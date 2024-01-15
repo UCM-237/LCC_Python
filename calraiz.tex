@@ -1,61 +1,61 @@
-\chapter{Cálculo de raíces de una función}
+\chapter{CÃ¡lculo de raÃ­ces de una funciÃ³n}
 
-\section{Raíces de una función}
-Se entiende por raíces de una función real $f(x):\mathbb{R} \rightarrow \mathbb{R}$. los valores $x=r$ que satisfacen, $f(r)=0$
+\section{Raï¿½ces de una funciï¿½n}
+Se entiende por raï¿½ces de una funciï¿½n real $f(x):\mathbb{R} \rightarrow \mathbb{R}$. los valores $x=r$ que satisfacen, $f(r)=0$
 
-El cálculo de las raíces de una función, tiene una gran importancia en la ciencia, donde un número significativo de problemas pueden reducirse a obtener la raíz o raíces de una ecuación.
+El cï¿½lculo de las raï¿½ces de una funciï¿½n, tiene una gran importancia en la ciencia, donde un nï¿½mero significativo de problemas pueden reducirse a obtener la raï¿½z o raï¿½ces de una ecuaciï¿½n.
 
-La obtención de la raíz de una ecuación es inmediata en aquellos casos en que se conoce la forma analítica de su función inversa $f^{-1}$, ($f(x)=y\Rightarrow f^{-1}(y)=x$). En este caso, $r=f^{-1}(0)$. Por ejemplo,
+La obtenciï¿½n de la raï¿½z de una ecuaciï¿½n es inmediata en aquellos casos en que se conoce la forma analï¿½tica de su funciï¿½n inversa $f^{-1}$, ($f(x)=y\Rightarrow f^{-1}(y)=x$). En este caso, $r=f^{-1}(0)$. Por ejemplo,
 \begin{align*}
 f(x)&=x^2-4\\
 f^{-1}(y)&=\pm\sqrt{y+4}\Rightarrow r=f^{-1}(0)=\pm 2\
 \end{align*}
 
-Sin embargo, en muchos casos de interés las funciones no pueden invertirse.  Un ejemplo, extraído de la física es la ecuación de Kepler para el cálculo de las órbitas planetarias,
+Sin embargo, en muchos casos de interï¿½s las funciones no pueden invertirse.  Un ejemplo, extraï¿½do de la fï¿½sica es la ecuaciï¿½n de Kepler para el cï¿½lculo de las ï¿½rbitas planetarias,
 \begin{equation*}
 x-a\sin(x)=b
 \end{equation*}
 
-Donde $a$ y $b$ son parámetros conocidos y se desea conocer el valor de $x$. La solución de la ecuación de Kepler es equivalente a obtener las raíces de la función $f(x)=x-a\sin(x)-b$. (La figura \ref{fig:kepler} muestra un ejemplo de dicha función.) En este caso, no se conoce la función inversa, y solo es posible conocer el valor de la raíz, aproximadamente, empleando métodos numéricos.
+Donde $a$ y $b$ son parï¿½metros conocidos y se desea conocer el valor de $x$. La soluciï¿½n de la ecuaciï¿½n de Kepler es equivalente a obtener las raï¿½ces de la funciï¿½n $f(x)=x-a\sin(x)-b$. (La figura \ref{fig:kepler} muestra un ejemplo de dicha funciï¿½n.) En este caso, no se conoce la funciï¿½n inversa, y solo es posible conocer el valor de la raï¿½z, aproximadamente, empleando mï¿½todos numï¿½ricos.
 \begin{figure}[h]
 \centering
 		\includegraphics[width=12cm]{kepler.pdf}
-	\caption{Ejemplo de ecuación de Kepler para $a=40$ y $b=2$}
+	\caption{Ejemplo de ecuaciï¿½n de Kepler para $a=40$ y $b=2$}
 	\label{fig:kepler}
 \end{figure}
 
-\paragraph*{Métodos iterativos}Todos los métodos que se describen en este capítulo, se basan en procedimientos iterativos. La idea es estimar un valor inicial para la raíz $r_0$, y a partir de él ir refinando paso a paso la solución, de modo que el resultado se acerque cada vez más al valor real de la raíz. Cada nueva aproximación a la raíz se obtiene a partir de las aproximaciones anteriores. 
+\paragraph*{Mï¿½todos iterativos}Todos los mï¿½todos que se describen en este capï¿½tulo, se basan en procedimientos iterativos. La idea es estimar un valor inicial para la raï¿½z $r_0$, y a partir de ï¿½l ir refinando paso a paso la soluciï¿½n, de modo que el resultado se acerque cada vez mï¿½s al valor real de la raï¿½z. Cada nueva aproximaciï¿½n a la raï¿½z se obtiene a partir de las aproximaciones anteriores. 
 \begin{align*}
 r_0\ \ \  \rightarrow \  \ r_1  \ \ \rightarrow \ \ r_2 \ \ \rightarrow \cdots \rightarrow \ \ r_k \ \rightarrow \cdots\\
 \vert f(r_0)\vert \ge \vert f(r_1)\vert \ge \vert f(r_2)\vert \ge \cdots \ge \vert f(r_k)\vert \ge \cdots
 \end{align*}
 
-El proceso que lleva de una solución aproximada a la siguiente se conoce con el nombre de \emph{iteración}. Lo habitual es que en cada iteración se realicen las mismas operaciones matemáticas una y otra vez. 
+El proceso que lleva de una soluciï¿½n aproximada a la siguiente se conoce con el nombre de \emph{iteraciï¿½n}. Lo habitual es que en cada iteraciï¿½n se realicen las mismas operaciones matemï¿½ticas una y otra vez. 
 
-El proceso se detiene cuando la solución alcanzada se estima lo suficientemente próxima a la solución real como para darla por buena. Para ello, se suele establecer un valor (\emph{tolerancia}) que actúa como criterio de convergencia. De este modo, las iteraciones se repiten hasta que se llega a un valor $r_n$ 	que cumple,
+El proceso se detiene cuando la soluciï¿½n alcanzada se estima lo suficientemente prï¿½xima a la soluciï¿½n real como para darla por buena. Para ello, se suele establecer un valor (\emph{tolerancia}) que actï¿½a como criterio de convergencia. De este modo, las iteraciones se repiten hasta que se llega a un valor $r_n$ 	que cumple,
 \begin{equation*}
 \vert f(r_n) \vert \leq \text(tol)
 \end{equation*}
 
-Se dice entonces que el algoritmo empleado para obtener la raíz ha convergido en \emph{n} iteraciones. Por otro lado, es importante señalar que los algoritmos para el cálculo de raíces de una función no siempre convergen. Hay veces en que no es posible aproximarse cada vez más al valor de la raíz bien por la naturaleza de la función o bien por que el algoritmo no es adecuado para obtenerla.
+Se dice entonces que el algoritmo empleado para obtener la raï¿½z ha convergido en \emph{n} iteraciones. Por otro lado, es importante seï¿½alar que los algoritmos para el cï¿½lculo de raï¿½ces de una funciï¿½n no siempre convergen. Hay veces en que no es posible aproximarse cada vez mï¿½s al valor de la raï¿½z bien por la naturaleza de la funciï¿½n o bien por que el algoritmo no es adecuado para obtenerla.
 
-\paragraph*{Búsqueda local.} Una función puede tener cualquier número de raíces, incluso infinitas, basta pensar por ejemplo en funciones trigonométricas como $\cos(x)$. Una característica importante de los métodos descritos en este capítulo es que solo son capaces de aproximar una raíz. La raíz de la función a la que el método converge depende de el valor inicial $r_0$ con el que se comienza la búsqueda iterativa\footnote{En ocasiones, como veremos más adelante no se suministra al algoritmo un valor inicial, sino un intervalo en el que buscar la raíz}. Por ello reciben el nombre de métodos locales. Si queremos encontrar varias (o todas) las raíces de una determinada función, es preciso emplear el método para cada una de las raíces por separado, cambiando cada vez el punto de partida.
+\paragraph*{Bï¿½squeda local.} Una funciï¿½n puede tener cualquier nï¿½mero de raï¿½ces, incluso infinitas, basta pensar por ejemplo en funciones trigonomï¿½tricas como $\cos(x)$. Una caracterï¿½stica importante de los mï¿½todos descritos en este capï¿½tulo es que solo son capaces de aproximar una raï¿½z. La raï¿½z de la funciï¿½n a la que el mï¿½todo converge depende de el valor inicial $r_0$ con el que se comienza la bï¿½squeda iterativa\footnote{En ocasiones, como veremos mï¿½s adelante no se suministra al algoritmo un valor inicial, sino un intervalo en el que buscar la raï¿½z}. Por ello reciben el nombre de mï¿½todos locales. Si queremos encontrar varias (o todas) las raï¿½ces de una determinada funciï¿½n, es preciso emplear el mï¿½todo para cada una de las raï¿½ces por separado, cambiando cada vez el punto de partida.
 
 \section{Metodos iterativos locales}
-\subsection{Método de la bisección}
+\subsection{Mï¿½todo de la bisecciï¿½n}
 \paragraph*{Teorema de Bolzano.}
 \begin{quote}
-Si una funcion $f(x)$, continua en el intervalo $[a, b]$, cambia de signo en los extremos del intervalo: $f(a)\cdot f(b) \le 0$, debe tener una raíz en el intervalo [a, b]. (figura: \ref{fig:bolzano}) 
+Si una funcion $f(x)$, continua en el intervalo $[a, b]$, cambia de signo en los extremos del intervalo: $f(a)\cdot f(b) \le 0$, debe tener una raï¿½z en el intervalo [a, b]. (figura: \ref{fig:bolzano}) 
 \end{quote}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{bolzano.pdf}
-\caption{Ilustración del teorema de Bolzano}
+\caption{Ilustraciï¿½n del teorema de Bolzano}
 \label{fig:bolzano}
 \end{figure}
 
-El conocido teorema de Bolzano, suministra el método más sencillo de aproximar la raíz de una función: Se parte de un intervalo inicial en el que se cumpla el teorema; y se va acotando sucesivamente el intervalo que contiene la raíz, reduciéndolo a la mitad en cada iteración, de forma que en cada nuevo intervalo se cumpla siempre el teorema de Bolzano.
+El conocido teorema de Bolzano, suministra el mï¿½todo mï¿½s sencillo de aproximar la raï¿½z de una funciï¿½n: Se parte de un intervalo inicial en el que se cumpla el teorema; y se va acotando sucesivamente el intervalo que contiene la raï¿½z, reduciï¿½ndolo a la mitad en cada iteraciï¿½n, de forma que en cada nuevo intervalo se cumpla siempre el teorema de Bolzano.
 
 \begin{figure}[h]
 \centering
@@ -71,62 +71,62 @@ El conocido teorema de Bolzano, suministra el método más sencillo de aproximar l
 \draw[blue,-latex](a.south)--(b);
 \draw[blue,-latex](b.south)--(c);
 \draw[blue,-latex](c.east)--(d);
-\draw (7.5,-4)node[above]{Sí};
+\draw (7.5,-4)node[above]{Sï¿½};
 \draw[blue,-latex](c.south)--(e);
 \draw (5,-5)node[right]{No};
 \draw[blue,-latex](e.east)--(f);
-\draw (8,-6)node[above]{Sí};
+\draw (8,-6)node[above]{Sï¿½};
 \draw[blue,-latex](e.south)--(g);
 \draw (5,-7.2)node[right]{No};
 \draw[blue,-latex](g.south)|-(2,-9)|-(b);
 \draw[blue,-latex](f.east)-|(11,-2)--(b);
 \end{tikzpicture}
-\caption{Diagrama de flujo del método de la bisección}
+\caption{Diagrama de flujo del mï¿½todo de la bisecciï¿½n}
 \label{fig:dfbisec}
 \end{figure}
-En la figura \ref{fig:dfbisec} se muestra un diagrama de flujo correspondiente al método de la bisección. El punto de partida es un intervalo $[a,b]$ en el que se cumple el teorema de Bolzano, y que contiene por tanto al menos una raíz. Es interesante hacer notar que el teorema de Bolzano se cumple siempre que la función sea continua en el intervalo $[a,b]$ y existan un número impar de raíces. Por esto es importante realizar cuidadosamente la elección del intervalo $[a,b]$, si hay más de una raíz, el algoritmo puede no converger.
+En la figura \ref{fig:dfbisec} se muestra un diagrama de flujo correspondiente al mï¿½todo de la bisecciï¿½n. El punto de partida es un intervalo $[a,b]$ en el que se cumple el teorema de Bolzano, y que contiene por tanto al menos una raï¿½z. Es interesante hacer notar que el teorema de Bolzano se cumple siempre que la funciï¿½n sea continua en el intervalo $[a,b]$ y existan un nï¿½mero impar de raï¿½ces. Por esto es importante realizar cuidadosamente la elecciï¿½n del intervalo $[a,b]$, si hay mï¿½s de una raï¿½z, el algoritmo puede no converger.
 
- Una vez que se tiene el intervalo se calcula el punto medio $c$. A continuación se compara el valor que toma la función en $c$, es decir $f(c)$ con la tolerancia. Si el valor es menor que ésta, el algoritmo ha encontrado un valor aproximado de la raíz con la tolerancia requerida, con lo que $c$ es la raíz y no hace falta seguir buscando. Si por el contrario, $f(c)$ está por encima de la tolerancia requerida, comparamos su signo con el que toma la función en uno cualquiera de los extremos del intervalo, En el diagrama de flujo se ha elegido el extremo $a$, pero el algoritmo funcionaría igualmente si eligiéramos $b$. Si el signo de $f(c)$ coincide con el que toma la función en el extremo del intervalo elegido, $c$ sustituye al extremo, (hacemos $a=c$ y $f(a)=f(c)$) si por el contrario el signo es distinto, hacemos que $c$ sustituya al otro extremo del intervalo. (hacemos $b=c$ y $f(b)=f(c)$). Este proceso se repetirá hasta que se cumpla que $f(c)\le \text{tol}$ 
+ Una vez que se tiene el intervalo se calcula el punto medio $c$. A continuaciï¿½n se compara el valor que toma la funciï¿½n en $c$, es decir $f(c)$ con la tolerancia. Si el valor es menor que ï¿½sta, el algoritmo ha encontrado un valor aproximado de la raï¿½z con la tolerancia requerida, con lo que $c$ es la raï¿½z y no hace falta seguir buscando. Si por el contrario, $f(c)$ estï¿½ por encima de la tolerancia requerida, comparamos su signo con el que toma la funciï¿½n en uno cualquiera de los extremos del intervalo, En el diagrama de flujo se ha elegido el extremo $a$, pero el algoritmo funcionarï¿½a igualmente si eligiï¿½ramos $b$. Si el signo de $f(c)$ coincide con el que toma la funciï¿½n en el extremo del intervalo elegido, $c$ sustituye al extremo, (hacemos $a=c$ y $f(a)=f(c)$) si por el contrario el signo es distinto, hacemos que $c$ sustituya al otro extremo del intervalo. (hacemos $b=c$ y $f(b)=f(c)$). Este proceso se repetirï¿½ hasta que se cumpla que $f(c)\le \text{tol}$ 
 
-El proceso se muestra gráficamente en la figura \ref{fig:bisec}, para un caso particular. Se trata de obtener la raíz de la función mostrada en la figura \ref{fig:bolzano}, $f(x)=e^x-x^2$. esta función tiene una única raíz: $r\approx -0.0735$. Para iniciar el algoritmo se ha elegido un intervalo $[a=-2,b=2]$. La figura \ref{fig:bisec}, muestra tres iteraciones sucesivas,y la solución final, que se obtiene al cabo de ocho iteraciones en éste ejemplo, para el que se a empleado una tolerancia $tol=0.01$. En la secuencia de gráficas se puede observar también la evolución del intervalo de búsqueda, $[-2, 2]\rightarrow [-2, 0] \rightarrow [-1, 0] \rightarrow [-1, -0.5] \cdots$; así como el cambio alternativo del límite derecho o izquierdo, para asegurar que la raíz queda siempre dentro de los sucesivos intervalos de búsqueda obtenidos. 
+El proceso se muestra grï¿½ficamente en la figura \ref{fig:bisec}, para un caso particular. Se trata de obtener la raï¿½z de la funciï¿½n mostrada en la figura \ref{fig:bolzano}, $f(x)=e^x-x^2$. esta funciï¿½n tiene una ï¿½nica raï¿½z: $r\approx -0.0735$. Para iniciar el algoritmo se ha elegido un intervalo $[a=-2,b=2]$. La figura \ref{fig:bisec}, muestra tres iteraciones sucesivas,y la soluciï¿½n final, que se obtiene al cabo de ocho iteraciones en ï¿½ste ejemplo, para el que se a empleado una tolerancia $tol=0.01$. En la secuencia de grï¿½ficas se puede observar tambiï¿½n la evoluciï¿½n del intervalo de bï¿½squeda, $[-2, 2]\rightarrow [-2, 0] \rightarrow [-1, 0] \rightarrow [-1, -0.5] \cdots$; asï¿½ como el cambio alternativo del lï¿½mite derecho o izquierdo, para asegurar que la raï¿½z queda siempre dentro de los sucesivos intervalos de bï¿½squeda obtenidos. 
 \begin{figure}
 \centering
 \subfigure[intervalo inicial]{\includegraphics[width=7cm]{rint0.pdf}} \qquad
 \subfigure[iteracion 1]{\includegraphics[width=7cm]{rint1.pdf}}\\
 \subfigure[iteracion 2]{\includegraphics[width=7cm]{rint2.pdf}}\qquad
 \subfigure[iteracion 3]{\includegraphics[width=7cm]{rint3.pdf}}\\
-\subfigure[iteracion 6: raíz alcanzada]{\includegraphics[width=7cm]{rint4.pdf}}
+\subfigure[iteracion 6: raï¿½z alcanzada]{\includegraphics[width=7cm]{rint4.pdf}}
 
-\caption{proceso de obtención de la raíz de una función por el método de la bisección }
+\caption{proceso de obtenciï¿½n de la raï¿½z de una funciï¿½n por el mï¿½todo de la bisecciï¿½n }
 \label{fig:bisec}
 \end{figure}
 
-\subsection{Método de interpolación lineal o (\emph{Regula falsi})}
-Este método supone una mejora del anterior ya que, en general,  converge más rápidamente. La idea es modificar el modo en que calculamos el punto $c$. En el caso del método de la bisección el criterio consistía en ir tomando en cada iteración el punto medio del intervalo que contiene la raíz. El método de interpolación lineal, elige como punto $c$ el punto de corte con el eje x, de la recta que pasa por los puntos $\left(a,f(a)\right)$ y $\left(b,f(b)\right)$. Es decir la recta que corta a la función $f(x)$ en ambos límites del intevalo que contiene a la raíz buscada. La recta que pasa por ambos puntos puede construirse a partir de ellos como,
+\subsection{Mï¿½todo de interpolaciï¿½n lineal o (\emph{Regula falsi})}
+Este mï¿½todo supone una mejora del anterior ya que, en general,  converge mï¿½s rï¿½pidamente. La idea es modificar el modo en que calculamos el punto $c$. En el caso del mï¿½todo de la bisecciï¿½n el criterio consistï¿½a en ir tomando en cada iteraciï¿½n el punto medio del intervalo que contiene la raï¿½z. El mï¿½todo de interpolaciï¿½n lineal, elige como punto $c$ el punto de corte con el eje x, de la recta que pasa por los puntos $\left(a,f(a)\right)$ y $\left(b,f(b)\right)$. Es decir la recta que corta a la funciï¿½n $f(x)$ en ambos lï¿½mites del intevalo que contiene a la raï¿½z buscada. La recta que pasa por ambos puntos puede construirse a partir de ellos como,
 \begin{equation*}
 y=\frac{f(a)-f(b)}{a-b}\cdot(x-b)+f(b)
 \end{equation*}
-el punto de corte con el eje $x$, que será el valor que tomaremos para $c$, se obtiene cuando $y=0$,
+el punto de corte con el eje $x$, que serï¿½ el valor que tomaremos para $c$, se obtiene cuando $y=0$,
 \begin{equation*}
 0=\frac{f(a)-f(b)}{a-b}\cdot(x-b)+f(b)
 \end{equation*}
 
-y despejando $c\equiv x$ en la ecuación anterior obtenemos,
+y despejando $c\equiv x$ en la ecuaciï¿½n anterior obtenemos,
 \begin{equation*}
 c=b-\frac{f(b)}{f(b)-f(a)}\cdot(b-a)
 \end{equation*}
 
-La figura \ref{fig:regulaf} muestra  gráficamente la posición del punto $c$ obtenido mediante el método de interpolación. 
+La figura \ref{fig:regulaf} muestra  grï¿½ficamente la posiciï¿½n del punto $c$ obtenido mediante el mï¿½todo de interpolaciï¿½n. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{rinter00.pdf}
 
-\caption{Obtención de la recta que une los extremos de un intervalo $[a,b]$  que contiene una raíz de la función}
+\caption{Obtenciï¿½n de la recta que une los extremos de un intervalo $[a,b]$  que contiene una raï¿½z de la funciï¿½n}
 \label{fig:regulaf}
 \end{figure}
 
-Por lo demás, el procedimiento es el mismo que en el caso del método de la bisección. Se empieza con un intervalo $[a,b]$ que  contenga una raíz, se obtiene el punto $c$ por el procedimiento descrito y se intercambia $c$ con el extremo del intervalo cuya imagen $f(a)$ o $f(b)$ tenga el mismo signo que $f(c)$ el procedimiento se repite iterativamente hasta que f(c) sea menor que el valor de tolerancia preestablecido. 
+Por lo demï¿½s, el procedimiento es el mismo que en el caso del mï¿½todo de la bisecciï¿½n. Se empieza con un intervalo $[a,b]$ que  contenga una raï¿½z, se obtiene el punto $c$ por el procedimiento descrito y se intercambia $c$ con el extremo del intervalo cuya imagen $f(a)$ o $f(b)$ tenga el mismo signo que $f(c)$ el procedimiento se repite iterativamente hasta que f(c) sea menor que el valor de tolerancia preestablecido. 
 
 \begin{figure}[h]
 \centering
@@ -142,45 +142,45 @@ Por lo demás, el procedimiento es el mismo que en el caso del método de la bisec
 \draw[blue,-latex](a.south)--(b);
 \draw[blue,-latex](b.south)--(c);
 \draw[blue,-latex](c.east)--(d);
-\draw (7.5,-4)node[above]{Sí};
+\draw (7.5,-4)node[above]{Sï¿½};
 \draw[blue,-latex](c.south)--(e);
 \draw (5,-5)node[right]{No};
 \draw[blue,-latex](e.east)--(f);
-\draw (8,-6)node[above]{Sí};
+\draw (8,-6)node[above]{Sï¿½};
 \draw[blue,-latex](e.south)--(g);
 \draw (5,-7.2)node[right]{No};
 \draw[blue,-latex](g.south)|-(2,-9)|-(b);
 \draw[blue,-latex](f.east)-|(11,-2)--(b);
 \end{tikzpicture}
-\caption{Diagrama de flujo del método de interpolación lineal}
+\caption{Diagrama de flujo del mï¿½todo de interpolaciï¿½n lineal}
 \label{fig:regula}
 \end{figure}
 
-En la figura \ref{fig:regula} se muestra el diagrama de flujo para el método de interpolación lineal. Como puede verse, es idéntico al de la bisección excepto en el paso en que se obtiene el valor de $c$, donde se ha sustituido el cálculo del punto medio del intervalo de búsqueda, por el cálculo del punto de corte con el eje de abscisas  de la recta que une los extremos del intervalo.
+En la figura \ref{fig:regula} se muestra el diagrama de flujo para el mï¿½todo de interpolaciï¿½n lineal. Como puede verse, es idï¿½ntico al de la bisecciï¿½n excepto en el paso en que se obtiene el valor de $c$, donde se ha sustituido el cï¿½lculo del punto medio del intervalo de bï¿½squeda, por el cï¿½lculo del punto de corte con el eje de abscisas  de la recta que une los extremos del intervalo.
 
-La figura \ref{fig:iterr2} Muestra gráficamente el proceso iterativo seguido para obtener la raíz de una función en un intervalo mediante el método de interpolación lineal. Se ha empleado la misma función y el mismo intervalo inicial que en el caso de la bisección. 
+La figura \ref{fig:iterr2} Muestra grï¿½ficamente el proceso iterativo seguido para obtener la raï¿½z de una funciï¿½n en un intervalo mediante el mï¿½todo de interpolaciï¿½n lineal. Se ha empleado la misma funciï¿½n y el mismo intervalo inicial que en el caso de la bisecciï¿½n. 
 
-Es fácil ver, sin embargo, que los puntos intermedios que obtiene el algoritmo hasta converger a la raíz son distintos. De hecho, el algoritmo emplea ahora tan solo siete iteraciones para obtener la raíz, empleando el mismo valor para la tolerancia, 0.01, que se empleó en el método de la bisección.
+Es fï¿½cil ver, sin embargo, que los puntos intermedios que obtiene el algoritmo hasta converger a la raï¿½z son distintos. De hecho, el algoritmo emplea ahora tan solo siete iteraciones para obtener la raï¿½z, empleando el mismo valor para la tolerancia, 0.01, que se empleï¿½ en el mï¿½todo de la bisecciï¿½n.
 
-Una observación final, se ha dicho al principio que éste método supone una mejora al método anterior de la bisección. Esto no siempre es cierto. El método de la bisección tiene una tasa de convergencia constante, cada iteración divide el espacio de búsqueda por la mitad. Sin embargo la convergencia del método de interpolación  lineal depende de la función $f(x)$ y de la posición relativa de los puntos iniciales $(a, f(a))$  y $(b, f(b))$ con respecto al la raíz. Por esto no es siempre cierto que converja más rápido que el método de  la bisección. Por otro lado, el cálculo de los sucesivos valores del punto $c$, requiere más operaciones aritméticas en el método de interpolación, con lo que cada iteración resulta más lenta que en el caso de la bisección.
+Una observaciï¿½n final, se ha dicho al principio que ï¿½ste mï¿½todo supone una mejora al mï¿½todo anterior de la bisecciï¿½n. Esto no siempre es cierto. El mï¿½todo de la bisecciï¿½n tiene una tasa de convergencia constante, cada iteraciï¿½n divide el espacio de bï¿½squeda por la mitad. Sin embargo la convergencia del mï¿½todo de interpolaciï¿½n  lineal depende de la funciï¿½n $f(x)$ y de la posiciï¿½n relativa de los puntos iniciales $(a, f(a))$  y $(b, f(b))$ con respecto al la raï¿½z. Por esto no es siempre cierto que converja mï¿½s rï¿½pido que el mï¿½todo de  la bisecciï¿½n. Por otro lado, el cï¿½lculo de los sucesivos valores del punto $c$, requiere mï¿½s operaciones aritmï¿½ticas en el mï¿½todo de interpolaciï¿½n, con lo que cada iteraciï¿½n resulta mï¿½s lenta que en el caso de la bisecciï¿½n.
 \begin{figure}
 \centering
 \subfigure[intervalo inicial]{\includegraphics[width=7cm]{rinter0.pdf}} \qquad
 \subfigure[iteracion 1]{\includegraphics[width=7cm]{rinter1.pdf}}\\
 \subfigure[iteracion 2]{\includegraphics[width=7cm]{rinter2.pdf}}\qquad
 \subfigure[iteracion 3]{\includegraphics[width=7cm]{rinter3.pdf}}\\
-\subfigure[iteracion 6: raíz alcanzada]{\includegraphics[width=7cm]{rinter4.pdf}}
+\subfigure[iteracion 6: raï¿½z alcanzada]{\includegraphics[width=7cm]{rinter4.pdf}}
 
-\caption{Proceso de obtención de la raíz de una función por el método de interpolación lineal}
+\caption{Proceso de obtenciï¿½n de la raï¿½z de una funciï¿½n por el mï¿½todo de interpolaciï¿½n lineal}
 \label{fig:iterr2}
 \end{figure}
 
-\subsection{Método de Newton-Raphson}
-El método de Newton se basa en la expansión de una función $f(x)$ en serie de Taylor en el entorno de un punto $x_0$,
+\subsection{Mï¿½todo de Newton-Raphson}
+El mï¿½todo de Newton se basa en la expansiï¿½n de una funciï¿½n $f(x)$ en serie de Taylor en el entorno de un punto $x_0$,
 \begin{equation*}
 f(x)\approx f(x_0)+f'(x_0)(x-x_0)+\frac{1}{2}f''(x_0)(x-x_0)^2+\cdots+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+\cdots
 \end{equation*}
- Pertenece a una familia de métodos ampliamente empleados en cálculo numérico. La idea en el caso del método de Newton es aproximar la función para la que se desea obtener la raíz, mediante el primer término de la serie de Taylor. Es decir aproximar localmente $f(x)$, en el entorno de $x_0$ por la recta,
+ Pertenece a una familia de mï¿½todos ampliamente empleados en cï¿½lculo numï¿½rico. La idea en el caso del mï¿½todo de Newton es aproximar la funciï¿½n para la que se desea obtener la raï¿½z, mediante el primer tï¿½rmino de la serie de Taylor. Es decir aproximar localmente $f(x)$, en el entorno de $x_0$ por la recta,
 \begin{equation*}
  f(x_0)+f'(x_0)(x-x_0)
 \end{equation*}
@@ -188,11 +188,11 @@ Esta recta, es precisamente la recta tangente a la curva $f(x)$ en el punto $x_0
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{newt0.pdf}[h]
-\caption{Recta tangente a la función $f(x)$ en el punto $x_0$}
+\caption{Recta tangente a la funciï¿½n $f(x)$ en el punto $x_0$}
 \label{fig:newton1}
 \end{figure}
 
-El método consiste en obtener el corte de esta recta tangente con el eje de abscisas,
+El mï¿½todo consiste en obtener el corte de esta recta tangente con el eje de abscisas,
 \begin{equation*}
 0= f(x_0)+f'(x_0)(x-x_0)
 \end{equation*}
@@ -203,15 +203,15 @@ y despejando x,
 x=x_0-\frac{f(x_0)}{f'(x_0)}
 \end{equation*}
 
-A continuación se evalúa la función en el punto obtenido $x\rightarrow f(x)$. Como en los métodos anteriores, se compara el valor de $f(x)$ con una cierta tolerancia preestablecida. Si es menor, el valor de $x$ se toma como raíz de la función. Si no, se vuelve aplicar el algoritmo, empleando ahora el valor de x que acabamos de obtener como punto de partida. Cada cálculo constituye una nueva iteración y los sucesivos valores obtenidos para $x$, convergen a la raíz,
+A continuaciï¿½n se evalï¿½a la funciï¿½n en el punto obtenido $x\rightarrow f(x)$. Como en los mï¿½todos anteriores, se compara el valor de $f(x)$ con una cierta tolerancia preestablecida. Si es menor, el valor de $x$ se toma como raï¿½z de la funciï¿½n. Si no, se vuelve aplicar el algoritmo, empleando ahora el valor de x que acabamos de obtener como punto de partida. Cada cï¿½lculo constituye una nueva iteraciï¿½n y los sucesivos valores obtenidos para $x$, convergen a la raï¿½z,
 
 \begin{equation*}
 x_0\rightarrow x_1=x_0-\frac{f(x_0)}{f'(x_0)}\rightarrow x_2=x_1-\frac{f(x_1)}{f'(x_1)}\rightarrow  \cdots \rightarrow x_n=\frac{f(x_{n-1})}{f'(x_{n-1})}\rightarrow \cdots
 \end{equation*}
 
-La figura \ref{fig:newton} muestra un diagrama de flujo correspondiente al método de Newton. Si se compara con los diagramas de flujo de los algoritmos anteriores, el algoritmo de Newton resulta algo más simple de implementar. Sin embargo es preciso evaluar en cada iteración el valor de la función y el de su derivada. 
+La figura \ref{fig:newton} muestra un diagrama de flujo correspondiente al mï¿½todo de Newton. Si se compara con los diagramas de flujo de los algoritmos anteriores, el algoritmo de Newton resulta algo mï¿½s simple de implementar. Sin embargo es preciso evaluar en cada iteraciï¿½n el valor de la funciï¿½n y el de su derivada. 
 
-El cálculo de la derivada, es el punto débil de este algoritmo, ya que para valores $x_0$ próximos a un mínimo o máximo local obtendremos valores de la derivada próximos a cero, lo que puede causar un error de desbordamiento al calcular el punto de corte de la recta tangente con el eje de abscisas o hacer que el algoritmo converja a una raíz alejada del punto inicial de búsqueda.
+El cï¿½lculo de la derivada, es el punto dï¿½bil de este algoritmo, ya que para valores $x_0$ prï¿½ximos a un mï¿½nimo o mï¿½ximo local obtendremos valores de la derivada prï¿½ximos a cero, lo que puede causar un error de desbordamiento al calcular el punto de corte de la recta tangente con el eje de abscisas o hacer que el algoritmo converja a una raï¿½z alejada del punto inicial de bï¿½squeda.
  
 \begin{figure}[h]
 \centering
@@ -225,21 +225,21 @@ El cálculo de la derivada, es el punto débil de este algoritmo, ya que para valo
 \draw[blue,-latex](a.south)--(b);
 \draw[blue,-latex](b.south)--(c);
 \draw[blue,-latex](c.east)--(d);
-\draw (7.5,-4)node[above]{Sí};
+\draw (7.5,-4)node[above]{Sï¿½};
 \draw[blue,-latex](c.south)--(g);
 \draw (5,-5)node[right]{No};
 \draw[blue,-latex](g.south)|-(2,-7)|-(b);
 
 \end{tikzpicture}
-\caption{Diagrama de flujo del método de Newton-Raphson}
+\caption{Diagrama de flujo del mï¿½todo de Newton-Raphson}
 \label{fig:newton}
 \end{figure}
 
-La figura \ref{fig:newton2} muestra un ejemplo de obtención de la raíz de una función mediante el método de Newton. El método es más rápido que los dos anteriores, es decir, partiendo de una distancia comparable a la raíz, es el que converge en menos iteraciones. 
+La figura \ref{fig:newton2} muestra un ejemplo de obtenciï¿½n de la raï¿½z de una funciï¿½n mediante el mï¿½todo de Newton. El mï¿½todo es mï¿½s rï¿½pido que los dos anteriores, es decir, partiendo de una distancia comparable a la raï¿½z, es el que converge en menos iteraciones. 
 
-En el ejemplo de la figura se ha obtenido la raíz para la misma función que en los ejemplos del método de la bisección e interpolación lineal. Se ha empezado sin embargo en un punto más alejado de la raíz, para que pueda observarse mejor en la figura la evolución del algoritmo. En cada uno de los gráficos que componen la figura pueden observarse  los pasos del algoritmo: dado el punto  $x_i$, se calcula  la recta tangente a la función $f(x)$ en el punto y se obtiene un nuevo punto $x_{i+1}$,  como el corte de dicha recta tangente con el eje de abscisas.
+En el ejemplo de la figura se ha obtenido la raï¿½z para la misma funciï¿½n que en los ejemplos del mï¿½todo de la bisecciï¿½n e interpolaciï¿½n lineal. Se ha empezado sin embargo en un punto mï¿½s alejado de la raï¿½z, para que pueda observarse mejor en la figura la evoluciï¿½n del algoritmo. En cada uno de los grï¿½ficos que componen la figura pueden observarse  los pasos del algoritmo: dado el punto  $x_i$, se calcula  la recta tangente a la funciï¿½n $f(x)$ en el punto y se obtiene un nuevo punto $x_{i+1}$,  como el corte de dicha recta tangente con el eje de abscisas.
 
-En este ejemplo el algoritmo converge en las cinco iteraciones que se muestran en la figura, para la misma tolerancia empleada en los métodos anteriores, $tol=0.01$. El punto de inicio empleado fue $x_0=2.5$, por tanto esta fuera del intervalo $[-2, 2]$ y más alejado de la raíz que en el caso de los métodos anteriores.   
+En este ejemplo el algoritmo converge en las cinco iteraciones que se muestran en la figura, para la misma tolerancia empleada en los mï¿½todos anteriores, $tol=0.01$. El punto de inicio empleado fue $x_0=2.5$, por tanto esta fuera del intervalo $[-2, 2]$ y mï¿½s alejado de la raï¿½z que en el caso de los mï¿½todos anteriores.   
 
 \begin{figure}
 \centering
@@ -248,18 +248,18 @@ En este ejemplo el algoritmo converge en las cinco iteraciones que se muestran e
 \subfigure[iteracion 2]{\includegraphics[width=7cm]{newt1.pdf}}\qquad
 \subfigure[iteracion 3]{\includegraphics[width=7cm]{newt2.pdf}}\\
 \subfigure[iteracion 4]{\includegraphics[width=7cm]{newt3.pdf}}\qquad
-\subfigure[iteracion 5: raíz de la función]{\includegraphics[width=7cm]{newt4.pdf}}
+\subfigure[iteracion 5: raï¿½z de la funciï¿½n]{\includegraphics[width=7cm]{newt4.pdf}}
 
-\caption{Proceso de obtención de la raíz de una función por el método de Newton}
+\caption{Proceso de obtenciï¿½n de la raï¿½z de una funciï¿½n por el mï¿½todo de Newton}
 \label{fig:newton2}
 \end{figure}
-\subsection{Método de la secante}
-El método de la secante podría considerarse una variante del método de newton en el que se sustituye la recta tangente al punto $x0$ por la recta secante que une dos puntos obtenidos en iteraciones sucesivas. La idea es \emph{aproximar} la derivada a la función $f$ en el punto $x_n$ por la pendiente de una recta secante, es decir de una recta que corta a la función en dos puntos, 
+\subsection{Mï¿½todo de la secante}
+El mï¿½todo de la secante podrï¿½a considerarse una variante del mï¿½todo de newton en el que se sustituye la recta tangente al punto $x0$ por la recta secante que une dos puntos obtenidos en iteraciones sucesivas. La idea es \emph{aproximar} la derivada a la funciï¿½n $f$ en el punto $x_n$ por la pendiente de una recta secante, es decir de una recta que corta a la funciï¿½n en dos puntos, 
 \begin{equation*}
 f'(x_n)\approx \frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}
 \end{equation*}
 
-Las sucesivas aproximaciones a la raíz de la función se obtienen de modo similar a las del método de Newton, simplemente sustituyendo la derivada de la función por su valor aproximado,
+Las sucesivas aproximaciones a la raï¿½z de la funciï¿½n se obtienen de modo similar a las del mï¿½todo de Newton, simplemente sustituyendo la derivada de la funciï¿½n por su valor aproximado,
 
 \begin{equation*}
 x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}\approx x_n-\frac{(x_n-x_{n-1})\cdot f(x_n)}{f(x_n)-f(x_{n-1})}
@@ -269,15 +269,15 @@ Para iniciar el algoritmo, es preciso emplear en este caso dos puntos iniciales.
 
 \begin{figure}[h]
 \includegraphics[width=14cm]{secante0.pdf}
-\caption{Recta secante a la  función $f(x)$ en los puntos $x_0$ y $x_1$}
+\caption{Recta secante a la  funciï¿½n $f(x)$ en los puntos $x_0$ y $x_1$}
 \label{fig:secante}
 \end{figure}
 
-El método podría en este punto confundirse con el de interpolación, sin embargo tiene dos diferencias importantes: En primer lugar, la elección de los dos puntos iniciales $x_0$ e $x_1$, no tienen por qué formar un intervalo que contenga a la raíz. Es decir, podrían estar ambos situados al mismo lado de la raíz. En segundo lugar, los puntos obtenidos se van sustituyendo por orden, de manera que la nueva recta secante se construye siempre a partir de los dos últimos puntos obtenidos, sin prestar atención a que el valor de la raíz esté contenido entre ellos. (No se comparan los signos de la función en los puntos para ver cual se sustituye, como en el caso del método de interpolación). 
+El mï¿½todo podrï¿½a en este punto confundirse con el de interpolaciï¿½n, sin embargo tiene dos diferencias importantes: En primer lugar, la elecciï¿½n de los dos puntos iniciales $x_0$ e $x_1$, no tienen por quï¿½ formar un intervalo que contenga a la raï¿½z. Es decir, podrï¿½an estar ambos situados al mismo lado de la raï¿½z. En segundo lugar, los puntos obtenidos se van sustituyendo por orden, de manera que la nueva recta secante se construye siempre a partir de los dos ï¿½ltimos puntos obtenidos, sin prestar atenciï¿½n a que el valor de la raï¿½z estï¿½ contenido entre ellos. (No se comparan los signos de la funciï¿½n en los puntos para ver cual se sustituye, como en el caso del mï¿½todo de interpolaciï¿½n). 
 
-La figura \ref{fig:secante2} muestra un diagrama de flujo para el método de la secante. El diagrama es básicamente el mismo que el empleado para el método de Newton. Las dos diferencias fundamentales son, que ahora en lugar de evaluar la función y la derivada en cada iteración, se calcula  el valor del punto de corte de la recta que pasa por los dos últimos puntos obtenidos (es decir, empleamos una recta secante, que corta a la curva en dos puntos, en lugar de emplear una recta tangente). 
+La figura \ref{fig:secante2} muestra un diagrama de flujo para el mï¿½todo de la secante. El diagrama es bï¿½sicamente el mismo que el empleado para el mï¿½todo de Newton. Las dos diferencias fundamentales son, que ahora en lugar de evaluar la funciï¿½n y la derivada en cada iteraciï¿½n, se calcula  el valor del punto de corte de la recta que pasa por los dos ï¿½ltimos puntos obtenidos (es decir, empleamos una recta secante, que corta a la curva en dos puntos, en lugar de emplear una recta tangente). 
 
-Además es preciso actualizar, en cada iteración, el valor de los dos últimos puntos obtenidos: el más antiguo se desecha, el punto recién obtenido sustituye al anterior y éste al obtenido dos iteraciones antes. 
+Ademï¿½s es preciso actualizar, en cada iteraciï¿½n, el valor de los dos ï¿½ltimos puntos obtenidos: el mï¿½s antiguo se desecha, el punto reciï¿½n obtenido sustituye al anterior y ï¿½ste al obtenido dos iteraciones antes. 
 
 \begin{figure}[h]
 \centering
@@ -291,82 +291,82 @@ Además es preciso actualizar, en cada iteración, el valor de los dos últimos pun
 \draw[blue,-latex](a.south)--(b);
 \draw[blue,-latex](b.south)--(c);
 \draw[blue,-latex](c.east)--(d);
-\draw (7.5,-4)node[above]{Sí};
+\draw (7.5,-4)node[above]{Sï¿½};
 \draw[blue,-latex](c.south)--(g);
 \draw (5,-5)node[right]{No};
 \draw[blue,-latex](g.south)|-(2,-7)|-(b);
 
 \end{tikzpicture}
-\caption{Diagrama de flujo del método de la secante}
+\caption{Diagrama de flujo del mï¿½todo de la secante}
 \label{fig:secante2}
 \end{figure}
 
-La figura \ref{fig:secante3} muestra un ejemplo de la obtención de una raíz por el método de la secante. Se ha empleado de nuevo la misma función que en los ejemplos anteriores, tomando como valores iniciales, $x_0=-2.5$ y $x_1=0.5$. La tolerancia se ha fijado en $tol=0.01$ también como en los anteriores algoritmos descritos. En este caso, el algoritmo encuentra la raíz en cinco iteraciones. Cada uno de los gráficos que compone la figura \ref{fig:secante3}, muestra la obtención de un nuevo punto a partir de los dos anteriores. 
+La figura \ref{fig:secante3} muestra un ejemplo de la obtenciï¿½n de una raï¿½z por el mï¿½todo de la secante. Se ha empleado de nuevo la misma funciï¿½n que en los ejemplos anteriores, tomando como valores iniciales, $x_0=-2.5$ y $x_1=0.5$. La tolerancia se ha fijado en $tol=0.01$ tambiï¿½n como en los anteriores algoritmos descritos. En este caso, el algoritmo encuentra la raï¿½z en cinco iteraciones. Cada uno de los grï¿½ficos que compone la figura \ref{fig:secante3}, muestra la obtenciï¿½n de un nuevo punto a partir de los dos anteriores. 
 
-En la iteración 2, puede observarse como el nuevo punto se obtiene a partir de dos puntos que están ambos situados a la derecha de la raíz, es decir, no forman un intervalo que contenga a la raíz.  Aquí se pone claramente de manifiesto la diferencia con el método de interpolación lineal. De hecho, com ya se ha dicho, el método de la secante puede iniciarse tomando los dos primeros puntos a uno de los lados de la raíz.
+En la iteraciï¿½n 2, puede observarse como el nuevo punto se obtiene a partir de dos puntos que estï¿½n ambos situados a la derecha de la raï¿½z, es decir, no forman un intervalo que contenga a la raï¿½z.  Aquï¿½ se pone claramente de manifiesto la diferencia con el mï¿½todo de interpolaciï¿½n lineal. De hecho, com ya se ha dicho, el mï¿½todo de la secante puede iniciarse tomando los dos primeros puntos a uno de los lados de la raï¿½z.
 
- El método es, en principio, más eficiente que el de la bisección y el de interpolación lineal, y menos eficiente que el de Newton.
+ El mï¿½todo es, en principio, mï¿½s eficiente que el de la bisecciï¿½n y el de interpolaciï¿½n lineal, y menos eficiente que el de Newton.
 
-La ventaja de este método respecto al de Newton es que evita tener que calcular explícitamente la derivada de la función para la que se quiere calcular la raíz. El algunos casos, la obtención de la forma analítica de dicha derivada puede ser compleja.   
+La ventaja de este mï¿½todo respecto al de Newton es que evita tener que calcular explï¿½citamente la derivada de la funciï¿½n para la que se quiere calcular la raï¿½z. El algunos casos, la obtenciï¿½n de la forma analï¿½tica de dicha derivada puede ser compleja.   
 
 \begin{figure}
 \centering
 \subfigure[intervalo inicial]{\includegraphics[width=7cm]{secante0.pdf}} \qquad
 \subfigure[iteracion 1]{\includegraphics[width=7cm]{secante1.pdf}}\\
-\subfigure[iteración 2]{\includegraphics[width=7cm]{secante2.pdf}}\qquad
-\subfigure[iteración 3]{\includegraphics[width=7cm]{secante3.pdf}}\\
-\subfigure[iteración 4]{\includegraphics[width=7cm]{secante31.pdf}}\qquad
-\subfigure[iteración 5]{\includegraphics[width=7cm]{secante4.pdf}}
+\subfigure[iteraciï¿½n 2]{\includegraphics[width=7cm]{secante2.pdf}}\qquad
+\subfigure[iteraciï¿½n 3]{\includegraphics[width=7cm]{secante3.pdf}}\\
+\subfigure[iteraciï¿½n 4]{\includegraphics[width=7cm]{secante31.pdf}}\qquad
+\subfigure[iteraciï¿½n 5]{\includegraphics[width=7cm]{secante4.pdf}}
 
-\caption{proceso de obtención de la raíz de una función por el método de la secante}
+\caption{proceso de obtenciï¿½n de la raï¿½z de una funciï¿½n por el mï¿½todo de la secante}
 \label{fig:secante3}
 \end{figure}
 
-\subsection{Método de las aproximaciones sucesivas o del punto fijo}
+\subsection{Mï¿½todo de las aproximaciones sucesivas o del punto fijo}
 
-El método del punto fijo es, como se verá a lo largo de esta sección, el más sencillo de programar de todos. Desafortunadamente, presenta el problema de que no podemos aplicarlo a todas las funciones. Hay casos en los que el método no converge, con lo que no es posible emplearlo para encontrar la raíz o raíces de una función.
+El mï¿½todo del punto fijo es, como se verï¿½ a lo largo de esta secciï¿½n, el mï¿½s sencillo de programar de todos. Desafortunadamente, presenta el problema de que no podemos aplicarlo a todas las funciones. Hay casos en los que el mï¿½todo no converge, con lo que no es posible emplearlo para encontrar la raï¿½z o raï¿½ces de una funciï¿½n.
  
-\paragraph{Punto fijo de una función.} \index{Punto fijo! de una función}Se dice que un punto $x_f$ es un punto fijo de una función $g(x)$ si se cumple,
+\paragraph{Punto fijo de una funciï¿½n.} \index{Punto fijo! de una funciï¿½n}Se dice que un punto $x_f$ es un punto fijo de una funciï¿½n $g(x)$ si se cumple,
 \begin{equation*}
 g(x_f)=x_f
 \end{equation*}
 
-Es decir, la imagen del punto fijo $x_f$ es de nuevo el punto fijo. Así por ejemplo la función,
+Es decir, la imagen del punto fijo $x_f$ es de nuevo el punto fijo. Asï¿½ por ejemplo la funciï¿½n,
 \begin{equation*}
 g(x)=-\sqrt{e^x}
 \end{equation*}
 
-Tiene un punto fijo en $x_f=-0.703467$, porque $g(-0.703467)=-0.703467$. La existencia de un punto fijo puede obtenerse gráficamente, representando en un mismo gráfico la función $y=g(x)$ y la recta $y=x$. Si existe un punto de corte entre ambas gráficas, se trata de un punto fijo.  La figura \ref{fig:pfijo0}, muestra gráficamente el punto fijo de la función $g(x)=-\sqrt{e^x}$ del ejemplo anterior.
+Tiene un punto fijo en $x_f=-0.703467$, porque $g(-0.703467)=-0.703467$. La existencia de un punto fijo puede obtenerse grï¿½ficamente, representando en un mismo grï¿½fico la funciï¿½n $y=g(x)$ y la recta $y=x$. Si existe un punto de corte entre ambas grï¿½ficas, se trata de un punto fijo.  La figura \ref{fig:pfijo0}, muestra grï¿½ficamente el punto fijo de la funciï¿½n $g(x)=-\sqrt{e^x}$ del ejemplo anterior.
 
-Una función puede tener uno o más puntos fijos o no tener ninguno. Por ejemplo, la función $y=\sqrt{e^x}$ no tiene ningún punto fijo.
+Una funciï¿½n puede tener uno o mï¿½s puntos fijos o no tener ninguno. Por ejemplo, la funciï¿½n $y=\sqrt{e^x}$ no tiene ningï¿½n punto fijo.
 
 
 \begin{figure}[h]
 \includegraphics[width=14cm]{pfijo0.eps}
-\caption{Obtención gráfica del punto fijo de la función, $g(x)=-\sqrt{e^x}$}
+\caption{Obtenciï¿½n grï¿½fica del punto fijo de la funciï¿½n, $g(x)=-\sqrt{e^x}$}
 \label{fig:pfijo0}
 \end{figure}
 
-\paragraph{Punto fijo atractivo.} \index{Punto fijo! atractivo}Supongamos ahora que, a partir de la función $g(x)$ creamos la siguiente sucesión,
+\paragraph{Punto fijo atractivo.} \index{Punto fijo! atractivo}Supongamos ahora que, a partir de la funciï¿½n $g(x)$ creamos la siguiente sucesiï¿½n,
 \begin{equation*}
 x_{n+1}=g(x_n)
 \end{equation*}
 
-Es decir, empezamos tomando un punto inicial $x_0$ y a partir de él vamos obteniendo los siguientes valores de la sucesión como,
+Es decir, empezamos tomando un punto inicial $x_0$ y a partir de ï¿½l vamos obteniendo los siguientes valores de la sucesiï¿½n como,
 \begin{equation*}
 x_0\rightarrow x_1=g(x_0)\rightarrow x_2=g(x_1)=g\left(g(x_0)\right) \rightarrow \cdots \rightarrow x_{n+1}=g(x_{n})=g\left( g\left( \cdots\left( g(x_0)\right)\right)\right) \rightarrow \cdots
 \end{equation*}
-Decimos que un punto fijo $x_f$ de la función $g(x)$ es un punto fijo atractivo si la sucesión $x_{n+1}=g(x_n)$ converge al valor $x_f$, siempre que $x_0$ se tome \emph{suficientemente} cercano a $x_f$. Cómo de cerca tienen que estar $x_0$ y $x_f$ para que la serie converja, es una cuestión delicada. De entrada, es importante descartar que hay funciones que tienen puntos fijos no atractivos, por ejemplo, la función $g(x)=x^2$ tiene dos puntos fijos $x=0$ y $x=1$. El primero es el límite de la sucesión $x_{n+1}=g(x_n)$ para cualquier valor inicial $x_0$ contenido en el intervalo abierto $(-1,  1)$. El punto $x=1$ resulta inalcanzable para cualquier sucesión excepto que el punto de inicio sea él mismo $x_0=x_f=1$.
+Decimos que un punto fijo $x_f$ de la funciï¿½n $g(x)$ es un punto fijo atractivo si la sucesiï¿½n $x_{n+1}=g(x_n)$ converge al valor $x_f$, siempre que $x_0$ se tome \emph{suficientemente} cercano a $x_f$. Cï¿½mo de cerca tienen que estar $x_0$ y $x_f$ para que la serie converja, es una cuestiï¿½n delicada. De entrada, es importante descartar que hay funciones que tienen puntos fijos no atractivos, por ejemplo, la funciï¿½n $g(x)=x^2$ tiene dos puntos fijos $x=0$ y $x=1$. El primero es el lï¿½mite de la sucesiï¿½n $x_{n+1}=g(x_n)$ para cualquier valor inicial $x_0$ contenido en el intervalo abierto $(-1,  1)$. El punto $x=1$ resulta inalcanzable para cualquier sucesiï¿½n excepto que el punto de inicio sea ï¿½l mismo $x_0=x_f=1$.
 
 Hay algunos casos en los que  es posible, para determinadas funciones, saber cuando uno de sus puntos fijos es atractivo,
 
-\paragraph{Teorema de existencia y unicidad del punto fijo.}\index{Punto fijo! Teorema} Dada una función $g(x)$,  continua y diferen-\- ciable en un intervalo $[a, b]$, si se cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$,  entonces $g(x)$ tiene un punto fijo en el intervalo $[a, b]$. 
+\paragraph{Teorema de existencia y unicidad del punto fijo.}\index{Punto fijo! Teorema} Dada una funciï¿½n $g(x)$,  continua y diferen-\- ciable en un intervalo $[a, b]$, si se cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$,  entonces $g(x)$ tiene un punto fijo en el intervalo $[a, b]$. 
 
-Si además existe una constante positiva $k < 1$  y se  cumple que  la derivada $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, entonces el punto fijo contenido en $[a,b]$ es único. 
+Si ademï¿½s existe una constante positiva $k < 1$  y se  cumple que  la derivada $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, entonces el punto fijo contenido en $[a,b]$ es ï¿½nico. 
 
-Para demostrar la primera parte del teorema, se puede emplear el teorema de Bolzano. Si se cumple que $g(a)=a$ o que  $g(b)=b$, entonces $a$ o $b$ serían el punto fijo. Supongamos que no es así;  entonces tiene que cumplirse que $g(a)>a$ y que $g(b)<b$. Si construimos una función, $f(x)=g(x)-x$ esta función, que es continua por construcción, cumple que $f(a)=g(a)-a>0$ y $f(b)=g(b)-b<0$. Pero entonces, debe existir un punto, $x_f \in [a, b]$ para el cual $f(x_f)=0$ y, por tanto, $f(x_f)=g(x_f)-x_f=0 \Rightarrow g(x_f)=x_f$. Es decir, $x_f$ es un punto fijo de $g(x)$.
+Para demostrar la primera parte del teorema, se puede emplear el teorema de Bolzano. Si se cumple que $g(a)=a$ o que  $g(b)=b$, entonces $a$ o $b$ serï¿½an el punto fijo. Supongamos que no es asï¿½;  entonces tiene que cumplirse que $g(a)>a$ y que $g(b)<b$. Si construimos una funciï¿½n, $f(x)=g(x)-x$ esta funciï¿½n, que es continua por construcciï¿½n, cumple que $f(a)=g(a)-a>0$ y $f(b)=g(b)-b<0$. Pero entonces, debe existir un punto, $x_f \in [a, b]$ para el cual $f(x_f)=0$ y, por tanto, $f(x_f)=g(x_f)-x_f=0 \Rightarrow g(x_f)=x_f$. Es decir, $x_f$ es un punto fijo de $g(x)$.
 
-La segunda parte del teorema puede demostrarse empleando el teorema de valor medio. Si suponemos  que existen dos puntos fijos distintos $x_{f1} \neq x_{f2}$ en el intervalo $[a,b]$, según el teorema del valor medio, existe un punto $\xi$ comprendido entre $x_{f1}$ y $ x_{f2}$ para el que se cumple,
+La segunda parte del teorema puede demostrarse empleando el teorema de valor medio. Si suponemos  que existen dos puntos fijos distintos $x_{f1} \neq x_{f2}$ en el intervalo $[a,b]$, segï¿½n el teorema del valor medio, existe un punto $\xi$ comprendido entre $x_{f1}$ y $ x_{f2}$ para el que se cumple,
 
 \begin{equation*}
 \frac{g(x_{f1})-g(x_{f2})}{x_{f1}-x_{f2}}=g'(\xi)
@@ -378,23 +378,23 @@ Por tanto,
 \vert g(x_{f1})-g(x_{f2}) \vert =\vert x_{f1}-x_{f2} \vert\cdot \vert g'(\xi) \vert \leq \vert x_{f1}-x_{f2} \vert \cdot k < \vert x_{f1}-x_{f2} \vert 
 \end{equation*}
 
-Pero como se trata de puntos fijos $\vert g(x_{f1})-g(x_{f2}) \vert =\vert x_{f1}-x_{f2}\vert $. con lo que llegaríamos al resultado contradictorio, 
+Pero como se trata de puntos fijos $\vert g(x_{f1})-g(x_{f2}) \vert =\vert x_{f1}-x_{f2}\vert $. con lo que llegarï¿½amos al resultado contradictorio, 
 
  \begin{equation*}
 \vert x_{f1}-x_{f2}\vert=\vert g(x_{f1})-g(x_{f2}) \vert  \leq \vert x_{f1}-x_{f2} \vert\cdot k < \vert x_{f1}-x_{f2} \vert 
 \end{equation*}
 
-Salvo que, en contra de la hipótesis inicial, se cumpla que  $ x_{f1}=x_{f2}$. En cuyo caso, solo puede existir un único punto fijo en el intervalo $[a, b]$ bajo las condiciones impuestas por el teorema.
+Salvo que, en contra de la hipï¿½tesis inicial, se cumpla que  $ x_{f1}=x_{f2}$. En cuyo caso, solo puede existir un ï¿½nico punto fijo en el intervalo $[a, b]$ bajo las condiciones impuestas por el teorema.
 
-\paragraph{Teorema de punto fijo (atractivo).} \footnote{Hay varios teoremas de punto fijo definidos en distintos contextos matemáticos. Aquí se da una versión reducida a funciones $f(x):\mathbb{R} \rightarrow \mathbb{R}$} Dada una función $g(x)$,  continua y diferenciable en un intervalo $[a, b]$, que  cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$ y que  $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, con $0<k<1$, entonces se cumple que, para cualquier punto inicial $x_0$, contenido en el intervalo $[a, b]$, la sucesión  $x_{n+1}=g(x_n)$ converge al único punto fijo del intervalo $[a, b]$.
+\paragraph{Teorema de punto fijo (atractivo).} \footnote{Hay varios teoremas de punto fijo definidos en distintos contextos matemï¿½ticos. Aquï¿½ se da una versiï¿½n reducida a funciones $f(x):\mathbb{R} \rightarrow \mathbb{R}$} Dada una funciï¿½n $g(x)$,  continua y diferenciable en un intervalo $[a, b]$, que  cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$ y que  $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, con $0<k<1$, entonces se cumple que, para cualquier punto inicial $x_0$, contenido en el intervalo $[a, b]$, la sucesiï¿½n  $x_{n+1}=g(x_n)$ converge al ï¿½nico punto fijo del intervalo $[a, b]$.
 
-La demostración puede obtenerse de nuevo a partir del teorema del valor medio.  Si lo aplicamos al valor inicial $x_0$ y al punto fijo $x_f$, obtenemos,
+La demostraciï¿½n puede obtenerse de nuevo a partir del teorema del valor medio.  Si lo aplicamos al valor inicial $x_0$ y al punto fijo $x_f$, obtenemos,
 
 \begin{equation*}
 \vert g(x_0)-g(x_f) \vert =\vert x_0-x_f \vert \cdot \vert g'(\xi) \vert \leq \vert x_0-x_f \vert \cdot k 
 \end{equation*}
 
-Para la siguiente iteración tendremos,
+Para la siguiente iteraciï¿½n tendremos,
 
 \begin{equation*}
 \vert g(x_1)-g(x_f) \vert \leq \vert x_1-x_f \vert \cdot k \leq \vert x_0-x_f \vert \cdot k^2 
@@ -402,7 +402,7 @@ Para la siguiente iteración tendremos,
 
 puesto que,  $x_1=g(x_0)$ y $x_f = g(x_f)$, puesto que $x_f$ es el punto fijo. 
 
-Por simple inducción tendremos que para el término enésimo de la sucesión,
+Por simple inducciï¿½n tendremos que para el tï¿½rmino enï¿½simo de la sucesiï¿½n,
 
 \begin{equation*}
 \vert g(x_n)-g(x_f) \vert \leq \vert x_{n-1}-x_f \vert \cdot k \leq \vert x_{n-2}-x_f \vert \cdot k^2 \leq \cdots \leq  \vert x_0-x_f \vert \cdot k^n 
@@ -413,25 +413,25 @@ Pero
 \underset{n\rightarrow \infty}{\text{lim}}k^n=0 \Rightarrow \underset{n\rightarrow \infty}{\text{lim}} \vert x_n-x_f \vert \leq \underset{n\rightarrow \infty}{\text{lim}}\vert x_0-x_f \vert k^n =0
 \end{equation*} 
 
-Es decir, la sucesión  $x_{n+1}=g(x_n)$ converge al punto fijo $x_f$.
+Es decir, la sucesiï¿½n  $x_{n+1}=g(x_n)$ converge al punto fijo $x_f$.
 
 
-\paragraph{El método del punto fijo.}\index{Punto fijo! Método} Como ya hemos visto, obtener una raíz de una función $f(x)$, consiste en resolver la ecuación $f(x)=0$. Supongamos que podemos descomponer la función $f(x)$ como la diferencia de dos términos, una función auxiliar, $g(x)$, y la propia variable $x$
+\paragraph{El mï¿½todo del punto fijo.}\index{Punto fijo! Mï¿½todo} Como ya hemos visto, obtener una raï¿½z de una funciï¿½n $f(x)$, consiste en resolver la ecuaciï¿½n $f(x)=0$. Supongamos que podemos descomponer la funciï¿½n $f(x)$ como la diferencia de dos tï¿½rminos, una funciï¿½n auxiliar, $g(x)$, y la propia variable $x$
 \begin{equation*}
 f(x)=g(x)-x
 \end{equation*}
 
-Encontrar una raíz de $f(x)$ resulta entonces equivalente a buscar un punto fijo de $g(x)$. 
+Encontrar una raï¿½z de $f(x)$ resulta entonces equivalente a buscar un punto fijo de $g(x)$. 
 
 \begin{equation*}
 f(x)=0 \rightarrow g(x)-x=0 \rightarrow g(x)=x
 \end{equation*}
 
-En general, a partir de una función dada $f(x)$, es posible encontrar distintas funciones $g(x)$ que cumplan que $f(x)=g(x)-x$. No podemos garantizar que cualquiera de las descomposiciones que hagamos nos genere una función $g(x)$ que tenga un punto fijo. 
-Además, para funciones que tengan más de una raíz, puede suceder que distintas descomposiciones de la función converjan a distintas raíces.
-Si podemos encontrar una que cumpla las condiciones del teorema de punto fijo que acabamos de enunciar, en un entorno de una raíz de $f(x)$, podemos desarrollar un método que obtenga iterativamente los valores de la sucesión   $x_{n+1}=g(x_n)$, a partir de un valor inicial $x_0$.  El resultado se aproximará al punto fijo de $g(x)$, y por tanto a la raíz de $f(x)$ tanto como queramos. Bastará, como   en los métodos anteriores, definir un valor (tolerancia), por debajo del cual consideramos que el valor obtenido es suficientemente próximo a  la raíz como para darlo por válido. 
+En general, a partir de una funciï¿½n dada $f(x)$, es posible encontrar distintas funciones $g(x)$ que cumplan que $f(x)=g(x)-x$. No podemos garantizar que cualquiera de las descomposiciones que hagamos nos genere una funciï¿½n $g(x)$ que tenga un punto fijo. 
+Ademï¿½s, para funciones que tengan mï¿½s de una raï¿½z, puede suceder que distintas descomposiciones de la funciï¿½n converjan a distintas raï¿½ces.
+Si podemos encontrar una que cumpla las condiciones del teorema de punto fijo que acabamos de enunciar, en un entorno de una raï¿½z de $f(x)$, podemos desarrollar un mï¿½todo que obtenga iterativamente los valores de la sucesiï¿½n   $x_{n+1}=g(x_n)$, a partir de un valor inicial $x_0$.  El resultado se aproximarï¿½ al punto fijo de $g(x)$, y por tanto a la raï¿½z de $f(x)$ tanto como queramos. Bastarï¿½, como   en los mï¿½todos anteriores, definir un valor (tolerancia), por debajo del cual consideramos que el valor obtenido es suficientemente prï¿½ximo a  la raï¿½z como para darlo por vï¿½lido. 
 
-La figura \ref{fig:pfijo1} muestra un diagrama de flujo del método del punto fijo. 
+La figura \ref{fig:pfijo1} muestra un diagrama de flujo del mï¿½todo del punto fijo. 
 
 
 \begin{figure}[h]
@@ -446,22 +446,22 @@ La figura \ref{fig:pfijo1} muestra un diagrama de flujo del método del punto fij
 \draw[blue,-latex](a.south)--(b);
 \draw[blue,-latex](b.south)--(c);
 \draw[blue,-latex](c.east)--(d);
-\draw (7.5,-4)node[above]{Sí};
+\draw (7.5,-4)node[above]{Sï¿½};
 \draw[blue,-latex](c.south)--(g);
 \draw (5,-5)node[right]{No};
 \draw[blue,-latex](g.south)|-(2,-7)|-(b);
 
 \end{tikzpicture}
-\caption{Diagrama de flujo del método del punto fijo. Nótese que la raíz obtenida corresponde a la función $f(x)=g(x)-x$}
+\caption{Diagrama de flujo del mï¿½todo del punto fijo. Nï¿½tese que la raï¿½z obtenida corresponde a la funciï¿½n $f(x)=g(x)-x$}
 \label{fig:pfijo1}
 \end{figure}
 
- La idea es elegir cuidadosamente el punto inicial $x_0$, para asegurar que se encuentra dentro del intervalo de convergencia del punto fijo.  A continuación, calculamos el valor de $g(x_0)$, el resultado será un nuevo valor  $x$ .  Comprobamos la diferencia entre el punto obtenido y el anterior y si es menor que una cierta tolerancia,  consideramos que el método ha convergido, dejamos de iterar, y devolvemos el valor de $x$ obtenido como resultado. Si no, copiamos $x$ en $x_0$ y volvemos a empezar todo el proceso. Es interesante hacer notar que que el algoritmo converge cuando la diferencia entre dos puntos consecutivos es menor que un cierto valor.  De acuerdo con la \emph{condición } de punto fijo $g(x_0)=x_0$, dicha distancia, sería equivalente a la que media entre $f(x_0)=g(x_0)-x_0$, la función para la que queremos obtener la raíz,   y $0$.
+ La idea es elegir cuidadosamente el punto inicial $x_0$, para asegurar que se encuentra dentro del intervalo de convergencia del punto fijo.  A continuaciï¿½n, calculamos el valor de $g(x_0)$, el resultado serï¿½ un nuevo valor  $x$ .  Comprobamos la diferencia entre el punto obtenido y el anterior y si es menor que una cierta tolerancia,  consideramos que el mï¿½todo ha convergido, dejamos de iterar, y devolvemos el valor de $x$ obtenido como resultado. Si no, copiamos $x$ en $x_0$ y volvemos a empezar todo el proceso. Es interesante hacer notar que que el algoritmo converge cuando la diferencia entre dos puntos consecutivos es menor que un cierto valor.  De acuerdo con la \emph{condiciï¿½n } de punto fijo $g(x_0)=x_0$, dicha distancia, serï¿½a equivalente a la que media entre $f(x_0)=g(x_0)-x_0$, la funciï¿½n para la que queremos obtener la raï¿½z,   y $0$.
 
-Veamos un ejemplo. Supongamos  que queremos calcular por el método del punto fijo la raíz de la  
-función $y=e^x-x^2$, que hemos empleado en los ejemplos de los métodos anteriores.
+Veamos un ejemplo. Supongamos  que queremos calcular por el mï¿½todo del punto fijo la raï¿½z de la  
+funciï¿½n $y=e^x-x^2$, que hemos empleado en los ejemplos de los mï¿½todos anteriores.
 
-En primer lugar, debemos obtener a partir de ella una nueva función que cumpla que $f(x)=g(x)-x$. Podemos hacerlo de varias maneras despejando una '$x$', de la ecuación $e^x-x^2=0$.  Para ilustrar los distintos casos de convergencia, despejaremos $x$ de tres maneras distintas .
+En primer lugar, debemos obtener a partir de ella una nueva funciï¿½n que cumpla que $f(x)=g(x)-x$. Podemos hacerlo de varias maneras despejando una '$x$', de la ecuaciï¿½n $e^x-x^2=0$.  Para ilustrar los distintos casos de convergencia, despejaremos $x$ de tres maneras distintas .
 
 \begin{equation*}
 e^x-x^2=0 \Rightarrow \left\{
@@ -479,90 +479,90 @@ x&=\frac{e^x}{x}
 \label{fig:pfijo01}
 \end{figure}
 
-En nuestro ejemplo hemos obtenido tres formas distintas de \emph{despejar} la variable $x$. La cuestión que surge inmediatamente es, si todas las funciones obtenidas, tienen un punto fijo y, en caso de tenerlo, si es posible alcanzarlo iterativamente.
+En nuestro ejemplo hemos obtenido tres formas distintas de \emph{despejar} la variable $x$. La cuestiï¿½n que surge inmediatamente es, si todas las funciones obtenidas, tienen un punto fijo y, en caso de tenerlo, si es posible alcanzarlo iterativamente.
 
-En el primer caso, $x=\pm \sqrt{e^x}$, obtenemos las dos ramas de la raíz cuadrada. Cada una de ellas constituye a los efectos de nuestro cálculo una función distinta. Si las dibujamos junto a la recta $y=x$ (figura \ref{fig:pfijo01}), observamos que solo la rama negativa la corta. Luego será  esta rama $g(x)=-\sqrt{e^x}$,  la que podremos utilizar para obtener la raíz de la función original por el método del punto fijo. La rama positiva, al no cortar a la recta $y=x$ en ningún punto, es una función que carece de punto fijo.
+En el primer caso, $x=\pm \sqrt{e^x}$, obtenemos las dos ramas de la raï¿½z cuadrada. Cada una de ellas constituye a los efectos de nuestro cï¿½lculo una funciï¿½n distinta. Si las dibujamos junto a la recta $y=x$ (figura \ref{fig:pfijo01}), observamos que solo la rama negativa la corta. Luego serï¿½  esta rama $g(x)=-\sqrt{e^x}$,  la que podremos utilizar para obtener la raï¿½z de la funciï¿½n original por el mï¿½todo del punto fijo. La rama positiva, al no cortar a la recta $y=x$ en ningï¿½n punto, es una funciï¿½n que carece de punto fijo.
 
-No es difícil demostrar, que la función $g(x)=-\sqrt{e^x} $ cumple las condiciones del teorema de punto fijo descrito más arriba para el intervalo $(-\infty, 0]$. Luego el algoritmo del punto fijo debería converger para cualquier punto de inicio $x_0$ contenido en dicho intervalo. De hecho, para esta función, el algoritmo converge desde cualquier punto de inicio (Si empezamos en punto positivo, el siguiente punto, $x_1$ será negativo, y por tanto estará dentro del intervalo de convergencia). Esta función es un ejemplo de que el teorema suministra una condición suficiente, pero no necesaria para que un punto fijo sea atractivo. 
+No es difï¿½cil demostrar, que la funciï¿½n $g(x)=-\sqrt{e^x} $ cumple las condiciones del teorema de punto fijo descrito mï¿½s arriba para el intervalo $(-\infty, 0]$. Luego el algoritmo del punto fijo deberï¿½a converger para cualquier punto de inicio $x_0$ contenido en dicho intervalo. De hecho, para esta funciï¿½n, el algoritmo converge desde cualquier punto de inicio (Si empezamos en punto positivo, el siguiente punto, $x_1$ serï¿½ negativo, y por tanto estarï¿½ dentro del intervalo de convergencia). Esta funciï¿½n es un ejemplo de que el teorema suministra una condiciï¿½n suficiente, pero no necesaria para que un punto fijo sea atractivo. 
 
-La figura \ref{fig:pfijo2} muestra un ejemplo del cálculo de la raíz de la función $f(x)=e^x-x^2$ empleando la función $g(x)=-\sqrt{e^x}$, para obtener el punto fijo. Se ha tomado como punto de partida $x_0=2.5$, un valor fuera del intervalo en el que se cumple el teorema. Como puede observarse en \ref{fig:pfijo21}. A pesar de ello el algoritmo converge rápidamente, y tras 5 iteraciones, \ref{fig:pfijo25}, ha alcanzado el punto fijo ---y por tanto la raíz buscada---, con la tolerancia impuesta
+La figura \ref{fig:pfijo2} muestra un ejemplo del cï¿½lculo de la raï¿½z de la funciï¿½n $f(x)=e^x-x^2$ empleando la funciï¿½n $g(x)=-\sqrt{e^x}$, para obtener el punto fijo. Se ha tomado como punto de partida $x_0=2.5$, un valor fuera del intervalo en el que se cumple el teorema. Como puede observarse en \ref{fig:pfijo21}. A pesar de ello el algoritmo converge rï¿½pidamente, y tras 5 iteraciones, \ref{fig:pfijo25}, ha alcanzado el punto fijo ---y por tanto la raï¿½z buscada---, con la tolerancia impuesta
   
 \begin{figure}
 \centering
 \subfigure[valor inicial \label{fig:pfijo21}]{\includegraphics[width=6.6cm]{pfijo3.pdf}} \qquad
 \subfigure[iteracion 1]{\includegraphics[width=6.5cm]{pfijo4.pdf}}\\
-\subfigure[iteración 2]{\includegraphics[width=6.5cm]{pfijo5.pdf}}\qquad
-\subfigure[iteración 3]{\includegraphics[width=6.5cm]{pfijo6.pdf}}\\
-\subfigure[iteración 4]{\includegraphics[width=6.5cm]{pfijo7.pdf}}\qquad
-\subfigure[iteración 5 \label{fig:pfijo25}]{\includegraphics[width=6.5cm]{pfijo8.pdf}}
-\caption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=-\sqrt{e^x}$}.
+\subfigure[iteraciï¿½n 2]{\includegraphics[width=6.5cm]{pfijo5.pdf}}\qquad
+\subfigure[iteraciï¿½n 3]{\includegraphics[width=6.5cm]{pfijo6.pdf}}\\
+\subfigure[iteraciï¿½n 4]{\includegraphics[width=6.5cm]{pfijo7.pdf}}\qquad
+\subfigure[iteraciï¿½n 5 \label{fig:pfijo25}]{\includegraphics[width=6.5cm]{pfijo8.pdf}}
+\caption{proceso de obtenciï¿½n de la raï¿½z de la funciï¿½n $f(x)=e^x-x^2$ aplicando el mï¿½todo del punto fijo sobre la funciï¿½n $g(x)=-\sqrt{e^x}$}.
 \label{fig:pfijo2}
 \end{figure}
 
-Si tratamos de emplear la función $g(x)=ln(x^2)$ para obtener la raíz, observamos que la función no cumple el teorema para ningún intervalo que contenga la raíz. 
+Si tratamos de emplear la funciï¿½n $g(x)=ln(x^2)$ para obtener la raï¿½z, observamos que la funciï¿½n no cumple el teorema para ningï¿½n intervalo que contenga la raï¿½z. 
 
-La figura \ref{fig:pfijo03} muestra la función $g(x)$, la recta $y=x$ y la evolución del algoritmo tras cuatro evaluaciones. Es fácil deducir que el algoritmo saltará de la rama positiva a la negativa y de ésta volverá a saltar de nuevo a la positiva. 
+La figura \ref{fig:pfijo03} muestra la funciï¿½n $g(x)$, la recta $y=x$ y la evoluciï¿½n del algoritmo tras cuatro evaluaciones. Es fï¿½cil deducir que el algoritmo saltarï¿½ de la rama positiva a la negativa y de ï¿½sta volverï¿½ a saltar de nuevo a la positiva. 
 
 \begin{figure}[h]
 \includegraphics[width=14cm]{p1fijo0.pdf}
-\caption{primeras iteraciones de la obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$.}
+\caption{primeras iteraciones de la obtenciï¿½n de la raï¿½z de la funciï¿½n $f(x)=e^x-x^2$ aplicando el mï¿½todo del punto fijo sobre la funciï¿½n $g(x)=ln(x^2)$.}
 \label{fig:pfijo03}
 \end{figure}
 
-La función presenta una asíntota vertical en el $0$. Si se empieza desde $x_0=0$, $x_0=1$ 0 $x_0=-1$ el algoritmo no converge, puesto que la función diverge hacia $-\infty$. Para el resto de los valores, la función oscila entre una rama y otra. Si en alguna de las oscilaciones acierta a pasar suficientemente cerca del punto fijo, $x_n-x_{n-} \leq tol$, el algoritmo habrá aproximado la raíz, aunque propiamente no se puede decir que converja.
+La funciï¿½n presenta una asï¿½ntota vertical en el $0$. Si se empieza desde $x_0=0$, $x_0=1$ 0 $x_0=-1$ el algoritmo no converge, puesto que la funciï¿½n diverge hacia $-\infty$. Para el resto de los valores, la funciï¿½n oscila entre una rama y otra. Si en alguna de las oscilaciones acierta a pasar suficientemente cerca del punto fijo, $x_n-x_{n-} \leq tol$, el algoritmo habrï¿½ aproximado la raï¿½z, aunque propiamente no se puede decir que converja.
 
- La figura \ref{fig:pfijo41}, muestra la evolución del algoritmo, tomando como punto inicial $x_0=-0.2$.  Tras 211 iteraciones el algoritmo 'atrapa la raíz'. En este caso la tolerancia se fijó en $tol=0.01$.  
+ La figura \ref{fig:pfijo41}, muestra la evoluciï¿½n del algoritmo, tomando como punto inicial $x_0=-0.2$.  Tras 211 iteraciones el algoritmo 'atrapa la raï¿½z'. En este caso la tolerancia se fijï¿½ en $tol=0.01$.  
  
- La gráfica \ref{fig:pfijo42} muestra una ampliación de \ref{fig:pfijo41} en la que pueden observarse en detalles los valores obtenidos para las dos últimas iteraciones. Las dos líneas horizontales de puntos marcan los límites $\text{raíz}\pm tol$. 
+ La grï¿½fica \ref{fig:pfijo42} muestra una ampliaciï¿½n de \ref{fig:pfijo41} en la que pueden observarse en detalles los valores obtenidos para las dos ï¿½ltimas iteraciones. Las dos lï¿½neas horizontales de puntos marcan los lï¿½mites $\text{raï¿½z}\pm tol$. 
  
- El algoritmo se detiene porque la diferencia entre los valores obtenidos en las dos últimas iteraciones caen dentro de la tolerancia. El valor obtenido en la penúltima iteración, que proviene de la rama positiva de la función $g(x)$ cae muy cerca del punto fijo. El último valor obtenido, se aleja de hecho del valor de la raíz, respecto al obtenido en la iteración anterior, pero no lo suficiente como para salirse de los límites de la banda marcada por la tolerancia. Como resultado, se cumple la condición de terminación y el algoritmo se detiene.  
+ El algoritmo se detiene porque la diferencia entre los valores obtenidos en las dos ï¿½ltimas iteraciones caen dentro de la tolerancia. El valor obtenido en la penï¿½ltima iteraciï¿½n, que proviene de la rama positiva de la funciï¿½n $g(x)$ cae muy cerca del punto fijo. El ï¿½ltimo valor obtenido, se aleja de hecho del valor de la raï¿½z, respecto al obtenido en la iteraciï¿½n anterior, pero no lo suficiente como para salirse de los lï¿½mites de la banda marcada por la tolerancia. Como resultado, se cumple la condiciï¿½n de terminaciï¿½n y el algoritmo se detiene.  
  
- Si disminuimos el valor de la tolerancia, no podemos garantizar que el algoritmo converja. De hecho, si trazamos cuales habrían sido los valores siguientes que habría tomado la solución del algoritmo, caso de no haberse detenido, es fácil ver que se alejan cada vez más de la raíz.  De nuevo habrá que esperar a que cambie de rama y vuelva  a pasar otra vez cerca del punto fijo para que haya otra oportunidad de que el algoritmo \emph{atrape} la solución.
+ Si disminuimos el valor de la tolerancia, no podemos garantizar que el algoritmo converja. De hecho, si trazamos cuales habrï¿½an sido los valores siguientes que habrï¿½a tomado la soluciï¿½n del algoritmo, caso de no haberse detenido, es fï¿½cil ver que se alejan cada vez mï¿½s de la raï¿½z.  De nuevo habrï¿½ que esperar a que cambie de rama y vuelva  a pasar otra vez cerca del punto fijo para que haya otra oportunidad de que el algoritmo \emph{atrape} la soluciï¿½n.
  
-  La gráfica \ref{fig:pfijo43} muestra la evolución del error en función del número de iteración. Como puede observarse, el error oscila de forma caótica de una iteración a la siguiente. De hecho, el estudio de las sucesiones de la forma $x_{n+1}=g(x_n)$ constituyen uno de los puntos de partidas para la descripción y el análisis de los llamados sistemas caóticos. 
+  La grï¿½fica \ref{fig:pfijo43} muestra la evoluciï¿½n del error en funciï¿½n del nï¿½mero de iteraciï¿½n. Como puede observarse, el error oscila de forma caï¿½tica de una iteraciï¿½n a la siguiente. De hecho, el estudio de las sucesiones de la forma $x_{n+1}=g(x_n)$ constituyen uno de los puntos de partidas para la descripciï¿½n y el anï¿½lisis de los llamados sistemas caï¿½ticos. 
 
-Uno sencillo, pero muy interesante es el de la ecuación logística discreta, $x_{n+1}=R\cdot (1-x_n)\cdot x_n$. Esta ecuación muestra un comportamiento muy distinto, según cual sea el valor de $R$ y el valor inicial $x_0$ con el que empecemos a iterar.
+Uno sencillo, pero muy interesante es el de la ecuaciï¿½n logï¿½stica discreta, $x_{n+1}=R\cdot (1-x_n)\cdot x_n$. Esta ecuaciï¿½n muestra un comportamiento muy distinto, segï¿½n cual sea el valor de $R$ y el valor inicial $x_0$ con el que empecemos a iterar.
  
  
 
 \begin{figure}[h]
 \centering
-\subfigure[Evolución del algoritmo durante 211 iteraciones \label{fig:pfijo41}]{\includegraphics[width=7cm]{p2fijo1.pdf}} \qquad
+\subfigure[Evoluciï¿½n del algoritmo durante 211 iteraciones \label{fig:pfijo41}]{\includegraphics[width=7cm]{p2fijo1.pdf}} \qquad
 \subfigure[Vista detallada de las ultimas iteraciones de \ref{fig:pfijo41} \label{fig:pfijo42}]{\includegraphics[width=7cm]{p2fijo1d2.eps}}\\
-\subfigure[Evolución del error \label{fig:pfijo43}]{\includegraphics[width=7.2cm]{p2fijo1e.pdf}}
+\subfigure[Evoluciï¿½n del error \label{fig:pfijo43}]{\includegraphics[width=7.2cm]{p2fijo1e.pdf}}
 
-\caption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$, el método oscila sin converger a la solución.}
+\caption{proceso de obtenciï¿½n de la raï¿½z de la funciï¿½n $f(x)=e^x-x^2$ aplicando el mï¿½todo del punto fijo sobre la funciï¿½n $g(x)=ln(x^2)$, el mï¿½todo oscila sin converger a la soluciï¿½n.}
 \label{fig:pfijo4}
 \end{figure}
 
-Por último, si empleamos la función $g(x)=\frac{e^x}{x}$, no se cumple el teorema de punto fijo en ningún punt. En este caso, el algoritmo diverge siempre.  La figura \ref{fig:pfijo5} muestra la evolución del algoritmo del punto fijo para esta función. Se ha elegido un punto de inicio $x_0=-0.745$, muy próximo al valor de la raíz, para poder observar la divergencia de las soluciones obtenidas con respecto al punto fijo. Como puede verse, el valor de $x_n$ cada vez se aleja más de la raíz. LA solución oscila entre un valor que cada vez se aproxima más a cero y otro que tiende hacia $-\infty$. Si se deja aumentar suficientemente el número de iteraciones, llegará un momento en que se producirá un error de desbordamiento. 
+Por ï¿½ltimo, si empleamos la funciï¿½n $g(x)=\frac{e^x}{x}$, no se cumple el teorema de punto fijo en ningï¿½n punt. En este caso, el algoritmo diverge siempre.  La figura \ref{fig:pfijo5} muestra la evoluciï¿½n del algoritmo del punto fijo para esta funciï¿½n. Se ha elegido un punto de inicio $x_0=-0.745$, muy prï¿½ximo al valor de la raï¿½z, para poder observar la divergencia de las soluciones obtenidas con respecto al punto fijo. Como puede verse, el valor de $x_n$ cada vez se aleja mï¿½s de la raï¿½z. LA soluciï¿½n oscila entre un valor que cada vez se aproxima mï¿½s a cero y otro que tiende hacia $-\infty$. Si se deja aumentar suficientemente el nï¿½mero de iteraciones, llegarï¿½ un momento en que se producirï¿½ un error de desbordamiento. 
 
-A diferencia de lo que sucedía en la elección de $g(x)=ln(x^2)$, en este caso, el algoritmo no oscila entre las dos ramas. Si empezamos en la rama de la derecha, eligiendo un valor positivo para $x_0$, el algoritmo diverge llevando las soluciones hacia $+\infty$. Es un resultado esperable, ya que dicha rama no tiene ningún punto fijo.
+A diferencia de lo que sucedï¿½a en la elecciï¿½n de $g(x)=ln(x^2)$, en este caso, el algoritmo no oscila entre las dos ramas. Si empezamos en la rama de la derecha, eligiendo un valor positivo para $x_0$, el algoritmo diverge llevando las soluciones hacia $+\infty$. Es un resultado esperable, ya que dicha rama no tiene ningï¿½n punto fijo.
 
 \begin{figure}
 \centering
 \subfigure[valor inicial]{\includegraphics[width=7cm]{p3fijo0.pdf}} \qquad
 \subfigure[iteracion 1]{\includegraphics[width=7cm]{p3fijo1.pdf}}\\
-\subfigure[iteración 2]{\includegraphics[width=7cm]{p3fijo2.pdf}}\qquad
-\subfigure[iteración 3]{\includegraphics[width=7cm]{p3fijo3.pdf}}\\
-\subfigure[iteración 4]{\includegraphics[width=7cm]{p3fijo4.pdf}}\qquad
-\subfigure[iteración 5]{\includegraphics[width=7cm]{p3fijo5.pdf}}
+\subfigure[iteraciï¿½n 2]{\includegraphics[width=7cm]{p3fijo2.pdf}}\qquad
+\subfigure[iteraciï¿½n 3]{\includegraphics[width=7cm]{p3fijo3.pdf}}\\
+\subfigure[iteraciï¿½n 4]{\includegraphics[width=7cm]{p3fijo4.pdf}}\qquad
+\subfigure[iteraciï¿½n 5]{\includegraphics[width=7cm]{p3fijo5.pdf}}
 
-\caption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=\frac{e^x}{x}$, el método diverge rápidamente.}
+\caption{proceso de obtenciï¿½n de la raï¿½z de la funciï¿½n $f(x)=e^x-x^2$ aplicando el mï¿½todo del punto fijo sobre la funciï¿½n $g(x)=\frac{e^x}{x}$, el mï¿½todo diverge rï¿½pidamente.}
 \label{fig:pfijo5}
 \end{figure}
 
-\section{Cálculo de raíces de funciones con Matlab.}
+\section{Cï¿½lculo de raï¿½ces de funciones con Matlab.}
 
-Matlab suministra funciones propias para calcular raíces de funciones.  Las dividiremos en dos grupos. En primer lugar estudiaremos la función de Matlab \texttt{fzero} y después veremos un conjunto de funciones específicas para manejar polinomios.
+Matlab suministra funciones propias para calcular raï¿½ces de funciones.  Las dividiremos en dos grupos. En primer lugar estudiaremos la funciï¿½n de Matlab \texttt{fzero} y despuï¿½s veremos un conjunto de funciones especï¿½ficas para manejar polinomios.
 
-\subsection{La función de Matlab \texttt{fzero.}}
+\subsection{La funciï¿½n de Matlab \texttt{fzero.}}
 
-La función \texttt{fzero} permite obtener la raíz de una función cualquiera real $f(x):\mathbb{R} \rightarrow \mathbb{R}$. \texttt{fzero}, es una función especial, ya que opera sobre otras funciones, podemos considerarla como una \emph{función de funciones}. Las funciones ordinarias actúan sobre variables, a lo largo de los capítulos anteriores hemos visto como asignar valores y \emph{variables de entrada} a las funciones y también cómo guardar los resultados obtenidos de las funciones en \emph{variables de salida}.
+La funciï¿½n \texttt{fzero} permite obtener la raï¿½z de una funciï¿½n cualquiera real $f(x):\mathbb{R} \rightarrow \mathbb{R}$. \texttt{fzero}, es una funciï¿½n especial, ya que opera sobre otras funciones, podemos considerarla como una \emph{funciï¿½n de funciones}. Las funciones ordinarias actï¿½an sobre variables, a lo largo de los capï¿½tulos anteriores hemos visto como asignar valores y \emph{variables de entrada} a las funciones y tambiï¿½n cï¿½mo guardar los resultados obtenidos de las funciones en \emph{variables de salida}.
 
-Matlab suministra varios mecanismos, para indicar a \texttt{fzero} ---y en general a cualquier \emph{función de funciones}--- la función sobre la que queremos que actúe. Veremos a continuación algunos de los más comunes.
+Matlab suministra varios mecanismos, para indicar a \texttt{fzero} ---y en general a cualquier \emph{funciï¿½n de funciones}--- la funciï¿½n sobre la que queremos que actï¿½e. Veremos a continuaciï¿½n algunos de los mï¿½s comunes.
 
-\paragraph{\emph{handle} de una función.}\index{"@ |emph{handle} de una función} El primer mecanismo, es asociar a una función un nombre de variable especial. Hasta ahora, siempre hemos empleado las variables para guardar en ellas valores numéricos o caracteres. Sin embargo Matlab permite guardar también funciones en una variable. Estas variables, reciben el nombre de \emph{handles}. Veamos un ejemplo. Si escribimos en la ventana de comandos, 
+\paragraph{\emph{handle} de una funciï¿½n.}\index{"@ |emph{handle} de una funciï¿½n} El primer mecanismo, es asociar a una funciï¿½n un nombre de variable especial. Hasta ahora, siempre hemos empleado las variables para guardar en ellas valores numï¿½ricos o caracteres. Sin embargo Matlab permite guardar tambiï¿½n funciones en una variable. Estas variables, reciben el nombre de \emph{handles}. Veamos un ejemplo. Si escribimos en la ventana de comandos, 
 
 \begin{verbatim}
 >> sn =@sin
@@ -570,9 +570,9 @@ sn =
     @sin
 \end{verbatim}
 
-Matlab asocia a la nueva variable \texttt{sn} la función seno (\texttt{sin}). Para indicar a Matlab que la nueva variable es el \emph{handle} de una función es imprescindible emplear el símbolo @, después del símbolo de asignación $=$.
+Matlab asocia a la nueva variable \texttt{sn} la funciï¿½n seno (\texttt{sin}). Para indicar a Matlab que la nueva variable es el \emph{handle} de una funciï¿½n es imprescindible emplear el sï¿½mbolo @, despuï¿½s del sï¿½mbolo de asignaciï¿½n $=$.
 
-Si pedimos a Matlab que nos muestre qué variables tiene en el \emph{workspace},
+Si pedimos a Matlab que nos muestre quï¿½ variables tiene en el \emph{workspace},
 
 \begin{verbatim}
 >> whos
@@ -582,19 +582,19 @@ Si pedimos a Matlab que nos muestre qué variables tiene en el \emph{workspace},
 
 \end{verbatim}
 
-Matlab nos indica que se ha creado una variable \texttt{sn}, cuya clase es \texttt{function\_handle}. Esta variable tiene propiedades muy interesantes: por una parte, podemos manejarla como si se tratara de la función seno, asignando valores de entrada, y guardando el resultado en una variable de salida, 
+Matlab nos indica que se ha creado una variable \texttt{sn}, cuya clase es \texttt{function\_handle}. Esta variable tiene propiedades muy interesantes: por una parte, podemos manejarla como si se tratara de la funciï¿½n seno, asignando valores de entrada, y guardando el resultado en una variable de salida, 
 \begin{verbatim}
 >> x=sn(pi/2)
 x =
      1
 \end{verbatim}
 
-Pero además podemos usarla como variable de entrada para otra función, tal y como se muestra en el siguiente código,
+Pero ademï¿½s podemos usarla como variable de entrada para otra funciï¿½n, tal y como se muestra en el siguiente cï¿½digo,
 
 \begin{verbatim}
 function pinta_funcion(fun,intervalo)
-%Esta función dibuja la gráfica de una funcion cualquiera (fun) en un
-%itervalo dado (intervalo). fun debe ser un handle de la función que se
+%Esta funciï¿½n dibuja la grï¿½fica de una funcion cualquiera (fun) en un
+%itervalo dado (intervalo). fun debe ser un handle de la funciï¿½n que se
 %quiere pintar. intervalo debe ser un vector que contenga los extremos del
 %intervalo que se desea pintar.
 
@@ -604,34 +604,34 @@ x=linspace(intervalo(1),intervalo(2),100);
 %calculamos el valor de la funcion en los puntos del intervalo,
 y=fun(x);
 
-%dibujamos la gráfica
+%dibujamos la grï¿½fica
 plot(x,y)
 \end{verbatim}
 
-La función \texttt{pinta\_funcion} nos dibujará la gráfica de cualquier función en el intervalo indicado. p realizar ara ello bastará crear un \emph{handle} de la función que se quiere dibujar y pasarlo a la función \texttt{pinta\_fun} como una variable de entrada. Así por ejemplo, si escribimos en Matlab,
+La funciï¿½n \texttt{pinta\_funcion} nos dibujarï¿½ la grï¿½fica de cualquier funciï¿½n en el intervalo indicado. p realizar ara ello bastarï¿½ crear un \emph{handle} de la funciï¿½n que se quiere dibujar y pasarlo a la funciï¿½n \texttt{pinta\_fun} como una variable de entrada. Asï¿½ por ejemplo, si escribimos en Matlab,
 
 \begin{verbatim}
 >>sn=@sin
 >>pinta_funcion(sn,[-pi/2,pi/2])
 \end{verbatim}
 
-Se obtendrá la gráfica de la función seno en el intervalo pedido.
+Se obtendrï¿½ la grï¿½fica de la funciï¿½n seno en el intervalo pedido.
 
-Podemos asignar \emph{handles} no solo a las funciones internas de Matlab sino a cualquier función que escribamos. Por ejemplo, en los métodos descritos más arriba para obtener raíces de funciones, usamos la función $f(x)=e^x-x^2$ como función de prueba. podemos crear un fichero que implemente esta función,
+Podemos asignar \emph{handles} no solo a las funciones internas de Matlab sino a cualquier funciï¿½n que escribamos. Por ejemplo, en los mï¿½todos descritos mï¿½s arriba para obtener raï¿½ces de funciones, usamos la funciï¿½n $f(x)=e^x-x^2$ como funciï¿½n de prueba. podemos crear un fichero que implemente esta funciï¿½n,
 
 \begin{verbatim}
 function y=prueba(x)
-%esta es una funcioncilla de prueba para los algoritmos de obtención de
-%raíces
+%esta es una funcioncilla de prueba para los algoritmos de obtenciï¿½n de
+%raï¿½ces
 y=exp(x)-x.^2;
 \end{verbatim}
 
-Si guardamos el fichero, con el nombre prueba.m en el directorio de trabajo, podemos ahora asignar un \emph{handle} a nuestra función,
+Si guardamos el fichero, con el nombre prueba.m en el directorio de trabajo, podemos ahora asignar un \emph{handle} a nuestra funciï¿½n,
 \begin{verbatim}
 mifuncion=@prueba realizar 
 \end{verbatim}
 
-Y a continuación, podemos emplear el programa \texttt{pinta\_fun} para representa la función en un intervalo, por ejemplo $[-2 2]$ que contenga la raíz,
+Y a continuaciï¿½n, podemos emplear el programa \texttt{pinta\_fun} para representa la funciï¿½n en un intervalo, por ejemplo $[-2 2]$ que contenga la raï¿½z,
 
 \begin{verbatim}
 pinta_funcion(mifuncion,[-2 2])
@@ -642,16 +642,16 @@ El resultado se muestra en la figura \ref{fig:handle}
 \begin{figure}[h]
 \centering
 \includegraphics[width=8cm]{handle.eps}
-\caption{Gráfica de la función $f(x)=e^x-x^2$, obtenida mediante \texttt{pinta\_funcion}.}
+\caption{Grï¿½fica de la funciï¿½n $f(x)=e^x-x^2$, obtenida mediante \texttt{pinta\_funcion}.}
 \label{fig:handle}
 \end{figure}
 
-\paragraph{la función \texttt{feval} de Matlab.} Esta función suministra un método indirecto para calcular los resultados de una función cualquiera.  Su sintaxis es la siguiente,
+\paragraph{la funciï¿½n \texttt{feval} de Matlab.} Esta funciï¿½n suministra un mï¿½todo indirecto para calcular los resultados de una funciï¿½n cualquiera.  Su sintaxis es la siguiente,
 \begin{verbatim} realizar 
 [y1, y2, ..., ym]=feval('fun', x1, x2, ...,xn)
 \end{verbatim}
 
-donde \texttt{fun} representa el nombre de la función que se desea evaluar, \texttt{x1, x2,...,xn}, son la variables de entrada empleadas por la función \texttt{fun}, y \texttt{y1, y2, ...,ym} representan sus variables de salida. Es importante destacar que el nombre de la función que se desea evaluar hay que introducirlo entre comillas simples. Así por ejemplo si escribimos,
+donde \texttt{fun} representa el nombre de la funciï¿½n que se desea evaluar, \texttt{x1, x2,...,xn}, son la variables de entrada empleadas por la funciï¿½n \texttt{fun}, y \texttt{y1, y2, ...,ym} representan sus variables de salida. Es importante destacar que el nombre de la funciï¿½n que se desea evaluar hay que introducirlo entre comillas simples. Asï¿½ por ejemplo si escribimos,
 
  \begin{verbatim}
 >> y=feval('sin',x)
@@ -659,7 +659,7 @@ y =
      1
 >> 
 \end{verbatim}
-obtenemos el mismo resultado que empleando la función \texttt{sin} directamente para calcular  el valor del seno de $\pi/2$,
+obtenemos el mismo resultado que empleando la funciï¿½n \texttt{sin} directamente para calcular  el valor del seno de $\pi/2$,
 \begin{verbatim}
 >> x=pi/2;
 >> y=sin(x)
@@ -671,12 +671,12 @@ y =
 
 
 
-\texttt{feval} suministra un método alternativo al uso de \emph{handles} para crear y manejar \emph{funciones de funciones}. Para ver un ejemplo, el siguiente código muestra una versión alternativa del programa \texttt{pinta\_funcion}, empleando la función \texttt{feval},
+\texttt{feval} suministra un mï¿½todo alternativo al uso de \emph{handles} para crear y manejar \emph{funciones de funciones}. Para ver un ejemplo, el siguiente cï¿½digo muestra una versiï¿½n alternativa del programa \texttt{pinta\_funcion}, empleando la funciï¿½n \texttt{feval},
 
 \begin{verbatim}
 function pinta_funcion2(fun,intervalo)
-%Esta función dibuja la gráfica de una funcion cualquiera (fun) en un
-%itervalo dado (intervalo). fun debe ser una cadena de caractéres que contengan exáctamente el nombre de la función (fun) que se 
+%Esta funciï¿½n dibuja la grï¿½fica de una funcion cualquiera (fun) en un
+%itervalo dado (intervalo). fun debe ser una cadena de caractï¿½res que contengan exï¿½ctamente el nombre de la funciï¿½n (fun) que se 
 %quiere pintar. intervalo debe ser un vector que contenga los extremos del
 %intervalo que se desea pintar.
 
@@ -686,40 +686,40 @@ x=linspace(intervalo(1),intervalo(2),100);
 %calculamos el valor de la funcion en los puntos del intervalo, EMPLEANDO LA FUNCION feval
 y=feval(fun,x);
 
-%dibujamos la gráfica
+%dibujamos la grï¿½fica
 plot(x,y)
 \end{verbatim}
 
-Para representar la función seno en el intervalo $-\frac{\pi}{2}, \frac{\pi}{2}$, empleando esta nueva función, introducimos en Matlab,
+Para representar la funciï¿½n seno en el intervalo $-\frac{\pi}{2}, \frac{\pi}{2}$, empleando esta nueva funciï¿½n, introducimos en Matlab,
 
 \begin{verbatim}
 >> pinta_funcion2('sin',[-pi/2,pi/2])
 \end{verbatim}
  realizar 
-También podemos crear una variable alfa-numérica con el nombre de la función seno, y pasar directamente la variable creada,
+Tambiï¿½n podemos crear una variable alfa-numï¿½rica con el nombre de la funciï¿½n seno, y pasar directamente la variable creada,
 
 \begin{verbatim}
 >> funcion='sin'
 >> pinta_funcion2(funcion,[-pi/2,pi/2])
 \end{verbatim}
 
-Al igual que en el caso del uso de \texttt{handles} podemos emplear la función \texttt{feval} con funciones creadas por el usuario, por ejemplo podemos representar nuestra función \texttt{prueba}, introducida anteriormente, 
+Al igual que en el caso del uso de \texttt{handles} podemos emplear la funciï¿½n \texttt{feval} con funciones creadas por el usuario, por ejemplo podemos representar nuestra funciï¿½n \texttt{prueba}, introducida anteriormente, 
 
 \begin{verbatim}
 >>pinta_funcion2('prueba',[-2 2])
 \end{verbatim}
 
-El resultado sería de nuevo la figura \ref{fig:handle}.  Una última propiedad importante de la función \texttt{feval} es que también admite que indiquemos la función a evaluar mediante un \emph{handle}. Sí volvemos al último ejemplo, podríamos haber construido un \emph{handle} para la función \texttt{prueba},
+El resultado serï¿½a de nuevo la figura \ref{fig:handle}.  Una ï¿½ltima propiedad importante de la funciï¿½n \texttt{feval} es que tambiï¿½n admite que indiquemos la funciï¿½n a evaluar mediante un \emph{handle}. Sï¿½ volvemos al ï¿½ltimo ejemplo, podrï¿½amos haber construido un \emph{handle} para la funciï¿½n \texttt{prueba},
 \begin{verbatim}
 >>mf=@prueba
 >>pinta_funcion2(mf,[-2 2])
 \end{verbatim} 
 
-Obtendríamos una vez más el mismo resultado.
+Obtendrï¿½amos una vez mï¿½s el mismo resultado.
 
-\paragraph{Funciones \emph{inline}.} \index{Funciones! \emph{inline}} Las funciones \emph{inlin realizar e} suministran un tercer mecanismo en Matlab para manejar una función de modo que sirva de \emph{variable}  a otra función. Las funciones \emph{inline} tienen una peculiaridad con respecto a las funciones que hemos visto hasta ahora; no se guardan en ficheros .m sino directamente en el \emph{Workspace}. Las funciones \emph{inline} solo existen mientras dura la sesión de Matlab en que se crearon, aunque es posible guardarlas en ficheros .mat y volver a cargarlas en Matlab, como se haría con cualquier otra variable.
+\paragraph{Funciones \emph{inline}.} \index{Funciones! \emph{inline}} Las funciones \emph{inlin realizar e} suministran un tercer mecanismo en Matlab para manejar una funciï¿½n de modo que sirva de \emph{variable}  a otra funciï¿½n. Las funciones \emph{inline} tienen una peculiaridad con respecto a las funciones que hemos visto hasta ahora; no se guardan en ficheros .m sino directamente en el \emph{Workspace}. Las funciones \emph{inline} solo existen mientras dura la sesiï¿½n de Matlab en que se crearon, aunque es posible guardarlas en ficheros .mat y volver a cargarlas en Matlab, como se harï¿½a con cualquier otra variable.
 
-Para crear una función \emph{inline} se emplea el comando \texttt{inline}. En su forma más sencilla, el comando debe emplear como variable de entrada una expresión entre comillas simples que represente la expresión matemática de la función. Por ejemplo si queremos hacer una versión \emph{inline} de la función \texttt{prueba},
+Para crear una funciï¿½n \emph{inline} se emplea el comando \texttt{inline}. En su forma mï¿½s sencilla, el comando debe emplear como variable de entrada una expresiï¿½n entre comillas simples que represente la expresiï¿½n matemï¿½tica de la funciï¿½n. Por ejemplo si queremos hacer una versiï¿½n \emph{inline} de la funciï¿½n \texttt{prueba},
 \begin{verbatim}
 >> fun=inline('exp(x)-x.^2')
 fun =
@@ -727,7 +727,7 @@ fun =
      fun(x) = exp(x)-x^2
 \end{verbatim}
 
-Para calcular el valor de la función en un punto, la función \emph{inline} se maneja de  modo análogo a cualquier otra función ordinaria.
+Para calcular el valor de la funciï¿½n en un punto, la funciï¿½n \emph{inline} se maneja de  modo anï¿½logo a cualquier otra funciï¿½n ordinaria.
 
 \begin{verbatim}
 >> y=fun(2)
@@ -735,17 +735,17 @@ y =
    3.3891
 \end{verbatim}
 
-Como en el caso del uso de \texttt{handles}, la variable creada mediante una función \emph{inline} realizar , hace referencia a una función y puede ser empleada como variable  de entrada por otras funciones. Por ejemplo, podríamos emplear directamente nuestra primera versión del programa para pintar funciones, \texttt{pitan\_funcion} para obtener la gráfica de nuestra función de prueba $f(x)=e^x-x^2$,
+Como en el caso del uso de \texttt{handles}, la variable creada mediante una funciï¿½n \emph{inline} realizar , hace referencia a una funciï¿½n y puede ser empleada como variable  de entrada por otras funciones. Por ejemplo, podrï¿½amos emplear directamente nuestra primera versiï¿½n del programa para pintar funciones, \texttt{pitan\_funcion} para obtener la grï¿½fica de nuestra funciï¿½n de prueba $f(x)=e^x-x^2$,
 
 \begin{verbatim}
 >>funcion=inline('exp(x)-x.^2')
 >>pinta_funcion(funcion,[-2 2])
 \end{verbatim}
 
-Una vez que hemos visto distintos métodos para manejar una función como variable de entrada de otra función, volvamos a la función \texttt{fzero}. En su forma más sencilla, \texttt{fzero} admite como variable de entrada, una función expresada mediante un \texttt{handle}, mediante su nombre escrito entrecomillas o bien construida como función \emph{inline}. Además es preciso introducir una segunda variable que puede ser un punto $x_0$ próximo a la raíz de la función o bien un vector $[a b]$ que defina un intervalo que contenga una raíz. La función \texttt{fzero}, devuelve como variable de salida el valor aproximado de la raíz. Si \texttt{fzero} no es capaz de encontrar la raíz de la función, devolverá NaN. Veamos un ejemplo con la función contenida en el fichero, prueba.m, descrito más arriba,
+Una vez que hemos visto distintos mï¿½todos para manejar una funciï¿½n como variable de entrada de otra funciï¿½n, volvamos a la funciï¿½n \texttt{fzero}. En su forma mï¿½s sencilla, \texttt{fzero} admite como variable de entrada, una funciï¿½n expresada mediante un \texttt{handle}, mediante su nombre escrito entrecomillas o bien construida como funciï¿½n \emph{inline}. Ademï¿½s es preciso introducir una segunda variable que puede ser un punto $x_0$ prï¿½ximo a la raï¿½z de la funciï¿½n o bien un vector $[a b]$ que defina un intervalo que contenga una raï¿½z. La funciï¿½n \texttt{fzero}, devuelve como variable de salida el valor aproximado de la raï¿½z. Si \texttt{fzero} no es capaz de encontrar la raï¿½z de la funciï¿½n, devolverï¿½ NaN. Veamos un ejemplo con la funciï¿½n contenida en el fichero, prueba.m, descrito mï¿½s arriba,
 
 \begin{enumerate}
-\item Empleando un \emph{handle} y un punto próximo a la raíz,
+\item Empleando un \emph{handle} y un punto prï¿½ximo a la raï¿½z,
 \begin{verbatim}
 >> hndl=@prueba
 hndl = 
@@ -754,28 +754,28 @@ hndl =
 raiz =
   -0.703467422498392
 \end{verbatim}
-\item Empleando un \emph{handle} y un intervalo que contenga la raíz,
+\item Empleando un \emph{handle} y un intervalo que contenga la raï¿½z,
 \begin{verbatim}
 >> raiz=fzero(hndl,[-2 2])
 raiz =
   -0.703467422498392
 \end{verbatim}
 
-\item Empleando el nombre de la función entre comillas y un punto cercano a la raíz,
+\item Empleando el nombre de la funciï¿½n entre comillas y un punto cercano a la raï¿½z,
 \begin{verbatim}
 >> raiz=fzero('prueba',2)
 raiz =
   -0.703467422498392
 \end{verbatim}
 
-\item  Empleando el nombre de la función entre comillas y un intervalo que contenga la raíz,
+\item  Empleando el nombre de la funciï¿½n entre comillas y un intervalo que contenga la raï¿½z,
 \begin{verbatim}
 >> raiz=fzero('prueba',[-2 2])
 raiz =
   -0.703467422498392
 \end{verbatim}
 
-\item Usando una función \emph{inline} y un punto cercano a la raíz,
+\item Usando una funciï¿½n \emph{inline} y un punto cercano a la raï¿½z,
 \begin{verbatim} realizar 
 >> finl=inline('exp(x)-x.^2')
 finl =
@@ -787,7 +787,7 @@ raiz =
   -0.703467422498392
 \end{verbatim}
 
-\item Usando una función \emph{inline} y un intervalo que contenga la raíz, 
+\item Usando una funciï¿½n \emph{inline} y un intervalo que contenga la raï¿½z, 
 \begin{verbatim}
 
 >> raiz=fzero(finl,[-2 2])
@@ -796,21 +796,21 @@ raiz =
 \end{verbatim}
 \end{enumerate} 
 
-La función \texttt{fzero}, tiene muchas posibilidades de ajuste de la precisión, del método que emplea internamente para buscar la raíz, etc. Para obtener una visión mas completa de su uso, consultar la ayuda de Matlab.
+La funciï¿½n \texttt{fzero}, tiene muchas posibilidades de ajuste de la precisiï¿½n, del mï¿½todo que emplea internamente para buscar la raï¿½z, etc. Para obtener una visiï¿½n mas completa de su uso, consultar la ayuda de Matlab.
 
-\subsection{Cálculo de raíces de polinomios.} \index{Polinomios}
+\subsection{Cï¿½lculo de raï¿½ces de polinomios.} \index{Polinomios}
 
-Matlab tiene un conjunto de funciones especialmente pensadas para  manejar polinomios. En primer lugar, en Matlab es habitual representar los polinomios mediante vectores cuyos elementos, son los coeficientes del polinomio ordenados de mayor a menor grado. Así por ejemplo, el polinomio. $y=2x^3+3x^2+4x+1$ se representa mediante el vector, $p1=[2\ 3\ 4\ 1]$,  el polinomio $y=3x^4+2x^2+6x$ se representa mediante el vector,  $p2=[3\ 0\ 2\ 6\ 0]$ y, en general, el polinomio $y(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_2x^2+a_1x+a_0$  se representa mediante el vector $p=[a_n\ a_{n-1}\ \cdots\ a_2\ a_1\ a_0]$. Si al polinomio le falta algún o algunos términos, el elemento correspondiente toma el valor $0$ en el vector que representa el polinomio.
+Matlab tiene un conjunto de funciones especialmente pensadas para  manejar polinomios. En primer lugar, en Matlab es habitual representar los polinomios mediante vectores cuyos elementos, son los coeficientes del polinomio ordenados de mayor a menor grado. Asï¿½ por ejemplo, el polinomio. $y=2x^3+3x^2+4x+1$ se representa mediante el vector, $p1=[2\ 3\ 4\ 1]$,  el polinomio $y=3x^4+2x^2+6x$ se representa mediante el vector,  $p2=[3\ 0\ 2\ 6\ 0]$ y, en general, el polinomio $y(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_2x^2+a_1x+a_0$  se representa mediante el vector $p=[a_n\ a_{n-1}\ \cdots\ a_2\ a_1\ a_0]$. Si al polinomio le falta algï¿½n o algunos tï¿½rminos, el elemento correspondiente toma el valor $0$ en el vector que representa el polinomio.
 
-Veamos a continuación un conjunto de funciones de Matlab, especialmente pensadas para manejar polinomios,
+Veamos a continuaciï¿½n un conjunto de funciones de Matlab, especialmente pensadas para manejar polinomios,
 
-\paragraph{La función \texttt{roots}.} \index{Polinomios!Raíces de un polinomio}Esta función calcula las raíces de un polinomio de grado $n$ a partir de los coeficientes del polinomio, contenidos en un vector como los que acabamos de describir. La sintaxis es: \texttt{raices=roots([vector de coeficientes])}. veamos un ejemplo. Dado el polinomio $y(x)=x^3-6^2+11x-6$ lo expresaríamos en Matlab como,
+\paragraph{La funciï¿½n \texttt{roots}.} \index{Polinomios!Raï¿½ces de un polinomio}Esta funciï¿½n calcula las raï¿½ces de un polinomio de grado $n$ a partir de los coeficientes del polinomio, contenidos en un vector como los que acabamos de describir. La sintaxis es: \texttt{raices=roots([vector de coeficientes])}. veamos un ejemplo. Dado el polinomio $y(x)=x^3-6^2+11x-6$ lo expresarï¿½amos en Matlab como,
 
 \begin{verbatim}
 >> p=[1 -6 11 -6]
 \end{verbatim}
 
-Y obtendríamos sus raíces como,
+Y obtendrï¿½amos sus raï¿½ces como,
 
 \begin{verbatim}
 >> raices=roots(p)
@@ -821,7 +821,7 @@ raices =
 
 \end{verbatim}
 
-Matlab devuelve todas las raíces del polinomio en un único vector, tanto las reales como las complejas. Como por ejemplo en el caso del polinomio $y(x)=x^2+2x+1$
+Matlab devuelve todas las raï¿½ces del polinomio en un ï¿½nico vector, tanto las reales como las complejas. Como por ejemplo en el caso del polinomio $y(x)=x^2+2x+1$
 
 \begin{verbatim}
 >> p=[1 2 3]
@@ -833,11 +833,11 @@ raices =
   -1.0000 - 1.4142i
 \end{verbatim}
 
-\paragraph{la función \texttt{poly}.} Esta función podría considerarse la opuesta a la anterior; dado un vector que contiene las raíces de un polinomio, nos devuelve los coeficientes del polinomio correspondiente, Por ejemplo si definimos el vector de raíces, 
+\paragraph{la funciï¿½n \texttt{poly}.} Esta funciï¿½n podrï¿½a considerarse la opuesta a la anterior; dado un vector que contiene las raï¿½ces de un polinomio, nos devuelve los coeficientes del polinomio correspondiente, Por ejemplo si definimos el vector de raï¿½ces, 
 \begin{verbatim}
 >>raices=[3 2 1]
 \end{verbatim}
-podemos obtener los coeficientes del polinomio que posee esas raíces como,
+podemos obtener los coeficientes del polinomio que posee esas raï¿½ces como,
 \begin{verbatim}
 >> raices=[1 2 3]
 raices =
@@ -847,9 +847,9 @@ coef =
      1    -6    11    -6
 \end{verbatim}
 
-Es decir, las raíces pertenecen al polinomio, $y(x)=x^3-6x^2+11x-6$.
+Es decir, las raï¿½ces pertenecen al polinomio, $y(x)=x^3-6x^2+11x-6$.
 
-\paragraph{la función \texttt{polyval}.}\index{Polinomios!valor de un polinomio en un punto} Esta función calcula el valor de un polinomio en un punto.  Para ello es preciso darle un vector con los coeficientes del polinomio ---definido igual que en los casos anteriores--- y un segundo vector con los puntos para los que se quiere calcular el valor del polinomio,
+\paragraph{la funciï¿½n \texttt{polyval}.}\index{Polinomios!valor de un polinomio en un punto} Esta funciï¿½n calcula el valor de un polinomio en un punto.  Para ello es preciso darle un vector con los coeficientes del polinomio ---definido igual que en los casos anteriores--- y un segundo vector con los puntos para los que se quiere calcular el valor del polinomio,
 
 \begin{verbatim}
 >> coef=[1 2 3 4]
@@ -873,9 +873,9 @@ y =
 \end{verbatim}  
  
 
-En este ejemplo se ha obtenido con \texttt{polyval} el valor del polinomio $y(x)=x^3+2x^2+2x+4$ primero para el punto $x=2$ y después para los puntos $x=[1\ 2\ 3\ 4\ 5\ 6\ 7\ 8\ 9\ 10]$.
+En este ejemplo se ha obtenido con \texttt{polyval} el valor del polinomio $y(x)=x^3+2x^2+2x+4$ primero para el punto $x=2$ y despuï¿½s para los puntos $x=[1\ 2\ 3\ 4\ 5\ 6\ 7\ 8\ 9\ 10]$.
 
-\paragraph{La función \texttt{conv}.} \index{Polinomios!Producto de polinomios}Calcula el producto de dos polinomios. Cada polinomio se representa mediante un vector de coeficientes y la función \texttt{conv} devuelve un vector con los coeficientes del polinomio producto. Por ejemplo, si multiplicamos   el polinomio $y_1=x+2$ por el polinomio $y_2=x-1$  obtendremos como resultado, $p=y_1\cdot y_2=x^2+x-2$,  
+\paragraph{La funciï¿½n \texttt{conv}.} \index{Polinomios!Producto de polinomios}Calcula el producto de dos polinomios. Cada polinomio se representa mediante un vector de coeficientes y la funciï¿½n \texttt{conv} devuelve un vector con los coeficientes del polinomio producto. Por ejemplo, si multiplicamos   el polinomio $y_1=x+2$ por el polinomio $y_2=x-1$  obtendremos como resultado, $p=y_1\cdot y_2=x^2+x-2$,  
 
 \begin{verbatim}
 >> y1=[1 2]
