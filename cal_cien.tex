@@ -9,7 +9,7 @@
 \textwidth= 15cm
 \evensidemargin=0cm
 \usepackage[spanish]{babel}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{textcomp}
 \usepackage{amstext}
 \usepackage{amsfonts}
@@ -17,7 +17,7 @@
 \usepackage[hyperindex=true,breaklinks=true,colorlinks=true,linkcolor=blue]{hyperref}
 
 \renewcommand{\tablename}{Tabla}
-\renewcommand{\listtablename}{Õndice de Tablas}
+\renewcommand{\listtablename}{√çndice de Tablas}
 \usepackage{paracol}
 \columnseprule=0.4pt
 \columnsep=30pt 
@@ -25,14 +25,12 @@
 
 \usepackage{multirow}
 \usepackage{makeidx}
-\addto\captionsspanish{\renewcommand{\chaptername}{CapÌtulo/Chapter}}
+\addto\captionsspanish{\renewcommand{\chaptername}{Cap√≠tulo/Chapter}}
 \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter.}}{}}
-\renewcommand{\sectionmark}[1]{ \markright{SecciÛn, Section \thesection}{} }
+\renewcommand{\sectionmark}[1]{ \markright{Secci√≥n, Section \thesection}{} }
 %\usepackage{draftwatermark}
 %\SetWatermarkText{Borrador,juan.jimenez@fis.ucm.es}
 %\SetWatermarkScale{2}
-
-
 \graphicspath{{./figuras/}}
 \makeindex
 \begin{document}
@@ -42,16 +40,14 @@
 Universidad Complutense de Madrid\\
 ---------------------------------------------------------------------
 \end{flushleft}
-Laboratorio de ComputaciÛn CientÌfica\\ Scientific Computing Laboratory}
+Laboratorio de Computaci√≥n Cient√≠fica\\ Scientific Computing Laboratory}
 \author{ Juan Jim\'enez\\}
 \maketitle
-
 \vspace*{\fill}
 \includegraphics[scale=1]{by-sa.eps}\\
-El contenido de estos apuntes est· bajo licencia Creative Commons Attribution-Share Alike 4.0\\
+El contenido de estos apuntes est√° bajo licencia Creative Commons Attribution-Share Alike 4.0\\
 These notes are licensed under Creative Commons Attribution-Share Alike 4.0 license\\  
 \href{http://creativecommons.org/licenses/by-sa/4.0/}{http://creativecommons.org/licenses/by-sa/4.0/}\\
-\copyright Juan JimÈnez
 
 \bigskip
 \tableofcontents
@@ -59,6 +55,48 @@ These notes are licensed under Creative Commons Attribution-Share Alike 4.0 lice
 \listoftables
 \include{preface}
 \include{introduccion}
+\include{introprog}
+%\include{aritmetica}
+%\include{calraiz}
+%\include{algebra}
+%\include{sistemas}
+%\include{interpolacion}
+%\include{integracion}
+%\include{tratamientoest}
+%\include{simbolico}
+\printindex
+\end{document}  \copyright Juan Jim√©nez
+
+\bigskip
+\tableofcontents
+\listoffigures
+\listoftables
+\include{preface}
+%\include{introduccion}
+%\include{introprog}
+%\include{aritmetica}
+%\include{calraiz}
+%\include{algebra}
+%\include{sistemas}
+%\include{interpolacion}
+%\include{integracion}
+%\include{tratamientoest}
+%\include{simbolico}
+\printindex
+\end{document}  
+\vspace*{\fill}
+\includegraphics[scale=1]{by-sa.eps}\\
+El contenido de estos apuntes est√° bajo licencia Creative Commons Attribution-Share Alike 4.0\\
+These notes are licensed under Creative Commons Attribution-Share Alike 4.0 license\\  
+\href{http://creativecommons.org/licenses/by-sa/4.0/}{http://creativecommons.org/licenses/by-sa/4.0/}\\
+\copyright Juan Jim√©nez
+
+\bigskip
+\tableofcontents
+\listoffigures
+\listoftables
+\include{preface}
+%\include{introduccion}
 %\include{introprog}
 %\include{aritmetica}
 %\include{calraiz}

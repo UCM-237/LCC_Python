@@ -1,17 +1,17 @@
-\chapter{Tratamiento estadístico de datos}
+\chapter{Tratamiento estadÃ­stico de datos}
 
-\section{Secuencias de números aleatorios}
+\section{Secuencias de nÃºmeros aleatorios}
 
 
-Se entiende por secuencia de número aleatorios, aquella en la que no es posible encontrar relación alguna entre un número de la secuencia y los que le preceden.
+Se entiende por secuencia de nÃºmero aleatorios, aquella en la que no es posible encontrar relaciÃ³n alguna entre un nÃºmero de la secuencia y los que le preceden.
 
-No es posible general secuencias de números aleatorios con un computador. La razón es que un computador es una máquina completamente determinista; la salidas que puede producir cualquier programa son completamente predecibles. Solo los procesos físicos pueden ser realmente ---intrínsecamente--- aleatorios.
+No es posible general secuencias de nÃºmeros aleatorios con un computador. La razÃ³n es que un computador es una mÃ¡quina completamente determinista; la salidas que puede producir cualquier programa son completamente predecibles. Solo los procesos fÃ­sicos pueden ser realmente ---intrÃ­nsecamente--- aleatorios.
 
-Sin embargo, es posible con un ordenador generar secuencias de números que simulan ser aleatorios. Estas secuencias reciben el nombre de secuencias de números \emph{pseudoaleatorios}.\index{Números pseudoaleatorios}
+Sin embargo, es posible con un ordenador generar secuencias de nÃºmeros que simulan ser aleatorios. Estas secuencias reciben el nombre de secuencias de nÃºmeros \emph{pseudoaleatorios}.\index{NÃºmeros pseudoaleatorios}
 
-El primer algoritmo para obtener números pseudoaleatorios, lo desarrolló John Von Newman en 1946. Se conoce con el nombre de \emph{Middle Square}.\index{Middle Square} La idea consiste en elegir un número inicial, formado por $n$ cifras, que recibe el nombre de semilla.\index{Números aleatorios! Semilla} A continuación se eleva el número al cuadrado. Por último, se extraen las $n$ cifras centrales del número así generado, que constituye el segundo número en la secuencia de números aleatorios. Este número se vuelve a elevar al cuadrado y se extraen de el las $n$ cifras centrales que constituirán el tercer número aleatorio. Este proceso se repite tantas veces como números aleatorios se deseen generar.
+El primer algoritmo para obtener nÃºmeros pseudoaleatorios, lo desarrollÃ³ John Von Newman en 1946. Se conoce con el nombre de \emph{Middle Square}.\index{Middle Square} La idea consiste en elegir un nÃºmero inicial, formado por $n$ cifras, que recibe el nombre de semilla.\index{NÃºmeros aleatorios! Semilla} A continuaciÃ³n se eleva el nÃºmero al cuadrado. Por Ãºltimo, se extraen las $n$ cifras centrales del nÃºmero asÃ­ generado, que constituye el segundo nÃºmero en la secuencia de nÃºmeros aleatorios. Este nÃºmero se vuelve a elevar al cuadrado y se extraen de el las $n$ cifras centrales que constituirÃ¡n el tercer nÃºmero aleatorio. Este proceso se repite tantas veces como nÃºmeros aleatorios se deseen generar.
 
-Veamos un ejemplo con una semilla  formada por $n=8$ dígitos,
+Veamos un ejemplo con una semilla  formada por $n=8$ dÃ­gitos,
 \begin{align*}
 semilla=&87289689 \rightarrow
 87289689^2={\color{red}7619}\ 48980571\ {\color{red}6721}\\
@@ -25,22 +25,22 @@ semilla=&87289689 \rightarrow
 &\ \ \ \ \ \vdots
 \end{align*}
 
-El siguiente código de Matlab, permite obtener un vector de números pseudoaleatorios mediante el método \emph{middle square}
+El siguiente cÃ³digo de Matlab, permite obtener un vector de nÃºmeros pseudoaleatorios mediante el mÃ©todo \emph{middle square}
 
 \begin{verbatim}
 function secuencia=middlesquare(semilla, longitud)
-%Este programa obtiene una secuencia de números psduoaleatorios empleado el
-%método 'middle square'.
+%Este programa obtiene una secuencia de nÃºmeros psduoaleatorios empleado el
+%mÃ©todo 'middle square'.
 %uso: secuencia=middlesquare(semilla, longitud)
-%Variables entrada: semilla, numero inicial que será empleado como semilla.
-%longitud, cantidad de números aleatorios que debe generar la secuencia.
+%Variables entrada: semilla, numero inicial que serÃ¡ empleado como semilla.
+%longitud, cantidad de nÃºmeros aleatorios que debe generar la secuencia.
 %variable de salida: secuencia vector de numeros aleatorios resultante
 
 %creamos un vector de ceros para guardar los resultados
-% convertimos el número a entero de 64 bits, asi todas la operaciones son
+% convertimos el nÃºmero a entero de 64 bits, asi todas la operaciones son
 % enteras...
 %ojo si usamos una semilla de mas de nueve digitos, el cuadrado puede
-%desbordar el entero más grande representable.
+%desbordar el entero mÃ¡s grande representable.
 
 semilla=uint64(semilla)
 %calculamos la longitud de la semilla
@@ -49,7 +49,7 @@ n=0;
 while c>0
     c=idivide(c,10);
     %la linea de codigo anterior, puende no funcionar en algunas versiones
-    %antiguas de matlab. Alternativamente, podría implementarse como,
+    %antiguas de matlab. Alternativamente, podrÃ­a implementarse como,
     %c=(c-rem(c,10))/10;
     n=n+1;
 end
@@ -63,7 +63,7 @@ for i=1:longitud
     %primero extraemos las n/2 cifras menores
     semilla=idivide(l,10^fix(n/2));
     %la linea de codigo anterior, puende no funcionar en algunas versiones
-    %antiguas de matlab. Alternativamente, podría implementarse como,
+    %antiguas de matlab. Alternativamente, podrÃ­a implementarse como,
     %semilla=(l-rem(l,10^fix(n/2)))/10^fix(n/2);
    
     % y a continuacion extraemos las n cifras siguiente, que seran el
@@ -74,16 +74,16 @@ for i=1:longitud
 end
 \end{verbatim} 
 
-Las secuencias generadas mediante el método \emph{middle square} no son aleatorias, cada número viene completamente determinado por el número anterior. Sin embargo, dichas secuencias parecen aleatorias. La figura \ref{fig:middlesquare} muestra una secuencia de $100$ valores pseudoaleatorios generados mediante \emph{middle square}. Aparentemente, cada valor parece no guardar ninguna relación con los anteriores.
+Las secuencias generadas mediante el mÃ©todo \emph{middle square} no son aleatorias, cada nÃºmero viene completamente determinado por el nÃºmero anterior. Sin embargo, dichas secuencias parecen aleatorias. La figura \ref{fig:middlesquare} muestra una secuencia de $100$ valores pseudoaleatorios generados mediante \emph{middle square}. Aparentemente, cada valor parece no guardar ninguna relaciÃ³n con los anteriores.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{middlesquare.eps}
-\caption{Secuencia de $100$ números pseudoaleatorios generada mediante el método \emph{middle square}.}
+\caption{Secuencia de $100$ nÃºmeros pseudoaleatorios generada mediante el mÃ©todo \emph{middle square}.}
 \label{fig:middlesquare}0.4
 \end{figure}
 
-El método descrito, presenta sin embargo serios inconvenientes: Si la semilla contiene ceros o unos a la derecha, estos tienden a repetirse indefinidamente. Además todos los métodos inducen ciclos que hacen que los números generados comiencen a repetirse periódicamente. Por ejemplo, si empezamos con la semilla de cuatro dígitos $3708$,  La secuencia cae, tras generar los primeros cuatro números aleatorios, en un ciclo en el que los cuatro siguientes números generados se repiten indefinidamente.
+El mÃ©todo descrito, presenta sin embargo serios inconvenientes: Si la semilla contiene ceros o unos a la derecha, estos tienden a repetirse indefinidamente. AdemÃ¡s todos los mÃ©todos inducen ciclos que hacen que los nÃºmeros generados comiencen a repetirse periÃ³dicamente. Por ejemplo, si empezamos con la semilla de cuatro dÃ­gitos $3708$,  La secuencia cae, tras generar los primeros cuatro nÃºmeros aleatorios, en un ciclo en el que los cuatro siguientes nÃºmeros generados se repiten indefinidamente.
 \begin{align*}
 semilla=3708 \rightarrow
 &3708^2={\color{red}13}\ 7492\ {\color{red}64}\\
@@ -100,36 +100,36 @@ semilla=3708 \rightarrow
 &\ \ \ \vdots
 \end{align*}
 
-Además, en la secuencia generada puede observarse cómo los ceros situados a las derecha una vez que aparecen en la secuencia, se conservan siempre.
+AdemÃ¡s, en la secuencia generada puede observarse cÃ³mo los ceros situados a las derecha una vez que aparecen en la secuencia, se conservan siempre.
 
-En los algoritmos de generación de números aleatorios, la idea es obtener números en el intervalo $(0,1)$ Para ello, se generan números entre $0$ y un número natural $m$ y luego se dividen los números generados, $X_n$ entre $m$,
+En los algoritmos de generaciÃ³n de nÃºmeros aleatorios, la idea es obtener nÃºmeros en el intervalo $(0,1)$ Para ello, se generan nÃºmeros entre $0$ y un nÃºmero natural $m$ y luego se dividen los nÃºmeros generados, $X_n$ entre $m$,
 
 \begin{equation*}
 U_n=\frac{X_n}{m}
 \end{equation*}
 
 Usualmente, se elige para $m$ un valor tan grande como sea posible. 
-En 1948 Lehmer propuso un algoritmo conocido con el nombre de \emph{linear congruential}. El algoritmo emplea cuatro elementos numéricos,
+En 1948 Lehmer propuso un algoritmo conocido con el nombre de \emph{linear congruential}. El algoritmo emplea cuatro elementos numÃ©ricos,
 
 \begin{itemize}
-\item[-] $I_0$, Semilla. Análoga a la del método \emph{middle square}.
-\item[-] $m > I_0$, Módulo.  Se elige tan grande como sea posible. Cuanto mayor es el módulo, mayor es el periodo del ciclo inducido.
+\item[-] $I_0$, Semilla. AnÃ¡loga a la del mÃ©todo \emph{middle square}.
+\item[-] $m > I_0$, MÃ³dulo.  Se elige tan grande como sea posible. Cuanto mayor es el mÃ³dulo, mayor es el periodo del ciclo inducido.
 \item[-] $a$, Multiplicador. Debe elegirse de modo que $0\le a < m$
 \item[-] $c$, Incremento. Debe elegirse de modo que $0\le c < m$
 \end{itemize}
  
-El algoritmo de obtención de la secuencia de números pseudoaleatorios se define en este caso como,
+El algoritmo de obtenciÃ³n de la secuencia de nÃºmeros pseudoaleatorios se define en este caso como,
 
 \begin{equation*}
 I_{n+1}=\text{rem}(a\cdot I_n+c, m)
 \end{equation*}
-Es decir, cada número se obtiene como el resto de la división entera del multiplicador por el número aleatorio anterior más el resto, divido entre el módulo. Por tanto, se trata de un número comprendido entre $0$ y $m-1$. 
+Es decir, cada nÃºmero se obtiene como el resto de la divisiÃ³n entera del multiplicador por el nÃºmero aleatorio anterior mÃ¡s el resto, divido entre el mÃ³dulo. Por tanto, se trata de un nÃºmero comprendido entre $0$ y $m-1$. 
 
-El siguiente código permite calcular una secuencia de números aleatorios por el método \emph{linear congruential}
+El siguiente cÃ³digo permite calcular una secuencia de nÃºmeros aleatorios por el mÃ©todo \emph{linear congruential}
 
 \begin{verbatim}
 function secuencia=linealcr(i0,a,c,m,l)
-%Esta función emplea el metodo linear congruential para obtener una
+%Esta funciÃ³n emplea el metodo linear congruential para obtener una
 %secuencia de numeros aleatorios de longitud arbitraria
 %Uso: secuencia=linealcr(i0,a,c,m,l)
 %Variables de entrada: i0=semilla, a=multiplicador, c=incremento, m=modulo.
@@ -156,36 +156,36 @@ end
 secuencia=secuencia/m
 \end{verbatim}
 
-Una variante del algoritmo descrito, frecuentemente empleada, se obtiene haciendo el incremento igual a cero, $c=0$. Dicha variante se conoce con el nombre de \emph{multiplicative congruential}, su expresión general sería,
+Una variante del algoritmo descrito, frecuentemente empleada, se obtiene haciendo el incremento igual a cero, $c=0$. Dicha variante se conoce con el nombre de \emph{multiplicative congruential}, su expresiÃ³n general serÃ­a,
 \begin{equation*}
 I_{n+1}=\text{rem}(a\cdot I_n)
 \end{equation*}
 
-Dado que el resto de la división entera de un número cualquiera entre el módulo $m$ solo puede tomar valores enteros comprendidos entre $0$ y $m-1$, es fácil deducir que, en el mejor de los casos, podríamos obtener un ciclo de longitud $m$, antes de que secuencia de números aleatorios comenzara a repetirse. De ahí la importancia de elegir $m$ lo más grande posible. Por otra parte, los valores de $I_0$ e $c$, también influyen en la longitud de los ciclos inducidos.
+Dado que el resto de la divisiÃ³n entera de un nÃºmero cualquiera entre el mÃ³dulo $m$ solo puede tomar valores enteros comprendidos entre $0$ y $m-1$, es fÃ¡cil deducir que, en el mejor de los casos, podrÃ­amos obtener un ciclo de longitud $m$, antes de que secuencia de nÃºmeros aleatorios comenzara a repetirse. De ahÃ­ la importancia de elegir $m$ lo mÃ¡s grande posible. Por otra parte, los valores de $I_0$ e $c$, tambiÃ©n influyen en la longitud de los ciclos inducidos.
 
 Si ahora dividimos los numero aleatorios obtenidos por el modulo,  
 \begin{equation*}
 x_n=\frac{I_n}{m} \Rightarrow x_n \in [0,1]
 \end{equation*}
-Los números así obtenidos pertenecen al intervalo $[0,1]$ y están regularmente distribuidos. 
+Los nÃºmeros asÃ­ obtenidos pertenecen al intervalo $[0,1]$ y estÃ¡n regularmente distribuidos. 
 
-En la década de los 60 del siglo pasado, La compañía IBM, desarrolló una función, conocida como \emph{Randu}, que utilizaba el algoritmo \emph{multiplicative congruential}. \emph{Randu} tenía definido un multiplicador $c=2^{16}+3$ y un módulo $m=2^{31}$. 
-Se han desarrollado diferentes variante de \emph{Randu}, mejorando progresivamente su rendimiento. Una de las mejoras introducidas fue aumentar el número de semillas empleadas,
+En la dÃ©cada de los 60 del siglo pasado, La compaÃ±Ã­a IBM, desarrollÃ³ una funciÃ³n, conocida como \emph{Randu}, que utilizaba el algoritmo \emph{multiplicative congruential}. \emph{Randu} tenÃ­a definido un multiplicador $c=2^{16}+3$ y un mÃ³dulo $m=2^{31}$. 
+Se han desarrollado diferentes variante de \emph{Randu}, mejorando progresivamente su rendimiento. Una de las mejoras introducidas fue aumentar el nÃºmero de semillas empleadas,
 \begin{equation*}
 I_{n+1}=\text{rem}(a\cdot I_n+b\cdot I_{n-1}+\cdots)
 \end{equation*} 
 
-Este método permite obtener periodos mayores.
+Este mÃ©todo permite obtener periodos mayores.
 
-\subsection{El generador de números aleatorios de Matlab.}\label{rand} Se trata de un generador mucho mas evolucionado que los ejemplo descritos hasta ahora.  La implementación concreta depende de la versión de Matlab empleada. Aquí solo nos referiremos a la conocida como \emph{'twister'}. Se basa en el algoritmo \emph{Mersenne Twister}. Genera números aleatorios, uniformemente distribuidos, en el intervalo $[2^{-53}, 1-2^{-53}] $. El periodo de la secuencia generada es $P=(2^{19937}-1)/2$. Es el algoritmo que emplea Matlab, por defecto, desde al versión 2007 hasta la actualidad.
+\subsection{El generador de nÃºmeros aleatorios de Matlab.}\label{rand} Se trata de un generador mucho mas evolucionado que los ejemplo descritos hasta ahora.  La implementaciÃ³n concreta depende de la versiÃ³n de Matlab empleada. AquÃ­ solo nos referiremos a la conocida como \emph{'twister'}. Se basa en el algoritmo \emph{Mersenne Twister}. Genera nÃºmeros aleatorios, uniformemente distribuidos, en el intervalo $[2^{-53}, 1-2^{-53}] $. El periodo de la secuencia generada es $P=(2^{19937}-1)/2$. Es el algoritmo que emplea Matlab, por defecto, desde al versiÃ³n 2007 hasta la actualidad.
 
-Para generar números aleatorios se emplea el comando \texttt{rand}, que es capaz de generar una matriz de tamaño arbitrario de números aleatorios.  Si se invoca el comando \texttt{rand}, sin indicar ninguna variable de entrada, 
+Para generar nÃºmeros aleatorios se emplea el comando \texttt{rand}, que es capaz de generar una matriz de tamaÃ±o arbitrario de nÃºmeros aleatorios.  Si se invoca el comando \texttt{rand}, sin indicar ninguna variable de entrada, 
 \begin{verbatim}
 >> y=rand
 y =
      8.147236863931789e-01
 \end{verbatim}
-Matlab nos devuelve un único número aleatorio. Si introducimos un único valor entero como variable de entrada,
+Matlab nos devuelve un Ãºnico nÃºmero aleatorio. Si introducimos un Ãºnico valor entero como variable de entrada,
 \begin{verbatim}
 >> x=rand(3)
 x =
@@ -193,9 +193,9 @@ x =
      1.269868162935061e-01     9.754040499940952e-02     9.575068354342976e-01
      9.133758561390194e-01     2.784982188670484e-01     9.648885351992765e-01
 \end{verbatim}
-Obtenemos una matriz cuadra de números aleatorios cuyas dimensiones coinciden con el número entero introducido. 
+Obtenemos una matriz cuadra de nÃºmeros aleatorios cuyas dimensiones coinciden con el nÃºmero entero introducido. 
 
-Si empleamos dos enteros como variables de entrada, \texttt{rand(f,c)}, obtenemos una matriz de números aleatorios de dimensión $f\times c$.
+Si empleamos dos enteros como variables de entrada, \texttt{rand(f,c)}, obtenemos una matriz de nÃºmeros aleatorios de dimensiÃ³n $f\times c$.
 \begin{verbatim}
 >> x=rand(3,2)
 x =
@@ -204,49 +204,49 @@ x =
      6.557406991565868e-01     9.339932477575505e-01
 \end{verbatim}
 
-Cada vez que se arranca Matlab, el generador de números aleatorios es reiniciado. Es decir, cada vez que arrancamos Matlab, volvemos a obtener la misma secuencia de números aleatorios. Podemos hacer que el generador se reinicie siempre que queramos, empleado para ello una semilla constituida por un número entero que debe estar comprendido entre $0$ y $2^{32}-1$. Para cada semilla obtendremos una secuencia de números distinta. Para reiniciar el generador, empleamos de nuevo la función \texttt{rand}, pero ahora las variables de entrada serán el algoritmo que queremos emplear para la generación de números aleatorios ---en nuestro caso usaremos siempre \texttt{'twister'}--- y el valor de la semilla. Por ejemplo,
+Cada vez que se arranca Matlab, el generador de nÃºmeros aleatorios es reiniciado. Es decir, cada vez que arrancamos Matlab, volvemos a obtener la misma secuencia de nÃºmeros aleatorios. Podemos hacer que el generador se reinicie siempre que queramos, empleado para ello una semilla constituida por un nÃºmero entero que debe estar comprendido entre $0$ y $2^{32}-1$. Para cada semilla obtendremos una secuencia de nÃºmeros distinta. Para reiniciar el generador, empleamos de nuevo la funciÃ³n \texttt{rand}, pero ahora las variables de entrada serÃ¡n el algoritmo que queremos emplear para la generaciÃ³n de nÃºmeros aleatorios ---en nuestro caso usaremos siempre \texttt{'twister'}--- y el valor de la semilla. Por ejemplo,
 \begin{verbatim}
 >> rand('twister',10)
 \end{verbatim}
 
-Si generamos ahora una secuencia de 3 números aleatorios,
+Si generamos ahora una secuencia de 3 nÃºmeros aleatorios,
 \begin{verbatim}
 >> s1=rand(1,3)
 s1 =
     0.7713    0.0208    0.6336
 \end{verbatim}
-Si reiniciamos de nuevo el algoritmo, con la misma semilla de antes y volvemos a generar una secuencia de 3 números aleatorios,
+Si reiniciamos de nuevo el algoritmo, con la misma semilla de antes y volvemos a generar una secuencia de 3 nÃºmeros aleatorios,
 \begin{verbatim}
 >> rand('twister',10)
 >> s1=rand(1,3)
 s1 =
     0.7713    0.0208    0.6336
 \end{verbatim}
-Volvemos a obtener los mismo números aleatorios. Esto sucederá siempre que reiniciemos el generador empleado la misma semilla.
+Volvemos a obtener los mismo nÃºmeros aleatorios. Esto sucederÃ¡ siempre que reiniciemos el generador empleado la misma semilla.
 
-Por ultimo, podemos emplear \texttt{rand} para conoces el estado del generador de números aleatorios en cualquier momento, durante una sesión con Matlab. Para ello, usamos \texttt{rand} empleando como variable de entrada únicamente el nombre del algoritmo empleado,
+Por ultimo, podemos emplear \texttt{rand} para conoces el estado del generador de nÃºmeros aleatorios en cualquier momento, durante una sesiÃ³n con Matlab. Para ello, usamos \texttt{rand} empleando como variable de entrada Ãºnicamente el nombre del algoritmo empleado,
 \begin{verbatim}
 estado=rand('twister')
 \end{verbatim}
-El resultado es un vector de columna de $625$ valores, que corresponde con las \emph{semillas} enteras que va ha emplear el algoritmo para generar el siguiente número aleatorio. 
+El resultado es un vector de columna de $625$ valores, que corresponde con las \emph{semillas} enteras que va ha emplear el algoritmo para generar el siguiente nÃºmero aleatorio. 
 
-Supongamos que después de obtener el estado del generador, seguimos generando números aleatorios. Podemos hacer que el generador vuelva al estado que tenía empleando el vector obtenido como si fuera una semilla. A partir de ahí el generador volverá a repetir de nuevo la misma secuencia de números aleatorios. La siguiente secuencia de instrucciones de Matlab ilustra este procedimiento,
+Supongamos que despuÃ©s de obtener el estado del generador, seguimos generando nÃºmeros aleatorios. Podemos hacer que el generador vuelva al estado que tenÃ­a empleando el vector obtenido como si fuera una semilla. A partir de ahÃ­ el generador volverÃ¡ a repetir de nuevo la misma secuencia de nÃºmeros aleatorios. La siguiente secuencia de instrucciones de Matlab ilustra este procedimiento,
 \begin{verbatim}
 %ejemplo de vuelta del generador de numeros aleatorios a un estado
 %anterior
 
-%generamos una secuencia de 5 números,
+%generamos una secuencia de 5 nÃºmeros,
 s1=rand(1,5)
 %guardamos el estado actual del generador
 estado=rand('twister');
 
-%generamos una nueva secuencia de 5 números
+%generamos una nueva secuencia de 5 nÃºmeros
 s2=rand(1,5)
 
 %volvemos a llevar el generador al estado anterior,
 rand('twister',estado)
 
-%volvemos a generar una secuencia de 5 números que será igual que s2
+%volvemos a generar una secuencia de 5 nÃºmeros que serÃ¡ igual que s2
 s2bis=rand(1,5)
 \end{verbatim}
 
@@ -263,19 +263,19 @@ Si ejecutamos la secuencia obtendremos,
 
 \section{Probabilidad y distribuciones de probabilidad}
 
-La probabilidad es una propiedad asociada a los sucesos aleatorios. Decimos que un suceso es aleatorio cuando no depende de una causa determinista que nos permite predecir cuándo va a suceder. \index{Suceso Aleatorio}
+La probabilidad es una propiedad asociada a los sucesos aleatorios. Decimos que un suceso es aleatorio cuando no depende de una causa determinista que nos permite predecir cuÃ¡ndo va a suceder. \index{Suceso Aleatorio}
 
 \subsection{Sucesos aleatorios discretos}
-Por ejemplo, obtener \emph{cara} o \emph{cruz} al lanzar una moneda al aire es un ejemplo sencillo de proceso aleatorio, ya que no es posible conocer de antemano cuál será el resultado del lanzamiento. La probabilidad da una medida de las posibilidades de que un determinado suceso aleatorio tenga lugar.
+Por ejemplo, obtener \emph{cara} o \emph{cruz} al lanzar una moneda al aire es un ejemplo sencillo de proceso aleatorio, ya que no es posible conocer de antemano cuÃ¡l serÃ¡ el resultado del lanzamiento. La probabilidad da una medida de las posibilidades de que un determinado suceso aleatorio tenga lugar.
 
 Volviendo al ejemplo de la moneda  lanzada al aire, las posibilidades son dos:
 \begin{enumerate}
 \item Que salga cara.
 \item Que salga cruz.
 \end{enumerate}
-Ambos sucesos son igualmente probable tras un lanzamiento, uno de los dos debe darse necesariamente y no hay, en principio, ningún otro suceso posible. Podemos entonces asociar valores numéricos a la probabilidad con la que se dan las distintas posibilidades:
+Ambos sucesos son igualmente probable tras un lanzamiento, uno de los dos debe darse necesariamente y no hay, en principio, ningÃºn otro suceso posible. Podemos entonces asociar valores numÃ©ricos a la probabilidad con la que se dan las distintas posibilidades:
 \begin{itemize}
-\item La probabilidad de que salga cara o cruz ---cualquiera de las dos--- debe tener asociado el valor máximo ya que \emph{necesariamente} ha de salir cara o cruz.  Habitualmente se toma como valor máximo de un suceso aleatorio el valor $1$, que estaría asociado con el suceso necesario o cierto,
+\item La probabilidad de que salga cara o cruz ---cualquiera de las dos--- debe tener asociado el valor mÃ¡ximo ya que \emph{necesariamente} ha de salir cara o cruz.  Habitualmente se toma como valor mÃ¡ximo de un suceso aleatorio el valor $1$, que estarÃ­a asociado con el suceso necesario o cierto,
 \begin{equation*}
 P(\text{cara o cruz}) = 1
 \end{equation*}
@@ -290,7 +290,7 @@ P(\emptyset) = 0
 P(\text{cara})=\frac{1}{2}=0.5
 \end{equation*}
 
-\item La probabilidad de sacar cruz. De modo análogo al caso anterior será la mitad de la probabilidad de sacar cara o cruz, 
+\item La probabilidad de sacar cruz. De modo anÃ¡logo al caso anterior serÃ¡ la mitad de la probabilidad de sacar cara o cruz, 
 
 \begin{equation*}
 P(\text{cara})=\frac{1}{2}=0.5
@@ -300,22 +300,22 @@ P(\text{cara})=\frac{1}{2}=0.5
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{probcaracruz.eps}
-\caption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar una moneda al aire.}
+\caption{DistribuciÃ³n de probabilidad y probabilidad acumulada de los resultados de lanzar una moneda al aire.}
 \label{fig:moneda}
 \end{figure}
 
 
-Lanzar una moneda o un dado, elegir una carta al azar, rellenar una quiniela, son ejemplos de fenómenos aleatorios discretos. Reciben este nombre, porque los sucesos posibles asociados al fenómeno son numerables, es decir, se pueden contar.  Así por ejemplo en el lanzamiento de una moneda solo hay dos sucesos posibles (cara o cruz), en el de un dado hay seis (cada una de sus caras), en el de la elección de una carta hay cuarenta (si se trata de una baraja española) etc. El conjunto de sucesos posibles recibe el nombre de variable aleatoria. \index{Variable! aleatoria}
+Lanzar una moneda o un dado, elegir una carta al azar, rellenar una quiniela, son ejemplos de fenÃ³menos aleatorios discretos. Reciben este nombre, porque los sucesos posibles asociados al fenÃ³meno son numerables, es decir, se pueden contar.  AsÃ­ por ejemplo en el lanzamiento de una moneda solo hay dos sucesos posibles (cara o cruz), en el de un dado hay seis (cada una de sus caras), en el de la elecciÃ³n de una carta hay cuarenta (si se trata de una baraja espaÃ±ola) etc. El conjunto de sucesos posibles recibe el nombre de variable aleatoria. \index{Variable! aleatoria}
 
-Una distribución de probabilidad discreta, es una función que asocia cada caso posible de un fenómeno aleatorio con su probabilidad. Si vamos sumando sucesivamente las probabilidades de todos los fenómenos posibles, lo que obtenemos es una nueva función que recibe el nombre de probabilidad acumulada (Más adelante volveremos sobre esta idea). La figura \ref{fig:moneda} muestra la distribución de probabilidad y la probabilidad acumulada asociadas al lanzamiento de una moneda al aire.
+Una distribuciÃ³n de probabilidad discreta, es una funciÃ³n que asocia cada caso posible de un fenÃ³meno aleatorio con su probabilidad. Si vamos sumando sucesivamente las probabilidades de todos los fenÃ³menos posibles, lo que obtenemos es una nueva funciÃ³n que recibe el nombre de probabilidad acumulada (MÃ¡s adelante volveremos sobre esta idea). La figura \ref{fig:moneda} muestra la distribuciÃ³n de probabilidad y la probabilidad acumulada asociadas al lanzamiento de una moneda al aire.
 
-Si todos los sucesos posibles dentro de un fenómeno aleatorio discreto tienen la misma probabilidad de suceder,  es posible determinar directamente la probabilidad de cada uno de ellos sin más que  dividir los casos favorables  entre los casos posibles,
+Si todos los sucesos posibles dentro de un fenÃ³meno aleatorio discreto tienen la misma probabilidad de suceder,  es posible determinar directamente la probabilidad de cada uno de ellos sin mÃ¡s que  dividir los casos favorables  entre los casos posibles,
 
 \begin{equation*}
 P(a)=\frac{\text{casos en que se da} \ a}{\text{numero total de casos posibles}}
 \end{equation*}
 
-Así por ejemplo la probabilidad de sacar un $6$ cuando se laza un dado será,
+AsÃ­ por ejemplo la probabilidad de sacar un $6$ cuando se laza un dado serÃ¡,
 
 \begin{equation*}
 P(a)=\frac{\text{casos en que se da}\ a=1}{\text{numero total de casos posibles}=6}=\frac{1}{6}
@@ -324,7 +324,7 @@ P(a)=\frac{\text{casos en que se da}\ a=1}{\text{numero total de casos posibles}
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{dado.eps}
-\caption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar un dado al aire.}
+\caption{DistribuciÃ³n de probabilidad y probabilidad acumulada de los resultados de lanzar un dado al aire.}
 \label{fig:dado}
 \end{figure}
 
@@ -337,37 +337,37 @@ Una propiedad que deben cumplir los sucesos aleatorios es que la suma de las pro
 
 Es decir, \emph{necesariamente} debe darse alguno de los casos posibles.
 
-Esto nos lleva al carácter aditivo o acumulativo de la probabilidad. Si elegimos un conjunto de casos posibles de un fenómeno aleatorio cualquiera, la probabilidad de que se de alguno de ellos será la suma de las probabilidades de los casos individuales. Por ejemplo la probabilidad al lanzar un dado de obtener un $2$, un $3$ ó un $6$ será,
+Esto nos lleva al carÃ¡cter aditivo o acumulativo de la probabilidad. Si elegimos un conjunto de casos posibles de un fenÃ³meno aleatorio cualquiera, la probabilidad de que se de alguno de ellos serÃ¡ la suma de las probabilidades de los casos individuales. Por ejemplo la probabilidad al lanzar un dado de obtener un $2$, un $3$ Ã³ un $6$ serÃ¡,
 
 \begin{equation*}
 P(2,3,6) = P(2) + P(3) + P(6) = \frac{1}{6}+\frac{1}{6}+\frac{1}{6}=\frac{3}{6} = \frac{1}{2}
 \end{equation*} 
 
-lo que coincide con lo que intuitivamente cabía esperar, que la probabilidad de sacar uno cualquiera de los tres números fuera $0.5$.
-La figura \ref{fig:dado} muestra la distribución de probabilidad y la probabilidad acumulada para el lanzamiento de un dado. La probabilidad acumulada guarda relación con el carácter aditivo de la probabilidad que acabamos de describir. Si consideramos el conjunto de valores posibles en orden: $1 < 2 < 3 < 4 < 5 < 6$, la probabilidad acumulada para cada valor es la probabilidad de sacar un número al lanzar el dado menor o igual que dicho valor. Así por ejemplo la probabilidad de sacar un número menor o igual que tres sería,
+lo que coincide con lo que intuitivamente cabÃ­a esperar, que la probabilidad de sacar uno cualquiera de los tres nÃºmeros fuera $0.5$.
+La figura \ref{fig:dado} muestra la distribuciÃ³n de probabilidad y la probabilidad acumulada para el lanzamiento de un dado. La probabilidad acumulada guarda relaciÃ³n con el carÃ¡cter aditivo de la probabilidad que acabamos de describir. Si consideramos el conjunto de valores posibles en orden: $1 < 2 < 3 < 4 < 5 < 6$, la probabilidad acumulada para cada valor es la probabilidad de sacar un nÃºmero al lanzar el dado menor o igual que dicho valor. AsÃ­ por ejemplo la probabilidad de sacar un nÃºmero menor o igual que tres serÃ­a,
 
 \begin{equation*}
 P(n\leqslant 3) = P(1) + P(2) + P(3) = \frac{1}{6}+\frac{1}{6}+\frac{1}{6}=\frac{3}{6} = \frac{1}{2}
 \end{equation*} 
 
-Hasta ahora, todas las distribuciones discretas de probabilidad que hemos visto ---moneda, dado--- asignan la misma probabilidad a todos los sucesos posibles. En general esto no tiene porqué ser así. Supongamos un dado trucado en el que la probabilidad de sacar un $6$ valga $0.5$, es decir en promedio tiende a salir un $6$ la mitad de las veces que se lanza el dado. Supongamos además que todos los demás números salen con la misma probabilidad,
+Hasta ahora, todas las distribuciones discretas de probabilidad que hemos visto ---moneda, dado--- asignan la misma probabilidad a todos los sucesos posibles. En general esto no tiene porquÃ© ser asÃ­. Supongamos un dado trucado en el que la probabilidad de sacar un $6$ valga $0.5$, es decir en promedio tiende a salir un $6$ la mitad de las veces que se lanza el dado. Supongamos ademÃ¡s que todos los demÃ¡s nÃºmeros salen con la misma probabilidad,
 \begin{align*}
 P(1)& = P(2) = P(3) = P(4) = P(5) = \frac{1}{10}\\
 P(6)& = \frac{1}{2}\\
 \sum_i P(i)& = 1 
 \end{align*}
 
-La figura \ref{fig:dadot} muestra la distribución de probabilidad y la probabilidad asociada al lanzamiento del dato trucado del ejemplo.
+La figura \ref{fig:dadot} muestra la distribuciÃ³n de probabilidad y la probabilidad asociada al lanzamiento del dato trucado del ejemplo.
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{dadot.eps}
-\caption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar un dado trucado al aire.}
+\caption{DistribuciÃ³n de probabilidad y probabilidad acumulada de los resultados de lanzar un dado trucado al aire.}
 \label{fig:dadot}
 \end{figure}
 
 
 \subsection{Distribuciones de probabilidad continuas}\label{pdfc}
-Hasta ahora, hemos considerado fenómenos en los que los casos posibles ---la variable aleatoria--- son finitos y numerables. Supongamos ahora un fenómeno aleatorio en que su variable aleatoria, $x$, es continua. Esto es: puede tomar todos los valores reales comprendidos en cierto intervalo, $x \in [a,b]$. Supongamos que todos los números contenidos en dicho intervalo pueden ser elegidos con igual probabilidad. Podríamos representar la distribución de probabilidad como una línea horizontal continua $f(x) = c$ que cubriera todo el intervalo $[a,b]$. Para obtener el valor constante $c$ de dicha distribución de probabilidad bastaría \emph{sumar} la probabilidad asociada por la distribución a cada valor del intervalo, igualar el resultado a uno y despejar $c$.
+Hasta ahora, hemos considerado fenÃ³menos en los que los casos posibles ---la variable aleatoria--- son finitos y numerables. Supongamos ahora un fenÃ³meno aleatorio en que su variable aleatoria, $x$, es continua. Esto es: puede tomar todos los valores reales comprendidos en cierto intervalo, $x \in [a,b]$. Supongamos que todos los nÃºmeros contenidos en dicho intervalo pueden ser elegidos con igual probabilidad. PodrÃ­amos representar la distribuciÃ³n de probabilidad como una lÃ­nea horizontal continua $f(x) = c$ que cubriera todo el intervalo $[a,b]$. Para obtener el valor constante $c$ de dicha distribuciÃ³n de probabilidad bastarÃ­a \emph{sumar} la probabilidad asociada por la distribuciÃ³n a cada valor del intervalo, igualar el resultado a uno y despejar $c$.
 
 En realidad, no podemos sumar los infinitos valores que contiene el intervalo. De hecho lo que hacemos es sustituir la suma por una integral,
 
@@ -377,49 +377,49 @@ En realidad, no podemos sumar los infinitos valores que contiene el intervalo. D
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{puniform.eps}
-\caption{Distribución de probabilidad uniforme para un intervalo $[a,b]$ y probabilidad acumulada correspondiente}
+\caption{DistribuciÃ³n de probabilidad uniforme para un intervalo $[a,b]$ y probabilidad acumulada correspondiente}
 \label{fig:puniform}
 \end{figure}
 
-La figura \ref{fig:puniform} muestra la distribución de probabilidad resultante
+La figura \ref{fig:puniform} muestra la distribuciÃ³n de probabilidad resultante
 
-Es importante darse cuenta de la diferencia con el caso discreto. El intervalo $[a,b]$ contiene infinitos números. Si tratáramos de asignar un valor a la probabilidad de obtener un número dividiendo casos favorables entre casos posibles, como hacíamos en el caso discreto, obtendríamos un valor $0$ para todos los números. 
+Es importante darse cuenta de la diferencia con el caso discreto. El intervalo $[a,b]$ contiene infinitos nÃºmeros. Si tratÃ¡ramos de asignar un valor a la probabilidad de obtener un nÃºmero dividiendo casos favorables entre casos posibles, como hacÃ­amos en el caso discreto, obtendrÃ­amos un valor $0$ para todos los nÃºmeros. 
 
-La distribución de probabilidad $f(x)\geqslant 0$ representa en el caso continuo una \emph{densidad} de probabilidad. Así, dado un número cualquiera $x_0 \in [a,b]$, el valor que toma la distribución de probabilidad $f(x_0)$ representa la probabilidad de obtener un número al azar en un intervalo $dx$ en torno a $x_0$,
+La distribuciÃ³n de probabilidad $f(x)\geqslant 0$ representa en el caso continuo una \emph{densidad} de probabilidad. AsÃ­, dado un nÃºmero cualquiera $x_0 \in [a,b]$, el valor que toma la distribuciÃ³n de probabilidad $f(x_0)$ representa la probabilidad de obtener un nÃºmero al azar en un intervalo $dx$ en torno a $x_0$,
 \begin{equation*}
 P\left(x_0-\frac{dx}{2}\leqslant x_0 \leqslant x_0+\frac{dx}{2}\right) = f(x_0)
 \end{equation*} 
 
-La probabilidad, vendrá siempre asociada a un intervalo, y se obtendrá integrando la distribución de probabilidad en dicho intervalo. Así por ejemplo,
+La probabilidad, vendrÃ¡ siempre asociada a un intervalo, y se obtendrÃ¡ integrando la distribuciÃ³n de probabilidad en dicho intervalo. AsÃ­ por ejemplo,
 
 \begin{equation*}
 P(x_1 \leqslant x \leqslant x_2) = \int_{x_1}^{x_2}f(x)dx
 \end{equation*}
 
-representa la probabilidad de obtener un número al azar en intervalo $[x_1,x_2]$. 
+representa la probabilidad de obtener un nÃºmero al azar en intervalo $[x_1,x_2]$. 
 
-La probabilidad acumulada, se obtiene también mediante integración, 
+La probabilidad acumulada, se obtiene tambiÃ©n mediante integraciÃ³n, 
 
 \begin{equation*}
 P(x) = \int_a^xf(x)dx
 \end{equation*}
 
-Para el caso de la distribución de probabilidad constante descrita más arriba obtendríamos una línea recta que corta el eje de abcisas en $a$ y el valor de ordenada $1$ en b,
+Para el caso de la distribuciÃ³n de probabilidad constante descrita mÃ¡s arriba obtendrÃ­amos una lÃ­nea recta que corta el eje de abcisas en $a$ y el valor de ordenada $1$ en b,
 \begin{equation*}
 P(x) = \int_a^xf(x)dx = \int_a^x \frac{1}{b-a}dx = \frac{x-a}{b-a}, \ x \in[a,b]
 \end{equation*}
-La figura \ref{fig:puniform} muestra la probabilidad acumulada para el ejemplo de la distribución uniforme. 
+La figura \ref{fig:puniform} muestra la probabilidad acumulada para el ejemplo de la distribuciÃ³n uniforme. 
 
-Si integramos la densidad de probabilidad sobre todo el intervalo de definición de la variable aleatoria, el resultado debe ser la unidad, puesto que dicha integral representa la probabilidad de obtener un número cualquiera entre todos los disponibles,
+Si integramos la densidad de probabilidad sobre todo el intervalo de definiciÃ³n de la variable aleatoria, el resultado debe ser la unidad, puesto que dicha integral representa la probabilidad de obtener un nÃºmero cualquiera entre todos los disponibles,
 
 \begin{equation*}
 \int_a^b f(x)dx =1, \ a\leqslant x \leqslant b
 \end{equation*}
 
-En probabilidad se emplean muchos tipos de distribuciones para representar el modo en que se dan los suceso aleatorios en la naturaleza. A continuación presentamos dos ejemplos muy conocidos:
+En probabilidad se emplean muchos tipos de distribuciones para representar el modo en que se dan los suceso aleatorios en la naturaleza. A continuaciÃ³n presentamos dos ejemplos muy conocidos:
 
-\paragraph{Distribución exponencial} \index{Distribución exponencial}
-La distribución exponencial está definida para sucesos que pueden tomar cualquier valor real positivo ó 0, $x \in [0,\infty)$. se representa mediante una función exponencial decreciente,
+\paragraph{DistribuciÃ³n exponencial} \index{DistribuciÃ³n exponencial}
+La distribuciÃ³n exponencial estÃ¡ definida para sucesos que pueden tomar cualquier valor real positivo Ã³ 0, $x \in [0,\infty)$. se representa mediante una funciÃ³n exponencial decreciente,
 \begin{equation*}
 f(x)=\frac{1}{\mu}e^{-\frac{x}{\mu}}
 \end{equation*}
@@ -427,106 +427,106 @@ f(x)=\frac{1}{\mu}e^{-\frac{x}{\mu}}
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{distexp.eps}
-\caption{Distribución de probabilidad exponencial}
+\caption{DistribuciÃ³n de probabilidad exponencial}
 \label{fig:distexp}
 \end{figure}
 
-La figura \ref{fig:distexp} muestra un ejemplo de distribución exponencial. Es interesante observar como su probabilidad acumulada tiende a $1$ a medida que $x$ tiende a $\infty$.
+La figura \ref{fig:distexp} muestra un ejemplo de distribuciÃ³n exponencial. Es interesante observar como su probabilidad acumulada tiende a $1$ a medida que $x$ tiende a $\infty$.
 
 \begin{equation*}
 P(0\leqslant x < \infty) = \int_0^{\infty}\frac{1}{\mu}e^{-\frac{x}{\mu}}dx = 1
 \end{equation*}
 
-\paragraph{Distribución Normal}\index{Distribución normal} Aparece con gran frecuencia en la naturaleza. En particular, como veremos más adelante, está relacionada con la incertidumbre inevitable en la medidas experimentales. Esta definida para sucesos aleatorios que pueden tomar cualquier valor real, $-\infty < x < \infty$. Se representa mediante la función de Gauss,
+\paragraph{DistribuciÃ³n Normal}\index{DistribuciÃ³n normal} Aparece con gran frecuencia en la naturaleza. En particular, como veremos mÃ¡s adelante, estÃ¡ relacionada con la incertidumbre inevitable en la medidas experimentales. Esta definida para sucesos aleatorios que pueden tomar cualquier valor real, $-\infty < x < \infty$. Se representa mediante la funciÃ³n de Gauss,
 \begin{equation*}
 f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 \end{equation*}
 
-La figura \ref{fig:normal} muestra un ejemplo de distribución normal.
+La figura \ref{fig:normal} muestra un ejemplo de distribuciÃ³n normal.
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{normal.eps}
-\caption{Distribución de probabilidad normal}
+\caption{DistribuciÃ³n de probabilidad normal}
 \label{fig:normal}
 \end{figure}
 
-\paragraph{Parámetros característicos de una distribución}
+\paragraph{ParÃ¡metros caracterÃ­sticos de una distribuciÃ³n}
 
-Los parámetros característicos permiten definir propiedades importantes de las distribuciones de probabilidad. Nos limitaremos a definir los dos más importantes:
-\begin{itemize}\index{Media de una distribución}
-\item \textbf{Media ó valor esperado.} El valor esperado de una distribución se obtiene integrando el producto de cada uno de los valores aleatorios sobre los que está definida la distribución, por su densidad de probabilidad,
+Los parÃ¡metros caracterÃ­sticos permiten definir propiedades importantes de las distribuciones de probabilidad. Nos limitaremos a definir los dos mÃ¡s importantes:
+\begin{itemize}\index{Media de una distribuciÃ³n}
+\item \textbf{Media Ã³ valor esperado.} El valor esperado de una distribuciÃ³n se obtiene integrando el producto de cada uno de los valores aleatorios sobre los que estÃ¡ definida la distribuciÃ³n, por su densidad de probabilidad,
 \begin{equation*}
 \mu = \int_a^b xf(x)dx, \ a\leqslant x \leqslant b
 \end{equation*}
 
-Así, para una distribución uniforme definida en un intervalo $[a,b]$,
+AsÃ­, para una distribuciÃ³n uniforme definida en un intervalo $[a,b]$,
 \begin{equation*}
 \mu = \int_a^b x\frac{1}{b-a}dx = \frac{a+b}{2}
 \end{equation*}
-para una distribución exponencial,
+para una distribuciÃ³n exponencial,
 \begin{equation*}
 \mu = \int_0^{\infty}x\frac{1}{\mu}e^{-\frac{x}{\mu}}dx = \mu
 \end{equation*}
-y para la distribución normal,
+y para la distribuciÃ³n normal,
 \begin{equation*}
 \mu = \int_{-\infty}^{\infty}x \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}= \mu
 \end{equation*}
-Es interesante observar como en el caso de las distribuciones exponencial y normal la media es un parámetro que forma parte de la definición de la función de distribución.
+Es interesante observar como en el caso de las distribuciones exponencial y normal la media es un parÃ¡metro que forma parte de la definiciÃ³n de la funciÃ³n de distribuciÃ³n.
 
-\item \textbf{Varianza}\index{Varianza de una distribución} La varianza da una medida de la dispersión de los valores de la distribución en torno a la media. Se define como,
+\item \textbf{Varianza}\index{Varianza de una distribuciÃ³n} La varianza da una medida de la dispersiÃ³n de los valores de la distribuciÃ³n en torno a la media. Se define como,
 \begin{equation*}
 \sigma^2 = \int_a^b (x-\mu)^2f(x)dx, \ a\leqslant x \leqslant b
 \end{equation*}
-Para una distribución uniforme definida en el intervalo $[a,b]$, tomará el valor,
+Para una distribuciÃ³n uniforme definida en el intervalo $[a,b]$, tomarÃ¡ el valor,
 \begin{equation*}
 \sigma^2 = \int_a^b (x-\mu)^2\frac{1}{b-a}dx = \frac{(b-a)^2}{12}
 \end{equation*}
-para una distribución exponencial,
+para una distribuciÃ³n exponencial,
 \begin{equation*}
 \sigma^2 = \int_0^{\infty}(x-\mu)^2\frac{1}{\mu}e^{-\frac{x}{\mu}}dx = \mu^2
 \end{equation*}
-y para la distribución normal,
+y para la distribuciÃ³n normal,
 \begin{equation*}
 \sigma^2 = \int_{-\infty}^{\infty}x \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}= \sigma^2
 \end{equation*}
 
-\item \textbf{Desviación estándar.} \index{Desviación estándar de una distribución} Es la raíz cuadrada de la varianza: $\sigma =\sqrt{\sigma^2}$  
+\item \textbf{DesviaciÃ³n estÃ¡ndar.} \index{DesviaciÃ³n estÃ¡ndar de una distribuciÃ³n} Es la raÃ­z cuadrada de la varianza: $\sigma =\sqrt{\sigma^2}$  
 \end{itemize}
 
-\section{El teorema del límite central}\label{tlc}
+\section{El teorema del lÃ­mite central}\label{tlc}
 
-El teorema del límite central juega un papel muy importante a la hora de analizar y evaluar resultados experimentales. Nos limitaremos a enunciarlo, pero no daremos una demostración.
+El teorema del lÃ­mite central juega un papel muy importante a la hora de analizar y evaluar resultados experimentales. Nos limitaremos a enunciarlo, pero no daremos una demostraciÃ³n.
 
-Supongamos que tenemos un fenómeno aleatorio continuo que viene caracterizado por una variable aleatoria $x$. Además el fenómeno aleatorio viene descrito por una distribución de probabilidad arbitraria $f(x)$ de media $\mu$ y varianza $\sigma^2$.
+Supongamos que tenemos un fenÃ³meno aleatorio continuo que viene caracterizado por una variable aleatoria $x$. AdemÃ¡s el fenÃ³meno aleatorio viene descrito por una distribuciÃ³n de probabilidad arbitraria $f(x)$ de media $\mu$ y varianza $\sigma^2$.
 
-Supongamos que realizamos un experimento consistente en obtener $n$ valores de x al azar. Los valores así obtenidos, deberán seguir la distribución de probabilidad $f(x)$. Para caracterizar nuestro experimento, calcularemos la media de los $n$ valores obtenidos,
+Supongamos que realizamos un experimento consistente en obtener $n$ valores de x al azar. Los valores asÃ­ obtenidos, deberÃ¡n seguir la distribuciÃ³n de probabilidad $f(x)$. Para caracterizar nuestro experimento, calcularemos la media de los $n$ valores obtenidos,
 
 \begin{equation*}
 \bar{x}_n=\frac{1}{n}\sum_{i=1}^n x_is
 \end{equation*}
 
-Si repetimos el experimento muchas veces, obtendremos al final una colección de medias; tantas, como veces hemos repetido el experimento,
-$\left\{\bar{x}_{n1}, \bar{x}_{n2} \cdots \bar{x}_{nj} \cdots \right\}$. El teorema del límite central, establece que las medias así obtenidas constituyen a su vez valores de una variable aleatoria que sigue una distribución normal, cuya media coincide con la media $\mu$ de la distribución original $f(x)$ y cuya varianza coincide con el valor de la varianza de la distribución original $\sigma^2$ dividida por el número $n$ de valores de $x$ obtenidos al azar en cada uno de los experimentos. (En todos los experimentos se obtiene siempre el mismo número de valores de la variable aleatoria $x$).
+Si repetimos el experimento muchas veces, obtendremos al final una colecciÃ³n de medias; tantas, como veces hemos repetido el experimento,
+$\left\{\bar{x}_{n1}, \bar{x}_{n2} \cdots \bar{x}_{nj} \cdots \right\}$. El teorema del lÃ­mite central, establece que las medias asÃ­ obtenidas constituyen a su vez valores de una variable aleatoria que sigue una distribuciÃ³n normal, cuya media coincide con la media $\mu$ de la distribuciÃ³n original $f(x)$ y cuya varianza coincide con el valor de la varianza de la distribuciÃ³n original $\sigma^2$ dividida por el nÃºmero $n$ de valores de $x$ obtenidos al azar en cada uno de los experimentos. (En todos los experimentos se obtiene siempre el mismo nÃºmero de valores de la variable aleatoria $x$).
 
 \begin{equation*}
 x, \ f(x), \mu, \sigma^2 \Rightarrow \bar{x}_n,\ f(\bar{x}_n)=\frac{1}{\sqrt{2\pi\sigma^2/n}}e^{-\frac{(x-\mu)^2}{2\sigma^2/n}}  
 \end{equation*}
 
-Veamos un ejemplo para ilustrar el teorema. Hemos visto en la sección \ref{rand} que el comando \texttt{rand} de Matlab genera números aleatorio uniformemente distribuidos en el intervalo\footnote{En realidad es el intervalo $[2^{-52},1-2^{-52}]$ podemos considerarlo equivalente al intervalo $(0,1)$ debido a la precisión finita de los números máquina} $(0,1)$. Podemos considerar que el ordenador genera número aleatorios que siguen aproximadamente una distribución continua en dicho intervalo. Podemos alterar dicho intervalo multiplicando el resultado de \texttt{rand} por un número cualquiera. Así, por ejemplo,
+Veamos un ejemplo para ilustrar el teorema. Hemos visto en la secciÃ³n \ref{rand} que el comando \texttt{rand} de Matlab genera nÃºmeros aleatorio uniformemente distribuidos en el intervalo\footnote{En realidad es el intervalo $[2^{-52},1-2^{-52}]$ podemos considerarlo equivalente al intervalo $(0,1)$ debido a la precisiÃ³n finita de los nÃºmeros mÃ¡quina} $(0,1)$. Podemos considerar que el ordenador genera nÃºmero aleatorios que siguen aproximadamente una distribuciÃ³n continua en dicho intervalo. Podemos alterar dicho intervalo multiplicando el resultado de \texttt{rand} por un nÃºmero cualquiera. AsÃ­, por ejemplo,
 \begin{verbatim}
 >> x=5*rand(100)
 \end{verbatim} 
-genera un vector de 100 números aleatorios en el intervalo $(0,5)$.
-Además podemos desplazar el centro del intervalo sumando o restando al resultado anterior un segundo número. Así,
+genera un vector de 100 nÃºmeros aleatorios en el intervalo $(0,5)$.
+AdemÃ¡s podemos desplazar el centro del intervalo sumando o restando al resultado anterior un segundo nÃºmero. AsÃ­,
 
 \begin{verbatim}
 >> x =5*rand(100) -2
 \end{verbatim}
-genera un vector de 100 números aleatorios en el intervalo $(-2,3)$.
+genera un vector de 100 nÃºmeros aleatorios en el intervalo $(-2,3)$.
 
-Para comprobar el teorema del límite central, podemos construir un bucle que genere un vector de $n$ números aleatorios en un determinado intervalo, calcule su media y guarde el resultado en un vector de medias. El siguiente código de Matlab, realiza dicho cálculo primero generando un vector de $10$ números aleatorios ($n = 10$) y después generando un vector de $100$, ($n=100$).  El programa genera en cada caso un millón de vectores distintos.
+Para comprobar el teorema del lÃ­mite central, podemos construir un bucle que genere un vector de $n$ nÃºmeros aleatorios en un determinado intervalo, calcule su media y guarde el resultado en un vector de medias. El siguiente cÃ³digo de Matlab, realiza dicho cÃ¡lculo primero generando un vector de $10$ nÃºmeros aleatorios ($n = 10$) y despuÃ©s generando un vector de $100$, ($n=100$).  El programa genera en cada caso un millÃ³n de vectores distintos.
 \begin{verbatim}
-%Este código genera un millón de vectores, formados por números 
+%Este cÃ³digo genera un millÃ³n de vectores, formados por nÃºmeros 
 %aleatorios distribuidos uniformemente en el intervalo (-1,1).
 %Calcula el valor medio de los valores de cada vector y guarda
 %el resultado en un nuevo vector.
@@ -544,13 +544,13 @@ for i=1:1000000
 end	
 \end{verbatim}s
 
-De acuerdo con el teorema del límite central, los dos vectores de medias obtenidos, \texttt{media10} y \texttt{media100}, deben seguir distribuciones normales tales que,
+De acuerdo con el teorema del lÃ­mite central, los dos vectores de medias obtenidos, \texttt{media10} y \texttt{media100}, deben seguir distribuciones normales tales que,
 \begin{enumerate}
-\item La media de la distribución normal debe coincidir con la media de la distribución a la que pertenecían los datos originales. Como hemos tomado datos distribuidos uniformemente en el intervalo $[-1,1]$, La media de dicha distribución es,
+\item La media de la distribuciÃ³n normal debe coincidir con la media de la distribuciÃ³n a la que pertenecÃ­an los datos originales. Como hemos tomado datos distribuidos uniformemente en el intervalo $[-1,1]$, La media de dicha distribuciÃ³n es,
 \begin{equation*}
 \mu = \frac{(b+a)}{2}=\frac{1+(-1)}{2}=0
 \end{equation*}
-\item La varianza de las distribuciones normales a las que pertenecen las medias obtenidas será en cada caso el resultado de dividir la varianza de la distribución uniforme original entre el número de datos empleados para calcular dichas medias,
+\item La varianza de las distribuciones normales a las que pertenecen las medias obtenidas serÃ¡ en cada caso el resultado de dividir la varianza de la distribuciÃ³n uniforme original entre el nÃºmero de datos empleados para calcular dichas medias,
 
 
 \begin{align*}
@@ -561,9 +561,9 @@ De acuerdo con el teorema del límite central, los dos vectores de medias obtenid
 
 \begin{figure}
 \centering
-\subfigure[Distribución para medias de 10 valores  \label{fig:tlc10}]{\includegraphics[width=10cm]{tlc1.eps}} \qquad 
-\subfigure[Distribución para medias de 100 valores  \label{fig:tlc100}]{\includegraphics[width=10cm]{tlc2.eps}}\\
-\caption{Teorema del límite central: Comparación entre histogramas normalizados para un millón de medias y la distribución normal a que pertenecen}
+\subfigure[DistribuciÃ³n para medias de 10 valores  \label{fig:tlc10}]{\includegraphics[width=10cm]{tlc1.eps}} \qquad 
+\subfigure[DistribuciÃ³n para medias de 100 valores  \label{fig:tlc100}]{\includegraphics[width=10cm]{tlc2.eps}}\\
+\caption{Teorema del lÃ­mite central: ComparaciÃ³n entre histogramas normalizados para un millÃ³n de medias y la distribuciÃ³n normal a que pertenecen}
 \end{figure}
 
 Por tanto, las distribuciones normales a las que pertenecen las medias calculadas son,
@@ -573,16 +573,16 @@ Por tanto, las distribuciones normales a las que pertenecen las medias calculada
 f(\bar{x}_{10})=\frac{1}{\sqrt{2\pi\frac{1}{30}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{30}}},\  f(\bar{x}_{100})=\frac{1}{\sqrt{2\pi\frac{1}{300}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{300}}}
 \end{equation*}
 
-Las figuras \ref{fig:tlc10} y \ref{fig:tlc100}, muestran un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total de puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad.}. Sobre dicho histograma se ha trazado mediante una línea roja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
+Las figuras \ref{fig:tlc10} y \ref{fig:tlc100}, muestran un histograma normalizado de las medias obtenidas con el cÃ³digo que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el nÃºmero de puntos que pertenecen a cada barra del histograma entre el nÃºmero total de puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribuciÃ³n a que pertenecen los datos, que cumple por definiciÃ³n tener Ã¡rea unidad.}. Sobre dicho histograma se ha trazado mediante una lÃ­nea roja, la funciÃ³n de Gauss que representa en cada caso la distribuciÃ³n normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribuciÃ³n coinciden bastante bien.
 
-De las figuras, es fácil deducir que cuantos más datos empleemos en el cálculo de las medias, más centrados son los resultados obtenidos en torno a la media de la distribución original. Por otro lado, esto es una consecuencia lógica del hecho de que la varianza de la distribución normal que siguen las medias, se obtenga dividiendo la varianza de la distribución original, por el número de datos $n$; cuantos mayor es $n$ más pequeña resulta la varianza de la distribución normal resultante.
+De las figuras, es fÃ¡cil deducir que cuantos mÃ¡s datos empleemos en el cÃ¡lculo de las medias, mÃ¡s centrados son los resultados obtenidos en torno a la media de la distribuciÃ³n original. Por otro lado, esto es una consecuencia lÃ³gica del hecho de que la varianza de la distribuciÃ³n normal que siguen las medias, se obtenga dividiendo la varianza de la distribuciÃ³n original, por el nÃºmero de datos $n$; cuantos mayor es $n$ mÃ¡s pequeÃ±a resulta la varianza de la distribuciÃ³n normal resultante.
  
 \section{Incertidumbre en las medidas experimentales}
-Siempre que realizamos una medida de una cantidad física dicha medida  estará afectada por un cierto error. Dado que no conocemos cual es el valor verdadero que toma la magnitud que estamos midiendo, no podemos tampoco conocer el error que cometemos al medirla. Decimos entonces que toda medida está afectada por un cierto grado de incertidumbre.
+Siempre que realizamos una medida de una cantidad fÃ­sica dicha medida  estarÃ¡ afectada por un cierto error. Dado que no conocemos cual es el valor verdadero que toma la magnitud que estamos midiendo, no podemos tampoco conocer el error que cometemos al medirla. Decimos entonces que toda medida estÃ¡ afectada por un cierto grado de incertidumbre.
 
-Lo que sí es posible hacer, es acotar el grado de incertidumbre de una medida, es decir estimar unos límites con respecto a la medida realizada dentro de los cuales debe estar contenido el verdadero valor que toma la magnitud medida.
+Lo que sÃ­ es posible hacer, es acotar el grado de incertidumbre de una medida, es decir estimar unos lÃ­mites con respecto a la medida realizada dentro de los cuales debe estar contenido el verdadero valor que toma la magnitud medida.
 
-Cualquier medida experimental debe incluir junto al resultado de la medida el valor de su incertidumbre y, por supuesto, las unidades empleadas en la medida. La figura \ref{fig:incertidumbre} muestra un modo correcto de expresar una medida experimental, aunque no es el único. Como puede observarse, la medida y su incertidumbre se separan en la representación mediante el símbolo $\pm$.  La incertidumbre se representa como  un entorno alrededor del valor medido, dentro del cual estaría incluido el valor real de la medida\footnote{Como se verá más adelante se debe indicar también el \emph{grado de confianza} con el que esperamos que la medida caiga dentro del intervalo indicado por la incertidumbre}. 
+Cualquier medida experimental debe incluir junto al resultado de la medida el valor de su incertidumbre y, por supuesto, las unidades empleadas en la medida. La figura \ref{fig:incertidumbre} muestra un modo correcto de expresar una medida experimental, aunque no es el Ãºnico. Como puede observarse, la medida y su incertidumbre se separan en la representaciÃ³n mediante el sÃ­mbolo $\pm$.  La incertidumbre se representa como  un entorno alrededor del valor medido, dentro del cual estarÃ­a incluido el valor real de la medida\footnote{Como se verÃ¡ mÃ¡s adelante se debe indicar tambiÃ©n el \emph{grado de confianza} con el que esperamos que la medida caiga dentro del intervalo indicado por la incertidumbre}. 
 
 \begin{figure}
 \centering
@@ -603,57 +603,57 @@ Cualquier medida experimental debe incluir junto al resultado de la medida el va
  
 \subsection{Fuentes de incertidumbre.}
 
-Antes de entrar en el estudio de las fuentes de incertidumbre, es importante destacar que el estudio de la medición constituye por sí mismo una ciencia, conocida con el nombre de metrología. Lo que vamos a describir a continuación tanto referido a las fuentes de incertidumbre como al modo de estimarla, es incompleto y representa tan solo una primera aproximación al problema.
+Antes de entrar en el estudio de las fuentes de incertidumbre, es importante destacar que el estudio de la mediciÃ³n constituye por sÃ­ mismo una ciencia, conocida con el nombre de metrologÃ­a. Lo que vamos a describir a continuaciÃ³n tanto referido a las fuentes de incertidumbre como al modo de estimarla, es incompleto y representa tan solo una primera aproximaciÃ³n al problema.
 La incertidumbre de una medida tiene fundamentalmente dos causas:
 
-\paragraph{Incertidumbre sistemática de precisión.}\index{Medidas experimentales! precisión}
- La primera es la precisión limitada de los aparatos de medida. Cualquier aparato de medida tiene una precisión que viene determinada por la unidad o fracción de unidad más pequeña que es capaz de resolver. Por ejemplo, una regla normal, es capaz de resolver (distinguir) dos longitudes que se diferencien en $0.5 mm$, un reloj digital sencillo es capaz de resolver tiempos con una diferencia de $1s.$ etc.
-La incertidumbre debida a la precisión finita de los aparatos de medida recibe el nombre de \emph{Incertidumbre sistemática de precisión.} 
-Se llama así porque depende exclusivamente de las características del aparato de medida que, en principio, son siempre las mismas.
+\paragraph{Incertidumbre sistemÃ¡tica de precisiÃ³n.}\index{Medidas experimentales! precisiÃ³n}
+ La primera es la precisiÃ³n limitada de los aparatos de medida. Cualquier aparato de medida tiene una precisiÃ³n que viene determinada por la unidad o fracciÃ³n de unidad mÃ¡s pequeÃ±a que es capaz de resolver. Por ejemplo, una regla normal, es capaz de resolver (distinguir) dos longitudes que se diferencien en $0.5 mm$, un reloj digital sencillo es capaz de resolver tiempos con una diferencia de $1s.$ etc.
+La incertidumbre debida a la precisiÃ³n finita de los aparatos de medida recibe el nombre de \emph{Incertidumbre sistemÃ¡tica de precisiÃ³n.} 
+Se llama asÃ­ porque depende exclusivamente de las caracterÃ­sticas del aparato de medida que, en principio, son siempre las mismas.
 
-La incertidumbre sistemática de precisión suele expresarse añadiendo a la medida la mitad de la división mínima de la escala del aparato de medida empleado. Así, por ejemplo, si medimos $123 mm$ con una regla graduada en milímetros, podríamos expresar la  medida como $123 \pm 0.5 mm$ o también como $12,3\pm0.05cm$.
+La incertidumbre sistemÃ¡tica de precisiÃ³n suele expresarse aÃ±adiendo a la medida la mitad de la divisiÃ³n mÃ­nima de la escala del aparato de medida empleado. AsÃ­, por ejemplo, si medimos $123 mm$ con una regla graduada en milÃ­metros, podrÃ­amos expresar la  medida como $123 \pm 0.5 mm$ o tambiÃ©n como $12,3\pm0.05cm$.
 
 
-La incertidumbre sistemática de precisión representa una distribución uniforme de media el valor de la medida realizada y anchura la división mínima de la escala. Es decir, se considera que el valor real de la medida está dentro de dicho intervalo intervalo con una probabilidad del $100\%$. Volviendo al ejemplo anterior de la regla, el valor real de nuestra medida estaría comprendido en el intervalo $[122.5,\ 123.5 ]$, y podría tomar cualquier valor de dicho intervalo con igual probabilidad. 
+La incertidumbre sistemÃ¡tica de precisiÃ³n representa una distribuciÃ³n uniforme de media el valor de la medida realizada y anchura la divisiÃ³n mÃ­nima de la escala. Es decir, se considera que el valor real de la medida estÃ¡ dentro de dicho intervalo intervalo con una probabilidad del $100\%$. Volviendo al ejemplo anterior de la regla, el valor real de nuestra medida estarÃ­a comprendido en el intervalo $[122.5,\ 123.5 ]$, y podrÃ­a tomar cualquier valor de dicho intervalo con igual probabilidad. 
 
-\paragraph{Incertidumbre estadística.} La segunda fuente de incertidumbre se debe a factores ambientales, que modifican de una vez para otra las condiciones en que se realiza una medida experimental. Estos factores hacen que la medidas realizadas sean sucesos aleatorios. En principio podría describirse mediante una distribución de probabilidad $f(x)$, pero en la práctica desconocemos de qué distribución se trata y ni siquiera sabemos cual es su valor esperado $\mu$ o su varianza $\sigma$. \index{Medidas experimentales! Incertidumbre estadística}
+\paragraph{Incertidumbre estadÃ­stica.} La segunda fuente de incertidumbre se debe a factores ambientales, que modifican de una vez para otra las condiciones en que se realiza una medida experimental. Estos factores hacen que la medidas realizadas sean sucesos aleatorios. En principio podrÃ­a describirse mediante una distribuciÃ³n de probabilidad $f(x)$, pero en la prÃ¡ctica desconocemos de quÃ© distribuciÃ³n se trata y ni siquiera sabemos cual es su valor esperado $\mu$ o su varianza $\sigma$. \index{Medidas experimentales! Incertidumbre estadÃ­stica}
 
-Afortunadamente, el teorema del límite central, que describimos en al sección \ref{tlc} proporciona un sistema de estimar la incertidumbre estadística.
+Afortunadamente, el teorema del lÃ­mite central, que describimos en al secciÃ³n \ref{tlc} proporciona un sistema de estimar la incertidumbre estadÃ­stica.
 
-Supongamos que repetimos $n$ veces la misma medida experimental. Por ejemplo: tenemos un recipiente con agua, lo calentamos y tomamos la temperatura del agua cuando ésta rompe a hervir. Repetimos $n$ veces el experimento y obtenemos un conjunto $\{x_1,x_2,\cdots x_n \}$ de medidas de la temperatura de ebullición del agua. Cabe esperar que, debido a la incertidumbre estadística, los valores obtenidos sean distintos  y, a la vez próximos entre sí\footnote{De hecho, si aparecen algunos valores claramente alejados del resto, lo habitual es considerar que están afectados por algún error desconocido y desecharlos. Dichos valores suelen recibir el nombre de valores o datos aberrantes.}.
+Supongamos que repetimos $n$ veces la misma medida experimental. Por ejemplo: tenemos un recipiente con agua, lo calentamos y tomamos la temperatura del agua cuando Ã©sta rompe a hervir. Repetimos $n$ veces el experimento y obtenemos un conjunto $\{x_1,x_2,\cdots x_n \}$ de medidas de la temperatura de ebulliciÃ³n del agua. Cabe esperar que, debido a la incertidumbre estadÃ­stica, los valores obtenidos sean distintos  y, a la vez prÃ³ximos entre sÃ­\footnote{De hecho, si aparecen algunos valores claramente alejados del resto, lo habitual es considerar que estÃ¡n afectados por algÃºn error desconocido y desecharlos. Dichos valores suelen recibir el nombre de valores o datos aberrantes.}.
 
-Sabemos que dichos valores deben seguir una cierta distribución de probabilidad. Podríamos estimar su valor esperado $\mu$ mediante el cálculo de la media aritmética de las medidas tomadas.
+Sabemos que dichos valores deben seguir una cierta distribuciÃ³n de probabilidad. PodrÃ­amos estimar su valor esperado $\mu$ mediante el cÃ¡lculo de la media aritmÃ©tica de las medidas tomadas.
 \begin{equation*}
 \mu \approx \bar{x}_n = \frac{1}{n}\sum_{i=1}^n x_i
 \end{equation*}
 
-La media así calculada se toma como el valor resultante de la medida realizada.
+La media asÃ­ calculada se toma como el valor resultante de la medida realizada.
 
-De acuerdo con el teorema del límite central, $\bar{x}_n$ es una variable aleatoria que debe seguir una distribución normal de media $\mu$ y de varianza $\sigma^2/n$. Como tampoco conocemos el valor de la varianza $\sigma^2$ de la distribución de probabilidad que siguen los datos medidos, la estimamos a partir de los propios datos medidos, de acuerdo con la siguiente ecuación,
+De acuerdo con el teorema del lÃ­mite central, $\bar{x}_n$ es una variable aleatoria que debe seguir una distribuciÃ³n normal de media $\mu$ y de varianza $\sigma^2/n$. Como tampoco conocemos el valor de la varianza $\sigma^2$ de la distribuciÃ³n de probabilidad que siguen los datos medidos, la estimamos a partir de los propios datos medidos, de acuerdo con la siguiente ecuaciÃ³n,
 \begin{equation*}
 \sigma^2 \approx s^2 = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2
 \end{equation*}
 
-Dividiendo $s^2$ por el número de muestras empleado se puede aproximar la varianza de la distribución normal que debe seguir $\bar{x}_n$,
+Dividiendo $s^2$ por el nÃºmero de muestras empleado se puede aproximar la varianza de la distribuciÃ³n normal que debe seguir $\bar{x}_n$,
 
 \begin{equation*}
 \sigma^2_{xn} \approx s^2_{xn} = \frac{s^2}{n}
 \end{equation*}
 
-La incertidumbre, se puede asociar con la raíz cuadrada la varianza que acabamos de estimar,
+La incertidumbre, se puede asociar con la raÃ­z cuadrada la varianza que acabamos de estimar,
 
 \begin{equation*}
 s_{xn}=\sqrt{s^2_{xn}}=\sqrt{\frac{\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2}{n}}
 \end{equation*}
 
-esta cantidad recibe el nombre de desviación estándar.
+esta cantidad recibe el nombre de desviaciÃ³n estÃ¡ndar.
 
 \subsection{Intervalos de confianza.}
-Como hemos visto, a partir del teorema central del límite podemos asociar la media de los valores obtenidos al repetir una medida y su desviación estándar con una distribución normal. Podemos ahora, en un segundo paso,s asociar la incertidumbre de la medida realizada con la probabilidad representada por dicha distribución normal.
+Como hemos visto, a partir del teorema central del lÃ­mite podemos asociar la media de los valores obtenidos al repetir una medida y su desviaciÃ³n estÃ¡ndar con una distribuciÃ³n normal. Podemos ahora, en un segundo paso,s asociar la incertidumbre de la medida realizada con la probabilidad representada por dicha distribuciÃ³n normal.
 
-Si el valor obtenido tras realizar $n$ repeticiones de una medida es $\bar{x}_n$ y su desviación típica es $s_{xn}$ ¿Cuál es la probabilidad de que el valor medido esté realmente comprendido en el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
+Si el valor obtenido tras realizar $n$ repeticiones de una medida es $\bar{x}_n$ y su desviaciÃ³n tÃ­pica es $s_{xn}$ Â¿CuÃ¡l es la probabilidad de que el valor medido estÃ© realmente comprendido en el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
 
-Como vimos en el apartado \ref{pdfc}, dicha probabilidad puede calcularse integrando la distribución normal obtenida entre $\bar{x}_n-s_{xn}$ y $\bar{x}_n+s_{xn}$,
+Como vimos en el apartado \ref{pdfc}, dicha probabilidad puede calcularse integrando la distribuciÃ³n normal obtenida entre $\bar{x}_n-s_{xn}$ y $\bar{x}_n+s_{xn}$,
 
 \begin{equation*}
 P(\bar{x}_n - s_{xn} \leqslant x \leqslant \bar{x}_n
@@ -666,29 +666,29 @@ P(\bar{x}_n - s_{xn} \leqslant x \leqslant \bar{x}_n
 \label{fig:ic1}
 \end{figure}
 
-El valor de dicha integral es $0.6827$. Si expresamos este valor como un tanto por ciento, concluimos que la probabilidad de que el valor medido este en el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ es del $68.27\%$. Dicho de otra manera: el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ corresponde con el \emph{intervalo de confianza} del 68.27\%. La figura \ref{fig:ic1} muestra el área bajo la distribución normal, correspondiente a dicha probabilidad.
+El valor de dicha integral es $0.6827$. Si expresamos este valor como un tanto por ciento, concluimos que la probabilidad de que el valor medido este en el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ es del $68.27\%$. Dicho de otra manera: el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ corresponde con el \emph{intervalo de confianza} del 68.27\%. La figura \ref{fig:ic1} muestra el Ã¡rea bajo la distribuciÃ³n normal, correspondiente a dicha probabilidad.
 
-Volviendo al problema de la medida, la manera correcta de expresarla sería en nuestro caso:  $\bar{x}\pm s_{xn}$ (unidades). Indicando que la incertidumbre corresponde con el intervalo de confianza del $68.27\%$.
+Volviendo al problema de la medida, la manera correcta de expresarla serÃ­a en nuestro caso:  $\bar{x}\pm s_{xn}$ (unidades). Indicando que la incertidumbre corresponde con el intervalo de confianza del $68.27\%$.
 
 
-Observando la figura \ref{fig:ic1}, es fácil plantearse la siguiente cuestión: ¿Qué valor de la incertidumbre contendría el valor de real de la medida con una probabilidad de, por ejemplo, el 95\%? O, dicho de otra manera, ¿Cuánto tengo yo que \emph{alargar} el intervalo de integración para que el área contenida bajo la distribución normal valga $0.95$?
+Observando la figura \ref{fig:ic1}, es fÃ¡cil plantearse la siguiente cuestiÃ³n: Â¿QuÃ© valor de la incertidumbre contendrÃ­a el valor de real de la medida con una probabilidad de, por ejemplo, el 95\%? O, dicho de otra manera, Â¿CuÃ¡nto tengo yo que \emph{alargar} el intervalo de integraciÃ³n para que el Ã¡rea contenida bajo la distribuciÃ³n normal valga $0.95$?
 
-Para estimarlo se emplea la inversa de la función de probabilidad acumulada. Como se explicó en el apartado \ref{pdfc}, la función de probabilidad acumulada se obtiene por integración de la distribución de probabilidad correspondiente. 
+Para estimarlo se emplea la inversa de la funciÃ³n de probabilidad acumulada. Como se explicÃ³ en el apartado \ref{pdfc}, la funciÃ³n de probabilidad acumulada se obtiene por integraciÃ³n de la distribuciÃ³n de probabilidad correspondiente. 
 
-Dicha función representa la probabilidad de obtener un resultado entre el límite inferior para el que está definida la distribución de probabilidad y el valor $x$ para el que se calcula la función. La inversa de la función de probabilidad acumulada nos indica, dado un valor de la probabilidad comprendido entre $0$ y $1$, a qué valor $x$ corresponde dicha probabilidad acumulada. 
+Dicha funciÃ³n representa la probabilidad de obtener un resultado entre el lÃ­mite inferior para el que estÃ¡ definida la distribuciÃ³n de probabilidad y el valor $x$ para el que se calcula la funciÃ³n. La inversa de la funciÃ³n de probabilidad acumulada nos indica, dado un valor de la probabilidad comprendido entre $0$ y $1$, a quÃ© valor $x$ corresponde dicha probabilidad acumulada. 
 
-Dado que la distribución normal no tiene primitiva, solo puede integrarse numéricamente. Por tanto, su inversa, solo puede obtenerse también numéricamente. Matlab, suministra la función \texttt{norminv(p)}, que permite obtener directamente los valores de la inversa de la función de probabilidad normal acumulada.
+Dado que la distribuciÃ³n normal no tiene primitiva, solo puede integrarse numÃ©ricamente. Por tanto, su inversa, solo puede obtenerse tambiÃ©n numÃ©ricamente. Matlab, suministra la funciÃ³n \texttt{norminv(p)}, que permite obtener directamente los valores de la inversa de la funciÃ³n de probabilidad normal acumulada.
 
-Además, la función \texttt{norminv(p)} calcula la función de probabilidad inversa acumulada para una distribución de probabilidad normal de media $0$ y varianza $1$. En realidad esto no supone ningún problema ya que para obtener el valor correspondiente a cualquier otra distribución normal, basta multiplicar el valor $x$ obtenido con \texttt{norminv(p)} por el valor de la desviación estándar y sumarle el valor de la media de la distribución deseada.
+AdemÃ¡s, la funciÃ³n \texttt{norminv(p)} calcula la funciÃ³n de probabilidad inversa acumulada para una distribuciÃ³n de probabilidad normal de media $0$ y varianza $1$. En realidad esto no supone ningÃºn problema ya que para obtener el valor correspondiente a cualquier otra distribuciÃ³n normal, basta multiplicar el valor $x$ obtenido con \texttt{norminv(p)} por el valor de la desviaciÃ³n estÃ¡ndar y sumarle el valor de la media de la distribuciÃ³n deseada.
 
-Antes de seguir adelante, veamos algunos ejemplos de uso de esta función. Por ejemplo si introducimos en la función el valor $0.1$,
+Antes de seguir adelante, veamos algunos ejemplos de uso de esta funciÃ³n. Por ejemplo si introducimos en la funciÃ³n el valor $0.1$,
 \begin{verbatim}
 >> p = 0.1;
 >> x = norminv(p)s
 >> x = -1.2815515655446004
 \end{verbatim}
 
-Es decir la probabilidad de obtener un número en el intervalo $(-\infty, -1.2815515655446004]$ vale $0.1$ o, lo que es equivalente, un 10\%.
+Es decir la probabilidad de obtener un nÃºmero en el intervalo $(-\infty, -1.2815515655446004]$ vale $0.1$ o, lo que es equivalente, un 10\%.
 
 Otro ejemplo especialmente significativo: Si introducimos el valor $0.5$, 
 
@@ -698,16 +698,16 @@ Otro ejemplo especialmente significativo: Si introducimos el valor $0.5$,
 >> x = 0.0
 \end{verbatim}
 
-Como cabría esperar de la simetría de la distribución normal, hay un $0.5$ ---50\%--- de probabilidades de obtener un número entre $-\infty$ y $0$.  La figura \ref{fig:invcum} muestra la función inversa de probabilidad acumulada y en particular el punto  correspondiente al valor 0.5.
+Como cabrÃ­a esperar de la simetrÃ­a de la distribuciÃ³n normal, hay un $0.5$ ---50\%--- de probabilidades de obtener un nÃºmero entre $-\infty$ y $0$.  La figura \ref{fig:invcum} muestra la funciÃ³n inversa de probabilidad acumulada y en particular el punto  correspondiente al valor 0.5.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{invcum.eps}
-\caption{Función inversa  de probabilidad normal acumulada}
+\caption{FunciÃ³n inversa  de probabilidad normal acumulada}
 \label{fig:invcum}s
 \end{figure}
 
-Supongamos ahora que queremos repetir el cálculo para una distribución normal de media $\mu=6$ y desviación típica $\sigma = 2$. Para el valor $0.1$ obtendríamos,
+Supongamos ahora que queremos repetir el cÃ¡lculo para una distribuciÃ³n normal de media $\mu=6$ y desviaciÃ³n tÃ­pica $\sigma = 2$. Para el valor $0.1$ obtendrÃ­amos,
 
 \begin{verbatim}
 >> p = 0.1;
@@ -719,11 +719,11 @@ Supongamos ahora que queremos repetir el cálculo para una distribución normal de
 >> x2 = -1.5631031310892007
 \end{verbatim}
 
-Por tanto, ahora tenemos un 10\% de probabilidades de obtener un número entre $-\infty$ y $-1.5631031310892007$
+Por tanto, ahora tenemos un 10\% de probabilidades de obtener un nÃºmero entre $-\infty$ y $-1.5631031310892007$
 
-Retomando el hilo de nuestro problema, lo que a nosotros realmente nos interesa, es encontrar intervalos de confianza, es decir conocer el intervalo en torno al valor medio $\bar{x}_n$ que corresponde a una determinada probabilidad. La función inversa de probabilidad acumulada nos da el intervalo entre $-\infty$ y $x$ correspondiente a una determinada probabilidad. Si combinamos los resultados de dicha función con las propiedades de simetría y área unidad de la función normal podemos obtener el intervalo centrado en torno a la media correspondiente a una determinada probabilidad.
+Retomando el hilo de nuestro problema, lo que a nosotros realmente nos interesa, es encontrar intervalos de confianza, es decir conocer el intervalo en torno al valor medio $\bar{x}_n$ que corresponde a una determinada probabilidad. La funciÃ³n inversa de probabilidad acumulada nos da el intervalo entre $-\infty$ y $x$ correspondiente a una determinada probabilidad. Si combinamos los resultados de dicha funciÃ³n con las propiedades de simetrÃ­a y Ã¡rea unidad de la funciÃ³n normal podemos obtener el intervalo centrado en torno a la media correspondiente a una determinada probabilidad.
 
-Así el intervalo $[-x ,x]$ correspondiente a  una probabilidad del $P\%$, abarca un área bajo la curva $P/100$. Por tanto el área que queda en las colas ---a derecha e izquierda del intervalo--- es $1-x/100$. Como la distribución normal es simétrica, dicha área debe dividirse en dos, una correspondiente a la cola $[-\infty, -x]$ y la otra correspondiente a la cola $[x, \infty]$.
+AsÃ­ el intervalo $[-x ,x]$ correspondiente a  una probabilidad del $P\%$, abarca un Ã¡rea bajo la curva $P/100$. Por tanto el Ã¡rea que queda en las colas ---a derecha e izquierda del intervalo--- es $1-x/100$. Como la distribuciÃ³n normal es simÃ©trica, dicha Ã¡rea debe dividirse en dos, una correspondiente a la cola $[-\infty, -x]$ y la otra correspondiente a la cola $[x, \infty]$.
 
 \begin{figure}[h]
 \centering
@@ -731,10 +731,10 @@ Así el intervalo $[-x ,x]$ correspondiente a  una probabilidad del $P\%$, abarca
 \caption{Intervalo de probabilidad P\%}
 \label{fig:intervalo}
 \end{figure}
-La figura \ref{fig:intervalo} muestra gráficamente la relación de áreas que acabamos de describir; las dos colas aparecen pintadas en azul. 
+La figura \ref{fig:intervalo} muestra grÃ¡ficamente la relaciÃ³n de Ã¡reas que acabamos de describir; las dos colas aparecen pintadas en azul. 
 
 
-Para obtener el límite inferior, $-x$, del intervalo de probabilidad $P\%$ basta emplear la función \texttt{norminv}, introduciendo como variable de entrada el área de la cola, \texttt{x=norminv((1-P/100)/2)}. Así por ejemplo, para obtener el límite inferior del intervalo de confianza correspondiente a una probabilidad del $90\%$,
+Para obtener el lÃ­mite inferior, $-x$, del intervalo de probabilidad $P\%$ basta emplear la funciÃ³n \texttt{norminv}, introduciendo como variable de entrada el Ã¡rea de la cola, \texttt{x=norminv((1-P/100)/2)}. AsÃ­ por ejemplo, para obtener el lÃ­mite inferior del intervalo de confianza correspondiente a una probabilidad del $90\%$,
 
 \begin{verbatim}
 >> p=(1-0.90)/2
@@ -746,9 +746,9 @@ x =
    -1.6449
 \end{verbatim}
 
-Por tanto el intervalo de confianza correspondiente a una probabilidad del $90\%$ para una distribución normal de media cero y desviación estándar uno es, $I_{90\%} =[-1.6449\ 1.6449]$
+Por tanto el intervalo de confianza correspondiente a una probabilidad del $90\%$ para una distribuciÃ³n normal de media cero y desviaciÃ³n estÃ¡ndar uno es, $I_{90\%} =[-1.6449\ 1.6449]$
 
-Supongamos ahora que hemos realizado un conjunto de $n$ medidas de una determinada magnitud física, por ejemplo temperatura en ºC, y obtenemos su media $\bar{x}_n=6.5$ ºC y su desviación estándar $s_{xn}=2$. Si queremos dar el resultado de la medida con una incertidumbre correspondiente a un intervalo de confianza del $95\%$, calculamos el intervalo de confianza empleando la función inversa de probabilidad acumulada normal, y después, multiplicamos el resultado por $s_{xn}$ para ajustarlo a la distribución normal que sigue la media de nuestros datos, 
+Supongamos ahora que hemos realizado un conjunto de $n$ medidas de una determinada magnitud fÃ­sica, por ejemplo temperatura en ÂºC, y obtenemos su media $\bar{x}_n=6.5$ ÂºC y su desviaciÃ³n estÃ¡ndar $s_{xn}=2$. Si queremos dar el resultado de la medida con una incertidumbre correspondiente a un intervalo de confianza del $95\%$, calculamos el intervalo de confianza empleando la funciÃ³n inversa de probabilidad acumulada normal, y despuÃ©s, multiplicamos el resultado por $s_{xn}$ para ajustarlo a la distribuciÃ³n normal que sigue la media de nuestros datos, 
 
 \begin{verbatim}
 >> xm = 6; %media de las medidas
@@ -764,22 +764,22 @@ incert =
    -3.9199
 \end{verbatim}
 
-Por tanto, en este ejemplo, debemos expresar la medida como $6.5 \pm 3.92$ ºC indicando que el intervalo de confianza es del $95\%$.
+Por tanto, en este ejemplo, debemos expresar la medida como $6.5 \pm 3.92$ ÂºC indicando que el intervalo de confianza es del $95\%$.
 
-\paragraph{La distribución T de Student.} Habitualmente, cuando el número de medidas que se han tomado para estimar el valor de $\bar{x}_n$ es pequeño, los intervalos de confianza se calculan empleando la distribución t de Student de n-1 grados de libertad, donde  n representa el número de medidas tomadas.
+\paragraph{La distribuciÃ³n T de Student.} Habitualmente, cuando el nÃºmero de medidas que se han tomado para estimar el valor de $\bar{x}_n$ es pequeÃ±o, los intervalos de confianza se calculan empleando la distribuciÃ³n t de Student de n-1 grados de libertad, donde  n representa el nÃºmero de medidas tomadas.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{tdestudent.eps}
-\caption{Comparación entre las distribuciones t de Student de 1, 5, 10, 20 y 30 grados de libertad y la distribución normal.}
+\caption{ComparaciÃ³n entre las distribuciones t de Student de 1, 5, 10, 20 y 30 grados de libertad y la distribuciÃ³n normal.}
 \label{fig:tdst}
 \end{figure}
 
-Para un número pequeño de muestras, la distribución t de Student da una aproximación mejor que la distribución normal. Para un número de muestras grande, ambas distribuciones son prácticamente iguales.  La figura \ref{fig:tdst} muestra una comparación entre la distribución normal y la distribución t de Student, calculada para distintos grados de libertad. De la figura se puede concluir en primer lugar que la desviación estándar de la distribución t de Student es en todos los casos mayor que la de la distribución normal, con lo cual los intervalos de confianza para un valor dado de la probabilidad son siempre mayores. En segundo lugar se observa también que para 30 o más medidas --- $n\geqslant 30$ --- la diferencia entre las distribuciones t de Student y normal es prácticamente despreciable.
+Para un nÃºmero pequeÃ±o de muestras, la distribuciÃ³n t de Student da una aproximaciÃ³n mejor que la distribuciÃ³n normal. Para un nÃºmero de muestras grande, ambas distribuciones son prÃ¡cticamente iguales.  La figura \ref{fig:tdst} muestra una comparaciÃ³n entre la distribuciÃ³n normal y la distribuciÃ³n t de Student, calculada para distintos grados de libertad. De la figura se puede concluir en primer lugar que la desviaciÃ³n estÃ¡ndar de la distribuciÃ³n t de Student es en todos los casos mayor que la de la distribuciÃ³n normal, con lo cual los intervalos de confianza para un valor dado de la probabilidad son siempre mayores. En segundo lugar se observa tambiÃ©n que para 30 o mÃ¡s medidas --- $n\geqslant 30$ --- la diferencia entre las distribuciones t de Student y normal es prÃ¡cticamente despreciable.
 
-El procedimiento de cálculo es el mismo que si empleamos la distribución normal, basta sustituir la inversa de la distribución normal acumulada por la inversa de la distribución t de Student acumulada. En Matlab, esta función esta definida como: \texttt{x = tinv(p,n)}. 
+El procedimiento de cÃ¡lculo es el mismo que si empleamos la distribuciÃ³n normal, basta sustituir la inversa de la distribuciÃ³n normal acumulada por la inversa de la distribuciÃ³n t de Student acumulada. En Matlab, esta funciÃ³n esta definida como: \texttt{x = tinv(p,n)}. 
 
-Así, para el ejemplo anterior de las medidas de temperatura de media  $\bar{x}_n=6.5$ ºC y  desviación estándar $s_{xn}=2$  si suponemos que el número de medidas tomadas es $n=5$. El intervalo de confianza correspondiente a un $95\%$  lo calcularíamos mediante la inversa de la distribución de probabilidad t de Student de $n-1$ grados de libertad acumulada como,
+AsÃ­, para el ejemplo anterior de las medidas de temperatura de media  $\bar{x}_n=6.5$ ÂºC y  desviaciÃ³n estÃ¡ndar $s_{xn}=2$  si suponemos que el nÃºmero de medidas tomadas es $n=5$. El intervalo de confianza correspondiente a un $95\%$  lo calcularÃ­amos mediante la inversa de la distribuciÃ³n de probabilidad t de Student de $n-1$ grados de libertad acumulada como,
 
 \begin{verbatim}
 >> xm = 6; %media de las cinco medidas
@@ -795,26 +795,26 @@ incert =
    -5.5529
 \end{verbatim}
 
-Por tanto deberíamos expresar el valor de la medida realizada como, $6.5\pm 5.55$ ºC. Si comparamos este resultado con el obtenido empleando la distribución normal, vemos que el intervalo de confianza y, por tanto, la incertidumbre han aumentado.
+Por tanto deberÃ­amos expresar el valor de la medida realizada como, $6.5\pm 5.55$ ÂºC. Si comparamos este resultado con el obtenido empleando la distribuciÃ³n normal, vemos que el intervalo de confianza y, por tanto, la incertidumbre han aumentado.
 
-\subsection{Propagación de la incertidumbre: Estimación de la incertidumbre de medidas indirectas.}
+\subsection{PropagaciÃ³n de la incertidumbre: EstimaciÃ³n de la incertidumbre de medidas indirectas.}
 
-Supongamos que deseamos obtener la incertidumbre de una determinada magnitud física $y$ que no hemos medido directamente, sino que se determina a partir de otras cantidades $x_1,x_2,\cdots,x_n$ empleando una relación funcional $f$,
+Supongamos que deseamos obtener la incertidumbre de una determinada magnitud fÃ­sica $y$ que no hemos medido directamente, sino que se determina a partir de otras cantidades $x_1,x_2,\cdots,x_n$ empleando una relaciÃ³n funcional $f$,
 
 \begin{equation*}
 y = f(x_1,x_2,\cdots,x_n)
 \end{equation*}
 
-La función $f$ suele recibir el nombre de ecuación de medida, y no tiene por qué representar simplemente una ley física; de hecho, debería incluir entre sus entradas cualquier cantidad que pueda contribuir a modificar significativamente la incertidumbre de $y$. Por ejemplo: diferentes observadores, laboratorios, experimentos, horas a las que se han realizado las observaciones, etc.
+La funciÃ³n $f$ suele recibir el nombre de ecuaciÃ³n de medida, y no tiene por quÃ© representar simplemente una ley fÃ­sica; de hecho, deberÃ­a incluir entre sus entradas cualquier cantidad que pueda contribuir a modificar significativamente la incertidumbre de $y$. Por ejemplo: diferentes observadores, laboratorios, experimentos, horas a las que se han realizado las observaciones, etc.
 
-La incertidumbre asociada al valor de $y$, a la que llamaremos $u_c(y)$, se expresa en función de la desviación estándar de $y$,  
+La incertidumbre asociada al valor de $y$, a la que llamaremos $u_c(y)$, se expresa en funciÃ³n de la desviaciÃ³n estÃ¡ndar de $y$,  
 
 \begin{equation*}
 u_c(y) =\sqrt{s_c^2(y)}
 \end{equation*}
 
 
-donde  $s_c^2(y)$ se define como la  varianza \emph{combinada} de $y$, que se estima en primera aproximación a partir de la expansión en serie de Taylor\footnote{En primera aproximación empleamos un desarrollo de Taylor de primer orden. En realidad, lo adecuado o no de este método depende de las características de la función $f$. No discutiremos aquí este problema.} de la función $f$	
+donde  $s_c^2(y)$ se define como la  varianza \emph{combinada} de $y$, que se estima en primera aproximaciÃ³n a partir de la expansiÃ³n en serie de Taylor\footnote{En primera aproximaciÃ³n empleamos un desarrollo de Taylor de primer orden. En realidad, lo adecuado o no de este mÃ©todo depende de las caracterÃ­sticas de la funciÃ³n $f$. No discutiremos aquÃ­ este problema.} de la funciÃ³n $f$	
 
 \begin{equation*}
 s_c^2(y) = \sum_{i=1}^n\left(\frac{\partial f}{\partial x_i}\right)^2 s^2(x_i) + 2\sum_{i=1}^{n-1}\sum_{i=1}^n \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} c_v(x_i,x_j)
@@ -828,26 +828,26 @@ La covarianza entre dos variables $z$ y $t$ de las que se tienen $n$ muestras, p
 c_v(z,t) =\frac{1}{n-1}\sum_{i=1}^n(z_i-\bar{z})(t_i-\bar{t})
 \end{equation*}
 
-De modo análogo a como hicimos en el caso de la varianza de la media de un conjunto de medidas, podemos relacionar la covarianza entre las medias de  de dos variables, con la covarianza entre $n$ medidas de dichas variables como,
+De modo anÃ¡logo a como hicimos en el caso de la varianza de la media de un conjunto de medidas, podemos relacionar la covarianza entre las medias de  de dos variables, con la covarianza entre $n$ medidas de dichas variables como,
 
 \begin{equation*}
 c_v(\bar{z},\bar{t}) =\frac{c_v(z,t)}{n}
 \end{equation*}
 
-En muchos casos de interés no existe correlación entre las variables de entrada. En estos casos, los valores de la covarianza será nulos y podemos simplificar la ecuación empleada en el cálculo de $s_c^2(y)$,
+En muchos casos de interÃ©s no existe correlaciÃ³n entre las variables de entrada. En estos casos, los valores de la covarianza serÃ¡ nulos y podemos simplificar la ecuaciÃ³n empleada en el cÃ¡lculo de $s_c^2(y)$,
 
 \begin{equation*}
 s_c^2(y) = \sum_{i=1}^n\left(\frac{\partial f}{\partial x_i}\right)^2 s^2(x_i)
 \end{equation*}
 
 
-Un ejemplo simple lo podemos obtener de la ecuación para la potencia disipada en una resistencia eléctrica. En este caso, el valor de la potencia disipada depende del voltaje, $V$, de la resistencia $R_0$ medida a una temperatura de referencia $t_0$, de la temperatura real a que se encuentra la resistencia $t$ y, en primera aproximación, de un coeficiente que $b$, que establece una relación linea entre temperatura y resistencia. 
+Un ejemplo simple lo podemos obtener de la ecuaciÃ³n para la potencia disipada en una resistencia elÃ©ctrica. En este caso, el valor de la potencia disipada depende del voltaje, $V$, de la resistencia $R_0$ medida a una temperatura de referencia $t_0$, de la temperatura real a que se encuentra la resistencia $t$ y, en primera aproximaciÃ³n, de un coeficiente que $b$, que establece una relaciÃ³n linea entre temperatura y resistencia. 
 
 \begin{equation*}
 P = f(V,R_o,b,t) = \frac{V^2}{R_0\left(1+b(t-t_0)\right)}
 \end{equation*}
 
-Supongamos que $b$ es un coeficiente numérico no sujeto a incertidumbre y que las  variables $V$, $R_0$, $t$ y $t_0$ no están correlacionadas entre sí. Podemos entonces expresar la varianza  en la  potencia disipada, a partir de las varianzas de las variables de entrada como,
+Supongamos que $b$ es un coeficiente numÃ©rico no sujeto a incertidumbre y que las  variables $V$, $R_0$, $t$ y $t_0$ no estÃ¡n correlacionadas entre sÃ­. Podemos entonces expresar la varianza  en la  potencia disipada, a partir de las varianzas de las variables de entrada como,
 
 \begin{equation*}
 s_c^2(P) = \left(\frac{\partial f}{\partial V}\right)^2 s^2(V)+ \left(\frac{\partial f}{\partial R_0}\right)^2 s^2(R_0)+ \left(\frac{\partial f}{\partial t}\right)^2 s^2(t)+\left(\frac{\partial f}{\partial t_0}\right)^2 s^2(t_0)    
@@ -860,13 +860,13 @@ s_c^2(P) =& \left(\frac{2V}{R_0\left(1+b(t-t_0)\right)}\right)^2 s^2(V)+ \left(\
 &+ \left(\frac{-V^2R_0b}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(t)+\left(\frac{V^2R_0b}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(t_0)    
 \end{align*}
 
-y la incertidumbre en la potencia disipada será la raíz cuadrada de la expresión que acabamos de obtener: $u_c(P) =\sqrt{s_c^2(P)} $
+y la incertidumbre en la potencia disipada serÃ¡ la raÃ­z cuadrada de la expresiÃ³n que acabamos de obtener: $u_c(P) =\sqrt{s_c^2(P)} $
 
-Establecer los intervalos de confianza, para una incertidumbre propagada no es tan sencillo como en el caso de una incertidumbre obtenida directamente de una medida experimental. En primera aproximación, podemos suponer que $y$ sigue una distribución normal de media el valor obtenido, a partir de la función $f$ y desviación $u_c(p)$ y estimar los intervalos de confianza del mismo modo que se describió anteriormente para una medida directa.  Pero esto no es siempre correcto. No podemos establecer en realidad ninguna ley general que relacione las distribuciones de probabilidad de las incertidumbres de las variables de entrada con la distribución de probabilidad de la incertidumbre de la variable de salida.
+Establecer los intervalos de confianza, para una incertidumbre propagada no es tan sencillo como en el caso de una incertidumbre obtenida directamente de una medida experimental. En primera aproximaciÃ³n, podemos suponer que $y$ sigue una distribuciÃ³n normal de media el valor obtenido, a partir de la funciÃ³n $f$ y desviaciÃ³n $u_c(p)$ y estimar los intervalos de confianza del mismo modo que se describiÃ³ anteriormente para una medida directa.  Pero esto no es siempre correcto. No podemos establecer en realidad ninguna ley general que relacione las distribuciones de probabilidad de las incertidumbres de las variables de entrada con la distribuciÃ³n de probabilidad de la incertidumbre de la variable de salida.
 
-\subsection{Ejemplo de estimación de la incertidumbre con Matlab.}
+\subsection{Ejemplo de estimaciÃ³n de la incertidumbre con Matlab.}
 
-Para aclarar los métodos descritos en los apartados anteriores, vamos obtener la incertidumbre de la potencia disipada en una resistencia, siguiendo la ecuación descrita en el apartado anterior . La tabla \ref{tabres} muestras los datos obtenidos tras realizar 20 medidas experimentales de la tensión y la temperatura en una resistencia.
+Para aclarar los mÃ©todos descritos en los apartados anteriores, vamos obtener la incertidumbre de la potencia disipada en una resistencia, siguiendo la ecuaciÃ³n descrita en el apartado anterior . La tabla \ref{tabres} muestras los datos obtenidos tras realizar 20 medidas experimentales de la tensiÃ³n y la temperatura en una resistencia.
 
 \begin{table}[h]
 \caption{Mediciones de temperatura y Voltaje, sobre una resistencia de prueba de 100 $\Omega$}
@@ -876,12 +876,12 @@ Para aclarar los métodos descritos en los apartados anteriores, vamos obtener la
 \hline
 Valor nominal de la resistencia& $R_0=100 \pm 5 \Omega$ (intervalo confianza 98\%) \\ 
 \hline
-Temperatura de referencia& $t_0=50\pm 0.1 ^oC$ (divisón menor del sensor $0.2^oC$) \\
+Temperatura de referencia& $t_0=50\pm 0.1 ^oC$ (divisÃ³n menor del sensor $0.2^oC$) \\
 \hline
-Valor del parámetro b& $b = 0.4\Omega / ^oC$ (incertidumbre despreciable)\\
+Valor del parÃ¡metro b& $b = 0.4\Omega / ^oC$ (incertidumbre despreciable)\\
 \hline
 \hline
-Temperatura ºC& Votaje mV\\
+Temperatura ÂºC& Votaje mV\\
 \hline
  $55.7$&$761$\\
 \hline 
@@ -931,17 +931,17 @@ Para obtener la incertidumbre en el valor de la potencia disipada por la resiste
 
 \begin{itemize} 
 
-\item Varianza del valor nominal de la resistencia $R_0$: En este caso, la tabla nos suministra como dato el intervalo de confianza correspondiente al 98\%.  Podemos emplear la función de Matlab \texttt{nominv(x)} para calcular la desviación estándar de $R_0$. Como hemos visto, el límite inferior del intervalo de confianza del 98 \%, corresponde con una probabilidad acumulada de $(1-0.98)/2$,
+\item Varianza del valor nominal de la resistencia $R_0$: En este caso, la tabla nos suministra como dato el intervalo de confianza correspondiente al 98\%.  Podemos emplear la funciÃ³n de Matlab \texttt{nominv(x)} para calcular la desviaciÃ³n estÃ¡ndar de $R_0$. Como hemos visto, el lÃ­mite inferior del intervalo de confianza del 98 \%, corresponde con una probabilidad acumulada de $(1-0.98)/2$,
 \begin{verbatim}
 >> i98 = norminv((1-0.98)/2)
 i98 =
    -2.3263
 \end{verbatim} 
 
-Dicha cantidad, multiplicada por la desviación estándar de $R_0$, corresponde con el limite inferior del intervalo de confianza suministrado en la tabla  para $R_0$. Por tanto,
+Dicha cantidad, multiplicada por la desviaciÃ³n estÃ¡ndar de $R_0$, corresponde con el limite inferior del intervalo de confianza suministrado en la tabla  para $R_0$. Por tanto,
 
 \begin{verbatim}
->> sR0 =-5/i98  %desviación estandar de R0
+>> sR0 =-5/i98  %desviaciÃ³n estandar de R0
 sR0 =
     2.1493
 >> s2R0 =sR0^2  %varianza de R0
@@ -951,7 +951,7 @@ s2R0 =
 
 luego $s^2(R_0)= 4.6195$
 
-\item Varianza de la temperatura de referencia $t_0$: En este caso se ha expresado la incertidumbre en función de la mitad de la división más pequeña de la escala del aparato de medida. Podemos considerar por tanto que la incertidumbre estaría representada por una distribución uniforme definida en el intervalo $[-0.1\ 0.1]$. En esta caso, podemos asociar la varianza de la medida directamente con dicha distribución uniforme, 
+\item Varianza de la temperatura de referencia $t_0$: En este caso se ha expresado la incertidumbre en funciÃ³n de la mitad de la divisiÃ³n mÃ¡s pequeÃ±a de la escala del aparato de medida. Podemos considerar por tanto que la incertidumbre estarÃ­a representada por una distribuciÃ³n uniforme definida en el intervalo $[-0.1\ 0.1]$. En esta caso, podemos asociar la varianza de la medida directamente con dicha distribuciÃ³n uniforme, 
 
 \begin{verbatim}
 >> s2t0=(1-(-1))^2/12
@@ -959,10 +959,10 @@ s2t0 =
     0.3333
 \end{verbatim}
 
-Así, $s^2(t_0)=0.3333$
+AsÃ­, $s^2(t_0)=0.3333$
 
 \item Varianzas de las medidas de temperatura y voltaje:
-En primer lugar promediamos los valores  obtenidos de voltaje y temperatura, para calcular el valor de la medida. Matlab tiene definida la función \texttt{mean(x)} que permite obtener directamente el valor medio de los elementos de \texttt{x}. Podemos por tanto definir en Matlab dos vectores, unos para los datos de temperatura y otro para los datos de voltaje y calcular directamente las medias,
+En primer lugar promediamos los valores  obtenidos de voltaje y temperatura, para calcular el valor de la medida. Matlab tiene definida la funciÃ³n \texttt{mean(x)} que permite obtener directamente el valor medio de los elementos de \texttt{x}. Podemos por tanto definir en Matlab dos vectores, unos para los datos de temperatura y otro para los datos de voltaje y calcular directamente las medias,
 
 \begin{verbatim}
 >> t=[55.7 62.8 58.1 60.9 66.3 59.4 61.8 62.5 59.4 61.4 55.7 65.3 56.9 57.8 62.9...
@@ -998,7 +998,7 @@ vm =
   802.1000
 \end{verbatim}
 
-Una vez estimadas las medias, que emplearemos como valores de las medidas de la temperatura y el voltaje,  podemos ahora estimar la varianza o la desviación estándar de las medias haciendo uso de las función de Matlab \texttt{std(x)}, para la desviación estándar,  y de \texttt{var(x)}, para la varianza.  Además, debemos aplicar el teorema central del límite, dividiendo por el número de datos disponible.
+Una vez estimadas las medias, que emplearemos como valores de las medidas de la temperatura y el voltaje,  podemos ahora estimar la varianza o la desviaciÃ³n estÃ¡ndar de las medias haciendo uso de las funciÃ³n de Matlab \texttt{std(x)}, para la desviaciÃ³n estÃ¡ndar,  y de \texttt{var(x)}, para la varianza.  AdemÃ¡s, debemos aplicar el teorema central del lÃ­mite, dividiendo por el nÃºmero de datos disponible.
 
 \begin{verbatim}
 >> s2t=var(t)/length(t) %varianza de la temperatura media
@@ -1017,11 +1017,11 @@ st =
     0.7300
 \end{verbatim} 
 
-Lógicamente, los resultados muestran que las desviaciones estándar son las raíces cuadradas de las varianzas. Tenemos por tanto, $\bar{t}=60.01$, $\bar{V}=802,01$, $s^2(t)=0.5382$, $s^2(V)=145.5837$.
+LÃ³gicamente, los resultados muestran que las desviaciones estÃ¡ndar son las raÃ­ces cuadradas de las varianzas. Tenemos por tanto, $\bar{t}=60.01$, $\bar{V}=802,01$, $s^2(t)=0.5382$, $s^2(V)=145.5837$.
 
 \end{itemize} 
 
-En este momento, hemos reunido ya toda la información necesaria para estimar la incertidumbre de la potencia consumida en la resistencia de nuestro ejemplo. La tabla \ref{tabdatos} contiene los datos calculados,
+En este momento, hemos reunido ya toda la informaciÃ³n necesaria para estimar la incertidumbre de la potencia consumida en la resistencia de nuestro ejemplo. La tabla \ref{tabdatos} contiene los datos calculados,
 
 \begin{table}[h]
 \caption{Medidas y varianzas estimadas}
@@ -1034,11 +1034,11 @@ Variable (unidades) & Valor & Varianza  \\
 \hline
 $R_0$($\Omega$)&$100$&$4.6195$\\
 \hline
-b ($\Omega$/ºC)& $0.4$ &--\\
+b ($\Omega$/ÂºC)& $0.4$ &--\\
 \hline
-$t_0$ (ºC)& 50& 0.3333\\
+$t_0$ (ÂºC)& 50& 0.3333\\
 \hline 
- $\bar{t}$ (ºC)&$60.01$&$0.5328$\\
+ $\bar{t}$ (ÂºC)&$60.01$&$0.5328$\\
 \hline 
 $\bar{V}$(mV)& $802.01$&$145.5837$\\
 \hline
@@ -1054,7 +1054,7 @@ P = \frac{V^2}{R_0\left(1+b(t-t_0)\right)}=\frac{0.80201^2}{100\left(1+0.4(60.01
 
 Donde hemos introducido el voltaje en voltios, para  obtener la potencia directamente en vatios.
 
-A continuación, propagamos la incertidumbre de las variables de entrada a la de salida,
+A continuaciÃ³n, propagamos la incertidumbre de las variables de entrada a la de salida,
 
 \begin{align*}
 s_c^2(P) =& \left(\frac{2V}{R_0\left(1+b(t-t_0)\right)}\right)^2 s^2(V)+ \left(\frac{-V^2\left(1+b(t-t_0)\right)}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(R_0)+\\
@@ -1064,11 +1064,11 @@ s_c^2(P) =& \left(\frac{2V}{R_0\left(1+b(t-t_0)\right)}\right)^2 s^2(V)+ \left(\
 =&1.4959\cdot10^{-09} + 7.6327\cdot10^{-10} + 5.6252\cdot10^{-09} + 3.5189\cdot10^{-09} =  1.1403\cdot 10^{-08}
 \end{align*} 
 
-En este caso, hemos multiplicado la varianza del voltaje $s^2(V)$ por $10^{-6}$, para obtener $s_c^2(P)$ en W$^2$. Podemos expresar ahora la incertidumbre de la potencia consumida en función de la desviación estándar como,
+En este caso, hemos multiplicado la varianza del voltaje $s^2(V)$ por $10^{-6}$, para obtener $s_c^2(P)$ en W$^2$. Podemos expresar ahora la incertidumbre de la potencia consumida en funciÃ³n de la desviaciÃ³n estÃ¡ndar como,
 
 \begin{equation*}
 u_c(P) = \sqrt{s_c^2(P)} =  1.0678\cdot 10^{-4} W
 \end{equation*}
 
-Con lo que finalmente expresaríamos la medida indirecta de la potencia consumida como, $P = 1.285 \pm 0.10678 $ mW. Si suponemos que la distribución de probabilidad asociada a la incertidumbre de la potencia es normal, la incertidumbre así expresada (mediante la desviación estándar) representaría un intervalo de confianza del $68.27\%$. 
+Con lo que finalmente expresarÃ­amos la medida indirecta de la potencia consumida como, $P = 1.285 \pm 0.10678 $ mW. Si suponemos que la distribuciÃ³n de probabilidad asociada a la incertidumbre de la potencia es normal, la incertidumbre asÃ­ expresada (mediante la desviaciÃ³n estÃ¡ndar) representarÃ­a un intervalo de confianza del $68.27\%$. 
 
