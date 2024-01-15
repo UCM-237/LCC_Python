@@ -1,39 +1,39 @@
 \chapter{Sistemas de ecuaciones lineales}\label{sistemas}
 
-\section{Introducción}
+\section{IntroducciÃ³n}
 
-Una ecuación lineal es aquella que establece una relación \emph{lineal} entre dos o más variables, por ejemplo,
+Una ecuaciÃ³n lineal es aquella que establece una relaciÃ³n \emph{lineal} entre dos o mÃ¡s variables, por ejemplo,
 
 \begin{equation*}
 3x_1-2x_2=12
 \end{equation*}
 
-Se dice que es una relación lineal, porque las variables están relacionadas entre sí tan solo mediante sumas y productos por coeficientes constantes. En particular, el ejemplo anterior puede representarse geométricamente mediante una línea recta.
+Se dice que es una relaciÃ³n lineal, porque las variables estÃ¡n relacionadas entre sÃ­ tan solo mediante sumas y productos por coeficientes constantes. En particular, el ejemplo anterior puede representarse geomÃ©tricamente mediante una lÃ­nea recta.
 
-El número de variables relacionadas en una ecuación lineal determina la dimensión de la ecuación. La del ejemplo anterior es una ecuación bidimensional, puesto que hay dos variables. El número puede ser arbitrariamente grande en general,
+El nÃºmero de variables relacionadas en una ecuaciÃ³n lineal determina la dimensiÃ³n de la ecuaciÃ³n. La del ejemplo anterior es una ecuaciÃ³n bidimensional, puesto que hay dos variables. El nÃºmero puede ser arbitrariamente grande en general,
 \begin{equation*}
 a_1x_1+a_2x_2+\cdots +a_nx_n=b
 \end{equation*} 
-será una ecuación n-dimensional.
+serÃ¡ una ecuaciÃ³n n-dimensional.
 
-Como ya hemos señalado más arriba, una ecuación bidimensional admite una línea recta como representación geométrica, una ecuación tridimensional admitirá un plano y para dimensiones mayores que tres cada ecuación representará un hiperplano de dimension n. Por supuesto, para dimensiones mayores que tres, no es posible obtener una representación gráfica de la ecuación.
+Como ya hemos seÃ±alado mÃ¡s arriba, una ecuaciÃ³n bidimensional admite una lÃ­nea recta como representaciÃ³n geomÃ©trica, una ecuaciÃ³n tridimensional admitirÃ¡ un plano y para dimensiones mayores que tres cada ecuaciÃ³n representarÃ¡ un hiperplano de dimension n. Por supuesto, para dimensiones mayores que tres, no es posible obtener una representaciÃ³n grÃ¡fica de la ecuaciÃ³n.
 
-Las ecuaciones lineales juegan un papel muy importante en la física y, en general en la ciencia y la tecnología. La razón es que constituyen la aproximación matemática más sencilla a la relación entre magnitudes físicas. Por ejemplo cuando decimos que la fuerza aplicada a un resorte y la elongación  que sufre están relacionadas por la ley de Hooke, $F=Kx$ estamos estableciendo una relación lineal entre las magnitudes fuerza y elongación. ¿Se cumple siempre dicha relación? Desde luego que no. Pero es razonablemente cierta para elongaciones pequeñas y, apoyados en ese sencillo modelo \emph{lineal} de la realidad, se puede aprender mucha física.
+Las ecuaciones lineales juegan un papel muy importante en la fÃ­sica y, en general en la ciencia y la tecnologÃ­a. La razÃ³n es que constituyen la aproximaciÃ³n matemÃ¡tica mÃ¡s sencilla a la relaciÃ³n entre magnitudes fÃ­sicas. Por ejemplo cuando decimos que la fuerza aplicada a un resorte y la elongaciÃ³n  que sufre estÃ¡n relacionadas por la ley de Hooke, $F=Kx$ estamos estableciendo una relaciÃ³n lineal entre las magnitudes fuerza y elongaciÃ³n. Â¿Se cumple siempre dicha relaciÃ³n? Desde luego que no. Pero es razonablemente cierta para elongaciones pequeÃ±as y, apoyados en ese sencillo modelo \emph{lineal} de la realidad, se puede aprender mucha fÃ­sica.
 
-Un sistema de ecuaciones lineales está constituido por varias ecuaciones lineales, que expresan relaciones lineales distintas sobre las mismas variables. Por ejemplo,
+Un sistema de ecuaciones lineales estÃ¡ constituido por varias ecuaciones lineales, que expresan relaciones lineales distintas sobre las mismas variables. Por ejemplo,
 
 \begin{align*}
 a_{11}x_1+a_{12}x_2&=b_1\\
 a_{21}x_1+a_{22}x_2&=b_2
 \end{align*}
 
-Se llaman soluciones del sistema de ecuaciones a los valores de las variables que satisfacen simultáneamente a todas las ecuaciones que componen el sistema. Desde el punto de vista de la obtención de las soluciones a las variables se les suele denominar incógnitas, es decir valores no conocidos que deseamos obtener o calcular.
+Se llaman soluciones del sistema de ecuaciones a los valores de las variables que satisfacen simultÃ¡neamente a todas las ecuaciones que componen el sistema. Desde el punto de vista de la obtenciÃ³n de las soluciones a las variables se les suele denominar incÃ³gnitas, es decir valores no conocidos que deseamos obtener o calcular.
 
-Un sistema de ecuaciones puede tener infinitas soluciones, puede tener una única solución o puede no tener solución. En lo que sigue, nos centraremos en sistemas de ecuaciones que tienen una única solución. 
+Un sistema de ecuaciones puede tener infinitas soluciones, puede tener una Ãºnica soluciÃ³n o puede no tener soluciÃ³n. En lo que sigue, nos centraremos en sistemas de ecuaciones que tienen una Ãºnica soluciÃ³n. 
 
-Una primera condición para que un sistema de ecuaciones tengan una única solución es que el número de incógnitas presentes en el sistema coincida con el número de ecuaciones. 
+Una primera condiciÃ³n para que un sistema de ecuaciones tengan una Ãºnica soluciÃ³n es que el nÃºmero de incÃ³gnitas presentes en el sistema coincida con el nÃºmero de ecuaciones. 
 
-De modo general podemos decir que vamos a estudiar métodos numéricos para resolver con un computador sistemas de $n$ ecuaciones con $n$ incógnitas,
+De modo general podemos decir que vamos a estudiar mÃ©todos numÃ©ricos para resolver con un computador sistemas de $n$ ecuaciones con $n$ incÃ³gnitas,
 
 \begin{align*}
 a_{11}&x_1+a_{12}x_2+\cdots +a_{1n}x_n=b_1\\
@@ -69,14 +69,14 @@ b_n
 \end{pmatrix}}^b
 \end{equation*}
 
-La matriz $A$ recibe el nombre de matriz de coeficientes del sistema de ecuaciones, el vector $x$ es el vector de incógnitas y el vector $b$ es el vector de términos independientes. Para resolver un sistema de ecuaciones podríamos aplicar lo aprendido en el capítulo anterior sobre álgebra de matrices,
+La matriz $A$ recibe el nombre de matriz de coeficientes del sistema de ecuaciones, el vector $x$ es el vector de incÃ³gnitas y el vector $b$ es el vector de tÃ©rminos independientes. Para resolver un sistema de ecuaciones podrÃ­amos aplicar lo aprendido en el capÃ­tulo anterior sobre Ã¡lgebra de matrices,
 \begin{equation*}
 A\cdot x=b \Rightarrow x=A^{-1}\cdot b
 \end{equation*}
 
-Es decir, bastaría invertir la matriz de coeficientes y multiplicarla por la izquierda por el vector de coeficientes para obtener el vector de  términos independientes. De aquí podemos deducir una segunda condición para que un sistema de ecuaciones tenga una solución única; Su matriz de coeficientes tiene que tener inversa. Veamos algunos ejemplos sencillos.
+Es decir, bastarÃ­a invertir la matriz de coeficientes y multiplicarla por la izquierda por el vector de coeficientes para obtener el vector de  tÃ©rminos independientes. De aquÃ­ podemos deducir una segunda condiciÃ³n para que un sistema de ecuaciones tenga una soluciÃ³n Ãºnica; Su matriz de coeficientes tiene que tener inversa. Veamos algunos ejemplos sencillos.
 
-Tomaremos en primer lugar un sistema de dos ecuaciones con dos incógnitas,
+Tomaremos en primer lugar un sistema de dos ecuaciones con dos incÃ³gnitas,
 
 \begin{align*}
 4x_1+x_2&=6\\
@@ -98,7 +98,7 @@ x_2
 \end{pmatrix}
 \end{equation*}
 
-e invirtiendo la matriz de coeficientes y multiplicándola por el vector de términos independientes se llega al vector de soluciones del sistema,
+e invirtiendo la matriz de coeficientes y multiplicÃ¡ndola por el vector de tÃ©rminos independientes se llega al vector de soluciones del sistema,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -122,23 +122,23 @@ x_2
 \end{pmatrix}
 \end{equation*}
 
-En el ejemplo que acabamos de ver, cada ecuación corresponde a una recta en el plano, en la figura \ref{fig:recta1} se han representado dichas rectas gráficamente. El punto en que se cortan es precisamente la solución del sistema.
+En el ejemplo que acabamos de ver, cada ecuaciÃ³n corresponde a una recta en el plano, en la figura \ref{fig:recta1} se han representado dichas rectas grÃ¡ficamente. El punto en que se cortan es precisamente la soluciÃ³n del sistema.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{recta1}
-\caption{Sistema de ecuaciones con solución única}
+\caption{Sistema de ecuaciones con soluciÃ³n Ãºnica}
 \label{fig:recta1}
 \end{figure}
 
-Supongamos ahora el siguiente sistema, también de dos ecuaciones con dos incógnitas,
+Supongamos ahora el siguiente sistema, tambiÃ©n de dos ecuaciones con dos incÃ³gnitas,
 
 \begin{align*}
 4x_1+x_2&=6\\
 2x_1+\frac{1}{2} x_2&=-1
 \end{align*}
 
-El sistema no tiene solución. Su matriz de coeficientes tiene determinante cero, por lo que no es invertible,
+El sistema no tiene soluciÃ³n. Su matriz de coeficientes tiene determinante cero, por lo que no es invertible,
 \begin{equation*}
 \vert A \vert =\begin{vmatrix}
 4& 1\\
@@ -146,25 +146,25 @@ El sistema no tiene solución. Su matriz de coeficientes tiene determinante cero,
 \end{vmatrix} =0 \Rightarrow \nexists A^{-1}
 \end{equation*}
 
-Si representamos gráficamente las dos ecuaciones de este sistema (figura \ref{fig:recta2}) es fácil entender lo que pasa, las rectas son paralelas, no existe ningún punto $(x_1,x_2$ que pertenezca a las dos rectas, y por tanto el sistema carece de solución.
+Si representamos grÃ¡ficamente las dos ecuaciones de este sistema (figura \ref{fig:recta2}) es fÃ¡cil entender lo que pasa, las rectas son paralelas, no existe ningÃºn punto $(x_1,x_2$ que pertenezca a las dos rectas, y por tanto el sistema carece de soluciÃ³n.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{recta2}
-\caption{Sistema de ecuaciones sin solución}
+\caption{Sistema de ecuaciones sin soluciÃ³n}
 \label{fig:recta2}
 \end{figure}
 
 Dos rectas paralelas lo son, porque tienen la misma pendiente. Esto se refleja en la matriz de coeficientes, en que las filas son proporcionales; si multiplicamos la segunda fila por dos, obtenemos la primera. 
 
-Por último, el sistema,
+Por Ãºltimo, el sistema,
 
 \begin{align*}
 4x_1+x_2&=6\\
 2x_1+\frac{1}{2} x_2&=3
 \end{align*}
 
-posee infinitas soluciones. la razón es que la segunda ecuación es igual que la primera multiplicada por dos: es decir, representa exactamente la misma relación lineal entre las variables $x_1$ y $x_2$, por tanto, todos los puntos de la recta son solución del sistema. De nuevo, la matriz de coeficientes del sistema no tiene inversa ya que su determinante es cero.
+posee infinitas soluciones. la razÃ³n es que la segunda ecuaciÃ³n es igual que la primera multiplicada por dos: es decir, representa exactamente la misma relaciÃ³n lineal entre las variables $x_1$ y $x_2$, por tanto, todos los puntos de la recta son soluciÃ³n del sistema. De nuevo, la matriz de coeficientes del sistema no tiene inversa ya que su determinante es cero.
 
 \begin{figure}[h]
 \centering
@@ -173,14 +173,14 @@ posee infinitas soluciones. la razón es que la segunda ecuación es igual que la 
 \label{recta3}
 \end{figure}
 
-Para sistemas de ecuaciones de dimensión mayor, se cumple también que que el sistema no tiene solución única si el determinante de su matriz de coeficiente es cero. En todos los demás casos, es posible obtener la solución del sistema invirtiendo la matriz de coeficientes y multiplicando el resultado por el vector de términos independientes.
+Para sistemas de ecuaciones de dimensiÃ³n mayor, se cumple tambiÃ©n que que el sistema no tiene soluciÃ³n Ãºnica si el determinante de su matriz de coeficiente es cero. En todos los demÃ¡s casos, es posible obtener la soluciÃ³n del sistema invirtiendo la matriz de coeficientes y multiplicando el resultado por el vector de tÃ©rminos independientes.
 
-En cuanto un sistema de ecuaciones tiene una dimensión suficientemente grande, invertir su matriz de coeficientes se torna un problema costoso o sencillamente inabordable.
+En cuanto un sistema de ecuaciones tiene una dimensiÃ³n suficientemente grande, invertir su matriz de coeficientes se torna un problema costoso o sencillamente inabordable.
 
-Desde un punto de vista numérico, la inversión de una matriz, presenta frecuentemente problemas debido al error de redondeo en las operaciones. Por esto, casi nunca se resuelven los sistemas de ecuaciones invirtiendo su matriz de coeficientes. A lo largo de este capítulo estudiaremos dos tipos de métodos de resolución de sistemas de ecuaciones. El primero de ellos recibe el nombre genérico de métodos directos, el segundo tipo lo constituyen los llamados métodos iterativos.
+Desde un punto de vista numÃ©rico, la inversiÃ³n de una matriz, presenta frecuentemente problemas debido al error de redondeo en las operaciones. Por esto, casi nunca se resuelven los sistemas de ecuaciones invirtiendo su matriz de coeficientes. A lo largo de este capÃ­tulo estudiaremos dos tipos de mÃ©todos de resoluciÃ³n de sistemas de ecuaciones. El primero de ellos recibe el nombre genÃ©rico de mÃ©todos directos, el segundo tipo lo constituyen los llamados mÃ©todos iterativos.
 
 \section{Condicionamiento}
-En la introducción hemos visto que para que un sistema de ecuaciones tenga solución, es preciso que su matriz de coeficientes sea invertible. Sin embargo cuando tratamos de resolver un sistema de ecuaciones numéricamente, empleando un ordenador, debemos antes examinar cuidadosamente la matriz de coeficientes del sistema. Veamos un ejemplo: el sistema,
+En la introducciÃ³n hemos visto que para que un sistema de ecuaciones tenga soluciÃ³n, es preciso que su matriz de coeficientes sea invertible. Sin embargo cuando tratamos de resolver un sistema de ecuaciones numÃ©ricamente, empleando un ordenador, debemos antes examinar cuidadosamente la matriz de coeficientes del sistema. Veamos un ejemplo: el sistema,
 
 \begin{align*}
 4x_1+x_2&=6\\
@@ -202,7 +202,7 @@ Si alteramos ligeramente uno de sus coeficientes,
 2x_1+0.4{\color{red}9} x_2&=-1
 \end{align*}
 
-Las soluciones se alteran bastante;  se vuelven aproximadamente 10 veces más grande,
+Las soluciones se alteran bastante;  se vuelven aproximadamente 10 veces mÃ¡s grande,
 \begin{equation*}
 x=\begin{pmatrix}
 -98.5\\
@@ -217,7 +217,7 @@ y si volvemos a alterar el mismo coeficiente,
 2x_1+0.4{\color{red}99} x_2&=-1
 \end{align*}
 
-La solución es aproximadamente 100 veces más grande,
+La soluciÃ³n es aproximadamente 100 veces mÃ¡s grande,
 \begin{equation*}
 x=\begin{pmatrix}
 -998.5\\
@@ -225,13 +225,13 @@ x=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-La razón para estos cambios es fácil de comprender intuitivamente; a medida que aproximamos el coeficiente a $0.5$, estamos haciendo que las dos ecuaciones lineales sean cada vez mas paralelas, pequeñas variaciones en la pendiente, modifican mucho la posición del punto de corte.
+La razÃ³n para estos cambios es fÃ¡cil de comprender intuitivamente; a medida que aproximamos el coeficiente a $0.5$, estamos haciendo que las dos ecuaciones lineales sean cada vez mas paralelas, pequeÃ±as variaciones en la pendiente, modifican mucho la posiciÃ³n del punto de corte.
 
-Cuando pequeñas variaciones en la matriz de coeficientes generan grandes variaciones en las soluciones del sistema, se dice que el sistema está mal condicionado, en otras palabras: que no es un sistema bueno para ser resuelto numéricamente. Las soluciones obtenidas para un sistema mal condicionado, hay que tomarlas siempre con bastante escepticismo.
+Cuando pequeÃ±as variaciones en la matriz de coeficientes generan grandes variaciones en las soluciones del sistema, se dice que el sistema estÃ¡ mal condicionado, en otras palabras: que no es un sistema bueno para ser resuelto numÃ©ricamente. Las soluciones obtenidas para un sistema mal condicionado, hay que tomarlas siempre con bastante escepticismo.
 
-Para estimar el buen o mal condicionamiento de un sistema, se emplea el número de condición, que definimos en el capítulo anterior, \ref{sec:SVD}, al hablar de la factorización SVD. El número de condición de una matriz es el cociente entre sus valores singulares mayor y menor.  Cuanto más próximo a $1$ sea el número de condición, mejor condicionada estará la matriz y cuanto mayor sea el número de condición peor condicionada estará.
+Para estimar el buen o mal condicionamiento de un sistema, se emplea el nÃºmero de condiciÃ³n, que definimos en el capÃ­tulo anterior, \ref{sec:SVD}, al hablar de la factorizaciÃ³n SVD. El nÃºmero de condiciÃ³n de una matriz es el cociente entre sus valores singulares mayor y menor.  Cuanto mÃ¡s prÃ³ximo a $1$ sea el nÃºmero de condiciÃ³n, mejor condicionada estarÃ¡ la matriz y cuanto mayor sea el nÃºmero de condiciÃ³n peor condicionada estarÃ¡.
 
-Matlab tiene un comando específico para obtener el número de condición de una matriz, sin tener que calcular la factorización SVD, el comando \texttt{nc=cond(A)}. Si lo aplicamos a la matriz de coeficientes del último ejemplo mostrado,
+Matlab tiene un comando especÃ­fico para obtener el nÃºmero de condiciÃ³n de una matriz, sin tener que calcular la factorizaciÃ³n SVD, el comando \texttt{nc=cond(A)}. Si lo aplicamos a la matriz de coeficientes del Ãºltimo ejemplo mostrado,
 
 \begin{verbatim}
 >> A=[4 1; 2, 0.499]
@@ -248,9 +248,9 @@ nc =
   5.3123e+003
 \end{verbatim}
 
-El número está bastante alejado de uno, lo que, en principio, indica un mal condicionamiento del sistema. 
+El nÃºmero estÃ¡ bastante alejado de uno, lo que, en principio, indica un mal condicionamiento del sistema. 
 
-Incidentalmente, podemos calcular la factorización svd de la matriz de coeficientes y dividir el valor singular mayor entre el menor para comprobar que el resultado es el mismo que nos da la función \texttt{cond},
+Incidentalmente, podemos calcular la factorizaciÃ³n svd de la matriz de coeficientes y dividir el valor singular mayor entre el menor para comprobar que el resultado es el mismo que nos da la funciÃ³n \texttt{cond},
 \begin{verbatim}
 >> [U,S,V]=svd(A)
 
@@ -278,7 +278,7 @@ nc =
   5.3123e+003
 \end{verbatim}
 
-Matlab emplea también la función \texttt{rnc=rcond(A)} para estimar el condicionamiento de una matriz. No describiremos el método, simplemente diremos que en lugar de obtener un número de condición para la matriz, se utiliza un valor recíproco. De este modo, cuanto más se aproxima a uno el resultado de \texttt{rcond}, mejor condicionada está la matriz, y cuanto más se aproxime a cero peor. Para nuestro ejemplo anterior,
+Matlab emplea tambiÃ©n la funciÃ³n \texttt{rnc=rcond(A)} para estimar el condicionamiento de una matriz. No describiremos el mÃ©todo, simplemente diremos que en lugar de obtener un nÃºmero de condiciÃ³n para la matriz, se utiliza un valor recÃ­proco. De este modo, cuanto mÃ¡s se aproxima a uno el resultado de \texttt{rcond}, mejor condicionada estÃ¡ la matriz, y cuanto mÃ¡s se aproxime a cero peor. Para nuestro ejemplo anterior,
 
 \begin{verbatim}
 >> rnc=rcond(A)
@@ -289,11 +289,11 @@ rnc =
 
 \end{verbatim}
 
-Próximo a cero, lo que indica un mal condicionamiento de $A$. Nótese que el resultado de \texttt{rcond}, no es el inverso del valor de \texttt{cond}.
+PrÃ³ximo a cero, lo que indica un mal condicionamiento de $A$. NÃ³tese que el resultado de \texttt{rcond}, no es el inverso del valor de \texttt{cond}.
 
-\section{Métodos directos}
+\section{MÃ©todos directos}
 \subsection{Sistemas triangulares}
-Vamos a empezar el estudio de los métodos directos por los algoritmos de resolución de los sistemas más simples posibles, aquellos cuya matriz de coeficientes es una matriz diagonal, triangular superior o triangular inferior.
+Vamos a empezar el estudio de los mÃ©todos directos por los algoritmos de resoluciÃ³n de los sistemas mÃ¡s simples posibles, aquellos cuya matriz de coeficientes es una matriz diagonal, triangular superior o triangular inferior.
 \paragraph{Sistemas diagonales.} Un sistema diagonal es aquel cuya matriz de coeficientes es una matriz diagonal. 
 
 \begin{equation*}
@@ -320,12 +320,12 @@ b_n
 \end{pmatrix}}^b
 \end{equation*}
 
-Su resolución es trivial, basta dividir cada término independiente por el elemento correspondiente de la diagonal de la matriz de coeficientes,
+Su resoluciÃ³n es trivial, basta dividir cada tÃ©rmino independiente por el elemento correspondiente de la diagonal de la matriz de coeficientes,
 \begin{equation*}
 x_i=\frac{b_i}{a_{ii}}
 \end{equation*}
 
-Para obtener la solución basta crear en Matlab un sencillo bucle \texttt{for},
+Para obtener la soluciÃ³n basta crear en Matlab un sencillo bucle \texttt{for},
 \begin{verbatim}
 n=size(A,1);
 x=zeros(n,1);
@@ -334,7 +334,7 @@ for i=1:n
 end
 \end{verbatim} 
 
-\paragraph{Sistemas triangulares inferiores: método de sustituciones progresivas.} Un sistema triangular inferior de $n$ ecuaciones con $n$ incógnitas tendrá la forma general,
+\paragraph{Sistemas triangulares inferiores: mÃ©todo de sustituciones progresivas.} Un sistema triangular inferior de $n$ ecuaciones con $n$ incÃ³gnitas tendrÃ¡ la forma general,
 
 \begin{equation*}
 \left. \begin{aligned}
@@ -361,36 +361,36 @@ b_n
 \end{equation*}
 
 El procedimiento para resolverlo a \emph{mano} es muy sencillo,
-despejamos la primera la primera incógnita de la primera ecuación,
+despejamos la primera la primera incÃ³gnita de la primera ecuaciÃ³n,
 \begin{equation*}
 x_1=\frac{b_1}{a_{11}}
 \end{equation*}
 
-A continuación sustituimos este resultado en la segunda ecuación, y despejamos $x_2$,
+A continuaciÃ³n sustituimos este resultado en la segunda ecuaciÃ³n, y despejamos $x_2$,
 \begin{equation*}
 x_2=\frac{b_2-a_{21}x_1}{a_{22}}
 \end{equation*}
 
-De cada ecuación vamos obteniendo una componente del vector solución, sustituyendo las soluciones obtenidas en las ecuaciones anteriores, así cuando llegamos a la ecuación $i$,
+De cada ecuaciÃ³n vamos obteniendo una componente del vector soluciÃ³n, sustituyendo las soluciones obtenidas en las ecuaciones anteriores, asÃ­ cuando llegamos a la ecuaciÃ³n $i$,
 
 \begin{equation*}
 x_i=\frac{b_i-\sum_{j=1}^{i-1}a_{ij}x_j}{a_{ii}}
 \end{equation*}
 
-Si repetimos este mismo proceso hasta llegar a la última ecuación del sistema, $n$, habremos obtenido la solución completa.
+Si repetimos este mismo proceso hasta llegar a la Ãºltima ecuaciÃ³n del sistema, $n$, habremos obtenido la soluciÃ³n completa.
 
-EL siguiente código calcula la solución de un sistema triangular inferior mediante sustituciones progresivas,
+EL siguiente cÃ³digo calcula la soluciÃ³n de un sistema triangular inferior mediante sustituciones progresivas,
 
 \begin{verbatim}
 function x = progresivas(A,b)
-%Esta Función permite obtener la solucion de un sistema triangular inferior
+%Esta FunciÃ³n permite obtener la solucion de un sistema triangular inferior
 %empleando sustituciones progresivas. La variables de entrada son la matriz
 %de coeficientes A  y el vector de terminos independientes b. la solucion se
 %devuelve como un vector columna en la varible x
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Obtenemos el tamaño de la matriz de coeficientes y comprobamos que es
+%Obtenemos el tamaÃ±o de la matriz de coeficientes y comprobamos que es
 %cuadrada,
 [f,c]=size(A);
 if f~=c
@@ -401,7 +401,7 @@ x=zeros(f,1);
 %construimos un bucle for para ir calculando progresivamente las soluciones
 %del sistema
 for i=1:f
-    %primero igualamos la solución al termino independiente de la ecuación
+    %primero igualamos la soluciÃ³n al termino independiente de la ecuaciÃ³n
     %que toque...
     x(i)=b(i)
     %y luego creamos un bucle para ir restando todas las soluciones
@@ -415,7 +415,7 @@ for i=1:f
 end
 \end{verbatim}
 
-\paragraph{Sistemas triangulares superiores: método de sustituciones regresivas.} En este caso, el sistema general de $n$ ecuaciones con $n$ incógnitas tendrá la forma general,
+\paragraph{Sistemas triangulares superiores: mÃ©todo de sustituciones regresivas.} En este caso, el sistema general de $n$ ecuaciones con $n$ incÃ³gnitas tendrÃ¡ la forma general,
 
 \begin{equation*}
 \left. \begin{aligned}
@@ -442,7 +442,7 @@ b_n
 \end{equation*}
 
 
-El método de resolución es idéntico al de un sistema triangular inferior, simplemente que ahora, empezamos a resolver por la última ecuación,
+El mÃ©todo de resoluciÃ³n es idÃ©ntico al de un sistema triangular inferior, simplemente que ahora, empezamos a resolver por la Ãºltima ecuaciÃ³n,
 \begin{equation*}
 x_n=\frac{b_n}{a_{nn}}
 \end{equation*}
@@ -455,54 +455,54 @@ x_{n-1}=\frac{b_{n-1}-a_{(n-1)n}}{a_{(n-1)(n-1)}}
 x_i=\frac{b_i-\sum_{j=i+1}^{n}a_{ij}x_j}{a_{ii}}
 \end{equation*}
 
-El código para implementar este método es similar al de las sustituciones progresivas. Se deja como ejercicio el construir una función en Matlab que calcule la solución de un sistema triangular superior por el método de las sustituciones regresivas.
+El cÃ³digo para implementar este mÃ©todo es similar al de las sustituciones progresivas. Se deja como ejercicio el construir una funciÃ³n en Matlab que calcule la soluciÃ³n de un sistema triangular superior por el mÃ©todo de las sustituciones regresivas.
 
 
-\subsection{Métodos basados en las factorizaciones}
-Puesto que sabemos como resolver sistemas triangulares, una manera de resolver sistemas más complejos sería encontrar métodos para reducirlos a sistemas triangulares. De este modo evitamos invertir la matriz de coeficientes y los posibles problemas de estabilidad numérica derivados de dicha operación. En el capítulo anterior \ref{sec:fact}, vimos varios métodos de factorizar una matriz, que permiten una aplicación directa a la resolución de sistemas.
-\paragraph{Factorización LU.} En el capítulo anterior \ref{sec:LU} vimos como factorizar una matriz en el producto de dos, una triangular inferior $L$ y una triangular superior $U$. La factorización podía incluir pivoteo de filas, para alcanzar una solución numéricamente estable. En este caso la factorización LU tomaba la forma,
+\subsection{MÃ©todos basados en las factorizaciones}
+Puesto que sabemos como resolver sistemas triangulares, una manera de resolver sistemas mÃ¡s complejos serÃ­a encontrar mÃ©todos para reducirlos a sistemas triangulares. De este modo evitamos invertir la matriz de coeficientes y los posibles problemas de estabilidad numÃ©rica derivados de dicha operaciÃ³n. En el capÃ­tulo anterior \ref{sec:fact}, vimos varios mÃ©todos de factorizar una matriz, que permiten una aplicaciÃ³n directa a la resoluciÃ³n de sistemas.
+\paragraph{FactorizaciÃ³n LU.} En el capÃ­tulo anterior \ref{sec:LU} vimos como factorizar una matriz en el producto de dos, una triangular inferior $L$ y una triangular superior $U$. La factorizaciÃ³n podÃ­a incluir pivoteo de filas, para alcanzar una soluciÃ³n numÃ©ricamente estable. En este caso la factorizaciÃ³n LU tomaba la forma,
 \begin{equation*}
 P\cdot A = L\cdot U
 \end{equation*}
 
 Donde $P$ representa una matriz de permutaciones.
 
-Supongamos que queremos resolver un sistema de $n$ ecuaciones lineales con $n$ incógnitas que representamos genéricamente en forma matricial, como siempre,
+Supongamos que queremos resolver un sistema de $n$ ecuaciones lineales con $n$ incÃ³gnitas que representamos genÃ©ricamente en forma matricial, como siempre,
 \begin{equation*}
 A\cdot x=b
 \end{equation*}
 
-Si calculamos la fatorización LU de su matriz de  coeficientes,
+Si calculamos la fatorizaciÃ³n LU de su matriz de  coeficientes,
 
 \begin{equation*}
 A \rightarrow P\cdot A = L\cdot U
 \end{equation*}
 
-Podemos transformar nuestro sistema de ecuaciones en uno equivalente aplicando la matriz de permutaciones, por la izquierda, a ambos lados del igual. El efecto es equivalente a que cambiáramos el orden en que se presentan las ecuaciones del sistema,
+Podemos transformar nuestro sistema de ecuaciones en uno equivalente aplicando la matriz de permutaciones, por la izquierda, a ambos lados del igual. El efecto es equivalente a que cambiÃ¡ramos el orden en que se presentan las ecuaciones del sistema,
 
 \begin{equation*}
 A\cdot x=b\rightarrow P\cdot A \cdot x=P\cdot b
 \end{equation*}
 
-Si sustituimos ahora $P\cdot A$ por su factorización LU,
+Si sustituimos ahora $P\cdot A$ por su factorizaciÃ³n LU,
 
 \begin{equation*}
 P\cdot A \cdot x=P\cdot b \rightarrow L\cdot U \cdot x= P\cdot b
 \end{equation*}
 
-El nuevo sistema puede resolverse en dos pasos empleando sustituciones regresivas y sustituciones progresivas. Para ello, asociamos el producto $U\cdot x$, a un vector de incógnitas auxiliar al que llamaremos $z$,
+El nuevo sistema puede resolverse en dos pasos empleando sustituciones regresivas y sustituciones progresivas. Para ello, asociamos el producto $U\cdot x$, a un vector de incÃ³gnitas auxiliar al que llamaremos $z$,
 
 \begin{equation*}
 U\cdot x=z
 \end{equation*}
 
-Si sustituimos nuestro vector auxiliar $z$ en la expresión matricial de nuestro sistema de ecuaciones,
+Si sustituimos nuestro vector auxiliar $z$ en la expresiÃ³n matricial de nuestro sistema de ecuaciones,
 
 \begin{equation*}
 L\cdot \overbrace{U\cdot x}^z=P\cdot b \rightarrow L\cdot z=P\cdot b
 \end{equation*}
 
-El sistema resultante es triangular inferior, por lo que podemos resolverlo por sustituciones progresivas, y obtener de este modo los valores de $z$. Podemos finalmente obtener la solución del sistema a través de la definición de $z$; $U\cdot x =z$, se trata de un sistema triangular superior, que podemos resolver mediante sustituciones regresivas.
+El sistema resultante es triangular inferior, por lo que podemos resolverlo por sustituciones progresivas, y obtener de este modo los valores de $z$. Podemos finalmente obtener la soluciÃ³n del sistema a travÃ©s de la definiciÃ³n de $z$; $U\cdot x =z$, se trata de un sistema triangular superior, que podemos resolver mediante sustituciones regresivas.
 
 Veamos un ejemplo. Supongamos que queremos resolver el sistema de ecuaciones lineales,
 
@@ -522,7 +522,7 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-En primer lugar deberíamos comprobar que la matriz de coeficiente esta bien condicionada,
+En primer lugar deberÃ­amos comprobar que la matriz de coeficiente esta bien condicionada,
 \begin{verbatim}
 >> A=[1 3 2;2 -1 1;1 4 3]
 A =
@@ -535,8 +535,8 @@ nc =
 
    24.3827
 \end{verbatim}
-No es un valor grande, con lo que podemos considerar que $A$ está bien condicionada. 
-Calculamos la factorización LU de la matriz de coeficientes, para ello podemos emplear el programa lufact.m, incluido en el capítulo anterior \ref{lufact}, o bien la función \texttt{lu} de Matlab,
+No es un valor grande, con lo que podemos considerar que $A$ estÃ¡ bien condicionada. 
+Calculamos la factorizaciÃ³n LU de la matriz de coeficientes, para ello podemos emplear el programa lufact.m, incluido en el capÃ­tulo anterior \ref{lufact}, o bien la funciÃ³n \texttt{lu} de Matlab,
 
 \begin{verbatim}
 >> [L U P]=lufact(A)
@@ -560,7 +560,7 @@ P =
      1     0     0
 \end{verbatim}
 
-A continuación debemos aplicar la matriz de permutaciones, al vector de términos independientes del sistema, para poder construir el sistema equivalente $L\cdot U=P\cdot b$,
+A continuaciÃ³n debemos aplicar la matriz de permutaciones, al vector de tÃ©rminos independientes del sistema, para poder construir el sistema equivalente $L\cdot U=P\cdot b$,
 \begin{verbatim}
 >> b=[13;3;18]
 
@@ -580,7 +580,7 @@ bp =
 
 \end{verbatim}
 
-Empleamos la matriz $L$ obtenida y el producto $bp=P\cdot b$ que acabamos de calcular, para obtener, por sustituciones progresivas, el vector auxiliar $z$ descrito más arriba. Empleamos para ello la función \texttt{progresivas}, cuyo código incluimos en la sección anterior, 
+Empleamos la matriz $L$ obtenida y el producto $bp=P\cdot b$ que acabamos de calcular, para obtener, por sustituciones progresivas, el vector auxiliar $z$ descrito mÃ¡s arriba. Empleamos para ello la funciÃ³n \texttt{progresivas}, cuyo cÃ³digo incluimos en la secciÃ³n anterior, 
 \begin{verbatim}
 >> z=progresivas(L,bp)
 z =
@@ -590,7 +590,7 @@ z =
    -1.3333
 \end{verbatim}
 
-Finalmente, podemos obtener la solución del sistema sin más que aplicar el método de las sustituciones regresiva a la matriz $U$ y al vector auxiliar $z$ que acabamos de obtener,\footnote{La función \texttt{regresivas} no se ha suministrado ni existe en Matlab. Su construcción se ha dejado como ejercicio en la sección anterior.}
+Finalmente, podemos obtener la soluciÃ³n del sistema sin mÃ¡s que aplicar el mÃ©todo de las sustituciones regresiva a la matriz $U$ y al vector auxiliar $z$ que acabamos de obtener,\footnote{La funciÃ³n \texttt{regresivas} no se ha suministrado ni existe en Matlab. Su construcciÃ³n se ha dejado como ejercicio en la secciÃ³n anterior.}
 
 \begin{verbatim}
 >> x=regresivas(U,z)
@@ -602,7 +602,7 @@ x =
 
 
 \end{verbatim}
-Para comprobar que la solución es correcta basta multiplicar la matriz de coeficientes del sistema original por el resultado obtenido para $x$ y comprobar que obtenemos como resultado el vector de términos independientes.
+Para comprobar que la soluciÃ³n es correcta basta multiplicar la matriz de coeficientes del sistema original por el resultado obtenido para $x$ y comprobar que obtenemos como resultado el vector de tÃ©rminos independientes.
 \begin{verbatim}
 >> A*x
 
@@ -613,13 +613,13 @@ ans =
     18
 \end{verbatim}
  
-\paragraph{Factorización de Cholesky.} Como vimos en el capitulo anterior \ref{chol}, la factorización de Cholesky permite descomponer una matriz $A$ en el producto de de una matriz triangular inferior, por su traspuesta. 
+\paragraph{FactorizaciÃ³n de Cholesky.} Como vimos en el capitulo anterior \ref{chol}, la factorizaciÃ³n de Cholesky permite descomponer una matriz $A$ en el producto de de una matriz triangular inferior, por su traspuesta. 
 \begin{equation*}
 A=L\cdot L^T
 \end{equation*}
-Para ello, es preciso que $A$ sea simétrica y definida positiva (ver \ref{tiposm}). 
+Para ello, es preciso que $A$ sea simÃ©trica y definida positiva (ver \ref{tiposm}). 
 
-Por tanto, en el caso particular de un sistema cuya matriz de coeficientes fuera simétrica y definida positiva, podríamos descomponerla empleando la factorización de Cholesky y resolver el sistema de modo análogo a como hicimos con con la factorización LU, sustituimos $A$ por el producto $L\cdot L^T$,
+Por tanto, en el caso particular de un sistema cuya matriz de coeficientes fuera simÃ©trica y definida positiva, podrÃ­amos descomponerla empleando la factorizaciÃ³n de Cholesky y resolver el sistema de modo anÃ¡logo a como hicimos con con la factorizaciÃ³n LU, sustituimos $A$ por el producto $L\cdot L^T$,
 \begin{equation*}
 A\cdot x = b \rightarrow L\cdot L^T\cdot x= b
 \end{equation*}
@@ -635,13 +635,13 @@ Resolvemos por sustituciones progresivas el sistema,
 L\cdot z=b
 \end{equation*}
 
-y por último obtenemos $x$ resolviendo por sustituciones regresivas el sistema,
+y por Ãºltimo obtenemos $x$ resolviendo por sustituciones regresivas el sistema,
 
 \begin{equation*}
 L^T\cdot x=z
 \end{equation*}
 
-La siguiente secuencia de comandos de Matlab muestra la resolución del sistema,
+La siguiente secuencia de comandos de Matlab muestra la resoluciÃ³n del sistema,
 \begin{equation*}
 \begin{pmatrix}
 2& 5& 1\\
@@ -696,9 +696,9 @@ ans =
     23
 \end{verbatim}
 
-En este ejemplo se ha empleado la función \texttt{cholesky}, cuyo código se incluyó en el capítulo anterior \ref{chol}, para factorizar la matriz de coeficientes del sistema. La factorización se podría haber llevado a cabo igualmente, empleando la función de Matlab \texttt{chol}\footnote{Matlab, por defecto, devuelve una matriz triangular superior: \texttt{U = chol(A)}. La factorización es la misma que la descrita en este apartado. Simplemente $L^T = U$ y $L = U^T$. Por tanto, si se emplea directamente el comando \texttt{chol}   de matlab: $A\cdot x = b \rightarrow U^T\cdot U\cdot x= b$}
+En este ejemplo se ha empleado la funciÃ³n \texttt{cholesky}, cuyo cÃ³digo se incluyÃ³ en el capÃ­tulo anterior \ref{chol}, para factorizar la matriz de coeficientes del sistema. La factorizaciÃ³n se podrÃ­a haber llevado a cabo igualmente, empleando la funciÃ³n de Matlab \texttt{chol}\footnote{Matlab, por defecto, devuelve una matriz triangular superior: \texttt{U = chol(A)}. La factorizaciÃ³n es la misma que la descrita en este apartado. Simplemente $L^T = U$ y $L = U^T$. Por tanto, si se emplea directamente el comando \texttt{chol}   de matlab: $A\cdot x = b \rightarrow U^T\cdot U\cdot x= b$}
 
-\paragraph{Factorización QR} Como vimos en el capítulo anterior \ref{QR}, la factorización QR, descompone una matriz en el producto de una matriz ortogonal  (ver \ref{tiposm}) $Q$  por una matriz triangular superior $R$. Si obtenemos la factorización QR de la matriz de coeficientes de un sistema,
+\paragraph{FactorizaciÃ³n QR} Como vimos en el capÃ­tulo anterior \ref{QR}, la factorizaciÃ³n QR, descompone una matriz en el producto de una matriz ortogonal  (ver \ref{tiposm}) $Q$  por una matriz triangular superior $R$. Si obtenemos la factorizaciÃ³n QR de la matriz de coeficientes de un sistema,
 
 \begin{equation*}
 A\cdot x=b \rightarrow Q\cdot R\cdot x =b
@@ -710,7 +710,7 @@ Podemos resolver ahora el sistema en dos pasos. En primer lugar, como Q es ortog
 Q\cdot R\cdot x =b \rightarrow Q^T\cdot Q\cdot R\cdot x = Q^T \cdot b \rightarrow R\cdot x= Q^T\cdot b
 \end{equation*}
 
-Pero el sistema resultante, es un sistema triangular superior, por lo que podemos resolverlo por sustituciones regresivas. Tomando el mismo ejemplo que resolvimos antes por factorización LU,
+Pero el sistema resultante, es un sistema triangular superior, por lo que podemos resolverlo por sustituciones regresivas. Tomando el mismo ejemplo que resolvimos antes por factorizaciÃ³n LU,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -728,7 +728,7 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-podemos ahora resolverlo mediante factorización QR. Para ello aplicamos la función \texttt{QRF2} incluida en el capítulo anterior \ref{QR}, o directamente la función de Matlab \texttt{qr}, a la matriz de coeficientes del sistema,
+podemos ahora resolverlo mediante factorizaciÃ³n QR. Para ello aplicamos la funciÃ³n \texttt{QRF2} incluida en el capÃ­tulo anterior \ref{QR}, o directamente la funciÃ³n de Matlab \texttt{qr}, a la matriz de coeficientes del sistema,
 
 \begin{verbatim}
 >> A=[1 3 2;2 -1 1;1 4 3]
@@ -749,7 +749,7 @@ R =
          0         0    0.3495
 \end{verbatim}
 
-A continuación multiplicamos $Q^T$ por el vector de términos independientes,
+A continuaciÃ³n multiplicamos $Q^T$ por el vector de tÃ©rminos independientes,
 
 \begin{verbatim}
 >> b=[13;3;18]
@@ -765,7 +765,7 @@ z =
     1.0484
 \end{verbatim}
 
-Por último resolvemos el sistema $R\cdot x= Q^T\cdot b$ mediante sustituciones regresivas y comprobamos el resultado,
+Por Ãºltimo resolvemos el sistema $R\cdot x= Q^T\cdot b$ mediante sustituciones regresivas y comprobamos el resultado,
 
 \begin{verbatim}
 >> x=regresivas(R,z)
@@ -785,17 +785,17 @@ ans =
    18.0000
 \end{verbatim}
 
-\paragraph{Factorización SVD.} La  factorización svd \ref{sec:SVD}, descompone una matriz cualquiera en el producto de tres matrices,
+\paragraph{FactorizaciÃ³n SVD.} La  factorizaciÃ³n svd \ref{sec:SVD}, descompone una matriz cualquiera en el producto de tres matrices,
 \begin{equation*}
 A=U\cdot S\cdot V^T
 \end{equation*}
-Donde $U$ y $V$ son matrices ortogonales y S es una matriz diagonal. Si calculamos la factorización svd de la matriz de coeficiente de un sistema,
+Donde $U$ y $V$ son matrices ortogonales y S es una matriz diagonal. Si calculamos la factorizaciÃ³n svd de la matriz de coeficiente de un sistema,
 
 \begin{equation*}
 A\cdot x=b \rightarrow U\cdot S\cdot V^T\cdot x=b
 \end{equation*}
 
-Como en el caso de la factorización QR, podemos aprovechar la ortogonalidad de las matrices $U$ y $V$ para simplificar el sistema,
+Como en el caso de la factorizaciÃ³n QR, podemos aprovechar la ortogonalidad de las matrices $U$ y $V$ para simplificar el sistema,
 
 \begin{equation*}
 U\cdot S\cdot V^T\cdot x=b \rightarrow U^T\cdot U\cdot S\cdot V^T \cdot x= U^T\cdot b \rightarrow S\cdot V^T \cdot x=U^T\cdot b
@@ -813,7 +813,7 @@ S\cdot z= U^T\cdot b
 
 Como la matriz $S$ es diagonal, se trata de un sistema diagonal que, como hemos visto, es trivial de resolver.
 
-Una vez conocido $Z$ podemos obtener la solución del sistema original, haciendo ahora uso de la ortogonalidad de la matriz $V$,
+Una vez conocido $Z$ podemos obtener la soluciÃ³n del sistema original, haciendo ahora uso de la ortogonalidad de la matriz $V$,
 
 \begin{equation*}
 V^T\cdot x=z \rightarrow V\cdot V^T\cdot x=V\cdot z \rightarrow x=V\cdot z
@@ -868,7 +868,7 @@ V =
 
 \end{verbatim}
 
-Calculamos a continuación el valor del vector auxiliar $z$,
+Calculamos a continuaciÃ³n el valor del vector auxiliar $z$,
 
 \begin{verbatim}
 >> ba=U'*b
@@ -883,7 +883,7 @@ z =
    -0.8518
     0.9101
 \end{verbatim}
-por último, calculamos $x$ y comprobamos la solución obtenida,
+por Ãºltimo, calculamos $x$ y comprobamos la soluciÃ³n obtenida,
 
 \begin{verbatim}
 >> x=V*z
@@ -899,18 +899,18 @@ ans =
    18.0000
 \end{verbatim}
 
-\subsection{El método de eliminación de Gauss.}\index{Gauss! Método de eliminación gaussiana} El método de eliminación gaussiana es el mismo descrito en el capítulo anterior \ref{sec:LU} para obtener la matriz triangular superior $U$ en la factorización LU de una matriz. Como ya se explicó en detalle, el método consiste en \emph{hacer  cero} todos los elementos situados por debajo de la diagonal de una matriz. Para ello se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones adecuadas de dicha fila con las anteriores.
+\subsection{El mÃ©todo de eliminaciÃ³n de Gauss.}\index{Gauss! MÃ©todo de eliminaciÃ³n gaussiana} El mÃ©todo de eliminaciÃ³n gaussiana es el mismo descrito en el capÃ­tulo anterior \ref{sec:LU} para obtener la matriz triangular superior $U$ en la factorizaciÃ³n LU de una matriz. Como ya se explicÃ³ en detalle, el mÃ©todo consiste en \emph{hacer  cero} todos los elementos situados por debajo de la diagonal de una matriz. Para ello se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones adecuadas de dicha fila con las anteriores.
 
-Toda la discusión incluida en el capítulo anterior sobre la eliminación de Gauss, es válida también para la resolución de sistemas, por lo que no volveremos a repetirla. Nos centraremos solo en su aplicación al problema de resolver un sistema de ecuaciones lineales.
+Toda la discusiÃ³n incluida en el capÃ­tulo anterior sobre la eliminaciÃ³n de Gauss, es vÃ¡lida tambiÃ©n para la resoluciÃ³n de sistemas, por lo que no volveremos a repetirla. Nos centraremos solo en su aplicaciÃ³n al problema de resolver un sistema de ecuaciones lineales.
 
 La idea fundamental, es sacar partido de las siguientes propiedades de todo sistema de ecuaciones lineales;
 \begin{enumerate}
 \item Un sistema de ecuaciones lineales no cambia aunque se altere el orden de sus ecuaciones.
 \item Un sistema de ecuaciones lineales no cambia aunque se multiplique cualquiera de sus ecuaciones por una constante distinta de cero.
-\item Un sistema de ecuaciones no cambia si se sustituye cualquiera de sus ecuaciones por una combinación lineal de ella con otra ecuación.
+\item Un sistema de ecuaciones no cambia si se sustituye cualquiera de sus ecuaciones por una combinaciÃ³n lineal de ella con otra ecuaciÃ³n.
 \end{enumerate}
  
-Si usamos la representación matricial de un sistema de ecuaciones, Cualquiera de los cambios descritos en las propiedades anteriores afecta tanto a la matriz de coeficientes como al vector de términos independientes, por ejemplo dado el sistema,
+Si usamos la representaciÃ³n matricial de un sistema de ecuaciones, Cualquiera de los cambios descritos en las propiedades anteriores afecta tanto a la matriz de coeficientes como al vector de tÃ©rminos independientes, por ejemplo dado el sistema,
  
 \begin{equation*}
 \begin{pmatrix}
@@ -927,7 +927,7 @@ x_3
 18
 \end{pmatrix}
 \end{equation*}
-Si cambio de orden la segunda ecuación con la primera obtengo el siguiente sistema equivalente,
+Si cambio de orden la segunda ecuaciÃ³n con la primera obtengo el siguiente sistema equivalente,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -945,7 +945,7 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-Es decir, se intercambia la primera fila de la matriz de coeficientes con la segunda, y el primer elemento del vector de términos independientes con el segundo. El vector de incógnitas permanece inalterado. 
+Es decir, se intercambia la primera fila de la matriz de coeficientes con la segunda, y el primer elemento del vector de tÃ©rminos independientes con el segundo. El vector de incÃ³gnitas permanece inalterado. 
 
 Si ahora sustituimos la segunda fila, por la diferencia entre ella y la primera multiplicada por $0.5$, obtenemos de nuevo un sistema equivalente, 
 
@@ -965,9 +965,9 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-Acabamos de dar los dos primeros pasos en el proceso de eliminación de Gauss para convertir la matriz de coeficientes del sistema en una matriz triangular superior: hemos 'pivoteado' las dos primeras filas y después hemos transformado en cero el primer elemento de la segunda fila, combinándola con la primera. Hemos aplicado también esta misma combinación al segundo elemento del vector de términos independientes, para que el sistema obtenido sea equivalente al original.
+Acabamos de dar los dos primeros pasos en el proceso de eliminaciÃ³n de Gauss para convertir la matriz de coeficientes del sistema en una matriz triangular superior: hemos 'pivoteado' las dos primeras filas y despuÃ©s hemos transformado en cero el primer elemento de la segunda fila, combinÃ¡ndola con la primera. Hemos aplicado tambiÃ©n esta misma combinaciÃ³n al segundo elemento del vector de tÃ©rminos independientes, para que el sistema obtenido sea equivalente al original.
 
-Para poder trabajar de una forma cómoda con el método de eliminación de Gauss, se suele construir una matriz, --conocida con el nombre de matriz ampliada--, añadiendo a la matriz de coeficientes, el vector de términos independientes como una columna más,
+Para poder trabajar de una forma cÃ³moda con el mÃ©todo de eliminaciÃ³n de Gauss, se suele construir una matriz, --conocida con el nombre de matriz ampliada--, aÃ±adiendo a la matriz de coeficientes, el vector de tÃ©rminos independientes como una columna mÃ¡s,
 
 \begin{equation*}
 A,\ b \rightarrow AM=(A\vert b)
@@ -992,7 +992,7 @@ En nuestro ejemplo,
 \end{pmatrix}
 \end{equation*}
 
-Podemos aplicar directamente a la matriz ampliada $AM$ el programa de eliminación de Gauss, \texttt{eligauss}, que incluimos en el capítulo anterior \ref{elig}, en la sección dedicada a la factorización LU. Si aplicamos \texttt{eligauss} a la matriz ampliada del sistema del ejemplo, 
+Podemos aplicar directamente a la matriz ampliada $AM$ el programa de eliminaciÃ³n de Gauss, \texttt{eligauss}, que incluimos en el capÃ­tulo anterior \ref{elig}, en la secciÃ³n dedicada a la factorizaciÃ³n LU. Si aplicamos \texttt{eligauss} a la matriz ampliada del sistema del ejemplo, 
 
 \begin{verbatim}
 >> A=[1 3 2;2 -1 1;1 4 3]
@@ -1024,7 +1024,7 @@ GA =
          0         0    0.5714    1.7143
 \end{verbatim}
 
-El programa ha obtenido como resultado una nueva matriz en la que los elementos situados por debajo de la diagonal son ahora cero. Podemos reconstruir, a partir del resultado obtenido un sistema equivalente actual Separando la última columna del resultado,
+El programa ha obtenido como resultado una nueva matriz en la que los elementos situados por debajo de la diagonal son ahora cero. Podemos reconstruir, a partir del resultado obtenido un sistema equivalente actual Separando la Ãºltima columna del resultado,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1046,7 +1046,7 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-El sistema resultante de la eliminación de Gauss es triangular superior, con lo que podemos resolverlo directamente mediante sustituciones regresivas,
+El sistema resultante de la eliminaciÃ³n de Gauss es triangular superior, con lo que podemos resolverlo directamente mediante sustituciones regresivas,
 
 \begin{verbatim}
 >> G=GA(:,1:3)
@@ -1068,22 +1068,22 @@ x =
     3.0000
 \end{verbatim}
 
-El programa \texttt{eligauss}, presenta el problema de que no incluye el pivoteo de filas. Como se explicó en el capítulo anterior este en necesario para evitar que un cero o un valor relativamente pequeño en la diagonal, impida completar el proceso de eliminación o haga los cálculos inestables. A continuación, incluimos una versión modificada de \texttt{eligauss} que incluye el pivoteo de filas.
+El programa \texttt{eligauss}, presenta el problema de que no incluye el pivoteo de filas. Como se explicÃ³ en el capÃ­tulo anterior este en necesario para evitar que un cero o un valor relativamente pequeÃ±o en la diagonal, impida completar el proceso de eliminaciÃ³n o haga los cÃ¡lculos inestables. A continuaciÃ³n, incluimos una versiÃ³n modificada de \texttt{eligauss} que incluye el pivoteo de filas.
 
 \begin{verbatim}
 function U=eligaussp(A)
-%Esta función obtiene una matriz triangular superior, a partir de una
-%matriz dada, aplicando el método de eliminación gaussiana.
-%realiza pivoteo de filas, así que lo primero que hace es comprobar si el
+%Esta funciÃ³n obtiene una matriz triangular superior, a partir de una
+%matriz dada, aplicando el mÃ©todo de eliminaciÃ³n gaussiana.
+%realiza pivoteo de filas, asÃ­ que lo primero que hace es comprobar si el
 %el elemento de la diagonal, de la fila que se va a emplear para eliminar
-%el mayor que los que tiene por debajo en su columna, si no es así,
+%el mayor que los que tiene por debajo en su columna, si no es asÃ­,
 % intercambia la fila con la que tenga el elemento mayor en dicha columna.
 
-%Obtenemos el número de filas de la matriz..
+%Obtenemos el nÃºmero de filas de la matriz..
 nf=size(A,1);
 U=A;
 %
-for j=1:nf-1 %recorro todas la columnas menos la última
+for j=1:nf-1 %recorro todas la columnas menos la Ãºltima
 %%%%%%%%%%%pivoteo de filas%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     %Buscamos el elemento mayor de la columna j de la diagonal para abajo
     maxcol=abs(U(j,j));
@@ -1103,14 +1103,14 @@ for j=1:nf-1 %recorro todas la columnas menos la última
     end
 %%%%%%%%fin del pivoteo de filas%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     for i=j+1:nf %Recorro las filas desde debajo de la diagonal hasta la 
-        %última en Matlab tengo la suerte de poder manejar cada fila de un 
+        %Ãºltima en Matlab tengo la suerte de poder manejar cada fila de un 
         %solo golpe.
         U(i,:)=U(i,:)-U(j,:)*U(i,j)/U(j,j);
     end
 end
 \end{verbatim}
 
-Si aplicamos esta función a nuestro ejemplo de siempre,
+Si aplicamos esta funciÃ³n a nuestro ejemplo de siempre,
 \begin{verbatim}
 >> GA=eligaussp(AM)
 GA =
@@ -1120,7 +1120,7 @@ GA =
      0     0     4    12
 \end{verbatim}
 
-y separando en la matriz ampliada la matriz de coeficientes y el vector de términos independientes podemos resolver el sistema por sustituciones regresivas,
+y separando en la matriz ampliada la matriz de coeficientes y el vector de tÃ©rminos independientes podemos resolver el sistema por sustituciones regresivas,
 
 \begin{verbatim}
 >> G=GA(:,1:3)
@@ -1144,9 +1144,9 @@ x =
 
 \end{verbatim}
 
-\subsection{Gauss-Jordan  y matrices en forma reducida escalonada}\index{Gauss-Jordan! eliminación}
-El método de eliminación de Gauss, permite obtener a partir de una matriz arbitraria, una  matriz triangular superior. Una vez obtenida ésta, podríamos seguir transformando la matriz de modo que hiciéramos cero todos los elementos situados por encima de su diagonal. Para ello bastaría aplicar el mismo método de eliminación de Gauss, la diferencia es que ahora eliminaríamos --haríamos ceros-- los elementos situados por encima de la diagonal principal de la matriz, empezando por la última columna y moviéndonos de abajo a arriba y de derecha a izquierda. Este proceso se conoce con el nombre de eliminación de Gauss-Jordan.
-Por ejemplo supongamos que partimos de la matriz que acabamos de obtener por eliminación de Gauss en ejemplo anterior,
+\subsection{Gauss-Jordan  y matrices en forma reducida escalonada}\index{Gauss-Jordan! eliminaciÃ³n}
+El mÃ©todo de eliminaciÃ³n de Gauss, permite obtener a partir de una matriz arbitraria, una  matriz triangular superior. Una vez obtenida Ã©sta, podrÃ­amos seguir transformando la matriz de modo que hiciÃ©ramos cero todos los elementos situados por encima de su diagonal. Para ello bastarÃ­a aplicar el mismo mÃ©todo de eliminaciÃ³n de Gauss, la diferencia es que ahora eliminarÃ­amos --harÃ­amos ceros-- los elementos situados por encima de la diagonal principal de la matriz, empezando por la Ãºltima columna y moviÃ©ndonos de abajo a arriba y de derecha a izquierda. Este proceso se conoce con el nombre de eliminaciÃ³n de Gauss-Jordan.
+Por ejemplo supongamos que partimos de la matriz que acabamos de obtener por eliminaciÃ³n de Gauss en ejemplo anterior,
 
 \begin{equation*}
 GA=\begin{pmatrix}
@@ -1156,7 +1156,7 @@ GA=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}  
 
-Empezaríamos por hacer cero el elemento $ga_{23}$ que es el que está situado encima de último elemento de la diagonal principal, para ello restaríamos a la segunda columna la tercera multiplicada por $-1$ y dividida por $4$,
+EmpezarÃ­amos por hacer cero el elemento $ga_{23}$ que es el que estÃ¡ situado encima de Ãºltimo elemento de la diagonal principal, para ello restarÃ­amos a la segunda columna la tercera multiplicada por $-1$ y dividida por $4$,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1170,7 +1170,7 @@ Empezaríamos por hacer cero el elemento $ga_{23}$ que es el que está situado enc
  \end{pmatrix}
 \end{equation*}  
 
-A continuación, eliminaríamos el elemento situado en la misma columna, una fila por encima. Para ello restamos a la primera la tercera multiplicada por $3$ y dividida por $4$,
+A continuaciÃ³n, eliminarÃ­amos el elemento situado en la misma columna, una fila por encima. Para ello restamos a la primera la tercera multiplicada por $3$ y dividida por $4$,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1198,7 +1198,7 @@ Como hemos llegado a la primera columna, pasamos a eliminar los elementos de la 
 \end{pmatrix}
 \end{equation*}
 
-Si ahora separamos en la matriz ampliada resultante, la matriz de coeficientes y el vector de términos independientes, obtenemos un sistema diagonal, cuya solución es trivial,
+Si ahora separamos en la matriz ampliada resultante, la matriz de coeficientes y el vector de tÃ©rminos independientes, obtenemos un sistema diagonal, cuya soluciÃ³n es trivial,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1224,21 +1224,21 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-El siguiente programa \texttt{gauss-jordan}, añade las líneas de código necesarias a \texttt{eligaussp} para realizar la eliminación de Gauss-Jordan completa de una matriz.
+El siguiente programa \texttt{gauss-jordan}, aÃ±ade las lÃ­neas de cÃ³digo necesarias a \texttt{eligaussp} para realizar la eliminaciÃ³n de Gauss-Jordan completa de una matriz.
 
 \begin{verbatim}
 function U=gauss_jordan(A)
-%Esta función realiza  la eliminación de GAUSS-JORDAN, que permite obtener,
+%Esta funciÃ³n realiza  la eliminaciÃ³n de GAUSS-JORDAN, que permite obtener,
 %a partir de una matriz dada, una matriz cuyos elementos por encima y 
 %debajo de la diagonal son todos cero.
 
-%Obtenemos el número de filas de la matriz..
+%Obtenemos el nÃºmero de filas de la matriz..
 nf=size(A,1);
 U=A;
 %
-%primera parte: reducción a una matriz triangular pro eliminación
+%primera parte: reducciÃ³n a una matriz triangular pro eliminaciÃ³n
 %progresiva
-for j=1:nf-1 %recorro todas la columnas menos la última
+for j=1:nf-1 %recorro todas la columnas menos la Ãºltima
 %%%%%%%%%%%pivoteo de filas%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     %Buscamos el elemento mayor de la columna j de la diagonal para abajo
     maxcol=abs(U(j,j));
@@ -1258,16 +1258,16 @@ for j=1:nf-1 %recorro todas la columnas menos la última
     end
 %%%%%%%%fin del pivoteo de filas%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     for i=j+1:nf %Recorro las filas desde debajo de la diagonal hasta la 
-        %última en Matlab tengo la suerte de poder manejar cada fila de un 
+        %Ãºltima en Matlab tengo la suerte de poder manejar cada fila de un 
         %solo golpe.
         U(i,:)=U(i,:)-U(j,:)*U(i,j)/U(j,j);
     end
 end
 
 
-%segunda parte, obtención de una matriz diagonal mediante eliminación
+%segunda parte, obtenciÃ³n de una matriz diagonal mediante eliminaciÃ³n
 %regresiva, Recorremos ahora las columnas en orden inverso empezando por el
-%final... (Eliminación de Gauss Jordan)
+%final... (EliminaciÃ³n de Gauss Jordan)
 
 for j=nf:-1:2
     for i=j-1:-1:1 %Recorro las filas desde encima de la diagonal hasta la
@@ -1277,7 +1277,7 @@ for j=nf:-1:2
 end
 \end{verbatim}
 
-Si tras aplicar la eliminación de Gauss-Jordan a la matriz ampliada de un sistema, dividimos cada fila por el elemento que ocupa la diagonal principal, obtendríamos en la última columna las soluciones del sistema. En nuestro ejemplo,
+Si tras aplicar la eliminaciÃ³n de Gauss-Jordan a la matriz ampliada de un sistema, dividimos cada fila por el elemento que ocupa la diagonal principal, obtendrÃ­amos en la Ãºltima columna las soluciones del sistema. En nuestro ejemplo,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1286,7 +1286,7 @@ Si tras aplicar la eliminación de Gauss-Jordan a la matriz ampliada de un sistem
  0&     0&     1&    3
 \end{pmatrix}
 \end{equation*}
-La matriz resultante se dice que esta en \emph{forma escalonada reducida por filas}\index{Matrices escalonadas}. Se deja como un ejercicio, añadir el código necesario al programa anterior para que dé como resultado la \emph{forma escalonada reducida por filas} de la matriz ampliada de un sistema. Como siempre, Matlab tiene su propia función para obtener formas escalonadas reducidas por filas. Se trata de la función \texttt{rref} (el nombre es la abreviatura en inglés de Row Reduced Echelon Form).
+La matriz resultante se dice que esta en \emph{forma escalonada reducida por filas}\index{Matrices escalonadas}. Se deja como un ejercicio, aÃ±adir el cÃ³digo necesario al programa anterior para que dÃ© como resultado la \emph{forma escalonada reducida por filas} de la matriz ampliada de un sistema. Como siempre, Matlab tiene su propia funciÃ³n para obtener formas escalonadas reducidas por filas. Se trata de la funciÃ³n \texttt{rref} (el nombre es la abreviatura en inglÃ©s de Row Reduced Echelon Form).
 
 \begin{verbatim}
 >> A
@@ -1306,14 +1306,14 @@ EF =
      0     0     0     1     4
 \end{verbatim}
  
-\section{Métodos iterativos}
-Los métodos iterativos se basan en una aproximación distinta al problema de la resolución de sistemas de ecuaciones lineales. La idea en todos ellos es buscar un método que, a partir de un valor inicial para la solución del sistema, vaya refinándolo progresivamente, acercándose cada vez más a la solución real. La figura \ref{fig:itera}, muestra un diagrama de flujo general para todos los métodos iterativos de resolución de sistemas.
+\section{MÃ©todos iterativos}
+Los mÃ©todos iterativos se basan en una aproximaciÃ³n distinta al problema de la resoluciÃ³n de sistemas de ecuaciones lineales. La idea en todos ellos es buscar un mÃ©todo que, a partir de un valor inicial para la soluciÃ³n del sistema, vaya refinÃ¡ndolo progresivamente, acercÃ¡ndose cada vez mÃ¡s a la soluciÃ³n real. La figura \ref{fig:itera}, muestra un diagrama de flujo general para todos los mÃ©todos iterativos de resoluciÃ³n de sistemas.
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
 %\usetikzlibrary{shapes.geometric}
-\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Solución inicial $x^{(s)}=x^{(0)}$}
+\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{SoluciÃ³n inicial $x^{(s)}=x^{(0)}$}
 (5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Calculamos\\ $x^{(s+1)}=M(x^{(s)}$}
 (5,-4) node(c)[diamond,aspect=3,draw=red,thick]{es $\lVert  x^{(s+1)}-x^{(s)} \rVert \le \text{tol}$?}
 (9.5,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{convergencia:\\ terminar}
@@ -1321,17 +1321,17 @@ Los métodos iterativos se basan en una aproximación distinta al problema de la r
 \draw[blue,-latex](a.south)--(b);
 \draw[blue,-latex](b.south)--(c);
 \draw[blue,-latex](c.east)--(d);
-\draw (7.7,-4)node[above]{Sí};
+\draw (7.7,-4)node[above]{SÃ­};
 \draw[blue,-latex](c.south)--(g);
 \draw (5,-5.1)node[right]{No};
 \draw[blue,-latex](g.south)|-(2,-7)|-(b);
 
 \end{tikzpicture}
-\caption{Diagrama de flujo general de los métodos iterativos para resolver sistemas de ecuaciones. La función $M(x)$ es la que especifica en cada caso el método.}
+\caption{Diagrama de flujo general de los mÃ©todos iterativos para resolver sistemas de ecuaciones. La funciÃ³n $M(x)$ es la que especifica en cada caso el mÃ©todo.}
 \label{fig:itera}
 \end{figure}
 
-Siguiendo el diagrama de flujo, el primer paso, es proponer un vector con soluciones del sistema. Si se conocen valores próximos a las soluciones reales se eligen dichos valores como solución inicial. Si, como es habitual, no se tiene idea alguna de cuales son las soluciones, lo más habitual es empezar con el vector $(0)$,
+Siguiendo el diagrama de flujo, el primer paso, es proponer un vector con soluciones del sistema. Si se conocen valores prÃ³ximos a las soluciones reales se eligen dichos valores como soluciÃ³n inicial. Si, como es habitual, no se tiene idea alguna de cuales son las soluciones, lo mÃ¡s habitual es empezar con el vector $(0)$,
 \begin{equation*}
 x^{(0)}=\begin{pmatrix}
 0\\
@@ -1341,41 +1341,41 @@ x^{(0)}=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-A partir de la primera solución, se calcula una segunda, siguiendo la especificaciones concretas del método que se esté usando. En el diagrama de flujo se ha representado de modo genérico el método mediante la función $M(\cdot)$. Dedicaremos buena parte de esta sección a estudiar algunos de los métodos más usuales.
+A partir de la primera soluciÃ³n, se calcula una segunda, siguiendo la especificaciones concretas del mÃ©todo que se estÃ© usando. En el diagrama de flujo se ha representado de modo genÃ©rico el mÃ©todo mediante la funciÃ³n $M(\cdot)$. Dedicaremos buena parte de esta secciÃ³n a estudiar algunos de los mÃ©todos mÃ¡s usuales.
 
-Una vez que se tienen dos soluciones se comparan. Para ello, se ha utilizado el módulo del vector diferencia de las dos soluciones. Este módulo nos da una medida de cuanto se parecen entre sí las dos soluciones. Si la diferencia es suficientemente pequeña, --menor que un cierto valor de tolerancia $tol$-- damos la solución por buena y el algoritmo termina. En caso contrario, copiamos la última solución obtenida en la penúltima y repetimos todo el proceso. El bucle se repite hasta que se cumpla la condición de que el módulo de la diferencia de dos soluciones sucesivas sea menor que la tolerancia establecida.
+Una vez que se tienen dos soluciones se comparan. Para ello, se ha utilizado el mÃ³dulo del vector diferencia de las dos soluciones. Este mÃ³dulo nos da una medida de cuanto se parecen entre sÃ­ las dos soluciones. Si la diferencia es suficientemente pequeÃ±a, --menor que un cierto valor de tolerancia $tol$-- damos la soluciÃ³n por buena y el algoritmo termina. En caso contrario, copiamos la Ãºltima soluciÃ³n obtenida en la penÃºltima y repetimos todo el proceso. El bucle se repite hasta que se cumpla la condiciÃ³n de que el mÃ³dulo de la diferencia de dos soluciones sucesivas sea menor que la tolerancia establecida.
 
-Una pregunta que surge de modo inmediato del esquema general que acabamos de introducir es si el proceso descrito converge, y, caso de hacerlo si converge a la solución correcta del sistema. 
+Una pregunta que surge de modo inmediato del esquema general que acabamos de introducir es si el proceso descrito converge, y, caso de hacerlo si converge a la soluciÃ³n correcta del sistema. 
 
-La respuesta es que los sistemas iterativos no siempre convergen, es decir, no esta garantizado que tras un cierto número de iteraciones la diferencia entre dos soluciones sucesivas sea menor que un valor de tolerancia arbitrario. La convergencia, como veremos más adelante, dependerá tanto del sistema que se quiere resolver como del método iterativo empleado. Por otro lado, si se cumple siempre que si el método converge, las sucesivas soluciones obtenidas se van aproximando a la solución real del sistema.
+La respuesta es que los sistemas iterativos no siempre convergen, es decir, no esta garantizado que tras un cierto nÃºmero de iteraciones la diferencia entre dos soluciones sucesivas sea menor que un valor de tolerancia arbitrario. La convergencia, como veremos mÃ¡s adelante, dependerÃ¡ tanto del sistema que se quiere resolver como del mÃ©todo iterativo empleado. Por otro lado, si se cumple siempre que si el mÃ©todo converge, las sucesivas soluciones obtenidas se van aproximando a la soluciÃ³n real del sistema.
 
-\subsection{El método de Jacobi.} \index{Método de Jacobi}
+\subsection{El mÃ©todo de Jacobi.} \index{MÃ©todo de Jacobi}
 
-\paragraph{Obtención del algoritmo.}Empezaremos por introducir el método iterativo de Jacobi, por ser el más intuitivo de todos. Para introducirlo, emplearemos un ejemplo sencillo. Supongamos que queremos resolver el siguiente sistema de ecuaciones,
+\paragraph{ObtenciÃ³n del algoritmo.}Empezaremos por introducir el mÃ©todo iterativo de Jacobi, por ser el mÃ¡s intuitivo de todos. Para introducirlo, emplearemos un ejemplo sencillo. Supongamos que queremos resolver el siguiente sistema de ecuaciones,
 
 \begin{align*}
 3x_1+3x_2&=6\\
 3x_1+4x_2&=7
 \end{align*}
 
-Supongamos que supiéramos de antemano el valor de $x_2$, para obtener $x_1$, bastaría entonces despejar $x_1$, por ejemplo de la primera ecuación, y sustituir el valor conocido de $x_2$,
+Supongamos que supiÃ©ramos de antemano el valor de $x_2$, para obtener $x_1$, bastarÃ­a entonces despejar $x_1$, por ejemplo de la primera ecuaciÃ³n, y sustituir el valor conocido de $x_2$,
 
 \begin{equation*}
 x_1=\frac{6-3x_2}{3}
 \end{equation*}
 
-De modo análogo, si conociéramos previamente $x_1$, podríamos despejar $x_2$, ahora por ejemplo de la segunda ecuación, y sustituir el valor conocido de $x_1$,
+De modo anÃ¡logo, si conociÃ©ramos previamente $x_1$, podrÃ­amos despejar $x_2$, ahora por ejemplo de la segunda ecuaciÃ³n, y sustituir el valor conocido de $x_1$,
 
 \begin{equation*}
 x_2=\frac{7-3x_1}{4}
 \end{equation*}
 
-El método de Jacobi lo que hace es \emph{suponer} conocido el valor de $x_2$, $x_2^{(0)}=0$, y con él obtener un valor de $x_1^{(1)}$,
+El mÃ©todo de Jacobi lo que hace es \emph{suponer} conocido el valor de $x_2$, $x_2^{(0)}=0$, y con Ã©l obtener un valor de $x_1^{(1)}$,
 \begin{equation*}
 x_1^{(1)}=\frac{6-3x_2^{(0)}}{3}=\frac{6-3\cdot 0}{3}=2
 \end{equation*}
 
-a continuación \emph{supone} conocido el valor de $x_1$, $x_1^{(0)}=0$ y con el obtiene un nuevo valor para $x_2$,
+a continuaciÃ³n \emph{supone} conocido el valor de $x_1$, $x_1^{(0)}=0$ y con el obtiene un nuevo valor para $x_2$,
 
 \begin{equation*}
 x_2^{(1)}=\frac{7-3x_1^{(0)}}{4}=\frac{7-3\cdot 0}{4}=1.75
@@ -1394,7 +1394,7 @@ x_1^{(s+1)}&=\frac{6-3x_2^{(s)}}{3}\\
 x_2^{(s+1)}&=\frac{7-3x_1^{(s)}}{4}
 \end{align*}
 
-Si repetimos el mismo cálculo diez veces obtenemos,
+Si repetimos el mismo cÃ¡lculo diez veces obtenemos,
 
 \begin{align*}
 x_1^{(10)}&=0.7627\\
@@ -1408,9 +1408,9 @@ x_1^{(20)}&=0.9437\\
 x_2^{(20)}&=0.9437
 \end{align*}
 
-La solución exacta del sistema es $x_1=1$, $x_2=1$. Según aumentamos el número de iteraciones, vemos cómo las soluciones obtenidas se aproximan cada vez más a la solución real.
+La soluciÃ³n exacta del sistema es $x_1=1$, $x_2=1$. SegÃºn aumentamos el nÃºmero de iteraciones, vemos cÃ³mo las soluciones obtenidas se aproximan cada vez mÃ¡s a la soluciÃ³n real.
 
-A partir del ejemplo, podemos generalizar el método de Jacobi para un sistema cualquiera de $n$ ecuaciones con $n$ incógnitas,
+A partir del ejemplo, podemos generalizar el mÃ©todo de Jacobi para un sistema cualquiera de $n$ ecuaciones con $n$ incÃ³gnitas,
 
 \begin{align*}
 a_{11}&x_1+a_{12}x_2+\cdots +a_{1n}x_n=b_1\\
@@ -1419,13 +1419,13 @@ a_{21}&x_1+a_{22}x_2+\cdots +a_{2n}x_n=b_2\\
 a_{n1}&x_1+a_{n2}x_2+\cdots +a_{nn}x_n=b_n
 \end{align*}
 
-La solución para la incógnita $x_i$ en la iteración, $s+1$ a partir de la solucione obtenida en la iteración $s$ toma la forma,
+La soluciÃ³n para la incÃ³gnita $x_i$ en la iteraciÃ³n, $s+1$ a partir de la solucione obtenida en la iteraciÃ³n $s$ toma la forma,
 
 \begin{equation*}
 x_i^{(s+1)}=\frac{b_i-\sum_{j\neq i}a_{ij}x_j^{(s)}}{a_{ii}}
 \end{equation*}
 
-A continuación, incluimos el código correspondiente al cálculo de una iteración del algoritmo de Jacobi. Este código es el que corresponde, para el método de jacobi, a la función $M(\cdot)$ del diagrama de flujo de la figura \ref{fig:itera}.
+A continuaciÃ³n, incluimos el cÃ³digo correspondiente al cÃ¡lculo de una iteraciÃ³n del algoritmo de Jacobi. Este cÃ³digo es el que corresponde, para el mÃ©todo de jacobi, a la funciÃ³n $M(\cdot)$ del diagrama de flujo de la figura \ref{fig:itera}.
 
 \begin{verbatim}
  	xs=xs1;
@@ -1436,7 +1436,7 @@ A continuación, incluimos el código correspondiente al cálculo de una iteración 
         for j=1:i-1 %restamos la contribucion de todas las incognitas
             xs1(i)=xs1(i)-A(i,j)*xs(j);       %por encima de x(i)
         end
-        for j=i+1:n %restamos la contribución de todas las incognitas
+        for j=i+1:n %restamos la contribuciÃ³n de todas las incognitas
             %por debajo de x(i)
             xs1(i)=xs1(i)-A(i,j)*xs(j);
         end
@@ -1445,7 +1445,7 @@ A continuación, incluimos el código correspondiente al cálculo de una iteración 
     end
 \end{verbatim}
 
-\paragraph{Expresión matricial para el método de Jacobi.} \index{Método de Jacobi! Expresión matricial} El método de Jacobi que acabamos de exponer puede expresarse también en forma matricial. En Matlab, el empleo en forma matricial, tiene la ventaja de ahorrar bucles en el cálculo de la nueva solución a partir de la anterior. Si expresamos un sistema general de orden $n$ en forma matricial,
+\paragraph{ExpresiÃ³n matricial para el mÃ©todo de Jacobi.} \index{MÃ©todo de Jacobi! ExpresiÃ³n matricial} El mÃ©todo de Jacobi que acabamos de exponer puede expresarse tambiÃ©n en forma matricial. En Matlab, el empleo en forma matricial, tiene la ventaja de ahorrar bucles en el cÃ¡lculo de la nueva soluciÃ³n a partir de la anterior. Si expresamos un sistema general de orden $n$ en forma matricial,
 
 \begin{equation*}
 \overbrace{\begin{pmatrix}
@@ -1466,7 +1466,7 @@ b_n
 \end{pmatrix}}^b
 \end{equation*}
 
-Podríamos separar en tres sumandos la expresión de la izquierda del sistema: una matriz diagonal $D$, una matriz estrictamente diagonal superior $U$, y una matriz estrictamente triangular inferior $L$,
+PodrÃ­amos separar en tres sumandos la expresiÃ³n de la izquierda del sistema: una matriz diagonal $D$, una matriz estrictamente diagonal superior $U$, y una matriz estrictamente triangular inferior $L$,
 
 \begin{equation*}
 \left[\overbrace{\begin{pmatrix}
@@ -1498,7 +1498,7 @@ b_n
 \end{pmatrix}}^b
 \end{equation*}
 
-Si pasamos los términos correspondientes a las dos matrices triangulares al lado derecho de la igualdad,
+Si pasamos los tÃ©rminos correspondientes a las dos matrices triangulares al lado derecho de la igualdad,
 
 \begin{align*}
 \overbrace{\begin{pmatrix}
@@ -1537,7 +1537,7 @@ x_n
 \end{pmatrix}}^x
 \end{align*}
 
-Si examinamos las filas de la matrices resultantes a uno y otro lado del igual, es fácil ver que cada una de ellas coincide con la expresión correspondiente a una iteración del método de Jacobi, sin mas que cambiar los valores de las incógnitas a la izquierda del igual por $x^{(s+1)}$ y la derecha por $x^{(s)}$,
+Si examinamos las filas de la matrices resultantes a uno y otro lado del igual, es fÃ¡cil ver que cada una de ellas coincide con la expresiÃ³n correspondiente a una iteraciÃ³n del mÃ©todo de Jacobi, sin mas que cambiar los valores de las incÃ³gnitas a la izquierda del igual por $x^{(s+1)}$ y la derecha por $x^{(s)}$,
 
 \begin{align*}
 \overbrace{\begin{pmatrix}
@@ -1576,7 +1576,7 @@ x_n^s
 \end{pmatrix}}^{x^s}
 \end{align*}
 
- y multiplicar a ambos lados por la inversa de la matriz $D$\footnote{$D$ es una matriz diagonal su inversa se calcula trivialmente sin más cambiar cada elemento de la diagonal por su inverso.},
+ y multiplicar a ambos lados por la inversa de la matriz $D$\footnote{$D$ es una matriz diagonal su inversa se calcula trivialmente sin mÃ¡s cambiar cada elemento de la diagonal por su inverso.},
  
  \begin{align*}
  \overbrace{\begin{pmatrix}
@@ -1615,17 +1615,17 @@ x_n^s
 \end{pmatrix}}^{x^s}\right]  
 \end{align*}
 
-El resultado final es una operación matricial,
+El resultado final es una operaciÃ³n matricial,
 
 \begin{equation*}
 x^{(s+1)}=D^{-1}\cdot b- D^{-1}\cdot\left(L+U\right)\cdot x^s
 \end{equation*}
 
-que equivale al código para una iteración y, por tanto a la función $M(\cdot)$ del método de Jacobi. 
+que equivale al cÃ³digo para una iteraciÃ³n y, por tanto a la funciÃ³n $M(\cdot)$ del mÃ©todo de Jacobi. 
 
-Si analizamos la ecuación anterior, observamos que el término, $D^{-1}\cdot b$ es fijo. Es decir, permanece igual en todas la iteraciones que necesitemos realizar para que la solución converja. El segundo término, tiene también una parte fija, $-D^{-1}(L+U)$ Se trata de una matriz de orden $n$, igual al del sistema que tratamos de resolver, Esta matriz, recibe el nombre de matriz del método, se suele representar por la letra $H$ y como veremos después esta directamente relaciona con la convergencia del método.
+Si analizamos la ecuaciÃ³n anterior, observamos que el tÃ©rmino, $D^{-1}\cdot b$ es fijo. Es decir, permanece igual en todas la iteraciones que necesitemos realizar para que la soluciÃ³n converja. El segundo tÃ©rmino, tiene tambiÃ©n una parte fija, $-D^{-1}(L+U)$ Se trata de una matriz de orden $n$, igual al del sistema que tratamos de resolver, Esta matriz, recibe el nombre de matriz del mÃ©todo, se suele representar por la letra $H$ y como veremos despuÃ©s esta directamente relaciona con la convergencia del mÃ©todo.
 
-Si queremos implementar en Matlab el método de Jacobi en forma matricial, lo mas eficiente es que calculemos en primer lugar las matrices $D, L, U, f=D^{-1}\cdot b$ y $H$. Una vez calculadas, empleamos el resultado para aproximar la solución iterativamente. Veamos con con un ejemplo como construir la matrices en Matlab. Supongamos que tenemos el siguiente sistema,
+Si queremos implementar en Matlab el mÃ©todo de Jacobi en forma matricial, lo mas eficiente es que calculemos en primer lugar las matrices $D, L, U, f=D^{-1}\cdot b$ y $H$. Una vez calculadas, empleamos el resultado para aproximar la soluciÃ³n iterativamente. Veamos con con un ejemplo como construir la matrices en Matlab. Supongamos que tenemos el siguiente sistema,
 \begin{equation*}
 \begin{pmatrix}
 4& 2& -1\\
@@ -1715,7 +1715,7 @@ L =
      1    -1     0
 \end{verbatim}
 
-También podemos obtenerlas directamente, empleando solo la matriz de coeficientes,
+TambiÃ©n podemos obtenerlas directamente, empleando solo la matriz de coeficientes,
 
 \begin{verbatim}
 >> U=A-tril(A)
@@ -1735,7 +1735,7 @@ L =
      1    -1     0
 \end{verbatim}
 
-Construimos a continuación el vector $f$,
+Construimos a continuaciÃ³n el vector $f$,
 
 \begin{verbatim}
 >> f=D^-1*b
@@ -1758,24 +1758,24 @@ H =
 \end{verbatim}
 
 
-A partir de las matrices construidas, el código para calcular una iteración por el método de Jacobi sería simplemente,
+A partir de las matrices construidas, el cÃ³digo para calcular una iteraciÃ³n por el mÃ©todo de Jacobi serÃ­a simplemente,
 
 \begin{verbatim}
 xs1=f+H*xs
 \end{verbatim}
 
 
-En el siguiente fragmento de código se reúnen todas las operaciones descritas,
+En el siguiente fragmento de cÃ³digo se reÃºnen todas las operaciones descritas,
 
 \begin{verbatim}
 ...
 ...
-%obtenemos el tamaño del sistema,
+%obtenemos el tamaÃ±o del sistema,
 
 n=size(A,1);
 %creamos un vector de soluciones inicial,
 xs=zeros(n,1);
-%creamos las matrices del método
+%creamos las matrices del mÃ©todo
 D=diag(diag(A));
 U=A-tril(A);
 L=A-triu(A);
@@ -1784,35 +1784,35 @@ L=A-triu(A);
 f=D^-1*b;
 H=-D^-1*(L+U);
 
-%calculamos la primera iteración,
+%calculamos la primera iteraciÃ³n,
 xs1=f+H*xs;
 %calculamos la diferencia entre las dos soluciones,
 tolf=norm(xs1-xs);
 %ponemos a 1 el contador de iteraciones.
 it=1;
 
-%a partir de aquí vendría el código necesario para calcular las
-%sucesivas iteraciones hasta que la solución converja
+%a partir de aquÃ­ vendrÃ­a el cÃ³digo necesario para calcular las
+%sucesivas iteraciones hasta que la soluciÃ³n converja
 ...
 ...
 \end{verbatim}
 
-\subsection{El método de Gauss-Seidel.} \index{Método de Gauss-Seidel}
-\paragraph{Obtención del algoritmo.} Este método aplica una mejora, sencilla y lógica al método de Jacobi que acabamos de estudiar. Si volvemos a escribir la expresión general para calcular una iteración de una de las componentes de la solución de un sistema por el método de Jacobi,
+\subsection{El mÃ©todo de Gauss-Seidel.} \index{MÃ©todo de Gauss-Seidel}
+\paragraph{ObtenciÃ³n del algoritmo.} Este mÃ©todo aplica una mejora, sencilla y lÃ³gica al mÃ©todo de Jacobi que acabamos de estudiar. Si volvemos a escribir la expresiÃ³n general para calcular una iteraciÃ³n de una de las componentes de la soluciÃ³n de un sistema por el mÃ©todo de Jacobi,
 
 \begin{equation*}
 x_i^{(s+1)}=\frac{b_i-\sum_{j\neq i}a_{ij}x_j^{(s)}}{a_{ii}}
 \end{equation*}
 
-Observamos que para obtener el término $x_i^{(s+1)}$ empleamos todos los términos $x_j^{(s)}, \ j\neq i$ de la iteración anterior. Sin embargo, es fácil darse cuenta que, como el algoritmo va calculando las componentes de cada iteración por orden, cuando vamos a calcular $x_i^{(s+1)}$, disponemos ya del resultado de todas las componentes anteriores de la solución para la iteración $s+1$. Es decir, sabemos ya cuál es el resultado de $x_l^{(s+1)}, \  l<i$. Si el algoritmo converge, esta soluciones serán mejores que las obtenidas en la iteración anterior. Si las usamos para calcular $x_i^{(s+1)}$ el resultado que obtendremos, será más próximo a la solución exacta y por tanto el algoritmo converge más deprisa.
+Observamos que para obtener el tÃ©rmino $x_i^{(s+1)}$ empleamos todos los tÃ©rminos $x_j^{(s)}, \ j\neq i$ de la iteraciÃ³n anterior. Sin embargo, es fÃ¡cil darse cuenta que, como el algoritmo va calculando las componentes de cada iteraciÃ³n por orden, cuando vamos a calcular $x_i^{(s+1)}$, disponemos ya del resultado de todas las componentes anteriores de la soluciÃ³n para la iteraciÃ³n $s+1$. Es decir, sabemos ya cuÃ¡l es el resultado de $x_l^{(s+1)}, \  l<i$. Si el algoritmo converge, esta soluciones serÃ¡n mejores que las obtenidas en la iteraciÃ³n anterior. Si las usamos para calcular $x_i^{(s+1)}$ el resultado que obtendremos, serÃ¡ mÃ¡s prÃ³ximo a la soluciÃ³n exacta y por tanto el algoritmo converge mÃ¡s deprisa.
 
-La idea, por tanto sería: 
+La idea, por tanto serÃ­a: 
 
-Para calcular $x_1^{(s+1)}$ procedemos igual que en el método de Jacobi. 
+Para calcular $x_1^{(s+1)}$ procedemos igual que en el mÃ©todo de Jacobi. 
 \begin{equation*}
 x_1^{(s+1)}=\frac{b_i-\sum_{j=2}^n a_{1j}x_j^{(s)}}{a_{11}}
 \end{equation*}
-Para calcular $x_2^{(s+1)}$ usamos la solución que acabamos de obtener  $x_1^{(s+1)}$ y todas las restantes soluciones de las iteraciones anteriores,
+Para calcular $x_2^{(s+1)}$ usamos la soluciÃ³n que acabamos de obtener  $x_1^{(s+1)}$ y todas las restantes soluciones de las iteraciones anteriores,
 \begin{equation*}
 x_2^{(s+1)}=\frac{b_i-a_{21}x_1^{s+1}-\sum_{j=3}^na_{2j}x_j^{(s)}}{a_{22}}
 \end{equation*}
@@ -1823,13 +1823,13 @@ Para calcular $x_3^{(s+1)}$ usamos las dos soluciones que acabamos de obtener  $
 x_3^{(s+1)}=\frac{b_i-a_{31}x_1^{s+1}-a_{32}x_2^{s+1}-\sum_{j=4}^na_{3j}x_j^{(s)}}{a_{33}}
 \end{equation*}
 
-Y para una componente $i$ cualquiera de la solución, obtenemos la expresión expresión general del método de Gauss-Seidel,
+Y para una componente $i$ cualquiera de la soluciÃ³n, obtenemos la expresiÃ³n expresiÃ³n general del mÃ©todo de Gauss-Seidel,
   
 \begin{equation*}
 x_i^{(s+1)}=\frac{b_i-\sum_{j< i}a_{ij}x_j^{(s+1)}-\sum_{j> i}a_{ij}x_j^{(s)}}{a_{ii}}
 \end{equation*}
 
-El siguiente código de Matlab implementa una iteración del método de Gauss-Seidel y puede considerarse como la función $M(\cdot)$, incluida en el diagrama de flujo de la figura \ref{fig:itera}, para dicho método.
+El siguiente cÃ³digo de Matlab implementa una iteraciÃ³n del mÃ©todo de Gauss-Seidel y puede considerarse como la funciÃ³n $M(\cdot)$, incluida en el diagrama de flujo de la figura \ref{fig:itera}, para dicho mÃ©todo.
 
 \begin{verbatim}
     xs=xs1;
@@ -1840,7 +1840,7 @@ El siguiente código de Matlab implementa una iteración del método de Gauss-Seide
         for j=1:i-1 %restamos la contribucion de todas las incognitas
             xs1(i)=xs1(i)-A(i,j)*xs1(j);       %por encima de x(i)
         end
-        for j=i+1:n %restamos la contribución de todas las incognitas
+        for j=i+1:n %restamos la contribuciÃ³n de todas las incognitas
             %por debajo de x(i)
             xs1(i)=xs1(i)-A(i,j)*xs(j);
         end
@@ -1853,34 +1853,34 @@ El siguiente código de Matlab implementa una iteración del método de Gauss-Seide
         it=it+1;
 \end{verbatim}
 
-Es interesante destacar, que el único cambio en todo el código respecto al método de Jacobi es la sustitución de la variable \texttt{xs(j)} por la variable \texttt{xs1(j)} al final del primer bucle for anidado.
+Es interesante destacar, que el Ãºnico cambio en todo el cÃ³digo respecto al mÃ©todo de Jacobi es la sustituciÃ³n de la variable \texttt{xs(j)} por la variable \texttt{xs1(j)} al final del primer bucle for anidado.
 
-\paragraph{Forma matricial del método de Gauss-Seidel.} \index{Método de Gauss-Seidel! Forma matricial} De modo análogo a cómo hicimos para el método de Jacobi, es posible obtener una solución matricial para el método de Gauss-Seidel. 
+\paragraph{Forma matricial del mÃ©todo de Gauss-Seidel.} \index{MÃ©todo de Gauss-Seidel! Forma matricial} De modo anÃ¡logo a cÃ³mo hicimos para el mÃ©todo de Jacobi, es posible obtener una soluciÃ³n matricial para el mÃ©todo de Gauss-Seidel. 
 
-Supongamos que realizamos la misma descomposición en sumandos de la matriz de coeficientes que empleamos para el método de Jacobi,
+Supongamos que realizamos la misma descomposiciÃ³n en sumandos de la matriz de coeficientes que empleamos para el mÃ©todo de Jacobi,
 
 \begin{equation*}
 A\cdot x =b \rightarrow (D+L+U)\cdot x=b
 \end{equation*}  
-En este caso, en cálculo de cada componente de la solución en una iteración intervienen las componentes de la iteración anterior que están por debajo de la que queremos calcular, por tanto solo deberemos pasar a la derecha de la igualdad, la matriz $U$, Que contiene los coeficientes que multiplican a dichas componentes,
+En este caso, en cÃ¡lculo de cada componente de la soluciÃ³n en una iteraciÃ³n intervienen las componentes de la iteraciÃ³n anterior que estÃ¡n por debajo de la que queremos calcular, por tanto solo deberemos pasar a la derecha de la igualdad, la matriz $U$, Que contiene los coeficientes que multiplican a dichas componentes,
 
 \begin{equation*}
 (D+L+U)\cdot x=b \rightarrow (D+L)\cdot x= b-U\cdot x
 \end{equation*}
 
-Sustituyendo $x$ a cada lado de la igualdad por $x^{(s+1)}$ y $x^{(s)}$ y multiplicando por la inversa de $D+U$ a ambos lados, obtenemos la expresión en forma matricial del cálculo de una iteración por el método de Gauss-Seidel,
+Sustituyendo $x$ a cada lado de la igualdad por $x^{(s+1)}$ y $x^{(s)}$ y multiplicando por la inversa de $D+U$ a ambos lados, obtenemos la expresiÃ³n en forma matricial del cÃ¡lculo de una iteraciÃ³n por el mÃ©todo de Gauss-Seidel,
 
 \begin{equation*}
 x^{(s+1)}= (D+L)^{-1}\cdot b-(D+L)^{-1}\cdot U\cdot x^{(s)}
 \end{equation*}
 
-Igual que hemos hecho en con el método de Jacobi, podemos identificar las partes fijas que no cambian al iterar: $f=(D+L)^{-1}\cdot b$ y la matriz del método, que en este caso es, $H=-(D+L)^{-1}\cdot U$.
+Igual que hemos hecho en con el mÃ©todo de Jacobi, podemos identificar las partes fijas que no cambian al iterar: $f=(D+L)^{-1}\cdot b$ y la matriz del mÃ©todo, que en este caso es, $H=-(D+L)^{-1}\cdot U$.
 
-El siguiente fragmento de código muestra la construcción de las matrices necesarias para implementar en Matlab el método de Gauss-Seidel,
+El siguiente fragmento de cÃ³digo muestra la construcciÃ³n de las matrices necesarias para implementar en Matlab el mÃ©todo de Gauss-Seidel,
 \begin{verbatim}
 ...
 ...
-%obtenemos el tamaño del sistema,
+%obtenemos el tamaÃ±o del sistema,
 
 n=size(A,1);
 %creamos un vector de soluciones inicial,
@@ -1894,18 +1894,18 @@ L=A-triu(A);
 f=(D+L)^(-1)*b;
 H=-(D+L)^(-1)*U
 
-%calculamos la primera iteración
+%calculamos la primera iteraciÃ³n
 xs1=f+H*xs;
 %calculamos la diferencia entre las dos soluciones,
 tolf=norm(xs1-xs);
 %ponemos a 1 el contador de iteraciones.
 it=1;
 
-%A partir de aquí vendría el código necesario para calcular las 
-%Sucesivas iteraciones hasta que la solución converja.
+%A partir de aquÃ­ vendrÃ­a el cÃ³digo necesario para calcular las 
+%Sucesivas iteraciones hasta que la soluciÃ³n converja.
 \end{verbatim}
 
-En general, el método de Gauss-Seidel es capaz de obtener soluciones, para un sistema dado y un cierto valor de tolerancia, empleando menos iteraciones que el método de Jacobi. Por ejemplo, si aplicamos ambos métodos a la resolución del sistema,
+En general, el mÃ©todo de Gauss-Seidel es capaz de obtener soluciones, para un sistema dado y un cierto valor de tolerancia, empleando menos iteraciones que el mÃ©todo de Jacobi. Por ejemplo, si aplicamos ambos mÃ©todos a la resoluciÃ³n del sistema,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1923,30 +1923,30 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-Empleando en ambos casos una tolerancia $tol=0.0000	1$, el método de Jacobi necesita 23 iteraciones para lograr una solución, mientras que el de Gauss-Seidel solo necesita 13. La figura \ref{fig:gjcom}, muestra la evolución de la tolerancia $tol=\lVert x^{(s+1)}-x^{(s)} \rVert$, en función del número de iteración. En ambos casos el valor inicial de la solución se tomó como el vector $(0,0,0)^T$.
+Empleando en ambos casos una tolerancia $tol=0.0000	1$, el mÃ©todo de Jacobi necesita 23 iteraciones para lograr una soluciÃ³n, mientras que el de Gauss-Seidel solo necesita 13. La figura \ref{fig:gjcom}, muestra la evoluciÃ³n de la tolerancia $tol=\lVert x^{(s+1)}-x^{(s)} \rVert$, en funciÃ³n del nÃºmero de iteraciÃ³n. En ambos casos el valor inicial de la soluciÃ³n se tomÃ³ como el vector $(0,0,0)^T$.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=16cm]{gjcom.eps}
-\caption{evolución de la tolerancia (módulo de la diferencia entre dos soluciones sucesivas) para un mismo sistema resuelto mediante el método de Gauss-Seidel y el método de Jacobi}
+\caption{evoluciÃ³n de la tolerancia (mÃ³dulo de la diferencia entre dos soluciones sucesivas) para un mismo sistema resuelto mediante el mÃ©todo de Gauss-Seidel y el mÃ©todo de Jacobi}
 \label{fig:gjcom}
 \end{figure}
 
-\subsection{Amortiguamiento.} \index{Métodos amortiguados} El amortiguamiento consiste en modificar un método iterativo, de modo que en cada iteración, se da como solución la media ponderada de los resultados de dos iteraciones sucesivas,
+\subsection{Amortiguamiento.} \index{MÃ©todos amortiguados} El amortiguamiento consiste en modificar un mÃ©todo iterativo, de modo que en cada iteraciÃ³n, se da como soluciÃ³n la media ponderada de los resultados de dos iteraciones sucesivas,
 \begin{equation*}
 x^{(s+1)}=\omega \cdot x^{*}+(1-\omega) \cdot x^{(s)}
 \end{equation*}
 
-Donde $x^{(*)}$ representa el valor que se obtendría aplicando una iteración del método a $x^{(s)}$, es decir sería el valor de $x^{(s+1)}$ si no se aplica amortiguamiento.
+Donde $x^{(*)}$ representa el valor que se obtendrÃ­a aplicando una iteraciÃ³n del mÃ©todo a $x^{(s)}$, es decir serÃ­a el valor de $x^{(s+1)}$ si no se aplica amortiguamiento.
 
-El parámetro $\omega$ recibe el nombre de factor de relajamiento. Si $0<\omega<1$ se trata de un método de subrelajación. Su uso permite resolver sistemas que no convergen si se usa el mismo método sin relajación. Si $w>1$ el método se llama de sobrerelajación, permite acelerar la convergencia respecto al mismo método sin relajación. Por último, si hacemos $\omega=1$, recuperamos el método original sin relajación.
+El parÃ¡metro $\omega$ recibe el nombre de factor de relajamiento. Si $0<\omega<1$ se trata de un mÃ©todo de subrelajaciÃ³n. Su uso permite resolver sistemas que no convergen si se usa el mismo mÃ©todo sin relajaciÃ³n. Si $w>1$ el mÃ©todo se llama de sobrerelajaciÃ³n, permite acelerar la convergencia respecto al mismo mÃ©todo sin relajaciÃ³n. Por Ãºltimo, si hacemos $\omega=1$, recuperamos el mÃ©todo original sin relajaciÃ³n.
 
-\paragraph{El método de Jacobi amortiguado.} \index{Método de Jacobi amortiguado} Se obtiene aplicando el método de relajación que acabamos de describir, al método de Jacobi. La expresión general de una iteración del método de Jacobi amortiguando sería,
+\paragraph{El mÃ©todo de Jacobi amortiguado.} \index{MÃ©todo de Jacobi amortiguado} Se obtiene aplicando el mÃ©todo de relajaciÃ³n que acabamos de describir, al mÃ©todo de Jacobi. La expresiÃ³n general de una iteraciÃ³n del mÃ©todo de Jacobi amortiguando serÃ­a,
 \begin{equation*}
 x_i^{(s+1)}=\omega\cdot \overbrace{\frac{b_i-\sum_{j\neq i}a_{ij}x_j^{(s)}}{a_{ii}}}^{x^{(*)}}+(1- \omega)\cdot x_i^{s}
 \end{equation*}
 
-Para implementarlo en Matlab, bastaría añadir al código del método de Jacobi una línea incluyendo el promedio entre las dos soluciones sucesivas,
+Para implementarlo en Matlab, bastarÃ­a aÃ±adir al cÃ³digo del mÃ©todo de Jacobi una lÃ­nea incluyendo el promedio entre las dos soluciones sucesivas,
 
 \begin{verbatim}
 while norm(xs1-xs)>tol
@@ -1958,42 +1958,42 @@ while norm(xs1-xs)>tol
         for j=1:i-1 %restamos la contribucion de todas las incognitas
             xs1(i)=xs1(i)-A(i,j)*xs(j);       %por encima de x(i)
         end
-        for j=i+1:n %restamos la contribución de todas las incognitas
+        for j=i+1:n %restamos la contribuciÃ³n de todas las incognitas
             %por debajo de x(i)
             xs1(i)=xs1(i)-A(i,j)*xs(j);
         end
         %dividimos por el elemento de la diagonal,
         xs1(i)=xs1(i)/A(i,i);
     end
-    %promediamos la solución obtenida con la anterior (amortiguamiento)
+    %promediamos la soluciÃ³n obtenida con la anterior (amortiguamiento)
     xs1=w*xs1+(1-w)*xs
 end
 \end{verbatim}
 
-En forma matricial, la expresión general del método de Jacobi amortiguado sería,
+En forma matricial, la expresiÃ³n general del mÃ©todo de Jacobi amortiguado serÃ­a,
 
 \begin{equation*}
 x^{(s+1)}=\omega\cdot\overbrace{\left(D^{-1}\cdot b- D^{-1}\cdot\left(L+U\right)\cdot x^{(s)}\right)}^{x^{(*)}}+(1-w)x^{(s)}
 \end{equation*}
-Si reorganizamos esta expresión,
+Si reorganizamos esta expresiÃ³n,
 
 \begin{equation*}
 x^{(s+1)}=\omega\cdot D^{-1}\cdot b+ \left[(1-w)\cdot I - w\cdot  D^{-1}\cdot  \left(L+U \right)\right]\cdot x^{(s)}
 \end{equation*}
 
-Podemos identificar fácilmente el termino fijo, $f=\omega\cdot D^{-1}\cdot b$ y la matriz del método $H=\left((1-w)\cdot I - w\cdot  D^{-1}\cdot  \left(L+U \right)\right)$.
+Podemos identificar fÃ¡cilmente el termino fijo, $f=\omega\cdot D^{-1}\cdot b$ y la matriz del mÃ©todo $H=\left((1-w)\cdot I - w\cdot  D^{-1}\cdot  \left(L+U \right)\right)$.
 
-Para implementar el código del método de Jacobi amortiguado en Matlab, debemos calcular la matriz identidad del tamaño de sistema y modificar las expresiones de $f$ y $H$,
+Para implementar el cÃ³digo del mÃ©todo de Jacobi amortiguado en Matlab, debemos calcular la matriz identidad del tamaÃ±o de sistema y modificar las expresiones de $f$ y $H$,
 
 \begin{verbatim}
 ...
 ...
-%obtenemos el tamaño del sistema,
+%obtenemos el tamaÃ±o del sistema,
 
 n=size(A,1);
 %creamos un vector de soluciones inicial,
 xs=zeros(n,1);
-%creamos las matrices del método
+%creamos las matrices del mÃ©todo
 D=diag(diag(A));
 U=A-tril(A);
 L=A-triu(A);
@@ -2003,26 +2003,26 @@ I=eye(n);
 f=w*D^-1*b;
 H=-w*D^-1*(L+U)+(1-w)*I;
 
-%calculamos la primera iteración,
+%calculamos la primera iteraciÃ³n,
 xs1=f+H*xs;
 %calculamos la diferencia entre las dos soluciones,
 tolf=norm(xs1-xs);
 %ponemos a 1 el contador de iteraciones.
 it=1;
 
-%a partir de aquí vendría el código necesario para calcular las
-%sucesivas iteraciones hasta que la solución converja
+%a partir de aquÃ­ vendrÃ­a el cÃ³digo necesario para calcular las
+%sucesivas iteraciones hasta que la soluciÃ³n converja
 ...
 ...
 \end{verbatim}
 
-\paragraph{El método SOR.} \index{Método SOR}El método SOR --\emph{Succesive OverRelaxation}-- se obtiene aplicando amortiguamiento al método de Gauss-Seidel. Aplicando el mismo razonamiento que el caso de Jacobi amortiguado, la expresión general para una iteración del método SOR es,
+\paragraph{El mÃ©todo SOR.} \index{MÃ©todo SOR}El mÃ©todo SOR --\emph{Succesive OverRelaxation}-- se obtiene aplicando amortiguamiento al mÃ©todo de Gauss-Seidel. Aplicando el mismo razonamiento que el caso de Jacobi amortiguado, la expresiÃ³n general para una iteraciÃ³n del mÃ©todo SOR es,
 
 \begin{equation*}
 x_i^{(s+1)}=\omega\cdot \overbrace{\frac{b_i-\sum_{j< i}a_{ij}x_j^{(s+1)}-\sum_{j> i}a_{ij}x_j^{(s)}}{a_{ii}}}^{x^{(*)}}+(1-\omega)\cdot x_i^{(s)}
 \end{equation*}
 
-Al igual que en el caso de Jacobi amortiguado, para implementar en Matlab el método SOR es suficiente añadir una línea que calcule el promedio de dos soluciones sucesivas,
+Al igual que en el caso de Jacobi amortiguado, para implementar en Matlab el mÃ©todo SOR es suficiente aÃ±adir una lÃ­nea que calcule el promedio de dos soluciones sucesivas,
 
 \begin{verbatim}
     xs=xs1;
@@ -2033,14 +2033,14 @@ Al igual que en el caso de Jacobi amortiguado, para implementar en Matlab el mét
         for j=1:i-1 %restamos la contribucion de todas las incognitas
             xs1(i)=xs1(i)-A(i,j)*xs1(j);       %por encima de x(i)
         end
-        for j=i+1:n %restamos la contribución de todas las incognitas
+        for j=i+1:n %restamos la contribuciÃ³n de todas las incognitas
             %por debajo de x(i)
             xs1(i)=xs1(i)-A(i,j)*xs(j);
         end
         %dividimos por el elemento de la diagonal,
         xs1(i)=xs1(i)/A(i,i);
     end
-     %amortiguamos la solución
+     %amortiguamos la soluciÃ³n
       xs1=w*xs1+(1-w)*xs;
      %calculamos la diferencia entre las dos soluciones,
         tolf=norm(xs1-xs);
@@ -2048,7 +2048,7 @@ Al igual que en el caso de Jacobi amortiguado, para implementar en Matlab el mét
         it=it+1;
 \end{verbatim}
 
-En forma matricial la expresión para una iteración del método SOR sería,
+En forma matricial la expresiÃ³n para una iteraciÃ³n del mÃ©todo SOR serÃ­a,
 \begin{equation*}
 x^{(s+1)}= \omega\cdot\overbrace{\left((D+L)^{-1}\cdot b-(D+L)^{-1}\cdot U\cdot x^{(s)}\right)}^{x^{(*)}}+(1-\omega)\cdot x^{(s)}
 \end{equation*}
@@ -2059,12 +2059,12 @@ Y tras reordenar,
 x^{(s+1)}= \omega\cdot\left((D+L)^{-1}\cdot b\right)+\left[(1-\omega)\cdot I-\omega\cdot(D+L)^{-1}\cdot U\right]\cdot x^{(s)}
 \end{equation*}
 
-De nuevo, podemos identificar, el término fijo, $f=\omega\cdot\left((D+L)^{-1}\cdot b\right)$ y la matriz del método, $H=\left((1-\omega)\cdot I-\omega\cdot(D+L)^{-1}\cdot U\right)$.
+De nuevo, podemos identificar, el tÃ©rmino fijo, $f=\omega\cdot\left((D+L)^{-1}\cdot b\right)$ y la matriz del mÃ©todo, $H=\left((1-\omega)\cdot I-\omega\cdot(D+L)^{-1}\cdot U\right)$.
 
-El siguiente fragmento de código muestra la obtención de $f$ y $H$ para el método SOR,
+El siguiente fragmento de cÃ³digo muestra la obtenciÃ³n de $f$ y $H$ para el mÃ©todo SOR,
 
 \begin{verbatim}
-%obtenemos el tamaño del sistema,
+%obtenemos el tamaÃ±o del sistema,
 
 n=size(A,1);
 %creamos un vector de soluciones inicial,
@@ -2081,7 +2081,7 @@ f=w*(D+L)^(-1)*b;
 H=(1-w)*I-w*(D+L)^(-1)*U;
 
 
-%calculamos la primera iteración
+%calculamos la primera iteraciÃ³n
 xs1=f+H*xs;
 
 %calculamos la diferencia entre las dos soluciones,
@@ -2090,22 +2090,22 @@ tolf=norm(x-x0);
 it=1;
 \end{verbatim}
 
-\subsection{Análisis de convergencia}\index{Análisis de convergencia}
-En la introducción a los métodos iterativos dejamos abierta la cuestión de su convergencia. Vamos a analizar en más detalle en qué condiciones podemos asegurar que un método iterativo, aplicado a un sistema de ecuaciones lineales concreto, converge. 
+\subsection{AnÃ¡lisis de convergencia}\index{AnÃ¡lisis de convergencia}
+En la introducciÃ³n a los mÃ©todos iterativos dejamos abierta la cuestiÃ³n de su convergencia. Vamos a analizar en mÃ¡s detalle en quÃ© condiciones podemos asegurar que un mÃ©todo iterativo, aplicado a un sistema de ecuaciones lineales concreto, converge. 
 
-En primer lugar, tenemos que definir qué entendemos por convergencia. Cuando un método iterativo converge, lo hace en forma asintótica. Es decir, haría falta un número infinito de iteraciones para alcanzar la solución exacta.
+En primer lugar, tenemos que definir quÃ© entendemos por convergencia. Cuando un mÃ©todo iterativo converge, lo hace en forma asintÃ³tica. Es decir, harÃ­a falta un nÃºmero infinito de iteraciones para alcanzar la soluciÃ³n exacta.
 
 \begin{equation*}
 x^{(0)}\rightarrow x^{(1)} \rightarrow x^{(2)}\rightarrow \cdots \rightarrow x^{(\infty)}=x
 \end{equation*}
 
-Lógicamente, es inviable realizar un número infinito de iteraciones. Por esta razón, las soluciones de los métodos iterativos son siempre aproximadas; realizamos un número finito de iteraciones hasta cumplir una determinada condición de convergencia. Como no conocemos la solución exacta, imponemos dicha condición entre dos iteraciones sucesivas,
+LÃ³gicamente, es inviable realizar un nÃºmero infinito de iteraciones. Por esta razÃ³n, las soluciones de los mÃ©todos iterativos son siempre aproximadas; realizamos un nÃºmero finito de iteraciones hasta cumplir una determinada condiciÃ³n de convergencia. Como no conocemos la soluciÃ³n exacta, imponemos dicha condiciÃ³n entre dos iteraciones sucesivas,
 \begin{equation*}
  \lVert x^{(s+1)}-x^{(s)}\rVert \leq C \Rightarrow  \lVert x^{(s+1)}-x\rVert = \lvert e^{(s+1)} \rvert
 \end{equation*}
-Donde $e^{(s+1)}$ representaría el error \emph{real} de convergencia cometido en la iteración $s+1$.
+Donde $e^{(s+1)}$ representarÃ­a el error \emph{real} de convergencia cometido en la iteraciÃ³n $s+1$.
 
-Tomando como punto de partida la expresión general del cálculo de una iteración en forma matricial,
+Tomando como punto de partida la expresiÃ³n general del cÃ¡lculo de una iteraciÃ³n en forma matricial,
 \begin{equation*}
 x^{(s+1)}=f+H\cdot x^{(s)}
 \end{equation*}
@@ -2115,33 +2115,33 @@ Podemos expresar el error de convergencia como,
 e^{(s+1)}=x^{(s+1)}-x=f+H\cdot x^{(s)}-x
 \end{equation*}
 
-Pero la solución exacta, si pudiera alcanzarse, cumpliría,
+Pero la soluciÃ³n exacta, si pudiera alcanzarse, cumplirÃ­a,
 
 \begin{equation*}
 x=f+H\cdot x
 \end{equation*}
 
-Y si sustituimos en la expresión del error de convergencia,
+Y si sustituimos en la expresiÃ³n del error de convergencia,
 
 \begin{equation*}
 e^{(s+1)}=f+H\cdot x^{(s)}-f-H\cdot x
 \end{equation*}
 
-Llegamos finalmente a la siguiente expresión, que relaciona los errores de convergencia de dos iteraciones sucesivas,
+Llegamos finalmente a la siguiente expresiÃ³n, que relaciona los errores de convergencia de dos iteraciones sucesivas,
 
 \begin{equation*}
 e^{(s+1)}=H\cdot e^{(s)}
 \end{equation*}
 
-Para que el error disminuya de iteración en iteración y el método converja, es necesario que la matriz del método $H$ tenga norma-2  menor que la unidad.
+Para que el error disminuya de iteraciÃ³n en iteraciÃ³n y el mÃ©todo converja, es necesario que la matriz del mÃ©todo $H$ tenga norma-2  menor que la unidad.
 
-Supongamos que un sistema de dimension $n$ su matriz del método $H$, tiene un conjunto de $n$ autovectores linealmente independientes, $w_1, \ w_2, \cdots, \ w_n$, cada uno asociado a su correspondiente autovalor, $\lambda_1, \ \lambda_2, \ \cdots,\ \lambda_n$. El error de convergencia, es también un vector de dimensión $n$, por tanto podemos expresarlo como una combinación lineal de los $n$ autovectores linealmente independientes de la matriz $H$. Supongamos que lo hacemos para el error de convergencia $e^{(0)}$correspondiente al valor inicial de la solución $x^{(0)}$,
+Supongamos que un sistema de dimension $n$ su matriz del mÃ©todo $H$, tiene un conjunto de $n$ autovectores linealmente independientes, $w_1, \ w_2, \cdots, \ w_n$, cada uno asociado a su correspondiente autovalor, $\lambda_1, \ \lambda_2, \ \cdots,\ \lambda_n$. El error de convergencia, es tambiÃ©n un vector de dimensiÃ³n $n$, por tanto podemos expresarlo como una combinaciÃ³n lineal de los $n$ autovectores linealmente independientes de la matriz $H$. Supongamos que lo hacemos para el error de convergencia $e^{(0)}$correspondiente al valor inicial de la soluciÃ³n $x^{(0)}$,
 
 \begin{equation*}
 e^{(0)}=\alpha_1\cdot w_1+\alpha_2\cdot w_2+\cdots+\alpha_n\cdot w_n
 \end{equation*}
 
-Si empleamos la ecuación deducida antes para la relación del error entre dos iteraciones sucesivas y recordando que aplicar una matriz a un autovector, es equivalente a multiplicarlo por el autovalor correspondientes: $H\cdot w_i=\lambda_i\cdot w_i$, obtenemos para el error de convergencia en la iteración $s$,
+Si empleamos la ecuaciÃ³n deducida antes para la relaciÃ³n del error entre dos iteraciones sucesivas y recordando que aplicar una matriz a un autovector, es equivalente a multiplicarlo por el autovalor correspondientes: $H\cdot w_i=\lambda_i\cdot w_i$, obtenemos para el error de convergencia en la iteraciÃ³n $s$,
 
 \begin{align*}
 e^{(1)}&=H\cdot e^{(0)}=\alpha_1\cdot \lambda_1 \cdot  w_1+\alpha_2\cdot \lambda_2 \cdot  w_2+\cdots+\alpha_n\cdot \lambda_n \cdot w_n\\
@@ -2150,35 +2150,35 @@ e^{(2)}&=H\cdot e^{(1)}=H^2\cdot e^{(0)}=\alpha_1\cdot \lambda_1^2 \cdot  w_1+\a
 e^{(s)}&=H\cdot e^{(s-1)}=H^s\cdot e^{(0)}=\alpha_1\cdot \lambda_1^s \cdot  w_1+\alpha_2\cdot \lambda_2^s \cdot  w_2+\cdots+\alpha_n\cdot \lambda_n^s \cdot w_n
 \end{align*}
 
-Para que el error tienda a cero, $e^{(s)}\rightarrow 0$ al aumentar $s$, para cualquier combinación inicial de valores $\alpha_i$, esto es para cualquier aproximación inicial $x^{(0)}$, es necesario que todos los autovalores de la matriz del método cumplan,
+Para que el error tienda a cero, $e^{(s)}\rightarrow 0$ al aumentar $s$, para cualquier combinaciÃ³n inicial de valores $\alpha_i$, esto es para cualquier aproximaciÃ³n inicial $x^{(0)}$, es necesario que todos los autovalores de la matriz del mÃ©todo cumplan,
 
 \begin{equation*}
 \vert \lambda_i \vert < 1
 \end{equation*}
 
-Por tanto, el sistema converge si el radio espectral de la matriz del método es menor que la unidad. \footnote{El radio espectral de una matriz es el mayor de sus autovalores en valor absoluto. Ver capítulo \ref{resp}.}
+Por tanto, el sistema converge si el radio espectral de la matriz del mÃ©todo es menor que la unidad. \footnote{El radio espectral de una matriz es el mayor de sus autovalores en valor absoluto. Ver capÃ­tulo \ref{resp}.}
 
 \begin{equation*}
 \rho(H)<1 \Rightarrow \lim_{s\rightarrow \infty}e^{(s)}=0
 \end{equation*}
 
-\paragraph{Velocidad de convergencia.} \index{Velocidad de convergencia}Para un número de iteraciones suficientemente grande, el radio espectral de la matriz del método nos da la velocidad de convergencia. Esto es debido a que el resto de los términos del error, asociados a otros autovalores más pequeños tienden a cero más  deprisa. Por tanto podemos hacer la siguiente aproximación, donde estamos suponiendo que el autovalor $\lambda_n$ es el radio espectral,
+\paragraph{Velocidad de convergencia.} \index{Velocidad de convergencia}Para un nÃºmero de iteraciones suficientemente grande, el radio espectral de la matriz del mÃ©todo nos da la velocidad de convergencia. Esto es debido a que el resto de los tÃ©rminos del error, asociados a otros autovalores mÃ¡s pequeÃ±os tienden a cero mÃ¡s  deprisa. Por tanto podemos hacer la siguiente aproximaciÃ³n, donde estamos suponiendo que el autovalor $\lambda_n$ es el radio espectral,
 
 \begin{equation*}
 e^{(s)}\approx c_n \rho(h)^s w_n= c_n \lambda_n^s w_n
 \end{equation*}
 
-Podemos ahora calcular cuantas iteraciones nos costará reducir un error inicial por debajo de un determinado valor. Esto dependerá de la solución inicial y de radio espectral de la matriz del método,
+Podemos ahora calcular cuantas iteraciones nos costarÃ¡ reducir un error inicial por debajo de un determinado valor. Esto dependerÃ¡ de la soluciÃ³n inicial y de radio espectral de la matriz del mÃ©todo,
 \begin{equation*}
 e^{(s)}\approx  \rho(h)^s e^{(0)} \Rightarrow \frac{e^{(s)}}{e^{(0)}} \approx \rho(h)^s
 \end{equation*}
 
-así por ejemplo si queremos reducir el error inicial en $m$ dígitos,
+asÃ­ por ejemplo si queremos reducir el error inicial en $m$ dÃ­gitos,
 \begin{equation*}
 \frac{e^{(s)}}{e^{(0)}} \approx \rho(h)^s \leq 10^{-m} \Rightarrow s \geq \frac{-m}{\log_{10}\left(\rho(H)\right)}
 \end{equation*}
 
-La matriz del método juega por tanto un papel fundamental tanto en la convergencia del método, como en la velocidad (número de iteraciones) con la que el método converge. Los métodos amortiguados, permiten modificar la matriz de convergencia, gracias al factor de amortiguamiento $\omega$, haciendo que sistemas para los que no es posible encontrar una solución mediante un método iterativo converjan.
+La matriz del mÃ©todo juega por tanto un papel fundamental tanto en la convergencia del mÃ©todo, como en la velocidad (nÃºmero de iteraciones) con la que el mÃ©todo converge. Los mÃ©todos amortiguados, permiten modificar la matriz de convergencia, gracias al factor de amortiguamiento $\omega$, haciendo que sistemas para los que no es posible encontrar una soluciÃ³n mediante un mÃ©todo iterativo converjan.
 
 Como ejemplo, el sistema,
 
@@ -2198,18 +2198,18 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-No converge si tratamos de resolverlo por el método de Jacobi. Sin embargo si es posible obtener su solución empleando el método de Jacobi Amortiguado. La figura \ref{fig:cjjam}  muestra la evolución de la tolerancia para dicho sistema empleando ambos métodos.
+No converge si tratamos de resolverlo por el mÃ©todo de Jacobi. Sin embargo si es posible obtener su soluciÃ³n empleando el mÃ©todo de Jacobi Amortiguado. La figura \ref{fig:cjjam}  muestra la evoluciÃ³n de la tolerancia para dicho sistema empleando ambos mÃ©todos.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{comjjam.eps}
-\caption{Evolución de la tolerancia para un mismo sistema empleando el metodo de Jacobi (diverge) y el de Jacobi amortiguado (converge).}
+\caption{EvoluciÃ³n de la tolerancia para un mismo sistema empleando el metodo de Jacobi (diverge) y el de Jacobi amortiguado (converge).}
 \label{fig:cjjam}
 
 
 \end{figure}
 
-Si calculamos el radio espectral de la matriz del método, para el método de Jacobi tendríamos,
+Si calculamos el radio espectral de la matriz del mÃ©todo, para el mÃ©todo de Jacobi tendrÃ­amos,
 \begin{verbatim}
 >> A=[1 2 -1  ; 2 -5 1;1 -1 3]
 
@@ -2240,9 +2240,9 @@ radio_espectral =
     1.0597
 \end{verbatim}
 
-El radio espectral es mayor que la unidad y el método no converge.
+El radio espectral es mayor que la unidad y el mÃ©todo no converge.
 
-SI repetimos el cálculo para el método de Jacobi amortiguado, con $\omega=0.5$
+SI repetimos el cÃ¡lculo para el mÃ©todo de Jacobi amortiguado, con $\omega=0.5$
 \begin{verbatim}
 >> H=(1-0.5)*eye(3)-0.5*diag(diag(A))^-1*(A-diag(diag(A)))
 
@@ -2267,9 +2267,9 @@ radio_espectral =
     0.6866
 \end{verbatim}
 
-El radio espectral es ahora menor que la unidad y el método converge.
+El radio espectral es ahora menor que la unidad y el mÃ©todo converge.
 
-Por último indicar que cualquiera de los métodos iterativos descrito converge para un sistema que cumpla que su matriz de coeficientes es estrictamente diagonal dominante.
+Por Ãºltimo indicar que cualquiera de los mÃ©todos iterativos descrito converge para un sistema que cumpla que su matriz de coeficientes es estrictamente diagonal dominante.
 
 
 

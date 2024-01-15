@@ -1,19 +1,19 @@
-\chapter{IntroducciÛn al c·lculo simbÛlico}\index{C·lculo Simbolico}
-En este ˙ltimo capÌtulo vamos a introducir un mÈtodo de c·lculo que difiere notablemente de lo visto  en los capÌtulos anteriores: se trata del c·lculo simbÛlico. Hasta ahora, hemos empleado siempre el ordenador para hacer c·lculo numÈrico. Las variables se definÌan asign·ndoles un valor numÈrico y despuÈs eran empleadas en operaciones algebraicas o se les aplicaban funciones matem·ticas para obtener a partir de ellas resultados numÈricos.
+\chapter{Introducci√≥n al c√°lculo simb√≥lico}\index{C√°lculo Simbolico}
+En este √∫ltimo cap√≠tulo vamos a introducir un m√©todo de c√°lculo que difiere notablemente de lo visto  en los cap√≠tulos anteriores: se trata del c√°lculo simb√≥lico. Hasta ahora, hemos empleado siempre el ordenador para hacer c√°lculo num√©rico. Las variables se defin√≠an asign√°ndoles un valor num√©rico y despu√©s eran empleadas en operaciones algebraicas o se les aplicaban funciones matem√°ticas para obtener a partir de ellas resultados num√©ricos.
 
-Sin embargo, en matem·ticas y en fÌsica, es practica habitual realizar operaciones con variables y funciones sin asignarles un resultado numÈrico. Un ejemplo tÌpico es el de la derivaciÛn de una funciÛn,
+Sin embargo, en matem√°ticas y en f√≠sica, es practica habitual realizar operaciones con variables y funciones sin asignarles un resultado num√©rico. Un ejemplo t√≠pico es el de la derivaci√≥n de una funci√≥n,
 
 \begin{equation*}
 f(x) = \sqrt{1-\ln x} \rightarrow f'(x) =-\frac{1}{2x\sqrt{1 - \ln x}} 
 \end{equation*}  
 
-A partir de una expresiÛn \emph{simbÛlica} de la funciÛn obtenemos su derivada expresada tambiÈn de modo \emph{simbÛlico} como otra funciÛn. TambiÈn con un computador es posible hacer este tipo de operaciones, a las que se da el nombre de c·lculo simbÛlico para distinguirlas del c·lculo numÈrico.  
+A partir de una expresi√≥n \emph{simb√≥lica} de la funci√≥n obtenemos su derivada expresada tambi√©n de modo \emph{simb√≥lico} como otra funci√≥n. Tambi√©n con un computador es posible hacer este tipo de operaciones, a las que se da el nombre de c√°lculo simb√≥lico para distinguirlas del c√°lculo num√©rico.  
 
 
-\section{C·lculo simbÛlico en el entorno de Matlab}
-Como se ha mostrado en capÌtulos anteriores, la funcionalidad que aportan los comandos b·sicos de Matlab puede ser ampliada, por parte del usuario, mediante la construcciÛn de funciones y \emph{scripts}. Matlab por su parte, tiene un amplio conjunto de funciones para aplicaciones especÌficas agrupadas en las llamadas \emph{toolboxes}. AsÌ por ejemplo, hay \emph{toolboxes} especÌficas para tratamiento de datos, procesamiento de seÒal, ecuaciones diferenciales en derivadas parciales y c·lculo simbÛlico entre otras. 
+\section{C√°lculo simb√≥lico en el entorno de Matlab}
+Como se ha mostrado en cap√≠tulos anteriores, la funcionalidad que aportan los comandos b√°sicos de Matlab puede ser ampliada, por parte del usuario, mediante la construcci√≥n de funciones y \emph{scripts}. Matlab por su parte, tiene un amplio conjunto de funciones para aplicaciones espec√≠ficas agrupadas en las llamadas \emph{toolboxes}. As√≠ por ejemplo, hay \emph{toolboxes} espec√≠ficas para tratamiento de datos, procesamiento de se√±al, ecuaciones diferenciales en derivadas parciales y c√°lculo simb√≥lico entre otras. 
 
-Las funciones de una \emph{toolbox} no se distinguen, en cuanto a su uso, de las funciones b·sicas de Matlab y su sintaxis es la misma. Lo ˙nico necesario es que la \emph{toolbox} en cuestiÛn estÈ instalada en Matlab. Para saber quÈ \emph{toolboxes} de Matlab est·n instaladas en un ordenador concreto basta introducir en la ventana de comandos de Matlab el comando \texttt{ver}. \index{VersiÛn (de Matlab)}
+Las funciones de una \emph{toolbox} no se distinguen, en cuanto a su uso, de las funciones b√°sicas de Matlab y su sintaxis es la misma. Lo √∫nico necesario es que la \emph{toolbox} en cuesti√≥n est√© instalada en Matlab. Para saber qu√© \emph{toolboxes} de Matlab est√°n instaladas en un ordenador concreto basta introducir en la ventana de comandos de Matlab el comando \texttt{ver}. \index{Versi√≥n (de Matlab)}
 
 \begin{verbatim}
 >> ver
@@ -60,11 +60,11 @@ System Identification Toolbox                         Version 9.2        (R2015a
 Wavelet Toolbox                                       Version 4.14.1     (R2015a)
 \end{verbatim} 
 
-Este comando muestra la versiÛn de Matlab asÌ como las \emph{toolboxes} instaladas. Para poder realizar c·lculo simbÛlico necesitamos tener \texttt{Symbolic Math Toolbox}, marcada en rojo en la relaciÛn de Toolboxes que se acaba de mostrar.
+Este comando muestra la versi√≥n de Matlab as√≠ como las \emph{toolboxes} instaladas. Para poder realizar c√°lculo simb√≥lico necesitamos tener \texttt{Symbolic Math Toolbox}, marcada en rojo en la relaci√≥n de Toolboxes que se acaba de mostrar.
 
-\section{Variables y expresiones simbÛlicas}
-\subsection{Variables simbÛlicas} \index{Variable! SimbÛlica}
-Una variable simbÛlica, a diferencia de las variables ordinarias de Matlab, no contiene un valor; simplemente es un objeto que puede manipularse empleando reglas  algebraicas ordinarias. Para crear una variable simbÛlica, se emplea el comando \texttt{syms},
+\section{Variables y expresiones simb√≥licas}
+\subsection{Variables simb√≥licas} \index{Variable! Simb√≥lica}
+Una variable simb√≥lica, a diferencia de las variables ordinarias de Matlab, no contiene un valor; simplemente es un objeto que puede manipularse empleando reglas  algebraicas ordinarias. Para crear una variable simb√≥lica, se emplea el comando \texttt{syms},
 
 \begin{verbatim}
 >> syms x
@@ -73,7 +73,7 @@ x =
 x
 \end{verbatim}
 
-Cuando pedimos a Matlab que nos muestre el contenido de la variable \texttt{x} nos indica que contiene el sÌmbolo \texttt{x}. Es importante remarcar que aquÌ no se trata de un car·cter sino de un sÌmbolo con el que se pueden realizar operaciones algebraicas. AsÌ, por ejemplo,
+Cuando pedimos a Matlab que nos muestre el contenido de la variable \texttt{x} nos indica que contiene el s√≠mbolo \texttt{x}. Es importante remarcar que aqu√≠ no se trata de un car√°cter sino de un s√≠mbolo con el que se pueden realizar operaciones algebraicas. As√≠, por ejemplo,
 \begin{verbatim}
 >> syms a b c
 >> c = a - b + a + b 
@@ -81,9 +81,9 @@ c =
 2*a
 \end{verbatim}
 
-Las tres variables \texttt{a}, \texttt{b} y \texttt{c} admiten operaciones aritmÈticas, cuyo resultado es simbÛlico, \texttt{2*a}, en lugar de numÈrico.
+Las tres variables \texttt{a}, \texttt{b} y \texttt{c} admiten operaciones aritm√©ticas, cuyo resultado es simb√≥lico, \texttt{2*a}, en lugar de num√©rico.
 
-Una forma alternativa de crear variables simbÛlicas es empleando la funciÛn \texttt{sym}.
+Una forma alternativa de crear variables simb√≥licas es empleando la funci√≥n \texttt{sym}.
 \begin{verbatim}
 >> a = sym('b') 
 a = 
@@ -93,7 +93,7 @@ b
 ans = 
 b^(1/2)
 \end{verbatim}
-En este caso el nombre de la variable y el sÌmbolo no tienen porquÈ coincidir y las variables hay que crearlas de una en una. La funciÛn \texttt{sym}, nos permite tambiÈn definir n˙meros 'simbÛlicos', que Matlab maneja de modo an·logo a cualquier otro sÌmbolo,
+En este caso el nombre de la variable y el s√≠mbolo no tienen porqu√© coincidir y las variables hay que crearlas de una en una. La funci√≥n \texttt{sym}, nos permite tambi√©n definir n√∫meros 'simb√≥licos', que Matlab maneja de modo an√°logo a cualquier otro s√≠mbolo,
 \begin{verbatim}
 >> dos = sym('2') 
 dos = 
@@ -104,7 +104,7 @@ ans =
 2^(1/2)
 \end{verbatim}
 
-TambiÈn es posible crear vectores y matrices simbÛlicas a partir de otras variables simbÛlicas,
+Tambi√©n es posible crear vectores y matrices simb√≥licas a partir de otras variables simb√≥licas,
 \begin{verbatim}
 >> syms a b c d
  
@@ -115,7 +115,7 @@ A =
 [ c, c, b]
 \end{verbatim}  
 
-o bien, lo que suele ser m·s frecuente, indicando la dimensiÛn de la matriz que deseamos crear,
+o bien, lo que suele ser m√°s frecuente, indicando la dimensi√≥n de la matriz que deseamos crear,
 \begin{verbatim}
 >> A = sym('a',[3,3]) 
 A = 
@@ -123,7 +123,7 @@ A =
 [ a2_1, a2_2, a2_3]
 [ a3_1, a3_2, a3_3]
 \end{verbatim}
-Es posible elegir el formato de los elementos simbÛlicos empleando comandos parecidos a los que emplea la funciÛn \texttt{fprintf} (ver secciÛn \ref{fpf}),
+Es posible elegir el formato de los elementos simb√≥licos empleando comandos parecidos a los que emplea la funci√≥n \texttt{fprintf} (ver secci√≥n \ref{fpf}),
 \begin{verbatim}
 >> A = sym('a%d%d',[3,3]) 
 A = 
@@ -131,7 +131,7 @@ A =
 [ a21, a22, a23]
 [ a31, a32, a33]
 \end{verbatim}
-Las operaciones que realicemos con matrices simbÛlicas dar·n tambiÈn resultados simbÛlicos,
+Las operaciones que realicemos con matrices simb√≥licas dar√°n tambi√©n resultados simb√≥licos,
 
 \begin{verbatim}
 >> b = sym('b%d',[3,1]) 
@@ -147,7 +147,7 @@ c =
  a31*b1 + a32*b2 + a33*b3
 \end{verbatim}
 
-Por ˙ltimo, el comando \texttt{sym} permite tambiÈn convertir una expresiÛn numÈrica en su equivalente simbÛlica,
+Por √∫ltimo, el comando \texttt{sym} permite tambi√©n convertir una expresi√≥n num√©rica en su equivalente simb√≥lica,
 \begin{verbatim}
 >> a = [0.1 0.3 0.22
 2.4 3 3.3
@@ -166,8 +166,8 @@ A =
 
 
 
-\subsection{Expresiones simbÛlicas}
-Es posible combinar una o m·s variables simbÛlicas con los operadores matem·ticos de Matlab para obtener expresiones simbÛlicas,
+\subsection{Expresiones simb√≥licas}
+Es posible combinar una o m√°s variables simb√≥licas con los operadores matem√°ticos de Matlab para obtener expresiones simb√≥licas,
 
 \begin{verbatim}
 >> syms a b c x
@@ -184,9 +184,9 @@ rm =
 -(b + (b^2 - 4*a*c)^(1/2))/(2*a)
 \end{verbatim}
 
-En este ejemplo, se han creado primero cuatro variables simbÛlicas y, a partir de ellas, se han generado tres expresiones simbÛlicas, la primera es un polinomio de grado dos y las dos siguientes las expresiones analÌticas de sus raÌces.
+En este ejemplo, se han creado primero cuatro variables simb√≥licas y, a partir de ellas, se han generado tres expresiones simb√≥licas, la primera es un polinomio de grado dos y las dos siguientes las expresiones anal√≠ticas de sus ra√≠ces.
 
-TambiÈn es posible crear funciones simbÛlicas a partir de variables simbÛlicas, expresiones simbÛlicas o funciones matem·ticas. Hay varias maneras de generarlas, pero quiz· la m·s sencilla, es usar variables simbÛlicas previamente definidas,
+Tambi√©n es posible crear funciones simb√≥licas a partir de variables simb√≥licas, expresiones simb√≥licas o funciones matem√°ticas. Hay varias maneras de generarlas, pero quiz√° la m√°s sencilla, es usar variables simb√≥licas previamente definidas,
 
 \begin{verbatim}
 >> syms x
@@ -195,9 +195,9 @@ f(x) =
 sin(x)
 \end{verbatim}
 
-Las variables de la funciÛn se indican entre parÈntesis a continuaciÛn del nombre de la funciÛn y antes del sÌmbolo '\texttt{=}'. Si hay varias (posibles) variables y no se indica expresamente, Matlab tomar· coma variable de la funciÛn aquella que alfabÈticamente estÈ m·s cerca de la letra $x$. 
+Las variables de la funci√≥n se indican entre par√©ntesis a continuaci√≥n del nombre de la funci√≥n y antes del s√≠mbolo '\texttt{=}'. Si hay varias (posibles) variables y no se indica expresamente, Matlab tomar√° coma variable de la funci√≥n aquella que alfab√©ticamente est√© m√°s cerca de la letra $x$. 
 
-Es posible definir funciones de m·s de una variable,
+Es posible definir funciones de m√°s de una variable,
 
 \begin{verbatim}
 >> syms x y
@@ -206,7 +206,7 @@ g(x, y) =
 sin((x^2 + y^2)^(1/2))
 \end{verbatim}
 
-o tambiÈn, combinar funciones simbÛlicas mediante operadores aritmÈticos o composiciÛn de funciones, 
+o tambi√©n, combinar funciones simb√≥licas mediante operadores aritm√©ticos o composici√≥n de funciones, 
 \begin{verbatim}
 >> h(x,y) = f(x) - g(x,y)
 h(x, y) =
@@ -221,10 +221,10 @@ r(x, y) =
 sin(sin((x^2 + y^2)^(1/2)))
 \end{verbatim}
 
-\subsection{SimplificaciÛn de expresiones simbÛlicas}
-Matlab permite, dada una expresiÛn simbÛlica, obtener una equivalente m·s sencilla. En general, este proceso de simplificaciÛn no es trivial ni unÌvoco, ya que una expresiÛn puede admitir varias formas simplificadas. Es tambiÈn posible que la expresiÛn simbÛlica que deseamos simplificar, no sea simplificable.
+\subsection{Simplificaci√≥n de expresiones simb√≥licas}
+Matlab permite, dada una expresi√≥n simb√≥lica, obtener una equivalente m√°s sencilla. En general, este proceso de simplificaci√≥n no es trivial ni un√≠voco, ya que una expresi√≥n puede admitir varias formas simplificadas. Es tambi√©n posible que la expresi√≥n simb√≥lica que deseamos simplificar, no sea simplificable.
 
-Es interesante, sobretodo cuando se trata de expresiones obtenidas a partir de c·lculos simbÛlicos, tratar de obtener una expresiÛn lo m·s simplificada posible. La razÛn es que resulta mucho m·s f·cil de entender y manipular. Matlab suministra el comando \texttt{simplify} para simplificar expresiones simbÛlicas. AsÌ por ejemplo, si construimos la funciÛn simbÛlica,
+Es interesante, sobretodo cuando se trata de expresiones obtenidas a partir de c√°lculos simb√≥licos, tratar de obtener una expresi√≥n lo m√°s simplificada posible. La raz√≥n es que resulta mucho m√°s f√°cil de entender y manipular. Matlab suministra el comando \texttt{simplify} para simplificar expresiones simb√≥licas. As√≠ por ejemplo, si construimos la funci√≥n simb√≥lica,
 
 \begin{verbatim}
 >> f(x) = sin(x)^2 + cos(x)^2 
@@ -238,9 +238,9 @@ y le aplicamos el comando \texttt{simplify},
 ans(x) =
 1
 \end{verbatim}
-Obtendremos un $1$, como cabrÌa esperar. Este ejemplo es particularmente simple y, aunque sirve para ilustrar el funcionamiento del comando, no siempre es posible conseguir soluciones tan satisfactorias.
+Obtendremos un $1$, como cabr√≠a esperar. Este ejemplo es particularmente simple y, aunque sirve para ilustrar el funcionamiento del comando, no siempre es posible conseguir soluciones tan satisfactorias.
 
-Veamos otro ejemplo que muestra la ambig¸edad del comando \texttt{simplify},
+Veamos otro ejemplo que muestra la ambig√ºedad del comando \texttt{simplify},
 
 \begin{verbatim}
 >> syms x
@@ -263,10 +263,10 @@ ans =
 (x - 1)^2
 \end{verbatim}
 
-Matlab simplifica el polinomio de grado dos suministrado convirtiÈndolo en un binomio. La pregunta que cabe hacerse es en quÈ medida podemos considerar el binomio una expresiÛn simplificada del polinomio del que procede. AsÌ por ejemplo, si estamos sumando polinomios, la expresiÛn desarrollada resulta m·s \emph{simple} que la expresiÛn binomial.
+Matlab simplifica el polinomio de grado dos suministrado convirti√©ndolo en un binomio. La pregunta que cabe hacerse es en qu√© medida podemos considerar el binomio una expresi√≥n simplificada del polinomio del que procede. As√≠ por ejemplo, si estamos sumando polinomios, la expresi√≥n desarrollada resulta m√°s \emph{simple} que la expresi√≥n binomial.
 
-\subsection{SustituciÛn de variables por valores numÈricos}
-Es posible, una vez definida una expresiÛn simbÛlica, sustituir sus variables por valores numÈricos mediante el uso del comando \texttt{subs},
+\subsection{Sustituci√≥n de variables por valores num√©ricos}
+Es posible, una vez definida una expresi√≥n simb√≥lica, sustituir sus variables por valores num√©ricos mediante el uso del comando \texttt{subs},
 
 \begin{verbatim}
 >> p = sin(x)^2 -2*x 
@@ -278,24 +278,24 @@ v =
 sin(2)^2 - 4
 \end{verbatim}
 
-La variable \texttt{x} ha sido sustituida, en la expresiÛn simbÛlica \texttt{p}, por el n˙mero $2$. La expresiÛn resultante sigue siendo todavÌa simbÛlica.
-Si lo que deseamos es obtener el valor numÈrico  de la funciÛn \texttt{p} en el punto $2$, tenemos que convertir la expresiÛn simbÛlica resultante en su correspondiente valor numÈrico. Para ello se emplea el comando \texttt{double},
+La variable \texttt{x} ha sido sustituida, en la expresi√≥n simb√≥lica \texttt{p}, por el n√∫mero $2$. La expresi√≥n resultante sigue siendo todav√≠a simb√≥lica.
+Si lo que deseamos es obtener el valor num√©rico  de la funci√≥n \texttt{p} en el punto $2$, tenemos que convertir la expresi√≥n simb√≥lica resultante en su correspondiente valor num√©rico. Para ello se emplea el comando \texttt{double},
 
 \begin{verbatim}
 >> double(v)
 ans =
    -3.1732
 \end{verbatim}
-Este comando toma su nombre del tipo de formato con que el ordenador va a representar el resultado; un n˙mero real guardado en doble precisiÛn\footnote{En realidad Matlab convierte los resultados a n˙meros reales o complejos de acuerdo con la expresiÛn simbÛlica de la que se han obtenido.}
+Este comando toma su nombre del tipo de formato con que el ordenador va a representar el resultado; un n√∫mero real guardado en doble precisi√≥n\footnote{En realidad Matlab convierte los resultados a n√∫meros reales o complejos de acuerdo con la expresi√≥n simb√≥lica de la que se han obtenido.}
 
-Otro comando de interÈs para pasar de simbÛlico a numÈrico es el comando \texttt{vpa} (\emph{variable precision arithmetic}).
+Otro comando de inter√©s para pasar de simb√≥lico a num√©rico es el comando \texttt{vpa} (\emph{variable precision arithmetic}).
 \begin{verbatim}
 >> vpa(v) 
 ans = 
 -3.1731781895681940426804159084511
 \end{verbatim}
-El n˙mero de dÌgitos obtenidos al hacer la conversiÛn es, por defecto, $32$. Dicho n˙mero puede ajustarse al 
-valor que se desee introduciÈndolo en \texttt{vpa} como un segundo par·metro,
+El n√∫mero de d√≠gitos obtenidos al hacer la conversi√≥n es, por defecto, $32$. Dicho n√∫mero puede ajustarse al 
+valor que se desee introduci√©ndolo en \texttt{vpa} como un segundo par√°metro,
 
 \begin{verbatim}
 >> vpa(v,5) 
@@ -303,7 +303,7 @@ ans =
 -3.1732
 \end{verbatim}
 
-Si una expresiÛn engloba m·s  de una variable simbÛlica es posible sustituir solo alguna o algunas de ellas, para ello basta indicar el nombre de la variable que se desea sustituir seguida de su valor,
+Si una expresi√≥n engloba m√°s  de una variable simb√≥lica es posible sustituir solo alguna o algunas de ellas, para ello basta indicar el nombre de la variable que se desea sustituir seguida de su valor,
 \begin{verbatim}
 >> syms x y z
 
@@ -324,7 +324,7 @@ fxz =
 x^4*y + x*y^4 + z*x*y
 \end{verbatim}
  
-Adem·s, es posible sustituir una variable simbÛlica por otra,
+Adem√°s, es posible sustituir una variable simb√≥lica por otra,
 
 \begin{verbatim}
 >> fxyx = subs(f,z,x) 
@@ -341,11 +341,11 @@ fxxx =
 \end{verbatim}
 
 
-\section{C·lculo infinitesimal}
-Es posible realizar operaciones tÌpicas del c·lculo infinitesimal como derivaciÛn e integraciÛn, empleando mÈtodos de c·lculo simbÛlico. A diferencia del c·lculo numÈrico, el resultado ser· ahora una expresiÛn. 
+\section{C√°lculo infinitesimal}
+Es posible realizar operaciones t√≠picas del c√°lculo infinitesimal como derivaci√≥n e integraci√≥n, empleando m√©todos de c√°lculo simb√≥lico. A diferencia del c√°lculo num√©rico, el resultado ser√° ahora una expresi√≥n. 
 
-\subsection{DerivaciÛn}
-Para obtener la derivada de una funciÛn simbÛlica, se emplea el comando \texttt{diff},
+\subsection{Derivaci√≥n}
+Para obtener la derivada de una funci√≥n simb√≥lica, se emplea el comando \texttt{diff},
 \begin{verbatim}
 >> syms x a
 >> f = a*exp(-x^2) 
@@ -355,9 +355,9 @@ a*exp(-x^2)
 df = 
 -2*a*x*exp(-x^2) 
 \end{verbatim}
-Matlab devuelve como resultado la derivada con respecto a la variable \texttt{x} de la funciÛn simbÛlica introducida. (Quiz· sea ˙til recordar que Matlab toma como variable de la funciÛn la variable simbÛlica mas prÛxima alfabÈticamente a la letra x.)
+Matlab devuelve como resultado la derivada con respecto a la variable \texttt{x} de la funci√≥n simb√≥lica introducida. (Quiz√° sea √∫til recordar que Matlab toma como variable de la funci√≥n la variable simb√≥lica mas pr√≥xima alfab√©ticamente a la letra x.)
 
-Si deseamos derivar una funciÛn respecto a una variable simbÛlica especÌfica, es preciso indicarlo expresamente, introduciendo dicha variable en la llamada al comando \texttt{diff} a continuaciÛn de la funciÛn que vamos a derivar y separada de Èsta por una coma. AsÌ lo indicamos si queremos derivar la funciÛn del ejemplo anterior respecto a la variable simbÛlica \texttt{a},
+Si deseamos derivar una funci√≥n respecto a una variable simb√≥lica espec√≠fica, es preciso indicarlo expresamente, introduciendo dicha variable en la llamada al comando \texttt{diff} a continuaci√≥n de la funci√≥n que vamos a derivar y separada de √©sta por una coma. As√≠ lo indicamos si queremos derivar la funci√≥n del ejemplo anterior respecto a la variable simb√≥lica \texttt{a},
 
 \begin{verbatim}
 >> dfa = diff(f,a) 
@@ -365,7 +365,7 @@ dfa =
 exp(-x^2)
 \end{verbatim}
 
-Es posible emplear el comando \texttt{diff} para obtener derivadas de orden superior. Para ello se introduce en la llamada el orden de la derivada a continuaciÛn del nombre de la funciÛn o, si es el caso, a continuaciÛn de la variable simbÛlica con respecto a la que se quiere derivar,
+Es posible emplear el comando \texttt{diff} para obtener derivadas de orden superior. Para ello se introduce en la llamada el orden de la derivada a continuaci√≥n del nombre de la funci√≥n o, si es el caso, a continuaci√≥n de la variable simb√≥lica con respecto a la que se quiere derivar,
 
 \begin{verbatim}
 >> df3 = diff(f,3) 
@@ -377,9 +377,9 @@ dfa2 =
 0
 \end{verbatim}
 
-En el primer caso hemos obtenido la derivada tercera con respecto a \texttt{x} de la funciÛn \texttt{f} de los ejemplos anteriores y en el segundo la derivada segunda de dicha funciÛn con respecto a la variable \texttt{a}. 
+En el primer caso hemos obtenido la derivada tercera con respecto a \texttt{x} de la funci√≥n \texttt{f} de los ejemplos anteriores y en el segundo la derivada segunda de dicha funci√≥n con respecto a la variable \texttt{a}. 
 
-Es f·cil comprobar que el resultado serÌa el mismo si derivamos la funciÛn original y las expresiones de las sucesivas derivadas obtenidas hasta alcanzar la derivada del orden deseado,
+Es f√°cil comprobar que el resultado ser√≠a el mismo si derivamos la funci√≥n original y las expresiones de las sucesivas derivadas obtenidas hasta alcanzar la derivada del orden deseado,
 \begin{verbatim}
 >> df = diff(f) 
 df = 
@@ -392,14 +392,14 @@ df2 =
 df3 = 
 12*a*x*exp(-x^2) - 8*a*x^3*exp(-x^2) 
 \end{verbatim}
-En an·lisis matem·tico, cuando una funciÛn posee m·s de una variable independiente, la derivaciÛn respecto a una de sus variables recibe el nombre de derivada parcial. AsÌ por ejemplo la funciÛn,
-$f(x,y) =\sin \left( \sqrt{x^2+y^2} \right)$ es una funciÛn de dos variables $x$ e $y$. Su derivada (parcial) con respecto a $x$ y su derivada parcial con respecto a $y$, se representan como,
+En an√°lisis matem√°tico, cuando una funci√≥n posee m√°s de una variable independiente, la derivaci√≥n respecto a una de sus variables recibe el nombre de derivada parcial. As√≠ por ejemplo la funci√≥n,
+$f(x,y) =\sin \left( \sqrt{x^2+y^2} \right)$ es una funci√≥n de dos variables $x$ e $y$. Su derivada (parcial) con respecto a $x$ y su derivada parcial con respecto a $y$, se representan como,
 \begin{align*}
 \frac{\partial f}{\partial x} &= x\cdot\frac{\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}} \\
 \frac{\partial f}{\partial y} &= y\cdot\frac{\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}}
 \end{align*}
 
-Podemos obtener dichas derivadas parciales, indicando al comando \texttt{diff} respecto a quÈ variable debe derivar, tal y como se ha mostrado anteriormente, siendo en nuestro ejemplo con respecto a $x$ e $y$,
+Podemos obtener dichas derivadas parciales, indicando al comando \texttt{diff} respecto a qu√© variable debe derivar, tal y como se ha mostrado anteriormente, siendo en nuestro ejemplo con respecto a $x$ e $y$,
 \begin{verbatim}
 >> syms x y
 >> fxy = sin(sqrt(x^2+y^2)) 
@@ -428,9 +428,9 @@ y^2 \cdot \frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2} \\
 x\cdot y \cdot\frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2} 
 \end{align*}
 
-Las derivadas calculadas respecto a variables distintas se llaman derivadas cruzadas, y no influye en ellas el orden en que se realice la derivaciÛn.
+Las derivadas calculadas respecto a variables distintas se llaman derivadas cruzadas, y no influye en ellas el orden en que se realice la derivaci√≥n.
 
-Para calcular las derivadas parciales de orden superior de una funciÛn, es suficiente indicar las variables con respecto a las cuales se desea derivar o, en el caso de que se calculen derivadas respecto a la misma variable, se puede tambiÈn indicar el orden. En los siguientes ejemplos de cÛdigo se muestra como obtener las derivadas segundas de la funciÛn que hemos venido utilizando a lo largo de esta secciÛn empleando ambos mÈtodos,
+Para calcular las derivadas parciales de orden superior de una funci√≥n, es suficiente indicar las variables con respecto a las cuales se desea derivar o, en el caso de que se calculen derivadas respecto a la misma variable, se puede tambi√©n indicar el orden. En los siguientes ejemplos de c√≥digo se muestra como obtener las derivadas segundas de la funci√≥n que hemos venido utilizando a lo largo de esta secci√≥n empleando ambos m√©todos,
 \begin{verbatim}
 >> sfx2 = diff(fxy,x,x) 
 sfx2 = 
@@ -467,7 +467,7 @@ sfyx =
 -(x*y*sin((x^2 + y^2)^(1/2)))/(x^2 + y^2) 
 \end{verbatim}
 
-Es posible emplear el comando de Matlab \texttt{pretty} para obtener una representaciÛn de una expresiÛn simbÛlica m·s f·cil de visualizar. Si la aplicamos al ˙ltimo de los resultados obtenidos en el ejemplo anterior obtenemos,
+Es posible emplear el comando de Matlab \texttt{pretty} para obtener una representaci√≥n de una expresi√≥n simb√≥lica m√°s f√°cil de visualizar. Si la aplicamos al √∫ltimo de los resultados obtenidos en el ejemplo anterior obtenemos,
 
 \begin{verbatim}
 >> pretty(sfyx)
@@ -478,19 +478,19 @@ Es posible emplear el comando de Matlab \texttt{pretty} para obtener una represe
        (x  + y )                   x  + y
 \end{verbatim}
 
-Es importante hacer notar que este comando no altera en modo alguno el valor de la expresiÛn simbÛlica, simplemente la muestra por pantalla en un formato distinto.
+Es importante hacer notar que este comando no altera en modo alguno el valor de la expresi√≥n simb√≥lica, simplemente la muestra por pantalla en un formato distinto.
 
-Es posible emplear Matlab para realizar c·lculos de gradientes, jacobianos, rotacionales, etc. No se incluye su descripciÛn en este manual, los interesados pueden consultar la ayuda de Matlab.
+Es posible emplear Matlab para realizar c√°lculos de gradientes, jacobianos, rotacionales, etc. No se incluye su descripci√≥n en este manual, los interesados pueden consultar la ayuda de Matlab.
 
 
-\subsection{IntegraciÛn} \index{IntegraciÛn! SimbÛlica}
-La integraciÛn indefinida en c·lculo simbÛlico permite obtener la primitiva de una funciÛn dada,
+\subsection{Integraci√≥n} \index{Integraci√≥n! Simb√≥lica}
+La integraci√≥n indefinida en c√°lculo simb√≥lico permite obtener la primitiva de una funci√≥n dada,
 \begin{equation*}
 F(x) = \int f(x)dx  \Leftrightarrow f(x) = \frac{dF(x)}{dx}  
 \end{equation*}
-Se trata de una operaciÛn m·s compleja que la derivaciÛn. De hecho, hay funciones para las que no es posible obtener una primitiva en forma simbÛlica, bien porque no existe, o bien porque los algoritmos empleados por Matlab no son capaces de obtenerla.
+Se trata de una operaci√≥n m√°s compleja que la derivaci√≥n. De hecho, hay funciones para las que no es posible obtener una primitiva en forma simb√≥lica, bien porque no existe, o bien porque los algoritmos empleados por Matlab no son capaces de obtenerla.
 
-El comando empleado para obtener la integral de una funciÛn es \texttt{int}. AsÌ por ejemplo, para obtener la primitiva de la funciÛn $f(x) = \sqrt{1-x^2}$ haremos,
+El comando empleado para obtener la integral de una funci√≥n es \texttt{int}. As√≠ por ejemplo, para obtener la primitiva de la funci√≥n $f(x) = \sqrt{1-x^2}$ haremos,
 \begin{verbatim}
 >> syms x
 >> f = sqrt(1-x^2) 
@@ -501,7 +501,7 @@ f =
 F = 
 asin(x)/2 + (x*(1 - x^2)^(1/2))/2
 \end{verbatim}
-Podemos comprobar el resultado obtenido aplicando la funciÛn \texttt{diff} vista en el apartado anterior,
+Podemos comprobar el resultado obtenido aplicando la funci√≥n \texttt{diff} vista en el apartado anterior,
 
 \begin{verbatim}
 >> diff(F) 
@@ -512,9 +512,9 @@ ans =
 ans = 
 (1 - x^2)^(1/2)
 \end{verbatim}
-Donde se ha hecho uso del comando \texttt{simplify} para recuperar la expresiÛn original.
+Donde se ha hecho uso del comando \texttt{simplify} para recuperar la expresi√≥n original.
 
-Como en otras funciones simbÛlicas, \texttt{int} calcula la integral con respecto a la variable simbÛlica m·s prÛxima a \texttt{x}, salvo que se indique expresamente respecto a quÈ variable simbÛlica se desea integrar. AsÌ por ejemplo,
+Como en otras funciones simb√≥licas, \texttt{int} calcula la integral con respecto a la variable simb√≥lica m√°s pr√≥xima a \texttt{x}, salvo que se indique expresamente respecto a qu√© variable simb√≥lica se desea integrar. As√≠ por ejemplo,
 \begin{verbatim}
 >> syms x a
 
@@ -534,9 +534,9 @@ Fx =
 Fa = 
 (x*log(a^2 + x^2))/2 
 \end{verbatim}
-en el primer y el segundo caso la integraciÛn se realiza con respecto a la variable \texttt{x}. En el tercer caso, la integraciÛn se realiza respecto a la variable \texttt{a}.
+en el primer y el segundo caso la integraci√≥n se realiza con respecto a la variable \texttt{x}. En el tercer caso, la integraci√≥n se realiza respecto a la variable \texttt{a}.
 
-Cuando no es posible encontrar una primitiva a una funciÛn, Matlab devuelve como resultado la expresiÛn \texttt{int(integrando)}, para indicar que no ha sido posible realizar la operaciÛn,
+Cuando no es posible encontrar una primitiva a una funci√≥n, Matlab devuelve como resultado la expresi√≥n \texttt{int(integrando)}, para indicar que no ha sido posible realizar la operaci√≥n,
 \begin{verbatim}
 >> f = sin(sinh(x)) 
 f = 
@@ -547,7 +547,7 @@ F =
 int(sin(sinh(x)), x)
 \end{verbatim}
 
-La funciÛn \texttt{int}, puede emplearse tambiÈn para calcular integrales definidas, si se le suministran los lÌmites de integraciÛn,
+La funci√≥n \texttt{int}, puede emplearse tambi√©n para calcular integrales definidas, si se le suministran los l√≠mites de integraci√≥n,
 
 \begin{verbatim}
 >> f = 10 * sin(x) 
@@ -559,11 +559,11 @@ F0pi =
 20
 \end{verbatim}
 
-\subsection{Series} \index{Series! SimbÛlicas}
-\index{Series! suma de series simbÛlicas}
+\subsection{Series} \index{Series! Simb√≥licas}
+\index{Series! suma de series simb√≥licas}
 
-\paragraph{Suma de series}Matlab permite calcular varias operaciones sobre sucesiones de las que se conoce el tÈrmino general. En este capÌtulo, solo nos referiremos a la suma de series. 
-Para ello se aplica el comando \texttt{symsum} indicando los lÌmites de la serie que se quiere sumar,
+\paragraph{Suma de series}Matlab permite calcular varias operaciones sobre sucesiones de las que se conoce el t√©rmino general. En este cap√≠tulo, solo nos referiremos a la suma de series. 
+Para ello se aplica el comando \texttt{symsum} indicando los l√≠mites de la serie que se quiere sumar,
 
 \begin{verbatim}
 >> syms k
@@ -575,9 +575,9 @@ pi^2/6
 ans =
 piecewise([1 <= a, Inf], [abs(a) < 1, -1/(a - 1)])
 \end{verbatim}
-El segundo ejemplo muestra el lÌmite de una serie geomÈtrica, donde si $a>1$ la serie no converge. Como siempre, Matlab toma por defecto como variable (Ìndice) la variable simbÛlica m·s prÛxima a \texttt{x}.
+El segundo ejemplo muestra el l√≠mite de una serie geom√©trica, donde si $a>1$ la serie no converge. Como siempre, Matlab toma por defecto como variable (√≠ndice) la variable simb√≥lica m√°s pr√≥xima a \texttt{x}.
 
-\paragraph{Serie de Taylor}\index{Series! Serie de Taylor de una funciÛn simbÛlica} Es posible calcular la expresiÛn de la serie de Taylor para una funciÛn simbÛlica. Para ello se emplea el comando \texttt{taylor}. Por defecto se obtienen tan solo los elementos de la serie hasta orden 5, aunque es posible obtener Ûrdenes superiores. A continuaciÛn se dan algunos ejemplos de uso,
+\paragraph{Serie de Taylor}\index{Series! Serie de Taylor de una funci√≥n simb√≥lica} Es posible calcular la expresi√≥n de la serie de Taylor para una funci√≥n simb√≥lica. Para ello se emplea el comando \texttt{taylor}. Por defecto se obtienen tan solo los elementos de la serie hasta orden 5, aunque es posible obtener √≥rdenes superiores. A continuaci√≥n se dan algunos ejemplos de uso,
 \begin{verbatim}
 >> syms x
 >> f = exp(x)
@@ -598,9 +598,9 @@ exp(1) + exp(1)*(x - 1) + (exp(1)*(x - 1)^2)/2 + (exp(1)*(x - 1)^3)/6 +
 (exp(1)*(x - 1)^4)/24 + (exp(1)*(x - 1)^5)/120
 \end{verbatim}
 
-Los ejemplos anteriores nos dan cinco tÈrminos del desarrollo de Taylor de la funciÛn exponencial. Primero en torno a $x = 0$, ya que no le hemos indicado un punto en torno al cual calcularlo. DespuÈs en torno a $x = 1$, valor definido en la llamada al comando \texttt{taylor} despuÈs del nombre de la funciÛn simbÛlica para la que queremos calcular el desarrollo.
+Los ejemplos anteriores nos dan cinco t√©rminos del desarrollo de Taylor de la funci√≥n exponencial. Primero en torno a $x = 0$, ya que no le hemos indicado un punto en torno al cual calcularlo. Despu√©s en torno a $x = 1$, valor definido en la llamada al comando \texttt{taylor} despu√©s del nombre de la funci√≥n simb√≥lica para la que queremos calcular el desarrollo.
 
-Para calcular desarrollos de Taylor de otro orden distinto al quinto, debemos indicarlo expresamente, empleando en la llamada al comando \texttt{taylor} la palabra clave \texttt{'Order'}, seguida del orden que deseamos para la expansiÛn,
+Para calcular desarrollos de Taylor de otro orden distinto al quinto, debemos indicarlo expresamente, empleando en la llamada al comando \texttt{taylor} la palabra clave \texttt{'Order'}, seguida del orden que deseamos para la expansi√≥n,
 
 \begin{verbatim}
 >> T2 = taylor(f,x,'Order',7) 
@@ -608,8 +608,8 @@ T2 =
 x^6/720 + x^5/120 + x^4/24 + x^3/6 + x^2/2 + x + 1
 \end{verbatim} 
 
-\subsection{LÌmites} \index{LÌmites! de una funciÛn simbÛlica}
-Para el c·lculo de lÌmites de una expresiÛn simbÛlica se emplea el comando \texttt{limit}. Es necesario incluir la funciÛn simbÛlica y el valor de la variable independiente para el que se desea calcular el lÌmite.  Dicho valor puede ser tambiÈn simbÛlico,
+\subsection{L√≠mites} \index{L√≠mites! de una funci√≥n simb√≥lica}
+Para el c√°lculo de l√≠mites de una expresi√≥n simb√≥lica se emplea el comando \texttt{limit}. Es necesario incluir la funci√≥n simb√≥lica y el valor de la variable independiente para el que se desea calcular el l√≠mite.  Dicho valor puede ser tambi√©n simb√≥lico,
 
 \begin{verbatim}
 >> syms x a
@@ -627,7 +627,7 @@ ans =
 a^2/(log(a) + 3*a^2)
 
 \end{verbatim}
-Si la expresiÛn para la que se desea calcular el lÌmite tiene m·s de una variable simbÛlica, Matlab calcular· el lÌmite empleando como variable la m·s cercana a \texttt{x}, excepto si se le indica expresamente con respecto a quÈ variable debe calcularlo. El siguiente ejemplo muestra como emplear el comando \texttt{limit} y la definiciÛn de derivada para calcular la derivada de una funciÛn,
+Si la expresi√≥n para la que se desea calcular el l√≠mite tiene m√°s de una variable simb√≥lica, Matlab calcular√° el l√≠mite empleando como variable la m√°s cercana a \texttt{x}, excepto si se le indica expresamente con respecto a qu√© variable debe calcularlo. El siguiente ejemplo muestra como emplear el comando \texttt{limit} y la definici√≥n de derivada para calcular la derivada de una funci√≥n,
 
 \begin{verbatim} 
 >> syms h 
@@ -656,16 +656,16 @@ ans =
 1/x
 \end{verbatim}
 
-Es posible calcular lÌmites en el \emph{infinito}
-\index{LÌmites! LÌmite en el infinito de una funciÛn simbÛlica}
+Es posible calcular l√≠mites en el \emph{infinito}
+\index{L√≠mites! L√≠mite en el infinito de una funci√≥n simb√≥lica}
 \begin{verbatim}
 >> limit (1/x,x,inf) 
 ans = 
 0
 \end{verbatim}
 
-Por ˙ltimo, es posible calcular el lÌmite por la izquierda y el lÌmite por la derecha cuando estos no coinciden. Para ello se aÒade al final del comando la palabra \texttt{'right} (derecha) o \texttt{'left'} (izquierda)
-\index{LÌmites! LÌmites laterales de una funciÛn simbÛlica}
+Por √∫ltimo, es posible calcular el l√≠mite por la izquierda y el l√≠mite por la derecha cuando estos no coinciden. Para ello se a√±ade al final del comando la palabra \texttt{'right} (derecha) o \texttt{'left'} (izquierda)
+\index{L√≠mites! L√≠mites laterales de una funci√≥n simb√≥lica}
 \begin{verbatim}
 >> limit (1/x,x,0,'right') 
 ans = 
@@ -679,18 +679,18 @@ ans =
 ans = 
 NaN
 \end{verbatim}
-Es interesante notar que si no se especifica la direcciÛn (left/right) al calcular este lÌmite, el resultado es \texttt{NaN}; puesto que el lÌmite, al no ser bilateral, no est· bien definido.
+Es interesante notar que si no se especifica la direcci√≥n (left/right) al calcular este l√≠mite, el resultado es \texttt{NaN}; puesto que el l√≠mite, al no ser bilateral, no est√° bien definido.
 
-\section{RepresentaciÛn gr·fica}
-Matlab dispone de un conjunto de funciones que permiten representar funciones simbÛlicas. Su funcionamiento es similar al de las funciones generales de Matlab para representaciÛn gr·fica. A continuaciÛn se presenta una revisiÛn de las m·s comunes.
-\index{Gr·ficos! RepresentaciÛn de funciones simbÛlicas}
-Para obtener la gr·fica de una funciÛn de una sola variable se emplea el comando \texttt{ezplot}. Este comando admite como variables de entrada una funciÛn simbÛlica y un vector con los lÌmites $[x_{min}\ x_{max}]$ entre los que se desea dibujar la funciÛn. Si no se suministran los lÌmites, Matlab toma for defecto el intervalo $[-2\pi \ 2\pi]$ para realizar la representaciÛn. AsÌ, por ejemplo para representar la funciÛn $f(x) = e^{\sin(x)}$,
+\section{Representaci√≥n gr√°fica}
+Matlab dispone de un conjunto de funciones que permiten representar funciones simb√≥licas. Su funcionamiento es similar al de las funciones generales de Matlab para representaci√≥n gr√°fica. A continuaci√≥n se presenta una revisi√≥n de las m√°s comunes.
+\index{Gr√°ficos! Representaci√≥n de funciones simb√≥licas}
+Para obtener la gr√°fica de una funci√≥n de una sola variable se emplea el comando \texttt{ezplot}. Este comando admite como variables de entrada una funci√≥n simb√≥lica y un vector con los l√≠mites $[x_{min}\ x_{max}]$ entre los que se desea dibujar la funci√≥n. Si no se suministran los l√≠mites, Matlab toma for defecto el intervalo $[-2\pi \ 2\pi]$ para realizar la representaci√≥n. As√≠, por ejemplo para representar la funci√≥n $f(x) = e^{\sin(x)}$,
 
 \begin{figure}
 \centering
 \subfigure[Intervalo por defecto: $-2\pi \leq x \leq 2\pi$ \label{fig:simplot1}]{\includegraphics[width=9cm]{simplot.eps}} \qquad 
 \subfigure[Intervalo suministrado: $-10 \leq x \leq 10$  \label{fig:simplot2}]{\includegraphics[width=9cm]{simplot2.eps}}\\
-\caption{Gr·fica de la funciÛn $f(x) = e^{\sin\left(x\right)}$ obtenida a partir de su expresiÛn simbÛlica con el comando \texttt{ezsurf} de Matlab}
+\caption{Gr√°fica de la funci√≥n $f(x) = e^{\sin\left(x\right)}$ obtenida a partir de su expresi√≥n simb√≥lica con el comando \texttt{ezsurf} de Matlab}
 \end{figure}
 
 \begin{verbatim}
@@ -708,7 +708,7 @@ exp(sin(x))
 \end{verbatim}
 El resultado se muestra en la figuras \ref{fig:simplot1}, \ref{fig:simplot2}. 
 
-La funciÛn \texttt{ezplot} puede emplearse tambiÈn para representar curvas paramÈtricas, $x(t),\ y(t)$. Por ejemplo, $x(t) = t\cos(t),\  y(t)= t\sin(t)$ representa una espiral en el plano $x,\ y$. Para obtener su gr·fica se debe pasar a \texttt{zplot} las funciones simbÛlicas $x(t)$ e $y(t)$,
+La funci√≥n \texttt{ezplot} puede emplearse tambi√©n para representar curvas param√©tricas, $x(t),\ y(t)$. Por ejemplo, $x(t) = t\cos(t),\  y(t)= t\sin(t)$ representa una espiral en el plano $x,\ y$. Para obtener su gr√°fica se debe pasar a \texttt{zplot} las funciones simb√≥licas $x(t)$ e $y(t)$,
 \begin{verbatim}
 >> syms t x y
 >> x = t*cos(t)
@@ -721,16 +721,16 @@ t*sin(t)
 >> ezplot(x,y)
 \end{verbatim}
 
-El resultado se muestra en la figura \ref{fig:simpar}. Si no se  indica un intervalo concreto para el par·metro \texttt{t}, Matlab toma por defecto el intervalo $[0 \ 2\pi]$. El intervalo puede especificarse mediante un vector $[t_{min} \ t_{max}]$ de modo an·logo al caso de la representaciÛn de funciones de una sola variable. Una aplicaciÛn directa de la representaciÛn de curvas paramÈtricas es la obtenciÛn de la trayectoria de un mÛvil conocida su posiciÛn en funciÛn del tiempo. Por ejemplo, la obtenciÛn de la par·bola trazada por un cuerpo que se mueve bajo la fuerza de la gravedad. 
+El resultado se muestra en la figura \ref{fig:simpar}. Si no se  indica un intervalo concreto para el par√°metro \texttt{t}, Matlab toma por defecto el intervalo $[0 \ 2\pi]$. El intervalo puede especificarse mediante un vector $[t_{min} \ t_{max}]$ de modo an√°logo al caso de la representaci√≥n de funciones de una sola variable. Una aplicaci√≥n directa de la representaci√≥n de curvas param√©tricas es la obtenci√≥n de la trayectoria de un m√≥vil conocida su posici√≥n en funci√≥n del tiempo. Por ejemplo, la obtenci√≥n de la par√°bola trazada por un cuerpo que se mueve bajo la fuerza de la gravedad. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.751]{simpar.eps}
-\caption{Gr·fica de la curva paramÈtrica $x(t) = t\cos(t), y(t)= t\sin(t)$ obtenida a partir de su expresiÛn simbÛlica con el comando \texttt{ezsurf} de Matlab }
+\caption{Gr√°fica de la curva param√©trica $x(t) = t\cos(t), y(t)= t\sin(t)$ obtenida a partir de su expresi√≥n simb√≥lica con el comando \texttt{ezsurf} de Matlab }
 \label{fig:simpar}
 \end{figure}
 
-Por ˙ltimo es tambiÈn posible representar superficies empleando funciones simbÛlicas de dos variables. Para ello se emplea el comando \texttt{ezsurf}. En este caso, es preciso suministrarle al menos la funciÛn de dos variables que se desea representar. Si no se especifica rango, Matlab por defecto representar· la funciÛn en el intervalo $[-2\pi \ 2\pi]$, tanto para la abscisa como para la ordenada. Adem·s, \texttt{ezsurf} admite como un segundo par·metro un vector de cuatro elementos $[x_{min} \ x_{max} \ y_{min} \ y_{max}]$ que indica el ·rea sobre la que se quiere representar la funciÛn. Es posible tambiÈn aÒadir un segundo par·metro al comando que especifica el tamaÒo de la retÌcula empleada para representar la superficie. Si no se indica este segundo par·metro, Matlab traza la superficie empleando una retÌcula de $60 \times 60$,
+Por √∫ltimo es tambi√©n posible representar superficies empleando funciones simb√≥licas de dos variables. Para ello se emplea el comando \texttt{ezsurf}. En este caso, es preciso suministrarle al menos la funci√≥n de dos variables que se desea representar. Si no se especifica rango, Matlab por defecto representar√° la funci√≥n en el intervalo $[-2\pi \ 2\pi]$, tanto para la abscisa como para la ordenada. Adem√°s, \texttt{ezsurf} admite como un segundo par√°metro un vector de cuatro elementos $[x_{min} \ x_{max} \ y_{min} \ y_{max}]$ que indica el √°rea sobre la que se quiere representar la funci√≥n. Es posible tambi√©n a√±adir un segundo par√°metro al comando que especifica el tama√±o de la ret√≠cula empleada para representar la superficie. Si no se indica este segundo par√°metro, Matlab traza la superficie empleando una ret√≠cula de $60 \times 60$,
 
 
 \begin{verbatim}
@@ -751,11 +751,11 @@ La figura \ref{fig:surfsim} muestra los resultados de este ejemplo.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{surfsim.eps}
-\caption{Gr·fica de la funciÛn $f(x) = \sin\left(\sqrt{x^2+y^2}\right)$ obtenida a partir de su expresiÛn simbÛlica con el comando \texttt{ezsurf} de Matlab }
+\caption{Gr√°fica de la funci√≥n $f(x) = \sin\left(\sqrt{x^2+y^2}\right)$ obtenida a partir de su expresi√≥n simb√≥lica con el comando \texttt{ezsurf} de Matlab }
 \label{fig:surfsim}
 \end{figure}
 
-Hasta aquÌ la introducciÛn al c·lculo simbÛlico. Para obtener una visiÛn completa de sus posibilidades se aconseja consultar la ayuda de Matlab
+Hasta aqu√≠ la introducci√≥n al c√°lculo simb√≥lico. Para obtener una visi√≥n completa de sus posibilidades se aconseja consultar la ayuda de Matlab
 
 
 

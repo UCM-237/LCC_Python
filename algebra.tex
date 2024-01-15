@@ -1,7 +1,7 @@
-\chapter{Aplicaciones del c·lculo cientÌfico al ·lgebra lineal}
+\chapter{Aplicaciones del c√°lculo cient√≠fico al √°lgebra lineal}
 \section{Matrices y vectores}
-En esta secciÛn vamos a repasar algunos conceptos fundamentales de  ·lgebra lineal y cÛmo pueden manejarse empleando Matlab. No daremos definiciones precisas ni tampoco demostraciones, ya que tanto unas como otras se ver·n en detalle en la asignatura de ·lgebra. 
-\paragraph{matrices.} Desde un punto de vista funcional definiremos una matriz como una tabla bidimensional de n˙meros ordenados en filas y columnas,
+En esta secci√≥n vamos a repasar algunos conceptos fundamentales de  √°lgebra lineal y c√≥mo pueden manejarse empleando Matlab. No daremos definiciones precisas ni tampoco demostraciones, ya que tanto unas como otras se ver√°n en detalle en la asignatura de √°lgebra. 
+\paragraph{matrices.} Desde un punto de vista funcional definiremos una matriz como una tabla bidimensional de n√∫meros ordenados en filas y columnas,
 \begin{equation*}
 A=
 \begin{pmatrix}
@@ -11,15 +11,15 @@ A=
 \end{pmatrix}
 \end{equation*}
 
-Cada lÌnea horizontal de n˙meros constituye una \emph{fila} de la matriz y cada lÌnea horizontal una \emph{columna} de la misma.
+Cada l√≠nea horizontal de n√∫meros constituye una \emph{fila} de la matriz y cada l√≠nea horizontal una \emph{columna} de la misma.
 
-A una matriz con $m$ filas y $n$ columnas se la denomina matriz de orden $m\times n$. $m$ y $n$ son la dimensiones de la matriz y se dan siempre en el mismo orden: primero el n˙mero de filas y despuÈs el de columnas. AsÌ, la matriz $A$ del ejemplo anterior es una matriz $3\times 4$. El orden de una matriz expresa el tamaÒo de la matriz.
+A una matriz con $m$ filas y $n$ columnas se la denomina matriz de orden $m\times n$. $m$ y $n$ son la dimensiones de la matriz y se dan siempre en el mismo orden: primero el n√∫mero de filas y despu√©s el de columnas. As√≠, la matriz $A$ del ejemplo anterior es una matriz $3\times 4$. El orden de una matriz expresa el tama√±o de la matriz.
 
 Dos matrices son iguales si tienen el mismo orden, y los elementos que ocupan en ambas matrices los mismo lugares son iguales.
 
-Una matriz es cuadrada, si tiene el mismo n˙mero de filas que de columnas. Es decir es de orden $n\times n$.
+Una matriz es cuadrada, si tiene el mismo n√∫mero de filas que de columnas. Es decir es de orden $n\times n$.
 
-Mientras no se diga expresamente lo contrario, emplearemos letras may˙sculas $A, B, \cdots$ para representar matrices. La expresiÛn $A_{m\times n}$ indica que la matriz $A$ tiene dimensiones $m \times n$. Para denotar los elementos de una matriz, emplearemos la misma letra en min˙sculas empleada para nombrar la matriz, indicando mediante subÌndices, y siempre por este orden, la fila y la columna a la que pertenece el elemento. AsÌ por ejemplo $a_{ij}$ representa al elemento de la matriz $A$, que ocupa la fila $i$ y la columna $j$.
+Mientras no se diga expresamente lo contrario, emplearemos letras may√∫sculas $A, B, \cdots$ para representar matrices. La expresi√≥n $A_{m\times n}$ indica que la matriz $A$ tiene dimensiones $m \times n$. Para denotar los elementos de una matriz, emplearemos la misma letra en min√∫sculas empleada para nombrar la matriz, indicando mediante sub√≠ndices, y siempre por este orden, la fila y la columna a la que pertenece el elemento. As√≠ por ejemplo $a_{ij}$ representa al elemento de la matriz $A$, que ocupa la fila $i$ y la columna $j$.
 
 \begin{equation*}
 A=
@@ -32,7 +32,7 @@ A=
 \end{equation*}
 
 \paragraph{vectores}
-A una matriz compuesta por una sola fila, la denominaremos vector fila. A una matriz compuesta por una sola columna la denominaremos vector columna. Siempre que hablemos de un vector, sin especificar m·s, entenderemos que se trata de un vector columna.\footnote{Esta identificaciÛn de los vectores como vectores columna no es general. La introducimos porque simplifica las explicaciones posteriores.} Para representar vectores, emplearemos letras min˙sculas. Para representar sus elementos aÒadiremos a la letra que representa al vector un subÌndice indicando la fila a la que pertenece el elemento.
+A una matriz compuesta por una sola fila, la denominaremos vector fila. A una matriz compuesta por una sola columna la denominaremos vector columna. Siempre que hablemos de un vector, sin especificar m√°s, entenderemos que se trata de un vector columna.\footnote{Esta identificaci√≥n de los vectores como vectores columna no es general. La introducimos porque simplifica las explicaciones posteriores.} Para representar vectores, emplearemos letras min√∫sculas. Para representar sus elementos a√±adiremos a la letra que representa al vector un sub√≠ndice indicando la fila a la que pertenece el elemento.
 
 \begin{equation*}
 a=
@@ -46,7 +46,7 @@ a_n
 \end{pmatrix}
 \end{equation*}
 
-Podemos asociar los puntos del plano con los vectores de dimensiÛn dos. Para ello, usamos una representaciÛn cartesiana, en la que los elementos del vector son los valores de las coordenadas $(x,y)$ del punto del plano que representan. Cada vector se representa gr·ficamente mediante una flecha que parte del origen de coordenadas y termina en el punto $(x,y)$ representado por el vector. La figura \ref{fig:vectores} representa los vectores,
+Podemos asociar los puntos del plano con los vectores de dimensi√≥n dos. Para ello, usamos una representaci√≥n cartesiana, en la que los elementos del vector son los valores de las coordenadas $(x,y)$ del punto del plano que representan. Cada vector se representa gr√°ficamente mediante una flecha que parte del origen de coordenadas y termina en el punto $(x,y)$ representado por el vector. La figura \ref{fig:vectores} representa los vectores,
 \begin{equation*}
 a=
 \begin{pmatrix}
@@ -69,11 +69,11 @@ c=
 \begin{figure}[h]
 \centering
 \includegraphics[width=7cm]{vectores.eps}
-\caption{RepresentaciÛn gr·fica de vectores en el plano}
+\caption{Representaci√≥n gr√°fica de vectores en el plano}
 \label{fig:vectores}
 \end{figure}
 
-De modo an·logo, podemos asociar vectores de dimensiÛn tres con puntos en el espacio tridimensional. En este caso, los valores de los elementos del vector corresponden con la coordenadas $(x,y,z)$ de los puntos en el espacio. La figura \ref{fig:vectores3} muestra la representaciÛn gr·fica en espacio tridimensional de los vectores, 
+De modo an√°logo, podemos asociar vectores de dimensi√≥n tres con puntos en el espacio tridimensional. En este caso, los valores de los elementos del vector corresponden con la coordenadas $(x,y,z)$ de los puntos en el espacio. La figura \ref{fig:vectores3} muestra la representaci√≥n gr√°fica en espacio tridimensional de los vectores, 
 \begin{equation*}
 a=
 \begin{pmatrix}
@@ -98,19 +98,19 @@ c=
 \begin{figure}[h]
 \centering
 \includegraphics[width=9cm]{vectores3.eps}
-\caption{RepresentaciÛn gr·fica de vectores en el espacio}
+\caption{Representaci√≥n gr√°fica de vectores en el espacio}
 \label{fig:vectores3}
 \end{figure}
 
-Evidentemente para vectores de mayor dimensiÛn, no es posible obtener una representaciÛn gr·fica. Si embargo muchas de las propiedades geomÈtricas, observables en los vectores bi y tridimensionales, pueden extrapolarse a vectores de cualquier dimensiÛn.
+Evidentemente para vectores de mayor dimensi√≥n, no es posible obtener una representaci√≥n gr√°fica. Si embargo muchas de las propiedades geom√©tricas, observables en los vectores bi y tridimensionales, pueden extrapolarse a vectores de cualquier dimensi√≥n.
 
 
 
 \section{Operaciones matriciales}\label{opmatr}
 
-A continuaciÛn definiremos las operaciones matem·ticas m·s comunes, definidas sobre matrices. 
+A continuaci√≥n definiremos las operaciones matem√°ticas m√°s comunes, definidas sobre matrices. 
 
-\paragraph{suma.} La suma de dos matrices, se define como la matriz resultante de sumar los elementos que ocupan en ambas la misma posiciÛn. Solo est· definida para matrices del mismo orden,
+\paragraph{suma.} La suma de dos matrices, se define como la matriz resultante de sumar los elementos que ocupan en ambas la misma posici√≥n. Solo est√° definida para matrices del mismo orden,
 
 \begin{gather*}
 C=A+B\\
@@ -139,7 +139,7 @@ La suma de matrices cumple las siguientes propiedades,
 \item Conmutativa: $A+B=B+A$
 \item Elemento neutro: $O_{n\times m}+A_{n\times m}=A_{m\times m}$ El elemento neutro $O_{n\times m}$ de la suma de matrices de orden $n\times m$ es la matriz nula de dicho orden, ---compuesta exclusivamente por ceros--- . 
 
-En Matlab, podemos crear una matriz de cualquier orden, compuesta exclusivamente por ceros mediante el comando \texttt{zeros(m,n)}, donde $m$ es el n˙mero de filas y $n$ el de columnas de la matriz de ceros resultante,
+En Matlab, podemos crear una matriz de cualquier orden, compuesta exclusivamente por ceros mediante el comando \texttt{zeros(m,n)}, donde $m$ es el n√∫mero de filas y $n$ el de columnas de la matriz de ceros resultante,
 
 \begin{verbatim}
 >> O=zeros(2,3)
@@ -192,7 +192,7 @@ S =
 
 
 
-\paragraph{TransposiciÛn}
+\paragraph{Transposici√≥n}
 Dada una matriz $A$, su transpuesta $A^T$ se define como la matriz que se obtiene intercambiando sus filas con sus columnas,
 
 \begin{gather*}
@@ -211,7 +211,7 @@ A^T=
 \end{pmatrix}
 \end{gather*}
 
-En Matlab, la operaciÛn de transposiciÛn se indica mediante un apÛstrofo ('),
+En Matlab, la operaci√≥n de transposici√≥n se indica mediante un ap√≥strofo ('),
 
 \begin{verbatim}
 >> A=[1 2 3; 4 3 6]
@@ -225,7 +225,7 @@ B =
      3     6
 \end{verbatim}
 
-Para vectores, la transposiciÛn convierte un vector fila en un vector columna y viceversa. 
+Para vectores, la transposici√≥n convierte un vector fila en un vector columna y viceversa. 
 \begin{gather*}
 a \rightarrow a^T\\
 a=
@@ -241,7 +241,7 @@ a^T=
 \end{pmatrix} 
 \end{gather*}
 
-Una matriz cuadrada se dice que es simÈtrica si coincide con su transpuesta,
+Una matriz cuadrada se dice que es sim√©trica si coincide con su transpuesta,
 
 \begin{gather*}
 A=A^T\\
@@ -254,20 +254,20 @@ A=A^T=
 \end{pmatrix}
 \end{gather*}
 
-Una matriz cuadrada es antisimÈtrica cuando cumple que $A=-A^T$. Cualquier matriz cuadrada se puede descomponer en la suma de una matriz simÈtrica m·s otra antisimÈtrica.
+Una matriz cuadrada es antisim√©trica cuando cumple que $A=-A^T$. Cualquier matriz cuadrada se puede descomponer en la suma de una matriz sim√©trica m√°s otra antisim√©trica.
 
-La parte simÈtrica puede definirse como,
+La parte sim√©trica puede definirse como,
 \begin{equation*}
 A_S=\frac{1}{2} \left( A+A^T \right)
 \end{equation*}
 
-y la parte antisimÈtrica como,
+y la parte antisim√©trica como,
 
 \begin{equation*}
 A_A=\frac{1}{2}\left( A-A^T \right)
 \end{equation*}
 
-AsÌ, por ejemplo,
+As√≠, por ejemplo,
 
 \begin{equation*}
  A=A_S+A_A \rightarrow
@@ -288,13 +288,13 @@ AsÌ, por ejemplo,
 \end{pmatrix}
 \end{equation*}
 
-Por ˙ltimo, la transpuesta de la suma de matrices cumple,
+Por √∫ltimo, la transpuesta de la suma de matrices cumple,
 \begin{equation*}
 (A+B)^T=A^T+B^T
 \end{equation*}
 
 
-\paragraph{Producto de una matriz por un escalar.} El producto de una matriz $A$ por un n˙mero $b$ es una matriz del mismo orden que $A$, cuyos elementos se obtienen multiplicando los elementos de $A$ por el n˙mero $b$,
+\paragraph{Producto de una matriz por un escalar.} El producto de una matriz $A$ por un n√∫mero $b$ es una matriz del mismo orden que $A$, cuyos elementos se obtienen multiplicando los elementos de $A$ por el n√∫mero $b$,
 
 \begin{gather*}
 C=b\cdot A \rightarrow c_{ij}=b\cdot a_{ij}\\
@@ -308,9 +308,9 @@ C=b\cdot A \rightarrow c_{ij}=b\cdot a_{ij}\\
 6& 9& -3&
 \end{pmatrix} 
 \end{gather*}
-En Matlab, el sÌmbolo \texttt{*} se emplea para representar el producto entre escalares (n˙meros), entre escalares y matrices y el producto entre matrices, como veremos en los siguientes p·rrafos.
+En Matlab, el s√≠mbolo \texttt{*} se emplea para representar el producto entre escalares (n√∫meros), entre escalares y matrices y el producto entre matrices, como veremos en los siguientes p√°rrafos.
 
-\paragraph{Producto escalar de dos vectores.} Dados vectores de la misma dimensiÛn $m$ se define su producto escalar como, 
+\paragraph{Producto escalar de dos vectores.} Dados vectores de la misma dimensi√≥n $m$ se define su producto escalar como, 
 
 \begin{gather*}
 a\cdot b=\sum_{i=1}^na_ib_i\\
@@ -327,11 +327,11 @@ a\cdot b=\sum_{i=1}^na_ib_i\\
 =1\cdot 1+3 \cdot (-2)+ 4 \cdot 0= -5
 \end{gather*}
 
-El resultado de producto escalar de dos vectores, es siempre un n˙mero; se multiplican los entre sÌ los elementos de los vectores que ocupan idÈnticas posiciones y se suman los productos resultantes. 
+El resultado de producto escalar de dos vectores, es siempre un n√∫mero; se multiplican los entre s√≠ los elementos de los vectores que ocupan id√©nticas posiciones y se suman los productos resultantes. 
 
 
 \paragraph{Producto matricial}
-El producto de una matriz de orden $n\times m$ por una matriz $m\times l$, es una nueva matriz de orden $n\times l$, cuyos elementos se obtiene de acuerdo con la siguiente expresiÛn,
+El producto de una matriz de orden $n\times m$ por una matriz $m\times l$, es una nueva matriz de orden $n\times l$, cuyos elementos se obtiene de acuerdo con la siguiente expresi√≥n,
 
 \begin{equation*}
 P=A\cdot B \rightarrow a_{ij}=\sum_{t=1}^m a_{it}b_{tj}
@@ -339,9 +339,9 @@ P=A\cdot B \rightarrow a_{ij}=\sum_{t=1}^m a_{it}b_{tj}
 
 Por tanto, el elemento de la matriz producto que ocupa la fila i y la columna j, se obtiene multiplicando por orden los elementos de la fila i de la matriz A con los elementos correspondientes de la columna j de la matriz B, y sumando los productos resultantes.
 
-Para que dos matrices puedan multiplicarse es imprescindible que el n˙mero de columnas de la primera matriz coincida con el n˙mero de filas de la segunda.
+Para que dos matrices puedan multiplicarse es imprescindible que el n√∫mero de columnas de la primera matriz coincida con el n√∫mero de filas de la segunda.
 
-Podemos entender la mec·nica del producto de matrices de una manera m·s f·cil si consideramos  la primera matriz como un grupo de vectores fila,
+Podemos entender la mec√°nica del producto de matrices de una manera m√°s f√°cil si consideramos  la primera matriz como un grupo de vectores fila,
 \begin{equation*}
 \begin{aligned}
 A_1=\begin{pmatrix}
@@ -386,10 +386,10 @@ b_{m1}& b_{m2}& \cdots b_{mn}
 \end{equation*}
 
 Podemos ahora considerar  cada elemento $p_{ij}$ de la matriz producto $P=A\cdot B$ como el producto escalar del vector fila $A_i$ for el vector columna $B_j$, $p_{ij}=A_i\cdot B_j$. 
-Es ahora relativamente f·cil, deducir algunas de las propiedad del producto matricial,
+Es ahora relativamente f√°cil, deducir algunas de las propiedad del producto matricial,
 
 \begin{enumerate}
-\item Para que dos matrices puedan multiplicarse, es preciso que el n˙mero de columnas de la primera coincida con el numero de filas de la segunda. Adem·s la matriz producto tiene tantas filas como la primera matriz y tantas columnas como la segunda.
+\item Para que dos matrices puedan multiplicarse, es preciso que el n√∫mero de columnas de la primera coincida con el numero de filas de la segunda. Adem√°s la matriz producto tiene tantas filas como la primera matriz y tantas columnas como la segunda.
 
 \item El producto matricial no es conmutativo. En general $A\cdot B \neq B \cdot A$
 
@@ -421,7 +421,7 @@ La matriz identidad $I_n$ es el elemento neutro del producto de matrices cuadrad
 A_{n\times n}\cdot I_n=I_n\cdot A_{n\times n}
 \end{equation*}
 
-Adem·s,
+Adem√°s,
 \begin{gather*}
 A_{n\times m}\cdot I_m=A_{n \times m}\\
 I_n\cdot A_{n\times m}=A_{n\times m}
@@ -467,37 +467,37 @@ a\cdot b= a^Tb=b^Ta=b\cdot a\\
 =1\cdot 1+3 \cdot (-2)+ 4 \cdot 0= -5
 \end{gather*}
 
-Es decir, transponemos el primer vector del producto, convirtiÈndolo en un vector fila.
+Es decir, transponemos el primer vector del producto, convirti√©ndolo en un vector fila.
 
-\paragraph{Norma de un vector.} La longitud euclÌdea, mÛdulo,  norma 2 o simplemente norma  de un vector se define como,
+\paragraph{Norma de un vector.} La longitud eucl√≠dea, m√≥dulo,  norma 2 o simplemente norma  de un vector se define como,
 
 \begin{equation*}
 \Vert x \Vert_2 =\Vert x \Vert =\sqrt{x\cdot x}=\sqrt{x^Tx}=\sqrt{x_1^2+x_2^2+\cdots x_n^2}=\left( \sum_{i=1}^nx_i^2 \right)^\frac{1}{2}
 \end{equation*}
 
-Constituye la manera usual de medir la longitud de un vector. Tiene una interpretaciÛn geomÈtrica inmediata a travÈs del teorema de Pit·goras: nos da la longitud del segmento que representa al vector. La figura \ref{fig:pitag} muestra dicha interpretaciÛn, para un vector bidimensional.  
+Constituye la manera usual de medir la longitud de un vector. Tiene una interpretaci√≥n geom√©trica inmediata a trav√©s del teorema de Pit√°goras: nos da la longitud del segmento que representa al vector. La figura \ref{fig:pitag} muestra dicha interpretaci√≥n, para un vector bidimensional.  
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{pitag.eps}
-\caption{interpretaciÛn geomÈtrica de la norma de un vector}
+\caption{interpretaci√≥n geom√©trica de la norma de un vector}
 \label{fig:pitag}
 \end{figure}
 
-A partir de la norma de un vector es posible obtener una expresiÛn alternativa para el producto escalar de dos vectores,
+A partir de la norma de un vector es posible obtener una expresi√≥n alternativa para el producto escalar de dos vectores,
 \begin{equation*}
 a\cdot b=\Vert a \Vert \Vert b \Vert \cos \theta
 \end{equation*}
-Donde $\theta$ representa el ·ngulo formado por los dos vectores.
+Donde $\theta$ representa el √°ngulo formado por los dos vectores.
 
-Aunque se trate de la manera m·s com˙n de definir la norma de un vector, la norma 2 no es la ˙nica definiciÛn posible,
+Aunque se trate de la manera m√°s com√∫n de definir la norma de un vector, la norma 2 no es la √∫nica definici√≥n posible,
 
 \begin{itemize}
 \item Norma 1: Se define como la suma de los valores absolutos de los elementos de un vector,
 \begin{equation*}
 \Vert x \Vert_1 =\vert x_1\vert +\vert x_2 \vert\cdots \vert x_n\vert
 \end{equation*}
-\item Norma p, Es una generalizaciÛn de la norma 2,
+\item Norma p, Es una generalizaci√≥n de la norma 2,
 \begin{equation*}
 \Vert x \Vert_p =\sqrt[p]{\vert x_1^p\vert+\vert x_2^p\vert+\cdots \vert x_n^p\vert}=\left( \sum_{i=1}^n\vert x_i^p \vert \right)^\frac{1}{p}
 \end{equation*}
@@ -514,7 +514,7 @@ Aunque se trate de la manera m·s com˙n de definir la norma de un vector, la norm
 \end{equation*}
 \end{itemize}
 
-En Matlab la norma de un vector puede obtenerse mediante el comando \texttt{norm(v,p)} La primera variable de entrada debe ser un vector y la segunda el tipo de norma que se desea calcular. Si se omite la segunda variable de entrada, el comando devuelve la norma 2. A continuaciÛn se incluyen varios ejemplo de utilizaciÛn,
+En Matlab la norma de un vector puede obtenerse mediante el comando \texttt{norm(v,p)} La primera variable de entrada debe ser un vector y la segunda el tipo de norma que se desea calcular. Si se omite la segunda variable de entrada, el comando devuelve la norma 2. A continuaci√≥n se incluyen varios ejemplo de utilizaci√≥n,
 \begin{verbatim}
 >> x=[1;2;-3;0;-1]
 x =
@@ -543,7 +543,7 @@ norma_minf =
      0
 \end{verbatim} 
 
-En general, una norma se define como una funciÛn de $\mathbb{R}^n \rightarrow \mathbb{R}$, que cumple,
+En general, una norma se define como una funci√≥n de $\mathbb{R}^n \rightarrow \mathbb{R}$, que cumple,
 \begin{align*}
 &\Vert x\Vert \geq 0,\  \Vert x\Vert =0 \Rightarrow x=0\\
 &\Vert x+y\Vert \leq \Vert x\Vert +\Vert y\Vert \\
@@ -552,7 +552,7 @@ En general, una norma se define como una funciÛn de $\mathbb{R}^n \rightarrow \m
 
 Llamaremos vectores unitarios $u$, a aquellos para los que se cumple que $\Vert u \Vert=1$.
 
-Dos vectores $a$ y $b$ son ortogonales si cumplen que su producto escalar es nulo, $a^Tb=0 \Rightarrow  a\bot b$. Si adem·s ambos vectores tienen mÛdulo unidad, se dice entonces que los vectores son ortonormales.  Desde el punto de vista de su representaciÛn geomÈtrica, dos vectores ortogonales, forman entre sÌ un ·ngulo recto.
+Dos vectores $a$ y $b$ son ortogonales si cumplen que su producto escalar es nulo, $a^Tb=0 \Rightarrow  a\bot b$. Si adem√°s ambos vectores tienen m√≥dulo unidad, se dice entonces que los vectores son ortonormales.  Desde el punto de vista de su representaci√≥n geom√©trica, dos vectores ortogonales, forman entre s√≠ un √°ngulo recto.
 
 \paragraph{Traza de una matriz.} La traza de una matriz cuadrada , se define como la suma de los elementos que ocupan su diagonal principal, 
 \begin{gather*}
@@ -570,7 +570,7 @@ La traza de la suma de dos matrices cuadradas $A$ y $B$ del mismo orden, coincid
 tr(A+B)=tr(A)+tr(B)
 \end{equation*}
 
-Dada una  matriz $A$ de dimensiÛn $m\times n$  y una matriz $B$ de dimensiÛn $n \times m$, se  cumple que,
+Dada una  matriz $A$ de dimensi√≥n $m\times n$  y una matriz $B$ de dimensi√≥n $n \times m$, se  cumple que,
 \begin{equation*}
 tr(AB)=tr(BA)
 \end{equation*}
@@ -589,7 +589,7 @@ t =
      4
 \end{verbatim}
 
-\paragraph{Determinante de una matriz.} El determinante de una matriz $A$, se representa habitualmente como $\vert A \vert$ o, en ocasiones como $det(A)$. Para poder definir el determinante de una matriz, necesitamos antes introducir una serie de conceptos previos. En primer lugar, si consideramos un escalar como una matriz de un solo elemento, el determinante  serÌa precisamente el valor de ese ˙nico elemento,
+\paragraph{Determinante de una matriz.} El determinante de una matriz $A$, se representa habitualmente como $\vert A \vert$ o, en ocasiones como $det(A)$. Para poder definir el determinante de una matriz, necesitamos antes introducir una serie de conceptos previos. En primer lugar, si consideramos un escalar como una matriz de un solo elemento, el determinante  ser√≠a precisamente el valor de ese √∫nico elemento,
 \begin{equation*}
 A=\begin{pmatrix}
 a_{11}
@@ -626,7 +626,7 @@ M_{33}=
 C_{ij}=(-1)^{i+j}\vert M_{ij} \vert
 \end{equation*}
 
-Podemos ahora definir el determinante de una matriz $A$ cuadrada de orden $n$, empleando la fÛrmula de Laplace, 
+Podemos ahora definir el determinante de una matriz $A$ cuadrada de orden $n$, empleando la f√≥rmula de Laplace, 
 
 \begin{equation*}
 \vert A \vert = \sum_{j=1}^n a_{ij}C_{ij}
@@ -641,7 +641,7 @@ o alternativamente,
 
 En el primer caso, se dice que se ha desarrollado el determinante a lo largo de la fila $i$. En el segundo caso, se dice que se ha desarrollo el determinante a lo largo de la columna $j$.
 
- La fÛrmula de Laplace, obtiene el determinante de una matriz de orden $n\times n$ a partir del c·lculo de los determinantes de los menores complementarios de los elementos de una fila; $n$ matrices de orden $(n-1)\times (n-1)$. A su vez, podrÌamos calcular el determinante de cada menor complementario, aplicando la formula de Laplace y asÌ sucesivamente hasta llegar a matrices de orden $2\times 2$. Para una matriz $2\times 2$, si desarrollamos por la primera fila obtenemos su determinante como,
+ La f√≥rmula de Laplace, obtiene el determinante de una matriz de orden $n\times n$ a partir del c√°lculo de los determinantes de los menores complementarios de los elementos de una fila; $n$ matrices de orden $(n-1)\times (n-1)$. A su vez, podr√≠amos calcular el determinante de cada menor complementario, aplicando la formula de Laplace y as√≠ sucesivamente hasta llegar a matrices de orden $2\times 2$. Para una matriz $2\times 2$, si desarrollamos por la primera fila obtenemos su determinante como,
 
 \begin{align*}
 A&=\begin{pmatrix}
@@ -666,7 +666,7 @@ a_{21}& a_{22}
 \end{align*}
 
 
-Para una matriz de dimensiÛn arbitraria $n\times n$, el determinante se obtiene aplicando recursivamente la fÛrmula de Laplace,
+Para una matriz de dimensi√≥n arbitraria $n\times n$, el determinante se obtiene aplicando recursivamente la f√≥rmula de Laplace,
 
 \begin{align*}
 &\vert A  \vert = \sum_{j=1}^na_{ij}C_{ij} =\sum_{j=1}^na_{ij}(-1)^{i+j} \left \vert M_{ij}^{(n-1)\times(n-1)} \right \vert \\
@@ -683,7 +683,7 @@ A=\begin{pmatrix}
 0& 6& 5
 \end{pmatrix}
 \end{equation*}
-desarroll·ndolo por los elementos de la primera columna, como,
+desarroll√°ndolo por los elementos de la primera columna, como,
 \begin{align*}
 \left\vert A \right\vert =& 1\cdot (-1)^2\cdot 
 \left\vert \begin{matrix}
@@ -701,25 +701,25 @@ desarroll·ndolo por los elementos de la primera columna, como,
 =& 1\cdot (-1)^2\cdot \left[ (-2)\cdot 5 - 6\cdot 3 \right] +3\cdot (-1)^3\cdot  \left[ 0\cdot 5 - 6\cdot (-2)\right] + 0\cdot (-1)^4 \cdot \left[ 0\cdot 3 - (-2)\cdot (-2)\right]= -64
 \end{align*}
 
-Podemos programar en Matlab una funciÛn recurrente que calcule el determinante de una matriz de rango $n\times n$. (El mÈtodo no es especialmente eficiente pero ilustra el uso de funciones recursivas.
+Podemos programar en Matlab una funci√≥n recurrente que calcule el determinante de una matriz de rango $n\times n$. (El m√©todo no es especialmente eficiente pero ilustra el uso de funciones recursivas.
 
 \begin{verbatim}
 function d=determinante(M)
 %este programa, calcula el determinante de una matriz empleando la formula
-%de Laplace. La funciÛn es recursiva, (se llama a si misma sucesivamente
+%de Laplace. La funci√≥n es recursiva, (se llama a si misma sucesivamente
 %para calcular los cofactores necesarios). Desarrolla siempre por los
 %elementos de la primera columna. (Es un prodigio de ineficiencia numerica,
 %pero permite manejar bucles y funciones recursivas, asi que supongo que
-%puede ser ˙til para los que empiezan a programar).
-%un posible ejercicio para ver lo malo que es el mÈtodo, consiste ir
+%puede ser √∫til para los que empiezan a programar).
+%un posible ejercicio para ver lo malo que es el m√©todo, consiste ir
 %aumentando la dimension de la matriz y comparar lo que lo tarde en
-%calcular el determinante con lo que tarda la funciÛn de Matlab det...
+%calcular el determinante con lo que tarda la funci√≥n de Matlab det...
 
 %primero comprobamos que la matriz suministrada es cuadrada:
 d=0;
 [a,b]=size(M);
 if a~=b
-    disp('la matriz no es cuadrada, CampeÛn')
+    disp('la matriz no es cuadrada, Campe√≥n')
     d=[];
 else
     for i=1:a
@@ -728,7 +728,7 @@ else
         else
             %Eliminamos la fila y columna que toque
             N=M([1:i-1 i+1:a],2:b);
-            %AÒadimos el calculo correspondiente al cofactor
+            %A√±adimos el calculo correspondiente al cofactor
             d=(-1)^(i+1)*M(i,1)*determinante(N)+d;
             %pause
         end
@@ -737,7 +737,7 @@ end
 
 \end{verbatim}
 
-En Matlab, el determinante de una matriz se calcula directamente empleando la funciÛn \texttt{det}. AsÌ, para calcular el determinante de la matriz $A$ del ejemplo anterior,
+En Matlab, el determinante de una matriz se calcula directamente empleando la funci√≥n \texttt{det}. As√≠, para calcular el determinante de la matriz $A$ del ejemplo anterior,
 \begin{verbatim}
 >> A=[1 0 -2; 3 -2 3; 0 6 5]
 A =
@@ -752,7 +752,7 @@ da =
 
 Entre las propiedades de los determinantes, destacaremos las siguientes,
 \begin{enumerate}
-\item El determinante del producto de un escalar $a$ por una matriz $A$ de dimensiÛn $n\times n$ cumple,
+\item El determinante del producto de un escalar $a$ por una matriz $A$ de dimensi√≥n $n\times n$ cumple,
 \begin{equation*}
 \left\vert a\cdot A \right\vert =a^n\cdot \vert A \vert
 \end{equation*}
@@ -769,7 +769,7 @@ Entre las propiedades de los determinantes, destacaremos las siguientes,
 
 Una matriz es singular si su determinante es cero.
 
-El rango de una matriz se define como el tamaÒo de la submatriz m·s grande dentro de $A$, cuyo determinante es distinto de cero. AsÌ por ejemplo la matriz,
+El rango de una matriz se define como el tama√±o de la submatriz m√°s grande dentro de $A$, cuyo determinante es distinto de cero. As√≠ por ejemplo la matriz,
 \begin{equation*}
 A=\begin{pmatrix}
 1& 2& 3\\
@@ -802,7 +802,7 @@ r =
      2
 \end{verbatim}
 
-\paragraph{InversiÛn.} Dada una matriz cuadrada no singular $A$ existe una ˙nica matriz $A^{-1}$ que cumple,
+\paragraph{Inversi√≥n.} Dada una matriz cuadrada no singular $A$ existe una √∫nica matriz $A^{-1}$ que cumple,
 \begin{equation*}
 A_{n\times n}\cdot A_{n\times n}^{-1}=I_{n\times n}
 \end{equation*}
@@ -812,15 +812,15 @@ La matriz $A^{-1}$ recibe el nombre de matriz inversa de $A$, y puede calcularse
 A^{-1}=\frac{1}{\vert A \vert}[adj(A)]^T
 \end{equation*}
 
-Donde $adj(A)$ es la matriz adjunta de $A$, que se obtiene sustituyendo cada elemento $a_{ij}$ de $A$, por su cofactor $C_{ij}$. A continuaciÛn incluimos el cÛdigo en Matlab de una funciÛn \texttt{inversa} que calcula la inversa de una matriz. La funciÛn \texttt{inversa} llama a su vez a la funciÛn \texttt{determinante} descrita m·s arriba. Lo ideal es crear un fichero \texttt{inversa.m} que incluya las dos funciones una detr·s de la otra tal y como aparecen escritas a continuaciÛn. De este modo, si llamamos desde el \emph{workspace} de Matlab a la funciÛn \texttt{inversa}, esta encuentra siempre el cÛdigo de \texttt{deteminante} ya que est· contenido en el mimo fichero.
+Donde $adj(A)$ es la matriz adjunta de $A$, que se obtiene sustituyendo cada elemento $a_{ij}$ de $A$, por su cofactor $C_{ij}$. A continuaci√≥n incluimos el c√≥digo en Matlab de una funci√≥n \texttt{inversa} que calcula la inversa de una matriz. La funci√≥n \texttt{inversa} llama a su vez a la funci√≥n \texttt{determinante} descrita m√°s arriba. Lo ideal es crear un fichero \texttt{inversa.m} que incluya las dos funciones una detr√°s de la otra tal y como aparecen escritas a continuaci√≥n. De este modo, si llamamos desde el \emph{workspace} de Matlab a la funci√≥n \texttt{inversa}, esta encuentra siempre el c√≥digo de \texttt{deteminante} ya que est√° contenido en el mimo fichero.
 
 \begin{verbatim}
 function B=inversa(A)
-%este programa calcula la inversa de una matriz a partir de definiciÛn
-%tÌpica: A^(-1)=[adj(A)]'/det(A)
+%este programa calcula la inversa de una matriz a partir de definici√≥n
+%t√≠pica: A^(-1)=[adj(A)]'/det(A)
 %Se ha includo al final del programa una funcion (determinante) para 
 %calcular determinantes
-%Todo el programa es MUY INEFICIENTE. El ˙nico interes de esto es enseÒar que
+%Todo el programa es MUY INEFICIENTE. El √∫nico interes de esto es ense√±ar que
 %las estructuras basicas de programacion funcionan, y como se manejan las
 %llamadas a funciones en Matlab etc.
 
@@ -829,26 +829,26 @@ function B=inversa(A)
 %primero comprobamos que la matriz suministrada es cuadrada:
 [a,b]=size(A);
 if a~=b
-    disp('la matriz no es cuadrada, CampeÛn')
+    disp('la matriz no es cuadrada, Campe√≥n')
     B=[];
 else
     %calculamos el determinante de A, si es cero hemos terminado
     dA=determinante(A)
     if dA==0
-        %deberÌamos condicionar en lugar de comparar con cero, los errores
+        %deber√≠amos condicionar en lugar de comparar con cero, los errores
         %de redondeo pueden matarnos.... Si el determinante es proximo a
         %cero
          disp('la matriz es singular, la pobre')
       B=[]  
     else
     
-    %Calculamos el cofactor de cada tÈrmino de A mediante un doble bucle.
+    %Calculamos el cofactor de cada t√©rmino de A mediante un doble bucle.
     for i=1:a
         for j=1:b
             %Construimos el menor correspondiente al elemento (i,j)
             m=A([1:i-1 i+1:a],[1:j-1 j+1:b])
-            %calculamos el cofactor llamando a la funciÛn determinante
-            %lo ponemos ya en la posiciÛn que corresponderia a la matriz 
+            %calculamos el cofactor llamando a la funci√≥n determinante
+            %lo ponemos ya en la posici√≥n que corresponderia a la matriz 
             %transpuesta de la adjunta.
             B(j,i)=(-1)^(i+j)*determinante(m)
         end
@@ -860,25 +860,25 @@ end
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%AquÌ incluimos la funcion determinante, asÌ la funcion inversa, no tiene
+%Aqu√≠ incluimos la funcion determinante, as√≠ la funcion inversa, no tiene
 %que ir a buscarla a ningun sitio ya que esta incluida en su mismo %fichero
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function d=determinante(M)
 %este programa, calcula el determinante de una matriz empleando la formula
-%de Laplace. La funciÛn es recursiva, (se llama a si misma sucesivamente
+%de Laplace. La funci√≥n es recursiva, (se llama a si misma sucesivamente
 %para calcular los cofactores necesarios). Desarrolla siempre por los
 %elementos de la primera columna. (Es un prodigio de ineficiencia numerica,
 %pero permite manejar bucles y funciones recursivas, asi que supongo que
-%puede ser ˙til para los que empiezan a programar).
-%un posible ejercicio para ver lo malo que es el mÈtodo, consiste ir
+%puede ser √∫til para los que empiezan a programar).
+%un posible ejercicio para ver lo malo que es el m√©todo, consiste ir
 %aumentando la dimension de la matriz y comparar lo que lo tarde en
-%calcular el determinante con lo que tarda la funciÛn de Matlab det...
+%calcular el determinante con lo que tarda la funci√≥n de Matlab det...
 
 %primero comprobamos que la matriz suministrada es cuadrada:
 d=0;
 [a,b]=size(M);
 if a~=b
-    print('la matriz no es cuadrada, CampeÛn')
+    print('la matriz no es cuadrada, Campe√≥n')
     d=[];
 else
     for i=1:a
@@ -887,7 +887,7 @@ else
         else
             %Elimminamos la fila y columna que toque
             N=M([1:i-1 i+1:a],2:b);
-            %AÒadimos el calculo correspondiente al cofactor
+            %A√±adimos el calculo correspondiente al cofactor
             d=(-1)^(i+1)*M(i,1)*determinante(N)+d;
             %pause
         end
@@ -896,7 +896,7 @@ end
 end
 \end{verbatim} 
 
-Como siempre, Matlab incluye una funciÛn propia \texttt{inv} para calcular la inversa de una matriz,
+Como siempre, Matlab incluye una funci√≥n propia \texttt{inv} para calcular la inversa de una matriz,
 \begin{verbatim}
 A =
 
@@ -923,7 +923,7 @@ AI =
     0.2344   -0.0781    0.1406
    -0.2813    0.0938    0.0313
 \end{verbatim} 
-Algunas propiedades relacionadas con la inversiÛn de matrices son,
+Algunas propiedades relacionadas con la inversi√≥n de matrices son,
 \begin{enumerate}
 \item Inversa del producto de dos matrices,
 \begin{equation*}
@@ -942,7 +942,7 @@ A^{-1}=A^T
 \end{enumerate}
 
 \section{Operadores vectoriales}
-En esta secciÛn vamos a estudiar el efecto de las operaciones matriciales, descritas en la secciÛn anterior, sobre los vectores. Empecemos por considerar el producto por un escalar $\alpha \cdot a$. El efecto fundamental es modificar el mÛdulo del vector,
+En esta secci√≥n vamos a estudiar el efecto de las operaciones matriciales, descritas en la secci√≥n anterior, sobre los vectores. Empecemos por considerar el producto por un escalar $\alpha \cdot a$. El efecto fundamental es modificar el m√≥dulo del vector,
 \begin{equation*}
 \alpha \cdot \begin{pmatrix}
 a_1\\
@@ -956,7 +956,7 @@ a_3
 \end{pmatrix}\rightarrow \vert \vert \alpha \cdot a \vert \vert =\sqrt{\alpha ^2a_1^2+\alpha ^2a_2^2+\alpha ^2a_3^2}=\vert \alpha \vert  \sqrt{a_1^2+a_2^2+a_3^2}=\vert \alpha \vert \cdot \vert \vert a \vert \vert
 \end{equation*}
 
-Gr·ficamente, si $alpha$ es un n˙mero positivo y mayor que la unidad, el resultado del producto ser· un vector m·s largo que $a$ con la misma direcciÛn y sentido. Si por el contrario, $\alpha$ es menor que la unidad, el vector resultante ser· m·s corto que $a$. Por ˙ltimo si se trata de un n˙mero negativo, a los resultados anteriores se aÒade el cambio de sentido con respecto a $a$. La figura \ref{fig:vmod} muestra gr·ficamente un ejemplo  del producto de un vector por un escalar.
+Gr√°ficamente, si $alpha$ es un n√∫mero positivo y mayor que la unidad, el resultado del producto ser√° un vector m√°s largo que $a$ con la misma direcci√≥n y sentido. Si por el contrario, $\alpha$ es menor que la unidad, el vector resultante ser√° m√°s corto que $a$. Por √∫ltimo si se trata de un n√∫mero negativo, a los resultados anteriores se a√±ade el cambio de sentido con respecto a $a$. La figura \ref{fig:vmod} muestra gr√°ficamente un ejemplo  del producto de un vector por un escalar.
 
 \begin{figure}[h]
 \centering
@@ -965,13 +965,13 @@ Gr·ficamente, si $alpha$ es un n˙mero positivo y mayor que la unidad, el resulta
 \label{fig:vmod}
 \end{figure}
 
-\paragraph{CombinaciÛn lineal.} Combinando la suma de vectores, con el producto por un escalar, podemos generar nuevos vectores, a partir de otros, el proceso se conoce como combinaciÛn lineal,
+\paragraph{Combinaci√≥n lineal.} Combinando la suma de vectores, con el producto por un escalar, podemos generar nuevos vectores, a partir de otros, el proceso se conoce como combinaci√≥n lineal,
 \begin{equation*}
 c=\alpha \cdot a + \beta \cdot b + \cdots +\theta z
 \end{equation*}
 
-AsÌ el vector $c$ serÌa el resultado de una combinaciÛn  lineal de los vectores $a, b \cdots z$. 
-Dado un conjunto de vectores, se dice que son linealmente independientes entre sÌ, si no es posible poner a unos como combinaciÛn lineal de otros,
+As√≠ el vector $c$ ser√≠a el resultado de una combinaci√≥n  lineal de los vectores $a, b \cdots z$. 
+Dado un conjunto de vectores, se dice que son linealmente independientes entre s√≠, si no es posible poner a unos como combinaci√≥n lineal de otros,
 
 \begin{equation*}
 \alpha \cdot a + \beta \cdot b + \cdots +\theta z=0 \Rightarrow \alpha =\beta =\cdots =\theta =0
@@ -979,9 +979,9 @@ Dado un conjunto de vectores, se dice que son linealmente independientes entre s
 
 
 
-Es posible expresar cualquier vector de dimensiÛn $n$ como una combinaciÛn lineal de $n$ vectores linealmente independientes.
+Es posible expresar cualquier vector de dimensi√≥n $n$ como una combinaci√≥n lineal de $n$ vectores linealmente independientes.
 
-Supongamos $n=2$, cualquier par de vectores que no estÈn alineados, pueden generar todos los vectores de dimensiÛn $2$ por ejemplo,
+Supongamos $n=2$, cualquier par de vectores que no est√©n alineados, pueden generar todos los vectores de dimensi√≥n $2$ por ejemplo,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -997,17 +997,17 @@ x_2
 \end{pmatrix}
 \end{equation*}
 
-La figura \ref{fig:clineal} muestra gr·ficamente estos dos vectores y algunos de los vectores resultantes de combinarlos linealmente.
+La figura \ref{fig:clineal} muestra gr√°ficamente estos dos vectores y algunos de los vectores resultantes de combinarlos linealmente.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{clineal.eps}
-\caption{RepresentaciÛn gr·fica de los vectores $a=(1,2)
+\caption{Representaci√≥n gr√°fica de los vectores $a=(1,2)
 $, $b=(-1,1)
-$ y algunos vectores, combinaciÛn lineal de $a$ y $b$.}
+$ y algunos vectores, combinaci√≥n lineal de $a$ y $b$.}
 \label{fig:clineal}
 \end{figure}
-Si tomamos como ejemplo $n=3$, cualquier conjunto de vectores que no estÈn contenidos en el mismo plano, pueden generar cualquier otro vector de dimensiÛn $3$. Por ejemplo,
+Si tomamos como ejemplo $n=3$, cualquier conjunto de vectores que no est√©n contenidos en el mismo plano, pueden generar cualquier otro vector de dimensi√≥n $3$. Por ejemplo,
 \begin{equation*}
 \begin{pmatrix}
 x_1\\
@@ -1028,22 +1028,22 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-La figura \ref{fig:clin3} muestra gr·ficamente estos tres vectores y el vector resultante de su combinaciÛn lineal, con $\alpha=1$, $\beta=-0.5$ y $\gamma=1$.  Es f·cil ver a partir de la figura que cualquier otro vector de dimensiÛn $3$ que queramos construir puede obtenerse a partir de los vectores $a$, $b$ y $c$.
+La figura \ref{fig:clin3} muestra gr√°ficamente estos tres vectores y el vector resultante de su combinaci√≥n lineal, con $\alpha=1$, $\beta=-0.5$ y $\gamma=1$.  Es f√°cil ver a partir de la figura que cualquier otro vector de dimensi√≥n $3$ que queramos construir puede obtenerse a partir de los vectores $a$, $b$ y $c$.
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{clin3.eps}
-\caption{RepresentaciÛn gr·fica de los vectores $a=(1,-2,1)
+\caption{Representaci√≥n gr√°fica de los vectores $a=(1,-2,1)
 $, $b=(2,0,-1)$, $c=(-1,1,1)$ y del vector $a-b+c$.}
 \label{fig:clin3}
 \end{figure}
 
-\paragraph{Espacio vectorial y  bases del espacio vectorial.} El conjunto de los vectores de dimensiÛn $n$ (matrices de orden $n\times 1$), junto con la suma vectorial y el producto por un escalar, constituye  un  \emph{espacio vectorial} de dimensiÛn $n$.
+\paragraph{Espacio vectorial y  bases del espacio vectorial.} El conjunto de los vectores de dimensi√≥n $n$ (matrices de orden $n\times 1$), junto con la suma vectorial y el producto por un escalar, constituye  un  \emph{espacio vectorial} de dimensi√≥n $n$.
 
- Como acabamos de ver, es posible obtener cualquier vector de dicho espacio vectorial a partir de $n$ vectores linealmente independientes del mismo. Un conjunto de $n$ vectores linealmente independientes de un espacio vectorial de dimensiÛn $n$ recibe el nombre de base del espacio vectorial. En principio es posible encontrar infinitas bases distintas para un espacio vectorial de dimensiÛn $n$. Hay algunas particularmente interesantes,
+ Como acabamos de ver, es posible obtener cualquier vector de dicho espacio vectorial a partir de $n$ vectores linealmente independientes del mismo. Un conjunto de $n$ vectores linealmente independientes de un espacio vectorial de dimensi√≥n $n$ recibe el nombre de base del espacio vectorial. En principio es posible encontrar infinitas bases distintas para un espacio vectorial de dimensi√≥n $n$. Hay algunas particularmente interesantes,
  
- \subparagraph{Bases ortogonales.} Una base ortogonal es aquella en que todos sus vectores son ortogonales entre sÌ , es decir cumple que su producto escalar es $b^i\cdot b^j=0, i\neq j$. Donde  $b^i$ representa el \emph{i-Èsimo} vector de la base, $\mathcal{B}=\left\lbrace b^1, b^2, \cdots, b^n  \right\rbrace $ .
+ \subparagraph{Bases ortogonales.} Una base ortogonal es aquella en que todos sus vectores son ortogonales entre s√≠ , es decir cumple que su producto escalar es $b^i\cdot b^j=0, i\neq j$. Donde  $b^i$ representa el \emph{i-√©simo} vector de la base, $\mathcal{B}=\left\lbrace b^1, b^2, \cdots, b^n  \right\rbrace $ .
  
- \subparagraph{Bases ortonormales.} Una base ortonormal, es una base ortogonal en la que, adem·s, los vectores de la base tienen mÛdulo $1$. Es decir, $b^i\cdot b^j=0, i\neq j$ y  $b^i\cdot b^j=1, i = j$. Un caso particularmente ˙til de base ortonormal es la base canÛnica, formada por los vectores, 
+ \subparagraph{Bases ortonormales.} Una base ortonormal, es una base ortogonal en la que, adem√°s, los vectores de la base tienen m√≥dulo $1$. Es decir, $b^i\cdot b^j=0, i\neq j$ y  $b^i\cdot b^j=1, i = j$. Un caso particularmente √∫til de base ortonormal es la base can√≥nica, formada por los vectores, 
 \begin{equation*}
 \mathcal{C}=\left\lbrace c^1=\begin{pmatrix}
 1\\
@@ -1075,7 +1075,7 @@ c^n=\begin{pmatrix}
 \end{pmatrix} \right\rbrace
 \end{equation*} 
 
-Podemos considerar las componentes de cualquier vector como los coeficientes de la combinaciÛn lineal de la base canÛnica que lo representa,
+Podemos considerar las componentes de cualquier vector como los coeficientes de la combinaci√≥n lineal de la base can√≥nica que lo representa,
 
 \begin{equation*}
 a=\begin{pmatrix}
@@ -1114,7 +1114,7 @@ a_n\cdot \begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-Por extensiÛn, podemos generalizar este resultado a cualquier otra base, es decir podemos agrupar en un vector los coeficientes de la combinaciÛn lineal de los vectores de la base que lo generan. Por ejemplo, si construimos, para los vectores de dimensiÛn $3$ la base,
+Por extensi√≥n, podemos generalizar este resultado a cualquier otra base, es decir podemos agrupar en un vector los coeficientes de la combinaci√≥n lineal de los vectores de la base que lo generan. Por ejemplo, si construimos, para los vectores de dimensi√≥n $3$ la base,
 \begin{equation*}
 \mathcal{B}=\left\lbrace \begin{pmatrix}
 1\\
@@ -1152,9 +1152,9 @@ Podemos entonces representar un vector en la base $\mathcal{B}$ como,
 \end{pmatrix}
 \end{equation*} 
  
-Donde  estamos empleando el superÌndice $^{\mathcal{B}}$, para indicar que las componentes del vector $a$ est·n definidas con respecto a la base $\mathcal{B}$.
+Donde  estamos empleando el super√≠ndice $^{\mathcal{B}}$, para indicar que las componentes del vector $a$ est√°n definidas con respecto a la base $\mathcal{B}$.
 
-AsÌ por ejemplo el vector,
+As√≠ por ejemplo el vector,
 \begin{equation*}
 a^{\mathcal{B}}=\begin{pmatrix}
 1.125\\
@@ -1163,7 +1163,7 @@ a^{\mathcal{B}}=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-TendrÌa en la base canÛnica las componentes, 
+Tendr√≠a en la base can√≥nica las componentes, 
 \begin{equation*}
 a^{\mathcal{B}}=\begin{pmatrix}
 1.125\\
@@ -1188,14 +1188,14 @@ a^{\mathcal{B}}=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-La figura \ref{fig:base1}, muestra gr·ficamente la relaciÛn entre los vectores de la base canÛnica $\mathcal{C}$, los vectores de la base $\mathcal{B}$, y el vector $a$, cuyas componentes se han representado en ambas bases.
+La figura \ref{fig:base1}, muestra gr√°ficamente la relaci√≥n entre los vectores de la base can√≥nica $\mathcal{C}$, los vectores de la base $\mathcal{B}$, y el vector $a$, cuyas componentes se han representado en ambas bases.
 
-Podemos aprovechar el producto de matrices para obtener las componentes en la base canÛnica $\mathcal{C}$ de un vector representado en una base cualquiera $\mathcal{B}$. Si agrupamos los vectores de la base $\mathcal{B}$, en una matriz $B$,
+Podemos aprovechar el producto de matrices para obtener las componentes en la base can√≥nica $\mathcal{C}$ de un vector representado en una base cualquiera $\mathcal{B}$. Si agrupamos los vectores de la base $\mathcal{B}$, en una matriz $B$,
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=15cm]{base1.eps}
-\caption{RepresentaciÛn gr·fica del vector $a$, en las base canÛnica $\mathcal{C}$ y en la base $\mathcal{B}$}
+\caption{Representaci√≥n gr√°fica del vector $a$, en las base can√≥nica $\mathcal{C}$ y en la base $\mathcal{B}$}
 \label{fig:base1}
 \end{figure}
 
@@ -1240,7 +1240,7 @@ a_n^{\mathcal{B}}
 \end{pmatrix}
 \end{equation*}
 
-Para obtener las componentes en la base canÛnica, basta entonces multiplicar la matriz $B$, por el vector $a^{\mathcal{B}}$. AsÌ en el ejemplo que acabamos de ver,
+Para obtener las componentes en la base can√≥nica, basta entonces multiplicar la matriz $B$, por el vector $a^{\mathcal{B}}$. As√≠ en el ejemplo que acabamos de ver,
 
 \begin{equation*}
 a=B\cdot a^{\mathcal{B}} \rightarrow a=\begin{pmatrix}
@@ -1259,7 +1259,7 @@ a=B\cdot a^{\mathcal{B}} \rightarrow a=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-Por ˙ltimo, una podemos combinar el producto de matrices y la matriz inversa, para obtener las componentes de un vector en una base cualquiera a partir de sus componentes en otra base. Supongamos que tenemos dos bases $\mathcal{B}_1$ y $\mathcal{B}_2$ y un vector $a$. Podemos obtener las componentes de $a$ en la base canÛnica, a partir de las componentes en la base $\mathcal{B}_1$ como, $a=B_1\cdot a^{\mathcal{B}_1}$ y a partir de sus componentes en la base $\mathcal{B}_2$ como $a=B_2\cdot a^{\mathcal{B}_2}$. Haciendo uso de la matriz inversa,
+Por √∫ltimo, una podemos combinar el producto de matrices y la matriz inversa, para obtener las componentes de un vector en una base cualquiera a partir de sus componentes en otra base. Supongamos que tenemos dos bases $\mathcal{B}_1$ y $\mathcal{B}_2$ y un vector $a$. Podemos obtener las componentes de $a$ en la base can√≥nica, a partir de las componentes en la base $\mathcal{B}_1$ como, $a=B_1\cdot a^{\mathcal{B}_1}$ y a partir de sus componentes en la base $\mathcal{B}_2$ como $a=B_2\cdot a^{\mathcal{B}_2}$. Haciendo uso de la matriz inversa,
 
 \begin{align*}
 a&=B_1\cdot a^{\mathcal{B}_1} \Rightarrow a^{\mathcal{B}_1}=B_1^{-1} \cdot a \\
@@ -1273,28 +1273,28 @@ a^{\mathcal{B}_1}&=B_1^{-1}\cdot B_2 \cdot a^{\mathcal{B}_2}\\
 a^{\mathcal{B}_2}&=B_2^{-1} \cdot B_1\cdot a^{\mathcal{B}_1} 
 \end{align*}
 
-El siguiente cÛdigo permite cambiar de base un vector y representa gr·ficamente tanto el vector como las bases antigua y nueva.
+El siguiente c√≥digo permite cambiar de base un vector y representa gr√°ficamente tanto el vector como las bases antigua y nueva.
 
 \begin{verbatim}
 function aB2=cambia_vb(aB1,B1,B2)
-%este programa cabia de base un vector de dimensiÛn 3 y lo representa en
-%relaciÛn con las bases antigua y nueva.
+%este programa cabia de base un vector de dimensi√≥n 3 y lo representa en
+%relaci√≥n con las bases antigua y nueva.
 %variables de entrada:
 %aB1, componentes del vector en la base 1
 %B1 base representada como una matriz, (cada columna contiene un vector de
-%la base) En la que est· representado el vector aB1
+%la base) En la que est√° representado el vector aB1
 %B2, base representada como una matriz, (cada columna contiene un vector de
 %la base) en la que se quiere representar el vector aB1
 %Si solo se incluye un vector y una base, el programa asume que la segunda
 %base es la canonica B2=[1 0 0;0 1 0; 0 0 1]
 %variables de salida:
 %aB2, Componentes del vector aB1 en la nueva base B2.
-%la funciÛn hace uso de una funciÛn auxiliar (pintavec) incluida al final
+%la funci√≥n hace uso de una funci√≥n auxiliar (pintavec) incluida al final
 %del fichero para dibujar los vectores.
 
 if nargin==2
     %asumimos que queremos cambiar el vector de B1 a la base canonica
-    %øEs B1 una base sensanta?
+    %¬øEs B1 una base sensanta?
     if det(B1)<=eps
         error('los vectores de la base no son l. independientes')
     end
@@ -1312,7 +1312,7 @@ else
     error('el numero de variables de entrada es menor de dos o mayor de tres')
 end
 
-%Dibujo de los vectores con la funciÛn pintavec....
+%Dibujo de los vectores con la funci√≥n pintavec....
 
 pintavec(B1,'r') %vectores de la base original
 xlabel('x')
@@ -1324,18 +1324,18 @@ for i=1:3
     pintavec(aB1(i)*B1(:,i),'k') %componentes de aB1
     pintavec(aB2(i)*B2(:,i),'k') %componentes de aB2
 end
-aBc=B1*aB1; %representacion del vector en la base canÛnica
+aBc=B1*aB1; %representacion del vector en la base can√≥nica
 pintavec(aBc,'g') %vector representado
 
 
 
 function pintavec(a,par)
-%funciÛn auxiliar para pintar vectores... con origen en el origen de
+%funci√≥n auxiliar para pintar vectores... con origen en el origen de
 %coordenadas (0,0,0).
 %la variable a puede ser un vector o una matriz. y par, es una cadena que contiene los
-%tÌpicos par·metros(color, tipo de lÌnea`etc'). El programa considera que
-%los vectores est·n siempre definidos como vectores columnas...
-d=size(a,2); %miramos cuantas columnas tiene a, cada columna representar· un
+%t√≠picos par√°metros(color, tipo de l√≠nea`etc'). El programa considera que
+%los vectores est√°n siempre definidos como vectores columnas...
+d=size(a,2); %miramos cuantas columnas tiene a, cada columna representar√° un
 %vector distinto
 if nargin==2
     for i=1:d
@@ -1350,7 +1350,7 @@ end
 
 \end{verbatim}
 
-\paragraph{Operadores lineales.} A partir de los visto en las secciones anteriores, sabemos que el producto de una matriz de $A$ de orden $n\times n$  multiplicada por un vector $b$ de dimension $n$ da como resultado un nuevo vector $c=A\cdot b$  de dimensiÛn $n$. Podemos considerar cada matriz $n\times n$ como un \emph{operador lineal}, que transforma unos vectores en otros.  Decimos que se trata de un operador lineal porque las componentes del vector resultante, est·n relacionadas linealmente con las del vector original, por ejemplo para $n=3$,
+\paragraph{Operadores lineales.} A partir de los visto en las secciones anteriores, sabemos que el producto de una matriz de $A$ de orden $n\times n$  multiplicada por un vector $b$ de dimension $n$ da como resultado un nuevo vector $c=A\cdot b$  de dimensi√≥n $n$. Podemos considerar cada matriz $n\times n$ como un \emph{operador lineal}, que transforma unos vectores en otros.  Decimos que se trata de un operador lineal porque las componentes del vector resultante, est√°n relacionadas linealmente con las del vector original, por ejemplo para $n=3$,
 \begin{equation*}
 \begin{pmatrix}
 y_1\\
@@ -1372,10 +1372,10 @@ y_3=a_{31}x_1+a_{32}x_2+a_{33}x_3
 \end{matrix} 
 \end{equation*}
 
-Entre los operadores lineales, es posible destacar aquellos que producen transformaciones geomÈtricas sencillas. Veamos algunos ejemplos para vectores bidimensionales,
+Entre los operadores lineales, es posible destacar aquellos que producen transformaciones geom√©tricas sencillas. Veamos algunos ejemplos para vectores bidimensionales,
 
 \begin{enumerate}
-\item DilataciÛn: aumenta el mÛdulo de un vector en un factor $\alpha>1$. ContracciÛn: disminuye el mÛdulo de un vector en un factor $0<\alpha<1$. En ambos casos, se conserva la direcciÛn y el sentido del vector original.
+\item Dilataci√≥n: aumenta el m√≥dulo de un vector en un factor $\alpha>1$. Contracci√≥n: disminuye el m√≥dulo de un vector en un factor $0<\alpha<1$. En ambos casos, se conserva la direcci√≥n y el sentido del vector original.
  
 \begin{equation*}
 R=\begin{pmatrix}
@@ -1393,7 +1393,7 @@ a_2
 \end{pmatrix}
 \end{equation*}
 
-\item ReflexiÛn de un vector respecto al eje x, conservando su mÛdulo,
+\item Reflexi√≥n de un vector respecto al eje x, conservando su m√≥dulo,
 \begin{equation*}
 R_x=\begin{pmatrix}
 1& 0\\
@@ -1410,7 +1410,7 @@ a_1\\
 \end{pmatrix}
 \end{equation*}
 
-\item ReflexiÛn de un vector respecto al eje y, conservando su mÛdulo,
+\item Reflexi√≥n de un vector respecto al eje y, conservando su m√≥dulo,
 \begin{equation*}
 R_y=\begin{pmatrix}
 -1& 0\\
@@ -1427,7 +1427,7 @@ a_2
 \end{pmatrix}
 \end{equation*}
 
-\item ReflexiÛn respecto al origen: Invierte el sentido de un vector, conservando su mÛdulo y direcciÛn,
+\item Reflexi√≥n respecto al origen: Invierte el sentido de un vector, conservando su m√≥dulo y direcci√≥n,
 \begin{equation*}
 R=\begin{pmatrix}
 -1& 0\\
@@ -1443,10 +1443,10 @@ a_2
 -a_2
 \end{pmatrix}
 \end{equation*}
-SerÌa equivalente a aplicar una reflexiÛn respecto al eje x y luego respecto al eje y o viceversa,
+Ser√≠a equivalente a aplicar una reflexi√≥n respecto al eje x y luego respecto al eje y o viceversa,
 $R=R_x\cdot R_y= R_y\cdot R_x$.
 
-\item RotaciÛn en torno al origen un ·ngulo $\theta$,
+\item Rotaci√≥n en torno al origen un √°ngulo $\theta$,
 \begin{equation*}
 R_{\theta}=\begin{pmatrix}
 cos(\theta)& -sin(\theta)\\
@@ -1472,16 +1472,16 @@ La figura \ref{fig:ltrans} muestra los vectores resultantes de aplicar las trans
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{ltrans.eps}
-\caption{Transformaciones lineales del vector $a=[1;2]$. $D$, dilataciÛn/contracciÛn en un factor $1.5$/$0.5$. $R_x$, reflexiÛn respecto al eje x. $R_y$, reflexiÛn respecto al eje y. $R_{\theta}$ rotaciones respecto al origen para ·ngulos $\theta=\pi /6$ y $\theta=\pi /3$}
+\caption{Transformaciones lineales del vector $a=[1;2]$. $D$, dilataci√≥n/contracci√≥n en un factor $1.5$/$0.5$. $R_x$, reflexi√≥n respecto al eje x. $R_y$, reflexi√≥n respecto al eje y. $R_{\theta}$ rotaciones respecto al origen para √°ngulos $\theta=\pi /6$ y $\theta=\pi /3$}
 \label{fig:ltrans}
 \end{figure}
 
-\paragraph{Norma de una matriz.} La norma de una matriz se puede definir a partir del efecto que produce al actuar, como un operador lineal, sobre un vector. En este caso, se les llama normas \emph{inducidas}. Para una matriz $A$ de orden $m\times n$, $y_{(m)}=A_{(m\times n)}x_{(n)}$, La norma inducida de $A$ se define en funciÛn de las normas de los vectores$x$ de su dominio y de las normas de los vectores $y$ de su rango como,
+\paragraph{Norma de una matriz.} La norma de una matriz se puede definir a partir del efecto que produce al actuar, como un operador lineal, sobre un vector. En este caso, se les llama normas \emph{inducidas}. Para una matriz $A$ de orden $m\times n$, $y_{(m)}=A_{(m\times n)}x_{(n)}$, La norma inducida de $A$ se define en funci√≥n de las normas de los vectores$x$ de su dominio y de las normas de los vectores $y$ de su rango como,
 \begin{equation*}
 \Vert A \Vert =\max_{x \neq 0} \frac{\Vert y \Vert}{\Vert x \Vert}=\max_{x \neq 0} \frac{\Vert Ax \Vert}{\Vert x \Vert}
 \end{equation*}
 
-Se puede interpretar como el factor m·ximo con que el que la matriz $A$ puede \emph{alargar} un vector cualquiera. Es posible definir la norma inducida en funciÛn de los vectores unitarios del dominio,
+Se puede interpretar como el factor m√°ximo con que el que la matriz $A$ puede \emph{alargar} un vector cualquiera. Es posible definir la norma inducida en funci√≥n de los vectores unitarios del dominio,
 \begin{equation*}
 \Vert A \Vert =\max_{x \neq 0} \frac{\Vert Ax \Vert}{\Vert x \Vert}= \max_{x \neq 0} \left\Vert A\frac{x}{\Vert x \Vert} \right\Vert= \max_{\Vert x \Vert =1}\Vert Ax \Vert
 \end{equation*}
@@ -1489,29 +1489,29 @@ Se puede interpretar como el factor m·ximo con que el que la matriz $A$ puede \e
 Junto a la norma inducida que acabamos de ver, se definen las siguientes normas,
 
 \begin{enumerate}
-\item Norma 1: Se suman los elementos de cada columna de la matriz, y se toma coma norma el valor m·ximo de dichas sumas,
+\item Norma 1: Se suman los elementos de cada columna de la matriz, y se toma coma norma el valor m√°ximo de dichas sumas,
 \begin{equation*}
 \Vert A_{m,n} \Vert _{1} = \max_j \sum_{i=1}^m a_{ij}
 \end{equation*}
- \item Norma $\infty$: Se suman los elementos de cada fila y se toma como norma $\infty$ el valor m·ximo de dichas sumas.
+ \item Norma $\infty$: Se suman los elementos de cada fila y se toma como norma $\infty$ el valor m√°ximo de dichas sumas.
 \begin{equation*}
 \Vert A_{m,n} \Vert _{\infty} = \max_i \sum_{j=1}^m a_{ij}
 \end{equation*}
 
-\item Norma 2: Se define como el mayor de los valores singulares de una matriz. (Ver secciÛn \ref{sec:SVD}).
+\item Norma 2: Se define como el mayor de los valores singulares de una matriz. (Ver secci√≥n \ref{sec:SVD}).
 \begin{equation*}
 \Vert A_{m,n} \Vert _2 = \sigma_{11}
 \end{equation*}
-\item Norma de Frobenius. Se define como la raÌz cuadrada de la suma de los cuadrados de todos los elementos de la matriz,
+\item Norma de Frobenius. Se define como la ra√≠z cuadrada de la suma de los cuadrados de todos los elementos de la matriz,
 \begin{equation*}
 \Vert A_{m,n} \Vert _F =\sqrt{\sum_{i=1}^m \sum_{j=1}^m a_{ij}^2}
 \end{equation*}
-Que tambiÈn puede expresarse de forma mas directa como,
+Que tambi√©n puede expresarse de forma mas directa como,
 \begin{equation*}
 \Vert A_{m,n} \Vert _F =\sqrt{tr(A^T\cdot A)}
 \end{equation*}
 \end{enumerate}
-En Matlab, es posible calcular las distintas normas de una matriz, de modo an·logo a como se calculan para el caso de vectores,  mediante el comando \texttt{norm(A,p)}. Donde \texttt{A}, es ahora un a matriz y \texttt{p} especifica el tipo de norma que se quiere calcular. En el caso de una matriz, el par·metro \texttt{p} solo puede tomar los valores, \texttt{1} (norma 1), \texttt{2} (norma 2), \texttt{inf} (norma $\infty$), y \texttt{'fro'} (norma de frobenius). El siguiente ejemplo muestra el c·lculo de las normas 1, 2, $\infty$ y de Frobenius de la misma matriz.
+En Matlab, es posible calcular las distintas normas de una matriz, de modo an√°logo a como se calculan para el caso de vectores,  mediante el comando \texttt{norm(A,p)}. Donde \texttt{A}, es ahora un a matriz y \texttt{p} especifica el tipo de norma que se quiere calcular. En el caso de una matriz, el par√°metro \texttt{p} solo puede tomar los valores, \texttt{1} (norma 1), \texttt{2} (norma 2), \texttt{inf} (norma $\infty$), y \texttt{'fro'} (norma de frobenius). El siguiente ejemplo muestra el c√°lculo de las normas 1, 2, $\infty$ y de Frobenius de la misma matriz.
 \begin{verbatim}
 >> A=[1 3 4 5
 2 5 6 -3
@@ -1534,12 +1534,12 @@ nfro =
      1.228820572744451e+01
 \end{verbatim} 
 
-\paragraph{Formas cuadr·ticas.} Se define como forma cuadr·tica a la siguiente operaciÛn entre una matriz cuadrada $A$ de orden $n \times n$ y un vector $x$ de dimensiÛn $n$,
+\paragraph{Formas cuadr√°ticas.} Se define como forma cuadr√°tica a la siguiente operaci√≥n entre una matriz cuadrada $A$ de orden $n \times n$ y un vector $x$ de dimensi√≥n $n$,
 \begin{equation*}
 \alpha=x^T\cdot A \cdot x, \ \alpha \in \mathbb{R}
 \end{equation*}
 
-El resultado es un escalar. AsÌ por ejemplo,
+El resultado es un escalar. As√≠ por ejemplo,
 \begin{equation*}
 A=\begin{pmatrix}
 1& 2& -1\\
@@ -1562,7 +1562,7 @@ A=\begin{pmatrix}
 \end{pmatrix}= 21
 \end{equation*}
 
-Para dimensiÛn $n=2$, 
+Para dimensi√≥n $n=2$, 
 \begin{equation*}
 \alpha =\begin{pmatrix}
 x_1& x_2
@@ -1575,31 +1575,31 @@ x_2
 \end{pmatrix} \rightarrow x_3\equiv \alpha=a_{11}x_1^2+(a_{12}+a_{21})x_1x_2+a_{22}x_2^2
 \end{equation*}
 
-Lo que obtenemos, dependiendo de los signos de $a_{11}$ y $a_{12}$, es la ecuaciÛn de un paraboloide o un hiperboloide. En la figura \ref{fig:parabol} Se muestra un ejemplo,
+Lo que obtenemos, dependiendo de los signos de $a_{11}$ y $a_{12}$, es la ecuaci√≥n de un paraboloide o un hiperboloide. En la figura \ref{fig:parabol} Se muestra un ejemplo,
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{parabol.eps}
-\caption{Formas cuadr·ticas asociadas a las cuatro matrices diagonales: $\vert a_{11}\vert=\vert a_{22}\vert=1$, $a_{12}=a_{21}=0$}
+\caption{Formas cuadr√°ticas asociadas a las cuatro matrices diagonales: $\vert a_{11}\vert=\vert a_{22}\vert=1$, $a_{12}=a_{21}=0$}
 \label{fig:parabol}
 \end{figure}
 
-Veamos brevemente, algunas propiedades relacionadas con  las formas cuadr·ticas,
+Veamos brevemente, algunas propiedades relacionadas con  las formas cuadr√°ticas,
 \begin{enumerate}
-\item Una matriz $A$ de orden $ n\times n$ se dice que es definida positiva si da lugar a una forma cuadr·tica que es siempre mayor que cero para cualquier vector no nulo,
+\item Una matriz $A$ de orden $ n\times n$ se dice que es definida positiva si da lugar a una forma cuadr√°tica que es siempre mayor que cero para cualquier vector no nulo,
 \begin{equation*}
 x^T \cdot A \cdot x > 0, \forall x \neq 0 
 \end{equation*}
 
-\item Una matriz \emph{simÈtrica} es definida positiva si todos sus \emph{valores propios} (ver secciÛn \ref{sec:diag}) son positivos.
+\item Una matriz \emph{sim√©trica} es definida positiva si todos sus \emph{valores propios} (ver secci√≥n \ref{sec:diag}) son positivos.
 
-\item Una matriz no simÈtrica $A$ es definida positiva si su parte simÈtrica $A_s=(A+A^T)/2$ lo es.
+\item Una matriz no sim√©trica $A$ es definida positiva si su parte sim√©trica $A_s=(A+A^T)/2$ lo es.
 \begin{equation*}
 x\cdot A_s\cdot >0, \forall x \neq 0 \Rightarrow x\cdot A\cdot >0, \forall x \neq 0
 \end{equation*}
 \end{enumerate}
 
 \section{Tipos de matrices empleados frecuentemente}\label{tiposm}
-Definimos a continuaciÛn algunos tipos de matrices frecuentemente empleados en ·lgebra, algunos ya han sido introducidos en secciones anteriores. Los reunimos todos aquÌ para facilitar su consulta
+Definimos a continuaci√≥n algunos tipos de matrices frecuentemente empleados en √°lgebra, algunos ya han sido introducidos en secciones anteriores. Los reunimos todos aqu√≠ para facilitar su consulta
 
 \begin{enumerate}
 \item Matriz ortogonal: Una matriz $A_{n\times n}$ es ortogonal cuando su inversa coincide con su traspuesta.
@@ -1619,7 +1619,7 @@ A=\begin{pmatrix}
 0& 0& 1
 \end{pmatrix}
 \end{equation*}
-\item Matriz simÈtrica: Una matriz $A_{n\times n}$ es simÈtrica cuando es igual que su traspuesta,
+\item Matriz sim√©trica: Una matriz $A_{n\times n}$ es sim√©trica cuando es igual que su traspuesta,
 \begin{equation*}
 A=A^T \rightarrow a_{ij}=a_{ji}
 \end{equation*}
@@ -1642,7 +1642,7 @@ a_{11}& 0& \cdots & 0\\
 a_{ij}=0,\ \forall i\neq j
 \end{equation*}
 
-\item Matriz triangular superior: Una matriz es triangular superior cuando todos los elementos situados por debajo de la diagonal son cero. Es estrictamente diagonal superior si adem·s los elementos de la diagonal tambiÈn son cero,
+\item Matriz triangular superior: Una matriz es triangular superior cuando todos los elementos situados por debajo de la diagonal son cero. Es estrictamente diagonal superior si adem√°s los elementos de la diagonal tambi√©n son cero,
 \begin{align*}
 TRS& \rightarrow a_{ij} = 0, \ \forall i\geq j \\
 ETRS& \rightarrow a_{ij} = 0, \ \forall i > j 
@@ -1660,7 +1660,7 @@ ETRS&=\begin{pmatrix}
 0 & 0 & 0
 \end{pmatrix}\\
 \end{align*}
-\item Matriz triangular inferior: Una matriz es triangular inferior si todos los elementos pro encima de su diagonal son cero. Es estrictamente triangular inferior si adem·s los elementos de su diagonal son tambiÈn cero,
+\item Matriz triangular inferior: Una matriz es triangular inferior si todos los elementos pro encima de su diagonal son cero. Es estrictamente triangular inferior si adem√°s los elementos de su diagonal son tambi√©n cero,
 \begin{align*}
 TRI& \rightarrow a_{ij} = 0, \ \forall i\leq j \\
 ETRI& \rightarrow a_{ij} = 0, \ \forall i < j 
@@ -1711,8 +1711,8 @@ A=\begin{pmatrix}
 
 
 
-\section{FactorizaciÛn de matrices}\label{sec:fact}
-La factorizaciÛn de matrices, consiste en la descomposiciÛn de una matriz en el producto de dos o m·s matrices. Las matrices resultantes de la factorizaciÛn se eligen de modo que simplifiquen, o hagan m·s robustas numÈricamente determinadas operaciones matriciales: C·lculos de determinantes, inversas, etc. A continuaciÛn se describen las m·s comunes.
+\section{Factorizaci√≥n de matrices}\label{sec:fact}
+La factorizaci√≥n de matrices, consiste en la descomposici√≥n de una matriz en el producto de dos o m√°s matrices. Las matrices resultantes de la factorizaci√≥n se eligen de modo que simplifiquen, o hagan m√°s robustas num√©ricamente determinadas operaciones matriciales: C√°lculos de determinantes, inversas, etc. A continuaci√≥n se describen las m√°s comunes.
 
 \subsection{Factorizacion LU}\label{sec:LU}
 Consiste en factorizar una matriz como el producto de una matriz triangular inferior $L$ por una  matriz triangular superior $U$, $A=L\cdot U$. Por ejemplo,
@@ -1731,15 +1731,15 @@ Consiste en factorizar una matriz como el producto de una matriz triangular infe
 0& 0& ^{-3}/_4
 \end{pmatrix}
 \end{equation*}
-Una aplicaciÛn inmediata, es el calculo del determinante. Puesto que el determinante de una matriz triangular, es directamente el producto de los elementos de la diagonal.
+Una aplicaci√≥n inmediata, es el calculo del determinante. Puesto que el determinante de una matriz triangular, es directamente el producto de los elementos de la diagonal.
 
 En el ejemplo anterior,
 \begin{equation*}
 \vert A \vert = 6 \equiv \vert L \vert\cdot\vert U\vert =1 \cdot 1 \cdot 1 \cdot 3 \cdot (-\frac{8}{3})\cdot (-\frac{3}{4})=6    
 \end{equation*}
 
-Uno de los mÈtodos m·s conocidos para calcular la factorizaciÛn LU de una matriz, se basa en el mÈtodo conocido como eliminaciÛn gaussiana. La idea es convertir en ceros los elementos situados por debajo de la diagonal de la matriz. Para ello, se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones  formadas con la fila que se sustituye y la fila anterior.
- veamos en quÈ consiste con un ejemplo. Supongamos que tenemos la siguiente matriz de orden $4 \times 4$, 
+Uno de los m√©todos m√°s conocidos para calcular la factorizaci√≥n LU de una matriz, se basa en el m√©todo conocido como eliminaci√≥n gaussiana. La idea es convertir en ceros los elementos situados por debajo de la diagonal de la matriz. Para ello, se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones  formadas con la fila que se sustituye y la fila anterior.
+ veamos en qu√© consiste con un ejemplo. Supongamos que tenemos la siguiente matriz de orden $4 \times 4$, 
 
 \begin{equation*}
 A=\begin{pmatrix}
@@ -1750,7 +1750,7 @@ A=\begin{pmatrix}
 \end{pmatrix} 
 \end{equation*}
 
-Si sustituimos la segunda fila por el resultado de restarle la primera multiplicada por $2$ y dividida por $3$ obtendrÌamos la matriz,
+Si sustituimos la segunda fila por el resultado de restarle la primera multiplicada por $2$ y dividida por $3$ obtendr√≠amos la matriz,
 
 \begin{equation*}
 A=\begin{pmatrix}
@@ -1766,7 +1766,7 @@ A=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-De modo an·logo, si sustituimos ahora la tercera fila por el resultado de restarle la primera multiplicada por $3$ y dividida $3$,
+De modo an√°logo, si sustituimos ahora la tercera fila por el resultado de restarle la primera multiplicada por $3$ y dividida $3$,
  
 \begin{equation*}
 U_1=\begin{pmatrix}
@@ -1782,7 +1782,7 @@ U_1=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-Por ˙ltimo si sustituimos la ˙ltima fila por el resultado de restarle la primera multiplicada por $5$ y dividida por $3$,
+Por √∫ltimo si sustituimos la √∫ltima fila por el resultado de restarle la primera multiplicada por $5$ y dividida por $3$,
 
 \begin{equation*}
 U_1=\begin{pmatrix}
@@ -1798,9 +1798,9 @@ U_1=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-El resultado que hemos obtenido, tras realizar esta transformaciÛn , es una nueva matriz $U$ en la que todos los elementos de su primera columna, por debajo de la diagonal, son ceros.
+El resultado que hemos obtenido, tras realizar esta transformaci√≥n , es una nueva matriz $U$ en la que todos los elementos de su primera columna, por debajo de la diagonal, son ceros.
 
-Podemos proceder de modo an·logo para \emph{eliminar} ahora los elementos de la segunda columna situados por debajo de la diagonal. Para ellos sustituimos la tercera fila  por la diferencia entre ella y las segunda fila multiplicada por 	$-2$  y dividida por $-2.6$.
+Podemos proceder de modo an√°logo para \emph{eliminar} ahora los elementos de la segunda columna situados por debajo de la diagonal. Para ellos sustituimos la tercera fila  por la diferencia entre ella y las segunda fila multiplicada por 	$-2$  y dividida por $-2.6$.
 
 \begin{align*}
 U_1 &=\begin{pmatrix}
@@ -1817,7 +1817,7 @@ U_1 &=\begin{pmatrix}
 \end{pmatrix}
 \end{align*}
 
-Y sustituyendo la ˙ltima fila por  la diferencia entre ella y la segunda multiplicada por $-4.66$ y dividida por $-2.6$,
+Y sustituyendo la √∫ltima fila por  la diferencia entre ella y la segunda multiplicada por $-4.66$ y dividida por $-2.6$,
 
 \begin{align*}
 U_2 &=\begin{pmatrix}
@@ -1834,7 +1834,7 @@ U_2 &=\begin{pmatrix}
 \end{pmatrix}
 \end{align*}
 
-De este modo, los elementos de la segunda columna situados debajo de la diagonal, han sido sustituidos por ceros. Un ˙ltimo paso, nos llevar· hasta una matriz triangular superior; sustituimos la ˙ltima fila por la diferencia entre ella y la tercera fila multiplicada por $0.25$ y dividida por $-0.75$,
+De este modo, los elementos de la segunda columna situados debajo de la diagonal, han sido sustituidos por ceros. Un √∫ltimo paso, nos llevar√° hasta una matriz triangular superior; sustituimos la √∫ltima fila por la diferencia entre ella y la tercera fila multiplicada por $0.25$ y dividida por $-0.75$,
 
 \begin{align*}
  U_2 &=\begin{pmatrix}
@@ -1860,13 +1860,13 @@ Podemos ahora, a partir del ejemplo, deducir un procedimiento general. Para \emp
 \end{bmatrix}
 \end{equation*}
 
-\item Multiplicamos el resultado de la operaciÛn anterior por el elemento $a_{ij}$,
+\item Multiplicamos el resultado de la operaci√≥n anterior por el elemento $a_{ij}$,
 \begin{equation*}
 \begin{bmatrix}
 a_{ij} \cdot 0/ a_{jj}& a_{ij} \cdot 0/ a_{jj}& \cdots & a_{ij} \cdot a_{jj}/ a_{jj}& a_{ij} \cdot a_{jj+1}/ a_{jj}& \cdots
 \end{bmatrix}
 \end{equation*}
-\item Finalmente, sustituimos la fila $i$ de la matriz de partida por la diferencia  entre ella y el resultado de la operaciÛn anterior.
+\item Finalmente, sustituimos la fila $i$ de la matriz de partida por la diferencia  entre ella y el resultado de la operaci√≥n anterior.
 \begin{equation*}
 \begin{bmatrix}
 0& 0& \cdots& a_{ij}& a_{ij+1}& \cdots
@@ -1876,23 +1876,23 @@ a_{ij} \cdot 0/ a_{jj}& a_{ij} \cdot 0/ a_{jj}& \cdots & a_{ij} \cdot a_{jj}/ a_
 \end{equation*}
 \end{enumerate}
 
-Este procedimiento se aplica iterativamente empezando en por el elemento  $a_{21}$ de la matriz y desplazando el cÛmputo hacia abajo, hasta llegar a la ˙ltima fila y hacia la derecha hasta llegar en cada fila al elemento anterior a la diagonal.
+Este procedimiento se aplica iterativamente empezando en por el elemento  $a_{21}$ de la matriz y desplazando el c√≥mputo hacia abajo, hasta llegar a la √∫ltima fila y hacia la derecha hasta llegar en cada fila al elemento anterior a la diagonal.
 
-El siguiente cÛdigo aplica el procedimiento descrito a una matriz de cualquier orden,\label{elig}
+El siguiente c√≥digo aplica el procedimiento descrito a una matriz de cualquier orden,\label{elig}
 
 \begin{verbatim}
 function U=eligauss(A)
-%Esta funciÛn obtiene una matriz triangular superior, a partir de una
-%matriz dada, aplicando el mÈtodo de eliminaciÛn gaussiana.
-%No realiza piboteo de filas, asÌ que si alg˙n elemento de la diagonal de A
-%queda cero o proximo a cero al ir eliminado dar· problemas...
+%Esta funci√≥n obtiene una matriz triangular superior, a partir de una
+%matriz dada, aplicando el m√©todo de eliminaci√≥n gaussiana.
+%No realiza piboteo de filas, as√≠ que si alg√∫n elemento de la diagonal de A
+%queda cero o proximo a cero al ir eliminado dar√° problemas...
 
-%Obtenemos el n˙mero de filas de la matriz..
+%Obtenemos el n√∫mero de filas de la matriz..
 nf=size(A,1);
 U=A
 %
-for j=1:nf-1 %recorro todas la columnas menos la ˙ltima
-    for i=j+1:nf %Recorro las filas desde debajo de la diagonal hasta la ˙ltima
+for j=1:nf-1 %recorro todas la columnas menos la √∫ltima
+    for i=j+1:nf %Recorro las filas desde debajo de la diagonal hasta la √∫ltima
         %en Matlab tengo la suerte de poder manejar cada fila de un solo
         %golpe.
         U(i,:)=U(i,:)-U(j,:)*U(i,j)/U(j,j)
@@ -1901,7 +1901,7 @@ end
 
 \end{verbatim}
 
-Hasta ahora, hemos descrito un procedimiento para transformar una matriz cualquiera en una matriz triangular superior. Nuestro objetivo era obtener la descomposiciÛn de un matriz en el producto de dos,  una triangular inferior y otra triangular superior.  En primer lugar, podemos asociar    el procedimiento descrito de eliminaciÛn gaussiana al producto de matrices. Volviendo al ejemplo anterior, si construimos la matriz $\lambda_1$
+Hasta ahora, hemos descrito un procedimiento para transformar una matriz cualquiera en una matriz triangular superior. Nuestro objetivo era obtener la descomposici√≥n de un matriz en el producto de dos,  una triangular inferior y otra triangular superior.  En primer lugar, podemos asociar    el procedimiento descrito de eliminaci√≥n gaussiana al producto de matrices. Volviendo al ejemplo anterior, si construimos la matriz $\lambda_1$
 \begin{equation*}
 \lambda_1=\begin{pmatrix} 
 1& 0& 0& 0\\
@@ -1931,7 +1931,7 @@ El producto $\lambda_1 \cdot A$ da como resultado la matriz,
 \end{pmatrix}
 \end{equation*}
 
-De modo an·logo, $U_2=\lambda_2 \cdot U_1$
+De modo an√°logo, $U_2=\lambda_2 \cdot U_1$
  
 \begin{equation*}
 \lambda_2=\begin{pmatrix} 
@@ -1951,7 +1951,7 @@ U_2= \begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-Por ˙ltimo, $U=\lambda_3 \cdot U_2$
+Por √∫ltimo, $U=\lambda_3 \cdot U_2$
 
 \begin{equation*}
  \lambda_3 =\begin{pmatrix}
@@ -1987,7 +1987,7 @@ De nuevo, podemos generalizar el procedimiento empleado; cada matriz $\lambda_j$
 \end{equation*} 
 Solo los elementos de la diagonal, que toman el valor $1$, y los elementos de la columna $j$ situados por debajo de la diagonal son distintos de cero.
 
-A partir de la definiciÛn de las matrices $\lambda_j$, podemos obtener una relaciÛn entre la matriz triangular superior $U$  obtenida al final del proceso de eliminaciÛn, y la matriz inicial $A$ de orden $n\times n$ para ello, en cada paso multiplicamos tanto por $\lambda_j$ como por su inversa $\lambda_j^{-1}$,
+A partir de la definici√≥n de las matrices $\lambda_j$, podemos obtener una relaci√≥n entre la matriz triangular superior $U$  obtenida al final del proceso de eliminaci√≥n, y la matriz inicial $A$ de orden $n\times n$ para ello, en cada paso multiplicamos tanto por $\lambda_j$ como por su inversa $\lambda_j^{-1}$,
 \begin{align*}
 A&=\lambda_1^{-1}\cdot \overbrace{\lambda_1\cdot A}^{U_1}\\
 A&=\lambda_1^{-1}\cdot\lambda_2^{-1} \cdot \overbrace{\lambda_2  \cdot \lambda_1 A}^{U_2}\\
@@ -1996,7 +1996,7 @@ A&=\lambda_1^{-1}\cdot \lambda_2^{-1}\cdot \overbrace{ \lambda_3^{-1}\cdot  \lam
 A&=\lambda_1^{-1} \cdot  \lambda_2^{-1}\cdot  \lambda_3^{-1} \cdots  \lambda_n ^{-1}\cdot \overbrace{\lambda_n \cdots \lambda_3 \cdot \lambda_2\cdot \lambda_1  \cdot A}^{U}
 \end{align*}
 
-Las matrices $\lambda_j^{-1}$ tienen dos propiedades que las hacen particularmente f·ciles de manejar:  la primera es que cumplen que  su inversa  $\lambda_j^{-1}$ puede obtenerse a partir de $\lambda_j$, sin m·s que cambiar de signo los elementos distintos de cero que no pertenecen a la diagonal (CompruÈbalo),
+Las matrices $\lambda_j^{-1}$ tienen dos propiedades que las hacen particularmente f√°ciles de manejar:  la primera es que cumplen que  su inversa  $\lambda_j^{-1}$ puede obtenerse a partir de $\lambda_j$, sin m√°s que cambiar de signo los elementos distintos de cero que no pertenecen a la diagonal (Compru√©balo),
 \begin{equation*}
  \lambda_j^{-1}=\begin{pmatrix}
 1& \cdots & 0& 0& 0& \cdots & 0\\
@@ -2010,7 +2010,7 @@ Las matrices $\lambda_j^{-1}$ tienen dos propiedades que las hacen particularmen
 \end{pmatrix}
 \end{equation*}
 
-La segunda propiedad es que el producto $L=\lambda_1^{-1} \cdot  \lambda_2^{-1}\cdot  \lambda_3^{-1} \cdots  \lambda_n ^{-1}$, se puede obtener progresivamente, a la vez que se construye $U$, sin m·s que ir juntando en una ˙nica matriz $L$ las columnas de $\lambda_1^{-1}$, $\lambda_2^{-1}$, etc. que contienen elementos no nulos, en nuestro ejemplo,
+La segunda propiedad es que el producto $L=\lambda_1^{-1} \cdot  \lambda_2^{-1}\cdot  \lambda_3^{-1} \cdots  \lambda_n ^{-1}$, se puede obtener progresivamente, a la vez que se construye $U$, sin m√°s que ir juntando en una √∫nica matriz $L$ las columnas de $\lambda_1^{-1}$, $\lambda_2^{-1}$, etc. que contienen elementos no nulos, en nuestro ejemplo,
 \begin{equation*}
  L =\begin{pmatrix}
 1& 0& 0&0\\
@@ -2035,13 +2035,13 @@ a_{n1}/a_{11}& \cdots & a_{nj-1}/a_{j-1j-1}& a_{nj}/a_{jj}& a_{nj+1}/a_{j+1j+1}&
 \end{pmatrix}
 \end{equation*}
 
-Por construcciÛn,  la matriz $L$ es una matriz inferior, Con lo que quedarÌa completo el c·lculo de la factorizaciÛn LU,
+Por construcci√≥n,  la matriz $L$ es una matriz inferior, Con lo que quedar√≠a completo el c√°lculo de la factorizaci√≥n LU,
 
 \begin{equation*}
 A=\overbrace{\lambda_1^{-1} \cdot  \lambda_2^{-1}\cdot  \lambda_3^{-1} \cdots  \lambda_n ^{-1}}^{L}\cdot \overbrace{\lambda_n \cdots \lambda_3 \cdot \lambda_2\cdot \lambda_1  \cdot A}^{U}=L\cdot U
 \end{equation*}
 
-La factorizaciÛn que acabamos de describir, puede presentar problemas numÈricos dependiendo del cÛmo sea la matriz que se desea factorizar. El primer problema se produce cuando el elemento de la diagonal de $u_{jj}$ por el que toca dividir para eliminar los elementos de la columna $j$, situados por debajo de la diagonal, es $0$. En ese caso el ordenador dar· un error de desbordamiento y no se podr· seguir factorizando. El segundo problema surge cuando los elementos de la matriz son dispares en magnitud; las operaciones matem·ticas realizadas durante el proceso de factorizaciÛn pueden dar lugar a errores de redondeo importantes que hagan incorrecto el resultado de la factorizaciÛn. Veamos un ejemplo un tanto extremo,
+La factorizaci√≥n que acabamos de describir, puede presentar problemas num√©ricos dependiendo del c√≥mo sea la matriz que se desea factorizar. El primer problema se produce cuando el elemento de la diagonal de $u_{jj}$ por el que toca dividir para eliminar los elementos de la columna $j$, situados por debajo de la diagonal, es $0$. En ese caso el ordenador dar√° un error de desbordamiento y no se podr√° seguir factorizando. El segundo problema surge cuando los elementos de la matriz son dispares en magnitud; las operaciones matem√°ticas realizadas durante el proceso de factorizaci√≥n pueden dar lugar a errores de redondeo importantes que hagan incorrecto el resultado de la factorizaci√≥n. Veamos un ejemplo un tanto extremo,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -2065,7 +2065,7 @@ La factorizaciÛn que acabamos de describir, puede presentar problemas numÈricos 
 \end{pmatrix}}^{U} 
 \end{equation*} 
 
-Como el \emph{eps} del ordenador es del orden de $10^{-16}$, $1$ es despreciado frente $10^{20}$. Es decir, $(1-10^{20})\approx 10^{20}$, con lo cual el ordenador tendr· una versiÛn aproximada de $U$
+Como el \emph{eps} del ordenador es del orden de $10^{-16}$, $1$ es despreciado frente $10^{20}$. Es decir, $(1-10^{20})\approx 10^{20}$, con lo cual el ordenador tendr√° una versi√≥n aproximada de $U$
 
 \begin{equation*}
 U \approx \hat{U}= \begin{pmatrix}
@@ -2088,7 +2088,7 @@ L \cdot \hat{U}=  \begin{pmatrix}
 \end{pmatrix} \neq A
 \end{equation*}
 
-Una manera de paliar los efectos de redondeo, es reordenar las filas de la matriz de modo que el elemento $a_{jj}$ por el que se va a dividir los elementos de la fila $j$ en el proceso de eliminaciÛn sea lo mayor posible. Este procedimiento se conoce con el nombre de pivoteo de filas.
+Una manera de paliar los efectos de redondeo, es reordenar las filas de la matriz de modo que el elemento $a_{jj}$ por el que se va a dividir los elementos de la fila $j$ en el proceso de eliminaci√≥n sea lo mayor posible. Este procedimiento se conoce con el nombre de pivoteo de filas.
 Para el ejemplo que acabamos de examinar, supongamos que cambiamos de orden las dos filas de    la matriz,
 
 \begin{equation*}
@@ -2101,7 +2101,7 @@ Para el ejemplo que acabamos de examinar, supongamos que cambiamos de orden las 
 \end{pmatrix}
 \end{equation*}
 
-Si recalculamos la factorizaciÛn LU, para la nueva matriz con la filas intercambiadas,
+Si recalculamos la factorizaci√≥n LU, para la nueva matriz con la filas intercambiadas,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -2125,7 +2125,7 @@ Si recalculamos la factorizaciÛn LU, para la nueva matriz con la filas intercamb
 \end{pmatrix}}^{U} 
 \end{equation*}
 
-De nuevo, por errores de redondeo el ordenador tendr· una version aproximada de $U$.
+De nuevo, por errores de redondeo el ordenador tendr√° una version aproximada de $U$.
 
 \begin{equation*}
 U \approx \hat{U}= \begin{pmatrix}
@@ -2151,7 +2151,7 @@ L \cdot \hat{U}=  \begin{pmatrix}
 \end{pmatrix} \approx A
 \end{equation*}
 
-La permutaciÛn de las filas de una matriz $A$ de orden $n\times m$, se puede definir a partir del producto con las matrices de permutaciÛn de orden $n \times n$. …stas se obtienen permutando directamente las filas de la matriz identidad $I_{n \times n}$. Si una matriz de permutaciÛn multiplica a otra matriz por la izquierda, permuta el orden de sus filas. Si la multiplica por la derecha. permuta el orden de sus columnas. AsÌ por ejemplo, para matrices de orden $3 \times n$,
+La permutaci√≥n de las filas de una matriz $A$ de orden $n\times m$, se puede definir a partir del producto con las matrices de permutaci√≥n de orden $n \times n$. √âstas se obtienen permutando directamente las filas de la matriz identidad $I_{n \times n}$. Si una matriz de permutaci√≥n multiplica a otra matriz por la izquierda, permuta el orden de sus filas. Si la multiplica por la derecha. permuta el orden de sus columnas. As√≠ por ejemplo, para matrices de orden $3 \times n$,
 
 \begin{equation*}
 I_{n \times n}=\begin{pmatrix}
@@ -2183,14 +2183,14 @@ P_{1\leftrightarrow 3}\cdot A=\begin{pmatrix}
 \end{pmatrix}= A_{1\leftrightarrow 3}
 \end{equation*}
 
-Volvamos al c·lculo de la factorizaciÛn LU, pero ahora empleando pivoteo de filas. Supongamos una matriz $A$ de orden $n\times n$
+Volvamos al c√°lculo de la factorizaci√≥n LU, pero ahora empleando pivoteo de filas. Supongamos una matriz $A$ de orden $n\times n$
 
-El primer paso, es buscar el elemento mayor en valor absoluto de la primera columna en intercambia la primera fila de la matriz de $A$, con la fila que contiene dicho elemento. Si utilizamos la matriz de permutaciÛn adecuada, esto puede expresarse como,
+El primer paso, es buscar el elemento mayor en valor absoluto de la primera columna en intercambia la primera fila de la matriz de $A$, con la fila que contiene dicho elemento. Si utilizamos la matriz de permutaci√≥n adecuada, esto puede expresarse como,
 
 \begin{equation*}
 A \rightarrow P_1\cdot A
 \end{equation*}
-A continuaciÛn eliminamos los elementos de la primera fila situados por debajo de la diagonal,
+A continuaci√≥n eliminamos los elementos de la primera fila situados por debajo de la diagonal,
 \begin{equation*}
 A \rightarrow P_1\cdot A \rightarrow \lambda_1 \cdot P_1 \cdot A
 \end{equation*}
@@ -2205,19 +2205,19 @@ Eliminamos los elementos de la segunda fila situados por debajo de la diagonal,
 A \rightarrow P_1\cdot A \rightarrow \lambda_1 \cdot P_1 \cdot A \rightarrow  P_2 \cdot \lambda_1 \cdot P_1 \cdot A \rightarrow \lambda_2 \cdot  P_2 \cdot \lambda_1 \cdot P_1 \cdot A
 \end{equation*}
 
-Si seguimos todo el proceso hasta eliminar los elementos situados por debajo de la diagonal en la fila $n-1$, obtendremos la expresiÛn de la matriz triangular superior $U$ resultante,
+Si seguimos todo el proceso hasta eliminar los elementos situados por debajo de la diagonal en la fila $n-1$, obtendremos la expresi√≥n de la matriz triangular superior $U$ resultante,
 
 \begin{equation*}
 \lambda_{n-1}P_{n-1}\lambda_{n-2}P_{n-2} \cdots  \lambda_2  P_2 \lambda_1  P_1 A = U
 \end{equation*}
 
-Aunque hemos obtenido $U$, necesitamos una manera de obtener $L$, ahora no es inmediato como en el caso de la factorizaciÛn sin pivoteo, no basta con invertir las matrices $\lambda_i$ ya que tenemos por medio todas las matrices de permutaciÛn utilizadas. Para obtenerla realizaremos la siguiente transformaciÛn, 
+Aunque hemos obtenido $U$, necesitamos una manera de obtener $L$, ahora no es inmediato como en el caso de la factorizaci√≥n sin pivoteo, no basta con invertir las matrices $\lambda_i$ ya que tenemos por medio todas las matrices de permutaci√≥n utilizadas. Para obtenerla realizaremos la siguiente transformaci√≥n, 
 
 \begin{equation*}
 \lambda_{n-1}P_{n-1}\lambda_{n-2}P_{n-2} \cdots  \lambda_2  P_2 \lambda_1  P_1 A = \lambda_{n-1}'\lambda_{n-2}'\cdots \lambda_2'   \lambda_1' P_{n-1}P_{n-2} \cdots P_2  P_1 A
 \end{equation*}
 
-Donde las matrices $\lambda_i'$ pueden obtenerse a partir de las matrices $\lambda_i$ y de las matrices de permutaciÛn de la manera siguiente,
+Donde las matrices $\lambda_i'$ pueden obtenerse a partir de las matrices $\lambda_i$ y de las matrices de permutaci√≥n de la manera siguiente,
 
 \begin{align*}
 \lambda_{n-1}' &= \lambda_{n-1} \\
@@ -2231,7 +2231,7 @@ Donde las matrices $\lambda_i'$ pueden obtenerse a partir de las matrices $\lamb
 \end{align*}
 
 
-Matem·ticamente el c·lculo de las matrices $\lambda_i'$ requiere calcular el producto de un gran n˙mero de matrices.  Sin embargo dicho c·lculo es equivalente a permutar los elementos de $\lambda_i$ situados por debajo de la diagonal.   AsÌ Por ejemplo para,
+Matem√°ticamente el c√°lculo de las matrices $\lambda_i'$ requiere calcular el producto de un gran n√∫mero de matrices.  Sin embargo dicho c√°lculo es equivalente a permutar los elementos de $\lambda_i$ situados por debajo de la diagonal.   As√≠ Por ejemplo para,
 
 \begin{equation*}
 \lambda_2=
@@ -2275,16 +2275,16 @@ P_3=
 \end{pmatrix}
 \end{equation*}
 
-Por ˙ltimo podemos representar el producto de todas las matrices de permutaciÛn como una sola matriz, $P_{n-1}P_{n-2} \cdots P_2  P_1=P$. (El producto de matrices de permutaciÛn entre sÌ, da como resultado una nueva matriz de permutaciÛn.
+Por √∫ltimo podemos representar el producto de todas las matrices de permutaci√≥n como una sola matriz, $P_{n-1}P_{n-2} \cdots P_2  P_1=P$. (El producto de matrices de permutaci√≥n entre s√≠, da como resultado una nueva matriz de permutaci√≥n.
 
  
-De esta manera, la factorizaciÛn LU con pivoteo de filas podrÌamos representarla como $P\cdot A=L\cdot U$,
+De esta manera, la factorizaci√≥n LU con pivoteo de filas podr√≠amos representarla como $P\cdot A=L\cdot U$,
 
 \begin{equation*}
 \overbrace{P_{n-1}P_{n-2} \cdots P_2  P_1}^{P}\cdot  A= \overbrace{\lambda_1'^{-1} \lambda_2'^{-2} \cdots \lambda_{n-2}'^{-1} \lambda_{n-1}'^{-1}}^{L}\cdot \overbrace{\lambda_{n-1}P_{n-1}\lambda_{n-2}P_{n-2} \cdots  \lambda_2  P_2 \lambda_1  P_1 A }^{U}   
 \end{equation*}
 
-Como ejemplo, vamos a volver a calcular la factorizaciÛn LU de la matriz,
+Como ejemplo, vamos a volver a calcular la factorizaci√≥n LU de la matriz,
  \begin{equation*}
 A=\begin{pmatrix}
 3& 4& 2&5\\
@@ -2295,7 +2295,7 @@ A=\begin{pmatrix}
 \end{equation*}
  Pero empleando ahora pivoteo de filas.
  
-En primer lugar buscamos  el elemento de la primera columna mayor en valor absoluto. En esta caso es el ˙ltimo elemento de la columna por lo que intercambiamos la primera fila con la cuarta,
+En primer lugar buscamos  el elemento de la primera columna mayor en valor absoluto. En esta caso es el √∫ltimo elemento de la columna por lo que intercambiamos la primera fila con la cuarta,
  
  
   \begin{equation*}
@@ -2338,7 +2338,7 @@ Eliminamos ahora los elementos de la primera columna situados por debajo de la d
 \end{pmatrix}
 \end{equation*}
 
-Para eliminar los elementos de la segunda columna, repetimos los mismos pasos. El elemento mayor de la segunda columna de $U_1$ es ahora $2.8$, por tanto intercambiamos entre sÌ la segunda y la cuarta fila,
+Para eliminar los elementos de la segunda columna, repetimos los mismos pasos. El elemento mayor de la segunda columna de $U_1$ es ahora $2.8$, por tanto intercambiamos entre s√≠ la segunda y la cuarta fila,
 
 \begin{equation*}
 P_2\cdot \overbrace{\lambda_1 \cdot P_1\cdot A}^{U_1}=\begin{pmatrix}
@@ -2358,7 +2358,7 @@ P_2\cdot \overbrace{\lambda_1 \cdot P_1\cdot A}^{U_1}=\begin{pmatrix}
 0& -0.8& -0.2& -2.8
 \end{pmatrix}
 \end{equation*}
-A continuaciÛn, eliminamos los elementos de la segunda columna situados por debajo de la diagonal,
+A continuaci√≥n, eliminamos los elementos de la segunda columna situados por debajo de la diagonal,
 
 \begin{equation*}
 \overbrace{\lambda_2\cdot P_2\cdot \lambda_1 \cdot P_1\cdot A}^{U_2}=\begin{pmatrix}
@@ -2379,7 +2379,7 @@ A continuaciÛn, eliminamos los elementos de la segunda columna situados por deba
 \end{pmatrix}
 \end{equation*}
 
-Para eliminar el elemento que queda debajo de la diagonal en la tercera columna, procedemos igual que para las columnas anteriores. Como en este caso, el elemento situado en la diagonal es mayor en valor absoluto no es preciso permutar. (Desde un punto de vista formal, podrÌamos decir que en este caso la matriz de permutaciones aplicada es la matriz identidad).
+Para eliminar el elemento que queda debajo de la diagonal en la tercera columna, procedemos igual que para las columnas anteriores. Como en este caso, el elemento situado en la diagonal es mayor en valor absoluto no es preciso permutar. (Desde un punto de vista formal, podr√≠amos decir que en este caso la matriz de permutaciones aplicada es la matriz identidad).
 
 \begin{align*}
 \overbrace{\lambda_3\cdot\lambda_2\cdot P_2\cdot \lambda_1 \cdot P_1\cdot A}^{U}&=\begin{pmatrix}
@@ -2401,7 +2401,7 @@ Para eliminar el elemento que queda debajo de la diagonal en la tercera columna,
 \end{pmatrix}= U 
 \end{align*}
 
-Como hemos visto, la matriz $\lambda_i'$ las obtenemos a  partir de $\lambda_i$, permutando los elementos situados por debajo de la diagonal, distintos de cero. En nuestro ejemplo solo hay matriz $\lambda_1$ afectada por una ˙nica permutaciÛn $P_2$,
+Como hemos visto, la matriz $\lambda_i'$ las obtenemos a  partir de $\lambda_i$, permutando los elementos situados por debajo de la diagonal, distintos de cero. En nuestro ejemplo solo hay matriz $\lambda_1$ afectada por una √∫nica permutaci√≥n $P_2$,
 \begin{equation*}
 \lambda'_1=\begin{pmatrix}
 1& 0& 0& 0\\
@@ -2411,7 +2411,7 @@ Como hemos visto, la matriz $\lambda_i'$ las obtenemos a  partir de $\lambda_i$,
 \end{pmatrix}
 \end{equation*}
 
-Para el resto, $\lambda_2'=\lambda_2$ y $\lambda'_3=\lambda_3$. Para obtener la matriz L cambiando los signos a los elementos situados por debajo de la diagonal de $\lambda'_1$, $\lambda_2$ y $\lambda_3$, y los agrupamos en una ˙nica matriz,
+Para el resto, $\lambda_2'=\lambda_2$ y $\lambda'_3=\lambda_3$. Para obtener la matriz L cambiando los signos a los elementos situados por debajo de la diagonal de $\lambda'_1$, $\lambda_2$ y $\lambda_3$, y los agrupamos en una √∫nica matriz,
 
 \begin{equation*}
 L=\begin{pmatrix}
@@ -2422,7 +2422,7 @@ L=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-Por ˙ltimo debemos multiplicar las matrices de permutaciones para agruparlas en una sola,
+Por √∫ltimo debemos multiplicar las matrices de permutaciones para agruparlas en una sola,
 
 \begin{equation*}
 P=P_2\cdot P_1= \begin{pmatrix}
@@ -2433,14 +2433,14 @@ P=P_2\cdot P_1= \begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-Es trivial comprobar que las matrices obtenidas cumplen \footnote{Los valores numÈricos empleados en el texto, est·n redondeados, por tanto dan una soluciÛn incorrecta. Si se reproducen las operaciones descritas en Matlab el resultado es mucho m·s preciso.} $P\cdot A = L\cdot U$.
+Es trivial comprobar que las matrices obtenidas cumplen \footnote{Los valores num√©ricos empleados en el texto, est√°n redondeados, por tanto dan una soluci√≥n incorrecta. Si se reproducen las operaciones descritas en Matlab el resultado es mucho m√°s preciso.} $P\cdot A = L\cdot U$.
 
-El siguiente cÛdigo calcula la factorizaciÛn LU de una matriz de orden arbitrario con pivoteo de filas. \label{lufact} 
+El siguiente c√≥digo calcula la factorizaci√≥n LU de una matriz de orden arbitrario con pivoteo de filas. \label{lufact} 
 
 \begin{verbatim}
 function [L,U,P]=lufact(A)
 %este programa calcula una factorizacionLU, de la matrix A,  empleando 
-%el mÈtodo de eliminacion gaussiana con pivoteo de filas...
+%el m√©todo de eliminacion gaussiana con pivoteo de filas...
 %L es una matriz triangular inferior, U es una matriz triangular superior y
 %P es una matriz de permutaciones tal que P*A=L*U
 
@@ -2448,7 +2448,7 @@ function [L,U,P]=lufact(A)
 %los calculos..
 
 %primero definimos la matriz de permutaciones como la matriz identidad de
-%orden igual al n˙mero de filas de la matriz A, (si no hay pivoteo de filas 
+%orden igual al n√∫mero de filas de la matriz A, (si no hay pivoteo de filas 
 %la matriz de permutaciones es precisamente la identidad)
 
 t=size(A,1); %obtenemos el numero de filas de la matriz A
@@ -2461,7 +2461,7 @@ U=A;
 %iniciamos un bucle para ir recorriendo las columnas (solo tenemos que
 %recorrer tantas columnas como fila - 1 tenga la matriz A
 for j=1:t-1
-    LA=zeros(t); %Matriz auxiliar (Lambda) de cada iteraciÛn.
+    LA=zeros(t); %Matriz auxiliar (Lambda) de cada iteraci√≥n.
     %Buscamos el elemento mas grande de la columna j
     maxcol=abs(U(j,j)); 
     index=j;
@@ -2499,28 +2499,28 @@ for j=1:t-1
    %Calculamos una matriz auxiliar con los factores de los elementos
    %a eliminar. 
    LA(j+1:t,j)=U(j+1:t,j)/U(j,j); %estos elementos son directamente los que 
-   %se aÒaden a la matriz L
+   %se a√±aden a la matriz L
    %Modificamos L y U
    L(j+1:t,j)=U(j+1:t,j)/U(j,j);
-   U=(eye(t)-LA)*U; %la expresiÛn eye(t)-LA nos permite cambiar de signo los
+   U=(eye(t)-LA)*U; %la expresi√≥n eye(t)-LA nos permite cambiar de signo los
    %elementos situados por debajo de la diagonal principal...
 end
 \end{verbatim}
 
 
-Desde el punto de vista de la implementaciÛn, el cÛdigo anterior simplifica el c·lculo de la factorizaciÛn LU,
+Desde el punto de vista de la implementaci√≥n, el c√≥digo anterior simplifica el c√°lculo de la factorizaci√≥n LU,
 
 \begin{enumerate}
-\item  no se calculan la inversa de $\lambda_i$. En realidad lo que se hace es ir construyendo iterativamente la matriz L: en cada iteraciÛn, primero se permutan los elementos de las columnas de la matriz L construida en la iteraciÛn anterior, y se aÒaden los elementos de la columna correspondiente.
-\item la matriz de permutaciÛn se va calculando tambiÈn iterativamente, intercambiando las filas de la matriz de permutaciÛn obtenida en la iteraciÛn anterior.
+\item  no se calculan la inversa de $\lambda_i$. En realidad lo que se hace es ir construyendo iterativamente la matriz L: en cada iteraci√≥n, primero se permutan los elementos de las columnas de la matriz L construida en la iteraci√≥n anterior, y se a√±aden los elementos de la columna correspondiente.
+\item la matriz de permutaci√≥n se va calculando tambi√©n iterativamente, intercambiando las filas de la matriz de permutaci√≥n obtenida en la iteraci√≥n anterior.
 \end{enumerate}
 
-Matlab posee un comando propio para calcular la factorizaciÛn LU de una Matriz, \texttt{[L,U,P]=lu(A)}. Es importante pedir siempre que devuelva la matriz \texttt{P}, en otro caso, la matriz \texttt{L} devuelta por Matlab no tiene por que ser triangular inferior. 
+Matlab posee un comando propio para calcular la factorizaci√≥n LU de una Matriz, \texttt{[L,U,P]=lu(A)}. Es importante pedir siempre que devuelva la matriz \texttt{P}, en otro caso, la matriz \texttt{L} devuelta por Matlab no tiene por que ser triangular inferior. 
 
-El comando \texttt{lu} de Matlab, permite calcular la factorizaciÛn LU, por otros mÈtodos distintos a la eliminaciÛn gaussiana con pivoteo de filas. La explicaciÛn de estos otros mÈtodos queda fuera del alcance de estos apuntes. Simplemente indicar que la factorizaciÛn LU de una matriz no es ˙nica --- es posible encontrar distintos pares L y U que factorizan a la misma matriz A.
+El comando \texttt{lu} de Matlab, permite calcular la factorizaci√≥n LU, por otros m√©todos distintos a la eliminaci√≥n gaussiana con pivoteo de filas. La explicaci√≥n de estos otros m√©todos queda fuera del alcance de estos apuntes. Simplemente indicar que la factorizaci√≥n LU de una matriz no es √∫nica --- es posible encontrar distintos pares L y U que factorizan a la misma matriz A.
 
-\subsection{FactorizaciÛn de Cholesky}\label{chol}
-Dada una matriz cuadrada, simÈtrica y definida positiva, es siempre posible factorizarla como $A=L\cdot L^T$. Donde $L$ es una matriz triangular inferior,
+\subsection{Factorizaci√≥n de Cholesky}\label{chol}
+Dada una matriz cuadrada, sim√©trica y definida positiva, es siempre posible factorizarla como $A=L\cdot L^T$. Donde $L$ es una matriz triangular inferior,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -2541,12 +2541,12 @@ L_{11}& L_{21}& \cdots & L_{n1}\\
 \end{pmatrix}
 \end{equation*}
 
-Para obtener la factorizaciÛn de Cholesky podemos emplear directamente la definiciÛn. AsÌ si calculamos $L\cdot L^T$, obtendrÌamos $a_{11}=L_{11}\cdot L_{11}=L_{11}^2$,  $a_{22}=L_{21}\cdot L_{21}+L_{22}\cdot L_{22}=L_{21}^2+L_{22}^2$  etc. Es f·cil comprobar que los elementos de la diagonal $a_{ii}$ de la matriz $A$ cumplen,
+Para obtener la factorizaci√≥n de Cholesky podemos emplear directamente la definici√≥n. As√≠ si calculamos $L\cdot L^T$, obtendr√≠amos $a_{11}=L_{11}\cdot L_{11}=L_{11}^2$,  $a_{22}=L_{21}\cdot L_{21}+L_{22}\cdot L_{22}=L_{21}^2+L_{22}^2$  etc. Es f√°cil comprobar que los elementos de la diagonal $a_{ii}$ de la matriz $A$ cumplen,
 
 \begin{equation*}
 a_{ii}=\sum_{k=1}^{j}L_{ki}^2=L_{ii}+\sum_{k=1}^{j-1}L_{ki}^2
 \end{equation*}
-A partir de esta expresiÛn podemos despejar $L_{ii}$,
+A partir de esta expresi√≥n podemos despejar $L_{ii}$,
 \begin{equation*}
 L_{ii}=\sqrt{a_{ii}-\sum_{k=1}^{j-1}L_{ki}^2}
 \end{equation*}
@@ -2556,12 +2556,12 @@ Del mismo modo, para los elementos que no pertenecen a la diagonal,
 \begin{equation*}
 a_{ij}=\sum_{k=1}^{j}L_{ik}\cdot L_{kj}=L_{ij}\cdot L_{jj}+\sum_{k=1}^{j-1}L_{ik}\cdot L_{kj}
 \end{equation*}
-A partir de esta expresiÛn podemos despejar $L_{ii}$,
+A partir de esta expresi√≥n podemos despejar $L_{ii}$,
 \begin{equation*}
 L_{ij}=\frac{a_{ij}-\sum_{k=1}^{j-1}L_{ik}\cdot L_{kj}}{L_{jj}}
 \end{equation*}
 
-Los elementos de la matriz L, se pueden calcular de las expresiones anteriores iterativamente por columnas: para obtener $L_{11}$ basta emplear $a_{11}$, para obtener los restantes elementos de la primera columna, basta conocer $L_{11}$. Conocida la primera columna de L, se puede calcular $L_{22}$ y asÌ sucesivamente hasta completar toda la matriz. El siguiente cÛdigo calcula la factorizaciÛn de Cholesky de una matriz, siempre que cumpla las condiciones requeridas,
+Los elementos de la matriz L, se pueden calcular de las expresiones anteriores iterativamente por columnas: para obtener $L_{11}$ basta emplear $a_{11}$, para obtener los restantes elementos de la primera columna, basta conocer $L_{11}$. Conocida la primera columna de L, se puede calcular $L_{22}$ y as√≠ sucesivamente hasta completar toda la matriz. El siguiente c√≥digo calcula la factorizaci√≥n de Cholesky de una matriz, siempre que cumpla las condiciones requeridas,
 
 \begin{verbatim}
 function L=cholesky(A)
@@ -2604,7 +2604,7 @@ end
 
 \end{verbatim} 
 
-Matlab tiene una funciÛn interna \texttt{chol}, que permite obtener la factorizaciÛn de Cholesky, Por defecto devuelve una matriz triangular superior U, de modo que la factorizaciÛn calculada cumple $A=U^T\cdot U$. (En realidad se trata tan solo de una forma alternativa de definir la factorizaciÛn de Cholesky), AsÌ por ejemplo,
+Matlab tiene una funci√≥n interna \texttt{chol}, que permite obtener la factorizaci√≥n de Cholesky, Por defecto devuelve una matriz triangular superior U, de modo que la factorizaci√≥n calculada cumple $A=U^T\cdot U$. (En realidad se trata tan solo de una forma alternativa de definir la factorizaci√≥n de Cholesky), As√≠ por ejemplo,
 
 \begin{verbatim}
 >> A
@@ -2625,18 +2625,18 @@ R =
     4.0000    3.0000    5.0000
 \end{verbatim}
 Si se quiere obtener directamente la matriz L, hay que indicarlo expresamente: \texttt{L=chol(A,'lower')}.
-Para obtener la factorizaciÛn Matlab emplea SOLO la parte triangular superior o la triangular inferior de la matriz A. Supone que A es simÈtrica pero NO lo comprueba.
-Si la matriz no es definida positiva, la funciÛn chol da un mensaje de error.
+Para obtener la factorizaci√≥n Matlab emplea SOLO la parte triangular superior o la triangular inferior de la matriz A. Supone que A es sim√©trica pero NO lo comprueba.
+Si la matriz no es definida positiva, la funci√≥n chol da un mensaje de error.
 
-\subsection{DiagonalizaciÛn}\label{sec:diag}
+\subsection{Diagonalizaci√≥n}\label{sec:diag}
 \paragraph{Autovectores y autovalores.} Dada una matriz $A$ de orden $n\times n$, se define como autovector, o vector propio de dicha matriz al vector $x$ que cumple,
 \begin{equation*}
 A\cdot x =\lambda \cdot x, \  x\neq 0, \ \lambda \in \mathbb{C}
 \end{equation*}
 
-Es decir, el efecto de multiplicar la matriz $A$ por el vector $x$ es equivalente a multiplicar el vector $x$  por un n˙mero $\lambda$ que, en general, ser· un n˙mero complejo.
+Es decir, el efecto de multiplicar la matriz $A$ por el vector $x$ es equivalente a multiplicar el vector $x$  por un n√∫mero $\lambda$ que, en general, ser√° un n√∫mero complejo.
 
-$\lambda$ recibe el nombre de autovalor, o valor propio de la matriz $A$. AsÌ por ejemplo,
+$\lambda$ recibe el nombre de autovalor, o valor propio de la matriz $A$. As√≠ por ejemplo,
 \begin{equation*}
 A= \begin{pmatrix}
 -2& 0& 0\\
@@ -2665,7 +2665,7 @@ tiene un autovalor $\lambda=3$ para el vector propio, $x=[0,\  -3,\  3]^T$ ,
 \end{pmatrix}
 \end{equation*}
 
-El vector propio asociado a un valor propio no es ˙nico, si $x$ es un vector propio de una matriz $A$, asociado a un valor propio $\lambda$, Es trivial comprobar que cualquier vector de la forma $\alpha\cdot x, \ \alpha \in \mathbf{C}$ tambiÈn es u vector propio asociado a $\lambda$,
+El vector propio asociado a un valor propio no es √∫nico, si $x$ es un vector propio de una matriz $A$, asociado a un valor propio $\lambda$, Es trivial comprobar que cualquier vector de la forma $\alpha\cdot x, \ \alpha \in \mathbf{C}$ tambi√©n es u vector propio asociado a $\lambda$,
 \begin{equation}
 A\cdot x= \lambda x \Rightarrow A \cdot \alpha x = \lambda  \alpha x
 \end{equation}
@@ -2673,7 +2673,7 @@ A\cdot x= \lambda x \Rightarrow A \cdot \alpha x = \lambda  \alpha x
 En realidad, cada vector propio expande un subespacio $E_{\lambda}S$ de $\mathbf{R}^n$. Aplicar la matriz $A$, a un vector de $E_{\lambda}S$ es equivalente a multiplicar el vector por $\lambda$. Cada subespacio asociado a un autovalor recibe el nombre de autosubespacio o subespacio propio. 
 
 El conjunto de todos los autovalores de una matriz $A$ recibe el nombre de espectro de $A$ y se representa como $\Lambda(A)$.
-Una descomposiciÛn en autovalores de una matriz $A$ se define como.
+Una descomposici√≥n en autovalores de una matriz $A$ se define como.
 \begin{equation*}
 A=X\cdot D \cdot X^{-1}
 \end{equation*}
@@ -2689,11 +2689,11 @@ Donde $D$ es una matriz diagonal formada por los autovalores de $A$.
 \end{pmatrix}
 \end{equation*}
 
-Esta descomposiciÛn no siempre existe. En general, si dos matrices $A$ y $B$ cumplen,
+Esta descomposici√≥n no siempre existe. En general, si dos matrices $A$ y $B$ cumplen,
 \begin{equation*}
 A=X\cdot B \cdot X^{-1}
 \end{equation*}
-se dice de ellas que son similares. A la transformaciÛn que lleva a convertir $B$ en $A$ se le llama una transformaciÛn de semejanza. Una matriz es diagonalizable cuando admite una transformaciÛn de semejanza con una matriz diagonal de autovalores. 
+se dice de ellas que son similares. A la transformaci√≥n que lleva a convertir $B$ en $A$ se le llama una transformaci√≥n de semejanza. Una matriz es diagonalizable cuando admite una transformaci√≥n de semejanza con una matriz diagonal de autovalores. 
 
 Volviendo al ejemplo anterior podemos factorizar la matriz $A$ como,
 
@@ -2717,7 +2717,7 @@ A= \begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-Por tanto en este ejemplo, los autovalores de $A$ serÌan $\lambda_1=-2$, $\lambda_2=2$ y $\lambda_3=3$. Para estudiar la composiciÛn de la matriz $X$ Reescribimos la expresiÛn de la relaciÛn de semejanza de la siguiente manera,
+Por tanto en este ejemplo, los autovalores de $A$ ser√≠an $\lambda_1=-2$, $\lambda_2=2$ y $\lambda_3=3$. Para estudiar la composici√≥n de la matriz $X$ Reescribimos la expresi√≥n de la relaci√≥n de semejanza de la siguiente manera,
 \begin{equation*}
  A=X \cdot D \cdot X^{-1}\rightarrow A\cdot X= X\cdot D
 \end{equation*}
@@ -2731,7 +2731,7 @@ A\cdot X= X\cdot D \rightarrow A\cdot \left( x_1 | x_2 | \cdots | x_n \right)= \
 0& 0& \cdots & \lambda_n
 \end{pmatrix}
 \end{equation*}
-Es f·cil comprobar que si consideramos el producto de la matriz $A$, por cada una de las columnas de la matriz $X$ se cumple,
+Es f√°cil comprobar que si consideramos el producto de la matriz $A$, por cada una de las columnas de la matriz $X$ se cumple,
 
 \begin{align*}
 A\cdot x_1 &=\lambda_1 \cdot x_1 \\
@@ -2745,11 +2745,11 @@ Lo que nos lleva a que cada columna de la matriz $X$ tiene que ser un autovector
 A\cdot x_i =\lambda_1 \cdot x_i \\
 \end{equation*}
 
-\paragraph{Polinomio caracterÌstico.} El polinomio caracterÌstico de una matriz $A$ de dimensiÛn $n\cdot n$, se define como,
+\paragraph{Polinomio caracter√≠stico.} El polinomio caracter√≠stico de una matriz $A$ de dimensi√≥n $n\cdot n$, se define como,
 \begin{equation*}
 P_A(z)=det(zI-A)
 \end{equation*}
-Donde $I$ es a matriz identidad de dimensiÛn $n \cdot n$. AsÌ por ejemplo para una matriz de dimensiÛn $2\cdot 2$,
+Donde $I$ es a matriz identidad de dimensi√≥n $n \cdot n$. As√≠ por ejemplo para una matriz de dimensi√≥n $2\cdot 2$,
 
 \begin{align*}
 P_A(z)=&det\left(z\cdot \begin{pmatrix}
@@ -2766,14 +2766,14 @@ z-a_{11}& -a_{12}\\
 =&(z-a_{11})\cdot(z-a_{22})-a_{12}\cdot a_{21}=z^2-(a_{11}+a_{22})\cdot z+a_{11}\cdot a_{22}-a_{12}\cdot a_{21}
 \end{align*}
 
-Los autovalores $\lambda$ de una matriz $A$ son las raÌces del polinomio caracterÌstico de la matriz $A$,
+Los autovalores $\lambda$ de una matriz $A$ son las ra√≠ces del polinomio caracter√≠stico de la matriz $A$,
 \begin{equation*}
 p_A(\lambda)=0
 \end{equation*}
 
-Las raÌces de un polinomio pueden ser simples o m˙ltiples, es decir una mima raÌz puede repetirse varias veces. Por tanto, los autovalores de una matriz, pueden tambiÈn repetirse. Se llama multiplicidad algebraica de un autovalor al n˙mero de veces que se repite.
+Las ra√≠ces de un polinomio pueden ser simples o m√∫ltiples, es decir una mima ra√≠z puede repetirse varias veces. Por tanto, los autovalores de una matriz, pueden tambi√©n repetirse. Se llama multiplicidad algebraica de un autovalor al n√∫mero de veces que se repite.
 
-Adem·s las raÌces de un polinomio pueden ser reales o complejas. Para una matriz cuyos elementos son todos reales, si tiene autovalores complejos estos se dan siempre como pares de n˙meros complejos conjugados. Es decir si $\lambda =a+bi$ es un autovalor entonces $\lambda^*=a-bi$ tambiÈn lo es.
+Adem√°s las ra√≠ces de un polinomio pueden ser reales o complejas. Para una matriz cuyos elementos son todos reales, si tiene autovalores complejos estos se dan siempre como pares de n√∫meros complejos conjugados. Es decir si $\lambda =a+bi$ es un autovalor entonces $\lambda^*=a-bi$ tambi√©n lo es.
 
 Veamos algunos ejemplos:
 
@@ -2785,7 +2785,7 @@ A=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-Tiene como polinomio caracterÌstico,
+Tiene como polinomio caracter√≠stico,
 
 \begin{equation*}
 P_A(z)=\left\vert\begin{matrix}
@@ -2794,7 +2794,7 @@ z-3& -2\\
 \end{matrix} \right\vert=z^2-z-2
 \end{equation*}
 
-Igualando el polinomio caracterÌstico a cero y obteniendo las raÌces de la ecuaciÛn de segundo grado resultante, obtenemos los autovalores de la matriz $A$,
+Igualando el polinomio caracter√≠stico a cero y obteniendo las ra√≠ces de la ecuaci√≥n de segundo grado resultante, obtenemos los autovalores de la matriz $A$,
 \begin{equation*}
 \lambda^2-\lambda-2=0 \rightarrow \left\{ 
 \begin{aligned}
@@ -2804,7 +2804,7 @@ Igualando el polinomio caracterÌstico a cero y obteniendo las raÌces de la ecuac
 \right.
 \end{equation*}
 
-Un vector propio asociado a $\lambda_1=2$ serÌa $x_1=[2,\  -1]^T$,
+Un vector propio asociado a $\lambda_1=2$ ser√≠a $x_1=[2,\  -1]^T$,
 \begin{equation*}
 \begin{pmatrix}
 3& 2\\
@@ -2821,7 +2821,7 @@ Un vector propio asociado a $\lambda_1=2$ serÌa $x_1=[2,\  -1]^T$,
 \end{pmatrix} 
 \end{equation*}
 
-y un vector propio asociado a $\lambda_2=-1$ serÌa $x_2=[1\ -2]^T$,
+y un vector propio asociado a $\lambda_2=-1$ ser√≠a $x_2=[1\ -2]^T$,
 
 \begin{equation*}
 \begin{pmatrix}
@@ -2847,7 +2847,7 @@ B=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-Tiene como polinomio caracterÌstico,
+Tiene como polinomio caracter√≠stico,
 
 \begin{equation*}
 P_B(z)=\left\vert\begin{matrix}
@@ -2865,7 +2865,7 @@ procediendo igual que en el caso anterior, obtenemos los autovalores de la matri
 \end{aligned}
 \right.
 \end{equation*}
-En este caso, hemos obtenido para el polinomio caracterÌstico una raÌz doble, con lo que obtenemos un ˙nico autovalor $\lambda=3$ de multiplicidad algebraica $2$.
+En este caso, hemos obtenido para el polinomio caracter√≠stico una ra√≠z doble, con lo que obtenemos un √∫nico autovalor $\lambda=3$ de multiplicidad algebraica $2$.
 
 La matriz,
 
@@ -2876,14 +2876,14 @@ C=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-tiene como polinomio caracterÌstico,
+tiene como polinomio caracter√≠stico,
 \begin{equation*}
 P_C(z)=\left\vert\begin{matrix}
 z-2& 1\\
 -1& z-2 
 \end{matrix} \right\vert=z^2-4z+5
 \end{equation*}
-Con lo que sus autovalores resultan ser dos n˙meros complejos conjugados,
+Con lo que sus autovalores resultan ser dos n√∫meros complejos conjugados,
 \begin{equation*}
 \lambda^2-4\lambda+5=0 \rightarrow \left\{ 
 \begin{aligned}
@@ -2893,7 +2893,7 @@ Con lo que sus autovalores resultan ser dos n˙meros complejos conjugados,
 \right.
 \end{equation*}
 
-Para que una matriz $A$ de orden $n\times n$ sea diagonalizable es preciso que cada autovalor tenga asociado un n˙mero de autovectores linealmente independientes, igual a su multiplicidad algebraica. La matriz $B$ del ejemplo mostrado m·s arriba tiene tan solo un autovector, $x=[1,\ 1]^T$ asociado a su ˙nico autovalor de multiplicidad $2$. No es posible encontrar otro linealmente independiente; por lo tanto $B$ no es diagonalizable. 
+Para que una matriz $A$ de orden $n\times n$ sea diagonalizable es preciso que cada autovalor tenga asociado un n√∫mero de autovectores linealmente independientes, igual a su multiplicidad algebraica. La matriz $B$ del ejemplo mostrado m√°s arriba tiene tan solo un autovector, $x=[1,\ 1]^T$ asociado a su √∫nico autovalor de multiplicidad $2$. No es posible encontrar otro linealmente independiente; por lo tanto $B$ no es diagonalizable. 
 
 La matriz, 
 \begin{equation*}
@@ -2904,7 +2904,7 @@ G=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-Tiene un autovalor $\lambda_1=3$, de multiplicidad $2$, y un autovalor $\lambda_2=1$ de multiplicidad $1$. Para el autovalor de multiplicidad $2$ es posible encontrar dos autovectores linealmente independientes, por ejemplo: $x_1=[1,\ 0,\ 0]^T$ y $x_2=[0,\ 1,\ 0]^T$. Para el segundo autovalor un posible autovector serÌa, $x_3=[-2,\ 0,\ 1]^T$. Es posible por tanto diagonalizar la matriz $G$,
+Tiene un autovalor $\lambda_1=3$, de multiplicidad $2$, y un autovalor $\lambda_2=1$ de multiplicidad $1$. Para el autovalor de multiplicidad $2$ es posible encontrar dos autovectores linealmente independientes, por ejemplo: $x_1=[1,\ 0,\ 0]^T$ y $x_2=[0,\ 1,\ 0]^T$. Para el segundo autovalor un posible autovector ser√≠a, $x_3=[-2,\ 0,\ 1]^T$. Es posible por tanto diagonalizar la matriz $G$,
 
 \begin{equation*}
 G=\begin{pmatrix}
@@ -2926,7 +2926,7 @@ G=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-\paragraph{Propiedades asociadas a los autovalores.} \label{resp} Damos a continuaciÛn, sin demostraciÛn, algunas propiedades de los autovalores de una matriz,
+\paragraph{Propiedades asociadas a los autovalores.} \label{resp} Damos a continuaci√≥n, sin demostraci√≥n, algunas propiedades de los autovalores de una matriz,
 
 \begin{enumerate}
 \item La suma de los autovalores de una matriz, coincide con su traza,
@@ -2939,11 +2939,11 @@ G=\begin{pmatrix}
 \left\vert A \right\vert = \prod_{i=1}^n \lambda_i
 \end{equation*} 
 
-\item Cuando loa autovectores de una matriz $A$ son ortogonales entre sÌ, entonces la matriz $A$ es diagonalizable ortogonalmente,
+\item Cuando loa autovectores de una matriz $A$ son ortogonales entre s√≠, entonces la matriz $A$ es diagonalizable ortogonalmente,
 \begin{equation*}
 A=Q\cdot D \cdot Q^{-1}; \ Q^{-1}=Q^T \Rightarrow A=Q\cdot A \cdot Q^T
 \end{equation*}
-Cualquier matriz simÈtrica posee autovalores reales y es diagonalizable ortogonalmente. En general, una matriz es diagonalizable ortogonalmente si es normal: $A\cdot A^T=A^T\cdot A$
+Cualquier matriz sim√©trica posee autovalores reales y es diagonalizable ortogonalmente. En general, una matriz es diagonalizable ortogonalmente si es normal: $A\cdot A^T=A^T\cdot A$
 
 \item El mayor de los autovalores en valor absoluto, de una matriz $A$ de orden $n$.  recibe el nombre de \emph{radio espectral} de dicha matriz,
 \begin{equation*}
@@ -2951,13 +2951,13 @@ Cualquier matriz simÈtrica posee autovalores reales y es diagonalizable ortogona
 \end{equation*} 
 \end{enumerate}
 
-No vamos a ver ning˙n  algoritmo concreto para diagonalizar matrices. Quiz· el mas utilizado, por su robustez numÈrica es el basado en la factorizaciÛn de Schur: cualquier matriz $A$ puede factorizarse como,
+No vamos a ver ning√∫n  algoritmo concreto para diagonalizar matrices. Quiz√° el mas utilizado, por su robustez num√©rica es el basado en la factorizaci√≥n de Schur: cualquier matriz $A$ puede factorizarse como,
 \begin{equation*}
 A=Q\cdot T \cdot Q^T
 \end{equation*}
 Donde $Q$ es una matriz ortogonal y $T$ es una matriz triangular superior. Los elementos de la diagonal de $T$ son precisamente los autovalores de $A$.
 
-Matlab incluye la funciÛn \texttt{eig} para calcular los autovectores y autovalores de una matriz. esa funciÛn admite como variable de entrada una matriz cuadrada de dimensiÛn arbitraria y devuelve como variable de salida un vector columna con los autovalores de la matriz de entrada,
+Matlab incluye la funci√≥n \texttt{eig} para calcular los autovectores y autovalores de una matriz. esa funci√≥n admite como variable de entrada una matriz cuadrada de dimensi√≥n arbitraria y devuelve como variable de salida un vector columna con los autovalores de la matriz de entrada,
 
 \begin{verbatim}
 >> A=[1 2 3;2 3 -2;3 0 1]
@@ -2977,7 +2977,7 @@ Lambda =
     3.7016
 
 \end{verbatim}  
-TambiÈn puede llamarse a la funciÛn \texttt{eig} con dos variables de salida. En este caso la primera variable de salida es una matriz en la que cada columna representa un autovector de la matriz de entrada normalizado ---de mÛdulo $1$---. La segunda variable de salida es una matriz diagonal cuyos elementos son los autovalores de la matriz de entrada.
+Tambi√©n puede llamarse a la funci√≥n \texttt{eig} con dos variables de salida. En este caso la primera variable de salida es una matriz en la que cada columna representa un autovector de la matriz de entrada normalizado ---de m√≥dulo $1$---. La segunda variable de salida es una matriz diagonal cuyos elementos son los autovalores de la matriz de entrada.
 
 \begin{verbatim}
 >> A=[1 2 3;2 3 -2;3 0 1]
@@ -3004,7 +3004,7 @@ D =
          0         0    3.7016
 \end{verbatim}
 
-Por ˙ltimo, Matlab tambiÈn incluye una funciÛn para calcular la factorizaciÛn de Schur. Si lo a aplicamos a la misma matriz \texttt{A}, para la que acabamos de calcular los autovalores,
+Por √∫ltimo, Matlab tambi√©n incluye una funci√≥n para calcular la factorizaci√≥n de Schur. Si lo a aplicamos a la misma matriz \texttt{A}, para la que acabamos de calcular los autovalores,
 
 \begin{verbatim}
 >> [Q,T]=schur(A)
@@ -3034,7 +3034,7 @@ ans =
 
 Se observa como los elementos de la diagonal de \texttt{T} son los autovalores de \texttt{A}  como la matriz \texttt{Q} es ortogonal.
   
-\subsection{FactorizaciÛn QR} \label{QR}
+\subsection{Factorizaci√≥n QR} \label{QR}
 La idea es factorizar una matriz $A$ en el producto de dos matrices; una matriz ortogonal $Q$ y una matriz triangular superior R.
 \begin{equation*}
 A=Q\cdot R, \leftarrow Q\cdot Q^T=I
@@ -3113,16 +3113,16 @@ q_{nn}
 \end{pmatrix}\cdot r_{nn}
 \end{align*}
 
-Para que la matriz $Q$ sea ortogonal, basta hacer que sus columnas, consideradas cada una como un vector, sean ortonormales entre sÌ. Podemos obtener la matriz $Q$ a partir de la matriz $A$, aplicando a sus columnas alg˙n mÈtodo de ortogonalizaciÛn de vectores. En particular, emplearemos el mÈtodo conocido como ortogonalizaciÛn de Grand-Schmidt.
+Para que la matriz $Q$ sea ortogonal, basta hacer que sus columnas, consideradas cada una como un vector, sean ortonormales entre s√≠. Podemos obtener la matriz $Q$ a partir de la matriz $A$, aplicando a sus columnas alg√∫n m√©todo de ortogonalizaci√≥n de vectores. En particular, emplearemos el m√©todo conocido como ortogonalizaci√≥n de Grand-Schmidt.
 
-\paragraph{OrtogonalizaciÛn de Grand-Schmidt} Este mÈtodo permite transformar un conjunto de vectores linealmente independientes arbitrarios en un conjunto de vectores ortonormales. Lo describiremos a la vez que estudiamos su uso para obtener la factorizaciÛn QR de una matriz $A$.
+\paragraph{Ortogonalizaci√≥n de Grand-Schmidt} Este m√©todo permite transformar un conjunto de vectores linealmente independientes arbitrarios en un conjunto de vectores ortonormales. Lo describiremos a la vez que estudiamos su uso para obtener la factorizaci√≥n QR de una matriz $A$.
 
-En primer lugar, consideremos el vector $a_1$, formado por los elementos de la primera columna de la matriz $A$. Si lo dividimos por su mÛdulo, obtendremos un vector unitario, Este vector, ser· la primera columna de la matriz $Q$,
+En primer lugar, consideremos el vector $a_1$, formado por los elementos de la primera columna de la matriz $A$. Si lo dividimos por su m√≥dulo, obtendremos un vector unitario, Este vector, ser√° la primera columna de la matriz $Q$,
 \begin{equation*}
 q_1=\frac{a_1}{\lVert a_1 \rVert}
 \end{equation*}
 
-De la expresiÛn anterior es f·cil deducir quien serÌa el elemento $r_{11}$ de la matriz $R$,
+De la expresi√≥n anterior es f√°cil deducir quien ser√≠a el elemento $r_{11}$ de la matriz $R$,
 
 \begin{equation*}
 a_1=q_1\cdot \lVert a_1 \rVert \Rightarrow r_{11}= \lVert a_1 \rVert
@@ -3138,7 +3138,7 @@ A=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-La primera columna de la matriz $Q$ serÌa,
+La primera columna de la matriz $Q$ ser√≠a,
 \begin{equation*}
 q_1=\frac{a_1}{\lVert a_1 \rVert}=\frac{1}{3}\cdot \begin{pmatrix}
 2\\
@@ -3156,7 +3156,7 @@ y el elemento $r_{11}$ de la matriz $R$,
 r_{11}=\lVert a_1 \rVert=3
 \end{equation*}
 
-Para obtener la segunda columna $Q$, Calculamos en primer lugar la proyecciÛn de la segunda columna de $A$, $a_2$ sobre el vector $q_1$. En general, la proyecciÛn de un vector $a$, sobre un vector $b$ se calcula obteniendo el producto escalar de los dos vectores y dividiendo el resultado por el mÛdulo del vector $b$. En nuestro casos el vector $q_1$, sobre el que se calcula la proyecciÛn, es unitario, por lo que calcular la proyecciÛn de $a_2$ sobre $q_1$ se reduce a calcular el producto escalar de los dos vectores,
+Para obtener la segunda columna $Q$, Calculamos en primer lugar la proyecci√≥n de la segunda columna de $A$, $a_2$ sobre el vector $q_1$. En general, la proyecci√≥n de un vector $a$, sobre un vector $b$ se calcula obteniendo el producto escalar de los dos vectores y dividiendo el resultado por el m√≥dulo del vector $b$. En nuestro casos el vector $q_1$, sobre el que se calcula la proyecci√≥n, es unitario, por lo que calcular la proyecci√≥n de $a_2$ sobre $q_1$ se reduce a calcular el producto escalar de los dos vectores,
 
 \begin{equation*}
 \phi_{a_2/q_1}=q_1^T\cdot a_2
@@ -3174,27 +3174,27 @@ Siguiendo con nuestro ejemplo,
 \end{pmatrix}=\frac{10}{3}
 \end{equation*}
 
-Podemos interpretar la proyecciÛn del vector $a_2$ sobre el vector $q_1$ como la \emph{componente} del vector $a_2$ en la direcciÛn de $q_1$. Por eso, si restamos al vector $a_2$ su proyecciÛn sobre $q_1$ multiplicada por $q_1$ el resultado ser· un nuevo vector $q_2$ ortogonal a $q_1$,
+Podemos interpretar la proyecci√≥n del vector $a_2$ sobre el vector $q_1$ como la \emph{componente} del vector $a_2$ en la direcci√≥n de $q_1$. Por eso, si restamos al vector $a_2$ su proyecci√≥n sobre $q_1$ multiplicada por $q_1$ el resultado ser√° un nuevo vector $q_2$ ortogonal a $q_1$,
 
 \begin{equation*}v_2=a_2-\phi_{a_2/q_1}\cdot q_1=a_2-(q_1^T\cdot a_2)\cdot q_1
 \end{equation*}
 
-La figura \ref{fig:qr} muestra gr·ficamente el proceso para dos vectores en el plano.
+La figura \ref{fig:qr} muestra gr√°ficamente el proceso para dos vectores en el plano.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{qr.eps}
-\caption{ObtenciÛn de un vector ortogonal}
+\caption{Obtenci√≥n de un vector ortogonal}
 \label{fig:qr}
 \end{figure}
 
-Como $q_2$ tiene que ser un vector unitario para que la matriz $Q$ sea ortogonal, dividimos el vector obtenido, $q`_2$, por su mÛdulo,
+Como $q_2$ tiene que ser un vector unitario para que la matriz $Q$ sea ortogonal, dividimos el vector obtenido, $q`_2$, por su m√≥dulo,
 
 \begin{equation*}
 q_2=\frac{V_2}{\lVert v_2 \rVert}=\frac{a_2-(q_1^T\cdot a_2)\cdot q_1}{\lVert a_2-(q_1^T\cdot a_2)\cdot q_1 \rVert}
 \end{equation*}
 
-Por ˙ltimo despejando $a_2$ podemos identificar los valores de $r_{12}$ y $r_{22}$, tal y como se describieron anteriormente,
+Por √∫ltimo despejando $a_2$ podemos identificar los valores de $r_{12}$ y $r_{22}$, tal y como se describieron anteriormente,
 
 \begin{align*}
 a_2&= (q_1^T\cdot a_2)\cdot q_1+\lVert a_2-(q_1^T\cdot a_2)\cdot q_2 \rVert \cdot q_2\\
@@ -3202,7 +3202,7 @@ r_{12}&=q_1^T\cdot a_2\\
 r_{22}&=\lVert a_2-(q_1^T\cdot a_2)\cdot q_2 \rVert 
  \end{align*}
 
-Volviendo a la matriz $A$ de nuestro ejemplo la segunda columna de la matriz $Q$ y los valores de $r_{12}$ y $r_{22}$ quedarÌan,
+Volviendo a la matriz $A$ de nuestro ejemplo la segunda columna de la matriz $Q$ y los valores de $r_{12}$ y $r_{22}$ quedar√≠an,
 
 
 \begin{align*}
@@ -3233,13 +3233,13 @@ q_1^T\cdot q_2= \begin{pmatrix}
 \end{pmatrix}={5\sqrt{5}}\cdot \left(\frac{14}{3}-\frac{40}{3}+\frac{26}{3}\right)=0
 \end{equation*}
 
-Para obtener la tercera columna de la matriz $Q$, $q_3$ procederÌamos de modo an·logo: calcularÌamos la proyecciÛn de la tercera columna de $A$, $a_3$ sobre los vectores formados por la los dos primeras columnas de $Q$, restamos de $a_3$ las dos proyecciones y normalizamos el vector resultante dividiÈndolo por su mÛdulo,
+Para obtener la tercera columna de la matriz $Q$, $q_3$ proceder√≠amos de modo an√°logo: calcular√≠amos la proyecci√≥n de la tercera columna de $A$, $a_3$ sobre los vectores formados por la los dos primeras columnas de $Q$, restamos de $a_3$ las dos proyecciones y normalizamos el vector resultante dividi√©ndolo por su m√≥dulo,
 
 \begin{equation*}
 q_3=\frac{v_3}{\lVert v_3 \rVert}=\frac{a_3-(q_1^T\cdot a_3)\cdot q_1-(q_2^T\cdot a_3)\cdot q_2}{\lVert a_3-(q_1^T\cdot a_3)\cdot q_1-(q_2^T\cdot a_3)\cdot q_2 \rVert}
 \end{equation*} 
 
-y de modo an·logo al caso de la segunda columna,
+y de modo an√°logo al caso de la segunda columna,
 
 \begin{align*}
 r_{13}&=q_1^T\cdot a_3\\
@@ -3247,7 +3247,7 @@ r_{23}&=q_2^T\cdot a_3\\
 r_{33}&=\lVert a_3-(q_1^T\cdot a_3)\cdot q_1-(q_2^T\cdot a_3)\cdot q_2 \rVert
 \end{align*}
 
-Es f·cil observar como vamos obteniendo las sucesivas columnas de la matriz $Q$, iterativamente. Podemos generalizar los resultas anteriores para cualquier columna arbitraria de la matriz $Q$,
+Es f√°cil observar como vamos obteniendo las sucesivas columnas de la matriz $Q$, iterativamente. Podemos generalizar los resultas anteriores para cualquier columna arbitraria de la matriz $Q$,
 
 \begin{equation*}
 q_i=\frac{a_i-\sum_{j=1}^i (q_j^T\cdot a_i)\cdot q_i}{\lVert a_i-\sum_{j=1}^i (q_j^T\cdot a_i)\cdot q_i \rVert}
@@ -3259,12 +3259,12 @@ r_{ji}&=q_j^T\cdot a_i, \ j<i\\
 r_{ii}&= \lVert a_i-\sum_{j=1}^i (q_j^T\cdot a_i)\cdot q_i \rVert
 \end{align*}
 
-El siguiente cÛdigo de Matlab, calcula la factorizaciÛn QR de una matriz, empleando el mÈtodo descrito,
+El siguiente c√≥digo de Matlab, calcula la factorizaci√≥n QR de una matriz, empleando el m√©todo descrito,
 
 \begin{verbatim}
 function [Q,R]=QRF1(A)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%FactorizaciÛn QR obtenida directamente por ortogonalizaciÛn de grand-schmidt
+%Factorizaci√≥n QR obtenida directamente por ortogonalizaci√≥n de grand-schmidt
 %Ojo, el algoritmo es inestable... Con lo que la bondad de las soluciones
 %dependera de la matriz que se quiera factorizar.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3275,7 +3275,7 @@ function [Q,R]=QRF1(A)
 for j=1:n
     %Construimos un vector auxiliar v, nos servira para ir obteniendo las
     %columnas de la matriz Q.
-    for i=1:m %Solo llegamos hasta m factorizaciÛn incompleta si m>n
+    for i=1:m %Solo llegamos hasta m factorizaci√≥n incompleta si m>n
         v(i)=A(i,j)
     end
     for i=1:j-1
@@ -3302,16 +3302,16 @@ for j=1:n
     end
     R(j,j)=sqrt(R(j,j))
     
-    %Y por ˙ltimo, divimos los elementos del vector v por R(j,j), para
+    %Y por √∫ltimo, divimos los elementos del vector v por R(j,j), para
     %obtener la columna j de la matriz Q
     for k=1:m
         Q(k,j)=v(k)/R(j,j)
     end
 end
 \end{verbatim}
-En general, el algoritmo que acabamos de describir para obtener la ortogonalizaciÛn de Grand-Schmidt, es numÈricamente inestable. La estabilidad puede mejorarse, si vamos modificando progresivamente la matriz $A$, a medida que calculamos las columnas de $Q$. 
+En general, el algoritmo que acabamos de describir para obtener la ortogonalizaci√≥n de Grand-Schmidt, es num√©ricamente inestable. La estabilidad puede mejorarse, si vamos modificando progresivamente la matriz $A$, a medida que calculamos las columnas de $Q$. 
 
-Cada vez que obtenemos una nueva columna de $Q$, modificamos las columnas de $A$ de modo que sean ortogonales a la columna de $Q$ obtenida. Para ello, lo m·s sencillo es crear una matriz auxiliar $V$ que hacemos, inicialmente, igual a $A$, $V^{(0)}=A$
+Cada vez que obtenemos una nueva columna de $Q$, modificamos las columnas de $A$ de modo que sean ortogonales a la columna de $Q$ obtenida. Para ello, lo m√°s sencillo es crear una matriz auxiliar $V$ que hacemos, inicialmente, igual a $A$, $V^{(0)}=A$
 
 para obtener la primera columna de $Q$, procedemos igual que antes, normalizando la primera columna de $V^{(0)}$
 \begin{align*}
@@ -3319,37 +3319,37 @@ q_1=\frac{v_1^{(0)}}{\lVert v_1^{(0)}\rVert}\\
 r_{11}=\lVert v_1^{(0)}\rVert
 \end{align*}
 
-A continuaciÛn calculamos la proyecciÛn de todas las dem·s columnas de la matriz $V^{(0)}$ con respecto a $q_1$, esto es equivalente a calcular los restantes elementos de la primera fila de la matriz $R$: $r_{21}, r_{31}, \cdots r_{n1}$,
+A continuaci√≥n calculamos la proyecci√≥n de todas las dem√°s columnas de la matriz $V^{(0)}$ con respecto a $q_1$, esto es equivalente a calcular los restantes elementos de la primera fila de la matriz $R$: $r_{21}, r_{31}, \cdots r_{n1}$,
 \begin{equation*}
 r_{1j}=q_1^T\cdot v_j^{(0)}
 \end{equation*}
 
-Una vez calculadas las proyecciones, modificamos todas las columnas de $V^{(0)}$, excepto la primera restando a cada una su proyecciÛn con respecto a $q_1$.
+Una vez calculadas las proyecciones, modificamos todas las columnas de $V^{(0)}$, excepto la primera restando a cada una su proyecci√≥n con respecto a $q_1$.
 
 \begin{equation*}
 v_j^{(1)}=v_j^{(0)}-r_{1j}\cdot v_j^{(0)}, \ j=2,3,\cdot n
 \end{equation*}
 
-La nueva matriz $V^{(1)}$ cumple que todas sus columnas a partir de la segunda son ortogonales a $q_1$. Para obtener $q_2$ es suficiente dividir $v_2^{1}$ por su mÛdulo,
+La nueva matriz $V^{(1)}$ cumple que todas sus columnas a partir de la segunda son ortogonales a $q_1$. Para obtener $q_2$ es suficiente dividir $v_2^{1}$ por su m√≥dulo,
 
 \begin{align*}
 q_2&=\frac{v_2^{(1)}}{\lVert v_2^{(1)} \rVert}\\
 r_{22}&=\lVert v_2^{(1)} \rVert
 \end{align*}
 
-Podemos ahora calcular el resto de los elementos de la segunda fila de la matriz $R$ de modo an·logo a como hemos calculado los de la primera,
+Podemos ahora calcular el resto de los elementos de la segunda fila de la matriz $R$ de modo an√°logo a como hemos calculado los de la primera,
 
 \begin{equation*}
 r_{2j}=q_2^T\cdot v_j^{(1)}
 \end{equation*}
 
-y, de nuevo actualizarÌamos todos las columnas de $V^{1}$, a partir de la tercera, para que fueran ortogonales a $q_2$, 
+y, de nuevo actualizar√≠amos todos las columnas de $V^{1}$, a partir de la tercera, para que fueran ortogonales a $q_2$, 
 
 \begin{equation*}
 v_j^{(2)}=v_j^{(1)}-r_{2j}\cdot v_j^{(1)}, \ j=3,4,\cdot n
 \end{equation*}
 
-Las columnas de $V^{(2)}$ serÌan ahora ortogonales a $q_1$ y $q_2$. Si seguimos el mismo procedimiento n veces, calculando cada vez una nueva columna de $Q$ y una fila de $R$, obtenemos finalmente la factorizaciÛn QR de la matriz inicial $A$. En general, para obtener la columna $q_i$ y los elementos de la fila $i$ de la matriz $R$ tendrÌamos,
+Las columnas de $V^{(2)}$ ser√≠an ahora ortogonales a $q_1$ y $q_2$. Si seguimos el mismo procedimiento n veces, calculando cada vez una nueva columna de $Q$ y una fila de $R$, obtenemos finalmente la factorizaci√≥n QR de la matriz inicial $A$. En general, para obtener la columna $q_i$ y los elementos de la fila $i$ de la matriz $R$ tendr√≠amos,
  
 \begin{align*}
 q_i&=\frac{v_i^{(i-1)}}{\lVert v_i^{(i-1)} \rVert}\\
@@ -3360,31 +3360,31 @@ r_{ii}&=\lVert v_i^{(i-1)} \rVert
 r_{ij}=q_i^T\cdot v_j^{(i-1)}
 \end{equation*}
 
-y la actualizaciÛn correspondiente de la matriz $V$ serÌa,
+y la actualizaci√≥n correspondiente de la matriz $V$ ser√≠a,
 
 \begin{equation*}
 v_j^{(i)}=v_j^{(i)}-r_{ij}\cdot v_j^{(i)}, \ j=i+1,i+2,\cdot n
 \end{equation*}
 
-El resultado es el mismo que el que se obtiene por el primer mÈtodo descrito. La ventaja es que numÈricamente es m·s estable. 
+El resultado es el mismo que el que se obtiene por el primer m√©todo descrito. La ventaja es que num√©ricamente es m√°s estable. 
 
 
 
-El siguiente cÛdigo de Matlab, calcula la factorizaciÛn QR de una matriz de orden $n\times n$, empleando el mÈtodo descrito,
+El siguiente c√≥digo de Matlab, calcula la factorizaci√≥n QR de una matriz de orden $n\times n$, empleando el m√©todo descrito,
 
 \begin{verbatim}
 function [Q,R]=QRF2(A)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Calculo de factorizacion QR de la matriz A, mediante la ortogonaliaciÛn de
+%Calculo de factorizacion QR de la matriz A, mediante la ortogonaliaci√≥n de
 %grand.schmidt modificada. Este algoritmo si que es estable...
 %Obtenemos las dimensiones de A
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 [m,n]=size(A);
 
 %creamos una matriz auxiliar v sobre la que vamos a realizar la
-%factorizaciÛn. Se podrÌa realizar directamente sobre A Machacando sus
-%columnas seg˙n la factorizaciÛn progresa... SerÌa lo correcto para ahorrar
-%espacio de almacenamiento. Pero en fin, quiz· asÌ queda m·s claro aunque
+%factorizaci√≥n. Se podr√≠a realizar directamente sobre A Machacando sus
+%columnas seg√∫n la factorizaci√≥n progresa... Ser√≠a lo correcto para ahorrar
+%espacio de almacenamiento. Pero en fin, quiz√° as√≠ queda m√°s claro aunque
 %sea menos eficiente.
 v=A;
 %Como siempre, vamos factorizando por columnas de la matriz A
@@ -3404,14 +3404,14 @@ for i=1:m %la matriz Q tiene que ser mXm, aunque el numero de columnas de A sea 
     end
     %Modificamos todos los R(i,j) con ij>i, en cuanto tenemos la columna j
     %de la matriz Q, nos basta calcular el producto escalar con las
-    %columnas de A (En nuestro caso de v porque est·n copiadas, de las
+    %columnas de A (En nuestro caso de v porque est√°n copiadas, de las
     %filas siguientes
     for j=i+1:n
         R(i,j)=0;
         for k=1:m
             R(i,j)=R(i,j)+Q(k,i)*v(k,j);
         end
-        %i por ˙ltimo modificamos todas las columnas de la matriz v desde
+        %i por √∫ltimo modificamos todas las columnas de la matriz v desde
         %i+1 hasta el final de la matriz. Aqui es donde cambia el algoritmo
         %ya que estamos modificando la matriz A, y las sucesivas matrices V
         %cada vez que obtenemos una nueva fila de valores de R
@@ -3422,7 +3422,7 @@ for i=1:m %la matriz Q tiene que ser mXm, aunque el numero de columnas de A sea 
 end
 \end{verbatim}
 
-Para terminar, indicar que Matlab tiene su propia funciÛn, \texttt{[Q,R]=qr(A)}, para calcular la factorizaciÛn QR de una matriz. Para calcularla, emplea el mÈtodo de ortogonalizaciÛn de Householder. Este mÈtodo es a˙n m·s robusto que la ortogonalizaciÛn de Grand-Schmidt modificada. Pero no lo veremos en este curso. Damos a continuaciÛn un ejemplo de uso de la funciÛn \texttt{qr},
+Para terminar, indicar que Matlab tiene su propia funci√≥n, \texttt{[Q,R]=qr(A)}, para calcular la factorizaci√≥n QR de una matriz. Para calcularla, emplea el m√©todo de ortogonalizaci√≥n de Householder. Este m√©todo es a√∫n m√°s robusto que la ortogonalizaci√≥n de Grand-Schmidt modificada. Pero no lo veremos en este curso. Damos a continuaci√≥n un ejemplo de uso de la funci√≥n \texttt{qr},
 \begin{verbatim}
 >> A=[2 3 1;2 0 2;1 4 3]
 
@@ -3457,13 +3457,13 @@ ans =
 
 \end{verbatim}
   
-\subsection{FactorizaciÛn SVD}\label{sec:SVD}
+\subsection{Factorizaci√≥n SVD}\label{sec:SVD}
 Dada una matriz cualquiera $A$ de orden $m\times n$ es posible factorizarla en el producto de tres matrices,
 \begin{equation*}
 A=U\cdot S \cdot V^T 
 \end{equation*}
 
-Donde $U$ es una matriz de orden $m\times m$ ortogonal, $V$ es una matriz de orden $n\times n$ ortogonal y $S$ es una matriz diagonal de orden $m\times n$. Adem·s los elementos de $S$ son positivos o cero y est·n ordenados en orden no creciente,
+Donde $U$ es una matriz de orden $m\times m$ ortogonal, $V$ es una matriz de orden $n\times n$ ortogonal y $S$ es una matriz diagonal de orden $m\times n$. Adem√°s los elementos de $S$ son positivos o cero y est√°n ordenados en orden no creciente,
 
 \begin{equation*}
 s=\begin{pmatrix}
@@ -3474,9 +3474,9 @@ s=\begin{pmatrix}
 \end{pmatrix}; \ \sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_i; \ i=\min(m,n)
 \end{equation*}
 
-Los elementos de la diagonal de la matriz $S$, ($\sigma_1, \ \sigma_2, \  \cdots \ \sigma_i$), reciben el nombre de \emph{valores singulares} de la matriz $A$. De ahÌ el nombre que recibe esta factorizaciÛn; SVD son las siglas en inglÈs de \emph{Singular Value Decomposition}.
+Los elementos de la diagonal de la matriz $S$, ($\sigma_1, \ \sigma_2, \  \cdots \ \sigma_i$), reciben el nombre de \emph{valores singulares} de la matriz $A$. De ah√≠ el nombre que recibe esta factorizaci√≥n; SVD son las siglas en ingl√©s de \emph{Singular Value Decomposition}.
 
-No vamos a describir ning˙n algoritmo para obtener la factorizaciÛn SVD de una matriz. En Matlab existe la funciÛn \texttt{[U,S,V]=svd(A)} que permite obtener directamente la factorizaciÛn dSDV de una matriz $A$ de dimensiÛn arbitraria. A continuaciÛn se incluyen unos ejemplos de uso para matrices no cuadradas,
+No vamos a describir ning√∫n algoritmo para obtener la factorizaci√≥n SVD de una matriz. En Matlab existe la funci√≥n \texttt{[U,S,V]=svd(A)} que permite obtener directamente la factorizaci√≥n dSDV de una matriz $A$ de dimensi√≥n arbitraria. A continuaci√≥n se incluyen unos ejemplos de uso para matrices no cuadradas,
 
 \begin{verbatim}
 >> A=[1 3 4;2 3 2;2 4 5;3 2 3]
@@ -3513,7 +3513,7 @@ V =
    -0.7103    0.3767    0.5946
 \end{verbatim}
 
-Como la matriz $A$ tiene m·s filas que columnas, la matriz $S$ resultante termina con na fila de ceros.
+Como la matriz $A$ tiene m√°s filas que columnas, la matriz $S$ resultante termina con na fila de ceros.
 
 \begin{verbatim}
 >> B=A'
@@ -3549,18 +3549,18 @@ V =
    
 \end{verbatim}
 
-Como la matriz $B$, transpuesta de la matriz $A$ del ejemplo anterior, tiene m·s columnas que filas, la matriz $S$ termina con una columna de ceros.
+Como la matriz $B$, transpuesta de la matriz $A$ del ejemplo anterior, tiene m√°s columnas que filas, la matriz $S$ termina con una columna de ceros.
 
-A continuaciÛn enunciamos sin demostraciÛn algunas propiedades de la factorizaciÛn SVD.
+A continuaci√≥n enunciamos sin demostraci√≥n algunas propiedades de la factorizaci√≥n SVD.
 
 \begin{enumerate}
-\item El rango de una matriz $A$ coincide con el n˙mero de sus valores singulares distintos de cero.
+\item El rango de una matriz $A$ coincide con el n√∫mero de sus valores singulares distintos de cero.
 \item La norma-2 inducida de una matriz $A$ coincide con su valor singular mayor $\sigma_1$.
 \item La norma de Frobenius de una matriz $A$ cumple:
 \begin{equation*}
 \lVert A \rVert_{F}=\sqrt{\sigma_1^2+\sigma_2^2+\cdots +\sigma_r^2}
 \end{equation*}
-\item Los valores singulares de una matriz $A$ distintos de cero son iguales a la raÌz cuadrada positiva de los autovalores distintos de cero de las matrices $A\cdot A^T$ Û $A^T\cdot A$. (los autovalores distintos de cero de estas dos matrices son iguales),
+\item Los valores singulares de una matriz $A$ distintos de cero son iguales a la ra√≠z cuadrada positiva de los autovalores distintos de cero de las matrices $A\cdot A^T$ √≥ $A^T\cdot A$. (los autovalores distintos de cero de estas dos matrices son iguales),
 \begin{equation*}
 \sigma_i^2=\lambda_i(A\cdot A^T)=\lambda_i(A^T\cdot A)
 \end{equation*}
@@ -3568,10 +3568,10 @@ A continuaciÛn enunciamos sin demostraciÛn algunas propiedades de la factorizaci
 \begin{equation*}
 \vert \det(A) \vert = \prod_{i=1}^n \sigma_i
 \end{equation*}
-\item El n˙mero de condiciÛn de una matriz cuadrada $A$ $n\cdot n$, que se define como el producto de la norma-2 inducida de $A$ por la norma-2 inducida de la inversa de $A$, puede expresarse como el cociente entre el el valor singular mayor de $A$ y su valor singular m·s pequeÒo,
+\item El n√∫mero de condici√≥n de una matriz cuadrada $A$ $n\cdot n$, que se define como el producto de la norma-2 inducida de $A$ por la norma-2 inducida de la inversa de $A$, puede expresarse como el cociente entre el el valor singular mayor de $A$ y su valor singular m√°s peque√±o,
 \begin{equation*}
 k(A)=\lVert A \rVert_2 \cdot \lVert A^{-1} \rVert_2 = \sigma_1 \cdot \frac{1}{\sigma_n}=\frac{\sigma_1}{\sigma_n}
 \end{equation*}
-El n˙mero de condiciÛn de una matriz, es una propiedad importante que permite estimar cÛmo de estables ser·n los c·lculos realizados empleando dicha matriz, en particular aquellos que involucran directa o indirectamente el c·lculo de su inversa.
+El n√∫mero de condici√≥n de una matriz, es una propiedad importante que permite estimar c√≥mo de estables ser√°n los c√°lculos realizados empleando dicha matriz, en particular aquellos que involucran directa o indirectamente el c√°lculo de su inversa.
 
 \end{enumerate}
