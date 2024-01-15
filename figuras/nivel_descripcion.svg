@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="nivel_descripcion.eps">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="420"
+     inkscape:cy="611.43424"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1082"
+     inkscape:window-height="888"
+     inkscape:window-x="585"
+     inkscape:window-y="98"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3782"
+       transform="translate(1.4142136,-199.75736)">
+      <g
+         transform="matrix(1.6200686,0,0,1,-240.83577,102)"
+         id="g3604">
+        <rect
+           style="fill:#fff072;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.69574678px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           id="rect3592"
+           width="399.30426"
+           height="50.304253"
+           x="175.84787"
+           y="795.21008"
+           rx="10.783937"
+           ry="4.6831388" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3598"
+         y="938.36218"
+         x="242.47264"
+         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial"
+         xml:space="preserve"><tspan
+           y="938.36218"
+           x="242.47264"
+           id="tspan3600"
+           sodipodi:role="line">Nivel Físico</tspan></text>
+    </g>
+    <g
+       id="g3771"
+       transform="translate(3.9142135,-197.65369)">
+      <rect
+         transform="matrix(0.99999972,-7.5133553e-4,0,1,0,0)"
+         ry="1.0399454"
+         rx="11.724384"
+         y="831.71332"
+         x="69.823059"
+         height="58.846333"
+         width="590.35406"
+         id="rect3602"
+         style="color:#000000;fill:#e6da6b;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.34185687px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <flowRoot
+         transform="translate(15.570302,153)"
+         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial"
+         id="flowRoot3613"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3615"><rect
+             y="676.36218"
+             x="195"
+             height="101"
+             width="359"
+             id="rect3617" /></flowRegion><flowPara
+           id="flowPara3619">Circuito Digital</flowPara></flowRoot>    </g>
+    <g
+       id="g3761"
+       transform="translate(3.4142029,-198.56043)">
+      <rect
+         ry="0.52549279"
+         rx="8.7492714"
+         y="771.17188"
+         x="99.809662"
+         height="57.380672"
+         width="531.38068"
+         id="rect3621"
+         style="color:#000000;fill:#eaca98;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.3150726px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3649"
+         y="815.36218"
+         x="131.27734"
+         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial"
+         xml:space="preserve"><tspan
+           y="815.36218"
+           x="131.27734"
+           id="tspan3651"
+           sodipodi:role="line">Hardware del sistema</tspan></text>
+    </g>
+    <g
+       id="g3751"
+       transform="translate(0.9141876,-198.05242)">
+      <rect
+         ry="1.0051287"
+         rx="7.0786076"
+         y="616.21021"
+         x="119.8481"
+         height="151.3038"
+         width="496.30383"
+         id="rect3623"
+         style="color:#000000;fill:#eab1b1;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.39194584px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text3658"
+         y="659.36218"
+         x="367.20312"
+         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial"
+         xml:space="preserve"><tspan
+           style="text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle"
+           y="659.36218"
+           x="373.85938"
+           id="tspan3660"
+           sodipodi:role="line">Arquitectura </tspan><tspan
+           style="text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan3662"
+           y="707.36218"
+           x="373.85938"
+           sodipodi:role="line">del </tspan><tspan
+           style="text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan3664"
+           y="755.36218"
+           x="367.20312"
+           sodipodi:role="line">Computador</tspan></text>
+    </g>
+    <g
+       id="g3745"
+       transform="translate(5.4142029,-198.44879)">
+      <rect
+         ry="1.0051287"
+         rx="7.0786076"
+         y="470.36218"
+         x="131"
+         height="143"
+         width="465"
+         id="rect3673"
+         style="color:#000000;fill:#aeaed1;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.69574678px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text3677"
+         y="530.36218"
+         x="362.39844"
+         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial"
+         xml:space="preserve"><tspan
+           style="text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle"
+           y="530.36218"
+           x="362.39844"
+           id="tspan3679"
+           sodipodi:role="line">Sistema Operativo/</tspan><tspan
+           style="text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle"
+           id="tspan3681"
+           y="578.36218"
+           x="362.39844"
+           sodipodi:role="line">Compilador</tspan></text>
+    </g>
+    <g
+       id="g3739"
+       transform="translate(5.4142029,-198.66815)">
+      <rect
+         style="color:#000000;fill:#a5c9e1;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.74638569px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3689"
+         width="418.94934"
+         height="113.94936"
+         x="154.02533"
+         y="353.38751"
+         rx="7.0777521"
+         ry="1.1569068" />
+      <text
+         xml:space="preserve"
+         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial"
+         x="361.53125"
+         y="400.36218"
+         id="text3691"
+         sodipodi:linespacing="100%"><tspan
+           sodipodi:role="line"
+           x="368.1875"
+           y="400.36218"
+           id="tspan3695"
+           style="text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle">Lenguaje de </tspan><tspan
+           sodipodi:role="line"
+           x="361.53125"
+           y="448.36218"
+           id="tspan3697"
+           style="text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle">alto nivel</tspan></text>
+    </g>
+    <g
+       id="g3730"
+       transform="translate(2.5000031,-199.75736)">
+      <rect
+         style="color:#000000;fill:#b1dcbe;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.75209093px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3707"
+         width="295.94366"
+         height="61.943657"
+         x="218.44237"
+         y="288.80457"
+         rx="7.076405"
+         ry="1.3521328" />
+      <text
+         xml:space="preserve"
+         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#080505;fill-opacity:1;stroke:none;font-family:Arial"
+         x="258.43765"
+         y="330.7764"
+         id="text3709"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3711"
+           x="258.43765"
+           y="330.7764">Aplicación</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,297 @@
+\begin{theindex}
+Symbols
+  \item : Operador de indexaci\'on, \hyperpage{36}
+  \item = S\IeC {\'\i }mbolo de asignaci\'on, \hyperpage{27}
+  \item @ , \hyperindexformat{\emph{handle} de una funci\'on}{172}
+
+  \indexspace
+A
+  \item Acumulaci\'on de errores, \hyperpage{142}
+  \item Adici\'on en binario, \hyperpage{129}
+  \item Advertencias, \hyperpage{82}
+  \item Ajuste polin\'omico, \hyperpage{301}
+  \item Alineamiento, \hyperpage{142}
+  \item ALU, \hyperpage{18}
+  \item An\'alisis de convergencia, \hyperpage{276}
+  \item Anidaci\'on
+    \subitem  If anidado, \hyperpage{84}
+    \subitem  While anidado, \hyperpage{91}
+    \subitem For anidado, \hyperpage{90}
+  \item ans, nombre de variable por defecto, \hyperpage{30}
+  \item Anulaci\'on catastr\'ofica, \hyperpage{145}
+  \item ASCII, Formato de datos, \hyperpage{42}
+
+  \indexspace
+B
+  \item B\'ezier, \hyperpage{308}
+  \item Base 10, \hyperpage{20}
+  \item Base 2, \hyperpage{20}
+  \item Binario, \hyperpage{127}
+  \item bit, \hyperpage{20}
+  \item Bit de signo, \hyperpage{128}
+  \item Bucles, \hyperpage{87}
+    \subitem  Bucle for, \hyperpage{87}
+    \subitem  Bucle while, \hyperpage{90}
+  \item Byte, \hyperpage{20}
+
+  \indexspace
+C
+  \item C\'alculo num\'erico, \hyperpage{15}
+  \item C\'alculo Simbolico, \hyperpage{365}
+  \item C\'elulas (cells), \hyperpage{38}
+  \item Circuito RC, \hyperpage{330}
+  \item Compilador, \hyperpage{17}
+  \item Complemento a dos, \hyperpage{128}
+    \subitem  Sustracci\'on, \hyperpage{129}
+  \item Computador, \hyperpage{16}
+  \item Computador 
+    \subitem  \emph{hardware}, \hyperpage{16}
+    \subitem  arquitectura, \hyperpage{17}
+  \item Control de flujo, \hyperpage{82}
+  \item Conversi\'on
+    \subitem  binario a decimal, \hyperpage{21}
+    \subitem  decimal a binario, n\'umeros no entero, \hyperpage{22}
+    \subitem  decimal a binario. n\'umeros enteros, \hyperpage{21}
+  \item CPU, \hyperpage{18}
+  \item Curvas de B\'ezier, \hyperpage{308}
+  \item Curvas de B\'ezier equivalentes, \hyperpage{311}
+
+  \indexspace
+D
+  \item Datos
+    \subitem  Entrada y Salida, \hyperpage{41}
+    \subitem  Importaci\'on, \hyperpage{46}
+    \subitem Formato ASCII, \hyperpage{42}
+    \subitem Lectura y escritura, \hyperpage{43}
+  \item Datos, an\'alisis, \hyperpage{15}
+  \item Depurador, \hyperpage{76}
+  \item Desbordamiento, \hyperpage{141}
+  \item Desviaci\'on est\'andar de una distribuci\'on, \hyperpage{348}
+  \item Diferenciaci\'on
+    \subitem  Diferencia de dos puntos centrada, \hyperpage{319}
+    \subitem  diferencias finitas, \hyperpage{317}
+    \subitem  polinomio interpolador, \hyperpage{316}
+    \subitem Diferencia adelantada de dos puntos, \hyperpage{317}
+  \item Diferencias Divididas, \hyperpage{287}
+  \item Distribuci\'on exponencial, \hyperpage{346}
+  \item Distribuci\'on normal, \hyperpage{347}
+
+  \indexspace
+E
+  \item Ecuaci\'on diferencial, \hyperpage{327}
+  \item Editor de textos, \hyperpage{67}
+  \item epsilon del computador, \hyperpage{140}
+  \item Error
+    \subitem  De sint\'axis, \hyperpage{76}
+  \item Error de redondeo, \hyperpage{138}, \hyperpage{318}
+  \item Error de Truncamiento, \hyperpage{317}
+  \item Errores
+    \subitem  De codificaci\'on, \hyperpage{79}
+  \item Errores aritm\'eticos, \hyperpage{142}
+  \item Espacio de trabajo, \hyperpage{31}
+  \item Est\'andar IEEE 754, \hyperpage{133}
+    \subitem  Doble precisi\'on, \hyperpage{136}
+    \subitem  Simple precisi\'on, \hyperpage{133}
+  \item Estructuras, \hyperpage{38}
+  \item Exceso, \hyperpage{139}
+  \item Exponente
+    \subitem  Representaci\'on en exceso, \hyperpage{133}
+
+  \indexspace
+F
+  \item Flujo, \hyperpage{82}
+    \subitem  Bucle for, \hyperpage{87}
+    \subitem  Bucle while, \hyperpage{90}
+    \subitem  Diagrama de Flujo, \hyperpage{93}
+    \subitem  Switch-case, \hyperpage{85}
+    \subitem Bucles, \hyperpage{87}
+    \subitem Condicional, \hyperpage{82}
+  \item Funci\'ones
+    \subitem  Funciones incluidas en matlab, \hyperpage{76}
+  \item Funciones
+    \subitem  \emph{inline}, \hyperpage{175}
+    \subitem  Definici\'on de funciones en matlab, \hyperpage{70}
+    \subitem  Recursivas, \hyperpage{92}
+
+  \indexspace
+G
+  \item Gauss
+    \subitem  M\'etodo de eliminaci\'on gaussiana, \hyperpage{255}
+  \item Gauss-Jordan
+    \subitem  eliminaci\'on, \hyperpage{259}
+  \item Gr\'aficos, \hyperpage{96}
+    \subitem  Comandos gr\'aficos en 2D, \hyperpage{104}
+    \subitem  Comandos gr\'aficos en 3D, \hyperpage{112}
+    \subitem  Representaci\'on de funciones simb\'olicas, 
+		\hyperpage{379}
+    \subitem Plot, \hyperpage{96}
+
+  \indexspace
+H
+  \item hod\'ografa, \hyperpage{313}
+
+  \indexspace
+I
+  \item IEEE 754
+    \subitem  N\'umero desnormalizado m\'as pr\'oximo a cero en doble precisi\'on, 
+		\hyperpage{136}
+    \subitem  N\'umero desnormalizado m\'as pr\'oximo a cero en simple precisi\'on, 
+		\hyperpage{135}
+    \subitem  N\'umero m\'as grande representable en doble precisi\'on, 
+		\hyperpage{136}
+    \subitem  n\'umero m\'as grande representable en simple precisi\'on, 
+		\hyperpage{134}
+    \subitem  N\'umeros desnormalizados, \hyperpage{135}
+  \item Indexaci\'on con el operador :, \hyperpage{36}
+  \item Indexaci\'on en matlab, \hyperpage{34}
+  \item Integraci\'on
+    \subitem  F\'ormula compuesta del trapecio, \hyperpage{322}
+    \subitem  F\'ormula del trapecio, \hyperpage{321}
+    \subitem  F\'ormulas de Simpson, \hyperpage{323}
+    \subitem  Formulas de Newton-Cotes, \hyperpage{321}
+    \subitem  Simb\'olica, \hyperpage{375}
+  \item \texttt{interp1}, \hyperpage{300}
+  \item Interpolaci\'on
+    \subitem  Diferencias Divididas, \hyperpage{287}
+    \subitem  Polin\'omica, \hyperpage{285}
+    \subitem  Polinomio de Lagrange, \hyperpage{286}
+    \subitem  Teorema de unicidad, \hyperpage{285}
+    \subitem Polinomio de Newton-gregory, \hyperpage{290}
+    \subitem Splines, \hyperpage{295}
+  \item Interpolaci\'on de orden cero, \hyperpage{294}
+  \item Interpolaci\'on lineal, \hyperpage{295}
+
+  \indexspace
+L
+  \item L\IeC {\'\i }mites
+    \subitem  de una funci\'on simb\'olica, \hyperpage{377}
+    \subitem  L\IeC {\'\i }mite en el infinito de una funci\'on simb\'olica, 
+		\hyperpage{378}
+    \subitem  L\IeC {\'\i }mites laterales de una funci\'on simb\'olica, 
+		\hyperpage{378}
+
+  \indexspace
+M
+  \item M\'etodo de Euler, \hyperpage{329}
+  \item M\'etodo de Gauss-Seidel, \hyperpage{270}
+    \subitem  Forma matricial, \hyperpage{271}
+  \item M\'etodo de Jacobi, \hyperpage{263}
+    \subitem  Expresi\'on matricial, \hyperpage{265}
+  \item M\'etodo de Jacobi amortiguado, \hyperpage{273}
+  \item M\'etodo de Runge-Kutta, \hyperpage{332}
+  \item M\'etodo SOR, \hyperpage{275}
+  \item M\'etodos amortiguados, \hyperpage{273}
+  \item M\IeC {\'\i }nimos cuadrados, \hyperpage{301}
+    \subitem  Residuos, \hyperpage{306}
+  \item Mantisa, \hyperpage{132}
+    \subitem  normalizada, \hyperpage{133}
+  \item Matlab, \hyperpage{25}
+    \subitem  entorno de programaci\'on, \hyperpage{25}
+    \subitem  IDE, \hyperpage{25}
+    \subitem ventana de Commandos, \hyperpage{25}
+  \item Matrices
+    \subitem  Definici\'on en matlab, \hyperpage{33}
+  \item Matrices escalonadas, \hyperpage{261}
+  \item Matriz de Vandermonde, \hyperpage{285}
+  \item Media de una distribuci\'on, \hyperpage{347}
+  \item Medidas experimentales
+    \subitem  Incertidumbre estad\IeC {\'\i }stica, \hyperpage{352}
+    \subitem  precisi\'on, \hyperpage{352}
+  \item Middle Square, \hyperpage{335}
+
+  \indexspace
+N
+  \item N\'umero m\'aquina, \hyperpage{138}
+  \item N\'umeros aleatorios
+    \subitem  Semilla, \hyperpage{335}
+  \item N\'umeros pseudoaleatorios, \hyperpage{335}
+  \item NaN, \hyperpage{134}
+  \item Not a Number, \hyperpage{134}
+  \item Notaci\'on cient\IeC {\'\i }fica, \hyperpage{127}, 
+		\hyperpage{132}
+
+  \indexspace
+O
+  \item Operaciones, \hyperpage{47}
+    \subitem Aritm\'eticas, \hyperpage{47}
+  \item Operadores
+    \subitem  Relaciones y l\'ogicos, \hyperpage{55}
+  \item Ordenador, \hyperpage{16}
+
+  \indexspace
+P
+  \item Polinomio de Lagrange, \hyperpage{286}
+  \item Polinomio de Newton-Gregory, \hyperpage{290}
+  \item Polinomio de Taylor, \hyperpage{282}
+    \subitem  Error de la aproximaci\'on, \hyperpage{282}
+    \subitem  Serie de la funci\'on exponencial, \hyperpage{282}
+    \subitem  Serie del logaritmo natural, \hyperpage{282}
+    \subitem  Series de las funciones seno y coseno, \hyperpage{283}
+  \item Polinomios, \hyperpage{177}
+    \subitem Producto de polinomios, \hyperpage{178}
+    \subitem Ra\IeC {\'\i }ces de un polinomio, \hyperpage{177}
+    \subitem valor de un polinomio en un punto, \hyperpage{178}
+  \item Polinomios de Bernstein, \hyperpage{308}
+  \item Problemas de valor inicial, \hyperpage{327}
+  \item Programaci\'on
+    \subitem  aplicaciones, \hyperpage{18}
+    \subitem  lenguajes, \hyperpage{18}
+  \item prompt, \hyperpage{25}
+  \item Punto fijo
+    \subitem  atractivo, \hyperpage{164}
+    \subitem  de una funci\'on, \hyperpage{163}
+    \subitem  M\'etodo, \hyperpage{165}
+    \subitem  Teorema, \hyperpage{164}
+
+  \indexspace
+R
+  \item Recursi\'on, \hyperpage{31}
+  \item Representaci\'on num\'erica, \hyperpage{128}
+    \subitem  en punto fijo, \hyperpage{130}
+    \subitem  en punto flotante, \hyperpage{132}
+  \item Residuos, \hyperpage{306}
+    \subitem C\'alculo con Matlab, \hyperpage{307}
+
+  \indexspace
+S
+  \item S\IeC {\'\i }mbolo de asignaci\'on, \hyperpage{27}
+  \item Script, \hyperpage{68}
+  \item Series
+    \subitem  Serie de Taylor de una funci\'on simb\'olica, 
+		\hyperpage{377}
+    \subitem  Simb\'olicas, \hyperpage{376}
+    \subitem  suma de series simb\'olicas, \hyperpage{376}
+  \item Sistema operativo, \hyperpage{17}
+  \item Splines, \hyperpage{295}
+    \subitem  Cubicos, \hyperpage{296}
+  \item Suceso Aleatorio, \hyperpage{341}
+
+  \indexspace
+T
+  \item Truncamiento, \hyperpage{127}
+  \item truncamiento, \hyperpage{139}
+
+  \indexspace
+V
+  \item Variable, \hyperpage{26}
+    \subitem \'Ambito, \hyperpage{72}
+    \subitem  \'Ambito de una variable, \hyperpage{72}
+    \subitem  aleatoria, \hyperpage{342}
+    \subitem  Formato, \hyperpage{33}
+    \subitem  nombre, \hyperpage{26}
+    \subitem  Simb\'olica, \hyperpage{366}
+    \subitem  tipo, \hyperpage{27}
+  \item Varianza de una distribuci\'on, \hyperpage{348}
+  \item Vectores
+    \subitem  Definici\'on en matlab, \hyperpage{33}
+  \item Velocidad de convergencia, \hyperpage{278}
+  \item Versi\'on (de Matlab), \hyperpage{365}
+  \item visualizacion de variables, formatos, \hyperpage{33}
+  \item Von Neumann, \hyperpage{18}
+
+  \indexspace
+W
+  \item Warnning, \hyperpage{82}
+  \item Workspace, \hyperpage{31}
+
+\end{theindex}
