@@ -34,7 +34,7 @@ Probablemente la principal ventaja, desde el punto de vista del cómputo, es que
 
 En cuanto a los inconvenientes hay que citar el crecimiento hacia infinito o menos infinito de cualquier polinomio para valores de la variable independiente alejados del origen. Esto puede dar lugar en algunos casos a errores de redondeo difíciles de manejar, haciendo muy difícil la aproximación para funciones no crecientes.
 
-Vamos a estudiar tres métodos distintos; en primer lugar veremos la aproximación mediante el polinomio de Taylor, útil para aproximar un polinomio en las inmediaciones de un punto. A continuación,  veremos la interpolación polinómica y, por último, estudiaremos el ajuste polinómico por mínimos cuadrados.
+Vamos a estudiar tres métodos distintos; en primer lugar veremos la aproximación mediante el polinomio de Taylor, útil para aproximar una función en las inmediaciones de un punto. A continuación,  veremos la interpolación polinómica y, por último, estudiaremos el ajuste polinómico por mínimos cuadrados.
 
 El uso de uno u otro de estos métodos esta asociado a la información disponible sobre la función que se desea aproximar y al uso que se pretenda hacer de la aproximación realizada.
 
@@ -73,23 +73,23 @@ y el del logaritmo natural, desarrollado en torno al punto $x_0=1$, \index{Polin
 
 La existencia de un término general para los desarrollos de Taylor de muchas funciones elementales lo hace particularmente atractivo para aproximar funciones mediante un ordenador. Así por ejemplo, la siguiente función de Matlab, aproxima el valor del logaritmo natural en un punto, empleando un polinomio de Taylor del grado que se desee,
 
-\begin{verbatim}
+\begin{lstlisting}
 function y=taylorln(x,n)
-%Esta función aproxima el valor del logaritmo natural de un numero
-%empleando para ello un polinomio de Taylor de grado n desarrollado en 
-%torno a x=1. Las variables de entrada son: x, valor para el que se desea 
-%calcular el logaritmo. n Grado del polinomio que se empleará en el 
-%cálculo. La variable de salida y es el logaritmo de x. (nota si x
-%es un vector, calculará el logaritmo para todos los puntos del vector)
+% Esta función aproxima el valor del logaritmo natural de un numero
+% empleando para ello un polinomio de Taylor de grado n desarrollado en 
+% torno a x=1. Las variables de entrada son: x, valor para el que se desea 
+% calcular el logaritmo. n Grado del polinomio que se empleará en el 
+% cálculo. La variable de salida y es el logaritmo de x. (nota si x
+% es un vector, calculará el logaritmo para todos los puntos del vector)
 
-%iniciliazamos la variable de salida y
+% iniciliazamos la variable de salida y
 y=0;
 
-%construimos un búcle para ir añadiendo términos al desarrollo
+% construimos un búcle para ir añadiendo términos al desarrollo
 for i=1:n
     y=y+(-1)^(i+1)*(x-1).^i/i;
 end
-\end{verbatim}
+\end{lstlisting}
 
 La aproximación funciona razonablemente bien para puntos comprendidos en el intervalo $0<x<2$. La figura \ref{fig:ln} muestra los resultados obtenidos en dicho intervalo para polinomios de Taylor del logaritmo natural de grados 2, 5, 10 20. La linea continua azul representa el valor del logaritmo obtenido con la función de Matlab \texttt{log}.
 
@@ -214,7 +214,7 @@ a_n
 
 \end{pmatrix}=\begin{pmatrix}
 y_0\\
-y_2\\
+y_1\\
 \vdots\\
 y_n
 \end{pmatrix}
@@ -251,22 +251,22 @@ Efectivamente, es fácil comprobar que, tal y como se ha construido, este polino
 
 El siguiente código de Matlab calcula el valor en un punto x cualquiera del polinomio de interpolación de Lagrange construido a partir un conjunto de puntos $\mathcal{A}\equiv \{(x_i,y_i)\}$ . 
 
-\begin{verbatim}
+\begin{lstlisting}
 function y1=Lagrange(x,y,x1)
-%este programa obtiene el valor interpolado y1 correspondiente al valor x1
-%empleando el polinomio interpolador de Lagrange de grado n, obtenido a 
-%partir de los vectores x e y (de longitud n)
+% este programa obtiene el valor interpolado y1 correspondiente al valor x1
+% empleando el polinomio interpolador de Lagrange de grado n, obtenido a 
+% partir de los vectores x e y (de longitud n)
 
-%obtenemos el tamaño del conjunto de datos,
+% obtenemos el tamaño del conjunto de datos,
 
 n=length(x);
-%inicializamos la variable de salida
+% inicializamos la variable de salida
 y1=0;
-%construimos el valor a partir de los polinomios de Lagrange,
+% construimos el valor a partir de los polinomios de Lagrange,
 for j=1:n
-    %inicializamos el polinomio de Lagrange correspondiente al dato i
+    % inicializamos el polinomio de Lagrange correspondiente al dato i
     lj=1;
-    %y lo calculamos...
+    % y lo calculamos...
     for i=1:j-1
         lj=lj*(x1-x(i))/(x(j)-x(i));
     end
@@ -274,12 +274,12 @@ for j=1:n
        lj=lj*(x1-x(i))/(x(j)-x(i));
     end 
     
-    %sumamos la contribución del polinomio de Lagrange lj
+    % sumamos la contribución del polinomio de Lagrange lj
     y1=y1+lj*y(j);
 end
-\end{verbatim}
+\end{lstlisting}
 
-\section{Diferencias divididas.} \index{Interpolación! Diferencias Divididas} \index{Diferencias Divididas}
+\section{Diferencias divididas.}\label{sec:difdiv} \index{Interpolación! Diferencias Divididas} \index{Diferencias Divididas}
 Tanto el método de la matriz de Vandermonde como el de los polinomios de Lagrange, presentan el inconveniente de que si se añade un dato más $(x_{n+1}, y_{n+1})$ a la colección de datos ya existentes, es preciso recalcular el polinomio de interpolación desde el principio. 
 
 El método de las diferencias divididas, permite obtener el polinomio de interpolación en un número menor de operaciones que en el caso del polinomio de Lagrange y además, el cálculo se hace escalonadamente, aprovechando todos los resultados anteriores cuando se añade al polinomio la contribución de un nuevo dato.
@@ -296,7 +296,7 @@ a_0&&=y_0\\
 a_0&+(x_1-x_0)a_1&=y_1\\
 a_0&+(x_2-x_0)a_1+(x_2-x_0)(x_2-x_1)a_2&=y_2\\
 \cdots\\
-a_0&+(x_n-x_0)a_1+(x_n-x_0)(x_n-x_1)a_2+\cdots +(x_n-x_{n-2})(x_n-x_{n-1})a_n&=y_n
+a_0&+(x_n-x_0)a_1+\cdots+(x_n-x_0)(x_n-x_1)\cdots (x_n-x_{n-2})(x_n-x_{n-1})a_n&=y_n
 \end{align*}
 
 Este sistema se resuelve explícitamente empleando un esquema de diferencias divididas. 
@@ -316,7 +316,8 @@ y, en general definiremos la diferencia dividida de orden $i$ para $i+1$ puntos 
 
 \begin{equation*}
 f\left[x_0,x_1,\cdots,x_i\right]=\frac{f\left[x_1,x_2,\cdots,x_i\right]-f\left[x_0,x_1,\cdots,x_{i-1}\right]}{x_i-x_0}
-\end{equation*}																																	Si despejamos por sustitución progresiva los coeficientes del polinomio de interpolación del sistema triangular inferior obtenido, cada coeficiente puede asociarse a una diferencia dividida,
+\end{equation*}																												
+Si despejamos por sustitución progresiva los coeficientes del polinomio de interpolación del sistema triangular inferior obtenido, cada coeficiente puede asociarse a una diferencia dividida,
 \begin{align*}
 a_0&=f\left[x_0\right]=y_0\\
 a_1&=f\left[x_0,x_1\right]\\
@@ -363,77 +364,77 @@ Es importante hacer notar que el polinomio de interpolación obtenido por difere
 
 El siguiente código permite calcular los coeficientes del polinomio de diferencias divididas a partir de un conjunto de $n$ datos.
 
-\begin{verbatim}
+\begin{lstlisting}
 function a=difdiv(x,y)
-%este polinomio permite obtener los coeficientes del polinomio de
-%diferencias divididas que interpola los datos contenidos el los vectores x
-%e y. Da como resultado un vector fila a con los coeficientes
+% este polinomio permite obtener los coeficientes del polinomio de
+% diferencias divididas que interpola los datos contenidos el los vectores x
+% e y. Da como resultado un vector fila a con los coeficientes
 
-%miramos cuantos datos tenemos
+% miramos cuantos datos tenemos
 n=length(x);
 
-%inicializamos el vector de coeficientes con las diferencias de orden 0, es
-%decir los valores de y,
+% inicializamos el vector de coeficientes con las diferencias de orden 0, es
+% decir los valores de y,
 
 a=y;
 
-%y ahora montamos un bucle, si tenemos n datos debemos calcular n
-%diferencias, como ya tenenos la primera, iniciamos el bucle en 2,
+% y ahora montamos un bucle, si tenemos n datos debemos calcular n
+% diferencias, como ya tenenos la primera, iniciamos el bucle en 2,
 for j=2:n
-    %en cada iteración calculamos las diferencias de un orden superior,
-    %como solo nos vale la primera diferencia de cada orden empezamos el
-    %bucle interior en el valor del exterior j
+    % en cada iteración calculamos las diferencias de un orden superior,
+    % como solo nos vale la primera diferencia de cada orden empezamos el
+    % bucle interior en el valor del exterior j
     for i=j:n
         a(i)=(a(i)-y(i-1))/(x(i)-x(i-j+1));
     end
-    %volvemos a copiar en y las diferencias obtenidas para emplearlas en la
-    %siguiente iteracion
+    % volvemos a copiar en y las diferencias obtenidas para emplearlas en la
+    % siguiente iteracion
     y=a;
     
 end
-\end{verbatim}
+\end{lstlisting}
 
 Como el polinomio de diferencias divididas toma una forma especial, es preciso tenerlo en cuenta a la hora de calcular su valor en un punto $x$ determinado. Es siguiente código permite evaluar un polinomio de diferencias divididas en un punto dado, conocidos sus coeficientes y los valores $x_1,\cdots, x_n$ a partir de los cuales se obtuvo el polinomio,
 
-\begin{verbatim}
+\begin{lstlisting}
 function y=evdif(a,x,x1)
-%esta función obtiene el valor de un polinomio de diferencias divididas a
-%partir de los coeficientes (a) del polinomio, los puntos (x) sobre los que
-%se ha calculado el polinomio y el punto o vector de puntos (x1) para el
-%que se quiere calcular el valor que toma el polinomio.
+% esta función obtiene el valor de un polinomio de diferencias divididas a
+% partir de los coeficientes (a) del polinomio, los puntos (x) sobre los que
+% se ha calculado el polinomio y el punto o vector de puntos (x1) para el
+% que se quiere calcular el valor que toma el polinomio.
 
-%obtenemos el tamaño del vector de coeficientes del polinomio,
+% obtenemos el tamaño del vector de coeficientes del polinomio,
 
 n=length(a);
 
-%Construimos un bucle para calcular el valor del polinomio,
+% Construimos un bucle para calcular el valor del polinomio,
 y=a(1);
 for k=1:n-1
-    %calculamos el valor del producto de los binomios que multiplican al
-    %coeficiente i
+    % calculamos el valor del producto de los binomios que multiplican al
+    % coeficiente i
     binprod=1;
     for j=1:k
         binprod=binprod.*(x1-x(j));
     end
     y=y+a(k+1)*binprod;
 end
-\end{verbatim}
+\end{lstlisting}
 
 Por último se podrían reunir las dos funciones anteriores en una única función que permitiera obtener directamente el valor que toma el polinomio de diferencias divididas en un punto x, partiendo de los datos interpolados. Una solución sencilla, es crear una función que llame a las dos anteriores,
 
-\begin{verbatim}
+\begin{lstlisting}
 function y=intdifdiv(x,xp,yp)
-%Esta función calcula el valor del polinomio de diferencias divididas que 
-%interpola los puntos (xp,yp) el el punto, o %los puntos contenidos en x. 
-%Empleando las funciones, difdiv, para calcular los coeficientes del
-%polinomio y evdif para evaluarlo
+% Esta función calcula el valor del polinomio de diferencias divididas que 
+% interpola los puntos (xp,yp) el el punto, o % los puntos contenidos en x. 
+% Empleando las funciones, difdiv, para calcular los coeficientes del
+% polinomio y evdif para evaluarlo
 
-%llamamos a difdiv
+% llamamos a difdiv
 a=difdiv(xp,yp);
  
- %y a continuación llamamos a evdif
+ % y a continuación llamamos a evdif
   y=evdif(a,xp,x);
- \end{verbatim} 
+ \end{lstlisting} 
  
  \subsection{El polinomio de Newton-Gregory} \label{sec:newgre} \index{Interpolación!Polinomio de Newton-gregory} \index{Polinomio de Newton-Gregory}
  Supone una simplificación al cálculo del polinomio de diferencias divididas para el caso particular en que los datos se encuentran equiespaciados y dispuestos en orden creciente con respecto a los valores de la coordenada $x$.
@@ -512,45 +513,45 @@ a_0=1, a_1=\frac{-2}{1}, a_2=\frac{5}{2\cdot 1^2}, a_3=\frac{-7}{6\cdot 1^3}
 
 El siguiente código muestra un ejemplo de implementación en Matlab del polinomio de Newton-Gregory
 
-\begin{verbatim}
+\begin{lstlisting}
 function [a,y1]=newgre(x,y,x1)
-%este polinomio permite obtener los coeficientes del polinomio de
-%newton-gregory que interpola los datos contenidos en los vectores x
-%e y. Da como resultado un vector fila a con los coeficientes, si se le da
-%ademas un punto o vector de puntos calcula los valores que toma el
-%polinomio en dichos puntos.
+% este polinomio permite obtener los coeficientes del polinomio de
+% newton-gregory que interpola los datos contenidos en los vectores 
+% x e y. Da como resultado un vector fila a con los coeficientes,  
+% si se le da ademas un punto o vector de puntos calcula los  
+% valoresque toma el polinomio en dichos puntos.
 
-%miramos cuantos datos tenemos
+% miramos cuantos datos tenemos
 n=length(x);
 
-%inicializamos el vector de coeficientes con las diferencias de orden 0, es
-%decir los valores de y,
+% inicializamos el vector de coeficientes con las diferencias de 
+% orden 0, es decir los valores de y,
 a=y;
 h=x(2)-x(1);
 
-%y ahora montamos un bucle, si tenemos n datos debemos calcular n
-%diferencias, como ya tenenos la primera, iniciamos el bucle en 2,
+% y ahora montamos un bucle, si tenemos n datos debemos calcular n
+% diferencias, como ya tenenos la primera, iniciamos el bucle en 2,
 for j=2:n
-    %en cada iteración calculamos las diferencias de un orden superior,
-    %como solo nos vale la primera diferencia de cada orden empezamos el
-    %bucle interior en el valor del exterior j
+    % en cada iteración calculamos las diferencias de un orden 
+    % superior. Como solo nos vale la primera diferencia de cada 
+    % orden empezamos el bucle interior en el valor del exterior j
     for i=j:n
-        %ahora basta dividir en todos los casos por la distancia h
-        %multiplicada por el orden de la diferencia
+        % ahora basta dividir en todos los casos por la distancia h
+        % multiplicada por el orden de la diferencia
         a(i)=(a(i)-y(i-1))/((j-1)*h);
     end
-    %volvemos acopiar en y las diferencias obtenidas para emplearlas en la
-    %siguiente iteracion
+    % volvemos acopiar en y las diferencias obtenidas para 
+    % emplearlas en la siguiente iteracion
     y=a;
     
 end
 y1=[];
 if nargin==3
-    %Construimos un bucle para calcular el valor del polinomio,
+    % Construimos un bucle para calcular el valor del polinomio,
     y1=a(1);
     for k=1:n-1
-        %calculamos el valor del producto de los binomios que multiplican al
-        %coeficiente i
+        % calculamos el valor del producto de los binomios que 
+        % multiplican al coeficiente i
         binprod=1;
         for j=1:k
             binprod=binprod.*(x1-x(j));
@@ -558,34 +559,35 @@ if nargin==3
         y1=y1+a(k+1)*binprod;
     end
 end
-\end{verbatim}
+\end{lstlisting}
+
 
 \section{Interpolación por intervalos.}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{intpoli.eps}
+\caption{Polinomio de interpolación de grado nueve obtenido a partir de un conjunto de diez datos} 
+\label{fig:intepol}
+\end{figure}
 
 Hasta ahora, hemos visto cómo interpolar un conjunto de $n+1$ datos mediante un polinomio de grado $n$. En muchos casos, especialmente cuando el número de datos es suficientemente alto, los resultados de dicha interpolación pueden no ser satisfactorios.  La razón es que el grado del polinomio de interpolación crece linealmente con el número de puntos a interpolar, así por ejemplo para interpolar 11 datos necesitamos un polinomio de grado 10. Desde un punto de vista numérico, este tipo de polinomios pueden dar grandes errores debido al redondeo. Por otro lado, y dependiendo de la disposición de los datos para los que se realiza la interpolación, puede resultar que el polinomio obtenido tome una forma demasiado complicada para los valores comprendidos entres los datos interpolados..  
 
 La figura \ref{fig:intepol} muestra el polinomio de interpolación de grado nueve para un conjunto de 10 datos. Es fácil darse cuenta, simplemente observando los datos, que no hay ninguna razón que justifique las curvas que traza el polinomio entre los puntos $1$ y $2$  o los puntos $9$ y $10$, por ejemplo.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
-\includegraphics[width=12cm]{intpoli.eps}
-\caption{Polinomio de interpolación de grado nueve obtenido a partir de un conjunto de diez datos} 
-\label{fig:intepol}
+\subfigure[Interpolación de orden cero  \label{fig:stepwise}]{\includegraphics[width=7cm]{steps.eps}} %\qquad 
+\subfigure[Interpolación lineal  \label{fig:lineal}]{\includegraphics[width=7cm]{lineal.eps}}\\
+\caption{Interpolaciones de orden cero y lineal para los datos de la figura \ref{fig:intepol} }
 \end{figure}
+
 
 En muchos casos es preferible no emplear todos los datos disponibles para obtener un único polinomio de interpolación. En su lugar, lo que se hace es dividir el conjunto de datos en varios grupos ---normalmente se agrupan formando intervalos de datos consecutivos--- y obtener varios polinomios de menor grado, de modo que cada uno interpole los datos de un grupo distinto. 
 
 El grado de los polinomios empleados deberá estar, en principio, relacionado con los datos contenidos en cada tramo.
 
+
 \paragraph{interpolación de orden cero} \index{Interpolación de orden cero} si hacemos que cada intervalo contenga un solo dato, obtendríamos polinomios de interpolación de grado cero, $a_{0i}=y_i$. El resultado, es un conjunto de escalones cuya valor varía de un intervalo a otro de acuerdo con el dato representativo contenido en cada tramo. La figura \ref{fig:stepwise} muestra el resultado de la interpolación de orden cero para los mismos diez datos de la figura \ref{fig:intepol}.
-
-\begin{figure}[h]
-\centering
-\subfigure[Interpolación de orden cero  \label{fig:stepwise}]{\includegraphics[width=9cm]{steps.eps}} \qquad 
-\subfigure[Interpolación lineal  \label{fig:lineal}]{\includegraphics[width=9cm]{lineal.eps}}\\
-\caption{Interpolaciones de orden cero y lineal para los datos de la figura \ref{fig:intepol} }
-\end{figure}
-
 
 \paragraph{interpolación lineal.} \index{Interpolación lineal} En este caso, se dividen los datos en grupos de dos. Cada par de datos consecutivos se interpola calculando la recta que pasa por ellos. La interpolación lineal se emplea en muchas aplicaciones debido a su sencillez de cálculo. La figura \ref{fig:lineal}, muestra el resultado de aproximar linealmente los mismos datos contenidos en los ejemplos anteriores.
 
@@ -761,31 +763,31 @@ Donde,
 
 La siguiente función permite obtener los coeficientes y el resultado de interpolar un conjunto de puntos mediante splines cúbicos,
 
-\begin{verbatim}
+\begin{lstlisting}
 function [c,yi]=spcubic(x,y,xi)
-%uso [c,yi]=spcubic(x,y,xi)
-%Esta funci?n interpola los puntos contenidos en los vectores columna x e y
-%empleando parae ello splines c?bicos naturales. devuelve los coeficientes
-%de los polinomios en una matriz de dimension (n-1)*4. Cada fila contiene
-%un splin desde So a Sn-1 los coeficiente est?n guardados el la fila en
-%orden depotencia creciente: ejemplo c(i,1)+c(i,2)*x+c(i,3)*x^2+c(i,4)*x^3
-%ademas devuelve los valores interpolados yi correspondientes a puntos xi
-%contenidos en el intervalo definido por los valores de x
+% uso [c,yi]=spcubic(x,y,xi)
+% Esta funci?n interpola los puntos contenidos en los vectores columna x e y
+% empleando parae ello splines c?bicos naturales. devuelve los coeficientes
+% de los polinomios en una matriz de dimension (n-1)*4. Cada fila contiene
+% un splin desde So a Sn-1 los coeficiente est?n guardados el la fila en
+% orden depotencia creciente: ejemplo c(i,1)+c(i,2)*x+c(i,3)*x^2+c(i,4)*x^3
+% ademas devuelve los valores interpolados yi correspondientes a puntos xi
+% contenidos en el intervalo definido por los valores de x
 
-%obtenemos la longitud de los datos...
+% obtenemos la longitud de los datos...
 l=length(x);
-%obtencion de los coeficientes M
-%Construimos el vector de diferencias h y un vector de diferencias
-%Dy=y(i+1)-y(i) Que nos ser? muy ?til a la hora de calcular el vector de
-%t?rminos independientes del sistema
+% obtencion de los coeficientes M
+% Construimos el vector de diferencias h y un vector de diferencias
+% Dy=y(i+1)-y(i) Que nos ser? muy ?til a la hora de calcular el vector de
+% t?rminos independientes del sistema
 
 for i=1:l-1
     h(i)=x(i+1)-x(i);
     Dy(i)=y(i+1)-y(i);
 end
 
-%Construimos la matriz del sistema. (Lo ideal seria definirla como una
-%matriz sparse pero en fin no sabeis, porque sois todav?a peque?os, etc...)
+% Construimos la matriz del sistema. (Lo ideal seria definirla como una
+% matriz sparse pero en fin no sabeis, porque sois todav?a peque?os, etc...)
 
 CSP(l-2,l-2)=2*(h(l-2)+h(l-1));
 b(l-2,1)=6*(Dy(l-1)/h(l-1)-Dy(l-2)/h(l-2));
@@ -796,44 +798,44 @@ for i=1:l-3
     b(i,1)=6*(Dy(i+1)/h(i+1)-Dy(i)/h(i));
 end
 
-%calculamos los coeficientes M,
+% calculamos los coeficientes M,
 M=CSP\b;
 
-%A?adimos el primer y el ?ltimo valor como ceros (Splines naturales)
+% A?adimos el primer y el ?ltimo valor como ceros (Splines naturales)
 M=[0;M;0];
 
-%calulamos los coeficientes A,
+% calulamos los coeficientes A,
 for i=1:l-1
     A(i)=Dy(i)/h(i)-(M(i+1)-M(i))*h(i)/6;
 end
-%Calculamos los coeficientes B,
+% Calculamos los coeficientes B,
 for i=1:l-1
     B(i)=y(i)-M(i)*h(i)^2/6;
 end
-%Podemos ahora calcular el valor que toma el polinomio para los puntos
-%que se desea interpolar
+% Podemos ahora calcular el valor que toma el polinomio para los puntos
+% que se desea interpolar
 
-%miramos cuantos puntos tenemos
+% miramos cuantos puntos tenemos
 l2=length(xi);
 for i=1:l2
-    %miramos en que intervalo esta el punto xi(i)
+    % miramos en que intervalo esta el punto xi(i)
     j=1;
     while xi(i)>x(j)
         j=j+1;
     end
     if j>l-1
-        j=l-1; %aunque estamos extrapolando
+        j=l-1; % aunque estamos extrapolando
     elseif j<2
-        j=2; %estamos calculando el primer punto o estamos tanbien
-        %extrapolando
+        j=2; % estamos calculando el primer punto o estamos tanbien
+        % extrapolando
     end
     
     yi(i)=-M(j-1)*(xi(i)-x(j))^3/(6*h(j-1))+...
         M(j)*(xi(i)-x(j-1))^3/(6*h(j-1))+A(j-1)*(xi(i)-x(j-1))+B(j-1);
 end
 
-%calcumos los coeficientes c del spline en forma 'normal'
-%la primera columna, son los valores de i,
+% calcumos los coeficientes c del spline en forma 'normal'
+% la primera columna, son los valores de i,
 c=zeros(l-1,4);
 for i=1:l-1
     c(i,1)=y(i);
@@ -841,7 +843,7 @@ for i=1:l-1
     c(i,3)=M(i)/2;
     c(i,4)=(M(i+1)-M(i))/(6*h(i));
 end
-\end{verbatim}
+\end{lstlisting}
 
 
 
@@ -900,7 +902,7 @@ y1 =
     3.3438    1.1938
 \end{verbatim}
 
-\section{Ajuste polinómico por el método de mínimos cuadrados}\index{Mínimos cuadrados} \index{Ajuste polinómico}
+\section{Ajuste polinómico por el método de mínimos cuadrados}\label{sec:mc}\index{Mínimos cuadrados} \index{Ajuste polinómico}
 Los métodos de interpolación que hemos descrito en las secciones anteriores pretenden encontrar un polinomio o una función definida a partir de polinomios que pase por un conjunto de datos. En el caso del ajuste por mínimos cuadrados, lo que se pretende es buscar el polinomio, de un grado dado, que mejor se aproxime a un conjunto de datos.
 
 Supongamos que tenemos un conjunto de $m$ datos, 
@@ -916,13 +918,13 @@ y&$y_1$&$y_2$&$\cdots$&$y_m$
  
 Queremos construir un polinomio $p(x)$  de grado $n < m-1$, de modo que los valores que toma el polinomio para los datos $p(x_i)$ sean lo más cercanos posibles a los correspondientes valores $y_i$. 
 
-En primer lugar, necesitamos clarificar qué entendemos por \emph{lo mas cercano posible}.  Una posibilidad, es medir la diferencia, $y_i-p(x_i)$ para cada par de datos del conjunto. Sin embargo, es más frecuente emplear el cuadrado de dicha diferencia, $\left(y_i-p(x_i)\right)^2$. Esta cantidad tiene, entre otras, la ventaja de que su valor es siempre positivo con  independencia de que la diferencia sea positiva o negativa. Además, representa el cuadrado de la distancia entre $p(x_i)$ e $y_i$. Podemos tomar la suma de dichas distancias al cuadrado, obtenidas por el polinomio para todos los pares de puntos, 
+En primer lugar, necesitamos clarificar qué entendemos por \emph{lo más cercano posible}.  Una posibilidad, es medir la diferencia, $y_i-p(x_i)$ para cada par de datos del conjunto. Sin embargo, es más frecuente emplear el cuadrado de dicha diferencia, $\left(y_i-p(x_i)\right)^2$. Esta cantidad tiene, entre otras, la ventaja de que su valor es siempre positivo con  independencia de que la diferencia sea positiva o negativa. Además, representa el cuadrado de la distancia entre $p(x_i)$ e $y_i$. Podemos tomar la suma de dichas distancias al cuadrado, obtenidas por el polinomio para todos los pares de puntos, 
 
 \begin{equation*}
 \sum_{i=1}^m \left(y_i-p(x_i)\right)^2
 \end{equation*}
 
-como una medida de la distancia del polinomio a los datos.  De este modo,  el polinomio \emph{lo mas cercano posible}  a los datos sería aquel que minimice la suma de diferencias al cuadrado que acabamos de definir. De ahí el nombre del método.
+como una medida de la distancia del polinomio a los datos.  De este modo,  el polinomio \emph{lo más cercano posible}  a los datos sería aquel que minimice la suma de diferencias al cuadrado que acabamos de definir. De ahí el nombre del método.
 
 En muchos casos, los datos a los que se pretende ajustar un polinomio por mínimos cuadrados son datos experimentales. En función del entorno experimental y del método con que se han adquirido los datos, puede resultar que algunos resulten más fiables que otros. En este caso, sería deseable hacer que el polinomio se aproxime más a los datos más fiables. Una forma de hacerlo es añadir unos \emph{pesos}, $\omega_i$, a las diferencias al  cuadrado en función de la confianza que nos merece cada dato,
 
@@ -1018,27 +1020,27 @@ c_j&=\sum_{i=1}^m \omega_ix_i^jy_i
  
 El siguiente código permite obtener el polinomio de mínimos cuadrados que aproxima un conjunto de $n$ datos,
 
-\begin{verbatim}
+\begin{lstlisting}
 function a=mc(x,y,n,w)
-%uso: a=mc(x,y,n,w). Esta función permite obtener los coeficientes del
-%polinomio de mínimos cuadrados que ajusta un conjunto de datos. Las
-%variables de entrada son: x, vector con la componente x de los datos a
-%ajustar. y, vector con la componente y de los datos a ajustar. n grado del
-%polinomio de minimos cuadrados. w vector de pesos asociados a los datos. si no
-%se sumininstra se toman todos los pesos como 1. Salidas: vector columna con
-%los coeficientes del polinomio=> a(1)+a(2)*x+a(3)*x^2+a(n+1)*x^n
+% uso: a=mc(x,y,n,w). Esta función permite obtener los coeficientes del
+% polinomio de mínimos cuadrados que ajusta un conjunto de datos. Las
+% variables de entrada son: x, vector con la componente x de los datos a
+% ajustar. y, vector con la componente y de los datos a ajustar. n grado del
+% polinomio de minimos cuadrados. w vector de pesos asociados a los datos. si no
+% se sumininstra se toman todos los pesos como 1. Salidas: vector columna con
+% los coeficientes del polinomio=> a(1)+a(2)*x+a(3)*x^2+a(n+1)*x^n
 
-%comprobamos en primer lugar que tenemos datos suficientes,
+% comprobamos en primer lugar que tenemos datos suficientes,
 
 m=length(x);
 if m<n+1
     error('no hay datos sufiecientes para calcular el polinomio pedido')
 end
-%Si no se ha suministrado vector de pesos construimos uno formado por unos,
+% Si no se ha suministrado vector de pesos construimos uno formado por unos,
 if nargin < 4
 	w=ones(m,1);
 end
-%Montamos un bucle para crear los elementos s de la matriz de coeficientes,
+% Montamos un bucle para crear los elementos s de la matriz de coeficientes,
 for j=1:2*n+1
     s(j)=0;    
 for i=1:m
@@ -1047,7 +1049,7 @@ end
 end
 
 
-%y un segundo bucle para crear los términos independientes...
+% y un segundo bucle para crear los términos independientes...
 for j=1:n+1
     c(j,1)=0;
     for i=1:m
@@ -1055,18 +1057,18 @@ for j=1:n+1
     end
 end
 
-% a partir de los valores de s, construimos la matriz del sistema,
+%  a partir de los valores de s, construimos la matriz del sistema,
 for i=1:n+1
     for j=1:n+1
         A(i,j)=s(i+j-1)
     end
 end
 
-%solo nos queda resolver el sistema... Empleamos la division por la
-%izquierda de matlab
+% solo nos queda resolver el sistema... Empleamos la division por la
+% izquierda de matlab
 
 a=A\c;
-\end{verbatim}
+\end{lstlisting}
 
 Una última observación importante es que si intentamos calcular el polinomio de mínimos cuadrados de grado $m-1$ que aproxima un conjunto de $m$ datos, lo que obtendremos será el polinomio de interpolación. En general, cuanto mayor sea el grado del polinomio más posibilidades hay de que la matriz de sistema empleado para obtener los coeficientes del polinomio esté mal condicionada.
 
@@ -1184,28 +1186,28 @@ Según vamos aumentando el número de los puntos de control, iremos empleando po
 La figura \ref{fig:bezier} muestra un ejemplo en el que se han construido varias curvas de Bézier sobre los mismos puntos de paso inicial y final. Es fácil observar cómo la forma de la curva depende del número y la posición de los puntos de control. Si unimos éstos por orden mediante segmentos rectos, obtenemos un polígono que recibe el nombre de polígono de control. En la figura \ref{fig:bezier} se han representado los polígonos de control mediante líneas de puntos.
 
 El siguiente código permite calcular y dibujar una curva de Bézier a partir de sus puntos de control.
-\begin{verbatim}
+\begin{lstlisting}
 function ber = bezier(p,res)
-%estas funcion pinta la curva de Bezier correspondiente a los puntos de 
-%control p. 
-%p debe ser una matriz de dimension n*2 donde n es el número de puntos de 
-%control empleados La primera columna contiene las coordenadas x 
-%y la segunda las coordenas y.
-%El codigo sigue directamente la definicion de los polinomios de Bernstain
-%por tanto, NO es un codigo optimo. Calcula varias veces las mismas
-%cantidades.
-%Los coeficientes binomiales de los polinomios de Berstein se 
-%pueden calcular directamente con el comando de matlab nchoosek. Sin 
-%enbargo, en el programa se han calculado a partir de la definicion:
-% n!/((n-k)!k!)
-%la variable de entrada res nos da el paso que empleará el parámatro t
-%para calcular y dibujar el polinomio
+% estas funcion pinta la curva de Bezier correspondiente a los puntos de 
+% control p. 
+% p debe ser una matriz de dimension n*2 donde n es el número de puntos de 
+% control empleados La primera columna contiene las coordenadas x 
+% y la segunda las coordenas y.
+% El codigo sigue directamente la definicion de los polinomios de Bernstain
+% por tanto, NO es un codigo optimo. Calcula varias veces las mismas
+% cantidades.
+% Los coeficientes binomiales de los polinomios de Berstein se 
+% pueden calcular directamente con el comando de matlab nchoosek. Sin 
+% enbargo, en el programa se han calculado a partir de la definicion:
+%  n!/((n-k)!k!)
+% la variable de entrada res nos da el paso que empleará el parámatro t
+% para calcular y dibujar el polinomio
 
 t = 0:res:1;
 ber = zeros(2,length(t));
-%calculamos un vector de coeficientes para los polinomios.
+% calculamos un vector de coeficientes para los polinomios.
 
-%coeficientes para la coordenada x.
+% coeficientes para la coordenada x.
 
 n = size(p,1)-1;
 num = factorial(n);
@@ -1218,7 +1220,7 @@ plot(p(:,1),p(:,2),'or')
 hold on
 plot(p(:,1),p(:,2),'r')
 plot(ber(1,:),ber(2,:))
-\end{verbatim}
+\end{lstlisting}
 
 \begin{figure}[h]
 \centering
@@ -1267,19 +1269,19 @@ La figura \ref{fig:bzgrad} muestra un ejemplo para una curva de Bézier construi
 
 El siguiente código permite calcular la curva equivalente de Bézier a una dada, para cualquier número de puntos de control que se desee. \index{Curvas de Bézier equivalentes}
 
-\begin{verbatim}
+\begin{lstlisting}
 function  pp = bzeq(p,n)
-%Esta funcion calcula los puntos de control de una curva de Bezier
-%equivalente de grado superior. p es matriz de tamaño mx2 que contiene los
-%puntos de control originales. n es el número de puntos de paso de la nueva
-%curva de Bezier equivalente. n tiene que ser mayor que m.
-%pp contiene los n puntos de control de la curva de Bézier resultante.
+% Esta funcion calcula los puntos de control de una curva de Bezier
+% equivalente de grado superior. p es matriz de tamaño mx2 que contiene 
+% los puntos de control originales. n es el número de puntos de paso de 
+% la nueva curva de Bezier equivalente. n tiene que ser mayor que m.
+% pp contiene los n puntos de control de la curva de Bézier resultante.
 
-%Construimos una matriz con una fila mas para guardar un nuevo elemento
+% Construimos un vector  con una fila mas para guardar un nuevo elemento
 c = size(p,1);
-%La siguiente linea sirve solo para ir pintando los resultados y ver que
-% efectivamente todos los polinomios dan la misma curva de Bezier... 
-% (si se tiene la funcion bezier).
+% La siguiente linea sirve solo para ir pintando los resultados y ver 
+%que  efectivamente todos los polinomios dan la misma curva de Bezier 
+%  (si se tiene la funcion bezier).
 bezier(p,0.01);
 if c == n
     pp = p;
@@ -1291,11 +1293,11 @@ else
         pp(i,:) = p(i-1,:)*(i-1)/(c) + (1 -(i-1)/(c))*p(i,:);
         
     end
-    %llamamos a la funcion recursivamente hasta tener n puntos de control
-    %el grado del polinomio sera n-1...
+    % llamamos a la funcion recursivamente hasta tener n puntos de 
+    % control el grado del polinomio sera n-1...
     pp = bzeq(pp,n);
 end
-\end{verbatim}
+\end{lstlisting}
 
 \paragraph{Derivadas.} Las derivadas de una curva de Bézier con respecto al parámetro $t$ son particularmente fáciles de obtener a partir de los puntos de control. Si tenemos una curva de Bézier de grado $n$, definida mediante puntos de control $\vec{p}_i$ su derivada primera con respecto a $t$ será una curva de Bézier de grado $n-1$ Cuyos puntos de control $\vec{d}_i$  puede obtenerse como:
 \begin{equation*}
@@ -1307,30 +1309,30 @@ La nueva curva de Bézier obtenida de este modo, es una hodógrafa; representa e
 La figura \ref{fig:bzc}, muestra una curva de Bézier sobre la que se ha trazado el vector derivada para algunos puntos. La figura \ref{fig:bzd} muestra la hodógrafa correspondiente y de nuevo los mismos vectores derivada de la figura \ref{fig:bzc}
 
 El siguiente código muestra como calcular los puntos de control de la derivada de una curva de Bézier.
-\begin{verbatim}
+\begin{lstlisting}
 function d = dbez(p)
-%esta función obtiene los puntos de control de la derivada con respecto al
-%parametro de una curva de bezier cuyos puntos de control están contenidos 
-% la matriz p. p de be ser una matriz de nx2 donde n es el número de puntos
-% de control.
+% esta función obtiene los puntos de control de la derivada con 
+% respecto al parametro de una curva de bezier cuyos puntos de  
+% control están contenidos la matriz p. p de be ser una matriz de 
+% nx2 donde n es el número de puntos de control.
 grado = size(p,1) -1
 d = zeros(grado,2)
 for i = 1:grado
     d(i,:) = (grado-1)*(p(i+1,:)-p(i,:))
 end
-%Codigo añadido para dibujar y analizar los resultados
-%pintamos la hodografa
+% Codigo añadido para dibujar y analizar los resultados
+% pintamos la hodografa
 v = bezier(d,0.01)
-%le añadimos algunos vectores para que se vea que tocan la hodografa
+% le añadimos algunos vectores para que se vea que tocan la hodografa
  hold on
  compass(v(1,1:10:size(v,2)),v(2,1:10:size(v,2)))
  figure
-%las pintamos además como vectores tangentes a la curva original
+% las pintamos además como vectores tangentes a la curva original
 x = bezier(p,0.01)
 hold on
 quiver(x(1,1:10:size(v,2)),x(2,1:10:size(v,2)),v(1,1:10:size(v,2))...
     ,v(2,1:10:size(v,2)))
-\end{verbatim}
+\end{lstlisting}
 
 \begin{figure}
 \centering
@@ -1363,4 +1365,104 @@ Podemos, por ejemplo, elegir libremente todos los puntos de control de la curva 
 \end{figure}
  
 
-La figura \ref{fig:ibz3} muestra un ejemplo de interpolación en la que se ha aplicado la condición de continuidad en la derivada que acabamos de describir
+La figura \ref{fig:ibz3} muestra un ejemplo de interpolación en la que se ha aplicado la condición de continuidad en la derivada que acabamos de describir.
+
+\section{ejercicios}
+\begin{enumerate}
+\item Carga en Matlab los datos del fichero \texttt{datos.txt}\footnote{disponible en \url{https://github.com/UCM-237/LCC/tree/master/datos}} y realiza las siguientes tareas:
+\begin{enumerate}
+\item \label{ej1a} Crea una función que a partir de dos vectores de datos $x,y$ de igual longitud $n+1$, calcula la matriz de Vandermonde necesaria   para obtener el polinomio de interpolación asociado a los puntos. Empleando la primera columna de datos contenida en \texttt{datos.txt} como datos $x$ y la segunda como datos $y$, genera el polinomio de interpolación,
+\begin{equation*}
+p(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n
+\end{equation*}
+
+Calcula el valor que toma el polinomio de interpolación en 100 puntos equiespaciados entre los valores $x_0$ y $x_{n}$ de los datos del fichero. Dibuja en una misma gráfica los resultados obtenidos, empleando una línea continua, y los valores del fichero, mediante puntos separados empleando el símbolo que prefieras. Comprueba que el polinomio pasa por los puntos contenidos en el fichero.
+
+\item Reproduce en matlab la función 'Lagrange' de la sección \ref{sec:lagranje} para calcular el polinomio interpolador de Lagrange. Emplea la función que acabas de crear para recalcular los valores del polinomio de interpolación realizado en el ejercicio anterior y comprueba que los resultados obtenidos son los mismos que empleando la matriz de Vandermonde.
+
+\item A partir de los ejemplos de la sección  sección \ref{sec:difdiv}, crea un programa que calcule los coeficientes del polinomio interpolador de diferencias divididas a partir de dos vectores de datos  $x,y$ de igual longitud $n+1$ y un segundo programa que calcule el valor del polinomio en un punto cualquiera a partir de los coeficientes obtenidos con el primer programa. Vuelve a calcular, empelando ahora el polinomio de diferencias dividas, los valores del polinomio de interpolación sobre los mismos datos empleados en los ejercicios anteriores y comprueba que da los mismos resultados.
+
+\item Por último, crea una función que calcule el polinomio de interpolación de Newton-Gregory (sección \ref{sec:newgre}). ¿Es posible usarlos para interpolar los datos del archivo \texttt{datos.txt}? Si la respuesta el afirmativa, repite el cálculo del polinomio de interpolación, empleando Newton-Gregory y comprueba si coincide con lo obtenido en los ejercicios anteriores.
+
+\item Usa el comando \texttt{help} para conocer los distintos métodos de interpolación por intervalos disponibles  para la función \texttt{interp1}. Empleando de nuevo los datos del fichero \texttt{datos.txt}, obtén el resultado de interpolar los valores en 100 puntos equiespaciados entre los valores $x_0$ y $x_{n}$ de los datos del fichero mediante \texttt{interp1}.  Emplea para ello los métodos \texttt{'nearest','linear'} y \texttt{'spline'}. Dibuja los resultados en la misma gráfica empleada en el ejercicio  \ref{ej1a})
+\end{enumerate}
+\item Construye a partir del código de ejemplo de la sección \ref{sec:mc}, una función que calcule el polinomio de grado $n$ que ajusta por mínimos cuadrados un conjunto de pares de datos datos $(x, y)$. Pruébalo sobre los datos del fichero \texttt{datos.txt}, sin emplear pesos. Compara los coeficientes del polinomio obtenido con los que se obtienen empleando el comando \texttt{polyfit} de Matlab. ¿Qué conclusión sacas?
+
+\item Añade el código necesario al programa anterior para que, una vez obtenidos los coeficientes del polinomio de mínimos cuadrados, la función calcule y devuelva un vector $r$ con los valores de los residuos, $r = y -p(x)$, donde $x$ e $y$ son los vectores del conjunto de datos para los que se ha obtenido el polinomio de mínimos cuadrados y $p$ los valores obtenidos aplicando el polinomio a los valores $x$ de la colección de datos.
+\end{enumerate}
+
+
+\section{Test del curso 2020/21}
+
+% El archivo con los datos lo puedes encontrar en
+%\url{}
+
+\noindent \textbf{Problema 1}. Una cuerda de escalada aumenta su longitud cuando está sometida a una tensión estacionaria en uno de sus extremos. En particular, el aumento de longitud sigue la siguiente ley
+\begin{equation}\label{eq:0}
+T = b\tanh(ax),
+\end{equation}
+donde $T \in \mathbb{R}^+$ es la tensión aplicada en Newtons, $x \in \mathbb{R}^+$ es la elongación de la cuerda en metros y $a, b \ \in \mathbb{R}^+$ son parámetros constantes que dependen de las características de la cuerda.
+
+En función del comportamiento físico de la cuerda, podemos distinguir tres regímenes:
+
+\begin{itemize}
+	\item \emph{Comportamiento elástico}: Se dice que el comportamiento de la cuerda es elástico si al desaparecer la tensión la cuerda recupera su longitud original. Esto se cumple para tensiones estacionarias pequeñas, y las elongaciones están acotadas por un valor positivo $x_{le}$, esto es, $0 \le x \le x_{le}$. En régimen elástico, la ecuación (\ref{eq:0}) puede aproximarse por la siguiente expresión
+\begin{equation}\label{eq:1}
+T = \kappa x - \gamma x^3,
+\end{equation}
+donde $\kappa,\gamma \in \mathbb{R}^+$ son también constantes.
+
+\item \emph{Comportamiento plástico}: Se dice que el comportamiento de la cuerda es plástico si al desaparecer la tensión la cuerda se deforma y no recupera su longitud original. Esto ocurre para tensiones medias, y la elongación alcanzada en este régimen está también acotada por $x_{le} < x \le x_{max}$.
+
+\item \emph{Rotura}: Para tensiones grandes la cuerda no admite elongaciones mayores que $x_{max}$ y se rompe.
+
+\end{itemize}
+
+La fábrica de cuerdas de escalada \textit{Pa'bennos Matao S.L.} ha realizado un estudio sobre un nuevo modelo de cuerda. En dicho estudio se fijó un extremo de la cuerda a una mesa abatible suficientemente grande (que hará la función de un plano inclinado), y se ató el otro extremo de la cuerda a una pesa. De manera secuencial se fue incrementando el ángulo formado por la mesa con la horizontal. En particular, se empezó con cero grados y aumentando el ángulo hasta que finalmente la cuerda alcanzó $x_{max}$ y se rompió. 
+
+Del estudio se pudo registrar la elongación sufrida por la cuerda por los distintos $i\in\{1,\dots,52\}$ ángulos de inclinación. Estos datos están en el archivo:  \texttt{cuerda.txt}\footnote{disponible en \url{https://github.com/UCM-237/LCC/tree/master/datos}}, en donde:
+\begin{itemize}
+	\item La primera columna corresponde a los ángulos $\theta_i$ medidos en radianes.
+	\item La segunda columna corresponde a las elongaciones $x_i$ medidas en metros.
+\end{itemize}
+
+\begin{enumerate}
+\item (\textbf{1 punto}) Estima el valor de la elongación $x_{max}$ para el cual se produce la rotura de la cuerda.
+
+\item (\textbf{1 punto}) Obtén la tensión ejercida por la pesa sobre la cuerda para cada ángulo de inclinación $\theta_i$ de la mesa, esto es
+\begin{equation} \label{eq:2}
+T_i = mg\sin(\theta_i),
+\end{equation}
+donde $m =1000$ Kg y $g = 9.8$ m/s$^2$. Representa gráficamente los datos: $T_i$ frente a $x_i$.
+
+\item A partir de los pares de datos $T_i$ y $x_i$ podemos estimar la ecuación (\ref{eq:1}).
+\begin{enumerate}
+\item (\textbf{2 puntos}) Ajusta los datos por mínimos cuadrados a un polinomio de grado tres. Dado que dicha aproximación solo es válida para el régimen de comportamiento elástico, es imprescindible realizar el ajuste del polinomio asignando pesos a cada par de datos. Para dar más valor a las elongaciones pequeñas y menos a las grandes, utiliza la siguiente expresión para definir los pesos
+\begin{equation}
+\omega_i = e^{-10x_i^2}.
+\end{equation}
+\item (\textbf{1 punto})  Representa, sobre la gráfica dibujada en el apartado 2a, el polinomio obtenido en el apartado 3a. Según tu criterio, ¿es razonable el ajuste realizado? \\ \textbf{Nota:} Recuerda que el vector de coeficientes, obtenido con el algoritmo de mínimos cuadrados del manual, está ordenado al revés con respecto a lo que esperan las funciones de Matlab. Puedes reordenarlo a mano o con el comando \texttt{flipud(p)}.
+\end{enumerate}
+
+\item (\textbf{1 punto})  Los coeficientes de las ecuaciones (\ref{eq:0}) y (\ref{eq:1}) están relacionados por las siguientes expresiones
+\begin{equation}
+\kappa = b\cdot a, \quad \gamma = \frac{b\cdot a^3}{3}. \nonumber
+\end{equation}
+		Calcula los valores de $a$ y $b$ a partir de los coeficiente del polinomio obtenido en el apartado 3a. Representa, en la misma gráfica de los apartados anteriores, la función $T(x) = b\tanh(ax)$. Explica, a la vista del gráfico, si los resultados obtenidos son razonables o no. 
+
+\item (\textbf{1 punto}) Calcula el valor de los residuos $r_i = T_i - P_3(x_i)$, donde $P_3(x)$ es el polinomio de grado tres obtenido en el apartado 3a. Si la cota $x_{le}$ para el comportamiento elástico de la cuerda viene definida cuando $r_i \approx 500 N$. Encuentra un valor aproximado para $x_{le}$. \\
+\textbf{Nota:} Hay que buscar $x_{le}$ empleando código. No vale dibujar los residuos y estimarlo a vista.
+\end{enumerate}
+
+\noindent \textbf{Problema 2.} Dados los siguiente valores de la función $f(x)$:
+\begin{equation}
+f(0) = 1, \quad f \left(\frac{\pi}{4}\right)= \frac{\sqrt{2}}{2}, \quad f \left(\frac{\pi}{2}\right) = 0, \quad f \left(\frac{3\pi}{4}\right) = -\frac{\sqrt{2}}{2}, \quad f(\pi) = -1 \nonumber
+\end{equation}
+\begin{enumerate}
+\item (\textbf{1.5 puntos}) Utilizando el comando de Matlab correspondiente. Obtener mediante interpolación con splines cúbicos los valores de la función $f(x)$ sobre cien puntos equiespaciados en el intervalo $[0,\pi]$.
+
+\item (\textbf{1.5 puntos}) Dibuja mediante un diagrama de barras los errores cometidos entre los $f(x)$ y la función $\cos(x)$ de Matlab en los mismos puntos del intervalo anterior. Considera que no necesitamos saber más de dos decimales para el cálculo de la función coseno; ¿podríamos utilizar la interpolación para $f(x)$?
+\end{enumerate}
+
+
+

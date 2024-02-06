@@ -1,9 +1,17 @@
-\chapter{Introducción a la programación en Paython\\ Introduction to Python programming}  \index{Python}
-Este capítulo presenta una introducción general a la programación. Para su desarrollo, vamos a emplear una de las aplicaciones informáticas para cálculo científico que más aceptación ha tenido en los últimos años: el entorno de programación de Matlab. Matlab es el acrónimo de MATrix LABboratory. El nombre está relacionado con el empleo de matrices como elemento básico para el cálculo numérico.
+\chapter{Introducción a la programación en Python\\ Introduction to Python Programming} \index{Python}
+\begin{paracol}{2}
+Este capítulo presenta una introducción general a la programación. Para su desarrollo, vamos a emplear uno de los lenguajes de progaramción que  que más aceptación ha tenido en los últimos años: Python. Este lenguaje fue desarrollado por Guiod van Rosssum a finales de los años 80 del siglo pasado. El un lenguaje de alto nivel de propósito general.
 
-Usaremos esta herramienta, entre otras motivos, porque nos ofrece la posibilidad de realizar programas similares a los que podríamos desarrollar con un lenguaje de programación de alto nivel, nos permite resolver problemas de cálculo científico directamente, empleando las herramientas que incluye y, además, nos permite combinar ambas cosas.
+El porqué emplear python está relacionado con la existencia de un gran número de \emph{módulos} expecialmente diseñados para el cálculo científico. Además, al tratarse de un lenguaje interpretado, es posible centrarse en el estudio de la programación en sí, sin tener que preocuparse de la compilación. En resumen, emplearemos Python tanto par aprender a programar como para a resolver problemas de calculo científico.
 
-Este capítulo no pretende ser exhaustivo, --cosa que por otro lado resulta imposible en el caso de Matlab--, sino tan solo dar una breve introducción a su uso. Afortunadamente, Matlab cuenta con una muy buena documentación, accesible a través de la 'ayuda', eso sí, en inglés. 
+Este capítulo no pretende ser exhaustivo, --cosa que por otro lado resulta imposible en el caso de Python--, sino tan solo dar una breve introducción a su uso. Afortunadamente, Python cuenta con una muy buena documentación, accesible a través de la Red. 
+\switchcolumn
+This chapter presents a general introduction to programming. We will use Python, one of the currently most used programming languages along their pages. Python was developed by Guido van Rossum in the late 1980s. It is a high-level, general-purpose programming language. 
+
+Why Python? Well, it has many useful \emph{modules} which allow us to develop code for scientific computing in an easy and reliable way. Moreover, being an interpreted language facilitates to focus on the programming skills without bothering with the compiling process. In summary, we will use Python to learn basic general programming methods and solve numerical problems.
+
+This chapter is by no means exhaustive. This would be impossible in the case of a language like Python. It is just an introduction to its use. Fortunately, Python has excellent online documentation and plenty of examples in the Wed. 
+\end{paracol}
 
 
 
@@ -12,7 +20,7 @@ Cuando iniciamos Matlab en el computador, se abre una ventana formada por uno o 
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=10cm]{ide.png}
+		\includegraphics[width=14cm]{ide_n.png}
 	\caption{Entorno de desarrollo integrado de Matlab}
 	\label{fig:ide}
 \end{figure}
@@ -20,7 +28,7 @@ Cuando iniciamos Matlab en el computador, se abre una ventana formada por uno o 
 Según como se configure, el IDE de Matlab puede mostrar un número mayor o menor de paneles y una disposición de los mismos distinta a la mostrada en la figura. La mejor manera de aprender estos y otros detalles del IDE es usarlo. Aquí nos centraremos solo en algunos aspectos fundamentales.
 
 \subsection{La ventana de comandos de Matlab} \index{Matlab!ventana de Commandos}
-De los paneles mostrados en la ventana de la figura \ref{fig:ide}, vamos a empezar examinando el situado a la derecha. Se trata de la ventana de comandos (\emph{command window}) de Matlab.  \index{prompt} La ventana muestra el simbolo $>>$, que recibe el nombre de \emph{prompt} y, a continuación, una barra vertical $|$ parpadeante.  La ventana de comandos permite al usuario interactuar directamente con Matlab: Matlab puede recibir instrucciones directamente a través de la ventana de comandos, ejecuta las instrucciones recibidas, y devuelve los resultados de nuevo en la ventana de comandos. Veamos un ejemplo muy sencillo: si escribimos en la ventana de comandos:
+De los paneles mostrados en la ventana de la figura \ref{fig:ide}, vamos a empezar examinando el situado en la parte inferior central. Se trata de la ventana de comandos (\emph{command window}) de Matlab.  \index{prompt} La ventana muestra el simbolo $>>$, que recibe el nombre de \emph{prompt} y, a continuación, una barra vertical $|$ parpadeante.  La ventana de comandos permite al usuario interactuar directamente con Matlab: Matlab puede recibir instrucciones directamente a través de la ventana de comandos, ejecuta las instrucciones recibidas, y devuelve los resultados de nuevo en la ventana de comandos. Veamos un ejemplo muy sencillo: si escribimos en la ventana de comandos:
 
 \begin{verbatim}
 >> a=18 + 3
@@ -153,7 +161,7 @@ hola amigos
 \end{verbatim}
 
 \end{enumerate}
- La forma que hemos visto de asignar un valor a una variable es la más sencilla pero no es la única. También podemos asignar un valor una variable a partir de una expresión aritmética, como hemos visto antes. Ademas podemos asignar un valor a una variable copiando el contenido de otra variable:
+ La forma que hemos visto de asignar un valor a una variable es la más sencilla pero no es la única. También podemos asignar un valor a una variable a partir de una expresión aritmética, como hemos visto antes. Ademas podemos asignar un valor a una variable copiando el contenido de otra variable:
 \begin{verbatim}
 >> a=18
 
@@ -266,7 +274,7 @@ La recursión se emplea muy a menudo en programación, entre otras aplicaciones,
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=8cm]{wsp1.png}
+		\includegraphics[width=8cm]{wsp2.png}
 	\caption{El \emph{Workspace} de Matlab}
 	\label{fig:wsp}
 \end{figure}
@@ -994,12 +1002,12 @@ Por último, una vez que se han escrito o leído datos en el fichero es preciso 
 Matlab posee una herramienta especial para importar datos. Con ella, es posible cargar en Matlab datos de muy diverso tipo, no sólo numéricos sino también imágenes, sonido, etc. Una de las ventajas de esta herramienta es que reconoce directamente ---entre otros--- los archivos creados por las hojas de cálculo.
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=10cm]{Wizard.pdf}
+		\includegraphics[width=10cm]{Wizard1.png}
 	\caption{Aspecto de la herramienta de importación de datos}
 	\label{fig:wizard}
 \end{figure}
 
-Para abrir en Matlab la herramienta de importación, basta seleccionar en la pestaña \emph{file} la opción \emph{Import Data}. Matlab abre entonces una ventana que nos permite navegar por el árbol de directorio y seleccionar el archivo del que deseamos importar los datos. Una vez seleccionado, Matlab abre la ventana mostrada en la imagen \ref{fig:wizard}. 
+Para abrir en Matlab la herramienta de importación, basta pulsar en la pestaña \emph{home}, situada en la parte superior del IDE de Matlab,   el botón \emph{Import Data}. Matlab abre entonces una ventana que nos permite navegar por el árbol de directorio y seleccionar el archivo del que deseamos importar los datos. Una vez seleccionado, Matlab abre la ventana mostrada en la imagen \ref{fig:wizard}. 
 Se trata de un programa especial ---\emph{import wizard}--- que sirve para guiar al usuario en el proceso de cargar las variables contenidas en el fichero en el \emph{workspace} de Matlab.
 
 \section{Operaciones aritméticas, relacionales y lógicas}\index{Operaciones}
@@ -2056,11 +2064,11 @@ Hasta ahora, hemos manejado siempre Matlab desde la línea de comandos. Es decir
 Matlab puede emplear ficheros de texto en los que introducimos un conjunto de comandos, guardarlos, y volver a emplearlos siempre que queramos. Esta es la forma habitual de trabajar no solo de Matlab, sino de otros muchos entornos de programación. Un fichero que contiene código de Matlab recibe el nombre genérico de \emph{programa}. Un programa de Matlab no es más que un fichero de texto que contiene líneas formadas por comando válidos de Matlab. Lo habitual es que cada línea contenga un comando. El fichero se guarda con un nombre y la extension \texttt{.m}. Por ejemplo: \texttt{miprograma.m}. El nombre del fichero, puede contener números y letras, pero el primer carácter debe ser siempre una letra. Los programas en Matlab pueden tomar dos formas básicas, \emph{scripts} y \emph{funciones}.
 
 \subsection{El editor de textos de Matlab.} \index{Editor de textos}
-Podemos emplear un editor de textos cualquiera, que genere texto en ASCII, como por ejemplo el 'block de notas', para escribir nuestros programas. Sin embargo, si trabajamos en el entorno de Matlab, lo ideal es emplear su propio editor de textos. Hay varias formas de abrir el editor de textos de Matlab; pulsando el icono de nuevo documento o bien desplegando el menú File y seleccionando nuevo script, la posición de ambos se indica en la figura \ref{fig:opened} 
+Podemos emplear un editor de textos cualquiera, que genere texto en ASCII, como por ejemplo el 'block de notas', para escribir nuestros programas. Sin embargo, si trabajamos en el entorno de Matlab, lo ideal es emplear su propio editor de textos. Hay varias formas de abrir el editor de textos de Matlab; la más sencilla es pulsar  el icono de nuevo documento (\emph{New Script}) o bien desplegando el menú \emph{New} y seleccionando \emph{script}, la posición de ambos se indica en la figura \ref{fig:opened}, dentro de la pestaña \emph{home} del IDE de matlab.
 \begin{figure}[h]
 \centering
-\includegraphics[width=14cm]{opened.pdf}
-\caption{posición del menú File y del icono de nuevo documento en el IDE de Matlab}
+\includegraphics[width=14cm]{opened.png}
+\caption{posición del botón  \emph{New Script} y del  menú \emph{New} en el IDE de Matlab (Señalados en rojo}.
 \label{fig:opened}
 \end{figure}
 
@@ -2076,26 +2084,26 @@ Si añadimos a continuación del comando \texttt{edit} el nombre de un fichero,
 >>edit ejemplo1.m
 \end{verbatim}
 
-Buscará un fichero con dicho nombre en los directorios de Matlab y en el directorio de trabajo. Si lo encuentra, abrirá el archivo encontrado. Si no lo encuentra, creará uno nuevo con dicho nombre. La figura \ref{fig:edv} muestra el editor de textos de Matlab, con el contenido del fichero \texttt{ejemplo1.m}. En dicha imagen es posible observar las barras de menú y de herramientas de las que dispone el editor de texto, para facilitar el trabajo de programación. 
+Buscará un fichero con dicho nombre en los directorios de Matlab y en el directorio de trabajo. Si lo encuentra, abrirá el archivo encontrado. Si no lo encuentra, creará uno nuevo con dicho nombre. La figura \ref{fig:edv} muestra el editor de textos de Matlab ---Integrado en la parte central superior del IDE de Matlab--- con el contenido del fichero \texttt{ejemplo1.m}. Además, de entre las pestañas situadas en la parte superior del IDE, se ha seleccionado la marcada como \emph{EDITOR}. Es posible observar las barras de menú y de herramientas de las que dispone el editor de texto, para facilitar el trabajo de programación. 
 \begin{figure}[h]
 \centering
-\includegraphics[width=14cm]{ejemplo1.pdf}
-\caption{Vista del editor de textos de Matlab mostrando el contenido del fichero prueba1.m}
+\includegraphics[width=14cm]{ejemplo1.png}
+\caption{Vista del editor de textos de Matlab mostrando el contenido del fichero ejemplo1.m}
 \label{fig:edv}
 \end{figure}
 Éstas, entre otras facilidades --resaltar texto de palabras clave, cotar número de líneas, sangrar estructuras de programación, etc.-- hacen que resulte especialmente atractivo emplear el editor de textos de Matlab en lugar de emplear otro editor de textos genérico.
 
 \subsection{Scripts} \index{Script}
 Un script en Matlab es un simple fichero de texto que contiene un conjunto de sentencias de Matlab válidas. La manera de ejecutarlo, consiste en escribir el nombre del fichero en la línea de comandos de Matlab. Matlab va leyendo el contenido del fichero línea a línea, y va ejecutando los comandos que contiene cada línea exactamente igual que si se hubieran escrito directamente en la línea de comandos de Matlab. Veamos un ejemplo sencillo, que corresponde con el código contenido en la figura \ref{fig:edv}:
-\begin{verbatim}
+%\begin{lstlisting}
 % Este programa toma dos matrices llamadas A y B del espacio de trabajo de
 %  Matlab, calcula su suma y la guarda en una variable llamada suma, calcula el 
 % producto y lo guarda en una variable llamada producto y, por última genera un 
-%mensaje en la ventana de comandos para indicar que ha terminado de ejecutarse.
-suma=A+B
-producto=A*B
-disp('ejecución terminada') 
-\end{verbatim}
+% mensaje en la ventana de comandos para indicar que ha terminado de ejecutarse.
+%suma=A+B
+%producto=A*B
+%disp('ejecución terminada') 
+%\end{lstlisting}
 Si escribimos el texto anterior en un archivo y lo guardamos con el nombre ejemplo1.m, podemos ejecutar su contenido en Matlab sin más que escribir en la línea de comandos:
 \begin{verbatim}
 >> ejemplo1
@@ -2139,18 +2147,8 @@ function [x1,x2]=raices(a,b,c)
 En este caso, las variables de salida serían \texttt{x1} y \texttt{x2}.
 
 A continuación, vamos a completar el ejemplo para el que hemos construido la cabecera en los párrafos anteriores. Se trata de una función que obtiene las raíces de una ecuación de segundo grado, $ax^2+bx+c=0$ conocidos sus coeficientes $a, b, c$,
-\begin{verbatim}
-function [x1,x2]=raices(a,b,c)
-%Esta función calcula las raices de una ecuación de segundo grado ax^2+b^x+c=0
-%las variables de entrada son los coeficientes a, b, c de la ecuación. 
-%las variables de salida x1 , x2 son las dos raices de la ecuación
 
-%calculo de la primera raiz
-x1=(-b+(b^2-4*a*c)^(1/2))/(2*a)
-
-%calculo de la segunda raiz
-x2=(-b-(b^2-4*a*c)^(1/2))/(2*a)
-\end{verbatim}
+%\lstinputlisting{../codigo/matlab/introduccion/raices.m}
 
 Deberemos guardar estas líneas de código en un archivo con el nombre raices.m. Podemos ahora emplear la función \texttt(raices) para calcular las raíces de una ecuación de segundo grado. Supongamos que queremos obtener las raíces de la ecuación,
 \begin{equation*}
@@ -2311,24 +2309,24 @@ En Matlab, como en cualquier lenguaje de alto nivel, es posible llamar una funci
 
 Veamos un ejemplo sencillo de llamada de una función desde otra,
 
-\begin{verbatim}
+%\begin{lstlisting}
 function salida=ejemplo2(entrada)
-%esta funcion toma el valor de entrada lo eleva al cuadrado y pasa el
-%resultado aun segunda función que calcula la raiz cuadrada...
-%entrada y salida deberían ser iguales al final
+% esta funcion toma el valor de entrada lo eleva al cuadrado y pasa el
+% resultado aun segunda función que calcula la raiz cuadrada...
+% entrada y salida deberían ser iguales al final
 
-x=entrada^2;
+%x=entrada^2;
 
-%%%%llamada a la segunda función%%%%
-salida=raiz(x);
-\end{verbatim}
+%%%%    llamada a la segunda función%%%%
+%salida=raiz(x);
+%\end{lstlisting}
 
 La función \texttt{ejemplo2} llama a una segunda función \texttt{raiz} cuyo código,
 
-\begin{verbatim}
-function out=raiz(in)
-out=in^(1/2);
-\end{verbatim}
+%\begin{lstlisting}
+%function out=raiz(in)
+%out=in^(1/2);
+%\end{lstlisting}
 
 Debe guardarse en uno de los tres lugares siguientes:
 \begin{enumerate}
@@ -2339,43 +2337,44 @@ Debe guardarse en uno de los tres lugares siguientes:
 
 Además al ejecutar la función \texttt{ejemplo2}, se buscará el código de la función raíz, precisamente en el orden que acabamos de indicar. Si añadimos directemente el código de la función \texttt{raiz} al fichero ejemplo2.m, el código quedaría,
 
-\begin{verbatim}
-function salida=ejemplo2(entrada)
-%esta funcion toma el valor de entrada lo eleva al cuadrado y pasa el
-%resultado aun segunda función que calcula la raiz cuadrada...
-%entrada y salida deberían ser iguales al final
+%\begin{lstlisting}
+%function salida=ejemplo2(entrada)
+% esta funcion toma el valor de entrada lo eleva al cuadrado y pasa el
+% resultado aun segunda función que calcula la raiz cuadrada...
+% entrada y salida deberían ser iguales al final
 
-x=entrada^2;
+%x=entrada^2;
 
-%%%%llamada a la segunda función%%%%
-salida=raiz(x);
+%%%%    llamada a la segunda función%%%%
+%salida=raiz(x);
 
-%%%%%%codigo de la segunda funcion%%%%%
-function out=raiz(in)
-disp('version incluida en el archivo ejemplo2.m')
-out=in^(1/2);
-\end{verbatim}
+%%%%%%    codigo de la segunda funcion%%%%%
+%function out=raiz(in)
+%disp('version incluida en el archivo ejemplo2.m')
+%out=in^(1/2);
+%\end{lstlisting}
+
 
 La ventaja de escribir el código de la segunda función en el mismo fichero de la primera es que el acceso es más rápido. Sin embargo, solo la función \texttt{ejemplo2} podrá llamarla. Es decir la función \texttt{raiz} no puede emplearse desde la ventana de comandos de Matlab  ni desde ninguna otra función.
 
 En general, si escribimos en un archivo .m de Matlab varias funciones,
 
-\begin{verbatim}
-function a=uno(b)
-%aqui viene el codigo de la funcion uno
-...
+% \begin{lstlisting}
+% function a=uno(b)
+% %aqui viene el codigo de la funcion uno
+% ...
 
-function c=dos(d)
-%aqui viene el codigo de la funcion dos
-...
+% function c=dos(d)
+% % aqui viene el codigo de la funcion dos
+% ...
 
-function e=tres(f)
-%aqui viene el codigo de la funcion dos
-...
-.
-.
-.
-\end{verbatim}
+% function e=tres(f)
+% % aqui viene el codigo de la funcion dos
+% ...
+% .
+% .
+% .
+% \end{lstlisting}
 
 Todas las funciones incluidas en el fichero pueden llamarse entre unas a otras, pero solo la primera de ellas puede ser ejecutada desde la ventana de comandos de Matlab. Además el nombre del fichero debe coincidir con el nombre de la primera función  contenida en él. En el ejemplo que acabamos de esbozar, el fichero debería llamarse uno.m.
 
@@ -2447,52 +2446,55 @@ Siempre que escribimos un programa, tanto si se trata de un \emph{script} como s
 \begin{enumerate} 
 \item Errores de sintaxis. \index{Error! De sintáxis}Normalmente son errores de escritura. Hemos escrito mal el nombre de una función o un comando o bien no hemos escrito correctamente el código siguiendo las reglas del lenguaje. Matlab advierte directamente de estos errores, cuando se trata de ejecutar el código, escribiendo en la ventana de comandos un mensaje de error. Como ejemplo veamos los errores del siguiente \texttt{script},
 
-\begin{verbatim}
-%script con errores,
-y=[1 2 3; 4 5 6; 2 3] %a esta matriz le falta un elemento en la última fila
+% \begin{lstlisting}
+% % script con errores,
+% y=[1 2 3; 4 5 6; 2 3] % a esta matriz le falta un elemento en la última fila
 
-x=[1 2 3; 4 5 6]
-z=y*x %las matrices no pueden multiplicarse entre si por que no coinciden
-      %numero de columnas de la primera con numero de filas de la segunda
-\end{verbatim}
+% x=[1 2 3; 4 5 6]
+% z=y*x % las matrices no pueden multiplicarse entre si por que no coinciden
+%       % numero de columnas de la primera con numero de filas de la segunda
+% \end{lstlisting}
 
-Si observamos el editor de textos, \ref{fig:ederror} puede observarse algunas de los caracteres del texto subrayados en rojo. Esto puede indicar la existencia de errores en esa línea de código, como en el caso del carácter que se ha rodeado en la figura de un círculo rojo. 
+Si observamos el editor de textos, figura \ref{fig:ederror}, puede observarse algunas de los caracteres del texto subrayados en rojo. Esto puede indicar la existencia de errores en esa línea de código, como en el caso del carácter que se ha rodeado en la figura de un círculo rojo. 
 
-En otros casos, --circulos azules de la figura-- se trata de advertencias, el programa funciona pero puede hacerlo de forma más eficiente; en el caso de la figura simplemente nos sugiere que añadamos un punto y coma al final de las sentencias, para que Matlab no escriba el resultado de cada cálculo en la ventana de comandos. No se trata por tanto de errores sino de advertir al programador que con puntos y comas su programa se ejecutará más rápido.
+En otros casos, --circulo azul de la figura-- se trata de advertencias, el programa funciona pero puede hacerlo de forma más eficiente; en el caso de la figura simplemente nos sugiere que añadamos un punto y coma al final de las sentencias, para que Matlab no escriba el resultado de cada cálculo en la ventana de comandos. No se trata por tanto de errores sino de advertir al programador que con puntos y comas su programa se ejecutará más rápido.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=14cm]{errores.pdf}
-\caption{Vista de el editor de texto de Matlab. Circulo rojo error en el código. Circulos azules advertencias de posible mejoras}
+\includegraphics[width=14cm]{errores.png}
+\caption{Vista de el editor de texto de Matlab. Circulo rojo error en el código. Rodeado en azul advertencias de posible mejoras. Rodeado en verde mensaje de error en tiempo de ejecución}
 \label{fig:ederror}
+\end{figure}
+
+Si pasamos el ratón por encima de los caractéres en rojo, Matlab nos ofrece información adicional sobre el error detectado o la advertencia de mejora. La figura \ref{fig:popupm} muestra la información asociada al error rodeado en rojo en la figura anterior (ref{fig:ederror}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=14cm]{popupm.png}
+\caption{Vista de el editor de texto de Matlab. Desplegable mostrando detalles sobre el error cometido}
+\label{fig:popupm}
 \end{figure}
 
 Si ejecutamos el script, que hemos guardado con el nombre de \texttt{errores.m},
 
 \begin{verbatim}
 >> errores
-Warning: File: errores.m Line: 2 Column: 4
-
-The expression on this line will generate an error when executed.  
-The error will be:  Error using vertcat
-CAT arguments dimensions are not consistent.
- 
-Error using errores (line 2)
-Error using vertcat
-CAT arguments dimensions are not consistent.
+Error using errores (line 3)
+Dimensions of arrays being concatenated are not consistent.
 \end{verbatim}
 
-Matlab ha detectado el error en la construcción de la matriz \texttt{y}, nos indica el tipo de error cometido y la línea y columna de código donde se ha producido.
+Matlab ha detectado el error en la construcción de la matriz \texttt{y}, nos indica mediante un mensaje el tipo de error cometido y la línea de código donde se ha producido y detiene la ejecución del \emph{script}. Se trata del mensaje rodeado en verde en la figura \ref{fig:ederror}.
 
 Si corregimos el código, añadiendo a la matriz \texttt{y} el elemento que le falta,
 
-\begin{verbatim}
-%script con errores,
-y=[1 2 3; 4 5 6; 2 3 8] %Ultima fila completada
-x=[1 2 3; 4 5 6]
-z=y*x %las matrices no pueden multiplicarse entre si por que no coinciden
-      %numero de columnas de la primera con numero de filas de la segunda
-\end{verbatim}
+% \begin{lstlisting}
+% % script con errores,
+% y=[1 2 3; 4 5 6; 2 3 8] % Ultima fila completada
+% x=[1 2 3; 4 5 6]
+% z=y*x % las matrices no pueden multiplicarse entre si por que no 
+%       % coinciden numero de columnas de la primera con numero de
+%       % filas de la segunda
+% \end{lstlisting}
 y volvemos a ejecutar el script.
 \begin{verbatim}
 >> errores
@@ -2510,12 +2512,15 @@ x =
      4     5     6
 
 Error using  * 
-Inner matrix dimensions must agree.
+Incorrect dimensions for matrix multiplication. Check that the number of
+columns in the first matrix matches the number of rows in the second matrix.
+To perform elementwise multiplication, use '.*'.
 
 Error in errores (line 5)
-z=y*x %las matrices no pueden multiplicarse entre si por que no coinciden
+z=y*x % las matrices no pueden multiplicarse entre si por que no coinciden
+
 \end{verbatim}
-Matlab nos detecta el siguiente error cometido así como la línea en la que se comete. 
+Matlab nos detecta el siguiente error cometido así como la línea en la que se comete. Es interesante notar que, aunque  se trata de un error de sistaxis, el editor de textos no puede detectarlo y, por tanto, no nos muestra ningún carácter subrrayado en rojo, asociado a él.
 
 Si intercambiamos las posiciones entre las variables \texttt{x} e \texttt{y} en el producto, suponiendo que ésta es la causa del error cometido,
 
@@ -2553,28 +2558,30 @@ z =
 
 El siguiente código del script \texttt{trect.m} muestra un error de este tipo, 
 
-\begin{verbatim}
-%este script toma los valores de los catetos de un triángulo rectangulo del 
-%workspace de Matlab (variables a y b). calcula su hipotenusa, y a partir
-%de estos datos, el seno el coseno y la tangente del angulo formado por la
-%hipotenusa y el cateto mayor que será siempre a
+% \begin{lstlisting}
+% % este script toma los valores de los catetos de un triángulo rectangulo del 
+% % workspace de matlab (variables a y b). calcula su hipotenusa, y a partir
+% % de estos datos, el seno el coseno y la tangente del angulo formado por la
+% % hipotenusa y el cateto mayor que será siempre a
 
-%calculo hipotenusa,
+% % calculo hipotenusa,
 
-h=sqrt(a^2+b^2)
+% h=sqrt(a^2+b^2)
 
-%calculo del seno
+% % calculo del seno
 
-s=a/h
+% s=a/h
 
-%calculo del coseno
-a=b/h %error estamos sobreescriesdo el valor del coseno en la variable que 
-      %guardaba el valor del cateto
+% % calculo del coseno
+% a=b/h % error estamos sobreescribiendo el valor del coseno en la variable  
+%       % que guardaba e valor del cateto
 
-%calculo de la tangente
-t=b/a
+% % calculo de la tangente
+% t=b/a
 
-\end{verbatim}
+% \end{lstlisting}
+
+%\lstinputlisting{../codigo/matlab/introduccion/trect.m}
 
 El programa funciona perfectamente, por ejemplo si hacemos \texttt{a=4} y \texttt{b}=3,
 
@@ -2600,13 +2607,13 @@ t =
 
      5
 \end{verbatim}
-Como hemos sobre escrito en \texttt{a} el valor del coseno, cuando tratamos de utilizar dicha variable, como si fuera el cateto mayor, para obtener la tangente el resultado que obtenemos es erróneo.
+Como hemos sobrescrito en \texttt{a} el valor del coseno, cuando tratamos de utilizar dicha variable como si fuera el cateto mayor para obtener la tangente, el resultado que obtenemos es erróneo.
 
-El editor de texto de Matlab nos permite ejecutar un programa paso a paso, ver los valores que van tomando las variable en Matlab, etc, mediante el depurador que lleva incorporado. Para ello, se definen en el editor de Matlab \emph{breakpoints},esto es líneas en las cuales Matlab detendrá la ejecución de un programa, entrará en modo de depuración y esperará instrucciones del usuario. La figura \ref{fig:depu1} muestra el código del ejemplo que acabamos de ver, en el que se ha definido un \texttt{breakpoint}, pinchando con el ratón sobre el guión que precede a la línea del programa en la que se desea parar la ejecución. Matlab indica que el \emph{breakpoint} está activo, cambiando el guión por un círculo rojo.
+El editor de texto de Matlab nos permite ejecutar un programa paso a paso, ver los valores que van tomando las variable en Matlab, etc, mediante el depurador que lleva incorporado. Para ello, se definen en el editor de Matlab \emph{breakpoints},esto es: líneas en las cuales Matlab detendrá la ejecución de un programa, entrará en modo de depuración y esperará instrucciones del usuario. La figura \ref{fig:depu1} muestra el código del ejemplo que acabamos de ver, en el que se ha definido un \texttt{breakpoint}, pulsando con el ratón sobre el guión que precede a la línea del programa en la que se desea parar la ejecución. Matlab indica que el \emph{breakpoint} está activo, cambiando el guión por un círculo rojo. Alternativamente, también es posible establecer o remover \emph{breackpoints} empleando el botón de la pestaña \emph{EDITOR}, rodeado de rojo en la figura.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=14cm]{depu1.pdf}
+\includegraphics[width=14cm]{depu1.png}
 \caption{Breakpoint activo}
 \label{fig:depu1}
 \end{figure}
@@ -2630,12 +2637,12 @@ A partir de aquí Matlab pone a nuestra disposición las herramientas de depurac
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=14cm]{depu2.pdf}
+\includegraphics[width=14cm]{depu2.png}
 \caption{Parada de programa en breakpoint y herramientas de depuración}
 \label{fig:depu2}
 \end{figure}
 
-Si pulsamos el botón de "paso adelante" Matlab ejecutará la línea de programa señalada con la flecha verde y se parará en la línea siguiente. En cada paso, podemos ver el valor que toman las variables, pidiendo su valor directamente en la ventana de comandos,
+Si pulsamos el botón  "ejecutar línea actual" Matlab ejecutará la línea de programa señalada con la flecha verde y se parará en la línea siguiente. En cada paso, podemos ver el valor que toman las variables, pidiendo su valor directamente en la ventana de comandos,
 
 \begin{verbatim}
 K>> a
@@ -2670,21 +2677,21 @@ Para ello, podríamos hacer uso de la función \texttt{rem} (ver tabla \ref{tabf
 
 \paragraph{if - elseif - else - end.} El mecanismo que necesitamos nos lo suministra la estructura \texttt{if} de Matlab. Veamos en primer lugar el código del ejemplo del que venimos hablando,
 
-\begin{verbatim}
-function espar(x)
-%Este programa recibe un numero entero como variable de entrada. y muestra
-%por pantalla un mensaje indicando si el numero recibido es par o impar.
+% \begin{lstlisting}
+% function espar(x)
+% % Este programa recibe un numero entero como variable de entrada. y muestra
+% % por pantalla un mensaje indicando si el numero recibido es par o impar.
 
-%Calculamos el resto de la division por dos
-resto=rem(x,2);
+% % Calculamos el resto de la division por dos
+% resto=rem(x,2);
 
-%Empleamos una estructura if - else -end para decidir que mensaje mostrar
+% % Empleamos una estructura if - else -end para decidir que mensaje mostrar
 
-if resto==0
-    %si el resto es cero el número es par
-    disp('el número es par')
-end
-\end{verbatim}
+% if resto==0
+%     % si el resto es cero el número es par
+%     disp('el número es par')
+% end
+% \end{lstlisting}
 
 El programa toma un número como variable de entrada y calcula el resto de su división entre dos. A continuación entra en una parte de código especial, que se inicia con la palabra clave \texttt{if} y termina con la palabra clave \texttt{end}. 
 
@@ -2693,52 +2700,52 @@ La palabra clave \texttt{if} va siempre seguida de una expresión que da un resu
 En nuestro ejemplo, se emplea una expresión relacional sencilla \texttt{resto==0}. Si se cumple, el programa ejecutará la siguiente línea de programa, escribiendo en la ventana de comandos la frase ``el número es par"  si no se cumple el programa se la salta, llega hasta el \texttt{end}, y no escribe nada por pantalla. 
 
 Acabamos de ver la estructura condicional \texttt{if} más sencilla posible. Podríamos complicarla un poco pidiendo que también nos saque un mensaje por pantalla cuando el número sea impar. Esto supone incluir en nuestro programa una disyuntiva; si es par el programa debe hacer una cosa y si no, debe hacer otra. Para incluir este tipo de disyuntivas en una estructura \texttt{if}, se emplea la palabra clave \texttt{else}. Veamos nuestro ejemplo modificado,
-\begin{verbatim}
-function espar(x)
-%Este programa recibe un numero entero como variable de entrada. y muestra
-%por pantalla un mensaje indicando si el numero recibido es par o impar.
+% \begin{lstlisting}
+% function espar(x)
+% % Este programa recibe un numero entero como variable de entrada. y muestra
+% % por pantalla un mensaje indicando si el numero recibido es par o impar.
 
-%Calculamos el resto de la division por dos
-resto=rem(x,2);
+% % Calculamos el resto de la division por dos
+% resto=rem(x,2);
 
-%Empleamos una estructura if - else -end para decidir que mensaje mostrar
+% % Empleamos una estructura if - else -end para decidir que mensaje mostrar
 
-if resto==0
-    %si el resto es cero el número es par
-    disp('el número es par')
-else
-    %si el resto no es cero el número es impar
-    disp('el número es impar')
-end 
-\end{verbatim}
+% if resto==0
+%     % si el resto es cero el número es par
+%     disp('el número es par')
+% else
+%     % si el resto no es cero el número es impar
+%     disp('el número es impar')
+% end 
+% \end{lstlisting}
 
 La palabra clave \texttt{else} marca ahora la disyuntiva, si el número es par, el programa ejecuta las líneas de código entre el \texttt{if} y el \texttt{else}, si el número no es par ejecutará las líneas entre el \texttt{else} y el \texttt{end}.
 
 La estructura \texttt{if} admite todavía ampliar el número de posibilidades de elección mediante la palabra clave \texttt{elseif}. Al igual que  con \texttt{if}, \texttt{elseif} va seguido de una expresión lógica que establece una condición, si se cumple se ejecutará el código de las líneas siguientes, si no se cumple, el programa saltará a la siguiente línea que contenga una palabra clave: otro \texttt{elseif}, un \texttt{else} o directamente el \texttt{end} que marca el final de la parte de código condicional. Para ver cómo funciona, vamos a modificar nuestro ejemplo anterior, para que, si el número introducido no es divisible por dos, compruebe si es divisible por tres,
 
-\begin{verbatim}
-function divis(x)
-%Este programa recibe un numero entero como variable de entrada. y muestra
-%por pantalla un mensaje indicando si el numero recibido es par. Si no es
-%par, comprueba si es divisible por 3 y si lo es muestra un mensaje por  
-%pantalla indicandolo. Si no es par ni divisible por tres muestra un
-%mensaje diciendo que no es par ni disible por tres. 
+% \begin{lstlisting}
+% function divis(x)
+% % Este programa recibe un numero entero como variable de entrada. y muestra
+% % por pantalla un mensaje indicando si el numero recibido es par. Si no 
+% % es par, comprueba si es divisible por 3 y si lo es muestra un mensaje   
+% % por pantalla indicandolo. Si no es par ni divisible por tres muestra un
+% % mensaje diciendo que no es par ni disible por tres. 
 
 
 
-%Empleamos una estructura if-elseif-else-end para decidir que mensaje mostrar
+% % Empleamos una estructura if-elseif-else-end para decidir que mensaje mostrar
 
-if rem(x,2)==0
-    %si el resto es cero el número es par
-    disp('el número es par')
-elseif rem(x,3)==0
-    %El número es divisible por tres
-    disp('el número es divisible por 3')
-else
-    %el numero no es par ni divisible por tres
-    disp('el número no es par ni divisible por 3')
-end
-\end{verbatim}
+% if rem(x,2)==0
+%     % si el resto es cero el número es par
+%     disp('el número es par')
+% elseif rem(x,3)==0
+%     % El número es divisible por tres
+%     disp('el número es divisible por 3')
+% else
+%     % el numero no es par ni divisible por tres
+%     disp('el número no es par ni divisible por 3')
+% end
+% \end{lstlisting}
 
 Si llamamos ahora a la función dando como valor de entrada un número par, Ejecutará el código situado debajo del \texttt{if} y antes del \texttt{elseif} y se saltará todo lo demás hasta llegar al \texttt{end}. Si el número introducido no es par, pero es divisible por tres, se saltará el código situado por debajo del \texttt{if}, ejecutará el código contenido debajo del \texttt{elseif} hasta el \texttt{else} y saltará el resto del código hasta llegar al \texttt{end}. Por último si el número no es par ni divisible por tres, solo ejecutará el código situado por debajo del \texttt{else}.
 
@@ -2775,35 +2782,35 @@ end};
 \paragraph{Estructuras if anidadas.}\index{Anidación! If anidado} 
 En el ejemplo anterior, hemos visto cómo, si el número introducido en la función era par y además divisible por tres, el programa nunca nos informaría de esta segunda propiedad, debido al carácter excluyente de la estructura \emph{if}. Una manera de resolver este problema, es mediante el uso de estructuras \texttt{if} anidadas. La idea es muy sencilla, se construye una estructura \texttt{if} para comprobar una determinada condición, si esta se cumple, dentro de su código se construye otra estructura if para comprobar una segunda condición, y así sucesivamente, todas las veces que sea necesario. Si modificamos nuestro ejemplo anterior, incluyendo un \texttt{if} anidado,
 
-\begin{verbatim}
-function divis23(x)
-%Este programa recibe un numero entero como variable de entrada. y muestra
-%por pantalla un mensaje indicando si el numero recibido es par. 
-%si el numero es par y divisible entre tres,
-%si es divisible entre tres  
-%Si no es par ni divisible por tres 
+% \begin{lstlisting}
+% function divis23(x)
+% % Este programa recibe un numero entero como variable de entrada. y 
+% % muestra por pantalla un mensaje indicando si el numero recibido es par. 
+% % si el numero es par y divisible entre tres,
+% % si es divisible entre tres  
+% % Si no es par ni divisible por tres 
 
 
 
-%Empleamos una estructura if - else -end 
-%y un if anidado para decidir que mensaje mostrar
+% % Empleamos una estructura if - else -end 
+% % y un if anidado para decidir que mensaje mostrar
 
-if rem(x,2)==0
-    %si el resto es cero el número es par
-    %comprobamos con un if anidado si además es divisible entre tres
-    if rem(x,3)==0
-        disp('el número es par y divisible entre tres')
-    else
-        disp('el número es par')
-    end
-elseif rem(x,3)==0
-    %El número es divisble entre tres
-    disp('el número es divisible entre 3')
-else
-    %el numero no es par ni divisible entre tres
-    disp('el número no es par ni divisible entre tres')
-end
-\end{verbatim}
+% if rem(x,2)==0
+%     % si el resto es cero el número es par
+%     % comprobamos con un if anidado si además es divisible entre tres
+%     if rem(x,3)==0
+%         disp('el número es par y divisible entre tres')
+%     else
+%         disp('el número es par')
+%     end
+% elseif rem(x,3)==0
+%     % El número es divisble entre tres
+%     disp('el número es divisible entre 3')
+% else
+%     % el numero no es par ni divisible entre tres
+%     disp('el número no es par ni divisible entre tres')
+% end
+% \end{lstlisting}
 
 \paragraph{Switch-case-otherwise.} \index{Flujo! Switch-case}Se trata de otra estructura que permite también ejecutar una parte u otra de código de acuerdo con unas codiciones preestablecida. Estas condiciones se presentan en forma de \emph{casos}, el programa comprueba al llegar a la estructura \texttt{switch} de qué caso se trata y ejecuta el código correspondiente. La figura \ref{fig:switch} muestra la forma general que toma una estructura \texttt{switch}.
 
@@ -2811,28 +2818,28 @@ La estructura \texttt{switch}, compara el valor contenido en la variable de entr
 
 Veamos un ejemplo muy sencillo,
 
-\begin{verbatim}
-function signo(x)
-%este programa emplea una estructura switch para informarnos del signo de
-%un número.
+% \begin{lstlisting}
+% function signo(x)
+% % este programa emplea una estructura switch para informarnos del signo de
+% % un número.
 
-%NOTA EL PROGRAMA NO COMPRUEBA QUE LA VARIABLE DE ENTRADA X SEA UN NUMERO,
-%SI ES UN VECTOR O UNA MATRIZEL RESULTADO NO TIENE SENTIDO
+% % NOTA EL PROGRAMA NO COMPRUEBA QUE LA VARIABLE DE ENTRADA X SEA UN NUMERO,
+% % SI ES UN VECTOR O UNA MATRIZ EL RESULTADO NO TIENE SENTIDO
   
-s=sign(x); %obtnemos el signo del número mediante la función sign
+% s=sign(x); % obtnemos el signo del número mediante la función sign
 
-%construimos la estructura switch,
+% % construimos la estructura switch,
 
-switch s
-    case 1
-        disp('el número es positivo')
-    case -1
-        disp('el número es negativo')
-    otherwise
-        disp('el número es cero')
-end
+% switch s
+%     case 1
+%         disp('el número es positivo')
+%     case -1
+%         disp('el número es negativo')
+%     otherwise
+%         disp('el número es cero')
+% end
 
-\end{verbatim}
+% \end{lstlisting}
 
 \begin{figure}[h]
 \centering
@@ -2884,19 +2891,19 @@ end};
 \end{figure} 
  
 El bucle empieza con la palabra clave for, seguida de una variable a la que hemos dado el nombre genérico de índice. Esta variable irá tomando sucesivamente los valores de los elementos contenidos en el [vector de valores]. El código contenido en el bucle, desde la línea siguiente al \texttt{for} hasta el \texttt{end} se ejecutará tantas veces como valores tenga el vector de valores. Antes de hablar de las sentencias \texttt{break} y \texttt{continue}, veamos alguno ejemplos.
-\begin{verbatim}
-function y=demofor(x)
-%este programa emplea un bucle for sencillo para ir mostrando uno a uno
-%los elementos del vector de entrada x por pantalla. además los suma y 
-%guarda el resultado total en el vector y,
+% \begin{lstlisting}
+% function y=demofor(x)
+% % este programa emplea un bucle for sencillo para ir mostrando uno 
+% % a uno los elementos del vector de entrada x por pantalla. además  
+% % los suma y guarda el resultado total en el vector y,
 
-y=0; %iniciamos la suma a cero
+% y=0; % iniciamos la suma a cero
 
-for i=x
-    disp(i)
-    y=y+i;
-end
-\end{verbatim}
+% for i=x
+%     disp(i)
+%     y=y+i;
+% end
+% \end{lstlisting}
 
 Si ejecutamos el programa, usando como entrada el vector \texttt{d=[1 9 4 18]},
 
@@ -2930,103 +2937,103 @@ for indice=principio:incremento:final
 \end{verbatim}
 
 Veamos un ejemplo sencillo para obtener el vector suma de dos vectores,
-\begin{verbatim}
-function s=sumafor(x,y)
-%este programa emplea un bucle for sencillo para sumar dos vectores
-%primero comprueba si son del mismo tamaño. Si no lo son da un mensaje de
-%aviso
+% \begin{lstlisting}
+% function s=sumafor(x,y)
+% % este programa emplea un bucle for sencillo para sumar dos vectores
+% % primero comprueba si son del mismo tamaño. Si no lo son da un mensaje 
+% % de aviso
 
-l1=length(x);
-l2=length(y);
-if l1==l2
-    %construimos un vector de ceros del mismo tamaño que x e y paraa
-    %guardar el resultado de la suma,
-    s=zeros(size(x));
-    %si son iguales los suma elemento a elemento usando un bucle for
-    for i=1:l1
-        s(i)=x(i)+y(i);
-    end
-else
-    disp('los vectores son de distinto tamaño')
-end
-\end{verbatim}
+% l1=length(x);
+% l2=length(y);
+% if l1==l2
+%     % construimos un vector de ceros del mismo tamaño que x e y paraa
+%     % guardar el resultado de la suma,
+%     s=zeros(size(x));
+%     % si son iguales los suma elemento a elemento usando un bucle for
+%     for i=1:l1
+%         s(i)=x(i)+y(i);
+%     end
+% else
+%     disp('los vectores son de distinto tamaño')
+% end
+% \end{lstlisting}
 
 En la figura \ref{fig:for}, aparecen dos sentencias opcionales, \texttt{break} y \texttt{continue}.
 
 La sentencia \texttt{break}, permite terminar el bucle \texttt{for} antes de que haya terminado de realizar todas las ejecuciones previstas. La sentencia break va siempre incluida dentro de una condición que, si se cumple interrumpe la ejecución del bucle. Por ejemplo, podemos emplear un bucle \texttt{for} y una sentencia \texttt{break}, para buscar la primera vez que un determinado número aparece en un vector,
 
-\begin{verbatim}
-function posicion=buscanum(x,n)
-%este programa emplea un bucle for y un break para buscar en el vector x, 
-%la primera vez que aparece el número n
+% \begin{lstlisting}
+% function posicion=buscanum(x,n)
+% % este programa emplea un bucle for y un break para buscar en el  
+% % vector x, la primera vez que aparece el número n
 
-%obtenemos la longitud del vector
-l1=length(x);
-%iniciamos la variable posicion a un valor absurdo
-posicion=-1;
-for i=1:l1
-    if x(i)==n
-        posicion=i:
-        break
-    end
-end
-if posicion==-1
-    disp('el numero pedido no se encuentra en el vector x') 
-end
-\end{verbatim} 
+% % obtenemos la longitud del vector
+% l1=length(x);
+% % iniciamos la variable posicion a un valor absurdo
+% posicion=-1;
+% for i=1:l1
+%     if x(i)==n
+%         posicion=i:
+%         break
+%     end
+% end
+% if posicion==-1
+%     disp('el numero pedido no se encuentra en el vector x') 
+% end
+% \end{lstlisting} 
 
 El programa toma como variables de entrada un vector y el número que debe buscar dentro del vector. Construye un bucle \texttt{for}, con el mismo número de iteraciones que el tamaño del vector. El bucle va comparando los elementos del vector con el número pedido. Cuando encuentra un elemento igual, se ejecuta el código de la estructura if contenida en el bucle; la variable posición toma el valor del índice \texttt{i} del bucle y la sentencia \texttt{break} interrumpe la ejecución del bucle, saltando al final del mismo. Por último, se ha añadido una condición al terminar el bucle, para el caso de que se hayan recorrido todos los elementos del vector sin encontrar el número pedido.
 
 La sentencia \texttt{continue}, se emplea para hacer que una determinada iteración interrumpa su ejecución y salte directamente al comienzo de la siguiente iteración. Debe ir, como en el caso de la sentencia \texttt{break}, incluida en una estructura condicional. Veamos un ejemplo para entender como funciona. Se trata de un programa que admite como entrada un vector de cualquier longitud y devuelve como salida otro vector que contiene solo los números pares contenidos en el vector de entrada,
 
-\begin{verbatim}
-function pares=buscapar(x)
-%este programa emplea un bucle for y un continue para construir un vector
-%de salida con los numeros pares contenidos en el vector de entrada.
+% \begin{lstlisting}
+% function pares=buscapar(x)
+% % este programa emplea un bucle for y un continue para construir un 
+% % vector de salida con los numeros pares contenidos en el vector de entrada.
 
-%obtenemos la longitud del vector
-l1=length(x);
-%iniciamos el vector de salida a un vector vacío,
-pares=[];
-for i=1:l1
-    if rem(x(i),2)~=0
-        continue
-    end
-    pares=[pares x(i)];
-end
-\end{verbatim}
+% % obtenemos la longitud del vector
+% l1=length(x);
+% % iniciamos el vector de salida a un vector vacío,
+% pares=[];
+% for i=1:l1
+%     if rem(x(i),2)~=0
+%         continue
+%     end
+%     pares=[pares x(i)];
+% end
+% \end{lstlisting}
 
 El funcionamiento es muy sencillo, en cada iteración la sentencia \texttt{if} comprueba si el número es par. Si no lo es, entra en el código de la estructura \texttt{if}, ejecuta la sentencia \texttt{continue}, y se salta el resto del código del bucle, volviendo directamente a empezar la siguiente iteración.
 
 \paragraph{bucles for anidados.} \index{Anidación!For anidado}Los bucles \texttt{for} pueden anidarse unos dentro de otros de modo análogo a como se hace con las estructuras \texttt{if}. Veamos un ejemplo de uso, muy común; calcular la suma de dos matrices,
 
-\begin{verbatim}
-function s=suma_mat(x,y)
-%este programa emplea dos bucles for anidados para obtener la suma de dos
-%matrices.
+% \begin{lstlisting}
+% function s=suma_mat(x,y)
+% % este programa emplea dos bucles for anidados para obtener la suma de 
+% % dos matrices.
 
-%obtenemos el tamaño de las matrices,
-t1=size(x);
-t2=size(y);
-if t1(1)==t2(1)&& t1(2)==t2(2)
-    %si las matrices tienen el mismo tamaño pueden sumarse...
-    %construimos una matriz de dicho tamaño para guardar el resultado de
-    %la suma
-    s=zeros(size(x));
-    %construimos un bucle que recorre las filas de ambas matrices
-    for i=1:t1(1)
-        %y dentro, anidamos un bucle que recorre las columnas
-        for j=1:t1(2)
-            %Empleando ambos índices para ir sumando los elementos de las
-            %dos matrices,
-            s(i,j)=x(i,j)+y(i,j);
-        end
-    end
-else
-    %si no tienen el mismo tamaño no se pueden sumar...
-    disp('las matrices no son del mismo tamaño')
-end
-\end{verbatim} 
+% % obtenemos el tamaño de las matrices,
+% t1=size(x);
+% t2=size(y);
+% if t1(1)==t2(1)&& t1(2)==t2(2)
+%     % si las matrices tienen el mismo tamaño pueden sumarse...
+%     % construimos una matriz de dicho tamaño para guardar el 
+%     % resultado de la suma
+%     s=zeros(size(x));
+%     % construimos un bucle que recorre las filas de ambas matrices
+%     for i=1:t1(1)
+%         % y dentro, anidamos un bucle que recorre las columnas
+%         for j=1:t1(2)
+%             % Empleando ambos índices para ir sumando los elementos 
+%             % de las dos matrices,
+%             s(i,j)=x(i,j)+y(i,j);
+%         end
+%     end
+% else
+%     % si no tienen el mismo tamaño no se pueden sumar...
+%     disp('las matrices no son del mismo tamaño')
+% end
+% \end{lstlisting} 
 
 Es interesante observar en este ejemplo el funcionamiento de los dos bucles anidados. Cada interación del bucle exterior, avanza una fila, en el recorrido de las matrices, cada iteración del bucle interior recorre todos los elementos de la fila indicada por el bucle exterior.
 
@@ -3053,23 +3060,23 @@ end};
 
 Veamos un ejemplo sencillo. 
 
-\begin{verbatim}
-function n=potencia(x,max)
-%este programa emplea un bucle while para calcular la potencia a la que hay
-%que elevar un número x para que el resultado sea mayor que otro
-%determinado número max
-%un número.
+% \begin{lstlisting}
+% function n=potencia(x,max)
+% % este programa emplea un bucle while para calcular la potencia a 
+% % la que hay que elevar un número x para que el resultado sea mayor 
+% % que otro determinado número max
+% % un número.
 
-%NOTA EL PROGRAMA NO COMPRUEBA QUE LA VARIABLE DE ENTRADA X SEA UN NUMERO,
-%Si ES UN VECTOR O UNA MATRIZ EL RESULTADO NO TIENE SENTIDO
+% % NOTA EL PROGRAMA NO COMPRUEBA QUE LA VARIABLE DE ENTRADA X SEA UN NUMERO,
+% % Si ES UN VECTOR O UNA MATRIZ EL RESULTADO NO TIENE SENTIDO
   
-pot=1;
-n=0;
-while pot<max %mientras la potencia calculada sea menor que max
-    n=n+1;
-    pot=x^n;
-end
-\end{verbatim}
+% pot=1;
+% n=0;
+% while pot<max % mientras la potencia calculada sea menor que max
+%     n=n+1;
+%     pot=x^n;
+% end
+% \end{lstlisting}
 
 El programa emplea un bucle \texttt{while} para calcular el exponente mínimo al que hay que elevar un número para que rebase una determinada cantidad. El bucle while se ejecuta mientras la potencia calculada sea menor que la variable \texttt{max}; una vez que la potencia rebasa dicho valor el bucle deja de ejecutarse. Un aspecto muy importante del bucle \texttt{while} es que al programarlo hay que asegurarse de que dentro del bucle existe la posibilidad de cambiar la condición de entrada. Si no, el programa no podrá terminar nunca el bucle\footnote{Cuando se produce esta situación por un error en el diseño del programa, el bucle se puede parar pulsando a la vez las teclas ctrl+c}.
 
@@ -3077,37 +3084,37 @@ Las sentencias \texttt{break} y \texttt{continue} son idénticas a las descritas
 
 \paragraph{Bucles while anidados.} \index{Anidación! While anidado} Del mismo modo que se anidan los bucles \texttt{for}, es posible anidar bucles \texttt{while}. Como un ejemplo, vamos a reproducir el programa desarrollado antes para sumar dos matrices, empleando ahora bucles \texttt{while}.
 
-\begin{verbatim}
-function s=suma_while(x,y)
-%este programa emplea dos bucles while anidados para obtener la suma de dos
-%matrices.
+% \begin{lstlisting}
+% function s=suma_while(x,y)
+% % este programa emplea dos bucles while anidados para obtener la 
+% % suma de dos matrices.
 
-%obtenemos el tamaño de las matrices,
-t1=size(x);
-t2=size(y);
-if t1(1)==t2(1)&& t1(2)==t2(2)
-    %si las matrices tienen el mismo tamaño pueden sumarse...
-    %construimos una matriz de dicho tamaño para guardar el resultado de
-    %la suma
-    s=zeros(size(x));
-    %construimos un bucle que recorre las filas de ambas matrices
-    i=1; %inicimos un contador para las filas
-    while i<=t1(1)
-        %y dentro, anidamos un bucle que recorre las columnas
-        j=1; %iniciamos un contador para las columnas
-        while j<=t1(2)
-            %Empleando ambos índices para ir sumando los elementos de las
-            %dos matrices,
-            s(i,j)=x(i,j)+y(i,j);
-            j=j+1; %vamos incrementando el indice de columnas
-        end
-        i=i+1; %vamos incrementando el indice de filas
-    end
-else
-    %si no tienen el mismo tamaño no se pueden sumar...
-    disp('las matrices no son del mismo tamaño')
-end
-\end{verbatim}
+% % obtenemos el tamaño de las matrices,
+% t1=size(x);
+% t2=size(y);
+% if t1(1)==t2(1)&& t1(2)==t2(2)
+%     % si las matrices tienen el mismo tamaño pueden sumarse...
+%     % construimos una matriz de dicho tamaño para guardar el 
+%     % resultado de la suma
+%     s=zeros(size(x));
+%     % construimos un bucle que recorre las filas de ambas matrices
+%     i=1; % inicimos un contador para las filas
+%     while i<=t1(1)
+%         % y dentro, anidamos un bucle que recorre las columnas
+%         j=1; % iniciamos un contador para las columnas
+%         while j<=t1(2)
+%             % Empleando ambos índices para ir sumando los elementos 
+%             % de las dos matrices,
+%             s(i,j)=x(i,j)+y(i,j);
+%             j=j+1; % vamos incrementando el indice de columnas
+%         end
+%         i=i+1; % vamos incrementando el indice de filas
+%     end
+% else
+%     % si no tienen el mismo tamaño no se pueden sumar...
+%     disp('las matrices no son del mismo tamaño')
+% end
+% \end{lstlisting}
 
 El ejemplo, es más complicado de programar y menos eficiente que si usáramos bucles \texttt{for}. La razón de incluirlo es puramente ilustrativa. En general, un bucle \texttt{while} debe utilizarse solo cuando el número de iteraciones que se precisa realizar no es fijo, sino que depende de alguna condición propia de los resultados que se van obteniendo a medida que se van realizando iteraciones.
 
@@ -3119,20 +3126,7 @@ f_0=0, f_1=1, f_2=1, f_3=2, f_4=3, f_5=5, f_6=8, \cdots f_i=f_{i-1}+f_{i-2} \cdo
 
 La sucesión empieza con los términos $0$ y $1$ y a partir de ahí cada término es la suma de los dos anteriores. Podemos convertir directamente esta definición en código,
 
-\begin{verbatim}
-function s=fibonacci(n)
-%obtiene el término enesimo de la sucesión de fibonacci empleando una
-%función recursiva. que funcione no quiere decir que sea eficiente...
-%n número del término que se desea obtener
-
-if n<2
-    %el valor del término de fibonacci es él mismo
-    s=n; 
-else
-    %si nó es la suma de los dos anteriores...
-    s=fibonacci(n-1)+fibonacci(n-2);
-end   
-\end{verbatim}
+%\lstinputlisting{../codigo/matlab/introduccion/fibonacci.m}
 
 Si n es menor que dos, la función da como valor el término correspondiente (1 o 0). Si n es mayor que dos, vuelve a llamarse a si misma con entrada \texttt{n-1} y \texttt{n-2}, para calcular el valor enésimo de la sucesión a partir de la suma de los dos anteriores, la función se irá llamando a sí misma hasta  llegar a $n<2$. A partir de ahí ira devolviendo los valores obtenidos en cada llamada hasta obtener el enésimo término.
 
@@ -3222,49 +3216,8 @@ Es fácil extraer del diagrama de flujo las estructuras de programación que nec
 Por supuesto es posible realizar un diagrama de flujo más detallado, en el que incluso se incluya explícitamente parte del código que se va a utilizar. Por ejemplo se podría indicar que se empleará la función \texttt{rem} para comprobar si un número es divisble entre otro. Sin embargo, hay que tener cuidado para evitar que un exceso de detalle dificulte entender la lógica del algoritmo contenida en el diagrama.
 
 Por último el algoritmo se codifica dando lugar a un programa de ordenador que permite resolver el problema. Para ello, hay que identificar las instrucciones del algoritmo con estructuras de programación validas: bucles, condicionales, etc. Veamos un posible código para generar números primos, siguiendo el algoritmo descrito. 
-
-\begin{verbatim}
-function p=primos(n)
-%generador de números primos. Genera un vector con los primeros n números
-%primos. (si n es muy grande tardará mucho en acabar.
-
-%creamos un vector de salida en el que incluimos el 2 como primer número
-%primo...
-p=zeros(1,n);
-p(1)=2;
-
-%iniciamos un contador a 1, puesto que ya tenemos el primer número primo
-
-j=1;
-
-%creamos un segundo contador que recorra los números impares, a a partir
-%del 3
-s=3;
-%creamos un bucle while, que realiza las iteraciones necesarias hasta tener
-%los n números primos deseados.
-while j<n
-    %creamos un bucle for que recorra todos los primos encontrados hasta la
-    %fecha
-    pr=1; %Activamos aviso de numero primo
-    for i=2:j
-        %calculamos el resto de la división entera con cada primo de p
-        if rem(s,p(i))==0
-            %si el numero es divisible por algun primo anterior
-            pr=0; %Desactivamos el aviso: el número no el primo...
-            break %... y cortamos la búsqueda
-        end
-    end
-      
-    if pr==1 %si el número es primo
-        p(j+1)=s; %lo guardamos...
-        %...e incrementamos el contador de números primos encontrados
-        j=j+1; 
-    end
-    %por ultimo, generamos un nuevo candidato para ver si es primo...
-    s=s+2;
-end 
-\end{verbatim}
  
+% \lstinputlisting{../codigo/matlab/introduccion/primos.m}
 \section{Representación Gráfica}\index{Gráficos}
 La posibilidades gráficas constituyen, junto a la facilidad para manejar matrices, uno de los aspectos más atractivos de Matlab como herramienta de cálculo científico. Matlab permite realizar gráficos en dos y tres dimensiones de muy diversos tipos. 
 
@@ -3311,7 +3264,7 @@ Matlab responde al comando abriendo una ventana gráfica, como la que muestra la
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm]{figura.pdf}
+\includegraphics[width=12cm]{figura.png}
 \caption{Ventana gráfica de Matlab. representación de los punto de la tabla \ref{tpuntos}}
 \label{fig:ventana}
 \end{figure}
@@ -3398,93 +3351,93 @@ La figura \ref{fig:tplot} muestra los resultados de las combinaciones de símbol
 Es posible crear varias figuras distintas empleando directamente el comando \texttt{figure}. Cada vez que lo introduzcamos en la ventana de comandos, Matlab creará una figura nueva asignándole un número (figura 1, 2 ,3 etc.). Si empleamos el comando \texttt{figure}, seguido de un número entre paréntesis, \texttt{figure(25)}, Matlab creará una nueva figura asignándole dicho número y si ya existe la figura la convertirá en la figura activa.
 El siguiente script muestra un ejemplo del uso de \texttt{figure} y \texttt{plot} combinados.
 
-\begin{verbatim}
-%este script  (figuras.m)muestra el uso de los comandos figure y plot para pintar
-%varias funciones se aconseja copiarlo y probarlo en Matlab para entender
-%mejor cómo funciona.
+% \begin{lstlisting}
+% % este script  (figuras.m)muestra el uso de los comandos figure y plot 
+% % para pintar varias funciones se aconseja copiarlo y probarlo en 
+% % Matlab para entender mejor cómo funciona.
 
-%vamos a pintar un trozo de la función e^x, en concreto para el intervalo
-%x=[0,1]
+% % vamos a pintar un trozo de la función e^x, en concreto para el 
+% % intervalo x=[0,1]
 
-%Construimos un vector de 100 puntos equiespaciados en el intervalo [0,1]
+% % Construimos un vector de 100 puntos equiespaciados en el intervalo [0,1]
 
-x=linspace(0,1,100);
+% x=linspace(0,1,100);
 
-%calculamos el valor de la funcion e^x para los puntos construidos,
+% % calculamos el valor de la funcion e^x para los puntos construidos,
 
-y1=exp(x);
+% y1=exp(x);
 
-%pintamos los puntos y frente a x,
+% % pintamos los puntos y frente a x,
 
-plot(x,y1) %plot ha construido una figura en Matlab, la figura 1.
+% plot(x,y1) % plot ha construido una figura en Matlab, la figura 1.
 
-%Construimos una segunda figura en Matlab
-figure %se ha construido la figura 2
+% % Construimos una segunda figura en Matlab
+% figure % se ha construido la figura 2
 
-%construimos una tercera figura 
-figure %se ha construido la figura 3
+% % construimos una tercera figura 
+% figure % se ha construido la figura 3
 
 
-%calculamos los valores que tomará la función sin(2*pi*x) para los puntos
-%x del intervalo [0,1] que ya tenemos
-y2=sin(2*pi*x);
+% % calculamos los valores que tomará la función sin(2*pi*x) para los 
+% % puntos x del intervalo [0,1] que ya tenemos
+% y2=sin(2*pi*x);
 
-%hacemos activa la figura 2
-figure(2)
-%pintamos en esta figura los puntos de la función sin...
+% % hacemos activa la figura 2
+% figure(2)
+% % pintamos en esta figura los puntos de la función sin...
 
-plot(x,y2)
+% plot(x,y2)
 
-%volvemos a hacer activa la figura 1
-figure(1)
-%pintamos ahora los puntos de la de la función y=e^x, pero invertidos x
-%frente a y, La grafica anterior se borra y es sustituida por la nueva,
-plot(y1,x)
+% % volvemos a hacer activa la figura 1
+% figure(1)
+% % pintamos ahora los puntos de la de la función y=e^x, pero invertidos 
+% % x frente a y, La grafica anterior se borra y es sustituida por la nueva,
+% plot(y1,x)
 
-%creamos una nueva figura asignándole un numero al crearla,
-figure(13)
+% % creamos una nueva figura asignándole un numero al crearla,
+% figure(13)
 
-%volvemos activar la figura 3
-figure(3)
+% % volvemos activar la figura 3
+% figure(3)
 
-%volvemos a pintar, ahora en la figura 3, la función y=e^x,
-plot(x,y1)
+% % volvemos a pintar, ahora en la figura 3, la función y=e^x,
+% plot(x,y1)
 
-%volvemos a activar la figura 13 y pintamos en ella de nuevo la funcion
-%sin..
+% % volvemos a activar la figura 13 y pintamos en ella de nuevo la 
+% % funcion sin..
 
-figure(13)
-plot(x,y2)
-\end{verbatim}
+% figure(13)
+% plot(x,y2)
+% \end{lstlisting}
 
 Como se ha señalado antes, cualquier comando gráfico que se ejecute borra por defecto el contenido anterior de la figura activa. Es posible cambiar este comportamiento, empleando para ello el comando \texttt{hold}. Si en la ventana de comandos escribimos \texttt{hold on}, a partir de ese momento la ventana activa mantendrá cualquier gráfico que contenga y añadirá a este los nuevos gráficos que se creen. Este comportamiento se mantiene hasta que vuelva a escribirse en la ventana de comandos la sentencia \texttt{hold off}. El siguiente script muestra un ejemplo del uso de este comando y La figura \ref{fig:sico} el gráfico resultante.
 
-\begin{verbatim}
-%ejemplo de uso de hold on para representar dos funciones en el mismo
-%gráfico
+% \begin{lstlisting}
+% % ejemplo de uso de hold on para representar dos funciones en el mismo
+% % gráfico
 
-%vamos a representar las funciones seno y coseno en el intervalo [-pi, pi]
+% % vamos a representar las funciones seno y coseno en el intervalo [-pi, pi]
 
-%creamos un vector de 100 puntos en el intervalo,
-x=[-pi:2*pi/99:pi];
+% % creamos un vector de 100 puntos en el intervalo,
+% x=[-pi:2*pi/99:pi];
 
-%calculamos el valor de la función seno sobre los puntos x
-seno=sin(x);
+% % calculamos el valor de la función seno sobre los puntos x
+% seno=sin(x);
 
-%calculamos el valor de la función coseno sobre los puntos x
-coseno=cos(x);
+% % calculamos el valor de la función coseno sobre los puntos x
+% coseno=cos(x);
 
-%pintamos la funcion seno, con linea continua azul
-plot(x,seno)
+% % pintamos la funcion seno, con linea continua azul
+% plot(x,seno)
 
-%le pedimos que mantenga el gráfico creado
-hold on
+% % le pedimos que mantenga el gráfico creado
+% hold on
 
-%pintamos encima la función coseno en linea continua roja
+% % pintamos encima la función coseno en linea continua roja
 
-plot(x,coseno,'r')
+% plot(x,coseno,'r')
 
-\end{verbatim}
+% \end{lstlisting}
 
 
 \begin{figure}[h]
@@ -3495,95 +3448,95 @@ plot(x,coseno,'r')
 \end{figure}
 
 Es posible también incluir varios gráficos separados en la misma figura. 
-Para ello se emplea el comando \texttt{subplot(i,j,k)}. Este comando divide la figura en un total de $i\times j$ gráficos y activa el situado en la posición $k$, las posiciones se cuentan fila a fila de arriba a abajo. El siguiente script muestra el uso del comando \texttt{suplot} La figura \ref{fig:subplot} muestra el resultado obtenido.
-
-
-\begin{verbatim}
-%Este script muestra el uso del comando subplot
-
-%vamos a crear una figura con 2X3=6 gráficas, se disponen en la figura como
-%si fueran los elementos de una matriz...
-%usamos el comando subplot de modo que cree el primer eje de los 6
-subplot(2,3,1)
-
-%definimos un vector x de puntos equiespacios en el intervalo (-1,1)
-x=linspace(-1,1,20);
-
-%calculamos los valores de polinomio 3x^2+2^x-1
-y=3*x.^2+2*x-1;
-
-%dibujamos la función en los ejes
-plot(x,y)
-
-%Añadimos rótulos a los ejes
-xlabel('eje x')
-ylabel('eje y')
-%Añadimos un titulo al grafico
-title('gráfico 1')
-
-%Generamos los siguientes ejes (a la derecha del anterior)
-subplot(2,3,2)
-%dibujamos la misma función pero ahora en linea discontinua roja
-plot(x,y,':r')
-
-%Añadimos rótulos a los ejes
-xlabel('eje x')
-ylabel('eje y')
-%Añadimos un titulo al grafico
-title('gráfico 2')
-
-%Generamos los siguientes ejes (a la derecha del anterior)
-subplot(2,3,3)
-%dibujamos la misma función pero ahora en linea de punto y raya negra
-plot(x,y,'-.k')
-
-%Añadimos rótulos a los ejes
-xlabel('eje x')
-ylabel('eje y')
-%Añadimos un titulo al grafico
-title('gráfico 3')
-
-%Generamos los siguientes ejes (debajo de los primeros)
-subplot(2,3,4)
-%dibujamos la misma función pero ahora solo con circulos azules
-plot(x,y,'o')
-
-%Añadimos rótulos a los ejes
-xlabel('eje x')
-ylabel('eje y')
-%Añadimos un titulo al grafico
-title('gráfico 4')
-
-%Generamos los siguientes ejes (a la derecha del anterior)
-subplot(2,3,5)
-%dibujamos la misma función pero ahora solo con cruce rojas
-plot(x,y,'+r')
-
-%Añadimos rótulos a los ejes
-xlabel('eje x')
-ylabel('eje y')
-%Añadimos un titulo al grafico
-title('gráfico 5')
-
-%Generamos los últimos ejes (a la derecha del anterior)
-subplot(2,3,6)
-%dibujamos la misma función pero ahora en linea continua y asteriscos
-%negros
-plot(x,y,'-*k')
-
-%Añadimos rótulos a los ejes
-xlabel('eje x')
-ylabel('eje y')
-%Añadimos un titulo al grafico
-title('gráfico 6')
-\end{verbatim}
-
+Para ello se emplea el comando \texttt{subplot(i,j,k)}. Este comando divide la figura en un total de $i\times j$ gráficos y activa el situado en la posición $k$, las posiciones se cuentan fila a fila de arriba a abajo. El siguiente script muestra el uso del comando \texttt{subplot} La figura \ref{fig:subplot} muestra el resultado obtenido.
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{subplot.eps}
 \caption{Ejemplo de empleo del comando subplot}
 \label{fig:subplot}
 \end{figure}
+
+
+% \begin{lstlisting}
+% % Este script muestra el uso del comando subplot
+
+% % vamos a crear una figura con 2X3=6 gráficas, se disponen en la figura 
+% % como si fueran los elementos de una matriz...
+% % usamos el comando subplot de modo que cree el primer eje de los 6
+% subplot(2,3,1)
+
+% % definimos un vector x de puntos equiespacios en el intervalo (-1,1)
+% x=linspace(-1,1,20);
+
+% % calculamos los valores de polinomio 3x^2+2^x-1
+% y=3*x.^2+2*x-1;
+
+% % dibujamos la función en los ejes
+% plot(x,y)
+
+% % Añadimos rótulos a los ejes
+% xlabel('eje x')
+% ylabel('eje y')
+% % Añadimos un titulo al grafico
+% title('gráfico 1')
+
+% % Generamos los siguientes ejes (a la derecha del anterior)
+% subplot(2,3,2)
+% % dibujamos la misma función pero ahora en linea discontinua roja
+% plot(x,y,':r')
+
+% % Añadimos rótulos a los ejes
+% xlabel('eje x')
+% ylabel('eje y')
+% % Añadimos un titulo al grafico
+% title('gráfico 2')
+
+% % Generamos los siguientes ejes (a la derecha del anterior)
+% subplot(2,3,3)
+% % dibujamos la misma función pero ahora en linea de punto y raya negra
+% plot(x,y,'-.k')
+
+% % Añadimos rótulos a los ejes
+% xlabel('eje x')
+% ylabel('eje y')
+% % Añadimos un titulo al grafico
+% title('gráfico 3')
+
+% % Generamos los siguientes ejes (debajo de los primeros)
+% subplot(2,3,4)
+% % dibujamos la misma función pero ahora solo con circulos azules
+% plot(x,y,'o')
+
+% % Añadimos rótulos a los ejes
+% xlabel('eje x')
+% ylabel('eje y')
+% % Añadimos un titulo al grafico
+% title('gráfico 4')
+
+% % Generamos los siguientes ejes (a la derecha del anterior)
+% subplot(2,3,5)
+% % dibujamos la misma función pero ahora solo con cruce rojas
+% plot(x,y,'+r')
+
+% % Añadimos rótulos a los ejes
+% xlabel('eje x')
+% ylabel('eje y')
+% % Añadimos un titulo al grafico
+% title('gráfico 5')
+
+% % Generamos los últimos ejes (a la derecha del anterior)
+% subplot(2,3,6)
+% % dibujamos la misma función pero ahora en linea continua y asteriscos
+% % negros
+% plot(x,y,'-*k')
+
+% % Añadimos rótulos a los ejes
+% xlabel('eje x')
+% ylabel('eje y')
+% % Añadimos un titulo al grafico
+% title('gráfico 6')
+% \end{lstlisting}
+
 
 En el ejemplo, se ha hecho usos de algunos comandos para gráficos que permiten introducir títulos. Estos son: 
 
@@ -3605,6 +3558,12 @@ ylabel('distancia en metros')
 
 \subsection{Gráficos en 2D} \index{Gráficos! Comandos gráficos en 2D}
 Hasta ahora, hemos visto tan solo el comando \texttt{plot}, que nos ha servido para introducir las capacidades gráficas en Matlab. Como hemos visto, plot permite representar gráficamente colecciones de datos en dos dimensiones. Hay otros muchos comandos que permiten obtener representaciones \emph{especializadas} de datos en dos dimensiones. A continuación veremos algunos de los más destacables.
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{wave.eps}
+\caption{Ejemplo de empleo del comando \texttt{fplot}}
+\label{fig:wave}
+\end{figure} 
 
 \paragraph{fplot.} Permite dibujar directamente una función en un intervalo de valores. El nombre de la función hay que introducirlo entre comillas simples y el intervalo como un vector de dos componentes. Por ejemplo,
 
@@ -3617,14 +3576,8 @@ dibuja la función,
 f(x)=e^{-x^2}\cos(6\pi x)
 \end{equation*}
 
-en el intervalo $[-3,3]$ (figura \ref{fig:wave}.
+en el intervalo $[-3,3]$ (figura \ref{fig:wave}).
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=12cm]{wave.eps}
-\caption{Ejemplo de empleo del comando \texttt{fplot}}
-\label{fig:wave}
-\end{figure} 
  
 \paragraph{semilogx.} El comando \texttt{semilog} representa el eje de las x en escala logarítmica, Es decir, en lugar de representar frente a la variable $x$, se representa frente a $\log_{10}(x)$. Si dibujamos empleando este tipo de gráfico la función $y=\log_{10}(x)$ deberíamos obtener una línear recta de pendiente unidad. La figura \ref{fig:slx} muestra el resultado, empleando para las \emph{equis} el intervalo $(0,1)$.
 \begin{verbatim}
@@ -3798,7 +3751,7 @@ La figura \ref{fig:quiver} muestra los resultados del ejemplo que acabamos de ve
 \begin{tabular}{ccc}
 \hline
 \hline
-tiempo &velocida& incertidumbre\\ 
+tiempo &velocidad& incertidumbre\\ 
 $t$ (s)&$v$ (m/s)& $\pm \Delta v$ (m/s)\\
 \hline
 0&0&0\\
@@ -3902,7 +3855,7 @@ Es posible rotar la figura par a obtener una vista concreta mediante el comando 
 
 \begin{figure}[h]
 \centering
-\subfigure[ventana gráfica \label{fig:muelle1}]{\includegraphics[width=6cm]{muelle1.pdf}} \qquad 
+\subfigure[ventana gráfica \label{fig:muelle1}]{\includegraphics[width=6cm]{muelle1.png}} \qquad 
 \subfigure[vista frontal (eje x) \label{fig:muelle2}]{\includegraphics[width=6cm]{muelle2.eps}}\\
 \subfigure[vista desde arriba (eje z) \label{fig:muelle3}]{\includegraphics[width=6cm]{muelle3.eps}}\qquad
 \subfigure[vista lateral (eje y)l \label{fig:muelle4}]{\includegraphics[width=6cm]{muelle4.eps}}\\
@@ -4046,8 +3999,8 @@ A continuación obtenemos la matriz de coordenadas z, aplicando la función a lo
 
 \begin{figure}[h]
 \centering
-\subfigure[Función $z=x^3+y^2$ representada con \texttt{mesh}\label{fig:msh}]{\includegraphics[width=8.5cm]{pa23.eps}} \qquad 
-\subfigure[Función $z=x^3+y^2$ representada con \texttt{surf} \label{fig:sur}]{\includegraphics[width=8.5cm]{surf.eps}}\\
+\subfigure[Función $z=x^3+y^2$ representada con \texttt{mesh}\label{fig:msh}]{\includegraphics[width=8cm]{pa23.eps}} %\qquad 
+\subfigure[Función $z=x^3+y^2$ representada con \texttt{surf} \label{fig:sur}]{\includegraphics[width=8cm]{surf.eps}}\\
 \caption{Comparación entre \texttt{mesh} y \texttt{surf}}
 \end{figure}
 
@@ -4105,92 +4058,7 @@ La retícula resulta muy adecuada para dibujar por ejemplo un cono (figura \ref{
 
 A continuación, se incluye el código de un script con varios ejemplos más de diseño de retículas circulares y gráficos de superficies en 3D. Los resultados se muestran en la figura \ref{fig:varios}
 
-\begin{verbatim}
-%este script (varios_g3d.m) incluye el diseño de varias retículas
-%circulares para trazar gráficos de superficies en el espacio.
-
-%retícula circular para un cono
- r=0:2/20:2;
- theta=0:2*pi/36:2*pi;
- [rm,them]=meshgrid(r,theta);
- 
-%calculamos las compontes en x e y partir de rm y thm,
- xm=rm.*cos(them);
- ym=rm.*sin(them);
- 
-%Definimos la componente z, a partir de la ecuación de un cono,
- zm=2-sqrt(xm.^2+ym.^2);
-
-%lo dibujamos empleando el comando mesh
- mesh(xm,ym,zm)
- 
-%Para dibujar una esfera, podríamos emplear la misma retícula, pero sale
-%más proporcionada, si de emplear intevalos de r equispaciodos, los hacemos
-%proporcionales al águlo de elevacion (0,pi/2). Asique recalculamos r.
-
- r=2*cos(0:pi/2/18:pi/2); %tomamos 16 intervalos entre r=0 y r=2
-%para theta usamos el mismo de antes, no hace falta volver a calcularlo.
-
-%calculamos los puntos de la retícula en polares,
-[rm,them]=meshgrid(r,theta);
-
-%calculamos las componentes x e y a partir de rm y thm
- xm=rm.*cos(them);
- ym=rm.*sin(them);
- 
- 
- 
- %definimos la componente z, como es la ecuación de una esfera, debemos
- %calcularla en dos partes,
- 
- zm_mas=sqrt(4-(xm.^2+ym.^2));
- zm_menos=-sqrt(4-(xm.^2+ym.^2));
- 
- %vamos a emplear la misma ventana gráfica en la que hemos dibujado el
- %cono, asi que pedimos a Matlab que retenga lo ya dibujado,
- 
- hold on
- 
- %para que no salga un dibujo encima del otro, dibujamos la esfera
- %desplazando su origen al punto (3,3,0)
- %emplearemos ahora el comando surf para representarla
- 
- %primero representamos la mitad superior
-  surf(xm+3,ym+3,zm_mas)
- 
- %y despues la parte inferior
-  surf(xm+3,ym+3,zm_menos)
-  
- %por último vamos a obtener la gráfica de un cilidro vertical, Para ello,
- %volvemos a alterar los valore de r. Costruimos un vector que repita
- %siempre los mismos valores y le damos tanto elementos como divisiones
- %'verticales queramos que tenga el cilindro, por ejemplo 20
- r=2*ones(1,20); 
- 
- %volvemos a crear la reticula
- [rm,them]=meshgrid(r,theta);
-
-%calculamos las componentes x e y a partir de rm y thm
- xm=rm.*cos(them);
- ym=rm.*sin(them);
- 
- % Para calcular los valores de z, debemos dividir la altura total que
- % queremos dar al cilindro entre el número de divisiones en r que tiene la
- % retícula original por ejemplo si la altura fuera 2
-  z=2/(length(r)-1)*(0:length(r)-1);
- % Tenemos una columna de la matriz z, pero necesitamos repetirlas para
- % cada valor de them,
-  zm=ones(size(xm))*diag(z);
- 
- %podemos ahora dibujar en cilindro. Como hemos hecho con la esfera, lo
- %vamos a desplazar a una posición en la que no se sobreponga a otra
- %figura, por ejemplo al punto (+3 -3 -1).
- 
- %lo vamos a representar usando de nuevo en comando mesh
- 
- mesh(xm+3,ym-3,zm-1)
-
-\end{verbatim}
+%\lstinputlisting{../codigo/matlab/introduccion/varios_g3d.m}
 
 \begin{figure}[h]
 \centering
@@ -4201,7 +4069,7 @@ A continuación, se incluye el código de un script con varios ejemplos más de 
 
 \paragraph{contour, contour3, meshc y surfc.} Este comandos permiten obtener y dibujar las curvas de nivel de una superficie. Su uso es idéntico al de los comandos anteriores. Es decir, también necesitan que se defina una retícula en el plano $(x,y)$, y se calculen los valores que tomará  la variable z sobre los puntos de la retícula.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 \subfigure[contour  \label{fig:contour}]{\includegraphics[width=6.5cm]{contour.eps}} \qquad 
 \subfigure[contour3 \label{fig:contour3}]{\includegraphics[width=6.5cm]{contour3.eps}}\\
@@ -4264,3 +4132,475 @@ Es decir, obtenemos el valor de los puntos $z$ de la superficie para los pares d
 \end{verbatim}
 
 Es importante insistir en que a lo largo de esta sección nos hemos limitado a introducir algunas de las posibilidades gráficas de Matlab. Para obtener una visión completa de las mismas es imprescindible leer con detenimiento la ayuda de Matlab.
+
+\newpage
+\section{Ejercicios}
+\begin{enumerate}
+\item Tipos de variables en Matlab; matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{línea de comandos} de Matlab e interpreta los resultados que obtienes. En los casos en que Matlab devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunos operaciones se apoyan en los resultados de operaciones anteriores.
+\begin{multicols}{2}
+\begin{enumerate}
+\renewcommand{\labelenumii}{\arabic{enumii}}
+\texttt{
+\item a=[1 2 3; 4 5 6]
+\item a=[1 2 3; 4 5]
+\item a=[ 1 2 3\\
+1 2 3\\
+1 2]
+\item[*] Operador (:) para crear vectores
+\item a=[1:10:0]
+\item a=1:10:2
+\item a=1:0.05:2
+\item a=1:-0.05:-1
+\item a=[1:10;2:12;3:13]
+\item a=[1:10;2:11;3:12]
+\item a=[1 2 7\\
+5 6 8\\
+3 2 6]
+\item b=[1 2 3]
+\item c=[a b]
+\item c=[a;b]
+\item d=[b;a]
+\item[*] Operador (:) para indexar
+\item c=[a(1,:) b]
+\item c=[a(1:2,:);b]
+\item c=[a(1:2,:);b;a(size(a,1),:)]
+\item[*] Funciones para manipulación de matrices
+\item a=[1 2 3]
+\item b=diag(a)
+\item c=diag(b)
+\item M=size(c)
+\item \ [m,n]=size(c)
+\item m=size(c)
+\item m=size(c,1)
+\item m=size(c,2)
+\item d=ones(size(a))
+\item d=ones(size(b))
+\item  d=ones(size(b,1))
+\item d=ones(size(b,1),size(c,2))
+\item f=eye(size(d,1))
+\item who
+\item whos
+\item clear all
+\item who
+\item q=[1 2 3\\
+4 5 6\\
+7 8 9]
+\item  r=diag(q,1)
+\item  r=diag(q,2)
+\item  r=diag(q,0)
+\item  r=diag(q,-1)
+\item  r=diag(q,-2)
+\item  tt=eye(1,3)
+\item  tt=eye(3,1)
+\item  tt=eye(3)
+\item  tt=eye(5)
+\item  tt=eye(5,3)\\
+\item  tt=eye(3,5)\\
+\item a=[1 3 4\\
+2 4 6]\\
+\item  b=[2 3\\
+4 5\\
+6 7]
+\item[*] Operadores aplicados a matrices
+\item c=a*b
+\item d=b*a
+\item e=[ 1 2\\
+4 5]
+\item a*e
+\item g=a*e
+\item g=e*a
+\item a*b
+\item a=[1 3 4\\
+5 6 8]
+\item b=3
+\item a*b
+\item a.*b
+\item b=[2 3]
+\item a.*b
+\item b=[ 2 3 4\\
+5 6 7]
+\item a.*b
+\item c=b'
+\item d=a'
+\item r=a-b
+\item h=a-a'
+\item j=a+b
+\item j=a'+b
+\item d=(a+b)*b'
+\item f=(a+b)*b'
+\item f=(a-b)'*b
+\item a=[ 1 3 5\\
+2 5 6
+3 4 2]
+\item p=a\^{}2
+\item r=a\^{}2-a*a
+\item r=a.\^{}2-a*a
+\item r=a\^{}2-a.*a
+\item b=[ 3 5 6\\
+2 1 1\\
+1 2 3]
+\item[*] Encadenando operaciones
+\item w=a*b\^{}(-1)
+\item w=a*inv(b)
+\item w=a/b
+\item w= a*b\^{}(-1)-a*inv(b)
+\item w= a*b\^{}(-1)-a/b
+\item w=a\^{}(-1)*b
+\item w=inv(a)*b
+\item w=a\textbackslash b
+\item w= a\^{}(-1)*b-inv(a)*b
+\item w=a\textbackslash b-inv(a)*b
+\item w=a./b
+\item w=a.\textbackslash b
+\item w=a.\^{}(-1)*b
+\item w=a.\^{}(-1)*b-a.\textbackslash b
+}
+\end{enumerate}
+\end{multicols}
+\item Obtén empleando la \emph{línea de comandos} de matlab el resultado de las siguientes expresiones:
+\begin{multicols}{2}
+\begin{align*}
+\frac{5+3x^2}{6y}\\
+\frac{1+4\sqrt{2x}}{6}y \\
+\frac{-x+\sqrt{x^2-4xy}}{2x}
+\end{align*}
+
+\begin{align*}
+\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(x-1)^2}\\
+\sin^2(2x)+\cos^2(2x) \\
+\arctan(\infty)\\
+\arctan\left(\frac{y}{x}\right)
+\end{align*}
+\end{multicols}
+Emplea para $x$ e $y$ tanto valores escalares como matrices.
+
+\item Abre un fichero nuevo en el editor de textos de matlab.
+Escribe las siguiente líneas:\\
+\texttt{
+x = A*B\\
+y = A+B\\
+z = A*sin(B)}\\
+Guarda el fichero. Emplea el comando \verb|clear| all para limpiar el \emph{workspace}
+Invoca el fichero desde matlab. ¿Qué sucede?\\
+Crea en la ventana de comandos las matrices,
+\begin{equation*}
+A =\begin{pmatrix}
+1&3&4\\
+2&5&6\\
+7&8&9
+\end{pmatrix}, \ B=\begin{pmatrix}
+2&6&8\\
+3&7&8\\
+2&7&9
+\end{pmatrix}
+\end{equation*}
+Vuelve a ejecutar el programa guardado en el fichero.\\
+Añade al programa, al principio del todo, la línea \texttt{clear all}. Guarda y vuelve a ejecutar el
+programa. ¿Qué sucede ahora?\\
+Introduce las matrices A y B directamente en el código del programa debajo de la línea \texttt{clear all}. Analiza qué sucede al ejecutar de nuevo el programa.\\
+ Eliminar la línea \texttt{clear all}. Introduce a través de la ventana de comando dos matrices $A$ y $B$ distintas de las que contiene el programa. Ejecuta el programa y comprueba qué matrices utiliza para realizar los cálculos.\\
+Comenta la(s) línea(s) de código donde has definido las matrices $A$ y $B$ en el programa. Añade al principio del programa una línea para convertir el script en una función:\\
+\verb|function [x] = nombre_de_tu_programa(A,B)| \\
+Invoca la función recién creada desde la \emph{línea de comandos} de matlab. Observa lo que pasa si la invocas como:
+\begin{verbatim}
+>>nombre_de_tu_programa
+>>nombre_de_tu_programa(F)
+>>nombre_de_tu_programa(F,J)
+\end{verbatim}
+Introduce, en el  workspace de matlab --usando la \emph{línea de comandos}--  las matrices $F$ y $J$, dondo,
+\begin{equation*}
+F =\begin{pmatrix}
+1&0&1\\
+2&0&4\\
+3&5&0
+\end{pmatrix}, \ J=\begin{pmatrix}
+1&6&7\\
+2&9&0\\
+4&4&4
+\end{pmatrix}
+\end{equation*}
+Vuelve a ejecutar, \verb|>>nombre_de_tu_programa(F,J)| \\
+Genera dos matrices de tamaño $(3\times 3)$. Nómbralas como prefieras: \verb|mi_matriz1, mi_matriz2|. Ejecuta ahora,
+\begin{verbatim}
+>>nombre_de_tu_programa(mi_matriz1,J)
+>>nombre_de_tu_programa(mi_matriz2,F)
+>>nombre_de_tu_programa(mi_matriz1,mi_matriz2)
+>>resultado=nombre_de_tu_programa(F,J)
+>>[r1,r2]=nombre_de_tu_programa(F,J)
+>>[A,B;r3]=nombre_de_tu_programa(F,J)
+>>[A,B;C]=nombre_de_tu_programa(A,B)
+\end{verbatim}
+Crea un nuevo fichero, con el siguiente código:
+% \begin{lstlisting}
+% A=sin(B).*cos(C)
+% [D,E,F]=nombre_de_tu_programa(A,C)
+% G = D + E - F
+% \end{lstlisting}
+Guárdalo con el nombre que quieras.\\
+Define en la \emph{línea de comandos} matrices $B$ y $C$ adecuadas para el programa que acabas de escribir y ejecútalo.\\
+Añade al programa una primera línea de código que lo convierta en una función que tome como entradas las matrices $B$ y $C$  y que:\\
+devuelva solo la matriz $G$\\
+devuelva las matrices $G$ y $D$\\ 
+devuelva las matrices $G$,$D$,$E$ y $F$.
+
+Escribe una nueva función con el siguiente código,
+\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]{python}
+import numpy as np
+def nombre_de_la_funcion(B,C):
+    E= B + C**2
+    D =B - C.inv()
+    return(E,D)
+% A=nombre_funcion_dentro(E,D);
+% end;
+% function s=nombre_funcion_dentro(l,p);[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]
+% s=l + p - 2;
+% end;
+\end{minted}
+
+Crea matrices $B$ y $C$ adecuadas y ejecuta la función que acabas de crear. Describe cómo funciona.
+
+\item Define en la \emph{línea de comandos} las matriz $M$ y $N$ e interpreta el resultado de las condiciones lógicas impuestas.
+
+\begin{equation*}
+M =\begin{pmatrix}
+1&2&3\\
+4&5&6\\
+7&8&9
+\end{pmatrix}, \ N=\begin{pmatrix}
+2&3&4\\
+5&6&7\\
+8&9&10
+\end{pmatrix}
+\end{equation*}
+\begin{verbatim}
+>>y=m<2
+>>y=m<=2
+>>y=m>2
+>>y=m>=2
+>>y=m==2
+>>y=m~=2
+>>y=any(m<2)
+>>y=any(m<2,1)
+>>y=any(m<2,2)
+>>y=any(m==2)
+>>y=all(m>=2)
+>>y=all(m~=0)
+>>y=all(any(m<2))
+>>y=any(all(m<2))
+
+>> index=find(m>2)
+>>[i,j]=find(m<5)
+
+>> y=any(m<2)&any(n>4)
+>> y=any(m<2)&any(n>10)
+>> y=any(m<2)&any(n>6)
+>> y=any(m<2)&any(n>7)
+>> y=any(m<2)&any(n>3)
+>> y=any(m<2)&any(n>2)
+>> y=any(m>2)&any(n>2)
+>> y=any(m>4)&any(n>2)
+>> y=any(m>4,1)&any(n>2)
+>> y=any(m>4,2)'&any(n>2)
+\end{verbatim}
+Repite el estudio de las condiciones lógicas cambiando \& por \textbar
+
+\item Escribe el siguiente código en un fichero. Ejecútalo y analiza los resultados,
+% \begin{lstlisting}
+% dato=rand(1)
+% if dato==0.5
+%  dato=0
+% elseif dato<0.5
+%  dato=-dato*10
+% else
+%  dato=dato*10
+% end
+% \end{lstlisting}
+
+Modifica el programa,
+\begin{enumerate}
+\item Para que no muestre los resultados de los cálculos por pantalla
+\item para que, utilizando comandos \verb|elseif, &| devuelva una variable (distinta de 'dato') con valor $-1$ si se cumple que 'dato' es menor o igual que $0.3$, con valor $-0.5$ si 'dato' es mayor que $0.3$ y menor que $0.5$, con valor $0$ si 'dato' es mayor o igual que $0.5$ y menor  o igual que $0.7$ y con valor $1$ en cualquier otro caso.
+\item Convierte el \emph{script}, en una función, que tome 'dato' como variable de entrada, y devuelva el valor de la variable obtenida, según la condición que se cumpla. (Lógicamente se debe eliminar o comentar la línea \verb|dato=rand(1)|).
+\end{enumerate}
+
+\item Crea un scrip de matlab con el siguiente código y trata de adivinar qué hace antes de ejecutarlo. Utiliza el \emph{help} de matlab para averiguar lo que hace la función \verb|abs|.
+% \begin{lstlisting}
+% n=10
+% for i=1:n
+%  for j=1:n
+%   if i==j
+%    a(i,j)=1;
+%   elseif abs(i-j)==1
+%    a(i,j)=-1
+%   else
+%    a(i,j)=0
+%   end
+%  end
+% end
+% \end{lstlisting}
+
+Introduce un punto de ruptura (\emph{breakpoint}) en el código, por ejemplo en la línea 12. Ejecuta paso a paso el programa para ver como va generando el resultado. Intercambia los índices \verb|i,j| de la matriz \verb|a|. \verb|a(j,i)|.¿Se obtiene el mismo resultado? ¿Cómo se construye ahora la matriz?
+
+\item Crea un script con el siguiente código,
+\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]{python}
+i=0
+while i<10:
+    i=i+1
+    j=0
+    while j<10:
+        j=j+1
+        if i==j:
+            a[i,j+=1;
+        elif abs(i-j)==1:
+            a[i,j]=-1
+        else:
+            [
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+][
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]a(i,j)=0
+\end{minted}
+
+Repite el estudio del programa anterior
+
+\item Modifica el \emph{script} anterior de modo que quede el siguiente código,
+\begin{lstlisting}
+i=0
+while(1)
+ i=i+1
+ j=0
+ while(1)
+  j=j+1
+  if i==j
+   a(i,j)=1;
+  elseif abs(i-j)==1
+   a(i,j)=-1
+  else
+   a(i,j)=0
+  end
+  if j==10
+   break
+  end
+ end
+ if i==10
+  break
+ end
+end
+\end{lstlisting}
+Repite el estudio del programa anterior. ¿Qué sucede si comentamos la(s) línea(s) que contiene la sentencia \verb|break|?
+Reconvierte los \emph{scrips} anteriores en funciones que admitan como variable de entrada el tamaño de la matriz que se desea generar y devuelvan como variable de salida la matriz creada.
+
+\item Dada una matriz $A \in \mathbb{R}^{n\times n}$ y un vector columna $v \in \mathbb{R}^n-{\mathbf{0}}$. Se dice que el vector $v$ pertenece al \emph{Kernel} de $A$ si se cumple que $Av =\mathbf{0}$.
+
+
+
+Crea una función que tome como variables de entrada una matriz $A$ cuadrada de cualquier dimension $n\times n$ y un vector columna de dimensión $n$ y compruebe si$n$ pertenece o no al \emph{kernel} de $A$. \textbf{Nota:} Considera que la condición se cumple si todos los elementos del vector $Av$ son menores que $1e-12$.
+
+\item Escribe ---empleando bucles y sin hacer uso del operador ( \^\ ) --- una función \verb|potencia.m| que reciba como argumentos de entrada un número real $x\in \mathbb{R}$ y un entero $n \in \mathbb{Z}$ y devuelva el valor de la n-ésima potencia de $x$ ($x^n$). El segundo argumento de entrada puede ser opcional. Si se omite debe tomarse como $n=2$ (devolviendo el cuadrado de $x$). Ver la función interna nargin. \textbf{Nota:} Ten en cuenta que $n$ puede ser positivo, negativo o cero.
+
+\item Crea una función que determine la suma de los inversos de los números naturales impares menores de 1000. Usa las funciones tic y toc para determinar el tiempo que se tarda. Emplea bucles para el cálculo.
+\begin{equation*}
+S_{imp} = \sum_{n=1}^{500}\frac{1}{2n-1} =\frac{1}{1}+\frac{1}{3}+\frac{1}{5}+\cdots+\frac{1}{999}
+\end{equation*}
+Modifica tu programa, de modo que admita como variable de entrada un número $m\in\mathbb{N}$ y calcule el valor de la suma de los inversos de los impares menores o iguales que $m$.
+
+\item Los números de Fibonacci, $F(n)$ son una serie de números naturales. Los dos primeros valores de la serie son:  $F(1)=1$ y $F(2)=2$. Los demás términos se calculan como la suma de los dos anteriores: $F(n) = F(n-1) + F(n-2)$.
+Escribe un script que genere los primeros $m$ números de la serie de Fibonacci, almacenándolos en un vector \verb|F|. Emplea para el cálculo la estructura \verb|while|.
+
+\item Sin utilizar las funciones de matlab \verb|flip,fliplr, flipud,...|, escribe las líneas de código para que, dado un vector \verb|x|, genere otro vector con el orden de los elementos invertido.
+\end{enumerate}
+
+\section{Test del curso 2020/21}
+\begin{enumerate}
+
+\item  El movimiento de un cuerpo en el plano viene descrito por las siguientes ecuaciones,
+
+\begin{align}
+x(t) &= \sin(2 \pi \, \omega_1 t)\\
+y(t) &= \cos(2 \pi \, \omega_2 t)\\
+z(t) &= a\cos(2\pi \, \omega_1 t) \label{eq:3}
+\end{align}
+
+donde $x,y,z$ representan las coordenadas del cuerpo en el instante de tiempo $t$ medidas en metros,  $w_1$ y $w_2$ son frecuencias fijas medidas en $rad\cdot s^{-1}$ y $a$ es una amplitud fija medida en metros.
+
+\begin{enumerate}
+	\item \label{ap1} (\textbf{1.5 puntos}) Escribe una función que:
+
+\begin{enumerate}
+	\item Tome como variables de entrada las frecuencias $w_1$, $w_2$, la amplitud $a$ .
+	\item Haga el cálculo de la trayectoria en tres dimensiones descrita por el cuerpo en el intervalo de tiempo $[0,1]$. Considera incrementos de tiempo de $0.01s$.
+	\item Dibuje en una gráfica la trayectoria descrita por el cuerpo en el espacio. Cada eje del gráfico deberá llevar  una etiqueta indicando de qué variable se trata $x$, $y$ ó $z$.
+	\item La salida serán tres vectores con los valores de $x$, $y$ y $z$ calculados para cada instante de tiempo.
+	\end{enumerate}
+
+\item (\textbf{1.5 puntos}) Añade a la función creada en el apartado anterior el código necesario para que:
+	\begin{enumerate}
+	\item \textbf{Solo si} se le dan dos variables de entrada en lugar de tres, entonces calcule la trayectoria que describiría el cuerpo en el plano si se eliminara la ecuación (\ref{eq:3}) de las ecuaciones del sistema. (NOTA: La función debe seguir funcionando igual que en el apartado anterior si se le dan tres entradas. Emplea el comando nargin).
+	\item El resultado deberá también representarse gráficamente, pero solo en dos dimensiones, y devolver la variable $z$ como un vector vacío. 
+	\end{enumerate}
+
+\item \label{ap2} (\textbf{1.5 puntos}) Crea un un \emph{live script} que genere dos  vectores de frecuencias: \texttt{W1} y \texttt{W2} de  modo que el primero contenga los números impares comprendidos entre $1$ y $7$ y el segundo los números pares comprendidos entres $2$ y $8$.  Emplea la función creada en el apartado anterior para calcular el valor de las trayectorias obtenidas tomando como entradas para  $\omega_1, \omega_2$,  todos los pares posibles de la forma: \texttt{W1(i)} y \texttt{W2(j)}. Supón que no hay tercera entrada $a$. Realiza los cálculos empleando bucles.
+
+\item (\textbf{1 punto}) Añade a tu programa el código necesario para que dibuje cada resultado en un \emph{subplot} de modo que la figura resultante tenga $4\times4$ \emph{subplots} (ver figura al dorso).  Debes crear los \emph{subplots} empleando los mismos bucles del apartados anterior. 
+
+\item (\textbf{0.5 puntos}) Repite los cálculos de los apartados c) y d) pero tomando ahora $a=1$.
+\end{enumerate}
+
+\item Una matriz cuadrada $A$, de dimensión arbitraria $(n\times n)$, cuyos elementos $a_{ij} \in \mathbb{Z}$, se define como \emph{buenrollista} cuando las suma de los valores pares de cada fila es mayor o igual que la suma de los valores  impares de la columna correspondiente, i.e., satisface la siguiente relación:
+\begin{equation}
+	\sum_{j=1}^n a_{ij\text{(par)}} \geq \sum_{j=1}^n a_{ji\text{(impar)}}, \quad \forall i\in\{1,...,n\}
+\end{equation}
+
+\begin{enumerate}
+\item (\textbf{1.5 puntos}) Escribe  una función que tome como variable de entrada una matriz cuadrada de cualquier dimensión 
+y calcule un vector con las sumas de los valores pares de los elementos de cada una de su filas  y otro vector con las sumas de los elementos impares de cada una de sus columnas.
+\item (\textbf{1.5 puntos}) Añade a la función anterior el código necesario para que compruebe, empleando los vectores obtenidos en el apartado anterior, si la función es \emph{buenrollista} y muestre un mensaje por pantalla indicando si lo es o no.
+\item (\textbf{1 punto}) Aplica la función desarrollada a la siguiente matriz:
+\begin{equation*}
+\begin{pmatrix}
+2&3&4&6&1\\
+5&4&-2&3&0\\
+4&-1&5&4&-6\\
+4&2&4&5&8\\
+3&0&-3&-3&6
+\end{pmatrix}
+\end{equation*}
+\end{enumerate}
+\end{enumerate}
+\noindent\rule{\textwidth}{0.4pt}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{lisa1.eps}
+\caption{vista de la figura con los ocho subplots} \label{fig:1}
+\end{figure}

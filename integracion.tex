@@ -68,7 +68,7 @@ Este polinomio es especialmente simple de evaluar en el punto $x_0$,
 
 \begin{align*}
 p'_n(x_0)&=\frac{\Delta y_0}{h}+\frac{\Delta^2 y_0}{2\cdot h^2}\overbrace{(x_0-x_1)}^{-h}+\cdots +
-\frac{\Delta^n y_0}{n! \cdot h^n}[\overbrace{(x_0-x_1)}^{-h}\overbrace{(x_1-x_2)}^{-h}\cdots \overbrace{(x_n-x_{n-1})}^{-h}]\\
+\frac{\Delta^n y_0}{n! \cdot h^n}[\overbrace{(x_0-x_1)}^{-h}\overbrace{(x_0-x_2)}^{-2h}\cdots \overbrace{(x_0-x_{n-1})}^{-(n-1)h}]\\
 p'_n(x_0)&=\frac{1}{h}\left(\Delta y_0-\frac{\Delta^2 y_0}{2}+\frac{\Delta^3 y_0}{3}+\cdots +
 \frac{\Delta^n y_0}{n}(-1)^{n-1}\right)
 \end{align*}
@@ -221,7 +221,7 @@ $y'''_0=\frac{y_2-2y_1+2yx_{-1}-y_{-2}}{2h^3}+O(h^2)$ &$y^{iv}_0=\frac{y_2-4y_1+
 \end{table}
 
 
-\section{Integración numérica.}
+\section{Integración numérica.}\label{sec:inum}
 
 Dada una función arbitraria $f(x)$ es en muchos casos posible obtener de modo analítico su primitiva $F(x)$ de modo que $f(x)=F'(x)$. En estos casos, la integral definida de $f(x)$ en un intervalo $[a,b]$ puede obtenerse directamente a partir de su primitiva,
 \begin{equation*}
@@ -306,7 +306,7 @@ que coincide con el área del trapecio mostrado en la figura.
 I(y)=\int_{x_0}^{x_n}ydx \approx \sum_{i=0}^{n-1}\int_{x_i}^{x_{i+1}}y(x)dx=\sum_{i=0}^{n-1}\frac{h}{2}(y_i+y_{i+1})=\frac{h}{2}\left(y_0+2y_1+2y_2+\cdots+2y_{n-1}+y_n \right)
 \end{equation*}
 
-La figura \ref{fig:trapecio2}, muestra el resultado de aplicar la fórmula extendida del trapecio a la misma función de la figura \ref{fig:trapecio}. En este caso, se ha dividido el intervalo de integración en cuatro subintervalos. Es inmediato observar a partir de la figura, que la aproximación mejorar progresivamente si se aumenta el número de subintervalos y se reduce el tamaño de los mismos.
+La figura \ref{fig:trapecio2}, muestra el resultado de aplicar la fórmula extendida del trapecio a la misma función de la figura \ref{fig:trapecio}. En este caso, se ha dividido el intervalo de integración en cuatro subintervalos. Es inmediato observar a partir de la figura, que la aproximación mejorará progresivamente si se aumenta el número de subintervalos y se reduce el tamaño de los mismos.
 
 \begin{figure}[h]
 \centering
@@ -316,79 +316,79 @@ La figura \ref{fig:trapecio2}, muestra el resultado de aplicar la fórmula exten
 \end{figure}
 
 \section{Las fórmulas de Simpson.}
-Se conocen con el nombre de fórmulas integrales de Simpson, a las aproximaciones a la integral definida obtenida a partir de los polinomios interpoladores de Newton-Gregory de grado dos (Simpsom $1/3$) y de grado tres (Simpsom $3/8$) . \index{Integración! Fórmulas de Simpson}
+Se conocen con el nombre de fórmulas integrales de Simpson, a las aproximaciones a la integral definida obtenida a partir de los polinomios interpoladores de Newton-Gregory de grado dos (Simpson $1/3$) y de grado tres (Simpson $3/8$) . \index{Integración! Fórmulas de Simpson}
 
 En el primer caso, es preciso conocer tres valores equiespaciados de la función en el intervalo de integración y en el segundo es preciso conocer cuatro puntos. 
 
-\paragraph*{Fórmula de Simpsom $1/3$.} La fórmula de Simpson, o Simpsom $1/3$,  emplea un polinomio de interpolación de Newton-Gregory de grado dos para  obtener la aproximación a la integral,
+\paragraph*{Fórmula de Simpson $1/3$.} La fórmula de Simpson, o Simpson $1/3$,  emplea un polinomio de interpolación de Newton-Gregory de grado dos para  obtener la aproximación a la integral,
 
 \begin{equation*}
 I(y)\approx \int_{x_0}^{x_2}P_2(x)dx=\int_{x_0}^{x_2}\left(y_0+\frac{x-x_0}{h}\Delta y_0+\frac{(x-x_0)\cdot(x-x_1)}{2h^2}\Delta^2 y_0 \right)dx= \frac{h}{3}(y_0+4y_1+y_2)
 \end{equation*}
 
-La figura \ref{fig:simpsom}, muestra gráficamente el resultado de aplicar el método de Simpsom a la misma función de los ejemplos anteriores.  De nuevo, la bondad de la aproximación depende de lo que varíe la función en el intervalo.  La diferencia fundamental con el método del trapecio es que ahora el área calculada esta limitada por el segmento de parábola definido por el polinomio de interpolación empleado.
+La figura \ref{fig:simpsom}, muestra gráficamente el resultado de aplicar el método de Simpson a la misma función de los ejemplos anteriores.  De nuevo, la bondad de la aproximación depende de lo que varíe la función en el intervalo.  La diferencia fundamental con el método del trapecio es que ahora el área calculada esta limitada por el segmento de parábola definido por el polinomio de interpolación empleado.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=8cm]{simpsom.eps}
-\caption{Interpretación gráfica de la fórmula $1/3$ de Simpsom.} 
+\caption{Interpretación gráfica de la fórmula $1/3$ de Simpson.} 
 \label{fig:simpsom}
 \end{figure}
 
-\paragraph*{Fórmula de Simpsom $3/8$.} En este caso, se emplea un polinomio de Newton-Gregory de grado 3 para obtener la aproximación a la integral,
+\paragraph*{Fórmula de Simpson $3/8$.} En este caso, se emplea un polinomio de Newton-Gregory de grado 3 para obtener la aproximación a la integral,
 
 \begin{align*}
-I(y)&\approx \int_{x_0}^{x_2}P_2(x)dx=\\
-&=\int_{x_0}^{x_2}\left(y_0+\frac{x-x_0}{h}\Delta y_0+\frac{(x-x_0)\cdot(x-x_1)}{2h^2}\Delta^2 y_0 +\frac{(x-x_0)\cdot(x-x_1)\cdot (x-x_2)}{3!h^3}\Delta^3 y_0\right)dx\\
+I(y)&\approx \int_{x_0}^{x_3}P_2(x)dx=\\
+&=\int_{x_0}^{x_3}\left(y_0+\frac{x-x_0}{h}\Delta y_0+\frac{(x-x_0)\cdot(x-x_1)}{2h^2}\Delta^2 y_0 +\frac{(x-x_0)\cdot(x-x_1)\cdot (x-x_2)}{3!h^3}\Delta^3 y_0\right)dx\\
 &= \frac{3h}{8}(y_0+3y_1+3y_2+y_3)
 \end{align*}
 
-La figura  \ref{fig:simpsom38} muestra el resultado de aplicar la fórmula de Simpsom $3/8$ a la misma función de los ejemplos anteriores. En este caso, la integral sería exacta porque la función de ejemplo elegida es un polinomio de tercer grado y coincide exactamente con el polinomio de interpolación construido para obtener la integral.
+La figura  \ref{fig:simpsom38} muestra el resultado de aplicar la fórmula de Simpson $3/8$ a la misma función de los ejemplos anteriores. En este caso, la integral sería exacta porque la función de ejemplo elegida es un polinomio de tercer grado y coincide exactamente con el polinomio de interpolación construido para obtener la integral.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=9cm]{simpsom38.eps}
-\caption{Interpretación gráfica de la fórmula $3/8$ de Simpsom.} 
+\caption{Interpretación gráfica de la fórmula $3/8$ de Simpson.} 
 \label{fig:simpsom38}
 \end{figure}
 
-Al igual que en el caso del método del trapecio, lo normal no es aplicar los métodos de Simpsom a todo el intervalo de integración, sino dividirlo en subintervalos más pequeños y aplicar el método sobre dichos subintervalos. El resultado se conoce como métodos extendidos de Simpsom. Al igual que sucede con la fórmula del trapecio, los métodos extendidos de Simpsom mejoran la aproximación obtenida para la integral tanto más cuanto más pequeño es el tamaño de los subintervalos empleados. 
+Al igual que en el caso del método del trapecio, lo normal no es aplicar los métodos de Simpson a todo el intervalo de integración, sino dividirlo en subintervalos más pequeños y aplicar el método sobre dichos subintervalos. El resultado se conoce como métodos extendidos de Simpson. Al igual que sucede con la fórmula del trapecio, los métodos extendidos de Simpson mejoran la aproximación obtenida para la integral tanto más cuanto más pequeño es el tamaño de los subintervalos empleados. 
 
-Así, la fórmula extendida de Simpsom $1/3$ toma la forma,
+Así, la fórmula extendida de Simpson $1/3$ toma la forma,
  
 \begin{align*}
-I(y)&\approx \sum_{i=0}^{n-2}\int_{x_i}^{x_{i+2}}P_2(x)dx=\sum_{i=0}^{n-2}\frac{h}{3}(y_i+4y_{i+1}+y_{i+2})\\
+	I(y)&\approx \sum_{i=0}^{\frac{n}{2}-1}\int_{x_{2i}}^{x_{2i+2}}P_2(x)dx=\sum_{i=0}^{\frac{n}{2}-1}\frac{h}{3}(y_{2i}+4y_{2i+1}+y_{2i+2})\\
 &= \frac{h}{3}(y_0+4y_1+2y_2+4y_3+2y_4+\cdots + 2y_{n-2}+4y_{n-1}+y_n)
 \end{align*}
 
-Donde se ha dividido el intervalo de integración en $n$ subintervalos, la fórmula de Simpsom se ha calculado para cada dos subintevalos y se han sumado los resultados.
+Donde se ha dividido el intervalo de integración en $n$ subintervalos, la fórmula de Simpson se ha calculado para cada dos subintevalos y se han sumado los resultados.
 
-Por último para la fórmula extendida de Simpsom $3/8$ se puede emplear la expresión,
+Por último para la fórmula extendida de Simpson $3/8$ se puede emplear la expresión,
 
 \begin{align*}
-I(y)&\approx \sum_{i=0}^{n-2}\int_{x_i}^{x_{i+2}}P_3(x)dx=\sum_{i=0}^{n-2}\frac{3h}{8}(y_i+3y_{i+1}+3y_{i+2}+y_{i+3})\\
+	I(y)&\approx \sum_{i=0}^{\frac{n}{3}-1}\int_{x_{3i}}^{x_{3i+3}}P_3(x)dx=\sum_{i=0}^{\frac{n}{3}-1}\frac{3h}{8}(y_{3i}+3y_{3i+1}+3y_{3i+2}+y_{3i+3})\\
 &= \frac{3h}{8}(y_0+3y_1+3y_2+2y_3+3y_4+3y_5+2y_6+ \cdots + 2y_{n-3}+3y_{n-2}+3y_{n-1}+y_n)
 \end{align*}
 
-En este caso también se divide el intervalo en $n$ subintervalos pero ahora se ha aplicado la regla de Simpsom $3/8$ a cada tres subintevalos.
+En este caso también se divide el intervalo en $n$ subintervalos pero ahora se ha aplicado la regla de Simpson $3/8$ a cada tres subintevalos.
 
-A continuación se incluye un código que permite permite aproximar la integral definida de una función en un intervalo por cualquiera de los tres métodos descritos: Trapecio, Simpsom o Simpsom $3/8$,
+A continuación se incluye un código que permite permite aproximar la integral definida de una función en un intervalo por cualquiera de los tres métodos descritos: Trapecio, Simpson o Simpson $3/8$,
 
-\begin{verbatim}
+\begin{lstlisting}
 function int=integra(fun,met,inter,dib)
-%implementa los metodos del trapecio, etc...
-%Uso: int=integra(fun,inter,dib)
-%fun, nombre de la función que se desea intergrar, debe ir entre comillas
-%met, método que se desea emplear para calcular la integral. los nombres
-%validos para los metodos son: 'trapecio', 'simpson' y simpsom38'
-%inter, es un vector de dos elementos que contiene lo extremos de intervalo
-%de integracion [a,b]
-%dib, si se da un valor a esta variable de entrada, dibuja la función en el
-%intervalo de integración y la integral obtenida. Si se omite no dibuja
-%nada.
-%int, valor de la integral obtenida.
-%Este programa no divide el intervalo de integración en subintervalos...
-%para calcular la integral empleando subintervalos usar la función trocea,
+% implementa los metodos del trapecio, etc...
+% Uso: int=integra(fun,inter,dib)
+% fun, nombre de la función que se desea intergrar, debe ir entre comillas
+% met, método que se desea emplear para calcular la integral. los nombres
+% validos para los metodos son: 'trapecio', 'simpson' y simpsom38'
+% inter, es un vector de dos elementos que contiene lo extremos de intervalo
+% de integracion [a,b]
+% dib, si se da un valor a esta variable de entrada, dibuja la función en el
+% intervalo de integración y la integral obtenida. Si se omite no dibuja
+% nada.
+% int, valor de la integral obtenida.
+% Este programa no divide el intervalo de integración en subintervalos...
+% para calcular la integral empleando subintervalos usar la función trocea,
 
 if strcmp(met,'trapecio')
     f0=feval(fun,inter(1));
@@ -439,19 +439,19 @@ else
     int='metodo desconocido, los metodos conocidos son ''trapecio'', ...
     ''simpson' y ''simpsom38'''
 end
-\end{verbatim}
+\end{lstlisting}
 
 Este programa aplica directamente el método deseado sobre el intervalo de integración. Para obtener los métodos extendidos, podemos emplear un segundo programa que divida el intervalo de integración inicial en el número de subintervalos que deseemos, aplique el programa anterior a cada subintervalo, y, por último, sume todo los resultados para obtener el valor de la integral en el intervalo deseado. El siguiente programa, muestra un ejemplo de como hacerlo,
 
-\begin{verbatim}
+\begin{lstlisting}
 function total=trocea(fun,met,inter,div,dib)
-%esta funcion lo unico que hace es trocear un intervalo en el numero de
-%tramos indicados por div, y llamar a la funcion integra para que integre
-%en cada intervalo.
-%USO: total=trocea(fun,met,inter,div,dib)
-% las variables de emtrada son la mismas que las de integra, salvo div que
-% representa el numero de subintervalos en que se desea dividir el
-% intervalo de integración.
+% esta funcion lo unico que hace es trocear un intervalo en el numero de
+% tramos indicados por div, y llamar a la funcion integra para que integre
+% en cada intervalo.
+% USO: total=trocea(fun,met,inter,div,dib)
+%  las variables de emtrada son la mismas que las de integra, salvo div que
+%  representa el numero de subintervalos en que se desea dividir el
+%  intervalo de integración.
 tramos=inter(1):(inter(2)-inter(1))/div:inter(2);
 total=0;
 if nargin==5
@@ -462,12 +462,12 @@ for i=1:size(tramos,2)-1
     total=total+int;
 end
 hold off
-\end{verbatim}t
+\end{lstlisting}t
 
 Por último indicar que Matlab posee un comando propio para calcular la integral definida de una función, el comando \texttt{quad}. Este comando admite como variables de entrada el nombre de una función, y dos valores que representan los límites de integración. Como variable de salida devuelve el valor de la integral definida en el intervalo introducido. Por ejemplo,
 
 \begin{verbatim}
->> i=quad('sin',0,pi)
+>> i=integral(@sin,0,pi)
 
 i =
 
@@ -495,7 +495,7 @@ Donde suponemos conocido el valor $v(0)$ de la velocidad del cuerpo en el instan
 Si volvemos a integrar ahora la expresión obtenida para la velocidad, obtendríamos la posición en función del tiempo,
 
 \begin{equation*}
-v(t)=\frac{dx}{dt}=\int \frac{F(t)}{m}dt +v(0)\rightarrow x(tt)=\int\left(\int \frac{F(t)}{m}dt +v(0)\right)dt+x(0)
+v(t)=\frac{dx}{dt}=\int \frac{F(t)}{m}dt +v(0)\rightarrow x(t)=\int\left(\int \frac{F(t)}{m}dt +v(0)\right)dt+x(0)
 \end{equation*}
 
 Donde suponemos conocida la posición inicial $x(0)$.
@@ -503,7 +503,7 @@ Donde suponemos conocida la posición inicial $x(0)$.
 Quizá el sistema físico idealizado más conocido y estudiado es el oscilador armónico. En este caso, el sistema está sometido a una fuerza que depende de la posición y, si existe disipación, a una fuerza que depende de la velocidad,
 
 \begin{equation*}
-m\frac{d^2x}{dt}=-kx-\mu \frac{dx}{dt}+F(t)
+m\frac{d^2x}{dt^2}=-kx-\mu \frac{dx}{dt}
 \end{equation*}
 
 En este caso, la expresión obtenida constituye una ecuación diferencial ordinaria y ya no es tan sencillo obtener una expresión analítica para x(t). Para obtener dicha expresión analítica, es preciso emplear métodos de resolución de ecuaciones diferenciales.
@@ -551,28 +551,37 @@ x_{i+1}&=x_i+hf(a+ih,x_i)
 
 El siguiente código implementa el método de Euler para resolver un problema de condiciones iniciales de primer orden a partir de una función $f(t)$ y un valor inicial $x_0$.
 
-\begin{verbatim}
+\begin{lstlisting}
+function y=euler(fun,ya,a,b,h)
+% implimentacion del metodo de Euler para resolver el problema y'(t)=f(y,t)
+% con condición inicial ya
+% Admite funciones sobre un vector de variables, en ese caso las
+% condiciones iniciales serán también un vector
+%Uso: y=euler(fun,ya,a,b,h)
+%variables de entrada: fun, debe contener el nombre de una función (sera la
+%función f) entrecomillas. ya, condición inicial. a, instante de tiempo 
 %inicial o valor inicial de la variable independiente (t). 
 %b, instante de tiempo final o valor final de la variable independiente
 %h paso de integración
 %podemos por elemental prudencia, comprobar que b>a
-%lo elegante no es pasar el paso como he hecho aqui, sino tcalcularlo en
+%lo elegante no es pasar el paso como he hecho aqui, sino calcularlo en
 %funcion de cuantos puntos de la solucion queremos en el intervalo...
 if a>=b
-    y='el intervalo debe ser creciente, para evitarse lios';
-    return
+y='el intervalo debe ser creciente, para evitarse lios';
+return
 end
 y=ya;
 paso=1;
 t(paso)=a;
 while t(paso)<=b
-    t(paso+1)=t(paso)+h;
-    y(paso+1)=y(paso)+h*feval(fun,t(paso),y(paso));
-    paso=paso+1;
+t(paso+1)=t(paso)+h;
+y(paso+1,:)=y(paso,:)+h*feval(fun,t(paso),y(paso,:));
+paso=paso+1;
 end
 %dibuja la solucion,
 plot(t,y)
-\end{verbatim}
+
+\end{lstlisting}
 
 Un ejemplo sencillo de problema de condiciones iniciales de primer orden, nos los suministra la ecuación diferencial de la carga y descarga de un condensador eléctrico. La figura \ref{fig:RC}, muestra un circuito eléctrico elemental formado por una resistencia $R$ en serie con un condensador $C$. \index{Circuito RC}
 
@@ -620,25 +629,24 @@ V_0(t)=V_i\left(1-e^{-t/R\cdot C}\right)
 \end{equation*} 
 
 
-Podemos resolver el problema de la carga del condensador, empleando el código de la función de Euler incluido más arriba. Lo único que necesitamos es definir una función de Matlab  para representar la función $f(x,t)$ de nuestro problema de valor inicial,
-t
-\begin{verbatim}
+Podemos resolver el problema de la carga del condensador, empleando el código de la función de Euler incluido más arriba. Lo único que necesitamos es definir una función de Matlab  para representar la función $f(x,t)$ de nuestro problema de valor inicial, t
+\begin{lstlisting}
 function s=condensador(~,Vo)
-%t tiempo en este ejemplo la función no depende del tiempo por lo que esta
-%variable realmente no se usa... pero como el programa Euler se la pasa, 
-%empleamos el simbolo ~ para que no de errores...
-%Vo Valor del voltaje en cada iteración
+% t tiempo en este ejemplo la función no depende del tiempo por lo que esta
+% variable realmente no se usa... pero como el programa Euler se la pasa, 
+% empleamos el simbolo ~ para que no de errores...
+% Vo Valor del voltaje en cada iteración
 
-%hay que definir los parametros fijos del circuito...
-C=0.0001; %Capacidad del condesador en Faradios
-R=1000; %resitencia en Ohmios
-%el voltaje de entrada podría Vi podria ser una función del tiempo... Aquí
-%vamos a considerar que es constante...
-Vi=10; %Voltaje suministrado al circuito en Voltios
-%Aqui cosntruimos la funcion que representa el circuito RC,
+% hay que definir los parametros fijos del circuito...
+C=0.0001; % Capacidad del condesador en Faradios
+R=1000; % resitencia en Ohmios
+% el voltaje de entrada podría Vi podria ser una función del tiempo... Aquí
+% vamos a considerar que es constante...
+Vi=10; % Voltaje suministrado al circuito en Voltios
+% Aqui cosntruimos la funcion que representa el circuito RC,
 
 s=(Vi-Vo)/R/C;
-\end{verbatim}
+\end{lstlisting}
 
 \begin{figure}[h]
 \centering
@@ -652,6 +660,71 @@ La figura \ref{fig:solrc} compara gráficamente los resultados obtenido si emple
 En primer lugar, es interesante observar como el voltaje $V_0$ crece hasta alcanzar el valor $V_i=10$ V del voltaje suministrado al circuito. El tiempo que tarda el condensador en alcanzar dicho voltaje y quedar completamente cargado depende de su capacidad y de la resistencia presente en el circuito.
 
 Como era de esperar, al hacer menor el paso de integración la solución numérica se aproxima más a la solución analítica. Sin embargo, como pasaba en el caso de los métodos de diferenciación de funciones, hay un valor de $h$ óptimo. Si disminuimos el paso de integración por debajo de ese valor, los errores de redondeo empiezan a dominar haciendo que la solución empeore.
+
+\paragraph{Problema de segundo orden.} Vamos a considerar ahora un sistema con una masa colgada de un resorte con un dispositivo mecánico (amortiguador) que ejerce una fuerza opuesta al movimiento proporcional a la velocidad. En este caso la ecuación diferencial sería la siguiente:
+\begin{equation*}
+m\frac{d^2 y}{dt^2}=m\cdot g-k \cdot y-\mu \frac{dy}{dt}
+\end{equation*}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=6cm]{figura_amortiguador.pdf}
+	\caption{Masa suspendida en vertical de un muelle con rozamiento.}
+	\label{fig:masa_suspendida}
+\end{figure}
+
+Tenemos un problema de valor inicial de segundo orden, con una ecuación en la que conviven la variable $y$ su derivada $\frac{dy}{dt}$ y su derivada segunda $\frac{d^2y}{dt^2}$. Para resolver este tipo de problemas lo que hacemos es reescribir la ecuación como dos ecuaciones de primer orden, una para la posición $y$ y otra para la velocidad $v_y=\frac{dy}{dt}$ de manera que obtendríamos un sistema de dos ecuaciones de primer orden acopladas:
+
+\begin{align*}
+\frac{dy}{dt}&=v_y \\
+\frac{dv_y}{dt}&=g-\frac{k}{m}\cdot y - \frac{\mu}{m}\cdot v_y 
+\end{align*}
+
+Ese sistema de ecuaciones de primer orden se puede resolver usando el método de Euler. Necesitamos definir una función de Matlab para representar el sistema de ecuaciones diferenciales
+
+\begin{lstlisting}
+function [dydt] = amortiguador(~,y)
+% y(1) posición
+% y(2) velocidad
+% k constante del muelle
+% mu coeficiente de rozamiento
+% g aceleración de la gravedad
+% m masa
+g=9.8;
+k=10.0;
+m=2.0;
+mu=0.5;
+dydt(1)=y(2);
+dydt(2)=g-(k/m)*y(1)-(mu/m)*y(2);
+end
+\end{lstlisting}
+
+Empleando la función descrita \texttt{euler('amortiguador',[0 0],0,50,0.01)} obtenemos la evolución temporal de la posición y la velocidad de la masa unida al resorte como puede verse en la figura \ref{fig:amortiguador1}. En esta figura se aprecia como la masa oscila en torno a la posición de equilibrio hasta que finalmente se para.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{amortiguador_1.png}
+	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento.}
+	\label{fig:amortiguador1}
+\end{figure}
+
+Si cambiamos el valor de la constante del muelle a $k=100$ ($kg/s^2$) y volvemos a aplicar el método de Euler para resolver obtenemos el resultado mostrado en la figura \ref{fig:amortiguador2}. En la gráfica puede observarse que la masa comienza a oscilar con oscilaciones de amplitud creciente. Para analizar este comportamiento anómalo vamos a repetir el método de Euler reduciendo en un orden de magnitud el paso de integración. Si lo hacemos así obtenemos los resultados de la figura \ref{fig:amortiguador3}. Al reducir el paso vemos que la masa oscila en torno a la posición de equilibrio hasta que se estabiliza. El comportamiento observado en la figura \ref{fig:amortiguador2} se debe a errores de integración del algoritmo de Euler.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{amortiguador_2.png}
+	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento $k=100$.}
+	\label{fig:amortiguador2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{amortiguador_3.png}
+	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento $k=100$ y paso $h=0.001$.}
+	\label{fig:amortiguador3}
+\end{figure}
+
+En la práctica se emplean algoritmos más precisos (y complejos) que el de Euler para resolver problemas de valor inicial, por ejemplo los métodos de Runge-Kutta.
 
 \subsection{Métodos de Runge-Kutta} \index{Método de Runge-Kutta}
 Si intentamos emplear polinomios de Taylor de grado superior, al empleado en el método de Euler, nos encontramos con la dificultad de obtener las derivadas sucesivas, con respecto al tiempo, de la función $f$. Así, si quisiéramos emplear el polinomio de Taylor de segundo grado, para la función x, tendríamos,
@@ -705,18 +778,18 @@ x_{i+1}&=x_i+h\cdot f(t_i+\frac{h}{2},x_i+\frac{h}{2}f(t_i,x_i))\\
 \end{align*}
 La siguiente función de Matlab implementa el método del punto medio,
 
-\begin{verbatim}
+\begin{lstlisting}
 function y=pmedio(fun,ya,a,b,h)
-%metodo de rungekutta de segundo orden mas conocido como del punto medio
-%uso: y=pmedio(fun,ya,a,b,h)
-% variables de entrada: fun, nombre entre comillas de la función que define
-% el problema de valor inicial que se desea resolver. ya, valor inicial. a,
+% metodo de rungekutta de segundo orden mas conocido como del punto medio
+% uso: y=pmedio(fun,ya,a,b,h)
+%  variables de entrada: fun, nombre entre comillas de la función que define
+%  el problema de valor inicial que se desea resolver. ya, valor inicial. a,
 % instante de tiempo inicial o valor inicial de la variable independiente.
 % b valor de tiempo final o valor final de la variable independiente. h,
 % paso de integracion
-%podemos por elemental prudencia, comprobar que b>a
-%lo elegante no es pasar el paso como he hecho aqui, sino calcularlo en
-%funcion de cuantos puntos de la solucion queremos en el intervalo...
+% podemos por elemental prudencia, comprobar que b>a
+% lo elegante no es pasar el paso como he hecho aqui, sino calcularlo en
+% funcion de cuantos puntos de la solucion queremos en el intervalo...
 if a>=b
     y='el intervalo debe ser creciente, para evitarse lios'
     return
@@ -729,10 +802,174 @@ while t(paso)<=b
     y(paso+1)=y(paso)+h*feval(fun,t(paso)+h/2,y(paso)+h*feval(fun,t(paso),y(paso))/2);
     paso=paso+1;
 end
-%pintamos la solucion,
+% pintamos la solucion,
 plot(t,y)
 
-\end{verbatim}
+\end{lstlisting}
 
 
 El resto de los métodos de Runge-Kutta, los dejaremos para cuando seáis más mayores... Pero que conste que es de lo más interesante de los métodos numéricos.
+
+\section{Ejercicios}
+\begin{enumerate}
+\item Crea una función de matlab que tomo como variables de entrada en handle de otra función \texttt{@f}, un valor $x_0$, un intervalo $h$ y una última variable \texttt{metodo }que contenga el nombre de un método y devuelva el valor de la derivada de f calculada en el punto $x_0$, empleando el método indicado en la variable \texttt{metodo}.  Los métodos pueden ser:
+\begin{itemize}
+\item \texttt{metodo = '2ad'}: diferencia de dos puntos adelantada
+\item \texttt{metodo = '2ce'}: diferencia de dos puntos centrada
+\item \texttt{metodo = '3ad'}: diferencia de tres puntos adelantada
+\end{itemize}
+Emplea la función que acabas de crear para obtener la derivada de la función $f(x) = 1/x$ en el punto $x_0 = 1$. Prueba para valores de $h$ $0.1$, $0.5$,$1.5$. Explica los resultados. 
+
+\item Analiza los programas mostrados en la sección \ref{sec:inum} para el calculo de integrales empleando los métodos deTrapecio, Simpson y Simpson 3/8 y la función para calcular los métodos extendidos. Comprueba la precisión de los métodos calculando la integral,
+\begin{equation*}
+\int_0^{\pi} \sin(x) = 2
+\end{equation*}
+
+\item El programa del apartado anterior, solo es útil cuando se conoce la función que se desea integrar. Sin embargo es posible aplicar los métodos de integración numérica descritos cuando solo se dispone de una tabla de datos. 
+
+\begin{enumerate}
+\item Escribe una función admita como entrada un vector de datos equiespaciados $[y= y_0,y_1,\cdots,y_n]$, un intervalo de integración $h=x_i - x_{i-1}$, y una variable con el nombre de un método (de modo análogo a como se ha hecho en el ejercicio anterior). La función deberá devolver la integral de la función que representan los datos de la tabla, aplicando el correspondiente método extendido, sobre los datos de $y$:
+\begin{align*}
+ &\text{Trapecio:}\\
+I(y)&=\int_{x_0}^{x_n}ydx \approx \sum_{i=0}^{n-1}\int_{x_i}^{x_{i+1}}y(x)dx=\sum_{i=0}^{n-1}\frac{h}{2}(y_i+y_{i+1})\\
+&=\frac{h}{2}\left(y_0+2y_1+2y_2+\cdots+2y_{n-1}+y_n \right)\\
+ &\text{Simpson:} \\
+I(y)&\approx \sum_{i=0}^{\frac{n}{2}-1}\int_{x_{2i}}^{x_{2i+2}}P_2(x)dx=\sum_{i=0}^{\frac{n}{2}-1}\frac{h}{3}(y_{2i}+4y_{2i+1}+y_{2i+2})\\
+&= \frac{h}{3}(y_0+4y_1+2y_2+4y_3+2y_4+\cdots + 2y_{n-2}+4y_{n-1}+y_n)\\
+&\text{Simpson 3/8}\\
+I(y)&\approx \sum_{i=0}^{\frac{n}{3}-1}\int_{x_{3i}}^{x_{3i+3}}P_3(x)dx=\sum_{i=0}^{\frac{n}{3}-1}\frac{3h}{8}(y_{3i}+3y_{3i+1}+3y_{3i+2}+y_{3i+3})\\
+&= \frac{3h}{8}(y_0+3y_1+3y_2+2y_3+3y_4+3y_5+2y_6+ \cdots + 2y_{n-3}+3y_{n-2}+3y_{n-1}+y_n)
+\end{align*}
+
+\item Es importante tener en cuenta que, para el caso de Simpson, $n$ --El número de datos del vector $y$ menos 1-- debe ser divisible entre dos. Añade el código necesario al programa realizado integre el último intervalo empleando el método del trapecio. Del mismo modo, para Simpson 3/8, $n$ debe ser divisible entre tres. Añada el código necesario para que, si no se cumple esta condición, integre por el método del trapecio, si sobra un intervalo o por el método de Simpson si sobran dos.
+
+\item Aplica la función de los apartados anteriores a la siguiente tabla de datos,
+
+%\begin{table}[h]
+%\centering
+\begin{tabular}{r r r r r r r r r r r r}
+\hline
+x & 0. &0.314 & 	0.628 &	0.942 &	1.256 &	1.570 &	1.884 &	 2.199 &	2.513 &	 2.827 &	3.141\\
+y & 0. &0.309 &	0.587 &	0.809 &	0.951 &	1.000 &	0.951 &    0.809 &	0.587 &	0.309 &	0.000\\
+\hline
+\end{tabular}
+%\end{table}
+calcula el resultado empleando los tres métodos, y compáralos con el que da la función de Matlab \texttt{trapz}
+\end{enumerate}
+
+\item La ecuación diferencial de un péndulo físico toma la forma,
+\begin{equation*}
+\frac{d^2\theta}{dt} =-\frac{g}{l}\sin(\theta),
+\end{equation*}
+donde $\theta$ es el ángulo que el péndulo forma con la vertical, $g\approx9.8 m/s^2$ es la aceleración de la gravedad y $l$ es la longitud del péndulo.
+\begin{enumerate}
+\item Reescribe la ecuación del péndulo en dos ecuaciones de primer orden, una para el angulo en función de la velocidad angular $\omega = \frac{d\theta}{dt}$ y otra para la velocidad angular $\frac{d\omega}{dt} = \frac{d^2\theta}{dt}$
+
+\item \label{ap:4b} crea un programa que permita obtener los valores de $\omega$ y $\theta$ en función de tiempo, a partir de las ecuaciones obtenidas en el apartado anterior, empleando el método de Euler. El programa deberá permitir dar valores iniciales $\theta_0$ y $\omega_o$ a la posición y velocidad angulares, definir un intervalo de tiempo de integración $[t_0,t_f]$ y un paso de integración $\Delta t$
+
+\item Para desplazamientos  pequeños de $\theta$, tomando $\sin(\theta) \approx \theta$, es posible aproximar  la ecuación exacta del péndulo por la siguiente ecuación,
+\begin{equation*}
+\frac{d^2\theta}{dt} =-\frac{g}{l}\theta,
+\end{equation*}
+Añade al programa realizado en el apartado \ref{ap:4b} el código necesario para que integre simultáneamente las ecuaciones del péndulo exacta y la aproximada.
+
+\item Compara gráficamente los resultados para la posición y velocidad obtenidas a partir de las ecuaciones exacta y aproximada para un péndulo de longitud $l=0.1m$. Si parte del reposo con ángulos iniciales $\theta_0$, $\pi/10, pi/6, pi/4, pi/3$. Emplea para la integración un intervalo de tiempo de $t_f-t_0 = 1s$ y un paso de integración $\Delta t=1e-3$
+\end{enumerate}
+\item La dinámica de un planeta que gira en torno a una estrella viene dada por las siguiente ecuaciones del movimiento,
+\begin{align*}
+\frac{d^2x}{dt^2} &= -G\frac{M}{(x^2+y^2)^{3/2}}x\\
+\frac{d^2y}{dt^2} &= -G\frac{M}{(x^2+y^2)^{3/2}}y
+\end{align*}
+Donde $G$ es la constante universal de la gravedad, $M$ la masa de la estrella, que se encuentra situada en el origen del coordenadas, y $(x,y)$ las coordenadas del vector posición del planeta.
+\begin{enumerate}
+\item transforma las ecuaciones del movimiento en un sistema de cuatro ecuaciones de primer orden, empleando la velocidad del planeta, $v_x = \frac{dx}{dt},\ v_y = \frac{dy}{dt} $. 
+\item Escribe un programa que permita obtener la trayectoria (órbita) de un planeta resolviendo mediante el método de Euler las ecuaciones obtenidas en el apartado anterior.
+\item Obtén la trayectoria (órbita) de un planeta que gira en torno a una estrella, empleando los siguientes datos, medidos en unidades arbitrarias: Masa de la estrella:$M=1$. Constante de la gravedad $G=1$. Posición inicial del planeta: $x_0 = 1$, $y_0=0$. Velocidad inicial $v_x = 0$, $v_y = 0.7$. Emplea un paso de integración $\Delta t =0.01$. Calcula la solución durante un tiempo total $t = 10$.
+\end{enumerate}
+\textbf{Nota:} El método de Euler no es suficientemente preciso para resolver este tipo de problemas. Es fácil obtener resultados muy alejados de la realidad en función del valor que tomen las condiciones iniciales. 
+\end{enumerate}
+
+\section{Test del curso 2020/21}
+
+\begin{figure}[h]
+\begin{minipage}{0.5\textwidth} \ 
+\includegraphics[width=\textwidth]{dibujillo.eps}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{align*}
+g &= 10 \, \text{m}/\text{s}^2 \text{\ gravedad}\\
+k &= 60 \, \text{N}/\text{m} \text{\ constante recuperadora del muelle}\\
+m &= 2 \, \text{kg} \text{\ masa del bloque}\\
+\alpha &= \frac{\pi}{6} \text{\ ángulo del plano inclinado}\\
+N &= \text{Reacción normal del plano}\\
+p &= mg\\
+	\mu &= 0.1 \, \text{kg}/\text{s} \text{\ coeficiente de rozamiento}\\
+\end{align*}
+
+\end{minipage}
+\caption{Sistema masa-muelle-plano inclinado.}
+\label{fig1}
+\end{figure}
+
+Sobre un plano inclinado se coloca un bloque sujeto por un muelle, tal y como muestra en la Figura \ref{fig1}. La superficie de contacto entre el bloque y el plano está muy pulida; por lo que se puede considerar que el rozamiento entre ambos es proporcional a la velocidad $v_x(t(t))\in\mathbb{R}$ a lo largo del eje paralelo al plano.
+
+El movimiento del bloque en la dirección del plano puede determinarse mediante la ecuación
+\begin{equation}
+	ma_{x}(t) = -kx(t) -\mu \lvert N \lvert v_x(t) + p_x, \label{eq: f}
+\end{equation}
+donde $a(t)\in\mathbb{R}$ representa la aceleración del bloque, $x(t)\in\mathbb{R}$ su posición y el resto constantes se describen en la Figura \ref{fig1}. El origen, $x=0$, se toma en el punto en donde la fuerza recuperadora del muelle es nula. La posición crece en el sentido de bajada a lo largo del plano.
+
+\begin{enumerate}
+
+	\item \label{p1} Emplea el método de Euler para estimar las posición $x(t)$ y las velocidad $v_x(t)$ del bloque a partir de la ecuación (\ref{eq: f}). Utiliza un paso de integración $h =10^{-3}\text{s}$. Considera una posición inicial $x(0) =0\text{m}$, una velocidad inicial $v(0) = 0\text{m/s}$ y un tiempo final de integración $t_{f}=11\text{s}$.
+
+\item \label{p2} Representa gráficamente los resultados obtenidos: Posición frente a tiempo y velocidad frente a tiempo. Emplea una figura distinta para cada representación. No olvides añadir rótulos a los ejes indicando las variables representadas con sus unidades.
+
+\item La solución analítica del problema, para velocidad inicial $v(0)=0$ y cualquier posición inicial $x(0)$ toma la siguiente forma,
+
+%\begin{equation}
+%x(t) = \frac{mp_x}{k}-\left(\frac{mp_x}{k}-x_0\right)\frac{e^{-\frac{Fr}{2}t}}{\sqrt{1-\frac{F^2_r m}{4k}}}\cos\left(\sqrt{\frac{k}{m}-\frac{F^2_r}{4}}\cdot t-\text{asin}\left(\frac{F_r}{2}\sqrt{\frac{m}{k}}\right)   \right)
+%\end{equation}
+%
+
+\begin{equation}\label{eq2}
+	x(t) = \frac{p_x}{k}-\left(\frac{p_x}{k}-x(0)\right)\frac{\omega_0}{\omega}e^{-\eta t}\cos\left(\omega t-\phi \right)
+\end{equation}
+donde,
+
+\begin{equation}
+\begin{matrix}
+\omega_0 = \sqrt{\frac{k}{m}} & \eta = \frac{\mu N}{2m}\\
+\ & \ \\
+\omega = \sqrt{\omega_0^2 -\eta^2} &
+\phi = \arcsin \left(\frac{\eta}{\omega_0}\right)
+\end{matrix} \nonumber
+\end{equation}
+ 
+\begin{enumerate}
+\item Calcula la posición del bloque mediante la ecuación (\ref{eq2}). Emplea para ello el mismo intervalo y los mismos instantes de tiempo empleados en el apartado \ref{p1}. Representa los resultados sobre el gráfico  para la posición calculada mediante el método de Euler que has obtenido en el apartado \ref{p2}. 
+\item Representa en un gráfico de barras los residuos resultantes de comparar la solución analítica con la obtenida por el método de Euler.
+\item Calcula el error cuadrático medio cometido al emplear el método de Euler. Considera como exacta la solución analítica (\ref{eq2}).
+\end{enumerate}
+
+\item Los instantes de tiempo para los que la posición del bloque alcanza un máximo o un mínimo local puede obtenerse a partir de la frecuencia de oscilación $\omega$,
+\begin{equation}\label{eq4}
+t_{max/min} = \frac{n \pi}{\omega}, n = 1,2,3,\cdots, \infty
+\end{equation}
+\begin{enumerate}
+\item \label{p4}Emplea las ecuaciónes (\ref{eq4}) y (\ref{eq2}) para obtener los primeros 20 puntos singulares (máximos o mínimos) del movimiento del bloque. Represéntalos sobre el gráfico de la posición, obtenido en el apartado \ref{p2}.
+\item Utilizando los datos obtenidos en el apartado \ref{p4}, emplea el método de diferencia de dos puntos centrada para obtener las derivadas de las posiciones en los máximos y mínimos locales con respecto al tiempo. Si hay puntos para los que no es posible aplicar este método, calcula su derivada empleando otra aproximación razonable.
+ 
+\item Representa los resultados obtenidos en el apartado anterior sobre el gráfico de la velocidad obtenido en el ejercicio \ref{p2}. A la vista de los resultados, ¿Cómo valorarías la precisión del método empleado para obtener las derivadas? 
+\end{enumerate}
+
+\item A partir de los resultados obtenidos para la velocidad en el apartado \ref{p1}, calcula la posición del bloque en el instante de tiempo $t=1s$ mediante la siguiente integral
+\begin{equation}
+x(1) = \int_0^1v_x(t)dt,
+\end{equation}
+\begin{enumerate}
+\item Emplea para ello el método del trapecio.
+\item Compara el resultado con los valores obtenidos tanto mediante el método de Euler como a partir de la solución analítica.\\ 
+\textbf{Nota:} Ten en cuenta que el método de Euler puede que no calcule $x(1)$ y $v(1)$ ya que por error de precisión el computador no obtiene exactamente $t=1$s. Por tanto, emplea para el cálculo y la comparativa los valores de $x(t)$ y $v(t)$ correspondientes al tiempo más próximo a $t=1\text{s}$.
+\end{enumerate}
+\end{enumerate}

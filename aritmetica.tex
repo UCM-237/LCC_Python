@@ -281,7 +281,7 @@ $-327.43$&$-3.2743\times 10^2$&$-3.2743e2$&$-$&$3.2743$&$2$\\
 \hline
 \end{tabular}\\
 
-La representación binaria en punto flotante sigue exactamente la misma representación que acabamos de describir para la notación científica. La única diferencia es que en lugar de trabajar con potencias de diez, se trabaja con potencias de dos, que son la que corresponden a la representación de números en binario.  Así por ejemplo, el número binario $-1101.00101$ se representaría como $-1.10100101\times 2^3$, y el número $0.001011101$ se representaría como $1.011101\times 2^{-3}$. 
+La representación binaria en punto flotante sigue exactamente la misma representación que acabamos de describir para la notación científica. La única diferencia es que en lugar de trabajar con potencias de diez, se trabaja con potencias de dos, que son las que corresponden a la representación de números en binario.  Así por ejemplo, el número binario $-1101.00101$ se representaría como $-1.10100101\times 2^3$, y el número $0.001011101$ se representaría como $1.011101\times 2^{-3}$. 
 
 El término punto flotante viene del hecho de que el punto decimal de la mantisa, no separa la parte entera del número de su parte decimal. Para poder separar la parte entera de la parte decimal del número es preciso emplear el valor del exponente. Así, para exponente $0$, el punto decimal de la mantisa estaría en el sitio que corresponde al número representado, para exponente $1$ habría que desplazarlo una posición a la izquierda, para exponente $-1$ habría que desplazarlo una posición a la derecha, para exponente 2, dos posiciones a la izquierda, para exponente -2, dos posiciones a las derecha, etc.
 
@@ -298,11 +298,11 @@ sig.&\multicolumn{11}{c||}{mantisa}&\multicolumn{4}{c|}{exponente}\\
 \end{tabular}
 \end{table}
 
-Si bien la representación que acabamos de ver sirve para el número representado, es evidente que no podemos representar así un número con exponente negativo como por ejemplo $1.011101\times 2^{-3}$. Además la división que hemos hecho del registro de 16 bits es arbitraria; podríamos haber elegido un reparto distinto de bits entre mantisa y exponente. De hecho hasta la década de los noventa del siglo XX, cada ordenador adoptaba su propia representación de números en punto flotante. La consecuencia era que los mismos programas, ejecutados en máquinas distintas daban diferentes soluciones. 
+Si bien la representación que acabamos de ver sirve para el número representado, es evidente que no podemos representar así un número con exponente negativo como por ejemplo $1.011101\times 2^{-3}$. Además la división que hemos hecho del registro de 16 bits es arbitraria; podríamos haber elegido un reparto distinto de bits entre mantisa y exponente. De hecho, hasta la década de los noventa del siglo XX, cada ordenador adoptaba su propia representación de números en punto flotante. La consecuencia era que los mismos programas, ejecutados en máquinas distintas daban diferentes soluciones. 
 
 Ya en 1976 John Palmer, de la compañía INTEL, promueve la creación de un estándar, es decir, de una representación en punto flotante que fuera adoptada por todos los fabricantes de computadoras. El primer borrador del estándar fue elaborado por William Kahan (Intel), Jerome Coonen (Berkeley) y Harold Stone (Berkeley): documento K-C-S. Inspirado en el trabajo de Kahan en el IBM 7094 (1968). El proceso de estandarización fue bastante lento. La primera versión no fue operativa hasta 1985. El resultado de estos trabajos fue el estándar actual. Conocido como IEEE 754. IEEE son la siglas de Institute of Electrical and Electronics Engineers. Se trata de una asociación que nació en Estados Unidos en el siglo XIX y que goza actualmente de carácter internacional. El IEEE se ocupa, entre otras cosas, de establecer estándares industriales en los campos de la electricidad, la electrónica y la computación. Veamos en detalle el estándar IEEE 754.
 
-\paragraph*{El estándar IEEE 754}\index{Estándar IEEE 754}
+\paragraph*{El estándar IEEE 754.}\index{Estándar IEEE 754}
 En primer lugar, el estándar se estableció pensando en dos tamaños de registro el primero de ellos emplea 32 bits para guardar los números en punto flotante y recibe el nombre de estándar de precisión simple. El segundo emplea 64 bits y se conoce como estándar de precisión doble.
 
 \subparagraph*{Simple precisión.}\index{Estándar IEEE 754! Simple precisión} Empecemos por describir el estándar de precisión simple. En primer lugar, se reserva un bit para contener el signo. Si el bit vale 1, se trata de un número negativo, y si vale 0 de un número positivo. De los restantes 31 bits, 23 se emplean para representar la mantisa y 8 para representar el exponente.
@@ -348,7 +348,7 @@ Tenemos por tanto que el exponente de 8 bits del estándar de precisión simple 
 
 Ya tenemos casi completa la descripción del éstandar. Solo faltan unos detalles --aunque muy importantes-- relativos a la representación de números muy grandes y muy pequeños. Empecemos con los números muy grandes.
 
-¿Cúal es el número más grande que podríamos representar en estándar de simple precisión? En principio cabría suponer que el correspondiente a escribir un 1 en todos los bits correspondientes a la mantisa (la mayor mantisa posible) y escribir también un 1 en todos los bits correspondientes al exponente (el mayor exponente posible). Sin embargo, el estándar está pensado para proteger las operaciones del computador de los errores de desbordamiento. Para ello reserva el valor más alto del exponente. Así cuando el exponente contenido en un registro es 128, dicho valor no se considera propiamente un número, de hecho es preciso mirar el contenido de la mantisa para saber qué es lo que representa el registro: 
+¿Cúal es el número más grande que podríamos representar en estándar de simple precisión? En principio cabría suponer que el correspondiente a escribir un 1 en todos los bits correspondientes a la mantisa (la mayor mantisa posible) y escribir también un 1 en todos los bits correspondientes al exponente (el mayor exponente posible). Sin embargo, el estándar está pensado para proteger las operaciones del computador de los errores de desbordamiento (ver sección \ref{errn} más adelante). Para ello reserva el valor más alto del exponente. Así cuando el exponente contenido en un registro es 128, dicho valor no se considera propiamente un número, de hecho es preciso mirar el contenido de la mantisa para saber qué es lo que representa el registro: 
 
 \begin{itemize}
 \item Si los bits de la mantisa son todos cero, el registro contiene la representación del infinito $\infty$.  El estándar específica el resultado de algunas operaciones en el infinito: $1/\infty=0$, $\arctan(\infty)=\pi/2$. 
@@ -457,7 +457,7 @@ La tabla \ref{tbieee} resume y compara las características de los dos estándar
 \multicolumn{3}{c}{\textbf{Precisión simple. Registro de 32 bits. Exponente exceso a 127}}\\
 \hline
 Mantisa&exponente (8 bits)&número representado\\
- (23 bits)\\
+ (23 bits)&(-exceso)\\
 $0$&$0-127=-127$&$(-1)^{bs}\cdot(0\cdot2^{-1}+\cdots+0\cdot2^{-23})\times2^{0-127}=0$\\
 $\neq 0$&$0-127\equiv\mathbf{-126}$&$(-1)^{bs}\cdot(m_1\cdot2^{-1}+\cdots+m_{23}\cdot2^{-23})\times2^{0-127\equiv \mathbf{-126}}$\\
 \hline
@@ -472,7 +472,7 @@ $\neq 0$&$255-127=128$&$(-1)^{bs}\cdot(m_1\cdot2^{-1}+\cdots+m_{23}\cdot2^{-23})
 \multicolumn{3}{c}{\textbf{Precisión doble. Registro de 64 bits. Exponente exceso a 1023}}\\
 \hline
 Mantisa &exponente (11 bits)&número representado\\
-(52 bits)\\
+(52 bits)&(-exceso)\\
 $0$&$0-1023=-1023$&$(-1)^{bs}\cdot(0\cdot2^{-1}+\cdots+0\cdot2^{-52})\times2^{0-1023}=0$\\
 $\neq 0$&$0-1023\equiv \mathbf{-1022}$&$(-1)^{bs}\cdot(m_1\cdot2^{-1}+\cdots+m_{23}\cdot2^{-52})\times2^{0-1023\equiv \mathbf{-1022}}$\\
 \hline
@@ -550,7 +550,7 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \item Pasamos la parte decimal a binario:\\
 $0.666666\cdots\times 2=1.333333\cdots$\\
 $0.333333\cdots\times 2=0.666666\cdots$\\
-A partir de aquí se repite el periodo $\widehat{10}$ indefinidamente: $1.666666  \xrightarrow{binario} 0.101010\cdots$ 
+A partir de aquí se repite el periodo $\widehat{10}$ indefinidamente: $1.666666  \xrightarrow{binario} 1.101010\cdots$ 
 \item Mantisa: el número en binario quedaría: $1.101010 \cdots$, con la misma representación en punto flotante, $1.101010\cdots \times 2^0$. La mantisa será, $10101010101010101010101$
 
 \item Exponente: $0 \xrightarrow{exceso\ 127} 127+0=127  \xrightarrow{binario \ 8 \ bits} 01111111$
@@ -567,7 +567,7 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \end{tabular}\\
 \end{enumerate}
 
-\section{Errores en la representación numérica.}
+\section{Errores en la representación numérica.}\label{errn}
 
 Como se ha indicado anteriormente, cualquier representación numérica que empleemos con el ordenador, está sometida a errores derivados del tamaño finito de los registros empleados. Vamos a centrarnos en el estudio de los errores cometidos cuando representamos números empleando el formato de punto flotante del estándar del IEEE754.
 
@@ -693,7 +693,7 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \hline
 \end{tabular}\\
 
-Para sumar dos números en notación científica es imprescindible que los dos estén representados con el mismo exponente, para entonces poder sumar directamente las mantisas. Disminuir el exponente del mayor de ellos hasta que coincida con el del menor no es posible, ya que eso supondría añadir dígitos a la parte entera de la mantisa, pero no hay bits disponibles para ello entre los asignados a la mantisa. Por tanto, la solución es aumentar el exponente del me realizar nor de los números, hasta que alcance el valor del mayor, y disminuir el valor de la mantisa desnormalizándola, es decir sin considerar el 1 implícito. 
+Para sumar dos números en notación científica es imprescindible que los dos estén representados con el mismo exponente, para entonces poder sumar directamente las mantisas. Disminuir el exponente del mayor de ellos hasta que coincida con el del menor no es posible, ya que eso supondría añadir dígitos a la parte entera de la mantisa, pero no hay bits disponibles para ello entre los asignados a la mantisa. Por tanto, la solución es aumentar el exponente del menor de los números, hasta que alcance el valor del exponente del mayor, y disminuir el valor de la mantisa desnormalizándola, es decir sin considerar el 1 implícito. 
 Por tanto en nuestro ejemplo, debemos representar $2^{-22}$ empleando un exponente 1, $2^{-22}\rightarrow 2^{-23}\cdot 2^1$,
 
 \begin{tabular}{|c||c||c|}
@@ -714,7 +714,7 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \hline
 \end{tabular}\\
 
-¿Qué pasa si tratamos de sumar un número más pequeño,por ejemplo $2^{-23}$?. Al representarlo con exponente 1 para poder sumarlo el número tomaría la forma, $2^{-23}\rightarrow 2^{-24}\cdot2^{1}$. Es fácil ver el problema, con una mantisa de 23 bits nos se puede representar el número $2^{-24}$ porque ya no hay \emph{hueco} para él. La mantisa sería cero y --dado que se trata de una representación desnormalizada--, el número resultante sería cero. Por tanto, al sumarlo con el número inicial nos daría este mismo número.
+¿Qué pasa si tratamos de sumar un número más pequeño,por ejemplo $2^{-23}$? Al representarlo con exponente 1 para poder sumarlo el número tomaría la forma, $2^{-23}\rightarrow 2^{-24}\cdot2^{1}$. Es fácil ver el problema, con una mantisa de 23 bits nos se puede representar el número $2^{-24}$ porque ya no hay \emph{hueco} para él. La mantisa sería cero y --dado que se trata de una representación desnormalizada--, el número resultante sería cero. Por tanto, al sumarlo con el número inicial nos daría este mismo número.
 
 Esto nos lleva a que la precisión del computador no es igual para todos los números representables, sino que depende de su magnitud. la precisión, tomada en función de la distancia entre dos números consecutivos, es: $\text{precisión}=\text{eps}\cdot 2^{exp}$ y su valor se duplica cada vez que aumentamos el exponente en una unidad. La figura \ref{fig:precision} muestra esquemáticamente este fenómeno.
 \begin{figure}[h]
@@ -726,7 +726,7 @@ Esto nos lleva a que la precisión del computador no es igual para todos los nú
 
 \subsection{Errores de desbordamiento}\index{Desbordamiento}
 En el apartado anterior hemos visto una de las limitaciones de la representación numérica de los ordenadores; el hecho de usar una mantisa finita hace que solo unos pocos números tengan representación exacta, el resto hay que aproximarlos cometiendo errores de redondeo. En este apartado nos centraremos en estudiar las limitaciones debidas al hecho de usar un exponente finito; solo podemos representar un rango limitado de valores.
-La figura \ref{fig:desbord} muestra esquemáticamente el rango de números representables. El número negativo más pequeño representable, viene definido, por un bit de signo 1, para indicar que se trata de un número negativo, la mantisa más grande y el exponente más grande que, dentro de las especificaciones del estándar, todavía representan un número finito. Cualquier número negativo menor que éste, produce un error de desbordamiento conocido en la literatura técnica con el nombre de \emph{overflow} negativo. El número negativo más próximo a cero, que se puede representar será aquel que tenga bit de signo 1, la mantisa (desnormalizada) más pequeña posible y el exponente más pequeño posible. Cualquier número más próximo a cero que este, será representado por el ordenador como cero. Se ha producido en este caso un error de desbordamiento conocido como \emph{underflow} negativo. 
+La figura \ref{fig:desbord} muestra esquemáticamente el rango de números representables. El número negativo más pequeño representable, viene definido, por un bit de signo 1, para indicar que se trata de un número negativo y la mantisa y el exponente más grandes que, dentro de las especificaciones del estándar, todavía representan un número finito. Cualquier número negativo menor que éste, produce un error de desbordamiento conocido en la literatura técnica con el nombre de \emph{overflow} negativo. El número negativo más próximo a cero, que se puede representar será aquel que tenga bit de signo 1, la mantisa (desnormalizada) más pequeña posible y el exponente más pequeño posible. Cualquier número más próximo a cero que este, será representado por el ordenador como cero. Se ha producido en este caso un error de desbordamiento conocido como \emph{underflow} negativo. 
 
 De modo análogo a como hemos definido el número negativo más pequeño representable, podemos definir el número positivo más grande representable. La única diferencia será que en este caso el bit de signo toma valor cero para indicar que es un  número positivo. Cualquier número mayor que éste que queramos representar, provocará un error de desbordamiento (\emph{overflow} positivo.) Por último, el número positivo más próximo a cero representable coincide con el correspondiente negativo, de nuevo salvo en el bit de signo, que ahora deberá ser cero. En el caso de tratar de representar un número más pequeño el ordenador no lo distinguirá de cero, produciéndose un desbordamiento denominado \emph{underflow} positivo. 
 \begin{figure}[h]
@@ -762,7 +762,7 @@ Como cabía esperar, el desplazamiento hacia la derecha de la mantisa produce la
 \item \textbf{Operación.}
 Una vez que los operandos están alineados, se puede realizar la operación. Si la operación es suma y los signos son iguales o si la operación es resta y los signos son diferentes, se suman las mantisa. En otro caso se restan.
 
-Es importante comprobar tras realizar la operación si se ha producido desbordamiento de la mantisa en el ejemplo propuesto:
+Es importante comprobar tras realizar la operación si se ha producido desbordamiento de la mantisa; en el ejemplo propuesto:
 
 \begin{tabular}{c r}
 &$9.999\cdot10^1$\\
@@ -811,9 +811,9 @@ El axioma fundamental de la aritmética en punto flotante establece una cota sup
 
 Supongamos por ejemplo que queremos realizar la operación $x\cdot(y+z)$ en aritmética flotante la operación podríamos describirla como,
 \begin{align*}
-\text{flotante}\left(x\cdot (y+z)\right)& =\left(x\cdot\text{flotante}(x+y)\right)\cdot(1+\delta_1)\\
- & = (x\cdot(y+x))\cdot(1+\delta_2)\cdot(1+\delta_1)\\
- & \approx (x\cdot(y+z)\cdot(1+2\delta)
+\text{flotante}\left(x\cdot (y+z)\right)& =\left(x\cdot\text{flotante}(y+z)\right)\cdot(1+\delta_1)\\
+ & = (x\cdot(y+z))\cdot(1+\delta_2)\cdot(1+\delta_1)\\
+ & \approx (x\cdot(y+z))\cdot(1+2\delta)
 \end{align*}
 
 Donde $\delta_1$ representa el error relativo cometido en el producto y $\delta_2$ el error relativo cometido en la suma. Ambos errores están acotados por el \emph{eps} del ordenador ($\delta_1, \ \delta_2 \leq eps$). El valor $\delta$ se puede obtener como,
@@ -843,7 +843,7 @@ y=-1.5\cdot10^{38}\\
 (x+y)+1\neq x+(y+1)
 \begin{cases}
 (x+y)+1=1\\
-(x+(y+1)=0
+x+(y+1)=0
 \end{cases}
 \end{equation*}
 
@@ -957,7 +957,7 @@ y=(\sqrt{x^2+1}-1)\cdot\left(\frac{\sqrt{x^2+1}+1}{\sqrt{x^2+1}+1}\right)=\frac{
 
 \subsection{Errores de desbordamiento}
 
-Al, hablar del rango finito de los números representables, se indicó como trata el éstandar IEEE 754 los números que desbordan los límites de representación. Al realizar operaciones aritméticas, es posibles llegar a situaciones en las que el resultado sea un número no representable bien por se demasiado grande en magnitud, (\emph{Overflow} positivo o negativo) o por ser demasiado pequeño, (\emph{underflow} positivo o negativo.) Un ejemplo que nos permite ilustrar este fenómeno es el del cálculo del módulo de un vector,
+Al, hablar del rango finito de los números representables, se indicó cómo trata el éstandar IEEE 754 los números que desbordan los límites de representación. Al realizar operaciones aritméticas, es posibles llegar a situaciones en las que el resultado sea un número no representable bien por se demasiado grande en magnitud, (\emph{Overflow} positivo o negativo) o por ser demasiado pequeño, (\emph{underflow} positivo o negativo.) Un ejemplo que nos permite ilustrar este fenómeno es el del cálculo del módulo de un vector,
 
 \begin{equation*}
 \vert\vert\vec{v}\vert\vert=\vert\vert(v_1, v_2\cdots v_n\vert\vert=\sqrt{\sum_{i=1}^nv_i^2}
@@ -965,7 +965,7 @@ Al, hablar del rango finito de los números representables, se indicó como trat
 
 Supongamos que creamos el siguiente programa en Matlab para calcular el módulo de un vector
 
-\begin{verbatim}
+\begin{lstlisting}
 function m=norma(x)
 %inicializamos a cero la variable que contendrá la norma del vector.
 m=0;
@@ -977,7 +977,7 @@ end
 
 %calculamos la raíz cuadrada del resultado del bucle
 m=sqrt(m)
-\end{verbatim}
+\end{lstlisting}
 
 El programa anterior provocará un error de desbordamiento incluso para n=1, si introducimos un número cuyo cuadrado sea mayor que el mayor número representable. Por ejemplo si introducimos el número, $ 2^{1024/2}=1.340780792994260e+154$ en nuestro programa Matlab devolverá como solución \emph{inf}. Es decir, el resultado produce un error de desbordamiento. El problema se produce en el bucle, al calcular el cuadrado del número,
 \begin{equation*}
@@ -993,45 +993,45 @@ Todavía es posible mejorar el programa, y ampliar el rango de vectores para los
 
 El siguiente código permite calcular el módulo de un vector usando este procedimiento\footnote{El programa no funcionará correctamente para vectores cuyos primeros elementos sean 0, $(0,0,0\cdots$},
 
-\begin{verbatim}
+\begin{lstlisting}
 function m=norma(x)
 n=length(x); %calculamos la longitud del vector.
 %si n=1 nos limitamos a devolver el valor absoluto del número introducido
 if n==1
 	x=abs(x);
 else
-%inicializamos con el primer elemento la variable que contendrá
+% inicializamos con el primer elemento la variable que contendrá
 % al mayor de los elementos del vector
 mayor=abs(x(1));
 
-%inicialimos a 1 la variable que contendrá la suma de
-%los cuadrados de los elementos divididos por el valor de ello
+% inicialimos a 1 la variable que contendrá la suma de
+% los cuadrados de los elementos divididos por el valor de ello
 
 nscalado=1
 
-%creamos un bucle para ir sumando los cuadrados de las componentes.
-%empezamos en el segundo elemento, puesto que el primero ya lo tenemos.
+% creamos un bucle para ir sumando los cuadrados de las componentes.
+% empezamos en el segundo elemento, puesto que el primero ya lo tenemos.
 	for i=2:n	
-		%calculamos el valor absoluto del elemento i
+		% calculamos el valor absoluto del elemento i
 		modxi=abs(x(i))
-		%comparamos con modxi con el mayor elemento obtenido hasta
-		%aquí
+		% comparamos con modxi con el mayor elemento obtenido hasta
+		% aquí
 		if mayor<modxi
-			%si modxi es mayor, será el elemento más grande encontrado
-			%hasta esta iteración
-			%cambiamos el valor de la suma 
+			% si modxi es mayor, será el elemento más grande encontrado
+			% hasta esta iteración
+			% cambiamos el valor de la suma 
 			mscalado=1+mscalado*(modxi/mayor)^2;
 			% definimos mayor como el nuevo valor encontrado
 			mayor=modxi;
 		else
-			%si es el más grande, nos limitamos a sumarlo al resto
+			% si no es el más grande, nos limitamos a sumarlo al resto
 			mscalado=mscalado+(modxi/mayor)^2;
 	
 		end
-%una vez completado el bucle que calcula la suma de cuadrados,
-%obtenemos la raíz cuadrada, y multiplicamos por el mayor.
+% una vez completado el bucle que calcula la suma de cuadrados,
+% obtenemos la raíz cuadrada, y multiplicamos por el mayor.
 m=mayor*sqrt(mscalado)
-\end{verbatim}
+\end{lstlisting}
 
 Si aplicamos este programa a obtener la norma del vector,
 \begin{equation*}

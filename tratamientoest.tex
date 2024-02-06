@@ -27,44 +27,44 @@ semilla=&87289689 \rightarrow
 
 El siguiente código de Matlab, permite obtener un vector de números pseudoaleatorios mediante el método \emph{middle square}
 
-\begin{verbatim}
+\begin{lstlisting}
 function secuencia=middlesquare(semilla, longitud)
-%Este programa obtiene una secuencia de números psduoaleatorios empleado el
-%método 'middle square'.
-%uso: secuencia=middlesquare(semilla, longitud)
-%Variables entrada: semilla, numero inicial que será empleado como semilla.
-%longitud, cantidad de números aleatorios que debe generar la secuencia.
-%variable de salida: secuencia vector de numeros aleatorios resultante
+% Este programa obtiene una secuencia de números psduoaleatorios empleado el
+% método 'middle square'.
+% uso: secuencia=middlesquare(semilla, longitud)
+% Variables entrada: semilla, numero inicial que será empleado como semilla.
+% longitud, cantidad de números aleatorios que debe generar la secuencia.
+% variable de salida: secuencia vector de numeros aleatorios resultante
 
-%creamos un vector de ceros para guardar los resultados
-% convertimos el número a entero de 64 bits, asi todas la operaciones son
+% creamos un vector de ceros para guardar los resultados
+%  convertimos el número a entero de 64 bits, asi todas la operaciones son
 % enteras...
-%ojo si usamos una semilla de mas de nueve digitos, el cuadrado puede
-%desbordar el entero más grande representable.
+% ojo si usamos una semilla de mas de nueve digitos, el cuadrado puede
+% desbordar el entero más grande representable.
 
 semilla=uint64(semilla)
-%calculamos la longitud de la semilla
+% calculamos la longitud de la semilla
 c=semilla;
 n=0;
 while c>0
     c=idivide(c,10);
-    %la linea de codigo anterior, puende no funcionar en algunas versiones
-    %antiguas de matlab. Alternativamente, podría implementarse como,
-    %c=(c-rem(c,10))/10;
+    % la linea de codigo anterior, puende no funcionar en algunas versiones
+    % antiguas de matlab. Alternativamente, podría implementarse como,
+    % c=(c-rem(c,10))/10;
     n=n+1;
 end
 
-%creamos un bucle para ir generando los numeros pseudoaleatorio a partir de
-%la semilla
-%elevamos al cuadrado la semilla
+% creamos un bucle para ir generando los numeros pseudoaleatorio a partir de
+% la semilla
+% elevamos al cuadrado la semilla
     
 for i=1:longitud     
     l=semilla.^2
-    %primero extraemos las n/2 cifras menores
+    % primero extraemos las n/2 cifras menores
     semilla=idivide(l,10^fix(n/2));
-    %la linea de codigo anterior, puende no funcionar en algunas versiones
-    %antiguas de matlab. Alternativamente, podría implementarse como,
-    %semilla=(l-rem(l,10^fix(n/2)))/10^fix(n/2);
+    % la linea de codigo anterior, puende no funcionar en algunas versiones
+    % antiguas de matlab. Alternativamente, podría implementarse como,
+    % semilla=(l-rem(l,10^fix(n/2)))/10^fix(n/2);
    
     % y a continuacion extraemos las n cifras siguiente, que seran el
     % siguiente numero aleatorio
@@ -72,7 +72,7 @@ for i=1:longitud
     % guardamos el numero generado en el vector de salida
     secuencia(i,1)=semilla;
 end
-\end{verbatim} 
+\end{lstlisting} 
 
 Las secuencias generadas mediante el método \emph{middle square} no son aleatorias, cada número viene completamente determinado por el número anterior. Sin embargo, dichas secuencias parecen aleatorias. La figura \ref{fig:middlesquare} muestra una secuencia de $100$ valores pseudoaleatorios generados mediante \emph{middle square}. Aparentemente, cada valor parece no guardar ninguna relación con los anteriores.
 
@@ -127,34 +127,34 @@ Es decir, cada número se obtiene como el resto de la división entera del multi
 
 El siguiente código permite calcular una secuencia de números aleatorios por el método \emph{linear congruential}
 
-\begin{verbatim}
+\begin{lstlisting}
 function secuencia=linealcr(i0,a,c,m,l)
-%Esta función emplea el metodo linear congruential para obtener una
-%secuencia de numeros aleatorios de longitud arbitraria
-%Uso: secuencia=linealcr(i0,a,c,m,l)
-%Variables de entrada: i0=semilla, a=multiplicador, c=incremento, m=modulo.
-%l= longitud de la secuencia obtenida.
-%varibles de salida: secuencia vector columna con los numeros aleatorios
-%generados.
-%nota: para generarlos con el metodo multiplicative congruential tomar c=0
+% Esta función emplea el metodo linear congruential para obtener una
+% secuencia de numeros aleatorios de longitud arbitraria
+% Uso: secuencia=linealcr(i0,a,c,m,l)
+% Variables de entrada: i0=semilla, a=multiplicador, c=incremento, m=modulo.
+% l= longitud de la secuencia obtenida.
+% varibles de salida: secuencia vector columna con los numeros aleatorios
+% generados.
+% nota: para generarlos con el metodo multiplicative congruential tomar c=0
 if (m<=a)||(m<=c)|| (m<=i0)
     error('el modulo debe ser mayor que los otros tres parametros')
 end
 
-%inicilizamos el vector secuencia
+% inicilizamos el vector secuencia
 secuencia=zeros(l,1);
-%guardamos la semilla como el primer numero de la secuencia
+% guardamos la semilla como el primer numero de la secuencia
 secuencia(1)=i0;
-%Creamos un bucle para ir calculando los sucesivos numeros de la secuencia
+% Creamos un bucle para ir calculando los sucesivos numeros de la secuencia
 
 for j=2:l
     secuencia(j)=rem(a*secuencia(j-1)+c,m);
 end
-%para obtener numeros en el intervalo (0,1), dividimos el resultado por el
-%modulo
+% para obtener numeros en el intervalo (0,1), dividimos el resultado por el
+% modulo
 
 secuencia=secuencia/m
-\end{verbatim}
+\end{lstlisting}
 
 Una variante del algoritmo descrito, frecuentemente empleada, se obtiene haciendo el incremento igual a cero, $c=0$. Dicha variante se conoce con el nombre de \emph{multiplicative congruential}, su expresión general sería,
 \begin{equation*}
@@ -204,9 +204,9 @@ x =
      6.557406991565868e-01     9.339932477575505e-01
 \end{verbatim}
 
-Cada vez que se arranca Matlab, el generador de números aleatorios es reiniciado. Es decir, cada vez que arrancamos Matlab, volvemos a obtener la misma secuencia de números aleatorios. Podemos hacer que el generador se reinicie siempre que queramos, empleado para ello una semilla constituida por un número entero que debe estar comprendido entre $0$ y $2^{32}-1$. Para cada semilla obtendremos una secuencia de números distinta. Para reiniciar el generador, empleamos de nuevo la función \texttt{rand}, pero ahora las variables de entrada serán el algoritmo que queremos emplear para la generación de números aleatorios ---en nuestro caso usaremos siempre \texttt{'twister'}--- y el valor de la semilla. Por ejemplo,
+Cada vez que se arranca Matlab, el generador de números aleatorios es reiniciado. Es decir, cada vez que arrancamos Matlab, volvemos a obtener la misma secuencia de números aleatorios. Podemos hacer que el generador se reinicie siempre que queramos, empleado para ello una semilla constituida por un número entero que debe estar comprendido entre $0$ y $2^{32}-1$. Para cada semilla obtendremos una secuencia de números distinta. Para reiniciar el generador, empleamos  la función \texttt{rng} y el valor de la semilla. Por ejemplo,
 \begin{verbatim}
->> rand('twister',10)
+>> rng(10)
 \end{verbatim}
 
 Si generamos ahora una secuencia de 3 números aleatorios,
@@ -217,49 +217,78 @@ s1 =
 \end{verbatim}
 Si reiniciamos de nuevo el algoritmo, con la misma semilla de antes y volvemos a generar una secuencia de 3 números aleatorios,
 \begin{verbatim}
->> rand('twister',10)
+>> rnd(10)
 >> s1=rand(1,3)
 s1 =
     0.7713    0.0208    0.6336
 \end{verbatim}
 Volvemos a obtener los mismo números aleatorios. Esto sucederá siempre que reiniciemos el generador empleado la misma semilla.
 
-Por ultimo, podemos emplear \texttt{rand} para conoces el estado del generador de números aleatorios en cualquier momento, durante una sesión con Matlab. Para ello, usamos \texttt{rand} empleando como variable de entrada únicamente el nombre del algoritmo empleado,
+Por ultimo, podemos emplear \texttt{rng} para conoces el estado del generador de números aleatorios en cualquier momento, durante una sesión con Matlab. Para ello, usamos \texttt{rng} Sin ninguna variable de entrada,
 \begin{verbatim}
-estado=rand('twister')
+estado=rnd
 \end{verbatim}
-El resultado es un vector de columna de $625$ valores, que corresponde con las \emph{semillas} enteras que va ha emplear el algoritmo para generar el siguiente número aleatorio. 
-
-Supongamos que después de obtener el estado del generador, seguimos generando números aleatorios. Podemos hacer que el generador vuelva al estado que tenía empleando el vector obtenido como si fuera una semilla. A partir de ahí el generador volverá a repetir de nuevo la misma secuencia de números aleatorios. La siguiente secuencia de instrucciones de Matlab ilustra este procedimiento,
+El resultado es:
 \begin{verbatim}
-%ejemplo de vuelta del generador de numeros aleatorios a un estado
-%anterior
+estado = 
+  struct with fields:
 
-%generamos una secuencia de 5 números,
+     Type: 'twister'
+     Seed: 10
+    State: [625x1 uint32]
+\end{verbatim}
+Nos devuelve el generador utilizado para obtener los números aleatorios, la semilla, en este caso \texttt{twister}, La semilla empleada para inicializar el generador y un vector de 625 enteros que son las semillas que el generador empleará para generar el siguiente número aleatorio.
+
+Si queremos cambiar el generador de números aleatorios empleado por matlab, empleamos de nuevo la función rnd, indicando un valor para la semilla y el nombre del generador entre comillas\footnote{Para obtener una relación completa de generadores, consultar la ayuda de matlab},
+\begin{verbatim}
+>> rng(0,'philox')
+>> estado = rng
+estado = 
+  struct with fields:
+
+     Type: 'philox'
+     Seed: 0
+    State: [7x1 uint32]
+\end{verbatim}
+
+Supongamos que después de obtener el estado del generador, seguimos generando números aleatorios. Podemos hacer que el generador vuelva al estado que tenía empleando la estructura obtenida para leinicializar el generador. A partir de ahí el generador volverá a repetir de nuevo la misma secuencia de números aleatorios. La siguiente secuencia de instrucciones de Matlab ilustra este procedimiento,
+\begin{lstlisting}
+% ejemplo de vuelta del generador de numeros aleatorios a un estado
+% anterior
+
+% generamos una secuencia de 5 números,
 s1=rand(1,5)
-%guardamos el estado actual del generador
-estado=rand('twister');
+% guardamos el estado actual del generador
+estado=rng;
 
-%generamos una nueva secuencia de 5 números
+% generamos una nueva secuencia de 5 números
 s2=rand(1,5)
 
-%volvemos a llevar el generador al estado anterior,
-rand('twister',estado)
+% volvemos a llevar el generador al estado anterior,
+rng(estado)
 
-%volvemos a generar una secuencia de 5 números que será igual que s2
+% volvemos a generar una secuencia de 5 números que será igual que s2
 s2bis=rand(1,5)
-\end{verbatim}
+\end{lstlisting}
 
 Si ejecutamos la secuencia obtendremos,
 
 \begin{verbatim}
->> s1 =
-    0.6178    0.5131    0.6504    0.6010    0.8052
-      s2 =
-    0.5216    0.9086    0.3192    0.0905    0.3007
-      s2bis =
-    0.5216    0.9086    0.3192    0.0905    0.3007
+s1 =
+    0.3655    0.6975    0.1789    0.4549    0.4396
+
+s2 =
+     0.5174    0.7001    0.4564    0.7388    0.4850
+      
+s2bis =
+    0.3655    0.6975    0.1789    0.4549    0.4396
 \end{verbatim}
+
+Por último podemos reiniciar el generador empleando,
+\begin{verbatim}
+>> rng('shuffle')
+\end{verbatim}
+En este caso, matlab suministra una semilla obtenida a partir de la hora actual.
 
 \section{Probabilidad y distribuciones de probabilidad}
 
@@ -502,7 +531,7 @@ Supongamos que tenemos un fenómeno aleatorio continuo que viene caracterizado p
 Supongamos que realizamos un experimento consistente en obtener $n$ valores de x al azar. Los valores así obtenidos, deberán seguir la distribución de probabilidad $f(x)$. Para caracterizar nuestro experimento, calcularemos la media de los $n$ valores obtenidos,
 
 \begin{equation*}
-\bar{x}_n=\frac{1}{n}\sum_{i=1}^n x_is
+\bar{x}_n=\frac{1}{n}\sum_{i=1}^n x_i
 \end{equation*}
 
 Si repetimos el experimento muchas veces, obtendremos al final una colección de medias; tantas, como veces hemos repetido el experimento,
@@ -525,24 +554,24 @@ Además podemos desplazar el centro del intervalo sumando o restando al resultad
 genera un vector de 100 números aleatorios en el intervalo $(-2,3)$.
 
 Para comprobar el teorema del límite central, podemos construir un bucle que genere un vector de $n$ números aleatorios en un determinado intervalo, calcule su media y guarde el resultado en un vector de medias. El siguiente código de Matlab, realiza dicho cálculo primero generando un vector de $10$ números aleatorios ($n = 10$) y después generando un vector de $100$, ($n=100$).  El programa genera en cada caso un millón de vectores distintos.
-\begin{verbatim}
-%Este código genera un millón de vectores, formados por números 
-%aleatorios distribuidos uniformemente en el intervalo (-1,1).
-%Calcula el valor medio de los valores de cada vector y guarda
-%el resultado en un nuevo vector.
+\begin{lstlisting}
+% Este código genera un millón de vectores, formados por números 
+% aleatorios distribuidos uniformemente en el intervalo (-1,1).
+% Calcula el valor medio de los valores de cada vector y guarda
+% el resultado en un nuevo vector.
 
-media10 = zeros(1,1000000); %vector para guardar las medias
+media10 = zeros(1,1000000); % vector para guardar las medias
 for i=1:1000000
  	media10(i) = mean(2*rand(10,1)-1);
 end
 
-%se repite el mismo calculo pero ahora con vectores de 100
-%elementos
+% se repite el mismo calculo pero ahora con vectores de 100
+% elementos
 media100 = zeros(1,1000000)
 for i=1:1000000
 	medias100(i) = mean (2*rand(100,1)-1);
 end	
-\end{verbatim}s
+\end{lstlisting}s
 
 De acuerdo con el teorema del límite central, los dos vectores de medias obtenidos, \texttt{media10} y \texttt{media100}, deben seguir distribuciones normales tales que,
 \begin{enumerate}
@@ -876,7 +905,7 @@ Para aclarar los métodos descritos en los apartados anteriores, vamos obtener l
 \hline
 Valor nominal de la resistencia& $R_0=100 \pm 5 \Omega$ (intervalo confianza 98\%) \\ 
 \hline
-Temperatura de referencia& $t_0=50\pm 0.1 ^oC$ (divisón menor del sensor $0.2^oC$) \\
+Temperatura de referencia& $t_0=50\pm 0.1 ^oC$ (división menor del sensor $0.2^oC$) \\
 \hline
 Valor del parámetro b& $b = 0.4\Omega / ^oC$ (incertidumbre despreciable)\\
 \hline

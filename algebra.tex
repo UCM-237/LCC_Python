@@ -703,19 +703,19 @@ desarrollándolo por los elementos de la primera columna, como,
 
 Podemos programar en Matlab una función recurrente que calcule el determinante de una matriz de rango $n\times n$. (El método no es especialmente eficiente pero ilustra el uso de funciones recursivas.
 
-\begin{verbatim}
+\begin{lstlisting}
 function d=determinante(M)
-%este programa, calcula el determinante de una matriz empleando la formula
-%de Laplace. La función es recursiva, (se llama a si misma sucesivamente
-%para calcular los cofactores necesarios). Desarrolla siempre por los
-%elementos de la primera columna. (Es un prodigio de ineficiencia numerica,
-%pero permite manejar bucles y funciones recursivas, asi que supongo que
-%puede ser útil para los que empiezan a programar).
-%un posible ejercicio para ver lo malo que es el método, consiste ir
-%aumentando la dimension de la matriz y comparar lo que lo tarde en
-%calcular el determinante con lo que tarda la función de Matlab det...
+% este programa, calcula el determinante de una matriz empleando la formula
+% de Laplace. La función es recursiva, (se llama a si misma sucesivamente
+% para calcular los cofactores necesarios). Desarrolla siempre por los
+% elementos de la primera columna. (Es un prodigio de ineficiencia numerica,
+% pero permite manejar bucles y funciones recursivas, asi que supongo que
+% puede ser útil para los que empiezan a programar).
+% un posible ejercicio para ver lo malo que es el método, consiste ir
+% aumentando la dimension de la matriz y comparar lo que lo tarde en
+% calcular el determinante con lo que tarda la función de Matlab det...
 
-%primero comprobamos que la matriz suministrada es cuadrada:
+% primero comprobamos que la matriz suministrada es cuadrada:
 d=0;
 [a,b]=size(M);
 if a~=b
@@ -726,16 +726,16 @@ else
         if a==1
             d=M;
         else
-            %Eliminamos la fila y columna que toque
+            % Eliminamos la fila y columna que toque
             N=M([1:i-1 i+1:a],2:b);
-            %Añadimos el calculo correspondiente al cofactor
+            % Añadimos el calculo correspondiente al cofactor
             d=(-1)^(i+1)*M(i,1)*determinante(N)+d;
-            %pause
+            % pause
         end
     end
 end
 
-\end{verbatim}
+\end{lstlisting}
 
 En Matlab, el determinante de una matriz se calcula directamente empleando la función \texttt{det}. Así, para calcular el determinante de la matriz $A$ del ejemplo anterior,
 \begin{verbatim}
@@ -814,67 +814,67 @@ A^{-1}=\frac{1}{\vert A \vert}[adj(A)]^T
 
 Donde $adj(A)$ es la matriz adjunta de $A$, que se obtiene sustituyendo cada elemento $a_{ij}$ de $A$, por su cofactor $C_{ij}$. A continuación incluimos el código en Matlab de una función \texttt{inversa} que calcula la inversa de una matriz. La función \texttt{inversa} llama a su vez a la función \texttt{determinante} descrita más arriba. Lo ideal es crear un fichero \texttt{inversa.m} que incluya las dos funciones una detrás de la otra tal y como aparecen escritas a continuación. De este modo, si llamamos desde el \emph{workspace} de Matlab a la función \texttt{inversa}, esta encuentra siempre el código de \texttt{deteminante} ya que está contenido en el mimo fichero.
 
-\begin{verbatim}
+\begin{lstlisting}
 function B=inversa(A)
-%este programa calcula la inversa de una matriz a partir de definición
-%típica: A^(-1)=[adj(A)]'/det(A)
-%Se ha includo al final del programa una funcion (determinante) para 
-%calcular determinantes
-%Todo el programa es MUY INEFICIENTE. El único interes de esto es enseñar que
-%las estructuras basicas de programacion funcionan, y como se manejan las
-%llamadas a funciones en Matlab etc.
+% este programa calcula la inversa de una matriz a partir de definición
+% típica: A^(-1)=[adj(A)]'/det(A)
+% Se ha includo al final del programa una funcion (determinante) para 
+% calcular determinantes
+% Todo el programa es MUY INEFICIENTE. El único interes de esto es enseñar que
+% las estructuras basicas de programacion funcionan, y como se manejan las
+% llamadas a funciones en Matlab etc.
 
 
-%Lo primero que hacemos es comprobar si la matriz es cuadrada
-%primero comprobamos que la matriz suministrada es cuadrada:
+% Lo primero que hacemos es comprobar si la matriz es cuadrada
+% primero comprobamos que la matriz suministrada es cuadrada:
 [a,b]=size(A);
 if a~=b
     disp('la matriz no es cuadrada, Campeón')
     B=[];
 else
-    %calculamos el determinante de A, si es cero hemos terminado
+    % calculamos el determinante de A, si es cero hemos terminado
     dA=determinante(A)
     if dA==0
-        %deberíamos condicionar en lugar de comparar con cero, los errores
-        %de redondeo pueden matarnos.... Si el determinante es proximo a
-        %cero
+        % deberíamos condicionar en lugar de comparar con cero, los errores
+        % de redondeo pueden matarnos.... Si el determinante es proximo a
+        % cero
          disp('la matriz es singular, la pobre')
       B=[]  
     else
     
-    %Calculamos el cofactor de cada término de A mediante un doble bucle.
+    % Calculamos el cofactor de cada término de A mediante un doble bucle.
     for i=1:a
         for j=1:b
-            %Construimos el menor correspondiente al elemento (i,j)
+            % Construimos el menor correspondiente al elemento (i,j)
             m=A([1:i-1 i+1:a],[1:j-1 j+1:b])
-            %calculamos el cofactor llamando a la función determinante
-            %lo ponemos ya en la posición que corresponderia a la matriz 
-            %transpuesta de la adjunta.
+            % calculamos el cofactor llamando a la función determinante
+            % lo ponemos ya en la posición que corresponderia a la matriz 
+            % transpuesta de la adjunta.
             B(j,i)=(-1)^(i+j)*determinante(m)
         end
     end
-    %Terminamos la operacion dividiendo por el determinante de A
+    % Terminamos la operacion dividiendo por el determinante de A
     B=B/dA
     end
 end
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Aquí incluimos la funcion determinante, así la funcion inversa, no tiene
-%que ir a buscarla a ningun sitio ya que esta incluida en su mismo %fichero
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Aquí incluimos la funcion determinante, así la funcion inversa, no tiene
+% que ir a buscarla a ningun sitio ya que esta incluida en su mismo % fichero
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function d=determinante(M)
-%este programa, calcula el determinante de una matriz empleando la formula
-%de Laplace. La función es recursiva, (se llama a si misma sucesivamente
-%para calcular los cofactores necesarios). Desarrolla siempre por los
-%elementos de la primera columna. (Es un prodigio de ineficiencia numerica,
-%pero permite manejar bucles y funciones recursivas, asi que supongo que
-%puede ser útil para los que empiezan a programar).
-%un posible ejercicio para ver lo malo que es el método, consiste ir
-%aumentando la dimension de la matriz y comparar lo que lo tarde en
-%calcular el determinante con lo que tarda la función de Matlab det...
+% este programa, calcula el determinante de una matriz empleando la formula
+% de Laplace. La función es recursiva, (se llama a si misma sucesivamente
+% para calcular los cofactores necesarios). Desarrolla siempre por los
+% elementos de la primera columna. (Es un prodigio de ineficiencia numerica,
+% pero permite manejar bucles y funciones recursivas, asi que supongo que
+% puede ser útil para los que empiezan a programar).
+% un posible ejercicio para ver lo malo que es el método, consiste ir
+% aumentando la dimension de la matriz y comparar lo que lo tarde en
+% calcular el determinante con lo que tarda la función de Matlab det...
 
-%primero comprobamos que la matriz suministrada es cuadrada:
+% primero comprobamos que la matriz suministrada es cuadrada:
 d=0;
 [a,b]=size(M);
 if a~=b
@@ -885,16 +885,16 @@ else
         if a==1
             d=M;
         else
-            %Elimminamos la fila y columna que toque
+            % Elimminamos la fila y columna que toque
             N=M([1:i-1 i+1:a],2:b);
-            %Añadimos el calculo correspondiente al cofactor
+            % Añadimos el calculo correspondiente al cofactor
             d=(-1)^(i+1)*M(i,1)*determinante(N)+d;
-            %pause
+            % pause
         end
     end
 end
 end
-\end{verbatim} 
+\end{lstlisting} 
 
 Como siempre, Matlab incluye una función propia \texttt{inv} para calcular la inversa de una matriz,
 \begin{verbatim}
@@ -941,7 +941,7 @@ A^{-1}=A^T
 \end{equation*}
 \end{enumerate}
 
-\section{Operadores vectoriales}
+\section{Operadores vectoriales}\label{opvect}
 En esta sección vamos a estudiar el efecto de las operaciones matriciales, descritas en la sección anterior, sobre los vectores. Empecemos por considerar el producto por un escalar $\alpha \cdot a$. El efecto fundamental es modificar el módulo del vector,
 \begin{equation*}
 \alpha \cdot \begin{pmatrix}
@@ -1275,68 +1275,68 @@ a^{\mathcal{B}_2}&=B_2^{-1} \cdot B_1\cdot a^{\mathcal{B}_1}
 
 El siguiente código permite cambiar de base un vector y representa gráficamente tanto el vector como las bases antigua y nueva.
 
-\begin{verbatim}
+\begin{lstlisting}
 function aB2=cambia_vb(aB1,B1,B2)
-%este programa cabia de base un vector de dimensión 3 y lo representa en
-%relación con las bases antigua y nueva.
-%variables de entrada:
-%aB1, componentes del vector en la base 1
-%B1 base representada como una matriz, (cada columna contiene un vector de
-%la base) En la que está representado el vector aB1
-%B2, base representada como una matriz, (cada columna contiene un vector de
-%la base) en la que se quiere representar el vector aB1
-%Si solo se incluye un vector y una base, el programa asume que la segunda
-%base es la canonica B2=[1 0 0;0 1 0; 0 0 1]
-%variables de salida:
-%aB2, Componentes del vector aB1 en la nueva base B2.
-%la función hace uso de una función auxiliar (pintavec) incluida al final
-%del fichero para dibujar los vectores.
+% este programa cabia de base un vector de dimensión 3 y lo representa en
+% relación con las bases antigua y nueva.
+% variables de entrada:
+% aB1, componentes del vector en la base 1
+% B1 base representada como una matriz, (cada columna contiene un vector de
+% la base) En la que está representado el vector aB1
+% B2, base representada como una matriz, (cada columna contiene un vector de
+% la base) en la que se quiere representar el vector aB1
+% Si solo se incluye un vector y una base, el programa asume que la segunda
+% base es la canonica B2=[1 0 0;0 1 0; 0 0 1]
+% variables de salida:
+% aB2, Componentes del vector aB1 en la nueva base B2.
+% la función hace uso de una función auxiliar (pintavec) incluida al final
+% del fichero para dibujar los vectores.
 
 if nargin==2
-    %asumimos que queremos cambiar el vector de B1 a la base canonica
-    %¿Es B1 una base sensanta?
+    % asumimos que queremos cambiar el vector de B1 a la base canonica
+    % ¿Es B1 una base sensanta?
     if det(B1)<=eps
         error('los vectores de la base no son l. independientes')
     end
     aB2=B1*aB1;
     B2=eye(3); %creamos la base para luego pintarla...
 elseif nargin==3
-    %cambio de base B1 a B2
+    % cambio de base B1 a B2
     if (det(B1)<=eps)||(det(B2)<=eps)
         error('los vectores de al menos una de las bases no son l. independientes')
     end
-    %invertimos la base nueva y multiplicamos por la antigua y por el
-    %vector para obtener las componentes del vector en la base nueva.
+    % invertimos la base nueva y multiplicamos por la antigua y por el
+    % vector para obtener las componentes del vector en la base nueva.
     aB2=inv(B2)*B1*aB1;
 else
     error('el numero de variables de entrada es menor de dos o mayor de tres')
 end
 
-%Dibujo de los vectores con la función pintavec....
+% Dibujo de los vectores con la función pintavec....
 
-pintavec(B1,'r') %vectores de la base original
+pintavec(B1,'r') % vectores de la base original
 xlabel('x')
 ylabel('y')
 zlabel('z')
 grid on
-pintavec(B2,'b') %vectores de la base nueva
+pintavec(B2,'b') % vectores de la base nueva
 for i=1:3
-    pintavec(aB1(i)*B1(:,i),'k') %componentes de aB1
-    pintavec(aB2(i)*B2(:,i),'k') %componentes de aB2
+    pintavec(aB1(i)*B1(:,i),'k') % componentes de aB1
+    pintavec(aB2(i)*B2(:,i),'k') % componentes de aB2
 end
-aBc=B1*aB1; %representacion del vector en la base canónica
-pintavec(aBc,'g') %vector representado
+aBc=B1*aB1; % representacion del vector en la base canónica
+pintavec(aBc,'g') % vector representado
 
 
 
 function pintavec(a,par)
-%función auxiliar para pintar vectores... con origen en el origen de
-%coordenadas (0,0,0).
-%la variable a puede ser un vector o una matriz. y par, es una cadena que contiene los
-%típicos parámetros(color, tipo de línea`etc'). El programa considera que
-%los vectores están siempre definidos como vectores columnas...
+% función auxiliar para pintar vectores... con origen en el origen de
+% coordenadas (0,0,0).
+% la variable a puede ser un vector o una matriz. y par, es una cadena que contiene los
+% típicos parámetros(color, tipo de línea`etc'). El programa considera que
+% los vectores están siempre definidos como vectores columnas...
 d=size(a,2); %miramos cuantas columnas tiene a, cada columna representará un
-%vector distinto
+% vector distinto
 if nargin==2
     for i=1:d
         quiver3(0,0,0,a(1,i),a(2,i),a(3,i),0,par)
@@ -1348,7 +1348,7 @@ else
     end
 end
 
-\end{verbatim}
+\end{lstlisting}
 
 \paragraph{Operadores lineales.} A partir de los visto en las secciones anteriores, sabemos que el producto de una matriz de $A$ de orden $n\times n$  multiplicada por un vector $b$ de dimension $n$ da como resultado un nuevo vector $c=A\cdot b$  de dimensión $n$. Podemos considerar cada matriz $n\times n$ como un \emph{operador lineal}, que transforma unos vectores en otros.  Decimos que se trata de un operador lineal porque las componentes del vector resultante, están relacionadas linealmente con las del vector original, por ejemplo para $n=3$,
 \begin{equation*}
@@ -1476,7 +1476,7 @@ La figura \ref{fig:ltrans} muestra los vectores resultantes de aplicar las trans
 \label{fig:ltrans}
 \end{figure}
 
-\paragraph{Norma de una matriz.} La norma de una matriz se puede definir a partir del efecto que produce al actuar, como un operador lineal, sobre un vector. En este caso, se les llama normas \emph{inducidas}. Para una matriz $A$ de orden $m\times n$, $y_{(m)}=A_{(m\times n)}x_{(n)}$, La norma inducida de $A$ se define en función de las normas de los vectores$x$ de su dominio y de las normas de los vectores $y$ de su rango como,
+\paragraph{Norma de una matriz.} La norma de una matriz se puede definir a partir del efecto que produce al actuar, como un operador lineal, sobre un vector. En este caso, se les llama normas \emph{inducidas}. Para una matriz $A$ de orden $m\times n$, $y_{(m)}=A_{(m\times n)}x_{(n)}$, La norma inducida de $A$ se define en función de las normas de los vectores $x$ de su dominio y de las normas de los vectores $y$ de su rango como,
 \begin{equation*}
 \Vert A \Vert =\max_{x \neq 0} \frac{\Vert y \Vert}{\Vert x \Vert}=\max_{x \neq 0} \frac{\Vert Ax \Vert}{\Vert x \Vert}
 \end{equation*}
@@ -1489,7 +1489,7 @@ Se puede interpretar como el factor máximo con que el que la matriz $A$ puede \
 Junto a la norma inducida que acabamos de ver, se definen las siguientes normas,
 
 \begin{enumerate}
-\item Norma 1: Se suman los elementos de cada columna de la matriz, y se toma coma norma el valor máximo de dichas sumas,
+\item Norma 1: Se suman los elementos de cada columna de la matriz, y se toma como norma el valor máximo de dichas sumas,
 \begin{equation*}
 \Vert A_{m,n} \Vert _{1} = \max_j \sum_{i=1}^m a_{ij}
 \end{equation*}
@@ -1500,7 +1500,7 @@ Junto a la norma inducida que acabamos de ver, se definen las siguientes normas,
 
 \item Norma 2: Se define como el mayor de los valores singulares de una matriz. (Ver sección \ref{sec:SVD}).
 \begin{equation*}
-\Vert A_{m,n} \Vert _2 = \sigma_{11}
+\Vert A_{m,n} \Vert _2 = \sigma_{1}
 \end{equation*}
 \item Norma de Frobenius. Se define como la raíz cuadrada de la suma de los cuadrados de todos los elementos de la matriz,
 \begin{equation*}
@@ -1738,7 +1738,7 @@ En el ejemplo anterior,
 \vert A \vert = 6 \equiv \vert L \vert\cdot\vert U\vert =1 \cdot 1 \cdot 1 \cdot 3 \cdot (-\frac{8}{3})\cdot (-\frac{3}{4})=6    
 \end{equation*}
 
-Uno de los métodos más conocidos para calcular la factorización LU de una matriz, se basa en el método conocido como eliminación gaussiana. La idea es convertir en ceros los elementos situados por debajo de la diagonal de la matriz. Para ello, se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones  formadas con la fila que se sustituye y la fila anterior.
+Uno de los métodos más empleados para calcular la factorización LU de una matriz, se basa en el método conocido como eliminación gaussiana. La idea es convertir en ceros los elementos situados por debajo de la diagonal de la matriz. Para ello, se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones  formadas con la fila que se sustituye y la fila anterior.
  veamos en qué consiste con un ejemplo. Supongamos que tenemos la siguiente matriz de orden $4 \times 4$, 
 
 \begin{equation*}
@@ -1880,26 +1880,26 @@ Este procedimiento se aplica iterativamente empezando en por el elemento  $a_{21
 
 El siguiente código aplica el procedimiento descrito a una matriz de cualquier orden,\label{elig}
 
-\begin{verbatim}
+\begin{lstlisting}
 function U=eligauss(A)
-%Esta función obtiene una matriz triangular superior, a partir de una
-%matriz dada, aplicando el método de eliminación gaussiana.
-%No realiza piboteo de filas, así que si algún elemento de la diagonal de A
-%queda cero o proximo a cero al ir eliminado dará problemas...
+% Esta función obtiene una matriz triangular superior, a partir de una
+% matriz dada, aplicando el método de eliminación gaussiana.
+% No realiza piboteo de filas, así que si algún elemento de la diagonal de A
+% queda cero o proximo a cero al ir eliminado dará problemas...
 
-%Obtenemos el número de filas de la matriz..
+% Obtenemos el número de filas de la matriz..
 nf=size(A,1);
 U=A
 %
-for j=1:nf-1 %recorro todas la columnas menos la última
-    for i=j+1:nf %Recorro las filas desde debajo de la diagonal hasta la última
-        %en Matlab tengo la suerte de poder manejar cada fila de un solo
-        %golpe.
+for j=1:nf-1 % recorro todas la columnas menos la última
+    for i=j+1:nf % Recorro las filas desde debajo de la diagonal hasta la última
+        % en Matlab tengo la suerte de poder manejar cada fila de un solo
+        % golpe.
         U(i,:)=U(i,:)-U(j,:)*U(i,j)/U(j,j)
     end
 end
 
-\end{verbatim}
+\end{lstlisting}
 
 Hasta ahora, hemos descrito un procedimiento para transformar una matriz cualquiera en una matriz triangular superior. Nuestro objetivo era obtener la descomposición de un matriz en el producto de dos,  una triangular inferior y otra triangular superior.  En primer lugar, podemos asociar    el procedimiento descrito de eliminación gaussiana al producto de matrices. Volviendo al ejemplo anterior, si construimos la matriz $\lambda_1$
 \begin{equation*}
@@ -2437,32 +2437,32 @@ Es trivial comprobar que las matrices obtenidas cumplen \footnote{Los valores nu
 
 El siguiente código calcula la factorización LU de una matriz de orden arbitrario con pivoteo de filas. \label{lufact} 
 
-\begin{verbatim}
+\begin{lstlisting}
 function [L,U,P]=lufact(A)
-%este programa calcula una factorizacionLU, de la matrix A,  empleando 
-%el método de eliminacion gaussiana con pivoteo de filas...
-%L es una matriz triangular inferior, U es una matriz triangular superior y
-%P es una matriz de permutaciones tal que P*A=L*U
+% este programa calcula una factorizacionLU, de la matrix A,  empleando 
+% el método de eliminacion gaussiana con pivoteo de filas...
+% L es una matriz triangular inferior, U es una matriz triangular superior y
+% P es una matriz de permutaciones tal que P*A=L*U
 
-%vamos a aprovechar la potencia de Matlab para evitar algunos buques en
-%los calculos..
+% vamos a aprovechar la potencia de Matlab para evitar algunos buques en
+% los calculos..
 
-%primero definimos la matriz de permutaciones como la matriz identidad de
-%orden igual al número de filas de la matriz A, (si no hay pivoteo de filas 
-%la matriz de permutaciones es precisamente la identidad)
+% primero definimos la matriz de permutaciones como la matriz identidad de
+% orden igual al número de filas de la matriz A, (si no hay pivoteo de filas 
+% la matriz de permutaciones es precisamente la identidad)
 
-t=size(A,1); %obtenemos el numero de filas de la matriz A
-P=eye(t); %Construimos la matriz identidad 
-%Ademas, inicializamos las matrices L y U
+t=size(A,1); % obtenemos el numero de filas de la matriz A
+P=eye(t); % Construimos la matriz identidad 
+% Ademas, inicializamos las matrices L y U
 L=P;
 U=A;
 
 
-%iniciamos un bucle para ir recorriendo las columnas (solo tenemos que
-%recorrer tantas columnas como fila - 1 tenga la matriz A
+% iniciamos un bucle para ir recorriendo las columnas (solo tenemos que
+% recorrer tantas columnas como fila - 1 tenga la matriz A
 for j=1:t-1
     LA=zeros(t); %Matriz auxiliar (Lambda) de cada iteración.
-    %Buscamos el elemento mas grande de la columna j
+    % Buscamos el elemento mas grande de la columna j
     maxcol=abs(U(j,j)); 
     index=j;
     for i=j:t
@@ -2474,38 +2474,38 @@ for j=1:t-1
     
     % reordenamos las filas de P, L y U de modo que el valor mas grande de
     % j pase a acupar la diagonal (Esto es equivalente a multiplicar U por
-    %la matriz de permetuciones correspondiente, ir calculado
-    %iterativamente el valor de la matriz de permutaciones P final, y
-    %reordenar las filas ya calculadas de L (aportadas por los valores de
-    %las matrices lambdas anteriores... a lambda_j)
+    % la matriz de permetuciones correspondiente, ir calculado
+    % iterativamente el valor de la matriz de permutaciones P final, y
+    % reordenar las filas ya calculadas de L (aportadas por los valores de
+    % las matrices lambdas anteriores... a lambda_j)
     
     Aux=U(j,:);
     Aux2=P(j,:);
     Aux3=L(j,1:j-1);
     
-    %Reordenamos U (Toda la fila)
+    % Reordenamos U (Toda la fila)
     U(j,:)=U(index,:);
     U(index,:)=Aux;
     
-    %Reordenamos L (Solo los elementos de la columnas anteriores...situados
-    %por debajo de la diagonal).
+    % Reordenamos L (Solo los elementos de la columnas anteriores...situados
+    % por debajo de la diagonal).
     L(j,1:j-1)=L(index,1:j-1);
     L(index,1:j-1)=Aux3;
     
-    %modificamos la matriz de permutaciones
+    % modificamos la matriz de permutaciones
     P(j,:)=P(index,:);
     P(index,:)=Aux2;
     
-   %Calculamos una matriz auxiliar con los factores de los elementos
-   %a eliminar. 
-   LA(j+1:t,j)=U(j+1:t,j)/U(j,j); %estos elementos son directamente los que 
-   %se añaden a la matriz L
-   %Modificamos L y U
+   % Calculamos una matriz auxiliar con los factores de los elementos
+   % a eliminar. 
+   LA(j+1:t,j)=U(j+1:t,j)/U(j,j); % estos elementos son directamente los que 
+   % se añaden a la matriz L
+   % Modificamos L y U
    L(j+1:t,j)=U(j+1:t,j)/U(j,j);
-   U=(eye(t)-LA)*U; %la expresión eye(t)-LA nos permite cambiar de signo los
-   %elementos situados por debajo de la diagonal principal...
+   U=(eye(t)-LA)*U; % la expresión eye(t)-LA nos permite cambiar de signo los
+   % elementos situados por debajo de la diagonal principal...
 end
-\end{verbatim}
+\end{lstlisting}
 
 
 Desde el punto de vista de la implementación, el código anterior simplifica el cálculo de la factorización LU,
@@ -2563,26 +2563,26 @@ L_{ij}=\frac{a_{ij}-\sum_{k=1}^{j-1}L_{ik}\cdot L_{kj}}{L_{jj}}
 
 Los elementos de la matriz L, se pueden calcular de las expresiones anteriores iterativamente por columnas: para obtener $L_{11}$ basta emplear $a_{11}$, para obtener los restantes elementos de la primera columna, basta conocer $L_{11}$. Conocida la primera columna de L, se puede calcular $L_{22}$ y así sucesivamente hasta completar toda la matriz. El siguiente código calcula la factorización de Cholesky de una matriz, siempre que cumpla las condiciones requeridas,
 
-\begin{verbatim}
+\begin{lstlisting}
 function L=cholesky(A)
-%hacemos que devuelva la matriz triangular inferior.
-%Comprobamos que es cuadrada, simetrica, y definida positiva.
+% hacemos que devuelva la matriz triangular inferior.
+% Comprobamos que es cuadrada, simetrica, y definida positiva.
 [a,b]=size(A);
 if a-b~=0
     disp('La matriz no es cuadrada')
 else
-    %ha resultado cuadrada comprobamos si es simetrica
+    % ha resultado cuadrada comprobamos si es simetrica
     c=A-A';
     if any(c)
         disp('LA matriz no es simetrica')
     else
-        %ha resultado simetrica, comprobamos si es definida positiva
+        % ha resultado simetrica, comprobamos si es definida positiva
         auto=eig(A);
         if any(auto<=0)
             disp('la matriz no es definida positiva')
         else
-            %una vez que la matriz cumple las condiciones necesarias,
-            %factorizamos por cholesky
+            % una vez que la matriz cumple las condiciones necesarias,
+            % factorizamos por cholesky
 
             for k=1:a
                 L(k,k)=A(k,k);
@@ -2602,7 +2602,7 @@ else
     end
 end
 
-\end{verbatim} 
+\end{lstlisting} 
 
 Matlab tiene una función interna \texttt{chol}, que permite obtener la factorización de Cholesky, Por defecto devuelve una matriz triangular superior U, de modo que la factorización calculada cumple $A=U^T\cdot U$. (En realidad se trata tan solo de una forma alternativa de definir la factorización de Cholesky), Así por ejemplo,
 
@@ -2735,14 +2735,14 @@ Es fácil comprobar que si consideramos el producto de la matriz $A$, por cada u
 
 \begin{align*}
 A\cdot x_1 &=\lambda_1 \cdot x_1 \\
-A\cdot x_2 &=\lambda_1 \cdot x_2 \\
+A\cdot x_2 &=\lambda_2 \cdot x_2 \\
 \vdots \\
 A\cdot x_n &=\lambda_n \cdot x_n \\
 \end{align*}
 Lo que nos lleva a que cada columna de la matriz $X$ tiene que ser un autovector de $A$ puesto que cumple,
 
 \begin{equation*}
-A\cdot x_i =\lambda_1 \cdot x_i \\
+A\cdot x_i =\lambda_i \cdot x_i \\
 \end{equation*}
 
 \paragraph{Polinomio característico.} El polinomio característico de una matriz $A$ de dimensión $n\cdot n$, se define como,
@@ -2939,7 +2939,7 @@ G=\begin{pmatrix}
 \left\vert A \right\vert = \prod_{i=1}^n \lambda_i
 \end{equation*} 
 
-\item Cuando loa autovectores de una matriz $A$ son ortogonales entre sí, entonces la matriz $A$ es diagonalizable ortogonalmente,
+\item Cuando los autovectores de una matriz $A$ son ortogonales entre sí, entonces la matriz $A$ es diagonalizable ortogonalmente,
 \begin{equation*}
 A=Q\cdot D \cdot Q^{-1}; \ Q^{-1}=Q^T \Rightarrow A=Q\cdot A \cdot Q^T
 \end{equation*}
@@ -3004,26 +3004,24 @@ D =
          0         0    3.7016
 \end{verbatim}
 
-Por último, Matlab también incluye una función para calcular la factorización de Schur. Si lo a aplicamos a la misma matriz \texttt{A}, para la que acabamos de calcular los autovalores,
+Por último, Matlab también incluye una función para calcular la factorización de Schur. Si lo aplicamos a la misma matriz \texttt{A}, para la que acabamos de calcular los autovalores,
 
 \begin{verbatim}
 >> [Q,T]=schur(A)
-
 Q =
 
    -0.6967    0.6449   -0.3142
     0.4425    0.0415   -0.8958
     0.5647    0.7632    0.3142
+\end{verbatim}
 
-
+\begin{verbatim}
 T =
-
    -2.7016   -0.6285   -1.2897
          0    4.0000   -1.3934
          0         0    3.7016
 
 >> Q*Q'
-
 ans =
 
     1.0000    0.0000    0.0000
@@ -3261,40 +3259,40 @@ r_{ii}&= \lVert a_i-\sum_{j=1}^i (q_j^T\cdot a_i)\cdot q_i \rVert
 
 El siguiente código de Matlab, calcula la factorización QR de una matriz, empleando el método descrito,
 
-\begin{verbatim}
+\begin{lstlisting}
 function [Q,R]=QRF1(A)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Factorización QR obtenida directamente por ortogonalización de grand-schmidt
-%Ojo, el algoritmo es inestable... Con lo que la bondad de las soluciones
-%dependera de la matriz que se quiera factorizar.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%En primer lugar obtenemos las dimensiones de la matriz
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Factorización QR obtenida directamente por ortogonalización de grand-schmidt
+% Ojo, el algoritmo es inestable... Con lo que la bondad de las soluciones
+% dependera de la matriz que se quiera factorizar.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% En primer lugar obtenemos las dimensiones de la matriz
 [m,n]=size(A);
 
-%fatorizamos columna a columna
+% fatorizamos columna a columna
 for j=1:n
-    %Construimos un vector auxiliar v, nos servira para ir obteniendo las
-    %columnas de la matriz Q.
+    % Construimos un vector auxiliar v, nos servira para ir obteniendo las
+    % columnas de la matriz Q.
     for i=1:m %Solo llegamos hasta m factorización incompleta si m>n
         v(i)=A(i,j)
     end
     for i=1:j-1
-        %obtenemos los elementos de la matriz R, correspondientes a la
-        %columna j, solo podemos construir hasta una fila antes de la
-        %diagonal i=j-1. cada fila es el producto escalar de la columna i
-        %de la matriz Q for la columna j de la Matriz A.
+        % obtenemos los elementos de la matriz R, correspondientes a la
+        % columna j, solo podemos construir hasta una fila antes de la
+        % diagonal i=j-1. cada fila es el producto escalar de la columna i
+        % de la matriz Q for la columna j de la Matriz A.
         R(i,j)=0
         for k=1:m
         R(i,j)=R(i,j)+Q(k,i)*A(k,j)
         end
         
-        %obtenemos las componentes del vector auxiliar que nos permitira
-        %construir la columna j de la matriz Q
+        % obtenemos las componentes del vector auxiliar que nos permitira
+        % construir la columna j de la matriz Q
         for k=1:m
             v(k)=v(k)-R(i,j)*Q(k,i)
         end
     end
-    %Obtenemos el valor del elemento de la diagonal R(j,j) de la matriz R
+    % Obtenemos el valor del elemento de la diagonal R(j,j) de la matriz R
 
     R(j,j)=0
     for k=1:m
@@ -3302,13 +3300,13 @@ for j=1:n
     end
     R(j,j)=sqrt(R(j,j))
     
-    %Y por último, divimos los elementos del vector v por R(j,j), para
-    %obtener la columna j de la matriz Q
+    % Y por último, divimos los elementos del vector v por R(j,j), para
+    % obtener la columna j de la matriz Q
     for k=1:m
         Q(k,j)=v(k)/R(j,j)
     end
 end
-\end{verbatim}
+\end{lstlisting}
 En general, el algoritmo que acabamos de describir para obtener la ortogonalización de Grand-Schmidt, es numéricamente inestable. La estabilidad puede mejorarse, si vamos modificando progresivamente la matriz $A$, a medida que calculamos las columnas de $Q$. 
 
 Cada vez que obtenemos una nueva columna de $Q$, modificamos las columnas de $A$ de modo que sean ortogonales a la columna de $Q$ obtenida. Para ello, lo más sencillo es crear una matriz auxiliar $V$ que hacemos, inicialmente, igual a $A$, $V^{(0)}=A$
@@ -3372,55 +3370,55 @@ El resultado es el mismo que el que se obtiene por el primer método descrito. L
 
 El siguiente código de Matlab, calcula la factorización QR de una matriz de orden $n\times n$, empleando el método descrito,
 
-\begin{verbatim}
+\begin{lstlisting}
 function [Q,R]=QRF2(A)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Calculo de factorizacion QR de la matriz A, mediante la ortogonaliación de
-%grand.schmidt modificada. Este algoritmo si que es estable...
-%Obtenemos las dimensiones de A
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Calculo de factorizacion QR de la matriz A, mediante la ortogonaliación de
+% grand.schmidt modificada. Este algoritmo si que es estable...
+% Obtenemos las dimensiones de A
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 [m,n]=size(A);
 
-%creamos una matriz auxiliar v sobre la que vamos a realizar la
-%factorización. Se podría realizar directamente sobre A Machacando sus
-%columnas según la factorización progresa... Sería lo correcto para ahorrar
-%espacio de almacenamiento. Pero en fin, quizá así queda más claro aunque
-%sea menos eficiente.
+% creamos una matriz auxiliar v sobre la que vamos a realizar la
+% factorización. Se podría realizar directamente sobre A Machacando sus
+% columnas según la factorización progresa... Sería lo correcto para ahorrar
+% espacio de almacenamiento. Pero en fin, quizá así queda más claro aunque
+% sea menos eficiente.
 v=A;
-%Como siempre, vamos factorizando por columnas de la matriz A
+% Como siempre, vamos factorizando por columnas de la matriz A
 
 
 for i=1:m %la matriz Q tiene que ser mXm, aunque el numero de columnas de A sea n)
-    %calculamos cada R(i,i) como el modulo del vector auxiliar v(1:m,i)
+    % calculamos cada R(i,i) como el modulo del vector auxiliar v(1:m,i)
     R(i,i)=0;
     for k=1:m
         R(i,i)=R(i,i)+v(k,i)^2;
     end
     R(i,i)=sqrt(R(i,i));
-    %calculamos el la columna i de la matriz Q, normalizando la columna i
-    %de la matriz v
+    % calculamos el la columna i de la matriz Q, normalizando la columna i
+    % de la matriz v
     for k=1:m
         Q(k,i)=v(k,i)/R(i,i);
     end
-    %Modificamos todos los R(i,j) con ij>i, en cuanto tenemos la columna j
-    %de la matriz Q, nos basta calcular el producto escalar con las
-    %columnas de A (En nuestro caso de v porque están copiadas, de las
-    %filas siguientes
+    % Modificamos todos los R(i,j) con ij>i, en cuanto tenemos la columna j
+    % de la matriz Q, nos basta calcular el producto escalar con las
+    % columnas de A (En nuestro caso de v porque están copiadas, de las
+    % filas siguientes
     for j=i+1:n
         R(i,j)=0;
         for k=1:m
             R(i,j)=R(i,j)+Q(k,i)*v(k,j);
         end
-        %i por último modificamos todas las columnas de la matriz v desde
-        %i+1 hasta el final de la matriz. Aqui es donde cambia el algoritmo
-        %ya que estamos modificando la matriz A, y las sucesivas matrices V
-        %cada vez que obtenemos una nueva fila de valores de R
+        % i por último modificamos todas las columnas de la matriz v desde
+        % i+1 hasta el final de la matriz. Aqui es donde cambia el algoritmo
+        % ya que estamos modificando la matriz A, y las sucesivas matrices V
+        % cada vez que obtenemos una nueva fila de valores de R
         for k=1:m
             v(k,j)=v(k,j)-R(i,j)*Q(k,i);
         end
     end
 end
-\end{verbatim}
+\end{lstlisting}
 
 Para terminar, indicar que Matlab tiene su propia función, \texttt{[Q,R]=qr(A)}, para calcular la factorización QR de una matriz. Para calcularla, emplea el método de ortogonalización de Householder. Este método es aún más robusto que la ortogonalización de Grand-Schmidt modificada. Pero no lo veremos en este curso. Damos a continuación un ejemplo de uso de la función \texttt{qr},
 \begin{verbatim}
@@ -3476,7 +3474,7 @@ s=\begin{pmatrix}
 
 Los elementos de la diagonal de la matriz $S$, ($\sigma_1, \ \sigma_2, \  \cdots \ \sigma_i$), reciben el nombre de \emph{valores singulares} de la matriz $A$. De ahí el nombre que recibe esta factorización; SVD son las siglas en inglés de \emph{Singular Value Decomposition}.
 
-No vamos a describir ningún algoritmo para obtener la factorización SVD de una matriz. En Matlab existe la función \texttt{[U,S,V]=svd(A)} que permite obtener directamente la factorización dSDV de una matriz $A$ de dimensión arbitraria. A continuación se incluyen unos ejemplos de uso para matrices no cuadradas,
+No vamos a describir ningún algoritmo para obtener la factorización SVD de una matriz. En Matlab existe la función \texttt{[U,S,V]=svd(A)} que permite obtener directamente la factorización SDV de una matriz $A$ de dimensión arbitraria. A continuación se incluyen unos ejemplos de uso para matrices no cuadradas,
 
 \begin{verbatim}
 >> A=[1 3 4;2 3 2;2 4 5;3 2 3]
@@ -3513,7 +3511,7 @@ V =
    -0.7103    0.3767    0.5946
 \end{verbatim}
 
-Como la matriz $A$ tiene más filas que columnas, la matriz $S$ resultante termina con na fila de ceros.
+Como la matriz $A$ tiene más filas que columnas, la matriz $S$ resultante termina con una fila de ceros.
 
 \begin{verbatim}
 >> B=A'
@@ -3575,3 +3573,4 @@ k(A)=\lVert A \rVert_2 \cdot \lVert A^{-1} \rVert_2 = \sigma_1 \cdot \frac{1}{\s
 El número de condición de una matriz, es una propiedad importante que permite estimar cómo de estables serán los cálculos realizados empleando dicha matriz, en particular aquellos que involucran directa o indirectamente el cálculo de su inversa.
 
 \end{enumerate}
+

@@ -1,0 +1,70 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+\usepackage{subfigure}
+\usepackage{amsmath,amsthm}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.multipart}
+\textwidth= 15cm
+\evensidemargin=0cm
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{amstext}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage[hyperindex=true,breaklinks=true,colorlinks=true,linkcolor=blue]{hyperref}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\listtablename}{\'Indice de Tablas}
+\usepackage{paracol}
+\columnseprule=0.4pt
+\columnsep=30pt 
+\normalcolseprulecolor
+\usepackage{minted}
+\usepackage{multirow}
+\usepackage{imakeidx}
+
+%\usepackage{draftwatermark}
+%\SetWatermarkText{Borrador,juan.jimenez@fis.ucm.es}
+%\SetWatermarkScale{2}
+
+
+\graphicspath{{./figuras/}}
+\makeindex
+\begin{document}
+\title{
+\begin{flushleft}
+\includegraphics[width=2.5cm]{ucm2.pdf}
+Universidad Complutense de Madrid\\
+---------------------------------------------------------------------\
+\end{flushleft}
+Laboratorio de Computaci\'on Cient\'ifica}
+\author{ Juan Jim\'enez\\ H\'ector Garc\'ia de Marina\\ L\'ia Garc\'ia }
+\maketitle
+\vspace*{\fill}
+
+\includegraphics[scale=1]{by-sa.eps}\\
+El contenido de estos apuntes est\'e1 bajo licencia Creative Commons Atribution-ShareAlike 4.0\\
+\href{http://creativecommons.org/licenses/by-sa/4.0/}{http://creativecommons.org/licenses/by-sa/4.0/}\\
+\copyright Juan Jim\'enez
+
+\bigskip
+\tableofcontents
+\listoffigures
+\listoftables
+
+\include{preface}
+\include{introduccion}
+\include{introprog}
+\include{aritmetica}
+\include{calraiz}
+%\include{algebra}
+%\include{sistemas}
+%\include{interpolacion}
+%\include{integracion}
+%\include{tratamientoest}
+%\include{simbolico}
+\printindex
+\end{document} 
