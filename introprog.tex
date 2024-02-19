@@ -1,23 +1,70 @@
-\chapter{Introducción a la programación en Python\\ Introduction to Python Programming} \index{Python}
+\chapter[Intro a Python \textsection \textsection \ Intro to python]{Introducción a la programación en Python\\ Introduction to Python Programming} \index{Python} \index[eng]{Python}
 \begin{paracol}{2}
 Este capítulo presenta una introducción general a la programación. Para su desarrollo, vamos a emplear uno de los lenguajes de progaramción que  que más aceptación ha tenido en los últimos años: Python. Este lenguaje fue desarrollado por Guiod van Rosssum a finales de los años 80 del siglo pasado. El un lenguaje de alto nivel de propósito general.
 
 El porqué emplear python está relacionado con la existencia de un gran número de \emph{módulos} expecialmente diseñados para el cálculo científico. Además, al tratarse de un lenguaje interpretado, es posible centrarse en el estudio de la programación en sí, sin tener que preocuparse de la compilación. En resumen, emplearemos Python tanto par aprender a programar como para a resolver problemas de calculo científico.
 
 Este capítulo no pretende ser exhaustivo, --cosa que por otro lado resulta imposible en el caso de Python--, sino tan solo dar una breve introducción a su uso. Afortunadamente, Python cuenta con una muy buena documentación, accesible a través de la Red. 
-\switchcolumn
-This chapter presents a general introduction to programming. We will use Python, one of the currently most used programming languages along their pages. Python was developed by Guido van Rossum in the late 1980s. It is a high-level, general-purpose programming language. 
+\switchcolumn 
+This chapter presents a general introduction to programming. We will use Python, one of the currently most used programming languages, along their pages. Guido van Rossum developed Python in the late 1980s. It is a high-level, general-purpose programming language. 
 
-Why Python? Well, it has many useful \emph{modules} which allow us to develop code for scientific computing in an easy and reliable way. Moreover, being an interpreted language facilitates to focus on the programming skills without bothering with the compiling process. In summary, we will use Python to learn basic general programming methods and solve numerical problems.
+Why Python? Well, it has many useful \emph{modules} which allow us to develop code for scientific computing efficiently and reliably. Moreover, being an interpreted language facilitates focusing on programming skills without bothering with the compiling process. We will use Python to learn basic general programming methods and solve numerical problems.
 
 This chapter is by no means exhaustive. This would be impossible in the case of a language like Python. It is just an introduction to its use. Fortunately, Python has excellent online documentation and plenty of examples in the Wed. 
 \end{paracol}
 
 
+\begin{paracol}{2}
+\section{Un entorno de programación para Python}\index{Python! entorno de programación}
+En primer lugar antes de empezar a describir el lenguaje de programación, vamos a introducir las herramientas  que usaramos. Es frecuente que los lenguajes de programación cuenten con lo que se conoce como un entorno de desarrollo integrado o, abreviadamente IDE (acrónimo tomado de su nombre en inglés: \emph{integrated development environment}. Un IDE suministra un habitualmente un entorno gráfico y un conjunto de herramientas tales como ayuda en línea, un depurador o un editor que facilitan la construcción y el depurado del código. Nosotros vamos a emplear un IDE específicamente diseñada para cálculo científico, no es el único, ni es necesariamente el mejor. Pero es adecuado para empezar a trabajar con Python. Se trata de \emph{Spyder}. Veamos en primer lugar como conseguirlo y como instalarlo en un ordenador personal.
 
-\section{El entorno de programación de Matlab}\index{Matlab! entorno de programación}\index{Matlab! IDE}
-Cuando iniciamos Matlab en el computador, se abre una ventana formada por uno o más paneles. Esta ventana, constituye lo que en programación se  llama un entorno de desarrollo integrado o, abreviadamente, IDE (acrónimo tomado de su nombre en Inglés: \emph{integrated development environment}. El IDE de Matlab, contiene todo los elementos necesarios para programar. La figura \ref{fig:ide} muestra el aspecto del IDE de Matlab.
+\subsection{Anaconda. Una distribuci- ón de herramientas de com- putación de software abierto}\index{anaconda}
+Entre los distintos medios en los que podemos instalar Python y algunas de sus herrramientas de desarrollo, hemos seleccionado Anaconda porque es software libre, fácil de instalar e incluye Spyder. La Manera más sencilla de instalarlo es descargar el instalador de Anaconda de su página Web: 
+\switchcolumn
+\section{A python's development environment}\index[eng]{Python! IDE}
+Before describing the programming language, we will introduce the tools we should use. It is common for programming languages to provide an \emph{integrated development environment} (IDE). An IDE usually includes a graphic environment and tools, such as online help,  a debugger or a text editor, that simplify code development and debugging. We are going to use an IDE specifically designed for scientific computing. It's not the only one available; neither is perhaps the best one, but it is suitable to begin working with Python. We refer to \emph{Spyder}. First, Let's see how to get it and install it on a personal computer.
 
+\subsection{Anaconda. A free software computing tools distribution}\index[eng]{Anaconda}
+Among the many ways you may follow to install Python and some of its development tools, We have selected Anaconda because it is free software, easy to install and includes Spyder. The easy way to install Anaconda is by downloading it from its Web page:  
+\end{paracol}
+\begin{center}
+    \hyperlink{https://www.anaconda.com/download}{https://www.anaconda.com/download}
+\end{center} 
+\begin{paracol}{2}
+ Hay instaladores de Anaconda disponibles para Windows, Linux y Mac. El proceso de instalación es en todos los casos bastante sencillo. La página web contiene además documentación en la que se explica detallademente el funcionamiento de Anaconda.
+
+ Una vez instalado, Ananconda proporciona una aplicación (Navegador) desde la que manejarlo: \emph{anaconda-navigator}. Si ejecutamos Anaconda-Navigator, obtendremos una ventana como la que se muestra en la figura \ref{fig:anaconda}.
+
+ El navegador de Anconda, muestra un conjunto de iconos. Cada uno de ellos corresponde a una aplicación distinta. Muchas de ellas están relacionadas con IDEs especialmente diseñados para usar Python, otras están relacionada con otros programas orientado al tratamiento de datos, las representaciones gráficas o la estadística. En algunos de los iconos aparece la palabra \emph{launch}. Indica que la aplicación se encuentra instalada en nuestro ordenador,. Si pulsamos con el ratón sobre el botón \emph{launch}, la aplicación se ejecuta. En otros casos, aparece la palabra \emph{install}. Se trata de aplicaciones que no están instaladas en nuestro ordenador, pero que pueden ser instaladas si pulsamos en botón \emph{install}. 
+
+ En nuestro caso, vamos a emplear Spyder, que aparece entre las aplicaciones ya instaladas, y que aparece rodeada en la figura \ref{fig:anaconda} con un círculo rojo.
+
+ Antes de entrar en la descripción de spyder, vamos a emplear Anaconda navigator para instalar un plug-in, que nos permitirá manejar desde spyder, otro de los entornos de programación de Python más empleados actualmente: \emph{Jupiter Notebook}. Jupiter Notebook, es en realidad un IDE para programar en Python independiente de Spyder. Es muy útil porque permite combinar código en python con texto y gráficos. Más adelante explicaremos como usarlo.  
+ \switchcolumn
+ Anaconda installers are available for Windows, Linux and Mac. The installation process is straightforward. Besides, the Anaconda webpage offers complete information on Anaconda installation and performance.
+
+ Once installed, it supplies an application \emph{anaconda-navigator} to manage Anaconda. When we start Anaconda-Navigator, we get a window like that shown in figure \ref{fig:anaconda}.
+
+ Anaconda-NAvigator shows a set of icons. Anyone of them is intended to launch a different application. Many of them are IDEs specifically designed to use Python. Others relate to other programs devoted to data processing, graphics or statistics. The work \emph{launch} is written in some of these icons. This means that the application is installed on our computer. Pressing the left-hand button of the mouse over the word \emph{launch} opens the application. In other cases, the word \emph{install} is Written over the icon. In these cases, the application is not installed on our computer, but we can install it by pressing the left-hand button of the mouse over the word \emph{install}.
+
+ We are going to use Spyder, which is already installed. In figure \ref{fig:anaconda}, the Spyder icon has been enclosed in a red circle.
+
+ Before starting with a Spyder description, we will use Anaconda to install a plug-in, allowing us to use another of Phyton's most currently used IDEs: \emph{Jupyter Notes}. Jupyter Notes is an IDE to develop code in Python independently of Spyder. It is a handy tool because it allows us combining, python code with graphics and text. We will describe Jupyter Notes later on.
+\end{paracol}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{anaconda.jpg}
+    \caption{Caption}
+    \label{fig:anaconda}
+\end{figure} 
+ 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{anaconda_2.jpg}
+    \caption{Caption}
+    \label{fig:anaconda}
+\end{figure} 
+ 
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=14cm]{ide_n.png}
@@ -25,7 +72,21 @@ Cuando iniciamos Matlab en el computador, se abre una ventana formada por uno o 
 	\label{fig:ide}
 \end{figure}
 
-Según como se configure, el IDE de Matlab puede mostrar un número mayor o menor de paneles y una disposición de los mismos distinta a la mostrada en la figura. La mejor manera de aprender estos y otros detalles del IDE es usarlo. Aquí nos centraremos solo en algunos aspectos fundamentales.
+
+
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=14cm]{ide_n.png}
+	\caption{Entorno de desarrollo integrado de Matlab}
+	\label{fig:ide}
+\end{figure}
+FALTA EXPLICAR COMO SE INTALA EL PLUG-
+IN THE JUPYTIR-NOTES.
+
+
+
+Según como se configure, el IDE de Python puede mostrar un número mayor o menor de paneles y una disposición de los mismos distinta a la mostrada en la figura. La mejor manera de aprender estos y otros detalles del IDE es usarlo. Aquí nos centraremos solo en algunos aspectos fundamentales.
 
 \subsection{La ventana de comandos de Matlab} \index{Matlab!ventana de Commandos}
 De los paneles mostrados en la ventana de la figura \ref{fig:ide}, vamos a empezar examinando el situado en la parte inferior central. Se trata de la ventana de comandos (\emph{command window}) de Matlab.  \index{prompt} La ventana muestra el simbolo $>>$, que recibe el nombre de \emph{prompt} y, a continuación, una barra vertical $|$ parpadeante.  La ventana de comandos permite al usuario interactuar directamente con Matlab: Matlab puede recibir instrucciones directamente a través de la ventana de comandos, ejecuta las instrucciones recibidas, y devuelve los resultados de nuevo en la ventana de comandos. Veamos un ejemplo muy sencillo: si escribimos en la ventana de comandos:
@@ -536,7 +597,7 @@ las expresiones,
 \begin{verbatim}
 >> A(2,3)
 
-ans =
+and =
      5
 \end{verbatim}
 y

@@ -24,7 +24,7 @@
 \normalcolseprulecolor
 \usepackage{minted}
 \usepackage{multirow}
-\usepackage{imakeidx}
+\usepackage[splitindex]{imakeidx}
 
 %\usepackage{draftwatermark}
 %\SetWatermarkText{Borrador,juan.jimenez@fis.ucm.es}
@@ -32,7 +32,8 @@
 
 
 \graphicspath{{./figuras/}}
-\makeindex
+\makeindex[title =Índice alfabético]
+\makeindex[name =eng, title =Alphabetic Index]
 \begin{document}
 \title{
 \begin{flushleft}
@@ -46,7 +47,7 @@ Laboratorio de Computaci\'on Cient\'ifica}
 \vspace*{\fill}
 
 \includegraphics[scale=1]{by-sa.eps}\\
-El contenido de estos apuntes est\'e1 bajo licencia Creative Commons Atribution-ShareAlike 4.0\\
+El contenido de estos apuntes est\'a bajo licencia Creative Commons Atribution-ShareAlike 4.0\\
 \href{http://creativecommons.org/licenses/by-sa/4.0/}{http://creativecommons.org/licenses/by-sa/4.0/}\\
 \copyright Juan Jim\'enez
 
@@ -67,4 +68,5 @@ El contenido de estos apuntes est\'e1 bajo licencia Creative Commons Atribution-
 %\include{tratamientoest}
 %\include{simbolico}
 \printindex
+\printindex[eng]
 \end{document} 
