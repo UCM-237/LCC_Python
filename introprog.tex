@@ -29,7 +29,15 @@ Among the many ways you may follow to install Python and some of its development
 \end{paracol}
 \begin{center}
     \hyperlink{https://www.anaconda.com/download}{https://www.anaconda.com/download}
-\end{center} 
+\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{anaconda.jpg}
+    \caption{Ventana de Anaconda Navigator. Se ha señalado en rojo el icono correspondiente a Spyder.}
+    \label{fig:anaconda}
+\end{figure} 
+
 \begin{paracol}{2}
  Hay instaladores de Anaconda disponibles para Windows, Linux y Mac. El proceso de instalación es en todos los casos bastante sencillo. La página web contiene además documentación en la que se explica detallademente el funcionamiento de Anaconda.
 
@@ -39,52 +47,73 @@ Among the many ways you may follow to install Python and some of its development
 
  En nuestro caso, vamos a emplear Spyder, que aparece entre las aplicaciones ya instaladas, y que aparece rodeada en la figura \ref{fig:anaconda} con un círculo rojo.
 
- Antes de entrar en la descripción de spyder, vamos a emplear Anaconda navigator para instalar un plug-in, que nos permitirá manejar desde spyder, otro de los entornos de programación de Python más empleados actualmente: \emph{Jupiter Notebook}. Jupiter Notebook, es en realidad un IDE para programar en Python independiente de Spyder. Es muy útil porque permite combinar código en python con texto y gráficos. Más adelante explicaremos como usarlo.  
+ Antes de entrar en la descripción de spyder, vamos a emplear Anaconda navigator para instalar un plug-in, que nos permitirá manejar desde spyder, otro de los entornos de programación de Python más empleados actualmente: \emph{Jupiter Notebook}. Jupiter Notebook, es en realidad un IDE para programar en Python independiente de Spyder. Es muy útil porque permite combinar código en python con texto y gráficos. Más adelante explicaremos como usarlo.
+
+ \paragraph{Instalación de spyder-notebook.} para instalar el plug-in de Spyder que permite manejar notas de jupyter-notes, pulsamos en la ventana de Anaconda-Navigator el botón \emph{Environmets}, (enmarcado en rojo en la figura \ref{fig:anaconda2}). La ventana de Anaconda-Navigator nos muestra ahora los entornos de trabajo de Anaconda, (figura \ref{fig:ntb1}). Por defecto, estaremos en el entorno base (root). Este será además el único entorno disponible si acabamos de hacer una instalación de Anaconda nueva en el ordenador. Si seleccionamos \emph{All} en el menu desplegable situado en la parte superior izquierda del panel de la derecha,  obtenemos una relación de todos los paquetes disponibles en anaconda. Aquellos que ya están instalados aparecen marcados a la izquierda con un cuadro verde, mientras que para aquellos disponibles pero no instalados el cuadro aparece en blanco.
+
+ En la parte superior derecha de éste panel hay un buscador. Si introducimos en el la palabra spyder, El panel nos mostrará los paquetes relacionados con Spyder (figura \ref{fig:ntb2}). Seleccionamos el paquete spyder notebook y en la parte inferior derecha del panel nos aparaceran dos nuevos botones. Si seleccionamos el botón \emph{apply}, Anaconda commenzará el proceso de instalación del paquete. Lo primero que hace es abrir un pop-up y comprobar las dependencias, una vez terminada la comprobación, pulsamos el botón apply del pop-up y dejamos que Anaconda instale spyder notebook.
+ 
+
  \switchcolumn
  Anaconda installers are available for Windows, Linux and Mac. The installation process is straightforward. Besides, the Anaconda webpage offers complete information on Anaconda installation and performance.
 
  Once installed, it supplies an application \emph{anaconda-navigator} to manage Anaconda. When we start Anaconda-Navigator, we get a window like that shown in figure \ref{fig:anaconda}.
 
- Anaconda-NAvigator shows a set of icons. Anyone of them is intended to launch a different application. Many of them are IDEs specifically designed to use Python. Others relate to other programs devoted to data processing, graphics or statistics. The work \emph{launch} is written in some of these icons. This means that the application is installed on our computer. Pressing the left-hand button of the mouse over the word \emph{launch} opens the application. In other cases, the word \emph{install} is Written over the icon. In these cases, the application is not installed on our computer, but we can install it by pressing the left-hand button of the mouse over the word \emph{install}.
+ Anaconda-Navigator shows a set of icons. Anyone of them is intended to launch a different application. Many of them are IDEs specifically designed to use Python. Others relate to other programs devoted to data processing, graphics or statistics. The work \emph{launch} is written in some of these icons. This means that the application is installed on our computer. Pressing the left-hand button of the mouse over the word \emph{launch} opens the application. In other cases, the word \emph{install} is Written over the icon. In these cases, the application is not installed on our computer, but we can install it by pressing the left-hand button of the mouse over the word \emph{install}.
 
  We are going to use Spyder, which is already installed. In figure \ref{fig:anaconda}, the Spyder icon has been enclosed in a red circle.
 
- Before starting with a Spyder description, we will use Anaconda to install a plug-in, allowing us to use another of Phyton's most currently used IDEs: \emph{Jupyter Notes}. Jupyter Notes is an IDE to develop code in Python independently of Spyder. It is a handy tool because it allows us combining, python code with graphics and text. We will describe Jupyter Notes later on.
+ Before starting with a Spyder description, we will use Anaconda to install a plug-in, allowing us to use another of Phyton's most currently used IDEs: \emph{Jupyter Notes}. Jupyter Notes is an IDE to develop code in Python independently of Spyder. It is a handy tool because it allows us to combine Python code with graphics and text. We will describe Jupyter Notes later on.
+
+ \paragraph{Spyder-notebook installation.} To install the plugin that allows using Jupyter Notes from Spyder, we press the mouse left button on the \emph{Environments} icon, (framed in red in figure \ref{fig:anaconda2}). Then, Anaconda-Navigator window shows us Anaconda work environments (figure \ref{fig:ntb1}). If we have just installed Anaconda, the only environment already available should be the base (root) environment. We will focus on the right-side panel. The upper left corner has a drop-down menu; we select the option \emph{all}. Then, the panel shows us all the software packages available in the Anaconda default channel. Those packages installed in the computer are ticked with a green square label before the package name; packages available but not installed are ticked with a white square one.
+
+ There is a browser located in the upper right corner of the panel. We will write the word \emph{spyder} of \emph{spyder notebook}. The panel now shows those software packages related to Spyder (figure \ref{fig:ntb2}). We select the package spyder notebook by clicking the white square before the package name. A new pair of push-buttons show up on the lower side of the panel. Clicking on \emph{apply} triggers the spyder notebook installations process.  
 \end{paracol}
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{anaconda.jpg}
-    \caption{Caption}
-    \label{fig:anaconda}
-\end{figure} 
  
 \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{anaconda_2.jpg}
-    \caption{Caption}
-    \label{fig:anaconda}
+\centering
+\includegraphics[width=\textwidth]{anaconda_2.jpg}
+\label{fig:anaconda2}
+\caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
+\end{figure}
+
+\begin{figure}
+\centering
+    \includegraphics[width=\textwidth]{notebook1.png}
+    \label{fig:ntb1}
+    \caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
+\end{figure}
+
+\begin{figure}
+\centering
+    \includegraphics[width=\textwidth]{notebook2.png}
+    \label{fig:ntb2}
+    \caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
+    \end{figure}
+
+\begin{figure}
+\centering
+    \includegraphics[width=\textwidth]{notebook3.png}
+    \label{fig:ntb3}
+    \caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
 \end{figure} 
+
+
+\begin{paracol}{2}
+\subsection{Spyder}\index{Spyder}
+Vamos a centrarnos en esta sección en describir Spyder. Como ya dijimos, Spyder es unn entorno de programación integrado, especialmente pensado para trabajar con Python en computación científica l Para lanzar el entorno basta con que pulsemos el botón \emph{launch} en la ventana de Anaconda-navigator (figura: \ref{fig:anaconda}). Al hacerlo, se nos abrirá una nueva ventana como la que se muestra en la figura \ref{fig:ide}.
+
+En la ventana de Spyder podemos distiguir tres paneles distintos, \footnote{La configuración que Spyder que se describe 
+ aquí, es la configuración por defecto. El ususario puede cambiarla a su gusto modificando los valores por defecto.}. Además, en parte superior de las ventamos tenemos una barra con menús deplegables y otra con botones. Vamos a describir brevemente algunas de las características principales del entorno a la vez que nos vamos introduciendo en las caracteríticas fundamentales de la programación en Python. En cualquier caso, no vamos a dar una descripción exhaustiva. La mejor manera de aprender a manejar Spyder es usarlo y consultar la abundante documentación disponible.
  
-\begin{figure}[h]
+\end{paracol}
+
+\begin{figure}
 	\centering
 		\includegraphics[width=14cm]{ide_n.png}
-	\caption{Entorno de desarrollo integrado de Matlab}
+	\caption{Spyder: Entorno de desarrollo integrado para Python}
 	\label{fig:ide}
 \end{figure}
-
-
-
-
-\begin{figure}[h]
-	\centering
-		\includegraphics[width=14cm]{ide_n.png}
-	\caption{Entorno de desarrollo integrado de Matlab}
-	\label{fig:ide}
-\end{figure}
-FALTA EXPLICAR COMO SE INTALA EL PLUG-
-IN THE JUPYTIR-NOTES.
-
-
 
 Según como se configure, el IDE de Python puede mostrar un número mayor o menor de paneles y una disposición de los mismos distinta a la mostrada en la figura. La mejor manera de aprender estos y otros detalles del IDE es usarlo. Aquí nos centraremos solo en algunos aspectos fundamentales.
 

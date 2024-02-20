@@ -69,18 +69,33 @@ The iterative process comes to a halt when the obtained solution is considered t
 \vert f(r_n) \vert \leq \text(tol)
 \end{equation*}
 
-Se dice entonces que el algoritmo empleado para obtener la raíz ha convergido en \emph{n} iteraciones. Por otro lado, es importante señalar que los algoritmos para el cálculo de raíces de una función no siempre convergen. Hay veces en que no es posible aproximarse cada vez más al valor de la raíz bien por la naturaleza de la función o bien por que el algoritmo no es adecuado para obtenerla.
+The algorithm used to obtain the root is then said to have converged in \emph{n} iterations. On the other hand, it is important to note that algorithms for calculating the root of a function do not always converge. Sometimes it is not possible to get closer and closer to the value of the root either because of the nature of the function or because the algorithm is not suitable for obtaining it.
 
 \end{paracol}
+\begin{paracol}{2}
+\paragraph*{Búsqueda local.} Una función puede tener cualquier número de raíces, incluso infinitas, basta pensar por ejemplo en funciones trigonométricas como $\cos(x)$. Una característica importante de los métodos descritos en este capítulo es que solo son capaces de aproximar una raíz. La raíz de la función a la que el método converge depende de el valor inicial $r_0$ con el que se comienza la búsqueda iterativa\footnote{En ocasiones, como veremos más adelante no se suministra al algoritmo un valor inicial, sino un intervalo en el que buscar la raíz}. Por ello reciben el nombre de métodos locales. Si queremos encontrar varias (o todas) las raíces de una determinada función, es preciso emplear el método para cada una de las raíces por separado, cambiando cada vez el punto de partida.
+\switchcolumn
 
-\paragraph*{Búsqueda local.} Una función puede tener cualquier número de raíces, incluso infinitas, basta pensar por ejemplo en funciones trigonomtricas como $\cos(x)$. Una característica importante de los métodos descritos en este capítulo es que solo son capaces de aproximar una raíz. La raíz de la función a la que el método converge depende de el valor inicial $r_0$ con el que se comienza la búsqueda iterativa\footnote{En ocasiones, como veremos más adelante no se suministra al algoritmo un valor inicial, sino un intervalo en el que buscar la raíz}. Por ello reciben el nombre de métodos locales. Si queremos encontrar varias (o todas) las raíces de una determinada función, es preciso emplear el método para cada una de las raíces por separado, cambiando cada vez el punto de partida.
+\paragraph*{Local search}. A function can have any number of roots, even infinite ones, just think for example of trigonometric functions such as $\cos(x)$. An important feature of the methods described in this chapter is that they are only able to approximate one root. The root of the function to which the method converges depends on the initial value $r_0$ with which the iterative search is started \footnote{Sometimes, as we will see later on, the algorithm is not given an initial value, but an interval in which to search for the root}. This is why they are called local methods. If we want to find several (or all) the roots of a given function, it is necessary to use the method on each of the roots separately, changing the starting point each time.
+\end{paracol}
 
+\begin{paracol}{2}
 \section{Metodos iterativos locales}
 \subsection{Método de la bisección}
 \paragraph*{Teorema de Bolzano.}
 \begin{quote}
 Si una funcion $f(x)$, continua en el intervalo $[a, b]$, cambia de signo en los extremos del intervalo: $f(a)\cdot f(b) \le 0$, debe tener una raíz en el intervalo [a, b]. (figura: \ref{fig:bolzano}) 
 \end{quote}
+
+\switchcolumn
+\section{Local iterative methods}
+\subsection{Bisection Method}
+\paragraph*{Bolzano's theorem}
+\begin{quote}
+    Let $f(x)$ be a continuous function defined in an interval $[a, b]$. Then, if $f(a)\cdot f(b)<0$
+(therefore,$f(a)<0$ and $f(b)>0$ or $f(a)>0$ and $f(b)<0$), there exists at least a point inside the interval $c \in [a,b]$ such that $f(c)=0$. (figure: \ref{fig:bolzano})
+\end{quote}
+\end{paracol}
 
 \begin{figure}[h]
 \centering
