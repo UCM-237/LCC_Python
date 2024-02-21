@@ -37,7 +37,19 @@ Among the many ways you may follow to install Python and some of its development
     \caption{Ventana de Anaconda Navigator. Se ha señalado en rojo el icono correspondiente a Spyder.}
     \label{fig:anaconda}
 \end{figure} 
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{anaconda_2.jpg}
+\label{fig:anaconda2}
+\caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
+\end{figure}
 
+\begin{figure}
+\centering
+    \includegraphics[width=0.8\textwidth]{notebook1.png}
+    \label{fig:ntb1}
+    \caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
+\end{figure}
 \begin{paracol}{2}
  Hay instaladores de Anaconda disponibles para Windows, Linux y Mac. El proceso de instalación es en todos los casos bastante sencillo. La página web contiene además documentación en la que se explica detallademente el funcionamiento de Anaconda.
 
@@ -65,35 +77,22 @@ Among the many ways you may follow to install Python and some of its development
 
  Before starting with a Spyder description, we will use Anaconda to install a plug-in, allowing us to use another of Phyton's most currently used IDEs: \emph{Jupyter Notes}. Jupyter Notes is an IDE to develop code in Python independently of Spyder. It is a handy tool because it allows us to combine Python code with graphics and text. We will describe Jupyter Notes later on.
 
- \paragraph{Spyder-notebook installation.} To install the plugin that allows using Jupyter Notes from Spyder, we press the mouse left button on the \emph{Environments} icon, (framed in red in figure \ref{fig:anaconda2}). Then, Anaconda-Navigator window shows us Anaconda work environments (figure \ref{fig:ntb1}). If we have just installed Anaconda, the only environment already available should be the base (root) environment. We will focus on the right-side panel. The upper left corner has a drop-down menu; we select the option \emph{all}. Then, the panel shows us all the software packages available in the Anaconda default channel. Those packages installed in the computer are ticked with a green square label before the package name; packages available but not installed are ticked with a white square one.
+ \paragraph{Spyder-notebook installation.} To install the plugin that allows using Jupyter Notes from Spyder, we press the mouse left button on the \emph{Environments} icon, (framed in red in figure \ref{fig:anaconda2}). Then, the Anaconda-Navigator window shows us Anaconda work environments (figure \ref{fig:ntb1}). If we have just installed Anaconda, the only environment already available should be the base (root) environment. We will focus on the right-side panel. The upper left corner has a drop-down menu; we select the option \emph{all}. Then, the panel shows us all the software packages available in the Anaconda default channel. Those packages installed in the computer are ticked with a green square label before the package name; packages available but not installed are ticked with a white square.
 
- There is a browser located in the upper right corner of the panel. We will write the word \emph{spyder} of \emph{spyder notebook}. The panel now shows those software packages related to Spyder (figure \ref{fig:ntb2}). We select the package spyder notebook by clicking the white square before the package name. A new pair of push-buttons show up on the lower side of the panel. Clicking on \emph{apply} triggers the spyder notebook installations process.  
+ There is a browser located in the upper right corner of the panel. We will write the word \emph{spyder} of \emph{spyder notebook}. The panel now shows those software packages related to Spyder (figure \ref{fig:ntb2}). We select the package spyder notebook by clicking the white square before the package name. A new pair of push buttons appear on the panel's lower side. Clicking on \emph{apply} triggers the Spyder notebook installations process. First, Anaconda launches a pop-up window and checks Spyder Notebook software dependencies. The process may take some time, so, be patient until it finishes the checking.  Once the checking process is over, we will press the \emph{apply} button on the pop-up window and let Anaconda to install the software
+ 
 \end{paracol}
  
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{anaconda_2.jpg}
-\label{fig:anaconda2}
-\caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
-\end{figure}
-
-\begin{figure}
-\centering
-    \includegraphics[width=\textwidth]{notebook1.png}
-    \label{fig:ntb1}
-    \caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
-\end{figure}
-
-\begin{figure}
-\centering
-    \includegraphics[width=\textwidth]{notebook2.png}
+    \includegraphics[width=0.8\textwidth]{notebook2.png}
     \label{fig:ntb2}
     \caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
     \end{figure}
 
 \begin{figure}
 \centering
-    \includegraphics[width=\textwidth]{notebook3.png}
+    \includegraphics[width=0.8\textwidth]{notebook3.png}
     \label{fig:ntb3}
     \caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
 \end{figure} 
@@ -104,7 +103,15 @@ Among the many ways you may follow to install Python and some of its development
 Vamos a centrarnos en esta sección en describir Spyder. Como ya dijimos, Spyder es unn entorno de programación integrado, especialmente pensado para trabajar con Python en computación científica l Para lanzar el entorno basta con que pulsemos el botón \emph{launch} en la ventana de Anaconda-navigator (figura: \ref{fig:anaconda}). Al hacerlo, se nos abrirá una nueva ventana como la que se muestra en la figura \ref{fig:ide}.
 
 En la ventana de Spyder podemos distiguir tres paneles distintos, \footnote{La configuración que Spyder que se describe 
- aquí, es la configuración por defecto. El ususario puede cambiarla a su gusto modificando los valores por defecto.}. Además, en parte superior de las ventamos tenemos una barra con menús deplegables y otra con botones. Vamos a describir brevemente algunas de las características principales del entorno a la vez que nos vamos introduciendo en las caracteríticas fundamentales de la programación en Python. En cualquier caso, no vamos a dar una descripción exhaustiva. La mejor manera de aprender a manejar Spyder es usarlo y consultar la abundante documentación disponible.
+ aquí, es la configuración por defecto. El ususario puede cambiarla a su gusto modificando los valores por defecto.}. Además, en la  parte superior de las ventamos tenemos una barra con menús deplegables y otra con botones. Vamos a describir brevemente algunas de las características principales del entorno a la vez que nos vamos introduciendo en las caracteríticas fundamentales de la programación en Python. En cualquier caso, no vamos a dar una descripción exhaustiva. La mejor manera de aprender a manejar Spyder es usarlo y consultar la abundante documentación disponible.
+
+\paragraph{El terminal mejorado de Python}
+De los tres paneles mostrados en la figura \ref{fig:ide}, vamos a describir en primer lugar el situado abajo a la derecha. Este panel contiene un terminal. El terminal nos muestra el símbolo \mintinline{python}{In [1]:}, que recibe el nombre de \emph{prompt}, y a continuacion una barra vertical $|$ parpadeante. El terminal permite al usuario interactuar directamente con Python; Python puede recibir instrucciones directamente a través del terminal, ejecuta las instrucciones recibidas, y devuelve y/o guarda en memoria los resultados obtenidos. Veamos un ejemplo muy sencillo. Si escribimos en el terminal:
+\begin{verbatim}
+In[1] 2+2
+Out[1]: 4
+In [2]:
+\end{verbatim} 
  
 \end{paracol}
 
@@ -114,8 +121,6 @@ En la ventana de Spyder podemos distiguir tres paneles distintos, \footnote{La c
 	\caption{Spyder: Entorno de desarrollo integrado para Python}
 	\label{fig:ide}
 \end{figure}
-
-Según como se configure, el IDE de Python puede mostrar un número mayor o menor de paneles y una disposición de los mismos distinta a la mostrada en la figura. La mejor manera de aprender estos y otros detalles del IDE es usarlo. Aquí nos centraremos solo en algunos aspectos fundamentales.
 
 \subsection{La ventana de comandos de Matlab} \index{Matlab!ventana de Commandos}
 De los paneles mostrados en la ventana de la figura \ref{fig:ide}, vamos a empezar examinando el situado en la parte inferior central. Se trata de la ventana de comandos (\emph{command window}) de Matlab.  \index{prompt} La ventana muestra el simbolo $>>$, que recibe el nombre de \emph{prompt} y, a continuación, una barra vertical $|$ parpadeante.  La ventana de comandos permite al usuario interactuar directamente con Matlab: Matlab puede recibir instrucciones directamente a través de la ventana de comandos, ejecuta las instrucciones recibidas, y devuelve los resultados de nuevo en la ventana de comandos. Veamos un ejemplo muy sencillo: si escribimos en la ventana de comandos:
@@ -4565,21 +4570,7 @@ while i<10:
         elif abs(i-j)==1:
             a[i,j]=-1
         else:
-            [
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos
-][
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos
-]a(i,j)=0
+            a(i,j)=0
 \end{minted}
 
 Repite el estudio del programa anterior
