@@ -103,8 +103,13 @@ Si una funcion $f(x)$, continua en el intervalo $[a, b]$, cambia de signo en los
 \caption{Ilustración del teorema de Bolzano}
 \label{fig:bolzano}
 \end{figure}
-
+\begin{paracol}{2}
 El conocido teorema de Bolzano, suministra el método más sencillo de aproximar la raíz de una función: Se parte de un intervalo inicial en el que se cumpla el teorema; y se va acotando sucesivamente el intervalo que contiene la raíz, reduciéndolo a la mitad en cada iteración, de forma que en cada nuevo intervalo se cumpla siempre el teorema de Bolzano.
+\switchcolumn
+
+The well-known Bolzano's theorem provides the simplest method of approximating the root of a function: We start from an initial interval in which the theorem is satisfied; and we successively limit the interval containing the root, reducing it by half in each iteration, so that in each new interval Bolzano's theorem is always satisfied.
+
+\end{paracol}
 
 \begin{figure}[h]
 \centering
@@ -124,7 +129,7 @@ El conocido teorema de Bolzano, suministra el método más sencillo de aproximar
 \draw[blue,-latex](c.south)--(e);
 \draw (5,-5)node[right]{No};
 \draw[blue,-latex](e.east)--(f);
-\draw (8,-6)node[above]{Sí};
+\draw (7.5,-6)node[above]{Sí};
 \draw[blue,-latex](e.south)--(g);
 \draw (5,-7.2)node[right]{No};
 \draw[blue,-latex](g.south)|-(2,-9)|-(b);
@@ -133,11 +138,54 @@ El conocido teorema de Bolzano, suministra el método más sencillo de aproximar
 \caption{Diagrama de flujo del método de la bisección}
 \label{fig:dfbisec}
 \end{figure}
+
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+%\usetikzlibrary{shapes.geometric}
+\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Begin with $[a,b]$\\ such as\\ $f(a)\cdot f(b)<0$}
+(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners]{Compute $c=\frac{a+b}{2}, f(c)$}
+(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{is $\vert f(c) \vert \le \text{tol}$?}
+(9,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{Convergence:\\ finish}
+(5,-6) node(e)[diamond,aspect=3,draw=red,thick]{is $f(a)\cdot f(c) < 0$?}
+(9.5,-6) node(f)[rectangle,draw=blue,thick,rounded corners,align=center]{$b=c$\\$f(b)=f(c)$}
+(5,-8) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$a=c$\\$f(a)=f(c)$};
+\draw[blue,-latex](a.south)--(b);
+\draw[blue,-latex](b.south)--(c);
+\draw[blue,-latex](c.east)--(d);
+\draw (7.5,-4)node[above]{Yes};
+\draw[blue,-latex](c.south)--(e);
+\draw (5,-5)node[right]{No};
+\draw[blue,-latex](e.east)--(f);
+\draw (8,-6)node[above]{Yes};
+\draw[blue,-latex](e.south)--(g);
+\draw (5,-7.2)node[right]{No};
+\draw[blue,-latex](g.south)|-(2,-9)|-(b);
+\draw[blue,-latex](f.east)-|(11,-2)--(b);
+\end{tikzpicture}
+\caption{Flowchart of the bisection method}
+\label{fig:dfbisec_eng}
+\end{figure}
+
+\begin{paracol}{2}
+
 En la figura \ref{fig:dfbisec} se muestra un diagrama de flujo correspondiente al método de la bisección. El punto de partida es un intervalo $[a,b]$ en el que se cumple el teorema de Bolzano, y que contiene por tanto al menos una raíz. Es interesante hacer notar que el teorema de Bolzano se cumple siempre que la función sea continua en el intervalo $[a,b]$ y existan un número impar de raíces. Por esto es importante realizar cuidadosamente la elección del intervalo $[a,b]$, si hay más de una raíz, el algoritmo puede no converger.
 
+\switchcolumn
+
+Figure \ref{fig:dfbisec_eng} shows a flowchart corresponding to the bisection method. The starting point is an interval $[a,b]$ in which Bolzano's theorem is satisfied, and which therefore contains at least one root. It is interesting to note that Bolzano's theorem is satisfied whenever the function is continuous on the interval $[a,b]$ and there are an odd number of roots. This is why it is important to choose the interval $[a,b]$ carefully. If there is more than one root, the algorithm may not converge.
+
+\switchcolumn
  Una vez que se tiene el intervalo se calcula el punto medio $c$. A continuación se compara el valor que toma la función en $c$, es decir $f(c)$ con la tolerancia. Si el valor es menor que ésta, el algoritmo ha encontrado un valor aproximado de la raíz con la tolerancia requerida, con lo que $c$ es la raíz y no hace falta seguir buscando. Si por el contrario, $f(c)$ está por encima de la tolerancia requerida, comparamos su signo con el que toma la función en uno cualquiera de los extremos del intervalo, En el diagrama de flujo se ha elegido el extremo $a$, pero el algoritmo funcionaría igualmente si eligiéramos $b$. Si el signo de $f(c)$ coincide con el que toma la función en el extremo del intervalo elegido, $c$ sustituye al extremo, (hacemos $a=c$ y $f(a)=f(c)$) si por el contrario el signo es distinto, hacemos que $c$ sustituya al otro extremo del intervalo. (hacemos $b=c$ y $f(b)=f(c)$). Este proceso se repetirá hasta que se cumpla que $f(c)\le \text{tol}$ 
 
-El proceso se muestra gráficamente en la figura \ref{fig:bisec}, para un caso particular. Se trata de obtener la raíz de la función mostrada en la figura \ref{fig:bolzano}, $f(x)=e^x-x^2$. esta función tiene una única raíz: $r\approx -0.7035$. Para iniciar el algoritmo se ha elegido un intervalo $[a=-2,b=2]$. La figura \ref{fig:bisec}, muestra tres iteraciones sucesivas,y la solución final, que se obtiene al cabo de ocho iteraciones en éste ejemplo, para el que se a empleado una tolerancia $tol=0.01$. En la secuencia de gráficas se puede observar también la evolución del intervalo de búsqueda, $[-2, 2]\rightarrow [-2, 0] \rightarrow [-1, 0] \rightarrow [-1, -0.5] \cdots$; así como el cambio alternativo del límite derecho o izquierdo, para asegurar que la raíz queda siempre dentro de los sucesivos intervalos de búsqueda obtenidos. 
+\switchcolumn
+
+ Once we have the interval we calculate the midpoint $c$. The value taken by the function at $c$, i.e. $f(c)$, is then compared with the tolerance. If the value is less than the tolerance, the algorithm has found an approximate value of the root with the required tolerance, so $c$ is the root and no further search is necessary. If, on the other hand, $f(c)$ is above the required tolerance, we compare its sign with the sign of the function at either end of the interval. In the flowchart we have chosen the end $a$, but the algorithm would work equally well if we chose $b$. If the sign of $f(c)$ coincides with the sign that the function takes at the end of the chosen interval, $c$ replaces the end, (we make $a=c$ and $f(a)=f(c)$) if on the contrary the sign is different, we make $c$ replace the other end of the interval (we make $b=c$ and $f(b)=f(c)$). This process will be repeated until $f(c)$ is satisfied. 
+
+ \switchcolumn
+\end{paracol} 
+
 \begin{figure}
 \centering
 \subfigure[intervalo inicial]{\includegraphics[width=7cm]{rint0.pdf}} \qquad
@@ -150,8 +198,21 @@ El proceso se muestra gráficamente en la figura \ref{fig:bisec}, para un caso p
 \label{fig:bisec}
 \end{figure}
 
+\begin{paracol}{2}
+El proceso se muestra gráficamente en la figura \ref{fig:bisec}, para un caso particular. Se trata de obtener la raíz de la función mostrada en la figura \ref{fig:bolzano}, $f(x)=e^x-x^2$. esta función tiene una única raíz: $r\approx -0.7035$. Para iniciar el algoritmo se ha elegido un intervalo $[a=-2,b=2]$. La figura \ref{fig:bisec}, muestra tres iteraciones sucesivas,y la solución final, que se obtiene al cabo de ocho iteraciones en éste ejemplo, para el que se a empleado una tolerancia $tol=0.01$. En la secuencia de gráficas se puede observar también la evolución del intervalo de búsqueda, $[-2, 2]\rightarrow [-2, 0] \rightarrow [-1, 0] \rightarrow [-1, -0.5] \cdots$; así como el cambio alternativo del límite derecho o izquierdo, para asegurar que la raíz queda siempre dentro de los sucesivos intervalos de búsqueda obtenidos. 
+
+\switchcolumn
+
+The process is shown graphically in figure \ref{fig:bisec}, for a particular case. This is to obtain the root of the function shown in figure \ref{fig:bolzano}, $f(x)=e^x-x^2$. This function has a single root: $r\approx -0.7035$. To start the algorithm, an interval $[a=-2,b=2]$ has been chosen. Figure \ref{fig:bisec}, shows three successive iterations, and the final solution, which is obtained after eight iterations in this example, for which a tolerance $tol=0.01$ has been used. The sequence of graphs also shows the evolution of the search interval, $[-2, 2]\rightarrow [-2, 0] \rightarrow [-1, 0] \rightarrow [-1, -0.5] \cdots$; as well as the alternative change of the right or left limit, to ensure that the root is always within the successive search intervals obtained. 
+
+
+
+
+
+
 \subsection{Método de interpolación lineal o (\emph{Regula falsi})}
 Este método supone una mejora del anterior ya que, en general,  converge más rápidamente. La idea es modificar el modo en que calculamos el punto $c$. En el caso del método de la bisección el criterio consistía en ir tomando en cada iteración el punto medio del intervalo que contiene la raíz. El método de interpolación lineal, elige como punto $c$ el punto de corte con el eje x, de la recta que pasa por los puntos $\left(a,f(a)\right)$ y $\left(b,f(b)\right)$. Es decir la recta que corta a la función $f(x)$ en ambos límites del intevalo que contiene a la raíz buscada. La recta que pasa por ambos puntos puede construirse a partir de ellos como,
+
 \begin{equation*}
 y=\frac{f(a)-f(b)}{a-b}\cdot(x-b)+f(b)
 \end{equation*}
@@ -165,7 +226,34 @@ y despejando $c\equiv x$ en la ecuación anterior obtenemos,
 c=b-\frac{f(b)}{f(b)-f(a)}\cdot(b-a)
 \end{equation*}
 
-La figura \ref{fig:regulaf} muestra  gráficamente la posición del punto $c$ obtenido mediante el método de interpolación. 
+\switchcolumn
+
+\subsection{False position method or (\emph{Regula falsi})}
+
+This method is an improvement on the previous one as it converges more quickly in general. The idea is to modify the way in which we calculate the point $c$. In the case of the bisection method, the criterion consisted of taking the midpoint of the interval containing the root at each iteration. The linear interpolation method chooses as point $c$ the point of intersection with the x-axis of the straight line that passes through the points $\left(a,f(a)\right)$ and $\left(b,f(b)\right)$. That is, the line that cuts the function $f(x)$ at both limits of the interval containing the root we are looking for. The line through both points can be constructed from them as,
+
+\begin{equation*}
+y=\frac{f(a)-f(b)}{a-b}\cdot(x-b)+f(b)
+\end{equation*}
+
+The intersection point with the x-axis, will be the value for $c$, is obtained when $y=0$,
+
+\begin{equation*}
+0=\frac{f(a)-f(b)}{a-b}\cdot(x-b)+f(b)
+\end{equation*}
+
+and replacing $cequiv x$ in the above equation, we get
+
+\begin{equation*}
+c=b-\frac{f(b)}{f(b)-f(a)}\cdot(b-a)
+\end{equation*}
+
+\switchcolumn
+La figura \ref{fig:regulaf} muestra  gráficamente la posición del punto $c$ obtenido mediante el método de interpolación.
+
+\switchcolumn
+Figure \ref{fig:regulaf} shows the position of point $c$ computed with this method.
+\end{paracol}
 
 \begin{figure}[h]
 \centering
@@ -175,7 +263,14 @@ La figura \ref{fig:regulaf} muestra  gráficamente la posición del punto $c$ ob
 \label{fig:regulaf}
 \end{figure}
 
-Por lo demás, el procedimiento es el mismo que en el caso del método de la bisección. Se empieza con un intervalo $[a,b]$ que  contenga una raíz, se obtiene el punto $c$ por el procedimiento descrito y se intercambia $c$ con el extremo del intervalo cuya imagen $f(a)$ o $f(b)$ tenga el mismo signo que $f(c)$ el procedimiento se repite iterativamente hasta que f(c) sea menor que el valor de tolerancia preestablecido. 
+\begin{paracol}{2}
+    Por lo demás, el procedimiento es el mismo que en el caso del método de la bisección. Se empieza con un intervalo $[a,b]$ que  contenga una raíz, se obtiene el punto $c$ por el procedimiento descrito y se intercambia $c$ con el extremo del intervalo cuya imagen $f(a)$ o $f(b)$ tenga el mismo signo que $f(c)$ el procedimiento se repite iterativamente hasta que f(c) sea menor que el valor de tolerancia preestablecido. 
+
+    \switchcolumn
+    Otherwise, the procedure is the same as in the case of the bisection method. We start with an interval $[a,b]$ containing a root, obtain the point $c$ by the procedure described above and exchange $c$ with the end of the interval whose image $f(a)$ or $f(b)$ has the same sign as $f(c)$. The procedure is repeated iteratively until $f(c)$ is less than the preset tolerance value. 
+    
+\end{paracol}
+
 
 \begin{figure}[h]
 \centering
@@ -205,13 +300,66 @@ Por lo demás, el procedimiento es el mismo que en el caso del método de la bis
 \label{fig:regula}
 \end{figure}
 
+
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+%\usetikzlibrary{shapes.geometric}
+\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Begin with $[a,b]$\\ being\\ $f(a)\cdot f(b)<0$}
+(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Compute\\ $c=b-\frac{f(b)}{f(b)-f(a)}\cdot(b-a), f(c)$}
+(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{is $\vert f(c) \vert \le \text{tol}$?}
+(9,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{It converges:\\ finish}
+(5,-6) node(e)[diamond,aspect=3,draw=red,thick]{is $f(a)\cdot f(c) < 0$?}
+(9.5,-6) node(f)[rectangle,draw=blue,thick,rounded corners,align=center]{$b=c$\\$f(b)=f(c)$}
+(5,-8) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$a=c$\\$f(a)=f(c)$};
+\draw[blue,-latex](a.south)--(b);
+\draw[blue,-latex](b.south)--(c);
+\draw[blue,-latex](c.east)--(d);
+\draw (7.5,-4)node[above]{Yes};
+\draw[blue,-latex](c.south)--(e);
+\draw (5,-5)node[right]{No};
+\draw[blue,-latex](e.east)--(f);
+\draw (8,-6)node[above]{Yes};
+\draw[blue,-latex](e.south)--(g);
+\draw (5,-7.2)node[right]{No};
+\draw[blue,-latex](g.south)|-(2,-9)|-(b);
+\draw[blue,-latex](f.east)-|(11,-2)--(b);
+\end{tikzpicture}
+\caption{Flowchart of false position method}
+\label{fig:regula_eng}
+\end{figure}
+
+\begin{paracol}{2}
 En la figura \ref{fig:regula} se muestra el diagrama de flujo para el método de interpolación lineal. Como puede verse, es idéntico al de la bisección excepto en el paso en que se obtiene el valor de $c$, donde se ha sustituido el cálculo del punto medio del intervalo de búsqueda, por el cálculo del punto de corte con el eje de abscisas  de la recta que une los extremos del intervalo.
 
+\switchcolumn
+The flowchart for the false position method is shown in figure \ref{fig:regula_eng}. As can be seen, it is identical to the bisection method except in the step where the value of $c$ is obtained, where the calculation of the midpoint of the search interval has been replaced by the calculation of the point of intersection with the abscissa axis of the straight line joining the ends of the interval.
+\switchcolumn
+
 La figura \ref{fig:iterr2} Muestra gráficamente el proceso iterativo seguido para obtener la raíz de una función en un intervalo mediante el método de interpolación lineal. Se ha empleado la misma función y el mismo intervalo inicial que en el caso de la bisección. 
+\switchcolumn
+
+Figure \ref{fig:iterr2} shows graphically the iterative process followed to obtain the root of a function in an interval by means of the false position method. The same function and the same initial interval have been used as in the case of bisection. 
+\switchcolumn
 
 Es fácil ver, sin embargo, que los puntos intermedios que obtiene el algoritmo hasta converger a la raíz son distintos. De hecho, el algoritmo emplea ahora tan solo siete iteraciones para obtener la raíz, empleando el mismo valor para la tolerancia, 0.01, que se empleó en el método de la bisección.
+\switchcolumn
+
+
+It is easy to see, however, that the intermediate points that the algorithm obtains until converging to the root are different. In fact, the algorithm now uses only seven iterations to obtain the root, using the same value for the tolerance, $0.01$, as was used in the bisection method.
+\end{paracol}
+
+\begin{paracol}{2}
 
 Una observación final, se ha dicho al principio que éste método supone una mejora al método anterior de la bisección. Esto no siempre es cierto. El método de la bisección tiene una tasa de convergencia constante, cada iteración divide el espacio de búsqueda por la mitad. Sin embargo la convergencia del método de interpolación  lineal depende de la función $f(x)$ y de la posición relativa de los puntos iniciales $(a, f(a))$  y $(b, f(b))$ con respecto al la raíz. Por esto no es siempre cierto que converja más rápido que el método de  la bisección. Por otro lado, el cálculo de los sucesivos valores del punto $c$, requiere más operaciones aritméticas en el método de interpolación, con lo que cada iteración resulta más lenta que en el caso de la bisección.
+
+\switchcolumn
+
+One final remark, it was said at the beginning that this method is an improvement on the previous method of bisection. This is not always true. The bisection method has a constant convergence rate, each iteration halving the search space. However, the convergence of the false position method depends on the function $f(x)$ and the relative position of the initial points $(a, f(a))$ and $(b, f(b))$ with respect to the root. This is why it is not always true that it converges faster than the bisection method. On the other hand, the calculation of the successive values of the point $c$ requires more arithmetic operations in the false position method, making each iteration slower than in the case of bisection.
+
+\end{paracol}
+
 \begin{figure}
 \centering
 \subfigure[intervalo inicial]{\includegraphics[width=7cm]{rinter0.pdf}} \qquad
@@ -224,22 +372,41 @@ Una observación final, se ha dicho al principio que éste método supone una me
 \label{fig:iterr2}
 \end{figure}
 
+\begin{paracol}{2}
 \subsection{Método de Newton-Raphson}
 El método de Newton se basa en la expansión de una función $f(x)$ en serie de Taylor en el entorno de un punto $x_0$,
+
+\switchcolumn
+\subsection{Newton-Raphson method}
+Newton's method is based on the expansion of a Taylor series function $f(x)$ around a point $x_0$,
+\end{paracol}
 \begin{equation*}
 f(x)\approx f(x_0)+f'(x_0)(x-x_0)+\frac{1}{2}f''(x_0)(x-x_0)^2+\cdots+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+\cdots
 \end{equation*}
+
+\begin{paracol}{2}
  Pertenece a una familia de métodos ampliamente empleados en cálculo numérico. La idea en el caso del método de Newton es aproximar la función para la que se desea obtener la raíz, mediante el primer término de la serie de Taylor. Es decir aproximar localmente $f(x)$, en el entorno de $x_0$ por la recta,
 \begin{equation*}
  f(x_0)+f'(x_0)(x-x_0)
 \end{equation*}
-Esta recta, es precisamente la recta tangente a la curva $f(x)$ en el punto $x_0$ (figura \ref{fig:newton1})
+
+\switchcolumn
+
+ It belongs to a family of methods widely used in numerical calculus. The idea in the case of Newton's method is to approximate the function for which one wishes to obtain the root, by means of the first term of Taylor's series. That is to say, to approximate locally $f(x)$, in the environment of $x_0$ by the straight line,
+\begin{equation*}
+ f(x_0)+f'(x_0)(x-x_0)
+\end{equation*}
+\end{paracol}
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{newt0.pdf}[h]
 \caption{Recta tangente a la función $f(x)$ en el punto $x_0$}
 \label{fig:newton1}
 \end{figure}
+
+\begin{paracol}{2}
+Esta recta, es precisamente la recta tangente a la curva $f(x)$ en el punto $x_0$ (figura \ref{fig:newton1})
 
 El método consiste en obtener el corte de esta recta tangente con el eje de abscisas,
 \begin{equation*}
@@ -252,16 +419,34 @@ y despejando x,
 x=x_0-\frac{f(x_0)}{f'(x_0)}
 \end{equation*}
 
+\switchcolumn
+This line is precisely the tangent line to the curve $f(x)$ at the point $x_0$ (figure \ref{fig:newton1}).
+
+The method consists of obtaining the intersection of this tangent line with the abscissa axis,
+\begin{equation*}
+0= f(x_0)+f'(x_0)(x-x_0)
+\end{equation*}
+
+and obtaining x,
+
+\begin{equation*}
+x=x_0-\frac{f(x_0)}{f'(x_0)}
+\end{equation*}
+
+\switchcolumn
 A continuación se evalúa la función en el punto obtenido $x\rightarrow f(x)$. Como en los métodos anteriores, se compara el valor de $f(x)$ con una cierta tolerancia preestablecida. Si es menor, el valor de $x$ se toma como raíz de la función. Si no, se vuelve aplicar el algoritmo, empleando ahora el valor de x que acabamos de obtener como punto de partida. Cada cálculo constituye una nueva iteración y los sucesivos valores obtenidos para $x$, convergen a la raíz,
+
+\switchcolumn
+
+Next, the function is evaluated at the point obtained $xrightarrow f(x)$. As in the previous methods, the value of $f(x)$ is compared with a certain pre-set tolerance. If it is smaller, the value of $x$ is taken as the root of the function. If not, the algorithm is applied again, now using the value of x just obtained as the starting point. Each calculation constitutes a new iteration and the successive values obtained for $x$ converge to the root,
+
+\end{paracol}
 
 \begin{equation*}
 x_0\rightarrow x_1=x_0-\frac{f(x_0)}{f'(x_0)}\rightarrow x_2=x_1-\frac{f(x_1)}{f'(x_1)}\rightarrow  \cdots \rightarrow x_n=x_{n-1}-\frac{f(x_{n-1})}{f'(x_{n-1})}\rightarrow \cdots
 \end{equation*}
 
-La figura \ref{fig:newton} muestra un diagrama de flujo correspondiente al método de Newton. Si se compara con los diagramas de flujo de los algoritmos anteriores, el algoritmo de Newton resulta algo más simple de implementar. Sin embargo es preciso evaluar en cada iteración el valor de la función y el de su derivada. 
 
-El cálculo de la derivada, es el punto débil de este algoritmo, ya que para valores $x_0$ próximos a un mínimo o máximo local obtendremos valores de la derivada próximos a cero, lo que puede causar un error de desbordamiento al calcular el punto de corte de la recta tangente con el eje de abscisas o hacer que el algoritmo converja a una raíz alejada del punto inicial de búsqueda.
- 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
@@ -284,13 +469,48 @@ El cálculo de la derivada, es el punto débil de este algoritmo, ya que para va
 \label{fig:newton}
 \end{figure}
 
-La figura \ref{fig:newton2} muestra un ejemplo de obtención de la raíz de una función mediante el método de Newton. El método es más rápido que los dos anteriores, es decir, partiendo de una distancia comparable a la raíz, es el que converge en menos iteraciones. 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+%\usetikzlibrary{shapes.geometric}
+\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Initial point $x_0$}
+(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Compute\\ $x=x_0-\frac{f(x_0)}{f'(x_0)}, f(x)$}
+(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{is $\vert f(x) \vert \le \text{tol}$?}
+(9,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{it converges:\\ finish}
+(5,-6) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$x_0=x$};
+\draw[blue,-latex](a.south)--(b);
+\draw[blue,-latex](b.south)--(c);
+\draw[blue,-latex](c.east)--(d);
+\draw (7.5,-4)node[above]{Yes};
+\draw[blue,-latex](c.south)--(g);
+\draw (5,-5)node[right]{No};
+\draw[blue,-latex](g.south)|-(2,-7)|-(b);
 
-En el ejemplo de la figura se ha obtenido la raíz para la misma función que en los ejemplos del método de la bisección e interpolación lineal. Se ha empezado sin embargo en un punto más alejado de la raíz, para que pueda observarse mejor en la figura la evolución del algoritmo. En cada uno de los gráficos que componen la figura pueden observarse  los pasos del algoritmo: dado el punto  $x_i$, se calcula  la recta tangente a la función $f(x)$ en el punto y se obtiene un nuevo punto $x_{i+1}$,  como el corte de dicha recta tangente con el eje de abscisas.
+\end{tikzpicture}
+\caption{Flowchart of Newton-Raphson method}
+\label{fig:newton_eng}
+\end{figure}
 
-En este ejemplo el algoritmo converge en las cinco iteraciones que se muestran en la figura, para la misma tolerancia empleada en los métodos anteriores, $tol=0.01$. El punto de inicio empleado fue $x_0=2.5$, por tanto esta fuera del intervalo $[-2, 2]$ y más alejado de la raíz que en el caso de los métodos anteriores.   
+\begin{paracol}{2}
 
+La figura \ref{fig:newton} muestra un diagrama de flujo correspondiente al método de Newton. Si se compara con los diagramas de flujo de los algoritmos anteriores, el algoritmo de Newton resulta algo más simple de implementar. Sin embargo es preciso evaluar en cada iteración el valor de la función y el de su derivada. 
+
+\switchcolumn
+
+Figure \ref{fig:newton_eng} shows a flowchart for Newton's method. Compared to the flowcharts of the previous algorithms, Newton's algorithm is somewhat simpler to implement. However, the value of the function and its derivative must be evaluated at each iteration. 
+
+\switchcolumn
+
+El cálculo de la derivada, es el punto débil de este algoritmo, ya que para valores $x_0$ próximos a un mínimo o máximo local obtendremos valores de la derivada próximos a cero, lo que puede causar un error de desbordamiento al calcular el punto de corte de la recta tangente con el eje de abscisas o hacer que el algoritmo converja a una raíz alejada del punto inicial de búsqueda.
+ 
+\switchcolumn
+
+The calculation of the derivative is the weak point of this algorithm, since for values $x_0$ close to a local minimum or maximum we will obtain values of the derivative close to zero, which may cause an overflow error when calculating the point of intersection of the tangent line with the abscissa axis or cause the algorithm to converge to a root far from the initial search point.
+
+\end{paracol}
+\newpage
 \begin{figure}
+
 \centering
 \subfigure[intervalo inicial]{\includegraphics[width=7cm]{newt01.pdf}} \qquad
 \subfigure[iteracion 1]{\includegraphics[width=7cm]{newt02.pdf}}\\
@@ -302,19 +522,65 @@ En este ejemplo el algoritmo converge en las cinco iteraciones que se muestran e
 \caption{Proceso de obtención de la raíz de una función por el método de Newton}
 \label{fig:newton2}
 \end{figure}
+
+
+
+
+
+\begin{paracol}{2}
+La figura \ref{fig:newton2} muestra un ejemplo de obtención de la raíz de una función mediante el método de Newton. El método es más rápido que los dos anteriores, es decir, partiendo de una distancia comparable a la raíz, es el que converge en menos iteraciones. 
+
+\switchcolumn
+
+Figure \ref{fig:newton2} shows an example of obtaining the root of a function using Newton's method. The method is faster than the previous two, i.e., starting from a comparable distance to the root, it is the one that converges in the fewest iterations.
+
+\switchcolumn
+
+En el ejemplo de la figura se ha obtenido la raíz para la misma función que en los ejemplos del método de la bisección e interpolación lineal. Se ha empezado sin embargo en un punto más alejado de la raíz, para que pueda observarse mejor en la figura la evolución del algoritmo. En cada uno de los gráficos que componen la figura pueden observarse  los pasos del algoritmo: dado el punto  $x_i$, se calcula  la recta tangente a la función $f(x)$ en el punto y se obtiene un nuevo punto $x_{i+1}$,  como el corte de dicha recta tangente con el eje de abscisas.
+
+\switchcolumn
+
+
+In the example in the figure, the root has been obtained for the same function as in the examples of the bisection and false position method. However, we have started at a point further away from the root, so that the evolution of the algorithm can be better observed in the figure. In each of the graphs that make up the figure, the steps of the algorithm can be observed: given the point $x_i$, the tangent line to the function $f(x)$ at the point is calculated and a new point $x_{i+1}$ is obtained, as the intersection of this tangent line with the abscissa axis.
+
+\switchcolumn
+
+En este ejemplo el algoritmo converge en las cinco iteraciones que se muestran en la figura, para la misma tolerancia empleada en los métodos anteriores, $tol=0.01$. El punto de inicio empleado fue $x_0=2.5$, por tanto esta fuera del intervalo $[-2, 2]$ y más alejado de la raíz que en el caso de los métodos anteriores.   
+
+\switchcolumn
+
+In this example the algorithm converges in the five iterations shown in the figure, for the same tolerance used in the previous methods, $tol=0.01$. The starting point used was $x_0=2.5$, so it is outside the interval $[-2, 2]$ and further away from the root than in the case of the previous methods.   
+
+\switchcolumn
+
 \subsection{Método de la secante}
 El método de la secante podría considerarse una variante del método de newton en el que se sustituye la recta tangente al punto $x0$ por la recta secante que une dos puntos obtenidos en iteraciones sucesivas. La idea es \emph{aproximar} la derivada a la función $f$ en el punto $x_n$ por la pendiente de una recta secante, es decir de una recta que corta a la función en dos puntos, 
 \begin{equation*}
 f'(x_n)\approx \frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}
 \end{equation*}
 
+\switchcolumn
+
+\subsection{Secant method}
+The secant method could be considered a variant of Newton's method in which the tangent line to the point $x0$ is replaced by the secant line joining two points obtained in successive iterations. The idea is to approximate the derivative of the function $f$ at the point $x_n$ by the slope of a secant line, i.e. a line that cuts the function at two points, 
+\begin{equation*}
+f'(x_n)\approx \frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}
+\end{equation*}
+
+\switchcolumn
 Las sucesivas aproximaciones a la raíz de la función se obtienen de modo similar a las del método de Newton, simplemente sustituyendo la derivada de la función por su valor aproximado,
 
 \begin{equation*}
 x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}\approx x_n-\frac{(x_n-x_{n-1})\cdot f(x_n)}{f(x_n)-f(x_{n-1})}
 \end{equation*}
 
-Para iniciar el algoritmo, es preciso emplear en este caso dos puntos iniciales. La figura \ref{fig:secante} muestra un ejemplo.
+\switchcolumn
+The successive approximations to the root of the function are obtained in a similar way to Newton's method, by simply substituting the derivative of the function by its approximate value,
+\begin{equation*}
+x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}\approx x_n-\frac{(x_n-x_{n-1})\cdot f(x_n)}{f(x_n)-f(x_{n-1})}
+\end{equation*}
+
+\end{paracol}
 
 \begin{figure}[h]
 \includegraphics[width=14cm]{secante0.pdf}
@@ -322,11 +588,18 @@ Para iniciar el algoritmo, es preciso emplear en este caso dos puntos iniciales.
 \label{fig:secante}
 \end{figure}
 
+\begin{paracol}{2}
+Para iniciar el algoritmo, es preciso emplear en este caso dos puntos iniciales. La figura \ref{fig:secante} muestra un ejemplo.
+
+    \switchcolumn
+    To start the algorithm, two starting points must be used in this case. Figure \ref{fig:secant} shows an example.
+\switchcolumn
 El método podría en este punto confundirse con el de interpolación, sin embargo tiene dos diferencias importantes: En primer lugar, la elección de los dos puntos iniciales $x_0$ e $x_1$, no tienen por qué formar un intervalo que contenga a la raíz. Es decir, podrían estar ambos situados al mismo lado de la raíz. En segundo lugar, los puntos obtenidos se van sustituyendo por orden, de manera que la nueva recta secante se construye siempre a partir de los dos últimos puntos obtenidos, sin prestar atención a que el valor de la raíz esté contenido entre ellos. (No se comparan los signos de la función en los puntos para ver cual se sustituye, como en el caso del método de interpolación). 
 
-La figura \ref{fig:secante2} muestra un diagrama de flujo para el método de la secante. El diagrama es básicamente el mismo que el empleado para el método de Newton. Las dos diferencias fundamentales son, que ahora en lugar de evaluar la función y la derivada en cada iteración, se calcula  el valor del punto de corte de la recta que pasa por los dos últimos puntos obtenidos (es decir, empleamos una recta secante, que corta a la curva en dos puntos, en lugar de emplear una recta tangente). 
+\switchcolumn
+The method could at this point be confused with false position method, but it has two important differences: Firstly, the choice of the two initial points $x_0$ and $x_1$, need not form an interval containing the root. That is, they could both be located on the same side of the root. Secondly, the points obtained are substituted in order, so that the new secant line is always constructed from the last two points obtained, without paying attention to whether the value of the root is contained between them. (The signs of the function at the points are not compared to see which one is substituted, as in the case of the interpolation method). 
 
-Además es preciso actualizar, en cada iteración, el valor de los dos últimos puntos obtenidos: el más antiguo se desecha, el punto recién obtenido sustituye al anterior y éste al obtenido dos iteraciones antes. 
+\end{paracol}
 
 \begin{figure}[h]
 \centering
@@ -350,13 +623,45 @@ Además es preciso actualizar, en cada iteración, el valor de los dos últimos 
 \label{fig:secante2}
 \end{figure}
 
-La figura \ref{fig:secante3} muestra un ejemplo de la obtención de una raíz por el método de la secante. Se ha empleado de nuevo la misma función que en los ejemplos anteriores, tomando como valores iniciales, $x_0=-2.5$ y $x_1=0.5$. La tolerancia se ha fijado en $tol=0.01$ también como en los anteriores algoritmos descritos. En este caso, el algoritmo encuentra la raíz en cinco iteraciones. Cada uno de los gráficos que compone la figura \ref{fig:secante3}, muestra la obtención de un nuevo punto a partir de los dos anteriores. 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+%\usetikzlibrary{shapes.geometric}
+\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Begin with two initial points $x_0$, $x_1$}
+(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Compute\\ $x=x_1-\frac{(x_1-x_0)\cdot f(x_1)}{f(x_1)-f(x_0)}, f(x)$}
+(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{is $\vert f(x) \vert \le \text{tol}$?}
+(9,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{it converges:\\ finish}
+(5,-6) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$x_0=x_1$\\ $x_1=x$};
+\draw[blue,-latex](a.south)--(b);
+\draw[blue,-latex](b.south)--(c);
+\draw[blue,-latex](c.east)--(d);
+\draw (7.5,-4)node[above]{Yes};
+\draw[blue,-latex](c.south)--(g);
+\draw (5,-5)node[right]{No};
+\draw[blue,-latex](g.south)|-(2,-7)|-(b);
 
-En la iteración 2, puede observarse como el nuevo punto se obtiene a partir de dos puntos que están ambos situados a la derecha de la raíz, es decir, no forman un intervalo que contenga a la raíz.  Aquí se pone claramente de manifiesto la diferencia con el método de interpolación lineal. De hecho, com ya se ha dicho, el método de la secante puede iniciarse tomando los dos primeros puntos a uno de los lados de la raíz.
+\end{tikzpicture}
+\caption{Flowchart of the secant method}
+\label{fig:secante2_eng}
+\end{figure}
 
- El método es, en principio, más eficiente que el de la bisección y el de interpolación lineal, y menos eficiente que el de Newton.
+\begin{paracol}{2}
 
-La ventaja de este método respecto al de Newton es que evita tener que calcular explícitamente la derivada de la función para la que se quiere calcular la raíz. El algunos casos, la obtención de la forma analítica de dicha derivada puede ser compleja.   
+La figura \ref{fig:secante2} muestra un diagrama de flujo para el método de la secante. El diagrama es básicamente el mismo que el empleado para el método de Newton. Las dos diferencias fundamentales son, que ahora en lugar de evaluar la función y la derivada en cada iteración, se calcula  el valor del punto de corte de la recta que pasa por los dos últimos puntos obtenidos (es decir, empleamos una recta secante, que corta a la curva en dos puntos, en lugar de emplear una recta tangente). 
+
+\switchcolumn
+Figure \ref{fig:secante2_eng} shows a flow diagram for the secant method. The diagram is basically the same as the one used for Newton's method. The two fundamental differences are that now, instead of evaluating the function and the derivative at each iteration, we calculate the value of the cut-off point of the line passing through the last two points obtained (i.e. we use a secant line, which cuts the curve at two points, instead of using a tangent line). 
+
+\switchcolumn
+
+Además es preciso actualizar, en cada iteración, el valor de los dos últimos puntos obtenidos: el más antiguo se desecha, el punto recién obtenido sustituye al anterior y éste al obtenido dos iteraciones antes. 
+
+\switchcolumn
+
+In addition, the value of the last two points obtained must be updated in each iteration: the oldest point is discarded, the newly obtained point replaces the previous one and this one replaces the one obtained two iterations before. 
+
+
+\end{paracol}
 
 \begin{figure}
 \centering
@@ -370,6 +675,38 @@ La ventaja de este método respecto al de Newton es que evita tener que calcular
 \caption{proceso de obtención de la raíz de una función por el método de la secante}
 \label{fig:secante3}
 \end{figure}
+
+\begin{paracol}{2}
+La figura \ref{fig:secante3} muestra un ejemplo de la obtención de una raíz por el método de la secante. Se ha empleado de nuevo la misma función que en los ejemplos anteriores, tomando como valores iniciales, $x_0=-2.5$ y $x_1=0.5$. La tolerancia se ha fijado en $tol=0.01$ también como en los anteriores algoritmos descritos. En este caso, el algoritmo encuentra la raíz en cinco iteraciones. Cada uno de los gráficos que compone la figura \ref{fig:secante3}, muestra la obtención de un nuevo punto a partir de los dos anteriores. 
+
+    \switchcolumn
+Figure \ref{fig:secant3} shows an example of obtaining a root by the secant method. The same function has been used again as in the previous examples, taking as initial values, $x_0=-2.5$ and $x_1=0.5$. The tolerance has been set to $tol=0.01$ as in the previous algorithms described. In this case, the algorithm finds the root in five iterations. Each of the graphs that make up the figure \ref{fig:secant3}, shows the obtaining of a new point from the two previous ones. 
+    \switchcolumn
+
+En la iteración 2, puede observarse como el nuevo punto se obtiene a partir de dos puntos que están ambos situados a la derecha de la raíz, es decir, no forman un intervalo que contenga a la raíz.  Aquí se pone claramente de manifiesto la diferencia con el método de interpolación lineal. De hecho, com ya se ha dicho, el método de la secante puede iniciarse tomando los dos primeros puntos a uno de los lados de la raíz.
+
+\switchcolumn
+In iteration 2, it can be seen how the new point is obtained from two points that are both located to the right of the root, i.e. they do not form an interval containing the root.  Here the difference with the linear interpolation method is clearly shown. In fact, as already mentioned, the secant method can be started by taking the first two points on either side of the root.
+
+\switchcolumn
+ El método es, en principio, más eficiente que el de la bisección y el de interpolación lineal, y menos eficiente que el de Newton.
+\switchcolumn
+
+ The method is, in principle, more efficient than bisection and false position, and less efficient than Newton's method.
+
+ \switchcolumn
+ La ventaja de este método respecto al de Newton es que evita tener que calcular explícitamente la derivada de la función para la que se quiere calcular la raíz. El algunos casos, la obtención de la forma analítica de dicha derivada puede ser compleja.   
+\switchcolumn
+
+The advantage of this method over Newton's is that it avoids having to explicitly calculate the derivative of the function for which the root is to be calculated. In some cases, obtaining the analytical form of this derivative can be complex.  
+
+\end{paracol}
+
+
+
+
+
+
 
 \subsection{Método de las aproximaciones sucesivas o del punto fijo}\label{pfijo}
 
