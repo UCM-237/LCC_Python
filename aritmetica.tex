@@ -1,4 +1,4 @@
-\chapter{Aritmética del Computador y Fuentes de error}
+\chapter{Aritmética del Computador y Fuentes de error}\label{chp:arit}
 En el capítulo 1, introdujimos la representación binaria de números así como la conversión de binario a decimal y decimal a binario. A lo largo de este capítulo vamos a profundizar más en el modo en que el ordenador representa y opera con los números así como en una de sus consecuencias inmediatas: la imprecisión de los resultados. 
 
 \section{Representación binaria y decimal}\index{Binario}
@@ -965,19 +965,19 @@ Al, hablar del rango finito de los números representables, se indicó cómo tra
 
 Supongamos que creamos el siguiente programa en Matlab para calcular el módulo de un vector
 
-\begin{lstlisting}
-function m=norma(x)
-%inicializamos a cero la variable que contendrá la norma del vector.
-m=0;
-n=length(x) %calculamos la longitud del vector.
-%creamos un bucle para ir sumando los cuadrados de las componentes
-for i=1:n
-m=m+x(i)^2;
-end
+% \begin{lstlisting}
+% function m=norma(x)
+% %inicializamos a cero la variable que contendrá la norma del vector.
+% m=0;
+% n=length(x) %calculamos la longitud del vector.
+% %creamos un bucle para ir sumando los cuadrados de las componentes
+% for i=1:n
+% m=m+x(i)^2;
+% end
 
-%calculamos la raíz cuadrada del resultado del bucle
-m=sqrt(m)
-\end{lstlisting}
+% %calculamos la raíz cuadrada del resultado del bucle
+% m=sqrt(m)
+% \end{lstlisting}
 
 El programa anterior provocará un error de desbordamiento incluso para n=1, si introducimos un número cuyo cuadrado sea mayor que el mayor número representable. Por ejemplo si introducimos el número, $ 2^{1024/2}=1.340780792994260e+154$ en nuestro programa Matlab devolverá como solución \emph{inf}. Es decir, el resultado produce un error de desbordamiento. El problema se produce en el bucle, al calcular el cuadrado del número,
 \begin{equation*}
@@ -993,45 +993,45 @@ Todavía es posible mejorar el programa, y ampliar el rango de vectores para los
 
 El siguiente código permite calcular el módulo de un vector usando este procedimiento\footnote{El programa no funcionará correctamente para vectores cuyos primeros elementos sean 0, $(0,0,0\cdots$},
 
-\begin{lstlisting}
-function m=norma(x)
-n=length(x); %calculamos la longitud del vector.
-%si n=1 nos limitamos a devolver el valor absoluto del número introducido
-if n==1
-	x=abs(x);
-else
-% inicializamos con el primer elemento la variable que contendrá
-% al mayor de los elementos del vector
-mayor=abs(x(1));
+% \begin{lstlisting}
+% function m=norma(x)
+% n=length(x); %calculamos la longitud del vector.
+% %si n=1 nos limitamos a devolver el valor absoluto del número introducido
+% if n==1
+% 	x=abs(x);
+% else
+% % inicializamos con el primer elemento la variable que contendrá
+% % al mayor de los elementos del vector
+% mayor=abs(x(1));
 
-% inicialimos a 1 la variable que contendrá la suma de
-% los cuadrados de los elementos divididos por el valor de ello
+% % inicialimos a 1 la variable que contendrá la suma de
+% % los cuadrados de los elementos divididos por el valor de ello
 
-nscalado=1
+% nscalado=1
 
-% creamos un bucle para ir sumando los cuadrados de las componentes.
-% empezamos en el segundo elemento, puesto que el primero ya lo tenemos.
-	for i=2:n	
-		% calculamos el valor absoluto del elemento i
-		modxi=abs(x(i))
-		% comparamos con modxi con el mayor elemento obtenido hasta
-		% aquí
-		if mayor<modxi
-			% si modxi es mayor, será el elemento más grande encontrado
-			% hasta esta iteración
-			% cambiamos el valor de la suma 
-			mscalado=1+mscalado*(modxi/mayor)^2;
-			% definimos mayor como el nuevo valor encontrado
-			mayor=modxi;
-		else
-			% si no es el más grande, nos limitamos a sumarlo al resto
-			mscalado=mscalado+(modxi/mayor)^2;
+% % creamos un bucle para ir sumando los cuadrados de las componentes.
+% % empezamos en el segundo elemento, puesto que el primero ya lo tenemos.
+% 	for i=2:n	
+% 		% calculamos el valor absoluto del elemento i
+% 		modxi=abs(x(i))
+% 		% comparamos con modxi con el mayor elemento obtenido hasta
+% 		% aquí
+% 		if mayor<modxi
+% 			% si modxi es mayor, será el elemento más grande encontrado
+% 			% hasta esta iteración
+% 			% cambiamos el valor de la suma 
+% 			mscalado=1+mscalado*(modxi/mayor)^2;
+% 			% definimos mayor como el nuevo valor encontrado
+% 			mayor=modxi;
+% 		else
+% 			% si no es el más grande, nos limitamos a sumarlo al resto
+% 			mscalado=mscalado+(modxi/mayor)^2;
 	
-		end
-% una vez completado el bucle que calcula la suma de cuadrados,
-% obtenemos la raíz cuadrada, y multiplicamos por el mayor.
-m=mayor*sqrt(mscalado)
-\end{lstlisting}
+% 		end
+% % una vez completado el bucle que calcula la suma de cuadrados,
+% % obtenemos la raíz cuadrada, y multiplicamos por el mayor.
+% m=mayor*sqrt(mscalado)
+% \end{lstlisting}
 
 Si aplicamos este programa a obtener la norma del vector,
 \begin{equation*}

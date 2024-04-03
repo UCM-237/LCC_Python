@@ -680,7 +680,7 @@ In addition, the value of the last two points obtained must be updated in each i
 La figura \ref{fig:secante3} muestra un ejemplo de la obtención de una raíz por el método de la secante. Se ha empleado de nuevo la misma función que en los ejemplos anteriores, tomando como valores iniciales, $x_0=-2.5$ y $x_1=0.5$. La tolerancia se ha fijado en $tol=0.01$ también como en los anteriores algoritmos descritos. En este caso, el algoritmo encuentra la raíz en cinco iteraciones. Cada uno de los gráficos que compone la figura \ref{fig:secante3}, muestra la obtención de un nuevo punto a partir de los dos anteriores. 
 
     \switchcolumn
-Figure \ref{fig:secant3} shows an example of obtaining a root by the secant method. The same function has been used again as in the previous examples, taking as initial values, $x_0=-2.5$ and $x_1=0.5$. The tolerance has been set to $tol=0.01$ as in the previous algorithms described. In this case, the algorithm finds the root in five iterations. Each of the graphs that make up the figure \ref{fig:secant3}, shows the obtaining of a new point from the two previous ones. 
+Figure \ref{fig:secant3} shows an example of obtaining a root by the secant method. The same function has been used again as in the previous examples, taking as initial values, $x_0=-2.5$ and $x_1=0.5$. As in the previous algorithms described, the tolerance has been set to $tol=0.01$. In this case, the algorithm finds the root in five iterations. Each of the graphs that make up the figure \ref{fig:secant3}, shows the obtaining of a new point from the previous two. 
     \switchcolumn
 
 En la iteración 2, puede observarse como el nuevo punto se obtiene a partir de dos puntos que están ambos situados a la derecha de la raíz, es decir, no forman un intervalo que contenga a la raíz.  Aquí se pone claramente de manifiesto la diferencia con el método de interpolación lineal. De hecho, com ya se ha dicho, el método de la secante puede iniciarse tomando los dos primeros puntos a uno de los lados de la raíz.
@@ -1005,12 +1005,12 @@ Se obtendrá la gráfica de la función seno en el intervalo pedido.
 
 Podemos asignar \emph{handles} no solo a las funciones internas de Matlab sino a cualquier función que escribamos. Por ejemplo, en los métodos descritos más arriba para obtener raíces de funciones, usamos la función $f(x)=e^x-x^2$ como función de prueba. podemos crear un fichero que implemente esta función,
 
-\begin{lstlisting}
-function y=prueba(x)
-% esta es una funcioncilla de prueba para los algoritmos de obtención de
-% raíces
-y=exp(x)-x.^2;
-\end{verbatim}
+% \begin{lstlisting}
+% function y=prueba(x)
+% % esta es una funcioncilla de prueba para los algoritmos de obtención de
+% % raíces
+% y=exp(x)-x.^2;
+% \end{verbatim}
 
 Si guardamos el fichero, con el nombre prueba.m en el directorio de trabajo, podemos ahora asignar un \emph{handle} a nuestra función,
 \begin{verbatim}
@@ -1059,22 +1059,22 @@ y =
 
 \texttt{feval} suministra un método alternativo al uso de \emph{handles} para crear y manejar \emph{funciones de funciones}. Para ver un ejemplo, el siguiente código muestra una versión alternativa del programa \texttt{pinta\_funcion}, empleando la función \texttt{feval},
 
-\begin{lstlisting}
-function pinta_funcion2(fun,intervalo)
-% Esta función dibuja la gráfica de una funcion cualquiera (fun) en un
-% itervalo dado (intervalo). fun debe ser una cadena de caractéres que contengan exáctamente el nombre de la función (fun) que se 
-% quiere pintar. intervalo debe ser un vector que contenga los extremos del
-% intervalo que se desea pintar.
+% \begin{lstlisting}
+% function pinta_funcion2(fun,intervalo)
+% % Esta función dibuja la gráfica de una funcion cualquiera (fun) en un
+% % itervalo dado (intervalo). fun debe ser una cadena de caractéres que contengan exáctamente el nombre de la función (fun) que se 
+% % quiere pintar. intervalo debe ser un vector que contenga los extremos del
+% % intervalo que se desea pintar.
 
-% Construimos cien puntos en el intevalo dado,
-x=linspace(intervalo(1),intervalo(2),100);
+% % Construimos cien puntos en el intevalo dado,
+% x=linspace(intervalo(1),intervalo(2),100);
 
-% calculamos el valor de la funcion en los puntos del intervalo, EMPLEANDO LA FUNCION feval
-y=feval(fun,x);
+% % calculamos el valor de la funcion en los puntos del intervalo, EMPLEANDO LA FUNCION feval
+% y=feval(fun,x);
 
-% dibujamos la gráfica
-plot(x,y)
-\end{lstlisting}
+% % dibujamos la gráfica
+% plot(x,y)
+% \end{lstlisting}
 
 Para representar la función seno en el intervalo $-\frac{\pi}{2}, \frac{\pi}{2}$, empleando esta nueva función, introducimos en Matlab,
 
