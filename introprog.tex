@@ -1624,10 +1624,7 @@ We define three variables, in lines $11 - 13$, to be used as coefficients for a 
 \mint{python}{eq_se_grado.soleq2}
 That is, we indicate the namespace first and then the function name, both separated by a point. This is the way in which we can access the variables and functions defined in a script from another script. 
 
-Why is it convenient to define variables and functions in separated namespaces? One reason is that it allows repeating the same variable and function names in different locations of our code, avoiding that they clash accidentally.   
-
-
-
+Why is it convenient to define variables and functions in separated namespaces? One reason is that it allows repeating the same variable and function names in different locations of our code, avoiding that they clash accidentally. In the last example, in line $14$ we saved the the quadratic equation solutions in variables \mintinline{python}{solplus} y \mintinline{python}{solminus}. But these variable names was already been used. We said that when we imported \mintinline{python}{eq_seg_grado}, we are runnig it. If we review the code of this script we can see that in line $34$\\ \mintinline{python}{solplus, solminus = soleq2(2, 3, 1)},\\ the program calls \mintinline{python}{soleq2} and the results are saved in variables with identical names,\\ \mintinline{python}{solplus} y \mintinline{python}{solminus}. Although we are saving the solutions in both cases with the same names, they belong to different namespaces. After running the script \mintinline{python}{Example_import.py}, we achieve the following result,   
 \end{paracol}
 
 \begin{minted}{python}
@@ -1643,12 +1640,15 @@ eqseg_grado: -1.0
 In [2]: 
 \end{minted}
 \begin{paracol}{2}
-Una vez que se ejecuta el programa, al importar \mintinline{python}{eq_seg_grado}, se ejecuta dicho script. Se calcula por tanto la solución de la ecuación de segundo grado: $x^2+2x+3=0$ y se muestran en el terminal las comprobaciones de los resultados. Una vez terminada la importación todas las variables y funciones creadas por \mintinline{python}{eq_seg_grado}, están disponibles en su namespace global. Por último, observamos los resultados de las dos ecuaciones de segundo grado resueltas. Las dos primeras, corresponden a la ecuación $2x^2+3x+1=0$, y las dos últimas a la ecuación $x^2+2x+3=0$. Para imprimir estas últimas, hemos empleado \mintinline{python}{eq_seg_grado.solplus}\\
+Al importar \mintinline{python}{eq_seg_grado}, se ejecuta dicho script. Se calcula por tanto la solución de la ecuación de segundo grado: $x^2+2x+3=0$ y se muestran en el terminal las comprobaciones de los resultados. Una vez terminada la importación, todas las variables y funciones creadas por \mintinline{python}{eq_seg_grado}, están disponibles en su namespace global. despues, observamos en el terminal los resultados de las dos ecuaciones de segundo grado resueltas. Las dos primeras, corresponden a la ecuación $2x^2+3x+1=0$, y las dos últimas a la ecuación $x^2+2x+3=0$. Para imprimir estas últimas, hemos empleado \mintinline{python}{eq_seg_grado.solplus}\\
 \mintinline{python}{eq_seg_grado.solminus},\\ 
 para indicar que nos referimos a las variables guardadas en el namespace de \mintinline{python}{eq_seg_grado}.
+\switchcolumn
+As we have alredy said, when we import \mintinline{python}{eq_seg_grado}, this script is ran. Thus, the program calculates first the solution of the quadratic function: $x^2+2x+3=0$ and shows the checking of the solutions on the Ipython terminal. Once the importation is over, all created functions and variables are available in the script's global namespace. Then we see on the Ipython terminal the results of the two quadratic ecuations solved. First the solutions of    $2x^2+3x+1=0$ and after the solutions of $x^2+2x+3=0$. To print these last solutions, we use\\
+\mintinline{python}{eq_seg_grado.solplus}\\ 
+\mintinline{python}{eq_seg_grado.solminus},\\
+To indicate that we want to print the variables held in the global namespace \mintinline{python}{eq_seg_grado}.  
 \end{paracol}
-======================THE FRONTIER=====================
-
 
 \begin{figure}[h]
 \centering
@@ -1688,6 +1688,13 @@ Functions inside functions
 \bicaption{Relación de inclusión entre los Namesapces de Python}{Inclusion relationship among Python Namespaces}
 \label{fig:amb}
 \end{figure} 
+
+\begin{paracol}{2}
+\paragraph{Local Namespace} Este \emph{namespace} es propio de las funciones. Cuando se ejecuta una función en Python, se crea un  namespace específico (local)  para dicha función en la que se guardan las variables que la función crea y utiliza durante su ejecución. Una vez que la funcion termina, el namespace local asociado se destruye, y las variables dejan de estar accesibles.
+
+Si nos fijamos en el código de la función \mintinline{python}{soleq2}, vemos que la función crea unas variables \mintinline{python}{a,b,c} en su cabecera. Dentro de la función se emplean dichas variables para resolver una equación de segundo grado, y se guardan las soluciones en las variables \mintinline{python}{xp,xm}.
+\end{paracol}
+======================THE FRONTIER=====================
 
 La figura \ref{fig:amb} muestra esquemáticamente como se gestionan las variables en Matlab. En el cuadro superior se muestra la ejecución de varias sentencias en la ventana de trabajo de Matlab. Las dos primeras crean directamente dos variables \texttt{a} y \texttt{b} que se almacenan en el \emph{workspace de Matlab}, representado por el cuadro azul de la derecha. 
 A continuación se llama a la función ejem (cuadro rojo central), asignándole como variable de entrada la variable \texttt{a} y como variable de salida la variable \texttt{y}. La ventana de comandos \emph{cede} el control a la función que empieza a ejecutarse:
