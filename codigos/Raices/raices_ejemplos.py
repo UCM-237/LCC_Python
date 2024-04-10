@@ -9,6 +9,7 @@ Created on Wed Feb 21 17:42:09 2024
 import numpy as np
 import matplotlib.pyplot as plt
 import raices as rc
+import scipy.optimize as opt
 
 x=np.linspace(-2.5,2.5,100)
 y=rc.f_prueba(x)
@@ -41,3 +42,11 @@ raiz,error,nit=rc.secant(rc.f_prueba,-1,0   ,0.001,50)
 print("Secante")
 print("Raiz \t Error \t Iteraciones")
 print(raiz,error,nit)
+
+def fun(x):
+    y=np.exp(x)-x**2
+    return y
+
+roots=opt.fsolve(fun,-2)
+print("fsolve roots")
+print(roots)
