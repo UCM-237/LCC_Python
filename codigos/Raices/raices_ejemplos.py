@@ -10,6 +10,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import raices as rc
 import scipy.optimize as opt
+from numpy.polynomial import Polynomial as P
+
 
 x=np.linspace(-2.5,2.5,100)
 y=rc.f_prueba(x)
@@ -50,3 +52,44 @@ def fun(x):
 roots=opt.fsolve(fun,-2)
 print("fsolve roots")
 print(roots)
+
+p = P([0,6,2,0,3])
+print(p)
+
+#y(x)=x^3-6^2+11x-6
+p1=P([1,-6,11,-6])
+print(p1)
+print("The roots are:\t",p1.roots())
+
+p2=P([1,2,1])
+print(p2)
+print("The roots are:\t",p2.roots())
+
+#Create a polynomial with roots 3, -2, 2
+p3=P.fromroots([3,-2,2])
+print(p3)
+#Compute the polynomial that is its derivative
+pdot=p3.deriv()
+print("Derivative:", pdot)
+#Compute the polynomial that is the integral
+pint=p3.integ()
+print("Integral:", pint)
+#Create polynomial p4 as a copy of pint
+p4=pint.copy()
+print(p4)
+'''
+print(p1*p2)
+print(p//p2)
+print(p%p2)
+print(p**2)
+
+#Polynomial p created and domain defined as [-2,2]
+p=P([0,6,2,0,3],[-2,2])
+dat=p.linspace()
+plt.figure()
+plt.grid()
+plt.plot(dat[0],dat[1])
+plt.xlabel('x')
+plt.ylabel('y')
+p_string=str(p)
+plt.title(p_string)'''
