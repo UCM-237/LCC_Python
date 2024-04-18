@@ -93,3 +93,14 @@ plt.xlabel('x')
 plt.ylabel('y')
 p_string=str(p)
 plt.title(p_string)'''
+
+# Precision maxima
+raiz,error,nit=rc.biseccion_max(rc.f_prueba,-2,2.5)
+print("Biseccion")
+print("Raiz \t Error \t Iteraciones")
+print(raiz,error,nit)
+
+print(np.spacing(1))
+print(np.spacing(1e-10))
+print(np.spacing(1e20))
+

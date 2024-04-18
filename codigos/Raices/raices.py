@@ -108,3 +108,26 @@ def secant(f,x0,x1,tol,itmax):
     r=x
     error=np.fabs(f(x0))
     return r,error,nit
+
+def biseccion_max(f,a,b):
+    ''' Bisection Method to compute roots at highest precision
+    f: function from which the roots are to be calculated inside [a,b]
+    '''
+    nit=0
+    r=0
+    if f(a)*f(b)>0:
+        '''the conditions of bozano's theorem are not fulfilled'''
+        return
+    c=(a+b)*0.5
+    while np.abs(b-a)>=np.abs(np.spacing(a)):
+        c=(a+b)*0.5
+        if f(c)*f(a)<0:
+            b=c
+        else:
+            a=c
+        nit+=1
+        print(np.abs(b-a),"\t",np.spacing(a))
+    r=c
+    error=np.abs(f(c))
+
+    return r,error,nit
