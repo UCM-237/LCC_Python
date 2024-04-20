@@ -73,11 +73,11 @@ Among the many ways you may follow to install Python and some of its development
 
  Once installed, it supplies an application \emph{anaconda-navigator} to manage Anaconda. When we start Anaconda-Navigator, we get a window like that shown in figure \ref{fig:anaconda}.
 
- Anaconda-Navigator shows a set of icons. Anyone of them is intended to launch a different application. Many of them are IDEs specifically designed to use Python. Others relate to other programs devoted to data processing, graphics, or statistics. The work \emph{launch} is written in some of these icons. It means that the application is already installed on our computer. Pressing the left-hand button of the mouse over the word \emph{launch} opens the application. In other cases, the word \emph{install} is Written over the icon. In these cases, the application is not installed on our computer, but we can install it by pressing the left-hand button of the mouse over the word \emph{install}.
+ Anaconda-Navigator shows a set of icons. Anyone of them is intended to launch a different application. Many of them are IDEs specifically designed to use Python. Others relate to other programs devoted to data processing, graphics, or statistics. The work \emph{launch} is written in some of these icons. This means that the application has already been installed on our computer. Pressing the left-hand button of the mouse over the word \emph{launch} opens the application. In other cases, the word \emph{install} is Written over the icon. In these cases, the application is not installed on our computer, but we can install it by pressing the left-hand button of the mouse over the word \emph{install}.
 
  We are going to use Spyder, which has already been installed. In figure \ref{fig: anaconda}, the Spyder icon has been enclosed in a red circle.
 
- Before starting with a Spyder description, we will use Anaconda to install a plug-in, allowing us to use another of Phyton's most currently used IDEs: \emph{Jupyter Notes}. Jupyter Notes is an IDE to develop code in Python independently of Spyder. It is a handy tool because it allows us to combine Python code with graphics and text. We will describe Jupyter Notes later on.
+ Before starting with a Spyder description, we will use Anaconda to install a plug-in, allowing us to use another of Phyton's most currently used IDEs: \emph{Jupyter Notes}. Jupyter Notes is an IDE for Python code development.  It is independent of Spyder. It is a handy tool because it allows us to combine Python code with graphics and text. We will describe Jupyter Notes later on.
 
  \paragraph{Spyder-notebook installation.} To install the plugin that allows using Jupyter Notes from Spyder, we press the mouse left button on the \emph{Environments} icon (framed in red in figure \ref{fig:anaconda2}). Then, the Anaconda-Navigator window shows us Anaconda work environments (figure \ref{fig:ntb1}). If we have just installed Anaconda, the only environment already available should be the base (root) environment. We will focus on the right-side panel. The upper left corner has a drop-down menu; we select the option \emph{all}. Then, the panel shows us all the software packages available in the Anaconda default channel. Those packages installed in the computer are ticked with a green square label before the package name; packages available but not installed are ticked with a white square.
 
@@ -159,7 +159,7 @@ Nevertheless, handling Python as a calculator is hardly ever enjoyable. Once a c
 Podemos ver una variable como una región de la memoria del computador, donde un programa guarda una determina información: números, letras, etc. Una característica fundamental de una variable es su nombre, ya que permite identificarla. \index{Variable! nombre} Como nombre para una variable se puede escoger cualquier combinación de letras y números, empezando siempre con una letra, en el caso de Python\footnote{Como se verá más adelante, Python tiene un conjunto de nombres de instrucciones y comandos ya definidos. Se debe evitar emplear dichos nombres, ya que de hacerlo se puede perder acceso al comando de Python que representan}. Se puede además emplear el signo "\_". Python distingue entre mayúsculas y minúsculas, por lo que si elegimos como nombres de variable Pino, PINO y PiNo, Matlab las considerará como variables distintas. 
 
 \switchcolumn
-We can consider a variable as a computer memory region where a program has allocated specific information: numbers, characters, etc. A variable fundamental characteristic is its name because it permits one to identify it univocally. \index[eng]{Variable! name}. We can take as a variable name whatever combination of lowercase and uppercase letters and numbers, provided that the first character is always a letter. When using Python  Python\footnote{As we shall see, later on, Python has a set of command names and keywords already defined. We should avoid using these names or keywords as names for our variables. Otherwise, we could lose access to the corresponding Python command or keyword.}, We may also use the symbol ''\_". For Python, uppercase and lowercase letters are different symbols. Thus, if we choose variable names, such as Oack, OACK, and OaCk, they represent different variables for phyton.
+We can consider a variable as a computer memory region where a program has allocated specific information: numbers, characters, etc. A variable fundamental characteristic is its name because it permits one to identify it univocally. \index[eng]{Variable! name}. We can take as a variable name whatever combination of lowercase and uppercase letters and numbers, provided that the first character is always a letter. When using Python\footnote{As we shall see later on, Python has a set of command names and keywords already defined. We should avoid using these names or keywords as names for our variables. Otherwise, we could lose access to the corresponding Python command or keyword.}, We may also use the symbol ''\_". For Python, uppercase and lowercase letters are different symbols. Thus, if we choose variable names, such as Oack, OACK, and OaCk, they represent different variables for phyton.
 
 \switchcolumn
 El método más elemental de crear o emplear una variable es asignarle la información para la que se creó. Para hacerlo, se emplea el símbolo de asignación \index{"= Símbolo de asignación} \index{Símbolo de asignación}, que coincide con el signo $=$ empleado en matemáticas. Como veremos más adelante la asignación en programación y la igualdad en matemáticas no representan exáctamente lo mismo. La manera de asignar directamente información a una variable es escribir el nombre de la variable, a continuación  el signo de asignación y, por último, la información asignada, \mintinline{python}{variable_1 = 18}. Si escribimos dicha expresión en la terminal de Python y pulsamos la tecla \emph{intro}:
@@ -952,7 +952,7 @@ Less than or equal to&&& The result is \mintinline{python}{True} if $a$ is great
 igual a&\multirow{2}{*}{\texttt{==}}&\multirow{2}{*}{\texttt{a==b}}&El resultado es \mintinline{python}{True} si $a$ eas igual a $b$. En otro caso el resultado es \mintinline{python}{False}\\ 
 equal to &&& The result is \mintinline{python}{True} is $a$ is equal to $b$. Otherwise the result is \mintinline{python}{False}\\
 \hline
-Distinto de& \multirow{2}{*}{\texttt{!=}}& \multirow{2}{*}{\texttt{!=b}}&El resultado es \mintinline{python}{True} si $a$ es distinto de $b$. En otro caso el resultado es \mintinline{python}{False}\\ 
+Distinto de& \multirow{2}{*}{\texttt{!=}}& \multirow{2}{*}{\texttt{a!=b}}&El resultado es \mintinline{python}{True} si $a$ es distinto de $b$. En otro caso el resultado es \mintinline{python}{False}\\ 
 not equal to&&& The result is \mintinline{python}{True} if $a$ is not equal to $b$. Otherwise the result is \mintinline{python}{False}\\
 \hline
 \hline
@@ -1231,7 +1231,7 @@ Python puede emplear ficheros de texto en los que introducimos un conjunto de co
 
 \switchcolumn
 \section{Scripts in python} \label[eng]{Scripts}
-So far, we have always dealt with Python using the command line. That is, we have always introduced instructions using the command line. This method is quite inefficient because we need to rewrite the commands again anytime we want to repeat the same operations.
+So far, we have always dealt with Python using the command line. That is, we have constantly introduced instructions using the command line. This method is rather inefficient because we need to rewrite the commands again anytime we want to repeat the same operations.
 
 With Python, you can effortlessly save a set of instructions in a text file and reuse them anytime you need to carry out the same calculation. This is the usual way to work in Python and many other programming environments. A Python code file is usually called a \emph{Script}. Thus, a Python Script is a text file that contains lines of valid Python commands. The file is saved using a name and the extension \texttt{.py}. So a valid name would be, for example, \texttt{myprogram.py}. The file name may contain numbers, letters, and special characters, such as the underline (\_). Using names that include blanks or other special characters is not advisable as a general criterion because we may have problems running them.
 \end{paracol}
@@ -1267,7 +1267,7 @@ Las líneas que aparecen escritas por defecto en el archivo de texto, no son com
     \item Grupos de líneas encerrados entre grupos de tres comillas \verb|"""|. Se emplean para comentarios más largos, en los que se dan explicaciones más completas de lo que hace el código.
 \end{itemize}
 \switchcolumn
-The figure shows a panel with several tabs. Each one belongs to a different text file containing a Python program. The file name is written in the tab. The file shown in the figure has the name \emph{untitle0.py}. It is a new file we have just opened to write a new program. To create a new Spyder's script, it is enough to click the left icon on top of the editor panel or unfold the File menu located just above and select the option \emph{New file}.
+The figure shows a panel with several tabs. Each one belongs to a different text file containing a Python program. The file name is written in the tab. The file shown in the figure has the name \emph{untitle0.py}. It is a new file we have just opened to write a new program. To create a new Spyder script, it is enough to click the left icon on top of the editor panel or unfold the File menu located just above and select the option \emph{New file}.
 
 Looking at figure \ref{fig:script}, we see how the code lines are numbered on the right side of the file how the code lines are numbered. Besides, some code lines are included.
 
@@ -1303,7 +1303,7 @@ Para seguir con el mismo ejemplo, vamos a escribir algunas líneas de código y 
 \switchcolumn
 In our case, Spyder has written a line comment showing the text codification (\emph{utf8}) used to store the file's information. Below, Spyder creates a comment area --the second type of comment-- using the code lines 2 to 6. There, it writes the file creation date and the name of the file author. Of course, this data can be changed by the user. This comment area created by Python is an excellent place to add information about the file features, the type of variables defined, etc.
 
-We will continue with the example, adding some code lines and then save the file with a new name. To save a file, click the third icon from the left in the icon panel above the editor or unfold the File menu and select the option Save as. We will save our file with the name \emph{ejemplo.py}.
+We will continue with the example, adding some code lines and then save the file with a new name. To save a file, click the third icon from the left in the icon panel above the editor or unfold the File menu and select Save as. We will save our file with the name \emph{ejemplo.py}.
 \end{paracol}
 
 \begin{minted}[
@@ -1420,7 +1420,7 @@ Cuyas soluciones toman la forma general,
 \section{Functions in Python} \index[eng]{functions}
 In the previous section, we learned about using scripts to save our code and reuse it later. While this is an improvement over repeatedly rewriting the same commands in the console, it still results in code that is not very flexible and reusable. In this section, we will introduce functions, a programming structure that enables our code to become a more powerful tool.
 
-In Python, it is possible to define functions using the console. However, this is not advisable as all work will be lost once Spyder is exited. takes in Python the following general structure,
+In Python, it is possible to define functions using the console. However, this is not advisable because all work will be lost once Spyder is exited. takes in Python the following general structure,
 
 \begin{minted}{python}
 def funcion_name(e1,e2,...):
@@ -1435,7 +1435,7 @@ The first line of a function definition is known as the function header. It alwa
 
 Beneath the header file comes the function body, that is, the code lines of the function. One important feature of Python language is that any line belonging to the body function should be indented. The function body lines should begin, leaving the same number of blank spaces from the beginning of the line. One advantage of using the Spyder text editor is that it automatically acknowledges the file header lines and indents the following lines. The last function line is usually used to recover variables that contain the function operations' relevant results. It starts with the keyword \mintinline{python}{return}, followed by a list of variables separated by commas. Obviously, these variables should be defined in the function body.
 
-Let's have a look at an example function for solving quadratic equations.
+Let's look at an example function for solving quadratic equations.
 \begin{equation*}
 ax^2+bx+c=0
 \end{equation*}
@@ -1514,18 +1514,18 @@ print('raiz negativa/negative root:', 2*solminus**2+3*solminus+1)
      \switchcolumn
      We have opened a new script in the Spyder text editor to define our function. We have saved the Script with the name {eq\_seg\_grado.py}. Obviously, you can save the file with whatever valid name you like, but it is a good idea to find a name that gives us some hints in the script content (quad\_eq.p should be a nice name for this script). 
 
-     After writing a brief comment about the file's content, we define the header of the function on line number $9$. It is interesting to look carefully at this definition: After writing the keyword \mintinline{python}{def}, we have given a name to the function \mintinline{python}{soleq2,} and, next, we have defined the input variables, enclosed in parentheses and separated by commas. These input variables will be the coefficients of the quadratic equation we wish to solve. We close the function header adding the final colon. Just beneath the header, we have added a rather lengthy comment explaining the purpose of the function and describing its input and output variables.
+     After writing a brief comment about the file's content, we define the function header on line number $9$. It is interesting to look carefully at this definition: After writing the keyword \mintinline{python}{def}, we have given a name to the function \mintinline{python}{soleq2,} and, next, we have defined the input variables, enclosed in parentheses and separated by commas. These input variables will be the coefficients of the quadratic equation we wish to solve. We close the function header, adding the final colon. Just beneath the header, we have added a rather lengthy comment explaining the purpose of the function and describing its input and output variables.
 
      We have written the mathematical operations for the quadratic equation's positive and negative squared roots in lines 27 and 28, respectively. Check it! In the first case, we have saved the result in variable \mintinline{python}{xp} and, in the second case, we have saved the result for the negative squared root in variable\mintinline{python}{xm}. Lastly, line number $29$ returns variables \mintinline{python}{xp, xm} with the operation results.
 
-     The function definition finishes here. The remaining code lines do not belong to the function, and this is the reason why they are not indented. We have added them to show how to use the function \mintinline{python}{soleq2} and check its results a correct.
+     The function definition finishes here. The remaining code lines do not belong to the function, so they are not indented. We have added them to show how to use the function \mintinline{python}{soleq2} and check if the results are correct.
 
      In line $34$, we show how to use (call) the already created function. First, we define two variables, \mintinline{python}{solplus} and \mintinline{python}{solminus} for saving the function results.
-     These variables, separated by commas, are orderly associated with those returned by the function,i.e. the variables included in the function code after the keyword \mintinline{python}{return}. Thus, Python will copy the content of variable \mintinline{python}{xp} in variable \mintinline{python}{solplus} and the content of variable \mintinline{python}{xm} in variable \mintinline{python}{solminus}. Unnecessary to say that we can give whatever valid name we want to the variables we use to save the function results. After the aforementioned variables, we write the assignation symbol followed by the function name. lastly, we write values for input variables, \mintinline{python}{a,b,c}.
+     These variables, separated by commas, are orderly associated with those returned by the function,i.e. the variables included in the function code after the keyword \mintinline{python}{return}. Thus, Python will copy the content of variable \mintinline{python}{xp} in variable \mintinline{python}{solplus} and the content of variable \mintinline{python}{xm} in variable \mintinline{python}{solminus}. It is unnecessary to say that we can give whatever valid name we want to the variables we use to save the function results. After the variables above, we write the assignation symbol followed by the function name. lastly, we write values for input variables, \mintinline{python}{a,b,c}.
 
-     Lines $38$ and $39$ check that both obtained solutions fulfill the quadratic equation $2x^2+3x+1 = 0$. We have added a quoted text to the \mintinline{python}{print} command that helps to which result is up to each solution.
+     Lines $38$ and $39$ check that both obtained solutions fulfil the quadratic equation $2x^2+3x+1 = 0$. We have added a quoted text to the \mintinline{python}{print} command that helps to determine which result is up to each solution.
 
-     If we click on the green triangle icon and run the script, we have written, we get the following result in the Ipython console,
+     If we click on the green triangle icon and run the script we have written, we get the following result in the Ipython console,
      
 \end{paracol}
 
@@ -1541,7 +1541,7 @@ In [2]:
 \begin{paracol}{2}
 Es importante recordar que un script no es más que una secuencia de instrucciones que se ejecutan en el terminal. Por tanto, si seguimos la secuencia del script del ejemplo, lo primero que hemos hecho es \emph{crear} la función que hemos definido y guardarla en la memoria del ordenador. Por eso, podemos ahora si quemeremos seguir utilizándola directamente en el terminal,
 \switchcolumn
-It is important to remark that a script is just a sequence of intructions that run in the console. Thus, if we track the sequence of the example script, we first \emph{create} the function defined in the script and save it in the computer memory. Hence, as long as we don´t quit Spyder,  we can keep on using it directly in the Ipython terminal,  
+It is important to note that a script is just a sequence of instructions that run in the console. Thus, if we track the sequence of the example script, we first \emph{create} the function defined in the script and save it in the computer memory. Hence, as long as we don´t quit Spyder,  we can keep on using it directly in the Ipython terminal,  
 \end{paracol}
 
 \begin{minted}{python}
@@ -1564,9 +1564,9 @@ A continuación empleamos el comando \mintinline{python}{print}, para observar l
 
 Las dos últimas líneas In[16] e In[17] las hemos empleado para imprimir el valor de las variables \mintinline{python}{solplus} y \mintinline{python}{solminus}. Esta variables se crearon cuando se ejecutó el script, pero Python las conserva todavía en memoria.
 \switchcolumn
-Notice that in this example, we have collected the quadratic equation coefficients in a Python list. Then we call the function. The procedure is the same as before; we define output variables to save the results \mintinline{python}{sp, sn}, write the assignation symbol and the name of the function and give values to the input variables. These last have been written in such a way that the function should identify the quadratic equation \mintinline{python}{a} coefficient with the first element of the list, the second coefficient with the second element of the list, etc. 
+Notice that we have collected the quadratic equation coefficients in a Python list in this example. Then, we call the function. The procedure is the same as before; we define output variables to save the results \mintinline{python}{sp, sn}, write the assignation symbol and the function name and give values to the input variables. These last have been written so that the function should identify the quadratic equation \mintinline{python}{a} coefficient with the first element of the list, the second coefficient with the second element of the list, etc. 
 
-Next, we use the command \mintinline{python}{print} to watch the output values of the output variables. In this case, the equation has not real solutions, and the results are two complex conjugated numbers.
+Next, we use the command \mintinline{python}{print} to watch the output values of the output variables. In this case, the equation does not have real solutions, and the results are two complex conjugated numbers.
 
 The last two lines, In[16] and In[17], are used to show the value of \mintinline{python}{solplus} and \mintinline{python}{solminus}. these variables were created when we ran the script, but Python still holds them in the computer memory. 
 \switchcolumn
@@ -1578,10 +1578,10 @@ En Python se definen cuatro \emph{namespaces} diferentes. Su definición es din�
 
 \switchcolumn
 \section{Namespace and Scope in Python}
-We have seen that Python holds the created variables in the computer memory to use them later. It is important to understand how Python manages the variables saved in the computer memory. This takes us to the idea of Python \emph{namespaces}.
-A \emph{namespace} could be considered as a memory space, reserved by Python, where programs and functions can access to find variables, functions and, in general, programming objects.
+We have seen that Python holds the created variables in the computer memory so that they can be used later. Understanding how Python manages the variables saved in the computer memory is essential. This takes us to the idea of Python \emph{namespaces}.
+A \emph{namespace} could be considered a memory space reserved by Python, where programs and functions can access to find variables, functions and, in general, programming objects.
 
-Python defines four different \emph{namespaces}. They are dynamically defined, which means that they last for a limited time period. They are created when necessary and destroyed when they are no longer needed. Usually, several \emph{namespaces} coexist. They are:
+Python defines four different \emph{namespaces}. They are dynamically defined, meaning they last for a limited time. They are created when necessary and destroyed when they are no longer needed. Usually, several \emph{namespaces} coexist. They are:
 
 \switchcolumn
 \paragraph{Built-in Namespace.} Contiene todas las variables y funciones propias de Python. Dichas variables son accesibles siempre que tenemos abierta una consola de Python. Podemos listar sus nombres escribiendo en la consola de Python el comando \mintinline{python}{dir(__builtins__)}. Por ejemplo, la función \mintinline{python}{print}, pertenece a este \emph{namespace}. Podemos acceder a las funciones y variables contenidas en Built-in, desde cualquier función o programa de Python.
@@ -1591,11 +1591,11 @@ Python defines four different \emph{namespaces}. They are dynamically defined, w
 Pero, ¿Qué pasa si queremos emplear dicha función en otro script? ¿Debemos volver a escribirla de nuevo? La respuesta es no. Para emplear la función \mintinline{python}{soleq2}, podemos \emph{importar} nuestro primer script en el segundo mediante el comando \mintinline{python}{import}. Veamos un ejemplo, 
 
 \switchcolumn
-\paragraph{Built-in Namespace.} This namespace stores all Python Built-in variables and functions. We can access these variables whenever we have a Python terminal opened. We list their names writing the command \mintinline{python}{dir(__builtins__)} on the Ipython terminal. For instance, the function \mintinline{python}{print}, belongs to this \emph{namespace}. We can access every function and variable stored in the Built-in namespace, from whatever function or program we write in Python.
+\paragraph{Built-in Namespace.} This namespace stores all Python Built-in variables and functions. We can access these variables whenever we have a Python terminal opened. We list their names by writing the command \mintinline{python}{dir(__builtins__)} on the Ipython terminal. For instance, the function \mintinline{python}{print} belongs to this \emph{namespace}. We can access every function and variable stored in the Built-in namespace from whatever function or program we write in Python.
 
-\paragraph{Global Namespace.} We could say that this \emph{namespace}, contains all functions and variables defined in a script. Nevertheless, we are going to introduce the concept of importation to better understand what we mean by this. Let's come back for a moment to the example above, where we wrote a script with a function \mintinline{python}{soleq2}, which allows us to get the roots of a quadratic equation. We have seen that if we run the script in Spyder, the function \mintinline{python}{soleq2} is stored in the computer memory, and we can use it straightforwardly on the Ipython terminal to solve any quadratic function.
+\paragraph{Global Namespace.} We could say that this \emph{namespace} contains all functions and variables defined in a script. Nevertheless, we will introduce the importation concept to better understand what we mean by this. Let's return for a moment to the example above, where we wrote a script with a function \mintinline{python}{soleq2}, allowing us to get a quadratic equation's roots. We have seen that if we run the script in Spyder, the function \mintinline{python}{soleq2} is stored in the computer memory, and we can use it straightforwardly on the Ipython terminal to solve any quadratic function.
 
-But, what if we want to use the function \mintinline{python}{soleq2} in another script? Do we need to write down the equation again in the new script? The answer is not. Python supplies a method to access the functions a variables of one script for another. The method is known as \emph{importation}, we import one script into another using the command \mintinline{python}{import}. The following script shows an example, 
+But what if we want to use the function \mintinline{python}{soleq2} in another script? Do we need to write down the equation again in the new script? The answer is not. Python supplies a method to access the functions and variables of one script from another. The method is known as \emph{importation}; we import one script into another using the command \mintinline{python}{import}. The following script shows an example, 
 \end{paracol}
 
 \inputminted[
@@ -1609,7 +1609,7 @@ linenos
 ]{python}{./codigos/introduccion/codigo_abierto/Example_import.py}
 
 \begin{paracol}{2}
-La línea $10$ de ejemplo \mintinline{python}{Example_import.py}, usa el comando \mintinline{python}{import} para \emph{importar} el contenido del script \mintinline{python}{eq_seg_grado.py}. Importante: se escribe el nombre del archivo sin la extensión \mintinline{python}{.py}. Cuando se ejecuta esta línea de código, se ejecuta el script \mintinline{python}{eq_seg_grado.py} y se crea un namespace global que contiene todas las funciones y variables creadas por dicho script. 
+La línea $10$ de ejemplo \mintinline{python}{Example_import.py}, usa el comando \mintinline{python}{import} para \emph{importar} el contenido del script \mintinline{python}{eq_seg_grado.py}. Importante: se escribe el nombre del archivo sin la extensión \mintinline{python}{.py}. Cuando se ejecuta esta línea de código, se ejecuta el script \mintinline{python}{eq_seg_grado.py} y se crea un namespace global que contiene todas las funciones y variables creadas por dicho script.
 
 En las líneas $11-13$ definimos tres variables, para usarlas como coeficientes de una equación de segundo grado y en la línea $14$ llamamos a la función \mintinline{python}{soleq2} para resolver dicha ecuación. Esta función está contenida en el namespace global de \mintinline{python}{eq_seg_grado.py}, para acceder a ella escribimos:
 \mint{python}{eq_se_grado.soleq2}
@@ -1617,14 +1617,22 @@ Es decir: primero indicamos el namespace y, separado por un punto, el nombre de 
 
 ¿por qué definir las variables y funciones en namespaces separados? Una razón es que permite repetir nombres de variables y funciones en distintas partes de nuestro código sin que accidentalmente unos borren a otros. En el ejemplo anterior, en la línea $14$ hemos guardo los resultados de las soluciones de la ecuación de segundo grado en las variables \mintinline{python}{solplus} y \mintinline{python}{solminus}. Pero estos nombres de variable ya existían. Hemos dicho que al importar \mintinline{python}{eq_seg_grado}, este script se ejecuta. Si revisamos sú codigo, vemos que en la línea $34$ \mintinline{python}{solplus, solminus = soleq2(2, 3, 1)}, Se llama a la función \mintinline{python}{soleq2}, y se emplean exáctamente los mismos nombres de variable para guardar los resultados. Aunque ambos resultados se guardan con los mismos nombres, pertenecen a namespaces distintos. Si ejecutamos el script \mintinline{python}{Example_import.py} obtenemos en el terminal de Ipython los siguiente resultados,
 
+En términos generales, cuando se importa un script, lo que se crea es una estructura de programación, que en Python se conoce con el nombre de módulo. El módulo toma el nombre del script que lo genera, exceptuando la extensión. Para acceder a las funciones contenidas en el módulo, basta anteponer al nombre de la variable o función el nombre del módulo separado por un punto.
+
+Si descontamos las funciones y variables definidas en el Built-in, todo el resto de código escrito en Python, está pensado para crear módulos. Lo habitual es que estos módulos se agrupen en paquetes de software que engloban funciones y objetos orientados a tareas específicas. A lo largo de estos apuntes, veremos algunos de ellos como numpy, orientado al cálculo científico o matplotlib, dedicado a la realización de gráficos.
 \switchcolumn
 Line number $10$ on \mintinline{python}{Example_import.py} example, uses the command \mintinline{python}{import} to \emph{import} the content of script \mintinline{python}{eq_seg_grado.py}. Attention: we write the name of the file without the extension \mintinline{python}{.py}. When program line number $10$ is executed, the script \mintinline{python}{eq_seg_grado.py} is thoroughly executed, and a global namespace is created to save the variables and functions created by this script.
 
-We define three variables, in lines $11 - 13$, to be used as coefficients for a quadratic equation. Later, in line $14$ we call function \mintinline{python}{soleq2} to solve the equation. But \mintinline{python}{soleq2} belongs to the global namespace created when the script \mintinline{python}{eq_seg_grado} was imported. So, to access it, we write:
+In lines $11 - 13$, we define three variables to be used as coefficients for a quadratic equation. Later, in line $14$, we call function \mintinline{python}{soleq2} to solve the equation. But \mintinline{python}{soleq2} belongs to the global namespace created when the script \mintinline{python}{eq_seg_grado} was imported. So, to access it, we write:
 \mint{python}{eq_se_grado.soleq2}
-That is, we indicate the namespace first and then the function name, both separated by a point. This is the way in which we can access the variables and functions defined in a script from another script. 
+We indicate the namespace first and then the function name, separated by a point. This is how we access the variables and functions defined in one script from another script. 
 
-Why is it convenient to define variables and functions in separated namespaces? One reason is that it allows repeating the same variable and function names in different locations of our code, avoiding that they clash accidentally. In the last example, in line $14$ we saved the the quadratic equation solutions in variables \mintinline{python}{solplus} y \mintinline{python}{solminus}. But these variable names was already been used. We said that when we imported \mintinline{python}{eq_seg_grado}, we are runnig it. If we review the code of this script we can see that in line $34$\\ \mintinline{python}{solplus, solminus = soleq2(2, 3, 1)},\\ the program calls \mintinline{python}{soleq2} and the results are saved in variables with identical names,\\ \mintinline{python}{solplus} y \mintinline{python}{solminus}. Although we are saving the solutions in both cases with the same names, they belong to different namespaces. After running the script \mintinline{python}{Example_import.py}, we achieve the following result,   
+Why is it convenient to define variables and functions in separated namespaces? One reason is that it allows repeating the same variable and function names in different locations of our code, avoiding them clashing accidentally. In the last example, in line $14$, we saved the quadratic equation solutions in variables \mintinline{python}{solplus} y \mintinline{python}{solminus}. But these variable names have already been used. We said that when we imported \mintinline{python}{eq_seg_grado}, we were running it. If we review the code of this script we can see that in line $34$\\ \mintinline{python}{solplus, solminus = soleq2(2, 3, 1)},\\ the program calls \mintinline{python}{soleq2} and the results are saved in variables with identical names,\\ \mintinline{python}{solplus} y \mintinline{python}{solminus}. Although we are saving the solutions in both cases with the same names, they belong to different namespaces. After running the script \mintinline{python}{Example_import.py}, we achieve the following result,   
+
+Generally, a programming structure is created whenever we import a script. In Python, these program structures are called modules. A  script and the module generated when the script is imported share the same name (except for the extension). To access the functions and 
+variables held in the module, it is enough to put the name of the module before the name of the function or variable separated with a point.
+
+Except for the functions and variables defined in the Built-in namespace, the remaining code written in Python is intended to create modules. Usually, the modules are grouped into software packages which enclose functions and programming objects devoted to specific tasks. In these lecture notes, we will meet some of them, like numpy, oriented to scientific computing or matplotlib, devoted to graphical representation.    
 \end{paracol}
 
 \begin{minted}{python}
@@ -1644,12 +1652,25 @@ Al importar \mintinline{python}{eq_seg_grado}, se ejecuta dicho script. Se calcu
 \mintinline{python}{eq_seg_grado.solminus},\\ 
 para indicar que nos referimos a las variables guardadas en el namespace de \mintinline{python}{eq_seg_grado}.
 \switchcolumn
-As we have alredy said, when we import \mintinline{python}{eq_seg_grado}, this script is ran. Thus, the program calculates first the solution of the quadratic function: $x^2+2x+3=0$ and shows the checking of the solutions on the Ipython terminal. Once the importation is over, all created functions and variables are available in the script's global namespace. Then we see on the Ipython terminal the results of the two quadratic ecuations solved. First the solutions of    $2x^2+3x+1=0$ and after the solutions of $x^2+2x+3=0$. To print these last solutions, we use\\
+As we have already said, this script is run when we import \mintinline{python}{eq_seg_grado}. Thus, the program calculates first the solution of the quadratic function: $x^2+2x+3=0$ and shows the checking of the solutions on the Ipython terminal. Once the importation is over, all created functions and variables are available in the script's global namespace. Then, we see the results of the two quadratic equations solved on the Ipython terminal. First, the solutions of    $2x^2+3x+1=0$ and then the solutions of $x^2+2x+3=0$. To print these last solutions, we use\\
 \mintinline{python}{eq_seg_grado.solplus}\\ 
 \mintinline{python}{eq_seg_grado.solminus},\\
-To indicate that we want to print the variables held in the global namespace \mintinline{python}{eq_seg_grado}.  
-\end{paracol}
+To indicate that, we want to print the variables held in the global namespace \mintinline{python}{eq_seg_grado}.  
 
+\switchcolumn
+\paragraph{Local Namespace.} Este \emph{namespace} es propio de las funciones. Cuando se ejecuta una función en Python, se crea un  namespace específico (local)  para dicha función en la que se guardan las variables que la función crea y utiliza durante su ejecución. Una vez que la funcion termina, el namespace local asociado se destruye, y las variables dejan de estar accesibles.
+
+Si nos fijamos en el código de la función \mintinline{python}{soleq2}, vemos que la función crea unas variables \mintinline{python}{a,b,c} en su cabecera. Dentro de la función se emplean dichas variables para resolver una equación de segundo grado, y se guardan las soluciones en las variables \mintinline{python}{xp,xm}. Estas cinco variables pertenecen al namespace local de la función \mintinline{python}{soleq2} y solo el código de dicha función puede acceder a ellas.
+
+Cuando llamamos a la función \mintinline{python}{soleq2} tanto si lo hacemos desde un módulo como desde la línea de comandos, empleamos el signo de asignación para copiar las variables de salida y damos valores a las variables de entrada. Por ejemplo si nos fijamos en la línea $14$ del módulo \mintinline{python}{Example_import.py},
+\switchcolumn
+\paragraph{Local Namespace.} This \emph{namespace} is used by Python functions. Whenever a function is executed, a specific namespace (local) is created for the function. Every variable created by the function is saved in its local namespace, and it is available for the function to use during execution. Once the function ends, its associated local namespace is destroyed, and the variables are no longer accessible.
+
+Focus on function \mintinline{python}{soleq2} code, we can see how the function creates variables \mintinline{python}{a,b,c} in its header. In the function body, these variables are used as the coefficients of the quadratic function to be solved. The solutions are saved in variables \mintinline{python}{xp,xm}. These five variables belong to the local namespace of the function \mintinline{python}{soleq2}, and only this function code can access them. 
+
+When we call function \mintinline{python}{soleq2}, whether from another module or the command line, we use the assignation symbol to copy the output variables and give values to the input variables. For instance, recall the line number $14$ of the \mintinline{python}{Example_import.py} module,
+\end{paracol}
+\mint{python}{solplus, solminus = eq_seg_grado.soleq2(e, f, g)}
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
@@ -1690,387 +1711,135 @@ Functions inside functions
 \end{figure} 
 
 \begin{paracol}{2}
-\paragraph{Local Namespace} Este \emph{namespace} es propio de las funciones. Cuando se ejecuta una función en Python, se crea un  namespace específico (local)  para dicha función en la que se guardan las variables que la función crea y utiliza durante su ejecución. Una vez que la funcion termina, el namespace local asociado se destruye, y las variables dejan de estar accesibles.
+El contenido de las variables \mintinline{python}{e,f,g}, que pertenecen al namespace global del módulo \mintinline{python}{Example_import.py} en qué se llama a la función, se copian en las variables \mintinline{python}{a,b,c} que pertenecen al namespace local de la función. Cuando se ejecuta el comando \mintinline{python}{return} el valor de las variables \mintinline{python}{xp,xm} que pertenecen al namespace local de la función, se copian en las variables\mint{python}{solplus, solminus} que pertenecen al namespace global del módulo \mintinline{python}{Example_import.py}.
 
-Si nos fijamos en el código de la función \mintinline{python}{soleq2}, vemos que la función crea unas variables \mintinline{python}{a,b,c} en su cabecera. Dentro de la función se emplean dichas variables para resolver una equación de segundo grado, y se guardan las soluciones en las variables \mintinline{python}{xp,xm}.
+\paragraph{Enclosing namespace.} En ocasiones, llamamos a una función desde dentro de  otra función. Por ejemplo nuestra función \mintinline{python}{soleq2}, llama a la función \mintinline{python}{print}, que pertenece al namespace Built-in the Python. Cuando se ejecuta la funcion \mintinline{python}{soleq2}, ésta crea su propio namespace, y cuando dentro de ésta se ejecuta la función \mintinline{python}{print} esta última tambien crea su propio namespace local, dentro del namespace de la función \mintinline{python}{soleq2}. Se dice entonces que el namespace local de \mintinline{python}{soleq2} \emph{encierra} al namespace de \mintinline{python}{print}. 
+En general, cuando una función llama a otra, El namespace de la primera se considera el Enclosing namespace de la segunda. El porqué de esta definición se entiende mejor explicando el concepto de ámbito de una variable.
+\switchcolumn
+When the function is called, variables \mintinline{python}{e,f,g}, which belong to the global namespace of the modules \mintinline{python}{Example_import.py} are copied in variables  \mintinline{python}{a,b,c}, which belong to the function local namespace. When the function at the end executes the command \mintinline{python}{return}, the values of variables \mintinline{python}{xp,xm}, which belong to the local namespace of the function, are copied in variables \mint{python}{solplus, solminus}, which belong to the global namespace of module \mintinline{python}{Example_import.py}.
+
+\paragraph{Enclosing namespace.} Sometimes, we call a function from inside another function. So, our function \mintinline{python}{soleq2}calls to función \mintinline{python}{print}, which belongs to the Python Built-in namespace. When function \mintinline{python}{soleq2} is executed, it creates its own namespace and when inside it function, \mintinline{python}{print} is executed this last, also creates its own local namespace inside the namespace of \mintinline{python}{soleq2}. The local namespace of \mintinline{python}{soleq2} \emph{encloses} the namespace of \mintinline{python}{print}. 
+In general, when a function calls another, the namespace of the first function is considered the Enclosing namespace of the second function. The reason for this name may be better understood by explaining the concept of variable scope.
+
+\switchcolumn
+\paragraph{Ámbito.}\index{Ámbito de una variable o función} Acabamos de describir el concepto de \emph{namespace} como una región de memoria, asociada a un módulo o a una función. La existencia de distintos namespace, hace que no todas las variables y/o funciones puedan se manipuladas desde cualquier lado. El ámbito de una variable o función define las funciones, módulos, etc desde lo que es posible acceder y manipular dicha variable o función. Los ámbitos, están fuertemente relacionados con las namespace y en python se cumple una regla general conocida como la regla "LEGB" (Local->Enclosing->Global->Built-in). Nos da, el orden de precedencia de los namespace. Así, una función tiene acceso a todas sus variable y funciones locales (Local namespace) a todas las de la función que la ha llamado, si es el caso (Enclosing namespace), a todas las del módulo que ha llamando a la función (Global namespace) a todas las del Built-in namespace. También se cumple lo contrario: desde la línea de comando solo se tiene acceso a las variables que se han creado en la propia línea de comando. Desde ún módulo se tiene acceso a las variables y funciones built-in y pero no a las de las funciones contenidas en el módulo.
+Desde una función se tiene acceso al contenido Built-in y al del módulo y, en su caso, la función, que contiene la función, pero no al de las funciones, contenidas o llamadas en dicha función.
+La fígura \ref{fig:amb}, muestra un esquema con el anidamiento de los namespaces en Python.
+\switchcolumn
+\paragraph{Scope} \index[eng]{Varaible and function scope} We have described the concept of \emph{namespace} as a memory area linked to a Python module or function. The namespaces make sure that not all variables or functions can be handled from everywhere. The scope of a variable or a function defines which functions, modules, etc., can manipulate such variable or function. The scopes are tightly related to namespaces. There is the rule known as the "LEGB" rule (Local->Enclosing->Global->Built-in) that establishes the namespace precedence order. So, a function has access to all its local variables and function (Local Namespace), to all ones belonging to the function that calls it, if any  (Enclosingnamespace), to all ones belonging to the module that calls the function (global namespace) to all builtin namespace variables and functions. It is also true that if we follow the opposite direction from the command line, we can only access built-in variables and variables created from the command line itself. From a module, we have only access to variables and functions built-in or created from the module but not to variables belonging to functions contained in the module.
+From a function, access is granted to built-in variables, those belonging to the module that contains the function, those belonging to the function that includes the function, if any, and those belonging to the function itself. However, a function has no direct access to variables belonging to functions contained in or called from the function.
+Figure \ref{fig:amb} shows a schematic view of Python namespace nesting.
+\switchcolumn
+\paragraph{Más sobre el comando \mintinline{python}{import}.}\index{import} El comando \mintinline{python}{import}, es quizá de los más empleados en Python. Más arriba hemos descrito su uso para importar un módulo entero en un script. Sin embargo, es posible emplearlo de otras muchas maneras:
+\switchcolumn
+\paragraph{More on \mintinline{python}{import} command.}\index[eng]{import} The \mintinline{python}{import} command is widely used in Python programming. We have already described how to use it to import a whole module. Nevertheless, it is possible to use it in very many different ways,
 \end{paracol}
-======================THE FRONTIER=====================
 
-La figura \ref{fig:amb} muestra esquemáticamente como se gestionan las variables en Matlab. En el cuadro superior se muestra la ejecución de varias sentencias en la ventana de trabajo de Matlab. Las dos primeras crean directamente dos variables \texttt{a} y \texttt{b} que se almacenan en el \emph{workspace de Matlab}, representado por el cuadro azul de la derecha. 
-A continuación se llama a la función ejem (cuadro rojo central), asignándole como variable de entrada la variable \texttt{a} y como variable de salida la variable \texttt{y}. La ventana de comandos \emph{cede} el control a la función que empieza a ejecutarse:
-\begin{enumerate}
-\item La función crea su propio espacio de memoria (cuadro rojo de la izquierda)
-\item Copia el valor contenido en la variable \texttt{a} en la variable \texttt{ent}. Esta variable se almacena en el espacio de memoria de la función.
-\item Crea la variable \texttt{b} asignándole el valor 4 y la guarda en el espacio de memoria de la función. 
-
-A partir de este momento y hasta el final de la ejecución de la función hay dos variables con el mismo nombre: \texttt{b=2} en el \emph{workspace} de Matlab; \texttt{b=4} en el espacio de memoria de la función. Las dos variables coexisten pero no se pueden confundir porque pertenecen a ámbitos distintos.
-\item Crea la variable sal asignándole el producto de \texttt{b=4} por \texttt{ent=3}. Almacena la variable sal en el espacio de memoria de la función.
-\item La función a llegado al final de su código. vuelve a leer la cabecera y crea la variable \texttt{y} en el workspace de Matlab, copiando el contenido de la variable \texttt{sal}.
-\item termina la ejecución destruyendo el espacio de memoria de la función y \emph{devolviendo} el control a la ventana de comandos.
-\end{enumerate}
-
-\paragraph{Llamar a una función desde otra función.}
-En Matlab, como en cualquier lenguaje de alto nivel, es posible llamar una función desde dentro de otra. Incluso es posible que una función se llame a sí misma, aunque este caso lo veremos más adelante cuando hablemos de control de flujo. 
-
-Veamos un ejemplo sencillo de llamada de una función desde otra,
-
-%\begin{lstlisting}
-function salida=ejemplo2(entrada)
-% esta funcion toma el valor de entrada lo eleva al cuadrado y pasa el
-% resultado aun segunda función que calcula la raiz cuadrada...
-% entrada y salida deberían ser iguales al final
-
-%x=entrada^2;
-
-%%%%    llamada a la segunda función%%%%
-%salida=raiz(x);
-%\end{lstlisting}
-
-La función \texttt{ejemplo2} llama a una segunda función \texttt{raiz} cuyo código,
-
-%\begin{lstlisting}
-%function out=raiz(in)
-%out=in^(1/2);
-%\end{lstlisting}
-
-Debe guardarse en uno de los tres lugares siguientes:
-\begin{enumerate}
-\item En el mismo fichero, ejemplo2.m en que se encuentra escrito el código de la función \texttt{ejemplo2}, justo debajo de dicha función.
-\item En un fichero propio, raiz.m guardado en el directorio en que Matlab está trabajando.
-\item En un fichero propio, raiz.m guardado en cualquier directorio de los incluidos en el \emph{path} de Matlab.
-\end{enumerate}
-
-Además al ejecutar la función \texttt{ejemplo2}, se buscará el código de la función raíz, precisamente en el orden que acabamos de indicar. Si añadimos directemente el código de la función \texttt{raiz} al fichero ejemplo2.m, el código quedaría,
-
-%\begin{lstlisting}
-%function salida=ejemplo2(entrada)
-% esta funcion toma el valor de entrada lo eleva al cuadrado y pasa el
-% resultado aun segunda función que calcula la raiz cuadrada...
-% entrada y salida deberían ser iguales al final
-
-%x=entrada^2;
-
-%%%%    llamada a la segunda función%%%%
-%salida=raiz(x);
-
-%%%%%%    codigo de la segunda funcion%%%%%
-%function out=raiz(in)
-%disp('version incluida en el archivo ejemplo2.m')
-%out=in^(1/2);
-%\end{lstlisting}
-
-
-La ventaja de escribir el código de la segunda función en el mismo fichero de la primera es que el acceso es más rápido. Sin embargo, solo la función \texttt{ejemplo2} podrá llamarla. Es decir la función \texttt{raiz} no puede emplearse desde la ventana de comandos de Matlab  ni desde ninguna otra función.
-
-En general, si escribimos en un archivo .m de Matlab varias funciones,
-
-% \begin{lstlisting}
-% function a=uno(b)
-% %aqui viene el codigo de la funcion uno
-% ...
-
-% function c=dos(d)
-% % aqui viene el codigo de la funcion dos
-% ...
-
-% function e=tres(f)
-% % aqui viene el codigo de la funcion dos
-% ...
-% .
-% .
-% .
-% \end{lstlisting}
-
-Todas las funciones incluidas en el fichero pueden llamarse entre unas a otras, pero solo la primera de ellas puede ser ejecutada desde la ventana de comandos de Matlab. Además el nombre del fichero debe coincidir con el nombre de la primera función  contenida en él. En el ejemplo que acabamos de esbozar, el fichero debería llamarse uno.m.
-
-Evidentemente si cada función está guardada en un fichero .m distinto, todas las funciones pueden en principio ser ejecutadas desde otra función o desde la ventana de comandos de Matlab.
-
-Cada vez que se ejecuta una función, ésta crea su propio espacio de memoria. Las variables incluidas en la cabecera de la función como variables de entrada y salida se copian, tal y como hemos visto para el caso de una función simple, entre el espacio de memoria propio de la función y el espacio de memoria de la función que la ha llamado.
-
-  
-\subsection{Funciones incluidas en Matlab.}\index{Funciónes! Funciones incluidas en matlab} 
-Matlab incluye cientos de funciones. Estas funciones, están escritas con la misma filosofía que acabamos de describir aquí, es decir, admiten una o varias variables de entrada y devuelven sus resultados en una o varias funciones de salida. En algunos casos, se trata de ficheros de texto  guardados con la extensión \texttt{.m} iguales a los que nosotros podemos crear \footnote{En muchos casos las funciones incluidas en Matlab no están escritas en ficheros de texto accesibles para el usuario. Por razones de eficiencia, se trata de versiones de las funciones escritas por lo general en lenguaje C y compiladas.}. La manera de emplearlas desde la ventana de comandos de Matlab es idéntica a la descrita para las funciones creadas por el usuario. 
-
-En la tabla \ref{tabfun}, se incluyen algunos ejemplos de las funciones matemáticas más corrientes. Son solo una pequeña muestra de las funciones disponibles. Para obtener una visión más completa de las funciones disponibles se aconseja emplear la ayuda de Matlab.
-
-\begin{table}
-\caption{Algunas funciones matemáticas en Matlab de uso frecuente}
-\label{tabfun}
-\begin{tabular}{c|c|c|c}
-tipo&nombre&variables&función matemática\\
-\hline
-\hline
-Trigonométrica&cos&y=cos(x)&coseno de un ángulo en radianes\\
-\hline
-Trigonométrica&sin&y=sin(x)&seno de un ángulo en radianes\\
-\hline
-Trigonométricas&tan&y=tan(x)&tangente de un ángulo en radianes\\
-\hline
-Trigonométricas&csc&y=csc(x)&cosecante de un ángulo en radianes\\
-\hline
-Trigonométricas&sec&y=sec(x)&secante de un ángulo en radianes\\
-\hline
-Trigonométricas&cot&y=cot(x)&cotangente de un ángulo en radianes\\
-
-\hline
-Trigonométricas&...&y=a...(x)&inversa de una función trigonométrica en radianes\\
-&asin&y=asin(x)&ejemplo, arcoseno en radianes\\
-\hline
-\hline
-Exponencial&exp&y=exp(x)&$e^x$\\
-\hline
-Exponencial&log&y=log(x)&logaritmo natural\\
-\hline
-Exponencial&log10&log10(x)&logaritmo en base 10\\
-\hline
-Exponecial&sqrt&y=sqrt(x)&$\sqrt(x)$\\
-\hline
-\hline
-Redondeo&ceil&y=ceil(x)& redondeo hacia $+\infty$\\
-\hline
-Redondeo&floor&y=floor(x)&redondeo hacia $-\infty$\\
-\hline
-Redondeo&round&y=round(x)&redondeo al entero más próximo\\
-\hline
-Redondeo&fix&y=fix(x)&redondeo hacia $0$\\
-\hline
-Redondeo&rem&r=rem(x,y)&resto de la división entera de y entre x\\
-\hline
-\hline
-Módulos&norm&y=norm(x)& módulo de un vector x\\
-\hline
-Módulos&abs&y=abs(x)&valor absoluto de x,(módulo de x si x es complejo)\\
-\hline
-Módulos&sign&y=sign(x)&función signo; 1 si x $>$ 0, -1 si x $<$ 0, 0 si x=0\\
-\end{tabular}
-\end{table}
-
-\subsection{Depuración.}\index{Depurador}
-Siempre que escribimos un programa, tanto si se trata de un \emph{script} como si es una función, es preciso comprobar su funcionamiento y, en  muchos casos corregir los errores cometido. El proceso de corrección de código desde su versión original hasta la versión definitiva se conoce con el nombre de depuración de código. Podemos distinguir dos tipos fundamentales de errores:
-
-\begin{enumerate} 
-\item Errores de sintaxis. \index{Error! De sintáxis}Normalmente son errores de escritura. Hemos escrito mal el nombre de una función o un comando o bien no hemos escrito correctamente el código siguiendo las reglas del lenguaje. Matlab advierte directamente de estos errores, cuando se trata de ejecutar el código, escribiendo en la ventana de comandos un mensaje de error. Como ejemplo veamos los errores del siguiente \texttt{script},
-
-% \begin{lstlisting}
-% % script con errores,
-% y=[1 2 3; 4 5 6; 2 3] % a esta matriz le falta un elemento en la última fila
-
-% x=[1 2 3; 4 5 6]
-% z=y*x % las matrices no pueden multiplicarse entre si por que no coinciden
-%       % numero de columnas de la primera con numero de filas de la segunda
-% \end{lstlisting}
-
-Si observamos el editor de textos, figura \ref{fig:ederror}, puede observarse algunas de los caracteres del texto subrayados en rojo. Esto puede indicar la existencia de errores en esa línea de código, como en el caso del carácter que se ha rodeado en la figura de un círculo rojo. 
-
-En otros casos, --circulo azul de la figura-- se trata de advertencias, el programa funciona pero puede hacerlo de forma más eficiente; en el caso de la figura simplemente nos sugiere que añadamos un punto y coma al final de las sentencias, para que Matlab no escriba el resultado de cada cálculo en la ventana de comandos. No se trata por tanto de errores sino de advertir al programador que con puntos y comas su programa se ejecutará más rápido.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=14cm]{errores.png}
-\caption{Vista de el editor de texto de Matlab. Circulo rojo error en el código. Rodeado en azul advertencias de posible mejoras. Rodeado en verde mensaje de error en tiempo de ejecución}
-\label{fig:ederror}
-\end{figure}
-
-Si pasamos el ratón por encima de los caractéres en rojo, Matlab nos ofrece información adicional sobre el error detectado o la advertencia de mejora. La figura \ref{fig:popupm} muestra la información asociada al error rodeado en rojo en la figura anterior (ref{fig:ederror}).
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=14cm]{popupm.png}
-\caption{Vista de el editor de texto de Matlab. Desplegable mostrando detalles sobre el error cometido}
-\label{fig:popupm}
-\end{figure}
-
-Si ejecutamos el script, que hemos guardado con el nombre de \texttt{errores.m},
-
-\begin{verbatim}
->> errores
-Error using errores (line 3)
-Dimensions of arrays being concatenated are not consistent.
-\end{verbatim}
-
-Matlab ha detectado el error en la construcción de la matriz \texttt{y}, nos indica mediante un mensaje el tipo de error cometido y la línea de código donde se ha producido y detiene la ejecución del \emph{script}. Se trata del mensaje rodeado en verde en la figura \ref{fig:ederror}.
-
-Si corregimos el código, añadiendo a la matriz \texttt{y} el elemento que le falta,
-
-% \begin{lstlisting}
-% % script con errores,
-% y=[1 2 3; 4 5 6; 2 3 8] % Ultima fila completada
-% x=[1 2 3; 4 5 6]
-% z=y*x % las matrices no pueden multiplicarse entre si por que no 
-%       % coinciden numero de columnas de la primera con numero de
-%       % filas de la segunda
-% \end{lstlisting}
-y volvemos a ejecutar el script.
-\begin{verbatim}
->> errores
-
-y =
-
-     1     2     3
-     4     5     6
-     2     3     8
-
-
-x =
-
-     1     2     3
-     4     5     6
-
-Error using  * 
-Incorrect dimensions for matrix multiplication. Check that the number of
-columns in the first matrix matches the number of rows in the second matrix.
-To perform elementwise multiplication, use '.*'.
-
-Error in errores (line 5)
-z=y*x % las matrices no pueden multiplicarse entre si por que no coinciden
-
-\end{verbatim}
-Matlab nos detecta el siguiente error cometido así como la línea en la que se comete. Es interesante notar que, aunque  se trata de un error de sistaxis, el editor de textos no puede detectarlo y, por tanto, no nos muestra ningún carácter subrrayado en rojo, asociado a él.
-
-Si intercambiamos las posiciones entre las variables \texttt{x} e \texttt{y} en el producto, suponiendo que ésta es la causa del error cometido,
-
-\begin{verbatim}
-y=[1 2 3; 4 5 6; 2 3 8] 
-
-x=[1 2 3; 4 5 6]
-z=x*y 
-\end{verbatim}
-
-El código se ejecuta con normalidad,
-\begin{verbatim}
->> errores
-
-y =
-
-     1     2     3
-     4     5     6
-     2     3     8
-
-
-x =
-
-     1     2     3
-     4     5     6
-
-
-z =
-
-    15    21    39
-    36    51    90
-\end{verbatim}
-
-\item Errores de codificación.\index{Errores! De codificación} Este segundo tipo de errores son mucho más difíciles de detectar. El código se ejecuta sin problemas, pero los resultados no son los esperados. Ante esta situación, no queda más remedio que ir revisando el código, paso a paso para detectar donde está el error.
-
-El siguiente código del script \texttt{trect.m} muestra un error de este tipo, 
-
-% \begin{lstlisting}
-% % este script toma los valores de los catetos de un triángulo rectangulo del 
-% % workspace de matlab (variables a y b). calcula su hipotenusa, y a partir
-% % de estos datos, el seno el coseno y la tangente del angulo formado por la
-% % hipotenusa y el cateto mayor que será siempre a
-
-% % calculo hipotenusa,
-
-% h=sqrt(a^2+b^2)
-
-% % calculo del seno
-
-% s=a/h
-
-% % calculo del coseno
-% a=b/h % error estamos sobreescribiendo el valor del coseno en la variable  
-%       % que guardaba e valor del cateto
-
-% % calculo de la tangente
-% t=b/a
-
-% \end{lstlisting}
-
-%\lstinputlisting{../codigo/matlab/introduccion/tract.m}
-
-El programa funciona perfectamente, por ejemplo si hacemos \texttt{a=4} y \texttt{b}=3,
-
-\begin{verbatim}
->> trect
-
-h =
-
-     5
-
-
-s =
-
-    0.8000
-
-
-a =
-
-    0.6000
-
-
-t =
-
-     5
-\end{verbatim}
-Como hemos sobrescrito en \texttt{a} el valor del coseno, cuando tratamos de utilizar dicha variable como si fuera el cateto mayor para obtener la tangente, el resultado que obtenemos es erróneo.
-
-El editor de texto de Matlab nos permite ejecutar un programa paso a paso, ver los valores que van tomando las variable en Matlab, etc, mediante el depurador que lleva incorporado. Para ello, se definen en el editor de Matlab \emph{breakpoints},esto es: líneas en las cuales Matlab detendrá la ejecución de un programa, entrará en modo de depuración y esperará instrucciones del usuario. La figura \ref{fig:depu1} muestra el código del ejemplo que acabamos de ver, en el que se ha definido un \texttt{breakpoint}, pulsando con el ratón sobre el guión que precede a la línea del programa en la que se desea parar la ejecución. Matlab indica que el \emph{breakpoint} está activo, cambiando el guión por un círculo rojo. Alternativamente, también es posible establecer o remover \emph{breackpoints} empleando el botón de la pestaña \emph{EDITOR}, rodeado de rojo en la figura.
-
-\begin{figure}[h]
+\begin{minted}[linenos]{python}
+import eq_sec_grado
+import eq_sec_grado as sec
+from eq_sec_grado import *
+from eq_sec_grado import soleq2
+from eq_sec_grado import soleq2 as cuqui
+\end{minted}
+
+\begin{paracol}{2}
+En todos los casos, el módulo desde el que se realiza la importación es el mismo, pero el modo de hacerlo es lo que cambia. Así en la línea $1$ del ejemplo importamos el módulo entero, la forma de acceder a las variables y funciones del módulo, es a través de su namesapce global: \mintinline{python}{eq_sec_grado.soleq2}. En la línea $2$, también estamos importando el módulo completo, pero ahora, usamos un 'alias', \mintinline{python}{sec},  para el nombre del namespace asociado. Esto quiere decir que para acceder a las variables y funciones del módulo debemos ahora emplear el alias en lugar del nombre del módulo: \mintinline{python}{sec.soleq2}. En la línea $3$ no importamos propiamente el módulo. Lo que hacemos es importar todas las funciones y variables contenidas el el módulo. De este modo no tenemos ya que anteponerles el nombre del módulo para usarlas. Es muy importante ser muy cuidadoso cuando se hace una importanción así. Si en el script que ha importado el módulo hay funciones y/o variables que cuyo nombre coincida con alguno de los importados, tendremos un conflicto de nombres y solo prevalecerá el último creado. En el número $4$ solo hemos importado la función \mintinline{python}{soleq2}. Podemos emplearla en el módulo de destino sin necesidad de hacer referencia a su módulo de origen. Por último, en número $5$ del ejemplo hemos importado tan solo la función \mintinline{python}{solq2}, pero además le hemos dado un alias. Esto quiere decir que en el modulo de destino deberemos emplearla usando el alias en lugar del nombre original de la función. Es decir, en lugar de utilizar \mintinline{python}{x1,x2 = soleq2(1,-3,2)} deberemos usar \mintinline{python}{x1,x2=cuqui(1,-3,2)}.
+\switchcolumn
+The module from which the import takes place is the same in every case, but not the way the import is carried out. So, in the line number $1$ of the example, we import the module as a whole. The method to access the variables and function of the module is by using its global namespace  \mintinline{python}{eq_sec_grado.soleq2}. In line $2$, we are also importing the whole module, but now, we use an 'alias', \mintinline{python}{sec} instead of the module name. This means that to access variables or functions belonging to the module, we use the alias: \mintinline{python}{sec.soleq2}. In line $3$, we are not importing the module as it is. We are just importing all variables and functions included in the module. In this case, we no longer need to put before the module name to access them.  But we should be careful using this importing method. If the script which has imported the module has variables or functions whose names coincide with those of the variables or functions imported, the names will clash. Only the last created ones will be accessible. In name $4$, we only imported function \mintinline{python}{soleq2} from the module. We can use it in the destination script without putting it before the origin module name. lastly, in line $5$  we have imported only function \mintinline{python}{soleq2} but this time we have assigned it an alias. This means that we have to use the alias instead of the proper name of the function when we use it in the destination module. That is: we have to write \mintinline{python}{x1,x2=cuqui(1,-3,2)}, instead of \mintinline{python}{x1,x2 = soleq2(1,-3,2)}.        
+\end{paracol}
+\begin{paracol}{2}
+\section{Depuración}\index{Depurador}
+Siempre que escribimos un programa, es preciso comprobar su funcionamiento y, en  muchos casos, corregir los errores cometido. El proceso de corrección de código desde su versión original hasta la versión definitiva se conoce con el nombre de depuración de código. Podemos distinguir dos tipos fundamentales de errores:
+
+\paragraph{Errores de sintaxis.} \index{Error! de sintáxis}Normalmente son errores de escritura. Hemos escrito mal el nombre de una función o un comando o bien no hemos escrito correctamente el código siguiendo las reglas del lenguaje. El editor de Spyder advierte directamente de estos errores. Además, si se intenta ejecutar el código, en la consola de Ipython aparacerá un mensaje de error. 
+
+Como ejemplo veamos los errores del script contenido  en el editor de textos de la figura \ref{fig:ederror}. Si nos fijamos, el editor a dibujado delante de algunas de las líneas un círculo rojo con un aspa en el centro. Es la manera que tiene de indicarnos que en esas líneas hay errores de sintáxis. Si pasamos el ratón por encima del círculo rojo, obtendremos un mensaje con información sobre el error cometido.
+
+Hay un segundo tipo de errores de sintaxis, que están relacionados con las propiedades de las funciones y variables que empleamos. Estos errores no son detectados directamente por el editor, pero arrojan tambien un mensaje de error en la consola de Ipython cuando los cometemos. por ejemplo, si escribimos las dos siguientes líneas de código,
+\switchcolumn
+\section{Debugging}\index[eng]{Debugger}
+Whenever we write a program, we must check its performance, and often, we will have to fix the errors made. The process that takes us from the original program version to the final one is known as code debugging. We could differentiate two main groups of errors:
+
+\paragraph{Syntax errors.}\index[eng]{Error !syntax error.} Broadly speaking, these are \emph{spelling} mistakes. We have written something, like a variable or a function name, wrong. Also, we make a syntax error if we do not follow the language rules. The Spyder editor warns us in either case. Anyway, If we do not pay attention to the editor signals and run the program, we will get an error message in the Ipython console. 
+
+As an example, figure \ref{fig:ederror} shows a script with several syntax errors. The editor has drawn a bold red circle with a cross in the centre before the lines which contain an error. If we put the mouse on top of the red circles, we get a message with some information on the error made.
+
+There is a second type of syntax error that the editor does not detect. It is related to the properties of variables and functions. In any case, if we try to run the program, an error message will be cast on the Ipython console. For instance, if we write the two following code lines, 
+\end{paracol}
+\begin{center}
+    \begin{minipage}{.4\textwidth}
+\begin{minted}{python}
+In [88]: a = 3
+In [89]: a.pop()
+Traceback (most recent call last):
+  Cell In[89], line 1
+    a.pop()
+AttributeError: 
+'int' object has no attribute 'pop'
+In [90]:
+\end{minted}
+\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
+Obtenemos un error en que se nos dice que no podemos extraer elementos de una variable entera, como es el caso de la variable \mintinline{python}{a=3}, creada. Efectivamente, solo podemos extraer elementos de una lista.
+
+\paragraph{Errores de codificación.}\index{Errores! de codificación} Este segundo tipo de errores son mucho más difíciles de detectar. El código se ejecuta sin problemas, pero los resultados no son los esperados. Ante esta situación, no queda más remedio que ir revisando el código, paso a paso para detectar donde está el error. Normalmente, este proceso se lleva a cabo con la ayuda de programas específicos llamados depuradores.
+
+El editor de texto de Spyder nos permite ejecutar un programa paso a paso, ver los valores que van tomando las variables etc, mediante el depurador que lleva incorporado. Para ello, se definen en el editor de Spyder \emph{breakpoints},esto es: líneas en las cuales Python detendrá la ejecución de un programa, entrará en modo de depuración y esperará instrucciones del usuario. La figura \ref{fig:depu1} muestra el código del ejemplo de la ecuación de segundo grado, en el que se ha definido un \texttt{breakpoint}, pulsando con el ratón sobre el espacio situado a continuación del número de la línea en que se desea  introducir el \emph{breakpoint}.  Spyder indica que el \emph{breakpoint} está activo, dibujado un círculo rojo. Alternativamente, también es posible establecer o remover \emph{breackpoints} empleando el botón \emph{Set/Clear Breackpoint} de la pestaña \emph{Debug}, situada encima del editor de textos.
+
+\switchcolumn
+We get an error message telling us that we cannot extract an element from an integer variable, as is the case of the variable \mintinline{python}{a=3}. For sure, you can only 'pop' an element from a list.
+
+\paragraph{Codding errors.} Errors of this kind are usu\-ally more difficult to find out than Syntax errors. The code runs correctly, but we do not get the expected results. The only way to find the bug is to review the code line by line. Fortunately there are specific programs to carry out this debugging task. they are called, well, yes, debuggers.
+
+The Spyder text editor allows us to run a program line by line, watching the values the variables are taking, etc, thanks to its built-in debugger. To use the debugger, we need to define in the Spyder editor \emph{breakpoints}, i.e., lines in which Python will stop the program, get into debugging mode, and wait for the user's instructions. Figure \ref{fig:depu1} shows the code of the quadratic equation example, in which we have defined a \emph{breakpoint}, pushing the mouse left button on top of the space after the number of the line at which we want to define a \emph{breakpoint}. Spyder marks the active \emph{breakpoint}, drawing a bold red circle in the space after the line number. It is also possible to set or remove \emph{breakpoints}, using the \emph{Set/Clear Breackpoint} button located in the tab \emph{Debug} on top of the text editor.
+\end{paracol}
+
+\begin{figure}
 \centering
 \includegraphics[width=14cm]{depu1.png}
-\caption{Breakpoint activo}
+\bicaption{Breakpoint activo señalado con una flecha azul, y menú desplegable \emph{debug}}{Active Breackpoint pointed by a blue arrow and \emph{debug} drop-down menu}
 \label{fig:depu1}
 \end{figure}
 
-Si una vez señalado el \emph{breakpoint}, ejecutamos el \emph{script},
-\begin{verbatim}
->> trect
+\begin{paracol}{2}
+Si una vez señalado el \emph{breakpoint},  entramos en el modo de depuración, Pulsando el primero de los botones azules en la parte superior del editor de textos (ver figura \ref{fig:depu2}),
+Spyder nos indica que ha detenido la ejecución del programa en la línea marcada por el \emph{breakpoint} (línea 35 en el ejemplo). Además, en el terminal de Ipython nos indica también que ha entrado en el modo de depuración,
+\switchcolumn
+If after activating the \emph{breakpoint}, we start the debugging mode by pressing the first of the blue buttons located on top of the text editor (see figure \ref{fig:depu2}), Spyder shows us that it has stopped the program run at the line marked by the \emph{breakpoint} red dot (line 35 in the example). Besides, the Ipython console also shows that it has come into debugging mode.
+\end{paracol}
+\begin{minted}{python}
+IPdb [1]: !continue
+> c:\users\abierto\documents\borrar\eq_seg_grado.py(35)<module>()
+     33 #here we add a 'how to use' example that's not part of the function
+     34 
+2--> 35 solplus, solminus = soleq2(2, 3, 1)
+     36 
+     37 #comprobacion
 
-h =
 
-    3.1477
-
-12  s=a/h
-K>> 
-\end{verbatim}
-
-Matlab nos indica que ha detenido la ejecución del programa en la línea marcada por el \emph{breakpoint} (línea 12 en el ejemplo). además vuelve a mostrar el \emph{prompt} en la ventana de comandos, pero esta vez precedido por la letra \texttt{k}, para indicarnos que ha entrado en modo de depuración.
-
-A partir de aquí Matlab pone a nuestra disposición las herramientas de depuración, la figura \ref{fig:depu2} muestra la línea en que se ha parado la ejecución del programa, señalada con una flecha verde, y algunas de estas herraminentas. Básicamente nos da la posibilidad de ejecutar el código paso a paso, de entrar e ir paso a paso en las funciones que llama nuestro programa, o de de continuar la ejecución hasta que el final del programa o hasta el siguiente \emph{brakpoint} activo. Para dominar los detalles del depurador se aconseja leer la ayuda de Matlab.
-
-
-\begin{figure}[h]
+IPdb [2]: 
+\end{minted}
+\begin{figure}
 \centering
 \includegraphics[width=14cm]{depu2.png}
-\caption{Parada de programa en breakpoint y herramientas de depuración}
+\bicaption{Parada de programa en un breakpoint y herramientas de depuración}{program stop on a breakpoint and debugging tools}
 \label{fig:depu2}
 \end{figure}
 
-Si pulsamos el botón  "ejecutar línea actual" Matlab ejecutará la línea de programa señalada con la flecha verde y se parará en la línea siguiente. En cada paso, podemos ver el valor que toman las variables, pidiendo su valor directamente en la ventana de comandos,
+\begin{paracol}{2}
+A partir de aquí Spyder pone a nuestra disposición las herramientas de depuración, la figura \ref{fig:depu2} muestra la línea en que se ha parado la ejecución del programa, (señalada con una flecha verde), y algunas de estas herramientas. Se trata del mismo módulo de ejemplos anteriores, en el que hemos introducido un pequeño error en la línea $28$.  Básicamente, Spyder nos da la posibilidad de ejecutar el código línea a línea, de entrar e ir línea a línea en las funciones que llama nuestro programa, o de de continuar la ejecución hasta el final del programa o hasta el siguiente \emph{breakpoint}.
 
-\begin{verbatim}
-K>> a
+Si pulsamos el botón ``ejecutar línea actual'' Spyder ejecutará la línea de programa señalada con la flecha verde y se parará en la línea siguiente. En cada paso, podemos ver el valor que toman las variables, pidiendo su valor directamente en el terminal de Ipython. En el ejmplo de la figura, el breakpoint está situado en la línea $35$ que corresponde a la llamada a la función \mintinline{python}{soleq}. Si volvemos a pulsar el `ejecutar la línea actual'', el depurador ejecutará la función y saltará directamente a la linea $39$. Si queremos que recorra paso a paso el código correspondiente a la función, empleamos el el botón ``entrar en la función de la línea actual''. El uso del resto de las opciones del depurador el bastante evidente (ver figura \ref{fig:depu2}). Si entramos en la función, ejecutamos su código línea a línea y vamos comprobando el resultado que deberían dar, comprobaremos que la línea $28$ no da un resultado correcto y estaremos en condiciones de repasar su código y descubrir el error. ¿Cúal es?.
+\switchcolumn
+Now, we can access Spyder debugger's tools. Figure \ref{fig:depu2} shows the line in which the program execution has been stopped. (Marked with a green arrow) and some of these tools. It is the same modules used in previous examples, but this time we have added a small error in line $28$. Spyder allows us to run the program line by line, get into the function our program calls to and cover them, line by line, or continue the program execution till the next breakpoint or to the program end. 
 
-a =
-
-    0.9531
-\end{verbatim}
-
-o bien señalando (sin pulsar botones) con el ratón en el editor de texto la variable de la que se trate.
-En nuestro ejemplo del triángulo rectángulo es muy sencillo avanzar paso a paso en el programa con el depurador, y caer en la cuenta que, cuando se va a calcular la tangente, la variable \texttt{a} ya no contiene el valor del cateto.
-
-\item Advertencias. \index{Advertencias} \index{Warnning}Por último señalar la existencia de los \emph{warnings} no se trata propiamente de errores, sino de simples advertencias de que algo puede funcionar de forma más eficiente, o puede no dar el resultado que esperábamos. En general, cuando se recibe un \emph{warning} al ejecutar un programa, o cuando el editor de Matlab subraya en rojo algún carácter en el editor de textos, se debe corregir el programa para que desaparezcan, aunque propiamente no se trate de errores.
-\end{enumerate} 
-
-
- 
-
-
-
-
+If we select the button ``Run the current line'' the program will execute the code line marked with the green arrow and stop in the next line. In each step, we can check the values the variables so far defined take by asking for them at the Ipython terminal. In the example shown in the figure, the breakpoint is located in line $35$, where the program calls to \mintinline{python}{soleq} function. If we push again the button ``Run the current line'', the debugger will execute the function and will jump to line $39$. If we want to cover line by line the function \mintinline{python}{soleq}, then we may push the button ``Get into the function of the current line''. The use of the remaining debugger tools is easy to understand, looking at figure \ref{fig:depu2}. If we get into the function \mintinline{python}{soleq} and execute its code line by line checking their results, we will realise that there is a bug in line $28$ because the result cast by this line is wrong. So, we would be ready to review its code and discover the error. Can you find it?   
+\switchcolumn
 \section{Control de Flujo}\index{Flujo} \index{Control de flujo}
-En la sección anterior, se introdujo el modo de escribir programas en Matlab mediante el uso de 	\emph{scripts} y funciones. En todos los casos vistos, la ejecución del programa empezaba por la primera línea del programa, y continuaba, por orden, línea tras línea hasta alcanzar el final del programa. Se trata de programas en los que el \emph{flujo} es lineal, porque los resultados de cada línea de programa se van obteniendo regularmente uno detrás de otro. 
+En la sección anterior, se introdujo el modo de escribir programas en Python mediante el uso de 	\emph{scripts} y funciones. En todos los casos vistos, la ejecución del programa empezaba por la primera línea del programa, y continuaba, por orden, línea tras línea hasta alcanzar el final del programa. Se trata de programas en los que el \emph{flujo} es lineal, porque los resultados de cada línea de programa se van obteniendo regularmente uno detrás de otro. 
 
 Hay ocasiones en las que, por diferentes razones que expondremos a continuación, puede interesarnos alterar el orden en que se ejecutan las sentencias de un programa, bien repitiendo una parte de los cálculos un determinado número de veces o bien ejecutando unas partes de código u otras en función de que se satisfagan unas determinadas condiciones.
 
@@ -2078,9 +1847,50 @@ El control del orden en que se ejecutan las sentencias de un programa es lo que 
 \subsection{Flujo condicional.}\index{Flujo!Condicional}
 Empezaremos con un ejemplo sencillo de cómo y para qué condicionar el flujo de un programa. Supongamos que queremos construir un programa que reciba como variable de entrada un número cualquiera y nos muestra un mensaje por pantalla si el número es par.
 
-Para ello, podríamos hacer uso de la función \texttt{rem} (ver tabla \ref{tabfun}). Si el resto de la división entre dos del número suministrado a la función es cero, se trata de un número par; si no, es un número impar. Podríamos hacer uso de operadores relacionales, en particular de \texttt{==} para comprobar si el resto de la división entre dos es cero. Por último necesitaríamos algún mecanismo que permitiera al programa escribir un mensaje solo cuando el número introducido sea par.
+Para ello, podríamos hacer uso del operador, \emph{resto de la división entera}, \mintinline{python}{%}. Si el resto de la división entre dos del número suministrado a la función es cero, se trata de un número par; si no, es un número impar. Podríamos hacer uso de operadores relacionales, en particular de \mintinline{python}{==} para comprobar si el resto de la división entre dos es cero. Por último necesitaríamos algún mecanismo que permitiera al programa escribir un mensaje solo cuando el número introducido sea par.
 
-\paragraph{if - elseif - else - end.} El mecanismo que necesitamos nos lo suministra la estructura \texttt{if} de Matlab. Veamos en primer lugar el código del ejemplo del que venimos hablando,
+\paragraph{if - elif - else.} El mecanismo que necesitamos nos lo suministra la estructura \mintinline{python}{if} de Python. Veamos en primer lugar el código del ejemplo del que venimos hablando,
+\switchcolumn
+\section{Flow control}
+\end{paracol}
+
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=Example\_import.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/introduccion/codigo_abierto/numero_par.py}
+
+\begin{paracol}{2}
+El script genera una función \mintinline{python}{par(a)}. En la línea $17$ aparece definida la entrada a una bloque \mintinline{python}{if}. Empieza con la palabra clave \emph{if} que va siempre seguida de una expresión que da un resultado lógico: verdadero ($1$) o falso ($0$). Esta expresión puede ser cualquier combinación válida de expresiones relacionales o lógicas.  
+
+En nuestro caso comparamos el resto de la división del número introducido entre 2 con cero. La entrada del bloque constituye una condición, y termina siembre con el símbolo ``dos puntos'' (:). El cuerpo del bloque mintinline{python}{if} lo constituyan las líneas posteriores a la línea de entrada, que deben estar sangradas. Estas líneas solo se ejecutan si se cumple la condición de la entrada del bloque \mintinline{python}{if}. En nuestro caso, el cuerpo lo constituyen las líneas $18$ y $19$. Por último, la línea $20$ corresponde al comando \mintinline{python}{return()} que está alineado con las líneas de código de la función, no con las de bloque mintinline{python}{if}. Por tanto, en nuestro ejemplo, si el número introducido no es par, la función se saltará todas las líneas del cuerpo del bloque \mintinline{python}{if} e irá directamente a la línea $20$.
+En las líneas siguientes se muestra un ejemplo del funcionamiento de la función \mintinline{python}{par}. Para probarla hemos importado directamente la función en el terminal de Ipython, y luego la hemos llamado dándole como variable de entrada primero el  número $3$ y luego el número $8$ en el primer caso no se cumple la condición impuesta, ya que el número no es par, por tanto la función se salta todo el bloque condicional, y ejecutamente directamente el comando \mintinline{python}{return()}. Como no hemos pedido que devuelva nada, la función no devuelve nada. En el segundo caso, el número es par y por tanto si se cumple la condición necesaria para ejecutar el bloque \mintinline{python}{if}. Como resultado, la función imprime en el terminal de Ipython el mensaje indicado. Una vez que acaba la eejecución del bloque condicional, ejecuta la función \mintinline{python}{return()} igual que en el caso anterior.
+
+\end{paracol}
+
+\begin{center}
+    \begin{minipage}{.4\textwidth}
+\begin{minted}{python}
+In [2]: from numero_par import par
+In [3]: par(3)
+In [4]: par(8)
+8  es un numero par
+8 is a pair number
+In [5]: 
+\end{minted}
+\end{minipage}
+\end{center}
+======================THE FRONTIER=====================
+ 
+
+
+
+
+
 
 % \begin{lstlisting}
 % function espar(x)
@@ -2098,9 +1908,9 @@ Para ello, podríamos hacer uso de la función \texttt{rem} (ver tabla \ref{tabf
 % end
 % \end{lstlisting}
 
-El programa toma un número como variable de entrada y calcula el resto de su división entre dos. A continuación entra en una parte de código especial, que se inicia con la palabra clave \texttt{if} y termina con la palabra clave \texttt{end}. 
+ 
 
-La palabra clave \texttt{if} va siempre seguida de una expresión que da un resultado lógico: verdadero ($1$) o falso ($0$). Esta expresión puede ser cualquier combinación válida de expresiones relacionales o lógicas. Esta expresión lógica, que sigue al if constituye una condición. El programa seguirá ejecutando las siguientes líneas solo si la condición se cumple; si no, se las saltará hasta llegar a la expresión \texttt{end}.
+
 
 En nuestro ejemplo, se emplea una expresión relacional sencilla \texttt{resto==0}. Si se cumple, el programa ejecutará la siguiente línea de programa, escribiendo en la ventana de comandos la frase ``el número es par"  si no se cumple el programa se la salta, llega hasta el \texttt{end}, y no escribe nada por pantalla. 
 

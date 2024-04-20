@@ -38,10 +38,11 @@ We are given two known parameters, $a$ and $b$, and we need to find the value of
 \begin{figure}[h]
 \centering
 	\includegraphics[width=12cm]{kepler.pdf}
-	\caption{Ejemplo de ecuación de Kepler para $a=40$ y $b=2$. An Example of Kepler's equation is taking $a=40$ and $b=2$.}
+	\bicaption{Ejemplo de ecuación de Kepler para $a=40$ y $b=2$.}{ An Example of Kepler's equation is taking $a=40$ and $b=2$.}
 	\label{fig:kepler}
 \end{figure}
 \begin{paracol}{2}
+
 \paragraph*{Métodos iterativos} 
 Todos los métodos que se describen en este capítulo, se basan en procedimientos iterativos. La idea es estimar un valor inicial para la raíz $r_0$, y a partir de él ir refinando paso a paso la solución, de modo que el resultado se acerque cada vez más al valor real de la raíz. Cada nueva aproximación a la raíz se obtiene a partir de las aproximaciones anteriores.
 \switchcolumn
@@ -100,10 +101,12 @@ Si una funcion $f(x)$, continua en el intervalo $[a, b]$, cambia de signo en los
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{bolzano.pdf}
-\caption{Ilustración del teorema de Bolzano}
+\bicaption{Ilustración del teorema de Bolzano}{Bolzano's theorem.}
 \label{fig:bolzano}
 \end{figure}
+
 \begin{paracol}{2}
+
 El conocido teorema de Bolzano, suministra el método más sencillo de aproximar la raíz de una función: Se parte de un intervalo inicial en el que se cumpla el teorema; y se va acotando sucesivamente el intervalo que contiene la raíz, reduciéndolo a la mitad en cada iteración, de forma que en cada nuevo intervalo se cumpla siempre el teorema de Bolzano.
 \switchcolumn
 
@@ -183,7 +186,7 @@ Figure \ref{fig:dfbisec_eng} shows a flowchart corresponding to the bisection me
 
  Once we have the interval we calculate the midpoint $c$. The value taken by the function at $c$, i.e. $f(c)$, is then compared with the tolerance. If the value is less than the tolerance, the algorithm has found an approximate value of the root with the required tolerance, so $c$ is the root and no further search is necessary. If, on the other hand, $f(c)$ is above the required tolerance, we compare its sign with the sign of the function at either end of the interval. In the flowchart we have chosen the end $a$, but the algorithm would work equally well if we chose $b$. If the sign of $f(c)$ coincides with the sign that the function takes at the end of the chosen interval, $c$ replaces the end, (we make $a=c$ and $f(a)=f(c)$) if on the contrary the sign is different, we make $c$ replace the other end of the interval (we make $b=c$ and $f(b)=f(c)$). This process will be repeated until $f(c)$ is satisfied. 
 
- \switchcolumn
+
 \end{paracol} 
 
 \begin{figure}
@@ -194,7 +197,7 @@ Figure \ref{fig:dfbisec_eng} shows a flowchart corresponding to the bisection me
 \subfigure[iteracion 3]{\includegraphics[width=7cm]{rint3.pdf}}\\
 \subfigure[iteracion 6: raíz alcanzada]{\includegraphics[width=7cm]{rint4.pdf}}
 
-\caption{proceso de obtención de la raíz de una función por el método de la bisección }
+\bicaption{proceso de obtención de la raíz de una función por el método de la bisección.}{process of obtaining the root of a function by the bisection method.}
 \label{fig:bisec}
 \end{figure}
 
@@ -207,7 +210,7 @@ The process is shown graphically in figure \ref{fig:bisec}, for a particular cas
 
 
 
-
+\switchcolumn
 
 
 \subsection{Método de interpolación lineal o (\emph{Regula falsi})}
@@ -259,7 +262,7 @@ Figure \ref{fig:regulaf} shows the position of point $c$ computed with this meth
 \centering
 \includegraphics[width=14cm]{rinter00.pdf}
 
-\caption{Obtención de la recta que une los extremos de un intervalo $[a,b]$  que contiene una raíz de la función}
+\bicaption{Obtención de la recta que une los extremos de un intervalo $[a,b]$  que contiene una raíz de la función}{Obtaining the line joining the extremes of an interval $[a,b]$ containing a root of the function}
 \label{fig:regulaf}
 \end{figure}
 
@@ -368,8 +371,7 @@ One final remark, it was said at the beginning that this method is an improvemen
 \subfigure[iteracion 3]{\includegraphics[width=7cm]{rinter3.pdf}}\\
 \subfigure[iteracion 6: raíz alcanzada]{\includegraphics[width=7cm]{rinter4.pdf}}
 
-\caption{Proceso de obtención de la raíz de una función por el método de interpolación lineal}
-\label{fig:iterr2}
+\bicaption{Proceso de obtención de la raíz de una función por el método de interpolación lineal}{Process of obtaining the root of a function by the method of linear interpolation}\label{fig:iterr2}
 \end{figure}
 
 \begin{paracol}{2}
@@ -401,7 +403,7 @@ f(x)\approx f(x_0)+f'(x_0)(x-x_0)+\frac{1}{2}f''(x_0)(x-x_0)^2+\cdots+\frac{1}{n
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{newt0.pdf}[h]
-\caption{Recta tangente a la función $f(x)$ en el punto $x_0$}
+\bicaption{Recta tangente a la función $f(x)$ en el punto $x_0$}{Tangent line to the function $f(x)$ at the point $x_0$.}
 \label{fig:newton1}
 \end{figure}
 
@@ -519,7 +521,7 @@ The calculation of the derivative is the weak point of this algorithm, since for
 \subfigure[iteracion 4]{\includegraphics[width=7cm]{newt3.pdf}}\qquad
 \subfigure[iteracion 5: raíz de la función]{\includegraphics[width=7cm]{newt4.pdf}}
 
-\caption{Proceso de obtención de la raíz de una función por el método de Newton}
+\bicaption{Proceso de obtención de la raíz de una función por el método de Newton}{Process of obtaining the root of a function by Newton's method}
 \label{fig:newton2}
 \end{figure}
 
@@ -584,7 +586,7 @@ x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}\approx x_n-\frac{(x_n-x_{n-1})\cdot f(x_n)}{f
 
 \begin{figure}[h]
 \includegraphics[width=14cm]{secante0.pdf}
-\caption{Recta secante a la  función $f(x)$ en los puntos $x_0$ y $x_1$}
+\bicaption{Recta secante a la  función $f(x)$ en los puntos $x_0$ y $x_1$}{Secant line to the function $f(x)$ at points $x_0$ and $x_1$.}
 \label{fig:secante}
 \end{figure}
 
@@ -672,7 +674,7 @@ In addition, the value of the last two points obtained must be updated in each i
 \subfigure[iteración 4]{\includegraphics[width=7cm]{secante31.pdf}}\qquad
 \subfigure[iteración 5]{\includegraphics[width=7cm]{secante4.pdf}}
 
-\caption{proceso de obtención de la raíz de una función por el método de la secante}
+\caption{proceso de obtención de la raíz de una función por el método de la secante}{process of obtaining the root of a function by the secant method}
 \label{fig:secante3}
 \end{figure}
 
@@ -680,7 +682,7 @@ In addition, the value of the last two points obtained must be updated in each i
 La figura \ref{fig:secante3} muestra un ejemplo de la obtención de una raíz por el método de la secante. Se ha empleado de nuevo la misma función que en los ejemplos anteriores, tomando como valores iniciales, $x_0=-2.5$ y $x_1=0.5$. La tolerancia se ha fijado en $tol=0.01$ también como en los anteriores algoritmos descritos. En este caso, el algoritmo encuentra la raíz en cinco iteraciones. Cada uno de los gráficos que compone la figura \ref{fig:secante3}, muestra la obtención de un nuevo punto a partir de los dos anteriores. 
 
     \switchcolumn
-Figure \ref{fig:secant3} shows an example of obtaining a root by the secant method. The same function has been used again as in the previous examples, taking as initial values, $x_0=-2.5$ and $x_1=0.5$. As in the previous algorithms described, the tolerance has been set to $tol=0.01$. In this case, the algorithm finds the root in five iterations. Each of the graphs that make up the figure \ref{fig:secant3}, shows the obtaining of a new point from the previous two. 
+Figure \ref{fig:secante3} shows an example of obtaining a root by the secant method. The same function has been used again as in the previous examples, taking as initial values, $x_0=-2.5$ and $x_1=0.5$. As in the previous algorithms described, the tolerance has been set to $tol=0.01$. In this case, the algorithm finds the root in five iterations. Each of the graphs that make up the figure \ref{fig:secante3}, shows the obtaining of a new point from the previous two. 
     \switchcolumn
 
 En la iteración 2, puede observarse como el nuevo punto se obtiene a partir de dos puntos que están ambos situados a la derecha de la raíz, es decir, no forman un intervalo que contenga a la raíz.  Aquí se pone claramente de manifiesto la diferencia con el método de interpolación lineal. De hecho, com ya se ha dicho, el método de la secante puede iniciarse tomando los dos primeros puntos a uno de los lados de la raíz.
@@ -702,16 +704,23 @@ The advantage of this method over Newton's is that it avoids having to explicitl
 
 \end{paracol}
 
+\begin{paracol}{2}
 
 
 
 
-
-
-\subsection{Método de las aproximaciones sucesivas o del punto fijo}\label{pfijo}
+ \subsection{Método de las aproximaciones sucesivas o del punto fijo}\label{pfijo}
 
 El método del punto fijo es, como se verá a lo largo de esta sección, el más sencillo de programar de todos. Desafortunadamente, presenta el problema de que no podemos aplicarlo a todas las funciones. Hay casos en los que el método no converge, con lo que no es posible emplearlo para encontrar la raíz o raíces de una función.
- 
+ \switchcolumn
+
+
+\subsection{Method of successive approximations or fixed point iteration}\label{pfijo}
+
+The fixed point iteration is, as will be seen throughout this section, the simplest of all to program. Unfortunately, it has the problem that we cannot apply it to all functions. There are cases in which the method does not converge, so it is not possible to use it to find the root or roots of a function.
+
+\switchcolumn
+
 \paragraph{Punto fijo de una función.} \index{Punto fijo! de una función}Se dice que un punto $x_f$ es un punto fijo de una función $g(x)$ si se cumple,
 \begin{equation*}
 g(x_f)=x_f
@@ -726,12 +735,30 @@ Tiene un punto fijo en $x_f=-0.703467$, porque $g(-0.703467)=-0.703467$. La exis
 
 Una función puede tener uno o más puntos fijos o no tener ninguno. Por ejemplo, la función $y=\sqrt{e^x}$ no tiene ningún punto fijo.
 
+\switchcolumn
+\paragraph{Fixed point.} \index{Fixed point!} $x_f$ is a fixed point of $g(x)$ if it holds,
+\begin{equation*}
+g(x_f)=x_f
+\end{equation*}
+
+That is, the image of the fixed point $x_f$ is again the fixed point. So for example the function,
+\begin{equation*}
+g(x)=-\sqrt{e^x}
+\end{equation*}
+
+Has a fixed point  $x_f=-0.703467$, because $g(-0.703467)=-0.703467$. The existence of a fixed point can be obtained graphically, representing in the same graph the function $y=g(x)$ and the straight line $y=x$. If there is a point of intersection between both graphs, it is a fixed point. The figure \ref{fig:pfijo0}, shows graphically the fixed point of the function $g(x)=-\sqrt{e^x}$ of the previous example.
+
+A function can have one or more fixed points or none at all. For example, the function $y=\sqrt{e^x}$ does not have any fixed point.
+\end{paracol}
 
 \begin{figure}[h]
 \includegraphics[width=14cm]{pfijo0.eps}
-\caption{Obtención gráfica del punto fijo de la función, $g(x)=-\sqrt{e^x}$}
+\bicaption{Obtención gráfica del punto fijo de la función, $g(x)=-\sqrt{e^x}$}{Obtaining the fixed point of the function graphically, $g(x)=-\sqrt{e^x}$}
 \label{fig:pfijo0}
 \end{figure}
+
+
+\begin{paracol}{2}
 
 \paragraph{Punto fijo atractivo.} \index{Punto fijo! atractivo}Supongamos ahora que, a partir de la función $g(x)$ creamos la siguiente sucesión,
 \begin{equation*}
@@ -739,12 +766,30 @@ x_{n+1}=g(x_n)
 \end{equation*}
 
 Es decir, empezamos tomando un punto inicial $x_0$ y a partir de él vamos obteniendo los siguientes valores de la sucesión como,
+\switchcolumn
+
+\paragraph{Attracting fixed point.} \index{Attracting fixed point} SSuppose now that from the function $g(x)$ we create the following sequence,
+\begin{equation*}
+x_{n+1}=g(x_n)
+\end{equation*}
+
+That is, we start by taking an initial point $x_0$and from it we obtain the following values of the sequence as,
+\end{paracol}
 \begin{equation*}
 x_0\rightarrow x_1=g(x_0)\rightarrow x_2=g(x_1)=g\left(g(x_0)\right) \rightarrow \cdots \rightarrow x_{n+1}=g(x_{n})=g\left( g\left( \cdots\left( g(x_0)\right)\right)\right) \rightarrow \cdots
 \end{equation*}
+
+\begin{paracol}{2}
 Decimos que un punto fijo $x_f$ de la función $g(x)$ es un punto fijo atractivo si la sucesión $x_{n+1}=g(x_n)$ converge al valor $x_f$, siempre que $x_0$ se tome \emph{suficientemente} cercano a $x_f$. Cómo de cerca tienen que estar $x_0$ y $x_f$ para que la serie converja, es una cuestión delicada. De entrada, es importante descartar que hay funciones que tienen puntos fijos no atractivos, por ejemplo, la función $g(x)=x^2$ tiene dos puntos fijos $x=0$ y $x=1$. El primero es el límite de la sucesión $x_{n+1}=g(x_n)$ para cualquier valor inicial $x_0$ contenido en el intervalo abierto $(-1,  1)$. El punto $x=1$ resulta inalcanzable para cualquier sucesión excepto que el punto de inicio sea él mismo $x_0=x_f=1$.
 
 Hay algunos casos en los que  es posible, para determinadas funciones, saber cuando uno de sus puntos fijos es atractivo,
+\switchcolumn
+
+We can say that fixed point $x_f$ of function $g(x)$ is an attracting  fixed point if the succession $x_{n+1}=g(x_n)$ converges to $x_f$, if $x_0$ is close \emph{enough} to $x_f$. How close $x_0$ and $x_f$ have to be for the series to converge is a delicate question. For example, the function $g(x)=x^2$ has two fixed points $x=0$ and $x=1$. The first is the limit of the sequence $x_{n+1}=g(x_n)$ for any initial value $x_0$ contained in the open interval $(-1, 1)$. The point $x=1$ is unreachable for any sequence unless the starting point is itself $x_0=x_f=1$.
+
+There are some cases where it is possible, for certain functions, to know when one of your fixed points is attractive,
+
+\switchcolumn
 
 \paragraph{Teorema de existencia y unicidad del punto fijo.}\index{Punto fijo! Teorema} Dada una función $g(x)$,  continua y diferen-\- ciable en un intervalo $[a, b]$, si se cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$,  entonces $g(x)$ tiene un punto fijo en el intervalo $[a, b]$. 
 
@@ -757,29 +802,62 @@ La segunda parte del teorema puede demostrarse empleando el teorema de valor med
 \begin{equation*}
 \frac{g(x_{f1})-g(x_{f2})}{x_{f1}-x_{f2}}=g'(\xi)
 \end{equation*}
+\switchcolumn
 
-Por tanto,
+\paragraph{Fixed point theorem.}\index{Fixed point! theorem} Let $g(x)$ , be a continuous and derivable function in $[a, b]$, if, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$,  then $g(x)$ has at least a fixed point in $[a, b]$. 
+
+If, in addition, there is a positive constant $k < 1$  and it holds that  $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, then $g(x)$ has a unique fixed point in $[a,b]$. 
+
+To prove the first part of the theorem, Bolzano's theorem can be used. If it is satisfied that $g(a)=a$ or $g(b)=b$, then $a$ or $b$ would be the fixed point. Suppose this is not the case; then it must be true that $g(a)>a$ and that $g(b)<b$. Define $f(x)=g(x)-x$. This function, which is continuous by construction, satisfies that $f(a)=g(a)-a>0$ and $f(b)=g(b)-b<0$. Then, there is a $x_f \in [a, b]$ that holds $f(x_f)=0$ and therefore $f(x_f)=g(x_f)-x_f=0 \Rightarrow g(x_f)=x_f$. That is, $x_f$ is a fixed point of $g(x)$.
+
+The second part of the theorem can be proved using the mean value theorem. If we assume that there are two distinct fixed points $x_{f1} \neq x_{f2}$ in $[a,b]$, according to the mean value theorem, there exists a point $\xi$ between $x_{f1}$ and $x_{f2}$ for which it is satisfied,
+
+\begin{equation*}
+\frac{g(x_{f1})-g(x_{f2})}{x_{f1}-x_{f2}}=g'(\xi)
+\end{equation*}
+
+Therefore,
+\end{paracol}
+
 
 \begin{equation*}
 \vert g(x_{f1})-g(x_{f2}) \vert =\vert x_{f1}-x_{f2} \vert\cdot \vert g'(\xi) \vert \leq \vert x_{f1}-x_{f2} \vert \cdot k < \vert x_{f1}-x_{f2} \vert 
 \end{equation*}
 
+\begin{paracol}{2}
+
 Pero como se trata de puntos fijos $\vert g(x_{f1})-g(x_{f2}) \vert =\vert x_{f1}-x_{f2}\vert $. con lo que llegaríamos al resultado contradictorio, 
+
+\switchcolumn
+
+But since we are dealing with fixed points $\vert g(x_{f1})-g(x_{f2}) \vert =vert x_{f1}-x_{f2} \vert$, this would lead to the contradictory result
+
+\end{paracol}
 
  \begin{equation*}
 \vert x_{f1}-x_{f2}\vert=\vert g(x_{f1})-g(x_{f2}) \vert  \leq \vert x_{f1}-x_{f2} \vert\cdot k < \vert x_{f1}-x_{f2} \vert 
 \end{equation*}
 
+\begin{paracol}{2}
 Salvo que, en contra de la hipótesis inicial, se cumpla que  $ x_{f1}=x_{f2}$. En cuyo caso, solo puede existir un único punto fijo en el intervalo $[a, b]$ bajo las condiciones impuestas por el teorema.
 
-\paragraph{Teorema de punto fijo (atractivo).} \footnote{Hay varios teoremas de punto fijo definidos en distintos contextos matemáticos. Aquí se da una versión reducida a funciones $f(x):\mathbb{R} \rightarrow \mathbb{R}$} Dada una función $g(x)$,  continua y diferenciable en un intervalo $[a, b]$, que  cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$ y que  $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, con $0<k<1$, entonces se cumple que, para cualquier punto inicial $x_0$, contenido en el intervalo $[a, b]$, la sucesión  $x_{n+1}=g(x_n)$ converge al único punto fijo del intervalo $[a, b]$.
+\switchcolumn
+Unless, contrary to the initial hypothesis, it is satisfied that $ x_{f1}=x_{f2}$. In which case, there can only be a single fixed point in the interval $[a, b]$ under the conditions imposed by the theorem.
 
-La demostración puede obtenerse de nuevo a partir del teorema del valor medio.  Si lo aplicamos al valor inicial $x_0$ y al punto fijo $x_f$, obtenemos,
+\switchcolumn
+
+\paragraph{Teorema de punto fijo (atractivo).} \footnote{Hay varios teoremas de punto fijo definidos en distintos contextos matemáticos. Aquí se da una versión reducida a funciones $f(x):\mathbb{R} \rightarrow \mathbb{R}$} Dada una función $g(x)$,  continua y diferenciable en un intervalo $[a, b]$, que  cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$ y que  $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, con $0<k<1$, entonces se cumple que, para cualquier punto inicial $x_0$, contenido en el intervalo $[a, b]$, la sucesión  $x_{n+1}=g(x_n)$ converge al único punto fijo del intervalo $[a, b]$.
+La demostración puede obtenerse de nuevo a partir del teorema del valor medio. Si lo aplicamos al valor inicial $x_0$ y al punto fijo $x_f$, obtenemos,
+\switchcolumn
+
+\paragraph{Theorem of the attracting fixed point.} \footnote{There are several fixed point theorems defined in different mathematical contexts. A version reduced to functions $f(x):\mathbb{R} \rightarrow \mathbb{R}$ is given here.} Let $g(x)$,  continuous and differentiable on an interval $[a, b]$, that holds, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$ and that  $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, with $0<k<1$, then it holds that for any $x_0$, in $[a, b]$, the succession  $x_{n+1}=g(x_n)$ converges to the only fixed point of the interval $[a, b]$.
+The proof can again be obtained from the mean value theorem. If we apply it to the initial value $x_0$ and the fixed point $x_f$, we obtain,
 
 \begin{equation*}
 \vert g(x_0)-g(x_f) \vert =\vert x_0-x_f \vert \cdot \vert g'(\xi) \vert \leq \vert x_0-x_f \vert \cdot k 
 \end{equation*}
 
+\switchcolumn
 Para la siguiente iteración tendremos,
 
 \begin{equation*}
@@ -789,23 +867,49 @@ Para la siguiente iteración tendremos,
 puesto que,  $x_1=g(x_0)$ y $x_f = g(x_f)$, puesto que $x_f$ es el punto fijo. 
 
 Por simple inducción tendremos que para el término enésimo de la sucesión,
+\switchcolumn
+For the next iteration we will have,
 
+\begin{equation*}
+\vert g(x_1)-g(x_f) \vert \leq \vert x_1-x_f \vert \cdot k \leq \vert x_0-x_f \vert \cdot k^2 
+\end{equation*}
+
+since $x_1=g(x_0)$ y $x_f = g(x_f)$, because $x_f$ is a fixed point.
+
+Using induction we can obtain the ntn term of the sequence,
+\end{paracol}
 \begin{equation*}
 \vert g(x_n)-g(x_f) \vert \leq \vert x_{n-1}-x_f \vert \cdot k \leq \vert x_{n-2}-x_f \vert \cdot k^2 \leq \cdots \leq  \vert x_0-x_f \vert \cdot k^n 
 \end{equation*}
 
+\begin{paracol}{2}
 Pero
+
+\switchcolumn
+But,
+\end{paracol}
+
 \begin{equation*}
 \underset{n\rightarrow \infty}{\text{lim}}k^n=0 \Rightarrow \underset{n\rightarrow \infty}{\text{lim}} \vert x_n-x_f \vert \leq \underset{n\rightarrow \infty}{\text{lim}}\vert x_0-x_f \vert k^n =0
 \end{equation*} 
 
+\begin{paracol}{2}
 Es decir, la sucesión  $x_{n+1}=g(x_n)$ converge al punto fijo $x_f$.
 
-
+\switchcolumn
+That is, the sequence $x_{n+1}=g(x_n)$ converges to the fixed point $x_f$.
+\switchcolumn
 \paragraph{El método del punto fijo.}\index{Punto fijo! Método} Como ya hemos visto, obtener una raíz de una función $f(x)$, consiste en resolver la ecuación $f(x)=0$. Supongamos que podemos descomponer la función $f(x)$ como la diferencia de dos términos, una función auxiliar, $g(x)$, y la propia variable $x$
 \begin{equation*}
 f(x)=g(x)-x
 \end{equation*}
+\switchcolumn
+\paragraph{Fixed point iteration.}\index{Fijex point! Iteration} As we have already seen, obtaining a root of a function $f(x)$, consists of solving the equation $f(x)=0$. Suppose we can decompose the function $f(x)$ as the difference of two terms, an auxiliary function, $g(x)$, and the variable $x$ itself.
+\begin{equation*}
+f(x)=g(x)-x
+\end{equation*}
+
+\switchcolumn
 
 Encontrar una raíz de $f(x)$ resulta entonces equivalente a buscar un punto fijo de $g(x)$. 
 
@@ -813,12 +917,33 @@ Encontrar una raíz de $f(x)$ resulta entonces equivalente a buscar un punto fij
 f(x)=0 \rightarrow g(x)-x=0 \rightarrow g(x)=x
 \end{equation*}
 
+\switchcolumn
+
+
+Finding a root of $f(x)$ is then equivalent to finding a fixed point of $g(x)$.
+
+\begin{equation*}
+f(x)=0 \rightarrow g(x)-x=0 \rightarrow g(x)=x
+\end{equation*}
+
+\switchcolumn
+
 En general, a partir de una función dada $f(x)$, es posible encontrar distintas funciones $g(x)$ que cumplan que $f(x)=g(x)-x$. No podemos garantizar que cualquiera de las descomposiciones que hagamos nos genere una función $g(x)$ que tenga un punto fijo. 
 Además, para funciones que tengan más de una raíz, puede suceder que distintas descomposiciones de la función converjan a distintas raíces.
 Si podemos encontrar una que cumpla las condiciones del teorema de punto fijo que acabamos de enunciar, en un entorno de una raíz de $f(x)$, podemos desarrollar un método que obtenga iterativamente los valores de la sucesión   $x_{n+1}=g(x_n)$, a partir de un valor inicial $x_0$.  El resultado se aproximará al punto fijo de $g(x)$, y por tanto a la raíz de $f(x)$ tanto como queramos. Bastará, como   en los métodos anteriores, definir un valor (tolerancia), por debajo del cual consideramos que el valor obtenido es suficientemente próximo a  la raíz como para darlo por válido. 
 
 La figura \ref{fig:pfijo1} muestra un diagrama de flujo del método del punto fijo. 
 
+\switchcolumn
+
+In general, starting from a given function $f(x)$, it is possible to find different functions $g(x)$ that satisfy that $f(x)=g(x)-x$. We cannot guarantee that any of the decompositions we do will generate a function $g(x)$ that has a fixed point. 
+Moreover, for functions that have more than one root, it can happen that different decompositions of the function converge to different roots.
+If we can find one that satisfies the conditions of the fixed point theorem just stated, in an environment of a root of $f(x)$, we can develop a method that iteratively obtains the values of the sequence $x_{n+1}=g(x_n)$, starting from an initial value $x_0$. The result will approximate the fixed point of $g(x)$, and therefore the root of $f(x)$ as much as we want. It will suffice, as in the previous methods, to define a value (tolerance), below which we consider that the value obtained is sufficiently close to the root to be valid.
+
+Figure \ref{fig:fixedp} shows a flowchart of the fixed point iteration. 
+
+
+\switchcolumn
 
 \begin{figure}[h]
 \centering
@@ -842,12 +967,54 @@ La figura \ref{fig:pfijo1} muestra un diagrama de flujo del método del punto fi
 \label{fig:pfijo1}
 \end{figure}
 
+\switchcolumn
+
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+%\usetikzlibrary{shapes.geometric}
+\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Initial point $x_0$}
+(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Compute\\ $x=g(x_0)$}
+(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{is $\vert  x-x_0 \vert \le \text{tol}$?}
+(9,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{it converges:\\ The end}
+(5,-6) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$x_0=x$};
+\draw[blue,-latex](a.south)--(b);
+\draw[blue,-latex](b.south)--(c);
+\draw[blue,-latex](c.east)--(d);
+\draw (7.5,-4)node[above]{Yes};
+\draw[blue,-latex](c.south)--(g);
+\draw (5,-5)node[right]{No};
+\draw[blue,-latex](g.south)|-(2,-7)|-(b);
+
+\end{tikzpicture}
+\caption{Flowchart of fixed point iteration. Root corresponds to $f(x)=g(x)-x$}
+\label{fig:fixedp}
+\end{figure}
+
+
+\switchcolumn
+
  La idea es elegir cuidadosamente el punto inicial $x_0$, para asegurar que se encuentra dentro del intervalo de convergencia del punto fijo.  A continuación, calculamos el valor de $g(x_0)$, el resultado será un nuevo valor  $x$ .  Comprobamos la diferencia entre el punto obtenido y el anterior y si es menor que una cierta tolerancia,  consideramos que el método ha convergido, dejamos de iterar, y devolvemos el valor de $x$ obtenido como resultado. Si no, copiamos $x$ en $x_0$ y volvemos a empezar todo el proceso. Es interesante hacer notar que que el algoritmo converge cuando la diferencia entre dos puntos consecutivos es menor que un cierto valor.  De acuerdo con la \emph{condición } de punto fijo $g(x_0)=x_0$, dicha distancia, sería equivalente a la que media entre $f(x_0)=g(x_0)-x_0$, la función para la que queremos obtener la raíz,   y $0$.
 
 Veamos un ejemplo. Supongamos  que queremos calcular por el método del punto fijo la raíz de la  
 función $y=e^x-x^2$, que hemos empleado en los ejemplos de los métodos anteriores.
 
 En primer lugar, debemos obtener a partir de ella una nueva función que cumpla que $f(x)=g(x)-x$. Podemos hacerlo de varias maneras despejando una '$x$', de la ecuación $e^x-x^2=0$.  Para ilustrar los distintos casos de convergencia, despejaremos $x$ de tres maneras distintas .
+
+
+\switchcolumn
+
+The idea is to carefully choose the initial point $x_0$, to ensure that it lies within the interval of convergence of the fixed point. Then, we calculate the value of $g(x_0)$, the result will be a new value $x$ . We check the difference between the obtained point and the previous one and if it is less than a certain tolerance, we consider that the method has converged, we stop iterating, and we return the value of $x$ obtained as a result. If not, we copy $x$ into $x_0$ and start the whole process again. It is interesting to note that the algorithm converges when the difference between two consecutive points is less than a certain value. According to the fixed point condition $g(x_0)=x_0$, this distance would be equivalent to that between $f(x_0)=g(x_0)-x_0$, the function for which we want to obtain the root, and $0$.
+
+Let us look at an example. Suppose we want to calculate by the fixed point method the root of the function $y=e^x-x^2$. 
+function $y=e^x-x^2$, which we have used in the examples of the previous methods.
+
+First, we must obtain from it a new function that satisfies that $f(x)=g(x)-x$. We can do this in several ways by clearing an '$x$' from the equation $e^x-x^2=0$. To illustrate the different cases of convergence, we will clear $x$ in three different ways.
+
+
+\end{paracol}
+
 
 \begin{equation*}
 e^x-x^2=0 \Rightarrow \left\{
@@ -861,44 +1028,84 @@ x&=\frac{e^x}{x}
 
 \begin{figure}[h]
 \includegraphics[width=14cm]{pfijo1.pdf}
-\caption{$g(x)=\pm \sqrt{e^x}$, Solo la rama negativa tiene un punto fijo.}
+\bicaption{$g(x)=\pm \sqrt{e^x}$, Solo la rama negativa tiene un punto fijo.}{$g(x)=\pm \sqrt{e^x}$, only negative branch has a fixed point.}
 \label{fig:pfijo01}
 \end{figure}
 
+\begin{paracol}{2}
+    
 En nuestro ejemplo hemos obtenido tres formas distintas de \emph{despejar} la variable $x$. La cuestión que surge inmediatamente es, si todas las funciones obtenidas, tienen un punto fijo y, en caso de tenerlo, si es posible alcanzarlo iterativamente.
 
 En el primer caso, $x=\pm \sqrt{e^x}$, obtenemos las dos ramas de la raíz cuadrada. Cada una de ellas constituye a los efectos de nuestro cálculo una función distinta. Si las dibujamos junto a la recta $y=x$ (figura \ref{fig:pfijo01}), observamos que solo la rama negativa la corta. Luego será  esta rama $g(x)=-\sqrt{e^x}$,  la que podremos utilizar para obtener la raíz de la función original por el método del punto fijo. La rama positiva, al no cortar a la recta $y=x$ en ningún punto, es una función que carece de punto fijo.
 
-No es difícil demostrar, que la función $g(x)=-\sqrt{e^x} $ cumple las condiciones del teorema de punto fijo descrito más arriba para el intervalo $(-\infty, 0]$. Luego el algoritmo del punto fijo debería converger para cualquier punto de inicio $x_0$ contenido en dicho intervalo. De hecho, para esta función, el algoritmo converge desde cualquier punto de inicio (Si empezamos en punto positivo, el siguiente punto, $x_1$ será negativo, y por tanto estará dentro del intervalo de convergencia). Esta función es un ejemplo de que el teorema suministra una condición suficiente, pero no necesaria para que un punto fijo sea atractivo. 
+\switchcolumn
+    
+In our example we have obtained three different ways of \emph{clearing} the variable $x$. The question that immediately arises is whether all the functions obtained have a fixed point and, if so, whether it is possible to reach it iteratively.
 
-La figura \ref{fig:pfijo2} muestra un ejemplo del cálculo de la raíz de la función $f(x)=e^x-x^2$ empleando la función $g(x)=-\sqrt{e^x}$, para obtener el punto fijo. Se ha tomado como punto de partida $x_0=2.5$, un valor fuera del intervalo en el que se cumple el teorema. Como puede observarse en \ref{fig:pfijo21}. A pesar de ello el algoritmo converge rápidamente, y tras 5 iteraciones, \ref{fig:pfijo25}, ha alcanzado el punto fijo ---y por tanto la raíz buscada---, con la tolerancia impuesta
-  
-\begin{figure}
+In the first case, $x=\pm \sqrt{e^x}$, we obtain the two branches of the square root. For the purposes of our calculation, each of them constitutes a different function. If we draw them next to the straight line $y=x$ (figure \ref{fig:pfijo01}), we observe that only the negative branch cuts it. Then it will be this branch $g(x)=-$-$sqrt{e^x}$, which we will be able to use to obtain the root of the original function by the fixed point method. The positive branch, as it does not cut the straight line $y=x$ at any point, is a function without a fixed point.
+
+\switchcolumn
+No es difícil demostrar, que la función $g(x)=-\sqrt{e^x} $ cumple las condiciones del teorema de punto fijo descrito más arriba para el intervalo $(-\infty, 0]$. Luego el algoritmo del punto fijo debería converger para cualquier punto de inicio $x_0$ contenido en dicho intervalo. De hecho, para esta función, el algoritmo converge desde cualquier punto de inicio (Si empezamos en punto positivo, el siguiente punto, $x_1$ será negativo, y por tanto estará dentro del intervalo de convergencia). Esta función es un ejemplo de que el teorema suministra una condición suficiente, pero no necesaria para que un punto fijo sea atractivo. 
+\switchcolumn
+
+It is not difficult to show that the function $g(x)=-\sqrt{e^x}$ satisfies the conditions of the fixed point theorem described above for the interval $(-\infty, 0]$. Then the fixed point iteration should converge for any starting point $x_0$ contained in that interval. In fact, for this function, the algorithm converges from any starting point. (If we start at a positive point, the next point, $x_1$ will be negative, and therefore within the interval of convergence). This function is an example of the theorem providing a sufficient, but not necessary condition for a fixed point to be attractive. 
+
+\switchcolumn
+
+La figura \ref{fig:pfijo2} muestra un ejemplo del cálculo de la raíz de la función $f(x)=e^x-x^2$ empleando la función $g(x)=-\sqrt{e^x}$, para obtener el punto fijo. Se ha tomado como punto de partida $x_0=2.5$, un valor fuera del intervalo en el que se cumple el teorema. Como puede observarse en \ref{fig:pfijo21}. A pesar de ello el algoritmo converge rápidamente, y tras 5 iteraciones, \ref{fig:pfijo25}, ha alcanzado el punto fijo ---y por tanto la raíz buscada---, con la tolerancia impuesta.
+
+\switchcolumn
+
+Figure \ref{fig:pfijo2} shows an example of the calculation of the root of the function $f(x)=e^x-x^2$ using the function $g(x)=-\sqrt{e^x}$, to obtain the fixed point. We have taken as a starting point $x_0=2.5$, a value outside the interval in which the theorem is satisfied. As can be seen in \ref{fig:pfijo21}. In spite of this, the algorithm converges quickly, and after 5 iterations, \ref{fig:pfijo25}, has reached the fixed point ---and therefore the root sought---, with the imposed tolerance.
+
+\end{paracol}
+
+%TODO REvisar ESTA FIGURA
+\begin{figure}[h]
 \centering
-\subfigure[valor inicial \label{fig:pfijo21}]{\includegraphics[width=6.6cm]{pfijo3.pdf}} \qquad
-\subfigure[iteracion 1]{\includegraphics[width=6.5cm]{pfijo4.pdf}}\\
-\subfigure[iteración 2]{\includegraphics[width=6.5cm]{pfijo5.pdf}}\qquad
-\subfigure[iteración 3]{\includegraphics[width=6.5cm]{pfijo6.pdf}}\\
-\subfigure[iteración 4]{\includegraphics[width=6.5cm]{pfijo7.pdf}}\qquad
-\subfigure[iteración 5 \label{fig:pfijo25}]{\includegraphics[width=6.5cm]{pfijo8.pdf}}
-\caption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=-\sqrt{e^x}$}.
+\subfigure[valor inicial\label{fig:pfijo21}]{\includegraphics[height=5.5cm]{pfijo3.pdf}} \qquad
+\subfigure[iteracion 1]{\includegraphics[height=5.5cm]{pfijo4.pdf}}\\
+\subfigure[iteración 2]{\includegraphics[height=5.5cm]{pfijo5.pdf}}\qquad
+\subfigure[iteración 3]{\includegraphics[height=5.5cm]{pfijo6.pdf}}\\
+\subfigure[iteración 4]{\includegraphics[height=5.5cm]{pfijo7.pdf}}\qquad
+\subfigure[iteración 5 \label{fig:pfijo25}]{\includegraphics[height=5.5cm]{pfijo8.pdf}}
+
+\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=-\sqrt{e^x}$}{Fixed point iteration to compute the root of $f(x)=e^x-x^2$ using the function $g(x)=-\sqrt{e^x}$}
 \label{fig:pfijo2}
 \end{figure}
 
+\begin{paracol}{2}
+    
 Si tratamos de emplear la función $g(x)=ln(x^2)$ para obtener la raíz, observamos que la función no cumple el teorema para ningún intervalo que contenga la raíz. 
 
 La figura \ref{fig:pfijo03} muestra la función $g(x)$, la recta $y=x$ y la evolución del algoritmo tras cuatro evaluaciones. Es fácil deducir que el algoritmo saltará de la rama positiva a la negativa y de ésta volverá a saltar de nuevo a la positiva. 
 
+\switchcolumn
+
+If we try to use the function $g(x)=ln(x^2)$ to obtain the root, we observe that the function does not satisfy the theorem for any interval containing the root. 
+
+Figure \ref{fig:pfijo03} shows the function $g(x)$, the line $y=x$ and the evolution of the algorithm after four evaluations. It is easy to deduce that the algorithm will jump from the positive branch to the negative branch and from the negative branch back to the positive branch.
+
+\end{paracol}
+
 \begin{figure}[h]
 \includegraphics[width=14cm]{p1fijo0.pdf}
-\caption{primeras iteraciones de la obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$.}
+\bicaption{primeras iteraciones de la obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$.} {first iterations of obtaining the root of the function $f(x)=e^x-x^2$ by applying the fixed point method on the function $g(x)=ln(x^2)$.}
 \label{fig:pfijo03}
 \end{figure}
 
+\begin{paracol}{2}
 La función presenta una asíntota vertical en el $0$. Si se empieza desde $x_0=0$, $x_0=1$ 0 $x_0=-1$ el algoritmo no converge, puesto que la función diverge hacia $-\infty$. Para el resto de los valores, la función oscila entre una rama y otra. Si en alguna de las oscilaciones acierta a pasar suficientemente cerca del punto fijo, $x_n-x_{n-} \leq tol$, el algoritmo habrá aproximado la raíz, aunque propiamente no se puede decir que converja.
 
  La figura \ref{fig:pfijo41}, muestra la evolución del algoritmo, tomando como punto inicial $x_0=-0.2$.  Tras 211 iteraciones el algoritmo 'atrapa la raíz'. En este caso la tolerancia se fijó en $tol=0.01$.  
  
+ \switchcolumn
+ The function has a vertical asymptote at $0$. If one starts from $x_0=0$, $x_0=1$ 0 $x_0=-1$ the algorithm does not converge, since the function diverges towards $-\infty$. For the rest of the values, the function oscillates between one branch and another. If in any of the oscillations it manages to pass close enough to the fixed point, $x_n-x_{n-} \leq tol$, the algorithm will have approximated the root, although it cannot properly be said to converge.
+
+ Figure \ref{fig:pfijo41}, shows the evolution of the algorithm, taking $x_0=-0.2$ as the starting point. After 211 iterations the algorithm 'catches the root'. In this case the tolerance was set to $tol=0.01$.
+
+  \switchcolumn
+  
  La gráfica \ref{fig:pfijo42} muestra una ampliación de \ref{fig:pfijo41} en la que pueden observarse en detalles los valores obtenidos para las dos últimas iteraciones. Las dos líneas horizontales de puntos marcan los límites $\text{raíz}\pm tol$. 
  
  El algoritmo se detiene porque la diferencia entre los valores obtenidos en las dos últimas iteraciones caen dentro de la tolerancia. El valor obtenido en la penúltima iteración, que proviene de la rama positiva de la función $g(x)$ cae muy cerca del punto fijo. El último valor obtenido, se aleja de hecho del valor de la raíz, respecto al obtenido en la iteración anterior, pero no lo suficiente como para salirse de los límites de la banda marcada por la tolerancia. Como resultado, se cumple la condición de terminación y el algoritmo se detiene.  
@@ -908,8 +1115,19 @@ La función presenta una asíntota vertical en el $0$. Si se empieza desde $x_0=
   La gráfica \ref{fig:pfijo43} muestra la evolución del error en función del número de iteración. Como puede observarse, el error oscila de forma caótica de una iteración a la siguiente. De hecho, el estudio de las sucesiones de la forma $x_{n+1}=g(x_n)$ constituyen uno de los puntos de partidas para la descripción y el análisis de los llamados sistemas caóticos. 
 
 Uno sencillo, pero muy interesante es el de la ecuación logística discreta, $x_{n+1}=R\cdot (1-x_n)\cdot x_n$. Esta ecuación muestra un comportamiento muy distinto, según cual sea el valor de $R$ y el valor inicial $x_0$ con el que empecemos a iterar.
+  
+\switchcolumn
+
+The graph \ref{fig:pfijo42} shows an enlargement of \ref{fig:pfijo41} in which the values obtained for the last two iterations can be seen in detail. The two horizontal dotted lines mark the $text{root}\pm tol$. 
+
+ The iteration stops because the difference between the values obtained in the last two iterations is lower than the tolerance. The value obtained in the penultimate iteration, which comes from the positive branch of the function $g(x)$, falls very close to the fixed point. The last value obtained, in fact, moves away from the value of the root, with respect to that obtained in the previous iteration, but not enough to fall outside the limits of the band marked by the tolerance. As a result, the termination condition is met and the algorithm stops. 
+
+ If we decrease the value of the tolerance, we cannot guarantee that the algorithm will converge. In fact, if we plot what would have been the next values that the solution of the algorithm would have taken, had it not stopped, it is easy to see that they move further and further away from the root. Again, we will have to wait for it to change branches and pass close to the fixed point again for there to be another chance for the algorithm to catch the solution.
  
- 
+The graph \ref{fig:pfijo43} shows the evolution of the error as a function of the iteration number. As can be seen, the error oscillates chaotically from one iteration to the next. In fact, the study of sequences of the form $x_{n+1}=g(x_n)$ is one of the starting points for the description and analysis of so-called chaotic systems. 
+
+A simple, but very interesting one is that of the discrete logistic equation, $x_{n+1}=R\cdot (1-x_n)\cdot x_n$. This equation shows very different behaviour, depending on the value of $R$ and the initial value $x_0$ with which we start iterating.
+\end{paracol} 
 
 \begin{figure}[h]
 \centering
@@ -917,13 +1135,23 @@ Uno sencillo, pero muy interesante es el de la ecuación logística discreta, $x
 \subfigure[Vista detallada de las ultimas iteraciones de \ref{fig:pfijo41} \label{fig:pfijo42}]{\includegraphics[width=7cm]{p2fijo1d2.eps}}\\
 \subfigure[Evolución del error \label{fig:pfijo43}]{\includegraphics[width=7.2cm]{p2fijo1e.pdf}}
 
-\caption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$, el método oscila sin converger a la solución.}
+\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$, el método oscila sin converger a la solución.}{Fixed point iteration to compute the root of function $f(x)=e^x-x^2$ using the function $g(x)=ln(x^2)$, iteration oscillates without converging to the solution.}
 \label{fig:pfijo4}
 \end{figure}
 
+\begin{paracol}{2}
 Por último, si empleamos la función $g(x)=\frac{e^x}{x}$, no se cumple el teorema de punto fijo en ningún punt. En este caso, el algoritmo diverge siempre.  La figura \ref{fig:pfijo5} muestra la evolución del algoritmo del punto fijo para esta función. Se ha elegido un punto de inicio $x_0=-0.745$, muy próximo al valor de la raíz, para poder observar la divergencia de las soluciones obtenidas con respecto al punto fijo. Como puede verse, el valor de $x_n$ cada vez se aleja más de la raíz. LA solución oscila entre un valor que cada vez se aproxima más a cero y otro que tiende hacia $-\infty$. Si se deja aumentar suficientemente el número de iteraciones, llegará un momento en que se producirá un error de desbordamiento. 
 
 A diferencia de lo que sucedía en la elección de $g(x)=ln(x^2)$, en este caso, el algoritmo no oscila entre las dos ramas. Si empezamos en la rama de la derecha, eligiendo un valor positivo para $x_0$, el algoritmo diverge llevando las soluciones hacia $+\infty$. Es un resultado esperable, ya que dicha rama no tiene ningún punto fijo.
+
+\switchcolumn
+
+Finally, if we use the function $g(x)=\frac{e^x}{x}$, the fixed point theorem is not satisfied at any point. In this case, the algorithm always diverges. Figure \ref{fig:pfijo5} shows the evolution of the fixed-point iteration for this function. A starting point $x_0=-0.745$, very close to the value of the root, has been chosen in order to observe the divergence of the solutions obtained with respect to the fixed point. As can be seen, the value of $x_n$ moves further and further away from the root. The solution oscillates between a value that gets closer and closer to zero and another that tends towards $-\infty$. If the number of iterations is allowed to increase sufficiently, there will come a time when an overflow error will occur. 
+
+Unlike in the choice of $g(x)=ln(x^2)$, in this case, the algorithm does not oscillate between the two branches. If we start on the right-hand branch, choosing a positive value for $x_0$, the algorithm diverges, taking the solutions towards $+\infty$. This is to be expected, since this branch has no fixed point.
+
+\end{paracol}
+
 
 \begin{figure}
 \centering
@@ -934,375 +1162,315 @@ A diferencia de lo que sucedía en la elección de $g(x)=ln(x^2)$, en este caso,
 \subfigure[iteración 4]{\includegraphics[width=7cm]{p3fijo4.pdf}}\qquad
 \subfigure[iteración 5]{\includegraphics[width=7cm]{p3fijo5.pdf}}
 
-\caption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=\frac{e^x}{x}$, el método diverge rápidamente.}
+\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=\frac{e^x}{x}$, el método diverge rápidamente.}{fixed point iteration to compute the root of function $f(x)=e^x-x^2$ using the function  $g(x)=\frac{e^x}{x}$, the iteration diverges quickly.}
 \label{fig:pfijo5}
 \end{figure}
+\begin{paracol}{2}
 
-\section{Cálculo de raíces de funciones con Matlab.}
+\section{Cálculo de raíces de funciones con Python.}
 
-Matlab suministra funciones propias para calcular raíces de funciones.  Las dividiremos en dos grupos. En primer lugar estudiaremos la función de Matlab \texttt{fzero} y después veremos un conjunto de funciones específicas para manejar polinomios.
+Python tiene sus propios métodos para calcular raíces de funciones. Vamos a ver dos de esos métodos. Primero la función  \texttt{fsolve} del paquete \texttt{scipy.optimize} que calcula raices de todo tipo de funciones. Después veremos las funciones específicas para usar polinomios del paquete \texttt{numpy} y entre ellas la función \texttt{roots} para hallar las raices de un polinomio.
 
-\subsection{La función de Matlab \texttt{fzero.}}
+\switchcolumn
 
-La función \texttt{fzero} permite obtener la raíz de una función cualquiera real $f(x):\mathbb{R} \rightarrow \mathbb{R}$. \texttt{fzero}, es una función especial, ya que opera sobre otras funciones, podemos considerarla como una \emph{función de funciones}. Las funciones ordinarias actúan sobre variables, a lo largo de los capítulos anteriores hemos visto como asignar valores y \emph{variables de entrada} a las funciones y también cómo guardar los resultados obtenidos de las funciones en \emph{variables de salida}.
+\section{Python root finding}
 
-Matlab suministra varios mecanismos, para indicar a \texttt{fzero} ---y en general a cualquier \emph{función de funciones}--- la función sobre la que queremos que actúe. Veremos a continuación algunos de los más comunes.
+Python has its own methods for calculating roots of functions. Let's take a look at two of those methods. First, the \texttt{fsolve} function from the \texttt{scipy.optimize} package calculates roots of all kinds of functions. Then we will look at the specific functions for using polynomials from the \texttt{numpy} package, including the \texttt{roots} function for finding the roots of a polynomial.
 
-\paragraph{\emph{handle} de una función.}\index{"@ |emph{handle} de una función} El primer mecanismo, es asociar a una función un nombre de variable especial. Hasta ahora, siempre hemos empleado las variables para guardar en ellas valores numéricos o caracteres. Sin embargo Matlab permite guardar también funciones en una variable. Estas variables, reciben el nombre de \emph{handles}. Veamos un ejemplo. Si escribimos en la ventana de comandos, 
+\subsection{Function \texttt{fsolve}}
 
-\begin{verbatim}
->> sn =@sin
-sn = 
-    @sin
-\end{verbatim}
+\switchcolumn
 
-Matlab asocia a la nueva variable \texttt{sn} la función seno (\texttt{sin}). Para indicar a Matlab que la nueva variable es el \emph{handle} de una función es imprescindible emplear el símbolo @, después del símbolo de asignación $=$.
+\subsection{La función \texttt{fsolve}}
 
-Si pedimos a Matlab que nos muestre qué variables tiene en el \emph{workspace},
+La función \texttt{fsolve} se encuentra en el paquete \texttt{optimize} de \texttt{scipy}. Esta función devuelve las raices de un sistema de ecuaciones definidas por $func(x)=0$ dado un punto de inicio.
 
-\begin{verbatim}
->> whos
-  Name      Size            Bytes  Class          Attributes
+Si el algoritmo no llega a converger \texttt{fsolve} devuelve el resultado de la última iteración.
 
-  sn      1x1                32  function_handle              
+\switchcolumn
+\texttt{fsolve} returns the roots of the (non-linear) equations defined by $func(x) = 0$ given a starting estimate.
 
-\end{verbatim}
+If algorithm fails \texttt{fsolve} returns the last iteration result.
 
-Matlab nos indica que se ha creado una variable \texttt{sn}, cuya clase es \texttt{function\_handle}. Esta variable tiene propiedades muy interesantes: por una parte, podemos manejarla como si se tratara de la función seno, asignando valores de entrada, y guardando el resultado en una variable de salida, 
-\begin{verbatim}
->> x=sn(pi/2)
-x =
-     1
-\end{verbatim}
+\switchcolumn
 
-Pero además podemos usarla como variable de entrada para otra función, tal y como se muestra en el siguiente código,
+La sintaxis del método \texttt{fsolve} en su forma más sencilla es la siguiente:
 
-% \begin{lstlisting}
-% function pinta_funcion(fun,intervalo)
-% % Esta función dibuja la gráfica de una funcion cualquiera (fun) en un
-% % itervalo dado (intervalo). fun debe ser un handle de la función que se
-% % quiere pintar. intervalo debe ser un vector que contenga los extremos del
-% % intervalo que se desea pintar.
+\begin{minted}{python}
+ import scipy.optimize as opt
 
-% % Construimos cien puntos en el intevalo dado,
-% x=linspace(intervalo(1),intervalo(2),100);
-
-% % calculamos el valor de la funcion en los puntos del intervalo,
-% y=fun(x);
-
-% % dibujamos la gráfica
-% plot(x,y)
-% \end{lstlisting}
-
-La función \texttt{pinta\_funcion} nos dibujará la gráfica de cualquier función en el intervalo indicado. p realizar ara ello bastará crear un \emph{handle} de la función que se quiere dibujar y pasarlo a la función \texttt{pinta\_fun} como una variable de entrada. Así por ejemplo, si escribimos en Matlab,
-
-\begin{verbatim}
->>sn=@sin
->>pinta_funcion(sn,[-pi/2,pi/2])
-\end{verbatim}
-
-Se obtendrá la gráfica de la función seno en el intervalo pedido.
-
-Podemos asignar \emph{handles} no solo a las funciones internas de Matlab sino a cualquier función que escribamos. Por ejemplo, en los métodos descritos más arriba para obtener raíces de funciones, usamos la función $f(x)=e^x-x^2$ como función de prueba. podemos crear un fichero que implemente esta función,
-
-% \begin{lstlisting}
-% function y=prueba(x)
-% % esta es una funcioncilla de prueba para los algoritmos de obtención de
-% % raíces
-% y=exp(x)-x.^2;
-% \end{verbatim}
-
-Si guardamos el fichero, con el nombre prueba.m en el directorio de trabajo, podemos ahora asignar un \emph{handle} a nuestra función,
-\begin{verbatim}
-mifuncion=@prueba 
-\end{verbatim}
-
-Y a continuación, podemos emplear el programa \texttt{pinta\_fun} para representa la función en un intervalo, por ejemplo $[-2 2]$ que contenga la raíz,
-
-\begin{verbatim}
-pinta_funcion(mifuncion,[-2 2])
-\end{verbatim} 
-
-El resultado se muestra en la figura \ref{fig:handle}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=8cm]{handle.eps}
-\caption{Gráfica de la función $f(x)=e^x-x^2$, obtenida mediante \texttt{pinta\_funcion}.}
-\label{fig:handle}
-\end{figure}
-
-\paragraph{la función \texttt{feval} de Matlab.} Esta función suministra un método indirecto para calcular los resultados de una función cualquiera.  Su sintaxis es la siguiente,
-\begin{verbatim} 
-[y1, y2, ..., ym]=feval('fun', x1, x2, ...,xn)
-\end{verbatim}
-
-donde \texttt{fun} representa el nombre de la función que se desea evaluar, \texttt{x1, x2,...,xn}, son la variables de entrada empleadas por la función \texttt{fun}, y \texttt{y1, y2, ...,ym} representan sus variables de salida. Es importante destacar que el nombre de la función que se desea evaluar hay que introducirlo entre comillas simples. Así por ejemplo si escribimos,
-
- \begin{verbatim}
->> y=feval('sin',x)
-y =
-     1
->> 
-\end{verbatim}
-obtenemos el mismo resultado que empleando la función \texttt{sin} directamente para calcular  el valor del seno de $\pi/2$,
-\begin{verbatim}
->> x=pi/2;
->> y=sin(x)
-y =
-     1
->> 
-\end{verbatim}
- realizar 
+ roots=opt.fsolve(fun,[x0])    
+\end{minted}
 
 
+donde \texttt{fun} representa el nombre de la función que se desea evaluar, \texttt{[x0]}, son los valores de partida de las raices  y \texttt{roots} las raices calculadas oir \texttt{fsolve}. 
 
-\texttt{feval} suministra un método alternativo al uso de \emph{handles} para crear y manejar \emph{funciones de funciones}. Para ver un ejemplo, el siguiente código muestra una versión alternativa del programa \texttt{pinta\_funcion}, empleando la función \texttt{feval},
+\switchcolumn
+The syntax of the \texttt{fsolve} method in its simplest form is as follows:
 
-% \begin{lstlisting}
-% function pinta_funcion2(fun,intervalo)
-% % Esta función dibuja la gráfica de una funcion cualquiera (fun) en un
-% % itervalo dado (intervalo). fun debe ser una cadena de caractéres que contengan exáctamente el nombre de la función (fun) que se 
-% % quiere pintar. intervalo debe ser un vector que contenga los extremos del
-% % intervalo que se desea pintar.
+\begin{minted}{python}
+ import scipy.optimize as opt
 
-% % Construimos cien puntos en el intevalo dado,
-% x=linspace(intervalo(1),intervalo(2),100);
+ roots=opt.fsolve(fun,[x0])
+\end{minted}
 
-% % calculamos el valor de la funcion en los puntos del intervalo, EMPLEANDO LA FUNCION feval
-% y=feval(fun,x);
+where \texttt{fun} represents the name of the function to be evaluated, \texttt{[x0]} are the starting values of the roots and \texttt{roots} are the calculated roots or \texttt{fsolve}.
 
-% % dibujamos la gráfica
-% plot(x,y)
-% \end{lstlisting}
+\switchcolumn
 
-Para representar la función seno en el intervalo $-\frac{\pi}{2}, \frac{\pi}{2}$, empleando esta nueva función, introducimos en Matlab,
+Un ejemplo de uso de \texttt{fsolve} para calcular la raiz de $f(x)=e^x-x^2$ partiendo de una aproximación inicial de $x_0=2$ sería el siguiente:
 
-\begin{verbatim}
->> pinta_funcion2('sin',[-pi/2,pi/2])
-\end{verbatim}
- realizar 
-También podemos crear una variable alfa-numérica con el nombre de la función seno, y pasar directamente la variable creada,
+\begin{minted}{python}
+import numpy as np
+import scipy.optimize as opt
 
-\begin{verbatim}
->> funcion='sin'
->> pinta_funcion2(funcion,[-pi/2,pi/2])
-\end{verbatim}
+def fun(x):
+    y=np.exp(x)-x**2
+    return y
 
-Al igual que en el caso del uso de \texttt{handles} podemos emplear la función \texttt{feval} con funciones creadas por el usuario, por ejemplo podemos representar nuestra función \texttt{prueba}, introducida anteriormente, 
+roots=opt.fsolve(fun,-2)
 
-\begin{verbatim}
->>pinta_funcion2('prueba',[-2 2])
-\end{verbatim}
+\end{minted}
 
-El resultado sería de nuevo la figura \ref{fig:handle}.  Una última propiedad importante de la función \texttt{feval} es que también admite que indiquemos la función a evaluar mediante un \emph{handle}. Sí volvemos al último ejemplo, podríamos haber construido un \emph{handle} para la función \texttt{prueba},
-\begin{verbatim}
->>mf=@prueba
->>pinta_funcion2(mf,[-2 2])
-\end{verbatim} 
+El método \texttt{fsolve}, tiene muchas posibilidades de ajuste de la precisión, el número máximo de iteraciones, etc. Para obtener una visión mas completa de su uso, consultar la ayuda de \texttt{scipy.optimize.fsolve}.
 
-Obtendríamos una vez más el mismo resultado.
+\switchcolumn
+An example of using \texttt{fsolve} to calculate the root of $f(x)=e^x-x^2$ starting from an initial approximation of $x_0=2$ would be as follows:
 
-\paragraph{Funciones \emph{inline}.} \index{Funciones! \emph{inline}} Las funciones \emph{inlin realizar e} suministran un tercer mecanismo en Matlab para manejar una función de modo que sirva de \emph{variable}  a otra función. Las funciones \emph{inline} tienen una peculiaridad con respecto a las funciones que hemos visto hasta ahora; no se guardan en ficheros .m sino directamente en el \emph{Workspace}. Las funciones \emph{inline} solo existen mientras dura la sesión de Matlab en que se crearon, aunque es posible guardarlas en ficheros .mat y volver a cargarlas en Matlab, como se haría con cualquier otra variable.
+\begin{minted}{python}
+import numpy as np
+import scipy.optimize as opt
 
-Para crear una función \emph{inline} se emplea el comando \texttt{inline}. En su forma más sencilla, el comando debe emplear como variable de entrada una expresión entre comillas simples que represente la expresión matemática de la función. Por ejemplo si queremos hacer una versión \emph{inline} de la función \texttt{prueba},
-\begin{verbatim}
->> fun=inline('exp(x)-x.^2')
-fun =
-     Inline function:
-     fun(x) = exp(x)-x^2
-\end{verbatim}
+def fun(x):
+    y=np.exp(x)-x**2
+    return y
 
-Para calcular el valor de la función en un punto, la función \emph{inline} se maneja de  modo análogo a cualquier otra función ordinaria.
+roots=opt.fsolve(fun,-2)
 
-\begin{verbatim}
->> y=fun(2)
-y =
-   3.3891
-\end{verbatim}
+\end{minted}
 
-Como en el caso del uso de \texttt{handles}, la variable creada mediante una función \emph{inline} realizar , hace referencia a una función y puede ser empleada como variable  de entrada por otras funciones. Por ejemplo, podríamos emplear directamente nuestra primera versión del programa para pintar funciones, \texttt{pitan\_funcion} para obtener la gráfica de nuestra función de prueba $f(x)=e^x-x^2$,
+The \texttt{fsolve} method has many possibilities to adjust the precision, the maximum number of iterations, etc. For a more complete overview of its use, see the \texttt{scipy.optimize.fsolve} help.
 
-\begin{verbatim}
->>funcion=inline('exp(x)-x.^2')
->>pinta_funcion(funcion,[-2 2])
-\end{verbatim}
+\end{paracol}
 
-Una vez que hemos visto distintos métodos para manejar una función como variable de entrada de otra función, volvamos a la función \texttt{fzero}. En su forma más sencilla, \texttt{fzero} admite como variable de entrada, una función expresada mediante un \texttt{handle}, mediante su nombre escrito entrecomillas o bien construida como función \emph{inline}. Además es preciso introducir una segunda variable que puede ser un punto $x_0$ próximo a la raíz de la función o bien un vector $[a b]$ que defina un intervalo que contenga una raíz. La función \texttt{fzero}, devuelve como variable de salida el valor aproximado de la raíz. Si \texttt{fzero} no es capaz de encontrar la raíz de la función, devolverá NaN. Veamos un ejemplo con la función contenida en el fichero, prueba.m, descrito más arriba,
 
-\begin{enumerate}
-\item Empleando un \emph{handle} y un punto próximo a la raíz,
-\begin{verbatim}
->> hndl=@prueba
-hndl = 
-    @prueba
->> raiz=fzero(hndl,2)
-raiz =
-  -0.703467422498392
-\end{verbatim}
-\item Empleando un \emph{handle} y un intervalo que contenga la raíz,
-\begin{verbatim}
->> raiz=fzero(hndl,[-2 2])
-raiz =
-  -0.703467422498392
-\end{verbatim}
-
-\item Empleando el nombre de la función entre comillas y un punto cercano a la raíz,
-\begin{verbatim}
->> raiz=fzero('prueba',2)
-raiz =
-  -0.703467422498392
-\end{verbatim}
-
-\item  Empleando el nombre de la función entre comillas y un intervalo que contenga la raíz,
-\begin{verbatim}
->> raiz=fzero('prueba',[-2 2])
-raiz =
-  -0.703467422498392
-\end{verbatim}
-
-\item Usando una función \emph{inline} y un punto cercano a la raíz,
-\begin{verbatim} realizar 
->> finl=inline('exp(x)-x.^2')
-finl =
-     Inline function:
-     finl(x) = exp(x)-x.^2
-
->> raiz=fzero(finl,2)
-raiz =
-  -0.703467422498392
-\end{verbatim}
-
-\item Usando una función \emph{inline} y un intervalo que contenga la raíz, 
-\begin{verbatim}
-
->> raiz=fzero(finl,[-2 2])
-raiz =
-  -0.703467422498392
-\end{verbatim}
-\end{enumerate} 
-
-La función \texttt{fzero}, tiene muchas posibilidades de ajuste de la precisión, del método que emplea internamente para buscar la raíz, etc. Para obtener una visión mas completa de su uso, consultar la ayuda de Matlab.
-
+\begin{paracol}{2}
 \subsection{Cálculo de raíces de polinomios.} \index{Polinomios}
 
-Matlab tiene un conjunto de funciones especialmente pensadas para  manejar polinomios. En primer lugar, en Matlab es habitual representar los polinomios mediante vectores cuyos elementos, son los coeficientes del polinomio ordenados de mayor a menor grado. Así por ejemplo, el polinomio. $y=2x^3+3x^2+4x+1$ se representa mediante el vector, $p1=[2\ 3\ 4\ 1]$,  el polinomio $y=3x^4+2x^2+6x$ se representa mediante el vector,  $p2=[3\ 0\ 2\ 6\ 0]$ y, en general, el polinomio $y(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_2x^2+a_1x+a_0$  se representa mediante el vector $p=[a_n\ a_{n-1}\ \cdots\ a_2\ a_1\ a_0]$. Si al polinomio le falta algún o algunos términos, el elemento correspondiente toma el valor $0$ en el vector que representa el polinomio.
+Podemos crear y manipular polinomios en NumPy usando las clases del paquete \texttt{numpy.polynomial package} incorporado en Numpy 1.4. La clase \texttt{Polynomial} proporciona los métodos numéricos habituales en Python $+$, $-$, $*$, $/$, $\%$ y otros específicos de polinomios.
 
-Veamos a continuación un conjunto de funciones de Matlab, especialmente pensadas para manejar polinomios,
+Para crear un polinomio tendremos que importar el módulo \texttt{numpy.polynomial} y usar la clase \texttt{Polynomial}. A esta clase, como primer argumento le proporcionarenmos un vector cuyos elementos, son los coeficientes del polinomio ordenados de  menor grado a mayor grado. Así por ejemplo, el polinomio $y=1 + 4x + 3x^2+2x^3$ se representa mediante el vector, $[1\ 4\ 3\ 2]$ de la siguiente manera:
 
-\paragraph{La función \texttt{roots}.} \index{Polinomios!Raíces de un polinomio}Esta función calcula las raíces de un polinomio de grado $n$ a partir de los coeficientes del polinomio, contenidos en un vector como los que acabamos de describir. La sintaxis es: \texttt{raices=roots([vector de coeficientes])}. veamos un ejemplo. Dado el polinomio $y(x)=x^3-6^2+11x-6$ lo expresaríamos en Matlab como,
+\switchcolumn
 
-\begin{verbatim}
->> p=[1 -6 11 -6]
-\end{verbatim}
+\subsection{Polynomials roots}
+Polynomials in NumPy can be created, manipulated, and even fitted using the convenience classes of the \texttt{numpy.polynomial package}, introduced in NumPy 1.4. The Polynomial class provides the standard Python numerical methods $+$, $-$, $*$, $//$, $\%$, $**$ and others. 
 
-Y obtendríamos sus raíces como,
+To create a polynomial we have to import the polynomial package and use the Polynomial class. Coefficients are given in an array-like form in order of increasing degree, i.e., $p1=[1\ 4\ 3\ 2]$  give $y=1 + 4x + 3x^2+2x^3$.
+\end{paracol}
 
-\begin{verbatim}
->> raices=roots(p)
-raices =
-    3.0000
-    2.0000
-    1.0000
+\begin{minted}{python}
+from numpy.polynomial import Polynomial as P
+p = P([1,4,3,2])
+\end{minted}
 
-\end{verbatim}
+\begin{paracol}{2}
+El polinomio $y=3x^4+2x^2+6x$ se representa mediante el vector,  $[0\ 6\ 2\ 0\ 3]$ y, en general, el polinomio $y(x)=a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}+ a_nx^n$  se representa mediante el vector $[a_0\ a_1\ a_2\  \cdots  a_{n-1}\ a_n]$. Si al polinomio le falta algún o algunos términos, el elemento correspondiente toma el valor $0$ en el vector que representa el polinomio.    
 
-Matlab devuelve todas las raíces del polinomio en un único vector, tanto las reales como las complejas. Como por ejemplo en el caso del polinomio $y(x)=x^2+2x+1$
+\switchcolumn
 
-\begin{verbatim}
->> p=[1 2 3]
-p =
-     1     2     3
->> raices=roots(p)
-raices =
-  -1.0000 + 1.4142i
-  -1.0000 - 1.4142i
-\end{verbatim}
+Polynomial $y=3x^4+2x^2+6x$ is represented by array,  $[0\ 6\ 2\ 0\ 3]$. In general, polynomial $y(x)=a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}+ a_nx^n$  is represented by array $[a_0\ a_1\ a_2\  \cdots  a_{n-1}\ a_n]$. if the polynomial does not have any of the monomials, the corresponding coefficient is array  is $0$.    
 
-\paragraph{la función \texttt{poly}.} Esta función podría considerarse la opuesta a la anterior; dado un vector que contiene las raíces de un polinomio, nos devuelve los coeficientes del polinomio correspondiente, Por ejemplo si definimos el vector de raíces, 
-\begin{verbatim}
->>raices=[3 2 1]
-\end{verbatim}
-podemos obtener los coeficientes del polinomio que posee esas raíces como,
-\begin{verbatim}
->> raices=[1 2 3]
-raices =
-     1     2     3
->> coef=poly(raices)
-coef =
-     1    -6    11    -6
-\end{verbatim}
+\end{paracol}
 
-Es decir, las raíces pertenecen al polinomio, $y(x)=x^3-6x^2+11x-6$.
 
-\paragraph{la función \texttt{polyval}.}\index{Polinomios!valor de un polinomio en un punto} Esta función calcula el valor de un polinomio en un punto.  Para ello es preciso darle un vector con los coeficientes del polinomio ---definido igual que en los casos anteriores--- y un segundo vector con los puntos para los que se quiere calcular el valor del polinomio,
+\begin{minted}{python}
+from numpy.polynomial import Polynomial as P
+p = P([0,6,2,0,3])
+\end{minted}
 
-\begin{verbatim}
->> coef=[1 2 3 4]
-coef =
-     1     2     3     4
->> x=2
-x =
-     2
->>y= polyval(coef,x)
-y =
-    26
->> x=[1:10]º
-x =
-     1     2     3     4     5     6     7     8     9    10
->> y=polyval(coef,x)
-y =
-  Columns 1 through 6
-          10          26          58         112         194         310
-  Columns 7 through 10
-         466         668         922        1234
-\end{verbatim}  
- 
+\begin{paracol}{2}
+\paragraph{El método \texttt{roots} de la clase \texttt{Polynomial}.} \index{Polinomios!Raíces de un polinomio} Este método de la clase \texttt{Polynomial} calcula las raíces de un polinomio de grado $n$ definido como un  como los que acabamos de describir. La sintaxis es: \texttt{p.roots()} donde  \texttt{p} es un polinomio definido como hemos visto antes. Veamos un ejemplo. Dado el polinomio $y(x)=x^3-6^2+11x-6$ lo expresaríamos y calcularíamos sus raices en python como,
 
-En este ejemplo se ha obtenido con \texttt{polyval} el valor del polinomio $y(x)=x^3+2x^2+2x+4$ primero para el punto $x=2$ y después para los puntos $x=[1\ 2\ 3\ 4\ 5\ 6\ 7\ 8\ 9\ 10]$.
+\switchcolumn
+\paragraph{Method \texttt{roots}.}\index{} This method returns the roots of a polynomial defined using the class \texttt{Polynomial}. The sintax is: \texttt{p.roots()} where \texttt{p} is a polynomial defined as above. Let's see an example. Given the polynomial  $y(x)=x^3-6^2+11x-6$ we define it and compute the roots in python as:
+\end{paracol}
 
-\paragraph{La función \texttt{conv}.} \index{Polinomios!Producto de polinomios}Calcula el producto de dos polinomios. Cada polinomio se representa mediante un vector de coeficientes y la función \texttt{conv} devuelve un vector con los coeficientes del polinomio producto. Por ejemplo, si multiplicamos   el polinomio $y_1=x+2$ por el polinomio $y_2=x-1$  obtendremos como resultado, $p=y_1\cdot y_2=x^2+x-2$,  
+\begin{minted}{python}
+from numpy.polynomial import Polynomial as P
+p=P([1,-6,11,-6])
+print(p)
+print("The roots are:\t",p.roots())
 
-\begin{verbatim}
->> y1=[1 2]
-y1 =
-     1     2
->> y2=[1 -1]
-y2 =
-     1    -1
->> p=conv(y1,y2)
-p =
-     1     1    -2
-\end{verbatim}
+1.0 - 6.0·x + 11.0·x² - 6.0·x³
+The roots are:	 [0.33333333 0.5        1.        ]
 
+\end{minted}
+
+\begin{paracol}{2}
+El método \texttt{roots} devuelve las raices del polinomio en un único vector. Si el polinomio tiene raices complejas devuelve su parte real como en el caso del polinomio  $y(x)=x^2+2x+1$
+
+\switchcolumn
+The method \texttt{roots} returns the polynomial roots in a single vector. If the polynomial has complex roots it returns its real part as in the case of the polynomial $y(x)=x^2+2x+1$
+\end{paracol}
+
+\begin{minted}{python}
+from numpy.polynomial import Polynomial as P
+p=P([1,2,1])
+print(p)
+print("The roots are:\t",p.roots())
+
+1.0 + 2.0·x + 1.0·x²
+The roots are:	 [-1.00000001 -0.99999999]
+\end{minted}
+\begin{paracol}{2}
+\paragraph{La función \texttt{fromroots}.} Esta función podría considerarse la opuesta a la anterior; dado un vector que contiene las raíces de un polinomio, nos devuelve el polinomio correspondiente, Por ejemplo si definimos el vector de raíces, $[3,2,1]$ podemos obtener el polinomio que posee esas raices. En este caso el polinomio es $y(x)=x^3-6x^2+11x-6$
+
+\switchcolumn
+
+\paragraph{The method\texttt{fromroots}.}. This method could be considered the opposite of the previous one; given a vector containing the roots of a polynomial, it returns the corresponding polynomial. For example, if we define the vector of roots, $[3,2,1]$ we can obtain the polynomial that has those roots. In this case the polynomial is $y(x)=x^3-6x^2+11x-6$.
+
+\end{paracol}
+\begin{minted}{python}
+from numpy.polynomial import Polynomial as P
+p=P.fromroots([3,2,1])
+print(p)
+
+-6.0 + 11.0·x - 6.0·x² + 1.0·x³
+\end{minted}
+\begin{paracol}{2}
+\paragraph{El método \texttt{linspace}.}
+El método  \texttt{linspace} devuelve valores equiespaciados $x$ y sus correspondientes $y$ en el dominio definido del polinomio. Si dicho dominio no se ha definido al crear el polinomio, se establece por defecto como $[-1,1]$. Este método es muy útil para representar un polinomio gráficamente, como se ve en el siguiente ejemplo y en la figura \ref{fig:poly-linespace}.
+
+\switchcolumn
+
+\paragraph{Method \texttt{linspace}.}
+Method \texttt{linspace} returns $x$, $y$ values at equally spaced points in domain of polynomial. If domain has been not defined $[-1,1]$ is set. This method is usefull to plot the polynomial, as in the next example and figure \ref{fig:poly-linespace}.
+
+\end{paracol}
+
+\begin{minted}{python}
+from numpy.polynomial import Polynomial as P
+#Polynomial p created and domain defined as [-2,2]
+p=P([0,6,2,0,3],[-2,2])
+dat=p.linspace()
+plt.figure()
+plt.grid()
+plt.plot(dat[0],dat[1])
+plt.xlabel('x')
+plt.ylabel('y')
+p_string=str(p)
+plt.title(p_string)
+\end{minted}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{figuras/poli_linspace.png}
+    \bicaption{Polinomio dibujado usando \texttt{linspace}}{Plotting a polynomial using \texttt{linspace}}
+    \label{fig:poly-linespace}
+\end{figure}
+
+\begin{paracol}{2}
+\paragraph{El método \texttt{deriv}.}
+El método \texttt{deriv} devuelve un polinomio que es el resultado de calcular la derivada del polinomio actual.
+
+\switchcolumn
+\paragraph{Method \texttt{deriv}.}
+Returns a polynomial instance of that is the derivative of the current polynomial.
+
+\switchcolumn
+\paragraph{El método \texttt{integ}.}
+Devuelve un polinomio que es la integral del polinomio actual.
+
+\switchcolumn
+\paragraph{Method \texttt{integ}.}
+Returns a polynomial that is the integral of the current polynomial.
+
+\switchcolumn
+\paragraph{El método \texttt{copy}.}
+Devuelve una copia del polinomio actual.
+\switchcolumn
+\paragraph{Method \texttt{copy}.}
+Returns a copy of the current polynomial.
+\end{paracol}
+
+\begin{minted}{python}
+from numpy.polynomial import Polynomial as P
+
+#Create a polynomial with roots 3, -2, 2
+p3=P.fromroots([3,-2,2])
+print(p3)
+#Compute the polynomial that is its derivative
+pdot=p3.deriv()
+print("Derivative:", pdot)
+#Compute the polynomial that is the integral
+pint=p3.integ()
+print("Integral:", pint)
+#Create polynomial p4 as a copy of pint
+p4=pint.copy()
+print(p4)
+
+12.0 - 4.0·x - 3.0·x² + 1.0·x³
+Derivative: -4.0 - 6.0·x + 3.0·x²
+Integral: 0.0 + 12.0·x - 2.0·x² - 1.0·x³ + 0.25·x^4
+0.0 + 12.0·x - 2.0·x² - 1.0·x³ + 0.25·x^4
+\end{minted}
+
+\begin{paracol}{2}
 \section{Cálculo de raices con la precisión máxima}
 Como ya se vio en la sección \ref{errn} todos los números que empleamos en un ordenador están sometidos a errores a causa del tamaño finito de los registros empleados para guardarlos. Cualquier número que queramos representar ha de aproximarse por un número máquina. Por lo tanto, en vez de buscar la aproximación a la raiz de una función con una tolerancia dada, podemos hallarla con la máxima precisión que nos permita la representación numérica empleada. Esta precisión máxima está relacionada con el \texttt{epsilon} del computador ya que la distancia entre dos números consecutivos es el épsilon multiplicado por dos elevado al exponente del número. De esta manera, por muchas iteraciones que hagamos la mejor aproximación que vamos a poder obtener de una raiz la obtendremos cuando el intervalo en el que se busca la raiz queda reducido a \texttt{eps} y por lo tanto no es posible reducirlo aún más. 
 
-En Matlab el comando  \texttt{eps} nos devuelve justo esa distancia entre dos números de coma flotante consecutivos:
+En \texttt{Numpy} el método \texttt{spacing(a)} nos devuelve la distancia entre $a$ y el siguiente número adyacente más próximo. De esta manera si a un número $x$ le sumamos un valor menor que \texttt{spacing(x)} el resultado es el mismo número. Hay que tener en cuenta que para números negativos $x<0$ la distancia que nos devuelve \texttt{spacing(x)} es también negativa. No debería haber ningún número máquina entre $x$y $x+spacing(x)$ para cualquier $x$ finito.
 
-\begin{verbatim}
->> eps(1)
+\switchcolumn
+\section{Computing roots at maximum precision.}
+As we saw in section \ref{errn} all the numbers we use in a computer are subject to errors because of the finite size of the registers used to store them. Any number we want to represent has to be approximated by a machine number. Therefore, instead of looking for the approximation to the root of a function with a given tolerance, we can find it with the maximum precision allowed by the numerical representation used. This maximum precision is related to the computer's epsilon, since the distance between two consecutive numbers is the epsilon multiplied by two raised to the exponent of the number. Thus, no matter how many iterations we make, the best approximation we will be able to obtain of a root will be when the interval in which the root is sought is reduced to \texttt{eps} and therefore it is not possible to reduce it further. 
 
-ans =
+In \texttt{Numpy} the method \texttt{spacing(a)} returns the distance between $a$ and the next nearest adjacent number. So if we add a value less than \texttt{spacing(x)} to a number $x$, the result is the same number. Note that for negative numbers $x<0$ the distance returned by \texttt{spacing(x)} is also negative. There should not be any representable number between $x + spacing(x)$ and $x$ for any finite $x$.
 
-2.220446049250313e-16
+\end{paracol}  
 
->> eps(1e10)
 
-ans =
+\begin{minted}{python}
+import numpy as np
 
-1.907348632812500e-06
+np.spacing(1)
+Out[9]: 2.220446049250313e-16
 
->> eps(1e-10)
+np.spacing(1e-10)
+Out[10]: 1.2924697071141057e-26
 
-ans =
+np.spacing(1e20)
+Out[11]: 16384.0
 
-1.292469707114106e-26
+10+np.spacing(10)/2
+Out[12]: 10.0
+10==(10+np.spacing(10)/2)
+Out[13]: True
 
-\end{verbatim}
+1e20==(1e20-np.spacing(1e20)/2)
+Out[14]: True
+np.spacing(-5)
+Out[15]: -8.881784197001252e-16
 
-Podemos usar \texttt{eps} para establecer la condición de parada de los algoritmos de búsqueda de raices. Para el caso del método de la bisección se puede modificar el diagrama de flujo según se indica en la figura \ref{fig:dfbisecprecmax}
-	
+-5+np.spacing(-5)
+Out[16]: -5.000000000000001
+
+-5-np.spacing(-5)
+Out[17]: -4.999999999999999
+\end{minted}
+\begin{paracol}{2}
+Puesto que entre $x$ y $x+spacing(x)$ no hay ningún número máquina, podemos usar \texttt{spacing} para establecer la condición de parada de los algoritmos de búsqueda de raices. Pararemos de buscar la raíz cuando el intervalo de búsqueda $(a,b)$ sea tal que no haya números máquina entre $a$ y $b$, es decir cuando $\vert b-a \vert \leq \vert np.spacing(a) \vert$.
+
+Para el caso del método de la bisección se puede modificar el diagrama de flujo según se indica en la figura \ref{fig:dfbisecprecmax}
+
+\switchcolumn
+Since between $x$ and $x+spacing(x)$ there is no machine number, we can use \texttt{spacing} to establish the stop condition of the root search algorithms. We will stop searching for the root when the search interval $(a,b)$ is such that there are no machine numbers between $a$ and $b$, i.e., when $\vert b-a \vert \leq \ert np.spacing(a) \vert$.
+
+For the case of the bisection method the flowchart can be modified as shown in the figure \ref{fig:dfbisecprecmax}
+
+\end{paracol}
+
 \begin{figure}[h]
 	\centering
 	\begin{tikzpicture}
@@ -1331,7 +1499,8 @@ Podemos usar \texttt{eps} para establecer la condición de parada de los algorit
 	\label{fig:dfbisecprecmax}
 \end{figure}
 
-Es más, en el método de la bisección se puede calcular en función del intervalo inicial el número de iteraciones necesario para alcanzar la máxima precisión, puesto que en cada iteración el intervalo se reduce a la mitad. Si llamamos $d$ al intervalo de partida $d=\vert a-b \vert$, en la iteración $n$ la longitud del intervalo será $\frac{d}{2^{n-1}}$. Se alcanzará el intervalo mínimo posible cuando su longitud sea la de \texttt{eps}. Pero según se explicaba en la sección \ref{errn} el valor de \texttt{eps} es igual a $2$ elevado al número de bits de la mantisa. En el caso de un número de doble precisión la mantisa tiene $52$ bits y por lo tanto:
+\begin{paracol}{2}
+Es más, en el método de la bisección se puede calcular en función del intervalo inicial el número de iteraciones necesario para alcanzar la máxima precisión, puesto que en cada iteración el intervalo se reduce a la mitad. Si llamamos $d$ al intervalo de partida $d=\vert a-b \vert$, en la iteración $n$ la longitud del intervalo será $\frac{d}{2^{n-1}}$. Se alcanzará el intervalo mínimo posible cuando su longitud sea la de \texttt{np.spacing(a)}. Pero según se explicaba en la sección \ref{errn} el valor de \texttt{eps} es igual a $2$ elevado al número de bits de la mantisa. En el caso de un número de doble precisión la mantisa tiene $52$ bits y por lo tanto:
 
 \begin{equation*}
 \frac{\vert d \vert}{2^{n-1}}<2^{-52} 
@@ -1343,8 +1512,27 @@ Y despejando y tomando logaritmos:
 n > \log_{2}(\vert d \vert)+53
 \end{equation*}
 
-Para métodos que no parten de un intervalo sino de un punto inicial, como el de Newton-Raphson o el del punto fijo también puede buscarse la raiz empleando \texttt{eps}, de manera que se alcanzará la precisión máxima cuando el intervalo comprendido entre dos soluciones obtenidas en iteraciones consecutivas sea del tamaño de \texttt{eps}. 
+Para métodos que no parten de un intervalo sino de un punto inicial, como el de Newton-Raphson o el del punto fijo también puede buscarse la raiz empleando \texttt{np.spacing(a)} de manera que se alcanzará la precisión máxima cuando el intervalo comprendido entre dos soluciones obtenidas en iteraciones consecutivas sea del tamaño de \texttt{np.spacing(a)}. 
 
+\switchcolumn
+Moreover, in the bisection method, the number of iterations required to achieve maximum accuracy can be calculated as a function of the starting interval, since at each iteration the interval is halved. If we call $d$ the starting interval $d=\vert a-b \vert$, at iteration $n$ the length of the interval will be $\frac{d}{2^{n-1}}$. The minimum possible interval will be reached when its length is that of \texttt{np.spacing(a)}. But as explained in the section \ref{errn} the value of \texttt{eps} is equal to $2$ raised to the number of bits of the mantissa. In the case of a double precision number the mantissa has $52$ bits and therefore:
+
+\begin{equation*}
+\frac{\vert d \vert}{2^{n-1}}<2^{-52} 
+\end{equation*}
+
+And clearing and taking logarithms:
+
+\begin{equation*}
+n > \log_{2}(\vert d \vert)+53
+\end{equation*}
+
+For methods that do not start from an interval but from an initial point, such as the Newton-Raphson or the fixed-point method, the root can also be found using \texttt{np.spacing(a)}, so that maximum precision will be achieved when the interval between two solutions obtained in consecutive iterations is the size of \texttt{np.spacing(a)}.
+\end{paracol}
+
+
+
+%TODO: Lia (18/04/2024)
 \section{Ejercicios}
 \begin{enumerate}
 \item Crea una función en matlab que implemente el método de  la bisección para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función $f(x)$, un intervalo de búsqueda $[a,b]$, un número máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución. 
