@@ -1836,8 +1836,10 @@ Si pulsamos el botón ``ejecutar línea actual'' Spyder ejecutará la línea de 
 \switchcolumn
 Now, we can access Spyder debugger's tools. Figure \ref{fig:depu2} shows the line where the program execution has been stopped. (Marked with a green arrow) and some of these tools. It is the same modules used in previous examples, but we have added a small error in line $28$ this time. Spyder allows us to run the program line by line, get into the function our program calls to and cover them line by line, or continue the program execution till the next breakpoint or to the program end. 
 
-If we select the button ``Run the current line,'' the program will execute the code line marked with the green arrow and stop in the following line. In each step, we can check the values the variables so far defined take by asking for them at the Ipython terminal. In the example shown in the figure, the breakpoint is located in line $35$, where the program calls to \mintinline{python}{soleq} function. If we push the button ``Run the current line'' again, the debugger will execute the function and jump to line $39$. If we want to cover line by line the function \mintinline{python}{soleq}, then we may push the button ``Get into the function of the current line''. The performance of the remaining debugger tools is easy to understand, looking at figure \ref{fig:depu2}. If we get into the function \mintinline{python}{soleq} and execute its code line by line, checking their results, we will realise that there is a bug in line $28$ because the result cast by this line is wrong. So we would be ready to review its code and discover the error. Can you find it?   
-\switchcolumn
+If we select the button ``Run the current line,'' the program will execute the code line marked with the green arrow and stop in the following line. In each step, we can check the values the variables so far defined take by asking for them at the Ipython terminal. In the example shown in the figure, the breakpoint is located in line $35$, where the program calls to \mintinline{python}{soleq} function. If we push the button ``Run the current line'' again, the debugger will execute the function and jump to line $39$. If we want to cover line by line the function \mintinline{python}{soleq}, then we may push the button ``Get into the function of the current line''. The performance of the remaining debugger tools is easy to understand, looking at figure \ref{fig:depu2}. If we get into the function \mintinline{python}{soleq} and execute its code line by line, checking their results, we will realise that there is a bug in line $28$ because the result cast by this line is wrong. So we would be ready to review its code and discover the error. Can you find it?
+\end{paracol}
+
+\begin{paracol}{2}
 \section{Control de Flujo}\index{Flujo} \index{Control de flujo}
 En la sección anterior, se introdujo el modo de escribir programas en Python mediante el uso de 	\emph{scripts} y funciones. En todos los casos vistos, la ejecución del programa empezaba por la primera línea del programa, y continuaba, por orden, línea tras línea hasta alcanzar el final del programa. Se trata de programas en los que el \emph{flujo} es lineal, porque los resultados de cada línea de programa se van obteniendo regularmente uno detrás de otro. 
 
@@ -1858,7 +1860,11 @@ Many times, in situations we will describe later, we would like to modify the or
 
 The control of the order a program follows when executing its sentences is known as \emph{flow control}. We will describe two main kinds of flow control: Conditional flow and loops.
 \subsection{Conditional flow.} \index[eng]{flow!Conditional}
-We begin with a simple example of how and why conditioning the flow. Suppose we want to make a program that takes a number as input and shows us a message if the number is even. 
+We begin with a simple example of how and why conditioning the flow. Suppose we want to make a program that gets a number as input and shows us a message on the screen if the number is even.  
+
+We can use the operator \emph{modulus}, \mintinline{python}{%}. If we divide the number by two and the remainder is zero, the number is even; otherwise, it is odd. We may use relational operators, specifically the \mintinline{python}{==} operator, to check if the division by two remainder is zero. Eventually, we need some method which allows the program to write a message only if the input number is even.
+
+\paragraph{if-elif-else.} The Python structure \mintinline{python}{if} supplies the method we need. But, let's see first the code of the example we are talking about,
 \end{paracol}
 
 \inputminted[
@@ -1866,7 +1872,7 @@ frame=lines,
 framesep=2mm,
 baselinestretch=1.2,
 %bgcolor=LightGray,
-label=Example\_import.py,
+label=numero\_par.py,
 fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/introduccion/codigo_abierto/numero_par.py}
@@ -1874,8 +1880,16 @@ linenos
 \begin{paracol}{2}
 El script genera una función \mintinline{python}{par(a)}. En la línea $17$ aparece definida la entrada a una bloque \mintinline{python}{if}. Empieza con la palabra clave \emph{if} que va siempre seguida de una expresión que da un resultado lógico: verdadero ($1$) o falso ($0$). Esta expresión puede ser cualquier combinación válida de expresiones relacionales o lógicas.  
 
-En nuestro caso comparamos el resto de la división del número introducido entre 2 con cero. La entrada del bloque constituye una condición, y termina siembre con el símbolo ``dos puntos'' (:). El cuerpo del bloque mintinline{python}{if} lo constituyan las líneas posteriores a la línea de entrada, que deben estar sangradas. Estas líneas solo se ejecutan si se cumple la condición de la entrada del bloque \mintinline{python}{if}. En nuestro caso, el cuerpo lo constituyen las líneas $18$ y $19$. Por último, la línea $20$ corresponde al comando \mintinline{python}{return()} que está alineado con las líneas de código de la función, no con las de bloque mintinline{python}{if}. Por tanto, en nuestro ejemplo, si el número introducido no es par, la función se saltará todas las líneas del cuerpo del bloque \mintinline{python}{if} e irá directamente a la línea $20$.
-En las líneas siguientes se muestra un ejemplo del funcionamiento de la función \mintinline{python}{par}. Para probarla hemos importado directamente la función en el terminal de Ipython, y luego la hemos llamado dándole como variable de entrada primero el  número $3$ y luego el número $8$ en el primer caso no se cumple la condición impuesta, ya que el número no es par, por tanto la función se salta todo el bloque condicional, y ejecutamente directamente el comando \mintinline{python}{return()}. Como no hemos pedido que devuelva nada, la función no devuelve nada. En el segundo caso, el número es par y por tanto si se cumple la condición necesaria para ejecutar el bloque \mintinline{python}{if}. Como resultado, la función imprime en el terminal de Ipython el mensaje indicado. Una vez que acaba la eejecución del bloque condicional, ejecuta la función \mintinline{python}{return()} igual que en el caso anterior.
+En nuestro caso comparamos el resto de la división del número introducido entre dos con cero. La entrada del bloque constituye una condición, y termina siembre con el símbolo ``dos puntos'' (:). El cuerpo del bloque mintinline{python}{if} lo constituyan las líneas posteriores a la línea de entrada, que deben estar sangradas. Estas líneas solo se ejecutan si se cumple la condición de la entrada del bloque \mintinline{python}{if}. En nuestro caso, el cuerpo lo constituyen las líneas $18$ y $19$. Por último, la línea $20$ corresponde al comando \mintinline{python}{return()} que está alineado con las líneas de código de la función, no con las de bloque mintinline{python}{if}. Por tanto, en nuestro ejemplo, si el número introducido no es par, la función se saltará todas las líneas del cuerpo del bloque \mintinline{python}{if} e irá directamente a la línea $20$.
+
+En las líneas de código siguientes se muestra un ejemplo del funcionamiento de la función \mintinline{python}{par}. Para probarla hemos importado directamente la función en el terminal de Ipython, y luego la hemos llamado dándole como variable de entrada primero el  número $3$ y luego el número $8$. En el primer caso no se cumple la condición impuesta, ya que el número no es par, por tanto la función se salta todo el bloque condicional, y ejecutamente directamente el comando \mintinline{python}{return()}. Como no hemos pedido que devuelva nada, la función no devuelve nada. En el segundo caso, el número es par y por tanto si se cumple la condición necesaria para ejecutar el bloque \mintinline{python}{if}. Como resultado, la función imprime en el terminal de Ipython el mensaje indicado. Una vez que acaba la ejecución del bloque condicional, ejecuta el comando \mintinline{python}{return()} igual que en el caso anterior.
+\switchcolumn
+The script generates a function \mintinline{python}{par(a)}. In line $17$, we find the definition of an \mintinline{python}{if} opening. It starts with the keyword $if$ followed by an expression that casts a logic result: true (1) or false (0). This expression could be any valid combination of relational or logical expressions.
+
+In our example, we are comparing the remainder of the division of the input number (\mintinline{python}{n}) by two with zero. The \mintinline{python}{if} block opening line always makes up a condition and always ends with a colon (:) symbol. The body of the \mintinline{python}{if} block comprises the code lines that follow the opening line, which must be indented. The program executes these lines only if the condition defined in the block opening line is met. In our case, the \mintinline{python}{if} block body comprised lines $18$ and $19$. Eventually, in line $20$, the command \mintinline{python}{return()} closes the function. Notice how this line is not indented like the lines of the \mintinline{python}{if} body. It is instead aligned with the lines of the function body because it is not part of the \mintinline{python}{if} block. Thus, if we introduce an odd number into the function, it will skip the lines of the \mintinline{python}{if}
+block body and will go straight to line $20$.
+
+Below are some lines of code that demonstrate the performance of the function \mintinline{python}{par}. To test it, we imported the function to the IPython terminal and called it twice - first with the input variable of 3, and then with the input variable of 8. When we passed 3, the condition was not met because the number was odd. Therefore, the function skipped the conditional block and directly executed the \mintinline{python}{return} command. Since we didn't ask the function to return anything, it returned an empty bracket. On the other hand, when we passed 8, the number was even, and it fulfilled the imposed condition to execute the \mintinline{python}{if} block. As a result, the function printed the stated message in the IPython terminal. Once the \mintinline{python}{if} block has been completed, the program executes the command \mintinline{python}{return}, as in the even number case.
 
 \end{paracol}
 
@@ -1883,7 +1897,6 @@ En las líneas siguientes se muestra un ejemplo del funcionamiento de la funció
     \begin{minipage}{.4\textwidth}
 \begin{minted}{python}
 In [2]: from numero_par import par
-
 In [3]: par(3)
 Out[3]: ()
 In [4]: par(8)
@@ -1893,37 +1906,44 @@ Out[4]: ()
 \end{minted}
 \end{minipage}
 \end{center}
+
+\begin{paracol}{2} 
+Acabamos de ver la estructura condicional \mintinline{python}{if} más sencilla posible. Podríamos complicarla un poco pidiendo que también nos saque un mensaje por pantalla cuando el número sea impar. Esto supone incluir en nuestro programa una disyuntiva; si es par el programa debe hacer una cosa y si no, debe hacer otra. Para incluir este tipo de disyuntivas en una estructura \mininline{python}{if}, se emplea la palabra clave \minntinline{else}. Veamos nuestro ejemplo modificado,
+
+\end{paracol}
+
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=numero\_par.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/introduccion/codigo_abierto/numero_par_mod.py}
+
+\begin{center}
+    \begin{minipage}{.4\textwidth}
+\begin{minted}{python}
+In [11]: from numero_par_mod import par2
+
+In [12]: par2(3)
+3  es un numero impar
+3 is an odd number
+Out[12]: ()
+
+In [13]: par2(8)
+8  es un numero par
+8 is an even number
+Out[13]: ()
+\end{minted}
+\end{minipage}
+\end{center}
 ======================THE FRONTIER=====================
  
 
 
 
-
-
-
-% \begin{lstlisting}
-% function espar(x)
-% % Este programa recibe un numero entero como variable de entrada. y muestra
-% % por pantalla un mensaje indicando si el numero recibido es par o impar.
-
-% % Calculamos el resto de la division por dos
-% resto=rem(x,2);
-
-% % Empleamos una estructura if - else -end para decidir que mensaje mostrar
-
-% if resto==0
-%     % si el resto es cero el número es par
-%     disp('el número es par')
-% end
-% \end{lstlisting}
-
- 
-
-
-
-En nuestro ejemplo, se emplea una expresión relacional sencilla \texttt{resto==0}. Si se cumple, el programa ejecutará la siguiente línea de programa, escribiendo en la ventana de comandos la frase ``el número es par"  si no se cumple el programa se la salta, llega hasta el \texttt{end}, y no escribe nada por pantalla. 
-
-Acabamos de ver la estructura condicional \texttt{if} más sencilla posible. Podríamos complicarla un poco pidiendo que también nos saque un mensaje por pantalla cuando el número sea impar. Esto supone incluir en nuestro programa una disyuntiva; si es par el programa debe hacer una cosa y si no, debe hacer otra. Para incluir este tipo de disyuntivas en una estructura \texttt{if}, se emplea la palabra clave \texttt{else}. Veamos nuestro ejemplo modificado,
 % \begin{lstlisting}
 % function espar(x)
 % % Este programa recibe un numero entero como variable de entrada. y muestra
