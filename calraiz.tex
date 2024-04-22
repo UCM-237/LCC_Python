@@ -594,7 +594,7 @@ x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}\approx x_n-\frac{(x_n-x_{n-1})\cdot f(x_n)}{f
 Para iniciar el algoritmo, es preciso emplear en este caso dos puntos iniciales. La figura \ref{fig:secante} muestra un ejemplo.
 
     \switchcolumn
-    To start the algorithm, two starting points must be used in this case. Figure \ref{fig:secant} shows an example.
+    To start the algorithm, two starting points must be used in this case. Figure \ref{fig:secante} shows an example.
 \switchcolumn
 El método podría en este punto confundirse con el de interpolación, sin embargo tiene dos diferencias importantes: En primer lugar, la elección de los dos puntos iniciales $x_0$ e $x_1$, no tienen por qué formar un intervalo que contenga a la raíz. Es decir, podrían estar ambos situados al mismo lado de la raíz. En segundo lugar, los puntos obtenidos se van sustituyendo por orden, de manera que la nueva recta secante se construye siempre a partir de los dos últimos puntos obtenidos, sin prestar atención a que el valor de la raíz esté contenido entre ellos. (No se comparan los signos de la función en los puntos para ver cual se sustituye, como en el caso del método de interpolación). 
 
@@ -1257,7 +1257,7 @@ The \texttt{fsolve} method has many possibilities to adjust the precision, the m
 \begin{paracol}{2}
 \subsection{Cálculo de raíces de polinomios.} \index{Polinomios}
 
-Podemos crear y manipular polinomios en NumPy usando las clases del paquete \texttt{numpy.polynomial package} incorporado en Numpy 1.4. La clase \texttt{Polynomial} proporciona los métodos numéricos habituales en Python $+$, $-$, $*$, $/$, $\%$ y otros específicos de polinomios.
+Podemos crear y manipular polinomios en NumPy usando las clases del paquete\\ \texttt{numpy.polynomial package} incorporado en Numpy 1.4. La clase \texttt{Polynomial} proporciona los métodos numéricos habituales en Python $+$, $-$, $*$, $/$, $\%$ y otros específicos de polinomios.
 
 Para crear un polinomio tendremos que importar el módulo \texttt{numpy.polynomial} y usar la clase \texttt{Polynomial}. A esta clase, como primer argumento le proporcionarenmos un vector cuyos elementos, son los coeficientes del polinomio ordenados de  menor grado a mayor grado. Así por ejemplo, el polinomio $y=1 + 4x + 3x^2+2x^3$ se representa mediante el vector, $[1\ 4\ 3\ 2]$ de la siguiente manera:
 
