@@ -75,7 +75,7 @@ Among the many ways you may follow to install Python and some of its development
 
  Anaconda-Navigator shows a set of icons. Anyone of them is intended to launch a different application. Many of them are IDEs specifically designed to use Python. Others relate to other programs devoted to data processing, graphics, or statistics. The work \emph{launch} is written in some of these icons. This means that the application has already been installed on our computer. Pressing the left-hand button of the mouse over the word \emph{launch} opens the application. In other cases, the word \emph{install} is Written over the icon. In these cases, the application is not installed on our computer, but we can install it by pressing the left-hand button of the mouse over the word \emph{install}.
 
- We are going to use Spyder, which has already been installed. In figure \ref{fig: anaconda}, the Spyder icon has been enclosed in a red circle.
+ We are going to use Spyder, which has already been installed. In figure \ref{fig:anaconda}, the Spyder icon has been enclosed in a red circle.
 
  Before starting with a Spyder description, we will use Anaconda to install a plug-in, allowing us to use another of Phyton's most currently used IDEs: \emph{Jupyter Notes}. Jupyter Notes is an IDE for Python code development.  It is independent of Spyder. It is a handy tool because it allows us to combine Python code with graphics and text. We will describe Jupyter Notes later on.
 
@@ -1244,7 +1244,7 @@ With Python, you can effortlessly save a set of instructions in a text file and 
 \end{figure}
     
 \begin{paracol}{2}
-\subsection{El editor de textos de\\ Spyder.} \index{Editor de textos}
+\subsection{El editor de textos de Spyder.} \index{Editor de textos}
 Podemos emplear un editor de textos cualquiera, que genere texto en ASCII, como por ejemplo el 'block de notas', para escribir nuestros programas. Sin embargo, si trabajamos en el entorno de Spyder, lo ideal es emplear su propio editor de textos.
 
 El editor de textos de Spyder ocupa el panel izquierda del la ventana del IDE, (figura \ref{fig:ide}). En la figura \ref{fig:script} se muestra una vista más detallada de este panel.
@@ -1748,13 +1748,19 @@ En todos los casos, el módulo desde el que se realiza la importación es el mis
 \switchcolumn
 The module from which the import takes place is the same in every case, but not how the import is carried out. So, in the line number $1$ of the example, we import the module as a whole. The method to access the variables and function of the module is by using its global namespace  \mintinline{python}{eq_sec_grado.soleq2}. In line $2$, we are also importing the whole module, but now, we use an 'alias', \mintinline{python}{sec} instead of the module name. This means that to access variables or functions belonging to the module, we use the alias: \mintinline{python}{sec.soleq2}. In line $3$, we are not importing the module as it is. We are just importing all variables and functions included in the module. In this case, we no longer need to put before the module name to access them.  But we should be careful using this importing method. If the script which has imported the module has variables or functions whose names coincide with those of the variables or functions imported, the names will clash. Only the last created ones will be accessible. In name $4$, we only imported function \mintinline{python}{soleq2} from the module. We can use it in the destination script without putting it before the origin module name. lastly, in line $5$  we have imported only function \mintinline{python}{soleq2} but this time we have assigned it an alias. This means that we have to use the alias instead of the proper function name when we use it in the destination module. That is: we have to write \mintinline{python}{x1,x2=cuqui(1,-3,2)}, instead of \mintinline{python}{x1,x2 = soleq2(1,-3,2)}.        
 \end{paracol}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=14cm]{figuras/error.png}
+    \bicaption{Un ejemplo de error de sintaxis (falta cerrar un paréntesis}{A sintax error example (a closing bracket has been omited}
+    \label{fig:depu0}
+\end{figure}
 \begin{paracol}{2}
 \section{Depuración}\index{Depurador}
-Siempre que escribimos un programa, es preciso comprobar su funcionamiento y, en  muchos casos, corregir los errores cometido. El proceso de corrección de código desde su versión original hasta la versión definitiva se conoce con el nombre de depuración de código. Podemos distinguir dos tipos fundamentales de errores:
+Siempre que escribimos un programa, es preciso comprobar su funcionamiento y, en  muchos casos, corregir los errores cometido. El proceso de corrección de código desde su versión original hasta la versión definitiva se conoce con el nombre de depuración de código. Podemos distinguir dos tipos de errores:
 
 \paragraph{Errores de sintaxis.} \index{Error! de sintáxis}Normalmente son errores de escritura. Hemos escrito mal el nombre de una función o un comando o bien no hemos escrito correctamente el código siguiendo las reglas del lenguaje. El editor de Spyder advierte directamente de estos errores. Además, si se intenta ejecutar el código, en la consola de Ipython aparacerá un mensaje de error. 
 
-Como ejemplo veamos los errores del script contenido  en el editor de textos de la figura \ref{fig:ederror}. Si nos fijamos, el editor a dibujado delante de algunas de las líneas un círculo rojo con un aspa en el centro. Es la manera que tiene de indicarnos que en esas líneas hay errores de sintáxis. Si pasamos el ratón por encima del círculo rojo, obtendremos un mensaje con información sobre el error cometido.
+Como ejemplo veamos los errores del script contenido  en el editor de textos de la figura \ref{fig:depu0}. Si nos fijamos, el editor a dibujado delante de la línea $14$ un círculo rojo con un aspa en el centro. Es la manera que tiene de indicarnos que en esas líneas hay errores de sintáxis. Si pasamos el ratón por encima del círculo rojo, obtendremos un mensaje con información sobre el error cometido.
 
 Hay un segundo tipo de errores de sintaxis, que están relacionados con las propiedades de las funciones y variables que empleamos. Estos errores no son detectados directamente por el editor, pero arrojan tambien un mensaje de error en la consola de Ipython cuando los cometemos. por ejemplo, si escribimos las dos siguientes líneas de código,
 \switchcolumn
@@ -1763,7 +1769,7 @@ Whenever we write a program, we must check its performance; often, we must fix t
 
 \paragraph{Syntax errors.}\index[eng]{Error !syntax error.} Broadly speaking, these are \emph{spelling} mistakes. We have written something wrong, like a variable or a function name. Also, we make a syntax error if we do not follow the language rules. The Spyder editor warns us in either case. If we ignore the editor signals and run the program, we will get an error message in the Ipython console. 
 
-For example, figure \ref{fig:ederror} shows a script with several syntax errors. The editor has drawn a bold red circle with a cross in the centre before the lines, which contain an error. If we put the mouse atop the red circles, we get a message with some information on the error made.
+For example, figure \ref{fig:depu0} shows a script with several syntax errors. The editor has drawn a bold red circle with a cross in the centre before the lines, which contain an error. If we put the mouse atop the red circles, we get a message with some information on the error made.
 
 There is a second type of syntax error that the editor does not detect. It is related to the properties of variables and functions. If we try to run the program, an error message will be cast on the Ipython console. For instance, if we write the two following code lines, 
 \end{paracol}
@@ -1908,22 +1914,32 @@ Out[4]: ()
 \end{center}
 
 \begin{paracol}{2} 
-Acabamos de ver la estructura condicional \mintinline{python}{if} más sencilla posible. Podríamos complicarla un poco pidiendo que también nos saque un mensaje por pantalla cuando el número sea impar. Esto supone incluir en nuestro programa una disyuntiva; si es par el programa debe hacer una cosa y si no, debe hacer otra. Para incluir este tipo de disyuntivas en una estructura \mininline{python}{if}, se emplea la palabra clave \minntinline{else}. Veamos nuestro ejemplo modificado,
-
+Acabamos de ver la estructura condicional \mintinline{python}{if} más sencilla posible. Podríamos complicarla un poco pidiendo que también nos saque un mensaje por pantalla cuando el número sea impar. Esto supone incluir en nuestro programa una disyuntiva; si es par el programa debe hacer una cosa y si no, debe hacer otra. Para incluir este tipo de disyuntivas en una estructura \mintinline{python}{if}, se emplea la palabra clave \mintinline{python}{else}. Veamos nuestro ejemplo modificado,
+\switchcolumn
+We have seen the simplest conditional \mintinline{python}{if} structure. We could make it a bit more complex, asking also for a message when the input number is odd. This means we want to include a disjunctive in our program; if the number is even, the program should do one thing, if the number is odd, it should do another one. To include this kind of disjunctive in an \mintinline{python}{if} structure, we use the keyword \mintinline{python}{else}. We can see below our example once modified,
 \end{paracol}
-
 \inputminted[
 frame=lines,
 framesep=2mm,
 baselinestretch=1.2,
 %bgcolor=LightGray,
-label=numero\_par.py,
+label=numero\_par\_mod.py,
 fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/introduccion/codigo_abierto/numero_par_mod.py}
+\begin{paracol}{2}
+Hemos añadido a nuestro script una segunda función a la que hemos llamado \mintinline{python}{par2}. El código es idéntico al de la función \mintinline{python}{par}, hasta que llegamos a 
+la palabra clave \mintinline{python}{else}, que marca la disyuntiva; si el número es par, el programa ejecuta las líneas de código entre el \mintinline{python}{if} y el \mintinline{python}{else}, si el número no es par ejecutará las líneas situadas debajo del \mintinline{python}{else} y que aparecen indentadas. En cualquiera de los dos caso, ejecutará la línea $35$ que no pertenece al bloque condicional.
+
+Las siguientes líneas de código muestran los resultados de aplicar la función \mintinline{python}{par2} a los números $3$ y $8$.
+\switchcolumn
+We have added a second function called \mintinline{python}{par2} to our script. The code is identical to the \mintinline{python}{par} function until we reach the \mintinline{python}{else} keyword. At that point, the disjunctive is set. If the input number is even, the program will execute the code lines between the \mintinline{python}{if} and \mintinline{python}{else}. Otherwise, it will execute the indented lines beneath the \mintinline{python}{else}. In both cases, the program will execute line $35$, which does not belong to the conditional block.
+
+The following code lines show the result of applying the function \mintinline{python}{par2} to the numbers $3$ and $8$.
+\end{paracol}
 
 \begin{center}
-    \begin{minipage}{.4\textwidth}
+    \begin{minipage}{.5\textwidth}
 \begin{minted}{python}
 In [11]: from numero_par_mod import par2
 
@@ -1939,33 +1955,45 @@ Out[13]: ()
 \end{minted}
 \end{minipage}
 \end{center}
+    
+\begin{paracol}{2}
+La estructura \mintinline{python}{if} admite todavía ampliar el número de posibilidades de elección mediante la palabra clave \mintinline{python}{elif}. Al igual que  con \mintinline{python}{if}, \mintinline{python}{elif} va seguido de una expresión lógica que establece una condición, si se cumple se ejecutará el código de las líneas siguientes, si no se cumple, el programa saltará a la siguiente línea que contenga una palabra clave: otro \mintinline{python}{elif}, un \mintinline{python}{else} o directamente a la siguiente línea no indentada, saliendo así del bloque condicional. Para ver cómo funciona, vamos a modificar nuestro ejemplo anterior, para que, si el número introducido no es divisible por dos, compruebe si es divisible por tres,
+\switchcolumn
+The \mintinline{python}{if} structure allows to expand the number of possible elections even more, using the keyword \mintinline{python}{elif}. As in the case of the keyword \mintinline{python}{if}, \mintinline{python}{elif} is followed by a logical expression which establishes a condition. If the condition is fulfilled, the following indented code lines will be executed, otherwise the program will jump to the next line with a keyword: another \mintinline{pytho}{elif}, an \mintinline{python}{else} or straightforwardly to the next non-indented line, exiting the conditional block. We are going to see how it works, modifying our last example. Now want the program to check when the input number is odd, whether it is divisible by three, 
+\end{paracol}
+
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=numero\_par\_mod.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/introduccion/codigo_abierto/numero_div2_div3.py}
+
+\begin{minted}{python}
+In [18]: from numero_div2_div3 import parthree
+In [19]: parthree(4)
+4  es un numero par
+4 is an even number
+Out[19]: ()
+In [20]: parthree(6)
+6  es un numero par
+6 is an even number
+Out[20]: ()
+In [21]: parthree(9)
+9  es un numero divisible por tres
+9 is a number divisible by three
+Out[21]: ()
+In [22]: parthree(7)
+7  es un numero impar pero no divisible por tres
+7 is an odd number but it not divisible by three
+Out[22]: ()
+\end{minted}
 ======================THE FRONTIER=====================
  
 
-
-
-% \begin{lstlisting}
-% function espar(x)
-% % Este programa recibe un numero entero como variable de entrada. y muestra
-% % por pantalla un mensaje indicando si el numero recibido es par o impar.
-
-% % Calculamos el resto de la division por dos
-% resto=rem(x,2);
-
-% % Empleamos una estructura if - else -end para decidir que mensaje mostrar
-
-% if resto==0
-%     % si el resto es cero el número es par
-%     disp('el número es par')
-% else
-%     % si el resto no es cero el número es impar
-%     disp('el número es impar')
-% end 
-% \end{lstlisting}
-
-La palabra clave \texttt{else} marca ahora la disyuntiva, si el número es par, el programa ejecuta las líneas de código entre el \texttt{if} y el \texttt{else}, si el número no es par ejecutará las líneas entre el \texttt{else} y el \texttt{end}.
-
-La estructura \texttt{if} admite todavía ampliar el número de posibilidades de elección mediante la palabra clave \texttt{elseif}. Al igual que  con \texttt{if}, \texttt{elseif} va seguido de una expresión lógica que establece una condición, si se cumple se ejecutará el código de las líneas siguientes, si no se cumple, el programa saltará a la siguiente línea que contenga una palabra clave: otro \texttt{elseif}, un \texttt{else} o directamente el \texttt{end} que marca el final de la parte de código condicional. Para ver cómo funciona, vamos a modificar nuestro ejemplo anterior, para que, si el número introducido no es divisible por dos, compruebe si es divisible por tres,
 
 % \begin{lstlisting}
 % function divis(x)
