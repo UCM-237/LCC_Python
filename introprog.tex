@@ -1959,7 +1959,7 @@ Out[13]: ()
 \begin{paracol}{2}
 La estructura \mintinline{python}{if} admite todavía ampliar el número de posibilidades de elección mediante la palabra clave \mintinline{python}{elif}. Al igual que  con \mintinline{python}{if}, \mintinline{python}{elif} va seguido de una expresión lógica que establece una condición, si se cumple se ejecutará el código de las líneas siguientes, si no se cumple, el programa saltará a la siguiente línea que contenga una palabra clave: otro \mintinline{python}{elif}, un \mintinline{python}{else} o directamente a la siguiente línea no indentada, saliendo así del bloque condicional. Para ver cómo funciona, vamos a modificar nuestro ejemplo anterior, para que, si el número introducido no es divisible por dos, compruebe si es divisible por tres,
 \switchcolumn
-The \mintinline{python}{if} structure allows to expand the number of possible elections even more, using the keyword \mintinline{python}{elif}. As in the case of the keyword \mintinline{python}{if}, \mintinline{python}{elif} is followed by a logical expression which establishes a condition. If the condition is fulfilled, the following indented code lines will be executed, otherwise the program will jump to the next line with a keyword: another \mintinline{pytho}{elif}, an \mintinline{python}{else} or straightforwardly to the next non-indented line, exiting the conditional block. We are going to see how it works, modifying our last example. Now want the program to check when the input number is odd, whether it is divisible by three, 
+The \mintinline{python}{if} structure allows to expand the number of possible elections even more, using the keyword \mintinline{python}{elif}. As in the case of the keyword \mintinline{python}{if}, \mintinline{python}{elif} is followed by a logical expression which establishes a condition. If the condition is fulfilled, the following indented code lines will be executed. Otherwise, the program will jump to the next line with a keyword: another \mintinline{python}{elif}, an \mintinline{python}{else} or straightforwardly to the next non-indented line, exiting the conditional block. We are going to see how it works, modifying our last example. Now want the program to check when the input number is odd, whether it is divisible by three, 
 \end{paracol}
 
 \inputminted[
@@ -1971,7 +1971,46 @@ label=numero\_par\_mod.py,
 fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/introduccion/codigo_abierto/numero_div2_div3.py}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+%\usetikzlibrary{shapes.multipart}
+\path (5,0) node(a) [rectangle split,rectangle split parts =2,draw=blue,top color=white,bottom color=blue!15, very thick,align=left,rounded corners]{Estructura/Structure if-elif-else
+\nodepart{two}
 
+\mintinline{python}{if} condición/condition\\
+\ \ \ ... código/code\\
+\ \ \ ...\\
+(\mintinline{python}{elif} condición/condition)\\
+\ \ \ ... código/code\\
+\ \ \ ...\\
+(\mintinline{python}{elif} condición/condition)\\
+\ \ \ ... código/code\\
+\ \ \ ...\\
+.\\
+(puede haber tantos bloques \mintinline{python}{elif} como se necesiten)\\
+(it could be as many \mintinline{python}{elif} blocks as needed)\\
+.\\
+(\mintinline{python}{else})\\
+\ \ \ ... código/code\\
+\ \ \ ...};		
+\end{tikzpicture}
+\bicaption{Esquema general de la estructura de flujo condicional \mintinline{python}{if} los términos escritos entre paréntesis son opcionales.}{General outline of an \mintinline{python}{if} conditional flow structure. Terms enclosed in parenthesis are optional}
+\label{fig:if}
+\end{figure} 
+\begin{paracol}{2}
+Si llamamos ahora a la función dando como valor de entrada un número par, Ejecutará el código situado debajo del\mintinline{python}{if} y antes del \mintinline{python}{elif} y se saltará todo lo demás hasta llegar al final del bloque condicional. Si el número introducido no es par, pero es divisible por tres, se saltará el código situado por debajo del\mintinline{python}{if}, ejecutará el código contenido debajo del \mintinline{python}{elif} hasta el \mintinline{python}{else} y saltará el resto del código hasta llegar al final del bloque condicional. Por último, si el número no es par ni divisible por tres, solo ejecutará el código situado por debajo del \texttt{else}.
+
+Un aspecto que debemos resaltar, es que el programa ejecutará el código correspondiente a la primera condición que se cumpla, y se saltará el resto hasta llegar al final del bloque condicional. Así por ejemplo, si en nuestro ejemplo introducimos el número $6$, el programa nos mostrará el mensaje ``el número es par", puesto que ésta es la primera condición que se cumple, pero nunca nos mostrará el mensaje ``el número es divisible por 3". Porque una vez comprobada y cumplida la primera condición (ser par) el programa salta directamente al final de la estructura, sin comprobar nada más. La figura \ref{fig:if} muestra el esquema completo de una estructura \mintinline{python}{if}. Los términos entre paréntesis pueden estar o no presentes en una implementación concreta. Las siguientes líneas de comandos muestran la importación y el uso de la función \mintinline{python}{parthree} empleando distintos número como entrada,
+
+\switchcolumn
+If we introduce now an even number in the function \mintinline{python}{parthree}, it executes the code beneath the \mintinline{python}{if} and before the \mintinline{python}{elif}. It skips all the remaining code till the end of the conditional block. If the introduced number is odd and divisible by three, the function skips the code beneath the \mintinline{python}{if} and executes the code between the \mintinline{python}{elif} and the \mintinline{python}{else}. It skips the remaining code till the end of the conditional block. Lastly, if the number is odd and is not divisible by three, it only executes the code beneath the \mintinline{python}{else}.
+
+Note that the program will execute the code belonging to the first condition met, and will skip the remaining code till the end of the conditional block. For instance, if we introduce the number $6$ in our example function, the program will show the message ``6 is an even number'', because this is the first condition it meets. But it never will show us the message `6 is a number divisible by three because, once the program checks that the first condition is fulfilled (be even), the program jumps to the end of the conditional structure without any further checking.  Figure \ref{fig:if} shows a complete outline of the \mintinline{python}{if} structure. Terms enclosed in parentheses are optional and could be or not be in a specific program implementation. The following commands show the import and use of function \mintinline{python}{parthree}, using different numbers as inputs.
+\end{paracol}
+
+\begin{center}
+    \begin{minipage}{.5\textwidth}
 \begin{minted}{python}
 In [18]: from numero_div2_div3 import parthree
 In [19]: parthree(4)
@@ -1991,69 +2030,46 @@ In [22]: parthree(7)
 7 is an odd number but it not divisible by three
 Out[22]: ()
 \end{minted}
-======================THE FRONTIER=====================
- 
+\end{minipage}
+\end{center}
 
-
-% \begin{lstlisting}
-% function divis(x)
-% % Este programa recibe un numero entero como variable de entrada. y muestra
-% % por pantalla un mensaje indicando si el numero recibido es par. Si no 
-% % es par, comprueba si es divisible por 3 y si lo es muestra un mensaje   
-% % por pantalla indicandolo. Si no es par ni divisible por tres muestra un
-% % mensaje diciendo que no es par ni disible por tres. 
-
-
-
-% % Empleamos una estructura if-elseif-else-end para decidir que mensaje mostrar
-
-% if rem(x,2)==0
-%     % si el resto es cero el número es par
-%     disp('el número es par')
-% elseif rem(x,3)==0
-%     % El número es divisible por tres
-%     disp('el número es divisible por 3')
-% else
-%     % el numero no es par ni divisible por tres
-%     disp('el número no es par ni divisible por 3')
-% end
-% \end{lstlisting}
-
-Si llamamos ahora a la función dando como valor de entrada un número par, Ejecutará el código situado debajo del \texttt{if} y antes del \texttt{elseif} y se saltará todo lo demás hasta llegar al \texttt{end}. Si el número introducido no es par, pero es divisible por tres, se saltará el código situado por debajo del \texttt{if}, ejecutará el código contenido debajo del \texttt{elseif} hasta el \texttt{else} y saltará el resto del código hasta llegar al \texttt{end}. Por último si el número no es par ni divisible por tres, solo ejecutará el código situado por debajo del \texttt{else}.
-
-Un aspecto que debemos resaltar, es que el programa ejecutará el código correspondiente a la primera condición que se cumpla, y se saltará el resto hasta llegar al \texttt{end}. Así por ejemplo, si en nuestro ejemplo introducimos el número $6$, el programa nos mostrará el mensaje ``el número es par", puesto que ésta es la primera condición que se cumple, pero nunca nos mostrará el mensaje ``el número es divisible por 3". Porque una vez comprobada y cumplida la primera condición (ser par) el programa salta directamente al \texttt{end} final de la estructura, sin comprobar nada más. La figura \ref{fig:if} muestra el esquema completo de una estructura \texttt{if}. Los términos entre paréntesis pueden estar o no presentes en una implementación concreta.
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
-%\usetikzlibrary{shapes.multipart}
-\path (5,0) node(a) [rectangle split,rectangle split parts =2,draw=blue,top color=white,bottom color=blue!15, very thick,align=left,rounded corners]{Estructura if-elseif-else-end
-\nodepart{two}
-
-if condición\\
-\ \ \ ... código\\
-\ \ \ ...\\
-(elseif condición)\\
-\ \ \ ... código\\
-\ \ \ ...\\
-(elseif condición)\\
-\ \ \ ... código\\
-\ \ \ ...\\
-.\\
-(puede haber tantos bloques elseif como se necesiten)\\
-.\\
-(else)\\
-\ \ \ ... código\\
-\ \ \ ...\\
-end};		
-\end{tikzpicture}
-\caption{Esquema general de la estructura de flujo condicional \texttt{if} los términos escritos entre paréntesis son opcionales.}
-\label{fig:if}
-\end{figure} 
-
+\begin{paracol}{2}
 \paragraph{Estructuras if anidadas.}\index{Anidación! If anidado} 
-En el ejemplo anterior, hemos visto cómo, si el número introducido en la función era par y además divisible por tres, el programa nunca nos informaría de esta segunda propiedad, debido al carácter excluyente de la estructura \emph{if}. Una manera de resolver este problema, es mediante el uso de estructuras \texttt{if} anidadas. La idea es muy sencilla, se construye una estructura \texttt{if} para comprobar una determinada condición, si esta se cumple, dentro de su código se construye otra estructura if para comprobar una segunda condición, y así sucesivamente, todas las veces que sea necesario. Si modificamos nuestro ejemplo anterior, incluyendo un \texttt{if} anidado,
+En el ejemplo anterior, hemos visto cómo, si el número introducido en la función era par y además divisible por tres, el programa nunca nos informaría de esta segunda propiedad, debido al carácter excluyente de la estructura \emph{if}. Una manera de resolver este problema, es mediante el uso de estructuras\mintinline{python}{if} anidadas. La idea es muy sencilla, se construye una estructura\mintinline{python}{if} para comprobar una determinada condición, si esta se cumple, dentro de su código se construye otra estructura if para comprobar una segunda condición, y así sucesivamente, todas las veces que sea necesario. Si modificamos nuestro ejemplo anterior, incluyendo un \mintinline{python}{if} anidado,
+\switchcolumn
+\paragraph{Nested if structures}\index[eng]{Nesting! Nested if}
+In the previous example, we saw that the program could not detect if the input number was both even and divisible by three due to the exclusive nature of the \mintinline{python}{if} statement. We can solve this problem using 
+   
+\end{paracol}
+\begin{center}
+    \begin{minipage}{.5\textwidth}
+    
+from numero_parytres_nested import parthreenested as piubello
 
+piubello(12)
+12  es un numero par
+12 is an even number
+12  es un par numero divisible entre 3
+12 is an even & divisible by 3 number
+Out[29]: ()
+
+piubello(5)
+5  es un numero no es divisible entre 2 ni entre 3
+5 is not divisible by 2 neither by 3 
+Out[30]: ()
+
+piubello(4)
+4  es un numero par
+4 is an even number
+Out[31]: ()
+
+piubello(9)
+9  es un numero divisible entre 3
+9 is an number divisible by 3
+Out[32]: ()
+\end{minipage}
+\end{center}
+======================THE FRONTIER=====================
 % \begin{lstlisting}
 % function divis23(x)
 % % Este programa recibe un numero entero como variable de entrada. y 
@@ -2275,9 +2291,9 @@ La sentencia \texttt{continue}, se emplea para hacer que una determinada iteraci
 % end
 % \end{lstlisting}
 
-El funcionamiento es muy sencillo, en cada iteración la sentencia \texttt{if} comprueba si el número es par. Si no lo es, entra en el código de la estructura \texttt{if}, ejecuta la sentencia \texttt{continue}, y se salta el resto del código del bucle, volviendo directamente a empezar la siguiente iteración.
+El funcionamiento es muy sencillo, en cada iteración la sentencia\mintinline{python}{if} comprueba si el número es par. Si no lo es, entra en el código de la estructura\mintinline{python}{if}, ejecuta la sentencia \texttt{continue}, y se salta el resto del código del bucle, volviendo directamente a empezar la siguiente iteración.
 
-\paragraph{bucles for anidados.} \index{Anidación!For anidado}Los bucles \texttt{for} pueden anidarse unos dentro de otros de modo análogo a como se hace con las estructuras \texttt{if}. Veamos un ejemplo de uso, muy común; calcular la suma de dos matrices,
+\paragraph{bucles for anidados.} \index{Anidación!For anidado}Los bucles \texttt{for} pueden anidarse unos dentro de otros de modo análogo a como se hace con las estructuras\mintinline{python}{if}. Veamos un ejemplo de uso, muy común; calcular la suma de dos matrices,
 
 % \begin{lstlisting}
 % function s=suma_mat(x,y)

@@ -1301,7 +1301,8 @@ from numpy.polynomial import Polynomial as P
 p=P([1,-6,11,-6])
 print(p)
 print("The roots are:\t",p.roots())
-
+\end{minted}
+\begin{minted}{pycon}
 1.0 - 6.0·x + 11.0·x² - 6.0·x³
 The roots are:	 [0.33333333 0.5        1.        ]
 
@@ -1319,7 +1320,8 @@ from numpy.polynomial import Polynomial as P
 p=P([1,2,1])
 print(p)
 print("The roots are:\t",p.roots())
-
+\end{minted}
+\begin{minted}{pycon}
 1.0 + 2.0·x + 1.0·x²
 The roots are:	 [-1.00000001 -0.99999999]
 \end{minted}
@@ -1335,7 +1337,8 @@ The roots are:	 [-1.00000001 -0.99999999]
 from numpy.polynomial import Polynomial as P
 p=P.fromroots([3,2,1])
 print(p)
-
+\end{minted}
+\begin{minted}{pycon}
 -6.0 + 11.0·x - 6.0·x² + 1.0·x³
 \end{minted}
 \begin{paracol}{2}
@@ -1409,7 +1412,9 @@ print("Integral:", pint)
 #Create polynomial p4 as a copy of pint
 p4=pint.copy()
 print(p4)
+\end{minted}
 
+\begin{minted}{pycon}
 12.0 - 4.0·x - 3.0·x² + 1.0·x³
 Derivative: -4.0 - 6.0·x + 3.0·x²
 Integral: 0.0 + 12.0·x - 2.0·x² - 1.0·x³ + 0.25·x^4
@@ -1431,7 +1436,7 @@ In \texttt{Numpy} the method \texttt{spacing(a)} returns the distance between $a
 \end{paracol}  
 
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 import numpy as np
 
 np.spacing(1)
@@ -1533,26 +1538,28 @@ For methods that do not start from an interval but from an initial point, such a
 
 
 %TODO: Lia (18/04/2024)
+\begin{paracol}{2}
 \section{Ejercicios}
 \begin{enumerate}
-\item Crea una función en matlab que implemente el método de  la bisección para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función $f(x)$, un intervalo de búsqueda $[a,b]$, un número máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución. 
+\item Crea una función en python que implemente el método de  la bisección para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función $f(x)$, un intervalo de búsqueda $[a,b]$, un número máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución. 
 
-Aplica el programa creado a la función de ejemplo empleada empleada en el manual, $f(x) = e^x-x^2$, para comprobar que funciona correctamente.
+Aplica el programa creado a la función de ejemplo empleada en el manual, $f(x) = e^x-x^2$, para comprobar que funciona correctamente.
 
-\item Crea una función en matlab que implemente el método de  interpolación lineal para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función $f(x)$, un intervalo de búsqueda $[a,b]$, un número máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución.
+\item Crea una función en python que implemente el método de  interpolación lineal para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función $f(x)$, un intervalo de búsqueda $[a,b]$, un número máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución.
 
-Aplica el programa creado a la función de ejemplo empleada empleada en el manual, $f(x) = e^x-x^2$, para comprobar que funciona correctamente.
+Aplica el programa creado a la función de ejemplo empleada en el manual, $f(x) = e^x-x^2$, para comprobar que funciona correctamente.
 
-\item Crea una función en matlab que implemente el método de  Newton-Raphson para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función $f(x)$ y su función derivada $f'(x)$, un punto inicial de búsqueda $x_0$, un numero máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución.
+\item Crea una función en python que implemente el método de  Newton-Raphson para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función $f(x)$ y su función derivada $f'(x)$, un punto inicial de búsqueda $x_0$, un numero máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución.
 
-Aplica el programa creado a la función de ejemplo empleada empleada en el manual, $f(x) = e^x-x^2$, para comprobar que funciona correctamente.
+Aplica el programa creado a la función de ejemplo empleada en el manual, $f(x) = e^x-x^2$, para comprobar que funciona correctamente.
 
-\item Crea una función en matlab que implemente el método de la secante para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función $f(x)$ y su función derivada $f'(x)$, dos punto iniciales de búsqueda $x_0,\ x_1$, un numero máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución.
+\item Crea una función en python que implemente el método de la secante para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función $f(x)$ y su función derivada $f'(x)$, dos punto iniciales de búsqueda $x_0,\ x_1$, un numero máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución.
 
-Aplica el programa creado a la función de ejemplo empleada empleada en el manual, $f(x) = e^x-x^2$, para comprobar que funciona correctamente.
-\item Crea una función en matlab que implemente el método del punto fijo para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función auxiliar $g(x)$, necesaria para aplicar el método, un punto inicial de búsqueda $x_0$, un numero máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución.
+Aplica el programa creado a la función de ejemplo empleada en el manual, $f(x) = e^x-x^2$, para comprobar que funciona correctamente.
 
-Aplica el programa creado a la función de ejemplo empleada empleada en el manual, $f(x) = e^x-x^2$, empleando para ello los tres ejemplos de funciones auxiliare $g(x)$ propuestos en la sección \ref{pfijo}. Comprueba que se cumple en cada caso lo expuesto en dicha sección.
+\item Crea una función en python que implemente el método del punto fijo para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función auxiliar $g(x)$, necesaria para aplicar el método, un punto inicial de búsqueda $x_0$, un numero máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución.
+
+Aplica el programa creado a la función de ejemplo empleada en el manual, $f(x) = e^x-x^2$, empleando para ello los tres ejemplos de funciones auxiliare $g(x)$ propuestos en la sección \ref{pfijo}. Comprueba que se cumple en cada caso lo expuesto en dicha sección.
 
 \item Se quiere aproximar el valor de $\pi$ utilizando las dos siguientes funciones:
 \begin{equation*}
@@ -1568,6 +1575,7 @@ y=\cos(x/2)
 El programa utilizado deberá añadir al gráfico obtenido en  \ref{it1}), un punto en la posición $(x_i,y_i)$ que represente el valor obtenido de la raíz en cada iteración $i$.
 \item Compara el número de iteraciones que se necesitan en cada caso para obtener la solución.
 \end{enumerate}
+
 \item El método de Steffensen, permite disminuir el número de iteraciones empleadas para obtener una raíz empleando el método del punto fijo.
 
 El algoritmo calcula cada iteración usando dos pasos intermedios de acuerdo con el siguiente procedimiento,
@@ -1614,8 +1622,8 @@ Donde  $t$ representa el tiempo en segundos y $x_1$ la posición del objeto en m
 x_2 = 4t^6
 \end{equation}
 \begin{enumerate}
-\item Dibuja en un mismo gráfica la posición en función del tiempo para los dos móviles, de modo que se observe el punto de alcance. (1 punto) 
-\item Calcula, empleando el método de la bisección o el de \emph{regula falsi},  el instante de tiempo y la posición en que el segundo móvil alcanza al primero (2 puntos)
+\item Dibuja en un mismo gráfica la posición en función del tiempo para los dos móviles, de modo que se observe el punto de alcance.  
+\item Calcula, empleando el método de la bisección o el de \emph{regula falsi},  el instante de tiempo y la posición en que el segundo móvil alcanza al primero.
 \end{enumerate}
 
 \item La distribución de Maxwell, 
@@ -1631,7 +1639,110 @@ da la probabilidad de que una partícula de un gas se mueva con velocidad $v$. D
 \end{enumerate}
 
 \end{enumerate}
+\switchcolumn
+\section{Problems}
+\begin{enumerate}
+\item 
+Create a python function that implements the bisection method to obtain the root of any function $y = f(x)\vert x, y \in \mathbb{R}$. The function must admit as input variables, the function $f(x)$, a search interval $[a,b]$, a maximum number of iterations, $nmax$, to be carried out and the tolerance $tol$ or maximum admissible error for the solution obtained. Likewise, the function must return as output variables, the approximate value obtained for the root $r$, the error committed $f(r)$ and the number of iterations used to reach the solution. 
 
+Apply the program created to the example function used in the manual, $f(x) = e^x-x^2$, to check that it works correctly.
+
+\item Create a python function that implements the linear interpolation method to obtain the root of any function $y = f(x)\vert x, y \in \mathbb{R}$. The function must admit as input variables, the function $f(x)$, a search interval $[a,b]$, a maximum number of iterations, $nmax$, to be carried out and the tolerance $tol$ or maximum admissible error for the solution obtained. Likewise, the function must return as output variables, the approximate value obtained for the root $r$, the error committed $f(r)$ and the number of iterations used to reach the solution.
+
+Apply the program created to the example function used in the manual, $f(x) = e^x-x^2$, to check that it works correctly.
+
+\item Create a python function that implements the Newton-Raphson method to obtain the root of any function $y = f(x)\vert x, y \in \mathbb{R}$. The function must admit as input variables, the function $f(x)$ and its derivative function $f'(x)$, an initial search point $x_0$, a maximum number of iterations, $nmax$, to be carried out and the tolerance $tol$ or maximum admissible error for the solution obtained. Likewise, the function must return as output variables, the approximate value obtained for the root $r$, the error committed $f(r)$ and the number of iterations used to reach the solution.
+
+Apply the program created to the example function used in the manual, $f(x) = e^x-x^2$, to check that it works correctly.
+
+\item Create a python function that implements the secant method to obtain the root of any function $y = f(x)\vert x, y \in \mathbb{R}$. The function must admit as input variables, the function $f(x)$ and its derivative function $f'(x)$, two initial search points $x_0,x_1$, a maximum number of iterations, $nmax$, to be carried out and the tolerance $tol$ or maximum admissible error for the solution obtained. Likewise, the function must return as output variables, the approximate value obtained for the root $r$, the error committed $f(r)$ and the number of iterations used to reach the solution.
+
+Apply the program created to the example function used in the manual, $f(x) = e^x-x^2$, to check that it works correctly.
+
+\item Create a python function that implements the fixed point iteration to obtain the root of any function $y = f(x)\vert x, y \in \mathbb{R}$. The function must admit as input variables, the auxiliary function $g(x)$, necessary to apply the method, an initial search point $x_0$, a maximum number of iterations, $nmax$, to be carried out and the tolerance $tol$ or maximum admissible error for the solution obtained. Likewise, the function must return as output variables, the approximate value obtained for the root $r$, the error committed $f(r)$ and the number of iterations used to reach the solution.
+
+Apply the program created to the example function used in the manual, $f(x) = e^x-x^2$, using the three examples of auxiliary functions $g(x)$ proposed in the section \ref{pfijo}. Check that what is stated in that section is satisfied in each case.
+
+\item The value of $\pi$ is to be approximated using the following two functions:
+\begin{equation*}
+y=\cos(x)+1
+\end{equation*}
+\begin{equation*}
+y=\cos(x/2)
+\end{equation*}
+\begin{enumerate}
+\alph{enumii}
+\item \label{it1}Draw the two functions and their derivatives on the interval $[\frac{\pi}{2},\frac{3\pi}{2}]$.
+\item Apply the secant method for each function, taking $x_0=3$ as a starting point and obtaining in both cases the solution with a tolerance of $0.01$. Choose a value for $x_1$ that you consider appropriate.
+The program used must add to the graph obtained in \ref{it1}), a point in the position $(x_i,y_i)$ that represents the value obtained for the root in each iteration $i$.
+\item Compare the number of iterations needed in each case to obtain the solution.
+\end{enumerate}
+
+\item Steffensen's method allows the number of iterations used to obtain a root to be reduced by using the fixed point method.
+
+The algorithm calculates each iteration using two intermediate steps according to the following procedure,
+
+% \begin{lstlisting}
+% while{condición} 
+%   x0 = x
+%   x1 = g(x0)
+%   x2 = g(x1)
+%   x  = x0 - (x1 -x0)^2/(x2 - 2x1 + x0)
+% end
+% \end{lstlisting}
+
+Where $g(x)$ represents the auxiliary function for which the fixed point is sought.
+
+
+Given the function,
+
+\begin{equation*}
+y= x^2-2x-3
+\end{equation*} 
+
+the fixed point method can be applied to it from two different reorderings:
+\begin{equation}
+x^2-2x-3=0 \Rightarrow x=\sqrt{2x+3}
+\end{equation}
+and
+\begin{equation}
+x^2-2x-3=0 \Rightarrow x=\frac{3}{x-2}
+\end{equation}
+\begin{enumerate}
+\item Apply the fixed point method, taking $x_0=4$ as a starting point, using both rearrangements. Calculate in both cases the root with a tolerance of $0.0001$. Indicate in each case: the value of the root and the number of interactions used. Are the results reasonable?
+
+\item Repeat the calculation using Steffensen's method and check whether or not it uses fewer iterations than the fixed point.
+\end{enumerate}
+
+\item An object moves according to the following law:
+\begin{equation}
+x_1 = 3t^6 - 2t^5 + t + 25
+\end{equation}
+Where $t$ represents the time in seconds and $x_1$ the position of the object in metres \\
+ A second object leaves in pursuit of the first at time instant $t=0$. Its law of motion is:
+\begin{equation}
+x_2 = 4t^6
+\end{equation}
+\begin{enumerate}
+\item Plot the position as a function of time for the two mobiles on the same graph, so that the range point can be observed.  
+\item Calculate, using the bisection method or the method of \emph{regula falsi}, the instant of time and the position at which the second mobile reaches the first one.
+\end{enumerate}
+
+\item Maxwell's distribution, 
+\begin{equation}
+f(v) = \sqrt{\frac{2}{\pi}}\left( \frac{m}{kT}\right)^{3/2}v^2e^{-\dfrac{\scriptstyle mv^2}{\scriptstyle 2kT}},
+\end{equation}
+gives the probability that a particle of a gas moves with velocity $v$. Where $m$ is the mass of the particle in kg, $T$ the temperature in degrees Kelving of the gas and k $=1.380649\times 10^{-23} \text{JK}^{-1}$ the Boltzmann constant. 
+\begin{enumerate}
+\item  \label{eje91e}Draw a graph of the Maxwell distribution at room temperature  $T= 300K$ for Nitrogen $N_2$ whose molecular mass is $m = 4.65 \times 10^{-26}	\text{Kg}$.
+\item \label{eje92e}Calculate at this temperature what is the most probable value of the velocity of a particle.
+\item Calculate how much the temperature has to be lowered so that the probability of finding a particle with the velocity calculated in section \ref{eje92e} is 0.001. Draw on the same graph as in exercise \ref{eje91e} the Maxwell distribution of Nitrogen for this new temperature. 
+
+\end{enumerate}
+
+\end{enumerate}    
+\end{paracol}
+\begin{paracol}{2}
 \section{Test del curso 2020/2021}
 \begin{enumerate}
 \item Una señal de FM, viene representada por la función
@@ -1664,3 +1775,39 @@ da la probabilidad de que una partícula de un gas se mueva con velocidad $v$. D
 
 \end{enumerate}
 \end{enumerate}
+\switchcolumn
+\section{2020/21 Test}
+\begin{enumerate}
+\item An FM signal, represented by the function
+\begin{equation}
+	x(t) = 2\cos\left(\pi \, t+ \frac{3}{2}\sin\left(\frac{\pi}{2} \, t\right)\right).
+\end{equation}
+\begin{enumerate}
+	\item \textbf{1 pt.} Plot the function in the interval $[0,\pi]$ Use equi-spaced values for $0.01\pi$.
+	
+    \item \textbf{3 pts. } Calculate the first three time instants in which the signal is zero, using the bisection method. In each case, choose the appropriate intervals. Obtain the results using a tolerance $tol=0.001$ and indicate the number of iterations used.
+\end{enumerate}
+
+\item  Han Solo has idled the Millennium Falcon at a point in the universe far from any galaxy. After leaving Chewbacca in an auxiliary ship, Han starts the engines (model \emph{Girodyne SRB42 Sublight Engine Thrusters}) and the Falcon accelerates with a uniform acceleration $a_0 = 3\times10^3\ m/s^2$. Chewabaca -- who did not study physics -- does not know the Theory of Relativity, and therefore thinks he can calculate the position $x_{cl}$ with respect to the Falcon using the classical function of uniformly accelerated rectilinear motion
+\begin{equation}
+	x_{cl}(t) =\frac{1}{2}a_0t^2.
+\end{equation}
+		In reality the Falcon cannot accelerate indefinitely (it would exceed the speed of light, which is impossible with the \emph{Sublight Engine Thrusters}), so the real position $x_{rel}$ at which it is located is expressed by
+\begin{equation}
+	x_{rel}(t) = \frac{c^2}{a_0}\sqrt{1 + \frac{a_0^2\,t^2}{c^2}} -\frac{c^2}{a_0}, 
+\end{equation}
+		where $c \approx 3\times 10^8 m/s$  is the speed of light in vacuum. 
+
+		In the following steps we are going to calculate how much time elapses until Chewbacca makes an error of one milliparsec\footnote{$1,\text{Parsec} \approx 3\times 10^{16}m$.} in the calculation of the Falcon's position.
+
+\begin{enumerate}
+	\item {\bf 2 pts.} Define the error function $e(t) = x_{cl}(t) - x_{rel}(t)$ and simplify it with the given numerical data. Then rewrite the error function as $e(t) = t - g(t)$ so that the fixed point algorithm can be applied later. A single decomposition of $e(t)$ is sufficient. In fact, keep only the one with the simplest $g(t)$ according to your criteria.
+	\item {\bf 1.5 pts.} Plot on the same graph the function $y = g(t)$ and the bisector of the first quadrant $y = t$, and check that $g(t)$ does indeed have a fixed point. For the graph choose the time interval $[0, \quad 3 \times 10^5]$ seconds with intervals of $1\times 10^4$ seconds.
+	\item {\bf 2.5 pts.} Use the fixed point iteration to obtain the time at which the position error reaches a value equal to one milliParsec. Give the result in Earth days. Take as initial value $t_0 = 1$ and give the result with a tolerance $tol = 0.1$. Indicates the number of iterations that the method has used to obtain the result.
+	\item {\bf Bonus track: 1 pt.} A Parsec is the distance from the Sun to a star that, when viewed from Earth, subtends a parallax angle of 1 second of a degree. Give two reasons why the Millennium Falcon could never have crossed the Kessel corridor in less than 12 Parsecs, as Han Solo claims.
+
+\end{enumerate}
+\end{enumerate}
+
+
+\end{paracol}
