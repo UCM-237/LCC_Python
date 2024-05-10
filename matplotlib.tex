@@ -180,6 +180,299 @@ plt.plot(x,y)
         \label{tab:lines}
     \end{table}  
     
+    \switchcolumn
+    Se puede combinar un símbolo de cada tipo en un mismo \texttt{plot}. Así por ejemplo si queremos representar los datos anteriores unidos mediante una línea de puntos,
+\begin{minted}{python}
+plt.plot(x,y,':')    
+\end{minted}
+
+Si queremos que pinte solo los puntos sin unirlos con líneas y en color rojo,
+\begin{minted}{python}
+plt.plot(x,y,'.r')
+\end{minted}
+
+Si queremos que pinte los puntos representados por triángulos con el vértice hacia arriba, unidos mediante una línea continua y en color negro,
+
+\begin{minted}{python}
+plt.plot(x,y,'-^k')
+\end{minted}
+
+\switchcolumn
+It is possible to combine one symbol of each type in the same text. So for example if we want to represent the above data joined by a dotted line,
+\begin{minted}{python}
+plt.plot(x,y,':')    
+\end{minted}
+
+If we want it to paint only the dots without joining them with lines and in red,
+\begin{minted}{python}
+plt.plot(x,y,'.r')
+\end{minted}
+If we want it to paint the points represented by triangles with the vertex upwards, joined by a continuous line and in black,
+
+\begin{minted}{python}
+plt.plot(x,y,'-^k')
+\end{minted}
+
+
+\switchcolumn
+La figura \ref{fig:tplot} muestra los resultados de las combinaciones de símbolos que acabamos de describir.
+
+\switchcolumn
+Figure \ref{fig:tplot} shows the results of the symbol combinations just described.
 \end{paracol}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{figuras/tipos_plot.png}
+    \bicaption{Ejemplos de dibujos con diferente formato}{Different uses of plot}
+    \label{fig:tplot}
+\end{figure}
+
+\begin{paracol}{2}
+    \paragraph{Scatter.} También podemos dibujar los puntos $x$, $y$, por separado sin unirlos usando el método \texttt{scatter(x,y)}. 
+    \switchcolumn
+    \paragraph{Scatter.} We can also draw the points $x$, $y$, separately without joining them using the method \texttt{scatter(x,y)}. 
+\end{paracol}
+
+\begin{paracol}{2}
+\subsection{Trabajar con múltiples figuras}
+Con \texttt{matplotlib.pyplot} se pueden dibujar diferentes gráficas en una misma figura usando el método \texttt{subplot}. Con este méotod crearemos una figura donde las distintas gráficas estarán dispuestas a modo de tabla. A este método le indicaremos mediante parámetros de entrada el número de filas, el número de columnas y la posición donde se va a dibujar la siguiente gráfica.
+
+En el siguiente ejemplo se crean dos gráficas dentro de la misma figura en dos filas y una columna. En la primera se dibuja la gráfica del coseno y en la segunda la del seno. El resultado puede verse en la figura \ref{fig:subplot_01}.
+
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+t1 = np.arange(0.0, 5.0, 0.1)
+plt.subplot(2,1,1)
+plt.plot(t1,np.cos(t1),'r.-')
+plt.subplot(2,1,2)
+plt.plot(t1,np.sin(t1),'b.-')
+\end{minted}
+
+\switchcolumn
+
+\subsection{Working with multiple figures}
+With \texttt{matplotlib.pyplot} you can draw different graphs in the same figure using the \texttt{subplot} method. With this method we will create a figure where the different graphs will be arranged as a table. To this method we will indicate by means of input parameters the number of rows, the number of columns and the position where the next graph is going to be drawn.
+
+In the following example, two graphs are created within the same figure in two rows and one column. In the first one the cosine graph is drawn and in the second one the sine graph is drawn. The result can be seen in figure \ref{fig:subplot_01}.
+
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+t1 = np.arange(0.0, 5.0, 0.1)
+plt.subplot(2,1,1)
+plt.plot(t1,np.cos(t1),'r.-')
+plt.subplot(2,1,2)
+plt.plot(t1,np.sin(t1),'b.-')
+\end{minted}
+\end{paracol}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{figuras/subplot_01.png}
+    \bicaption{Dos gráficas en una misma figura usando  \texttt{subplot}}{Two graphs in one figure using \texttt{subplot}}
+    \label{fig:subplot_01}
+\end{figure}
+
+\begin{paracol}{2}
+    Se puede añadir texto en cualquier parte del dibujo mediante el método \texttt{text} indicando las coordenadas donde se quiere poner el texto y el texto deseado. También se puede poner un texto como título de la figura, usando \texttt{title}, o etiquetando los ejes con \texttt{xlabel}, \texttt{ylabel}.
+
+Por ejemplo el siguiente código da lugar a la figura \ref{fig:plot_text}.
+  
+\switchcolumn
+Text can be added anywhere on the drawing using the \texttt{text} method, indicating the coordinates where the text is to be placed and the desired text. You can also put a text as the title of the figure, using \texttt{title}, or by labelling the axes with \texttt{xlabel}, \texttt{ylabel}.
+
+For example, the following code results in the following figure \ref{fig:plot_text}.
+ 
+\end{paracol}
+ \begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+plt.figure()
+t=np.arange(0.0,5,0.01)
+y=np.exp(-t) * np.cos(2*np.pi*t)
+plt.plot(t,y)
+plt.title("Evolución de un sistema amortiguado")
+plt.xlabel('t(s)')
+plt.ylabel('x(m)')
+plt.text(2.5,0.8,'$x=e^{-t}\cos(2\pi \cdot t)$')
+    \end{minted}
+    
+    \begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{figuras/plot_text.png}
+    \bicaption{Figura con texto en etiquetas}{Figure with text and labels}
+    \label{fig:plot_text}
+\end{figure}
+\begin{paracol}{2}
+\subsection{Ejes no lineales}
+    \texttt{Matplotlib.pytplot} cuenta con un método para definir la escala de los ejes, son los métodos \texttt{xscale} e \texttt{yscale}. Estos métodos pueden recibir como argumento el tipo de escala del eje, a elegir entre los siguientes:
+    \begin{itemize}
+        \item \texttt{"linear"} para definir una escala lineal
+        \item \texttt{"log"} para definir una escala logarítmica de eje positivo
+        \item \texttt{"symlog"} para definir una escala logarítmica con tramo positivo y negativo centrado en el cero (como los valores del logaritmo en torno al cero tienden a infinito hay una zona en torno al cero donde considera la escala lineal)
+        \item \texttt{"logit"} escala logarítmica entre $0$ y $1$
+    \end{itemize}
+    Tanto \texttt{xscale} como \texttt{yscale} permiten definir la escala mediante una función que le definamos nosotros.
+
+    En el siguiente ejemplo de código puede verse un ejemplo de uso de los métodos \texttt{xscale} e \texttt{yscale} para generar la figura \ref{fig:scale}.  
+    
+    Como se ve en la figura \ref{fig:scale}  las divisiones del eje logarítmico (eje y en la segunda figura y ambos en la tercera) aparecen marcadas como potencias de 10. Como estamos representando empleando el logaritmo decimal de la variable, las divisiones se corresponden con el exponente de la potencia de 10 de cada división, $\log_{10}(10^n)=n$.
+    
+    En segundo lugar hemos empleado un nuevo método: \texttt{grid()}. Este método añade una retícula al gráfico de modo que sea más fácil ver los valores que toman las variables en cada punto de la gráfica. Si se invoca el método \texttt{grid()} sin parámetros cambia la retícula de visible a invisible y viceversa.
+
+
+    \switchcolumn
+    \subsection{Nonlinear axis}
+    \texttt{Matplotlib.pytplot} has a method to define the scale of the axes, these are the methods \texttt{xscale} and \texttt{yscale}. These methods can take as an argument the scale type of the axis, choose from the following:
+    \begin{itemize}
+        \item ‘linear’ to define a linear scale
+        \item \texttt{‘log’} to define a positive-axis logarithmic scale
+        \item \texttt{‘symlog’} to define a logarithmic scale with a positive and negative span centred at zero (as the values of the logarithm around zero tend to infinity there is a zone around zero where the linear scale is considered)
+        \item{‘logit’} logarithmic scale between $0$ and $1$.
+    \end{itemize}
+    Both \texttt{xscale} and \texttt{yscale} allow the scale to be defined by a function that we define.
+
+    The following code example shows an example of using the \texttt{xscale} and \texttt{yscale} methods to generate the \ref{fig:scale} figure.  
+    
+    As can be seen in the figure \ref{fig:scale} the divisions of the logarithmic axis (y-axis in the second figure and both in the third figure) are marked as powers of 10. As we are representing using the decimal logarithm of the variable, the divisions correspond to the exponent of the power of 10 of each division, $\log_{10}(10^n)=n$.
+
+    Secondly, we have employed a new method: \text{grid()}. This method adds a grid to the graph so that it is easier to see the values taken by the variables at each point on the graph. Calling the \texttt{grid()} method without parameters toggles the visibility of the grid.
+\end{paracol}
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.linspace(0,10,100)
+y=np.exp(x)
+plt.figure()
+
+plt.subplot(3,1,1)
+plt.plot(x,y)
+plt.grid()
+plt.xlabel("Escala lineal")
+plt.ylabel("Escala lineal")
+plt.title("$y=e^x$")
+
+plt.subplot(3,1,2)  
+plt.plot(x,y)
+plt.yscale('log')
+plt.xlabel("Escala lineal")
+plt.ylabel("Escala logarítmica")
+plt.grid()
+
+
+plt.subplot(3,1,3)  
+plt.plot(x,y)
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel("Escala logarítmica")
+plt.ylabel("Escala logarítmica")
+plt.grid()
+
+\end{minted}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{figuras/plt_log_scales.png}
+    \bicaption{Gráfica de la función $y=e^x$ con ejes en escala lineal y logarítmica}{Graph of the function $y=e^x$ with axes on linear and logarithmic scale}
+    \label{fig:scale}
+\end{figure}
+\begin{paracol}{2}
+\subsection{Gráfica en coordenadas polares}
+Usando el método \texttt{polar} podemos representar funciones en coordenadas polares. El primer argumento  es un ángulo en radianes y el segundo el correspondiente radio. La figura \ref{fig:sp} muestra la espiral,
+
+\begin{equation*}
+r=2\cdot\sqrt{\theta}
+\end{equation*}
+
+Para el intervalo angular $[0,8\pi]$.
+
+ \switchcolumn
+
+\subsection{Polar coordinates graph}
+Using the \texttt{polar} method we can plot functions in polar coordinates. The first argument is an angle in radians and the second the corresponding radius. The figure \ref{fig:sp} shows the spiral,
+
+\begin{equation}
+r=2\cdot\sqrt{\theta}
+\end{equation}
+
+For the angular interval $[0,8\pi]$.
+\end{paracol}
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+theta=np.linspace(0,8*np.pi,100)
+radio=2*theta
+plt.figure()
+plt.polar(theta,radio,'b.-')
+plt.grid(visible=True)
+plt.title("Espiral en polares")
+\end{minted}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{figuras/plt_polar.png}
+    \bicaption{Espiral en coordenadas polares}{Spiral plot using polar coordinates}
+    \label{fig:sp}
+\end{figure}
+
+\begin{paracol}{2}
+    \subsection{Otras representaciones gráficas}
+    Con \texttt{matplotlib.pyplot} tenemos más opciones para hacer otro tipo de representaciones gráficas.
+
+    \paragraph{hist}. Este método permite dibujar el histograma de una colección de datos. El histograma representa cuántos datos de una colección caen dentro de un intervalo dado. El método \texttt{hist} necesita como parámetro de entrada un vector de datos. Si no se le indica otra cosa los datos se agrupan en $10$ intervalos. Si se quiere cambiar el número de intervalos se puede indicar con el parámetro \texttt{bin}. En el siguiente ejemplo se dibuja el histograma de los datos de coches por cada $1000$ habitantes usando el método \texttt{hist} con el número de intervalos por defecto, con $5$ intervalos y con $10$. Los datos se cargan de un fichero llamado \textit{coches.dat} y la figura \ref{fig:plt_hist} es la figura resultante.
+
+    \switchcolumn
+    \subsection{Other graphical representations}
+    With \texttt{matplotlib.pyplot} we have more options to make other types of graphical representations.
+
+    \paragraph{hist}. This method allows you to draw the histogram of a collection of data. The histogram represents how much data in a collection falls within a given interval. The \texttt{hist} method requires a vector of data as input parameter. Unless otherwise specified, the data is grouped into $10$ intervals. If you want to change the number of intervals you can specify it with the parameter \texttt{bin}. In the following example the histogram of the car data per $1000$ inhabitants is drawn using the \texttt{hist} method with the default number of intervals, with $5$ intervals and with $10$ intervals. The data is loaded from a file called \textit{cars.dat} and the resulting figure \ref{fig:plt_hist} is the resulting figure.
+\end{paracol}
+
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Abrir el archivo en modo lectura
+with open('coches.dat', 'r') as file:
+    lineas=file.readlines() 
+    f=len(lineas)
+    n=np.zeros([f])
+    i=0
+    for row in lineas:
+        n[i]=float(row)
+        i+=1
+
+
+plt.figure()
+
+plt.subplot(1,3,1)
+plt.hist(n)
+plt.grid(visible=True)
+plt.title("10 intervalos")
+plt.xlabel("Coches por cada 1000 habitantes")
+plt.ylabel("Número de paises")
+plt.subplot(1,3,2)
+plt.hist(n, bins=5)
+plt.grid(visible=True)
+plt.title("5 intervalos")
+plt.xlabel("Coches por cada 1000 habitantes")
+plt.ylabel("Número de paises")
+plt.subplot(1,3,3)
+plt.hist(n,bins=20)
+plt.grid(visible=True)
+plt.title("20 intervalos")
+plt.xlabel("Coches por cada 1000 habitantes")
+plt.ylabel("Número de paises")
+\end{minted}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{figuras/plt_hist.png}
+    \bicaption{Histogramas del número de automóviles por cada $1000$ habitantes}{}
+    \label{fig:plt_hist}
+\end{figure}
 \section{Dibujar en 3D}
 \section{Animaciones}

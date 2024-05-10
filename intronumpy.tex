@@ -1,54 +1,146 @@
-\chapter{Introducción a Numpy \\ Introduction to Numpy}
-\subsection{Vectores y matrices.} \index{Vectores!en Numpy} \index{Matrices!en Numpy} 
-Una de las característica más interesantes de Matlab, es la posibilidad de crear fácilmente matrices. Se pueden crear de muchas maneras, la más elemental de todas ellas, emplea el operador de asignación $=$, y los símbolos especiales $[$, $]$, el punto y coma $;$ y la coma $,$. Las matrices se crean introduciendo los valores de sus elementos por filas, separados por comas o espacios. Una vez introducidos todos los elementos de una fila, se añade un punto y coma, o se pulsa la tecla \emph{intro}, y se añaden los elementos de la fila siguiente. El siguiente ejemplo muestra como crear una matriz de de dos filas y tres columnas:
-\begin{verbatim}
- >> matriz23 =[ 1 3 4 ;3 5 -1]
+\chapter{Introducción a Numpy\\ Introduction to Numpy}\index{Numpy} \index[eng]{Numpy}
+\epigraph{When the going gets tough, the tough get going}{Popular Witticism (US)}
+\begin{paracol}{2}
+\section{Numpy: un paquete de Python para cálculo nu\-mérico}
+En el capítulo \ref{ch:intpr}, vimos cómo importar mó\-dulos de python en un script o directamente en el terminal de Ipython, de modo que podamos reutilizar el código contenido en ellos. Numpy es un libraría de python que contiene funciones y variables específicamente diseñadas para el cálculo numérico. Está estructurada en forma de módulos y submódulos de modo que para utilizarla en nuestros programas basta  importarla en nuestros script, importar sus submodulos o importar sus funciones.
+La base de Numpy la constituyen objetos y operaciones algebráicas. En esta sección vamos a repasar algunos conceptos fundamentales de  álgebra lineal y cómo pueden manejarse empleando Python. No daremos definiciones precisas ni tampoco demostraciones, ya que tanto unas como otras se verán en detalle en la asignatura de álgebra.
 
-matriz23 =
+\paragraph{matrices.} Desde un punto de vista funcional definiremos una matriz como una tabla bidimensional de números ordenados en filas y columnas,
 
-     1     3     4
-     3     5    -1
-\end{verbatim}
-o también:
- \begin{verbatim}
-  >> matriz23 =[ 1 3 4 
-3 5 -1]
+\end{paracol}
 
-matriz23 =
+\begin{equation*}
+A=
+\begin{pmatrix}
+1& \sqrt{2}& 3.5& 0\\
+-2& \pi& -4.6& 4\\
+7& -19& 2.8& 0.6
+\end{pmatrix}
+\end{equation*}
 
-     1     3     4
-     3     5    -1
- \end{verbatim}
+\begin{paracol}{2}
+Cada línea horizontal de números constituye una \emph{fila} de la matriz y cada línea horizontal una \emph{columna} de la misma.
 
-En el primer caso, se empleado el punto y coma para separar las filas y en el segundo se ha empleado la tecla \emph{intro}.  En ambos se emplea el símbolo $[$ para indicar a Matlab que queremos empezar a construir una matriz, y el símbolo $]$ para indicar a Matlab que hemos terminado de construirla. Una vez construida, Matlab nos devuelve en la ventana de comandos la Matriz completa. Matlab nos permite además emplear cada elemento de una matriz como si se tratase de una variable, es decir, se puede asignar  a los elementos de una matriz un valor numérico, el resultados de una operación o un valor guardado en otra variable:
-\begin{verbatim}
->> a=1
+A una matriz con $m$ filas y $n$ columnas se la denomina matriz de orden $m\times n$. $m$ y $n$ son la dimensiones de la matriz y se dan siempre en el mismo orden: primero el número de filas y después el de columnas. Así, la matriz $A$ del ejemplo anterior es una matriz $3\times 4$, y como esta formada por números reales se dice que $A\in\mathbb{R}^{3\times 4}$. El orden de una matriz expresa el tamaño de la matriz.
 
-a =
+Dos matrices son iguales si tienen el mismo orden, y los elementos que ocupan en ambas matrices los mismo lugares son iguales.
 
-          1.00
+Una matriz es cuadrada, si tiene el mismo número de filas que de columnas. Es decir es de orden $n\times n$.
 
->> b=2
-
-b =
-
-          2.00
-
->> mtr=[ a a+b a-b; 1 0.5 cos(0)]
-
-mtr =
-
-          1.00          3.00         -1.00
-          1.00          0.50          1.00
-
->> 
-\end{verbatim}
-
-Matlab considera las matrices como la forma básica de sus variables, así para Matlab un escalar es una matriz de una fila por una columna. Un vector \emph{fila} de 3 elementos es una matriz de una fila por tres columnas y un vector \emph{columna} de tres elementos es una matriz de tres filas y una columna.
-
-\paragraph*{Indexación.} \index{Indexación en matlab}Al igual que se hace en álgebra, Matlab es capaz de referirse a un elemento cualquiera de una matriz empleando índices para determinar su posición (fila y columna) dentro de la matriz.
+Mientras no se diga expresamente lo contrario, emplearemos letras mayúsculas $A, B, \cdots$ para representar matrices. La expresión $A_{m\times n}$ indica que la matriz $A$ tiene dimensiones $m \times n$. Para denotar los elementos de una matriz, emplearemos la misma letra en minúsculas empleada para nombrar la matriz, indicando mediante subíndices, y siempre por este orden, la fila y la columna a la que pertenece el elemento. Así por ejemplo $a_{ij}$ representa al elemento de la matriz $A$, que ocupa la fila $i$ y la columna $j$.
+\end{paracol}
+\begin{equation*}
+A=
+\begin{pmatrix}
+1& \sqrt{2}& 3.5& 0\\
+-2& \pi& -4.6& 4\\
+7& -19& 2.8& 0.6
+\end{pmatrix}
+\rightarrow a_{23}=-4.6
+\end{equation*}
+\begin{paracol}{2}
+\paragraph{vectores}
+A una matriz compuesta por una sola fila, la denominaremos vector fila. A una matriz compuesta por una sola columna la denominaremos vector columna. Siempre que hablemos de un vector, sin especificar más, entenderemos que se trata de un vector columna.\footnote{Esta identificación de los vectores como vectores columna no es general. La introducimos porque simplifica las explicaciones posteriores.} Para representar vectores, emplearemos letras minúsculas. Para representar sus elementos añadiremos a la letra que representa al vector un subíndice indicando la fila a la que pertenece el elemento.
+\end{paracol}
 \begin{equation*}
 a=
+\begin{pmatrix}
+a_1\\
+a_2\\
+\vdots \\
+a_i\\
+\vdots \\
+a_n
+\end{pmatrix}
+\end{equation*}
+\begin{paracol}{2}
+Podemos asociar los puntos del plano con los vectores de dimensión dos. Para ello, usamos una representación cartesiana, en la que los elementos del vector son los valores de las coordenadas $(x,y)$ del punto del plano que representan. Cada vector se representa gráficamente mediante una flecha que parte del origen de coordenadas y termina en el punto $(x,y)$ representado por el vector. La figura \ref{fig:vectores} representa los vectores,
+\end{paracol}
+\begin{equation*}
+a=
+\begin{pmatrix}
+1\\
+2
+\end{pmatrix},
+b=
+\begin{pmatrix}
+2\\
+-3
+\end{pmatrix},
+c=
+\begin{pmatrix}
+0\\
+-2
+\end{pmatrix}
+\end{equation*}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=7cm]{vectores.eps}
+\caption{Representación gráfica de vectores en el plano}
+\label{fig:vectores}
+\end{figure}
+
+\begin{paracol}{2}
+\subsection{Vectores y matrices en\\ Numpy.} \index{Vectores!en Numpy} \index{Matrices!en Numpy} 
+\paragraph{Matrices.} Una de las característica más interesantes de Numpy, es la posibilidad de crear fácilmente matrices. Se pueden crear de diferentes maneras, la más elemental de todas ellas, emplea la funcion de Numpy \mintinline{python}{array} aplicada a una lista de filas de la matriz que se quiere construir. Cada fila debe ser a su vez una lista de números. Evidentemente, para que se pueda construir la matriz, todas las filas deben tener el mismo número de elementos. El siguiente ejemplo muestra como construir una matriz de dos filas y tres columnas,
+\end{paracol}
+
+\begin{center}
+    \begin{minipage}{0.4\textwidth}
+    \begin{minted}{python}
+In [3]: import numpy as np
+
+In [4]: A = np.array([[1,2,3],[4,5,6]])
+
+In [5]: print(A)
+[[1 2 3]
+ [4 5 6]]
+
+In [6]: L = [[1,2,3],[4,5,6]]
+
+In [7]: B = np.array(L)
+
+In [9]: print(L)
+[[1, 2, 3], [4, 5, 6]]
+
+In [10]: print(B)
+[[1 2 3]
+ [4 5 6]]
+ \end{minted}
+\end{minipage}
+ \end{center}
+\begin{paracol}{2} 
+Lo primero que hacemos es importar Numpy, lo importamos usando como alias la abreviatura np, porque es más cómodo a la hora de llamar a funciones específicas de Numpy.  Hemmos construido dos matrices iguales \mintinline{python}{A} y \mintinline{python}{B}. En el primer caso hemos creado directamente dentro de la llamada a la función \mintinline{python}{array}, la lista a partir de la cual construimos la matriz. En el segundo caso, hemos construido primero una lista \mintinline{python}{L}, y luego hemos empleado dicha lista como variable de entrada de la función \mintinline{python}{array}. Si nos fijamos en las líneas [9] y [10], vemos como Python distingue la lista ---todos sus elementos aparacen representados en la misma línea---, de la matriz en la que cada fila ocupa una línea distinta. Podemos construir matrces a partir de listas y variables ya definidas, siempre que seamos coherentes con el criterio de que cada fila se cree a partir de una lista y que todas las filas tengan los mismos elementos,
+\end{paracol}
+\begin{center}
+    \begin{minipage}{0.4\textwidth}
+        \begin{minted}{python}
+In [23]: a =1; b= 2; c =3
+
+In [24]: d =[4,5,6]
+
+In [25]: C = np.array([[a,b,c],d])
+
+In [26]: print(C)
+[[1 2 3]
+ [4 5 6]]
+
+In [27]: C = np.array([[a,b,c],d,[7,8,9]])
+
+In [28]: print(C)
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+        \end{minted}
+    \end{minipage}
+\end{center}
+\begin{paracol}{2}
+\paragraph*{Indexación.} \index{Numpy!indexación}Al igual que se hace en álgebra, Numpy es capaz de referirse a un elemento cualquiera de una matriz empleando índices para determinar su posición (fila y columna) dentro de la matriz.
+\end{paracol}
+\begin{equation*}
+A=
 \begin{pmatrix}
 a_{11}&a_{12}&a_{13}\\
 a_{21}&a_{22}&a_{23}\\
@@ -56,182 +148,127 @@ a_{31}&a_{32}&a_{33}
 \end{pmatrix}
 \end{equation*}
 
-El criterio para referirse a un elemento concreto de una matriz, en Matlab es el mismo: se indica el nombre de la variable que contiene la matriz y a continuación, entre paréntesis y separados por una coma, el índice de su fila y después él de su columna:
- \begin{verbatim}
- >> a=[1 2 3; 4 5 6; 7 8 9]
+\begin{paracol}{2}
+Sin embargo,  criterio para referirse a un elemento concreto de una matriz, en Numpy está heredado de las listas: se indica el nombre de la variable que contiene la matriz y a continuación, entre corchetes y separados por una coma, el índice de su fila y después él de su columna \textbf{pero empezando a contar desde $0$}. Es decir, la primera fila de una matriz de dimensión $m\times n$ es la fila $0$ y la última es la fila $m-1$. De modo análogo su primera columna es la $0$ y su última columna es la $n-1$,    
+\end{paracol}
+\begin{center}
+    \begin{minipage}{0.3\textwidth}
+        \begin{minted}{python}
+In [31]: print(C)
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
 
-a =
+In [32]: C[1,2]
+Out[32]: 6
 
-          1.00          2.00          3.00
-          4.00          5.00          6.00
-          7.00          8.00          9.00
+In [33]: C[0,0]
+Out[33]: 1
+        \end{minted}
+    \end{minipage}
+\end{center}
 
->> a(1,2)
+\begin{paracol}{2}
+Numpy puede seleccionar dentro de una matriz no solo elementos aislados, sino también submatrices completas. 
+Para ello, emplea un símbolo reservado, el símbolo \emph{dos puntos} $:$. Este símbolo se emplea para recorrer valores desde un valor inicial hasta un valor final, con un incremento o paso fijo. La sintaxis es: \mintinline{python}{inicio:fin:paso}, Es importante tener en cuenta que Numpy detendrá la cuenta en el valor \mintinline{python}{paso-1}. Además, si no indicamos el tamaño del paso, Numpy tomará por defecto un paso igual a uno. En este caso basta emplear un único símbolo \emph{dos puntos} para separar el valor de inicio del valor final,
+\end{paracol}
 
-ans =
+\begin{center}
+        \begin{minted}{python}
+In [87]: D = numpy.array([[1.,2.,3.],[4.,5.,6.],[-2,-3,0],[3,2,1]])
 
-          2.00
+In [88]: print(D)
+[[ 1.  2.  3.]
+ [ 4.  5.  6.]
+ [-2. -3.  0.]
+ [ 3.  2.  1.]]
 
->> a(2,1)
+In [90]: D[0:1,0:3]
+Out[90]: array([[1., 2., 3.]])
 
-ans =
+In [91]: D[0:2,0:2]
+Out[91]: 
+array([[1., 2.],
+       [4., 5.]])
 
-          4.00
+In [92]: D[2:3,1:2]
+Out[92]: array([[-3.]])
 
->> 
- \end{verbatim}
+In [93]: D[3:4,0:3]
+Out[93]: array([[3., 2., 1.]])
+
+In [94]: D[0:4,0:3]
+Out[94]: 
+array([[ 1.,  2.,  3.],
+       [ 4.,  5.,  6.],
+       [-2., -3.,  0.],
+       [ 3.,  2.,  1.]])
+
+In [95]: D[0:4,2:3]
+Out[95]: 
+array([[3.],
+       [6.],
+       [0.],
+       [1.]])
+       \end{minted}
+\end{center}
+
+\begin{paracol}{2}
+La línea [90], extrae un vector fila con los elementos de la primera fila de la matriz \mintinline{python}{D}. La fila [91] extrae una matriz de dimension $2\times 2$ con los cuatro elementos de la esquina superior izquierda de la matriz original. La fila [92] extrae un único elemento pero sigue siendo una matriz de dimensión $1 \times 1$, por tanto es distinto que si empleamos la indexación directa del elemento: \mintinline{python}{D[2,1]}. La línea [93] nos devuelve un vector fila con la última fila de la matriz. La línea [94], nos devuelve de nuevo la matriz entera. Por último la línea 95 nos devuelve un vector columna con la primera columna de la matriz.
+
+Hemos dicho que la línea [94] nos devuelve un vector columna. Bueno, sí y no; vamos a verlo más despacio.
+
+\paragraph{Vectores.}
+Cuando introducimos los vectores, distinguimos entre vectores filas y columna, definiéndolos como matrices de una sola fila o una sola columna. Sin embargo, en Numpy, se sigue un criterio distinto que permite generalizar el concepto de matriz asociándolo con el de tensor. Sin entrar en detalles\footnote{Una definición formal del concepto de tensor, queda fuera del alcance de estos apuntes}, podemos decir que un tensor es un objeto algebráico caracterizado por dos parámetros el orden y la dimensión. Así un escalar $a \in \mathbb{R}$ es un tensor de orden cero. Un vector $b \in \mathbb{R}^n$ es un tensor de orden 1 y dimesión $n$. Una matriz $A \in \mathbb{R}^{m\times n}$ Es un tensor de orden dos y dimensiones $m,n$. Un tensor de orden 3, $T \in \mathbb{R}^{n\times m \times l}$, etc. Podemos consider asociar el orden al número mínimo de índices que necesitamos para definir de forma unívoca los elementos de un Tensor: para un escalar, no nos hace faltar ningún indice, solo tenemos un elemento que es el propio escalar, por tanto le asociamos orden cero. Para un vector es suficiente emplear un índice para par definir sus elementos, $b=(b_i),\ i=1,\cdots, n$, $b \in \mathbb{R}^n$. Para una matriz necesito dos índices, $A=(a_{ij}),\ i =1, \cdots n, j = 1,\ \cdots, m$, $A \in \mathbb{R}^{n\times m}$. Para un tensor de orden tres necesitaría tres índices, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ y así sucesivamente. Numpy permite definir estructuras de cualquier orden y dimensión que queramos. Pero nosotros nos vamos a limitar a vectores (orden 1) y matrices (orden 2). ¿Tiene sentido entonces distiguir entre vectores fila y columna? Solo si consideramos siempre los vectores como matrices (orden 2) y dimesiones $1\times n$ (vector fila) ó $n \times 1$ (vector columna). Para Numpy, sin embargo, vectores y matrices son estructuras de distinto orden. Veamos con algunos ejemplo cómo se diferencian Para verlo mejor podemos emplear la propiedad \mintinline{python}{shape} de los arrays en numpy, Dicha propiedad nos devuelve una tupla con las dimensiones del array, el número de elementos que contine la tupla nos da el orden,
+\end{paracol}
+\begin{center}
+    \begin{minipage}{0.3\textwidth}
+    \begin{minted}{python}
+In [23]: D
+Out[23]: 
+array([[ 1.,  2.,  3.],
+       [ 4.,  5.,  6.],
+       [-2., -3.,  0.],
+       [ 3.,  2.,  1.]])
+
+In [24]: D.shape
+Out[24]: (4, 3)
+
+In [25]: D[1,1]
+Out[25]: 5.0
+
+In [26]: D[1,1].shape
+Out[26]: ()
+
+In [27]: D[1,1:2]
+Out[27]: array([5.])
+
+In [28]: D[1,1:2].shape
+Out[28]: (1,)
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{center}
+    \begin{minipage}{0.3\textwidth}
+    \begin{minted}{python}
+In [29]: D[1:2,1:2]
+Out[29]: array([[5.]])
+
+In [30]: D[1:2,1:2].shape
+Out[30]: (1, 1)
+    \end{minted}
+        
+    \end{minipage}
+\end{center}
+
+ \begin{paracol}{2}
+ Empezamos con la matriz \mintinline{python}{D} de ejemplos anteriores. Para obtener sus dimensiones empleamos \mintinline{python}{D.shape}. El resultado es una tupla compuesta de dos elementos, puesto que es una matriz y, por tanto su orden es dos. El primer elemento no da la dimensión de sus columnas, es decir, el número de filas. El segundo elemento nos da la dimensión de sus filas, es decir el número de columnas. En la línea [27] extraemos el elemento que ocupa la posición $[1,1]$. En la [26] cuando tratamos de obtener sus dimensiones, nos da una tupla vacía, porque es un escalar y su orden es cero. En la línea [28] le hemos pedido a Numpy que nos de los elementos de la fila $1$ de la matriz \mintinline{python}{D} que ocupan las columnas desde la $1$ hasta la $1$. Es decir, hacemos referencia al mismo elemento de la matriz, sin embargo el resultado no es exáctamente el mismo. Nos ha devuelto un array con el elemento seleccionado. Cuando el la línea [28] pedimos sun dimensiones, obtenemos una tupla con un único elemento \mintinline{python}{(1,)} Es decir, el orden del array es $1$, se trata de un vector, y tiene de dimensión $1$, el vector solo tiene un elemento. 
+
  
-Es interesante observar de nuevo cómo Matlab asigna por defecto el valor del elemento buscado a la variable \texttt{ans}. Como ya se ha dicho, es mejor asignar siempre una variable a los resultados, para asegurarnos de que no los perdemos al realizar nuevas operaciones:
-\begin{verbatim}
->> a12=a(1,2)
+ \end{paracol}
 
-a12 =
 
-          2.00
-
->> a21=a(2,1)
-
-a21 =
-
-          4.00
-
->> 
-\end{verbatim}
-Ahora hemos creado dos variables nuevas que contienen los valores de los elementos $a_{12}$ y $a_{21}$ de la matriz $a$. 
-
-Matlab puede seleccionar dentro de una matriz no solo elementos aislados, sino también submatrices completas. Para ello, emplea un símbolo reservado, el símbolo \emph{dos puntos} $:$. Este símbolo se emplea para recorrer valores desde un valor inicial hasta un valor final, con un incremento o paso fijo. La sintaxis es: \texttt{inicio:paso:fin}, por ejemplo podemos recorrer los números enteros de cero a 8 empleando un paso 2:
-\begin{verbatim}
->> 0:2:8
-
-ans =
-
-             0          2.00          4.00          6.00          8.00
-
->> 
-\end{verbatim}
-
-El resultado nos da la lista de los números $0, 2, 4, 6, 8$.
-Además, si no indicamos el tamaño del paso,  Matlab tomará por defecto un paso igual a uno. En este caso basta emplear un único símbolo \emph{dos puntos} para separar el valor de inicio del valor final:
- \begin{verbatim}
- >> 1:5
-
-ans =
-
-          1.00          2.00          3.00          4.00          5.00
-
->>
- \end{verbatim}
- 
- Podemos emplear el símbolo \emph{dos puntos},\index{Indexación con el operador :} \index{": Operador de indexación} para obtener submatrices de una matriz dada. Así por ejemplo si construimos una matriz de cuatro filas por cinco columnas:
- \begin{verbatim}
- >> matriz=[1 2 4 5 6
-3 5 -6 0 2
-4 5 8 9 0
-3 3 -1 2 0]
-
-matriz =
-
-          1.00          2.00          4.00          5.00          6.00
-          3.00          5.00         -6.00          0.00          2.00
-          4.00          5.00          8.00          9.00          0.00
-          3.00          3.00         -1.00          2.00          0.00
-
->> 
- \end{verbatim}
- Podemos obtener el vector formado por los tres últimos elementos de su segunda fila:
- \begin{verbatim}
- >> fil=matriz(2,3:5)
-
-fil =
-
-         -6.00             0          2.00
-
->> 
- \end{verbatim}
-
- o la submatriz de tres filas por tres columnas formada por los elementos que ocupan las filas 2 a 4 y las columnas 3 a 5:
-\begin{verbatim}
- >> subm=matriz(2:4,3:5)
-
- subm =
-
-         -6.00          0                2.00
-	          8.00          9.00             0  
-         -1.00          2.00             0  
-
- >> 
-\end{verbatim}
-
-o el vector columna formado por su segunda columna completa:
-\begin{verbatim}
->> matriz(1:4,2)
-
-ans =
-
-          2.00
-          5.00
-          5.00
-          3.00
-
->> 
-\end{verbatim} 
-
-De hecho, si deseamos seleccionar todos los elementos en una fila o una columna, podemos emplear el símbolo \texttt{:} directamente sin indicar principio ni fin,
-
-\begin{verbatim}
-
->> matriz(:,2)
-
-ans =
-
-          2.00
-          5.00
-          5.00
-          3.00
-
->> matriz(3,:)
-ans =
-
-     4.00     5.00     8.00    9.00    0.00
-\end{verbatim}
- 
-\label{index}A parte de la indexación típica del álgebra de los elementos de una matriz indicando su fila y columna, en Matlab es posible referirse a un  elemento de una matriz empleando un único índice. En este caso, Matlab cuenta los elementos por columnas, de arriba abajo y de izquierda a derecha, 
-
-\begin{equation*}
-A=
-\begin{pmatrix}
-a_1&a_4&a_7\\
-a_2&a_5&a_8\\
-a_3&a_6&a_9
-\end{pmatrix}
-\end{equation*}
-
-Así por ejemplo, en una matriz $A$ de $3$ filas y $4$ columnas, 
-\begin{verbatim}
->> A=[3 0 -1 0; 2 1 5 7; 1 3 9 8]
-A =
-
-     3     0    -1     0
-     2     1     5     7
-     1     3     9     8
-\end{verbatim}
-las expresiones,
-\begin{verbatim}
->> A(2,3)
-
-and =
-     5
-\end{verbatim}
-y
-\begin{verbatim}
->> A(8)
-
-ans =
-     5
-\end{verbatim} 
-hacen referencia al mismo elemento de la matriz $A$. 
-
-\subsection{Funciones incluidas en Matlab.}\index{Funciónes! Funciones incluidas en matlab} 
+\subsection{Funciones incluidas en Numpy.}\index{Funciónes! Funciones incluidas en matlab} 
 Matlab incluye cientos de funciones. Estas funciones, están escritas con la misma filosofía que acabamos de describir aquí, es decir, admiten una o varias variables de entrada y devuelven sus resultados en una o varias funciones de salida. En algunos casos, se trata de ficheros de texto  guardados con la extensión \texttt{.m} iguales a los que nosotros podemos crear \footnote{En muchos casos las funciones incluidas en Matlab no están escritas en ficheros de texto accesibles para el usuario. Por razones de eficiencia, se trata de versiones de las funciones escritas por lo general en lenguaje C y compiladas.}. La manera de emplearlas desde la ventana de comandos de Matlab es idéntica a la descrita para las funciones creadas por el usuario. 
 
 En la tabla \ref{tabfun}, se incluyen algunos ejemplos de las funciones matemáticas más corrientes. Son solo una pequeña muestra de las funciones disponibles. Para obtener una visión más completa de las funciones disponibles se aconseja emplear la ayuda de Matlab.
