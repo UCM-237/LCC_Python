@@ -1,4 +1,4 @@
-\chapter[Intro a Python \textsection \textsection \ Intro to python]{Introducción a la programación en Python\\ Introduction to Python Programming} \index{Python} \index[eng]{Python}
+\chapter[Intro a Python \textsection \textsection \ Intro to python]{Introducción a la programación en Python\\ Introduction to Python Programming}\label{ch:intpr} \index{Python} \index[eng]{Python}
 \epigraph{\textbf{UN PARACAIDISTA SE DESNUCA}\\ Por darle una sorpresa y a escondidas, su hacendosa, tierna e inocente esposa le cambió a última hora el paracaídas de reglamento por otro de punto, amorosamente tejido por ella, de malla ancha.}{Julio Ceron. Diario ABC, 2.03.1986. p.55}
 \begin{paracol}{2}
 Este capítulo presenta una introducción general a la programación. Para su desarrollo, vamos a emplear uno de los lenguajes de progaramción que  que más aceptación ha tenido en los últimos años: Python. Este lenguaje fue desarrollado por Guiod van Rosssum a finales de los años 80 del siglo pasado. El un lenguaje de alto nivel de propósito general.
@@ -1967,7 +1967,7 @@ frame=lines,
 framesep=2mm,
 baselinestretch=1.2,
 %bgcolor=LightGray,
-label=numero\_par\_mod.py,
+label=numero\_div2\_div3.py,
 fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/introduccion/codigo_abierto/numero_div2_div3.py}
@@ -2038,125 +2038,60 @@ Out[22]: ()
 En el ejemplo anterior, hemos visto cómo, si el número introducido en la función era par y además divisible por tres, el programa nunca nos informaría de esta segunda propiedad, debido al carácter excluyente de la estructura \emph{if}. Una manera de resolver este problema, es mediante el uso de estructuras\mintinline{python}{if} anidadas. La idea es muy sencilla, se construye una estructura\mintinline{python}{if} para comprobar una determinada condición, si esta se cumple, dentro de su código se construye otra estructura if para comprobar una segunda condición, y así sucesivamente, todas las veces que sea necesario. Si modificamos nuestro ejemplo anterior, incluyendo un \mintinline{python}{if} anidado,
 \switchcolumn
 \paragraph{Nested if structures}\index[eng]{Nesting! Nested if}
-In the previous example, we saw that the program could not detect if the input number was both even and divisible by three due to the exclusive nature of the \mintinline{python}{if} statement. We can solve this problem using 
-   
+In the previous example, we saw that the program could not detect if the input number was both even and divisible by three due to the exclusive nature of the \mintinline{python}{if} statement. We can solve this problem using using nested \mintinline{python}{if} structures. It is a very simple idea. We build an \mintinline{python}{if} statement to check a specific condition. If the condition is fulfilled, inside the \mintinline{python}{if} statement, we build another \mintinline{python}{if } statement to check a second condition, and so on as many times as needed. Notice that in a nested \mintinline{python}{if} structure, the inner condition is checked only if the outer one is met. We can modify our previous example, using now a nested \mintinline{python}{if,}
 \end{paracol}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=numero\_parytres\_nested.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/introduccion/codigo_abierto/numero_parytres_nested.py}
+
+\begin{paracol}{2}
+la modificación realizada está en las líneas $23$-$25$. Se trata de una nueva estructura \mintinline{python}{if} definida dentro de la que comienza en la línea $20$ comprobando si la el número es par. El programa solo llegará a comprobar este nuevo \mintinline{python}{if}, si efectivamente se a cumplido la condición de que el número sea par. Si nos fijamos en la estructura del código, vemos que tiene tres niveles de indentación: El primero corresponde al código perteneciente a la función \mintinline{python}{parthreenested}, el segundo corresponde al código la estructura \mintinline{python}{if} más externa y el tercero al código del \mintinline{python}{if} anidado. Si añadieramos un nuevo \mintinline{python}{if} dentro de éste último, deberíamos indentar su código un nivel más.
+\switchcolumn
+We can see that we had added code lines $23-24$. This added code defines a new \mintinline{python}{if} statement defined inside the \mintinline{python}{if} structure that starts at line $20$. The program will only check this new condition if the number is even and it has met the condition imposed in line $20$. If we focus on the code structure, we can see that it has three indentation levels: The first one belongs to the code of function \mintinline{python}{parthreenested}, the second one to the outer \mintinline{python}{if} structure and the last one to the nested \mintinline{python}{if}. If we would add a new \mintinline{python}{if} inside the last one, we should indent the code one level more. 
+\end{paracol}
+
 \begin{center}
-    \begin{minipage}{.5\textwidth}
-    
-from numero_parytres_nested import parthreenested as piubello
+    \begin{minipage}{.7\textwidth}
+    \begin{minted}{python}    
+In [41]: from numero_parytres_nested import parthreenested as piubello
 
-piubello(12)
-12  es un numero par
-12 is an even number
-12  es un par numero divisible entre 3
+In [42]: piubello(12)
+12  es un numero par y divisible entre 3
 12 is an even & divisible by 3 number
-Out[29]: ()
+Out[42]: ()
 
-piubello(5)
+In [43]: piubello(5)
 5  es un numero no es divisible entre 2 ni entre 3
 5 is not divisible by 2 neither by 3 
-Out[30]: ()
+Out[43]: ()
 
-piubello(4)
+In [44]: piubello(4)
 4  es un numero par
 4 is an even number
-Out[31]: ()
+Out[44]: ()
 
-piubello(9)
+In [45]: piubello(9)
 9  es un numero divisible entre 3
 9 is an number divisible by 3
-Out[32]: ()
+Out[45]: ()
+\end{minted}
 \end{minipage}
 \end{center}
-======================THE FRONTIER=====================
-% \begin{lstlisting}
-% function divis23(x)
-% % Este programa recibe un numero entero como variable de entrada. y 
-% % muestra por pantalla un mensaje indicando si el numero recibido es par. 
-% % si el numero es par y divisible entre tres,
-% % si es divisible entre tres  
-% % Si no es par ni divisible por tres 
 
-
-
-% % Empleamos una estructura if - else -end 
-% % y un if anidado para decidir que mensaje mostrar
-
-% if rem(x,2)==0
-%     % si el resto es cero el número es par
-%     % comprobamos con un if anidado si además es divisible entre tres
-%     if rem(x,3)==0
-%         disp('el número es par y divisible entre tres')
-%     else
-%         disp('el número es par')
-%     end
-% elseif rem(x,3)==0
-%     % El número es divisble entre tres
-%     disp('el número es divisible entre 3')
-% else
-%     % el numero no es par ni divisible entre tres
-%     disp('el número no es par ni divisible entre tres')
-% end
-% \end{lstlisting}
-
-\paragraph{Switch-case-otherwise.} \index{Flujo! Switch-case}Se trata de otra estructura que permite también ejecutar una parte u otra de código de acuerdo con unas codiciones preestablecida. Estas condiciones se presentan en forma de \emph{casos}, el programa comprueba al llegar a la estructura \texttt{switch} de qué caso se trata y ejecuta el código correspondiente. La figura \ref{fig:switch} muestra la forma general que toma una estructura \texttt{switch}.
-
-La estructura \texttt{switch}, compara el valor contenido en la variable de entrada a la estructura con las expresiones contenidas en los casos, ejecutando el primer caso para el que coincidan. Si no encuentra ninguno, ejecuta entonces el código contenido debajo de la sentencia \texttt{otherwise}.
-
-Veamos un ejemplo muy sencillo,
-
-% \begin{lstlisting}
-% function signo(x)
-% % este programa emplea una estructura switch para informarnos del signo de
-% % un número.
-
-% % NOTA EL PROGRAMA NO COMPRUEBA QUE LA VARIABLE DE ENTRADA X SEA UN NUMERO,
-% % SI ES UN VECTOR O UNA MATRIZ EL RESULTADO NO TIENE SENTIDO
-  
-% s=sign(x); % obtnemos el signo del número mediante la función sign
-
-% % construimos la estructura switch,
-
-% switch s
-%     case 1
-%         disp('el número es positivo')
-%     case -1
-%         disp('el número es negativo')
-%     otherwise
-%         disp('el número es cero')
-% end
-
-% \end{lstlisting}
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
-%\usetikzlibrary{shapes.multipart}
-\path (5,0) node(a) [rectangle split,rectangle split parts =2,draw=green,top color=white,bottom color=green!20, very thick,align=left,rounded corners]{Estructura switch-case-otherwise
-\nodepart{two}
-switch variable\\
-\ \ \ case expresión\\
-\ \ \ \ \ ... código\\
-\ \ \ case expresión\\
-\ \ \ \ \ ... código\\
-\ \ \ .\\
-Puede haber tantos bloques \emph{case} como se necesiten\\
-\ \ \ .\\
-\ \ \ otherwise\\
-\ \ \ \ \ ... código\\
-end};		
-\end{tikzpicture}
-\caption{Esquema general de la estructura switch-case-otherwise}
-\label{fig:switch}
-\end{figure}
-
-La función del ejemplo emplea a su vez la función de Matlab \texttt{sign} para obtener el signo ($1$, $-1$, $0$) del número introducido. Guarda el resultado de esta operación en la variable \texttt{s}, que será precisamente la variable de entrada a la estructura \texttt{switch}. Los casos se limitan a chequear los posibles valores de la variable y enviar a la ventana de comandos el mensaje correspondiente.
- 
+\begin{paracol}{2}
 \subsection{Bucles}\index{Flujo!Bucles}\index{Bucles}
-En ocasiones, es preciso repetir una operación un número determinado de veces o hasta que se cumple una cierta condición. Los lenguajes de alto nivel poseen estructuras específicas, para repetir la ejecución de un trozo de programa las veces que sea necesario. Cada repetición recibe el nombre de iteración. Estas estructuras reciben el nombre genérico de bucles. Vamos a ver dos tipos: los bucles \texttt{for} y los bucles \texttt{while}.
+En ocasiones, es preciso repetir una operación un número determinado de veces o hasta que se cumple una cierta condición. Los lenguajes de alto nivel poseen estructuras específicas, para repetir la ejecución de un trozo de programa las veces que sea necesario. Cada repetición recibe el nombre de iteración. Estas estructuras reciben el nombre genérico de bucles. Vamos a ver dos tipos: los bucles \mintinline{python}{for} y los bucles \mintinline{python}{while}.
 
-\paragraph{Bucles for.} \index{Flujo! Bucle for}\index{Bucles! Bucle for}Un bucle \texttt{for} repite las sentencias contenidas en el bucle un determinado número de veces, es decir realiza un número fijo de iteraciones. La estructura general de un bucle \texttt{for} se muestra en la figura, \ref{fig:for}
+\paragraph{Bucles for.} \index{Flujo! Bucle for}\index{Bucles! Bucle for}Un bucle \mintinline{python}{for} repite las sentencias contenidas en el bucle un determinado número de veces, es decir realiza un número fijo de iteraciones. La estructura general de un bucle \mintinline{python}{for} se muestra en la figura, \ref{fig:for}
+
+El bucle empieza con la palabra clave for, seguida de una variable a la que hemos dado el nombre genérico de índice. Esta variable irá tomando sucesivamente los valores de los elementos contenidos en el [vector de valores]. El código contenido en el bucle, desde la línea siguiente al \mintinline{python}{for}  se ejecutará tantas veces como valores tenga el vector de valores. Antes de hablar de las sentencias \mintinline{python}{break} y \mintinline{python}{continue}, veamos alguno ejemplos.
+\end{paracol}
 
 \begin{figure}[h]
 \centering
@@ -2174,11 +2109,13 @@ for indice=[vector de valores]\\
 
 end};		
 \end{tikzpicture}
-\caption{Esquema general de la estructura de un bucle \texttt{for} los términos escritos entre paréntesis son opcionales.}
+\bicaption{Esquema general de la estructura de un bucle \mintinline{python}{for} los términos escritos entre paréntesis son opcionales.}{\mintinline{python}{for} structure General outline. Terms enclosed in parentheses are optional.}
 \label{fig:for}
 \end{figure} 
  
-El bucle empieza con la palabra clave for, seguida de una variable a la que hemos dado el nombre genérico de índice. Esta variable irá tomando sucesivamente los valores de los elementos contenidos en el [vector de valores]. El código contenido en el bucle, desde la línea siguiente al \texttt{for} hasta el \texttt{end} se ejecutará tantas veces como valores tenga el vector de valores. Antes de hablar de las sentencias \texttt{break} y \texttt{continue}, veamos alguno ejemplos.
+
+
+======================THE FRONTIER=====================
 % \begin{lstlisting}
 % function y=demofor(x)
 % % este programa emplea un bucle for sencillo para ir mostrando uno 
@@ -2210,7 +2147,7 @@ d =
      4
 
     18
-
+so sling your hook!
 
 suma =
 
@@ -2324,7 +2261,7 @@ El funcionamiento es muy sencillo, en cada iteración la sentencia\mintinline{py
 % \end{lstlisting} 
 
 Es interesante observar en este ejemplo el funcionamiento de los dos bucles anidados. Cada interación del bucle exterior, avanza una fila, en el recorrido de las matrices, cada iteración del bucle interior recorre todos los elementos de la fila indicada por el bucle exterior.
-
+""" 
 \paragraph{bucle while.} \index{Flujo! Bucle while}\index{Bucles! Bucle while} Este bucle tiene la misma finalidad que un bucle \texttt{for}, repetir un trozo de código un determinado número de veces. Lo que cambia, es el mecanismo que determina cuantas iteraciones realizará el bucle. En el caso de un bucle \texttt{while} las iteraciones se repiten un número indefinido de veces mientras se cumpla una determinada condición impuesta al principio del bucle. La figura \ref{fig:while} muestra la estructura general de un bucle while.
 
 \begin{figure}[h]

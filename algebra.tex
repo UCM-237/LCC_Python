@@ -1,78 +1,7 @@
 \chapter{Aplicaciones del cálculo científico al álgebra lineal}
-\epigraph{When the going gets tough, the tough get going}{Popular Witticism (US)}
+
 \section{Matrices y vectores}
-En esta sección vamos a repasar algunos conceptos fundamentales de  álgebra lineal y cómo pueden manejarse empleando Matlab. No daremos definiciones precisas ni tampoco demostraciones, ya que tanto unas como otras se verán en detalle en la asignatura de álgebra. 
-\paragraph{matrices.} Desde un punto de vista funcional definiremos una matriz como una tabla bidimensional de números ordenados en filas y columnas,
-\begin{equation*}
-A=
-\begin{pmatrix}
-1& \sqrt(2)& 3.5& 0\\
--2& \pi& -4.6& 4\\
-7& -19& 2.8& 0.6
-\end{pmatrix}
-\end{equation*}
 
-Cada línea horizontal de números constituye una \emph{fila} de la matriz y cada línea horizontal una \emph{columna} de la misma.
-
-A una matriz con $m$ filas y $n$ columnas se la denomina matriz de orden $m\times n$. $m$ y $n$ son la dimensiones de la matriz y se dan siempre en el mismo orden: primero el número de filas y después el de columnas. Así, la matriz $A$ del ejemplo anterior es una matriz $3\times 4$. El orden de una matriz expresa el tamaño de la matriz.
-
-Dos matrices son iguales si tienen el mismo orden, y los elementos que ocupan en ambas matrices los mismo lugares son iguales.
-
-Una matriz es cuadrada, si tiene el mismo número de filas que de columnas. Es decir es de orden $n\times n$.
-
-Mientras no se diga expresamente lo contrario, emplearemos letras mayúsculas $A, B, \cdots$ para representar matrices. La expresión $A_{m\times n}$ indica que la matriz $A$ tiene dimensiones $m \times n$. Para denotar los elementos de una matriz, emplearemos la misma letra en minúsculas empleada para nombrar la matriz, indicando mediante subíndices, y siempre por este orden, la fila y la columna a la que pertenece el elemento. Así por ejemplo $a_{ij}$ representa al elemento de la matriz $A$, que ocupa la fila $i$ y la columna $j$.
-
-\begin{equation*}
-A=
-\begin{pmatrix}
-1& \sqrt(2)& 3.5& 0\\
--2& \pi& -4.6& 4\\
-7& -19& 2.8& 0.6
-\end{pmatrix}
-\rightarrow a_{23}=-4.6
-\end{equation*}
-
-\paragraph{vectores}
-A una matriz compuesta por una sola fila, la denominaremos vector fila. A una matriz compuesta por una sola columna la denominaremos vector columna. Siempre que hablemos de un vector, sin especificar más, entenderemos que se trata de un vector columna.\footnote{Esta identificación de los vectores como vectores columna no es general. La introducimos porque simplifica las explicaciones posteriores.} Para representar vectores, emplearemos letras minúsculas. Para representar sus elementos añadiremos a la letra que representa al vector un subíndice indicando la fila a la que pertenece el elemento.
-
-\begin{equation*}
-a=
-\begin{pmatrix}
-a_1\\
-a_2\\
-\vdots \\
-a_i\\
-\vdots \\
-a_n
-\end{pmatrix}
-\end{equation*}
-
-Podemos asociar los puntos del plano con los vectores de dimensión dos. Para ello, usamos una representación cartesiana, en la que los elementos del vector son los valores de las coordenadas $(x,y)$ del punto del plano que representan. Cada vector se representa gráficamente mediante una flecha que parte del origen de coordenadas y termina en el punto $(x,y)$ representado por el vector. La figura \ref{fig:vectores} representa los vectores,
-\begin{equation*}
-a=
-\begin{pmatrix}
-1\\
-2
-\end{pmatrix},
-b=
-\begin{pmatrix}
-2\\
--3
-\end{pmatrix},
-c=
-\begin{pmatrix}
-0\\
--2
-\end{pmatrix}
-\end{equation*}
-
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=7cm]{vectores.eps}
-\caption{Representación gráfica de vectores en el plano}
-\label{fig:vectores}
-\end{figure}
 
 De modo análogo, podemos asociar vectores de dimensión tres con puntos en el espacio tridimensional. En este caso, los valores de los elementos del vector corresponden con la coordenadas $(x,y,z)$ de los puntos en el espacio. La figura \ref{fig:vectores3} muestra la representación gráfica en espacio tridimensional de los vectores, 
 \begin{equation*}
@@ -103,42 +32,6 @@ c=
 \label{fig:vectores3}
 \end{figure}
 
-Evidentemente para vectores de mayor dimensión, no es posible obtener una representación gráfica. Si embargo muchas de las propiedades geométricas, observables en los vectores bi y tridimensionales, pueden extrapolarse a vectores de cualquier dimensión.
-
-
-
-\section{Operaciones matriciales}\label{opmatr}
-
-A continuación definiremos las operaciones matemáticas más comunes, definidas sobre matrices. 
-
-\paragraph{suma.} La suma de dos matrices, se define como la matriz resultante de sumar los elementos que ocupan en ambas la misma posición. Solo está definida para matrices del mismo orden,
-
-\begin{gather*}
-C=A+B\\
-c_{ij}=a_{ij}+b_{ij}\\
-\\
-\begin{pmatrix}
-1& 2& 3\\
-4& 5& 6\\
-7& 8& 9\\
-\end{pmatrix} =
-\begin{pmatrix}
-1& 3& 5\\
-3& 5& 7\\
-5& 7& 9\\
-\end{pmatrix} +
-\begin{pmatrix}
-0& -1& -2\\
-1& 0& -1\\
-2& 1& 0\\
-\end{pmatrix}
-\end{gather*}
-
-La suma de matrices cumple las siguientes propiedades,
-\begin{enumerate}
-\item Asociativa: $(A+B)+C=A+(B+C)$
-\item Conmutativa: $A+B=B+A$
-\item Elemento neutro: $O_{n\times m}+A_{n\times m}=A_{m\times m}$ El elemento neutro $O_{n\times m}$ de la suma de matrices de orden $n\times m$ es la matriz nula de dicho orden, ---compuesta exclusivamente por ceros--- . 
 
 En Matlab, podemos crear una matriz de cualquier orden, compuesta exclusivamente por ceros mediante el comando \texttt{zeros(m,n)}, donde $m$ es el número de filas y $n$ el de columnas de la matriz de ceros resultante,
 
