@@ -2051,7 +2051,7 @@ linenos
 ]{python}{./codigos/introduccion/codigo_abierto/numero_parytres_nested.py}
 
 \begin{paracol}{2}
-la modificación realizada está en las líneas $23$-$25$. Se trata de una nueva estructura \mintinline{python}{if} definida dentro de la que comienza en la línea $20$ comprobando si la el número es par. El programa solo llegará a comprobar este nuevo \mintinline{python}{if}, si efectivamente se a cumplido la condición de que el número sea par. Si nos fijamos en la estructura del código, vemos que tiene tres niveles de indentación: El primero corresponde al código perteneciente a la función \mintinline{python}{parthreenested}, el segundo corresponde al código la estructura \mintinline{python}{if} más externa y el tercero al código del \mintinline{python}{if} anidado. Si añadieramos un nuevo \mintinline{python}{if} dentro de éste último, deberíamos indentar su código un nivel más.
+la modificación realizada está en las líneas $23$-$25$. Se trata de una nueva estructura \mintinline{python}{if} definida dentro de la que comienza en la línea $20$ comprobando si el número es par. El programa solo llegará a comprobar este nuevo \mintinline{python}{if}, si efectivamente se a cumplido la condición de que el número sea par. Si nos fijamos en la estructura del código, vemos que tiene tres niveles de indentación: El primero corresponde al código perteneciente a la función \mintinline{python}{parthreenested}, el segundo corresponde al código la estructura \mintinline{python}{if} más externa y el tercero al código del \mintinline{python}{if} anidado. Si añadieramos un nuevo \mintinline{python}{if} dentro de éste último, deberíamos indentar su código un nivel más.
 \switchcolumn
 We can see that we had added code lines $23-24$. This added code defines a new \mintinline{python}{if} statement defined inside the \mintinline{python}{if} structure that starts at line $20$. The program will only check this new condition if the number is even and it has met the condition imposed in line $20$. If we focus on the code structure, we can see that it has three indentation levels: The first one belongs to the code of function \mintinline{python}{parthreenested}, the second one to the outer \mintinline{python}{if} structure and the last one to the nested \mintinline{python}{if}. If we would add a new \mintinline{python}{if} inside the last one, we should indent the code one level more. 
 \end{paracol}
@@ -2090,177 +2090,86 @@ En ocasiones, es preciso repetir una operación un número determinado de veces 
 
 \paragraph{Bucles for.} \index{Flujo! Bucle for}\index{Bucles! Bucle for}Un bucle \mintinline{python}{for} repite las sentencias contenidas en el bucle un determinado número de veces, es decir realiza un número fijo de iteraciones. La estructura general de un bucle \mintinline{python}{for} se muestra en la figura, \ref{fig:for}
 
-El bucle empieza con la palabra clave for, seguida de una variable a la que hemos dado el nombre genérico de índice. Esta variable irá tomando sucesivamente los valores de los elementos contenidos en el [vector de valores]. El código contenido en el bucle, desde la línea siguiente al \mintinline{python}{for}  se ejecutará tantas veces como valores tenga el vector de valores. Antes de hablar de las sentencias \mintinline{python}{break} y \mintinline{python}{continue}, veamos alguno ejemplos.
+El bucle empieza con la palabra clave for, seguida de una variable a la que hemos dado el nombre genérico de índice. Después viene la palabra clave \mintinline{python}{in}, una lista de valores y el símbolo \mintinline{python}{:}. La variable irá tomando sucesivamente los valores de los elementos contenidos en la [lista de valores]. El código contenido en el bucle, desde la línea siguiente al \mintinline{python}{for}, debe estar indentado, igual que vimos en el caso de las estructuras condicioneales \mintinline{python}{if}.  Se ejecutará tantas veces como valores tenga la lista de valores. Antes de hablar de las sentencias \mintinline{python}{break} y \mintinline{python}{continue}, veamos alguno ejemplos. 
 \end{paracol}
-
-\begin{figure}[h]
+\begin{figure}
 \centering
 \begin{tikzpicture}
 %\usetikzlibrary{shapes.multipart}
-\path (5,0) node(a) [rectangle split,rectangle split parts =2,draw=orange,top color=white,bottom color=orange!30, very thick,align=left,rounded corners]{Estructura de un bucle for
+\path (5,0) node(a) [rectangle split,rectangle split parts =2,draw=orange,top color=white,bottom color=orange!30, very thick,align=left,rounded corners]{Estructura de un bucle for / For loop structure
 \nodepart{two}
 
-for indice=[vector de valores]\\
-\ \ \ ... código\\
-(condición: Break)\\
-\ \ \ ...\\
-(condicición: Continue)\\
-\ \ \ ... código\\
-
-end};		
+\mintinline{python}{for índice/index in [Lista de valores/Values list]}\\
+\ \ \ \mintinline{python}{... código /...code}\\
+\mintinline{python}{(condición: / condition: break)}\\ 
+\ \ \ \mintinline{python}{... código / ...code}\\
+\mintinline{python}{(condición: / condition: continue)}\\
+\ \ \ \mintinline{python}{... código / ... code}\\
+};		
 \end{tikzpicture}
 \bicaption{Esquema general de la estructura de un bucle \mintinline{python}{for} los términos escritos entre paréntesis son opcionales.}{\mintinline{python}{for} structure General outline. Terms enclosed in parentheses are optional.}
 \label{fig:for}
 \end{figure} 
- 
 
 
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=numero\_par.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/introduccion/codigo_abierto/ejemplo_for.py}
+
+\begin{paracol}{2}
+La funcion \mintinline{python}{sumalist}, toma como variable de entrada una lísta de números de cualquier longitud y devuelve como salida la suma de todos los números contenidos en la lista. Además, imprime en el terminal de Ipython cada una de los números. El bucle \mintinline{python}{for} comienza en la línea $22$. La primera vez que el código llega a dicha línea asigna a la variable \mintinline{python}{i} el primer elemento de la lista \mintinline{python}{A}. En la linea $23$ muestra por pantalla el valor dicho elemento. En la línea $24$ suma su contendido a la variable \mintinline{python}{y} y vuelve de nuevo a la línea $22$, Asigna a la variable \mintinline{python}{y} el valor del segundo elemento de \mintinline{python}{A}. El proceso se repite hasta que se han recorrido todos los elementos de la lista. Es entonces cuando el programa termina el bucle y ejecuta la linea $25$, devolviendo el valor de la variable $y$, en la que se ha acumulado la suma de los elementos de la lista.
+
+La función \mintinline{python}{sumaelementos}, toma coma variables de entrada dos listas de igual longitud y devuelve como variable de salida una lista cuyos elementos contienen las sumas de los elementos de las listas de entrada que ocupan la misma posición. El código está protegido por una estructura condicional, de modo que si las lista de entrada no tienen la misma longitud el programa muestra un mensaje por pantalla y devuelve una lista vacía. Si las listas tienen la misma longitud, en la línea $41$ se crea la variable \mintinline{python}{index} empleando el comando \mintinline{python}{range}. Por tanto, \mintinline{python}{index} sera una lista que contendrá los valores enteros desde $0$ hasta la $longitud -1$ de la s listas de entrada. En la línea $42$ se inicia el bucle \mintinline{python}{for} sobre dicha lista \mintinline{python}{i in index}. En la línea $42$ se suman los elementos de las listas de entrada que ocupan la posición indicada por el valos de \mintinline{python}{i} y se añade el resultado a la lista \mintinline{python}{S}. Cuando el bucle ha recorrido y sumado todos los elementos de las listas de entrada, el bucle termina y se devuelve el valor de \mintinline{python}{S}. Esta manera de crear una lista de índices para recorrer los elementos de una estructura de datos se usa con mucha frecuencia en programación.
+
+Volvamos, antes de seguir con los ejemplos, a la estructura de la figura (\ref{fig:for}). En ella aparecen dos palabras clave opcionales que permiten interrumpir o alterar la ejecución de un bucle \mintinline{python}{for}. Ambas, deben siempre incluirse dentro de una estructura condicional. La palabra clave \mintinline{python}{break}, interrumpe la ejecución del bucle \mintinline{python}{for} que la contiene y sigue adelante con la ejecución del resto de las líneas de código que haya por debajo del bucle. La palabra clave \mintinline{python}{continue} salta todas las líneas de código que tenga por debajo, dentro del bucle y empieza una nueva iteración. Para ver su funcionamiento volvamos al programa de ejemplo anterior.
+
+La función \mintinline{python}{firsttime} busca la primera vez que un número \mintinline{python}{b} aparece en una lista \mintinline{python}{A}, devuelve la posición que ocupa en la lista y termina la ejecución. El bucle \mintinline{python}{for} comienza en la línea $55$. La estructura \mintinline{python}{if}, contenida en el bucle \mintinline{python}{for}, comprueba si el elemento correspondiente de la lista coincide con el valor buscado. Si es así, \mintinline{python}{p}, ejecuta la instrucción \mintinline{python}{break} y termina la ejecución del bucle. Si no coincide con el número, incrementa el valor de la variable \mintinline{python}{p} en $1$, y vuelve al principio del bucle. Si el número está en la lista, el valor de \mintinline{python}{p} será menor que la longitud de la lista y por, tanto se mostrará en el terminar de Ipython un mensaje indicando que el número está en la lista y qué posición ocupa. Si el número no está en la lista, el bucle \mintinline{python}{for} no se interrumpe y ek valor de \mintinline{python}{p} coincidirá con la longitud de la lista, mostrando entonces en el terminal de Ipython un mensaje indicando que el número no está en la lista\footnote{Hay maneras mejores de hacer esto mismo. El ejemplo solo pretende mostrar el uso del comando \mintinline{python}{break}}.
+
+La función \mintinline{python}{buscapar} busca los números pares de una lista y crea una nueva lista con los números pares contenidos en la lista original. En la línea $71$ se comprueba si el número es impar y, caso de serlo, la instrucción \mintinline{python}{continue} hace que el programa no ejecute la línea $73$, evitando que los números impares se incluyan en la lista \mintinline{python}{B}, que solo contendrá números pares al final de la ejecución del programa.
+
+\paragraph{bucles for anidados.} \index{Anidación!For anidado} Los bucles \mintinline{python}{for} pueden anidarse unos dentro de otros de modo análogo a como se hace con las estructuras \mintinline{python}{if}. Las funciones \mintinline{python}{listadelistas} y \mintinline{python}{pairs} muestran ejemplos de su uso.
+
+\mintinline{python}{listadelistas} toma una lista de dos dimensiones ---una lista \mintinline{python}{A} formada por listas de números--- y busca cuantas veces aparece un número en ella. Para ello emplea dos bucles \mintinline{python}{for} anidados. En la línea $86$, empieza el primero de los bucles, creando un índice \mintinline{python}{i} que recorrerá la lista. En la línea $87$ comienza un segundo bucle creando un segundo índice \mintinline{python}{j}. Es segundo índice recorrerá cada una de las lista de números incluidas en la lista \mintinline{python}{A}. Este bucle \mintinline{python}{for} interior contiene una estructura condicional que comprueba si el elemento correspodiente, al elemento que ocupa la posición \mintinline{python}{j} dentro de la lista de números \mintinline{python}{i}, coincide con el valor deseado. Si coincide, los índices de número se guardan como una dupla en la lista \mintinline{python}{ind} y se incrementa en una unidad el contador \mintinline{python}{counter}, que lleva la cuenta de las veces que ha aparecido el número. Veamos un ejemplo de cómo funciona,
+\end{paracol}
+
+\begin{center}
+    \begin{minipage}{.7\textwidth}
+    \begin{minted}{python}    
+In [12]: LoL =[[1],[1,2,5],[2,-1,5,3,5],[4,3,2,0,5],[2,1]]
+
+In [13]: from ejemplo_for import listadelistas
+
+In [14]: indice, contador = listadelistas(LoL,5)
+
+In [15]: indice
+Out[15]: [(1, 2), (2, 2), (2, 4), (3, 4)]
+
+In [16]: contador
+Out[16]: 4
+\end{minted}
+\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
+La función nos muestra las veces que aparece el número $4$ en la lista \mintinline{python}{LoL}. Dejamos al sufrido lector que trate de averiguar como funciona la función \mintinline{python}{pairs}.
+
+\paragraph{List comprehension.} Python cuenta con excelentes recursos para realizar operaciones de modo iterativo sobre diversos tipos de estructuras de datos. Entre ellos, vamos a ver una conocida con el nombre de \emph{List comprehension}. La idea es crear una lista, en la que los elementos se obtienen como el resultado de una iteración en otra u otras listas. Su estructura general toma la forma:
+\end{paracol}
+
+\mint{python}{newlist = [expression for item in iterable if condition == True]}
+
+\begin{paracol}{2}
+La nueva lista se forma a partir de una operación (expresión) que se realiza sobre cada elemento (item) de otra estructura de datos (iterable). Además se puede imponer una condición sobre cada elemento para que se lleva a cabo la operación. La última función \mintinline{python}{pair_cmh}  muestra un ejemplo de uso de las \emph{list comprehension}. 
+\end{paracol}
 ======================THE FRONTIER=====================
-% \begin{lstlisting}
-% function y=demofor(x)
-% % este programa emplea un bucle for sencillo para ir mostrando uno 
-% % a uno los elementos del vector de entrada x por pantalla. además  
-% % los suma y guarda el resultado total en el vector y,
 
-% y=0; % iniciamos la suma a cero
 
-% for i=x
-%     disp(i)
-%     y=y+i;
-% end
-% \end{lstlisting}
-
-Si ejecutamos el programa, usando como entrada el vector \texttt{d=[1 9 4 18]},
-
-\begin{verbatim}
->> d=[1 9 4 18]
-
-d =
-
-     1     9     4    18
-
->> suma=demofor(d)
-     1
-
-     9
-
-     4
-
-    18
-so sling your hook!
-
-suma =
-
-    32
-\end{verbatim}
-
-Una vez que el programa llega al bucle \texttt{for}, iguala la variable \texttt{i} al primer valor contenido en el vector de entrada, lo muestra por pantalla y añade su valor a la variable de salida. cuando llega al \texttt{end} del bucle for comprueba que todavía quedan valores del vector de entrada por recorrer, así que vuelve al principio del \texttt{for}, igual la variable \texttt{i} al segundo valor del vector de entrada, suma dicho valor a la variable de salida, llega al \texttt{end} y así sucesivamente hasta que haya recorrido todos los valores del vector de entrada.
-
-El uso más habitual de los bucles, es para recorrer elementos de un vector o de una matriz. por esta razón, lo más frecuente es que no se de explícitamente el vector cuyos elementos debe recorrer el índice del \texttt{for}, sino que se construya empleado el operador \texttt{:},
-\begin{verbatim}
-for indice=principio:incremento:final
-\end{verbatim}
-
-Veamos un ejemplo sencillo para obtener el vector suma de dos vectores,
-% \begin{lstlisting}
-% function s=sumafor(x,y)
-% % este programa emplea un bucle for sencillo para sumar dos vectores
-% % primero comprueba si son del mismo tamaño. Si no lo son da un mensaje 
-% % de aviso
-
-% l1=length(x);
-% l2=length(y);
-% if l1==l2
-%     % construimos un vector de ceros del mismo tamaño que x e y paraa
-%     % guardar el resultado de la suma,
-%     s=zeros(size(x));
-%     % si son iguales los suma elemento a elemento usando un bucle for
-%     for i=1:l1
-%         s(i)=x(i)+y(i);
-%     end
-% else
-%     disp('los vectores son de distinto tamaño')
-% end
-% \end{lstlisting}
-
-En la figura \ref{fig:for}, aparecen dos sentencias opcionales, \texttt{break} y \texttt{continue}.
-
-La sentencia \texttt{break}, permite terminar el bucle \texttt{for} antes de que haya terminado de realizar todas las ejecuciones previstas. La sentencia break va siempre incluida dentro de una condición que, si se cumple interrumpe la ejecución del bucle. Por ejemplo, podemos emplear un bucle \texttt{for} y una sentencia \texttt{break}, para buscar la primera vez que un determinado número aparece en un vector,
-
-% \begin{lstlisting}
-% function posicion=buscanum(x,n)
-% % este programa emplea un bucle for y un break para buscar en el  
-% % vector x, la primera vez que aparece el número n
-
-% % obtenemos la longitud del vector
-% l1=length(x);
-% % iniciamos la variable posicion a un valor absurdo
-% posicion=-1;
-% for i=1:l1
-%     if x(i)==n
-%         posicion=i:
-%         break
-%     end
-% end
-% if posicion==-1
-%     disp('el numero pedido no se encuentra en el vector x') 
-% end
-% \end{lstlisting} 
-
-El programa toma como variables de entrada un vector y el número que debe buscar dentro del vector. Construye un bucle \texttt{for}, con el mismo número de iteraciones que el tamaño del vector. El bucle va comparando los elementos del vector con el número pedido. Cuando encuentra un elemento igual, se ejecuta el código de la estructura if contenida en el bucle; la variable posición toma el valor del índice \texttt{i} del bucle y la sentencia \texttt{break} interrumpe la ejecución del bucle, saltando al final del mismo. Por último, se ha añadido una condición al terminar el bucle, para el caso de que se hayan recorrido todos los elementos del vector sin encontrar el número pedido.
-
-La sentencia \texttt{continue}, se emplea para hacer que una determinada iteración interrumpa su ejecución y salte directamente al comienzo de la siguiente iteración. Debe ir, como en el caso de la sentencia \texttt{break}, incluida en una estructura condicional. Veamos un ejemplo para entender como funciona. Se trata de un programa que admite como entrada un vector de cualquier longitud y devuelve como salida otro vector que contiene solo los números pares contenidos en el vector de entrada,
-
-% \begin{lstlisting}
-% function pares=buscapar(x)
-% % este programa emplea un bucle for y un continue para construir un 
-% % vector de salida con los numeros pares contenidos en el vector de entrada.
-
-% % obtenemos la longitud del vector
-% l1=length(x);
-% % iniciamos el vector de salida a un vector vacío,
-% pares=[];
-% for i=1:l1
-%     if rem(x(i),2)~=0
-%         continue
-%     end
-%     pares=[pares x(i)];
-% end
-% \end{lstlisting}
-
-El funcionamiento es muy sencillo, en cada iteración la sentencia\mintinline{python}{if} comprueba si el número es par. Si no lo es, entra en el código de la estructura\mintinline{python}{if}, ejecuta la sentencia \texttt{continue}, y se salta el resto del código del bucle, volviendo directamente a empezar la siguiente iteración.
-
-\paragraph{bucles for anidados.} \index{Anidación!For anidado}Los bucles \texttt{for} pueden anidarse unos dentro de otros de modo análogo a como se hace con las estructuras\mintinline{python}{if}. Veamos un ejemplo de uso, muy común; calcular la suma de dos matrices,
-
-% \begin{lstlisting}
-% function s=suma_mat(x,y)
-% % este programa emplea dos bucles for anidados para obtener la suma de 
-% % dos matrices.
-
-% % obtenemos el tamaño de las matrices,
-% t1=size(x);
-% t2=size(y);
-% if t1(1)==t2(1)&& t1(2)==t2(2)
-%     % si las matrices tienen el mismo tamaño pueden sumarse...
-%     % construimos una matriz de dicho tamaño para guardar el 
-%     % resultado de la suma
-%     s=zeros(size(x));
-%     % construimos un bucle que recorre las filas de ambas matrices
-%     for i=1:t1(1)
-%         % y dentro, anidamos un bucle que recorre las columnas
-%         for j=1:t1(2)
-%             % Empleando ambos índices para ir sumando los elementos 
-%             % de las dos matrices,
-%             s(i,j)=x(i,j)+y(i,j);
-%         end
-%     end
-% else
-%     % si no tienen el mismo tamaño no se pueden sumar...
-%     disp('las matrices no son del mismo tamaño')
-% end
-% \end{lstlisting} 
-
-Es interesante observar en este ejemplo el funcionamiento de los dos bucles anidados. Cada interación del bucle exterior, avanza una fila, en el recorrido de las matrices, cada iteración del bucle interior recorre todos los elementos de la fila indicada por el bucle exterior.
 """ 
 \paragraph{bucle while.} \index{Flujo! Bucle while}\index{Bucles! Bucle while} Este bucle tiene la misma finalidad que un bucle \texttt{for}, repetir un trozo de código un determinado número de veces. Lo que cambia, es el mecanismo que determina cuantas iteraciones realizará el bucle. En el caso de un bucle \texttt{while} las iteraciones se repiten un número indefinido de veces mientras se cumpla una determinada condición impuesta al principio del bucle. La figura \ref{fig:while} muestra la estructura general de un bucle while.
 
