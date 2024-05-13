@@ -105,13 +105,3 @@ def pairs(A,B):
             if i != j:
                 pares.append((i,j))
     return(pares)
-
-
-
-
-        
-        
-    
-        
-        
-    
