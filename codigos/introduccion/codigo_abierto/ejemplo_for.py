@@ -107,16 +107,7 @@ def pairs(A,B):
     return(pares)
 
 
-def pair_cmh(A,B):
-    """
-    A and B are two list of numbers of the same lenght. The function build a list
-    of pairs, taken one element from and one element from b with the condition that 
-    they should be different. It doesn't the mater the order i.e (1,2) and (2,1)
-    are different a valid'. But, but we will use a list comprehension
 
-    """
-    pares = [(i,j) for i in A for j in B if i != j]
-    return(pares)
 
         
         
