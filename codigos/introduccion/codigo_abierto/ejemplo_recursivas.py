@@ -11,8 +11,10 @@ def fibonacci(n):
     Parameters
     ----------
     n : TYPE integer
-        DESCRIPTION. n is tne fibonacci series term  
-
+        DESCRIPTION. n is the fibonacci series term whose value we whant to 
+        calculate
+    n: es el término de la serie de fibonacci cuyo valor queremos calcular
+        
     Returns 
     -------
     s : TYPE integer
@@ -29,8 +31,6 @@ def fibonacci(n):
 
 def fibo_series(n):
     """
-    
-
     Parameters
     ----------
     n : TYPE integer
