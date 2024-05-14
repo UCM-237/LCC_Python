@@ -2182,7 +2182,7 @@ La función \mintinline{python}{lc_demo}, Crea una lista con los números impare
 
 La segunda función, \mintinline{python}{pair_cmh}, es un poco más compleja, pero deja ver las posibilidades del método. La función crea una lista de duplas, para ello emplea dos estructuras \mintinline{python}{for}, tal y como están escritas, es como si fueran dos \mintinline{python}{for} anidados. Así, la funcion compara  cada elemento \mintinline{python}{i} de la primera lista con todos los elementos \mintinline{python}{j} de la segunda y, si son distintos \mintinline{python}{i != j}, guarda los dos números como una duplas \mintinline{python}{(i,j)} en la lista \mintinline{python}{pares.}
 
-\paragraph{bucle while.} \index{Flujo! Bucle while}\index{Bucles! Bucle while} Este bucle tiene la misma finalidad que un bucle \texttt{for}, repetir un trozo de código un determinado número de veces. Lo que cambia, es el mecanismo que determina cuantas iteraciones realizará el bucle. En el caso de un bucle \texttt{while} las iteraciones se repiten un número indefinido de veces mientras se cumpla una determinada condición impuesta al principio del bucle. La figura \ref{fig:while} muestra la estructura general de un bucle while. El siguiente código muestra algunos ejemplos de uso,
+\paragraph{bucle while.} \index{Flujo! Bucle while}\index{Bucles! Bucle while} Este bucle tiene la misma finalidad que un bucle \texttt{for}, repetir un trozo de código un determinado número de veces. Lo que cambia, es el mecanismo que determina cuantas iteraciones realizará el bucle. En el caso de un bucle \texttt{while} las iteraciones se repiten un número indefinido de veces mientras se cumpla una determinada condición impuesta al principio del bucle. La figura \ref{fig:while} muestra la estructura general de un bucle while. Como sucede en todas las estructuras de programación que hemos visto en Python, es preciso que el código correspondiente al bucle \mintinline{python}{while} esté indentado. El siguiente código muestra algunos ejemplos de uso,
 \end{paracol}
 
 \begin{figure}
@@ -2204,78 +2204,50 @@ La segunda función, \mintinline{python}{pair_cmh}, es un poco más compleja, pe
 \label{fig:while}
 \end{figure}
 
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=examples\_while.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/introduccion/codigo_abierto/examples_while.py}
 
-======================THE FRONTIER============== 
+\begin{paracol}{2}
+La función \mintinline{python}{pmax}, toma como entradas dos números y calcula a qué exponente es necesario elevar el primero de los números para que el resultado sea mayor que el segundo. El código del bucle \mintinline{python}{while} comienza en la línea $16$ comprobando si el número elevado al valor de \mintinline{python}{n} es menor que el valor de la segunda variable de entrada \mintinline{python}{M}. Si efectivamente se cumple esta condición, se ejecuta la línea $17$ que lo único que hace es incrementar en una unidad el valor de \mintinline{python}{n}. A continuación el programa vuelve de nuevo a la línea $16$ y comprueba si se cumple la condición para el nuevo valor de \mintinline{python}{n}. Este proceso continúa hasta que la condición deja de cumplirse. En ese momento, el programa sale del bucle \mintinline{python}{while} y ejecuta la instrucción \mintinline{python}{return}, devolviendo el último valor calculado de \mintinline{python}{n}.
 
-% \begin{lstlisting}
-% function n=potencia(x,max)
-% % este programa emplea un bucle while para calcular la potencia a 
-% % la que hay que elevar un número x para que el resultado sea mayor 
-% % que otro determinado número max
-% % un número.
-
-% % NOTA EL PROGRAMA NO COMPRUEBA QUE LA VARIABLE DE ENTRADA X SEA UN NUMERO,
-% % Si ES UN VECTOR O UNA MATRIZ EL RESULTADO NO TIENE SENTIDO
-  
-% pot=1;
-% n=0;
-% while pot<max % mientras la potencia calculada sea menor que max
-%     n=n+1;
-%     pot=x^n;
-% end
-% \end{lstlisting}
-
-El programa emplea un bucle \texttt{while} para calcular el exponente mínimo al que hay que elevar un número para que rebase una determinada cantidad. El bucle while se ejecuta mientras la potencia calculada sea menor que la variable \texttt{max}; una vez que la potencia rebasa dicho valor el bucle deja de ejecutarse. Un aspecto muy importante del bucle \texttt{while} es que al programarlo hay que asegurarse de que dentro del bucle existe la posibilidad de cambiar la condición de entrada. Si no, el programa no podrá terminar nunca el bucle\footnote{Cuando se produce esta situación por un error en el diseño del programa, el bucle se puede parar pulsando a la vez las teclas ctrl+c}.
-
+Un aspecto muy importante del bucle \texttt{while} es que al programarlo hay que asegurarse de que dentro del bucle existe la posibilidad de cambiar la condición de entrada. Si no, el programa no podrá terminar nunca el bucle\footnote{Cuando se produce esta situación por un error en el diseño del programa, el bucle se puede parar pulsando a la vez las teclas ctrl+c}.
 Las sentencias \texttt{break} y \texttt{continue} son idénticas a las descritas en el caso de los bucles \texttt{for}, por lo que no insistiremos más sobre el asunto.
 
-\paragraph{Bucles while anidados.} \index{Anidación! While anidado} Del mismo modo que se anidan los bucles \texttt{for}, es posible anidar bucles \texttt{while}. Como un ejemplo, vamos a reproducir el programa desarrollado antes para sumar dos matrices, empleando ahora bucles \texttt{while}.
-
-% \begin{lstlisting}
-% function s=suma_while(x,y)
-% % este programa emplea dos bucles while anidados para obtener la 
-% % suma de dos matrices.
-
-% % obtenemos el tamaño de las matrices,
-% t1=size(x);
-% t2=size(y);
-% if t1(1)==t2(1)&& t1(2)==t2(2)
-%     % si las matrices tienen el mismo tamaño pueden sumarse...
-%     % construimos una matriz de dicho tamaño para guardar el 
-%     % resultado de la suma
-%     s=zeros(size(x));
-%     % construimos un bucle que recorre las filas de ambas matrices
-%     i=1; % inicimos un contador para las filas
-%     while i<=t1(1)
-%         % y dentro, anidamos un bucle que recorre las columnas
-%         j=1; % iniciamos un contador para las columnas
-%         while j<=t1(2)
-%             % Empleando ambos índices para ir sumando los elementos 
-%             % de las dos matrices,
-%             s(i,j)=x(i,j)+y(i,j);
-%             j=j+1; % vamos incrementando el indice de columnas
-%         end
-%         i=i+1; % vamos incrementando el indice de filas
-%     end
-% else
-%     % si no tienen el mismo tamaño no se pueden sumar...
-%     disp('las matrices no son del mismo tamaño')
-% end
-% \end{lstlisting}
-
-El ejemplo, es más complicado de programar y menos eficiente que si usáramos bucles \texttt{for}. La razón de incluirlo es puramente ilustrativa. En general, un bucle \texttt{while} debe utilizarse solo cuando el número de iteraciones que se precisa realizar no es fijo, sino que depende de alguna condición propia de los resultados que se van obteniendo a medida que se van realizando iteraciones.
+\paragraph{Bucles while anidados.} \index{Anidación! While anidado} Del mismo modo que se anidan los bucles \mintinline{python}{for}, es posible anidar bucles \mintinline{python}{while}.
+En el código de ejemplo anterior se ha definido una función, \mintinline{python}{L_suma}, Que empela dos bucles \mintinline{python}{while} anidados para sumar los valores de dos listas de listas de números que ocupan la misma posición. Las listas deben tener las mismas dimensiones, mismo número de listas de números y mismo número de valores en cada lista de número. Lo primero que se hace en definir un índice, para ir recorriendo cada una de las listas de números contenidas en las listas de entrada \mintinline{python}{A} y \mintinline{python}{B}. Después se crea una nueva lista \mintinline{python}{C}, vacía. En la línea $34$ se empieza el bucle \mintinline{python}{while} exterior. Este bucle se ejecutará mientras le índice \mintinline{python}{i} sea menor que el número de listas de números contenidas en las listas de entrada. Una vez que se entra en dicho bucle, lo primero que se hace es comprobar cuantos numeros hay en la lista \mintinline{python}{i} y se añade una nueva lista (de números) vacía a la lista \mintinline{python}{C}. El programa entra en el \mintinline{python}{while} interior, que va recorriendo los valores de las listas de números \mintinline{python}{i} contenidas en las listas de entrada, los suma y los añade a la lista \mintinline{python}{C}. Cada vez que termina con una de las listas de números, \mintinline{python}{j = n_num}, El programa sale del bucle interior, incrementa en una unidad el valor de \mintinline{python}{i}, cuenta cuantos números hay en la nueva lista \mintinline{python}{y} añade una nueva lista vacía a \mintinline{python}{C} y vuelve a entrar en el bucle interior. El proceso continúa hasta que se agotan las listas de números, \mintinline{python}{i = n_lista}; cuando se cumple esta condición, el programa sale del bucle \mintinline{python}{while} exterior y devuelve el valor de \mintinline{python}{C}.
 
 \subsection{Funciones recursivas.} \index{Funciones! Recursivas}
-Una función recursiva es una función que se llama a sí misma. Hemos esperado hasta aquí para hablar de ellas porque, de alguna manera, se comportan como un bucle y necesitan una condición de salida para dejar de llamarse a sí mismas y terminar su ejecución. En general, son delicadas de manejar y tienden a consumir mucha memoria ya que cada vez que la función se llama a sí misma necesita crear un nuevo espacio de memoria independiente. Veamos un ejemplo de función recurrente que permite obtener el término enésimo de la sucesión de Fibonacci  
+Una función recursiva es una función que se llama a sí misma. Hemos esperado hasta aquí para hablar de ellas porque, de alguna manera, se comportan como un bucle y necesitan una condición de salida para dejar de llamarse a sí mismas y terminar su ejecución. En general, son delicadas de manejar y tienden a consumir mucha memoria ya que cada vez que la función se llama a sí misma necesita crear un nuevo espacio de memoria independiente. Veamos un ejemplo de función recurrente que permite obtener el término enésimo de la sucesión de Fibonacci
+\end{paracol}
+
 \begin{align*}
 f_0=0, f_1=1, f_2=1, f_3=2, f_4=3, f_5=5, f_6=8, \cdots f_i=f_{i-1}+f_{i-2} \cdots 
 \end{align*}
-
+\begin{paracol}{2}
 La sucesión empieza con los términos $0$ y $1$ y a partir de ahí cada término es la suma de los dos anteriores. Podemos convertir directamente esta definición en código,
+\end{paracol}
 
-%\lstinputlisting{../codigo/matlab/introduccion/fibonacci.m}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=ejemmplo\_recursivas.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/introduccion/codigo_abierto/ejemplo_recursivas.py}
 
-Si n es menor que dos, la función da como valor el término correspondiente (1 o 0). Si n es mayor que dos, vuelve a llamarse a si misma con entrada \texttt{n-1} y \texttt{n-2}, para calcular el valor enésimo de la sucesión a partir de la suma de los dos anteriores, la función se irá llamando a sí misma hasta  llegar a $n<2$. A partir de ahí ira devolviendo los valores obtenidos en cada llamada hasta obtener el enésimo término.
+\begin{paracol}{2}
+Si n es menor que dos, la función \mintinline{python}{fibonacci} da como valor el término correspondiente (1 o 0). Si n es mayor que dos, vuelve a llamarse a si misma con entrada \texttt{n-1} y \texttt{n-2}, para calcular el valor enésimo de la sucesión a partir de la suma de los dos anteriores, la función se irá llamando a sí misma hasta  llegar a $n<2$. A partir de ahí ira devolviendo los valores obtenidos en cada llamada hasta obtener el enésimo término.
+
+La segunda función, \mintinline{python}{fibo_series}, emplea una \emph{list comprehension} para crear una lista con los n primeros terminos de la serie de fibonacci\footnote{si se emplea un valor de n muy grande, es posible que se agote el número máximo de llamadas recursivas a una función admitido por Python, en cuyo caso el programa dará un error}.
 
 \subsection{Algoritmos y diagramas de flujo.} \index{Flujo! Diagrama de Flujo}
 Un algoritmo es, en la definición de la Real Academia: 
@@ -2298,74 +2270,92 @@ El siguiente paso, sería pensar y definir un algoritmo que permita resolver nue
 En ocasiones, facilita la comprensión de un algoritmo representarlo gráficamente mediante un diagrama de flujo. Los diagramas de flujo emplean símbolos bien definidos para representar los distintos paso de un algoritmo y flechas para indicar la relación entre ellos; la relación en la que la información \emph{fluye} de un paso del algoritmo a otro.
 
 No hay una norma rígida para realizar un diagrama de flujo, el grado de detalle con que se describe el algoritmo va en función de las necesidades del programador, o de los destinatarios a quienes va dirigido el diagrama. La idea fundamental es que facilite la comprensión del algoritmo. Se utilizan diversos símbolos para indicar, procedimientos, condiciones, almacenamiento de resultados, etc. La figura \ref{fig:flujo} muestra los tres símbolos más empleados.
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
-%\usetikzlibrary{shapes.geometric}
-\path (5,0) node(a) [ellipse,draw=blue, very thick,align=center]{Inicio y fin del algoritmo}
-(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{procedimentos}
-(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{flujo condicional};
-\end{tikzpicture}
-\caption{Símbolos empleados en diagramas de flujo}
-\label{fig:flujo}
-\end{figure}
-
-Para indicar el inicio y el fin de un algoritmo se emplea como símbolo una elipse. Para indicar un procedimiento concreto, como por ejemplo realizar un cálculo, asignar un valor a una variable, etc, se emplea como símbolo un rectángulo. Por último se emplea un rombo como símbolo, para representar una condición.
-
-Los símbolos se relacionan mediante flechas que indican el sentido en que se ejecuta el algoritmo. los rombos suelen tener dos flechas de salida marcadas con las palabras ``si'' y ``no'', para indicar por donde sigue el flujo de información dependiendo de si la condición representada se cumple o no.
-
-Por último un bucle se representa habitualmente mediante una flecha que devuelve el flujo a un símbolo ya recorrido anteriormente. 
+\end{paracol}
 
 \begin{figure}
 \centering
 \begin{tikzpicture}
 %\usetikzlibrary{shapes.geometric}
-\path (6,0) node(a) [ellipse,draw=blue, very thick,align=center]{inicio}
-(6,-1.5) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Introducir cuantos\\
-números primos se desea obtener ($n$)}
-(6,-3) node(c)[rectangle,draw=blue, thick,rounded corners,align=center]{guardar el número $2$\\
-como primer número primo}
-(6,-5) node(d)[diamond,aspect=3,draw=red,align=center,thick]{¿Se ha alcanzado\\ la cifra pedida de primos?}
-(11,-5) node(e)[ellipse,draw=blue,align=center,very thick]{fin}
-(6,-7) node(f)[rectangle,draw=blue, thick,rounded corners,align=center]{tomar el siguiente número impar}
-(6,-8.3) node(g)[rectangle,draw=blue, thick,rounded corners,align=center]{tomar el primer numero primo\\ de los ya encotrados}
-(6,-10.5) node(h)[diamond,aspect=3,draw=red,align=center,thick]{¿Es divisible el impar entre el primo?}
-(6,-13.5) node(i)[diamond,aspect=3,draw=red,align=center,thick]{¿Se han acabado\\ los números primos\\ ya encontrados?}
-(6,-16) node(j)[rectangle,draw=blue,thick,rounded corners,align=center]{Tomar el siguinte número primo\\ de la lista de los ya encontrados}
-(0,-13.5) node(k)[rectangle,draw=blue,thick,rounded corners,align=center]{añadir el número\\ impar a la lista de\\ primos encontrados};
+\path (5,0) node(a) [ellipse,draw=blue, very thick,align=center]{Inicio y fin del algoritmo\\ Algorithm start and end}
+(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{procedimentos\\ procedures}
+(5,-4) node(c)[diamond,aspect=3,draw=red,thick, align=center]{flujo condicional\\ Conditional flow};
+\end{tikzpicture}
+\bicaption{Símbolos empleados en diagramas de flujo}{Symbols used in flowcharts}
+\label{fig:flujo}
+\end{figure}
+
+\begin{paracol}{2}
+Para indicar el inicio y el fin de un algoritmo se emplea como símbolo una elipse. Para indicar un procedimiento concreto, como por ejemplo realizar un cálculo, asignar un valor a una variable, etc, se emplea como símbolo un rectángulo. Por último se emplea un rombo como símbolo, para representar una condición.
+
+Los símbolos se relacionan mediante flechas que indican el sentido en que se ejecuta el algoritmo. los rombos suelen tener dos flechas de salida marcadas con las palabras ``si'' y ``no'', para indicar por donde sigue el flujo de información dependiendo de si la condición representada se cumple o no.
+
+Por último un bucle se representa habitualmente mediante una flecha que devuelve el flujo a un símbolo ya recorrido anteriormente.
+\end{paracol}
+ 
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+%\usetikzlibrary{shapes.geometric}
+\path (7,0) node(a) [ellipse,draw=blue, very thick,align=center]{Inicio\\ Start}
+(7,-1.5) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Introducir cuantos
+números primos se desea obtener ($n$)\\ Insert how many prime numbers you wish to get ($n$)}
+(7,-3) node(c)[rectangle,draw=blue, thick,rounded corners,align=center]{guardar el número $2$
+como primer número primo\\ save number $2$ as the first prime number}
+(7,-6) node(d)[diamond,aspect=3,draw=red,align=center,thick]{\small ¿Se ha alcanzado \small la cifra pedida de primos? \\ \small Have you got the quantity \small of prime number required?}
+(14,-6) node(e)[ellipse,draw=blue,align=center,very thick]{Fin\\End}
+(7,-9) node(f)[rectangle,draw=blue, thick,rounded corners,align=center]{Tomar el siguiente número impar\\ Take the next odd number}
+(7,-10.8) node(g)[rectangle,draw=blue, thick,rounded corners,align=center]{Tomar el primer numero primo\\ de los ya encontrados\\ Take the first prime number of those already found}
+(7,-13.5) node(h)[diamond,aspect=3,draw=red,align=center,thick]{¿Es divisible el impar entre el primo?\\ Is the odd number divisible by the prime one?}
+(7,-17.5) node(i)[diamond,aspect=3,draw=red,align=center,thick]{\small ¿Se han acabado los números primos ya encontrados?\\ \small Is the list of found prime numbers ended?}
+(7,-20.3) node(j)[rectangle,draw=blue,thick,rounded corners,align=center]{Tomar el Siguiente número primo de la lista de los ya encontrados\\ Take the next number from the found prime numbers list}
+(0,-15.5) node(k)[rectangle,draw=blue,thick,rounded corners,align=center]{Añadir el número\\ impar a la lista de\\ primos encontrados\\ \\Add the odd number\\ to the found\\ primes list};
 \draw[blue,-latex](a.south)--(b);
 \draw[blue,-latex](b.south)--(c);
 \draw[blue,-latex](c.south)--(d);
-\draw[blue,-latex](d.east)--node[auto]{Si}(e);
-\draw[blue,-latex](d.south)--node[auto]{No}(f);
+\draw[blue,-latex](d.east)--node[above]{Sí}node[below]{Yes}(e);
+\draw[blue,-latex](d.south)--node[left]{No} node[right]{Not}(f);
 \draw[blue,-latex](f.south)--(g);
 \draw[blue,-latex](g.south)--(h);
-\draw[blue,-latex](h.west)|-node[auto]{sí}(1,-10.5)|-(f);
-\draw[blue,-latex](h.south)--node[auto]{no}(i);
-\draw[blue,-latex](i.west)--node[auto]{sí}(k);
-\draw[blue,-latex](k.north)|-(0,-5)|-(d);
-\draw[blue,-latex](i.south)--node[auto]{no}(j);
-\draw[blue,-latex](j.east)|-(11,-16)|-(h);
+\draw[blue,-latex](h.west)|-node[below]{Yes}node[above]{Sí}(1,-13.5)|-(f);
+\draw[blue,-latex](h.south)--node[left]{No}node[right]{Not}(i);
+\draw[blue,-latex](i.west)|-node[below]{Yes}node[above]{Sí}(0,-17.5)--(k);
+\draw[blue,-latex](k.north)|-(0,-6)|-(d);
+\draw[blue,-latex](i.south)--node[left]{No}node[right]{Not}(j);
+\draw[blue,-latex](j.east)|-(13.5,-20.3)|-(h);
 \end{tikzpicture}
-\caption{Diagrama de flujo para el problema de los números primos}
+\bicaption{Diagrama de flujo para el problema de los números primos}{Flow chart for the prime numbers problem}
 \label{fig:primos}
 \end{figure}
-
+\begin{paracol}{2}
 La figura \ref{fig:primos} muestra un posible diagrama de flujo para el problema de los números primos. Como puede observarse, contiene más información que la versión que hemos dado del algoritmo descrito con palabras. 
 
 Las líneas que marcan los flujos de información nos indican que será necesario implementar un bucle exterior hasta que se complete el número $n$ de primos solicitados y un bucle interior que deberá comprobar si cada nuevo número impar que probamos, es divisible por los números primos encontrados hasta ese momento.
 
 Hay una tercera condición que debe interrumpir la comprobación para el primer número primo que resulte ser divisor del número que se está comprobando.
 
-Es fácil extraer del diagrama de flujo las estructuras de programación que necesitaremos para elaborar un código que nos permita resolver el problema planteado. Por ejemplo, parece lógico implementar el bucle exterior empleando un bucle \texttt{while}, implementar el bucle interior con un \texttt{for}, que de tantas iteraciones como primos se han encontrado hasta ese momento, Emplear un \texttt{break} para interumpir la comprobación, etc.
+Es fácil extraer del diagrama de flujo las estructuras de programación que necesitaremos para elaborar un código que nos permita resolver el problema planteado. Por ejemplo, parece lógico implementar el bucle exterior empleando un bucle \mintinline{python}{while}, implementar el bucle interior con un \mintinline{python}{for}, que de tantas iteraciones como primos se han encontrado hasta ese momento, Emplear un \mintinline{python}{break} para interumpir la comprobación, etc.
 
-Por supuesto es posible realizar un diagrama de flujo más detallado, en el que incluso se incluya explícitamente parte del código que se va a utilizar. Por ejemplo se podría indicar que se empleará la función \texttt{rem} para comprobar si un número es divisble entre otro. Sin embargo, hay que tener cuidado para evitar que un exceso de detalle dificulte entender la lógica del algoritmo contenida en el diagrama.
+Por supuesto es posible realizar un diagrama de flujo más detallado, en el que incluso se incluya explícitamente parte del código que se va a utilizar. Por ejemplo se podría indicar que se empleará el comando \mintinline{python}{%} para comprobar si un número es divible entre otro. Sin embargo, hay que tener cuidado para evitar que un exceso de detalle dificulte entender la lógica del algoritmo contenida en el diagrama.
 
-Por último el algoritmo se codifica dando lugar a un programa de ordenador que permite resolver el problema. Para ello, hay que identificar las instrucciones del algoritmo con estructuras de programación validas: bucles, condicionales, etc. Veamos un posible código para generar números primos, siguiendo el algoritmo descrito. 
- 
-% \lstinputlisting{../codigo/matlab/introduccion/primos.m}
+Por último el algoritmo se codifica dando lugar a un programa de ordenador que permite resolver el problema. Para ello, hay que identificar las instrucciones del algoritmo con estructuras de programación validas: bucles, condicionales, etc. Veamos un posible código para generar números primos, siguiendo el algoritmo descrito.
 
+El siguiente código muestra dos funciones para calcular los $n$ primeros números primos La primera emplea una variable de aviso para detectar cuando un número impar no es divisible por todos los primos anteriores a él.
+
+La segunda emplea una estructura \mintinline{python}{for} especial definida en python, de la que no hemos hablado anteriormente. Se trata de la estructura \mintinline{python}{for - else}.
+
+\end{paracol}
+
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=primos.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/introduccion/codigo_abierto/primos.py}
+===================== The Frontier =========================
 \subsection{Exportar e importar datos en Matlab} \label{fpf}
 
 \paragraph*{Datos en formato propio de Matlab}
