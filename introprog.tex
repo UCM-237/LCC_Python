@@ -2159,40 +2159,53 @@ Out[16]: 4
 \begin{paracol}{2}
 La función nos muestra las veces que aparece el número $4$ en la lista \mintinline{python}{LoL}. Dejamos al sufrido lector que trate de averiguar como funciona la función \mintinline{python}{pairs}.
 
-\paragraph{List comprehension.} Python cuenta con excelentes recursos para realizar operaciones de modo iterativo sobre diversos tipos de estructuras de datos. Entre ellos, vamos a ver una conocida con el nombre de \emph{List comprehension}. La idea es crear una lista, en la que los elementos se obtienen como el resultado de una iteración en otra u otras listas. Su estructura general toma la forma:
+\paragraph{List comprehension.} \index{List comprehesion}Python cuenta con excelentes recursos para realizar operaciones de modo iterativo sobre diversos tipos de estructuras de datos. Entre ellos, vamos a ver una conocida con el nombre de \emph{List comprehension}. La idea es crear una lista, en la que los elementos se obtienen como el resultado de una iteración en otra u otras listas. Su estructura general toma la forma:
 \end{paracol}
 
 \mint{python}{newlist = [expression for item in iterable if condition == True]}
 
 \begin{paracol}{2}
-La nueva lista se forma a partir de una operación (expresión) que se realiza sobre cada elemento (item) de otra estructura de datos (iterable). Además se puede imponer una condición sobre cada elemento para que se lleva a cabo la operación. La última función \mintinline{python}{pair_cmh}  muestra un ejemplo de uso de las \emph{list comprehension}. 
+La nueva lista se forma a partir de una operación (expresión) que se realiza sobre cada elemento (item) de otra estructura de datos (iterable). Además se puede imponer una condición sobre cada elemento para que se lleva a cabo la operación. El siguinete script de Python, contiene un par de ejemplos,
 \end{paracol}
-======================THE FRONTIER=====================
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=List\_comprehesion\_example.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/introduccion/codigo_abierto/List_comprehesion_example.py}
 
+\begin{paracol}{2}
+La función \mintinline{python}{lc_demo}, Crea una lista con los números impares contendidos en otra lista. ES fácil la estructura de la \emph{list comprehesion}, creada en la línea $18$: la lista \mintinline{python}{B}, está formada por los elementos \mintinline{python}{i} incluidos en la lista \mintinline{python}{A}, que cumplan \mintinline{python}{i != 0}, es decir, que no sean divisibles por dos y, por tanto, impares. 
 
-""" 
-\paragraph{bucle while.} \index{Flujo! Bucle while}\index{Bucles! Bucle while} Este bucle tiene la misma finalidad que un bucle \texttt{for}, repetir un trozo de código un determinado número de veces. Lo que cambia, es el mecanismo que determina cuantas iteraciones realizará el bucle. En el caso de un bucle \texttt{while} las iteraciones se repiten un número indefinido de veces mientras se cumpla una determinada condición impuesta al principio del bucle. La figura \ref{fig:while} muestra la estructura general de un bucle while.
+La segunda función, \mintinline{python}{pair_cmh}, es un poco más compleja, pero deja ver las posibilidades del método. La función crea una lista de duplas, para ello emplea dos estructuras \mintinline{python}{for}, tal y como están escritas, es como si fueran dos \mintinline{python}{for} anidados. Así, la funcion compara  cada elemento \mintinline{python}{i} de la primera lista con todos los elementos \mintinline{python}{j} de la segunda y, si son distintos \mintinline{python}{i != j}, guarda los dos números como una duplas \mintinline{python}{(i,j)} en la lista \mintinline{python}{pares.}
 
-\begin{figure}[h]
+\paragraph{bucle while.} \index{Flujo! Bucle while}\index{Bucles! Bucle while} Este bucle tiene la misma finalidad que un bucle \texttt{for}, repetir un trozo de código un determinado número de veces. Lo que cambia, es el mecanismo que determina cuantas iteraciones realizará el bucle. En el caso de un bucle \texttt{while} las iteraciones se repiten un número indefinido de veces mientras se cumpla una determinada condición impuesta al principio del bucle. La figura \ref{fig:while} muestra la estructura general de un bucle while. El siguiente código muestra algunos ejemplos de uso,
+\end{paracol}
+
+\begin{figure}
 \centering
 \begin{tikzpicture}
 %\usetikzlibrary{shapes.multipart}
-\path (5,0) node(a) [rectangle split,rectangle split parts =2,draw=yellow,top color=white,bottom color=yellow!40, very thick,align=left,rounded corners]{Estructura de un bucle while
+\path (5,0) node(a) [rectangle split,rectangle split parts =2,draw=yellow,top color=white,bottom color=yellow!40, very thick,align=left,rounded corners]{Estructura de un bucle while /while Loop structure
 \nodepart{two}
 
-while condición\\
-\ \ \ ... código\\
-(condición: Break)\\
-\ \ \ ...\\
-(condicición: Continue)\\
-\ \ \ ... código\\
-end};		
+\mintinline{python}{while condición/condition:}\\
+\ \ \ \mintinline{python}{... código/ ... code}\\
+\mintinline{python}{(condición/condition: break)}\\
+\ \ \ \mintinline{python}{...}\\
+\mintinline{python}{(condición/condition: continue)}\\
+\ \ \ \mintinline{python}{... código/ ...code}\\
+};		
 \end{tikzpicture}
-\caption{Esquema general de la estructura de un bucle \texttt{while} los términos escritos entre paréntesis son opcionales.}
+\bicaption{Esquema general de la estructura de un bucle \texttt{while} los términos escritos entre paréntesis son opcionales.}{General structure for a while loop. Terms enclosed in parentheses are optional.}
 \label{fig:while}
 \end{figure}
 
-Veamos un ejemplo sencillo. 
+
+======================THE FRONTIER============== 
 
 % \begin{lstlisting}
 % function n=potencia(x,max)
