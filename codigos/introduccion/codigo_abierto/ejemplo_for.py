@@ -51,15 +51,18 @@ def firsttime(A,b):
     Si no aparece muestra un mensaje por pantalla
     This program find the first time a number b apears in a list A
     """
-    p =0
-    for i in A:
+    p = 0
+    for i in A:        
         if i==b:
-            return(p)
             break
         p = p + 1 #p += 1
-    print('el numero no esta en la lista')
-    print('the number is not in the list')
-    return('no esta')
+    if p == len(A):
+        print('el número', b, ' no está en la lista')
+        print('number', b, 'is not included in the list')
+    else:
+        print('el número', b, 'ocupa en la lista la posición', p )
+        print('number', b, 'is located at position', p, 'in the list' )
+    return(p)
 
 def buscapar(A):
     """
