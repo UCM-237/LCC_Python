@@ -478,3 +478,74 @@ plt.ylabel("Número de paises")
 \end{figure}
 \section{Dibujar en 3D}
 \section{Animaciones}
+
+
+
+
+\newpage
+===============================================\\
+he traído aquí el examen, porque aquí acababa antes el primer tema de programación\\
+=================================================
+\section{Test del curso 2020/21}
+\begin{enumerate}
+
+\item  El movimiento de un cuerpo en el plano viene descrito por las siguientes ecuaciones,
+
+\begin{align}
+x(t) &= \sin(2 \pi \, \omega_1 t)\\
+y(t) &= \cos(2 \pi \, \omega_2 t)\\
+z(t) &= a\cos(2\pi \, \omega_1 t) \label{eq:3}
+\end{align}
+
+donde $x,y,z$ representan las coordenadas del cuerpo en el instante de tiempo $t$ medidas en metros,  $w_1$ y $w_2$ son frecuencias fijas medidas en $rad\cdot s^{-1}$ y $a$ es una amplitud fija medida en metros.
+
+\begin{enumerate}
+	\item \label{ap1} (\textbf{1.5 puntos}) Escribe una función que:
+
+\begin{enumerate}
+	\item Tome como variables de entrada las frecuencias $w_1$, $w_2$, la amplitud $a$ .
+	\item Haga el cálculo de la trayectoria en tres dimensiones descrita por el cuerpo en el intervalo de tiempo $[0,1]$. Considera incrementos de tiempo de $0.01s$.
+	\item Dibuje en una gráfica la trayectoria descrita por el cuerpo en el espacio. Cada eje del gráfico deberá llevar  una etiqueta indicando de qué variable se trata $x$, $y$ ó $z$.
+	\item La salida serán tres vectores con los valores de $x$, $y$ y $z$ calculados para cada instante de tiempo.
+	\end{enumerate}
+
+\item (\textbf{1.5 puntos}) Añade a la función creada en el apartado anterior el código necesario para que:
+	\begin{enumerate}
+	\item \textbf{Solo si} se le dan dos variables de entrada en lugar de tres, entonces calcule la trayectoria que describiría el cuerpo en el plano si se eliminara la ecuación (\ref{eq:3}) de las ecuaciones del sistema. (NOTA: La función debe seguir funcionando igual que en el apartado anterior si se le dan tres entradas. Emplea el comando nargin).
+	\item El resultado deberá también representarse gráficamente, pero solo en dos dimensiones, y devolver la variable $z$ como un vector vacío. 
+	\end{enumerate}
+
+\item \label{ap2} (\textbf{1.5 puntos}) Crea un un \emph{live script} que genere dos  vectores de frecuencias: \texttt{W1} y \texttt{W2} de  modo que el primero contenga los números impares comprendidos entre $1$ y $7$ y el segundo los números pares comprendidos entres $2$ y $8$.  Emplea la función creada en el apartado anterior para calcular el valor de las trayectorias obtenidas tomando como entradas para  $\omega_1, \omega_2$,  todos los pares posibles de la forma: \texttt{W1(i)} y \texttt{W2(j)}. Supón que no hay tercera entrada $a$. Realiza los cálculos empleando bucles.
+
+\item (\textbf{1 punto}) Añade a tu programa el código necesario para que dibuje cada resultado en un \emph{subplot} de modo que la figura resultante tenga $4\times4$ \emph{subplots} (ver figura al dorso).  Debes crear los \emph{subplots} empleando los mismos bucles del apartados anterior. 
+
+\item (\textbf{0.5 puntos}) Repite los cálculos de los apartados c) y d) pero tomando ahora $a=1$.
+\end{enumerate}
+
+\item Una matriz cuadrada $A$, de dimensión arbitraria $(n\times n)$, cuyos elementos $a_{ij} \in \mathbb{Z}$, se define como \emph{buenrollista} cuando las suma de los valores pares de cada fila es mayor o igual que la suma de los valores  impares de la columna correspondiente, i.e., satisface la siguiente relación:
+\begin{equation}
+	\sum_{j=1}^n a_{ij\text{(par)}} \geq \sum_{j=1}^n a_{ji\text{(impar)}}, \quad \forall i\in\{1,...,n\}
+\end{equation}
+
+\begin{enumerate}
+\item (\textbf{1.5 puntos}) Escribe  una función que tome como variable de entrada una matriz cuadrada de cualquier dimensión 
+y calcule un vector con las sumas de los valores pares de los elementos de cada una de su filas  y otro vector con las sumas de los elementos impares de cada una de sus columnas.
+\item (\textbf{1.5 puntos}) Añade a la función anterior el código necesario para que compruebe, empleando los vectores obtenidos en el apartado anterior, si la función es \emph{buenrollista} y muestre un mensaje por pantalla indicando si lo es o no.
+\item (\textbf{1 punto}) Aplica la función desarrollada a la siguiente matriz:
+\begin{equation*}
+\begin{pmatrix}
+2&3&4&6&1\\
+5&4&-2&3&0\\
+4&-1&5&4&-6\\
+4&2&4&5&8\\
+3&0&-3&-3&6
+\end{pmatrix}
+\end{equation*}
+\end{enumerate}
+\end{enumerate}
+\noindent\rule{\textwidth}{0.4pt}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{lisa1.eps}
+\caption{vista de la figura con los ocho subplots} \label{fig:1}
+\end{figure}
