@@ -977,7 +977,6 @@ La traza de la suma de dos matrices cuadradas $A$ y $B$ del mismo orden, coincid
 tr(A+B)=tr(A)+tr(B)
 \end{equation*}
 
-========================= THE FRONTIER ======================================
 \begin{paracol}{2}
 Dada una  matriz $A$ de dimensión $m\times n$  y una matriz $B$ de dimensión $n \times m$, se  cumple que,    
 \end{paracol}
@@ -1034,7 +1033,7 @@ A=\begin{pmatrix}
 a_{11}
 \end{pmatrix} \rightarrow \vert A \vert =a_{11}
 \end{equation*}
-\begin{paracol}
+\begin{paracol}{2}
 Se denomina menor complementario o simplemente menor, $M_{ij}$ del elemento $a_{ij}$ de una matriz $A$, a la matriz que resulta de eliminar de la matriz $A$ la fila $i$ y la columna $j$ a las que pertenece el elemento $a_{ij}$. Por ejemplo,
 \end{paracol}
 
@@ -1151,45 +1150,21 @@ desarrollándolo por los elementos de la primera columna, como,
 =& 1\cdot (-1)^2\cdot \left[ (-2)\cdot 5 - 6\cdot 3 \right] +3\cdot (-1)^3\cdot  \left[ 0\cdot 5 - 6\cdot (-2)\right] + 0\cdot (-1)^4 \cdot \left[ 0\cdot 3 - (-2)\cdot (-2)\right]= -64
 \end{align*}
 
-Podemos programar en Matlab una función recurrente que calcule el determinante de una matriz de rango $n\times n$. (El método no es especialmente eficiente pero ilustra el uso de funciones recursivas.
+Podemos programar en Python una función recurrente que calcule el determinante de una matriz de rango $n\times n$. (El método no es especialmente eficiente pero ilustra el uso de funciones recursivas.
 
-\begin{lstlisting}
-function d=determinante(M)
-% este programa, calcula el determinante de una matriz empleando la formula
-% de Laplace. La función es recursiva, (se llama a si misma sucesivamente
-% para calcular los cofactores necesarios). Desarrolla siempre por los
-% elementos de la primera columna. (Es un prodigio de ineficiencia numerica,
-% pero permite manejar bucles y funciones recursivas, asi que supongo que
-% puede ser útil para los que empiezan a programar).
-% un posible ejercicio para ver lo malo que es el método, consiste ir
-% aumentando la dimension de la matriz y comparar lo que lo tarde en
-% calcular el determinante con lo que tarda la función de Matlab det...
-
-% primero comprobamos que la matriz suministrada es cuadrada:
-d=0;
-[a,b]=size(M);
-if a~=b
-    disp('la matriz no es cuadrada, Campeón')
-    d=[];
-else
-    for i=1:a
-        if a==1
-            d=M;
-        else
-            % Eliminamos la fila y columna que toque
-            N=M([1:i-1 i+1:a],2:b);
-            % Añadimos el calculo correspondiente al cofactor
-            d=(-1)^(i+1)*M(i,1)*determinante(N)+d;
-            % pause
-        end
-    end
-end
-
-\end{lstlisting}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=determinante.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/Algebra/codigo_abierto/determinante.py}
 \begin{flalign*}
-&&\reversemathwitch*    novicio
+&&\reversemathwitch*
 \end{flalign*}
-
+\begin{paracol}{2}
 Entre las propiedades de los determinantes, destacaremos las siguientes,
 \begin{enumerate}
 \item El determinante del producto de un escalar $a$ por una matriz $A$ de dimensión $n\times n$ cumple,
@@ -1210,6 +1185,7 @@ Entre las propiedades de los determinantes, destacaremos las siguientes,
 Una matriz es singular si su determinante es cero.
 
 El rango de una matriz se define como el tamaño de la submatriz más grande dentro de $A$, cuyo determinante es distinto de cero. Así por ejemplo la matriz,
+\end{paracol}
 \begin{equation*}
 A=\begin{pmatrix}
 1& 2& 3\\
@@ -1217,42 +1193,83 @@ A=\begin{pmatrix}
 7& 8& 9
 \end{pmatrix} \rightarrow \vert A \vert =0
 \end{equation*}
-Es una matriz singular y su rango es dos,
+\begin{paracol}{2}
+Es una matriz singular y su rango es dos,    
+\end{paracol}
+
 \begin{equation*}
-\begin{matrix}
+\left \vert \begin{matrix}
 1& 2\\
 4& 5
-\end{matrix}=-3 \neq 0 \Rightarrow r(A)=2
+\end{matrix} \right \vert=-3 \neq 0 \Rightarrow r(A)=2
 \end{equation*}
+\begin{paracol}{2}
+Para una matriz cuadrada no singular, su rango coincide con su dimensión.
 
-Para una matriz no singular, su rango coincide con su orden.
+En Numpy se puede obtener el rango de una  matriz mediante el comando \mintinline{python}{rank},
+\end{paracol}
+\begin{center}
+\begin{minipage}{0.5\textwidth}
+\begin{minted}{python}
+In [395]: A
+Out[395]: 
+array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
 
-En Matlab se puede estimar el rango de una  matriz mediante el comando \texttt{rank},
-\begin{verbatim}
->> A=[1 2 3
-4 5 6
-7 8 9]
-A =
-
-     1     2     3
-     4     5     6
-     7     8     9
->> r=rank(A)
-r =
-     2
-\end{verbatim}
-
-\paragraph{Inversión.} Dada una matriz cuadrada no singular $A$ existe una única matriz $A^{-1}$ que cumple,
+In [396]: np.linalg.matrix_rank(A)
+Out[396]: 2
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{paracol}{2}
+\paragraph{Inversión.} Dada una matriz cuadrada no singular $A$ de dimension $n$ existe una única matriz $A^{-1}$ de dimension $n$ que cumple,
 \begin{equation*}
-A_{n\times n}\cdot A_{n\times n}^{-1}=I_{n\times n}
+A\cdot A^{-1}=I_{n\times n}
 \end{equation*}
+Donde $I_{n\times n}$ es la matriz indentidad de dimensión $n$.
+La matriz $A^{-1}$ recibe el nombre de matriz inversa de $A$, y  en numpy puede calcularse a partir de $A$ como \mintinline{python}{np.linalg.inv(A)}, ó \mintinline{python}{np.linalg.matrix_power(A,-1)}
+En el segundo caso, estamos empleando la función, del submódulo linalg de numpy, \mintinline{python}{matrix.power(A,n)} que permite calcular el resultado de elevar una matriz a una pontencia $A^n$.
+\end{paracol}
+\begin{center}
+\begin{minipage}{0.7\textwidth}
+\begin{minted}{python}
+In [409]: B = np.linalg.inv(A)
 
-La matriz $A^{-1}$ recibe el nombre de matriz inversa de $A$, y puede calcularse a partir de $A$ como,
+In [410]: B
+Out[410]: 
+array([[ 1.29166667, -0.58333333, -0.04166667],
+       [ 0.58333333, -0.16666667, -0.08333333],
+       [-0.48611111,  0.30555556,  0.06944444]])
+
+In [411]: B @ A
+Out[411]: 
+array([[ 1.00000000e+00, -5.55111512e-17, -1.11022302e-16],
+       [ 0.00000000e+00,  1.00000000e+00, -1.11022302e-16],
+       [ 0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
+
+In [412]: np.linalg.matrix_power(A,-1)
+Out[412]: 
+array([[ 1.29166667, -0.58333333, -0.04166667],
+       [ 0.58333333, -0.16666667, -0.08333333],
+       [-0.48611111,  0.30555556,  0.06944444]])
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{flalign*}
+
+&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+\end{flalign*}
+\begin{paracol}{2}
+La inversa de una matriz puede obtenerse a partir de la expresión,
+\end{paracol}
 \begin{equation*}
 A^{-1}=\frac{1}{\vert A \vert}[adj(A)]^T
 \end{equation*}
-
-Donde $adj(A)$ es la matriz adjunta de $A$, que se obtiene sustituyendo cada elemento $a_{ij}$ de $A$, por su cofactor $C_{ij}$. A continuación incluimos el código en Matlab de una función \texttt{inversa} que calcula la inversa de una matriz. La función \texttt{inversa} llama a su vez a la función \texttt{determinante} descrita más arriba. Lo ideal es crear un fichero \texttt{inversa.m} que incluya las dos funciones una detrás de la otra tal y como aparecen escritas a continuación. De este modo, si llamamos desde el \emph{workspace} de Matlab a la función \texttt{inversa}, esta encuentra siempre el código de \texttt{deteminante} ya que está contenido en el mimo fichero.
+========================= THE FRONTIER ======================================
+\begin{paracol}{2}
+Donde $adj(A)$ es la matriz adjunta de $A$, que se obtiene sustituyendo cada elemento $a_{ij}$ de $A$, por su cofactor $C_{ij}$. A continuación incluimos el código en Python de una función, \mintinline{python}{inver}, que calcula la inversa de una matriz. La función \mintinline{python}{inver} llama a su vez a la función \mintinline{python}{determi} descrita más arriba, por lo que debemos importar el módulo \mintinline{python}{determinante} en el módulo en que vamos a crear la función \mintinline{python}{inver}.
+\end{paracol}
 
 \begin{lstlisting}
 function B=inversa(A)
@@ -1335,34 +1352,10 @@ else
 end
 end
 \end{lstlisting} 
+\begin{flalign*}
+&&\reversemathwitch*
+\end{flalign*}
 
-Como siempre, Matlab incluye una función propia \texttt{inv} para calcular la inversa de una matriz,
-\begin{verbatim}
-A =
-
-     1     0    -2
-     3    -2     3
-     0     6     5
->> AI=inv(A)
-AI =
-    0.4375    0.1875    0.0625
-    0.2344   -0.0781    0.1406
-   -0.2813    0.0938    0.0313
->> A*AI
-ans =
-    1.0000         0         0
-         0    1.0000         0
-   -0.0000    0.0000    1.0000
-\end{verbatim}
- 
-Alternativamente, podemos calcular la inversa, directamente como \texttt{A\^\ -1},
-\begin{verbatim}
->> AI=A^-1
-AI =
-    0.4375    0.1875    0.0625
-    0.2344   -0.0781    0.1406
-   -0.2813    0.0938    0.0313
-\end{verbatim} 
 Algunas propiedades relacionadas con la inversión de matrices son,
 \begin{enumerate}
 \item Inversa del producto de dos matrices,
