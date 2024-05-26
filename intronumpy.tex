@@ -1257,7 +1257,6 @@ array([[ 1.29166667, -0.58333333, -0.04166667],
 \end{minipage}
 \end{center}
 \begin{flalign*}
-
 &\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
 \end{flalign*}
 \begin{paracol}{2}
@@ -1266,10 +1265,10 @@ La inversa de una matriz puede obtenerse a partir de la expresión,
 \begin{equation*}
 A^{-1}=\frac{1}{\vert A \vert}[adj(A)]^T
 \end{equation*}
-========================= THE FRONTIER ======================================
 \begin{paracol}{2}
-Donde $adj(A)$ es la matriz adjunta de $A$, que se obtiene sustituyendo cada elemento $a_{ij}$ de $A$, por su cofactor $C_{ij}$. A continuación incluimos el código en Python de una función, \mintinline{python}{inver}, que calcula la inversa de una matriz. La función \mintinline{python}{inver} llama a su vez a la función \mintinline{python}{determi} descrita más arriba, por lo que debemos importar el módulo \mintinline{python}{determinante} en el módulo en que vamos a crear la función \mintinline{python}{inver}.
+Donde $adj(A)$ es la matriz adjunta de $A$, que se obtiene sustituyendo cada elemento $a_{ij}$ de $A$, por su cofactor $C_{ij}$. A continuación incluimos el código en Python de una función, \mintinline{python}{inver}, que calcula la inversa de una matriz. La función \mintinline{python}{inver} llama a su vez a la función \mintinline{python}{dumbdet} descrita más arriba, por lo que debemos importar el módulo \mintinline{python}{determinante} en el módulo en que vamos a crear la función \mintinline{python}{inver}.
 \end{paracol}
+========================= THE FRONTIER ======================================
 
 \begin{lstlisting}
 function B=inversa(A)
