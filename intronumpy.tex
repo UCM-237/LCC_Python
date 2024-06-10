@@ -367,9 +367,9 @@ array([[ 4.,  5.],
 \section{Operaciones matriciales}\label{opmatr}
   
 \begin{paracol}{2}
-A continuación definiremos las operaciones matemáticas más comunes, definidas sobre matrices. 
+A continuación definiremos las operaciones matemáticas más comunes, definidas sobre matrices. Vamos a empezar por aquellas que se realizan elemento a elemento, entre aquellos elementos que ocupan la misma posición en las matrices que se operan,
 
-\paragraph{suma.} La suma de dos matrices, se define como la matriz resultante de sumar los elementos que ocupan en ambas la misma posición. Solo está definida para matrices del mismo orden,
+\paragraph{Suma.} La suma de dos matrices, se define como la matriz resultante de sumar los elementos que ocupan en ambas la misma posición. Solo está definida para matrices del mismo orden,
 \end{paracol}
 \begin{gather*}
 C=A+B\\
@@ -400,35 +400,78 @@ La suma de matrices cumple las siguientes propiedades,
 \item Elemento opuesto: La opuesta a una matriz se obtiene cambiando de signo todos sus elementos, $A_{op}=-A$
 \end{enumerate}
 En numpy el signo $+$ se también utiliza para representar la suma de matrices, por lo que la suma de dos matrices puede obtenerse directamente como,
+\end{paracol}
 \begin{center}
     \begin{minipage}{.5\textwidth}
     \begin{minted}{python}
-In [370]: import numpy as np
-In [371]: A = np.array([[1,3,5],[2,4,6]])
-In [372]: A
-Out[372]: 
+In [0]: import numpy as np
+In [1]: A = np.array([[1,3,5],[2,4,6]])
+In [2]: A
+Out[2]: 
 array([[1, 3, 5],
        [2, 4, 6]])
 
-In [373]: B = np.array([[3,-2,0],[1,-4,3]])
+In [3]: B = np.array([[3,-2,0],[1,-4,3]])
 
-In [374]: A+B
-Out[374]: 
+In [4]: A+B
+Out[4]: 
 array([[4, 1, 5],
        [3, 0, 9]])
 
-In [375]: 
     \end{minted}
         
     \end{minipage}
 \end{center}
-
-
-
-En numpy, podemos crear una matriz de cualquier orden, compuesta exclusivamente por ceros mediante el comando\\ \mintinline{python}{numpy.zeros((m,n))}, donde $m$ es el número de filas y $n$ el de columnas de la matriz de ceros resultante. Si damos un único valor, \mintinline{python}{numpy.zeros(n)}, obtenedremos un vector formado por $n$ ceros.
+\begin{paracol}{2}
+\paragraph{Multiplicación elemento a elemento.} No es propiamente una operación matricial. Dadas dos matrices $A$ y $B$ de las mismas dimensiones, si las multiplicamos elemento a elemento, obtendremos una nueva matriz $C$ tal que, $c_{i,j} = a_{i,j}b_{i,j}$. Al igual que la suma, el producto elemento a elemento es asociativo y conmutativo. 
+En Numpy el simbolo para la multiplicación elemento a elemento es el asterisco *,
 \end{paracol}
 \begin{center}
     \begin{minipage}{.5\textwidth}
+        \begin{minted}{python}
+In [49]: A
+Out[49]: 
+array([[1, 2],
+       [2, 0],
+       [3, 5]])
+
+In [50]: B
+Out[50]: 
+array([[-3,  1],
+       [ 0,  2],
+       [ 1, -4]])
+
+In [51]: A*B
+Out[51]: 
+array([[ -3,   2],
+       [  0,   0],
+       [  3, -20]])
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{paracol}{2}
+\paragraph{División elemento a elemento.} Es análoga a la multiplicación que acabamos de ver. Si dividimos elemento a elemento una matrix $A$ entre otra matriz $B$, ambas de las mismas dimensiones, obtenemos una matriz $C$ cuyos elementos cumplen $c_{i,j} = a_{i,j}/b_{i,j}$. El símbolo que se emplea es el mismo de la división ordinaria entre números.
+
+en el ejemplo siguiente, dividimos entre sí las dos matrices del ejemplo anterior, es interesante observar como Python nos advierte de la división entre cero, y asigna al elemento en que se produce el valor \mintinline{python}{inf}
+\end{paracol}
+\begin{center}
+    \begin{minipage}{\textwidth}
+        \begin{minted}{python}
+In [52]: A/B
+/tmp/ipykernel_10098/713994841.py:1: RuntimeWarning: divide by zero encountered in divide
+  A/B
+Out[52]: 
+array([[-0.33333333,  2.        ],
+       [        inf,  0.        ],
+       [ 3.        , -1.25      ]])
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{paracol}{2}
+En numpy, podemos crear una matriz de cualquier orden, compuesta exclusivamente por ceros mediante el comando\\ \mintinline{python}{numpy.zeros((m,n))}, donde $m$ es el número de filas y $n$ el de columnas de la matriz de ceros resultante. Si damos un único valor, \mintinline{python}{numpy.zeros(n)}, obtenedremos un vector formado por $n$ ceros.
+\end{paracol}
+\begin{center}
+    \begin{minipage}{.3\textwidth}
         \begin{minted}{python}
 In [375]: np.zeros(3)
 Out[376]: array([0., 0., 0.])
@@ -467,8 +510,9 @@ array([[0, 0, 0],
 
 \begin{paracol}{2}
 \paragraph{Transposición}
-Dada una matriz $A$, su transpuesta $A^T$ se define como la matriz que se obtiene intercambiando sus filas con sus columnas,    
+Dada una matriz $A$, su transpuesta $A^T$ se define como la matriz que se obtiene intercambiando sus filas con sus columnas.     
 \end{paracol}
+
 
 \begin{gather*}
 A \rightarrow  A^T\\
@@ -1268,93 +1312,21 @@ A^{-1}=\frac{1}{\vert A \vert}[adj(A)]^T
 \begin{paracol}{2}
 Donde $adj(A)$ es la matriz adjunta de $A$, que se obtiene sustituyendo cada elemento $a_{ij}$ de $A$, por su cofactor $C_{ij}$. A continuación incluimos el código en Python de una función, \mintinline{python}{inver}, que calcula la inversa de una matriz. La función \mintinline{python}{inver} llama a su vez a la función \mintinline{python}{dumbdet} descrita más arriba, por lo que debemos importar el módulo \mintinline{python}{determinante} en el módulo en que vamos a crear la función \mintinline{python}{inver}.
 \end{paracol}
-========================= THE FRONTIER ======================================
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=inversa.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/Algebra/codigo_abierto/inversa.py}
 
-\begin{lstlisting}
-function B=inversa(A)
-% este programa calcula la inversa de una matriz a partir de definición
-% típica: A^(-1)=[adj(A)]'/det(A)
-% Se ha includo al final del programa una funcion (determinante) para 
-% calcular determinantes
-% Todo el programa es MUY INEFICIENTE. El único interes de esto es enseñar que
-% las estructuras basicas de programacion funcionan, y como se manejan las
-% llamadas a funciones en Matlab etc.
-
-
-% Lo primero que hacemos es comprobar si la matriz es cuadrada
-% primero comprobamos que la matriz suministrada es cuadrada:
-[a,b]=size(A);
-if a~=b
-    disp('la matriz no es cuadrada, Campeón')
-    B=[];
-else
-    % calculamos el determinante de A, si es cero hemos terminado
-    dA=determinante(A)
-    if dA==0
-        % deberíamos condicionar en lugar de comparar con cero, los errores
-        % de redondeo pueden matarnos.... Si el determinante es proximo a
-        % cero
-         disp('la matriz es singular, la pobre')
-      B=[]  
-    else
-    
-    % Calculamos el cofactor de cada término de A mediante un doble bucle.
-    for i=1:a
-        for j=1:b
-            % Construimos el menor correspondiente al elemento (i,j)
-            m=A([1:i-1 i+1:a],[1:j-1 j+1:b])
-            % calculamos el cofactor llamando a la función determinante
-            % lo ponemos ya en la posición que corresponderia a la matriz 
-            % transpuesta de la adjunta.
-            B(j,i)=(-1)^(i+j)*determinante(m)
-        end
-    end
-    % Terminamos la operacion dividiendo por el determinante de A
-    B=B/dA
-    end
-end
-end
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Aquí incluimos la funcion determinante, así la funcion inversa, no tiene
-% que ir a buscarla a ningun sitio ya que esta incluida en su mismo % fichero
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function d=determinante(M)
-% este programa, calcula el determinante de una matriz empleando la formula
-% de Laplace. La función es recursiva, (se llama a si misma sucesivamente
-% para calcular los cofactores necesarios). Desarrolla siempre por los
-% elementos de la primera columna. (Es un prodigio de ineficiencia numerica,
-% pero permite manejar bucles y funciones recursivas, asi que supongo que
-% puede ser útil para los que empiezan a programar).
-% un posible ejercicio para ver lo malo que es el método, consiste ir
-% aumentando la dimension de la matriz y comparar lo que lo tarde en
-% calcular el determinante con lo que tarda la función de Matlab det...
-
-% primero comprobamos que la matriz suministrada es cuadrada:
-d=0;
-[a,b]=size(M);
-if a~=b
-    print('la matriz no es cuadrada, Campeón')
-    d=[];
-else
-    for i=1:a
-        if a==1
-            d=M;
-        else
-            % Elimminamos la fila y columna que toque
-            N=M([1:i-1 i+1:a],2:b);
-            % Añadimos el calculo correspondiente al cofactor
-            d=(-1)^(i+1)*M(i,1)*determinante(N)+d;
-            % pause
-        end
-    end
-end
-end
-\end{lstlisting} 
 \begin{flalign*}
 &&\reversemathwitch*
 \end{flalign*}
 
+\begin{paracol}{2}
 Algunas propiedades relacionadas con la inversión de matrices son,
 \begin{enumerate}
 \item Inversa del producto de dos matrices,
@@ -1372,66 +1344,109 @@ Algunas propiedades relacionadas con la inversión de matrices son,
 A^{-1}=A^T
 \end{equation*}
 \end{enumerate}
-\subsection{Funciones incluidas en Numpy.}\index{Funciónes! Funciones incluidas en matlab} 
-Matlab incluye cientos de funciones. Estas funciones, están escritas con la misma filosofía que acabamos de describir aquí, es decir, admiten una o varias variables de entrada y devuelven sus resultados en una o varias funciones de salida. En algunos casos, se trata de ficheros de texto  guardados con la extensión \texttt{.m} iguales a los que nosotros podemos crear \footnote{En muchos casos las funciones incluidas en Matlab no están escritas en ficheros de texto accesibles para el usuario. Por razones de eficiencia, se trata de versiones de las funciones escritas por lo general en lenguaje C y compiladas.}. La manera de emplearlas desde la ventana de comandos de Matlab es idéntica a la descrita para las funciones creadas por el usuario. 
-
-En la tabla \ref{tabfun}, se incluyen algunos ejemplos de las funciones matemáticas más corrientes. Son solo una pequeña muestra de las funciones disponibles. Para obtener una visión más completa de las funciones disponibles se aconseja emplear la ayuda de Matlab.
+\end{paracol}
 
 \begin{table}
-\caption{Algunas funciones matemáticas en Matlab de uso frecuente}
+\bicaption{Algunas funciones matemáticas en Numpy de uso frecuente}{frecuently used mathematical functions included in Numpy}
 \label{tabfun}
 \begin{tabular}{c|c|c|c}
-tipo&nombre&variables&función matemática\\
+Tipo&Nombre&variables&función matemática\\
+Type&Name&variables&funcion matemática\\
 \hline
 \hline
-Trigonométrica&cos&y=cos(x)&coseno de un ángulo en radianes\\
-\hline
-Trigonométrica&sin&y=sin(x)&seno de un ángulo en radianes\\
-\hline
-Trigonométricas&tan&y=tan(x)&tangente de un ángulo en radianes\\
-\hline
-Trigonométricas&csc&y=csc(x)&cosecante de un ángulo en radianes\\
-\hline
-Trigonométricas&sec&y=sec(x)&secante de un ángulo en radianes\\
-\hline
-Trigonométricas&cot&y=cot(x)&cotangente de un ángulo en radianes\\
 
+Trigonométricas&\multirow{2}{*}{cos}&\multirow{2}{4em}{y=cos(x)}&coseno de un ángulo en radianes\\
+Trigonometric& & & Cosine of angle in radians\\
 \hline
-Trigonométricas&...&y=a...(x)&inversa de una función trigonométrica en radianes\\
-&asin&y=asin(x)&ejemplo, arcoseno en radianes\\
+Trigonometricas&\multirow{2}{*}{sin}&\multirow{2}{4em}{y=sin(x)}&seno de un ángulo en radianes\\
+Trigonometric& & &Sine of an angle in radians\\
 \hline
+Trigonométricas&\multirow{2}{*}{tan}&\multirow{2}{4em}{y=tan(x)}&tangente de un ángulo en radianes\\
+Trigonometric & & &Tangent of an angle in radians\\
 \hline
-Exponencial&exp&y=exp(x)&$e^x$\\
-\hline
-Exponencial&log&y=log(x)&logaritmo natural\\
-\hline
-Exponencial&log10&log10(x)&logaritmo en base 10\\
-\hline
-Exponecial&sqrt&y=sqrt(x)&$\sqrt(x)$\\
-\hline
-\hline
-Redondeo&ceil&y=ceil(x)& redondeo hacia $+\infty$\\
-\hline
-Redondeo&floor&y=floor(x)&redondeo hacia $-\infty$\\
-\hline
-Redondeo&round&y=round(x)&redondeo al entero más próximo\\
-\hline
-Redondeo&fix&y=fix(x)&redondeo hacia $0$\\
-\hline
-Redondeo&rem&r=rem(x,y)&resto de la división entera de y entre x\\
+Trigonométricas &...&y=arc...(x)&inversa de una función trigonométrica\\
+Trigonometric &arcsin&y=arcsin(x)& Inverse of a trigonometric function\\
 \hline
 \hline
-Módulos&norm&y=norm(x)& módulo de un vector x\\
+Exponencial&\multirow{2}{*}{exp}&\multirow{2}{*}{y=exp(x)}&\multirow{2}{*}{$e^x$}\\
+Exponential& & & \\
 \hline
-Módulos&abs&y=abs(x)&valor absoluto de x,(módulo de x si x es complejo)\\
+Exponencial&\multirow{2}{*}{log}&\multirow{2}{*}{y=log(x)}&logaritmo natural\\
+Exponential & & & Natural logarithm\\
 \hline
-Módulos&sign&y=sign(x)&función signo; 1 si x $>$ 0, -1 si x $<$ 0, 0 si x=0\\
+Exponencial&\multirow{2}{*}{log10}&\multirow{2}{*}{log10(x)}&logaritmo en base 10\\
+Exponential& & & Basis 10 logarithm\\
+\hline
+Exponencial&\multirow{2}{*}{sqrt}&\multirow{2}{*}{y=sqrt(x)}&\multirow{2}{*}{$\sqrt{x}$}\\
+Exponential& & & \\
+\hline
+\hline
+Redondeo&\multirow{2}{*}{ceil}&\multirow{2}{*}{y=ceil(x)}& redondeo hacia $+\infty$\\
+Rounding& & & rounding towards $+\infty$\\
+\hline
+Redondeo&\multirow{2}{*}{floor}&\multirow{2}{*}{y=floor(x)}&redondeo hacia $-\infty$\\
+Rounding& & & rounding towards $-\infty$ \\
+\hline
+Redondeo&\multirow{2}{*}{rint}&\multirow{2}{*}{y=rint(x)}&redondeo al entero más próximo\\
+Rounding& & & rounding towards the nearest integer\\
+\hline
+Redondeo&\multirow{2}{*}{fix}&\multirow{2}{*}{y=fix(x)}&redondeo hacia $0$\\
+Rounding& & & rounding towards $0$\\
+\hline
+Redondeo&\multirow{2}{*}{mod}&\multirow{2}{*}{r=mod(x,y)}&resto de la división entera de y entre x\\
+Rounding& & & remainder after integer division\\
+\hline
+\hline
+Módulos&\multirow{2}{*}{norm}&\multirow{2}{*}{y=norm(x)}& módulo de un vector x\\
+Norms & & & Norm of a vector\\
+\hline
+Módulos&\multirow{2}{*}{abs}&\multirow{2}{*}{y=abs(x)}&valor absoluto de x\\
+Norms & & & Absolute value of x\\
+\hline
+Módulos&\multirow{2}{*}{sign}&\multirow{2}{*}{y=sign(x)}&función signo; 1 si x $>$ 0, -1 si x $<$ 0, 0 si x=0\\
+Norms & & &sign function; 1 if x $>$ 0, -1 if x $<$ 0, 0 if x=0\\ 
 \end{tabular}
 \end{table}
 
+\begin{paracol}{2}
+\subsection{Funciones incluidas en\\ Num\-py.}\index{Funciónes! Funciones incluidas en Numpy} 
+Numpy incluye un gran número de funciones. Muchas de ellas  están pensadas para ser aplicadas a arrays o a variables numéricas indistintamente. En el primer caso, la función se aplica elemento a elemento y el resultado es un array con las mismas dimensiones que el original. 
 
+En la tabla \ref{tabfun}, se incluyen algunos ejemplos de las funciones matemáticas más corrientes. No están todas. Para obtener una visión más completa de las funciones disponibles se aconseja acudir a la documntacion de Numpy.
+El uso de estas funciones es directo, por ejemplo, el siguiente código calcula la exponencial de los elementos de una matriz,
+\end{paracol}
+
+\begin{center}
+    \begin{minipage}{0.5\textwidth}
+        \begin{minted}{python}
+In [1]: import numpy as np
+
+In [2]: A = np.array([[1,2],[2,0],[3,5]])
+
+In [3]: A
+Out[3]: 
+array([[1, 2],
+       [2, 0],
+       [3, 5]])
+
+In [4]: np.exp(A)
+Out[4]: 
+array([[  2.71828183,   7.3890561 ],
+       [  7.3890561 ,   1.        ],
+       [ 20.08553692, 148.4131591 ]])
+        \end{minted}
+    \end{minipage}
+\end{center}
+
+========================= THE FRONTIER ======================================
+\begin{flalign*}
+&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+\end{flalign*}
+
+\begin{paracol}{2}
 \section{Operadores vectoriales}\label{opvect}
 En esta sección vamos a estudiar el efecto de las operaciones matriciales, descritas en la sección anterior, sobre los vectores. Empecemos por considerar el producto por un escalar $\alpha \cdot a$. El efecto fundamental es modificar el módulo del vector,
+\end{paracol}
 \begin{equation*}
 \alpha \cdot \begin{pmatrix}
 a_1\\
@@ -1444,33 +1459,34 @@ a_3
 \alpha a_3
 \end{pmatrix}\rightarrow \vert \vert \alpha \cdot a \vert \vert =\sqrt{\alpha ^2a_1^2+\alpha ^2a_2^2+\alpha ^2a_3^2}=\vert \alpha \vert  \sqrt{a_1^2+a_2^2+a_3^2}=\vert \alpha \vert \cdot \vert \vert a \vert \vert
 \end{equation*}
-
+\begin{paracol}{2}
 Gráficamente, si $alpha$ es un número positivo y mayor que la unidad, el resultado del producto será un vector más largo que $a$ con la misma dirección y sentido. Si por el contrario, $\alpha$ es menor que la unidad, el vector resultante será más corto que $a$. Por último si se trata de un número negativo, a los resultados anteriores se añade el cambio de sentido con respecto a $a$. La figura \ref{fig:vmod} muestra gráficamente un ejemplo  del producto de un vector por un escalar.
-
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=7cm]{vmod.eps}
 \caption{efecto del producto de un escalar por un vector}
 \label{fig:vmod}
 \end{figure}
-
+\begin{paracol}{2}
 \paragraph{Combinación lineal.} Combinando la suma de vectores, con el producto por un escalar, podemos generar nuevos vectores, a partir de otros, el proceso se conoce como combinación lineal,
+\end{paracol}
 \begin{equation*}
 c=\alpha \cdot a + \beta \cdot b + \cdots +\theta z
 \end{equation*}
-
+\begin{paracol}{2}
 Así el vector $c$ sería el resultado de una combinación  lineal de los vectores $a, b \cdots z$. 
 Dado un conjunto de vectores, se dice que son linealmente independientes entre sí, si no es posible poner a unos como combinación lineal de otros,
-
+\end{paracol}
 \begin{equation*}
 \alpha \cdot a + \beta \cdot b + \cdots +\theta z=0 \Rightarrow \alpha =\beta =\cdots =\theta =0
 \end{equation*}
 
-
-
+\begin{paracol}{2}
 Es posible expresar cualquier vector de dimensión $n$ como una combinación lineal de $n$ vectores linealmente independientes.
 
 Supongamos $n=2$, cualquier par de vectores que no estén alineados, pueden generar todos los vectores de dimensión $2$ por ejemplo,
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1496,7 +1512,9 @@ $, $b=(-1,1)
 $ y algunos vectores, combinación lineal de $a$ y $b$.}
 \label{fig:clineal}
 \end{figure}
+\begin{paracol}{2}
 Si tomamos como ejemplo $n=3$, cualquier conjunto de vectores que no estén contenidos en el mismo plano, pueden generar cualquier otro vector de dimensión $3$. Por ejemplo,
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 x_1\\
@@ -1516,8 +1534,9 @@ x_3
 1
 \end{pmatrix}
 \end{equation*}
-
+\begin{paracol}{2}
 La figura \ref{fig:clin3} muestra gráficamente estos tres vectores y el vector resultante de su combinación lineal, con $\alpha=1$, $\beta=-0.5$ y $\gamma=1$.  Es fácil ver a partir de la figura que cualquier otro vector de dimensión $3$ que queramos construir puede obtenerse a partir de los vectores $a$, $b$ y $c$.
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{clin3.eps}
@@ -1526,6 +1545,7 @@ $, $b=(2,0,-1)$, $c=(-1,1,1)$ y del vector $a-b+c$.}
 \label{fig:clin3}
 \end{figure}
 
+\begin{paracol}{2}
 \paragraph{Espacio vectorial y  bases del espacio vectorial.} El conjunto de los vectores de dimensión $n$ (matrices de orden $n\times 1$), junto con la suma vectorial y el producto por un escalar, constituye  un  \emph{espacio vectorial} de dimensión $n$.
 
  Como acabamos de ver, es posible obtener cualquier vector de dicho espacio vectorial a partir de $n$ vectores linealmente independientes del mismo. Un conjunto de $n$ vectores linealmente independientes de un espacio vectorial de dimensión $n$ recibe el nombre de base del espacio vectorial. En principio es posible encontrar infinitas bases distintas para un espacio vectorial de dimensión $n$. Hay algunas particularmente interesantes,
@@ -1533,6 +1553,8 @@ $, $b=(2,0,-1)$, $c=(-1,1,1)$ y del vector $a-b+c$.}
  \subparagraph{Bases ortogonales.} Una base ortogonal es aquella en que todos sus vectores son ortogonales entre sí , es decir cumple que su producto escalar es $b^i\cdot b^j=0, i\neq j$. Donde  $b^i$ representa el \emph{i-ésimo} vector de la base, $\mathcal{B}=\left\lbrace b^1, b^2, \cdots, b^n  \right\rbrace $ .
  
  \subparagraph{Bases ortonormales.} Una base ortonormal, es una base ortogonal en la que, además, los vectores de la base tienen módulo $1$. Es decir, $b^i\cdot b^j=0, i\neq j$ y  $b^i\cdot b^j=1, i = j$. Un caso particularmente útil de base ortonormal es la base canónica, formada por los vectores, 
+\end{paracol}
+
 \begin{equation*}
 \mathcal{C}=\left\lbrace c^1=\begin{pmatrix}
 1\\
@@ -1563,9 +1585,9 @@ c^n=\begin{pmatrix}
 1
 \end{pmatrix} \right\rbrace
 \end{equation*} 
-
+\begin{paracol}{2}
 Podemos considerar las componentes de cualquier vector como los coeficientes de la combinación lineal de la base canónica que lo representa,
-
+\end{paracol}
 \begin{equation*}
 a=\begin{pmatrix}
 a_1\\
@@ -1603,7 +1625,10 @@ a_n\cdot \begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 Por extensión, podemos generalizar este resultado a cualquier otra base, es decir podemos agrupar en un vector los coeficientes de la combinación lineal de los vectores de la base que lo generan. Por ejemplo, si construimos, para los vectores de dimensión $3$ la base,
+\end{paracol}
+
 \begin{equation*}
 \mathcal{B}=\left\lbrace \begin{pmatrix}
 1\\
@@ -1619,8 +1644,10 @@ Por extensión, podemos generalizar este resultado a cualquier otra base, es dec
 1
 \end{pmatrix} \right\rbrace
 \end{equation*} 
-
+\begin{paracol}{2}
 Podemos entonces representar un vector en la base $\mathcal{B}$ como,
+\end{paracol}
+
 \begin{equation*}
 \alpha \cdot \begin{pmatrix}
 1\\
@@ -1640,10 +1667,11 @@ Podemos entonces representar un vector en la base $\mathcal{B}$ como,
 \gamma
 \end{pmatrix}
 \end{equation*} 
- 
+\begin{paracol}{2}
 Donde  estamos empleando el superíndice $^{\mathcal{B}}$, para indicar que las componentes del vector $a$ están definidas con respecto a la base $\mathcal{B}$.
 
 Así por ejemplo el vector,
+\end{paracol} 
 \begin{equation*}
 a^{\mathcal{B}}=\begin{pmatrix}
 1.125\\
@@ -1651,8 +1679,9 @@ a^{\mathcal{B}}=\begin{pmatrix}
 0.75
 \end{pmatrix}
 \end{equation*}
-
-Tendría en la base canónica las componentes, 
+\begin{paracol}{2}
+Tendría en la base canónica las componentes,
+\end{paracol}
 \begin{equation*}
 a^{\mathcal{B}}=\begin{pmatrix}
 1.125\\
@@ -1677,10 +1706,11 @@ a^{\mathcal{B}}=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 La figura \ref{fig:base1}, muestra gráficamente la relación entre los vectores de la base canónica $\mathcal{C}$, los vectores de la base $\mathcal{B}$, y el vector $a$, cuyas componentes se han representado en ambas bases.
 
 Podemos aprovechar el producto de matrices para obtener las componentes en la base canónica $\mathcal{C}$ de un vector representado en una base cualquiera $\mathcal{B}$. Si agrupamos los vectores de la base $\mathcal{B}$, en una matriz $B$,
-
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=15cm]{base1.eps}
@@ -1718,8 +1748,10 @@ b_{31}&b_{32}& \cdots & \vdots \\
 b_{n1}&b_{n2}& \cdots & b_{nn}\\
 \end{pmatrix}
 \end{equation*}
-
+\begin{paracol}{2}
 Supongamos que tenemos un vector $a$ cuyas componentes en la base $\mathcal{B}$ son,
+\end{paracol}
+
 \begin{equation*}
 a^{\mathcal{B}}=\begin{pmatrix}
 a_1^{\mathcal{B}}\\
@@ -1729,7 +1761,9 @@ a_n^{\mathcal{B}}
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 Para obtener las componentes en la base canónica, basta entonces multiplicar la matriz $B$, por el vector $a^{\mathcal{B}}$. Así en el ejemplo que acabamos de ver,
+\end{paracol}
 
 \begin{equation*}
 a=B\cdot a^{\mathcal{B}} \rightarrow a=\begin{pmatrix}
@@ -1748,98 +1782,33 @@ a=B\cdot a^{\mathcal{B}} \rightarrow a=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 Por último, una podemos combinar el producto de matrices y la matriz inversa, para obtener las componentes de un vector en una base cualquiera a partir de sus componentes en otra base. Supongamos que tenemos dos bases $\mathcal{B}_1$ y $\mathcal{B}_2$ y un vector $a$. Podemos obtener las componentes de $a$ en la base canónica, a partir de las componentes en la base $\mathcal{B}_1$ como, $a=B_1\cdot a^{\mathcal{B}_1}$ y a partir de sus componentes en la base $\mathcal{B}_2$ como $a=B_2\cdot a^{\mathcal{B}_2}$. Haciendo uso de la matriz inversa,
+\end{paracol}
 
 \begin{align*}
 a&=B_1\cdot a^{\mathcal{B}_1} \Rightarrow a^{\mathcal{B}_1}=B_1^{-1} \cdot a \\
  a&=B_2\cdot a^{\mathcal{B}_2} \Rightarrow a^{\mathcal{B}_2}=B_2^{-1} \cdot a
 \end{align*}
 
+\begin{paracol}{2}
 Y sustituyendo obtenemos,
+\end{paracol}
 
 \begin{align*}
 a^{\mathcal{B}_1}&=B_1^{-1}\cdot B_2 \cdot a^{\mathcal{B}_2}\\
 a^{\mathcal{B}_2}&=B_2^{-1} \cdot B_1\cdot a^{\mathcal{B}_1} 
 \end{align*}
 
-El siguiente código permite cambiar de base un vector y representa gráficamente tanto el vector como las bases antigua y nueva.
+\begin{paracol}{2}
+El siguiente código permite cambiar de base un vector y, si el vector pertenece a $\mathbb{R}^3$, representa gráficamente tanto el vector como las bases antigua y nueva.
+\end{paracol}
+=================falta el código premetido===================================
 
-\begin{lstlisting}
-function aB2=cambia_vb(aB1,B1,B2)
-% este programa cabia de base un vector de dimensión 3 y lo representa en
-% relación con las bases antigua y nueva.
-% variables de entrada:
-% aB1, componentes del vector en la base 1
-% B1 base representada como una matriz, (cada columna contiene un vector de
-% la base) En la que está representado el vector aB1
-% B2, base representada como una matriz, (cada columna contiene un vector de
-% la base) en la que se quiere representar el vector aB1
-% Si solo se incluye un vector y una base, el programa asume que la segunda
-% base es la canonica B2=[1 0 0;0 1 0; 0 0 1]
-% variables de salida:
-% aB2, Componentes del vector aB1 en la nueva base B2.
-% la función hace uso de una función auxiliar (pintavec) incluida al final
-% del fichero para dibujar los vectores.
-
-if nargin==2
-    % asumimos que queremos cambiar el vector de B1 a la base canonica
-    % ¿Es B1 una base sensanta?
-    if det(B1)<=eps
-        error('los vectores de la base no son l. independientes')
-    end
-    aB2=B1*aB1;
-    B2=eye(3); %creamos la base para luego pintarla...
-elseif nargin==3
-    % cambio de base B1 a B2
-    if (det(B1)<=eps)||(det(B2)<=eps)
-        error('los vectores de al menos una de las bases no son l. independientes')
-    end
-    % invertimos la base nueva y multiplicamos por la antigua y por el
-    % vector para obtener las componentes del vector en la base nueva.
-    aB2=inv(B2)*B1*aB1;
-else
-    error('el numero de variables de entrada es menor de dos o mayor de tres')
-end
-
-% Dibujo de los vectores con la función pintavec....
-
-pintavec(B1,'r') % vectores de la base original
-xlabel('x')
-ylabel('y')
-zlabel('z')
-grid on
-pintavec(B2,'b') % vectores de la base nueva
-for i=1:3
-    pintavec(aB1(i)*B1(:,i),'k') % componentes de aB1
-    pintavec(aB2(i)*B2(:,i),'k') % componentes de aB2
-end
-aBc=B1*aB1; % representacion del vector en la base canónica
-pintavec(aBc,'g') % vector representado
-
-
-
-function pintavec(a,par)
-% función auxiliar para pintar vectores... con origen en el origen de
-% coordenadas (0,0,0).
-% la variable a puede ser un vector o una matriz. y par, es una cadena que contiene los
-% típicos parámetros(color, tipo de línea`etc'). El programa considera que
-% los vectores están siempre definidos como vectores columnas...
-d=size(a,2); %miramos cuantas columnas tiene a, cada columna representará un
-% vector distinto
-if nargin==2
-    for i=1:d
-        quiver3(0,0,0,a(1,i),a(2,i),a(3,i),0,par)
-        hold on
-    end
-else
-    for i=1:d
-        quiver3(0,0,0,a(1,i),a(2,i),a(3,i),0)
-    end
-end
-
-\end{lstlisting}
-
+\begin{paracol}{2}
 \paragraph{Operadores lineales.} A partir de los visto en las secciones anteriores, sabemos que el producto de una matriz de $A$ de orden $n\times n$  multiplicada por un vector $b$ de dimension $n$ da como resultado un nuevo vector $c=A\cdot b$  de dimensión $n$. Podemos considerar cada matriz $n\times n$ como un \emph{operador lineal}, que transforma unos vectores en otros.  Decimos que se trata de un operador lineal porque las componentes del vector resultante, están relacionadas linealmente con las del vector original, por ejemplo para $n=3$,
+\end{paracol}
+
 \begin{equation*}
 \begin{pmatrix}
 y_1\\
@@ -1861,11 +1830,11 @@ y_3=a_{31}x_1+a_{32}x_2+a_{33}x_3
 \end{matrix} 
 \end{equation*}
 
+\begin{paracol}{2}
 Entre los operadores lineales, es posible destacar aquellos que producen transformaciones geométricas sencillas. Veamos algunos ejemplos para vectores bidimensionales,
 
-\begin{enumerate}
-\item Dilatación: aumenta el módulo de un vector en un factor $\alpha>1$. Contracción: disminuye el módulo de un vector en un factor $0<\alpha<1$. En ambos casos, se conserva la dirección y el sentido del vector original.
- 
+1. Dilatación: aumenta el módulo de un vector en un factor $\alpha>1$. Contracción: disminuye el módulo de un vector en un factor $0<\alpha<1$. En ambos casos, se conserva la dirección y el sentido del vector original.
+\end{paracol} 
 \begin{equation*}
 R=\begin{pmatrix}
 \alpha& 0\\
@@ -1881,8 +1850,9 @@ a_2
 \alpha \cdot a_2
 \end{pmatrix}
 \end{equation*}
-
-\item Reflexión de un vector respecto al eje x, conservando su módulo,
+\begin{paracol}{2}
+2. Reflexión de un vector respecto al eje x, conservando su módulo,
+\end{paracol}
 \begin{equation*}
 R_x=\begin{pmatrix}
 1& 0\\
@@ -1898,8 +1868,9 @@ a_1\\
 -a_2
 \end{pmatrix}
 \end{equation*}
-
-\item Reflexión de un vector respecto al eje y, conservando su módulo,
+\begin{paracol}{2}
+3. Reflexión de un vector respecto al eje y, conservando su módulo,
+\end{paracol}
 \begin{equation*}
 R_y=\begin{pmatrix}
 -1& 0\\
@@ -1915,8 +1886,9 @@ a_2
 a_2
 \end{pmatrix}
 \end{equation*}
-
-\item Reflexión respecto al origen: Invierte el sentido de un vector, conservando su módulo y dirección,
+\begin{paracol}{2}
+4. Reflexión respecto al origen: Invierte el sentido de un vector, conservando su módulo y dirección,
+\end{paracol}
 \begin{equation*}
 R=\begin{pmatrix}
 -1& 0\\
@@ -1932,10 +1904,13 @@ a_2
 -a_2
 \end{pmatrix}
 \end{equation*}
-Sería equivalente a aplicar una reflexión respecto al eje x y luego respecto al eje y o viceversa,
+\begin{paracol}{2}
+5. Sería equivalente a aplicar una reflexión respecto al eje x y luego respecto al eje y o viceversa,
+\end{paracol}
 $R=R_x\cdot R_y= R_y\cdot R_x$.
-
-\item Rotación en torno al origen un ángulo $\theta$,
+\begin{paracol}{2}
+ Rotación en torno al origen un ángulo $\theta$,
+\end{paracol}
 \begin{equation*}
 R_{\theta}=\begin{pmatrix}
 cos(\theta)& -sin(\theta)\\
@@ -1951,7 +1926,7 @@ a_1cos(\theta)-a_2sin(\theta)\\
 a_1sin(\theta)+a_2cos(\theta)
 \end{pmatrix}
 \end{equation*}
-\end{enumerate}
+
 
 La figura \ref{fig:ltrans} muestra los vectores resultantes de aplicar las transformaciones lineales que acabamos de describir al vector,  $ a=\bigl( \begin{smallmatrix}
 1\\
@@ -1965,70 +1940,96 @@ La figura \ref{fig:ltrans} muestra los vectores resultantes de aplicar las trans
 \label{fig:ltrans}
 \end{figure}
 
+\begin{paracol}{2}
 \paragraph{Norma de una matriz.} La norma de una matriz se puede definir a partir del efecto que produce al actuar, como un operador lineal, sobre un vector. En este caso, se les llama normas \emph{inducidas}. Para una matriz $A$ de orden $m\times n$, $y_{(m)}=A_{(m\times n)}x_{(n)}$, La norma inducida de $A$ se define en función de las normas de los vectores $x$ de su dominio y de las normas de los vectores $y$ de su rango como,
+\end{paracol}
 \begin{equation*}
 \Vert A \Vert =\max_{x \neq 0} \frac{\Vert y \Vert}{\Vert x \Vert}=\max_{x \neq 0} \frac{\Vert Ax \Vert}{\Vert x \Vert}
 \end{equation*}
 
+\begin{paracol}{2}
 Se puede interpretar como el factor máximo con que el que la matriz $A$ puede \emph{alargar} un vector cualquiera. Es posible definir la norma inducida en función de los vectores unitarios del dominio,
+\end{paracol}
 \begin{equation*}
 \Vert A \Vert =\max_{x \neq 0} \frac{\Vert Ax \Vert}{\Vert x \Vert}= \max_{x \neq 0} \left\Vert A\frac{x}{\Vert x \Vert} \right\Vert= \max_{\Vert x \Vert =1}\Vert Ax \Vert
 \end{equation*}
 
+\begin{paracol}{2}
 Junto a la norma inducida que acabamos de ver, se definen las siguientes normas,
 
-\begin{enumerate}
-\item Norma 1: Se suman los elementos de cada columna de la matriz, y se toma como norma el valor máximo de dichas sumas,
+1. Norma 1: Se suman los elementos de cada columna de la matriz, y se toma como norma el valor máximo de dichas sumas,
+\end{paracol}
 \begin{equation*}
 \Vert A_{m,n} \Vert _{1} = \max_j \sum_{i=1}^m a_{ij}
 \end{equation*}
- \item Norma $\infty$: Se suman los elementos de cada fila y se toma como norma $\infty$ el valor máximo de dichas sumas.
+\begin{paracol}{2}
+2. Norma $\infty$: Se suman los elementos de cada fila y se toma como norma $\infty$ el valor máximo de dichas sumas.
+\end{paracol}
 \begin{equation*}
 \Vert A_{m,n} \Vert _{\infty} = \max_i \sum_{j=1}^m a_{ij}
 \end{equation*}
-
-\item Norma 2: Se define como el mayor de los valores singulares de una matriz. (Ver sección \ref{sec:SVD}).
+\begin{paracol}{2}
+3. Norma 2: Se define como el mayor de los valores singulares de una matriz. (Ver sección 
+\end{paracol}
+\ref{sec:SVD}).
 \begin{equation*}
 \Vert A_{m,n} \Vert _2 = \sigma_{1}
 \end{equation*}
-\item Norma de Frobenius. Se define como la raíz cuadrada de la suma de los cuadrados de todos los elementos de la matriz,
+\begin{paracol}{2}
+4. Norma de Frobenius. Se define como la raíz cuadrada de la suma de los cuadrados de todos los elementos de la matriz,
+\end{paracol}
 \begin{equation*}
 \Vert A_{m,n} \Vert _F =\sqrt{\sum_{i=1}^m \sum_{j=1}^m a_{ij}^2}
 \end{equation*}
+\begin{paracol}{2}
 Que también puede expresarse de forma mas directa como,
+\end{paracol}
 \begin{equation*}
 \Vert A_{m,n} \Vert _F =\sqrt{tr(A^T\cdot A)}
 \end{equation*}
-\end{enumerate}
-En Matlab, es posible calcular las distintas normas de una matriz, de modo análogo a como se calculan para el caso de vectores,  mediante el comando \texttt{norm(A,p)}. Donde \texttt{A}, es ahora un a matriz y \texttt{p} especifica el tipo de norma que se quiere calcular. En el caso de una matriz, el parámetro \texttt{p} solo puede tomar los valores, \texttt{1} (norma 1), \texttt{2} (norma 2), \texttt{inf} (norma $\infty$), y \texttt{'fro'} (norma de frobenius). El siguiente ejemplo muestra el cálculo de las normas 1, 2, $\infty$ y de Frobenius de la misma matriz.
-\begin{verbatim}
->> A=[1 3 4 5
-2 5 6 -3
-1 0 4 3]
-A =
-     1     3     4     5
-     2     5     6    -3
-     1     0     4     3
->> n1=norm(A,1)
-n1 =
-    14
->> n2=norm(A,2)
-n2 =
-     1.022217214669622e+01
->> ninf=norm(A,inf)
-ninf =
-    16
->> nfro=norm(A,'fro')
-nfro =
-     1.228820572744451e+01
-\end{verbatim} 
+\begin{paracol}{2}
+En Numpy, es posible calcular las distintas normas de una matriz, de modo análogo a como se calculan para el caso de vectores,  mediante el comando \texttt{norm(A,p)}. Donde \texttt{A}, es ahora un a matriz y \texttt{p} especifica el tipo de norma que se quiere calcular. En el caso de una matriz, el parámetro \texttt{p} solo puede tomar los valores, \texttt{1} (norma 1), \texttt{2} (norma 2), \texttt{inf} (norma $\infty$), y \texttt{'fro'} (norma de frobenius). Esta última es la norma por defecto, y es la que se optiene si se no se define el tipo de normar. El siguiente ejemplo muestra el cálculo de las normas 1, 2, $\infty$ y de Frobenius de la misma matriz.
+\end{paracol}
+\begin{center}
+    \begin{minipage}{0.5\textwidth}
+    \begin{minted}{python}
+In [11]: A = np.array([[1,-1,3],[2,0,-2],[3,1,2]])
 
+In [12]: A
+Out[12]: 
+array([[ 1, -1,  3],
+       [ 2,  0, -2],
+       [ 3,  1,  2]])
+
+In [13]: np.linalg.norm(A)
+Out[13]: 5.744562646538029
+
+In [14]: np.linalg.norm(A,'fro')
+Out[14]: 5.744562646538029
+
+In [15]: np.linalg.norm(A,1)
+Out[15]: 7.0
+
+In [17]: np.linalg.norm(A,inf)
+Out[17]: 6.0
+
+In [18]: np.linalg.norm(A,2)
+Out[18]: 4.552861506620628
+\end{minted}
+\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
 \paragraph{Formas cuadráticas.} Se define como forma cuadrática a la siguiente operación entre una matriz cuadrada $A$ de orden $n \times n$ y un vector $x$ de dimensión $n$,
+\end{paracol}
 \begin{equation*}
 \alpha=x^T\cdot A \cdot x, \ \alpha \in \mathbb{R}
 \end{equation*}
 
+\begin{paracol}{2}
 El resultado es un escalar. Así por ejemplo,
+\end{paracol}
+
 \begin{equation*}
 A=\begin{pmatrix}
 1& 2& -1\\
@@ -2050,8 +2051,9 @@ A=\begin{pmatrix}
 3
 \end{pmatrix}= 21
 \end{equation*}
-
-Para dimensión $n=2$, 
+\begin{paracol}{2}
+Para dimensión $n=2$,
+\end{paracol}
 \begin{equation*}
 \alpha =\begin{pmatrix}
 x_1& x_2
@@ -2064,28 +2066,35 @@ x_2
 \end{pmatrix} \rightarrow x_3\equiv \alpha=a_{11}x_1^2+(a_{12}+a_{21})x_1x_2+a_{22}x_2^2
 \end{equation*}
 
+\begin{paracol}{2}
 Lo que obtenemos, dependiendo de los signos de $a_{11}$ y $a_{12}$, es la ecuación de un paraboloide o un hiperboloide. En la figura \ref{fig:parabol} Se muestra un ejemplo,
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{parabol.eps}
 \caption{Formas cuadráticas asociadas a las cuatro matrices diagonales: $\vert a_{11}\vert=\vert a_{22}\vert=1$, $a_{12}=a_{21}=0$}
 \label{fig:parabol}
 \end{figure}
-
+\begin{paracol}{2}
 Veamos brevemente, algunas propiedades relacionadas con  las formas cuadráticas,
-\begin{enumerate}
-\item Una matriz $A$ de orden $ n\times n$ se dice que es definida positiva si da lugar a una forma cuadrática que es siempre mayor que cero para cualquier vector no nulo,
+
+1. Una matriz $A$ de orden $ n\times n$ se dice que es definida positiva si da lugar a una forma cuadrática que es siempre mayor que cero para cualquier vector no nulo,
+\end{paracol}
 \begin{equation*}
 x^T \cdot A \cdot x > 0, \forall x \neq 0 
 \end{equation*}
+\begin{paracol}{2}
+2. Una matriz \emph{simétrica} es definida positiva si todos sus \emph{valores propios} (ver sección \ref{sec:diag}) son positivos.
 
-\item Una matriz \emph{simétrica} es definida positiva si todos sus \emph{valores propios} (ver sección \ref{sec:diag}) son positivos.
-
-\item Una matriz no simétrica $A$ es definida positiva si su parte simétrica $A_s=(A+A^T)/2$ lo es.
+3. Una matriz no simétrica $A$ es definida positiva si su parte simétrica $A_s=(A+A^T)/2$ lo es.
+\end{paracol}
 \begin{equation*}
 x\cdot A_s\cdot >0, \forall x \neq 0 \Rightarrow x\cdot A\cdot >0, \forall x \neq 0
 \end{equation*}
-\end{enumerate}
+
+\begin{flalign*}
+&&\reversemathwitch*
+\end{flalign*}
 
 \section{Tipos de matrices empleados frecuentemente}\label{tiposm}
 Definimos a continuación algunos tipos de matrices frecuentemente empleados en álgebra, algunos ya han sido introducidos en secciones anteriores. Los reunimos todos aquí para facilitar su consulta
