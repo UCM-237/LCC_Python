@@ -902,6 +902,171 @@ ans =
 \subsection{El método de eliminación de Gauss.}\index{Gauss! Método de eliminación gaussiana} El método de eliminación gaussiana es el mismo descrito en el capítulo anterior \ref{sec:LU} para obtener la matriz triangular superior $U$ en la factorización LU de una matriz. Como ya se explicó en detalle, el método consiste en \emph{hacer  cero} todos los elementos situados por debajo de la diagonal de una matriz. Para ello se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones adecuadas de dicha fila con las anteriores.
 
 Toda la discusión incluida en el capítulo anterior sobre la eliminación de Gauss, es válida también para la resolución de sistemas, por lo que no volveremos a repetirla. Nos centraremos solo en su aplicación al problema de resolver un sistema de ecuaciones lineales.
+===========Traido del capituilo anterior=============================
+Uno de los métodos más empleados para calcular la factorización LU de una matriz, se basa en el método conocido como eliminación gaussiana. La idea es convertir en ceros los elementos situados por debajo de la diagonal de la matriz. Para ello, se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones  formadas con la fila que se sustituye y la fila anterior.
+ veamos en qué consiste con un ejemplo. Supongamos que tenemos la siguiente matriz de orden $4 \times 4$, 
+
+\begin{equation*}
+A=\begin{pmatrix}
+3& 4& 2&5\\
+2& 0& 1& -2\\
+3& 2& 1& 8\\
+5& 2& 3& 2
+\end{pmatrix} 
+\end{equation*}
+
+Si sustituimos la segunda fila por el resultado de restarle la primera multiplicada por $2$ y dividida por $3$ obtendríamos la matriz,
+
+\begin{equation*}
+A=\begin{pmatrix}
+3& 4& 2&5\\
+2& 0& 1& -2\\
+3& 2& 1& 8\\
+5& 2& 3& 2
+\end{pmatrix} \rightarrow [2\ 0\ 1\ -2]-\frac{2}{3} [3\ 4\ 2\ 5] \rightarrow U_1=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+3& 2& 1& 8\\
+5& 2& 3& 2
+\end{pmatrix}
+\end{equation*}
+
+De modo análogo, si sustituimos ahora la tercera fila por el resultado de restarle la primera multiplicada por $3$ y dividida $3$,
+ 
+\begin{equation*}
+U_1=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+3& 2& 1& 8\\
+5& 2& 3& 2
+\end{pmatrix} \rightarrow [3\ 2\ 1\ 8]-\frac{3}{3} [3\ 4\ 2\ 5] \rightarrow U_1=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+0& -2& -1& -3\\
+5& 2& 3& 2
+\end{pmatrix}
+\end{equation*}
+
+Por último si sustituimos la última fila por el resultado de restarle la primera multiplicada por $5$ y dividida por $3$,
+
+\begin{equation*}
+U_1=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+0& -2& -1& -3\\
+5& 2& 3& 2
+\end{pmatrix} \rightarrow [5\ 2\ 3\ 2]-\frac{5}{3} [3\ 4\ 2\ 5] \rightarrow U_1=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+0& -2& -1& -3\\
+0& -4,66& -0.33& -6.33
+\end{pmatrix}
+\end{equation*}
+
+El resultado que hemos obtenido, tras realizar esta transformación , es una nueva matriz $U$ en la que todos los elementos de su primera columna, por debajo de la diagonal, son ceros.
+
+Podemos proceder de modo análogo para \emph{eliminar} ahora los elementos de la segunda columna situados por debajo de la diagonal. Para ellos sustituimos la tercera fila  por la diferencia entre ella y las segunda fila multiplicada por 	$-2$  y dividida por $-2.6$.
+
+\begin{align*}
+U_1 &=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+0& -2& -1& -3\\
+0& -4,66& -0.33& -6.33
+\end{pmatrix} \rightarrow [0\ -2\ -1\ -3]-\frac{-2}{-2.6} [0\ -2.6\ -0.33\ -5.33\ ] \rightarrow \\
+ U_2 &=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+0& 0& -0.75& 7\\
+0& -4.66& -0.33& -6.33
+\end{pmatrix}
+\end{align*}
+
+Y sustituyendo la última fila por  la diferencia entre ella y la segunda multiplicada por $-4.66$ y dividida por $-2.6$,
+
+\begin{align*}
+U_2 &=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+0& -2& -1& -3\\
+0& -4,66& -0.33& -6.33
+\end{pmatrix} \rightarrow [0\ -4.66\ -0.33\ -6.33]-\frac{-4.66}{-2.6} [0\ -2.6\ -0.33\ -5.33\ ] \rightarrow \\
+ U_2 &=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+0& 0& -0.75& 7\\
+0& 0& 0.25& 3
+\end{pmatrix}
+\end{align*}
+
+De este modo, los elementos de la segunda columna situados debajo de la diagonal, han sido sustituidos por ceros. Un último paso, nos llevará hasta una matriz triangular superior; sustituimos la última fila por la diferencia entre ella y la tercera fila multiplicada por $0.25$ y dividida por $-0.75$,
+
+\begin{align*}
+ U_2 &=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+0& 0& -0.75& 7\\
+0& 0& 0.25& 3
+\end{pmatrix} \rightarrow [0\ 0\ 0.25\ 3]-\frac{0.25}{-0.75} [0\ 0\ -0.75\ 7\ ] \rightarrow \\
+ U_3 &=\begin{pmatrix}
+3& 4& 2&5\\
+0& -2.6& -0.33& -5.33\\
+0& 0& -0.75& 7\\
+0& 0& 0& 5.33
+\end{pmatrix}=U
+\end{align*}
+
+Podemos ahora, a partir del ejemplo, deducir un procedimiento general. Para \emph{eliminar} ---convertir en 0--- el elemento $a_{ij}$ situado por debajo de la diagonal principal,  $i>j$:
+\begin{enumerate}
+\item Dividimos los elementos de la fila $j$ por el elemento de dicha fila que a su vez pertenece a la diagonal, $a_{jj}$
+\begin{equation*}
+\begin{bmatrix}
+0/ a_{jj}& 0/ a_{jj}& \cdots & a_{jj}/ a_{jj}& a_{jj+1}/ a_{jj}& \cdots
+\end{bmatrix}
+\end{equation*}
+
+\item Multiplicamos el resultado de la operación anterior por el elemento $a_{ij}$,
+\begin{equation*}
+\begin{bmatrix}
+a_{ij} \cdot 0/ a_{jj}& a_{ij} \cdot 0/ a_{jj}& \cdots & a_{ij} \cdot a_{jj}/ a_{jj}& a_{ij} \cdot a_{jj+1}/ a_{jj}& \cdots
+\end{bmatrix}
+\end{equation*}
+\item Finalmente, sustituimos la fila $i$ de la matriz de partida por la diferencia  entre ella y el resultado de la operación anterior.
+\begin{equation*}
+\begin{bmatrix}
+0& 0& \cdots& a_{ij}& a_{ij+1}& \cdots
+\end{bmatrix}-\begin{bmatrix}
+a_{ij} \cdot 0/ a_{jj}& a_{ij} \cdot 0/ a_{jj}& \cdots & a_{ij} \cdot a_{jj}/ a_{jj}& a_{ij} \cdot a_{jj+1}/ a_{jj}& \cdots
+\end{bmatrix}
+\end{equation*}
+\end{enumerate}
+
+Este procedimiento se aplica iterativamente empezando en por el elemento  $a_{21}$ de la matriz y desplazando el cómputo hacia abajo, hasta llegar a la última fila y hacia la derecha hasta llegar en cada fila al elemento anterior a la diagonal.
+
+El siguiente código aplica el procedimiento descrito a una matriz de cualquier orden,\label{elig}
+
+\begin{lstlisting}
+function U=eligauss(A)
+% Esta función obtiene una matriz triangular superior, a partir de una
+% matriz dada, aplicando el método de eliminación gaussiana.
+% No realiza piboteo de filas, así que si algún elemento de la diagonal de A
+% queda cero o proximo a cero al ir eliminado dará problemas...
+
+% Obtenemos el número de filas de la matriz..
+nf=size(A,1);
+U=A
+%
+for j=1:nf-1 % recorro todas la columnas menos la última
+    for i=j+1:nf % Recorro las filas desde debajo de la diagonal hasta la última
+        % en Matlab tengo la suerte de poder manejar cada fila de un solo
+        % golpe.
+        U(i,:)=U(i,:)-U(j,:)*U(i,j)/U(j,j)
+    end
+end
+
+\end{lstlisting}
+
+=====================================================================
 
 La idea fundamental, es sacar partido de las siguientes propiedades de todo sistema de ecuaciones lineales;
 \begin{enumerate}
