@@ -22,7 +22,7 @@ first column.
 @author: juan
 """
 import numpy as np
-def dunmbdet(A):
+def dumbdet(A):
 
 #first we check the matrix is square
 #primero comprobamos si la matriz es cuadrada
@@ -39,7 +39,7 @@ def dunmbdet(A):
 
         for i in range(0,sz):
             N = np.delete(A,i,0)
-            d = (-1)**(i+2)*A[i,0]*dunmbdet(N[:,1:sz])+d
+            d = (-1)**(i+2)*A[i,0]*dumbdet(N[:,1:sz])+d
             
     
     return d

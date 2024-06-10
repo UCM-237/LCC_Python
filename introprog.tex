@@ -1,4 +1,5 @@
-\chapter[Intro a Python \textsection \textsection \ Intro to python]{Introducción a la programación en Python\\ Introduction to Python Programming}\label{ch:intpr} \index{Python} \index[eng]{Python}
+\chapter{Introducción a la programación en Python\\ Introduction to Python Programming}\label{ch:intpr} \index{Python} \index[eng]{Python}
+\chaptermark{Intro a Python \textreferencemark \ Intro to python}
 \epigraph{\textbf{UN PARACAIDISTA SE DESNUCA}\\ Por darle una sorpresa y a escondidas, su hacendosa, tierna e inocente esposa le cambió a última hora el paracaídas de reglamento por otro de punto, amorosamente tejido por ella, de malla ancha.}{Julio Ceron. Diario ABC, 2.03.1986. p.55}
 \begin{paracol}{2}
 Este capítulo presenta una introducción general a la programación. Para su desarrollo, vamos a emplear uno de los lenguajes de progaramción que  que más aceptación ha tenido en los últimos años: Python. Este lenguaje fue desarrollado por Guiod van Rosssum a finales de los años 80 del siglo pasado. El un lenguaje de alto nivel de propósito general.
@@ -11,20 +12,23 @@ This chapter presents a general introduction to programming. We will use Python,
 
 Why Python? Well, it has many useful \emph{modules} that allow us to develop code for scientific computing efficiently and reliably. Moreover, being an interpreted language facilitates focusing on programming skills without bothering with the compiling process. We will use Python to learn basic general programming methods and solve numerical problems.
 
-This chapter is by no means exhaustive. It would be impossible in the case of a language like Python. It is just an introduction to its use. Fortunately, Python has excellent online documentation and plenty of examples in the Wed. 
+This chapter is by no means exhaustive. It would be impossible in the case of a language like Python. It is just an introduction to its use. Fortunately, Python has excellent online documentation and plenty of examples on the Web. 
 \end{paracol}
 
 
 \begin{paracol}{2}
-\section{Un entorno de programación para Python}\index{Python! entorno de programación}
+\section[Un entorno de programación para Python]{Un entorno de programación para Python\sectionmark{Un entorno para Python \textreferencemark \ an environment for Python}}\index{Python! entorno de programación}
+\sectionmark{Un entorno para Python \textreferencemark \ An environment for Python}
 En primer lugar antes de empezar a describir el lenguaje de programación, vamos a introducir las herramientas  que usaramos. Es frecuente que los lenguajes de programación cuenten con lo que se conoce como un entorno de desarrollo integrado o, abreviadamente IDE (acrónimo tomado de su nombre en inglés: \emph{integrated development environment}. Un IDE suministra un habitualmente un entorno gráfico y un conjunto de herramientas tales como ayuda en línea, un depurador o un editor que facilitan la construcción y el depurado del código. Nosotros vamos a emplear un IDE específicamente diseñada para cálculo científico, no es el único, ni es necesariamente el mejor. Pero es adecuado para empezar a trabajar con Python. Se trata de \emph{Spyder}. Veamos en primer lugar como conseguirlo y como instalarlo en un ordenador personal.
 
-\subsection{Anaconda. Una distribuci- ón de herramientas de com\-putación de software abierto}\index{anaconda}
-Entre los distintos medios en los que podemos instalar Python y algunas de sus herrramientas de desarrollo, hemos seleccionado Anaconda porque es software libre, fácil de instalar e incluye Spyder. La Manera más sencilla de instalarlo es descargar el instalador de Anaconda de su página Web: 
 \switchcolumn
 \section{A python's development environment}\index[eng]{Python! IDE}
 Before describing the programming language, we will introduce the tools we should use. It is common for programming languages to provide an \emph{integrated development environment} (IDE). An IDE usually includes a graphic environment and tools, such as online help,  a debugger, or a text editor, that simplify code development and debugging. We are going to use an IDE specifically designed for scientific computing. It's not the only one available; neither is perhaps the best one, but it is suitable to begin working with Python. We refer to \emph{Spyder}. First, Let's see how to get it and install it on a personal computer.
-
+\end{paracol}
+\begin{paracol}{2}
+\subsection{Anaconda. Una distribuci- ón de herramientas de com\-putación de software abierto}\index{anaconda}
+Entre los distintos medios en los que podemos instalar Python y algunas de sus herrramientas de desarrollo, hemos seleccionado Anaconda porque es software libre, fácil de instalar e incluye Spyder. La Manera más sencilla de instalarlo es descargar el instalador de Anaconda de su página Web: 
+\switchcolumn
 \subsection{Anaconda. A free software computing tools distribution}\index[eng]{Anaconda}
 Among the many ways you may follow to install Python and some of its development tools, We have selected Anaconda because it is free software, easy to install, and includes Spyder. The easy way to install Anaconda is by downloading it from its Web page:  
 \end{paracol}
@@ -659,7 +663,12 @@ TypeError: 'set' object does not support item assignment
 \end{center}
 
 \begin{paracol}{2}
-\section{Operaciones aritméticas, relacionales y lógicas.}\index{Operaciones}
+\section[Operaciones aritméticas, relacionales y lógicas.]{Operaciones aritméticas, relacionales y lógicas.\sectionmark{Op. aritm., relac. y lógic.  \textreferencemark \ Arithm., relat. and logic op.}}\index{Operaciones}
+\sectionmark{Op. aritm., relac. y lógic.  \textreferencemark \ Arithm., relat. and logic. op.}
+\switchcolumn
+\section{Arithmetical, relational and logical operations}\index[eng]{Operations}
+\end{paracol}
+\begin{paracol}{2}
 \subsection{Operaciones aritméticas}\index{Operaciones!Aritméticas}
  Una vez que sabemos como crear variables en Python, vamos a ver como podemos realizar operaciones aritméticas elementales con ellas. La sintaxis es muy sencilla, y podemos sintetizarla de la siguiente manera:
 \begin{equation*}
@@ -671,7 +680,6 @@ TypeError: 'set' object does not support item assignment
 \end{equation*}
 Es decir basta concatenar los operadores con los operandos y definir una variable en la que guardar el resultado. Por ejemplo,
 \switchcolumn
-\section{Arithmetical, relational and logical operations}\index[eng]{Operations}
 \subsection{Arithmetic operations}\index{Operations!Arithmétics}
 Once we know how to create variables in Python, we will see how to perform basic arithmetic operations. The syntax is pretty simple, and we can synthesize it as follows:
 \begin{equation*}
@@ -1224,13 +1232,15 @@ We left it as an exercise to check that such a combination of logical operations
 \end{paracol}
 
 \begin{paracol}{2}
-\section{Scripts en python} \label{Scripts}
+\section[Scripts en Python]{Scripts en python} \index{Scripts}
+
 Hasta ahora, hemos manejado siempre Py-thon desde la línea de comandos. Es decir, hemos introducido las instrucciones de Python en la ventana de comandos. Este modo de emplear el programa es poco eficiente, ya que exige volver a introducir todos los comandos de nuevo cada vez que queremos repetir un cálculo.
 
 Python puede emplear ficheros de texto en los que introducimos un conjunto de comandos, los guardamos, y volvemos a emplearlos siempre que queramos. Esta es la forma habitual de trabajar no solo de Python, sino de otros muchos entornos de programación. Un fichero que contiene código de Python recibe el nombre genérico de \emph{Script}. Un Script de Python  no es más que un fichero de texto que contiene líneas formadas por comandos válidos de Python. Lo habitual es que cada línea contenga un comando. El fichero se guarda con un nombre y la extension \texttt{.py}. Por ejemplo: \texttt{miprograma.py}. El nombre del fichero, puede contener números y letras, y algunos caractéres especiales como la barra baja (\_). En general es no es aconsejable emplear nombres que incluyan espacios en blanco u otros caractéres especiales, ya que es posible que den problemas al intentar ejecutarlos.  
 
 \switchcolumn
-\section{Scripts in python} \label[eng]{Scripts}
+\section[Scripts in Python ]{Scripts in Python \sectionmark{Script en Python  \textreferencemark \ Scripts in Python.}} \index[eng]{Scripts}
+\sectionmark{Script en Python  \textreferencemark \ Scripts in Python.}
 So far, we have always dealt with Python using the command line. That is, we have constantly introduced instructions using the command line. This method is rather inefficient because we need to rewrite the commands again anytime we want to repeat the same operations.
 
 With Python, you can effortlessly save a set of instructions in a text file and reuse them anytime you need to carry out the same calculation. This is the usual way to work in Python and many other programming environments. A Python code file is usually called a \emph{Script}. Thus, a Python Script is a text file that contains lines of valid Python commands. The file is saved using a name and the extension \texttt{.py}. So a valid name would be, for example, \texttt{myprogram.py}. The file name may contain numbers, letters, and special characters, such as the underline (\_). Using names that include blanks or other special characters is not advisable as a general criterion because we may have problems running them.
@@ -1417,7 +1427,8 @@ Cuyas soluciones toman la forma general,
     x_{1,2} = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 \end{equation*}
 \switchcolumn
-\section{Functions in Python} \index[eng]{functions}
+\section[Functions in Python]{Functions in Python\sectionmark{Funciones en Python  \textreferencemark \ Functions in Python.}} \index[eng]{functions}
+\sectionmark{Funciones en Python  \textreferencemark \ Functions in Python.}
 In the previous section, we learned about using scripts to save our code and reuse it later. While this is an improvement over repeatedly rewriting the same commands in the console, it still results in code that is not very flexible and reusable. In this section, we will introduce functions, a programming structure that enables our code to become a more powerful tool.
 
 In Python, it is possible to define functions using the console. However, this is not advisable because all work will be lost once Spyder is exited. takes in Python the following general structure,
@@ -1577,7 +1588,8 @@ Por \emph{namespace} entendemos un espacio de memoria, reservado por Python dond
 En Python se definen cuatro \emph{namespaces} diferentes. Su definición es dinámica, es decir, tienen una duración en tiempo límitada: se crean cuando son neceserios y se destruyen una vez que que una vez que dejan de ser necesarios. Habitualmente varios \emph{namespaces} coexisten a la vez. Veamos cuales son:
 
 \switchcolumn
-\section{Namespace and Scope in Python}
+\section[Namespace and scope in Python]{Namespace and Scope in Python\sectionmark{Namespace y ámbito \textreferencemark \ Namespace and scope.}}\index[eng][Variable! Namespace]\index[eng]{Variable! Scope}
+\sectionmark{Namespace y ámbito \textreferencemark \ Namespace and scope.}
 We have seen that Python holds the created variables in the computer memory so that they can be used later. Understanding how Python manages the variables saved in the computer memory is essential. This takes us to the idea of Python \emph{namespaces}.
 A \emph{namespace} could be considered a memory space reserved by Python, where programs and functions can access to find variables, functions and, in general, programming objects.
 
@@ -1764,7 +1776,8 @@ Como ejemplo veamos los errores del script contenido  en el editor de textos de 
 
 Hay un segundo tipo de errores de sintaxis, que están relacionados con las propiedades de las funciones y variables que empleamos. Estos errores no son detectados directamente por el editor, pero arrojan tambien un mensaje de error en la consola de Ipython cuando los cometemos. por ejemplo, si escribimos las dos siguientes líneas de código,
 \switchcolumn
-\section{Debugging}\index[eng]{Debugger}
+\section[Debugging]{Debugging\sectionmark{depuración \textreferencemark \ debugging.}}\index[eng]{Debugger}
+\sectionmark{depuración \textreferencemark \ debugging.}
 Whenever we write a program, we must check its performance; often, we must fix the errors. The process that takes us from the original program version to the final one is known as code debugging. We could differentiate two main groups of errors:
 
 \paragraph{Syntax errors.}\index[eng]{Error !syntax error.} Broadly speaking, these are \emph{spelling} mistakes. We have written something wrong, like a variable or a function name. Also, we make a syntax error if we do not follow the language rules. The Spyder editor warns us in either case. If we ignore the editor signals and run the program, we will get an error message in the Ipython console. 
@@ -1846,18 +1859,14 @@ If we select the button ``Run the current line,'' the program will execute the c
 \end{paracol}
 
 \begin{paracol}{2}
-\section{Control de Flujo}\index{Flujo} \index{Control de flujo}
+\section[Control de flujo]{Control de Flujo\sectionmark{Control de flujo \textreferencemark \ flow control.}}\index{Flujo} \index{Control de flujo}
+\sectionmark{Control de flujo \textreferencemark \ flow control.}
 En la sección anterior, se introdujo el modo de escribir programas en Python mediante el uso de 	\emph{scripts} y funciones. En todos los casos vistos, la ejecución del programa empezaba por la primera línea del programa, y continuaba, por orden, línea tras línea hasta alcanzar el final del programa. Se trata de programas en los que el \emph{flujo} es lineal, porque los resultados de cada línea de programa se van obteniendo regularmente uno detrás de otro. 
 
 Hay ocasiones en las que, por diferentes razones que expondremos a continuación, puede interesarnos alterar el orden en que se ejecutan las sentencias de un programa, bien repitiendo una parte de los cálculos un determinado número de veces o bien ejecutando unas partes de código u otras en función de que se satisfagan unas determinadas condiciones.
 
 El control del orden en que se ejecutan las sentencias de un programa es lo que se conoce con el nombre de \emph{control de flujo}. Veremos dos tipos principales de control de flujo: El flujo condicional y los bucles.
-\subsection{Flujo condicional.}\index{Flujo!Condicional}
-Empezaremos con un ejemplo sencillo de cómo y para qué condicionar el flujo de un programa. Supongamos que queremos construir un programa que reciba como variable de entrada un número cualquiera y nos muestra un mensaje por pantalla si el número es par.
 
-Para ello, podríamos hacer uso del operador, \emph{resto de la división entera}, \mintinline{python}{%}. Si el resto de la división entre dos del número suministrado a la función es cero, se trata de un número par; si no, es un número impar. Podríamos hacer uso de operadores relacionales, en particular de \mintinline{python}{==} para comprobar si el resto de la división entre dos es cero. Por último necesitaríamos algún mecanismo que permitiera al programa escribir un mensaje solo cuando el número introducido sea par.
-
-\paragraph{if - elif - else.} El mecanismo que necesitamos nos lo suministra la estructura \mintinline{python}{if} de Python. Veamos en primer lugar el código del ejemplo del que venimos hablando,
 \switchcolumn
 \section{Flow control} \index[eng]{flow} \index[eng]{flow control}
 In the previous section, we introduced how to write Python programs using scripts and functions. In all the examples shown, the programs ran from the first line and went on, in an orderly manner, line after line, until the program ended. These programs follow a linear \emph{flow} because the results of each line are obtained sequentially, one after another.
@@ -1865,6 +1874,16 @@ In the previous section, we introduced how to write Python programs using script
 Many times, in situations we will describe later, we would like to modify the order in which the program sentences are executed. Sometimes, we need to repeat a block of code several times, while other times, we want a chunk of code to be executed only when a predefined condition is fulfilled. 
 
 The control of the order a program follows when executing its sentences is known as \emph{flow control}. We will describe two main kinds of flow control: Conditional flow and loops.
+\end{paracol}
+
+\begin{paracol}{2}
+\subsection{Flujo condicional.}\index{Flujo!Condicional}
+Empezaremos con un ejemplo sencillo de cómo y para qué condicionar el flujo de un programa. Supongamos que queremos construir un programa que reciba como variable de entrada un número cualquiera y nos muestra un mensaje por pantalla si el número es par.
+
+Para ello, podríamos hacer uso del operador, \emph{resto de la división entera}, \mintinline{python}{%}. Si el resto de la división entre dos del número suministrado a la función es cero, se trata de un número par; si no, es un número impar. Podríamos hacer uso de operadores relacionales, en particular de \mintinline{python}{==} para comprobar si el resto de la división entre dos es cero. Por último necesitaríamos algún mecanismo que permitiera al programa escribir un mensaje solo cuando el número introducido sea par.
+
+\paragraph{if - elif - else.} El mecanismo que necesitamos nos lo suministra la estructura \mintinline{python}{if} de Python. Veamos en primer lugar el código del ejemplo del que venimos hablando,
+\switchcolumn
 \subsection{Conditional flow.} \index[eng]{flow!Conditional}
 We begin with a simple example of how and why conditioning the flow. Suppose we want to make a program that gets a number as input and shows us a message on the screen if the number is even.  
 
@@ -2139,7 +2158,7 @@ La función \mintinline{python}{sumaelementos}, toma coma variables de entrada d
 
 Volvamos, antes de seguir con los ejemplos, a la estructura de la figura (\ref{fig:for}). En ella aparecen dos palabras clave opcionales que permiten interrumpir o alterar la ejecución de un bucle \mintinline{python}{for}. Ambas, deben siempre incluirse dentro de una estructura condicional. La palabra clave \mintinline{python}{break}, interrumpe la ejecución del bucle \mintinline{python}{for} que la contiene y sigue adelante con la ejecución del resto de las líneas de código que haya por debajo del bucle. La palabra clave \mintinline{python}{continue} salta todas las líneas de código que tenga por debajo, dentro del bucle y empieza una nueva iteración. Para ver su funcionamiento volvamos al programa de ejemplo anterior.
 
-La función \mintinline{python}{firsttime} busca la primera vez que un número \mintinline{python}{b} aparece en una lista \mintinline{python}{A}, devuelve la posición que ocupa en la lista y termina la ejecución. El bucle \mintinline{python}{for} comienza en la línea $55$. La estructura \mintinline{python}{if}, contenida en el bucle \mintinline{python}{for}, comprueba si el elemento correspondiente de la lista coincide con el valor buscado. Si es así, \mintinline{python}{p}, ejecuta la instrucción \mintinline{python}{break} y termina la ejecución del bucle. Si no coincide con el número, incrementa el valor de la variable \mintinline{python}{p} en $1$, y vuelve al principio del bucle. Si el número está en la lista, el valor de \mintinline{python}{p} será menor que la longitud de la lista y por, tanto se mostrará en el terminar de Ipython un mensaje indicando que el número está en la lista y qué posición ocupa. Si el número no está en la lista, el bucle \mintinline{python}{for} no se interrumpe y ek valor de \mintinline{python}{p} coincidirá con la longitud de la lista, mostrando entonces en el terminal de Ipython un mensaje indicando que el número no está en la lista\footnote{Hay maneras mejores de hacer esto mismo. El ejemplo solo pretende mostrar el uso del comando \mintinline{python}{break}}.
+La función \mintinline{python}{firsttime} busca la primera vez que un número \mintinline{python}{b} aparece en una lista \mintinline{python}{A}, devuelve la posición que ocupa en la lista y termina la ejecución. El bucle \mintinline{python}{for} comienza en la línea $55$. La estructura \mintinline{python}{if}, contenida en el bucle \mintinline{python}{for}, comprueba si el elemento correspondiente de la lista coincide con el valor buscado. Si es así, \mintinline{python}{p}, ejecuta la instrucción \mintinline{python}{break} y termina la ejecución del bucle. Si no coincide con el número, incrementa el valor de la variable \mintinline{python}{p} en $1$, y vuelve al principio del bucle. Si el número está en la lista, el valor de \mintinline{python}{p} será menor que la longitud de la lista y por, tanto se mostrará en el terminar de Ipython un mensaje indicando que el número está en la lista y qué posición ocupa. Si el número no está en la lista, el bucle \mintinline{python}{for} no se interrumpe y ek valor de \mintinline{python}{p} coincidirá con la longitud de la lista, mostrando entonces en el terminal de Ipython un mensaje indicando que el número no está en la lista\footnote{Hay maneras mejores de hacer esto mismo en Python. El ejemplo solo pretende mostrar el uso del comando \mintinline{python}{break}}.
 
 La función \mintinline{python}{buscapar} busca los números pares de una lista y crea una nueva lista con los números pares contenidos en la lista original. En la línea $71$ se comprueba si el número es impar y, caso de serlo, la instrucción \mintinline{python}{continue} hace que el programa no ejecute la línea $73$, evitando que los números impares se incluyan en la lista \mintinline{python}{B}, que solo contendrá números pares al final de la ejecución del programa.
 
@@ -2155,7 +2174,15 @@ The function \mintinline{python}{sumaelementos} takes two lists of equal length 
 
 Before proceeding with the code examples, we will return to figure \ref{fig:for}. There are two keywords included in the general \mintinline{python}{for} structure layout that allows to interrupt or alter the execution of a \mintinline{python}{for} block. Both should always be included in a conditional statement. The keyword \mintinline{python}{break} interrupts the execution of the \mintinline{python}{for} loop that encloses it, and the program jumps to the following line after the \mintinline{python}{for} block. The keyword \mintinline{python}{continue} skips every code line beneath it, belonging to the \mintinline{python}{for} block and starts a new iteration. We will see how they work, resuming the study of the example code included above. 
 
-The function \mintinline{python}{firsttime} searches for the first time that a number \mintinline{python}{b} appears in a list \mintinline{python}{A}. The \mintinline{python}{for} loop starts at line $55$. The \mintinline{python}{if} structure, enclosed in the \mintinline{python}{for} loop, checks if the element \mintinline{python}{i} of the list meets the wanted number. if so, the program executes the \mintinline{python}{break} command, and the program returns the position \mintinline{python}{p} of the number in the list.  If the element \mintinline{python}{i} of the list \mintinline{python}{A} does not match the wanted number, the program goes back to the beginning of the \mintinline{python}{for} loop and will try the next element of the list. Notice that if the list \mintinline{python}{A} hasn't got the number, the position retrieved will be $-1$.
+The function \mintinline{python}{firsttime} searches for the first time that a number \mintinline{python}{b} appears in a list \mintinline{python}{A}, returns the position the number is located at in the list and finishes the program execution. The \mintinline{python}{for} loop starts at line $55$. The \mintinline{python}{if} structure, enclosed in the \mintinline{python}{for} loop, checks if the element \mintinline{python}{i} of the list meets the wanted number. if so, the program executes the \mintinline{python}{break} command, and the program returns the position \mintinline{python}{p} of the number in the list.  If the element \mintinline{python}{i} of the list \mintinline{python}{A} does not match the wanted number, the program increments the value of variable \mintinline{python}{p} in 1 and goes back to the beginning of the \mintinline{python}{for} loop and will try the next element of the list. If the wanted number is in the list,  the final value of \mintinline{python}{p} will be less than the list length, and the Ipython console will display a message indicating that the number is in the list and the position the number has in the list. If the program can not find the number in the list, the \mintinline{python}{for} loop is not interrupted, and the Ipython console will display a message indicating that the number is not in the list \footnote{there are better ways to do this. This example is intended only to show the performance of the \mintinline{python}{break} statement.}.
+\ \\
+\ \\
+
+The function \mintinline{python}{buscapar} searches for the even numbers included in a list and builds a new list with the even numbers contained in the original list. The program checks in line $71$ if the number is odd. If this is the case, the \mintinline{python}{continue} command makes the program skip line $73$, avoiding including the odd numbers in list \mintinline{python}{B}, which will only have even numbers when the program finishes.
+
+\paragraph{Nested for loops.} \index{Nesting!Nested for} The \mintinline{python}{for} loops can be nested one into another, likewise to how we nested \mintinline{python}{if} structures. Functions \mintinline{python}{listadelistas} and \mintinline{python}{pairs} show a couple of examples of how to do it.
+
+The function \mintinline{python}{listadelistas} takes a bidimensional list -- a list \mintinline{python}{A} in which each element is, in turn, a list of numbers-- as input and searches how many times a number also supplied to the function as an input, is enclosed in the list. It performs this task using two nested \mintinline{python}{for} loops. The first (outer) loop starts at line $86$, defining an index \mintinline{python}{i}, which will cover the list. A second (inner) \mintinline{python}{for} loop starts at line $87$, creating a second index \mintinline{python}{j}. This second index will cover each list of numbers included in list \mintinline{python}{A}. The inner \mintinline{python}{for} loop has a conditional structure inside that checks if the number that takes position \mintinline{python}{j} inside the number list \mintinline{python}{i} meets the wanted value. If so, the index \mintinline{python}{(i,j)} are saved as a tuple in list \mintinline{python}{ind} and the variable \mintinline{python}{counter}, which counts the times the wanted number has been found in the list, is increased in one unit. The following code presents an example of the function performance,     
 \end{paracol}
 
 \begin{center}
@@ -2247,7 +2274,6 @@ label=examples\_while.py,
 fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/introduccion/codigo_abierto/examples_while.py}
-
 \begin{paracol}{2}
 La función \mintinline{python}{pmax}, toma como entradas dos números y calcula a qué exponente es necesario elevar el primero de los números para que el resultado sea mayor que el segundo. El código del bucle \mintinline{python}{while} comienza en la línea $16$ comprobando si el número elevado al valor de \mintinline{python}{n} es menor que el valor de la segunda variable de entrada \mintinline{python}{M}. Si efectivamente se cumple esta condición, se ejecuta la línea $17$ que lo único que hace es incrementar en una unidad el valor de \mintinline{python}{n}. A continuación el programa vuelve de nuevo a la línea $16$ y comprueba si se cumple la condición para el nuevo valor de \mintinline{python}{n}. Este proceso continúa hasta que la condición deja de cumplirse. En ese momento, el programa sale del bucle \mintinline{python}{while} y ejecuta la instrucción \mintinline{python}{return}, devolviendo el último valor calculado de \mintinline{python}{n}.
 
@@ -2257,8 +2283,19 @@ Las sentencias \texttt{break} y \texttt{continue} son idénticas a las descritas
 \paragraph{Bucles while anidados.} \index{Anidación! While anidado} Del mismo modo que se anidan los bucles \mintinline{python}{for}, es posible anidar bucles \mintinline{python}{while}.
 En el código de ejemplo anterior se ha definido una función, \mintinline{python}{L_suma}, Que empela dos bucles \mintinline{python}{while} anidados para sumar los valores de dos listas de listas de números que ocupan la misma posición. Las listas deben tener las mismas dimensiones, mismo número de listas de números y mismo número de valores en cada lista de número. Lo primero que se hace en definir un índice, para ir recorriendo cada una de las listas de números contenidas en las listas de entrada \mintinline{python}{A} y \mintinline{python}{B}. Después se crea una nueva lista \mintinline{python}{C}, vacía. En la línea $34$ se empieza el bucle \mintinline{python}{while} exterior. Este bucle se ejecutará mientras le índice \mintinline{python}{i} sea menor que el número de listas de números contenidas en las listas de entrada. Una vez que se entra en dicho bucle, lo primero que se hace es comprobar cuantos numeros hay en la lista \mintinline{python}{i} y se añade una nueva lista (de números) vacía a la lista \mintinline{python}{C}. El programa entra en el \mintinline{python}{while} interior, que va recorriendo los valores de las listas de números \mintinline{python}{i} contenidas en las listas de entrada, los suma y los añade a la lista \mintinline{python}{C}. Cada vez que termina con una de las listas de números, \mintinline{python}{j = n_num}, El programa sale del bucle interior, incrementa en una unidad el valor de \mintinline{python}{i}, cuenta cuantos números hay en la nueva lista \mintinline{python}{y} añade una nueva lista vacía a \mintinline{python}{C} y vuelve a entrar en el bucle interior. El proceso continúa hasta que se agotan las listas de números, \mintinline{python}{i = n_lista}; cuando se cumple esta condición, el programa sale del bucle \mintinline{python}{while} exterior y devuelve el valor de \mintinline{python}{C}.
 
+\switchcolumn
+The function \mintinline{python}{pmax} takes two numbers as input and calculates the exponent you have to raise the first number to obtain a result greater than the second one. The \mintinline{python}{while} loop code starts at line $16$, checking whether the first input variable raises to \mintinline{python}{n} is less than the second input variable. When this condition is fulfilled, the program executes line $17$ that increases in one unit the value of \mintinline{python}{n}. Then, the program returns to line $16$ and checks if the condition is met for a new value of \mintinline{python}{n}. This process goes on until the condition is no longer met. At this moment, the program exits the \mintinline{python}{while} loop and executes the \mintinline{python}{return} instruction, returning the last value of \mintinline{python}{n} the program calculated.
+
+A critical point to consider when programming a \mintinline{python}{while} is ensuring that the input to the loop condition will change inside the loop. Otherwise, the program will get into an infinite loop and never stop\footnote{If you get into this situation for an error in the program design, please don`t panic: press the board keys Control + C simultaneously and breathe normally.}. The commands \mintinline{python}{break} and \mintinline{python}{continue} are identical to those described for the \mintinline{python}{for} loops. For this reason, we will not insist on them any more. 
+
+\paragraph{Nested while loops.}\index[eng]{Nesting! Nested While} In a similar way as with the \mintinline{python}{for} loops, it is possible to nest \mintinline{python}{while} loops. We have defined the function \mintinline{python}{L_suma}, in the above code example, which uses two nested \mintinline{python}{while} loops to add the values of two lists located at the same position in each list. The lists should have the same dimension, the same number of lists of numbers and the same number of numbers in each list of numbers. We first define an index to cover the lists of numbers contained in the input lists \mintinline{python}{A} and \mintinline{python}{B}. Then, a new empty list \mintinline{python}{C} is created. An outer \mintinline{python}{while} loop starts at line $34$. This loop will run while the index \mintinline{python}{i} is less than the number of list of numbers contained in the input lists. Once the program gets into this outer loop, the program checks first of all how many numbers the list \mintinline{python}{i} contains and appends a new empty list (of numbers) to list \mintinline{python}{C}. The program then gets into the inner \mintinline{python}{while} loop, which covers the values of the lists of numbers \mintinline{python}{i} contained in the input lists, adds these values between then and appends the result to the list \mintinline{python}{C}. Any time a list of numbers is completed, \mintinline{python}{j = n_num}, the program jumps off the inner loop, increases in one unit the value of \mintinline{python}{i}, checks how many numbers are in the new list of numbers, adds a new empty list to \mintinline{python}{C} and get again into the inner loop. The process goes on till the lists of numbers are exhausted, \mintinline{python}{i = n_lista}; when this condition is met, the program gets out the outer \mintinline{python}{while} loop and returns the value of \mintinline{python}{C}.
+\end{paracol}
+
+\begin{paracol}{2}
 \subsection{Funciones recursivas.} \index{Funciones! Recursivas}
-Una función recursiva es una función que se llama a sí misma. Hemos esperado hasta aquí para hablar de ellas porque, de alguna manera, se comportan como un bucle y necesitan una condición de salida para dejar de llamarse a sí mismas y terminar su ejecución. En general, son delicadas de manejar y tienden a consumir mucha memoria ya que cada vez que la función se llama a sí misma necesita crear un nuevo espacio de memoria independiente. Veamos un ejemplo de función recurrente que permite obtener el término enésimo de la sucesión de Fibonacci
+Una función recursiva es una función que se llama a sí misma. Hemos esperado hasta aquí para hablar de ellas porque, de alguna manera, se comportan como un bucle y necesitan una condición de salida para dejar de llamarse a sí mismas y terminar su ejecución. En general, son delicadas de manejar y tienden a consumir mucha memoria ya que cada vez que la función se llama a sí misma necesita crear un nuevo espacio de memoria independiente. Veamos un ejemplo de función recurrente que permite obtener el término enésimo de la sucesión de Fibonacci.
+\switchcolumn
+\subsection{recursive functions.} A recursive function is a function that calls itself. We have waited till now to speak of them because, in some ways, they behave like a loop and need an output condition to stop their execution. Speaking in general, they are difficult to deal with and tend to be very memory-consuming because any time a function calls itself creates a new memory independent memory area. We are going to see an example of a recursive function which allows for obtaining the Fibonacci series $n$ term.  
 \end{paracol}
 
 \begin{align*}
@@ -2266,6 +2303,8 @@ f_0=0, f_1=1, f_2=1, f_3=2, f_4=3, f_5=5, f_6=8, \cdots f_i=f_{i-1}+f_{i-2} \cdo
 \end{align*}
 \begin{paracol}{2}
 La sucesión empieza con los términos $0$ y $1$ y a partir de ahí cada término es la suma de los dos anteriores. Podemos convertir directamente esta definición en código,
+\switchcolumn
+The series starts with the terms $0$ and $1$, and later on, each term is the sum of the previous two. We can straightforwardly cast this definition into code,
 \end{paracol}
 
 \inputminted[
@@ -2273,7 +2312,7 @@ frame=lines,
 framesep=2mm,
 baselinestretch=1.2,
 %bgcolor=LightGray,
-label=ejemmplo\_recursivas.py,
+label=ejemplo\_recursivas.py,
 fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/introduccion/codigo_abierto/ejemplo_recursivas.py}
@@ -2281,7 +2320,7 @@ linenos
 \begin{paracol}{2}
 Si n es menor que dos, la función \mintinline{python}{fibonacci} da como valor el término correspondiente (1 o 0). Si n es mayor que dos, vuelve a llamarse a si misma con entrada \texttt{n-1} y \texttt{n-2}, para calcular el valor enésimo de la sucesión a partir de la suma de los dos anteriores, la función se irá llamando a sí misma hasta  llegar a $n<2$. A partir de ahí ira devolviendo los valores obtenidos en cada llamada hasta obtener el enésimo término.
 
-La segunda función, \mintinline{python}{fibo_series}, emplea una \emph{list comprehension} para crear una lista con los n primeros terminos de la serie de fibonacci\footnote{si se emplea un valor de n muy grande, es posible que se agote el número máximo de llamadas recursivas a una función admitido por Python, en cuyo caso el programa dará un error}.
+La segunda función, \mintinline{python}{fibo_series}, emplea una \emph{list comprehension} para crear una lista con los n primeros terminos de la serie de Fibonacci\footnote{si se emplea un valor de n muy grande, es posible que se agote el número máximo de llamadas recursivas a una función admitido por Python, en cuyo caso el programa dará un error. Además se puede modificar directamente la funcion \mintinline{python}{fibonacci} para obtener los n primeros términos de la serie con menos esfuerzo}.
 
 \subsection{Algoritmos y diagramas de flujo.} \index{Flujo! Diagrama de Flujo}
 Un algoritmo es, en la definición de la Real Academia: 
@@ -2304,6 +2343,33 @@ El siguiente paso, sería pensar y definir un algoritmo que permita resolver nue
 En ocasiones, facilita la comprensión de un algoritmo representarlo gráficamente mediante un diagrama de flujo. Los diagramas de flujo emplean símbolos bien definidos para representar los distintos paso de un algoritmo y flechas para indicar la relación entre ellos; la relación en la que la información \emph{fluye} de un paso del algoritmo a otro.
 
 No hay una norma rígida para realizar un diagrama de flujo, el grado de detalle con que se describe el algoritmo va en función de las necesidades del programador, o de los destinatarios a quienes va dirigido el diagrama. La idea fundamental es que facilite la comprensión del algoritmo. Se utilizan diversos símbolos para indicar, procedimientos, condiciones, almacenamiento de resultados, etc. La figura \ref{fig:flujo} muestra los tres símbolos más empleados.
+
+\switchcolumn
+if n is less than or equal to two, the function \mintinline{python}{fibonacci} returns the corresponding term ($1$ or $0$). If n is greater than two, the function calls itself with inputs \mintinline{python}{n-1} and \mintinline{python}{n-2}, to calculate the value of the nth term of the series by adding the values of the previous two. The function will be calling itself till it arrives at $n\leq 2$. From then on, it will be returning the values of the terms obtained in each call till it gets the nth one.
+
+the second function \mintinline{python}{fibo_series}, uses a \emph{list comprehension} to create a list with the n first terms of the Fibonacci series\footnote{If the number n is to large, it is possible that the maximum number of recursive function calls allowed by Python be reached. In this case, the program casts an error. Besides, we could modify the function \mintinline{python}{fibonacci} to obtain the list with the first n terms of the series, with less effort.}.
+
+\subsection{Algorithms and flow charts.}
+
+According to the Oxford Dictionary, an algorithm is defined as:
+\begin{quotation}
+    2. Mathematics and Computing. A procedure or set of rules used in calculation and problem-solving; (in later use spec.) a precisely defined set of mathematical or logical operations for the performance of a particular task.
+\end{quotation}
+The word algorithm is a transliteration of the Arab mathematician \emph{Al-Juarismi} name (circa 780-850 ac). Algorithms are fundamental in programming due to they are the previous step to program creation. 
+
+ Usually, we depart from a problem we have a precise statement for. For instance: Obtain the first n prime numbers.
+
+The next step would be to define an algorithm that allows us to solve the problem. It is important to realise that the same problem can, in many cases, be solved by different methods. Therefore, it is possible to design different algorithms to solve the same problem. An algorithm for the odd numbers problem may be as follows,
+
+\begin{itemize}
+    \item Take number 2 as the first prime number. (A prime number is such that is only divisible by itself and by one)
+    \item Cover all odd numbers from 3 till the number $n$ of prime numbers required is completed.
+    \item For each odd number, try to divide it between all prime numbers discovered so far. If the number is not divisible by any of them, then the number is prime. save it and try the next odd number. Otherwise, i.e. if it is divisible for one of them, break the process and try the next odd number.
+\end{itemize}
+
+Sometimes understanding an algorithm is easier if we represent it graphically using a flow chart. Flowcharts use well-defined symbols to represent the steps of an algorithm and arrows to indicate the relationship among the steps; how the information \emph{flows} from one step to another.
+
+There is no rigid form to designing a flow chart; the degree of detail description used in the algorithm depends on the programmer's needs or the needs of the people the flow chart addresses. The basic idea is to use the chart to ease the algorithm's understanding. There are several symbols to indicate procedures, conditions, data storage, etc. Figure \ref{fig:flujo} shows the three most common chart symbols.
 \end{paracol}
 
 \begin{figure}
@@ -2324,6 +2390,13 @@ Para indicar el inicio y el fin de un algoritmo se emplea como símbolo una elip
 Los símbolos se relacionan mediante flechas que indican el sentido en que se ejecuta el algoritmo. los rombos suelen tener dos flechas de salida marcadas con las palabras ``si'' y ``no'', para indicar por donde sigue el flujo de información dependiendo de si la condición representada se cumple o no.
 
 Por último un bucle se representa habitualmente mediante una flecha que devuelve el flujo a un símbolo ya recorrido anteriormente.
+
+\switchcolumn
+We use an ellipse to indicate the beginning and end of an algorithm. To indicate a procedure, for instance, to perform a computation, to assign a value to a variable, etc., we use a rectangle. finally, we use a rhombus as a symbol to indicate a condition. 
+
+The symbols are related by arrows to establish the direction of the program flow. Rhombus usually have two exit arrows marked with the words 'yes' and 'not' to indicate where the program flows depending on whether the condition is met or not.
+
+Finally, a loop is usually represented by an arrow which comes back to a previously covered symbol. 
 \end{paracol}
  
 
@@ -2372,12 +2445,31 @@ Es fácil extraer del diagrama de flujo las estructuras de programación que nec
 
 Por supuesto es posible realizar un diagrama de flujo más detallado, en el que incluso se incluya explícitamente parte del código que se va a utilizar. Por ejemplo se podría indicar que se empleará el comando \mintinline{python}{%} para comprobar si un número es divible entre otro. Sin embargo, hay que tener cuidado para evitar que un exceso de detalle dificulte entender la lógica del algoritmo contenida en el diagrama.
 
-Por último el algoritmo se codifica dando lugar a un programa de ordenador que permite resolver el problema. Para ello, hay que identificar las instrucciones del algoritmo con estructuras de programación validas: bucles, condicionales, etc. Veamos un posible código para generar números primos, siguiendo el algoritmo descrito.
+Por último el algoritmo se codifica dando lugar a un programa de ordenador que permite resolver el problema. Para ello, hay que identificar las instrucciones del algoritmo con estructuras de programación validas: bucles, condicionales, etc.
 
 El siguiente código muestra dos funciones para calcular los $n$ primeros números primos La primera emplea una variable de aviso para detectar cuando un número impar no es divisible por todos los primos anteriores a él. Trata de comprender como funciona
 
-La segunda emplea una estructura \mintinline{python}{for} especial definida en python, de la que no hemos hablado anteriormente. Se trata de la estructura \mintinline{python}{for - else}.
-Si nos fijamos en las líneas de código $37$ a $41$, vemos una estructura for en la que se comprueba si el numero impar correspondiente es divisible por los primos ya obtenidos. En la linea $41$ aparece una instrucción \mintinline{python}{else}; dicha instrucción esta asociada al bucle \mintinline{python}{for} y solo se ejecuta cuando el bucle \mintinline{python}{for} llega al final. En nuestro caso, solo se ejecutará si el bucle \mintinline{python}{for} no es interrumpido por la instrucción \mintinline{python}{break} contenida en él. Es decir solo se ejecuta si el numero impar que estamos probando no es divisible por ninguno de los primos anteriores. Si se da esta situación, el bucle \mintinline{python}{for} llega has el final y además quiere decir que el número impar en cuestión es el además el siguiente número primo. EL programa entra entoces en el bloque \mintinline{python}{else} y ejecuta la única sentencia que contiene, guardando el número impar en la lista de primos. Ni que decir tiene que, como siempre, el código correspondiente al bloque \mintinline{python}{else}, debe estar indentado. 
+La segunda emplea una estructura \mintinline{python}{for} especial definida en Python, de la que no hemos hablado anteriormente. Se trata de la estructura \mintinline{python}{for - else}.
+Si nos fijamos en las líneas de código $37$ a $41$, vemos una estructura \mintinline{python}{for} en la que se comprueba si el numero impar correspondiente es divisible por los primos ya obtenidos. En la linea $41$ aparece una instrucción \mintinline{python}{else}; dicha instrucción esta asociada al bucle \mintinline{python}{for} y solo se ejecuta cuando el bucle \mintinline{python}{for} llega al final. En nuestro caso, solo se ejecutará si el bucle \mintinline{python}{for} no es interrumpido por la instrucción \mintinline{python}{break} contenida en él. Es decir solo se ejecuta si el numero impar que estamos probando no es divisible por ninguno de los primos anteriores. Si se da esta situación, el bucle \mintinline{python}{for} llega has el final y además quiere decir que el número impar en cuestión es el además el siguiente número primo. El programa entra entoces en el bloque \mintinline{python}{else} y ejecuta la única sentencia que contiene, guardando el número impar en la lista de primos. Ni que decir tiene que, como siempre, el código correspondiente al bloque \mintinline{python}{else}, debe estar indentado. 
+
+\switchcolumn
+Figure \ref{fig:primos} shows a possible flow chart for the prime numbers problems. As you can see, it has more information than the text version of the algorithm we gave above.
+
+The arrows describing the information flow show that we must implement an outer loop until the required number $n$ of prime numbers is fulfilled. We will also need an inner loop if any odd number we test is divisible by any of the prime numbers found so far.
+
+There is a third condition which should break the checking when we find the first odd number being a divisor for the odd number the program is checking.
+
+From the chart flow, it is easy to obtain the programming structures needed to build a code that allows us to solve the prime numbers problem. So, it seems reasonable to implement the outer loop using a \mintinline{python}{while} loop, a \mintinline{python}{for} loop --that computes as many iterations as prime numbers have been found so far-- for the inner loop, a \mintinline{python}{break} to interrupt the checking process, etc.
+
+Of course, it is possible to build a more detailed flow chart, even including explicitly part of the code to be included in the program. For instance, we may indicate that we will use the command \mintinline{python}{%} to check if a number is divisible by another. Nevertheless, it is essential to note that you should be careful to avoid an excess of details that make it difficult to understand the logic of the algorithm described by the flow chart.
+
+Eventually, we have to cast the algorithm into code, generating a computer program that allows us to solve the problem. We need to identify the algorithm instruction with valid programming structures: loops, conditionals, etc.
+
+The following code shows two functions for calculating the $n$ first prime numbers. 
+
+The first function uses a flag variable to detect when an even number is not divisible for any prime number less than it. Try to understand how it works.
+
+The second one uses a Python special \mintinline{python}{for} structure, which we have not spoken of so far.  it is the \mintinline{python}{for - else} structure. If we focus on code lines $37$ to $41$, we shall see a \mintinline{python}{for} structure in which we check if the odd number we are checking is divisible by any of the previously found prime numbers. In line $41$, there is an \mintinline{python}{else} instruction. It is linked to the \mintinline{python}{for} loop and the program will execute this instruction only if the for loop reaches its end. In our case, the program reaches this \mintinline{python}{else} command only if the \mintinline{python}{break} instruction inside does not interrupt the \mintinline{python}{for} loop. In other words, this happens only if the odd number we are checking is not divisible by any of the previously found primes and, therefore, it is the next prime number. Then the program gets into the \mintinline{python}{else} block and executes the single line it contains, saving the odd number in the list of prime numbers. It is needless to say that the code within the "else" statement should be properly indented.
 \end{paracol}
 
 \inputminted[
@@ -3053,66 +3145,3 @@ Escribe un script que genere los primeros $m$ números de la serie de Fibonacci,
 \item Sin utilizar las funciones de matlab \verb|flip,fliplr, flipud,...|, escribe las líneas de código para que, dado un vector \verb|x|, genere otro vector con el orden de los elementos invertido.
 \end{enumerate}
 
-\section{Test del curso 2020/21}
-\begin{enumerate}
-
-\item  El movimiento de un cuerpo en el plano viene descrito por las siguientes ecuaciones,
-
-\begin{align}
-x(t) &= \sin(2 \pi \, \omega_1 t)\\
-y(t) &= \cos(2 \pi \, \omega_2 t)\\
-z(t) &= a\cos(2\pi \, \omega_1 t) \label{eq:3}
-\end{align}
-
-donde $x,y,z$ representan las coordenadas del cuerpo en el instante de tiempo $t$ medidas en metros,  $w_1$ y $w_2$ son frecuencias fijas medidas en $rad\cdot s^{-1}$ y $a$ es una amplitud fija medida en metros.
-
-\begin{enumerate}
-	\item \label{ap1} (\textbf{1.5 puntos}) Escribe una función que:
-
-\begin{enumerate}
-	\item Tome como variables de entrada las frecuencias $w_1$, $w_2$, la amplitud $a$ .
-	\item Haga el cálculo de la trayectoria en tres dimensiones descrita por el cuerpo en el intervalo de tiempo $[0,1]$. Considera incrementos de tiempo de $0.01s$.
-	\item Dibuje en una gráfica la trayectoria descrita por el cuerpo en el espacio. Cada eje del gráfico deberá llevar  una etiqueta indicando de qué variable se trata $x$, $y$ ó $z$.
-	\item La salida serán tres vectores con los valores de $x$, $y$ y $z$ calculados para cada instante de tiempo.
-	\end{enumerate}
-
-\item (\textbf{1.5 puntos}) Añade a la función creada en el apartado anterior el código necesario para que:
-	\begin{enumerate}
-	\item \textbf{Solo si} se le dan dos variables de entrada en lugar de tres, entonces calcule la trayectoria que describiría el cuerpo en el plano si se eliminara la ecuación (\ref{eq:3}) de las ecuaciones del sistema. (NOTA: La función debe seguir funcionando igual que en el apartado anterior si se le dan tres entradas. Emplea el comando nargin).
-	\item El resultado deberá también representarse gráficamente, pero solo en dos dimensiones, y devolver la variable $z$ como un vector vacío. 
-	\end{enumerate}
-
-\item \label{ap2} (\textbf{1.5 puntos}) Crea un un \emph{live script} que genere dos  vectores de frecuencias: \texttt{W1} y \texttt{W2} de  modo que el primero contenga los números impares comprendidos entre $1$ y $7$ y el segundo los números pares comprendidos entres $2$ y $8$.  Emplea la función creada en el apartado anterior para calcular el valor de las trayectorias obtenidas tomando como entradas para  $\omega_1, \omega_2$,  todos los pares posibles de la forma: \texttt{W1(i)} y \texttt{W2(j)}. Supón que no hay tercera entrada $a$. Realiza los cálculos empleando bucles.
-
-\item (\textbf{1 punto}) Añade a tu programa el código necesario para que dibuje cada resultado en un \emph{subplot} de modo que la figura resultante tenga $4\times4$ \emph{subplots} (ver figura al dorso).  Debes crear los \emph{subplots} empleando los mismos bucles del apartados anterior. 
-
-\item (\textbf{0.5 puntos}) Repite los cálculos de los apartados c) y d) pero tomando ahora $a=1$.
-\end{enumerate}
-
-\item Una matriz cuadrada $A$, de dimensión arbitraria $(n\times n)$, cuyos elementos $a_{ij} \in \mathbb{Z}$, se define como \emph{buenrollista} cuando las suma de los valores pares de cada fila es mayor o igual que la suma de los valores  impares de la columna correspondiente, i.e., satisface la siguiente relación:
-\begin{equation}
-	\sum_{j=1}^n a_{ij\text{(par)}} \geq \sum_{j=1}^n a_{ji\text{(impar)}}, \quad \forall i\in\{1,...,n\}
-\end{equation}
-
-\begin{enumerate}
-\item (\textbf{1.5 puntos}) Escribe  una función que tome como variable de entrada una matriz cuadrada de cualquier dimensión 
-y calcule un vector con las sumas de los valores pares de los elementos de cada una de su filas  y otro vector con las sumas de los elementos impares de cada una de sus columnas.
-\item (\textbf{1.5 puntos}) Añade a la función anterior el código necesario para que compruebe, empleando los vectores obtenidos en el apartado anterior, si la función es \emph{buenrollista} y muestre un mensaje por pantalla indicando si lo es o no.
-\item (\textbf{1 punto}) Aplica la función desarrollada a la siguiente matriz:
-\begin{equation*}
-\begin{pmatrix}
-2&3&4&6&1\\
-5&4&-2&3&0\\
-4&-1&5&4&-6\\
-4&2&4&5&8\\
-3&0&-3&-3&6
-\end{pmatrix}
-\end{equation*}
-\end{enumerate}
-\end{enumerate}
-\noindent\rule{\textwidth}{0.4pt}
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{lisa1.eps}
-\caption{vista de la figura con los ocho subplots} \label{fig:1}
-\end{figure}
