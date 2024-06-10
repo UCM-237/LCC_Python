@@ -1438,11 +1438,6 @@ array([[  2.71828183,   7.3890561 ],
     \end{minipage}
 \end{center}
 
-========================= THE FRONTIER ======================================
-\begin{flalign*}
-&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
-\end{flalign*}
-
 \begin{paracol}{2}
 \section{Operadores vectoriales}\label{opvect}
 En esta sección vamos a estudiar el efecto de las operaciones matriciales, descritas en la sección anterior, sobre los vectores. Empecemos por considerar el producto por un escalar $\alpha \cdot a$. El efecto fundamental es modificar el módulo del vector,
@@ -1803,7 +1798,15 @@ a^{\mathcal{B}_2}&=B_2^{-1} \cdot B_1\cdot a^{\mathcal{B}_1}
 \begin{paracol}{2}
 El siguiente código permite cambiar de base un vector y, si el vector pertenece a $\mathbb{R}^3$, representa gráficamente tanto el vector como las bases antigua y nueva.
 \end{paracol}
-=================falta el código premetido===================================
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=inversa.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/Algebra/codigo_abierto/cambio_vb.py}
 
 \begin{paracol}{2}
 \paragraph{Operadores lineales.} A partir de los visto en las secciones anteriores, sabemos que el producto de una matriz de $A$ de orden $n\times n$  multiplicada por un vector $b$ de dimension $n$ da como resultado un nuevo vector $c=A\cdot b$  de dimensión $n$. Podemos considerar cada matriz $n\times n$ como un \emph{operador lineal}, que transforma unos vectores en otros.  Decimos que se trata de un operador lineal porque las componentes del vector resultante, están relacionadas linealmente con las del vector original, por ejemplo para $n=3$,
@@ -2096,15 +2099,18 @@ x\cdot A_s\cdot >0, \forall x \neq 0 \Rightarrow x\cdot A\cdot >0, \forall x \ne
 &&\reversemathwitch*
 \end{flalign*}
 
+\begin{paracol}{2}
 \section{Tipos de matrices empleados frecuentemente}\label{tiposm}
 Definimos a continuación algunos tipos de matrices frecuentemente empleados en álgebra, algunos ya han sido introducidos en secciones anteriores. Los reunimos todos aquí para facilitar su consulta
 
-\begin{enumerate}
-\item Matriz ortogonal: Una matriz $A_{n\times n}$ es ortogonal cuando su inversa coincide con su traspuesta.
+1 Matriz ortogonal: Una matriz $A_{n\times n}$ es ortogonal cuando su inversa coincide con su traspuesta.
+\end{paracol}
 \begin{equation*}
 A^T=A^{-1}
 \end{equation*}
+\begin{paracol}{2}
 ejemplo,
+\end{paracol}
 
 \begin{equation*}
 A=\begin{pmatrix}
@@ -2117,19 +2123,26 @@ A=\begin{pmatrix}
 0& 0& 1
 \end{pmatrix}
 \end{equation*}
-\item Matriz simétrica: Una matriz $A_{n\times n}$ es simétrica cuando es igual que su traspuesta,
+\begin{paracol}{2}
+2. Matriz simétrica: Una matriz $A_{n\times n}$ es simétrica cuando es igual que su traspuesta,
+\end{paracol}
 \begin{equation*}
 A=A^T \rightarrow a_{ij}=a_{ji}
 \end{equation*}
+\begin{paracol}{2}
 ejemplo,
+\end{paracol}
 \begin{equation*}
 A=\begin{pmatrix}
 1& -2& 3\\
 -2& 4& 0\\
 3& 0& -5
 \end{pmatrix}
-\end{equation*} 
-\item Matriz Diagonal: Una matriz $A$  es diagonal si solo son distintos de ceros los elementos de su diagonal principal,
+\end{equation*}
+\begin{paracol}{2}
+3. Matriz Diagonal: Una matriz $A$  es diagonal si solo son distintos de ceros los elementos de su diagonal principal,
+\end{paracol}
+
 \begin{equation*}
 \begin{pmatrix}
 a_{11}& 0& \cdots & 0\\
@@ -2140,12 +2153,17 @@ a_{11}& 0& \cdots & 0\\
 a_{ij}=0,\ \forall i\neq j
 \end{equation*}
 
-\item Matriz triangular superior: Una matriz es triangular superior cuando todos los elementos situados por debajo de la diagonal son cero. Es estrictamente diagonal superior si además los elementos de la diagonal también son cero,
+\begin{paracol}{2}
+4. Matriz triangular superior: Una matriz es triangular superior cuando todos los elementos situados por debajo de la diagonal son cero. Es estrictamente diagonal superior si además los elementos de la diagonal también son cero,
+\end{paracol}
 \begin{align*}
 TRS& \rightarrow a_{ij} = 0, \ \forall i\geq j \\
 ETRS& \rightarrow a_{ij} = 0, \ \forall i > j 
 \end{align*}
+\begin{paracol}{2}
 ejemplos,
+\end{paracol}
+
 \begin{align*}
 TRS&=\begin{pmatrix}
 1 & 3 & 7\\
@@ -2158,12 +2176,17 @@ ETRS&=\begin{pmatrix}
 0 & 0 & 0
 \end{pmatrix}\\
 \end{align*}
-\item Matriz triangular inferior: Una matriz es triangular inferior si todos los elementos pro encima de su diagonal son cero. Es estrictamente triangular inferior si además los elementos de su diagonal son también cero,
+\begin{paracol}{2}
+5. Matriz triangular inferior: Una matriz es triangular inferior si todos los elementos pro encima de su diagonal son cero. Es estrictamente triangular inferior si además los elementos de su diagonal son también cero,
+\end{paracol}
 \begin{align*}
 TRI& \rightarrow a_{ij} = 0, \ \forall i\leq j \\
 ETRI& \rightarrow a_{ij} = 0, \ \forall i < j 
 \end{align*}
+\begin{paracol}{2}
 ejemplos,
+\end{paracol}
+
 \begin{align*}
 TRI&=\begin{pmatrix}
 1 & 0 & 0\\
@@ -2176,7 +2199,9 @@ ETRI&=\begin{pmatrix}
 7 & -1 & 0
 \end{pmatrix}\\
 \end{align*}
-\item Matriz definida Positiva. Una Matriz $A_{n \times n}$ es definida positiva si dado un vector $x$ no nulo cumple,
+\begin{paracol}{2}
+6. Matriz definida Positiva. Una Matriz $A_{n \times n}$ es definida positiva si dado un vector $x$ no nulo cumple,
+\end{paracol}
 \begin{equation*}
 x^T\cdot A \cdot x > 0, \ \forall x\neq 0
 \end{equation*}
@@ -2184,15 +2209,18 @@ si,
 \begin{equation*}
 x^T\cdot A \cdot x \geq 0, \ \forall x\neq 0
 \end{equation*}
-
+\begin{paracol}{2}
 entonces la matriz $A$ es semidefinida positiva.
 
-\item Una matriz es Diagonal dominante si cada uno de los elementos de la diagonal en valor absoluto es mayor que la suma de los valores absolutos de los elementos de fila a la  que pertenece.
+7. Una matriz es Diagonal dominante si cada uno de los elementos de la diagonal en valor absoluto es mayor que la suma de los valores absolutos de los elementos de la fila a la  que pertenece.
+\end{paracol}
 
 \begin{equation*}
 \lvert a_{ii} \rvert > \sum_{j\neq i} \lvert a_{ij} \rvert, \ \forall i
 \end{equation*}
+\begin{paracol}{2}
 ejemplo,
+\end{paracol}
 \begin{equation*}
 A=\begin{pmatrix}
 10& 2 & 3\\
@@ -2205,15 +2233,13 @@ A=\begin{pmatrix}
 \end{aligned} \right. 
 \end{equation*}
 
-\end{enumerate}
-
-
-
+\begin{paracol}{2}
 \section{Factorización de matrices}\label{sec:fact}
 La factorización de matrices, consiste en la descomposición de una matriz en el producto de dos o más matrices. Las matrices resultantes de la factorización se eligen de modo que simplifiquen, o hagan más robustas numéricamente determinadas operaciones matriciales: Cálculos de determinantes, inversas, etc. A continuación se describen las más comunes.
 
 \subsection{Factorizacion LU}\label{sec:LU}
 Consiste en factorizar una matriz como el producto de una matriz triangular inferior $L$ por una  matriz triangular superior $U$, $A=L\cdot U$. Por ejemplo,
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 3& 4& 2\\
@@ -2229,428 +2255,272 @@ Consiste en factorizar una matriz como el producto de una matriz triangular infe
 0& 0& ^{-3}/_4
 \end{pmatrix}
 \end{equation*}
+\begin{paracol}{2}
 Una aplicación inmediata, es el calculo del determinante. Puesto que el determinante de una matriz triangular, es directamente el producto de los elementos de la diagonal.
 
 En el ejemplo anterior,
+\end{paracol}
 \begin{equation*}
 \vert A \vert = 6 \equiv \vert L \vert\cdot\vert U\vert =1 \cdot 1 \cdot 1 \cdot 3 \cdot (-\frac{8}{3})\cdot (-\frac{3}{4})=6    
 \end{equation*}
 
-Uno de los métodos más empleados para calcular la factorización LU de una matriz, se basa en el método conocido como eliminación gaussiana. La idea es convertir en ceros los elementos situados por debajo de la diagonal de la matriz. Para ello, se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones  formadas con la fila que se sustituye y la fila anterior.
- veamos en qué consiste con un ejemplo. Supongamos que tenemos la siguiente matriz de orden $4 \times 4$, 
 
-\begin{equation*}
-A=\begin{pmatrix}
-3& 4& 2&5\\
-2& 0& 1& -2\\
-3& 2& 1& 8\\
-5& 2& 3& 2
-\end{pmatrix} 
-\end{equation*}
+% Hasta ahora, hemos descrito un procedimiento para transformar una matriz cualquiera en una matriz triangular superior. Nuestro objetivo era obtener la descomposición de un matriz en el producto de dos,  una triangular inferior y otra triangular superior.  En primer lugar, podemos asociar    el procedimiento descrito de eliminación gaussiana al producto de matrices. Volviendo al ejemplo anterior, si construimos la matriz $\lambda_1$
+% \begin{equation*}
+% \lambda_1=\begin{pmatrix} 
+% 1& 0& 0& 0\\
+% -2/3& 1& 0& 0\\
+% -3/3& 0& 1& 0\\
+% -5/3& 0& 0& 1
+% \end{pmatrix}
+% \end{equation*},
+% El producto $\lambda_1 \cdot A$ da como resultado la matriz,
 
-Si sustituimos la segunda fila por el resultado de restarle la primera multiplicada por $2$ y dividida por $3$ obtendríamos la matriz,
+% \begin{equation*} 
+%  U_1=\begin{pmatrix}
+% 3& 4& 2&5\\
+% 0& -2.66& -0.33& -5.33\\
+% 0& -2& -1& -3\\
+% 0& -4.66& -0.33& -6.33
+% \end{pmatrix}=\begin{pmatrix} 
+% 1& 0& 0& 0\\
+% -2/3& 1& 0& 0\\
+% -3/3& 0& 1& 0\\
+% -5/3& 0& 0& 1
+% \end{pmatrix}\cdot \begin{pmatrix}
+% 3& 4& 2&5\\
+% 2& 0& 1& -2\\
+% 3& 2& 1& 8\\
+% 5& 2& 3& 2
+% \end{pmatrix}
+% \end{equation*}
 
-\begin{equation*}
-A=\begin{pmatrix}
-3& 4& 2&5\\
-2& 0& 1& -2\\
-3& 2& 1& 8\\
-5& 2& 3& 2
-\end{pmatrix} \rightarrow [2\ 0\ 1\ -2]-\frac{2}{3} [3\ 4\ 2\ 5] \rightarrow U_1=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-3& 2& 1& 8\\
-5& 2& 3& 2
-\end{pmatrix}
-\end{equation*}
-
-De modo análogo, si sustituimos ahora la tercera fila por el resultado de restarle la primera multiplicada por $3$ y dividida $3$,
+% De modo análogo, $U_2=\lambda_2 \cdot U_1$
  
-\begin{equation*}
-U_1=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-3& 2& 1& 8\\
-5& 2& 3& 2
-\end{pmatrix} \rightarrow [3\ 2\ 1\ 8]-\frac{3}{3} [3\ 4\ 2\ 5] \rightarrow U_1=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-0& -2& -1& -3\\
-5& 2& 3& 2
-\end{pmatrix}
-\end{equation*}
+% \begin{equation*}
+% \lambda_2=\begin{pmatrix} 
+% 1& 0& 0& 0\\
+% 0& 1& 0& 0\\
+% 0& -2/2.66& 1& 0\\
+% 0& -4.66/2.66& 0& 1
+% \end{pmatrix}
+% \end{equation*}
 
-Por último si sustituimos la última fila por el resultado de restarle la primera multiplicada por $5$ y dividida por $3$,
+% \begin{equation*}
+% U_2= \begin{pmatrix}
+% 3& 4& 2&5\\
+% 0& -2.6& -0.33& -5.33\\
+% 0& 0& -0.75& 7\\
+% 0& 0& 0.25& 3
+% \end{pmatrix}
+% \end{equation*}
 
-\begin{equation*}
-U_1=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-0& -2& -1& -3\\
-5& 2& 3& 2
-\end{pmatrix} \rightarrow [5\ 2\ 3\ 2]-\frac{5}{3} [3\ 4\ 2\ 5] \rightarrow U_1=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-0& -2& -1& -3\\
-0& -4,66& -0.33& -6.33
-\end{pmatrix}
-\end{equation*}
+% Por último, $U=\lambda_3 \cdot U_2$
 
-El resultado que hemos obtenido, tras realizar esta transformación , es una nueva matriz $U$ en la que todos los elementos de su primera columna, por debajo de la diagonal, son ceros.
+% \begin{equation*}
+%  \lambda_3 =\begin{pmatrix}
+% 1& 0& 0&0\\
+% 0& 1& 0& 0\\
+% 0& 0& 1& 0\\
+% 0& 0& 0.25/0.75 & 1
+% \end{pmatrix}
+% \end{equation*}
 
-Podemos proceder de modo análogo para \emph{eliminar} ahora los elementos de la segunda columna situados por debajo de la diagonal. Para ellos sustituimos la tercera fila  por la diferencia entre ella y las segunda fila multiplicada por 	$-2$  y dividida por $-2.6$.
+% \begin{equation*}
+%  U =\begin{pmatrix}
+% 3& 4& 2&5\\
+% 0& -2.66& -0.33& -5.33\\
+% 0& 0& -0.75& 7\\
+% 0& 0& 0& 5.33
+% \end{pmatrix}
+% \end{equation*}
 
-\begin{align*}
-U_1 &=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-0& -2& -1& -3\\
-0& -4,66& -0.33& -6.33
-\end{pmatrix} \rightarrow [0\ -2\ -1\ -3]-\frac{-2}{-2.6} [0\ -2.6\ -0.33\ -5.33\ ] \rightarrow \\
- U_2 &=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-0& 0& -0.75& 7\\
-0& -4.66& -0.33& -6.33
-\end{pmatrix}
-\end{align*}
+% De nuevo, podemos generalizar el procedimiento empleado; cada matriz $\lambda_j$ \emph{elimina} todos los elementos de la columna $n$ de una matriz $A$ , situados por debajo de la diagonal. La  matriz $\lambda_j$  toma la forma general,
 
-Y sustituyendo la última fila por  la diferencia entre ella y la segunda multiplicada por $-4.66$ y dividida por $-2.6$,
+% \begin{equation*}
+% \lambda_j=\begin{pmatrix}
+% 1& \cdots & 0& 0& 0& \cdots & 0\\
+%  \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
+% 0& \cdots & 1& 0& 0& \cdots & 0\\
+% 0& \cdots & 0& 1& 0& \cdots & 0\\
+% 0& \cdots &0 & -a_{j+1,j}/a_{jj}& 0& \cdots & 0\\
+% 0& \cdots &0 & -a_{j+2,j}/a_{jj}& 1& \cdots & 0\\
+%  \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
+% 0& \cdots & 0& -a_{n,j}/a_{jj}& 0&\cdots & 1\\
+% \end{pmatrix}
+% \end{equation*} 
+% Solo los elementos de la diagonal, que toman el valor $1$, y los elementos de la columna $j$ situados por debajo de la diagonal son distintos de cero.
 
-\begin{align*}
-U_2 &=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-0& -2& -1& -3\\
-0& -4,66& -0.33& -6.33
-\end{pmatrix} \rightarrow [0\ -4.66\ -0.33\ -6.33]-\frac{-4.66}{-2.6} [0\ -2.6\ -0.33\ -5.33\ ] \rightarrow \\
- U_2 &=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-0& 0& -0.75& 7\\
-0& 0& 0.25& 3
-\end{pmatrix}
-\end{align*}
+% A partir de la definición de las matrices $\lambda_j$, podemos obtener una relación entre la matriz triangular superior $U$  obtenida al final del proceso de eliminación, y la matriz inicial $A$ de orden $n\times n$ para ello, en cada paso multiplicamos tanto por $\lambda_j$ como por su inversa $\lambda_j^{-1}$,
+% \begin{align*}
+% A&=\lambda_1^{-1}\cdot \overbrace{\lambda_1\cdot A}^{U_1}\\
+% A&=\lambda_1^{-1}\cdot\lambda_2^{-1} \cdot \overbrace{\lambda_2  \cdot \lambda_1 A}^{U_2}\\
+% A&=\lambda_1^{-1}\cdot \lambda_2^{-1}\cdot \overbrace{ \lambda_3^{-1}\cdot  \lambda_3 \cdot  \lambda_2\cdot \lambda_1 \cdot A}^{U_3}\\
+% \vdots \\
+% A&=\lambda_1^{-1} \cdot  \lambda_2^{-1}\cdot  \lambda_3^{-1} \cdots  \lambda_n ^{-1}\cdot \overbrace{\lambda_n \cdots \lambda_3 \cdot \lambda_2\cdot \lambda_1  \cdot A}^{U}
+% \end{align*}
 
-De este modo, los elementos de la segunda columna situados debajo de la diagonal, han sido sustituidos por ceros. Un último paso, nos llevará hasta una matriz triangular superior; sustituimos la última fila por la diferencia entre ella y la tercera fila multiplicada por $0.25$ y dividida por $-0.75$,
+% Las matrices $\lambda_j^{-1}$ tienen dos propiedades que las hacen particularmente fáciles de manejar:  la primera es que cumplen que  su inversa  $\lambda_j^{-1}$ puede obtenerse a partir de $\lambda_j$, sin más que cambiar de signo los elementos distintos de cero que no pertenecen a la diagonal (Compruébalo),
+% \begin{equation*}
+%  \lambda_j^{-1}=\begin{pmatrix}
+% 1& \cdots & 0& 0& 0& \cdots & 0\\
+%  \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
+% 0& \cdots & 1& 0& 0& \cdots & 0\\
+% 0& \cdots & 0& 1& 0& \cdots & 0\\
+% 0& \cdots &0 & a_{j+1j}/a_{jj}& 0& \cdots & 0\\
+% 0& \cdots &0 & a_{j+2j}/a_{jj}& 1& \cdots & 0\\
+%  \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
+% 0& \cdots & 0& a_{nj}/a_{jj}& 0&\cdots & 1\\
+% \end{pmatrix}
+% \end{equation*}
 
-\begin{align*}
- U_2 &=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-0& 0& -0.75& 7\\
-0& 0& 0.25& 3
-\end{pmatrix} \rightarrow [0\ 0\ 0.25\ 3]-\frac{0.25}{-0.75} [0\ 0\ -0.75\ 7\ ] \rightarrow \\
- U_3 &=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-0& 0& -0.75& 7\\
-0& 0& 0& 5.33
-\end{pmatrix}=U
-\end{align*}
+% La segunda propiedad es que el producto $L=\lambda_1^{-1} \cdot  \lambda_2^{-1}\cdot  \lambda_3^{-1} \cdots  \lambda_n ^{-1}$, se puede obtener progresivamente, a la vez que se construye $U$, sin más que ir juntando en una única matriz $L$ las columnas de $\lambda_1^{-1}$, $\lambda_2^{-1}$, etc. que contienen elementos no nulos, en nuestro ejemplo,
+% \begin{equation*}
+%  L =\begin{pmatrix}
+% 1& 0& 0&0\\
+% 2/3& 1& 0& 0\\
+% 3/3& 2/2.66& 1& 0\\
+% 5/3& 4.66/2.66& -0.25/0.75 & 1
+% \end{pmatrix}
+% \end{equation*}
 
-Podemos ahora, a partir del ejemplo, deducir un procedimiento general. Para \emph{eliminar} ---convertir en 0--- el elemento $a_{ij}$ situado por debajo de la diagonal principal,  $i>j$:
-\begin{enumerate}
-\item Dividimos los elementos de la fila $j$ por el elemento de dicha fila que a su vez pertenece a la diagonal, $a_{jj}$
-\begin{equation*}
-\begin{bmatrix}
-0/ a_{jj}& 0/ a_{jj}& \cdots & a_{jj}/ a_{jj}& a_{jj+1}/ a_{jj}& \cdots
-\end{bmatrix}
-\end{equation*}
+% y, en general,
 
-\item Multiplicamos el resultado de la operación anterior por el elemento $a_{ij}$,
-\begin{equation*}
-\begin{bmatrix}
-a_{ij} \cdot 0/ a_{jj}& a_{ij} \cdot 0/ a_{jj}& \cdots & a_{ij} \cdot a_{jj}/ a_{jj}& a_{ij} \cdot a_{jj+1}/ a_{jj}& \cdots
-\end{bmatrix}
-\end{equation*}
-\item Finalmente, sustituimos la fila $i$ de la matriz de partida por la diferencia  entre ella y el resultado de la operación anterior.
-\begin{equation*}
-\begin{bmatrix}
-0& 0& \cdots& a_{ij}& a_{ij+1}& \cdots
-\end{bmatrix}-\begin{bmatrix}
-a_{ij} \cdot 0/ a_{jj}& a_{ij} \cdot 0/ a_{jj}& \cdots & a_{ij} \cdot a_{jj}/ a_{jj}& a_{ij} \cdot a_{jj+1}/ a_{jj}& \cdots
-\end{bmatrix}
-\end{equation*}
-\end{enumerate}
+% \begin{equation*}
+%  L=\begin{pmatrix}
+% 1& \cdots & 0& 0& 0& \cdots & 0\\
+%  \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
+% a_{j-11}/a_{11}& \cdots & 1& 0& 0& \cdots & 0\\
+% a_{j1}/a_{11}& \cdots & a_{jj-1}/a_{j-1 j-1}& 1& 0& \cdots & 0\\
+% a_{j+11}/a_{11}& \cdots &a_{j+1j-1}/a_{j-1 j-1} & a_{j+1j}/a_{jj}& 0& \cdots & 0\\
+% a_{j+11}/a_{11}& \cdots &a_{j+2j-1}/a_{j-1 j-1} & a_{j+2j}/a_{jj}& 1& \cdots & 0\\
+%  \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
+% a_{n1}/a_{11}& \cdots & a_{nj-1}/a_{j-1j-1}& a_{nj}/a_{jj}& a_{nj+1}/a_{j+1j+1}&\cdots & 1\\
+% \end{pmatrix}
+% \end{equation*}
 
-Este procedimiento se aplica iterativamente empezando en por el elemento  $a_{21}$ de la matriz y desplazando el cómputo hacia abajo, hasta llegar a la última fila y hacia la derecha hasta llegar en cada fila al elemento anterior a la diagonal.
+% Por construcción,  la matriz $L$ es una matriz inferior, Con lo que quedaría completo el cálculo de la factorización LU,
 
-El siguiente código aplica el procedimiento descrito a una matriz de cualquier orden,\label{elig}
+% \begin{equation*}
+% A=\overbrace{\lambda_1^{-1} \cdot  \lambda_2^{-1}\cdot  \lambda_3^{-1} \cdots  \lambda_n ^{-1}}^{L}\cdot \overbrace{\lambda_n \cdots \lambda_3 \cdot \lambda_2\cdot \lambda_1  \cdot A}^{U}=L\cdot U
+% \end{equation*}
 
-\begin{lstlisting}
-function U=eligauss(A)
-% Esta función obtiene una matriz triangular superior, a partir de una
-% matriz dada, aplicando el método de eliminación gaussiana.
-% No realiza piboteo de filas, así que si algún elemento de la diagonal de A
-% queda cero o proximo a cero al ir eliminado dará problemas...
+% La factorización que acabamos de describir, puede presentar problemas numéricos dependiendo del cómo sea la matriz que se desea factorizar. El primer problema se produce cuando el elemento de la diagonal de $u_{jj}$ por el que toca dividir para eliminar los elementos de la columna $j$, situados por debajo de la diagonal, es $0$. En ese caso el ordenador dará un error de desbordamiento y no se podrá seguir factorizando. El segundo problema surge cuando los elementos de la matriz son dispares en magnitud; las operaciones matemáticas realizadas durante el proceso de factorización pueden dar lugar a errores de redondeo importantes que hagan incorrecto el resultado de la factorización. Veamos un ejemplo un tanto extremo,
 
-% Obtenemos el número de filas de la matriz..
-nf=size(A,1);
-U=A
-%
-for j=1:nf-1 % recorro todas la columnas menos la última
-    for i=j+1:nf % Recorro las filas desde debajo de la diagonal hasta la última
-        % en Matlab tengo la suerte de poder manejar cada fila de un solo
-        % golpe.
-        U(i,:)=U(i,:)-U(j,:)*U(i,j)/U(j,j)
-    end
-end
+% \begin{equation*}
+% \begin{pmatrix}
+% 10^{-20}& 1\\
+% 1& 1 
+% \end{pmatrix}=\overbrace{\begin{pmatrix}
+% 1& 0\\
+% 10^{20}& 1 
+% \end{pmatrix}}^{L}\cdot \overbrace{\begin{pmatrix}
+% 1& 0\\
+% -10^{20}& 1
+% \end{pmatrix}\cdot \begin{pmatrix}
+% 10^{-20}& 1\\
+% 1& 1
+% \end{pmatrix}}^{U}= \overbrace{\begin{pmatrix}
+% 1& 0\\
+% 10^{20}& 1 
+% \end{pmatrix}}^{L} \cdot \overbrace{\begin{pmatrix}
+% 10^{-20}& 1\\
+% 0& 1 -10^{20} 
+% \end{pmatrix}}^{U} 
+% \end{equation*} 
 
-\end{lstlisting}
+% Como el \emph{eps} del ordenador es del orden de $10^{-16}$, $1$ es despreciado frente $10^{20}$. Es decir, $(1-10^{20})\approx 10^{20}$, con lo cual el ordenador tendrá una versión aproximada de $U$
 
-Hasta ahora, hemos descrito un procedimiento para transformar una matriz cualquiera en una matriz triangular superior. Nuestro objetivo era obtener la descomposición de un matriz en el producto de dos,  una triangular inferior y otra triangular superior.  En primer lugar, podemos asociar    el procedimiento descrito de eliminación gaussiana al producto de matrices. Volviendo al ejemplo anterior, si construimos la matriz $\lambda_1$
-\begin{equation*}
-\lambda_1=\begin{pmatrix} 
-1& 0& 0& 0\\
--2/3& 1& 0& 0\\
--3/3& 0& 1& 0\\
--5/3& 0& 0& 1
-\end{pmatrix}
-\end{equation*},
-El producto $\lambda_1 \cdot A$ da como resultado la matriz,
+% \begin{equation*}
+% U \approx \hat{U}= \begin{pmatrix}
+% 10^{-20}& 1\\
+% 0& -10^{20} 
+% \end{pmatrix} 
+% \end{equation*}
 
-\begin{equation*} 
- U_1=\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.66& -0.33& -5.33\\
-0& -2& -1& -3\\
-0& -4.66& -0.33& -6.33
-\end{pmatrix}=\begin{pmatrix} 
-1& 0& 0& 0\\
--2/3& 1& 0& 0\\
--3/3& 0& 1& 0\\
--5/3& 0& 0& 1
-\end{pmatrix}\cdot \begin{pmatrix}
-3& 4& 2&5\\
-2& 0& 1& -2\\
-3& 2& 1& 8\\
-5& 2& 3& 2
-\end{pmatrix}
-\end{equation*}
+% Pero si ahora volvemos a multiplicar $L\cdot U$  para recuperar $A$,
+% \begin{equation*}
+% L \cdot \hat{U}=  \begin{pmatrix}
+% 1& 0\\
+% 10^{20}& 1 
+% \end{pmatrix} \cdot \begin{pmatrix}
+% 10^{-20}& 1\\
+% 0& -10^{20} 
+% \end{pmatrix}= \begin{pmatrix}
+% 10^{-20}& 1\\
+% 1& 0
+% \end{pmatrix} \neq A
+% \end{equation*}
 
-De modo análogo, $U_2=\lambda_2 \cdot U_1$
- 
-\begin{equation*}
-\lambda_2=\begin{pmatrix} 
-1& 0& 0& 0\\
-0& 1& 0& 0\\
-0& -2/2.66& 1& 0\\
-0& -4.66/2.66& 0& 1
-\end{pmatrix}
-\end{equation*}
+% Una manera de paliar los efectos de redondeo, es reordenar las filas de la matriz de modo que el elemento $a_{jj}$ por el que se va a dividir los elementos de la fila $j$ en el proceso de eliminación sea lo mayor posible. Este procedimiento se conoce con el nombre de pivoteo de filas.
+% Para el ejemplo que acabamos de examinar, supongamos que cambiamos de orden las dos filas de    la matriz,
 
-\begin{equation*}
-U_2= \begin{pmatrix}
-3& 4& 2&5\\
-0& -2.6& -0.33& -5.33\\
-0& 0& -0.75& 7\\
-0& 0& 0.25& 3
-\end{pmatrix}
-\end{equation*}
+% \begin{equation*}
+% \begin{pmatrix}
+% 10^{-20}& 1\\
+% 1& 1 
+% \end{pmatrix} \rightarrow \begin{pmatrix}
+% 1& 1\\
+% 10^{-20}& 1 
+% \end{pmatrix}
+% \end{equation*}
 
-Por último, $U=\lambda_3 \cdot U_2$
+% Si recalculamos la factorización LU, para la nueva matriz con la filas intercambiadas,
 
-\begin{equation*}
- \lambda_3 =\begin{pmatrix}
-1& 0& 0&0\\
-0& 1& 0& 0\\
-0& 0& 1& 0\\
-0& 0& 0.25/0.75 & 1
-\end{pmatrix}
-\end{equation*}
+% \begin{equation*}
+% \begin{pmatrix}
+% 1& 1\\
+% 10^{-20}& 1 
+% \end{pmatrix}=\overbrace{\begin{pmatrix}
+% 1& 0\\
+% 10^{-20}& 1 
+% \end{pmatrix}}^{L}\cdot \overbrace{\begin{pmatrix}
+% 1& 0\\
+% -10^{-20}& 1
+% \end{pmatrix}\cdot \begin{pmatrix}
+% 1& 1\\
+% 10^{-20}& 1 
+% \end{pmatrix}}^{U}= \overbrace{\begin{pmatrix}
+% 1& 0\\
+% 10^{-20}& 1 
+% \end{pmatrix}}^{L} \cdot \overbrace{\begin{pmatrix}
+% 1& 1\\
+% 0&  1-10^{-20}
+% \end{pmatrix}}^{U} 
+% \end{equation*}
 
-\begin{equation*}
- U =\begin{pmatrix}
-3& 4& 2&5\\
-0& -2.66& -0.33& -5.33\\
-0& 0& -0.75& 7\\
-0& 0& 0& 5.33
-\end{pmatrix}
-\end{equation*}
+% De nuevo, por errores de redondeo el ordenador tendrá una version aproximada de $U$.
 
-De nuevo, podemos generalizar el procedimiento empleado; cada matriz $\lambda_j$ \emph{elimina} todos los elementos de la columna $n$ de una matriz $A$ , situados por debajo de la diagonal. La  matriz $\lambda_j$  toma la forma general,
+% \begin{equation*}
+% U \approx \hat{U}= \begin{pmatrix}
+% 1& 1\\
+% 0& 1 
+% \end{pmatrix} 
+% \end{equation*}
 
-\begin{equation*}
-\lambda_j=\begin{pmatrix}
-1& \cdots & 0& 0& 0& \cdots & 0\\
- \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
-0& \cdots & 1& 0& 0& \cdots & 0\\
-0& \cdots & 0& 1& 0& \cdots & 0\\
-0& \cdots &0 & -a_{j+1,j}/a_{jj}& 0& \cdots & 0\\
-0& \cdots &0 & -a_{j+2,j}/a_{jj}& 1& \cdots & 0\\
- \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
-0& \cdots & 0& -a_{n,j}/a_{jj}& 0&\cdots & 1\\
-\end{pmatrix}
-\end{equation*} 
-Solo los elementos de la diagonal, que toman el valor $1$, y los elementos de la columna $j$ situados por debajo de la diagonal son distintos de cero.
+% Sin embargo si recalculamos el producto $L\cdot \hat{U}$ y volvemos a reordenar las filas del resultado,
+% \begin{equation*}
+% L \cdot \hat{U}=  \begin{pmatrix}
+% 1& 0\\
+% 10^{-20}& 1 
+% \end{pmatrix} \cdot \begin{pmatrix}
+% 1& 1\\
+% 0& 1 
+% \end{pmatrix}= \begin{pmatrix}
+% 1& 1\\
+% 10^{-20}& 1+10^{-20}
+% \end{pmatrix} \rightarrow \begin{pmatrix}
+% 10^{-20}& 1+10^{-20}\\
+% 1& 1
+% \end{pmatrix} \approx A
+% \end{equation*}
+\begin{paracol}{2}
+Describir un método para realizar la factorización LU de una matriz, queda fuera de los objetivos de estos apuntes. Sin embargo sí que utilizaremos el comando \mintinline{python}{lu} incluido en una librería de Python llamada Scipy para obtener directamente el resultado de una factorización LU. Es una librería parecida a Numpy y que, al igual que esta última contiene un gran numero de funciones matemáticas. De hecho Numpy y Scipy solapan un poco y hay determinadas funciones que pueden encontrarse en ambas librerías. El comando pertenece a un submodulo de Scipy llamado \mintinline{python}{linalg}. Admite como variable de entrada una matriz cuadrada $A$ y nos devuelve como salida una matriz de permutación $P$, de la que hablaremos enseguida, y una matriz triangular inferior $L$ y otra triangular superior $U$ de modo que se cumple que $A =PLU$,
 
-A partir de la definición de las matrices $\lambda_j$, podemos obtener una relación entre la matriz triangular superior $U$  obtenida al final del proceso de eliminación, y la matriz inicial $A$ de orden $n\times n$ para ello, en cada paso multiplicamos tanto por $\lambda_j$ como por su inversa $\lambda_j^{-1}$,
-\begin{align*}
-A&=\lambda_1^{-1}\cdot \overbrace{\lambda_1\cdot A}^{U_1}\\
-A&=\lambda_1^{-1}\cdot\lambda_2^{-1} \cdot \overbrace{\lambda_2  \cdot \lambda_1 A}^{U_2}\\
-A&=\lambda_1^{-1}\cdot \lambda_2^{-1}\cdot \overbrace{ \lambda_3^{-1}\cdot  \lambda_3 \cdot  \lambda_2\cdot \lambda_1 \cdot A}^{U_3}\\
-\vdots \\
-A&=\lambda_1^{-1} \cdot  \lambda_2^{-1}\cdot  \lambda_3^{-1} \cdots  \lambda_n ^{-1}\cdot \overbrace{\lambda_n \cdots \lambda_3 \cdot \lambda_2\cdot \lambda_1  \cdot A}^{U}
-\end{align*}
-
-Las matrices $\lambda_j^{-1}$ tienen dos propiedades que las hacen particularmente fáciles de manejar:  la primera es que cumplen que  su inversa  $\lambda_j^{-1}$ puede obtenerse a partir de $\lambda_j$, sin más que cambiar de signo los elementos distintos de cero que no pertenecen a la diagonal (Compruébalo),
-\begin{equation*}
- \lambda_j^{-1}=\begin{pmatrix}
-1& \cdots & 0& 0& 0& \cdots & 0\\
- \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
-0& \cdots & 1& 0& 0& \cdots & 0\\
-0& \cdots & 0& 1& 0& \cdots & 0\\
-0& \cdots &0 & a_{j+1j}/a_{jj}& 0& \cdots & 0\\
-0& \cdots &0 & a_{j+2j}/a_{jj}& 1& \cdots & 0\\
- \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
-0& \cdots & 0& a_{nj}/a_{jj}& 0&\cdots & 1\\
-\end{pmatrix}
-\end{equation*}
-
-La segunda propiedad es que el producto $L=\lambda_1^{-1} \cdot  \lambda_2^{-1}\cdot  \lambda_3^{-1} \cdots  \lambda_n ^{-1}$, se puede obtener progresivamente, a la vez que se construye $U$, sin más que ir juntando en una única matriz $L$ las columnas de $\lambda_1^{-1}$, $\lambda_2^{-1}$, etc. que contienen elementos no nulos, en nuestro ejemplo,
-\begin{equation*}
- L =\begin{pmatrix}
-1& 0& 0&0\\
-2/3& 1& 0& 0\\
-3/3& 2/2.66& 1& 0\\
-5/3& 4.66/2.66& -0.25/0.75 & 1
-\end{pmatrix}
-\end{equation*}
-
-y, en general,
-
-\begin{equation*}
- L=\begin{pmatrix}
-1& \cdots & 0& 0& 0& \cdots & 0\\
- \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
-a_{j-11}/a_{11}& \cdots & 1& 0& 0& \cdots & 0\\
-a_{j1}/a_{11}& \cdots & a_{jj-1}/a_{j-1 j-1}& 1& 0& \cdots & 0\\
-a_{j+11}/a_{11}& \cdots &a_{j+1j-1}/a_{j-1 j-1} & a_{j+1j}/a_{jj}& 0& \cdots & 0\\
-a_{j+11}/a_{11}& \cdots &a_{j+2j-1}/a_{j-1 j-1} & a_{j+2j}/a_{jj}& 1& \cdots & 0\\
- \vdots &  &  \vdots & \vdots &  \vdots & & \vdots\\
-a_{n1}/a_{11}& \cdots & a_{nj-1}/a_{j-1j-1}& a_{nj}/a_{jj}& a_{nj+1}/a_{j+1j+1}&\cdots & 1\\
-\end{pmatrix}
-\end{equation*}
-
-Por construcción,  la matriz $L$ es una matriz inferior, Con lo que quedaría completo el cálculo de la factorización LU,
-
-\begin{equation*}
-A=\overbrace{\lambda_1^{-1} \cdot  \lambda_2^{-1}\cdot  \lambda_3^{-1} \cdots  \lambda_n ^{-1}}^{L}\cdot \overbrace{\lambda_n \cdots \lambda_3 \cdot \lambda_2\cdot \lambda_1  \cdot A}^{U}=L\cdot U
-\end{equation*}
-
-La factorización que acabamos de describir, puede presentar problemas numéricos dependiendo del cómo sea la matriz que se desea factorizar. El primer problema se produce cuando el elemento de la diagonal de $u_{jj}$ por el que toca dividir para eliminar los elementos de la columna $j$, situados por debajo de la diagonal, es $0$. En ese caso el ordenador dará un error de desbordamiento y no se podrá seguir factorizando. El segundo problema surge cuando los elementos de la matriz son dispares en magnitud; las operaciones matemáticas realizadas durante el proceso de factorización pueden dar lugar a errores de redondeo importantes que hagan incorrecto el resultado de la factorización. Veamos un ejemplo un tanto extremo,
-
-\begin{equation*}
-\begin{pmatrix}
-10^{-20}& 1\\
-1& 1 
-\end{pmatrix}=\overbrace{\begin{pmatrix}
-1& 0\\
-10^{20}& 1 
-\end{pmatrix}}^{L}\cdot \overbrace{\begin{pmatrix}
-1& 0\\
--10^{20}& 1
-\end{pmatrix}\cdot \begin{pmatrix}
-10^{-20}& 1\\
-1& 1
-\end{pmatrix}}^{U}= \overbrace{\begin{pmatrix}
-1& 0\\
-10^{20}& 1 
-\end{pmatrix}}^{L} \cdot \overbrace{\begin{pmatrix}
-10^{-20}& 1\\
-0& 1 -10^{20} 
-\end{pmatrix}}^{U} 
-\end{equation*} 
-
-Como el \emph{eps} del ordenador es del orden de $10^{-16}$, $1$ es despreciado frente $10^{20}$. Es decir, $(1-10^{20})\approx 10^{20}$, con lo cual el ordenador tendrá una versión aproximada de $U$
-
-\begin{equation*}
-U \approx \hat{U}= \begin{pmatrix}
-10^{-20}& 1\\
-0& -10^{20} 
-\end{pmatrix} 
-\end{equation*}
-
-Pero si ahora volvemos a multiplicar $L\cdot U$  para recuperar $A$,
-\begin{equation*}
-L \cdot \hat{U}=  \begin{pmatrix}
-1& 0\\
-10^{20}& 1 
-\end{pmatrix} \cdot \begin{pmatrix}
-10^{-20}& 1\\
-0& -10^{20} 
-\end{pmatrix}= \begin{pmatrix}
-10^{-20}& 1\\
-1& 0
-\end{pmatrix} \neq A
-\end{equation*}
-
-Una manera de paliar los efectos de redondeo, es reordenar las filas de la matriz de modo que el elemento $a_{jj}$ por el que se va a dividir los elementos de la fila $j$ en el proceso de eliminación sea lo mayor posible. Este procedimiento se conoce con el nombre de pivoteo de filas.
-Para el ejemplo que acabamos de examinar, supongamos que cambiamos de orden las dos filas de    la matriz,
-
-\begin{equation*}
-\begin{pmatrix}
-10^{-20}& 1\\
-1& 1 
-\end{pmatrix} \rightarrow \begin{pmatrix}
-1& 1\\
-10^{-20}& 1 
-\end{pmatrix}
-\end{equation*}
-
-Si recalculamos la factorización LU, para la nueva matriz con la filas intercambiadas,
-
-\begin{equation*}
-\begin{pmatrix}
-1& 1\\
-10^{-20}& 1 
-\end{pmatrix}=\overbrace{\begin{pmatrix}
-1& 0\\
-10^{-20}& 1 
-\end{pmatrix}}^{L}\cdot \overbrace{\begin{pmatrix}
-1& 0\\
--10^{-20}& 1
-\end{pmatrix}\cdot \begin{pmatrix}
-1& 1\\
-10^{-20}& 1 
-\end{pmatrix}}^{U}= \overbrace{\begin{pmatrix}
-1& 0\\
-10^{-20}& 1 
-\end{pmatrix}}^{L} \cdot \overbrace{\begin{pmatrix}
-1& 1\\
-0&  1-10^{-20}
-\end{pmatrix}}^{U} 
-\end{equation*}
-
-De nuevo, por errores de redondeo el ordenador tendrá una version aproximada de $U$.
-
-\begin{equation*}
-U \approx \hat{U}= \begin{pmatrix}
-1& 1\\
-0& 1 
-\end{pmatrix} 
-\end{equation*}
-
-Sin embargo si recalculamos el producto $L\cdot \hat{U}$ y volvemos a reordenar las filas del resultado,
-\begin{equation*}
-L \cdot \hat{U}=  \begin{pmatrix}
-1& 0\\
-10^{-20}& 1 
-\end{pmatrix} \cdot \begin{pmatrix}
-1& 1\\
-0& 1 
-\end{pmatrix}= \begin{pmatrix}
-1& 1\\
-10^{-20}& 1+10^{-20}
-\end{pmatrix} \rightarrow \begin{pmatrix}
-10^{-20}& 1+10^{-20}\\
-1& 1
-\end{pmatrix} \approx A
-\end{equation*}
+A veces obtener la factorización LU directa de una matriz, pude llevar a cálculos que son numéricamente inestables afectando a la precisión del resultado. Una manera de paliar este efecto es permutar entre sí algunas de las filas de la matriz que se quiere factorizar y factorizar la versión permutada.
 
 La permutación de las filas de una matriz $A$ de orden $n\times m$, se puede definir a partir del producto con las matrices de permutación de orden $n \times n$. Éstas se obtienen permutando directamente las filas de la matriz identidad $I_{n \times n}$. Si una matriz de permutación multiplica a otra matriz por la izquierda, permuta el orden de sus filas. Si la multiplica por la derecha. permuta el orden de sus columnas. Así por ejemplo, para matrices de orden $3 \times n$,
-
+\end{paracol}
 \begin{equation*}
 I_{n \times n}=\begin{pmatrix}
 1& 0& 0\\
@@ -2662,9 +2532,9 @@ I_{n \times n}=\begin{pmatrix}
 1& 0& 0\\
 \end{pmatrix}
 \end{equation*}
-
-Si multiplicamos $P_{1 \leftrightarrow 3}$ con cualquier otra matriz $A$ de orden $3\times n$, El resultado es equivalente a intercambiar en la matriz $A$ la fila $1$ con la $3$. Por ejemplo
-   
+\begin{paracol}{2}
+Si multiplicamos $P_{1 \leftrightarrow 3}$ con cualquier otra matriz $A$ de orden $3\times n$, El resultado es equivalente a intercambiar en la matriz $A$ la fila $1$ con la $3$. Por ejemplo,
+\end{paracol}
 \begin{equation*}
 P_{1\leftrightarrow 3}\cdot A=\begin{pmatrix}
 0& 0& 1\\
@@ -2681,109 +2551,110 @@ P_{1\leftrightarrow 3}\cdot A=\begin{pmatrix}
 \end{pmatrix}= A_{1\leftrightarrow 3}
 \end{equation*}
 
-Volvamos al cálculo de la factorización LU, pero ahora empleando pivoteo de filas. Supongamos una matriz $A$ de orden $n\times n$
+% Volvamos al cálculo de la factorización LU, pero ahora empleando la permutación de filas. Supongamos una matriz $A$ de orden $n\times n$
 
-El primer paso, es buscar el elemento mayor en valor absoluto de la primera columna en intercambia la primera fila de la matriz de $A$, con la fila que contiene dicho elemento. Si utilizamos la matriz de permutación adecuada, esto puede expresarse como,
+% El primer paso, es buscar el elemento mayor en valor absoluto de la primera columna en intercambia la primera fila de la matriz de $A$, con la fila que contiene dicho elemento. Si utilizamos la matriz de permutación adecuada, esto puede expresarse como,
 
-\begin{equation*}
-A \rightarrow P_1\cdot A
-\end{equation*}
-A continuación eliminamos los elementos de la primera fila situados por debajo de la diagonal,
-\begin{equation*}
-A \rightarrow P_1\cdot A \rightarrow \lambda_1 \cdot P_1 \cdot A
-\end{equation*}
-Volvemos a buscar el mayor elemento en valor absoluto para la segunda columna (Solo desde la diagonal hasta el ultimo elemento de la columna).  
-\begin{equation*}
-A \rightarrow P_1\cdot A \rightarrow \lambda_1 \cdot P_1 \cdot A \rightarrow  P_2 \cdot \lambda_1 \cdot P_1 \cdot A 
-\end{equation*}
+% \begin{equation*}
+% A \rightarrow P_1\cdot A
+% \end{equation*}
+% A continuación eliminamos los elementos de la primera fila situados por debajo de la diagonal,
+% \begin{equation*}
+% A \rightarrow P_1\cdot A \rightarrow \lambda_1 \cdot P_1 \cdot A
+% \end{equation*}
+% Volvemos a buscar el mayor elemento en valor absoluto para la segunda columna (Solo desde la diagonal hasta el ultimo elemento de la columna).  
+% \begin{equation*}
+% A \rightarrow P_1\cdot A \rightarrow \lambda_1 \cdot P_1 \cdot A \rightarrow  P_2 \cdot \lambda_1 \cdot P_1 \cdot A 
+% \end{equation*}
 
-Eliminamos los elementos de la segunda fila situados por debajo de la diagonal,
+% Eliminamos los elementos de la segunda fila situados por debajo de la diagonal,
 
-\begin{equation*}
-A \rightarrow P_1\cdot A \rightarrow \lambda_1 \cdot P_1 \cdot A \rightarrow  P_2 \cdot \lambda_1 \cdot P_1 \cdot A \rightarrow \lambda_2 \cdot  P_2 \cdot \lambda_1 \cdot P_1 \cdot A
-\end{equation*}
+% \begin{equation*}
+% A \rightarrow P_1\cdot A \rightarrow \lambda_1 \cdot P_1 \cdot A \rightarrow  P_2 \cdot \lambda_1 \cdot P_1 \cdot A \rightarrow \lambda_2 \cdot  P_2 \cdot \lambda_1 \cdot P_1 \cdot A
+% \end{equation*}
 
-Si seguimos todo el proceso hasta eliminar los elementos situados por debajo de la diagonal en la fila $n-1$, obtendremos la expresión de la matriz triangular superior $U$ resultante,
+% Si seguimos todo el proceso hasta eliminar los elementos situados por debajo de la diagonal en la fila $n-1$, obtendremos la expresión de la matriz triangular superior $U$ resultante,
 
-\begin{equation*}
-\lambda_{n-1}P_{n-1}\lambda_{n-2}P_{n-2} \cdots  \lambda_2  P_2 \lambda_1  P_1 A = U
-\end{equation*}
+% \begin{equation*}
+% \lambda_{n-1}P_{n-1}\lambda_{n-2}P_{n-2} \cdots  \lambda_2  P_2 \lambda_1  P_1 A = U
+% \end{equation*}
 
-Aunque hemos obtenido $U$, necesitamos una manera de obtener $L$, ahora no es inmediato como en el caso de la factorización sin pivoteo, no basta con invertir las matrices $\lambda_i$ ya que tenemos por medio todas las matrices de permutación utilizadas. Para obtenerla realizaremos la siguiente transformación, 
+% Aunque hemos obtenido $U$, necesitamos una manera de obtener $L$, ahora no es inmediato como en el caso de la factorización sin pivoteo, no basta con invertir las matrices $\lambda_i$ ya que tenemos por medio todas las matrices de permutación utilizadas. Para obtenerla realizaremos la siguiente transformación, 
 
-\begin{equation*}
-\lambda_{n-1}P_{n-1}\lambda_{n-2}P_{n-2} \cdots  \lambda_2  P_2 \lambda_1  P_1 A = \lambda_{n-1}'\lambda_{n-2}'\cdots \lambda_2'   \lambda_1' P_{n-1}P_{n-2} \cdots P_2  P_1 A
-\end{equation*}
+% \begin{equation*}
+% \lambda_{n-1}P_{n-1}\lambda_{n-2}P_{n-2} \cdots  \lambda_2  P_2 \lambda_1  P_1 A = \lambda_{n-1}'\lambda_{n-2}'\cdots \lambda_2'   \lambda_1' P_{n-1}P_{n-2} \cdots P_2  P_1 A
+% \end{equation*}
 
-Donde las matrices $\lambda_i'$ pueden obtenerse a partir de las matrices $\lambda_i$ y de las matrices de permutación de la manera siguiente,
+% Donde las matrices $\lambda_i'$ pueden obtenerse a partir de las matrices $\lambda_i$ y de las matrices de permutación de la manera siguiente,
 
-\begin{align*}
-\lambda_{n-1}' &= \lambda_{n-1} \\
-\lambda_{n-2}' &= P_{n-1}\lambda_{n-2} P_{n-1} ^{-1}\\
-\lambda_{n-3}' &= P_{n-1}P_{n-2}\lambda_{n-3}P_{n-2}^{-1} P_{n-1}^{-1} \\
- & \vdots \\
- \lambda_{k\ \ }'  &= P_{n-1}P_{n-2}\cdots P_{k+1} \lambda_{k}P_{k+1}^{-1} \cdots P_{n-2}^{1} P_{n-1}^{-1} \\
- & \vdots \\
-\lambda_{2\ \ }'  &= P_{n-1}P_{n-2}\cdots P_3 \lambda_{2}P_3^{-1} \cdots P_{n-2}^{1} P_{n-1}^{-1} \\
-\lambda_{1\ \ }'  &= P_{n-1}P_{n-2}\cdots P_3P_2 \lambda_{1}P_2^{-1}P_3^{-1} \cdots P_{n-2}^{1} P_{n-1}^{-1} \\
-\end{align*}
+% \begin{align*}
+% \lambda_{n-1}' &= \lambda_{n-1} \\
+% \lambda_{n-2}' &= P_{n-1}\lambda_{n-2} P_{n-1} ^{-1}\\
+% \lambda_{n-3}' &= P_{n-1}P_{n-2}\lambda_{n-3}P_{n-2}^{-1} P_{n-1}^{-1} \\
+%  & \vdots \\
+%  \lambda_{k\ \ }'  &= P_{n-1}P_{n-2}\cdots P_{k+1} \lambda_{k}P_{k+1}^{-1} \cdots P_{n-2}^{1} P_{n-1}^{-1} \\
+%  & \vdots \\
+% \lambda_{2\ \ }'  &= P_{n-1}P_{n-2}\cdots P_3 \lambda_{2}P_3^{-1} \cdots P_{n-2}^{1} P_{n-1}^{-1} \\
+% \lambda_{1\ \ }'  &= P_{n-1}P_{n-2}\cdots P_3P_2 \lambda_{1}P_2^{-1}P_3^{-1} \cdots P_{n-2}^{1} P_{n-1}^{-1} \\
+% \end{align*}
 
 
-Matemáticamente el cálculo de las matrices $\lambda_i'$ requiere calcular el producto de un gran número de matrices.  Sin embargo dicho cálculo es equivalente a permutar los elementos de $\lambda_i$ situados por debajo de la diagonal.   Así Por ejemplo para,
+% Matemáticamente el cálculo de las matrices $\lambda_i'$ requiere calcular el producto de un gran número de matrices.  Sin embargo dicho cálculo es equivalente a permutar los elementos de $\lambda_i$ situados por debajo de la diagonal.   Así Por ejemplo para,
 
-\begin{equation*}
-\lambda_2=
-\begin{pmatrix}
-1& 0& 0& 0\\
-0& 1& 0& 0\\
-0& 2& 1& 0\\
-0& 3& 0& 1
-\end{pmatrix}, \ 
-P_3=
-\begin{pmatrix}
-1& 0& 0& 0\\
-0& 1& 0& 0\\
-0& 0& 0& 1\\
-0& 0& 1& 0
-\end{pmatrix}
-\end{equation*}
+% \begin{equation*}
+% \lambda_2=
+% \begin{pmatrix}
+% 1& 0& 0& 0\\
+% 0& 1& 0& 0\\
+% 0& 2& 1& 0\\
+% 0& 3& 0& 1
+% \end{pmatrix}, \ 
+% P_3=
+% \begin{pmatrix}
+% 1& 0& 0& 0\\
+% 0& 1& 0& 0\\
+% 0& 0& 0& 1\\
+% 0& 0& 1& 0
+% \end{pmatrix}
+% \end{equation*}
 
-\begin{equation*}
-\lambda_2'=P_3\cdot \lambda_2 P_3^{-1}
-\begin{pmatrix}
-1& 0& 0& 0\\
-0& 1& 0& 0\\
-0& 0& 0& 1\\
-0& 0& 1& 0
-\end{pmatrix}\cdot \begin{pmatrix}
-1& 0& 0& 0\\
-0& 1& 0& 0\\
-0& 2& 1& 0\\
-0& 3& 0& 1
-\end{pmatrix} \cdot \begin{pmatrix}
-1& 0& 0& 0\\
-0& 1& 0& 0\\
-0& 0& 0& 1\\
-0& 0& 1& 0
-\end{pmatrix} = \begin{pmatrix}
-1& 0& 0& 0\\
-0& 1& 0& 0\\
-0& 3& 1& 0\\
-0& 2& 0& 1
-\end{pmatrix}
-\end{equation*}
+% \begin{equation*}
+% \lambda_2'=P_3\cdot \lambda_2 P_3^{-1}
+% \begin{pmatrix}
+% 1& 0& 0& 0\\
+% 0& 1& 0& 0\\
+% 0& 0& 0& 1\\
+% 0& 0& 1& 0
+% \end{pmatrix}\cdot \begin{pmatrix}
+% 1& 0& 0& 0\\
+% 0& 1& 0& 0\\
+% 0& 2& 1& 0\\
+% 0& 3& 0& 1
+% \end{pmatrix} \cdot \begin{pmatrix}
+% 1& 0& 0& 0\\
+% 0& 1& 0& 0\\
+% 0& 0& 0& 1\\
+% 0& 0& 1& 0
+% \end{pmatrix} = \begin{pmatrix}
+% 1& 0& 0& 0\\
+% 0& 1& 0& 0\\
+% 0& 3& 1& 0\\
+% 0& 2& 0& 1
+% \end{pmatrix}
+% \end{equation*}
 
-Por último podemos representar el producto de todas las matrices de permutación como una sola matriz, $P_{n-1}P_{n-2} \cdots P_2  P_1=P$. (El producto de matrices de permutación entre sí, da como resultado una nueva matriz de permutación.
+% Por último podemos representar el producto de todas las matrices de permutación como una sola matriz, $P_{n-1}P_{n-2} \cdots P_2  P_1=P$. (El producto de matrices de permutación entre sí, da como resultado una nueva matriz de permutación.
 
  
-De esta manera, la factorización LU con pivoteo de filas podríamos representarla como $P\cdot A=L\cdot U$,
+% De esta manera, la factorización LU con pivoteo de filas podríamos representarla como $P\cdot A=L\cdot U$,
 
+% \begin{equation*}
+% \overbrace{P_{n-1}P_{n-2} \cdots P_2  P_1}^{P}\cdot  A= \overbrace{\lambda_1'^{-1} \lambda_2'^{-2} \cdots \lambda_{n-2}'^{-1} \lambda_{n-1}'^{-1}}^{L}\cdot \overbrace{\lambda_{n-1}P_{n-1}\lambda_{n-2}P_{n-2} \cdots  \lambda_2  P_2 \lambda_1  P_1 A }^{U}   
+% \end{equation*}
+\begin{paracol}{2}
+Como ejemplo, vamos a calcular la factorización LU de la matriz,
+\end{paracol}
 \begin{equation*}
-\overbrace{P_{n-1}P_{n-2} \cdots P_2  P_1}^{P}\cdot  A= \overbrace{\lambda_1'^{-1} \lambda_2'^{-2} \cdots \lambda_{n-2}'^{-1} \lambda_{n-1}'^{-1}}^{L}\cdot \overbrace{\lambda_{n-1}P_{n-1}\lambda_{n-2}P_{n-2} \cdots  \lambda_2  P_2 \lambda_1  P_1 A }^{U}   
-\end{equation*}
-
-Como ejemplo, vamos a volver a calcular la factorización LU de la matriz,
- \begin{equation*}
 A=\begin{pmatrix}
 3& 4& 2&5\\
 2& 0& 1& -2\\
@@ -2791,235 +2662,281 @@ A=\begin{pmatrix}
 5& 2& 3& 2
 \end{pmatrix} 
 \end{equation*}
- Pero empleando ahora pivoteo de filas.
+%  Pero empleando ahora pivoteo de filas.
  
-En primer lugar buscamos  el elemento de la primera columna mayor en valor absoluto. En esta caso es el último elemento de la columna por lo que intercambiamos la primera fila con la cuarta,
+% En primer lugar buscamos  el elemento de la primera columna mayor en valor absoluto. En esta caso es el último elemento de la columna por lo que intercambiamos la primera fila con la cuarta,
  
  
-  \begin{equation*}
-P_1\cdot A=\begin{pmatrix}
-0& 0& 0& 1\\
-0& 1& 0& 0\\
-0& 0&1& 0\\
-1& 0& 0& 0
-\end{pmatrix}\begin{pmatrix}
-3& 4& 2&5\\
-2& 0& 1& -2\\
-3& 2& 1& 8\\
-5& 2& 3& 2
-\end{pmatrix}= \begin{pmatrix}
-5& 2& 3& 2\\
-2& 0& 1& -2\\
-3& 2& 1& 8\\
-3& 4& 2&5
-\end{pmatrix}
-\end{equation*}
+%   \begin{equation*}
+% P_1\cdot A=\begin{pmatrix}
+% 0& 0& 0& 1\\
+% 0& 1& 0& 0\\
+% 0& 0&1& 0\\
+% 1& 0& 0& 0
+% \end{pmatrix}\begin{pmatrix}
+% 3& 4& 2&5\\
+% 2& 0& 1& -2\\
+% 3& 2& 1& 8\\
+% 5& 2& 3& 2
+% \end{pmatrix}= \begin{pmatrix}
+% 5& 2& 3& 2\\
+% 2& 0& 1& -2\\
+% 3& 2& 1& 8\\
+% 3& 4& 2&5
+% \end{pmatrix}
+% \end{equation*}
 
-Eliminamos ahora los elementos de la primera columna situados por debajo de la diagonal,
+% Eliminamos ahora los elementos de la primera columna situados por debajo de la diagonal,
 
-\begin{equation*}
-\overbrace{\lambda_1 \cdot P_1\cdot A}^{U_1}=\begin{pmatrix}
-1& 0& 0& 0\\
--2/5& 1& 0& 0\\
--3/5& 0& 1& 0\\
--3/5& 0& 0&1
-\end{pmatrix} \cdot \begin{pmatrix}
-5& 2& 3& 2\\
-2& 0& 1& -2\\
-3& 2& 1& 8\\
-3& 4& 0&5
-\end{pmatrix}= \begin{pmatrix}
-5& 2& 3& 2\\
-0& -0.8& -0.2& -2.8\\
-0& 0.8& -0.8& -6.8\\
-0& 2.8& 0.2&3.8
-\end{pmatrix}
-\end{equation*}
+% \begin{equation*}
+% \overbrace{\lambda_1 \cdot P_1\cdot A}^{U_1}=\begin{pmatrix}
+% 1& 0& 0& 0\\
+% -2/5& 1& 0& 0\\
+% -3/5& 0& 1& 0\\
+% -3/5& 0& 0&1
+% \end{pmatrix} \cdot \begin{pmatrix}
+% 5& 2& 3& 2\\
+% 2& 0& 1& -2\\
+% 3& 2& 1& 8\\
+% 3& 4& 0&5
+% \end{pmatrix}= \begin{pmatrix}
+% 5& 2& 3& 2\\
+% 0& -0.8& -0.2& -2.8\\
+% 0& 0.8& -0.8& -6.8\\
+% 0& 2.8& 0.2&3.8
+% \end{pmatrix}
+% \end{equation*}
 
-Para eliminar los elementos de la segunda columna, repetimos los mismos pasos. El elemento mayor de la segunda columna de $U_1$ es ahora $2.8$, por tanto intercambiamos entre sí la segunda y la cuarta fila,
+% Para eliminar los elementos de la segunda columna, repetimos los mismos pasos. El elemento mayor de la segunda columna de $U_1$ es ahora $2.8$, por tanto intercambiamos entre sí la segunda y la cuarta fila,
 
-\begin{equation*}
-P_2\cdot \overbrace{\lambda_1 \cdot P_1\cdot A}^{U_1}=\begin{pmatrix}
-1& 0& 0& 0\\
-0& 0& 0& 1\\
-0& 0& 1& 0\\
-0& 1& 0&0
-\end{pmatrix} \cdot \begin{pmatrix}
-5& 2& 3& 2\\
-0& -0.8& -0.2& -2.8\\
-0& 0.8& -0.8& -6.8\\
-0& 2.8& 0.2&3.8
-\end{pmatrix}= \begin{pmatrix}
-5& 2& 3& 2\\
-0& 2.8& 0.2&3.8\\
-0& 0.8& -0.8& -6.8\\
-0& -0.8& -0.2& -2.8
-\end{pmatrix}
-\end{equation*}
-A continuación, eliminamos los elementos de la segunda columna situados por debajo de la diagonal,
+% \begin{equation*}
+% P_2\cdot \overbrace{\lambda_1 \cdot P_1\cdot A}^{U_1}=\begin{pmatrix}
+% 1& 0& 0& 0\\
+% 0& 0& 0& 1\\
+% 0& 0& 1& 0\\
+% 0& 1& 0&0
+% \end{pmatrix} \cdot \begin{pmatrix}
+% 5& 2& 3& 2\\
+% 0& -0.8& -0.2& -2.8\\
+% 0& 0.8& -0.8& -6.8\\
+% 0& 2.8& 0.2&3.8
+% \end{pmatrix}= \begin{pmatrix}
+% 5& 2& 3& 2\\
+% 0& 2.8& 0.2&3.8\\
+% 0& 0.8& -0.8& -6.8\\
+% 0& -0.8& -0.2& -2.8
+% \end{pmatrix}
+% \end{equation*}
+% A continuación, eliminamos los elementos de la segunda columna situados por debajo de la diagonal,
 
-\begin{equation*}
-\overbrace{\lambda_2\cdot P_2\cdot \lambda_1 \cdot P_1\cdot A}^{U_2}=\begin{pmatrix}
-1& 0& 0& 0\\
-0& 1& 0& 0\\
-0& -0.8/2.8& 1& 0\\
-0& 0.8/2.8& 0&1
-\end{pmatrix} \cdot \begin{pmatrix}
-5& 2& 3& 2\\
-0& 2.8& 0.2&3.8\\
-0& 0.8& -0.8& -6.8\\
-0& -0.8& -0.2& -2.8
-\end{pmatrix} = \begin{pmatrix}
-5& 2& 3& 2\\
-0& 2.8& 0.2&3.8\\
-0& 0& -0.85& -5.71\\
-0& 0& -0.14& -1.71
-\end{pmatrix}
-\end{equation*}
+% \begin{equation*}
+% \overbrace{\lambda_2\cdot P_2\cdot \lambda_1 \cdot P_1\cdot A}^{U_2}=\begin{pmatrix}
+% 1& 0& 0& 0\\
+% 0& 1& 0& 0\\
+% 0& -0.8/2.8& 1& 0\\
+% 0& 0.8/2.8& 0&1
+% \end{pmatrix} \cdot \begin{pmatrix}
+% 5& 2& 3& 2\\
+% 0& 2.8& 0.2&3.8\\
+% 0& 0.8& -0.8& -6.8\\
+% 0& -0.8& -0.2& -2.8
+% \end{pmatrix} = \begin{pmatrix}
+% 5& 2& 3& 2\\
+% 0& 2.8& 0.2&3.8\\
+% 0& 0& -0.85& -5.71\\
+% 0& 0& -0.14& -1.71
+% \end{pmatrix}
+% \end{equation*}
 
-Para eliminar el elemento que queda debajo de la diagonal en la tercera columna, procedemos igual que para las columnas anteriores. Como en este caso, el elemento situado en la diagonal es mayor en valor absoluto no es preciso permutar. (Desde un punto de vista formal, podríamos decir que en este caso la matriz de permutaciones aplicada es la matriz identidad).
+% Para eliminar el elemento que queda debajo de la diagonal en la tercera columna, procedemos igual que para las columnas anteriores. Como en este caso, el elemento situado en la diagonal es mayor en valor absoluto no es preciso permutar. (Desde un punto de vista formal, podríamos decir que en este caso la matriz de permutaciones aplicada es la matriz identidad).
 
-\begin{align*}
-\overbrace{\lambda_3\cdot\lambda_2\cdot P_2\cdot \lambda_1 \cdot P_1\cdot A}^{U}&=\begin{pmatrix}
-1& 0& 0& 0\\
-0& 1& 0& 0\\
-0& 0& 1& 0\\
-0& 0& -0.14/0.85&1
-\end{pmatrix} \cdot \begin{pmatrix}
-5& 2& 3& 2\\
-0& 2.8& 0.2&3.8\\
-0& 0& -0.85& -5.71\\
-0& 0& -0.14& -1.71
-\end{pmatrix}\\ 
-&= \begin{pmatrix}
-5& 2& 3& 2\\
-0& 2.8& 0.2&3.8\\
-0& 0& -0.85& -5.71\\
-0& 0& 0& -2.66
-\end{pmatrix}= U 
-\end{align*}
+% \begin{align*}
+% \overbrace{\lambda_3\cdot\lambda_2\cdot P_2\cdot \lambda_1 \cdot P_1\cdot A}^{U}&=\begin{pmatrix}
+% 1& 0& 0& 0\\
+% 0& 1& 0& 0\\
+% 0& 0& 1& 0\\
+% 0& 0& -0.14/0.85&1
+% \end{pmatrix} \cdot \begin{pmatrix}
+% 5& 2& 3& 2\\
+% 0& 2.8& 0.2&3.8\\
+% 0& 0& -0.85& -5.71\\
+% 0& 0& -0.14& -1.71
+% \end{pmatrix}\\ 
+% &= \begin{pmatrix}
+% 5& 2& 3& 2\\
+% 0& 2.8& 0.2&3.8\\
+% 0& 0& -0.85& -5.71\\
+% 0& 0& 0& -2.66
+% \end{pmatrix}= U 
+% \end{align*}
 
-Como hemos visto, la matriz $\lambda_i'$ las obtenemos a  partir de $\lambda_i$, permutando los elementos situados por debajo de la diagonal, distintos de cero. En nuestro ejemplo solo hay matriz $\lambda_1$ afectada por una única permutación $P_2$,
-\begin{equation*}
-\lambda'_1=\begin{pmatrix}
-1& 0& 0& 0\\
-3/5& 1& 0& 0\\
-3/5& 0& 1& 0\\
-2/5& 0& 0& 1
-\end{pmatrix}
-\end{equation*}
+% Como hemos visto, la matriz $\lambda_i'$ las obtenemos a  partir de $\lambda_i$, permutando los elementos situados por debajo de la diagonal, distintos de cero. En nuestro ejemplo solo hay matriz $\lambda_1$ afectada por una única permutación $P_2$,
+% \begin{equation*}
+% \lambda'_1=\begin{pmatrix}
+% 1& 0& 0& 0\\
+% 3/5& 1& 0& 0\\
+% 3/5& 0& 1& 0\\
+% 2/5& 0& 0& 1
+% \end{pmatrix}
+% \end{equation*}
 
-Para el resto, $\lambda_2'=\lambda_2$ y $\lambda'_3=\lambda_3$. Para obtener la matriz L cambiando los signos a los elementos situados por debajo de la diagonal de $\lambda'_1$, $\lambda_2$ y $\lambda_3$, y los agrupamos en una única matriz,
+% Para el resto, $\lambda_2'=\lambda_2$ y $\lambda'_3=\lambda_3$. Para obtener la matriz L cambiando los signos a los elementos situados por debajo de la diagonal de $\lambda'_1$, $\lambda_2$ y $\lambda_3$, y los agrupamos en una única matriz,
 
-\begin{equation*}
-L=\begin{pmatrix}
-1& 0& 0& 0\\
-3/5& 1& 0& 0\\
-3/5& 0.8/2.8& 1& 0\\
-2/5& -0.8/2.8& 0.14/0.85& 1
-\end{pmatrix}
-\end{equation*}
+% \begin{equation*}
+% L=\begin{pmatrix}
+% 1& 0& 0& 0\\
+% 3/5& 1& 0& 0\\
+% 3/5& 0.8/2.8& 1& 0\\
+% 2/5& -0.8/2.8& 0.14/0.85& 1
+% \end{pmatrix}
+% \end{equation*}
 
-Por último debemos multiplicar las matrices de permutaciones para agruparlas en una sola,
+% Por último debemos multiplicar las matrices de permutaciones para agruparlas en una sola,
 
-\begin{equation*}
-P=P_2\cdot P_1= \begin{pmatrix}
-0& 0& 0& 1\\
-1& 0& 0& 0\\
-0& 0& 1& 0\\
-0& 1& 0& 0
-\end{pmatrix}
-\end{equation*}
+% \begin{equation*}
+% P=P_2\cdot P_1= \begin{pmatrix}
+% 0& 0& 0& 1\\
+% 1& 0& 0& 0\\
+% 0& 0& 1& 0\\
+% 0& 1& 0& 0
+% \end{pmatrix}
+% \end{equation*}
 
-Es trivial comprobar que las matrices obtenidas cumplen \footnote{Los valores numéricos empleados en el texto, están redondeados, por tanto dan una solución incorrecta. Si se reproducen las operaciones descritas en Matlab el resultado es mucho más preciso.} $P\cdot A = L\cdot U$.
+% Es trivial comprobar que las matrices obtenidas cumplen \footnote{Los valores numéricos empleados en el texto, están redondeados, por tanto dan una solución incorrecta. Si se reproducen las operaciones descritas en Matlab el resultado es mucho más preciso.} $P\cdot A = L\cdot U$.
 
-El siguiente código calcula la factorización LU de una matriz de orden arbitrario con pivoteo de filas. \label{lufact} 
+% El siguiente código calcula la factorización LU de una matriz de orden arbitrario con pivoteo de filas. \label{lufact} 
 
-\begin{lstlisting}
-function [L,U,P]=lufact(A)
-% este programa calcula una factorizacionLU, de la matrix A,  empleando 
-% el método de eliminacion gaussiana con pivoteo de filas...
-% L es una matriz triangular inferior, U es una matriz triangular superior y
-% P es una matriz de permutaciones tal que P*A=L*U
+% \begin{lstlisting}
+% function [L,U,P]=lufact(A)
+% % este programa calcula una factorizacionLU, de la matrix A,  empleando 
+% % el método de eliminacion gaussiana con pivoteo de filas...
+% % L es una matriz triangular inferior, U es una matriz triangular superior y
+% % P es una matriz de permutaciones tal que P*A=L*U
 
-% vamos a aprovechar la potencia de Matlab para evitar algunos buques en
-% los calculos..
+% % vamos a aprovechar la potencia de Matlab para evitar algunos buques en
+% % los calculos..
 
-% primero definimos la matriz de permutaciones como la matriz identidad de
-% orden igual al número de filas de la matriz A, (si no hay pivoteo de filas 
-% la matriz de permutaciones es precisamente la identidad)
+% % primero definimos la matriz de permutaciones como la matriz identidad de
+% % orden igual al número de filas de la matriz A, (si no hay pivoteo de filas 
+% % la matriz de permutaciones es precisamente la identidad)
 
-t=size(A,1); % obtenemos el numero de filas de la matriz A
-P=eye(t); % Construimos la matriz identidad 
-% Ademas, inicializamos las matrices L y U
-L=P;
-U=A;
+% t=size(A,1); % obtenemos el numero de filas de la matriz A
+% P=eye(t); % Construimos la matriz identidad 
+% % Ademas, inicializamos las matrices L y U
+% L=P;
+% U=A;
 
 
-% iniciamos un bucle para ir recorriendo las columnas (solo tenemos que
-% recorrer tantas columnas como fila - 1 tenga la matriz A
-for j=1:t-1
-    LA=zeros(t); %Matriz auxiliar (Lambda) de cada iteración.
-    % Buscamos el elemento mas grande de la columna j
-    maxcol=abs(U(j,j)); 
-    index=j;
-    for i=j:t
-        if abs(U(i,j))>maxcol
-            maxcol=abs(U(i,j));
-            index=i;
-        end
-    end
+% % iniciamos un bucle para ir recorriendo las columnas (solo tenemos que
+% % recorrer tantas columnas como fila - 1 tenga la matriz A
+% for j=1:t-1
+%     LA=zeros(t); %Matriz auxiliar (Lambda) de cada iteración.
+%     % Buscamos el elemento mas grande de la columna j
+%     maxcol=abs(U(j,j)); 
+%     index=j;
+%     for i=j:t
+%         if abs(U(i,j))>maxcol
+%             maxcol=abs(U(i,j));
+%             index=i;
+%         end
+%     end
     
-    % reordenamos las filas de P, L y U de modo que el valor mas grande de
-    % j pase a acupar la diagonal (Esto es equivalente a multiplicar U por
-    % la matriz de permetuciones correspondiente, ir calculado
-    % iterativamente el valor de la matriz de permutaciones P final, y
-    % reordenar las filas ya calculadas de L (aportadas por los valores de
-    % las matrices lambdas anteriores... a lambda_j)
+%     % reordenamos las filas de P, L y U de modo que el valor mas grande de
+%     % j pase a acupar la diagonal (Esto es equivalente a multiplicar U por
+%     % la matriz de permetuciones correspondiente, ir calculado
+%     % iterativamente el valor de la matriz de permutaciones P final, y
+%     % reordenar las filas ya calculadas de L (aportadas por los valores de
+%     % las matrices lambdas anteriores... a lambda_j)
     
-    Aux=U(j,:);
-    Aux2=P(j,:);
-    Aux3=L(j,1:j-1);
+%     Aux=U(j,:);
+%     Aux2=P(j,:);
+%     Aux3=L(j,1:j-1);
     
-    % Reordenamos U (Toda la fila)
-    U(j,:)=U(index,:);
-    U(index,:)=Aux;
+%     % Reordenamos U (Toda la fila)
+%     U(j,:)=U(index,:);
+%     U(index,:)=Aux;
     
-    % Reordenamos L (Solo los elementos de la columnas anteriores...situados
-    % por debajo de la diagonal).
-    L(j,1:j-1)=L(index,1:j-1);
-    L(index,1:j-1)=Aux3;
+%     % Reordenamos L (Solo los elementos de la columnas anteriores...situados
+%     % por debajo de la diagonal).
+%     L(j,1:j-1)=L(index,1:j-1);
+%     L(index,1:j-1)=Aux3;
     
-    % modificamos la matriz de permutaciones
-    P(j,:)=P(index,:);
-    P(index,:)=Aux2;
+%     % modificamos la matriz de permutaciones
+%     P(j,:)=P(index,:);
+%     P(index,:)=Aux2;
     
-   % Calculamos una matriz auxiliar con los factores de los elementos
-   % a eliminar. 
-   LA(j+1:t,j)=U(j+1:t,j)/U(j,j); % estos elementos son directamente los que 
-   % se añaden a la matriz L
-   % Modificamos L y U
-   L(j+1:t,j)=U(j+1:t,j)/U(j,j);
-   U=(eye(t)-LA)*U; % la expresión eye(t)-LA nos permite cambiar de signo los
-   % elementos situados por debajo de la diagonal principal...
-end
-\end{lstlisting}
+%    % Calculamos una matriz auxiliar con los factores de los elementos
+%    % a eliminar. 
+%    LA(j+1:t,j)=U(j+1:t,j)/U(j,j); % estos elementos son directamente los que 
+%    % se añaden a la matriz L
+%    % Modificamos L y U
+%    L(j+1:t,j)=U(j+1:t,j)/U(j,j);
+%    U=(eye(t)-LA)*U; % la expresión eye(t)-LA nos permite cambiar de signo los
+%    % elementos situados por debajo de la diagonal principal...
+% end
+% \end{lstlisting}
 
 
-Desde el punto de vista de la implementación, el código anterior simplifica el cálculo de la factorización LU,
+% Desde el punto de vista de la implementación, el código anterior simplifica el cálculo de la factorización LU,
 
-\begin{enumerate}
-\item  no se calculan la inversa de $\lambda_i$. En realidad lo que se hace es ir construyendo iterativamente la matriz L: en cada iteración, primero se permutan los elementos de las columnas de la matriz L construida en la iteración anterior, y se añaden los elementos de la columna correspondiente.
-\item la matriz de permutación se va calculando también iterativamente, intercambiando las filas de la matriz de permutación obtenida en la iteración anterior.
-\end{enumerate}
+% \begin{enumerate}
+% \item  no se calculan la inversa de $\lambda_i$. En realidad lo que se hace es ir construyendo iterativamente la matriz L: en cada iteración, primero se permutan los elementos de las columnas de la matriz L construida en la iteración anterior, y se añaden los elementos de la columna correspondiente.
+% \item la matriz de permutación se va calculando también iterativamente, intercambiando las filas de la matriz de permutación obtenida en la iteración anterior.
+% \end{enumerate}
+\begin{paracol}{2}
+ Scipy, calcula siempre la factorización LU, permutando las filas para obtener un resultado lo mas preciso posible,
+\end{paracol}
+\begin{center}
+\begin{minipage}{0.7\textwidth}
+\begin{minted}{python}
+In [213]: A = np.array([[3,4,2,5],[2,0,1,-2],[3,2,1,8],[5,2,3,2]])
 
-Matlab posee un comando propio para calcular la factorización LU de una Matriz, \texttt{[L,U,P]=lu(A)}. Es importante pedir siempre que devuelva la matriz \texttt{P}, en otro caso, la matriz \texttt{L} devuelta por Matlab no tiene por que ser triangular inferior. 
+In [214]: A
+Out[214]: 
+array([[ 3,  4,  2,  5],
+       [ 2,  0,  1, -2],
+       [ 3,  2,  1,  8],
+       [ 5,  2,  3,  2]])
 
-El comando \texttt{lu} de Matlab, permite calcular la factorización LU, por otros métodos distintos a la eliminación gaussiana con pivoteo de filas. La explicación de estos otros métodos queda fuera del alcance de estos apuntes. Simplemente indicar que la factorización LU de una matriz no es única --- es posible encontrar distintos pares L y U que factorizan a la misma matriz A.
+In [215]: import scipy as sp
 
+In [216]: [P,L,U] = sp.linalg.lu(A)
+
+In [217]: P
+Out[217]: 
+array([[0., 1., 0., 0.],
+       [0., 0., 0., 1.],
+       [0., 0., 1., 0.],
+       [1., 0., 0., 0.]])
+
+In [218]: L
+Out[218]: 
+array([[ 1.        ,  0.        ,  0.        ,  0.        ],
+       [ 0.6       ,  1.        ,  0.        ,  0.        ],
+       [ 0.6       ,  0.28571429,  1.        ,  0.        ],
+       [ 0.4       , -0.28571429,  0.16666667,  1.        ]])
+
+In [219]: U
+Out[219]: 
+array([[ 5.        ,  2.        ,  3.        ,  2.        ],
+       [ 0.        ,  2.8       ,  0.2       ,  3.8       ],
+       [ 0.        ,  0.        , -0.85714286,  5.71428571],
+       [ 0.        ,  0.        ,  0.        , -2.66666667]])
+
+In [220]: P @ L @ U
+Out[220]: 
+array([[ 3.,  4.,  2.,  5.],
+       [ 2.,  0.,  1., -2.],
+       [ 3.,  2.,  1.,  8.],
+       [ 5.,  2.,  3.,  2.]])
+\end{minted}
+\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
 \subsection{Factorización de Cholesky}\label{chol}
 Dada una matriz cuadrada, simétrica y definida positiva, es siempre posible factorizarla como $A=L\cdot L^T$. Donde $L$ es una matriz triangular inferior,
-
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 a_{11}& a_{12}& \cdots & a_{1n}\\
@@ -3038,103 +2955,53 @@ L_{11}& L_{21}& \cdots & L_{n1}\\
 0& 0& \cdots & L_{nn}
 \end{pmatrix}
 \end{equation*}
+\begin{paracol}{2}
+Numpy tiene una función, en el submódulo \mintinline{python}{linalg}, llamada \mintinline{python}{cholesky}, que permite obtener la factorización de Cholesky, 
+\end{paracol}
+\begin{center}
+    \begin{minipage}{0.5\textwidth}
+    \begin{minted}{python}
+In [224]: B
+Out[224]: 
+array([[47, 28, 26, 45],
+       [28, 24, 16, 40],
+       [26, 16, 15, 22],
+       [45, 40, 22, 97]])
 
-Para obtener la factorización de Cholesky podemos emplear directamente la definición. Así si calculamos $L\cdot L^T$, obtendríamos $a_{11}=L_{11}\cdot L_{11}=L_{11}^2$,  $a_{22}=L_{21}\cdot L_{21}+L_{22}\cdot L_{22}=L_{21}^2+L_{22}^2$  etc. Es fácil comprobar que los elementos de la diagonal $a_{ii}$ de la matriz $A$ cumplen,
+In [225]: L = np.linalg.cholesky(B)
 
-\begin{equation*}
-a_{ii}=\sum_{k=1}^{j}L_{ki}^2=L_{ii}+\sum_{k=1}^{j-1}L_{ki}^2
-\end{equation*}
-A partir de esta expresión podemos despejar $L_{ii}$,
-\begin{equation*}
-L_{ii}=\sqrt{a_{ii}-\sum_{k=1}^{j-1}L_{ki}^2}
-\end{equation*}
+In [226]: L
+Out[226]: 
+array([[ 6.8556546 ,  0.        ,  0.        ,  0.        ],
+       [ 4.08421976,  2.70539257,  0.        ,  0.        ],
+       [ 3.79248978,  0.18874832,  0.76249285,  0.        ],
+       [ 6.56392462,  4.87599823, -5.00195311,  2.2627417 ]])
 
-Del mismo modo, para los elementos que no pertenecen a la diagonal,
+In [227]: L @ L.T
+Out[227]: 
+array([[47., 28., 26., 45.],
+       [28., 24., 16., 40.],
+       [26., 16., 15., 22.],
+       [45., 40., 22., 97.]])
+    \end{minted}
+        
+    \end{minipage}
+\end{center}
 
-\begin{equation*}
-a_{ij}=\sum_{k=1}^{j}L_{ik}\cdot L_{kj}=L_{ij}\cdot L_{jj}+\sum_{k=1}^{j-1}L_{ik}\cdot L_{kj}
-\end{equation*}
-A partir de esta expresión podemos despejar $L_{ii}$,
-\begin{equation*}
-L_{ij}=\frac{a_{ij}-\sum_{k=1}^{j-1}L_{ik}\cdot L_{kj}}{L_{jj}}
-\end{equation*}
-
-Los elementos de la matriz L, se pueden calcular de las expresiones anteriores iterativamente por columnas: para obtener $L_{11}$ basta emplear $a_{11}$, para obtener los restantes elementos de la primera columna, basta conocer $L_{11}$. Conocida la primera columna de L, se puede calcular $L_{22}$ y así sucesivamente hasta completar toda la matriz. El siguiente código calcula la factorización de Cholesky de una matriz, siempre que cumpla las condiciones requeridas,
-
-\begin{lstlisting}
-function L=cholesky(A)
-% hacemos que devuelva la matriz triangular inferior.
-% Comprobamos que es cuadrada, simetrica, y definida positiva.
-[a,b]=size(A);
-if a-b~=0
-    disp('La matriz no es cuadrada')
-else
-    % ha resultado cuadrada comprobamos si es simetrica
-    c=A-A';
-    if any(c)
-        disp('LA matriz no es simetrica')
-    else
-        % ha resultado simetrica, comprobamos si es definida positiva
-        auto=eig(A);
-        if any(auto<=0)
-            disp('la matriz no es definida positiva')
-        else
-            % una vez que la matriz cumple las condiciones necesarias,
-            % factorizamos por cholesky
-
-            for k=1:a
-                L(k,k)=A(k,k);
-                for i=1:k-1
-                    L(k,k)=L(k,k)-L(k,i)^2;
-                end
-                L(k,k)=sqrt(L(k,k));
-                for j=k+1:a
-                    L(j,k)=A(j,k);
-                    for i=1:k-1
-                        L(j,k)=L(j,k)-L(j,i)*L(k,i);
-                    end
-                    L(j,k)=L(j,k)/L(k,k);
-                end
-            end
-        end
-    end
-end
-
-\end{lstlisting} 
-
-Matlab tiene una función interna \texttt{chol}, que permite obtener la factorización de Cholesky, Por defecto devuelve una matriz triangular superior U, de modo que la factorización calculada cumple $A=U^T\cdot U$. (En realidad se trata tan solo de una forma alternativa de definir la factorización de Cholesky), Así por ejemplo,
-
-\begin{verbatim}
->> A
-A =
-     6     3     4
-     3    14     3
-     4     3     5
->> U=chol(A)
-U =
-
-    2.4495    1.2247    1.6330
-         0    3.5355    0.2828
-         0         0    1.5011
->> R=U'*U
-R =
-    6.0000    3.0000    4.0000
-    3.0000   14.0000    3.0000
-    4.0000    3.0000    5.0000
-\end{verbatim}
-Si se quiere obtener directamente la matriz L, hay que indicarlo expresamente: \texttt{L=chol(A,'lower')}.
-Para obtener la factorización Matlab emplea SOLO la parte triangular superior o la triangular inferior de la matriz A. Supone que A es simétrica pero NO lo comprueba.
-Si la matriz no es definida positiva, la función chol da un mensaje de error.
+\begin{paracol}{2}
+Si la matriz no es definida positiva, la función \mintinline{python}{cholesky} da un mensaje de error.
 
 \subsection{Diagonalización}\label{sec:diag}
 \paragraph{Autovectores y autovalores.} Dada una matriz $A$ de orden $n\times n$, se define como autovector, o vector propio de dicha matriz al vector $x$ que cumple,
+\end{paracol}
 \begin{equation*}
 A\cdot x =\lambda \cdot x, \  x\neq 0, \ \lambda \in \mathbb{C}
 \end{equation*}
-
+\begin{paracol}{2}
 Es decir, el efecto de multiplicar la matriz $A$ por el vector $x$ es equivalente a multiplicar el vector $x$  por un número $\lambda$ que, en general, será un número complejo.
 
 $\lambda$ recibe el nombre de autovalor, o valor propio de la matriz $A$. Así por ejemplo,
+\end{paracol}
 \begin{equation*}
 A= \begin{pmatrix}
 -2& 0& 0\\
@@ -3142,7 +3009,11 @@ A= \begin{pmatrix}
 0& 0& 3
 \end{pmatrix}
 \end{equation*}
-tiene un autovalor $\lambda=3$ para el vector propio, $x=[0,\  -3,\  3]^T$ , 
+
+\begin{paracol}{2}
+tiene un autovalor $\lambda=3$ para el vector propio, $x=[0,\  -3,\  3]^T$ ,
+\end{paracol}
+
 \begin{equation*}
 \begin{pmatrix}
 -2& 0& 0\\
@@ -3162,22 +3033,22 @@ tiene un autovalor $\lambda=3$ para el vector propio, $x=[0,\  -3,\  3]^T$ ,
 9
 \end{pmatrix}
 \end{equation*}
-
-El vector propio asociado a un valor propio no es único, si $x$ es un vector propio de una matriz $A$, asociado a un valor propio $\lambda$, Es trivial comprobar que cualquier vector de la forma $\alpha\cdot x, \ \alpha \in \mathbf{C}$ también es u vector propio asociado a $\lambda$,
+\begin{paracol}{2}
+El vector propio asociado a un valor propio no es único, si $x$ es un vector propio de una matriz $A$, asociado a un valor propio $\lambda$, Es trivial comprobar que cualquier vector de la forma $\alpha\cdot x, \ \alpha \in \mathbb{C}$ también es u vector propio asociado a $\lambda$,
+\end{paracol}
 \begin{equation}
 A\cdot x= \lambda x \Rightarrow A \cdot \alpha x = \lambda  \alpha x
 \end{equation}
-
-En realidad, cada vector propio expande un subespacio $E_{\lambda}S$ de $\mathbf{R}^n$. Aplicar la matriz $A$, a un vector de $E_{\lambda}S$ es equivalente a multiplicar el vector por $\lambda$. Cada subespacio asociado a un autovalor recibe el nombre de autosubespacio o subespacio propio. 
-
+\begin{paracol}{2}
 El conjunto de todos los autovalores de una matriz $A$ recibe el nombre de espectro de $A$ y se representa como $\Lambda(A)$.
 Una descomposición en autovalores de una matriz $A$ se define como.
+\end{paracol}
 \begin{equation*}
 A=X\cdot D \cdot X^{-1}
 \end{equation*}
-
+\begin{paracol}{2}
 Donde $D$ es una matriz diagonal formada por los autovalores de $A$. 
-
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 \lambda_1& 0 & \cdots & 0\\
@@ -3186,14 +3057,21 @@ Donde $D$ es una matriz diagonal formada por los autovalores de $A$.
 0& 0& \cdots & \lambda_n
 \end{pmatrix}
 \end{equation*}
-
-Esta descomposición no siempre existe. En general, si dos matrices $A$ y $B$ cumplen,
+\begin{paracol}{2}
+Esta descomposición no siempre existe. 
+\end{paracol}
+\begin{flalign*}
+&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+\end{flalign*}
+En general, si dos matrices $A$ y $B$ cumplen,
 \begin{equation*}
 A=X\cdot B \cdot X^{-1}
 \end{equation*}
+\begin{paracol}{2}
 se dice de ellas que son similares. A la transformación que lleva a convertir $B$ en $A$ se le llama una transformación de semejanza. Una matriz es diagonalizable cuando admite una transformación de semejanza con una matriz diagonal de autovalores. 
 
 Volviendo al ejemplo anterior podemos factorizar la matriz $A$ como,
+\end{paracol}
 
 \begin{equation*}
 A= \begin{pmatrix}
@@ -3214,13 +3092,16 @@ A= \begin{pmatrix}
 0& 0& 1/3
 \end{pmatrix}
 \end{equation*}
-
+\begin{paracol}{2}
 Por tanto en este ejemplo, los autovalores de $A$ serían $\lambda_1=-2$, $\lambda_2=2$ y $\lambda_3=3$. Para estudiar la composición de la matriz $X$ Reescribimos la expresión de la relación de semejanza de la siguiente manera,
+\end{paracol}
+
 \begin{equation*}
  A=X \cdot D \cdot X^{-1}\rightarrow A\cdot X= X\cdot D
 \end{equation*}
-
+\begin{paracol}{2}
 Si consideramos ahora cada columna de la matriz $X$ como un vector,
+\end{paracol}
 \begin{equation*}
 A\cdot X= X\cdot D \rightarrow A\cdot \left( x_1 | x_2 | \cdots | x_n \right)= \left( x_1 | x_2 | \cdots | x_n \right) \cdot\begin{pmatrix}
 \lambda_1& 0 & \cdots & 0\\
@@ -3229,26 +3110,31 @@ A\cdot X= X\cdot D \rightarrow A\cdot \left( x_1 | x_2 | \cdots | x_n \right)= \
 0& 0& \cdots & \lambda_n
 \end{pmatrix}
 \end{equation*}
+\begin{paracol}{2}
 Es fácil comprobar que si consideramos el producto de la matriz $A$, por cada una de las columnas de la matriz $X$ se cumple,
-
+\end{paracol}
 \begin{align*}
 A\cdot x_1 &=\lambda_1 \cdot x_1 \\
 A\cdot x_2 &=\lambda_2 \cdot x_2 \\
 \vdots \\
 A\cdot x_n &=\lambda_n \cdot x_n \\
 \end{align*}
+\begin{paracol}{2}
 Lo que nos lleva a que cada columna de la matriz $X$ tiene que ser un autovector de $A$ puesto que cumple,
-
+\end{paracol}
 \begin{equation*}
 A\cdot x_i =\lambda_i \cdot x_i \\
 \end{equation*}
-
+\begin{paracol}{2}
+En realidad, cada vector propio expande un subespacio $E_{\lambda}S$ de $\mathbf{R}^n$. Aplicar la matriz $A$, a un vector de $E_{\lambda}S$ es equivalente a multiplicar el vector por $\lambda$. Cada subespacio asociado a un autovalor recibe el nombre de autosubespacio o subespacio propio. 
 \paragraph{Polinomio característico.} El polinomio característico de una matriz $A$ de dimensión $n\cdot n$, se define como,
+\end{paracol}
 \begin{equation*}
 P_A(z)=det(zI-A)
 \end{equation*}
+\begin{paracol}{2}
 Donde $I$ es a matriz identidad de dimensión $n \cdot n$. Así por ejemplo para una matriz de dimensión $2\cdot 2$,
-
+\end{paracol}
 \begin{align*}
 P_A(z)=&det\left(z\cdot \begin{pmatrix}
 1& 0\\
@@ -3263,12 +3149,13 @@ z-a_{11}& -a_{12}\\
 \\
 =&(z-a_{11})\cdot(z-a_{22})-a_{12}\cdot a_{21}=z^2-(a_{11}+a_{22})\cdot z+a_{11}\cdot a_{22}-a_{12}\cdot a_{21}
 \end{align*}
-
+\begin{paracol}{2}
 Los autovalores $\lambda$ de una matriz $A$ son las raíces del polinomio característico de la matriz $A$,
+\end{paracol}
 \begin{equation*}
 p_A(\lambda)=0
 \end{equation*}
-
+\begin{paracol}{2}
 Las raíces de un polinomio pueden ser simples o múltiples, es decir una mima raíz puede repetirse varias veces. Por tanto, los autovalores de una matriz, pueden también repetirse. Se llama multiplicidad algebraica de un autovalor al número de veces que se repite.
 
 Además las raíces de un polinomio pueden ser reales o complejas. Para una matriz cuyos elementos son todos reales, si tiene autovalores complejos estos se dan siempre como pares de números complejos conjugados. Es decir si $\lambda =a+bi$ es un autovalor entonces $\lambda^*=a-bi$ también lo es.
@@ -3276,23 +3163,25 @@ Además las raíces de un polinomio pueden ser reales o complejas. Para una matr
 Veamos algunos ejemplos:
 
 La matriz,
+\end{paracol}
 \begin{equation*}
 A=\begin{pmatrix}
 3& 2\\
 -2& -2
 \end{pmatrix}
 \end{equation*}
-
+\begin{paracol}{2}
 Tiene como polinomio característico,
-
+\end{paracol}
 \begin{equation*}
 P_A(z)=\left\vert\begin{matrix}
 z-3& -2\\
 2& z+2 
 \end{matrix} \right\vert=z^2-z-2
 \end{equation*}
-
+\begin{paracol}{2}
 Igualando el polinomio característico a cero y obteniendo las raíces de la ecuación de segundo grado resultante, obtenemos los autovalores de la matriz $A$,
+\end{paracol}
 \begin{equation*}
 \lambda^2-\lambda-2=0 \rightarrow \left\{ 
 \begin{aligned}
@@ -3301,8 +3190,9 @@ Igualando el polinomio característico a cero y obteniendo las raíces de la ecu
 \end{aligned}
 \right.
 \end{equation*}
-
+\begin{paracol}{2}
 Un vector propio asociado a $\lambda_1=2$ sería $x_1=[2,\  -1]^T$,
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 3& 2\\
@@ -3318,9 +3208,9 @@ Un vector propio asociado a $\lambda_1=2$ sería $x_1=[2,\  -1]^T$,
 -2
 \end{pmatrix} 
 \end{equation*}
-
+\begin{paracol}{2}
 y un vector propio asociado a $\lambda_2=-1$ sería $x_2=[1\ -2]^T$,
-
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 3& 2\\
@@ -3336,25 +3226,27 @@ y un vector propio asociado a $\lambda_2=-1$ sería $x_2=[1\ -2]^T$,
 2
 \end{pmatrix} 
 \end{equation*}
-
+\begin{paracol}{2}
 La matriz,
+\end{paracol}
 \begin{equation*}
 B=\begin{pmatrix}
 4& -1\\
 1& 2
 \end{pmatrix}
 \end{equation*}
-
+\begin{paracol}{2}
 Tiene como polinomio característico,
-
+\end{paracol}
 \begin{equation*}
 P_B(z)=\left\vert\begin{matrix}
 z-4& -1\\
 1& z-2 
 \end{matrix} \right\vert=z^2-6z+9
 \end{equation*}
-
+\begin{paracol}{2}
 procediendo igual que en el caso anterior, obtenemos los autovalores de la matriz $B$,
+\end{paracol}
 \begin{equation*}
 \lambda^2-6\lambda+9=0 \rightarrow \left\{ 
 \begin{aligned}
@@ -3363,25 +3255,29 @@ procediendo igual que en el caso anterior, obtenemos los autovalores de la matri
 \end{aligned}
 \right.
 \end{equation*}
+\begin{paracol}{2}
 En este caso, hemos obtenido para el polinomio característico una raíz doble, con lo que obtenemos un único autovalor $\lambda=3$ de multiplicidad algebraica $2$.
 
 La matriz,
-
+\end{paracol}
 \begin{equation*}
 C=\begin{pmatrix}
 2& -1\\
 1& 2
 \end{pmatrix}
 \end{equation*}
-
+\begin{paracol}{2}
 tiene como polinomio característico,
+\end{paracol}
 \begin{equation*}
 P_C(z)=\left\vert\begin{matrix}
 z-2& 1\\
 -1& z-2 
 \end{matrix} \right\vert=z^2-4z+5
 \end{equation*}
+\begin{paracol}{2}
 Con lo que sus autovalores resultan ser dos números complejos conjugados,
+\end{paracol}
 \begin{equation*}
 \lambda^2-4\lambda+5=0 \rightarrow \left\{ 
 \begin{aligned}
@@ -3390,10 +3286,11 @@ Con lo que sus autovalores resultan ser dos números complejos conjugados,
 \end{aligned}
 \right.
 \end{equation*}
-
+\begin{paracol}{2}
 Para que una matriz $A$ de orden $n\times n$ sea diagonalizable es preciso que cada autovalor tenga asociado un número de autovectores linealmente independientes, igual a su multiplicidad algebraica. La matriz $B$ del ejemplo mostrado más arriba tiene tan solo un autovector, $x=[1,\ 1]^T$ asociado a su único autovalor de multiplicidad $2$. No es posible encontrar otro linealmente independiente; por lo tanto $B$ no es diagonalizable. 
 
-La matriz, 
+La matriz,
+\end{paracol}
 \begin{equation*}
 G=\begin{pmatrix}
 3& 0& 1\\
@@ -3401,9 +3298,9 @@ G=\begin{pmatrix}
 0& 0& 1
 \end{pmatrix}
 \end{equation*}
-
+\begin{paracol}{2}
 Tiene un autovalor $\lambda_1=3$, de multiplicidad $2$, y un autovalor $\lambda_2=1$ de multiplicidad $1$. Para el autovalor de multiplicidad $2$ es posible encontrar dos autovectores linealmente independientes, por ejemplo: $x_1=[1,\ 0,\ 0]^T$ y $x_2=[0,\ 1,\ 0]^T$. Para el segundo autovalor un posible autovector sería, $x_3=[-2,\ 0,\ 1]^T$. Es posible por tanto diagonalizar la matriz $G$,
-
+\end{paracol}
 \begin{equation*}
 G=\begin{pmatrix}
 3& 0& 1\\
@@ -3423,535 +3320,140 @@ G=\begin{pmatrix}
 0& 1& 1
 \end{pmatrix}
 \end{equation*}
-
+\begin{flalign*}
+&&\reversemathwitch*
+\end{flalign*}
+\begin{paracol}{2}
 \paragraph{Propiedades asociadas a los autovalores.} \label{resp} Damos a continuación, sin demostración, algunas propiedades de los autovalores de una matriz,
 
-\begin{enumerate}
-\item La suma de los autovalores de una matriz, coincide con su traza,
+1. La suma de los autovalores de una matriz, coincide con su traza,
+\end{paracol}
 \begin{equation*}
 \text{tr}(A)=\sum_{i=1}^n \lambda_i
 \end{equation*}
 
-\item El producto de los autovalores de una matriz coincide con su determinante,
+\begin{paracol}{2}
+2. El producto de los autovalores de una matriz coincide con su determinante,
+\end{paracol}
 \begin{equation*}
 \left\vert A \right\vert = \prod_{i=1}^n \lambda_i
 \end{equation*} 
-
-\item Cuando los autovectores de una matriz $A$ son ortogonales entre sí, entonces la matriz $A$ es diagonalizable ortogonalmente,
+\begin{paracol}{2}
+3. Cuando los autovectores de una matriz $A$ son ortogonales entre sí, entonces la matriz $A$ es diagonalizable ortogonalmente,
+\end{paracol}
 \begin{equation*}
 A=Q\cdot D \cdot Q^{-1}; \ Q^{-1}=Q^T \Rightarrow A=Q\cdot A \cdot Q^T
 \end{equation*}
+\begin{paracol}{2}
 Cualquier matriz simétrica posee autovalores reales y es diagonalizable ortogonalmente. En general, una matriz es diagonalizable ortogonalmente si es normal: $A\cdot A^T=A^T\cdot A$
 
-\item El mayor de los autovalores en valor absoluto, de una matriz $A$ de orden $n$.  recibe el nombre de \emph{radio espectral} de dicha matriz,
+4. El mayor de los autovalores en valor absoluto, de una matriz $A$ de orden $n$.  recibe el nombre de \emph{radio espectral} de dicha matriz,
+\end{paracol}
+
 \begin{equation*}
 \rho(A)=\max_{i=1}^n \vert \lambda_i \vert
 \end{equation*} 
-\end{enumerate}
-
-No vamos a ver ningún  algoritmo concreto para diagonalizar matrices. Quizá el mas utilizado, por su robustez numérica es el basado en la factorización de Schur: cualquier matriz $A$ puede factorizarse como,
-\begin{equation*}
-A=Q\cdot T \cdot Q^T
-\end{equation*}
-Donde $Q$ es una matriz ortogonal y $T$ es una matriz triangular superior. Los elementos de la diagonal de $T$ son precisamente los autovalores de $A$.
-
-Matlab incluye la función \texttt{eig} para calcular los autovectores y autovalores de una matriz. esa función admite como variable de entrada una matriz cuadrada de dimensión arbitraria y devuelve como variable de salida un vector columna con los autovalores de la matriz de entrada,
-
-\begin{verbatim}
->> A=[1 2 3;2 3 -2;3 0 1]
-
-A =
-
-     1     2     3
-     2     3    -2
-     3     0     1
-
->> Lambda=eig(A)
-
-Lambda =
-
-   -2.7016
-    4.0000
-    3.7016
-
-\end{verbatim}  
-También puede llamarse a la función \texttt{eig} con dos variables de salida. En este caso la primera variable de salida es una matriz en la que cada columna representa un autovector de la matriz de entrada normalizado ---de módulo $1$---. La segunda variable de salida es una matriz diagonal cuyos elementos son los autovalores de la matriz de entrada.
-
-\begin{verbatim}
->> A=[1 2 3;2 3 -2;3 0 1]
-
-A =
-
-     1     2     3
-     2     3    -2
-     3     0     1
-
->> [X,D]=eig(A)
-
-X =
-
-   -0.6967    0.7071    0.6548
-    0.4425    0.0000   -0.2062
-    0.5647    0.7071    0.7271
 
 
-D =
+\begin{paracol}{2}
+Numpy incluye en el submodulo \mintinline{python}{linalg} la función \mintinline{python}{eig} para calcular los autovectores y autovalores de una matriz. esa función admite como variable de entrada una matriz cuadrada de dimensión arbitraria y devuelve como variable de salida un vector con los autovalores de la matriz de entrada y una matriz cuadrada en la que cada columna corresponde a un autovalor. A continuación, se muestran dos formas distintas de llamar a la función \mintinline{python}{eig}. En la línea \mintinline{python}{In [281]} se ha realizado la operación $X\cdot D \cdot X^{-1}$ para comprobar que se cumple que coincide con la matriz $A$.
+\end{paracol}
+\begin{center}
+    \begin{minipage}{\textwidth}
+    \begin{minted}{python}
+In [273]: A
+Out[273]: 
+array([[ 3,  4,  2,  5],
+       [ 2,  0,  1, -2],
+       [ 3,  2,  1,  8],
+       [ 5,  2,  3,  2]])
 
-   -2.7016         0         0
-         0    4.0000         0
-         0         0    3.7016
-\end{verbatim}
+In [274]: [autovalores, autovectores] = np.linalg.eig(A)
 
-Por último, Matlab también incluye una función para calcular la factorización de Schur. Si lo aplicamos a la misma matriz \texttt{A}, para la que acabamos de calcular los autovalores,
+In [275]: autovalores
+Out[275]: array([10.71154715, -4.45608147,  0.70096017, -0.95642586])
 
-\begin{verbatim}
->> [Q,T]=schur(A)
-Q =
+In [276]: autovectores
+Out[276]: 
+array([[-0.5482369 , -0.40905141, -0.34168564,  0.53836293],
+       [-0.05940265,  0.51767323, -0.46625182, -0.17480032],
+       [-0.63104339, -0.60944455,  0.78709433, -0.82325502],
+       [-0.54561146,  0.43962336,  0.2152735 ,  0.04314365]])
 
-   -0.6967    0.6449   -0.3142
-    0.4425    0.0415   -0.8958
-    0.5647    0.7632    0.3142
-\end{verbatim}
+In [277]: Results = np.linalg.eig(A)
 
-\begin{verbatim}
-T =
-   -2.7016   -0.6285   -1.2897
-         0    4.0000   -1.3934
-         0         0    3.7016
+In [278]: Results
+Out[278]: 
+EigResult(eigenvalues=array([10.71154715, -4.45608147,  0.70096017,
+-0.95642586]), eigenvectors=array([[-0.5482369 , -0.40905141, -0.34168564,  0.53836293],
+       [-0.05940265,  0.51767323, -0.46625182, -0.17480032],
+       [-0.63104339, -0.60944455,  0.78709433, -0.82325502],
+       [-0.54561146,  0.43962336,  0.2152735 ,  0.04314365]]))
 
->> Q*Q'
-ans =
+In [279]: Results.eigenvalues
+Out[279]: array([10.71154715, -4.45608147,  0.70096017, -0.95642586])
 
-    1.0000    0.0000    0.0000
-    0.0000    1.0000    0.0000
-    0.0000    0.0000    1.0000
+In [280]: Results.eigenvectors
+Out[280]: 
+array([[-0.5482369 , -0.40905141, -0.34168564,  0.53836293],
+       [-0.05940265,  0.51767323, -0.46625182, -0.17480032],
+       [-0.63104339, -0.60944455,  0.78709433, -0.82325502],
+       [-0.54561146,  0.43962336,  0.2152735 ,  0.04314365]])
 
-\end{verbatim}
 
-Se observa como los elementos de la diagonal de \texttt{T} son los autovalores de \texttt{A}  como la matriz \texttt{Q} es ortogonal.
-  
+In [281]: autovectores@np.diag(autovalores)@np.linalg.inv(autovectores)
+\end{minted}    
+    \end{minipage}
+\end{center}
+\begin{center}
+    \begin{minipage}{0.9\textwidth}
+    \begin{minted}{python}
+Out[281]: 
+array([[ 3.00000000e+00,  4.00000000e+00,  2.00000000e+00,
+         5.00000000e+00],
+       [ 2.00000000e+00, -2.33146835e-15,  1.00000000e+00,
+        -2.00000000e+00],
+       [ 3.00000000e+00,  2.00000000e+00,  1.00000000e+00,
+         8.00000000e+00],
+       [ 5.00000000e+00,  2.00000000e+00,  3.00000000e+00,
+         2.00000000e+00]])
+
+    \end{minted}    
+    \end{minipage}
+\end{center}
+
+
+\begin{paracol}{2}
 \subsection{Factorización QR} \label{QR}
 La idea es factorizar una matriz $A$ en el producto de dos matrices; una matriz ortogonal $Q$ y una matriz triangular superior R.
+\end{paracol}
 \begin{equation*}
 A=Q\cdot R, \leftarrow Q\cdot Q^T=I
 \end{equation*}
-Supongamos que consideramos cada columna de $A$ y cada columna de $Q$ como un vector,
-\begin{equation*}
-A=\left( a_1\vert a_2\vert \cdots \vert a_n\right), \ Q=\left( q_1\vert q_2\vert \cdots \vert q_n \right)
-\end{equation*}
-
-Podemos ahora considerar el producto $Q\cdot R$ como combinaciones lineales de las columnas de $Q$, que dan como resultado las columnas de $A$,
-\begin{align*}
-&\begin{pmatrix}
-a_{11}& a_{12}& \cdots & a_{1n}\\
-a_{21}& a_{22}& \cdots & a_{2n}\\
-\vdots & \vdots & \cdots & \vdots\\
-a_{n1}& a_{n2}& \cdots & a_{nn}
-\end{pmatrix}=\begin{pmatrix}
-q_{11}& q_{12}& \cdots & q_{1n}\\
-q_{21}& q_{22}& \cdots & q_{2n}\\
-\vdots & \vdots & \cdots & \vdots\\
-q_{n1}& q_{n2}& \cdots & q_{nn}
-\end{pmatrix}\cdot \begin{pmatrix}
-r_{11}& r_{12}& \cdots & r_{1n}\\
-0 & r_{22}& \cdots & r_{2n}\\
-\vdots & \vdots & \cdots & \vdots\\
-0& 0& \cdots & a_{nn}
-\end{pmatrix} \Rightarrow\\
-&a_1=q_1\cdot r_{11} \rightarrow \begin{pmatrix}
-a_{11}\\
-a_{21}\\
-\vdots \\
-a_{n1}
-\end{pmatrix}=\begin{pmatrix}
-q_{11}\\
-q_{21}\\
-\vdots\\
-q_{n1}
-\end{pmatrix} \cdot r_{11},\\
-&a_2=q_1\cdot r_{12}+ q_2\cdot r_{22} \rightarrow \begin{pmatrix}
-a_{12}\\
-a_{22}\\
-\vdots \\
-a_{n2}
-\end{pmatrix}=\begin{pmatrix}
-q_{11}\\
-q_{21}\\
-\vdots\\
-q_{n1}
-\end{pmatrix}\cdot r_{12}+\begin{pmatrix}
-q_{12}\\
-q_{22}\\
-\vdots\\
-q_{n2}
-\end{pmatrix} \cdot r_{22}\\
-\vdots \\
-&a_n=q_1\cdot r_{1n}+ q_2\cdot r_{2n}+\cdots +r_{nn} \rightarrow \begin{pmatrix}
-a_{1n}\\
-a_{2n}\\
-\vdots \\
-a_{nn}
-\end{pmatrix}=\begin{pmatrix}
-q_{11}\\
-q_{21}\\
-\vdots\\
-q_{n1}
-\end{pmatrix}\cdot r_{1n}+\begin{pmatrix}
-q_{12}\\
-q_{22}\\
-\vdots\\
-q_{n2}
-\end{pmatrix} \cdot r_{2n}+ \cdots + \begin{pmatrix}
-q_{1n}\\
-q_{2n}\\
-\vdots\\
-q_{nn} 
-\end{pmatrix}\cdot r_{nn}
-\end{align*}
-
-Para que la matriz $Q$ sea ortogonal, basta hacer que sus columnas, consideradas cada una como un vector, sean ortonormales entre sí. Podemos obtener la matriz $Q$ a partir de la matriz $A$, aplicando a sus columnas algún método de ortogonalización de vectores. En particular, emplearemos el método conocido como ortogonalización de Grand-Schmidt.
-
-\paragraph{Ortogonalización de Grand-Schmidt} Este método permite transformar un conjunto de vectores linealmente independientes arbitrarios en un conjunto de vectores ortonormales. Lo describiremos a la vez que estudiamos su uso para obtener la factorización QR de una matriz $A$.
-
-En primer lugar, consideremos el vector $a_1$, formado por los elementos de la primera columna de la matriz $A$. Si lo dividimos por su módulo, obtendremos un vector unitario, Este vector, será la primera columna de la matriz $Q$,
-\begin{equation*}
-q_1=\frac{a_1}{\lVert a_1 \rVert}
-\end{equation*}
-
-De la expresión anterior es fácil deducir quien sería el elemento $r_{11}$ de la matriz $R$,
-
-\begin{equation*}
-a_1=q_1\cdot \lVert a_1 \rVert \Rightarrow r_{11}= \lVert a_1 \rVert
-\end{equation*}
-
-Supongamos por ejemplo que queremos factorizar la siguiente matriz,
-
-\begin{equation*}
-A=\begin{pmatrix}
-2& 3& 1\\
-2& 0& 2\\
-1& 4& 3
-\end{pmatrix}
-\end{equation*}
-
-La primera columna de la matriz $Q$ sería,
-\begin{equation*}
-q_1=\frac{a_1}{\lVert a_1 \rVert}=\frac{1}{3}\cdot \begin{pmatrix}
-2\\
-2\\
-1
-\end{pmatrix}=\begin{pmatrix}
-2/3\\
-2/3\\
-1/3
-\end{pmatrix}
-\end{equation*}
-
-y el elemento $r_{11}$ de la matriz $R$,
-\begin{equation*}
-r_{11}=\lVert a_1 \rVert=3
-\end{equation*}
-
-Para obtener la segunda columna $Q$, Calculamos en primer lugar la proyección de la segunda columna de $A$, $a_2$ sobre el vector $q_1$. En general, la proyección de un vector $a$, sobre un vector $b$ se calcula obteniendo el producto escalar de los dos vectores y dividiendo el resultado por el módulo del vector $b$. En nuestro casos el vector $q_1$, sobre el que se calcula la proyección, es unitario, por lo que calcular la proyección de $a_2$ sobre $q_1$ se reduce a calcular el producto escalar de los dos vectores,
-
-\begin{equation*}
-\phi_{a_2/q_1}=q_1^T\cdot a_2
-\end{equation*}
-
-Siguiendo con nuestro ejemplo,
-\begin{equation*}
-\phi_{a_2/q_1}=q_1^T\cdot a_2=
-\begin{pmatrix}
-2/3& 2/3& 1/3
-\end{pmatrix}\cdot \begin{pmatrix}
-3\\
-0\\
-4
-\end{pmatrix}=\frac{10}{3}
-\end{equation*}
-
-Podemos interpretar la proyección del vector $a_2$ sobre el vector $q_1$ como la \emph{componente} del vector $a_2$ en la dirección de $q_1$. Por eso, si restamos al vector $a_2$ su proyección sobre $q_1$ multiplicada por $q_1$ el resultado será un nuevo vector $q_2$ ortogonal a $q_1$,
-
-\begin{equation*}v_2=a_2-\phi_{a_2/q_1}\cdot q_1=a_2-(q_1^T\cdot a_2)\cdot q_1
-\end{equation*}
-
-La figura \ref{fig:qr} muestra gráficamente el proceso para dos vectores en el plano.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=12cm]{qr.eps}
-\caption{Obtención de un vector ortogonal}
-\label{fig:qr}
-\end{figure}
-
-Como $q_2$ tiene que ser un vector unitario para que la matriz $Q$ sea ortogonal, dividimos el vector obtenido, $q`_2$, por su módulo,
-
-\begin{equation*}
-q_2=\frac{V_2}{\lVert v_2 \rVert}=\frac{a_2-(q_1^T\cdot a_2)\cdot q_1}{\lVert a_2-(q_1^T\cdot a_2)\cdot q_1 \rVert}
-\end{equation*}
-
-Por último despejando $a_2$ podemos identificar los valores de $r_{12}$ y $r_{22}$, tal y como se describieron anteriormente,
-
-\begin{align*}
-a_2&= (q_1^T\cdot a_2)\cdot q_1+\lVert a_2-(q_1^T\cdot a_2)\cdot q_2 \rVert \cdot q_2\\
-r_{12}&=q_1^T\cdot a_2\\
-r_{22}&=\lVert a_2-(q_1^T\cdot a_2)\cdot q_2 \rVert 
- \end{align*}
-
-Volviendo a la matriz $A$ de nuestro ejemplo la segunda columna de la matriz $Q$ y los valores de $r_{12}$ y $r_{22}$ quedarían,
-
-
-\begin{align*}
-q_2&=\frac{v_2}{\lVert v_2 \rVert}=\frac{a_2-(q_1^T\cdot a_2)\cdot q_1}{\lVert a_2-(q_1^T\cdot a_2)\cdot q_1 \rVert}=\left[\begin{pmatrix}
-3\\
-0\\
-4
-\end{pmatrix}-\frac{10}{3}\cdot \begin{pmatrix}
-2/3\\
-2/3\\
-1/3
-\end{pmatrix}\right]\cdot \frac{3}{5\sqrt{5}}=\frac{1}{5\sqrt{5}}\begin{pmatrix}
-7/3\\
--20/3\\
-26/3
-\end{pmatrix}\\
-r_{12}&=\frac{10}{3}\\
-r_{22}&=\frac{5\sqrt{5}}{3}
-\end{align*}
-Se puede comprobar que los vectores $q_1$ y $q_2$ son ortogonales,
-\begin{equation*}
-q_1^T\cdot q_2= \begin{pmatrix}
-2/3& 2/3& 273
-\end{pmatrix}\cdot {5\sqrt{5}}\begin{pmatrix}
-7/3\\
--20/3\\
-26/3
-\end{pmatrix}={5\sqrt{5}}\cdot \left(\frac{14}{3}-\frac{40}{3}+\frac{26}{3}\right)=0
-\end{equation*}
-
-Para obtener la tercera columna de la matriz $Q$, $q_3$ procederíamos de modo análogo: calcularíamos la proyección de la tercera columna de $A$, $a_3$ sobre los vectores formados por la los dos primeras columnas de $Q$, restamos de $a_3$ las dos proyecciones y normalizamos el vector resultante dividiéndolo por su módulo,
-
-\begin{equation*}
-q_3=\frac{v_3}{\lVert v_3 \rVert}=\frac{a_3-(q_1^T\cdot a_3)\cdot q_1-(q_2^T\cdot a_3)\cdot q_2}{\lVert a_3-(q_1^T\cdot a_3)\cdot q_1-(q_2^T\cdot a_3)\cdot q_2 \rVert}
-\end{equation*} 
-
-y de modo análogo al caso de la segunda columna,
-
-\begin{align*}
-r_{13}&=q_1^T\cdot a_3\\
-r_{23}&=q_2^T\cdot a_3\\
-r_{33}&=\lVert a_3-(q_1^T\cdot a_3)\cdot q_1-(q_2^T\cdot a_3)\cdot q_2 \rVert
-\end{align*}
-
-Es fácil observar como vamos obteniendo las sucesivas columnas de la matriz $Q$, iterativamente. Podemos generalizar los resultas anteriores para cualquier columna arbitraria de la matriz $Q$,
-
-\begin{equation*}
-q_i=\frac{a_i-\sum_{j=1}^i (q_j^T\cdot a_i)\cdot q_i}{\lVert a_i-\sum_{j=1}^i (q_j^T\cdot a_i)\cdot q_i \rVert}
-\end{equation*}
-
-y para los valores de $r_{1i}, r_{2i}, \cdots r{ii}$,
-\begin{align*}
-r_{ji}&=q_j^T\cdot a_i, \ j<i\\
-r_{ii}&= \lVert a_i-\sum_{j=1}^i (q_j^T\cdot a_i)\cdot q_i \rVert
-\end{align*}
-
-El siguiente código de Matlab, calcula la factorización QR de una matriz, empleando el método descrito,
-
-\begin{lstlisting}
-function [Q,R]=QRF1(A)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Factorización QR obtenida directamente por ortogonalización de grand-schmidt
-% Ojo, el algoritmo es inestable... Con lo que la bondad de las soluciones
-% dependera de la matriz que se quiera factorizar.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% En primer lugar obtenemos las dimensiones de la matriz
-[m,n]=size(A);
-
-% fatorizamos columna a columna
-for j=1:n
-    % Construimos un vector auxiliar v, nos servira para ir obteniendo las
-    % columnas de la matriz Q.
-    for i=1:m %Solo llegamos hasta m factorización incompleta si m>n
-        v(i)=A(i,j)
-    end
-    for i=1:j-1
-        % obtenemos los elementos de la matriz R, correspondientes a la
-        % columna j, solo podemos construir hasta una fila antes de la
-        % diagonal i=j-1. cada fila es el producto escalar de la columna i
-        % de la matriz Q for la columna j de la Matriz A.
-        R(i,j)=0
-        for k=1:m
-        R(i,j)=R(i,j)+Q(k,i)*A(k,j)
-        end
-        
-        % obtenemos las componentes del vector auxiliar que nos permitira
-        % construir la columna j de la matriz Q
-        for k=1:m
-            v(k)=v(k)-R(i,j)*Q(k,i)
-        end
-    end
-    % Obtenemos el valor del elemento de la diagonal R(j,j) de la matriz R
-
-    R(j,j)=0
-    for k=1:m
-        R(j,j)=R(j,j)+v(k)^2
-    end
-    R(j,j)=sqrt(R(j,j))
-    
-    % Y por último, divimos los elementos del vector v por R(j,j), para
-    % obtener la columna j de la matriz Q
-    for k=1:m
-        Q(k,j)=v(k)/R(j,j)
-    end
-end
-\end{lstlisting}
-En general, el algoritmo que acabamos de describir para obtener la ortogonalización de Grand-Schmidt, es numéricamente inestable. La estabilidad puede mejorarse, si vamos modificando progresivamente la matriz $A$, a medida que calculamos las columnas de $Q$. 
-
-Cada vez que obtenemos una nueva columna de $Q$, modificamos las columnas de $A$ de modo que sean ortogonales a la columna de $Q$ obtenida. Para ello, lo más sencillo es crear una matriz auxiliar $V$ que hacemos, inicialmente, igual a $A$, $V^{(0)}=A$
-
-para obtener la primera columna de $Q$, procedemos igual que antes, normalizando la primera columna de $V^{(0)}$
-\begin{align*}
-q_1=\frac{v_1^{(0)}}{\lVert v_1^{(0)}\rVert}\\
-r_{11}=\lVert v_1^{(0)}\rVert
-\end{align*}
-
-A continuación calculamos la proyección de todas las demás columnas de la matriz $V^{(0)}$ con respecto a $q_1$, esto es equivalente a calcular los restantes elementos de la primera fila de la matriz $R$: $r_{21}, r_{31}, \cdots r_{n1}$,
-\begin{equation*}
-r_{1j}=q_1^T\cdot v_j^{(0)}
-\end{equation*}
-
-Una vez calculadas las proyecciones, modificamos todas las columnas de $V^{(0)}$, excepto la primera restando a cada una su proyección con respecto a $q_1$.
-
-\begin{equation*}
-v_j^{(1)}=v_j^{(0)}-r_{1j}\cdot v_j^{(0)}, \ j=2,3,\cdot n
-\end{equation*}
-
-La nueva matriz $V^{(1)}$ cumple que todas sus columnas a partir de la segunda son ortogonales a $q_1$. Para obtener $q_2$ es suficiente dividir $v_2^{1}$ por su módulo,
-
-\begin{align*}
-q_2&=\frac{v_2^{(1)}}{\lVert v_2^{(1)} \rVert}\\
-r_{22}&=\lVert v_2^{(1)} \rVert
-\end{align*}
-
-Podemos ahora calcular el resto de los elementos de la segunda fila de la matriz $R$ de modo análogo a como hemos calculado los de la primera,
-
-\begin{equation*}
-r_{2j}=q_2^T\cdot v_j^{(1)}
-\end{equation*}
-
-y, de nuevo actualizaríamos todos las columnas de $V^{1}$, a partir de la tercera, para que fueran ortogonales a $q_2$, 
-
-\begin{equation*}
-v_j^{(2)}=v_j^{(1)}-r_{2j}\cdot v_j^{(1)}, \ j=3,4,\cdot n
-\end{equation*}
-
-Las columnas de $V^{(2)}$ serían ahora ortogonales a $q_1$ y $q_2$. Si seguimos el mismo procedimiento n veces, calculando cada vez una nueva columna de $Q$ y una fila de $R$, obtenemos finalmente la factorización QR de la matriz inicial $A$. En general, para obtener la columna $q_i$ y los elementos de la fila $i$ de la matriz $R$ tendríamos,
- 
-\begin{align*}
-q_i&=\frac{v_i^{(i-1)}}{\lVert v_i^{(i-1)} \rVert}\\
-r_{ii}&=\lVert v_i^{(i-1)} \rVert
-\end{align*}
-
-\begin{equation*}
-r_{ij}=q_i^T\cdot v_j^{(i-1)}
-\end{equation*}
-
-y la actualización correspondiente de la matriz $V$ sería,
-
-\begin{equation*}
-v_j^{(i)}=v_j^{(i)}-r_{ij}\cdot v_j^{(i)}, \ j=i+1,i+2,\cdot n
-\end{equation*}
-
-El resultado es el mismo que el que se obtiene por el primer método descrito. La ventaja es que numéricamente es más estable. 
-
-
-
-El siguiente código de Matlab, calcula la factorización QR de una matriz de orden $n\times n$, empleando el método descrito,
-
-\begin{lstlisting}
-function [Q,R]=QRF2(A)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Calculo de factorizacion QR de la matriz A, mediante la ortogonaliación de
-% grand.schmidt modificada. Este algoritmo si que es estable...
-% Obtenemos las dimensiones de A
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-[m,n]=size(A);
-
-% creamos una matriz auxiliar v sobre la que vamos a realizar la
-% factorización. Se podría realizar directamente sobre A Machacando sus
-% columnas según la factorización progresa... Sería lo correcto para ahorrar
-% espacio de almacenamiento. Pero en fin, quizá así queda más claro aunque
-% sea menos eficiente.
-v=A;
-% Como siempre, vamos factorizando por columnas de la matriz A
-
-
-for i=1:m %la matriz Q tiene que ser mXm, aunque el numero de columnas de A sea n)
-    % calculamos cada R(i,i) como el modulo del vector auxiliar v(1:m,i)
-    R(i,i)=0;
-    for k=1:m
-        R(i,i)=R(i,i)+v(k,i)^2;
-    end
-    R(i,i)=sqrt(R(i,i));
-    % calculamos el la columna i de la matriz Q, normalizando la columna i
-    % de la matriz v
-    for k=1:m
-        Q(k,i)=v(k,i)/R(i,i);
-    end
-    % Modificamos todos los R(i,j) con ij>i, en cuanto tenemos la columna j
-    % de la matriz Q, nos basta calcular el producto escalar con las
-    % columnas de A (En nuestro caso de v porque están copiadas, de las
-    % filas siguientes
-    for j=i+1:n
-        R(i,j)=0;
-        for k=1:m
-            R(i,j)=R(i,j)+Q(k,i)*v(k,j);
-        end
-        % i por último modificamos todas las columnas de la matriz v desde
-        % i+1 hasta el final de la matriz. Aqui es donde cambia el algoritmo
-        % ya que estamos modificando la matriz A, y las sucesivas matrices V
-        % cada vez que obtenemos una nueva fila de valores de R
-        for k=1:m
-            v(k,j)=v(k,j)-R(i,j)*Q(k,i);
-        end
-    end
-end
-\end{lstlisting}
-
-Para terminar, indicar que Matlab tiene su propia función, \texttt{[Q,R]=qr(A)}, para calcular la factorización QR de una matriz. Para calcularla, emplea el método de ortogonalización de Householder. Este método es aún más robusto que la ortogonalización de Grand-Schmidt modificada. Pero no lo veremos en este curso. Damos a continuación un ejemplo de uso de la función \texttt{qr},
-\begin{verbatim}
->> A=[2 3 1;2 0 2;1 4 3]
-
-A =
-
-     2     3     1
-     2     0     2
-     1     4     3
-
->> [q,r]=qr(A)
-
-q =
-
-   -0.6667    0.2087   -0.7155
-   -0.6667   -0.5963    0.4472
-   -0.3333    0.7752    0.5367
-
-
-r =
-
-   -3.0000   -3.3333   -3.0000
-         0    3.7268    1.3416
-         0         0    1.7889
-
->> q*r
-
-ans =
-
-    2.0000    3.0000    1.0000
-    2.0000    0.0000    2.0000
-    1.0000    4.0000    3.0000
-
-\end{verbatim}
+\begin{paracol}{2}
+No vamos tampoco a ver en detalle como se calcula la factorización QR. Podemos calcularla empleando la función de Numpy, incluida en el submodulo \mintinline{python}{linalg}, \mintinline{python}{[Q,R]=qr(A)},
+\end{paracol}
+\begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \begin{minted}{python}
+In [287]: A = np.array([[1,-2,4],[2,5,3],[1,3,-3]])
+
+In [288]: [Q,R] = np.linalg.qr(A)
+
+In [289]: Q@Q.T
+Out[289]: 
+array([[1.00000000e+00, 2.56739074e-16, 8.32667268e-17],
+       [2.56739074e-16, 1.00000000e+00, 5.55111512e-17],
+       [8.32667268e-17, 5.55111512e-17, 1.00000000e+00]])
+
+In [290]: R
+Out[290]: 
+array([[-2.44948974, -4.4907312 , -2.85773803],
+       [ 0.        , -4.22295315,  3.51254982],
+       [ 0.        ,  0.        , -3.67359866]])
+    \end{minted}    
+    \end{minipage}
+\end{center}
   
 \subsection{Factorización SVD}\label{sec:SVD}
 Dada una matriz cualquiera $A$ de orden $m\times n$ es posible factorizarla en el producto de tres matrices,
