@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{381}\PYG{p}{]:} \PYG{n}{C}\PYG{o}{.}\PYG{n}{T}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{381}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{1}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]])}
+\end{Verbatim}

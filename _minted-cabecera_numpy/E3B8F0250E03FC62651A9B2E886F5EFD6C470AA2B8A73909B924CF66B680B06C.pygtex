@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{409}\PYG{p}{]:} \PYG{n}{B} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{inv}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{410}\PYG{p}{]:} \PYG{n}{B}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{410}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[} \PYG{l+m+mf}{1.29166667}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.58333333}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.04166667}\PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mf}{0.58333333}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.16666667}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.08333333}\PYG{p}{],}
+       \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.48611111}\PYG{p}{,}  \PYG{l+m+mf}{0.30555556}\PYG{p}{,}  \PYG{l+m+mf}{0.06944444}\PYG{p}{]])}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{411}\PYG{p}{]:} \PYG{n}{B} \PYG{o}{@} \PYG{n}{A}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{411}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[} \PYG{l+m+mf}{1.00000000e+00}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{5.55111512e\PYGZhy{}17}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.11022302e\PYGZhy{}16}\PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mf}{0.00000000e+00}\PYG{p}{,}  \PYG{l+m+mf}{1.00000000e+00}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.11022302e\PYGZhy{}16}\PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mf}{0.00000000e+00}\PYG{p}{,}  \PYG{l+m+mf}{0.00000000e+00}\PYG{p}{,}  \PYG{l+m+mf}{1.00000000e+00}\PYG{p}{]])}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{412}\PYG{p}{]:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{matrix\PYGZus{}power}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{412}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[} \PYG{l+m+mf}{1.29166667}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.58333333}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.04166667}\PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mf}{0.58333333}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.16666667}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.08333333}\PYG{p}{],}
+       \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.48611111}\PYG{p}{,}  \PYG{l+m+mf}{0.30555556}\PYG{p}{,}  \PYG{l+m+mf}{0.06944444}\PYG{p}{]])}
+\end{Verbatim}
