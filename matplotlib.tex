@@ -781,7 +781,14 @@ Matplotlib también proporciona una interfaz para generar animaciones utilizando
     \switchcolumn
     \section{Animations}
     Based on its plotting functionality, Matplotlib also provides an interface to generate animations using the \textit{animation} module. An animation is a sequence of frames where each frame corresponds to a plot on a figure.
-    
+
+    \switchcolumn
+    Para crear una animación en python usando \textit{matplotlib.animation} seguiremos los siguientes pasos:
+    \begin{enumerate}
+        \item Inicializar los meta datos para la animación creando un diccionario con ellos y pasándoselos al método que va a crear la animación \textit{writers}.
+        \item Inicializar el fondo de la animación, es decir aquellos elementos que no van a cambiar. Lo haremos definiendo una figura.
+        \item Definir los objetos que van a ir cambiando en cada fotograma. Actualizarlos dentro de un buble \textit{for}
+    \end{enumerate}
 \end{paracol}
 
 
