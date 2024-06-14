@@ -6,8 +6,12 @@
 En el capítulo \ref{ch:intpr}, vimos cómo importar mó\-dulos de python en un script o directamente en el terminal de Ipython, de modo que podamos reutilizar el código contenido en ellos. Numpy es un libraría de python que contiene funciones y variables específicamente diseñadas para el cálculo numérico. Está estructurada en forma de módulos y submódulos de modo que para utilizarla en nuestros programas basta  importarla en nuestros script, importar sus submodulos o importar sus funciones.
 La base de Numpy la constituyen objetos y operaciones algebráicas. En esta sección vamos a repasar algunos conceptos fundamentales de  álgebra lineal y cómo pueden manejarse empleando Python. No daremos definiciones precisas ni tampoco demostraciones, ya que tanto unas como otras se verán en detalle en la asignatura de álgebra.
 
-\paragraph{matrices.} Desde un punto de vista funcional definiremos una matriz como una tabla bidimensional de números ordenados en filas y columnas,
+\paragraph{Matrices.} Desde un punto de vista funcional definiremos una matriz como una tabla bidimensional de números ordenados en filas y columnas,
+\switchcolumn
 
+\section{Numpy: a Python library for scientific computing}
+In chapter \ref{ch:intpr}, we have seen how to import Python modules to a script or to the Ipython console. In this way, we can reuse the code available in the modules. Numpy is a Python library with functions and variables specifically intended to perform scientific computing. Numpy is structured in modules and submodules so that we can import the whole library, its submodules, or just any of its functions into our scripts. The background of Numpy is built of algebraic objects and operations. In this section, we will review some fundamental notions of linear algebra and how to deal with them using Numpy. We will not provide formal definitions or demonstrations because both will be studied in detail in algebra during the next term.
+\paragraph{Matrices} From a functional perspective, we will define a matrix as a table of numbers ordered by rows and columns,
 \end{paracol}
 
 \begin{equation*}
@@ -20,7 +24,7 @@ A=
 \end{equation*}
 
 \begin{paracol}{2}
-Cada línea horizontal de números constituye una \emph{fila} de la matriz y cada línea horizontal una \emph{columna} de la misma.
+Cada línea horizontal de números constituye una \emph{fila} de la matriz y cada línea vertical una \emph{columna} de la misma.
 
 A una matriz con $m$ filas y $n$ columnas se la denomina matriz de orden $m\times n$. $m$ y $n$ son la dimensiones de la matriz y se dan siempre en el mismo orden: primero el número de filas y después el de columnas. Así, la matriz $A$ del ejemplo anterior es una matriz $3\times 4$, y como esta formada por números reales se dice que $A\in\mathbb{R}^{3\times 4}$. El orden de una matriz expresa el tamaño de la matriz.
 
@@ -29,6 +33,13 @@ Dos matrices son iguales si tienen el mismo orden, y los elementos que ocupan en
 Una matriz es cuadrada, si tiene el mismo número de filas que de columnas. Es decir es de orden $n\times n$.
 
 Mientras no se diga expresamente lo contrario, emplearemos letras mayúsculas $A, B, \cdots$ para representar matrices. La expresión $A_{m\times n}$ indica que la matriz $A$ tiene dimensiones $m \times n$. Para denotar los elementos de una matriz, emplearemos la misma letra en minúsculas empleada para nombrar la matriz, indicando mediante subíndices, y siempre por este orden, la fila y la columna a la que pertenece el elemento. Así por ejemplo $a_{ij}$ representa al elemento de la matriz $A$, que ocupa la fila $i$ y la columna $j$.
+\switchcolumn
+Each horizontal line of numbers forms a matrix row, and each vertical line a matrix column.
+A matrix with $m$ rows and $n$ columns is denoted as a matrix of order $m\times n$. $m$ and $n$ are the matrix dimensions, and they are always defined in the same order: first, the number of rows and then the number of columns. So matrix $A$ in the example above is a $3\times 4$ matrix, and as it is built of real numbers, we say that $A\in \mathbb{R}^{3\times 4}$. The matrix order defines the size of the matrix.
+
+Two matrices are equal if they have the same order and the elements located in both matrices in the same place are equal. A matrix is square when it has the same number of rows and columns. That is, it is an $n\times n$ matrix.
+
+From now on, we will use capital letters $A,\ B,\cdots$ to name matrices. The expression $A_{m\times n}$ means that matrix $A$ has dimensions $m\times n$. We will refer to the elements of a matrix using the same letter used to name the matrix but in lowercase and using subindexes to indicate the row and column the element belongs to. The first subindex always represents the row, and the second is the column. For instance, $a_{ij}$ Represents the matrix $A$ element that belongs to row $i$ and to column $j$.
 \end{paracol}
 \begin{equation*}
 A=
@@ -42,6 +53,8 @@ A=
 \begin{paracol}{2}
 \paragraph{vectores}
 A una matriz compuesta por una sola fila, la denominaremos vector fila. A una matriz compuesta por una sola columna la denominaremos vector columna. Siempre que hablemos de un vector, sin especificar más, entenderemos que se trata de un vector columna.\footnote{Esta identificación de los vectores como vectores columna no es general. La introducimos porque simplifica las explicaciones posteriores.} Para representar vectores, emplearemos letras minúsculas. Para representar sus elementos añadiremos a la letra que representa al vector un subíndice indicando la fila a la que pertenece el elemento.
+\switchcolumn
+We call a matrix formed by a single row a row vector. We call a matrix formed by a single column a column vector. Whenever we speak of a vector without further specification, we consider it a column vector.\footnote{This identification of a vector with a column vector is by no means general. We introduce it because it simplifies the exposition.}. To name vectors, we will use lowercase letters. To name the elements of a vector, we will add a subindex to the letter representing the vector to show the row the element belongs to. 
 \end{paracol}
 \begin{equation*}
 a=
@@ -56,6 +69,8 @@ a_n
 \end{equation*}
 \begin{paracol}{2}
 Podemos asociar los puntos del plano con los vectores de dimensión dos. Para ello, usamos una representación cartesiana, en la que los elementos del vector son los valores de las coordenadas $(x,y)$ del punto del plano que representan. Cada vector se representa gráficamente mediante una flecha que parte del origen de coordenadas y termina en el punto $(x,y)$ representado por el vector. La figura \ref{fig:vectores} representa los vectores,
+\switchcolumn
+We can establish a relationship between the plane points and two-dimensional vectors. To do so, we use a Cartesian representation, in which the elements of a vector are the $(x,y)$ coordinates of the point of the plane they represent. Each vector is drawn using an arrow that starts at the origin of the coordinates and ends at the point $(x,y)$ represented by the vector. Figure \ref{fig:vectores} represents vectors, 
 \end{paracol}
 \begin{equation*}
 a=
@@ -85,6 +100,8 @@ c=
 
 \begin{paracol}{2}
 De modo análogo, podemos asociar vectores de dimensión tres con puntos en el espacio tridimensional. En este caso, los valores de los elementos del vector corresponden con la coordenadas $(x,y,z)$ de los puntos en el espacio. La figura \ref{fig:vectores3} muestra la representación gráfica en espacio tridimensional de los vectores,
+\switchcolumn
+Likewise, we can associate vectors of dimension three with points in the 3D space. In this case, the vector elements represent the coordinates $(x,y,z)$ of the points in the space. Figure \ref{fig:vectores3} shows a graphic representation of vectors,
 \end{paracol}
 \begin{equation*}
 a=
@@ -118,6 +135,12 @@ Evidentemente para vectores de mayor dimensión, no es posible obtener una repre
 
 \subsection{Vectores y matrices en\\ Numpy.} \index{Vectores!en Numpy} \index{Matrices!en Numpy} 
 \paragraph{Matrices.} Una de las característica más interesantes de Numpy, es la posibilidad de crear fácilmente matrices. Se pueden crear de diferentes maneras, la más elemental de todas ellas, emplea la funcion de Numpy \mintinline{python}{array} aplicada a una lista de filas de la matriz que se quiere construir. Cada fila debe ser a su vez una lista de números. Evidentemente, para que se pueda construir la matriz, todas las filas deben tener el mismo número de elementos. El siguiente ejemplo muestra como construir una matriz de dos filas y tres columnas,
+
+\switchcolumn 
+Obviously, it is impossible to get a graphic representation for vectors of larger dimensions. Nevertheless, many geometrical properties owned by 2D and 3D vectors can be applied to vectors of whatever dimension.
+
+\subsection{Vetors and matrices in Numpy.}\index[eng]{Vectors! in Numpy}\index[eng]{Matrices! in Numpy}
+\paragraph{Matrices.} One interesting feature of numpy is that it allows us to create matrices easily. There are several methods to create them, but using the Numpy function \mintinline{python}{array} with a Python list with the rows of the matrix we want to build is probably the easiest method. Each row should be, in turn, a list of numbers, i.e., matrix elements. Of course, to build a matrix all rows should have the same number of elements. The following example shows how to build a matrix of two rows and three columns.
 \end{paracol}
 
 \begin{center}
@@ -145,7 +168,10 @@ In [10]: print(B)
 \end{minipage}
  \end{center}
 \begin{paracol}{2} 
-Lo primero que hacemos es importar Numpy, lo importamos usando como alias la abreviatura np, porque es más cómodo a la hora de llamar a funciones específicas de Numpy.  Hemmos construido dos matrices iguales \mintinline{python}{A} y \mintinline{python}{B}. En el primer caso hemos creado directamente dentro de la llamada a la función \mintinline{python}{array}, la lista a partir de la cual construimos la matriz. En el segundo caso, hemos construido primero una lista \mintinline{python}{L}, y luego hemos empleado dicha lista como variable de entrada de la función \mintinline{python}{array}. Si nos fijamos en las líneas [9] y [10], vemos como Python distingue la lista ---todos sus elementos aparacen representados en la misma línea---, de la matriz en la que cada fila ocupa una línea distinta. Podemos construir matrces a partir de listas y variables ya definidas, siempre que seamos coherentes con el criterio de que cada fila se cree a partir de una lista y que todas las filas tengan los mismos elementos,
+Lo primero que hacemos es importar Numpy, lo importamos usando como alias la abreviatura np, porque es más cómodo a la hora de llamar a funciones específicas de Numpy.  Hemmos construido dos matrices iguales \mintinline{python}{A} y \mintinline{python}{B}. En el primer caso hemos creado directamente dentro de la llamada a la función \mintinline{python}{array}, la lista a partir de la cual construimos la matriz. En el segundo caso, hemos construido primero una lista \mintinline{python}{L}, y luego hemos empleado dicha lista como variable de entrada de la función \mintinline{python}{array}. Si nos fijamos en las líneas [9] y [10], vemos como Python distingue la lista ---todos sus elementos aparacen representados en la misma línea---, de la matriz en la que cada fila ocupa una línea distinta. Podemos construir matrices a partir de listas y variables ya definidas, siempre que seamos coherentes con el criterio de que cada fila se cree a partir de una lista y que todas las filas tengan los mismos elementos,
+\switchcolumn
+First, we import Numpy; we do it using \mintinline{python}{np} as an alias. The reason is that \mintinline{python}{np} is shorter than \mintinline{python}{numpy}, and it eases the calls to specific Numpy functions. We have built two identical matrices \mintinline{python}{a} and \mintinline{python}{B}. In the first case, we have straightforwardly created the list needed to make the matrix inside the call to the function \mintinline{python}{array}. In the second case, we first created a list \mintinline{python}{L}, and then we used it as an input variable to the function \mintinline{python}{array}. Focusing on lines [9] and [10], we see how Python can tell a list and a matrix apart. For a list, Python represents all elements in the same line. For a matrix, each row is written in a different line.
+We can build matrices from lists and variables already defined as long as we follow the criteria that each row be created from a list and all rows have the same number of elements,  
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.4\textwidth}
@@ -171,6 +197,8 @@ In [28]: print(C)
 \end{center}
 \begin{paracol}{2}
 \paragraph*{Indexación.} \index{Numpy!indexación}Al igual que se hace en álgebra, Numpy es capaz de referirse a un elemento cualquiera de una matriz empleando índices para determinar su posición (fila y columna) dentro de la matriz.
+\switchcolumn
+\paragraph{Indexing}\index[eng]{Numpy!Indexing} As in algebra, in NUmpy is also possible to refer any element of a matrix using indexes to indicate its position (row and column) in the matrix. 
 \end{paracol}
 \begin{equation*}
 A=
@@ -182,7 +210,9 @@ a_{31}&a_{32}&a_{33}
 \end{equation*}
 
 \begin{paracol}{2}
-Sin embargo,  criterio para referirse a un elemento concreto de una matriz, en Numpy está heredado de las listas: se indica el nombre de la variable que contiene la matriz y a continuación, entre corchetes y separados por una coma, el índice de su fila y después él de su columna \textbf{pero empezando a contar desde $0$}. Es decir, la primera fila de una matriz de dimensión $m\times n$ es la fila $0$ y la última es la fila $m-1$. De modo análogo su primera columna es la $0$ y su última columna es la $n-1$,    
+Sin embargo,  el criterio para referirse a un elemento concreto de una matriz, en Numpy está heredado de las listas: se indica el nombre de la variable que contiene la matriz y a continuación, entre corchetes y separados por una coma, el índice de su fila y después él de su columna \textbf{pero empezando a contar desde $0$}. Es decir, la primera fila de una matriz de dimensión $m\times n$ es la fila $0$ y la última es la fila $m-1$. De modo análogo su primera columna es la $0$ y su última columna es la $n-1$,
+\switchcolumn
+However, the Numpy criteria to refer to a specific element inside a matrix has been borrowed from Python Lists: we write the name of the matrix followed by the row and column indexes of the element we are interested in, enclosed in a square bracket and separated by a comma. The point is that we \textbf{count the rows and columns starting at $0$}. Thus, the first row of a matrix with dimensions $m\times n$ is the row $0$, and the last is the row $m-1$. Likewise, its first column is column $0$, and the last one is column $n-1$, 
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.3\textwidth}
@@ -203,7 +233,9 @@ Out[33]: 1
 
 \begin{paracol}{2}
 Numpy puede seleccionar dentro de una matriz no solo elementos aislados, sino también submatrices completas. 
-Para ello, emplea un símbolo reservado, el símbolo \emph{dos puntos} $:$. Este símbolo se emplea para recorrer valores desde un valor inicial hasta un valor final, con un incremento o paso fijo. La sintaxis es: \mintinline{python}{inicio:fin:paso}, Es importante tener en cuenta que Numpy detendrá la cuenta en el valor \mintinline{python}{paso-1}. Además, si no indicamos el tamaño del paso, Numpy tomará por defecto un paso igual a uno. En este caso basta emplear un único símbolo \emph{dos puntos} para separar el valor de inicio del valor final,
+Para ello, emplea un símbolo reservado, el símbolo \emph{dos puntos} $:$. Este símbolo se emplea para recorrer valores desde un valor inicial hasta un valor final, con un incremento o paso fijo. La sintaxis es: \mintinline{python}{inicio:fin:paso}. Es importante tener en cuenta que Numpy detendrá la cuenta en el valor \mintinline{python}{stop-step}. Además, si no indicamos el tamaño del paso, Numpy tomará por defecto un paso igual a uno. En este caso basta emplear \mintinline{python}{start:stop}
+\switchcolumn
+Inside a matrix, Numpy can select single elements and whole submatrices. To do so, it uses the colon : symbol as a special symbol. Using a fixed step, we use this symbol to cover a set of values from a start (initial) value to a stop (final) one. The syntax is simple: \mintinline{python}{start:stop:step}. Beware! Numpy will stop the count in the step \mintinline{python}{stop-step}. Besides, if we leave apart the step size, Numpy will take a step equal to one. In this case, the expression is just \mintinline{python}{start:stop}
 \end{paracol}
 
 \begin{center}
@@ -247,12 +279,18 @@ array([[3.],
 \end{center}
 
 \begin{paracol}{2}
-La línea [90], extrae un vector fila con los elementos de la primera fila de la matriz \mintinline{python}{D}. La fila [91] extrae una matriz de dimension $2\times 2$ con los cuatro elementos de la esquina superior izquierda de la matriz original. La fila [92] extrae un único elemento pero sigue siendo una matriz de dimensión $1 \times 1$, por tanto es distinto que si empleamos la indexación directa del elemento: \mintinline{python}{D[2,1]}. La línea [93] nos devuelve un vector fila con la última fila de la matriz. La línea [94], nos devuelve de nuevo la matriz entera. Por último la línea 95 nos devuelve un vector columna con la primera columna de la matriz.
+La línea [90], extrae un vector fila con los elementos de la primera fila de la matriz \mintinline{python}{D}. La fila [91] extrae una matriz de dimension $2\times 2$ con los cuatro elementos de la esquina superior izquierda de la matriz original. La fila [92] extrae un único elemento pero sigue siendo una matriz de dimensión $1 \times 1$, por tanto es distinto que si empleamos la indexación directa del elemento: \mintinline{python}{D[2,1]}. La línea [93] nos devuelve un vector fila con la última fila de la matriz. La línea [94], nos devuelve de nuevo la matriz entera. Por último la línea [95] nos devuelve un vector columna con la primera columna de la matriz.
 
-Hemos dicho que la línea [94] nos devuelve un vector columna. Bueno, sí y no; vamos a verlo más despacio.
+Hemos dicho que la línea [95] nos devuelve un vector columna. Bueno, sí y no; vamos a verlo más despacio.
 
 \paragraph{Vectores.}
-Cuando introducimos los vectores, distinguimos entre vectores filas y columna, definiéndolos como matrices de una sola fila o una sola columna. Sin embargo, en Numpy, se sigue un criterio distinto que permite generalizar el concepto de matriz asociándolo con el de tensor. Sin entrar en detalles\footnote{Una definición formal del concepto de tensor, queda fuera del alcance de estos apuntes}, podemos decir que un tensor es un objeto algebráico caracterizado por dos parámetros el orden y la dimensión. Así un escalar $a \in \mathbb{R}$ es un tensor de orden cero. Un vector $b \in \mathbb{R}^n$ es un tensor de orden 1 y dimesión $n$. Una matriz $A \in \mathbb{R}^{m\times n}$ Es un tensor de orden dos y dimensiones $m,n$. Un tensor de orden 3, $T \in \mathbb{R}^{n\times m \times l}$, etc. Podemos consider asociar el orden al número mínimo de índices que necesitamos para definir de forma unívoca los elementos de un Tensor: para un escalar, no nos hace faltar ningún indice, solo tenemos un elemento que es el propio escalar, por tanto le asociamos orden cero. Para un vector es suficiente emplear un índice para par definir sus elementos, $b=(b_i),\ i=1,\cdots, n$, $b \in \mathbb{R}^n$. Para una matriz necesito dos índices, $A=(a_{ij}),\ i =1, \cdots n, j = 1,\ \cdots, m$, $A \in \mathbb{R}^{n\times m}$. Para un tensor de orden tres necesitaría tres índices, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ y así sucesivamente. Numpy permite definir estructuras de cualquier orden y dimensión que queramos. Pero nosotros nos vamos a limitar a vectores (orden 1) y matrices (orden 2). ¿Tiene sentido entonces distiguir entre vectores fila y columna? Solo si consideramos siempre los vectores como matrices (orden 2) y dimesiones $1\times n$ (vector fila) ó $n \times 1$ (vector columna). Para Numpy, sin embargo, vectores y matrices son estructuras de distinto orden. Veamos con algunos ejemplo cómo se diferencian Para verlo mejor podemos emplear la propiedad \mintinline{python}{shape} de los arrays en numpy, Dicha propiedad nos devuelve una tupla con las dimensiones del array, el número de elementos que contine la tupla nos da el orden,
+Cuando introducimos los vectores, distinguimos entre vectores filas y columna, definiéndolos como matrices de una sola fila o una sola columna. Sin embargo, en Numpy, se sigue un criterio distinto que permite generalizar el concepto de matriz asociándolo con el de tensor. Sin entrar en detalles\footnote{Una definición formal del concepto de tensor, queda fuera del alcance de estos apuntes.}, podemos decir que un tensor es un objeto algebráico caracterizado por dos parámetros; el orden y la dimensión. Así un escalar $a \in \mathbb{R}$ es un tensor de orden cero. Un vector $b \in \mathbb{R}^n$ es un tensor de orden 1 y dimesión $n$. Una matriz $A \in \mathbb{R}^{m\times n}$ Es un tensor de orden dos y dimensiones $m,n$. Un tensor de orden 3, $T \in \mathbb{R}^{n\times m \times l}$, etc. Podemos asociar el orden al número mínimo de índices que necesitamos para definir de forma unívoca los elementos de un Tensor: para un escalar, no nos hace faltar ningún indice, solo tenemos un elemento que es el propio escalar, por tanto le asociamos orden cero. Para un vector es suficiente emplear un índice para definir sus elementos, $b=(b_i),\ i=1,\cdots, n$, $b \in \mathbb{R}^n$. Para una matriz necesito dos índices, $A=(a_{ij}),\ i =1, \cdots n, j = 1,\ \cdots, m$, $A \in \mathbb{R}^{n\times m}$. Para un tensor de orden tres necesitaría tres índices, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ y así sucesivamente. Numpy permite definir estructuras de cualquier orden y dimensión que queramos. Pero nosotros nos vamos a limitar a vectores (orden 1) y matrices (orden 2). ¿Tiene sentido entonces distiguir entre vectores fila y columna? Solo si consideramos siempre los vectores como matrices (orden 2) y dimesiones $1\times n$ (vector fila) ó $n \times 1$ (vector columna). Para Numpy, sin embargo, vectores y matrices son estructuras de distinto orden. Veamos con algunos ejemplo cómo se diferencian. Para verlo mejor podemos emplear la propiedad \mintinline{python}{shape} de los arrays en numpy, Dicha propiedad nos devuelve una tupla con las dimensiones del array, el número de elementos que contine la tupla nos da el orden,
+\switchcolumn
+Line [90] extracts a row vector from the first row of matrix \mintinline{python}{D}. Line [91] extracts a $2\times 2$ matrix using the four elements located on the left-up corner of the original, \mintinline{python}{D}, matrix. Line [92] extracts a single matrix element, but notice that it takes the form of a $1\times 1$ matrix. Thus, this result is different than the result achieved when we directly use the indexes of the element: \mintinline{python}{D[2,1]}. Lain [93] returns a row vector with the elements of the matrix's last row. Lastly, line [95] returns a column vector with the elements of the matrix's last column.
+
+We have said that line [95] returns a column vector. well, yes and not; let's see it in more detail.
+
+\paragraph{Vectors.} When we introduced vectors in the previous section, we made a distinction between row and column vectors, defining them as matrices with a single row or a single column. Nevertheless, Numpy follows another criterion that allows us to generalise the idea of matrix linking it with the concept of tensor. we do not get into details\footnote{A formal definition of tensors is far beyond the scope of these notes.} and simply say that a tensor is an algebraic object defined by two parámeters, its order, and its dimension. So, a scalar $a \in \mathbb{R}$ is a tensor of order zero. A vector $b \in \mathbb{R}^n$ is a tensor of order one and dimension $n$. A matrix $A\in \mathbb{R}^{m\times n}$ is a tensor of order two and dimensions $m,n$. A third order tensor, $T\in\mathbb{R}^{n\times m\times l}$, etc. We can relate the order with the minimum number of indexes we need to univocally define the tensor element: for a scalar, we don't need an index at all; we have only a single element, the scalar itself. For this reason, we associate scalars with a zero-order tensor. For a vector, it is enough to use a single index to define its elements, $b=(b_i), i = 1,\cdots, n,\ b \in \mathbb{R}^n$. For a matrix, we need two indexes, $A = (a_{ij}), i =1,\dots,n,\ j = 1,\dots,m,\ A \in \mathbb{R}^{n\times m}$. For third-order tensors, we need three indexes, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ and so on. In Numpy, we can define structures of whatever order and dimensions we want, but we will only use vectors (order 1) and matrices (order 2). Has, then, any sense to distinguish between row and column vector? Only if we always consider vectors as matrices (order 2) and dimensions $1\times n$ (row vector) or $n\times 1$ (column vector). For Numpy, however, vectors an matrices are structures of different order. Let's see some examples of their differences. To appreciate it better we can use the Numpy arrays attribute \mintinline{python}{shape}, which gives us a tuple containing the dimensions of the array. The number of elements of the tuple tells us the order of the array,     
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.3\textwidth}
@@ -297,11 +335,19 @@ Out[30]: (1, 1)
  \begin{paracol}{2}
  Empezamos con la matriz \mintinline{python}{D} de ejemplos anteriores. Para obtener sus dimensiones empleamos \mintinline{python}{D.shape}. El resultado es una tupla compuesta de dos elementos, puesto que es una matriz y, por tanto su orden es dos. El primer elemento no da la dimensión de sus columnas, es decir, el número de filas. El segundo elemento nos da la dimensión de sus filas, es decir el número de columnas. 
  
- En la línea [27] extraemos el elemento que ocupa la posición $[1,1]$. En la [26] cuando tratamos de obtener sus dimensiones, nos da una tupla vacía, porque es un escalar y su orden es cero. En la línea [28] le hemos pedido a Numpy que nos de los elementos de la fila $1$ de la matriz \mintinline{python}{D} que ocupan las columnas desde la $1$ hasta la $1$. Es decir, hacemos referencia al mismo elemento de la matriz, sin embargo el resultado no es exáctamente el mismo. Nos ha devuelto un array con el elemento seleccionado. Cuando el la línea [28] pedimos sun dimensiones, obtenemos una tupla con un único elemento \mintinline{python}{(1,)} Es decir, el orden del array es $1$, se trata de un vector, y tiene de dimensión $1$, el vector solo tiene un elemento. 
+ En la línea [25] extraemos el elemento que ocupa la posición $[1,1]$. En la [26] cuando tratamos de obtener sus dimensiones, nos da una tupla vacía, porque es un escalar y su orden es cero. En la línea [27] le hemos pedido a Numpy que nos de los elementos de la fila $1$ de la matriz \mintinline{python}{D} que ocupan las columnas desde la $1$ hasta la $1$. Es decir, hacemos referencia al mismo elemento de la matriz, sin embargo el resultado no es exáctamente el mismo. Nos ha devuelto un array con el elemento seleccionado. Cuando el la línea [28] pedimos sus dimensiones, obtenemos una tupla con un único elemento \mintinline{python}{(1,)}. Es decir, el orden del array es $1$, se trata de un vector, y tiene de dimensión $1$, el vector solo tiene un elemento. 
  
- Por último, en la línea [29] volvemos a pedir a Python que nos de los elementos de la matriz \mintinline{python}{D}, que ocupan las filas desde la $1$ hasta la $1$ y las columnas desde la $1$ hasta la $1$, el resultado es de nuevo ahora una matriz, podemos ver en la línea \mintinline{python}{out [29]} que el numero $5$ aparece ahora encerrado entre dos pares de corchetes. Cuando en la línea [30], empleamos de nuevo el comando \mintinline{python}{shape}, nos devuelve una tupla con dos elementos --el orden del array es $2$, puesto que se trata de una matriz-- y sus dimensiones son una fila y una columna, puesto que la matriz solo tiene un elemento.  
+ Por último, en la línea [29] volvemos a pedir a Python que nos de los elementos de la matriz \mintinline{python}{D}, que ocupan las filas desde la $1$ hasta la $1$ y las columnas desde la $1$ hasta la $1$, el resultado es ahora una matriz, podemos ver en la línea \mintinline{python}{out [29]} que el numero $5$ aparece ahora encerrado entre dos pares de corchetes. Cuando en la línea [30], preguntamos por su \mintinline{python}{shape}, nos devuelve una tupla con dos elementos --el orden del array es $2$, puesto que se trata de una matriz-- y sus dimensiones son una fila y una columna, puesto que la matriz solo tiene un elemento.  
 
  Vamos a completar nuestro estudio de los arrays en Python, extrayendo ahora partes más grandes de la misma matriz \mintinline{python}{D},
+ \switchcolumn
+ We begin with the same matrix \mintinline{python}{D} we use in previous examples. To get its dimensions, we use \mintinline{python}{D.shape}. The result is a tuple of two elements because it is a matrix, and thus, its order is two. The first element gives us its column dimension, that is, its number of rows. The second element is its row dimension, that is, its number of columns.
+
+ In line [25] we extract the element located at position $[1,1]$. In line [26] when we try to get its dimension, Numpy returns an empty tuple because it is a scalar and its order is zero. In line [27], we ask Numpy that retrieve the elements of row $1$ of the matrix \mintinline{python}{D} that fill the columns $1$ to $1$. Thus, we are making reference to the same element of the matrix as in the previous case. However, the result is not exactly the same. Numpy retrieves an array with the selected element. When we ask for its dimensions in line [28] we get a tuple with a single element \mintinline{python}{(1,)}. Then, the order of the array is one. It is a vector with a single element.
+
+ Finally, in line [29], we ask Numpy to retrieve the elements of matrix \mintinline{python}{D} with fill the rows from $1$ to $1$ and the columns from $1$ to $1$. Thus, the result is now a matrix, We can see in line \mintinline{python}{out [29]} that the number $5$ is enclosed in two pair of square brackets. When in line [30], we ask for its \mintinline{python}{shape}, we get a tuple with two elements  --now the order of the array is two, because it is a matrix-- and their dimension are one row and one column as far as the matrix has a single element.
+
+ We are going to complete our study on Numpy arrays, extracting larger parts of the same matrix, 
  \end{paracol}
 \begin{center}
  \begin{minipage}{0.3\textwidth}
@@ -318,10 +364,15 @@ Out[10]: array([4., 5., 6.])
 
 In [11]: D[:,1]
 Out[11]: array([ 2.,  5., -3.,  2.])
-
+    
 In [12]: D[1:2,:]
 Out[12]: array([[4., 5., 6.]])
-
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{center}
+ \begin{minipage}{0.3\textwidth}
+    \begin{minted}{python}
 In [13]: D[:,1:2]
 Out[13]: 
 array([[ 2.],
@@ -332,9 +383,13 @@ array([[ 2.],
 \end{minipage}
 \end{center}
 \begin{paracol}{2}
-En el primer caso, línea [10], henos extraido toda la segunda fila de la matriz \mintinline{python}{D}, el resultado es un vector, por tanto tiene orden $1$ y dimensión $3$. En la línea [11] hemos extraido la primera columna y el resultado es de nuevo un vector, por tanto tiene orden $1$ y la dimensión esta vez $4$. En la línea [12] extraemos todas las columnas de las filas que van desde  segunda hasta la segunda. El resultado es una matriz, ya que el orden del array extraído es $2$, y la dimensiones será $1$ para las filas y $3$ para las columna. Es lo más parecido a un vector 'fila' que podemos obtener con Numpy. Por último, en la línea 13, extraemos todas las filas de las columnas que van desde la segunda hasta la segunda. El resultado es de nuevo una matriz, porque el array extraido tiene orden dos, pero las dimensiones son ahora $4$ para las filas y $1$ para las columnas, lo podemos identificar con un vector columna de los descritos antes.
+En el primer caso, línea [10], hemos extraido toda la segunda fila de la matriz \mintinline{python}{D}, el resultado es un vector, por tanto tiene orden $1$ y dimensión $3$. En la línea [11] hemos extraido la primera columna y el resultado es de nuevo un vector, por tanto tiene orden $1$ y la dimensión esta vez $4$. En la línea [12] extraemos todas las columnas de las filas que van desde la segunda hasta la segunda. El resultado es una matriz, ya que el orden del array extraído es $2$, y la dimensiones será $1$ para las filas y $3$ para las columna. Es lo más parecido a un vector 'fila' que podemos obtener con Numpy. Por último, en la línea [13], extraemos todas las filas de las columnas que van desde la segunda hasta la segunda. El resultado es de nuevo una matriz, porque el array extraido tiene orden dos, pero las dimensiones son ahora $4$ para las filas y $1$ para las columnas, lo podemos identificar con un vector columna de los descritos antes.
 
-Evidentemente, podemos tambier extraer de una matriz bloques (submatrices), indicando las filas y columnas que queremos extraer de la matriz original. por ejemplo,
+Evidentemente, podemos tambier extraer de una matriz bloque (submatrices), indicando las filas y columnas que queremos extraer de la matriz original. por ejemplo,
+\switchcolumn
+In the first case, line [10] we get the whole second row of matrix \mintinline{python}{D}. The result is a vector and has order $1$ and dimension $3$. In line [11], we extract the first column of the matrix, and the result is again a vector. This time the order is $1$, and the dimension is $4$. In line [12] we extract all columns belonging to rows second to second. The result is a matrix because the order of the extracted array is two. The dimensions are $1$ for the rows and $3$ for the columns. It is the most similar to a 'row' vector we can get using Numpy. Lastly, in line [13], we extract all the rows belonging to columns second to second. the result is again a matrix because the array obtained has order two, but the dimensions are now $4$ for the rows and $1$ for the columns, we could identify it as a column vector of those described above. 
+
+Indeed, we can also  extract a block matrix (submatrices), using indexes to define the rows and columns we want to obtain from the original matrix,
 \end{paracol}
 
 \begin{center}
@@ -362,14 +417,14 @@ array([[ 4.,  5.],
 \end{center}
 
 \begin{paracol}{2}
-
-\end{paracol}
-\section{Operaciones matriciales}\label{opmatr}
-  
-\begin{paracol}{2}
+\section{Operaciones matriciales}\label{opmatr} \index{Matrices! Operaciones Matriciales} 
 A continuación definiremos las operaciones matemáticas más comunes, definidas sobre matrices. Vamos a empezar por aquellas que se realizan elemento a elemento, entre aquellos elementos que ocupan la misma posición en las matrices que se operan,
 
 \paragraph{Suma.} La suma de dos matrices, se define como la matriz resultante de sumar los elementos que ocupan en ambas la misma posición. Solo está definida para matrices del mismo orden,
+
+\switchcolumn
+\section{Matrix Operations}\index{Matrices! Matrix Operations}
+In this section we will define the most common mathematical operation for matrices. We are going to beging for those operation that are carried out, element by element, between those elements
 \end{paracol}
 \begin{gather*}
 C=A+B\\
@@ -3454,15 +3509,17 @@ array([[-2.44948974, -4.4907312 , -2.85773803],
     \end{minted}    
     \end{minipage}
 \end{center}
-  
+
+\begin{paracol}{2}
 \subsection{Factorización SVD}\label{sec:SVD}
 Dada una matriz cualquiera $A$ de orden $m\times n$ es posible factorizarla en el producto de tres matrices,
+\end{paracol}
 \begin{equation*}
 A=U\cdot S \cdot V^T 
 \end{equation*}
-
+\begin{paracol}{2}
 Donde $U$ es una matriz de orden $m\times m$ ortogonal, $V$ es una matriz de orden $n\times n$ ortogonal y $S$ es una matriz diagonal de orden $m\times n$. Además los elementos de $S$ son positivos o cero y están ordenados en orden no creciente,
-
+\end{paracol}
 \begin{equation*}
 s=\begin{pmatrix}
 \sigma_1& 0& \cdots & 0\\
@@ -3472,105 +3529,80 @@ s=\begin{pmatrix}
 \end{pmatrix}; \ \sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_i; \ i=\min(m,n)
 \end{equation*}
 
+\begin{paracol}{2}
 Los elementos de la diagonal de la matriz $S$, ($\sigma_1, \ \sigma_2, \  \cdots \ \sigma_i$), reciben el nombre de \emph{valores singulares} de la matriz $A$. De ahí el nombre que recibe esta factorización; SVD son las siglas en inglés de \emph{Singular Value Decomposition}.
 
-No vamos a describir ningún algoritmo para obtener la factorización SVD de una matriz. En Matlab existe la función \texttt{[U,S,V]=svd(A)} que permite obtener directamente la factorización SDV de una matriz $A$ de dimensión arbitraria. A continuación se incluyen unos ejemplos de uso para matrices no cuadradas,
+No vamos a describir ningún algoritmo para obtener la factorización SVD de una matriz. En Numpy existe la función \mintinline{python}{[U,s,VT]=svd(A)}, dentro del submodulo \mintinline{python}{linalg}, que permite obtener directamente la factorización SDV de una matriz $A$ de dimensión arbitraria. Es importante destacar que Numpy devuelve un vector $s$ en con los valores singulares y, directamente, la matriz $V^T$. Para reconstruir la matriz $S$ es preciso crear un matriz de dimensión $m\times n$ a partir del vector $s$, añadiendo las filas o culumnas de ceros necesarias. A continuación se incluyen un ejemplo de uso para una matrice $A$ no cuadrada,
+\end{paracol}
+\begin{center}
+    \begin{minipage}{0.7\textwidth}
+    \begin{minted}{python}
+In [93]: A = np.array([[1,3,4],[2,3,2],[2,4,5],[3,2,3]])
 
-\begin{verbatim}
->> A=[1 3 4;2 3 2;2 4 5;3 2 3]
+In [94]: A
+Out[94]: 
+array([[1, 3, 4],
+       [2, 3, 2],
+       [2, 4, 5],
+       [3, 2, 3]])
 
-A =
+In [102]: U,s,VT = np.linalg.svd(A)
 
-     1     3     4
-     2     3     2
-     2     4     5
-     3     2     3
+In [105]: S[:s.shape[0],:s.shape[0]] = np.diag(s)
 
->> [U,S,V]=svd(A)
+In [106]: S
+Out[106]: 
+array([[10.25447551,  0.        ,  0.        ],
+       [ 0.        ,  1.90114896,  0.        ],
+       [ 0.        ,  0.        ,  1.10966868],
+       [ 0.        ,  0.        ,  0.        ]])
 
-U =
+In [107]: U@S@VT
+Out[107]: 
+array([[1., 3., 4.],
+       [2., 3., 2.],
+       [2., 4., 5.],
+       [3., 2., 3.]])
+\end{minted}
+\end{minipage}
+\end{center}
 
-   -0.4877    0.5175    0.1164   -0.6934
-   -0.3860   -0.3612   -0.8375   -0.1387
-   -0.6517    0.3024    0.0552    0.6934
-   -0.4340   -0.7144    0.5311   -0.1387
-
-
-S =
-
-   10.2545         0         0
-         0    1.9011         0
-         0         0    1.1097
-         0         0         0
-
-
-V =
-
-   -0.3769   -0.9170    0.1307
-   -0.5945    0.1313   -0.7933
-   -0.7103    0.3767    0.5946
-\end{verbatim}
-
+\begin{paracol}{2}
 Como la matriz $A$ tiene más filas que columnas, la matriz $S$ resultante termina con una fila de ceros.
+\end{paracol}
 
-\begin{verbatim}
->> B=A'
-
-B =
-
-     1     2     2     3
-     3     3     4     2
-     4     2     5     3
-
->> [U,S,V]=svd(B)
-
-U =
-
-   -0.3769   -0.9170    0.1307
-   -0.5945    0.1313   -0.7933
-   -0.7103    0.3767    0.5946
-
-
-S =
-
-   10.2545         0         0         0
-         0    1.9011         0         0
-         0         0    1.1097         0
-
-
-V =
-
-   -0.4877    0.5175    0.1164   -0.6934
-   -0.3860   -0.3612   -0.8375   -0.1387
-   -0.6517    0.3024    0.0552    0.6934
-   -0.4340   -0.7144    0.5311   -0.1387
-   
-\end{verbatim}
-
-Como la matriz $B$, transpuesta de la matriz $A$ del ejemplo anterior, tiene más columnas que filas, la matriz $S$ termina con una columna de ceros.
-
+\begin{paracol}{2}
 A continuación enunciamos sin demostración algunas propiedades de la factorización SVD.
 
-\begin{enumerate}
-\item El rango de una matriz $A$ coincide con el número de sus valores singulares distintos de cero.
-\item La norma-2 inducida de una matriz $A$ coincide con su valor singular mayor $\sigma_1$.
-\item La norma de Frobenius de una matriz $A$ cumple:
+1. El rango de una matriz $A$ coincide con el número de sus valores singulares distintos de cero.
+
+2. La norma-2 inducida de una matriz $A$ coincide con su valor singular mayor $\sigma_1$.
+3. La norma de Frobenius de una matriz $A$ cumple:
+\end{paracol}
+
 \begin{equation*}
 \lVert A \rVert_{F}=\sqrt{\sigma_1^2+\sigma_2^2+\cdots +\sigma_r^2}
 \end{equation*}
-\item Los valores singulares de una matriz $A$ distintos de cero son iguales a la raíz cuadrada positiva de los autovalores distintos de cero de las matrices $A\cdot A^T$ ó $A^T\cdot A$. (los autovalores distintos de cero de estas dos matrices son iguales),
+
+\begin{paracol}{2}
+4. Los valores singulares de una matriz $A$ distintos de cero son iguales a la raíz cuadrada positiva de los autovalores distintos de cero de las matrices $A\cdot A^T$ ó $A^T\cdot A$. (los autovalores distintos de cero de estas dos matrices son iguales),
+\end{paracol}
 \begin{equation*}
 \sigma_i^2=\lambda_i(A\cdot A^T)=\lambda_i(A^T\cdot A)
 \end{equation*}
-\item El valor absoluto del determinante de una matriz cuadrada $A$,$n\times n$, coincide con el producto de sus valores singulares,
+\begin{paracol}{2}
+5. El valor absoluto del determinante de una matriz cuadrada $A$,$n\times n$, coincide con el producto de sus valores singulares,
+\end{paracol}
 \begin{equation*}
 \vert \det(A) \vert = \prod_{i=1}^n \sigma_i
 \end{equation*}
-\item El número de condición de una matriz cuadrada $A$ $n\cdot n$, que se define como el producto de la norma-2 inducida de $A$ por la norma-2 inducida de la inversa de $A$, puede expresarse como el cociente entre el el valor singular mayor de $A$ y su valor singular más pequeño,
+\begin{paracol}{2}
+6. El número de condición de una matriz cuadrada $A$ $n\cdot n$, que se define como el producto de la norma-2 inducida de $A$ por la norma-2 inducida de la inversa de $A$, puede expresarse como el cociente entre el el valor singular mayor de $A$ y su valor singular más pequeño,
+\end{paracol}
 \begin{equation*}
 k(A)=\lVert A \rVert_2 \cdot \lVert A^{-1} \rVert_2 = \sigma_1 \cdot \frac{1}{\sigma_n}=\frac{\sigma_1}{\sigma_n}
 \end{equation*}
+\begin{paracol}{2}
 El número de condición de una matriz, es una propiedad importante que permite estimar cómo de estables serán los cálculos realizados empleando dicha matriz, en particular aquellos que involucran directa o indirectamente el cálculo de su inversa.
-
-\end{enumerate}
+\end{paracol}
 
