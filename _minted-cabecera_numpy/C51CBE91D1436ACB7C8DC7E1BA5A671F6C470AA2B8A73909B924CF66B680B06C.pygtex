@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{52}\PYG{p}{]:} \PYG{n}{A}\PYG{o}{/}\PYG{n}{B}
+\PYG{o}{/}\PYG{n}{tmp}\PYG{o}{/}\PYG{n}{ipykernel\PYGZus{}10098}\PYG{o}{/}\PYG{l+m+mf}{713994841.}\PYG{n}{py}\PYG{p}{:}\PYG{l+m+mi}{1}\PYG{p}{:} \PYG{n+ne}{RuntimeWarning}\PYG{p}{:} \PYG{n}{divide} \PYG{n}{by} \PYG{n}{zero} \PYG{n}{encountered}
+\PYG{o+ow}{in} \PYG{n}{divide} \PYG{n}{A}\PYG{o}{/}\PYG{n}{B}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{52}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.33333333}\PYG{p}{,}  \PYG{l+m+mf}{2.}        \PYG{p}{],}
+       \PYG{p}{[}        \PYG{n}{inf}\PYG{p}{,}  \PYG{l+m+mf}{0.}        \PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mf}{3.}        \PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.25}      \PYG{p}{]])}
+\end{Verbatim}

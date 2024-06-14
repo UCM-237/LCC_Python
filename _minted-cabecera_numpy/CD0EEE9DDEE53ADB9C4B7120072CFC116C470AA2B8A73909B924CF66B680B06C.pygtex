@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{224}\PYG{p}{]:} \PYG{n}{B}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{224}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{47}\PYG{p}{,} \PYG{l+m+mi}{28}\PYG{p}{,} \PYG{l+m+mi}{26}\PYG{p}{,} \PYG{l+m+mi}{45}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{28}\PYG{p}{,} \PYG{l+m+mi}{24}\PYG{p}{,} \PYG{l+m+mi}{16}\PYG{p}{,} \PYG{l+m+mi}{40}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{26}\PYG{p}{,} \PYG{l+m+mi}{16}\PYG{p}{,} \PYG{l+m+mi}{15}\PYG{p}{,} \PYG{l+m+mi}{22}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{45}\PYG{p}{,} \PYG{l+m+mi}{40}\PYG{p}{,} \PYG{l+m+mi}{22}\PYG{p}{,} \PYG{l+m+mi}{97}\PYG{p}{]])}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{225}\PYG{p}{]:} \PYG{n}{L} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{cholesky}\PYG{p}{(}\PYG{n}{B}\PYG{p}{)}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{226}\PYG{p}{]:} \PYG{n}{L}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{226}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[} \PYG{l+m+mf}{6.8556546} \PYG{p}{,}  \PYG{l+m+mf}{0.}        \PYG{p}{,}  \PYG{l+m+mf}{0.}        \PYG{p}{,}  \PYG{l+m+mf}{0.}        \PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mf}{4.08421976}\PYG{p}{,}  \PYG{l+m+mf}{2.70539257}\PYG{p}{,}  \PYG{l+m+mf}{0.}        \PYG{p}{,}  \PYG{l+m+mf}{0.}        \PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mf}{3.79248978}\PYG{p}{,}  \PYG{l+m+mf}{0.18874832}\PYG{p}{,}  \PYG{l+m+mf}{0.76249285}\PYG{p}{,}  \PYG{l+m+mf}{0.}        \PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mf}{6.56392462}\PYG{p}{,}  \PYG{l+m+mf}{4.87599823}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{5.00195311}\PYG{p}{,}  \PYG{l+m+mf}{2.2627417} \PYG{p}{]])}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{227}\PYG{p}{]:} \PYG{n}{L} \PYG{o}{@} \PYG{n}{L}\PYG{o}{.}\PYG{n}{T}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{227}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mf}{47.}\PYG{p}{,} \PYG{l+m+mf}{28.}\PYG{p}{,} \PYG{l+m+mf}{26.}\PYG{p}{,} \PYG{l+m+mf}{45.}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mf}{28.}\PYG{p}{,} \PYG{l+m+mf}{24.}\PYG{p}{,} \PYG{l+m+mf}{16.}\PYG{p}{,} \PYG{l+m+mf}{40.}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mf}{26.}\PYG{p}{,} \PYG{l+m+mf}{16.}\PYG{p}{,} \PYG{l+m+mf}{15.}\PYG{p}{,} \PYG{l+m+mf}{22.}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mf}{45.}\PYG{p}{,} \PYG{l+m+mf}{40.}\PYG{p}{,} \PYG{l+m+mf}{22.}\PYG{p}{,} \PYG{l+m+mf}{97.}\PYG{p}{]])}
+\end{Verbatim}
