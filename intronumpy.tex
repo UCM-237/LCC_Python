@@ -1027,8 +1027,8 @@ I_n\cdot A_{n\times m}=A_{n\times m}
 
 \begin{paracol}{2}
 En Numpy se emplea el comando \mintinline{python}{eye(n)} para construir la matriz identidad de dimensiones $n\times n$,
-
-    
+\switchcolumn
+In Numpy, we can use the command \mintinline{python}{eye(n)} to build the identity matrix of dimension $n\times n$.   
 \end{paracol}
 
 \begin{center}
@@ -1044,7 +1044,9 @@ array([[1., 0., 0., 0.],
     \end{minipage}
 \end{center}
 \begin{paracol}{2}
-Una matriz cuadrada se dice que es ortogonal si cumple,    
+Una matriz cuadrada se dice que es ortogonal si cumple,
+\switchcolumn
+An orthogonal matrix is a square matrix that fulfils,   
 \end{paracol}
 \begin{equation*}
 A^T\cdot A=I
@@ -1052,6 +1054,8 @@ A^T\cdot A=I
 
 \begin{paracol}{2}
 \paragraph{Norma de un vector.} La longitud euclídea, módulo,  norma 2 o simplemente norma  de un vector se define como,
+\switchcolumn
+\paragraph{Vector norm} The Euclidean length, module, norm 2 or just norm of a vector is defined as follows,
 \end{paracol}
 \begin{equation*}
 \Vert x \Vert_2 =\Vert x \Vert =\sqrt{x\cdot x}=\sqrt{x^Tx}=\sqrt{x_1^2+x_2^2+\cdots x_n^2}=\left( \sum_{i=1}^nx_i^2 \right)^\frac{1}{2}
@@ -1059,7 +1063,9 @@ A^T\cdot A=I
 \begin{paracol}{2}
 Constituye la manera usual de medir la longitud de un vector. Tiene una interpretación geométrica inmediata a través del teorema de Pitágoras: nos da la longitud del segmento que representa al vector. La figura \ref{fig:pitag} muestra dicha interpretación, para un vector bidimensional.
 
-La norma de un vector en Numpy se obtiene empleando el  comando \mintinline{python}{norm} que pertenece al submódulo \mintinline{python}{linalg}, 
+La norma de un vector en Numpy se obtiene empleando el  comando \mintinline{python}{norm} que pertenece al submódulo \mintinline{python}{linalg},
+\switchcolumn
+The vector norm represents the usual method to measure its length. It has a direct geometrical interpretation using Pithagoras' theorem: the norm is the length of the segment that represents the vector. Figure \ref{fig:pitag} shows such an interpretation for a bi-dimensional vector.
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.3\textwidth}
@@ -1076,17 +1082,21 @@ Out[425]: 5.477225575051661
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{pitag.eps}
-\caption{interpretación geométrica de la norma de un vector}
+\bicaption{interpretación geométrica de la norma de un vector}{Geometrical interpretation of the norm of a vector.}
 \label{fig:pitag}
 \end{figure}
 \begin{paracol}{2}
 A partir de la norma de un vector es posible obtener una expresión alternativa para el producto escalar de dos vectores,
+\switchcolumn
+We can derive an alternative expression of the scalar product of two vector, using the vector norm
 \end{paracol}
 \begin{equation*}
 a\cdot b=\Vert a \Vert \Vert b \Vert \cos \theta
 \end{equation*}
 \begin{paracol}{2}
 Donde $\theta$ representa el ángulo formado por los dos vectores.
+\switchcolumn
+where $\theta$ is the angle between the two vectors.
 \end{paracol}
 
 \begin{flalign*}
@@ -1097,12 +1107,18 @@ Donde $\theta$ representa el ángulo formado por los dos vectores.
 Aunque se trate de la manera más común de definir la norma de un vector, la norma 2 no es la única definición posible,
 
 \emph{Norma 1:} Se define como la suma de los valores absolutos de los elementos de un vector,
+\switchcolumn
+Being the norm 2 the most common way to define a vector norm is by no means the only possible definition,
+
+\emph{Norm 1:} defined as the sum of the absolute values of vector elements. 
 \end{paracol}
 \begin{equation*}
 \Vert x \Vert_1 =\vert x_1\vert +\vert x_2 \vert\cdots \vert x_n\vert
 \end{equation*}
 \begin{paracol}{2}
-\emph{Norma p:} Es una generalización de la norma 2,    
+\emph{Norma p:} Es una generalización de la norma 2,
+\switchcolumn
+\emph{P-Norm:} It is a generalization of the norm 2
 \end{paracol}
 
 \begin{equation*}
@@ -1110,7 +1126,9 @@ Aunque se trate de la manera más común de definir la norma de un vector, la no
 \end{equation*}
 
 \begin{paracol}{2}
-\emph{norma $\infty$:} se define como el mayor elemento del vector valor absoluto,    
+\emph{Norma $\infty$:} se define como el mayor elemento del vector valor absoluto,
+\switchcolumn
+\emph{$\infty$ Norm:} The element with the largest absolute value
 \end{paracol}
 
 \begin{equation*}
@@ -1119,12 +1137,16 @@ Aunque se trate de la manera más común de definir la norma de un vector, la no
 
 \begin{paracol}{2}
 \emph{Norma $-\infty$:} el menor elemento del vector en valor absoluto,
+\switchcolumn
+\emph{$-\infty$ Norm:} The element of the smallest absolute value. 
 \end{paracol}
 \begin{equation*}
 \Vert x \Vert_{-\infty} =min \left\lbrace \vert x_i\vert\right \rbrace 
 \end{equation*}
 \begin{paracol}{2}
-En Numpy la norma de un vector puede obtenerse mediante el comando \mintinline{python}{norm(v,p)} La primera variable de entrada debe ser un vector y la segunda el tipo de norma que se desea calcular. Si se omite la segunda variable de entrada, el comando devuelve la norma 2. Para las normas $\infty \text{y} -\infty$ Se emplea el símbolo especial \mintinline{python}{inf} de Numpy. A continuación se incluyen varios ejemplo de utilización,
+En Numpy la norma de un vector puede obtenerse mediante el comando \mintinline{python}{norm(v,p)}. La primera variable de entrada debe ser un vector y la segunda el tipo de norma que se desea calcular. Si se omite la segunda variable de entrada, el comando devuelve la norma 2. Para las normas $\infty\ \text{y} -\infty$ Se emplea el símbolo especial \mintinline{python}{inf} de Numpy. A continuación se incluyen varios ejemplo de utilización,
+\switchcolumn
+In Numpy the vector norm can be obtained using the command \mintinline{python}{norm(v,p)}. The first variable should be a vector and the second one represents the norm we want to calculate. If we leave out the second variable, the function returns norm 2 by default. For norms $\infty\ \text{y} \infty$ we use the symbol\mintinline{python}{inf} to represent the norm kind.
 \end{paracol}
 
 \begin{center}
@@ -1155,7 +1177,9 @@ Out[428]: 1.0
 \end{center}
 
 \begin{paracol}{2}
-En general, una norma se define como una función de $\mathbb{R}^n \rightarrow \mathbb{R}$, que cumple,
+En general, una norma se define como una función $\mathbb{R}^n \rightarrow \mathbb{R}$, que cumple,
+\switchcolumn
+In general, a norm can be define as functions $\mathbb{R}^n \rightarrow \mathbb{R}$, which satisfies,
 \end{paracol}
 \begin{align*}
 &\Vert x\Vert \geq 0,\  \Vert x\Vert =0 \Rightarrow x=0\\
@@ -1172,7 +1196,13 @@ Llamaremos vectores unitarios $u$, a aquellos para los que se cumple que $\Vert 
 
 Dos vectores $a$ y $b$ son ortogonales si cumplen que su producto escalar es nulo, $a^Tb=0 \Rightarrow  a\bot b$. Si además ambos vectores tienen módulo unidad, se dice entonces que los vectores son ortonormales.  Desde el punto de vista de su representación geométrica, dos vectores ortogonales, forman entre sí un ángulo recto.
 
-\paragraph{Traza de una matriz.} La traza de una matriz cuadrada , se define como la suma de los elementos que ocupan su diagonal principal,
+\paragraph{Traza de una matriz.} La traza de una matriz cuadrada , se define como la suma de los elementos que ocupan su diagonal principal
+\switchcolumn
+Vectors $u$ with $\Vert u \Vert=1$ are called unitary vectors.
+
+Two vectors $a$ and $b$ are orthogonal if their scalar product is zero, $a^Tb = 0 \Rightarrow a\bot b$. Besides, if the vectors have norm one them they are called orthonormal vectors. From the point of view of the geometrical representation, the angle between two orthogonal vectors is a square angle.
+
+\paragraph{Matrix's trace.} The trace of a square matrix is the sum of the elements located in the matrix's main diagonal. 
 \end{paracol}
 \begin{gather*}
 Tr(A)=\sum_{i=1}^na_{ii}\\
@@ -1185,7 +1215,9 @@ Tr\left(
 \end{gather*}
 
 \begin{paracol}{2}
-La traza de la suma de dos matrices cuadradas $A$ y $B$ del mismo orden, coincide con la suma de las trazas de $A$ y $B$,    
+La traza de la suma de dos matrices cuadradas $A$ y $B$ del mismo orden, coincide con la suma de las trazas de $A$ y $B$,
+\switchcolumn
+The trace of the sum of two square, same dimension matrices $A$ and $B$ is equal to the sum of $A$ trace plus $B$ trace, 
 \end{paracol}
 
 \begin{equation*}
@@ -1193,14 +1225,18 @@ tr(A+B)=tr(A)+tr(B)
 \end{equation*}
 
 \begin{paracol}{2}
-Dada una  matriz $A$ de dimensión $m\times n$  y una matriz $B$ de dimensión $n \times m$, se  cumple que,    
+Dada una  matriz $A$ de dimensión $m\times n$  y una matriz $B$ de dimensión $n \times m$, se  cumple que,
+\switchcolumn
+For two matrices $A$ of dimensions $m\times n$ and $B$ of dimensions $n\times m$ is  always true that,
 \end{paracol}
 
 \begin{equation*}
 tr(AB)=tr(BA)
 \end{equation*}
 \begin{paracol}{2}
-En Python, puede obtenerse directamente el valor de la traza de una matriz $A$, mediante la función \mintinline{python}{np.trace(A)}. En este caso, se trata de un método asociado a cualquier array por lo que tambi.en puede expresarse como \mintinline{python}{A.trace()}  
+En Python, puede obtenerse directamente el valor de la traza de una matriz $A$, mediante la función \mintinline{python}{np.trace(A)}. En este caso, se trata de un método asociado a cualquier array por lo que también puede expresarse como \mintinline{python}{A.trace()}  
+\switchcolumn
+In Numpy, the value of a matrix's trace can be calculated using the function \mintinline{python}{np.trace(A)}. In this case, the function is a method associated to any matrix and can be also expressed as \mintinline{python}{A.trace()}  
 \end{paracol}
 
 \begin{center}
@@ -1227,6 +1263,8 @@ Out[200]: -2
 \begin{paracol}{2}
 \paragraph{Determinante de una matriz.} 
 En Numpy, el determinante de una matriz se calcula  empleando la función \mintinline{python}{det}, del submódulo \mintinline{python}{linalg}. Así, para calcular el determinante de la matriz $A$ del ejemplo anterior,
+\switchcolumn
+\paragraph{Matrix's determinant.} In Numpy, a matrix's determinant can be calculated using the function \mintinline{python}{det}, del submódulo \mintinline{python}{linalng}. We can calculate the determinant of matrix \mintinline{python}{A} of the previous example, 
 \end{paracol}
 \begin{center}
 \begin{minipage}{0.5\textwidth}
@@ -1241,7 +1279,9 @@ Out[203]: 20.000000000000007
 &\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
 \end{flalign*}
 \begin{paracol}{2}
-El determinante de una matriz $A$, se representa habitualmente como $\vert A \vert$ o, en ocasiones como $det(A)$. Para poder definir el determinante de una matriz, necesitamos antes introducir una serie de conceptos previos. En primer lugar, si consideramos un escalar como una matriz de un solo elemento, el determinante  sería precisamente el valor de ese único elemento,    
+El determinante de una matriz $A$, se representa habitualmente como $\vert A \vert$ o, en ocasiones como $det(A)$. Para poder definir el determinante de una matriz, necesitamos antes introducir una serie de conceptos previos. En primer lugar, si consideramos un escalar como una matriz de un solo elemento, el determinante  sería precisamente el valor de ese único elemento,
+\switchcolumn
+The determinant of a matrix, $A$ is usually represented as $\vert A\vert$ and occasionally as $det(A)$. To define the determinant of a matrix, we need first to establish some previous definitions. First, if we consider a scalar as a matrix of a single element, the determinant of the matrix is this single element.
 \end{paracol}
 \begin{equation*}
 A=\begin{pmatrix}
@@ -1249,7 +1289,9 @@ a_{11}
 \end{pmatrix} \rightarrow \vert A \vert =a_{11}
 \end{equation*}
 \begin{paracol}{2}
-Se denomina menor complementario o simplemente menor, $M_{ij}$ del elemento $a_{ij}$ de una matriz $A$, a la matriz que resulta de eliminar de la matriz $A$ la fila $i$ y la columna $j$ a las que pertenece el elemento $a_{ij}$. Por ejemplo,
+En álgebral lineal, se denomina menor primero, $M_{ij}$ de una matriz $A$, al determinate de la matriz que resulta de eliminar de la matriz $A$ la fila $i$ y la columna $j$. Por ejemplo,
+\switchcolumn
+In linear algebra, a first minor $M_{ij}$ of a square matrix $A$ is the determinant of the matrix obtained by removing simultaneously row $i$ and column $j$ of $A$. For instance, 
 \end{paracol}
 
 \begin{align*}
@@ -1258,48 +1300,59 @@ A=\begin{pmatrix}
 3& -2& 3\\
 0& 6& 5
 \end{pmatrix},& \ 
-M_{23}=
+M_{23}=det
 \begin{pmatrix}
 1& 0\\
 0& 6
 \end{pmatrix}\\
 M_{32}=
-\begin{pmatrix}
+det\begin{pmatrix}
 1& -2\\
 3& 3
 \end{pmatrix},& \ 
 M_{33}=
-\begin{pmatrix}
+det\begin{pmatrix}
 1& 0\\
 3& -2
 \end{pmatrix}\cdots
 \end{align*}
 
 \begin{paracol}{2}
- El  cofactor $C_{ij}$ de un elemento $a_{ij}$ de la matriz $A$, se define a partir del determinante del menor complementario del elemento $a_{ij}$ como,   
+ El  cofactor $C_{ij}$ de un elemento $a_{ij}$ de la matriz $A$, se define a partir del menor primero $M_{ij}$, que corresponde precísamenta a la fila y columna que contiene a $a_{ij}$,
+ \switchcolumn
+ We define the cofactor $C_{ij}$ of a matrix $A_{ij}$ element, $a_{ij}$, using the first minor $M_{ij}$ obtained removing the row and column $a_{ij}$ belongs to.
 \end{paracol}
  
 \begin{equation*}
-C_{ij}=(-1)^{i+j}\vert M_{ij} \vert
+C_{ij}=(-1)^{i+j} M_{ij}
 \end{equation*}
 
 \begin{paracol}{2}
-Podemos ahora definir el determinante de una matriz $A$ cuadrada de orden $n$, empleando la fórmula de Laplace, 
+Podemos ahora definir el determinante de una matriz $A$ cuadrada de orden $n$, empleando la fórmula de Laplace,
+\switchcolumn
+Now, we can define the determinant of a $n$ dimensional square matrix $A$, using the Laplace's formula, 
 \end{paracol}
 \begin{equation*}
 \vert A \vert = \sum_{j=1}^n a_{ij}C_{ij}
 \end{equation*}
 \begin{paracol}{2}
 o alternativamente,
+\switchcolumn
+or also as,
 \end{paracol}
 
 \begin{equation*}
 \vert A \vert = \sum_{i=1}^n a_{ij}C_{ij}
 \end{equation*}
 \begin{paracol}{2}
-En el primer caso, se dice que se ha desarrollado el determinante a lo largo de la fila $i$. En el segundo caso, se dice que se ha desarrollo el determinante a lo largo de la columna $j$.
+En el primer caso, se dice que se ha desarrollado el determinante a lo largo de la fila $i$. En el segundo caso, se dice que se ha desarrollo a lo largo de la columna $j$.
 
- La fórmula de Laplace, obtiene el determinante de una matriz de orden $n\times n$ a partir del cálculo de los determinantes de los menores complementarios de los elementos de una fila; $n$ matrices de orden $(n-1)\times (n-1)$. A su vez, podríamos calcular el determinante de cada menor complementario, aplicando la formula de Laplace y así sucesivamente hasta llegar a matrices de orden $2\times 2$. Para una matriz $2\times 2$, si desarrollamos por la primera fila obtenemos su determinante como,
+ La fórmula de Laplace obtiene el determinante de una matriz de orden $n\times n$ a partir del cálculo de los menores complementarios de los elementos de una fila o columna; los determinates the $n$ matrices de orden $(n-1)\times (n-1)$. A su vez, podríamos calcular cada menor complementario, aplicando la fórmula de Laplace y así sucesivamente hasta llegar a matrices de orden $2\times 2$. Para una matriz $2\times 2$, si desarrollamos por la primera fila obtenemos su determinante como,
+\switchcolumn
+In the first case, we say that we develop the determinant along the row $i$. In the second one, we say that we have developed the determinant along the column $j$
+
+Laplace's formula gets the determinant of a Matrix of dimensions $n\times n$ using the first minors of a matrix row or column, i.e. the determinants of $n$ matrix of order $(n-1)\times (n-1)$. In turn, we can calculate each minor using Laplace's formula and so on, till we arrive at matrices of dimension $2\times 2$. We obtain the determinant of a $2\times 2$ matrix developing it along its first row,      
+
 \end{paracol}
 
 \begin{align*}
