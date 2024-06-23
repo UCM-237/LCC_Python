@@ -1367,6 +1367,8 @@ a_{21}& a_{22}
 
 \begin{paracol}{2}
 y si desarrollamos por la segunda columna,
+\switchcolumn
+And if  we develop using the secon column,
 \end{paracol}
 \begin{align*}
 A&=\begin{pmatrix}
@@ -1380,6 +1382,8 @@ a_{21}& a_{22}
 
 \begin{paracol}{2}
 Para una matriz de dimensión arbitraria $n\times n$, el determinante se obtiene aplicando recursivamente la fórmula de Laplace,
+\switchcolumn
+For a matrix of arbitrary dimension we obtain the determinant using the Laplace's formula recursively,
 \end{paracol}
 
 \begin{align*}
@@ -1390,6 +1394,8 @@ Para una matriz de dimensión arbitraria $n\times n$, el determinante se obtiene
 \end{align*}
 \begin{paracol}{2}
 Así, por ejemplo, podemos calcular el determinante de la matriz,
+\switchcolumn
+For instance, we can calculate the determinant of the following matrix,
 \end{paracol}
 \begin{equation*}
 A=\begin{pmatrix}
@@ -1400,6 +1406,8 @@ A=\begin{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
 desarrollándolo por los elementos de la primera columna, como,
+\switchcolumn
+Developing by the first column elements,
 \end{paracol}
 \begin{align*}
 \left\vert A \right\vert =& 1\cdot (-1)^2\cdot 
@@ -1418,7 +1426,11 @@ desarrollándolo por los elementos de la primera columna, como,
 =& 1\cdot (-1)^2\cdot \left[ (-2)\cdot 5 - 6\cdot 3 \right] +3\cdot (-1)^3\cdot  \left[ 0\cdot 5 - 6\cdot (-2)\right] + 0\cdot (-1)^4 \cdot \left[ 0\cdot 3 - (-2)\cdot (-2)\right]= -64
 \end{align*}
 
-Podemos programar en Python una función recurrente que calcule el determinante de una matriz de rango $n\times n$. (El método no es especialmente eficiente pero ilustra el uso de funciones recursivas.
+\begin{paracol}{2}
+Podemos programar en Python una función recursiva\footnote{El método no es especialmente eficiente pero ilustra el uso de funciones recursivas.} que calcule el determinante de una matriz de dimensiones $n\times n$.
+\switchcolumn
+We can now program a recursive function\footnote{The method is not particularly efficient but it helps to show the use of recursive functions} to calculate the determinant of any $n\times n$ dimensions.
+\end{paracol}
 
 \inputminted[
 frame=lines,
@@ -1435,7 +1447,7 @@ linenos
 \begin{paracol}{2}
 Entre las propiedades de los determinantes, destacaremos las siguientes,
 \begin{enumerate}
-\item El determinante del producto de un escalar $a$ por una matriz $A$ de dimensión $n\times n$ cumple,
+\item El determinante del producto de un escalar $a$ por una matriz $A$ cumple,
 \begin{equation*}
 \left\vert a\cdot A \right\vert =a^n\cdot \vert A \vert
 \end{equation*}
@@ -1452,7 +1464,28 @@ Entre las propiedades de los determinantes, destacaremos las siguientes,
 
 Una matriz es singular si su determinante es cero.
 
-El rango de una matriz se define como el tamaño de la submatriz más grande dentro de $A$, cuyo determinante es distinto de cero. Así por ejemplo la matriz,
+El rango de una matriz $A$ se define como el tamaño de la submatriz más grande dentro de $A$, cuyo determinante es distinto de cero. Así por ejemplo la matriz,
+\switchcolumn
+Among determinants' properties we will point out the following ones,
+\begin{enumerate}
+	\item The determint of a escalar $a$ by a  matrix $A$ is,
+	\begin{equation*}
+		\left\vert a\cdot A \right\vert =a^n\cdot \vert A \vert
+	\end{equation*}
+	\item The determinant of a matrix traspose equals the determinant of the matrix,
+	\begin{equation*}
+		\vert A \vert =\left\vert A^T \right\vert
+	\end{equation*}
+	
+	\item The determinant of a matrix product equals the product of their determinants,
+	\begin{equation*}
+		\left\vert A_{n\times n} \cdot  B_{n\times n} \right\vert = \left\vert A_{n\times n} \right\vert \cdot \left\vert B_{n\times n} \right\vert 
+	\end{equation*}
+\end{enumerate}
+
+A singular matrix is a square matrix whose determinant is zero.
+
+The rank of a matrix $A$ is the size of the largest submatrix, inside $A$, whose determinant is non-zero. For instance,  
 \end{paracol}
 \begin{equation*}
 A=\begin{pmatrix}
@@ -1462,7 +1495,9 @@ A=\begin{pmatrix}
 \end{pmatrix} \rightarrow \vert A \vert =0
 \end{equation*}
 \begin{paracol}{2}
-Es una matriz singular y su rango es dos,    
+Es una matriz singular y su rango es dos,
+\switchcolumn
+is a singular matrix, and its rank is 2,    
 \end{paracol}
 
 \begin{equation*}
@@ -1474,7 +1509,11 @@ Es una matriz singular y su rango es dos,
 \begin{paracol}{2}
 Para una matriz cuadrada no singular, su rango coincide con su dimensión.
 
-En Numpy se puede obtener el rango de una  matriz mediante el comando \mintinline{python}{rank},
+En Numpy se puede obtener el rango de una  matriz mediante el comando \mintinline{python}{matrix_rank},
+\switchcolumn
+For a non-singular square matrix, its rank meets its dimension.
+
+In Numpy, we can obtain the rank of a matrix using the comand \mintinline{python}{matrix_rank},  
 \end{paracol}
 \begin{center}
 \begin{minipage}{0.5\textwidth}
@@ -1498,6 +1537,13 @@ A\cdot A^{-1}=I_{n\times n}
 Donde $I_{n\times n}$ es la matriz indentidad de dimensión $n$.
 La matriz $A^{-1}$ recibe el nombre de matriz inversa de $A$, y  en numpy puede calcularse a partir de $A$ como \mintinline{python}{np.linalg.inv(A)}, ó \mintinline{python}{np.linalg.matrix_power(A,-1)}
 En el segundo caso, estamos empleando la función, del submódulo linalg de numpy, \mintinline{python}{matrix.power(A,n)} que permite calcular el resultado de elevar una matriz a una pontencia $A^n$.
+\switchcolumn
+\paragraph{Inversion.} For a square non-singular matrix $A$ of dimension $n$ there is a unique matrix $A^{-1}$ of dimension $n$ that satisfies,
+\begin{equation*}
+	A\cdot A^{-1}=I_{n\times n}
+\end{equation*}
+Where $I_{n\times n}$ is the identity matrix of dimension $n$. The matrix $A^{-1}$ is called the inverse matrix of $A$, and we can calculate it in Numpy appliying the comands  \mintinline{python}{np.linalg.inv(A)}, ó \mintinline{python}{np.linalg.matrix_power(A,-1)} to the matrix $A$.
+In the second case, we are using the function \mintinline{python}{matrix.power(A,n)} which allows us to calculate the result to raise a natrix to a power $A^n$. 
 \end{paracol}
 \begin{center}
 \begin{minipage}{0.7\textwidth}
@@ -1529,12 +1575,16 @@ array([[ 1.29166667, -0.58333333, -0.04166667],
 \end{flalign*}
 \begin{paracol}{2}
 La inversa de una matriz puede obtenerse a partir de la expresión,
+\switchcolumn
+A matrix inverse can be calculate using the following expression,
 \end{paracol}
 \begin{equation*}
 A^{-1}=\frac{1}{\vert A \vert}[adj(A)]^T
 \end{equation*}
 \begin{paracol}{2}
 Donde $adj(A)$ es la matriz adjunta de $A$, que se obtiene sustituyendo cada elemento $a_{ij}$ de $A$, por su cofactor $C_{ij}$. A continuación incluimos el código en Python de una función, \mintinline{python}{inver}, que calcula la inversa de una matriz. La función \mintinline{python}{inver} llama a su vez a la función \mintinline{python}{dumbdet} descrita más arriba, por lo que debemos importar el módulo \mintinline{python}{determinante} en el módulo en que vamos a crear la función \mintinline{python}{inver}.
+\switchcolumn 
+Where $adj(A)$ is the adjugate matrix of $A$, which can be obtained replacing each element $a_{ij}$ of $A$ by its cofactor $C_{ij}$. Next, We include the Python code of a function, \mintinline{python}{inver}, to calculate the inverse of a matrix. The function \mintinline{python}{inver}, in turn,  calls the function \mintinline{python}{dumbdet}. Therefore, we must need to import the module \mintinline{python}{determinante} in the module where we will create the funtion \mintinline{python}{inver} 
 \end{paracol}
 \inputminted[
 frame=lines,
