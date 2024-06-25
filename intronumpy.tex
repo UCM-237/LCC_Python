@@ -139,7 +139,7 @@ Evidentemente para vectores de mayor dimensión, no es posible obtener una repre
 \switchcolumn 
 Obviously, it is impossible to get a graphic representation for vectors of larger dimensions. Nevertheless, many geometrical properties owned by 2D and 3D vectors can be applied to vectors of whatever dimension.
 
-\subsection{Vetors and matrices in Numpy.}\index[eng]{Vectors! in Numpy}\index[eng]{Matrices! in Numpy}
+\subsection{Vectors and matrices in\\ Numpy.}\index[eng]{Vectors! in Numpy}\index[eng]{Matrices! in Numpy}
 \paragraph{Matrices.} One interesting feature of numpy is that it allows us to create matrices easily. There are several methods to create them, but using the Numpy function \mintinline{python}{array} with a Python list with the rows of the matrix we want to build is probably the easiest method. Each row should be, in turn, a list of numbers, i.e., matrix elements. Of course, to build a matrix all rows should have the same number of elements. The following example shows how to build a matrix of two rows and three columns.
 \end{paracol}
 
@@ -180,6 +180,12 @@ In [23]: a =1; b= 2; c =3
 
 In [24]: d =[4,5,6]
 
+        \end{minted}
+\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{0.4\textwidth}
+\begin{minted}{python}
 In [25]: C = np.array([[a,b,c],d])
 
 In [26]: print(C)
@@ -1618,11 +1624,29 @@ Algunas propiedades relacionadas con la inversión de matrices son,
 A^{-1}=A^T
 \end{equation*}
 \end{enumerate}
+\switchcolumn
+Some properties relate with matrix inversion are,
+\begin{enumerate}
+	\item Inverse of the the producto of two matrices,
+	\begin{equation*}
+		(A\cdot B)^{-1}=B^{-1}\cdot A^{-1}
+	\end{equation*}
+	
+	\item Determinant of the inverse matrix,
+	\begin{equation*}
+		\left\vert A^{-1} \right\vert = \vert A \vert ^{-1}
+	\end{equation*}
+	
+	\item A matrix is ortogonal if its transpose is equal to its inverse,
+	\begin{equation*}
+		A^{-1}=A^T
+	\end{equation*}
+\end{enumerate}
 \end{paracol}
 
-\begin{table}
-\bicaption{Algunas funciones matemáticas en Numpy de uso frecuente}{frecuently used mathematical functions included in Numpy}
-\label{tabfun}
+\begin{table}[h]
+\bicaption{Algunas funciones matemáticas en Numpy de uso frecuente}{frecuently used mathematical functions included in Numpy} \label{tabfun}
+
 \begin{tabular}{c|c|c|c}
 Tipo&Nombre&variables&función matemática\\
 Type&Name&variables&funcion matemática\\
@@ -1686,8 +1710,14 @@ Norms & & &sign function; 1 if x $>$ 0, -1 if x $<$ 0, 0 if x=0\\
 \subsection{Funciones incluidas en\\ Num\-py.}\index{Funciónes! Funciones incluidas en Numpy} 
 Numpy incluye un gran número de funciones. Muchas de ellas  están pensadas para ser aplicadas a arrays o a variables numéricas indistintamente. En el primer caso, la función se aplica elemento a elemento y el resultado es un array con las mismas dimensiones que el original. 
 
-En la tabla \ref{tabfun}, se incluyen algunos ejemplos de las funciones matemáticas más corrientes. No están todas. Para obtener una visión más completa de las funciones disponibles se aconseja acudir a la documntacion de Numpy.
+En la tabla \ref{tabfun}, se incluyen algunos ejemplos de las funciones matemáticas más corrientes. No están todas. Para obtener una visión más completa de las funciones disponibles se aconseja acudir a la documentacion de Numpy.
 El uso de estas funciones es directo, por ejemplo, el siguiente código calcula la exponencial de los elementos de una matriz,
+\switchcolumn
+\subsection{Functions included in Numpy}\index{Functions! Funtions included in Numpy}
+Numpy includes a large number of mathematical functions. Many of them are intended to be applied both, to arrays and simple variables. In the first case, the function is applied element-wise and the result is an array with the same dimension than the original one.
+
+Table \ref{tabfun} shows some examples of common mathematical functions. Not every function available in Numpy has been included. To achieve a complete view of available functions, it is advisable to read Numpy documentation.
+These functions can be use straightforwardly, for instance, the following code calculates the exponential values of a matrix elements,   
 \end{paracol}
 
 \begin{center}
@@ -1712,9 +1742,15 @@ array([[  2.71828183,   7.3890561 ],
     \end{minipage}
 \end{center}
 
+\begin{flalign*}
+	&\mathwitch*_{i=0}^{\infty}\left\lbrace \right.&     
+\end{flalign*}
 \begin{paracol}{2}
 \section{Operadores vectoriales}\label{opvect}
 En esta sección vamos a estudiar el efecto de las operaciones matriciales, descritas en la sección anterior, sobre los vectores. Empecemos por considerar el producto por un escalar $\alpha \cdot a$. El efecto fundamental es modificar el módulo del vector,
+\switchcolumn
+\section{Vectorial operators}
+In this section we will study the effect of matrix operation described in the previous section when they are applied to vectors. We start considering the effect if the product of a vector by a scalar $\alpha \cdot a$. The main effect is the change of the vector module,
 \end{paracol}
 \begin{equation*}
 \alpha \cdot \begin{pmatrix}
@@ -1729,24 +1765,32 @@ a_3
 \end{pmatrix}\rightarrow \vert \vert \alpha \cdot a \vert \vert =\sqrt{\alpha ^2a_1^2+\alpha ^2a_2^2+\alpha ^2a_3^2}=\vert \alpha \vert  \sqrt{a_1^2+a_2^2+a_3^2}=\vert \alpha \vert \cdot \vert \vert a \vert \vert
 \end{equation*}
 \begin{paracol}{2}
-Gráficamente, si $alpha$ es un número positivo y mayor que la unidad, el resultado del producto será un vector más largo que $a$ con la misma dirección y sentido. Si por el contrario, $\alpha$ es menor que la unidad, el vector resultante será más corto que $a$. Por último si se trata de un número negativo, a los resultados anteriores se añade el cambio de sentido con respecto a $a$. La figura \ref{fig:vmod} muestra gráficamente un ejemplo  del producto de un vector por un escalar.
+Gráficamente, si $\alpha$ es un número positivo y mayor que la unidad, el resultado del producto será un vector más largo que $a$ con la misma dirección y sentido. Si por el contrario, $\alpha$ es menor que la unidad, el vector resultante será más corto que $a$. Por último si se trata de un número negativo, a los resultados anteriores se añade el cambio de sentido con respecto a $a$. La figura \ref{fig:vmod} muestra gráficamente un ejemplo  del producto de un vector por un escalar.
+\switchcolumn
+If $\alpha$ is a positive number and greater than one, we observe graphically that the result of the product will be a vector larger than $a$ and with the same direction and sense. Conversely, if $\alpha$ is positive but less than one, the resulting vector will be shorter than $a$. Lastly if $\alpha$ is negative, a change of sense with respect to $a$ is added to the previously obtained results. Figure \ref{fig:vmod} shows graphically and example of the product of a vector by a scalar.
 \end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=7cm]{vmod.eps}
-\caption{efecto del producto de un escalar por un vector}
+\bicaption{efecto del producto de un escalar por un vector}{effect of the product of a vector by a scalar}
 \label{fig:vmod}
 \end{figure}
 \begin{paracol}{2}
 \paragraph{Combinación lineal.} Combinando la suma de vectores, con el producto por un escalar, podemos generar nuevos vectores, a partir de otros, el proceso se conoce como combinación lineal,
+\switchcolumn
+\paragraph{Linear combination}Combining vector addition with product by a scalar, we can use a set of vectors to generate new vectors. This process is called linear combination. 
 \end{paracol}
 \begin{equation*}
 c=\alpha \cdot a + \beta \cdot b + \cdots +\theta z
 \end{equation*}
 \begin{paracol}{2}
-Así el vector $c$ sería el resultado de una combinación  lineal de los vectores $a, b \cdots z$. 
+Así el vector $c$ sería el resultado de una combinación  lineal de los vectores $a, b, \cdots, z$. 
 Dado un conjunto de vectores, se dice que son linealmente independientes entre sí, si no es posible poner a unos como combinación lineal de otros,
+\switchcolumn
+So, the vector $c$ is the result of linear combination of vectors $a,b,\cdots, z$.
+A set o vectors are linearly independent if it is not possible to represent any of then as a combination of the others.
 \end{paracol}
+
 \begin{equation*}
 \alpha \cdot a + \beta \cdot b + \cdots +\theta z=0 \Rightarrow \alpha =\beta =\cdots =\theta =0
 \end{equation*}
@@ -1755,6 +1799,10 @@ Dado un conjunto de vectores, se dice que son linealmente independientes entre s
 Es posible expresar cualquier vector de dimensión $n$ como una combinación lineal de $n$ vectores linealmente independientes.
 
 Supongamos $n=2$, cualquier par de vectores que no estén alineados, pueden generar todos los vectores de dimensión $2$ por ejemplo,
+\switchcolumn
+It is possible to represent any vector of dimensions $n$ as a lineal combination of $n$ vectors linearly independent.
+
+Let's take $n=2$,  any pair of no collinear vectors can generate all vectors of dimension $2$, for example,
 \end{paracol}
 
 \begin{equation*}
@@ -1771,19 +1819,26 @@ x_2
 \end{pmatrix}
 \end{equation*}
 
-La figura \ref{fig:clineal} muestra gráficamente estos dos vectores y algunos de los vectores resultantes de combinarlos linealmente.
+
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{clineal.eps}
-\caption{Representación gráfica de los vectores $a=(1,2)
-$, $b=(-1,1)
-$ y algunos vectores, combinación lineal de $a$ y $b$.}
+\bicaption{Representación gráfica de los vectores $a=(1,2)$, $b=(-1,1)$ y algunos vectores, combinación lineal de $a$ y $b$.}{A graphic representations of Vectors $a=(1,2)$, $b=(-1,1)$ and some vectors obtained from a lineal combination of $a$ and $b$.}
 \label{fig:clineal}
 \end{figure}
+
 \begin{paracol}{2}
+La figura \ref{fig:clineal} muestra gráficamente estos dos vectores y algunos de los vectores resultantes de combinarlos linealmente.
+
 Si tomamos como ejemplo $n=3$, cualquier conjunto de vectores que no estén contenidos en el mismo plano, pueden generar cualquier otro vector de dimensión $3$. Por ejemplo,
+
+\switchcolumn
+Figure \ref{fig:clineal} shows these two vector and some other vectors obtained by combining them linearly.
+
+If we take now $n=3$, whatever three vectors not contained in the same plane can generate any other vector of dimension three. For example,
 \end{paracol}
+
 \begin{equation*}
 \begin{pmatrix}
 x_1\\
@@ -1803,25 +1858,39 @@ x_3
 1
 \end{pmatrix}
 \end{equation*}
+
 \begin{paracol}{2}
 La figura \ref{fig:clin3} muestra gráficamente estos tres vectores y el vector resultante de su combinación lineal, con $\alpha=1$, $\beta=-0.5$ y $\gamma=1$.  Es fácil ver a partir de la figura que cualquier otro vector de dimensión $3$ que queramos construir puede obtenerse a partir de los vectores $a$, $b$ y $c$.
+\switchcolumn
+Figure \ref{fig:clin3} shows these three vector and another one obtained by combining them linearly, taking $\alpha=1$, $\beta=-0.5$ y $\gamma=1$. It is easy to deduce using the figure thar any other three-dimensional vector can be built using vectors $a$, $b$ y $c$.
 \end{paracol}
-\begin{figure}[h]
+
+\begin{figure}
 \centering
 \includegraphics[width=12cm]{clin3.eps}
-\caption{Representación gráfica de los vectores $a=(1,-2,1)
-$, $b=(2,0,-1)$, $c=(-1,1,1)$ y del vector $a-b+c$.}
+\bicaption{Representación gráfica de los vectores $a=(1,-2,1)
+$, $b=(2,0,-1)$, $c=(-1,1,1)$ y del vector $a-b+c$.}{Vectors $a=(1,-2,1)$, $b =(2,0-1))$, $c=(-1,1,1)$ and vector $a-b+c$; a graphic representation}
 \label{fig:clin3}
 \end{figure}
 
 \begin{paracol}{2}
-\paragraph{Espacio vectorial y  bases del espacio vectorial.} El conjunto de los vectores de dimensión $n$ (matrices de orden $n\times 1$), junto con la suma vectorial y el producto por un escalar, constituye  un  \emph{espacio vectorial} de dimensión $n$.
+\paragraph{Espacio vectorial y  bases del espacio vectorial.} El conjunto de los vectores de dimensión $n$, junto con la suma vectorial y el producto por un escalar, constituye  un  \emph{espacio vectorial} de dimensión $n$.
 
  Como acabamos de ver, es posible obtener cualquier vector de dicho espacio vectorial a partir de $n$ vectores linealmente independientes del mismo. Un conjunto de $n$ vectores linealmente independientes de un espacio vectorial de dimensión $n$ recibe el nombre de base del espacio vectorial. En principio es posible encontrar infinitas bases distintas para un espacio vectorial de dimensión $n$. Hay algunas particularmente interesantes,
  
  \subparagraph{Bases ortogonales.} Una base ortogonal es aquella en que todos sus vectores son ortogonales entre sí , es decir cumple que su producto escalar es $b^i\cdot b^j=0, i\neq j$. Donde  $b^i$ representa el \emph{i-ésimo} vector de la base, $\mathcal{B}=\left\lbrace b^1, b^2, \cdots, b^n  \right\rbrace $ .
  
  \subparagraph{Bases ortonormales.} Una base ortonormal, es una base ortogonal en la que, además, los vectores de la base tienen módulo $1$. Es decir, $b^i\cdot b^j=0, i\neq j$ y  $b^i\cdot b^j=1, i = j$. Un caso particularmente útil de base ortonormal es la base canónica, formada por los vectores, 
+\switchcolumn
+\paragraph{Vector spaces and vector space bases.} 
+
+The set of all $n$-dimensional vectors with the vector addition and the product by scalars define a \emph{vector space} of dimension $n$.
+
+ We have already seen that it is possible to obtain any vector of this $n$-dimensional space using $n$ linearly independent vectors belonging to the space. A set of $n$ linearly independent vector in a vector space of dimension $n$, is called a basis of the vector space. We can, in principle, find infinity different basis for an $n$-dimensional vector space. Some of these bases have properties that make them specially interesting,
+ 
+ \subparagraph{Ortogonal bases.} An ortogonal basis is built by vectors which are all ortogonal among then. That is, the scalar product is $b^i\cdot b^j =0,\ i \neq j$. Where $b^i$ is the $i$ vector of the basis, $\mathcal{B} =\left\lbrace b^1,b^2,\cdots,b^n \right\rbrace$.
+
+\subparagraph{Ortonormal bases.} An ortogonal basis whose vectors, in addition,  have norm $1$ is called an ortonormal basis. That is, $b^i\cdot b^j=0, i\neq j$ and  $b^i\cdot b^j=1, i = j$. A particularly useful ortonormal basis is the canonical basis, composed by the following vectors, 
 \end{paracol}
 
 \begin{equation*}
@@ -1856,6 +1925,8 @@ c^n=\begin{pmatrix}
 \end{equation*} 
 \begin{paracol}{2}
 Podemos considerar las componentes de cualquier vector como los coeficientes de la combinación lineal de la base canónica que lo representa,
+\switchcolumn
+We can consider the components of any vector as the coefficients of the linear combination of the canonical base vectors which represents the vector
 \end{paracol}
 \begin{equation*}
 a=\begin{pmatrix}
@@ -1896,6 +1967,8 @@ a_n\cdot \begin{pmatrix}
 
 \begin{paracol}{2}
 Por extensión, podemos generalizar este resultado a cualquier otra base, es decir podemos agrupar en un vector los coeficientes de la combinación lineal de los vectores de la base que lo generan. Por ejemplo, si construimos, para los vectores de dimensión $3$ la base,
+\switchcolumn
+We can also generalise and extend this result to any other basis, just grouping in a vector the coeficients of linear combination of basis vectors which generates it. For example, we can build for vector of dimension $3$ the following basis,   
 \end{paracol}
 
 \begin{equation*}
@@ -1915,6 +1988,8 @@ Por extensión, podemos generalizar este resultado a cualquier otra base, es dec
 \end{equation*} 
 \begin{paracol}{2}
 Podemos entonces representar un vector en la base $\mathcal{B}$ como,
+\switchcolumn
+We can then represent a vector in the basis $\mathcal{B}$ as,
 \end{paracol}
 
 \begin{equation*}
@@ -1940,6 +2015,10 @@ Podemos entonces representar un vector en la base $\mathcal{B}$ como,
 Donde  estamos empleando el superíndice $^{\mathcal{B}}$, para indicar que las componentes del vector $a$ están definidas con respecto a la base $\mathcal{B}$.
 
 Así por ejemplo el vector,
+\switchcolumn
+Where the superscript $^\mathbb{B}$, means that vector $a$ components are defined in basis $\mathcal{B}$.
+
+So, for instance, vector,
 \end{paracol} 
 \begin{equation*}
 a^{\mathcal{B}}=\begin{pmatrix}
@@ -1950,6 +2029,8 @@ a^{\mathcal{B}}=\begin{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
 Tendría en la base canónica las componentes,
+\switchcolumn
+Would have the following component in the canonical basis,
 \end{paracol}
 \begin{equation*}
 a^{\mathcal{B}}=\begin{pmatrix}
@@ -1979,11 +2060,15 @@ a^{\mathcal{B}}=\begin{pmatrix}
 La figura \ref{fig:base1}, muestra gráficamente la relación entre los vectores de la base canónica $\mathcal{C}$, los vectores de la base $\mathcal{B}$, y el vector $a$, cuyas componentes se han representado en ambas bases.
 
 Podemos aprovechar el producto de matrices para obtener las componentes en la base canónica $\mathcal{C}$ de un vector representado en una base cualquiera $\mathcal{B}$. Si agrupamos los vectores de la base $\mathcal{B}$, en una matriz $B$,
+\switchcolumn
+Figure \ref{fig:base1}, shows the relationship among the canonical basis vectors $\mathcal{C}$, the basis $\mathcal{B}$ vectors, and vector $a$, whose component have been represented in both bases.
+
+We can use the matrix product to obtain any vector components in the canonical basis $\mathcal{C}$ from the vector components in any other basis $\mathcal{B}$. If we put together the basis $\mathcal{B}$ vector in a single matrix $B$,
 \end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=15cm]{base1.eps}
-\caption{Representación gráfica del vector $a$, en las base canónica $\mathcal{C}$ y en la base $\mathcal{B}$}
+\bicaption{Representación gráfica del vector $a$, en la base canónica $\mathcal{C}$ y en la base $\mathcal{B}$.}{Graphic representation of vector $a$, in the canonical basis $\mathcal{C}$ and in $\mathcal{B}$ basis.}
 \label{fig:base1}
 \end{figure}
 
@@ -2019,6 +2104,8 @@ b_{n1}&b_{n2}& \cdots & b_{nn}\\
 \end{equation*}
 \begin{paracol}{2}
 Supongamos que tenemos un vector $a$ cuyas componentes en la base $\mathcal{B}$ son,
+\switchcolumn
+Supose now that we vector $a$ has the following components ins basis $\mathcal{B}$,
 \end{paracol}
 
 \begin{equation*}
@@ -2054,16 +2141,21 @@ a=B\cdot a^{\mathcal{B}} \rightarrow a=\begin{pmatrix}
 \end{equation*}
 
 \begin{paracol}{2}
-Por último, una podemos combinar el producto de matrices y la matriz inversa, para obtener las componentes de un vector en una base cualquiera a partir de sus componentes en otra base. Supongamos que tenemos dos bases $\mathcal{B}_1$ y $\mathcal{B}_2$ y un vector $a$. Podemos obtener las componentes de $a$ en la base canónica, a partir de las componentes en la base $\mathcal{B}_1$ como, $a=B_1\cdot a^{\mathcal{B}_1}$ y a partir de sus componentes en la base $\mathcal{B}_2$ como $a=B_2\cdot a^{\mathcal{B}_2}$. Haciendo uso de la matriz inversa,
+Por último, podemos combinar el producto de matrices y la matriz inversa, para obtener las componentes de un vector en una base cualquiera a partir de sus componentes en otra base. Supongamos que tenemos dos bases $\mathcal{B}_1$ y $\mathcal{B}_2$ y un vector $a$. Podemos obtener las componentes de $a$ en la base canónica, a partir de las componentes en la base $\mathcal{B}_1$ como, $a=B_1\cdot a^{\mathcal{B}_1}$ y a partir de sus componentes en la base $\mathcal{B}_2$ como $a=B_2\cdot a^{\mathcal{B}_2}$. Haciendo uso de la matriz inversa,
+\switchcolumn
+Eventually, we can combine the matrix product and the inverse matrix to obtain the vector components in any basis whatsoever, knowing the vector components is other arbitrary basis. Suppose we have two bases $\mathcal{B}_1$ and $\mathcal{B}_2$ and a vector $a$. We can get the components of $a$ in the canonical basis from its components on basis $\mathcal{B}_1$ as, $a=B_1\cdot a^{\mathcal{B}_1}$  and from basis $\mathcal{B}_2$ as $a=B_2\cdot a^{\mathcal{B}_2}$.
+Using the inverse matrix we obtain,
 \end{paracol}
 
 \begin{align*}
 a&=B_1\cdot a^{\mathcal{B}_1} \Rightarrow a^{\mathcal{B}_1}=B_1^{-1} \cdot a \\
  a&=B_2\cdot a^{\mathcal{B}_2} \Rightarrow a^{\mathcal{B}_2}=B_2^{-1} \cdot a
-\end{align*}
+\end{align*},
 
 \begin{paracol}{2}
-Y sustituyendo obtenemos,
+y sustituyendo obtenemos,
+\switchcolumn
+and, after replace, we obtain,
 \end{paracol}
 
 \begin{align*}
@@ -2073,19 +2165,24 @@ a^{\mathcal{B}_2}&=B_2^{-1} \cdot B_1\cdot a^{\mathcal{B}_1}
 
 \begin{paracol}{2}
 El siguiente código permite cambiar de base un vector y, si el vector pertenece a $\mathbb{R}^3$, representa gráficamente tanto el vector como las bases antigua y nueva.
+\switchcolumn
+The following code allows us to change a vector from one basis to aanother. Besides, if the vector is in $\mathbb{R}^3$, the program represents the vector and the old a  the new bases.
 \end{paracol}
 \inputminted[
 frame=lines,
 framesep=2mm,
 baselinestretch=1.2,
 %bgcolor=LightGray,
-label=inversa.py,
+label=cambio\_vb.py,
 fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/Algebra/codigo_abierto/cambio_vb.py}
 
 \begin{paracol}{2}
 \paragraph{Operadores lineales.} A partir de los visto en las secciones anteriores, sabemos que el producto de una matriz de $A$ de orden $n\times n$  multiplicada por un vector $b$ de dimension $n$ da como resultado un nuevo vector $c=A\cdot b$  de dimensión $n$. Podemos considerar cada matriz $n\times n$ como un \emph{operador lineal}, que transforma unos vectores en otros.  Decimos que se trata de un operador lineal porque las componentes del vector resultante, están relacionadas linealmente con las del vector original, por ejemplo para $n=3$,
+\switchcolumn
+\paragraph{Linear operators.} In previous sections we sow that the product of a matrix $A$ of dimensions $n\times n$ by a vector $b$ of dimension $n$ cast a new vector $c$ of dimension $n$ as a result. We could consider every matrix $n\times n$ as a \emph{linear operator}, which transforms one vector into another. We define it as a linear operator because the components of the resulting vector are linearly related with the components of the operator (the original vector before the transformation). For example, in $n=3$,   
+
 \end{paracol}
 
 \begin{equation*}
@@ -2113,6 +2210,10 @@ y_3=a_{31}x_1+a_{32}x_2+a_{33}x_3
 Entre los operadores lineales, es posible destacar aquellos que producen transformaciones geométricas sencillas. Veamos algunos ejemplos para vectores bidimensionales,
 
 1. Dilatación: aumenta el módulo de un vector en un factor $\alpha>1$. Contracción: disminuye el módulo de un vector en un factor $0<\alpha<1$. En ambos casos, se conserva la dirección y el sentido del vector original.
+\switchcolumn
+Some linear operator are particular interesting because they generate simple geometrical transformations. Let's see some examples for bi-dimensional vectors:
+
+1. Dilation: Spans the module of a vector in a factor $\alpha>1$. Contraction: diminishes the module of a vector in a factor $0<\alpha<1$. In both cases, the direction and sense of the original vector is preserved.
 \end{paracol} 
 \begin{equation*}
 R=\begin{pmatrix}
@@ -2131,6 +2232,8 @@ a_2
 \end{equation*}
 \begin{paracol}{2}
 2. Reflexión de un vector respecto al eje x, conservando su módulo,
+\switchcolumn
+2. Reflection of a vector with respect to the x-axis, preserving its norm,
 \end{paracol}
 \begin{equation*}
 R_x=\begin{pmatrix}
@@ -2149,6 +2252,8 @@ a_1\\
 \end{equation*}
 \begin{paracol}{2}
 3. Reflexión de un vector respecto al eje y, conservando su módulo,
+\switchcolumn
+3. reflection of a vector with respect to the y-axis, preserving its norm, 
 \end{paracol}
 \begin{equation*}
 R_y=\begin{pmatrix}
@@ -2167,6 +2272,9 @@ a_2
 \end{equation*}
 \begin{paracol}{2}
 4. Reflexión respecto al origen: Invierte el sentido de un vector, conservando su módulo y dirección,
+\switchcolumn
+
+4. reflection with respect to the origin: Invert the sense of the vector, preserving its norm and direction. 
 \end{paracol}
 \begin{equation*}
 R=\begin{pmatrix}
@@ -2184,11 +2292,15 @@ a_2
 \end{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
-5. Sería equivalente a aplicar una reflexión respecto al eje x y luego respecto al eje y o viceversa,
+Sería equivalente a aplicar una reflexión respecto al eje x y luego respecto al eje y o viceversa,
+\switchcolumn
+It is equivalent to apply a refletion on x-axis and then a reflection on y-axis or vice versa,
 \end{paracol}
 $R=R_x\cdot R_y= R_y\cdot R_x$.
 \begin{paracol}{2}
- Rotación en torno al origen un ángulo $\theta$,
+ 5. Rotación en torno al origen un ángulo $\theta$,
+ \switchcolumn
+ 5. Rotation an angle $\theta$ around the origin,
 \end{paracol}
 \begin{equation*}
 R_{\theta}=\begin{pmatrix}
@@ -2215,12 +2327,14 @@ La figura \ref{fig:ltrans} muestra los vectores resultantes de aplicar las trans
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{ltrans.eps}
-\caption{Transformaciones lineales del vector $a=[1;2]$. $D$, dilatación/contracción en un factor $1.5$/$0.5$. $R_x$, reflexión respecto al eje x. $R_y$, reflexión respecto al eje y. $R_{\theta}$ rotaciones respecto al origen para ángulos $\theta=\pi /6$ y $\theta=\pi /3$}
+\bicaption{Transformaciones lineales del vector $a=[1,2]$. $D$, dilatación/contracción en un factor $1.5$/$0.5$. $R_x$, reflexión respecto al eje x. $R_y$, reflexión respecto al eje y. $R_{\theta}$ rotaciones respecto al origen para ángulos $\theta=\pi /6$ y $\theta=\pi /3$}{Linear transformation of vector $=[1,1]$. $D$, factor $1.5$/$0.5$ dilation/contraction. $R_y$ reflection on y-axis. $R_{\theta}$ $\theta=\pi /6$ and $\theta=\pi /3$ angles rotations around the origin.}
 \label{fig:ltrans}
 \end{figure}
 
 \begin{paracol}{2}
 \paragraph{Norma de una matriz.} La norma de una matriz se puede definir a partir del efecto que produce al actuar, como un operador lineal, sobre un vector. En este caso, se les llama normas \emph{inducidas}. Para una matriz $A$ de orden $m\times n$, $y_{(m)}=A_{(m\times n)}x_{(n)}$, La norma inducida de $A$ se define en función de las normas de los vectores $x$ de su dominio y de las normas de los vectores $y$ de su rango como,
+\switchcolumn
+\paragraph{Matrix norm.} A matrix norm can be defined from the effect of the matrix when operates  on a vector as a linear operator. In this case, we call these norms \emph{induced} norms. For a matrix $A$ of dimensions $m\times n$, $y(m) =A_{m\times n}x_{(n)}$. The induced norm of $A$ is defined using the norms of the vectors $x$ of its domain and the norms of the vectors $y$ of its range, according to the following expression,   
 \end{paracol}
 \begin{equation*}
 \Vert A \Vert =\max_{x \neq 0} \frac{\Vert y \Vert}{\Vert x \Vert}=\max_{x \neq 0} \frac{\Vert Ax \Vert}{\Vert x \Vert}
@@ -2228,6 +2342,9 @@ La figura \ref{fig:ltrans} muestra los vectores resultantes de aplicar las trans
 
 \begin{paracol}{2}
 Se puede interpretar como el factor máximo con que el que la matriz $A$ puede \emph{alargar} un vector cualquiera. Es posible definir la norma inducida en función de los vectores unitarios del dominio,
+\switchcolumn
+It can be interpreted as the maximum factor a matrix $A$ can \emph{enlarge} any vector. Some times the induced norm is defined using the unitary vector of its domain,
+
 \end{paracol}
 \begin{equation*}
 \Vert A \Vert =\max_{x \neq 0} \frac{\Vert Ax \Vert}{\Vert x \Vert}= \max_{x \neq 0} \left\Vert A\frac{x}{\Vert x \Vert} \right\Vert= \max_{\Vert x \Vert =1}\Vert Ax \Vert
@@ -2236,38 +2353,54 @@ Se puede interpretar como el factor máximo con que el que la matriz $A$ puede \
 \begin{paracol}{2}
 Junto a la norma inducida que acabamos de ver, se definen las siguientes normas,
 
-1. Norma 1: Se suman los elementos de cada columna de la matriz, y se toma como norma el valor máximo de dichas sumas,
+1. Norma $1$: Se suman los elementos de cada columna de la matriz, y se toma como norma el valor máximo de dichas sumas,
+\switchcolumn
+Besides the induced norm already described, it is possible to define the following norms,
+
+1. Norm $1$: we add the elements of each column up and then take the maximun value of these sums as a norm
 \end{paracol}
 \begin{equation*}
 \Vert A_{m,n} \Vert _{1} = \max_j \sum_{i=1}^m a_{ij}
 \end{equation*}
 \begin{paracol}{2}
 2. Norma $\infty$: Se suman los elementos de cada fila y se toma como norma $\infty$ el valor máximo de dichas sumas.
+\switchcolumn
+2. Norm $\infty$: We add the elements of each row up and then take the maximum value of these sums as the $\infty$ norm.
 \end{paracol}
 \begin{equation*}
 \Vert A_{m,n} \Vert _{\infty} = \max_i \sum_{j=1}^m a_{ij}
 \end{equation*}
 \begin{paracol}{2}
-3. Norma 2: Se define como el mayor de los valores singulares de una matriz. (Ver sección 
+3. Norma 2: Se define como el mayor de los valores singulares de una matriz. (Ver sección \ref{sec:SVD}).
+
+\switchcolumn
+3. Norm $2$:it si defined as the largest of the matrix singular values. (See section \ref{sec:SVD}). 
 \end{paracol}
-\ref{sec:SVD}).
+
 \begin{equation*}
 \Vert A_{m,n} \Vert _2 = \sigma_{1}
 \end{equation*}
 \begin{paracol}{2}
 4. Norma de Frobenius. Se define como la raíz cuadrada de la suma de los cuadrados de todos los elementos de la matriz,
+
+\switchcolumn
+4.Frobenius' norm. It is defined as the square root of the sum of the squared values of the matrix elements, 
 \end{paracol}
 \begin{equation*}
 \Vert A_{m,n} \Vert _F =\sqrt{\sum_{i=1}^m \sum_{j=1}^m a_{ij}^2}
 \end{equation*}
 \begin{paracol}{2}
 Que también puede expresarse de forma mas directa como,
+\switchcolumn
+That can be also expressed in a more straightforward way as,
 \end{paracol}
 \begin{equation*}
 \Vert A_{m,n} \Vert _F =\sqrt{tr(A^T\cdot A)}
 \end{equation*}
 \begin{paracol}{2}
-En Numpy, es posible calcular las distintas normas de una matriz, de modo análogo a como se calculan para el caso de vectores,  mediante el comando \texttt{norm(A,p)}. Donde \texttt{A}, es ahora un a matriz y \texttt{p} especifica el tipo de norma que se quiere calcular. En el caso de una matriz, el parámetro \texttt{p} solo puede tomar los valores, \texttt{1} (norma 1), \texttt{2} (norma 2), \texttt{inf} (norma $\infty$), y \texttt{'fro'} (norma de frobenius). Esta última es la norma por defecto, y es la que se optiene si se no se define el tipo de normar. El siguiente ejemplo muestra el cálculo de las normas 1, 2, $\infty$ y de Frobenius de la misma matriz.
+En Numpy, es posible calcular las distintas normas de una matriz, de modo análogo a como se calculan para el caso de vectores,  mediante el comando \texttt{norm(A,p)}. Donde \texttt{A}, es ahora un a matriz y \texttt{p} especifica el tipo de norma que se quiere calcular. En el caso de una matriz, el parámetro \texttt{p} solo puede tomar los valores, \texttt{1} (norma 1), \texttt{2} (norma 2), \texttt{inf} (norma $\infty$), y \mintinline{python}{'fro'} (norma de frobenius). Esta última es la norma por defecto, y es la que se obtiene si se no se define el tipo de norma. El siguiente ejemplo muestra el cálculo de las normas 1, 2, $\infty$ y de Frobenius de la misma matriz.
+\switchcolumn
+In Numpy is possible to calculate the different matrix norms, similarly to how we calculate the norm of a vector, using the command \mintinline{python}{norm(A,p)}. Where \mintinline{python}{A} is now a matrix and \mintinline{python}{p} specifies the kind of norm we can calculate. In the case of a matrix, parameter \mintinline{python}{p} can take only the values, \mintinline{python}{1} (norm 1), \mintinline{python}{2} (norm 2), \mintinline{python}{inf}, (norm $\infty$), and \mintinline{python}{'fro'} (frobenius' norm). This last is the norm by default and, thus, if the norm Numpy calculates if parameter \mintinline{python}{p} is omitted. The following example shows the calculations of norms 1, 2, $\infty$, and Frobenius for the same matrix.  
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.5\textwidth}
@@ -2300,6 +2433,8 @@ Out[18]: 4.552861506620628
 
 \begin{paracol}{2}
 \paragraph{Formas cuadráticas.} Se define como forma cuadrática a la siguiente operación entre una matriz cuadrada $A$ de orden $n \times n$ y un vector $x$ de dimensión $n$,
+\switchcolumn
+\paragraph{Quadratic forms.} We define the following operation between a square matrix $A$ of dimensions $n\times n$ an a vector $x$ as a quadratic form,
 \end{paracol}
 \begin{equation*}
 \alpha=x^T\cdot A \cdot x, \ \alpha \in \mathbb{R}
@@ -2307,6 +2442,8 @@ Out[18]: 4.552861506620628
 
 \begin{paracol}{2}
 El resultado es un escalar. Así por ejemplo,
+\switchcolumn
+The result is a scalar. For instance,
 \end{paracol}
 
 \begin{equation*}
@@ -2332,6 +2469,8 @@ A=\begin{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
 Para dimensión $n=2$,
+\switchcolumn
+In $n=2$ dimension,
 \end{paracol}
 \begin{equation*}
 \alpha =\begin{pmatrix}
@@ -2347,17 +2486,24 @@ x_2
 
 \begin{paracol}{2}
 Lo que obtenemos, dependiendo de los signos de $a_{11}$ y $a_{12}$, es la ecuación de un paraboloide o un hiperboloide. En la figura \ref{fig:parabol} Se muestra un ejemplo,
+\switchcolumn
+Depending of the sign of $a_{11}$ y $a_{12}$ we obtain  a paraboloid or a hyperboloid  equation. Figure \ref{fig:parabol} shows an example.
 \end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{parabol.eps}
-\caption{Formas cuadráticas asociadas a las cuatro matrices diagonales: $\vert a_{11}\vert=\vert a_{22}\vert=1$, $a_{12}=a_{21}=0$}
+\bicaption{Formas cuadráticas asociadas a las cuatro matrices diagonales: $\vert a_{11}\vert=\vert a_{22}\vert=1$, $a_{12}=a_{21}=0$}{Quadratic forms obtained using the four diagonal matrices: $\vert a_{11}\vert=\vert a_{22}\vert=1$, $a_{12}=a_{21}=0$}
 \label{fig:parabol}
 \end{figure}
 \begin{paracol}{2}
-Veamos brevemente, algunas propiedades relacionadas con  las formas cuadráticas,
+Veamos brevemente, algunas propiedades de las formas cuadráticas,
 
 1. Una matriz $A$ de orden $ n\times n$ se dice que es definida positiva si da lugar a una forma cuadrática que es siempre mayor que cero para cualquier vector no nulo,
+
+\switchcolumn
+Briefly we will revise some quadratic forms properties, 
+
+1. A matrix $A$ of dimensions $n\times n$ is positive definite is generates a quadratic form always greater than zero for any non-null vector.
 \end{paracol}
 \begin{equation*}
 x^T \cdot A \cdot x > 0, \forall x \neq 0 
@@ -2366,20 +2512,27 @@ x^T \cdot A \cdot x > 0, \forall x \neq 0
 2. Una matriz \emph{simétrica} es definida positiva si todos sus \emph{valores propios} (ver sección \ref{sec:diag}) son positivos.
 
 3. Una matriz no simétrica $A$ es definida positiva si su parte simétrica $A_s=(A+A^T)/2$ lo es.
+\switchcolumn
+2. A \emph{symmetric} matrix is positive definite if all its \emph{eigenvalues} (see section \ref{sec:diag}) are positive. 
+
+3. A non-symmetric matrix $A$ is positive definite is it symmetric part $A_s=(A+A^T)/2$ be so. 
 \end{paracol}
 \begin{equation*}
 x\cdot A_s\cdot >0, \forall x \neq 0 \Rightarrow x\cdot A\cdot >0, \forall x \neq 0
 \end{equation*}
 
 \begin{flalign*}
-&&\reversemathwitch*
+&&\left. \right\rbrace \reversemathwitch*
 \end{flalign*}
 
 \begin{paracol}{2}
-\section{Tipos de matrices empleados frecuentemente}\label{tiposm}
+\section{Tipos de matrices empleados frecuentemente.}\label{tiposm}
 Definimos a continuación algunos tipos de matrices frecuentemente empleados en álgebra, algunos ya han sido introducidos en secciones anteriores. Los reunimos todos aquí para facilitar su consulta
 
 1 Matriz ortogonal: Una matriz $A_{n\times n}$ es ortogonal cuando su inversa coincide con su traspuesta.
+
+\switchcolumn
+\section{Kinds of matrices frequently used.}
 \end{paracol}
 \begin{equation*}
 A^T=A^{-1}
