@@ -1,36 +1,61 @@
-\chapter{Aritmética del Computador y Fuentes de error}\label{chp:arit}
+\chapter{Aritmética del Computador y Fuentes de error\\ Computer Arithmetics and Errors}\label{chp:arit}
+\chaptermark{aritm. del c. y errores \textreferencemark \ C. arithm. and errors}
+\epigraph{``What's the use?'' a few hundred rivets chattered. ``We've given - we've given; and the sooner we confess that we can't keep the ship together, and go off our little heads, the easier it will be. Not rivet forged 
+ can stand this strain''.\\
+ ``No one rivet was ever meant to. Share it among you'', the Steam answered.}{Rudyard Kipling, The Ship that Found Herself}
+
+\begin{paracol}{2}
 En el capítulo 1, introdujimos la representación binaria de números así como la conversión de binario a decimal y decimal a binario. A lo largo de este capítulo vamos a profundizar más en el modo en que el ordenador representa y opera con los números así como en una de sus consecuencias inmediatas: la imprecisión de los resultados. 
 
 \section{Representación binaria y decimal}\index{Binario}
 
 Los números reales pueden representarse empleando para ello una recta que se extiende entre $-\infty$ y $+\infty$. La mayoría de ellos no admiten una representación numérica exacta, puesto que poseen infinitos decimales. 
 
-Los números enteros, $1, -1, 2, -2, 3, -3, \cdots$ admiten una representación numérica exacta. \index{Notación científica} En cualquier caso, rara vez manejamos números enteros con una cantidad grande de dígitos, habitualmente, los aproximamos, expresándolos en notación científica, multiplicándolos por una potencia de $10$. Tomemos un ejemplo de la química: la cantidad de átomos o moléculas que constituyen un mol de una sustancia se expresa por el número de Avogadro, $N_A=6.02214179 \times 10^{23}$, dicho numero, --que debería ser un entero--  se expresa empleando tan solo 9 de sus 23 cifras significativas (a veces tan solo se dan las tres primeras). 
+Los números enteros, $1, -1, 2, -2, 3, -3, \cdots$ admiten una representación numérica exacta. \index{Notación científica} En cualquier caso, rara vez manejamos números enteros con una cantidad grande de dígitos, habitualmente, los aproximamos, expresán\-dolos en notación científica, multiplicándolos por una potencia de $10$. Tomemos un ejemplo de la química: la cantidad de átomos o moléculas que constituyen un mol de una sustancia se expresa por el número de Avogadro, $N_A=6.02214179 \times 10^{23}$, dicho numero, --que debería ser un entero--  se expresa empleando tan solo 9 de sus 23 cifras significativas (a veces tan solo se dan las tres primeras). 
 
 \index{Truncamiento} Cuando truncamos un número, es decir, despreciamos todos sus dígitos hacia la derecha a partir de uno dado, estamos aproximando dicho número por un  número racional, es decir, por un número que puede expresarse como el cociente entre dos números enteros. $1/2, 3/4, \cdots$ 
 
-Algunos números racionales se reducen a su vez a números enteros, $6/3$, otros dan lugar a números cuya representación exige un número finito de dígitos: 
+Algunos números racionales se reducen a su vez a números enteros, $6/3$, otros dan lugar a números cuya representación exige un número finito de dígitos:
+\switchcolumn
+In chapter one, we introduced the binary representation of numbers and the conversion from decimal to binary and from binary to decimal. In this chapter, we will get deep into how a computer represents and operates numbers. We also discuss one of its direct consequences: the imprecision of the results.
+
+\section{Binary and decimal representations}\index[eng]{Binary}
+
+Real numbers can be represented on a line extending from $-\infty$ to $\infty$. Most do not have exact numerical representations because they have an infinite number of decimals.
+
+The integer numbers $1-1,2,-2,3-3,\cdots$ can be represented in scientific notation. However, we rarely deal with numbers containing a large amount of digits. Usually, we take an approximate value, written then in scientific notation, by multiplying the number by a power of $10$. Let's take an example from chemistry: the number of atoms or molecules that make up a mole of a chemical substance is defined as Avogadros's number $N_A = 6.02214179 \times 10^{23}$. This number should be an integer, but we represent it in scientific notation given just a few, nine in our example, of its 23 digits.
+
+\index[eng]{Truncation} We truncate a number when we miss off digits past a certain point in the number. Then, we approximate the truncated number by a rational number, i.e., a number that can be represented by the quotient of two integers. $1/2,3/4,cdots$
+
+Some fractional numbers reduce, in turn, to integer numbers $6/3$. Others are numbers that need an infinity number of digits to be represented: 
+\end{paracol}
 \begin{equation*}
 11/2=(5.5)_{10}=5\times10^0+5\times10^{-1}
-\end{equation*} 
+\end{equation*}
+\begin{paracol}{2}
 Si representamos el mismo número en base 2 obtenemos,
+\end{paracol}
 \begin{equation*}
 11/2=(101.1)_2=1\times2^2+0\times2^1+1\times2^0+1\times2^{-1}
 \end{equation*}
+\begin{paracol}{2}
 Sin embargo, el que un número racional admita una representación finita, depende de la base en que se representa. Por ejemplo: $1/10=(0.1)_{10}$ no admite representación finita en base 2.
+\end{paracol}
 \begin{equation*}
 1/10=(0.0001100110011\cdots)_2 =1\times2^{-4}+1\times2^{-5}+0\times2^{-6}+0\times2^{-7}+1\times2^{-8}+\cdots 
 \end{equation*}
- 
+\begin{paracol}{2}
 En este último caso, se trata de una representación que, aunque no termina, es repetitiva o periódica; tras el primer cero decimal se repite indefinidamente la secuencia: $0011$. Los números racionales admiten siempre una representación finita ó infinita periódica. 
 
 El número racional $1/3=(0.333\cdots)_{10}=(0.010101\cdots)_2$ solo admite representación infinita periódica tanto en base 10 como en base 2. Sin embargo, admite representación finita si lo representamos en base 3: $1/3=(0.1)_3=0\times3^0+1\times3^{-1}$.
 
 Habitualmente, en la vida ordinaria, representamos los números en base 10, sin embargo, como hemos visto en el capítulo 1 el ordenador emplea una representación binaria. Como acabamos de ver, una primera consecuencia de esta diferencia, es que al pasar números de una representación a otra estemos alterando la precisión con la que manejamos dichos números. Esta diferencia de representación supone ya una primera fuente de errores, que es preciso tener en cuenta cuando lo que se pretende es hacer cálculo científico con un ordenador. Como iremos viendo a lo largo de este capítulo, no será la única.
 
-\section{Representación de números en el ordenador}\index{Representación numérica}
+\section{Representación de nú\-meros en el ordenador}\index{Representación numérica}
 \paragraph{Enteros positivos} La forma mas fácil de representar números sería empleando directamente los registros de memoria para guardar números en binario.  Si suponemos un ordenador que tenga regis-\- tros de 16 bits. Podríamos guardar en ellos números comprendidos entre el $0$ y el $2^{16}-1=65535$. Este último se representaría con un $1$ en cada una de las posiciones del registro, en total 16 unos. Se trata del entero más grande que podríamos representar con un registro de 16 bits:
+\end{paracol}
 \\
+\ \\
 
 \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
@@ -40,6 +65,7 @@ valor&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1 \\
 \hline
 \end{tabular}\\
 
+\begin{paracol}{2}
  Hasta ahora, nuestro sistema de representación solo admite números enteros. El menor número que podemos representar es el cero, y el mayor ---dependerá del tamaño $n$ de los registros del ordenador---, $2^n-1$.  Es evidente que este sistema de representación resulta insuficiente.
  
  \paragraph{Enteros positivos y negativos}
@@ -56,6 +82,7 @@ valor&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1 \\
  C_2^N=2^n-N
  \end{equation*} 
  Veamos un ejemplo de esta representación, para el caso de un registro de 4 bits:
+ \end{paracol}
  
  \begin{table}
  \centering
@@ -84,7 +111,7 @@ valor&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1 \\
 \end{tabular}
  \end{table}
  
-
+\begin{paracol}{2}
  La representación en complemento a 2 tiene las siguientes características:
  \begin{itemize}
  \item La representación de los números positivos coincide con su valor binario
@@ -94,6 +121,7 @@ valor&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1 \\
  \end{itemize}
 
 Una forma práctica de obtener el complemento a dos de un número binario es copiar el número original de  derecha a izquierda hasta que aparezca el primer 1. Luego de copiar el primer 1, se complementan el resto de los bits del número (si es 0 se pone un 1 y si es 1 se pone un 0). Por ejemplo el complemento a dos del número 2, (0010 en una representación de 4 bits) sería 1110,
+\end{paracol}
 
 \begin{eqnarray*}
 001\mathbf{0} & \xrightarrow{copia\  bit\ derecha }& \cdots 0 \\
@@ -102,7 +130,9 @@ Una forma práctica de obtener el complemento a dos de un número binario es cop
  \mathbf{0}010& \xrightarrow{complemento\ bit\ 0} &1110
 \end{eqnarray*} 
 
+\begin{paracol}{2}
 \index{Complemento a dos! Sustracción} Una propiedad importante de la representación de complemento a dos, es que la diferencia de dos números puede realizarse directamente sumando al primero el complemento a dos del segundo. Para verlo podemos usar los dos números del ejemplo anterior: $0010$ es la representación binaria del número $2$, si empleamos un registro de cuatro bits. Su complemento a dos, $1110$ representa al número $-2$. Si los sumamos \index{Adición en binario} \footnote{Sumar en binario es como sumar en decimal. Se procede de bit a bit, de derecha a izquierda y cuando se suman 1 y 1, el resultado es 10 (base 2), de modo que el bit resultante se coloca en 0 y se lleva el 1 hacia el siguiente bit de la izquierda.}:
+\end{paracol}
 
 \begin{table}
  \centering
@@ -120,6 +150,7 @@ Una forma práctica de obtener el complemento a dos de un número binario es cop
 \end{tabular}
 \end{table}
 
+\begin{paracol}{2}
 El resultado de la suma nos da un número cuyos primeros cuatro bits son 0. El bit distinto de cero, no puede ser almacenado en un registro de cuatro bits, se dice que el resultado de la operación \emph{desborda} el tamaño del registro. Ese bit que no puede almacenarse se descarta al realizar la operación de suma, con lo que el resultado sería cero, como corresponde a la suma de $2+(-2)$. Esta es la motivación fundamental para emplear una representación en complemente a dos: No hace falta emplear circuitos especiales para calcular la diferencia entre dos números, ya que ésta se representa como la suma del minuendo con el complemento a dos del sustraendo.
 
 \subsection{Números no enteros: Representación en punto fijo y en punto flotante}
@@ -133,7 +164,7 @@ La representación de números no enteros se emplea para representar de modo apr
 \end{itemize}
 
 Por ejemplo, si tenemos un registro de 16 bits podemos reservar 1 bit para el signo, 7 para la parte entera y 8 para la parte decimal.  La representación en punto fijo del número binario $-10111.0011101101$ sería: \\
-
+\end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
@@ -143,9 +174,11 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 \hline
 \end{tabular}\\
 
+\begin{paracol}{2}
 Es interesante notar cómo para representar la parten entera, nos sobran dos bits en el registro, ya que la parte entera solo tiene cinco cifras y tenemos 7 bits para representarla. Sin embargo, la parte decimal tiene 10 cifras; como solo tenemos 8 bits para representar la parte decimal, la representación trunca el número eliminando los dos últimos decimales.
 
 Si asociamos cada bit con una potencia de dos, en orden creciente de derecha a izquierda, podemos convertir directamente el número representado de binario a decimal,\\ 
+\end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
@@ -157,7 +190,9 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 \hline
 \end{tabular}\\
 
+\begin{paracol}{2}
 Por tanto el número representado sería,
+\end{paracol}
 
 \begin{equation*}
 \begin{split}
@@ -166,7 +201,9 @@ Por tanto el número representado sería,
 \end{split}
 \end{equation*}
 
+\begin{paracol}{2}
 De modo análogo podemos calcular cual sería el número más grande representable,\\
+\end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
@@ -185,7 +222,9 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 \end{split}
 \end{equation*}
 
+\begin{paracol}{2}
 El número menor representable,\\
+\end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
@@ -204,7 +243,9 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 \end{split}
 \end{equation*}
 
+\begin{paracol}{2}
 El número entero más grande,\\
+\end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
@@ -223,7 +264,9 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 \end{split}
 \end{equation*}
 
+\begin{paracol}{2}
 El número decimal positivo más próximo a 1,\\
+\end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
@@ -242,7 +285,9 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 \end{split}
 \end{equation*}
 
+\begin{paracol}{2}
 O el número decimal positivo más próximo a 0,\\
+\end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
@@ -260,6 +305,8 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 &+ 0 \cdot 2^{-5}+0 \cdot 2^{-6} +0 \cdot 2^{-7}+1 \cdot 2^{-8} =  0.00390625
 \end{split}
 \end{equation*}
+
+\begin{paracol}{2}
 La representación en punto fijo fue la más usada en los primeros computadores. Sin embargo, es posible con el mismo tamaño de registro representar un espectro mucho más amplio de números empleando la representación en punto flotante.
 
 \paragraph*{Representación en punto flotante} \index{Representación numérica! en punto flotante}
@@ -267,11 +314,15 @@ La representación de números en el ordenador en formato de punto flotante, es 
 $234.25\equiv 2.345\times 10^2$, $0.000234\equiv 2.34\times 10^{-5}$, $-56.238 \equiv -5.6238\times 10^1$. La idea es desplazar el punto decimal hasta que solo quede una cifra significativa en la parte entera del número y multiplicar el resultado por 10 elevado a la potencia adecuada para recuperar el número original.
 
 Muchas calculadoras y programas de cálculo científico presentan los resultados por pantalla en formato científico. Habitualmente lo hacen con la siguiente notación,
+\end{paracol}
 
 \begin{equation*}
 -5.3572\times 10^{-3}  \xrightarrow{calculadora}  -5.3572e-03
 \end{equation*}
+
+\begin{paracol}{2}
 Es decir, en primer lugar se representa el signo del número si es negativo (si es positivo lo habitual es omitirlo). A continuación la parte significativa, $5.3572$, que recibe el nombre de mantisa  \index{Mantisa}. Y por último se representa el valor del exponente de la potencia de 10, $-3$, precedido por la letra e, ---e de exponente---. En notación científica se asume que el exponente corresponde siempre a una potencia de diez. Es evidente que tenemos el número perfectamente descrito sin más que indicar los valores de su signo, mantisa y exponente,\\
+\end{paracol}
 
 \begin{tabular}{|c||c||c||c|c|c|}
 \hline
@@ -281,11 +332,14 @@ $-327.43$&$-3.2743\times 10^2$&$-3.2743e2$&$-$&$3.2743$&$2$\\
 \hline
 \end{tabular}\\
 
+\begin{paracol}{2}
 La representación binaria en punto flotante sigue exactamente la misma representación que acabamos de describir para la notación científica. La única diferencia es que en lugar de trabajar con potencias de diez, se trabaja con potencias de dos, que son las que corresponden a la representación de números en binario.  Así por ejemplo, el número binario $-1101.00101$ se representaría como $-1.10100101\times 2^3$, y el número $0.001011101$ se representaría como $1.011101\times 2^{-3}$. 
 
 El término punto flotante viene del hecho de que el punto decimal de la mantisa, no separa la parte entera del número de su parte decimal. Para poder separar la parte entera de la parte decimal del número es preciso emplear el valor del exponente. Así, para exponente $0$, el punto decimal de la mantisa estaría en el sitio que corresponde al número representado, para exponente $1$ habría que desplazarlo una posición a la izquierda, para exponente $-1$ habría que desplazarlo una posición a la derecha, para exponente 2, dos posiciones a la izquierda, para exponente -2, dos posiciones a las derecha, etc.
 
 ¿Cómo representar números binarios en punto flotante empleando los registros de un computador? Una solución inmediata es dividir el registro en tres partes. Una para el signo, otra para la mantisa y otra para el exponente. Supongamos, como en el caso de la representación en punto fijo, que contamos con registros de 16 bits.  Podemos dividir el registro en tres zonas, la primera, de un solo bit la empleamos para guardar el signo. La segunda de, por ejemplo 11 bits, la empleamos para guardar la mantisa del número y por último los cuatro bits restantes los empleamos para guardar el exponente en binario. Podríamos entonces representar el número  $-1.10100101\times 2^3$ como,
+\end{paracol}
+
 \begin{table}
 \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c||c|c|c|c|}
 \hline
@@ -298,6 +352,7 @@ sig.&\multicolumn{11}{c||}{mantisa}&\multicolumn{4}{c|}{exponente}\\
 \end{tabular}
 \end{table}
 
+\begin{paracol}{2}
 Si bien la representación que acabamos de ver sirve para el número representado, es evidente que no podemos representar así un número con exponente negativo como por ejemplo $1.011101\times 2^{-3}$. Además la división que hemos hecho del registro de 16 bits es arbitraria; podríamos haber elegido un reparto distinto de bits entre mantisa y exponente. De hecho, hasta la década de los noventa del siglo XX, cada ordenador adoptaba su propia representación de números en punto flotante. La consecuencia era que los mismos programas, ejecutados en máquinas distintas daban diferentes soluciones. 
 
 Ya en 1976 John Palmer, de la compañía INTEL, promueve la creación de un estándar, es decir, de una representación en punto flotante que fuera adoptada por todos los fabricantes de computadoras. El primer borrador del estándar fue elaborado por William Kahan (Intel), Jerome Coonen (Berkeley) y Harold Stone (Berkeley): documento K-C-S. Inspirado en el trabajo de Kahan en el IBM 7094 (1968). El proceso de estandarización fue bastante lento. La primera versión no fue operativa hasta 1985. El resultado de estos trabajos fue el estándar actual. Conocido como IEEE 754. IEEE son la siglas de Institute of Electrical and Electronics Engineers. Se trata de una asociación que nació en Estados Unidos en el siglo XIX y que goza actualmente de carácter internacional. El IEEE se ocupa, entre otras cosas, de establecer estándares industriales en los campos de la electricidad, la electrónica y la computación. Veamos en detalle el estándar IEEE 754.
@@ -312,6 +367,8 @@ En primer lugar, el estándar se estableció pensando en dos tamaños de registr
 \index{Exponente! Representación en exceso} En cuanto al exponente, es preciso buscar una forma de representar exponentes positivos y negativos. El estándar establece para ello lo que se llama la representación en \emph{exceso}. Con ocho bits podemos representar hasta $2^8=256$ números distintos. Éstos irían desde el $[00000000]=0$ hasta el $[11111111]=255$. Si partimos nuestra colección de números en dos, podríamos emplear la primera mitad para representar números negativos, reservando el mayor de ellos para representar el cero, y la segunda para representar números positivos. Para obtener el valor de un número basta restar al contenido del exponente el número reservado para representar el cero. Se dice entonces que la representación se realiza \emph{en exceso} a dicho número.
 
 En el caso del estándar de simple precisión la primera mitad de los números disponibles iría del 0 al 127 y la segunda mitad del 128 al 255. La representación se realiza entonces en exceso a 127. La tabla \ref{tabex} muestra unos cuanto ejemplos de cálculo de la representación \emph{en exceso}.
+\end{paracol}
+
 \begin{table}
 \centering
 \begin{tabular}{ccc}
@@ -344,6 +401,7 @@ $11111111$&$255$&$255-127=128$\\
 \label{tabex}
 \end{table}
 
+\begin{paracol}{2}
 Tenemos por tanto que el exponente de 8 bits del estándar de precisión simple permite representar todos los exponentes enteros desde el -127 al 128.
 
 Ya tenemos casi completa la descripción del éstandar. Solo faltan unos detalles --aunque muy importantes-- relativos a la representación de números muy grandes y muy pequeños. Empecemos con los números muy grandes.
@@ -353,12 +411,11 @@ Ya tenemos casi completa la descripción del éstandar. Solo faltan unos detalle
 \begin{itemize}
 \item Si los bits de la mantisa son todos cero, el registro contiene la representación del infinito $\infty$.  El estándar específica el resultado de algunas operaciones en el infinito: $1/\infty=0$, $\arctan(\infty)=\pi/2$. 
 
-\item \index{NaN} \index{Not a Number} Si por el contrario, el contenido de la mantisa es distinto de cero, se considera el contenido del registro como no numérico (NaN, abreviatura en ingles de \emph{Not a Number}). Este tipo de resultados, considerados no numéricos, surgen en algunas operaciones que carecen de sentido matémático: $0/0, \ \infty\times0,\ \infty -\infty$.  
-
-\end{itemize}
+\item \index{NaN} \index{Not a Number} Si por el contrario, el contenido de la mantisa es distinto de cero, se considera el contenido del registro como no numérico (NaN, abreviatura en ingles de \emph{Not a Number}). Este tipo de resultados, considerados no numéricos, surgen en algunas operaciones que carecen de sentido matémático: $0/0, \ \infty\times0,\ \infty -\infty$. \end{itemize}
 
 Todo esto hace que el exponente mayor que realmente representa un número sea el 127. \index{IEEE 754! número más grande representable en simple precisión} Como ejemplo podemos construir el número más grande que podemos representar distinto de infinito. Se trata del número con la mantisa más grande posible, una mantisa formada exclusivamente por unos, seguida por el exponente más grande posible. El exponente mas grande en exceso es 127, que corresponde a un exponente en binario $127+127=254 \equiv [11111110]$. Por tanto el número se representaría como,
-
+\end{paracol}
+\ \\
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -367,11 +424,14 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \hline
 \end{tabular}\\
 
+\begin{paracol}{2}
 En base 10 el número representado sería, $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{127}\approx 3.402823466385289\times10^{38}$. Donde hemos representado en negrita el 1 implícito, no presente en la mantisa.
  
 Veamos ahora los números mas pequeños, de acuerdo con lo dicho, el número más próximo a cero que podríamos construir sería aquel que tuviera la mantisa más pequeña y el exponente más pequeño, es decir una mantisa formada solo por ceros y un exponente formado solo por ceros. Ese número sería $(1\cdot 2^0)\cdot2^{-127}$ (se debe recordar que la mantisa en la representación del estándar esta normalizada; lleva un 1 entero implícito). 
 
-\index{IEEE 754! Números desnormalizados} Es evidente que si no fuera por el 1 implícito de la mantisa sería posible representar números aún más pequeños. Por otro lado, si consideramos siempre la mantisa como normalizada, es imposible representar el número 0. Para permitir la representación de números más pequeños, incluido el cero, los desarrolladores del estándar decidieron añadir la siguiente regla: \emph{Si los bits del exponente de un número son todos ceros, es decir, si el exponente representado es -127, se considera que la mantisa de ese número \textbf{no} lleva un 1 entero implícito. Además el  exponente del número se toma como -126}. Los números así representados reciben el nombre de números desnormalizados. Veamos algunos ejemplos.\\
+\index{IEEE 754! Números desnormalizados} Es evidente que si no fuera por el 1 implícito de la mantisa sería posible representar números aún más pequeños. Por otro lado, si consideramos siempre la mantisa como normalizada, es imposible representar el número 0. Para permitir la representación de números más pequeños, incluido el cero, los desarrolladores del estándar decidieron añadir la siguiente regla: \emph{Si los bits del exponente de un número son todos ceros, es decir, si el exponente representado es -127, se considera que la mantisa de ese número \textbf{no} lleva un 1 entero implícito. Además el  exponente del número se toma como -126}. Los números así representados reciben el nombre de números desnormalizados. Veamos algunos ejemplos.
+\end{paracol}
+\ \\
 
 \begin{tabular}{|c||c||c|}
 \hline
@@ -381,14 +441,17 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \hline
 \end{tabular}\\
 
+\begin{paracol}{2}
 El exponente del número representado en la tabla anterior es 0. Por tanto, en exceso a 127 el exponente sería $0-127=-127$. Este exponente corresponde a un número desnormalizado por tanto el número expresado en base 10 sería,
+\end{paracol}
 \begin{equation*}
 (1\cdot 2^{-1}+ 0\cdot 2^{-2}+1\cdot2^{-3}+0\cdots)\times2^{-126}
 \end{equation*}
-
+\begin{paracol}{2}
 Nótese como el exponente ha sido reducido en una unidad ($-126$) a la hora de calcular la representación decimal del número.
 
 \index{IEEE 754! Número desnormalizado más próximo a cero en simple precisión} El número más próximo a cero que podemos representar mediante números desnormalizados, será aquel que tenga la menor mantisa posible distinta de cero,\\ 
+\end{paracol}
 
 \begin{tabular}{|c||c||c|}
 \hline
@@ -398,7 +461,9 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \hline
 \end{tabular}\\
 
+\begin{paracol}{2}
 que representado en base 10 sería el número: $(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$. Podemos calcular para comparar cual sería el número normalizado más próximo a cero, se trata del número que tiene una mantisa formada solo por ceros, multiplicada por el exponente más pequeño distinto de cero (un exponente igual a cero, implica automáticamente un número desnormalizado),\\ 
+\end{paracol}
 
 \begin{tabular}{|c||c||c|}
 \hline
@@ -408,10 +473,12 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \hline
 \end{tabular}\\
 
- Si lo representamos en formato decimal obtenemos: $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}=2^{-126}\approx   1.175494350822288\times10^{-38}$
+\begin{paracol}{2}
+Si lo representamos en formato decimal obtenemos: $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}=2^{-126}\approx   1.175494350822288\times10^{-38}$
 
 Como un último ejemplo, podemos calcular cual es el número desnormalizado más grande. Debería tener la mantisa más grande posible (todo unos) con un exponente formado exclusivamente por ceros,
- 
+\end{paracol}
+\ \\
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
