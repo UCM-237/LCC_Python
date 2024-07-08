@@ -1577,7 +1577,7 @@ array([[ 1.29166667, -0.58333333, -0.04166667],
 \end{minipage}
 \end{center}
 \begin{flalign*}
-&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+&\mathwitch*_{i=0}^{\infty}\Xi_i(t) \lbrace &     
 \end{flalign*}
 \begin{paracol}{2}
 La inversa de una matriz puede obtenerse a partir de la expresión,
@@ -1603,7 +1603,7 @@ linenos
 ]{python}{./codigos/Algebra/codigo_abierto/inversa.py}
 
 \begin{flalign*}
-&&\reversemathwitch*
+&&\rbrace \reversemathwitch*
 \end{flalign*}
 
 \begin{paracol}{2}
@@ -2522,7 +2522,7 @@ x\cdot A_s\cdot >0, \forall x \neq 0 \Rightarrow x\cdot A\cdot >0, \forall x \ne
 \end{equation*}
 
 \begin{flalign*}
-&&\left. \right\rbrace \reversemathwitch*
+&&\rbrace \reversemathwitch*
 \end{flalign*}
 
 \begin{paracol}{2}
@@ -3035,7 +3035,7 @@ $\lambda$ recibe el nombre de autovalor, o valor propio de la matriz $A$ asociad
 \switchcolumn
 Namely, the result of multiply matrx $A$ for its eigenvector $x$ is equal to multiply the number, $\lambda$ for the eigen vector. $x$ and $\lambda$ could be real or complex.
 
-$\lambda$ is call de eigenvalue or characterirstic values of the matrix $A$, asociated to the eigenvector $x$. For example,`
+$\lambda$ is call de eigenvalue or characteristic values of the matrix $A$, associated to the eigenvector $x$. For example,`
 \end{paracol}
 \begin{equation*}
 A= \begin{pmatrix}
@@ -3046,7 +3046,9 @@ A= \begin{pmatrix}
 \end{equation*}
 
 \begin{paracol}{2}
-tiene un autovalor $\lambda=3$ para el vector propio, $x=[0,\  -3,\  3]^T$ ,
+tiene un autovalor $\lambda=3$ para el vector propio $x=[0,\  -3,\  3]^T$ ,
+\switchcolumn
+It has an eigenvalue $\lambda=3$ for the eigenvector $x=[0,\  -3,\  3]^T$ ,
 \end{paracol}
 
 \begin{equation*}
@@ -3070,19 +3072,25 @@ tiene un autovalor $\lambda=3$ para el vector propio, $x=[0,\  -3,\  3]^T$ ,
 \end{equation*}
 \begin{paracol}{2}
 El vector propio asociado a un valor propio no es único, si $x$ es un vector propio de una matriz $A$, asociado a un valor propio $\lambda$, Es trivial comprobar que cualquier vector de la forma $\alpha\cdot x, \ \alpha \in \mathbb{C}$ también es u vector propio asociado a $\lambda$,
+\switchcolumn
+There is not a single eigenvector associated to an eigenvalue, if $x$ is an eigenvector of a matrix $A$, associated to an eigenvalue $\lambda$, It is easy to check that any other vector that we build as $\alpha \cdot x, \ \alpha \in \mathbb{C}$ is also an eigenvector associated to $\lambda$, 
 \end{paracol}
 \begin{equation}
 A\cdot x= \lambda x \Rightarrow A \cdot \alpha x = \lambda  \alpha x
 \end{equation}
 \begin{paracol}{2}
 El conjunto de todos los autovalores de una matriz $A$ recibe el nombre de espectro de $A$ y se representa como $\Lambda(A)$.
-Una descomposición en autovalores de una matriz $A$ se define como.
+Una descomposición en autovalores de una matriz $A$ se define como,
+\switchcolumn
+ we define the set of all eigenvalues of a matrix $A$ as the spectrum of $A$ and we represented it as $\Lambda(A)$. The eigendecomposition of a matrix $A$ is defined as,
 \end{paracol}
 \begin{equation*}
 A=X\cdot D \cdot X^{-1}
 \end{equation*}
 \begin{paracol}{2}
 Donde $D$ es una matriz diagonal formada por los autovalores de $A$. 
+\switchcolumn
+Where $D$ is a diagonal matrix built using the eigenvalues of $A$.
 \end{paracol}
 \begin{equation*}
 \begin{pmatrix}
@@ -3093,12 +3101,18 @@ Donde $D$ es una matriz diagonal formada por los autovalores de $A$.
 \end{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
-Esta descomposición no siempre existe. 
+Esta descomposición no siempre existe.  
+\switchcolumn
+The eigendescomposition does not always exist.  
 \end{paracol}
 \begin{flalign*}
-&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+&\mathwitch*_{i=0}^{\infty}\Xi_i(t)\lbrace &     
 \end{flalign*}
+\begin{paracol}{2}
 En general, si dos matrices $A$ y $B$ cumplen,
+\switchcolumn
+In general, if two matrices $A$ and $B$ satisfy,
+\end{paracol}
 \begin{equation*}
 A=X\cdot B \cdot X^{-1}
 \end{equation*}
@@ -3106,6 +3120,10 @@ A=X\cdot B \cdot X^{-1}
 se dice de ellas que son similares. A la transformación que lleva a convertir $B$ en $A$ se le llama una transformación de semejanza. Una matriz es diagonalizable cuando admite una transformación de semejanza con una matriz diagonal de autovalores. 
 
 Volviendo al ejemplo anterior podemos factorizar la matriz $A$ como,
+\switchcolumn
+Their a similar matrices. The transformation that convert $A$ into $B$ is denoted a similarity transformation. A matrix is diagonalisable when there is a similarity transformation that converts it in a diagonal matrix formed by its eigenvalues.
+
+Coming back to the previous example we can factorise matrix $A$ as, 
 \end{paracol}
 
 \begin{equation*}
@@ -3129,6 +3147,8 @@ A= \begin{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
 Por tanto en este ejemplo, los autovalores de $A$ serían $\lambda_1=-2$, $\lambda_2=2$ y $\lambda_3=3$. Para estudiar la composición de la matriz $X$ Reescribimos la expresión de la relación de semejanza de la siguiente manera,
+\switchcolumn
+So, in this example the $A$ eigenvectors would be $\lambda_1=-2$, $\lambda_2=2$ and $\lambda_3=3$. To study the structure of matrix $X$, we rewrite the similarity relashionship as follows,
 \end{paracol}
 
 \begin{equation*}
@@ -3136,6 +3156,8 @@ Por tanto en este ejemplo, los autovalores de $A$ serían $\lambda_1=-2$, $\lamb
 \end{equation*}
 \begin{paracol}{2}
 Si consideramos ahora cada columna de la matriz $X$ como un vector,
+\switchcolumn
+Now, we can consider each column of matrix $X$ as a vector,
 \end{paracol}
 \begin{equation*}
 A\cdot X= X\cdot D \rightarrow A\cdot \left( x_1 | x_2 | \cdots | x_n \right)= \left( x_1 | x_2 | \cdots | x_n \right) \cdot\begin{pmatrix}
@@ -3147,6 +3169,8 @@ A\cdot X= X\cdot D \rightarrow A\cdot \left( x_1 | x_2 | \cdots | x_n \right)= \
 \end{equation*}
 \begin{paracol}{2}
 Es fácil comprobar que si consideramos el producto de la matriz $A$, por cada una de las columnas de la matriz $X$ se cumple,
+\switchcolumn
+It is easy to check that the product of matrix $A$ by each column of matrix $X$ satisfy, 
 \end{paracol}
 \begin{align*}
 A\cdot x_1 &=\lambda_1 \cdot x_1 \\
@@ -3156,19 +3180,28 @@ A\cdot x_n &=\lambda_n \cdot x_n \\
 \end{align*}
 \begin{paracol}{2}
 Lo que nos lleva a que cada columna de la matriz $X$ tiene que ser un autovector de $A$ puesto que cumple,
+\switchcolumn
+But then, each column of matrix $x$ must be an eigenvector of $A$ because they satisfy,
 \end{paracol}
 \begin{equation*}
 A\cdot x_i =\lambda_i \cdot x_i \\
 \end{equation*}
 \begin{paracol}{2}
-En realidad, cada vector propio expande un subespacio $E_{\lambda}S$ de $\mathbf{R}^n$. Aplicar la matriz $A$, a un vector de $E_{\lambda}S$ es equivalente a multiplicar el vector por $\lambda$. Cada subespacio asociado a un autovalor recibe el nombre de autosubespacio o subespacio propio. 
-\paragraph{Polinomio característico.} El polinomio característico de una matriz $A$ de dimensión $n\cdot n$, se define como,
+En realidad, cada valor propio expande un subespacio $E_{\lambda}S$ de $\mathbf{C}^n$. Aplicar la matriz $A$, a un vector de $E_{\lambda}S$ es equivalente a multiplicar el vector por $\lambda$. Cada subespacio asociado a un autovalor recibe el nombre de autosubespacio o subespacio propio.
+
+\paragraph{Polinomio característico.} El polinomio característico de una matriz $A$ de dimensión $n\times n$, se define como,
+
+\switchcolumn
+Actually, each eigenvalue expand a subspace $E_{\lambda}S$ of $\mathbf{C}^n$. To apply matrix $A$ to a vector in $E_{\lambda}S$  is identical to multiply the eigenvector by $\lambda$. Each subspace associated to an eigenvector is called an eigensubspace.
+\paragraph{Characteristic polynomial.} The characteristic polynomial of a matrix $A$ with dimensions $n\times n$, is defined as, 
 \end{paracol}
 \begin{equation*}
 P_A(z)=det(zI-A)
 \end{equation*}
 \begin{paracol}{2}
-Donde $I$ es a matriz identidad de dimensión $n \cdot n$. Así por ejemplo para una matriz de dimensión $2\cdot 2$,
+Donde $I$ es a matriz identidad de dimensión $n \times n$. Así por ejemplo para una matriz de dimensión $2\times 2$,
+\switchcolumn
+Where $I$ is the $n\times n$ identity matrix . For instance, for a matrix with dimensions $2\times 2$,
 \end{paracol}
 \begin{align*}
 P_A(z)=&det\left(z\cdot \begin{pmatrix}
@@ -3186,18 +3219,29 @@ z-a_{11}& -a_{12}\\
 \end{align*}
 \begin{paracol}{2}
 Los autovalores $\lambda$ de una matriz $A$ son las raíces del polinomio característico de la matriz $A$,
+\switchcolumn
+The eigenvalues $\lambda$ of matrix $A$ are the roots of the  characteristic polynomial of matrix $A$.
 \end{paracol}
 \begin{equation*}
 p_A(\lambda)=0
 \end{equation*}
 \begin{paracol}{2}
-Las raíces de un polinomio pueden ser simples o múltiples, es decir una mima raíz puede repetirse varias veces. Por tanto, los autovalores de una matriz, pueden también repetirse. Se llama multiplicidad algebraica de un autovalor al número de veces que se repite.
+Las raíces de un polinomio pueden ser simples o múltiples, es decir una misma raíz puede repetirse varias veces. Por tanto, los autovalores de una matriz, pueden también repetirse. Se llama multiplicidad algebraica de un autovalor al número de veces que se repite.
 
 Además las raíces de un polinomio pueden ser reales o complejas. Para una matriz cuyos elementos son todos reales, si tiene autovalores complejos estos se dan siempre como pares de números complejos conjugados. Es decir si $\lambda =a+bi$ es un autovalor entonces $\lambda^*=a-bi$ también lo es.
 
 Veamos algunos ejemplos:
 
 La matriz,
+
+\switchcolumn
+The roots of a polynomial may be single of multiple that is the same root can be repeated several times. So, the autovalues of a matrix can also be repeated.
+
+Besides, the roots of a polynomial may be real or complex. For a matrix with real elements, if it has complex eigenvalues their al always pairs complex conjugated numbers. That is, if $\lambda =a+bi$ is an eigenvalue then $\lambda^*=a-bi$ is also an eigenvalue.
+
+Let's have a look to some examples:
+
+The matrix, 
 \end{paracol}
 \begin{equation*}
 A=\begin{pmatrix}
@@ -3207,6 +3251,8 @@ A=\begin{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
 Tiene como polinomio característico,
+\switchcolumn
+has characteristic polynomial, 
 \end{paracol}
 \begin{equation*}
 P_A(z)=\left\vert\begin{matrix}
@@ -3216,6 +3262,8 @@ z-3& -2\\
 \end{equation*}
 \begin{paracol}{2}
 Igualando el polinomio característico a cero y obteniendo las raíces de la ecuación de segundo grado resultante, obtenemos los autovalores de la matriz $A$,
+\switchcolumn
+If we equals the characteristic polynomial to zero and compute the roots of the resulting quadratic equation, we obtain the eigenvalues of matrix $A$
 \end{paracol}
 \begin{equation*}
 \lambda^2-\lambda-2=0 \rightarrow \left\{ 
@@ -3227,6 +3275,8 @@ Igualando el polinomio característico a cero y obteniendo las raíces de la ecu
 \end{equation*}
 \begin{paracol}{2}
 Un vector propio asociado a $\lambda_1=2$ sería $x_1=[2,\  -1]^T$,
+\switchcolumn
+An associated eigenvector to $\lambda_1=2$  would be $x_1=[2,\  -1]^T$,
 \end{paracol}
 \begin{equation*}
 \begin{pmatrix}
@@ -3245,6 +3295,8 @@ Un vector propio asociado a $\lambda_1=2$ sería $x_1=[2,\  -1]^T$,
 \end{equation*}
 \begin{paracol}{2}
 y un vector propio asociado a $\lambda_2=-1$ sería $x_2=[1\ -2]^T$,
+\switchcolumn
+An an associated vector to $\lambda_2=-1$ would be $x_2=[1\ -2]^T$,
 \end{paracol}
 \begin{equation*}
 \begin{pmatrix}
@@ -3263,6 +3315,8 @@ y un vector propio asociado a $\lambda_2=-1$ sería $x_2=[1\ -2]^T$,
 \end{equation*}
 \begin{paracol}{2}
 La matriz,
+\switchcolumn
+the matrix,
 \end{paracol}
 \begin{equation*}
 B=\begin{pmatrix}
@@ -3271,7 +3325,9 @@ B=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
-Tiene como polinomio característico,
+tiene como polinomio característico,
+\switchcolumn
+has charasteristic polynomial, 
 \end{paracol}
 \begin{equation*}
 P_B(z)=\left\vert\begin{matrix}
@@ -3281,6 +3337,8 @@ z-4& -1\\
 \end{equation*}
 \begin{paracol}{2}
 procediendo igual que en el caso anterior, obtenemos los autovalores de la matriz $B$,
+\switchcolumn
+repeating the same procedure as in the previous example, we obtain the eigenvalues of matrix $B$,
 \end{paracol}
 \begin{equation*}
 \lambda^2-6\lambda+9=0 \rightarrow \left\{ 
@@ -3294,6 +3352,10 @@ procediendo igual que en el caso anterior, obtenemos los autovalores de la matri
 En este caso, hemos obtenido para el polinomio característico una raíz doble, con lo que obtenemos un único autovalor $\lambda=3$ de multiplicidad algebraica $2$.
 
 La matriz,
+\switchcolumn
+In this case, we obtain a double root for the characteristic polynomial so, we get a single eigenvector with algebraic multiplicity $2$. 
+
+Matrix,
 \end{paracol}
 \begin{equation*}
 C=\begin{pmatrix}
@@ -3303,6 +3365,8 @@ C=\begin{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
 tiene como polinomio característico,
+\switchcolumn
+has characteristic polynomial,
 \end{paracol}
 \begin{equation*}
 P_C(z)=\left\vert\begin{matrix}
@@ -3312,6 +3376,8 @@ z-2& 1\\
 \end{equation*}
 \begin{paracol}{2}
 Con lo que sus autovalores resultan ser dos números complejos conjugados,
+\switchcolumn
+So, its eigenvalues are two complex conjugate numbers.
 \end{paracol}
 \begin{equation*}
 \lambda^2-4\lambda+5=0 \rightarrow \left\{ 
@@ -3325,6 +3391,11 @@ Con lo que sus autovalores resultan ser dos números complejos conjugados,
 Para que una matriz $A$ de orden $n\times n$ sea diagonalizable es preciso que cada autovalor tenga asociado un número de autovectores linealmente independientes, igual a su multiplicidad algebraica. La matriz $B$ del ejemplo mostrado más arriba tiene tan solo un autovector, $x=[1,\ 1]^T$ asociado a su único autovalor de multiplicidad $2$. No es posible encontrar otro linealmente independiente; por lo tanto $B$ no es diagonalizable. 
 
 La matriz,
+
+\switchcolumn
+For an $A$ matrix of dimension $n times n$ be diagonalisable it is necessary that any eigenvalue has a number of linearly independent eigenvector that meet its algebraic multiplicity. Matrix $B$ in the example showed above has a single eigenvector, $x=[1,\ 1]^T$ associated to its single eigenvalue of multiplicity $2$; thus, it is impossible to find another eigenvector linearly independent and $B$ is not a diagonalisable matrix.
+
+The matrix,  
 \end{paracol}
 \begin{equation*}
 G=\begin{pmatrix}
@@ -3335,6 +3406,8 @@ G=\begin{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
 Tiene un autovalor $\lambda_1=3$, de multiplicidad $2$, y un autovalor $\lambda_2=1$ de multiplicidad $1$. Para el autovalor de multiplicidad $2$ es posible encontrar dos autovectores linealmente independientes, por ejemplo: $x_1=[1,\ 0,\ 0]^T$ y $x_2=[0,\ 1,\ 0]^T$. Para el segundo autovalor un posible autovector sería, $x_3=[-2,\ 0,\ 1]^T$. Es posible por tanto diagonalizar la matriz $G$,
+\switchcolumn
+has an eigenvalue $\lambda_1=3$, with multiplicity $2$, and an eigenvalue $\lambda_2=1$ with multiplicity $1$. It is possible to find to linearly independent vectors for the eigen vector of multiplicity $2$, for example: $x_1=[1,\ 0,\ 0]^T$ y $x_2=[0,\ 1,\ 0]^T$. A possible eigenvector for the second eigenvalues may be, $x_3=[-2,\ 0,\ 1]^T$. Thus, it is possible to diagonalise matrix $G$,
 \end{paracol}
 \begin{equation*}
 G=\begin{pmatrix}
@@ -3356,12 +3429,16 @@ G=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 \begin{flalign*}
-&&\reversemathwitch*
+&&\rbrace \reversemathwitch*
 \end{flalign*}
 \begin{paracol}{2}
 \paragraph{Propiedades asociadas a los autovalores.} \label{resp} Damos a continuación, sin demostración, algunas propiedades de los autovalores de una matriz,
 
 1. La suma de los autovalores de una matriz, coincide con su traza,
+\switchcolumn	
+\paragraph{Eigenvalues associated properties} We include below, without proofs, some properties of a matrix eigenvalues
+
+1. the addition of the eigenvalues of a matrix equals the matrix trace.
 \end{paracol}
 \begin{equation*}
 \text{tr}(A)=\sum_{i=1}^n \lambda_i
@@ -3369,12 +3446,16 @@ G=\begin{pmatrix}
 
 \begin{paracol}{2}
 2. El producto de los autovalores de una matriz coincide con su determinante,
+\switchcolumn
+2. the product of the eigenvalues of a matrix equals the matrix determinant
 \end{paracol}
 \begin{equation*}
 \left\vert A \right\vert = \prod_{i=1}^n \lambda_i
 \end{equation*} 
 \begin{paracol}{2}
 3. Cuando los autovectores de una matriz $A$ son ortogonales entre sí, entonces la matriz $A$ es diagonalizable ortogonalmente,
+\switchcolumn
+3. Wen the eigenvector of a matrix $A$ are orthogonal among them, then matrix $a$ is orthogonally diagonalisable
 \end{paracol}
 \begin{equation*}
 A=Q\cdot D \cdot Q^{-1}; \ Q^{-1}=Q^T \Rightarrow A=Q\cdot A \cdot Q^T
@@ -3383,6 +3464,11 @@ A=Q\cdot D \cdot Q^{-1}; \ Q^{-1}=Q^T \Rightarrow A=Q\cdot A \cdot Q^T
 Cualquier matriz simétrica posee autovalores reales y es diagonalizable ortogonalmente. En general, una matriz es diagonalizable ortogonalmente si es normal: $A\cdot A^T=A^T\cdot A$
 
 4. El mayor de los autovalores en valor absoluto, de una matriz $A$ de orden $n$.  recibe el nombre de \emph{radio espectral} de dicha matriz,
+
+\switchcolumn
+Any symmetric matrix has real eigenvalues and is orthogonally diagonalisable. IN general, a matrix  is ortogonally diagonalizable if it is normal:  $A\cdot A^T=A^T\cdot A$
+
+4. The maximum absolute value of a $n\times n$ matrix $A$ eigenvalues is called the spectral radius of matrix $A$.  
 \end{paracol}
 
 \begin{equation*}
@@ -3391,7 +3477,9 @@ Cualquier matriz simétrica posee autovalores reales y es diagonalizable ortogon
 
 
 \begin{paracol}{2}
-Numpy incluye en el submodulo \mintinline{python}{linalg} la función \mintinline{python}{eig} para calcular los autovectores y autovalores de una matriz. esa función admite como variable de entrada una matriz cuadrada de dimensión arbitraria y devuelve como variable de salida un vector con los autovalores de la matriz de entrada y una matriz cuadrada en la que cada columna corresponde a un autovalor. A continuación, se muestran dos formas distintas de llamar a la función \mintinline{python}{eig}. En la línea \mintinline{python}{In [281]} se ha realizado la operación $X\cdot D \cdot X^{-1}$ para comprobar que se cumple que coincide con la matriz $A$.
+Numpy incluye en el submodulo \mintinline{python}{linalg} la función \mintinline{python}{eig} para calcular los autovectores y autovalores de una matriz. Esta función admite como variable de entrada una matriz cuadrada de dimensión arbitraria y devuelve como variable de salida un vector con los autovalores de la matriz de entrada y una matriz cuadrada en la que cada columna corresponde a un autovalor. A continuación, se muestran dos formas distintas de llamar a la función \mintinline{python}{eig}. En la línea \mintinline{python}{In [281]} se ha realizado la operación $X\cdot D \cdot X^{-1}$ para comprobar que se cumple que coincide con la matriz $A$.
+\switchcolumn
+Numpy includes, in the submodule \mintinline{python}{linalg}, the function \mintinline{python}{eig} to calculate the eigenvalues and eigenvector of a matrix. Function \mintinline{python}{eig} takes a square matrix of arbitrary dimensions as input and returns a vector with the eigenvalues of the input matrix and a square matrix, each of its column is an eigenvector. We show next two different ways of calling function \mintinline{python}{eig}. In line \mintinline{python}{In [281]} we computed the operation $X\cdot D \cdot X^{-1}$ to check that the results coincides with matrix $A$.
 \end{paracol}
 \begin{center}
     \begin{minipage}{\textwidth}
@@ -3416,7 +3504,12 @@ array([[-0.5482369 , -0.40905141, -0.34168564,  0.53836293],
        [-0.54561146,  0.43962336,  0.2152735 ,  0.04314365]])
 
 In [277]: Results = np.linalg.eig(A)
-
+\end{minted}    
+\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+\begin{minted}{python}
 In [278]: Results
 Out[278]: 
 EigResult(eigenvalues=array([10.71154715, -4.45608147,  0.70096017,
@@ -3435,14 +3528,10 @@ array([[-0.5482369 , -0.40905141, -0.34168564,  0.53836293],
        [-0.63104339, -0.60944455,  0.78709433, -0.82325502],
        [-0.54561146,  0.43962336,  0.2152735 ,  0.04314365]])
 
-
-In [281]: autovectores@np.diag(autovalores)@np.linalg.inv(autovectores)
-\end{minted}    
-    \end{minipage}
-\end{center}
 \begin{center}
-    \begin{minipage}{0.9\textwidth}
-    \begin{minted}{python}
+	\begin{minipage}{\textwidth}
+		\begin{minted}{python}
+In [281]: autovectores@np.diag(autovalores)@np.linalg.inv(autovectores)
 Out[281]: 
 array([[ 3.00000000e+00,  4.00000000e+00,  2.00000000e+00,
          5.00000000e+00],
@@ -3460,13 +3549,18 @@ array([[ 3.00000000e+00,  4.00000000e+00,  2.00000000e+00,
 
 \begin{paracol}{2}
 \subsection{Factorización QR} \label{QR}
-La idea es factorizar una matriz $A$ en el producto de dos matrices; una matriz ortogonal $Q$ y una matriz triangular superior R.
+La idea es factorizar una matriz $A$ en el producto de dos matrices; una matriz ortogonal $Q$ y una matriz triangular superior $R$.
+\switchcolumn
+\subsection{QR Factorisation}
+The objetive of QR factorisation is to divide a matriz $A$ in the product of two matrices; one of then an orthogonal matrix $Q$ and the other one an upper triangular matrix $R$.
 \end{paracol}
 \begin{equation*}
 A=Q\cdot R, \leftarrow Q\cdot Q^T=I
 \end{equation*}
 \begin{paracol}{2}
 No vamos tampoco a ver en detalle como se calcula la factorización QR. Podemos calcularla empleando la función de Numpy, incluida en el submodulo \mintinline{python}{linalg}, \mintinline{python}{[Q,R]=qr(A)},
+\switchcolumn
+We are not going to get into details on how to calculate a QR factorisation. We can use a Numpy function included in submodule \mintinline{python}{linalg}, \mintinline{python}{[Q,R]=qr(A)},
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.7\textwidth}
@@ -3474,7 +3568,12 @@ No vamos tampoco a ver en detalle como se calcula la factorización QR. Podemos 
 In [287]: A = np.array([[1,-2,4],[2,5,3],[1,3,-3]])
 
 In [288]: [Q,R] = np.linalg.qr(A)
-
+\end{minted}    
+\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+\begin{minted}{python}
 In [289]: Q@Q.T
 Out[289]: 
 array([[1.00000000e+00, 2.56739074e-16, 8.32667268e-17],
@@ -3558,6 +3657,8 @@ array([[1., 3., 4.],
 
 \begin{paracol}{2}
 Como la matriz $A$ tiene más filas que columnas, la matriz $S$ resultante termina con una fila de ceros.
+\switchcolumn
+Matrix $A$ has more rows that columns. For this reason, matrix $S$ ends with a row of zeros. 
 \end{paracol}
 
 \begin{paracol}{2}
@@ -3567,6 +3668,15 @@ A continuación enunciamos sin demostración algunas propiedades de la factoriza
 
 2. La norma-2 inducida de una matriz $A$ coincide con su valor singular mayor $\sigma_1$.
 3. La norma de Frobenius de una matriz $A$ cumple:
+
+\switchcolumn
+Next, we include without demonstrations some SVD factorisation properties.
+
+1. The rank of a matrix $A$ coincides with the number of its non-zero singular values.
+
+2. The induced 2-norm of a matrix $A$ is equal to its largest singular value $\sigma_1$.
+
+3. The Frobenius norm of matrix satisfies,
 \end{paracol}
 
 \begin{equation*}
@@ -3574,24 +3684,35 @@ A continuación enunciamos sin demostración algunas propiedades de la factoriza
 \end{equation*}
 
 \begin{paracol}{2}
-4. Los valores singulares de una matriz $A$ distintos de cero son iguales a la raíz cuadrada positiva de los autovalores distintos de cero de las matrices $A\cdot A^T$ ó $A^T\cdot A$. (los autovalores distintos de cero de estas dos matrices son iguales),
+4. Los valores singulares de una matriz $A$ distintos de cero son iguales a la raíz cuadrada positiva de los autovalores distintos de cero de las matrices $A\cdot A^T$ ó $A^T\cdot A$. (Los autovalores distintos de cero de estas dos matrices son iguales),
+
+\switchcolumn
+4. The non-zero singular values of a matrix $A$ are equal to the positive square root of the non-zero eigen values of the matrices $A\cdot A^T$ ó $A^T\cdot A$. (The non-zero eigenvalues of these matrix are equal by obvious reasons),
 \end{paracol}
 \begin{equation*}
 \sigma_i^2=\lambda_i(A\cdot A^T)=\lambda_i(A^T\cdot A)
 \end{equation*}
 \begin{paracol}{2}
 5. El valor absoluto del determinante de una matriz cuadrada $A$,$n\times n$, coincide con el producto de sus valores singulares,
+
+\switchcolumn
+5. The absolute value of a square $n\ times n$ matrix $A$ determinant its equal to the product of the matrix singular values. 
 \end{paracol}
 \begin{equation*}
 \vert \det(A) \vert = \prod_{i=1}^n \sigma_i
 \end{equation*}
 \begin{paracol}{2}
 6. El número de condición de una matriz cuadrada $A$ $n\cdot n$, que se define como el producto de la norma-2 inducida de $A$ por la norma-2 inducida de la inversa de $A$, puede expresarse como el cociente entre el el valor singular mayor de $A$ y su valor singular más pequeño,
+
+\switchcolumn
+6. The condition number of a square $n\times n$ matrix $A$, which is defined as the product of the $A$ induced 2-norm by the induced 2-norm of the inverse of $A$, may be expressed as the quotient between the largest singular value of $A$ and its lower singular value,
 \end{paracol}
 \begin{equation*}
 k(A)=\lVert A \rVert_2 \cdot \lVert A^{-1} \rVert_2 = \sigma_1 \cdot \frac{1}{\sigma_n}=\frac{\sigma_1}{\sigma_n}
 \end{equation*}
 \begin{paracol}{2}
 El número de condición de una matriz, es una propiedad importante que permite estimar cómo de estables serán los cálculos realizados empleando dicha matriz, en particular aquellos que involucran directa o indirectamente el cálculo de su inversa.
+\switchcolumn
+The condition number of a matrix, is very useful property that allows us to estimate how stable will be the operations performed using the matrix, i particular, those  operations with involve directly or indirectly the computing of the matrix inverse.
 \end{paracol}
 
