@@ -2739,7 +2739,8 @@ The description of method to calculate a matrix LU factorization is far beyond t
 
 Sometimes obtaining directly the LU factorization of a matrix, leads to numerically instable calculations. This, in turn, affect the results precision. One way to overcome this problem is to permute some rows of the matrix we intend to factorize and then, to factorize the permuted version.
 
-  
+We can define the rows permutation of $A$ matrix of dimensions $n\times m$ multiplying the matrix by permutation matrices of dimensions $n\times n$. We obtain these last permuting the rows of the identity matrix $I_{n\times n}$.  When a permutation matrix multiplies another matrix by it left side, it permutes the order of the matrix rows. By contrast, if the permutation matrix multiplies another matrix by ts right, it permutes the order of the matrix columns. For instance, for matrix of dimensions $3\times n$, 
+
 \end{paracol}
 \begin{equation*}
 I_{n \times n}=\begin{pmatrix}
@@ -2754,6 +2755,8 @@ I_{n \times n}=\begin{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
 Si multiplicamos $P_{1 \leftrightarrow 3}$ con cualquier otra matriz $A$ de orden $3\times n$, El resultado es equivalente a intercambiar en la matriz $A$ la fila $1$ con la $3$. Por ejemplo,
+\switchcolumn
+If we multiply $P_{1\leftrightarrow 3}$ by any other matrix $A$ of dimensions $3\times n$, the result is equivalent to interchange row 1 and 3. For example, 
 \end{paracol}
 \begin{equation*}
 P_{1\leftrightarrow 3}\cdot A=\begin{pmatrix}
@@ -2872,7 +2875,9 @@ P_{1\leftrightarrow 3}\cdot A=\begin{pmatrix}
 % \overbrace{P_{n-1}P_{n-2} \cdots P_2  P_1}^{P}\cdot  A= \overbrace{\lambda_1'^{-1} \lambda_2'^{-2} \cdots \lambda_{n-2}'^{-1} \lambda_{n-1}'^{-1}}^{L}\cdot \overbrace{\lambda_{n-1}P_{n-1}\lambda_{n-2}P_{n-2} \cdots  \lambda_2  P_2 \lambda_1  P_1 A }^{U}   
 % \end{equation*}
 \begin{paracol}{2}
-Como ejemplo, vamos a calcular la factorización LU de la matriz,
+Volviendo a la factorización LU, vamos a ver como se calcularía para la siguiente matriz,	
+\switchcolumn
+Coming back to LU factorization, we are going to calculate it for the following matrix,
 \end{paracol}
 \begin{equation*}
 A=\begin{pmatrix}
@@ -2882,231 +2887,14 @@ A=\begin{pmatrix}
 5& 2& 3& 2
 \end{pmatrix} 
 \end{equation*}
-%  Pero empleando ahora pivoteo de filas.
- 
-% En primer lugar buscamos  el elemento de la primera columna mayor en valor absoluto. En esta caso es el último elemento de la columna por lo que intercambiamos la primera fila con la cuarta,
- 
- 
-%   \begin{equation*}
-% P_1\cdot A=\begin{pmatrix}
-% 0& 0& 0& 1\\
-% 0& 1& 0& 0\\
-% 0& 0&1& 0\\
-% 1& 0& 0& 0
-% \end{pmatrix}\begin{pmatrix}
-% 3& 4& 2&5\\
-% 2& 0& 1& -2\\
-% 3& 2& 1& 8\\
-% 5& 2& 3& 2
-% \end{pmatrix}= \begin{pmatrix}
-% 5& 2& 3& 2\\
-% 2& 0& 1& -2\\
-% 3& 2& 1& 8\\
-% 3& 4& 2&5
-% \end{pmatrix}
-% \end{equation*}
 
-% Eliminamos ahora los elementos de la primera columna situados por debajo de la diagonal,
-
-% \begin{equation*}
-% \overbrace{\lambda_1 \cdot P_1\cdot A}^{U_1}=\begin{pmatrix}
-% 1& 0& 0& 0\\
-% -2/5& 1& 0& 0\\
-% -3/5& 0& 1& 0\\
-% -3/5& 0& 0&1
-% \end{pmatrix} \cdot \begin{pmatrix}
-% 5& 2& 3& 2\\
-% 2& 0& 1& -2\\
-% 3& 2& 1& 8\\
-% 3& 4& 0&5
-% \end{pmatrix}= \begin{pmatrix}
-% 5& 2& 3& 2\\
-% 0& -0.8& -0.2& -2.8\\
-% 0& 0.8& -0.8& -6.8\\
-% 0& 2.8& 0.2&3.8
-% \end{pmatrix}
-% \end{equation*}
-
-% Para eliminar los elementos de la segunda columna, repetimos los mismos pasos. El elemento mayor de la segunda columna de $U_1$ es ahora $2.8$, por tanto intercambiamos entre sí la segunda y la cuarta fila,
-
-% \begin{equation*}
-% P_2\cdot \overbrace{\lambda_1 \cdot P_1\cdot A}^{U_1}=\begin{pmatrix}
-% 1& 0& 0& 0\\
-% 0& 0& 0& 1\\
-% 0& 0& 1& 0\\
-% 0& 1& 0&0
-% \end{pmatrix} \cdot \begin{pmatrix}
-% 5& 2& 3& 2\\
-% 0& -0.8& -0.2& -2.8\\
-% 0& 0.8& -0.8& -6.8\\
-% 0& 2.8& 0.2&3.8
-% \end{pmatrix}= \begin{pmatrix}
-% 5& 2& 3& 2\\
-% 0& 2.8& 0.2&3.8\\
-% 0& 0.8& -0.8& -6.8\\
-% 0& -0.8& -0.2& -2.8
-% \end{pmatrix}
-% \end{equation*}
-% A continuación, eliminamos los elementos de la segunda columna situados por debajo de la diagonal,
-
-% \begin{equation*}
-% \overbrace{\lambda_2\cdot P_2\cdot \lambda_1 \cdot P_1\cdot A}^{U_2}=\begin{pmatrix}
-% 1& 0& 0& 0\\
-% 0& 1& 0& 0\\
-% 0& -0.8/2.8& 1& 0\\
-% 0& 0.8/2.8& 0&1
-% \end{pmatrix} \cdot \begin{pmatrix}
-% 5& 2& 3& 2\\
-% 0& 2.8& 0.2&3.8\\
-% 0& 0.8& -0.8& -6.8\\
-% 0& -0.8& -0.2& -2.8
-% \end{pmatrix} = \begin{pmatrix}
-% 5& 2& 3& 2\\
-% 0& 2.8& 0.2&3.8\\
-% 0& 0& -0.85& -5.71\\
-% 0& 0& -0.14& -1.71
-% \end{pmatrix}
-% \end{equation*}
-
-% Para eliminar el elemento que queda debajo de la diagonal en la tercera columna, procedemos igual que para las columnas anteriores. Como en este caso, el elemento situado en la diagonal es mayor en valor absoluto no es preciso permutar. (Desde un punto de vista formal, podríamos decir que en este caso la matriz de permutaciones aplicada es la matriz identidad).
-
-% \begin{align*}
-% \overbrace{\lambda_3\cdot\lambda_2\cdot P_2\cdot \lambda_1 \cdot P_1\cdot A}^{U}&=\begin{pmatrix}
-% 1& 0& 0& 0\\
-% 0& 1& 0& 0\\
-% 0& 0& 1& 0\\
-% 0& 0& -0.14/0.85&1
-% \end{pmatrix} \cdot \begin{pmatrix}
-% 5& 2& 3& 2\\
-% 0& 2.8& 0.2&3.8\\
-% 0& 0& -0.85& -5.71\\
-% 0& 0& -0.14& -1.71
-% \end{pmatrix}\\ 
-% &= \begin{pmatrix}
-% 5& 2& 3& 2\\
-% 0& 2.8& 0.2&3.8\\
-% 0& 0& -0.85& -5.71\\
-% 0& 0& 0& -2.66
-% \end{pmatrix}= U 
-% \end{align*}
-
-% Como hemos visto, la matriz $\lambda_i'$ las obtenemos a  partir de $\lambda_i$, permutando los elementos situados por debajo de la diagonal, distintos de cero. En nuestro ejemplo solo hay matriz $\lambda_1$ afectada por una única permutación $P_2$,
-% \begin{equation*}
-% \lambda'_1=\begin{pmatrix}
-% 1& 0& 0& 0\\
-% 3/5& 1& 0& 0\\
-% 3/5& 0& 1& 0\\
-% 2/5& 0& 0& 1
-% \end{pmatrix}
-% \end{equation*}
-
-% Para el resto, $\lambda_2'=\lambda_2$ y $\lambda'_3=\lambda_3$. Para obtener la matriz L cambiando los signos a los elementos situados por debajo de la diagonal de $\lambda'_1$, $\lambda_2$ y $\lambda_3$, y los agrupamos en una única matriz,
-
-% \begin{equation*}
-% L=\begin{pmatrix}
-% 1& 0& 0& 0\\
-% 3/5& 1& 0& 0\\
-% 3/5& 0.8/2.8& 1& 0\\
-% 2/5& -0.8/2.8& 0.14/0.85& 1
-% \end{pmatrix}
-% \end{equation*}
-
-% Por último debemos multiplicar las matrices de permutaciones para agruparlas en una sola,
-
-% \begin{equation*}
-% P=P_2\cdot P_1= \begin{pmatrix}
-% 0& 0& 0& 1\\
-% 1& 0& 0& 0\\
-% 0& 0& 1& 0\\
-% 0& 1& 0& 0
-% \end{pmatrix}
-% \end{equation*}
-
-% Es trivial comprobar que las matrices obtenidas cumplen \footnote{Los valores numéricos empleados en el texto, están redondeados, por tanto dan una solución incorrecta. Si se reproducen las operaciones descritas en Matlab el resultado es mucho más preciso.} $P\cdot A = L\cdot U$.
-
-% El siguiente código calcula la factorización LU de una matriz de orden arbitrario con pivoteo de filas. \label{lufact} 
-
-% \begin{lstlisting}
-% function [L,U,P]=lufact(A)
-% % este programa calcula una factorizacionLU, de la matrix A,  empleando 
-% % el método de eliminacion gaussiana con pivoteo de filas...
-% % L es una matriz triangular inferior, U es una matriz triangular superior y
-% % P es una matriz de permutaciones tal que P*A=L*U
-
-% % vamos a aprovechar la potencia de Matlab para evitar algunos buques en
-% % los calculos..
-
-% % primero definimos la matriz de permutaciones como la matriz identidad de
-% % orden igual al número de filas de la matriz A, (si no hay pivoteo de filas 
-% % la matriz de permutaciones es precisamente la identidad)
-
-% t=size(A,1); % obtenemos el numero de filas de la matriz A
-% P=eye(t); % Construimos la matriz identidad 
-% % Ademas, inicializamos las matrices L y U
-% L=P;
-% U=A;
-
-
-% % iniciamos un bucle para ir recorriendo las columnas (solo tenemos que
-% % recorrer tantas columnas como fila - 1 tenga la matriz A
-% for j=1:t-1
-%     LA=zeros(t); %Matriz auxiliar (Lambda) de cada iteración.
-%     % Buscamos el elemento mas grande de la columna j
-%     maxcol=abs(U(j,j)); 
-%     index=j;
-%     for i=j:t
-%         if abs(U(i,j))>maxcol
-%             maxcol=abs(U(i,j));
-%             index=i;
-%         end
-%     end
-    
-%     % reordenamos las filas de P, L y U de modo que el valor mas grande de
-%     % j pase a acupar la diagonal (Esto es equivalente a multiplicar U por
-%     % la matriz de permetuciones correspondiente, ir calculado
-%     % iterativamente el valor de la matriz de permutaciones P final, y
-%     % reordenar las filas ya calculadas de L (aportadas por los valores de
-%     % las matrices lambdas anteriores... a lambda_j)
-    
-%     Aux=U(j,:);
-%     Aux2=P(j,:);
-%     Aux3=L(j,1:j-1);
-    
-%     % Reordenamos U (Toda la fila)
-%     U(j,:)=U(index,:);
-%     U(index,:)=Aux;
-    
-%     % Reordenamos L (Solo los elementos de la columnas anteriores...situados
-%     % por debajo de la diagonal).
-%     L(j,1:j-1)=L(index,1:j-1);
-%     L(index,1:j-1)=Aux3;
-    
-%     % modificamos la matriz de permutaciones
-%     P(j,:)=P(index,:);
-%     P(index,:)=Aux2;
-    
-%    % Calculamos una matriz auxiliar con los factores de los elementos
-%    % a eliminar. 
-%    LA(j+1:t,j)=U(j+1:t,j)/U(j,j); % estos elementos son directamente los que 
-%    % se añaden a la matriz L
-%    % Modificamos L y U
-%    L(j+1:t,j)=U(j+1:t,j)/U(j,j);
-%    U=(eye(t)-LA)*U; % la expresión eye(t)-LA nos permite cambiar de signo los
-%    % elementos situados por debajo de la diagonal principal...
-% end
-% \end{lstlisting}
-
-
-% Desde el punto de vista de la implementación, el código anterior simplifica el cálculo de la factorización LU,
-
-% \begin{enumerate}
-% \item  no se calculan la inversa de $\lambda_i$. En realidad lo que se hace es ir construyendo iterativamente la matriz L: en cada iteración, primero se permutan los elementos de las columnas de la matriz L construida en la iteración anterior, y se añaden los elementos de la columna correspondiente.
-% \item la matriz de permutación se va calculando también iterativamente, intercambiando las filas de la matriz de permutación obtenida en la iteración anterior.
-% \end{enumerate}
 \begin{paracol}{2}
  Scipy, calcula siempre la factorización LU, permutando las filas para obtener un resultado lo mas preciso posible,
+ \switchcolumn
+ Scipy always use row permutation, when calculating an LU factorization, to obtain a result as accurate as possible,   
 \end{paracol}
-\begin{center}
+
+\begin{center}	
 \begin{minipage}{0.7\textwidth}
 \begin{minted}{python}
 In [213]: A = np.array([[3,4,2,5],[2,0,1,-2],[3,2,1,8],[5,2,3,2]])
@@ -3129,12 +2917,20 @@ array([[0., 1., 0., 0.],
        [0., 0., 1., 0.],
        [1., 0., 0., 0.]])
 
+
 In [218]: L
 Out[218]: 
 array([[ 1.        ,  0.        ,  0.        ,  0.        ],
        [ 0.6       ,  1.        ,  0.        ,  0.        ],
        [ 0.6       ,  0.28571429,  1.        ,  0.        ],
        [ 0.4       , -0.28571429,  0.16666667,  1.        ]])
+\end{minted}
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.7\textwidth}
+\begin{minted}{python}
 
 In [219]: U
 Out[219]: 
@@ -3156,7 +2952,11 @@ array([[ 3.,  4.,  2.,  5.],
 \begin{paracol}{2}
 \subsection{Factorización de Cholesky}\label{chol}
 Dada una matriz cuadrada, simétrica y definida positiva, es siempre posible factorizarla como $A=L\cdot L^T$. Donde $L$ es una matriz triangular inferior,
+\switchcolumn
+\subsection{Cholesky factorisation}
+Given a square simetric positive definite matrix, it always possible to factorize it as $A=L\cdot L^T$. Where $L$ is a lower triangular matrix.
 \end{paracol}
+
 \begin{equation*}
 \begin{pmatrix}
 a_{11}& a_{12}& \cdots & a_{1n}\\
@@ -3176,7 +2976,9 @@ L_{11}& L_{21}& \cdots & L_{n1}\\
 \end{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
-Numpy tiene una función, en el submódulo \mintinline{python}{linalg}, llamada \mintinline{python}{cholesky}, que permite obtener la factorización de Cholesky, 
+Numpy tiene una función, en el submódulo \mintinline{python}{linalg}, llamada \mintinline{python}{cholesky}, que permite obtener la factorización de Cholesky.
+\switchcolumn
+Numpy has a function, included in the \mintinline{python}{linalg} submodule, called \mintinline{python}{cholesky}, to calculate the cholesky factorization of a matrix.
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.5\textwidth}
@@ -3196,15 +2998,20 @@ array([[ 6.8556546 ,  0.        ,  0.        ,  0.        ],
        [ 4.08421976,  2.70539257,  0.        ,  0.        ],
        [ 3.79248978,  0.18874832,  0.76249285,  0.        ],
        [ 6.56392462,  4.87599823, -5.00195311,  2.2627417 ]])
+    \end{minted}        
+\end{minipage}
+\end{center}
 
+\begin{center}
+	\begin{minipage}{0.5\textwidth}
+		\begin{minted}{python}
 In [227]: L @ L.T
 Out[227]: 
 array([[47., 28., 26., 45.],
        [28., 24., 16., 40.],
        [26., 16., 15., 22.],
        [45., 40., 22., 97.]])
-    \end{minted}
-        
+    \end{minted}        
     \end{minipage}
 \end{center}
 
@@ -3213,14 +3020,22 @@ Si la matriz no es definida positiva, la función \mintinline{python}{cholesky} 
 
 \subsection{Diagonalización}\label{sec:diag}
 \paragraph{Autovectores y autovalores.} Dada una matriz $A$ de orden $n\times n$, se define como autovector, o vector propio de dicha matriz al vector $x$ que cumple,
+\switchcolumn
+If the matrix is not definite posive, then function \mintinline{python}{cholesky} returns an error message.
+\subsection{Diagonalisation}
+\paragraph{Eigenvectors and eigenvalues.} We define an eigenvector or characteristic vector $x$ of the $n\times n$ matrix $A$ as, 
 \end{paracol}
 \begin{equation*}
 A\cdot x =\lambda \cdot x, \  x\neq 0, \ \lambda \in \mathbb{C}
 \end{equation*}
 \begin{paracol}{2}
-Es decir, el efecto de multiplicar la matriz $A$ por el vector $x$ es equivalente a multiplicar el vector $x$  por un número $\lambda$ que, en general, será un número complejo.
+Es decir, el efecto de multiplicar la matriz $A$ por el vector $x$ es equivalente a multiplicar el vector $x$  por un número $\lambda$. Tanto $X$ como $\lambda$ pueden ser reales o complejos.
 
-$\lambda$ recibe el nombre de autovalor, o valor propio de la matriz $A$. Así por ejemplo,
+$\lambda$ recibe el nombre de autovalor, o valor propio de la matriz $A$ asociado al autovector $x$. Así por ejemplo,
+\switchcolumn
+Namely, the result of multiply matrx $A$ for its eigenvector $x$ is equal to multiply the number, $\lambda$ for the eigen vector. $x$ and $\lambda$ could be real or complex.
+
+$\lambda$ is call de eigenvalue or characterirstic values of the matrix $A$, asociated to the eigenvector $x$. For example,`
 \end{paracol}
 \begin{equation*}
 A= \begin{pmatrix}
