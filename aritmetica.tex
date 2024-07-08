@@ -1,6 +1,6 @@
 \chapter{Aritmética del Computador y Fuentes de error\\ Computer Arithmetics and Errors}\label{chp:arit}
 \chaptermark{aritm. del c. y errores \textreferencemark \ C. arithm. and errors}
-\epigraph{``What's the use?'' a few hundred rivets chattered. ``We've given - we've given; and the sooner we confess that we can't keep the ship together, and go off our little heads, the easier it will be. Not rivet forged 
+\epigraph{``What's the use?'' a few hundred rivets chattered. ``We've given - we've given, and the sooner we confess that we can't keep the ship together and go off our little heads, the easier it will be. Not rivet forged 
  can stand this strain''.\\
  ``No one rivet was ever meant to. Share it among you'', the Steam answered.}{Rudyard Kipling, The Ship that Found Herself}
 
@@ -21,11 +21,11 @@ In chapter one, we introduced the binary representation of numbers and the conve
 
 \section{Binary and decimal representations}\index[eng]{Binary}
 
-Real numbers can be represented on a line extending from $-\infty$ to $\infty$. Most do not have exact numerical representations because they have an infinite number of decimals.
+Real numbers can be represented on a line extending from $-\infty$ to $\infty$. Most do not have exact numerical representations because they have infinite decimals.
 
 The integer numbers $1-1,2,-2,3-3,\cdots$ can be represented in scientific notation. However, we rarely deal with numbers containing a large amount of digits. Usually, we take an approximate value, written then in scientific notation, by multiplying the number by a power of $10$. Let's take an example from chemistry: the number of atoms or molecules that make up a mole of a chemical substance is defined as Avogadros's number $N_A = 6.02214179 \times 10^{23}$. This number should be an integer, but we represent it in scientific notation given just a few, nine in our example, of its 23 digits.
 
-\index[eng]{Truncation} We truncate a number when we miss off digits past a certain point in the number. Then, we approximate the truncated number by a rational number, i.e., a number that can be represented by the quotient of two integers. $1/2,3/4,cdots$
+\index[eng]{Truncation} We truncate a number when we miss off digits past a certain point in the number. Then, we approximate the truncated number by a rational number, i.e., a number that the quotient of two integers can represent. $1/2,3/4,cdots$
 
 Some fractional numbers reduce, in turn, to integer numbers $6/3$. Others are numbers that need an infinity number of digits to be represented: 
 \end{paracol}
@@ -34,12 +34,16 @@ Some fractional numbers reduce, in turn, to integer numbers $6/3$. Others are nu
 \end{equation*}
 \begin{paracol}{2}
 Si representamos el mismo número en base 2 obtenemos,
+\switchcolumn
+If we represent the same number in base 2 we obtain,
 \end{paracol}
 \begin{equation*}
 11/2=(101.1)_2=1\times2^2+0\times2^1+1\times2^0+1\times2^{-1}
 \end{equation*}
 \begin{paracol}{2}
 Sin embargo, el que un número racional admita una representación finita, depende de la base en que se representa. Por ejemplo: $1/10=(0.1)_{10}$ no admite representación finita en base 2.
+\switchcolumn
+However, A rational number may or may not have a finite representation, depending on the base used to represent it. For example, $1/10=(0.1)_{10}$ has no finite representation in base 2. 
 \end{paracol}
 \begin{equation*}
 1/10=(0.0001100110011\cdots)_2 =1\times2^{-4}+1\times2^{-5}+0\times2^{-6}+0\times2^{-7}+1\times2^{-8}+\cdots 
@@ -52,10 +56,21 @@ El número racional $1/3=(0.333\cdots)_{10}=(0.010101\cdots)_2$ solo admite repr
 Habitualmente, en la vida ordinaria, representamos los números en base 10, sin embargo, como hemos visto en el capítulo 1 el ordenador emplea una representación binaria. Como acabamos de ver, una primera consecuencia de esta diferencia, es que al pasar números de una representación a otra estemos alterando la precisión con la que manejamos dichos números. Esta diferencia de representación supone ya una primera fuente de errores, que es preciso tener en cuenta cuando lo que se pretende es hacer cálculo científico con un ordenador. Como iremos viendo a lo largo de este capítulo, no será la única.
 
 \section{Representación de nú\-meros en el ordenador}\index{Representación numérica}
-\paragraph{Enteros positivos} La forma mas fácil de representar números sería empleando directamente los registros de memoria para guardar números en binario.  Si suponemos un ordenador que tenga regis-\- tros de 16 bits. Podríamos guardar en ellos números comprendidos entre el $0$ y el $2^{16}-1=65535$. Este último se representaría con un $1$ en cada una de las posiciones del registro, en total 16 unos. Se trata del entero más grande que podríamos representar con un registro de 16 bits:
+\sectionmark{Rep, de nums. en el ord.\textreferencemark Compt. Num. Rep.}
+\chaptermark{Intro al sw. científico  \ Intro to scientific sw.}
+\paragraph{Enteros positivos} La forma mas fácil de representar números sería empleando directamente los registros de memoria para guardar números en binario.  Si suponemos un ordenador que tenga registros de 16 bits. Podríamos guardar en ellos números comprendidos entre el $0$ y el $2^{16}-1=65535$. Este último se representaría con un $1$ en cada una de las posiciones del registro, en total 16 unos. Se trata del entero más grande que podríamos representar con un registro de 16 bits:
+
+\switchcolumn
+For this case, the number representation is infinite but repetitive or periodic; following the first zero after the decimal point, the sequence $0011$ repeats endlessly.
+Rational numbers always have a finite representation or a periodic infinite one.
+
+The rational number $1/3=(0.333\cdots)_{10} = (0.010101\cdots)_2$ has a periodic infinite representation both in basis ten and in basis 2. However, it has a finite representation in base 3: $1/3=(0.1)_{3}= 0 \times 3^0 + 1\times 3^{-1}$.
+
+Usually, in ordinary life, we represent the number using basis 10. However, as we saw in chapter \ref{ch1}, computers use a binary representation. The first consequence of this difference is that we alter number precision when we change them from one representation to another. Thus, this representation difference is, in fact, the first cause of errors that we must take into account when we want to use a computer to perform scientific computing. In this chapter, we will find more causes.
+
+\section{Computer number representation}
+\paragraph{positive integers.} The most straightforward method for representing numbers would be using the memory registers directly to store the numbers in binary format. Considering a computer with 16-bit size registers, we can save numbers between 0 and $2^{16}-1=65535$. This maximum number would be represented by filling each register position with a 1, so 16 ones in total. This number is the largest one we can represent using 16 bits:
 \end{paracol}
-\\
-\ \\
 
 \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
@@ -66,9 +81,9 @@ valor&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1 \\
 \end{tabular}\\
 
 \begin{paracol}{2}
- Hasta ahora, nuestro sistema de representación solo admite números enteros. El menor número que podemos representar es el cero, y el mayor ---dependerá del tamaño $n$ de los registros del ordenador---, $2^n-1$.  Es evidente que este sistema de representación resulta insuficiente.
+ Hasta ahora, nuestro sistema de representación solo admite números enteros positivos. El menor número que podemos representar es el cero, y el mayor ---dependerá del tamaño $n$ de los registros del ordenador---, $2^n-1$.  Es evidente que este sistema de representación resulta insuficiente.
  
- \paragraph{Enteros positivos y negativos}
+ \paragraph{Enteros positivos y negativos.}
  Un primera mejora consistiría en ampliar el sistema de representación para que admita también números negativos. Una posibilidad sería reservar uno de los bits del array para representar el signo \index{Bit de signo}, y usar los restantes para representar el número. En nuestro ejemplo de un registro de 16 bits, el número más grande sería ahora $2^{15}-1$ y el más pequeño sería $-2^{15}+1$. El cero tendría una doble representación, una de ellas con signo más y la otra con signo menos.
  
  Una representación alternativa, cuyo uso está muy extendido en las máquinas, es la representación conocida con el nombre de \emph{Complemento a 2} \index{Complemento a dos} \index{Representación numérica!}. Supongamos un registro de n bits:
@@ -81,7 +96,22 @@ valor&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1 \\
  \begin{equation*}
  C_2^N=2^n-N
  \end{equation*} 
- Veamos un ejemplo de esta representación, para el caso de un registro de 4 bits:
+ En la tabla \ref{tabla:c2} se muestra un ejemplo de esta representación, para el caso de un registro de 4 bits:
+ \switchcolumn
+Our current representation system only accepts positive integer numbers. The lowest number we can represent is zero, and the largest one --which will depend on the computer register size--, would be $2^n-1$. It's clear that this representation system is insufficient.
+ \paragraph{Positive and negative integers.} A first improvement would be to expand the system so that it also admits negative numbers. One option would be to reserve a bit of the register to represent the sign, using the remaining register to represent the (absolute value of the) number. Returning to our example of a 16-bit register, the largest number representable would now be $2^{15}-1$ and the lowest $-2^{15}+1$. Zero would have a double representation, one with a plus sign and another with a minus sign.
+
+ An alternative representation, frequently used by computers, is the \emph{2's complement} representation.\index[eng]{2's complement} \index[eng]{Numeric Representation!} We will describe the representation for a generic  $n$-bits register:
+ \begin{itemize}
+     \item A non-negative integer is stored using directly its binary representation. The range of representable non-negative numbers is $0 \le x \le 2^{(n-1)}-1$.
+     \item A negative integer $-x$ where  $1 \le x \le 2^{(n-1)}$, is stored as the binary representation of the positive integer $2^{n}-x$.
+     \item The number built following the procedure just described is called the 2's complement of $x$. 
+ \end{itemize}
+ In general, we define the 2's complement of an integer $N<2^n$ in a binary representation of n digits as:
+\begin{equation*}
+ C_2^N=2^n-N
+ \end{equation*}
+ Table \ref{tabla:c2} shows an example of the 2's complement representation for a 4-bit register.
  \end{paracol}
  
  \begin{table}
@@ -109,6 +139,8 @@ valor&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1 \\
 0& 0000& & 0\\
 \hline
 \end{tabular}
+\bicaption{Representación en complemento a dos para un registro de 4 bits}{2's complement representation for a 4-bit register}
+\label{tabla:c2}
  \end{table}
  
 \begin{paracol}{2}
@@ -121,20 +153,32 @@ valor&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1 \\
  \end{itemize}
 
 Una forma práctica de obtener el complemento a dos de un número binario es copiar el número original de  derecha a izquierda hasta que aparezca el primer 1. Luego de copiar el primer 1, se complementan el resto de los bits del número (si es 0 se pone un 1 y si es 1 se pone un 0). Por ejemplo el complemento a dos del número 2, (0010 en una representación de 4 bits) sería 1110,
+\switchcolumn
+2's complement representation has the following properties:
+ \begin{itemize}
+     \item For a positive integer, its 2's complement representation fits its standard binary representation.
+     \item We get a single representation for the number zero.
+     \item The range of representable values in an N-bit representation is $-2^{N-1} \le x \le  2^{N-1}-1$.
+     \item We obtain the negative number by computing the 2's complement of their binary representation and changing the sign of the result
+ \end{itemize}
+A practical method for computing the 2's complement of a binary number is to copy the number from right to left till we reach the first 1. Once we have copied the first 1, we \emph{complement} the remaining number bits. This means changing the zeros to ones and the ones to zeros. For instance, the 2'complemet of the number 2 (0010 in a -bit representation) will be 1110, 
+
 \end{paracol}
 
 \begin{eqnarray*}
-001\mathbf{0} & \xrightarrow{copia\  bit\ derecha }& \cdots 0 \\
-00\mathbf{1}0 & \xrightarrow{copia\ primer\ bit = 1}& \cdot \cdot 10\\ 
-0 \mathbf{0}10& \xrightarrow{complemento\ bit\  0} &\cdot  \ 110\\
- \mathbf{0}010& \xrightarrow{complemento\ bit\ 0} &1110
+001\mathbf{0} & \xrightarrow[copy\ the\ right\ end\ bit]{copia\  bit\ derecha }& \cdots 0 \\
+00\mathbf{1}0 & \xrightarrow[copy\ first\ bit=1]{copia\ primer\ bit = 1}& \cdot \cdot 10\\ 
+0 \mathbf{0}10& \xrightarrow[complement\ bit\ 0]{complemento\ bit\  0} &\cdot  \ 110\\
+ \mathbf{0}010& \xrightarrow[complement\ bit\ 0]{complemento\ bit\ 0} &1110
 \end{eqnarray*} 
 
 \begin{paracol}{2}
-\index{Complemento a dos! Sustracción} Una propiedad importante de la representación de complemento a dos, es que la diferencia de dos números puede realizarse directamente sumando al primero el complemento a dos del segundo. Para verlo podemos usar los dos números del ejemplo anterior: $0010$ es la representación binaria del número $2$, si empleamos un registro de cuatro bits. Su complemento a dos, $1110$ representa al número $-2$. Si los sumamos \index{Adición en binario} \footnote{Sumar en binario es como sumar en decimal. Se procede de bit a bit, de derecha a izquierda y cuando se suman 1 y 1, el resultado es 10 (base 2), de modo que el bit resultante se coloca en 0 y se lleva el 1 hacia el siguiente bit de la izquierda.}:
+\index[eng]{Complemento a dos! Sustracción} Una propiedad importante de la representación de complemento a dos, es que la diferencia de dos números puede realizarse directamente sumando al primero el complemento a dos del segundo. Para verlo podemos usar los dos números del ejemplo anterior: $0010$ es la representación binaria del número $2$, si empleamos un registro de cuatro bits. Su complemento a dos, $1110$ representa al número $-2$. Si los sumamos \index{Adición en binario} \footnote{Sumar en binario es como sumar en decimal. Se procede de bit a bit, de derecha a izquierda y cuando se suman 1 y 1, el resultado es 10 (base 2), de modo que el bit resultante se coloca en 0 y se lleva el 1 hacia el siguiente bit de la izquierda.}:
+\switchcolumn
+\index[eng]{2's complement! substraction} An important property of 2's complement representation is that we can compute the difference between two numbers just by adding the first number to the 2's complement of the second one. We can see it using the two numbers of the previous example: $0010$ is the binary representation of the number $2$ if we use a 4-bit representation. it 2's complement, $1110$ represent the number $-2$. If we add them \index[eng]{binary addition}\footnote{the addition of binary numbers is like the addition of decimal numbers. We add then, bitwise, from right to left, and when we add 1 and 1, the result is 10 (base 2). So, the resulting bit is set to zero, and we carry on the 1 to the next left bit.}: 
 \end{paracol}
 
-\begin{table}
+\begin{table}[H]
  \centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -164,25 +208,40 @@ La representación de números no enteros se emplea para representar de modo apr
 \end{itemize}
 
 Por ejemplo, si tenemos un registro de 16 bits podemos reservar 1 bit para el signo, 7 para la parte entera y 8 para la parte decimal.  La representación en punto fijo del número binario $-10111.0011101101$ sería: \\
+\switchcolumn
+The result of the addition yields a number with its first four bits as 0. The bit with value one cannot be accommodated in a 4-bit register. We refer to the result as an \emph{overflow} of the register size. This bit that can not be stored is discarded after the addition. Thus, the result will be zero, as can be expected after adding $2+(-2)$. This is a fundamental motivation to use the 2's complement representation: we do not need any additional special circuits to compute the difference between two numbers because we can represent it straightforwardly by adding the minuend plus the 2's complement of the subtrahend. 
+\subsection{Non-integer numbers: fixed point and floating point representations.}We use the non-integer representation to approximately represent real numbers. As we have seen before, periodic rational numbers and irrational numbers cannot be exactly represented using a finite number of decimals. This is the reason why their representation is always an approximation. In the case of non-periodic rational numbers, the representation will be exact or approximated depending on the number itself, the size of the computer registers and the representation system we use. The two most common representation systems are the fixed-point and the floating-point representations.   \paragraph{fixed-point representation.} To represent a number using a fixed-point representation, we divide the register into three parts:
+\begin{itemize}
+    \item We set aside one bit to store the number sign.
+    \item We represent the integer part of the number using a fixed-size field of bits.
+    \item We represent the decimal part of the number using also a fixed-size field of bits. 
+ \end{itemize}
+ For instance, if we are using a 16-bit register we can take a bit to represent the number sign, seven bits for the integer part and eight bits for the decimal part. following this register sharing, the representation of the number $-10111.0011101101$ would be:\\ 
 \end{paracol}
-
+\begin{minipage}{\textwidth}
+\centering
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
-s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
+s&\multicolumn{7}{c||}{p. entera/ integer p.}&\multicolumn{8}{c|}{p. decimal/ decimal p.}\\
 \hline
 1&0&0&1&0&1&1&1&0&0&1&1&1&0&1&1\\
 \hline
-\end{tabular}\\
+\end{tabular}
+\end{minipage}
 
 \begin{paracol}{2}
 Es interesante notar cómo para representar la parten entera, nos sobran dos bits en el registro, ya que la parte entera solo tiene cinco cifras y tenemos 7 bits para representarla. Sin embargo, la parte decimal tiene 10 cifras; como solo tenemos 8 bits para representar la parte decimal, la representación trunca el número eliminando los dos últimos decimales.
 
-Si asociamos cada bit con una potencia de dos, en orden creciente de derecha a izquierda, podemos convertir directamente el número representado de binario a decimal,\\ 
+Si asociamos cada bit con una potencia de dos, en orden creciente de derecha a izquierda, podemos convertir directamente el número representado de binario a decimal,\\
+\switchcolumn
+It is interesting to notice how we have two extra bits to represent the integer part of the number because the integer part has only five digits and we have seven bits to represent it. However, to represent the decimal part of the number, we have ten digits and only eight bits to represent it. So, the representation truncates the number cutting out the last two decimals.
+
+If we associate each bit with a power of two, in increasing order from right to left, we can straightforwardly convert the number from its binary representation to its decimal form.
 \end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
-s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
+s&\multicolumn{7}{c||}{p. entera / integer p.}&\multicolumn{8}{c|}{p. decimal / decimal p. }\\
 \hline
 1&0&0&1&0&1&1&1&0&0&1&1&1&0&1&1\\
 \hline
@@ -191,7 +250,11 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 \end{tabular}\\
 
 \begin{paracol}{2}
+\ \\
 Por tanto el número representado sería,
+\switchcolumn
+\ \\
+Then, the number represented will be,
 \end{paracol}
 
 \begin{equation*}
@@ -203,6 +266,8 @@ Por tanto el número representado sería,
 
 \begin{paracol}{2}
 De modo análogo podemos calcular cual sería el número más grande representable,\\
+\switchcolumn
+Similarly, we can calculate the largest representable number, 
 \end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
@@ -224,6 +289,8 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 
 \begin{paracol}{2}
 El número menor representable,\\
+\switchcolumn
+The lowest representable number,
 \end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
@@ -245,6 +312,8 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 
 \begin{paracol}{2}
 El número entero más grande,\\
+\switchcolumn
+The largest integer,
 \end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
@@ -266,6 +335,8 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 
 \begin{paracol}{2}
 El número decimal positivo más próximo a 1,\\
+\switchcolumn
+The positive decimal number closest to 1,\\
 \end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
@@ -287,6 +358,8 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 
 \begin{paracol}{2}
 O el número decimal positivo más próximo a 0,\\
+\switchcolumn
+Or the positive decimal number closest to 0,
 \end{paracol}
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
@@ -309,15 +382,26 @@ s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
 \begin{paracol}{2}
 La representación en punto fijo fue la más usada en los primeros computadores. Sin embargo, es posible con el mismo tamaño de registro representar un espectro mucho más amplio de números empleando la representación en punto flotante.
 
-\paragraph*{Representación en punto flotante} \index{Representación numérica! en punto flotante}
+\paragraph*{Representación en punto flotante.} \index{Representación numérica! en punto flotante}
 La representación de números en el ordenador en formato de punto flotante, es similar a la forma de representar los números en la llamada notación científica. \index{Notación científica} En notación científica los números se representan como el producto de una cantidad por una potencia de diez:
-$234.25\equiv 2.345\times 10^2$, $0.000234\equiv 2.34\times 10^{-5}$, $-56.238 \equiv -5.6238\times 10^1$. La idea es desplazar el punto decimal hasta que solo quede una cifra significativa en la parte entera del número y multiplicar el resultado por 10 elevado a la potencia adecuada para recuperar el número original.
+\switchcolumn
+The fixed point representation was widely used in the first computers. However, using the same register size, it is possible to represent a much wider spectrum of numbers using the floating point representation.
+
+\paragraph{Floating point representation.} \index[eng]{Number representation! Floating point}
+The floating point representation of numbers in a computer is similar to the numeric representation known as scientific notation.\index[eng]{Scientific Notation} In scientific notation, number are represented as the product of a quantity by a power of ten:
+\end{paracol}
+\begin{equation*}
+234.25\equiv 2.345\times 10^2,\ 0.000234\equiv 2.34\times 10^{-5},\ -56.238 \equiv -5.6238\times 10^1.    
+\end{equation*}
+
+\begin{paracol}{2}
+La idea es desplazar el punto decimal hasta que solo quede una cifra significativa en la parte entera del número y multiplicar el resultado por 10 elevado a la potencia adecuada para recuperar el número original.
 
 Muchas calculadoras y programas de cálculo científico presentan los resultados por pantalla en formato científico. Habitualmente lo hacen con la siguiente notación,
 \end{paracol}
 
 \begin{equation*}
--5.3572\times 10^{-3}  \xrightarrow{calculadora}  -5.3572e-03
+-5.3572\times 10^{-3}  \xrightarrow[Calculator]{calculadora}  -5.3572e-03
 \end{equation*}
 
 \begin{paracol}{2}
@@ -486,7 +570,7 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&11111111111111111111111&00000000\\
 \hline
 \end{tabular}\\
-
+\begin{paracol}{2}
 En formato decimal, el número sería: $(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}\approx 1.175494210692441\times10^{-38}$. Los dos últimos números representados, son muy próximos entre sí. De hecho, hemos calculado ya su diferencia, al obtener el número desnomarlizado más próximo a cero representable, $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}-(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}=(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$.
 
 \subparagraph*{Doble precisión} \index{Estándar IEEE 754! Doble precisión} La diferencia entre los estándares de simple y doble precisión está en el tamaño de los registros empleados para representar los números. En doble precisión se emplea un registro de 64 bits. Es decir, el tamaño de los registros es el doble que el empleado en simple precisión. El resto del estándar se adapta al tamaño de la representación; se emplea 1 bit para el signo del número, 52 bits para la mantisa y 11 bits para el exponente.
@@ -494,7 +578,7 @@ En formato decimal, el número sería: $(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdo
 En este caso el exponente puede almacenar $2^{11}=2048$ números (desde el 0 al 2047) como en el caso de estándar de simple precisión se dividen los números por la mitad, con lo que los exponentes se representan ahora en exceso a 1023. por tanto el exponente 0 representa el valor $0-1023=-1023$ y el exponente 2047 representa el valor $2047-1023=1024$.
 
 De nuevo, el valor mayor del exponente, 1024 se emplea para representar el infinito $\infty$, si va acompañado de una mantisa formada exclusivamente por ceros. En caso de que acompañe a una mantisa no nula, el contenido del registro se considera que no representa un número NaN (error de desbordamiento) \index{IEEE 754! Número más grande representable en doble precisión}. Podemos, como ejemplo, obtener para el estándar de doble precisión el número más grande representable,\\
-
+\end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 52 bits $\rightarrow$&$\leftarrow$ exponente, 11 bits $\rightarrow$\\
@@ -502,11 +586,11 @@ sig.&$\leftarrow$mantisa, 52 bits $\rightarrow$&$\leftarrow$ exponente, 11 bits 
 0&111111111111111111111111111111111111111111111111111&11111111110\\
 \hline
 \end{tabular}\\
-
+\begin{paracol}{2}
 El número representado toma en base 10 el valor: $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-52})\times2^{1023}\approx 1.797693134862316\times10^{308}$
 
 Por último, para exponente -1023 es decir, un exponente formado exclusivamente por ceros, el número representado se considera desnormalizado; se elimina el 1 entero implícito de la representación de la mantisa y se aumenta en una unidad el exponente, que pasa así a valer -1022. \index{IEEE 754! Número desnormalizado más próximo a cero en doble precisión} Como ejemplo, podemos calcular el número más próximo a cero representable en doble precisión,\\
-
+\end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 52 bits $\rightarrow$&$\leftarrow$ exponente, 11 bits $\rightarrow$\\
@@ -514,11 +598,11 @@ sig.&$\leftarrow$mantisa, 52 bits $\rightarrow$&$\leftarrow$ exponente, 11 bits 
 0&000000000000000000000000000000000000000000000000001&00000000000\\
 \hline
 \end{tabular}\\
-
+\begin{paracol}{2}
 El número representado toma el base 10 el valor: $(0\cdot2^{-1}+0\cdot2^{-2}+0\cdots+1\cdot2^{-52})\times2^{-1022}\approx  4.940656458412465\times10^{-324}$
 
 La tabla \ref{tbieee} resume y compara las características de los dos estándares vistos,
-
+\end{paracol}
 \begin{table}[h]
 \begin{tabular}{ccc}
 \multicolumn{3}{c}{\textbf{Precisión simple. Registro de 32 bits. Exponente exceso a 127}}\\
@@ -554,12 +638,11 @@ $\neq 0$&$2047-1023=1024$&$(-1)^{bs}\cdot(m_1\cdot2^{-1}+\cdots+m_{52}\cdot2^{-5
 \caption{Comparación entre los estándares del IEEE para la representación en punto flotante. ($bs$ bit de signo, $m_i$ bit de mantisa, $e_i$ bit de exponente)}
 \label{tbieee}
 \end{table}
-
+\begin{paracol}{2}
 Para terminar veamos algunos ejemplos de representación de números en el estándar IEEE 754:
 
-\begin{enumerate}
-\item ¿Cúal es el valor decimal del siguiente número expresado en el estándar del IEEE 754 de simple precisión precisión?
-
+1. ¿Cúal es el valor decimal del siguiente número expresado en el estándar del IEEE 754 de simple precisión precisión?
+\end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -567,16 +650,16 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 1&11000000000000000000000&01111100\\
 \hline
 \end{tabular}\\
-
-\begin{itemize}
+\begin{paracol}{2}
+\begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
 \item El bit de signo es 1, por lo tanto el número es negativo.
 \item El exponente sería, $0\cdot2^7+1\cdot2^6+1\cdot2^5+1\cdot2^4+1\cdot2^3+1\cdot2^2+0\cdot2^1+0\cdot2^0-127=124-127=-3$
 \item A la vista del exponente, la mantisa está normalizada, $\mathbf{1}+1\cdot2^{-1}+1\cdot2^{-2}=1.75$
 \item Por tanto el número en representación decimal es: $ (-1)^1\times(1.75)\times2^{-3}=-0.21875$
 \end{itemize}
 
-\item ¿Cúal es el valor decimal del siguiente número expresado en el estándar del IEEE 754 de simple precisión?
-
+2. ¿Cúal es el valor decimal del siguiente número expresado en el estándar del IEEE 754 de simple precisión?
+\end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -584,16 +667,16 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&01000000000000000000000&10000001\\
 \hline
 \end{tabular}\\
-
-\begin{itemize}
+\begin{paracol}{2}
+\begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
 \item El bit de signo es 0, por lo tanto el número es positivo.
 \item El exponente sería, $1\cdot2^7+0\cdot2^6+0\cdot2^5+0\cdot2^4+0\cdot2^3+0\cdot2^2+0\cdot^1+1\cdot2^0-127=129-127=2$
 \item A la vista del exponente, la mantisa está normalizada, $\mathbf{1\cdot 2^0}+1\cdot2^{-2}=0.25$
 \item Por tanto el número en representación decimal es: $ (-1)^0\times(0.25)\times2^{2}=+5.0$
 \end{itemize}
 
-\item ¿Cúal es la representación en el estándar IEEE 754 de simple precisión del número: $347.625$?
-\begin{itemize}
+3. ¿Cúal es la representación en el estándar IEEE 754 de simple precisión del número: $347.625$?
+\begin{itemize}[leftmargin=\dimexpr 26pt-.5in]
 \item  Convertimos el número a binario, $347.625 = 101011011.101$
 \item Representamos el número en formato de coma flotante, $1.01011011101\times 2^{8}$
 \item mantisa: 01011011101 (normalizada)
@@ -601,7 +684,7 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \item signo: 0 (positivo)
 \end{itemize}
 Con lo cual la representación de $347.625$ es, 
-
+\end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -609,22 +692,40 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&0101101110100000000000&10000111\\
 \hline
 \end{tabular}\\
-
-\item ¿cúal el la representación en el estándar IEEE 754 de simple precisión del número: $\frac{5}{3}$
-\begin{itemize}
+\begin{paracol}{2}
+4. ¿cúal el la representación en el estándar IEEE 754 de simple precisión del número: $\frac{5}{3}$
+\begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
 \item $\frac{5}{3}=1.66666\cdots$
 \item Pasamos la parte entera a binario: $1=1\cdot 2^0$
 \item Pasamos la parte decimal a binario:\\
 $0.666666\cdots\times 2=1.333333\cdots$\\
 $0.333333\cdots\times 2=0.666666\cdots$\\
 A partir de aquí se repite el periodo $\widehat{10}$ indefinidamente: $1.666666  \xrightarrow{binario} 1.101010\cdots$ 
-\item Mantisa: el número en binario quedaría: $1.101010 \cdots$, con la misma representación en punto flotante, $1.101010\cdots \times 2^0$. La mantisa será, $10101010101010101010101$
+\item Mantisa: el número en binario quedaría:\\
+$1.101010 \cdots$, con la misma representación en punto flotante, $1.101010\cdots \times 2^0$. La mantisa será, $10101010101010101010101$
 
-\item Exponente: $0 \xrightarrow{exceso\ 127} 127+0=127  \xrightarrow{binario \ 8 \ bits} 01111111$
+\item Exponente:\\
+$0 \xrightarrow{exceso\ 127} 127+0=127  \xrightarrow{binario \ 8 \ bits} 01111111$
 \item Signo: 0 (positivo)
 \end{itemize}
 Con lo cual la representación de $\frac{5}{3}$ es,
+\switchcolumn
+4. What is the standard IEEE 754 simple precision representation of  the number?: $\frac{5}{3}$
+\begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
+\item $\frac{5}{3}=1.66666\cdots$
+\item We pass the integer part to binary: $1=1\cdot 2^0$
+\item We pass the decimal part to binary:\\
+$0.666666\cdots\times 2=1.333333\cdots$\\
+$0.333333\cdots\times 2=0.666666\cdots$\\
+from this point on the period $\widehat{10}$ repeats indefinitely: $1.666666  \xrightarrow{binario} 1.101010\cdots$ 
+\item Mantissa: the number representation in binary is: $1.101010 \cdots$, and the same floating point representation, $1.101010\cdots \times 2^0$. The mantissa is, $10101010101010101010101$
 
+\item Exponent:\\
+$0 \xrightarrow{exceso\ 127} 127+0=127  \xrightarrow{binario \ 8 \ bits} 01111111$
+\item Sign: 0 (positive)
+\end{itemize}
+therefore, $\frac{5}{3}$ binary representation is,
+\end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -632,10 +733,9 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&10101010101010101010101&01111111\\
 \hline
 \end{tabular}\\
-\end{enumerate}
 
+\begin{paracol}{2}
 \section{Errores en la representación numérica.}\label{errn}
-
 Como se ha indicado anteriormente, cualquier representación numérica que empleemos con el ordenador, está sometida a errores derivados del tamaño finito de los registros empleados. Vamos a centrarnos en el estudio de los errores cometidos cuando representamos números empleando el formato de punto flotante del estándar del IEEE754.
 
 En primer lugar, solo hay una cantidad finita de números que admiten una representación exacta, son los que se obtienen directamente de los valores --unos y ceros-- contenidos en un registro al interpretarlos de acuerdo con las especificaciones del estándar. Estos números reciben el nombre de números máquina. 
@@ -666,29 +766,32 @@ Supongamos que tenemos un número no máquina $x=(1.a_1a_2\cdots a_{23}a_{24}\cd
 
 En general, el criterio que se sigue es aproximar cada número real, por truncamiento o exceso, empleando en cada caso el número máquina más cercano. 
 Siempre que redondeamos un número cometemos un error, que podemos definir como el valor absoluto de la diferencia entre  el valor real  del número y su aproximación. Este error recibe el nombre de error absoluto,
-
+\end{paracol}
 \begin{equation*}
 \text{Error absoluto}=\vert x-x_r\vert
 \end{equation*}
 
+\begin{paracol}{2}
 Donde $x_r=x_T$ si se redondeó por truncamiento o $x_r=x_E$ si se redondeó por exceso.
 
-
-
-
-
 El intervalo entre dos números máquina consecutivos puede obtenerse restando el menor del mayor,
+\end{paracol}
+
 \begin{equation*}
 x_E-x_T= (1.a_1a_2\cdots a_{23}+2^{-23})\times2^\text{exp}- (1.a_1a_2\cdots a_{23})\times2^{\text{exp}}=2^{-23}\times 2^\text{exp}
 \end{equation*}
 
+\begin{paracol}{2}
 Si aproximamos ahora cualquier número real comprendido en el intervalo $x_T$ y $x_E$ por el más cercano de estos dos, el error absoluto que cometemos, sera siempre menor o como mucho igual que la mitad del intervalo,
+\end{paracol}
 
 \begin{equation*}
 \vert x-x_r \vert \leq \frac{1}{2}\vert x_E-x_T \vert= \frac{1}{2}\cdot 2^{-23}\cdot 2^\text{exp}
 \end{equation*}
 
+\begin{paracol}{2}
 Este resultado se ilustra gráficamente en la figura 	\ref{fig:errorred}
+\end{paracol}
 
 \begin{figure}[h]
 \centering
@@ -706,41 +809,44 @@ Este resultado se ilustra gráficamente en la figura 	\ref{fig:errorred}
 \draw(3,0.25)node{$\frac{1}{2}\vert x_E-x_T\vert$ };
 \draw(7,0.25)node{$\frac{1}{2}\vert x_E-x_T\vert$};
 
-
 \end{tikzpicture}
 \caption{Posición relativa de un número no máquina $x$ y su redondeo a número máquina por truncamiento $x_T$ y por exceso $x_E$ Si redondeamos al más próximo de los dos, el error es siempre menor o igual a la mitad del intervalo $x_E-x_T$.}
 \label{fig:errorred}
 \end{figure} 
 
+\begin{paracol}{2}
 Examinando con un poco de detalle el resultado anterior, vemos que consta de tres términos. El término $\frac{1}{2}$ surge de aproximar un número real por su número máquina más cercano, El termino $2^\text{exp}$ depende del tamaño del número. Para números grandes este factor será grande y para números pequeños será un factor pequeño. Por último queda el factor $2^{-23}$;  este factor está directamente relacionado con la mantisa empleada en la representación. Efectivamente, si hubiéramos  representado el número en el estándar de doble precisión, es fácil demostrar que el error absoluto cometido habría quedado acotado como,
-
+\end{paracol}
  \begin{equation*}
 \vert x-x_r \vert \leq \frac{1}{2}\vert x_E-x_T \vert= \frac{1}{2}\cdot 2^{-52}\cdot 2^\text{exp}
 \end{equation*}
- 
+
+\begin{paracol}{2}
 \index{epsilon del computador} Es decir, el único factor que cambia en el error es precisamente el término relacionado con el tamaño de la mantisa. Este término recibe el nombre de precision del computador o \emph{epsilon del computador} (eps). Y vale siempre 2 elevado a menos ($-$) el  número de bits de la mantisa. Por tanto, podemos generalizar la expresión parar la cota del error absoluto como,
+\end{paracol}
 
   \begin{equation*}
 \vert x-x_r \vert \leq \frac{1}{2}\vert x_E-x_T \vert= \frac{1}{2}\cdot\ \text{eps}\cdot2^\text{exp}
 \end{equation*}
-
+\begin{paracol}{2}
 El significado del \emph{epsilon} del computador queda aún más claro si definimos el error relativo..
-
+\end{paracol}
 \begin{equation*}
 \text{Error relativo}=\frac{\vert x-x_r \vert}{\vert x \vert} \leq \frac{1}{2}\frac{\vert x_E-x_T \vert}{\vert x \vert}= \frac{1}{2}\cdot \frac{\text{eps}\cdot2^\text{exp}}{(1.a_1a_2\cdots a_{23}a_{24}\cdots)\times2^{\text{exp}}}\leq \frac{1}{2}\text{eps}
 \end{equation*}
-
+\begin{paracol}{2}
 El error relativo pondera el valor del error cometido con la magnitud del número representado.  Un ejemplo sencillo ayudará a entender mejor su significado. Imaginemos que tuviéramos un sistema de representación que solo nos permitiera representar número enteros. Si queremos representar los números $1.5$ y $1000000.5$ su representación sería $1$ y $1000000$ en ambos casos hemos cometido un error absoluto de 0.5. Sin embargo si comparamos con los números representados, en el primer caso el error vale la mitad del número mientras que en el segundo no llega a una millonésima parte.
 
 En el caso de la representación que estamos estudiando, el error relativo cometido para cualquier número representable es siempre más pequeño que la mitad del \emph{epsilon} del computador,
-
+\end{paracol}
 
 \begin{equation*}
 x_r=x\cdot (1+ \delta); | \delta| \leq \frac{1}{2}\cdot eps
 \end{equation*}
 
-
+\begin{paracol}{2}
 Un último comentario sobre el \emph{epsilon} del computador, entendido como precisión. La diferencia entre dos números máquina consecutivos está estrechamente  relacionada con el \emph{epsilon}. Si tenemos un número máquina y queremos incrementarlo en la cantidad más pequeña posible, dicha cantidad es precisamente el \emph{epsilon}, multiplicado por 2 elevado al exponente del número. La razón de que esto sea así está relacionada con el modo en que se suman dos números en la representación en punto flotante. Supongamos que tenemos un número cualquiera representado en el estándar de precisión simple,
+\end{paracol}
 
 \begin{tabular}{|c||c||c|}
 \hline
@@ -749,9 +855,9 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&11110000000000000000000&10000000\\
 \hline
 \end{tabular}\\
-
+\begin{paracol}{2}
 El número representado tiene de exponente $2^7-127=1$. Supongamos ahora que quisieramos sumar a este número la cantidad $2^{-22}$ su representación en el estándar emplearía una mantisa de ceros (recordar el 1 ímplicito) y un exponente $-22+127=105$. Sería por tanto,
-
+\end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -759,10 +865,10 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&00000000000000000000000&01101001\\
 \hline
 \end{tabular}\\
-
+\begin{paracol}{2}
 Para sumar dos números en notación científica es imprescindible que los dos estén representados con el mismo exponente, para entonces poder sumar directamente las mantisas. Disminuir el exponente del mayor de ellos hasta que coincida con el del menor no es posible, ya que eso supondría añadir dígitos a la parte entera de la mantisa, pero no hay bits disponibles para ello entre los asignados a la mantisa. Por tanto, la solución es aumentar el exponente del menor de los números, hasta que alcance el valor del exponente del mayor, y disminuir el valor de la mantisa desnormalizándola, es decir sin considerar el 1 implícito. 
 Por tanto en nuestro ejemplo, debemos representar $2^{-22}$ empleando un exponente 1, $2^{-22}\rightarrow 2^{-23}\cdot 2^1$,
-
+\end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa \textbf{(desnorm.)}, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -770,8 +876,9 @@ sig.&$\leftarrow$mantisa \textbf{(desnorm.)}, 23 bits $\rightarrow$&$\leftarrow$
 0&00000000000000000000001&100000000\\
 \hline
 \end{tabular}\\
-
+\begin{paracol}{2}
 La suma de ambos números se obtiene sumando directamente las mantisas,
+\end{paracol}
 
 \begin{tabular}{|c||c||c|}
 \hline
@@ -781,9 +888,12 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \hline
 \end{tabular}\\
 
+\begin{paracol}{2}
 ¿Qué pasa si tratamos de sumar un número más pequeño,por ejemplo $2^{-23}$? Al representarlo con exponente 1 para poder sumarlo el número tomaría la forma, $2^{-23}\rightarrow 2^{-24}\cdot2^{1}$. Es fácil ver el problema, con una mantisa de 23 bits nos se puede representar el número $2^{-24}$ porque ya no hay \emph{hueco} para él. La mantisa sería cero y --dado que se trata de una representación desnormalizada--, el número resultante sería cero. Por tanto, al sumarlo con el número inicial nos daría este mismo número.
 
 Esto nos lleva a que la precisión del computador no es igual para todos los números representables, sino que depende de su magnitud. la precisión, tomada en función de la distancia entre dos números consecutivos, es: $\text{precisión}=\text{eps}\cdot 2^{exp}$ y su valor se duplica cada vez que aumentamos el exponente en una unidad. La figura \ref{fig:precision} muestra esquemáticamente este fenómeno.
+\end{paracol}
+
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=10cm]{precision.pdf}
@@ -791,11 +901,14 @@ Esto nos lleva a que la precisión del computador no es igual para todos los nú
 	\label{fig:precision}
 \end{figure}
 
+\begin{paracol}{2}
 \subsection{Errores de desbordamiento}\index{Desbordamiento}
 En el apartado anterior hemos visto una de las limitaciones de la representación numérica de los ordenadores; el hecho de usar una mantisa finita hace que solo unos pocos números tengan representación exacta, el resto hay que aproximarlos cometiendo errores de redondeo. En este apartado nos centraremos en estudiar las limitaciones debidas al hecho de usar un exponente finito; solo podemos representar un rango limitado de valores.
 La figura \ref{fig:desbord} muestra esquemáticamente el rango de números representables. El número negativo más pequeño representable, viene definido, por un bit de signo 1, para indicar que se trata de un número negativo y la mantisa y el exponente más grandes que, dentro de las especificaciones del estándar, todavía representan un número finito. Cualquier número negativo menor que éste, produce un error de desbordamiento conocido en la literatura técnica con el nombre de \emph{overflow} negativo. El número negativo más próximo a cero, que se puede representar será aquel que tenga bit de signo 1, la mantisa (desnormalizada) más pequeña posible y el exponente más pequeño posible. Cualquier número más próximo a cero que este, será representado por el ordenador como cero. Se ha producido en este caso un error de desbordamiento conocido como \emph{underflow} negativo. 
 
 De modo análogo a como hemos definido el número negativo más pequeño representable, podemos definir el número positivo más grande representable. La única diferencia será que en este caso el bit de signo toma valor cero para indicar que es un  número positivo. Cualquier número mayor que éste que queramos representar, provocará un error de desbordamiento (\emph{overflow} positivo.) Por último, el número positivo más próximo a cero representable coincide con el correspondiente negativo, de nuevo salvo en el bit de signo, que ahora deberá ser cero. En el caso de tratar de representar un número más pequeño el ordenador no lo distinguirá de cero, produciéndose un desbordamiento denominado \emph{underflow} positivo. 
+\end{paracol}
+
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=10cm]{underandover.pdf}
@@ -803,6 +916,7 @@ De modo análogo a como hemos definido el número negativo más pequeño represe
 	\label{fig:desbord}
 \end{figure}
 
+\begin{paracol}{2}
 \section{Errores derivados de las operaciones aritméticas}\index{Errores aritméticos}
 Hasta ahora, nos hemos centrado siempre en el problema de la representación numérica del computador. En esta sección vamos a introducir un nuevo tipo de errores que tienen si cabe todavía más importancia desde el punto de vista del cálculo científico. Se trata de los errores derivados de las operaciones aritméticas.
 
@@ -812,94 +926,109 @@ Indirectamente ya se introdujo el problema en la sección anterior al hablar de 
 Para empezar, se ilustrará el proceso de la suma de dos números representados en base 10 en formato de punto flotante. Supongamos que queremos sumar los números $99.99$ y $0.161$. Supongamos además que seguimos una representación en punto flotante con las siguientes limitaciones la mantisa es de cuatro dígitos, el exponente es de dos dígitos.
 
 Si sumamos los números, tal y como los hemos escrito más arriba, sin seguir formato de punto flotante, el resultado sería,
-
+\end{paracol}
 \begin{equation*}
 99.99+0.161=100.151
 \end{equation*}
 
+\begin{paracol}{2}
 Supongamos que los representamos ahora en el formato de punto flotante descrito más arriba, $99.99=9.999\times10^1$, $0.161=1.610\times10^{-1}$. Vamos a descomponer el proceso de sumar estos dos números en cuatro pasos, que reflejan, esquemáticamente, el proceso que seguiría un computador.
 
-\begin{enumerate}
-\item \textbf{Alineamiento.} \index{Alineamiento}Consiste en representar el número más pequeño empleando el exponente del mayor. Para ellos se desplazan hacia la derecha los dígitos del número más pequeño tantas posiciones como indique la diferencia de los exponentes de los dos números y se cambiar el exponente del número mas pequeño por el del más grande.
+1. \textbf{Alineamiento.} \index{Alineamiento}Consiste en representar el número más pequeño empleando el exponente del mayor. Para ellos se desplazan hacia la derecha los dígitos del número más pequeño tantas posiciones como indique la diferencia de los exponentes de los dos números y se cambiar el exponente del número mas pequeño por el del más grande.
+\end{paracol}
+
 \begin{equation*}
 1.610\times 10^{-1}\rightarrow 0.016\times10^1
 \end{equation*}
+\begin{paracol}{2}
 Como cabía esperar, el desplazamiento hacia la derecha de la mantisa produce la pérdida de los últimos dígitos del número. Tenemos aquí un primer error de redondeo en el proceso de alineamiento.
 
-\item \textbf{Operación.}
+2. \textbf{Operación.}
 Una vez que los operandos están alineados, se puede realizar la operación. Si la operación es suma y los signos son iguales o si la operación es resta y los signos son diferentes, se suman las mantisa. En otro caso se restan.
 
 Es importante comprobar tras realizar la operación si se ha producido desbordamiento de la mantisa; en el ejemplo propuesto:
-
+\end{paracol}
 \begin{tabular}{c r}
 &$9.999\cdot10^1$\\
 $+$&$0.016\cdot10^1$\\
 \hline
 &$10.015\cdot10^1$
 \end{tabular}\\
-
+\begin{paracol}{2}
 No es posible emplear directamente el resultado de la suma de las mantisas de los sumandos como mantisa de la suma ya que requeriría emplear un dígito más. El resultado obtenido desborda el tamaño de la mantisa.
 
-\item \textbf{Normalización.}
+3. \textbf{Normalización.}
 Si se ha producido desbordamiento de la mantisa, es preciso volver a normalizarla,
+\end{paracol}
+
 \begin{equation*}
 10.015\times10^1=1.0015\times10^2
 \end{equation*}
- 
-\item \textbf{Redondeo.} El desplazamiento de la mantisa hace que no quepan todo los dígitos, por lo que es necesario redondearla (por truncamiento o por exceso),
 
+\begin{paracol}{2}
+4. \textbf{Redondeo.} El desplazamiento de la mantisa hace que no quepan todo los dígitos, por lo que es necesario redondearla (por truncamiento o por exceso),
+\end{paracol}
 \begin{equation*}
 1.0015\times10^2=1.002\times10^2
 \end{equation*}
-
+\begin{paracol}{2}
 Por último, se comprueba si las operaciones realizadas han producido desbordamiento del exponente, en cuyo caso el resultado sería un número no representable: $\infty$ ó $0$.
 
-\item \textbf{Renormalización} Para números en representación binaria es preciso a veces volver a normalizar la mantisa después del redondeo. Supongamos, como en el ejemplo anterior, una mantisa de cuatro bits, ---ahora con números representados en binario--- y que tras realizar una operación suma el resultado que se obtiene es $11.111\times2^1$. La mantisa ha desbordado y hay que normalizarla $11.111\times2^1\rightarrow1.1111\times2^2$. Tenemos que redondear la mantisa y lo normal en este caso dado que el número estaría exactamente en la mitad del intervalo entre dos números representables, es hacerlo por exceso: $1.1111\times2^2\rightarrow10.000\times2^2$. la operación de redondeo por exceso ha vuelto a desbordar la mantisa y, por tanto, hay que volver a normalizarla: $10.000\times2^2\rightarrow1.000\times2^3$.
-\end{enumerate} 
+5. \textbf{Renormalización} Para números en representación binaria es preciso a veces volver a normalizar la mantisa después del redondeo. Supongamos, como en el ejemplo anterior, una mantisa de cuatro bits, ---ahora con números representados en binario--- y que tras realizar una operación suma el resultado que se obtiene es $11.111\times2^1$. La mantisa ha desbordado y hay que normalizarla $11.111\times2^1\rightarrow1.1111\times2^2$. Tenemos que redondear la mantisa y lo normal en este caso dado que el número estaría exactamente en la mitad del intervalo entre dos números representables, es hacerlo por exceso: $1.1111\times2^2\rightarrow10.000\times2^2$. la operación de redondeo por exceso ha vuelto a desbordar la mantisa y, por tanto, hay que volver a normalizarla: $10.000\times2^2\rightarrow1.000\times2^3$.
 
 Analicemos el error cometido para la suma empleada en los ejemplos anteriores. En aritmética exacta, el número obtenido tras la suma es $100.152$. Empleando la representación en punto flotante, con una mantisa de cuatro dígitos el resultado es $1.002\times10^2=100.2$. por tanto, el error absoluto cometido es,
+\end{paracol}
+
 \begin{equation*}
 \vert 100.151-100.2 \vert=0.049
 \end{equation*}
-
+\begin{paracol}{2}
 y el error relativo,
+\end{paracol}
 \begin{equation*}
 \left\vert\frac{100.151-100.2 }{100.152}\right\vert\approx 0.000489
 \end{equation*}
+\begin{paracol}{2}
 En general puede comprobarse que para cualquier operación aritmética básica $\odot \ $(suma, resta, multiplicación división) y dos números máquina $x$, $y$ se cumple,
-
+\end{paracol}
 \begin{equation*}
 \text{flotante}(x\odot y)=(x\odot y)\cdot(1+\delta) \ \ \vert \delta \vert \leq eps
 \end{equation*}
-
+\begin{paracol}{2}
 Este enunciado se conoce como el axioma fundamental de la aritmética en punto flotante:\emph{ El eps del computador es la cota superior del error relativo en cualquier operación aritmética básica realizada en punto flotante entre números máquina.} 
 
 El axioma fundamental de la aritmética en punto flotante establece una cota superior para el error. En la práctica, es frecuente que se encadenen un gran número de operaciones aritméticas elementales. Al encadenar operaciones, los errores cometidos en cada una de ellas se acumulan.
 
 Supongamos por ejemplo que queremos realizar la operación $x\cdot(y+z)$ en aritmética flotante la operación podríamos describirla como,
+\end{paracol}
+
 \begin{align*}
 \text{flotante}\left(x\cdot (y+z)\right)& =\left(x\cdot\text{flotante}(y+z)\right)\cdot(1+\delta_1)\\
  & = (x\cdot(y+z))\cdot(1+\delta_2)\cdot(1+\delta_1)\\
  & \approx (x\cdot(y+z))\cdot(1+2\delta)
 \end{align*}
 
+\begin{paracol}{2}
 Donde $\delta_1$ representa el error relativo cometido en el producto y $\delta_2$ el error relativo cometido en la suma. Ambos errores están acotados por el \emph{eps} del ordenador ($\delta_1, \ \delta_2 \leq eps$). El valor $\delta$ se puede obtener como,
+\end{paracol}
+
 \begin{equation*}
 (1+\delta_1)\cdot(1+\delta_2)=1+\delta_1\delta_2+\delta_1+\delta_2\approx 1+2\delta,\ \delta=\max(\delta_1,\delta_2)
 \end{equation*}
 
+\begin{paracol}{2}
 Podemos concluir que, en este caso, el error de redondeo relativo duplica al de una operación aritmética sencilla. En general, el error tenderá a multiplicarse con el número de operaciones aritméticas encadenadas.
 
 Hay situaciones en las cuales los errores de redondeo que se producen durante una operación aritmética son considerables por ejemplo, cuando se suman cantidades grandes con cantidades pequeñas,
-
+\end{paracol}
 \begin{equation*}
 \text{flotante}(1.5\cdot10^{38}+1.0\cdot10^0)=1.5\cdot10^{38} + 0
 \end{equation*}
-
+\begin{paracol}{2}
 En este caso, durante el proceso de alineamiento, es preciso desplazar la mantisa del número pequeño 38 posiciones decimales para poder sumarlo. Con cualquier mantisa que tenga menos de 38 dígitos el resultado es equivalente a convertir el segundo sumando en cero.
 
 Otro ejemplo es la pérdida de la propiedad asociativa,
-
+\end{paracol}
 \begin{equation*}
 \left. \begin{aligned}
 x=1.5\cdot10^{38}\\
@@ -913,17 +1042,19 @@ y=-1.5\cdot10^{38}\\
 x+(y+1)=0
 \end{cases}
 \end{equation*}
-
+\begin{paracol}{2}
 Los resultados pueden estar sometidos a errores muy grandes cuando la operación aritmética es la sustracción de cantidades muy parecidas. Si, por ejemplo, queremos realizar la operación $100.1-99.35=0.75$ y suponemos que estamos empleando una representación en punto flotante con una mantisa de cuatro dígitos y los números representados en base 10 ($100.1=1.001\cdot10^2$, $99.35=9.935\cdot 10^1$) 
 
-\begin{enumerate}
-\item \textbf{Alineamiento}
+ 1. \textbf{Alineamiento}
+ \end{paracol}
+ 
 \begin{equation*}
 9.935\cdot 10^1\rightarrow 0.994 \cdot 10^2
 \end{equation*}
 
-\item \textbf{Operación}
-
+\begin{paracol}{2}
+2. \textbf{Operación}
+\end{paracol}
 \begin{tabular}{c r}
 &$1.001\cdot10^2$\\
 $-$&$0.994\cdot10^2$\\
@@ -931,31 +1062,40 @@ $-$&$0.994\cdot10^2$\\
 &$0.007\cdot10^2$
 \end{tabular}\\
 
-\item \textbf{normalización}
+\begin{paracol}{2}
+3. \textbf{normalización}
+\end{paracol}
 \begin{equation*}
 0.007\cdot10^2\rightarrow 7.000\cdot10^{-1}
 \end{equation*}
-\end{enumerate}
 
+\begin{paracol}{2}
 Los pasos $4$ y $5$ no son necesarios en este ejemplo. Si calculamos ahora el error absoluto de redondeo cometido,
+\end{paracol}
 \begin{equation*}
 \vert 0.75-0.7 \vert =0.05
 \end{equation*} 
-
+\begin{paracol}{2}
 Y el error relativo,
+\end{paracol}{2}
+
 \begin{equation*}
 \left\vert\frac{0.75-0.7}{0.75}\right\vert\approx 0.0666
 \end{equation*}
+\begin{paracol}{2}
 Es decir, se comete un error de un $6,7\%$. El problema en este caso surge porque en el proceso de alineamiento perdemos un dígito significativo.
 
  En un sistema de representación en punto flotante en que los números se representan en base $\beta$ y el tamaño de la mantisa es $p$, Si las sustracciones se realizan empleando $p$ dígitos, el error de redondeo relativo puede llegar a ser $\beta-1$.
  
 Veamos un ejemplo para números en base 10 ($\beta=10$). Supongamos que empleamos una mantisa de cuatro dígitos y que queremos realizar la operación $1.000\cdot10^0-9.999\cdot10^{-1}$. El resultado exacto sería, $1-0.9999=0.0001$. Sin embargo, en el proceso de alineamiento,
+\end{paracol}
+
 \begin{equation*}
 9.999\cdot10^{-1}\rightarrow0.9999\cdot10^0
 \end{equation*} 
+\begin{paracol}{2}
 Si redondeamos el número por exceso, el resultado de la sustracción sería cero. Si lo redondeamos por defecto,
-
+\end{paracol}
 \begin{tabular}{c r}
 &$1.000\cdot10^0$\\
 $-$&$0.999\cdot10^0$\\
@@ -963,22 +1103,27 @@ $-$&$0.999\cdot10^0$\\
 &$0.001\cdot10^0$
 \end{tabular}\\
 
+\begin{paracol}{2}
 y el error relativo cometido sería,
+\end{paracol}
+
 \begin{equation*}
 \left\vert\frac{1.000\cdot10^{-4}-1.000\cdot10^{-3}}{1.000\cdot10^{-4}}\right\vert=\frac{10^{-4}(10-1)}{10^{-4}}=10-1\Rightarrow\beta -1
 \end{equation*}
 
-
+\begin{paracol}{2}
 Para paliar estos problemas, el estándar IEEE 754 establece que las operaciones aritméticas deben realizarse siempre empleando dos dígitos extra para guardar los resultados intermedios. Estos dos dígitos extra reciben el nombre de dígitos de protección o dígitos de guarda (\emph{guard digits}).
 Si repetimos la sustracción, $100.1-99.35$, empleando los dos dígitos de guarda,
 
-\begin{enumerate}
-\item \textbf{Alineamiento}
+1. \textbf{Alineamiento}
+\end{paracol}
 \begin{equation*}
 9.935{\color{red}00}\cdot=10^1\rightarrow 0.993{\color{red}50} \cdot 10^2
 \end{equation*}
 
-\item \textbf{Operación}
+\begin{paracol}{2}
+2. \textbf{Operación}
+\end{paracol}
 \begin{tabular}{c r}
 &$1.001{\color{red}00} \cdot10^2$\\
 $-$&$0.993{\color{red}50}\cdot10^2$\\
@@ -986,12 +1131,14 @@ $-$&$0.993{\color{red}50}\cdot10^2$\\
 &$0.007{\color{red}50}\cdot10^2$
 \end{tabular}\\
 
-\item \textbf{normalización}
+\begin{paracol}{2}
+3. \textbf{normalización}
+\end{paracol}
 \begin{equation*}
 0.007{\color{red}50}\cdot10^2\rightarrow 7.500\cdot10^{-1}
 \end{equation*}
 
-\end{enumerate}
+\begin{paracol}{2}
 En este caso, obtenemos el resultado exacto. En general, empleando dos bits de guarda para realizar las sustracciones el error de redondeo es siempre menor que el \emph{eps} del computador.
 
 
@@ -999,39 +1146,47 @@ En este caso, obtenemos el resultado exacto. En general, empleando dos bits de g
 La anulación catastrófica se produce cuando en una operación aritmética, típicamente la sustracción,  los dígitos más significativos de los operandos, que no están afectados por el redondeo, se cancelan entre sí. El resultado contendrá fundamentalmente dígitos que sí están afectados por errores de redondeo. Veamos un ejemplo,
 
 Supongamos que queremos realizar la operación $b^2-4\cdot a \cdot c$ empleando números en base 10, y una mantisa de 5 dígitos. Supongamos que los números empleados son: $b= 3.3357\cdot10^0$, $a=1.2200\cdot10^0$, $c=2.2800\cdot10^0$. El resultado exacto de la operación es,
+\end{paracol}
 \begin{equation}
 b^2-4\cdot a\cdot c=4.944\cdot10^{-4}
 \end{equation}
 
+\begin{paracol}{2}
 Si realizamos las operaciones en la representación pedida,
+\end{paracol}
 \begin{align*}
 b^2=1.1126{\color{red}89}\cdot10^1\\
 4\cdot a\cdot c=1.1126{\color{red}40}\cdot10^1\\
 b^2-4\cdot a\cdot c=5.0000\cdot10^{-4}
 \end{align*}
-
+\begin{paracol}{2}
 El error relativo cometido es aproximadamente un 1\%. Como se han utilizado dos bits de guarda en las operaciones intermedias, la sustracción no comente en este caso error alguno. El error se debe a los redondeos de los resultados anteriores. Una vez realizada la sustracción, el resultado solo contiene los dígitos sometidos a redondeo ya que los anteriores se han anulado en la operación.
 
 Como regla práctica se debe evitar al realizar operaciones aritméticas aquellas situaciones en las que se sustraen cantidades casi iguales. Veamos otro ejemplo, para ilustrar esta idea. Supongamos que queremos realizar la operación,
+\end{paracol}
+
 \begin{equation*}
 y=\sqrt{x^2+1}-1
 \end{equation*}
+\begin{paracol}{2}
 Para valores pequeños de $x$, esta operación implica una anulación con pérdida de dígitos significativos. Una posible solución es utilizar una forma alternativa de construir la ecuación. Si multiplicamos y dividimos por el conjugado,
-
+\end{paracol}
 \begin{equation*}
 y=(\sqrt{x^2+1}-1)\cdot\left(\frac{\sqrt{x^2+1}+1}{\sqrt{x^2+1}+1}\right)=\frac{x^2}{\sqrt{x^2+1}+1}
 \end{equation*}
 
+\begin{paracol}{2}
 \subsection{Errores de desbordamiento}
 
 Al, hablar del rango finito de los números representables, se indicó cómo trata el éstandar IEEE 754 los números que desbordan los límites de representación. Al realizar operaciones aritméticas, es posibles llegar a situaciones en las que el resultado sea un número no representable bien por se demasiado grande en magnitud, (\emph{Overflow} positivo o negativo) o por ser demasiado pequeño, (\emph{underflow} positivo o negativo.) Un ejemplo que nos permite ilustrar este fenómeno es el del cálculo del módulo de un vector,
+\end{paracol}
 
 \begin{equation*}
 \vert\vert\vec{v}\vert\vert=\vert\vert(v_1, v_2\cdots v_n\vert\vert=\sqrt{\sum_{i=1}^nv_i^2}
 \end{equation*}
-
+\begin{paracol}{2}
 Supongamos que creamos el siguiente programa en Matlab para calcular el módulo de un vector
-
+\end{paracol}
 % \begin{lstlisting}
 % function m=norma(x)
 % %inicializamos a cero la variable que contendrá la norma del vector.
@@ -1045,21 +1200,23 @@ Supongamos que creamos el siguiente programa en Matlab para calcular el módulo 
 % %calculamos la raíz cuadrada del resultado del bucle
 % m=sqrt(m)
 % \end{lstlisting}
-
+\begin{paracol}{2}
 El programa anterior provocará un error de desbordamiento incluso para n=1, si introducimos un número cuyo cuadrado sea mayor que el mayor número representable. Por ejemplo si introducimos el número, $ 2^{1024/2}=1.340780792994260e+154$ en nuestro programa Matlab devolverá como solución \emph{inf}. Es decir, el resultado produce un error de desbordamiento. El problema se produce en el bucle, al calcular el cuadrado del número,
+\end{paracol}
 \begin{equation*}
 \left(2^{1024/2}\right)^2=2^{1024}> (2-2^{-52})\cdot 2^{1023}
 \end{equation*}
-
+\begin{paracol}{2}
 Una vez producido el desbordamiento el resto de las operaciones quedan invalidadas. Como en casos anteriores, la solución a este tipo de problemas exige modificar la forma en que se realizan los cálculos. Un primer paso sería igualar el módulo al valor absoluto del número cuando n=1. De este modo, el modulo del número propuesto en el ejemplo anterior se podría calcular correctamente.
 
 Todavía es posible mejorar el programa, y ampliar el rango de vectores para los que es posible calcular el módulo. Para ello es suficiente recurrir a un pequeño artificio: dividir los elementos del vector por el elemento de mayor tamaño en valor absoluto, calcular el módulo del vector resultante, y multiplicar el resultado de nuevo por el elemento de mayor tamaño,
+\end{paracol}
 \begin{align*}
 \sqrt{\sum_{i=1}^nv_i^2}=\vert\max{v_i}\vert\cdot\sqrt{\sum_{i=1}^n\left(\frac{v_i}{\vert\max{v_i}\vert}\right)^2}
 \end{align*}
-
+\begin{paracol}{2}
 El siguiente código permite calcular el módulo de un vector usando este procedimiento\footnote{El programa no funcionará correctamente para vectores cuyos primeros elementos sean 0, $(0,0,0\cdots$},
-
+\end{paracol}
 % \begin{lstlisting}
 % function m=norma(x)
 % n=length(x); %calculamos la longitud del vector.
@@ -1099,17 +1256,21 @@ El siguiente código permite calcular el módulo de un vector usando este proced
 % % obtenemos la raíz cuadrada, y multiplicamos por el mayor.
 % m=mayor*sqrt(mscalado)
 % \end{lstlisting}
-
+\begin{paracol}{2}
 Si aplicamos este programa a obtener la norma del vector,
+\end{paracol}
 \begin{equation*}
 x=[2^{1024/2}\ 2^{1024/2}]
 \end{equation*}
+\begin{paracol}{2}
 obtenemos como resultado,
+\end{paracol}
 \begin{equation*}
 m=1.896150381621836\cdot10^{154}
 \end{equation*}
+\begin{paracol}{2}
 En lugar de un error de desbordamiento (\emph{inf}).
-
+\end{paracol}
 
 
   	 
