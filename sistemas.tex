@@ -461,6 +461,14 @@ In Python, we can use the function \texttt{cond} inside the \texttt{linalg} modu
 
 \end{paracol}
 
+\begin{minted}{pycon}
+import numpy as np
+
+A=np.array([[4,1],[2,0.499]])
+
+np.linalg.cond(A)
+Out[7]: 5312.250061755533
+\end{minted}
 \begin{verbatim}
 >> A=[4 1; 2, 0.499]
 
