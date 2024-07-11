@@ -1,4 +1,8 @@
-\chapter{Sistemas de ecuaciones lineales}\label{sistemas}
+\chapter{Sistemas de ecuaciones lineales\\ Linear equation systems}\index{sistemas} \index[eng]{systems}
+\chaptermark{Sistemas \textreferencemark\ Systems}
+\epigraph{Después de cada guerra \\ alguien tiene que limpiar. \\ No se van a ordenar solas las cosas, \\ digo yo. (Maria Wisława Anna Szymborska)}
+
+\begin{paracol}{2}
 
 \section{Introducción}
 
@@ -16,6 +20,25 @@ a_1x_1+a_2x_2+\cdots +a_nx_n=b
 \end{equation*} 
 será una ecuación n-dimensional.
 
+\switchcolumn    
+
+\section{Introduction}
+
+A linear equation is an equation that establishes a \emph{linear} relationship between two or more variables, for example,
+
+\begin{equation}
+3x_1-2x_2=12
+\end{equation}
+
+It is said to be a linear relationship, because the variables are related to each other only through additions and products by constant coefficients. In particular, the above example can be represented geometrically by a straight line.
+
+The number of related variables in a linear equation determines the dimension of the equation. The above example is a two-dimensional equation, since there are two variables. The number can be arbitrarily large in general,
+\begin{equation*}
+a_1x_1+a_2x_2+cdots +a_nx_n=b
+\end{equation*} 
+will be an n-dimensional equation.
+
+\switchcolumn
 Como ya hemos señalado más arriba, una ecuación bidimensional admite una línea recta como representación geométrica, una ecuación tridimensional admitirá un plano y para dimensiones mayores que tres cada ecuación representará un hiperplano de dimension n. Por supuesto, para dimensiones mayores que tres, no es posible obtener una representación gráfica de la ecuación.
 
 Las ecuaciones lineales juegan un papel muy importante en la física y, en general en la ciencia y la tecnología. La razón es que constituyen la aproximación matemática más sencilla a la relación entre magnitudes físicas. Por ejemplo cuando decimos que la fuerza aplicada a un resorte y la elongación  que sufre están relacionadas por la ley de Hooke, $F=Kx$ estamos estableciendo una relación lineal entre las magnitudes fuerza y elongación. ¿Se cumple siempre dicha relación? Desde luego que no. Pero es razonablemente cierta para elongaciones pequeñas y, apoyados en ese sencillo modelo \emph{lineal} de la realidad, se puede aprender mucha física.
@@ -27,11 +50,35 @@ a_{11}x_1+a_{12}x_2&=b_1\\
 a_{21}x_1+a_{22}x_2&=b_2
 \end{align*}
 
+\switchcolumn
+As we have already pointed out above, a two-dimensional equation admits a straight line as geometrical representation, a three-dimensional equation will admit a plane and for dimensions greater than three each equation will represent a hyperplane of dimension n. Of course, for dimensions greater than three, it is not possible to obtain a graphical representation of the equation.
+
+Linear equations play a very important role in physics and, in general, in science and technology. The reason is that they are the simplest mathematical approximation of the relationship between physical quantities. For example, when we say that the force applied to a spring and the elongation it undergoes are related by Hooke's law, $F=Kx$, we are establishing a linear relationship between the quantities force and elongation. Does this relationship always hold true? Certainly not. But it is reasonably true for small elongations and, based on this simple \emph{linear} model of reality, a lot of physics can be learned.
+
+A system of linear equations is made up of several linear equations, which express different linear relationships about the same variables. For example,
+
+\begin{align*}
+a_{11}x_1+a_{12}x_2&=b_1\\
+a_{21}x_1+a_{22}x_2&=b_2
+\end{align*}
+
+\switchcolumn
+
 Se llaman soluciones del sistema de ecuaciones a los valores de las variables que satisfacen simultáneamente a todas las ecuaciones que componen el sistema. Desde el punto de vista de la obtención de las soluciones a las variables se les suele denominar incógnitas, es decir valores no conocidos que deseamos obtener o calcular.
 
 Un sistema de ecuaciones puede tener infinitas soluciones, puede tener una única solución o puede no tener solución. En lo que sigue, nos centraremos en sistemas de ecuaciones que tienen una única solución. 
 
 Una primera condición para que un sistema de ecuaciones tengan una única solución es que el número de incógnitas presentes en el sistema coincida con el número de ecuaciones. 
+
+\switchcolumn
+
+The values of the variables that simultaneously satisfy all the equations that make up the system are called solutions of the system of equations. From the point of view of obtaining the solutions, the variables are usually called unknowns, i.e. unknown values that we wish to obtain or calculate.
+
+A system of equations can have infinite solutions, it can have only one solution or it can have no solution. In what follows, we will focus on systems of equations that have only one solution. 
+
+A first condition for a system of equations to have a unique solution is that the number of unknowns present in the system coincides with the number of equations. 
+
+\switchcolumn
 
 De modo general podemos decir que vamos a estudiar métodos numéricos para resolver con un computador sistemas de $n$ ecuaciones con $n$ incógnitas,
 
@@ -43,6 +90,22 @@ a_{n1}&x_1+a_{n2}x_2+\cdots +a_{nn}x_n=b_n
 \end{align*}  
 
 Una de las grandes ventajas de los sistemas de ecuaciones lineales es que puede expresarse en forma de producto matricial,
+
+\switchcolumn
+
+In general terms, we can say that we are going to study numerical methods to solve with a computer systems of $n$ equations with $n$ unknowns,
+
+\begin{align*}
+a_{11}&x_1+a_{12}x_2+\cdots +a_{1n}x_n=b_1\\
+a_{21}&x_1+a_{22}x_2+\cdots +a_{2n}x_n=b_2\\
+\cdots & \\
+a_{n1}&x_1+a_{n2}x_2+\cdots +a_{nn}x_n=b_n
+\end{align*}  
+
+One of the great advantages of systems of linear equations is that they can be expressed in matrix product form,
+
+\end{paracol}
+
 
 
 \begin{equation*}
@@ -69,11 +132,19 @@ b_n
 \end{pmatrix}}^b
 \end{equation*}
 
-La matriz $A$ recibe el nombre de matriz de coeficientes del sistema de ecuaciones, el vector $x$ es el vector de incógnitas y el vector $b$ es el vector de términos independientes. Para resolver un sistema de ecuaciones podríamos aplicar lo aprendido en el capítulo anterior sobre álgebra de matrices,
+\begin{paracol}{2}
+    La matriz $A$ recibe el nombre de matriz de coeficientes del sistema de ecuaciones, el vector $x$ es el vector de incógnitas y el vector $b$ es el vector de términos independientes. Para resolver un sistema de ecuaciones podríamos aplicar álgebra de matrices, como se ha visto en el capítulo \ref{ch:numpy}:
+    
+\switchcolumn
+    The matrix $A$ is called the coefficient matrix of the system of equations, the vector $x$ is the vector of unknowns and the vector $b$ is the vector of independent terms. To solve a system of equations we could apply matrix algebra, as discussed in chapter \ref{ch:numpy}:
+    
+\end{paracol}
+
 \begin{equation*}
 A\cdot x=b \Rightarrow x=A^{-1}\cdot b
 \end{equation*}
 
+\begin{paracol}{2}
 Es decir, bastaría invertir la matriz de coeficientes y multiplicarla por la izquierda por el vector de coeficientes para obtener el vector de  términos independientes. De aquí podemos deducir una segunda condición para que un sistema de ecuaciones tenga una solución única; Su matriz de coeficientes tiene que tener inversa. Veamos algunos ejemplos sencillos.
 
 Tomaremos en primer lugar un sistema de dos ecuaciones con dos incógnitas,
@@ -84,6 +155,21 @@ Tomaremos en primer lugar un sistema de dos ecuaciones con dos incógnitas,
 \end{align*}
 
 Si expresamos el sistema en forma de producto de matrices obtenemos,
+
+\switchcolumn
+
+That is, it would be enough to invert the matrix of coefficients and multiply it on the left by the vector of coefficients to obtain the vector of independent terms. From this we can deduce a second condition for a system of equations to have a unique solution; its coefficient matrix must have an inverse. Let us look at some simple examples.
+
+We will first take a system of two equations with two unknowns,
+
+\begin{align*}
+4x_1+x_2&=6 \\
+3x_1-2x_2&=-1
+\end{align*}
+
+If we express the system as a product of matrices we obtain,
+
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -98,7 +184,13 @@ x_2
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 e invirtiendo la matriz de coeficientes y multiplicándola por el vector de términos independientes se llega al vector de soluciones del sistema,
+
+\switchcolumn
+and by inverting the coefficient matrix and multiplying it by the vector of independent terms we arrive at the vector of solutions of the system,
+
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -122,15 +214,22 @@ x_2
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 En el ejemplo que acabamos de ver, cada ecuación corresponde a una recta en el plano, en la figura \ref{fig:recta1} se han representado dichas rectas gráficamente. El punto en que se cortan es precisamente la solución del sistema.
 
+\switchcolumn
+In the example we have just seen, each equation corresponds to a line in the plane, in the figure \ref{fig:recta1} these lines have been represented graphically. The point where they intersect is precisely the solution of the system.
+
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{recta1}
-\caption{Sistema de ecuaciones con solución única}
+\bicaption{Sistema de ecuaciones con solución única}{Equation system with unique solution}
 \label{fig:recta1}
 \end{figure}
 
+\begin{paracol}
+    
 Supongamos ahora el siguiente sistema, también de dos ecuaciones con dos incógnitas,
 
 \begin{align*}
@@ -146,17 +245,46 @@ El sistema no tiene solución. Su matriz de coeficientes tiene determinante cero
 \end{vmatrix} =0 \Rightarrow \nexists A^{-1}
 \end{equation*}
 
+\switchcolumn
+Now suppose the following system, also of two equations with two unknowns,
+\begin{align*}
+4x_1+x_2&=6\\
+2x_1+\frac{1}{2} x_2&=-1
+\end{align*}
+
+The system has no solution. Its coefficient matrix has zero determinant, so it is not invertible,
+\begin{equation*}
+\vert A \vert =\begin{vmatrix}
+4& 1\\
+2& 1/2
+\end{vmatrix} =0 \Rightarrow \nexists A^{-1}
+\end{equation*}
+
+\switchcolumn
 Si representamos gráficamente las dos ecuaciones de este sistema (figura \ref{fig:recta2}) es fácil entender lo que pasa, las rectas son paralelas, no existe ningún punto $(x_1,x_2)$ que pertenezca a las dos rectas, y por tanto el sistema carece de solución.
+
+\switchcolumn
+If we represent graphically the two equations of this system (figure \ref{fig:recta2}) it is easy to understand what happens, the lines are parallel, there is no point $(x_1,x_2)$ that belongs to the two lines, and therefore the system has no solution.
+
+\end{paracol}
+
+
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{recta2}
-\caption{Sistema de ecuaciones sin solución}
+\bicaption{Sistema de ecuaciones sin solución}{Equation system without solution}
 \label{fig:recta2}
 \end{figure}
 
+\begin{paracol}{2}
 Dos rectas paralelas lo son, porque tienen la misma pendiente. Esto se refleja en la matriz de coeficientes, en que las filas son proporcionales; si multiplicamos la segunda fila por dos, obtenemos la primera. 
 
+\switchcolumn
+
+Two parallel lines are parallel because they have the same slope. This is reflected in the coefficient matrix, where the rows are proportional; if we multiply the second row by two, we get the first row. 
+
+\switchcolumn
 Por último, el sistema,
 
 \begin{align*}
@@ -166,19 +294,39 @@ Por último, el sistema,
 
 posee infinitas soluciones. la razón es que la segunda ecuación es igual que la primera multiplicada por dos: es decir, representa exactamente la misma relación lineal entre las variables $x_1$ y $x_2$, por tanto, todos los puntos de la recta son solución del sistema. De nuevo, la matriz de coeficientes del sistema no tiene inversa ya que su determinante es cero.
 
+\switchcolumn
+Finally, the system,
+
+\begin{align*}
+4x_1+x_2&=6.
+2x_1+frac{1}{2} x_2&=3
+\end{align*}
+
+has infinite solutions.The reason is that the second equation is the same as the first equation multiplied by two: that is, it represents exactly the same linear relationship between the variables $x_1$ and $x_2$, therefore, all the points on the line are solutions of the system. Again, the coefficient matrix of the system has no inverse since its determinant is zero.
+\end{paracol}
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{recta3.eps}
-\caption{Sistema de ecuaciones con infinitas soluciones}
+\bicaption{Sistema de ecuaciones con infinitas soluciones}{Equation system with infinite solutions}
 \label{recta3}
 \end{figure}
 
+\begin{paracol}{2}
 Para sistemas de ecuaciones de dimensión mayor, se cumple también que que el sistema no tiene solución única si el determinante de su matriz de coeficiente es cero. En todos los demás casos, es posible obtener la solución del sistema invirtiendo la matriz de coeficientes y multiplicando el resultado por el vector de términos independientes.
 
 En cuanto un sistema de ecuaciones tiene una dimensión suficientemente grande, invertir su matriz de coeficientes se torna un problema costoso o sencillamente inabordable.
 
 Desde un punto de vista numérico, la inversión de una matriz, presenta frecuentemente problemas debido al error de redondeo en las operaciones. Por esto, casi nunca se resuelven los sistemas de ecuaciones invirtiendo su matriz de coeficientes. A lo largo de este capítulo estudiaremos dos tipos de métodos de resolución de sistemas de ecuaciones. El primero de ellos recibe el nombre genérico de métodos directos, el segundo tipo lo constituyen los llamados métodos iterativos.
 
+\switchcolumn
+For higher dimensional systems of equations, it is also true that the system has no unique solution if the determinant of its coefficient matrix is zero. In all other cases, it is possible to obtain the solution of the system by inverting the coefficient matrix and multiplying the result by the vector of independent terms.
+
+As soon as a system of equations has a sufficiently large dimension, inverting its coefficient matrix becomes a costly or simply intractable problem.
+
+From a numerical point of view, the inversion of a matrix often presents problems due to the rounding error in the operations. For this reason, systems of equations are almost never solved by inverting their matrix of coefficients. Throughout this chapter we will study two types of methods for solving systems of equations. The first of these is known generically as direct methods, while the second type is known as iterative methods.
+
+\switchcolumn
 \section{Condicionamiento}
 En la introducción hemos visto que para que un sistema de ecuaciones tenga solución, es preciso que su matriz de coeficientes sea invertible. Sin embargo cuando tratamos de resolver un sistema de ecuaciones numéricamente, empleando un ordenador, debemos antes examinar cuidadosamente la matriz de coeficientes del sistema. Veamos un ejemplo: el sistema,
 
@@ -186,6 +334,17 @@ En la introducción hemos visto que para que un sistema de ecuaciones tenga solu
 4x_1+x_2&=6\\
 2x_1+0.4 x_2&=-1
 \end{align*}
+
+\switchcolumn
+\section{Condition number}
+In the introduction we have seen that for a system of equations to have a solution, its coefficient matrix must be invertible. However, when we try to solve a system of equations numerically, using a computer, we must first carefully examine the matrix of coefficients of the system. Let us look at an example: the system,
+
+\begin{align*}
+4x_1+x_2&=6\\
+2x_1+0.4 x_2&=-1
+\end{align*}
+
+\switchcolumn
 
 Tiene como soluciones,
 \begin{equation*}
@@ -195,12 +354,33 @@ x=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
+\switchcolumn
+ Has the following solutions,
+ \begin{equation*}
+x=\begin{pmatrix}
+-8.5\\
+40
+\end{pmatrix}
+\end{equation*}
+
+\switchcolumn
+
 Si alteramos ligeramente uno de sus coeficientes,
 
 \begin{align*}
 4x_1+x_2&=6\\
 2x_1+0.4{\color{red}9} x_2&=-1
 \end{align*}
+
+\switchcolumn
+
+If we slightly change one of the coefficients,
+\begin{align*}
+4x_1+x_2&=6\\
+2x_1+0.4{\color{red}9} x_2&=-1
+\end{align*}
+
+\switchcolumn
 
 Las soluciones se alteran bastante;  se vuelven aproximadamente 10 veces más grande,
 \begin{equation*}
@@ -210,12 +390,34 @@ x=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
+\switchcolumn
+
+The solutions become quite altered; they become about 10 times larger,
+\begin{equation*}
+x=\begin{pmatrix}
+-98.5\\
+400
+\end{pmatrix}
+\end{equation*}
+
+\switchcolumn
 y si volvemos a alterar el mismo coeficiente,
 
 \begin{align*}
 4x_1+x_2&=6\\
 2x_1+0.4{\color{red}99} x_2&=-1
 \end{align*}
+
+\switchcolumn
+
+if we change again the same coefficient,
+
+\begin{align*}
+4x_1+x_2&=6\\
+2x_1+0.4{\color{red}99} x_2&=-1
+\end{align*}
+
+\switchcolumn
 
 La solución es aproximadamente 100 veces más grande,
 \begin{equation*}
@@ -225,13 +427,39 @@ x=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
+\switchcolumn
+
+The solution is about 100 times larger,
+
+\begin{equation*}
+x=\begin{pmatrix}
+-998.5\\
+4000
+\end{pmatrix}
+\end{equation*}
+
+\switchcolumn
 La razón para estos cambios es fácil de comprender intuitivamente; a medida que aproximamos el coeficiente a $0.5$, estamos haciendo que las dos ecuaciones lineales sean cada vez mas paralelas, pequeñas variaciones en la pendiente, modifican mucho la posición del punto de corte.
 
 Cuando pequeñas variaciones en la matriz de coeficientes generan grandes variaciones en las soluciones del sistema, se dice que el sistema está mal condicionado, en otras palabras: que no es un sistema bueno para ser resuelto numéricamente. Las soluciones obtenidas para un sistema mal condicionado, hay que tomarlas siempre con bastante escepticismo.
 
-Para estimar el buen o mal condicionamiento de un sistema, se emplea el número de condición, que definimos en el capítulo anterior, \ref{sec:SVD}, al hablar de la factorización SVD. El número de condición de una matriz es el cociente entre sus valores singulares mayor y menor.  Cuanto más próximo a $1$ sea el número de condición, mejor condicionada estará la matriz y cuanto mayor sea el número de condición peor condicionada estará.
+Para estimar el buen o mal condicionamiento de un sistema, se emplea el número de condición, que definimos en el capítulo \ref{ch:numpy} en la sección \ref{sec:SVD}, al hablar de la factorización SVD. El número de condición de una matriz es el cociente entre sus valores singulares mayor y menor.  Cuanto más próximo a $1$ sea el número de condición, mejor condicionada estará la matriz y cuanto mayor sea el número de condición peor condicionada estará.
 
-Matlab tiene un comando específico para obtener el número de condición de una matriz, sin tener que calcular la factorización SVD, el comando \texttt{nc=cond(A)}. Si lo aplicamos a la matriz de coeficientes del último ejemplo mostrado,
+\switchcolumn
+The reason for these changes is easy to understand intuitively; as we bring the coefficient closer to $0.5$, we are making the two linear equations more and more parallel, and small variations in the slope greatly modify the position of the cut-off point.
+
+When small variations in the matrix of coefficients generate large variations in the solutions of the system, it is said that the system is ill-conditioned, in other words: that it is not a good system to be solved numerically. The solutions obtained for an ill-conditioned system must always be taken with considerable scepticism.
+
+To estimate the good or bad conditioning of a system, we use the condition number, which we defined in the chapter \ref{ch:numpy} in section \ref{sec:SVD}, when talking about SVD factorisation. The condition number of a matrix is the quotient of its largest and smallest singular values.  The closer the condition number is to $1$, the better conditioned the matrix is, and the larger the condition number, the worse conditioned it is.
+
+\switchcolumn
+
+En Python dentro del paquete \texttt{linalg} de \texttt{numpy} está la función \texttt{cond} que nos permite obtener el número de condición de una matriz. Si lo aplicamos a la matriz de coeficientes del último ejemplo mostrado,
+
+\switchcolumn
+In Python, we can use the function \texttt{cond} inside the \texttt{linalg} module in \texttt{numpy} to compute the condition number of a matrix. We can apply to the last example coefficient matrix
+
+\end{paracol}
 
 \begin{verbatim}
 >> A=[4 1; 2, 0.499]
