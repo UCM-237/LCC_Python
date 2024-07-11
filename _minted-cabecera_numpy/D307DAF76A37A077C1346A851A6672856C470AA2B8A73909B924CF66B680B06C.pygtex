@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{[}\PYG{n}{Q}\PYG{p}{,}\PYG{n}{R}\PYG{p}{]}\PYG{o}{=}\PYG{n}{qr}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+\end{Verbatim}

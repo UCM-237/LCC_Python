@@ -2481,282 +2481,311 @@ label=primos.py,
 fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/introduccion/codigo_abierto/primos.py}
-===================== The Frontier =========================
-\subsection{Exportar e importar datos en Matlab} \label{fpf}
 
-\paragraph*{Datos en formato propio de Matlab}
-Matlab posee un formato de archivo propio para manejar sus datos. Los archivos de datos propios de Matlab, emplean la extensión \texttt{.mat}.
+\begin{paracol}{2}
+\subsection{Exportar e importar datos en Python} \label{fpf}
+Almacenar datos es importante para trabajar en varias sesiones y compartir resultados. Dado que cuando Python se cierra, todas las variables de la memoria se pierden, los datos deben almacenarse de alguna otra forma. A veces también es necesario leer datos que están almacenados en un archivo.
+\switchcolumn
+\subsection{Reading and writing data in Pyhton}\label{fpf_eng}
+Storing data is important for working in multiple sessions and sharing results. Since when Python shuts down, all variables in memory are lost, data must be stored in some other way. Sometimes it is also necessary to read data that is stored in a file.
+\switchcolumn
+\paragraph*{Archivos de texto}
+Un archivo de texto, que muchas veces se guarda con extensión \textit{.txt}, es un archivo que sólo contiene texto sin formato. 
+Para trabajar con ficheros de texto, necesitamos utilizar la función \texttt{open} que devuelve un objeto de tipo fichero. Se suele utilizar con dos argumentos:
+\switchcolumn
+\paragraph*{Text files}
+A text file, many times saved with the \textit{.txt} extension, is a file that only contains plain text. To work with text files we need to use the \texttt{open} function, that returns a file object. It is usually used with two arguments:
+\end{paracol}
+\begin{minted}{python}
+    f=open(filename, mode)
+\end{minted}
+\begin{paracol}{2}
+    \texttt{f} es el objeto tipo archivo devuelto por la función, \texttt{filename} es un string con el nombre y ruta del archivo de texto que se quiere abrir y \texttt{mode} es otro string que indica de qué manera va a usarse el archivo. Algunos de los modos más comunes son:
+    \begin{itemize}
+        \item 'r' es el modo por defecto. Indica que el archivo se abre sólo para leerse.
+        \item 'w' abre el archivo para escribir en él. Si el archivo no existe lo crea.
+        \item 'a' es el modo añadir. Añade texto al final del archivo. Si el archivo no existe lo crea al igual que el modo 'w'.
+        \item 'r+' abre un archivo (pero no lo crea) para leer y escribir en él.
+        \item 'w+' abre un archivo para leer y escribir, lo crea si es que no existe. Borra lo que tuviera escrito anteriormente en él.
+        \item 'a+'  abre un archivo para leer y escribir, lo crea si es que no existe. Añade los datos al final del archivo.
+    \end{itemize}
+    \switchcolumn
+    \texttt{f} is the file object returned by the function, \texttt{filename} is a string with the name and path of the text file to be opened and \texttt{mode} is another string indicating how the file is to be used. Some of the most common modes are:
+    \begin{itemize}
+        \item 'r' is the default mode. It indicates that the file is opened for reading only.
+        \item 'w' opens the file for writing to. If the file does not exist, it creates it.
+        \item 'a' is the append mode. Adds text to the end of the file. If the file does not exist, it creates it as in 'w' mode.
+        \item 'r+' opens a file (but does not create it) for reading and writing to it.
+        \item 'w+' opens a file for reading and writing, creates it if it does not exist. Discards what was previously written to it.
+        \item 'a+' opens a file for reading and writing, creates it if it does not exist. Adds data to the end of the file.
+    \end{itemize}
 
+    \switchcolumn
+    Los objetos de tipo archivo tienen métodos que nos permiten acceder y modificar su contenido. Algunos de esos métodos son:  
+    \begin{itemize}
+        \item \texttt{write} que permite escribir datos en el archivo
+        \item \texttt{read} lee todos los datos que contiene el archivo y los devuelve
+        \item \texttt{readline} lee una línea (hasta el carácter fin de línea) del archivo. 
+        \item \texttt{readlines} lee el archivo completo pero devuelve una lista donde cada línea es uno de los elementos
+    \end{itemize}
+    \switchcolumn
+    File type objects have methods that allow us to access and modify their content. Some of these methods are:  
+    \begin{itemize}
+        \item \texttt{write} which allows writing data to the file
+        \item \texttt{read} reads all the data contained in the file and returns it
+        \item \texttt{readline} reads a line (up to the end-of-line character) from the file
+        \item \texttt{readlines} reads the whole file but returns a list where each line is one of the elements
+    \end{itemize}
+    \switchcolumn
+    En el siguiente ejemplo se puede ver el código para usar algunos de los métodos anteriores. Se abre un archivo y se escriben $5$ líneas en él. A continuación se lee dicho archivo. Se vuelve a abrir el archivo pero en modo añadir \texttt{a}, escribiendo una línea al final del archivo. Se lee pero usando el método \texttt{readlines}, de manera que lo que se obtiene es una lista donde cada elemento es una de las líneas. Finalmente se vuelve a abrir el archivo y se lee, en la variable \texttt{line} cada línea, se para el bucle cuando el método \texttt{readline} no devuelve nada.
 
-Si tenemos un conjunto de variables en el \emph{workspace}, podemos guardarlas en un fichero empleando el comando \texttt{save}, seguido del nombre del fichero donde queremos guardarlos. No es preciso incluir la extensión \texttt{.mat}, Matlab la añade automáticamente:
-\begin{verbatim}
->> save datos
-\end{verbatim}
-Matlab creará en el directorio de trabajo un nuevo fichero \texttt{datos.mat} en el que quedarán guardadas todas las variables contenidas en el \emph{workspace}.  Los ficheros \texttt{.mat} generados por Matlab están escritos en binario. No se puede examinar su contenido empleando un editor de textos. Matlab almacena toda la información necesaria ---nombre de las variables, tipo, etc--- para poder volver a reconstruir las variables en el \emph{workspace} tal y como estaban cuando se generó el archivo.
+    \switchcolumn
+        In the following example you can see the code to use some of the above methods. You open a file and write $5$ lines to it. Then read the file. The file is reopened but in append mode, writing a line to the end of the file. It is read but using the \texttt{readlines} method, so that what you get is a list where each element is one of the lines. Finally the file is reopened and read, in the variable \texttt{line} each line, and the loop is stopped when the \texttt{readline} method does not return anything.
+\end{paracol}
 
+\begin{minted}{python}
+    
+f=open('textfile.txt','w')
+for i in range(5):
+    f.write(f"Line {i}\n")
+f.close()
 
-Es posible guardar tan solo algunas de las variables contenidas en el \emph{workspace} en lugar de guardarlas todas. Para ello, basta añadir al comando \texttt{save}, detrás del nombre del archivo, el nombre de las variables que se desean guardar, separadas entre sí por un espacio
-\begin{verbatim}
->>save datos1 A  matriz_1 B 
-\end{verbatim}
-La instrucción anterior guarda en un archivo ---llamado datos1.mat--- las variables \texttt{A}, \texttt{matriz1} y \texttt{B}.
+f=open('textfile.txt','r')
+print(f.read())
+f.close()
 
+f=open('textfile.txt','a')
+f.write("Another line")
+f.close()
 
-Los datos contenidos en cualquier fichero \texttt{.mat} generado con el comando \texttt{save} de Matlab, pueden volver a cargarse en el \emph{workspace} empleando el comando \texttt{load}, seguido del nombre del fichero cuyos datos se desean cargar:
-\begin{verbatim}
-load datos.mat
-\end{verbatim}
- carga en el \emph{workspace} las variables contenidas en el fichero \texttt{datos.mat}, la extensión del fichero puede omitirse al emplear la función \texttt{load}. Si conocemos los nombres de las variables contenidas en un archivo \texttt{.mat}, podemos cargar en Matlab solo una o varias de las variables contenidas en el archivo, escribiendo sus nombres, separados por espacios, detrás del nombre del archivo: 
-\begin{verbatim}
->>load datos A G matriz1
-\end{verbatim}
- cargará tan solo las variables \texttt{A}, \texttt{G} y \texttt{matriz1}, de entre las que contenga el ficheros \texttt{datos.mat}
+f=open('textfile.txt','r')
+print(f.readlines())
+f.close()
 
-\paragraph*{Datos en Formato ASCII} \index{Datos!Formato ASCII}\index{ASCII, Formato de datos}e puede emplear también el comando \texttt{save} para exportar datos en formato ASCII. Pare ello es preciso añadir al comando modificadores,
-\begin{verbatim}
->>save datos.txt A -ASCII
-\end{verbatim}
+f=open('textfile.txt','r')
+while True:
+    line=f.readline()
+    if not line:
+        break
+    print(line)
 
-Este comando guardará la variable \texttt{A} en el fichero \texttt{datos.txt}. Matlab no añade ninguna extensión por defecto al nombre del fichero cuando empleamos el comando \texttt{save} con el modificador \texttt{-ASCII}. En este caso, hemos añadido explícitamente la extensión \texttt{.txt}, esto facilita que el archivo resultante se pueda examinar luego empleando un sencillo editor de texto o una hoja de cálculo.
+f.close()
+\end{minted}
 
+\begin{minted}{pycon}
+Line 0
+Line 1
+Line 2
+Line 3
+Line 4
 
-Cuando se exportan datos desde Matlab en formato ASCII, Matlab guarda tan solo los valores numéricos contenidos en las variables, pero no los nombres de éstas. Por otro lado, guarda tan solo ocho dígitos, por lo que habitualmente se pierde precisión. Es posible guardar  datos en formato ASCII, conservando toda la precisión, si añadimos al comando \texttt{save} el modificador \texttt{-DOUBLE}, 
-\begin{verbatim}
->>save nombre_Archivo matriz_1, matriz2, ... -ASCII -DOUBLE
-\end{verbatim}
+['Line 0\n', 'Line 1\n', 'Line 2\n', 'Line 3\n', 'Line 4\n', 'Another line']
+Line 0
 
+Line 1
 
-Supongamos que en \emph{workspace} tenemos guardada la siguiente matriz,
+Line 2
 
-\begin{equation*}
-a=
-\begin{pmatrix}
-1.300236890000000e+000&3.456983000000000e+000&4.321678000000000e+006\\
-4.000230000000000e+003&1.245677000000000e+001&1.231565670000000e+002
-\end{pmatrix}
-\end{equation*}
-Si ejecutamos en Matlab, 
-\begin{verbatim}
->>save datos.txt a -ASCII
-\end{verbatim}
+Line 3
 
-El fichero resultante tendrá el aspecto siguiente,
-\begin{verbatim}
-   1.3002369e+00   3.4569830e+00   4.3216780e+05
-   4.0002300e+03   1.2456770e+01   1.2315657e+02
-\end{verbatim}
+Line 4
 
-es decir, los elementos de una misma fila de la matriz \texttt{a} se guardan en una fila separados por espacios, las filas de la matriz se separan empleando retornos de carro ---cada una ocupa una línea nueva--- y los valores cuyos dígitos significativos exceden de 8 se han truncado, redondeando el último dígito representado. Este último es el caso de los elementos $a_{11}$ y $a_{33}$ de la matriz del ejemplo.
+Another line
+\end{minted}
 
-Cuando se guardan varias variables o todo el \emph{workspace} en un mismo fichero con formato ASCII, es preciso tener en cuenta que Matlab se limitará a guardar los contenidos de las variables, uno debajo de otro, en el orden en que las escribamos detrás del comando \texttt{save} (en el caso de que guardemos todas las variables del \emph{workspace} las guardará una debajo de otra por orden alfabético), por lo que resulta difícil distinguir las variables originales.
-Así por ejemplo, si tenemos en el \emph{workspace} las variables,
- \begin{equation*}
- A=
- \begin{pmatrix}
-3&5\\
-2&1\\
-8&0
-\end{pmatrix}
-a=
-\begin{pmatrix}
-1&3&4\\
-4&5.6&2\\
-3&0&1
-\end{pmatrix}
-c=
-\begin{pmatrix}
-3&2
-\end{pmatrix}
-\end{equation*}
-La orden,
-\begin{verbatim}
->>save datos.txt c a A -ASCII
-\end{verbatim}
+\begin{paracol}{2}
+\paragraph*{Trabajar con números y arrays}
+ En muchos de los casos vamos a necesitar guardar y leer números o matrices. Podríamos utilizar los métodos anteriores para guardar los números o matrices en un archivo y leerlos de nuevo. Sin emabrgo, una manera mejor de hacerlo es usar el paquete numpy para guardar y leer directamente un array.
+ \switchcolumn
+ \paragraph*{Working with numbers and arrays}
+ In many cases we will need to save and read numbers or arrays. We could use the above methods to save the numbers or arrays to a file and read them back. However, a better way to do this is to use the numpy package to directly save and read an array.
+ \switchcolumn
+ Dentro de numpy tenemos los métodos \texttt{savetxt} y \texttt{loadtxt} para guardar arrays en archivos de texto o cargarlos desde archivos de texto. 
 
-produce el un archivo con el siguiente contenido,
-\begin{verbatim}
-   3.0000000e+00   2.0000000e+00
-   1.0000000e+00   3.0000000e+00   4.0000000e+00
-   4.0000000e+00   5.6000000e+00   2.0000000e+00
-   3.0000000e+00   0.0000000e+00   1.0000000e+00
-   3.0000000e+00   5.0000000e+00
-   2.0000000e+00   1.0000000e+00
-   8.0000000e+00   0.0000000e+00
-\end{verbatim}
-
-El comando \texttt{load}, presenta algunas limitaciones para cargar datos contenidos en un fichero ASCII. Solo funciona correctamente si el contenido del fichero puede cargarse en una única matriz, es decir, cada fila de datos en el fichero debe contener el mismo número de datos. Así, en el ejemplo anterior, los datos guardados en el fichero \texttt{datos.txt}, no pueden volver a cargarse en Matlab usando el comando load.
-
-Para el caso de un fichero cuyos contenido pueda adaptarse a una matriz, el comando load carga todos los datos en una única matriz a la que asigna el nombre del fichero sin extensión.
-
-\paragraph*{Lectura y escritura de datos con formato} \index{Datos!Lectura y escritura}
-
-Matlab puede también escribir y leer datos, empleando formatos y procedimientos similares a los de el lenguaje C. Para ello, es preciso emplear varios comandos\footnote{Lo que se ofrece a continuación es solo un resumen del uso de los comandos y formatos más frecuentes. Para obtener una información completa, consultar la ayuda de Matlab.}:
-
-En primer lugar es preciso crear ---o si ya existe abrir--- el archivo en que se quiere guardar o del que se quieren leer los datos. En ambos casos se emplea para ello el comando \texttt{fopen}. La sintaxis de este comando es de la forma,
-\begin{verbatim}
-fid=fopen(nombre de fichero, permisos)
-\end{verbatim} 
-El nombre del fichero debe ser una cadena de caracteres, es decir, debe ir escrito entre apóstrofos. Hay al menos ocho tipos de permisos distintos. Aquí describiremos tan solo tres de ellos, \texttt{'w'} ---\emph{write}--- abre o crea un archivo con permiso de escritura. Si el archivo ya existía su contenido anterior se sobreescribe. Si se quiere añadir datos a un archivo sin perder su contenido se emplea el permiso \texttt{'a'} ---\emph{append}--- los nuevos datos introducidos se escriben al final del fichero, a continuación de los ya existentes. \texttt{'r'} ---\emph{read}--- permiso de lectura, es la opción por defecto, permite leer el contenido de un archivo. Cuando se trabaja en el sistema operativo \emph{Windows}, es común emplear los permisos en la forma \texttt{'wt'} y \texttt{'rt'}, de este modo, los archivos se manejan en el denominado formato 'texto'. La variable \texttt{fid}, es un identificador del fichero abierto y es también la forma de referirnos a él ---en un programa, o en la línea de comandos--- mientras permanece abierto.
-
-Supongamos que hemos abierto ---o creado--- un archivo para escribir en él, datos contenidos en el \emph{workspace}, 
-\begin{verbatim}
-fichero1=fopen('mi_fichero','wt') 
-\end{verbatim}
-
-Para escribir en él emplearemos el comando fprintf. La sintaxis de este comando necesita un identificador de archivo --en nuestro caso sería fichero1--, un descriptor del formato con el que se desean guardar los datos y el nombre de la variable que se desea guardar.
-\begin{verbatim}
-control=fprintf(fichero1,formato,nombre_de_variable,...)
-\end{verbatim} 
-Los descriptores de formato se escriben entre apóstrofos. Empiezan siembre con el carácter \texttt{\%}, seguido de un número con formato \emph{e.d}. Donde \emph{e} recibe el nombre de anchura de campo  y \emph{d} recibe el nombre de precisión. Por último se añade un carácter, conocido como carácter de conversión, que permite ajustar el formato numérico de los datos. Los más usuales son: \texttt{f} ---notación de punto fijo---, \texttt{e} ---notación exponencial--- y \texttt{g} ---la notación que resulte más compacta de las dos anteriores---.  La anchura de campo representa en número mínimo de caracteres que se emplearán para representar el número.  La precisión depende del carácter de conversión; para \texttt{f} y  \texttt{e}, representa el número de dígitos  a la derecha del punto decimal, para  \texttt{g} el número de dígitos significativos.
-
-Aquí hemos incluido solo los caracteres de conversión más usuales para el caso de datos numéricos. Cabe añadir que para el caso de una cadena de caracteres se emplea como carácter de conversión la letra $s$.  Por ejemplo:
-
-\begin{verbatim}
->>A='mi cadena de caracteres'
->>num=fprinf(fid,'%s', A)
-\end{verbatim}
-Escribe  el texto contenido en el vector \texttt{A} en el archivo indicado por \texttt{fid}.
+ Para usar \texttt{savetxt} tenemos que porporcionar los siguientes argumentos: un string con el nombre del archivo y la variable que contiene el array que vamos a guardar. Además, de manera opcional se pueden proporcionar más. Por ejemplo el formato, bajo la clave de \texttt{fmt} (en el ejemplo el formato es un número (\%), con tres cifras decimales ($.3$) de tipo float (f). El tipo de delimitador entre elementos, una cabecera etc. Se puede consultar la documentación para verlos todos.
  
-Matlab, almacena los datos consecutivamente uno detrás de otro. Si se trata de matrices, los va leyendo por columnas y una variable tras otra en el orden en que se hayan introducido al llamar a la función \texttt{fprintf}. Para separar entre sí los datos se puede añadir a los descriptores de formatos, espacios y también caracteres de escape como Retornos de carro \texttt{\textbackslash r}, indicadores de salto de línea \texttt{\textbackslash n} o tabuladores \texttt{\textbackslash t}, entre otros.
+ \switchcolumn
 
-Por ejemplo, supongamos que tenemos en Matlab las siguiente matrices
+ Within numpy we have the methods \texttt{savetxt} and \texttt{loadtxt} to save arrays to text files or load them from text files. 
 
- \begin{equation*}
- A=
- \begin{pmatrix}
-3.25&5.22\\
-23.1&130.5\\
-8&0
-\end{pmatrix}
-a=
-\begin{pmatrix}
-1.2345&3.0879&4234.2\\
-40&5000.6&223\\
-3&0&1
-\end{pmatrix}
-c=
-\begin{pmatrix}
-30&2
-\end{pmatrix}
-\end{equation*}
+ To use \texttt{savetxt} we have to provide the following arguments: a string with the name of the file and the variable containing the array to be saved. In addition, you can optionally provide more. For example the format, under the key of \texttt{fmt} (in the example the format is a number (\%), with three decimal digits ($.3$) of type float (f). The type of delimiter between elements, a header etc. You can consult the documentation to see them all.
 
-Si empleamos,
-\begin{verbatim}
->>num=fprinf(fid,'%2.1f', A, a, c)
-\end{verbatim}
+ \switchcolumn
+ El método \texttt{loadtxt} nos permite leer un array de un archivo y guardarlo directamente en una variable de tipo array de numpy. Para ello simplemente proporcionaremos el archivo donde está almacenado el array y el método nos devolverá el array. En el ejemplo puede verse cómo se guarda una matriz $2x3$ en un archivo de texto, con una cabecera, cómo se lee usando las funciones \texttt{open} y \texttt{read} y cómo se lee la matriz y se almacena en un array de numpy usando el método \texttt{savetxt}.
 
-Los datos se guardarán en el archivo indicado por \texttt{fid} en la siguiente forma:
-\begin{verbatim}
-3.223.18.05.2130.50.01.240.03.03.15000.60.04234.2223.01.030.02.0
-\end{verbatim}
+ \switchcolumn
 
-Guardados en este formato resulta bastante difícil reconocerlos. Si probamos,
-\begin{verbatim}
->>num=fprinf(fid,'%2.1f ', A, a, c)
-\end{verbatim}
+ The \texttt{loadtxt} method allows us to read an array from a file and store it directly into a numpy array variable. To do this we simply provide the file where the array is stored and the method will return the array. In the example you can see how a $2x3$ array is stored in a text file, with a header, how it is read using the \texttt{open} and \texttt{read} functions and how the array is read and stored in a numpy array using the \texttt{savetxt} method.
+ 
+\end{paracol}
+\begin{minted}{python}
+    import numpy as np
 
-El resultado sería,
-\begin{verbatim}
-3.2 23.1 8.0 5.2 130.5 0.0 1.2 40.0 3.0 3.1 5000.6 0.0 4234.2 223.0 1.0 30.0 2.0
-\end{verbatim}
+arr=np.array([[0.3,4.3,3.5],[-1.23,0.032,-3.23]])
+np.savetxt('matrix01.txt', arr,fmt='%.3f',delimiter=' ',header='Col1 Col2 Col3')
+f=open('matrix01.txt','r')
+print(f.read())
+f.close()
+#Now we read it with loadtxt
 
-El formato es de punto fijo y los datos aparecen separados por un espacio ---nótese que en el descriptor de formato se ha incluido un espacio entre la f y el apóstrofo---. Los datos de las tres matrices aparecen uno detrás de otro, y se han ido escribiendo en el archivo por columnas
+m1= np.loadtxt('matrix01.txt')
+print(m1)
 
-Si cambiamos de nuevo el descriptor de formato,
-\begin{verbatim}
->>num=fprinf(fid,'%2.3g\n', A, a c)
-\end{verbatim}
-obtendremos,
-\begin{verbatim}
-3.25
-23.1
- 8
-5.22
-130
- 0
-1.23
-40
- 3
-3.09
-5e+03
- 0
-4.23e+03
-223
- 1
-30
-\end{verbatim}
-Matlab elige el formato más compacto para cada dato, y guarda cada dato en una fila nueva, debido al término \texttt{\textbackslash n} introducido al final del descriptor.
+\end{minted}
 
-Por último indicar que es posible emplear varios descriptores consecutivos, en cuyo caso, Matlab los aplica a cada dato consecutivamente, cuando ha terminado con la lista de descriptores, comienza de nuevo por el principio.
+\begin{minted}{pycon}
+# Col1 Col2 Col3
+0.300 4.300 3.500
+-1.230 0.032 -3.230
 
-Por ejemplo, 
+[[ 0.3    4.3    3.5  ]
+ [-1.23   0.032 -3.23 ]]
+\end{minted}
 
-\begin{verbatim}
->>num=fprinf(fid,'%2.3g %2.3g %2.3g\n', a)
-\end{verbatim}
-Guarda los datos contenidos en \texttt{a} como,
-\begin{verbatim}
-1.23 40 3.09
-5e+03 4.23e+03 223
-\end{verbatim}
+\begin{paracol}{2}
+\paragraph*{Datos en formato CSV}
+    Hay muchos datos científicos que se almacenan en el formato de archivo de valores separados por comas (CSV). Se trata de un archivo de texto que utiliza una coma para separar los valores. Es un formato muy útil que permite almacenar grandes tablas de datos (números y texto) en texto plano. Cada línea (fila) de los datos es un registro de datos, y cada registro consta de uno o varios campos, separados por comas. También se puede abrir con Microsoft Excel, y visualizar las filas y columnas.
 
-Es decir cada tres datos cambia a una línea nueva. Por supuesto, podríamos hacer que los datos se guardaran con un formato distinto en cada caso,
-\begin{verbatim}
->>num=fprinf(fid,'%2.3g %3f %2.3f\n', a)
+    Python tiene su propio módulo csv que puede manejar la lectura y escritura del archivo csv. No vamos a introducir este módulo csv aquí. En su lugar, usaremos el paquete numpy para manejar el archivo csv ya que muchas veces leeremos el archivo csv directamente a un array numpy.
 
-1.23 40.000000 3.088
-5e+03 4234.200000 223.000
-\end{verbatim}
+\switchcolumn
 
-Por último indicar, que si se emplea el comando \texttt{fprintf} sin emplear un  identificador de archivo o empleando como identificador el valor $1$. Matlab escribe el resultado directamente en la ventana de comandos con el formato deseado.
+\paragraph*{Data in CSV format}
+    There is a lot of scientific data that is stored in the Comma Separated Values (CSV) file format. This is a text file that uses a comma to separate values. It is a very useful format that allows large tables of data (numbers and text) to be stored in plain text. Each line (row) of data is a data record, and each record consists of one or more fields, separated by commas. It can also be opened with Microsoft Excel, and rows and columns can be displayed.
 
-Por ejemplo, 
-\begin{verbatim}
->>B = [8.8  7.7; 8800  7700];
->>fprintf(1, 'X is %6.2f metros o %8.3f mm\n', 9.9, 9900, B)
-\end{verbatim}
-Mostrará en la ventana de comandos las siguientes líneas:
-\begin{verbatim}
-X is 9.90 metros o 9900.000 mm
-X is 8.80 metros o 8800.000 mm
-X is 7.70 metros o 7700.000 mm
-\end{verbatim}
+    Python has its own csv module that can handle reading and writing the csv file. We will not introduce this csv module here. Instead, we will use the numpy package to handle the csv file since we will often read the csv file directly to a numpy array.
+
+\switchcolumn
+
+    Usando el mismo método \texttt{savetxt} de numpy del epígrafe anterior podemos indicar que el caracter delimitador que queremos poner para separar los datos es una coma. A la hora de leer los datos con \texttt{loadtxt} tendremos también que indicar que se ha usado la coma para separar unas columnas de otras, como se ve en el siguiente ejemplo.
+
+\switchcolumn
+
+    Using the same \texttt{savetxt} method of numpy from the previous section, we can indicate that the delimiter character we want to use to separate the data is a comma. When reading the data with \texttt{loadtxt} we will also have to indicate that the comma has been used to separate some columns from others, as shown in the following example.
+
+\end{paracol}
 
 
-Para cargar archivos desde un fichero que contiene datos en binario, se emplea el comando \texttt{fscanf}. Su uso es similar al de \texttt{fprintf}, pero ahora los datos pasarán desde el fichero donde están guardados a una matriz.
+\begin{minted}{python}
+    
+import numpy as np
 
-\begin{verbatim}
->>A=fscanf(pid,'%f')
-\end{verbatim}
+# Create a random 20x4 matrix
+m2=np.random.random([20,4])
 
-El comando \texttt{fscanf}, admite como parámetros  el número máximo de datos que se leerán del fichero,
-\begin{verbatim}
-a=fscanf(fid,'%5.2f',M)
-\end{verbatim}
-Lee como máximo M datos del fichero y los guarda en un vector \texttt{a}. Es posible dar a los datos formato de matriz, mediante dos parámetros (fila y columna),
-\begin{verbatim}
-a=fscanf(fid,'%5.2f',[M,N])
-\end{verbatim}
-Ahora creará una matriz \texttt{a} de M filas por N columnas. Matlab irá cogiendo los datos del fichero, por columnas hasta rellenar la matriz.
+#Save it as a csv file
+np.savetxt('randomMat.csv',m2, fmt='%.2f', delimiter=',')
 
-Es posible dar al segundo parámetro el valor \texttt{inf}. De este modo, Matlab creará una matriz de \texttt{M} filas y el número de columnas necesario para cargar todos los datos del fichero. (Si faltan elementos para completar la matriz resultante, Matlab rellena los huecos con ceros.)
-Por último, una vez que se han escrito o leído datos en el fichero es preciso cerrarlo correctamente empleando el comando \texttt{fclose}, la sintaxis de este comando solo precisa que se incluya el identificador del fichero que se quiere cerrar,
-\begin{verbatim}
->>fclose(fid)
-\end{verbatim}
+#Read ir back with loadtxt
+m3=np.loadtxt('randomMat.csv',delimiter=',')
 
-\paragraph*{Herramienta de importación de datos}\index{Datos! Importación}
-Matlab posee una herramienta especial para importar datos. Con ella, es posible cargar en Matlab datos de muy diverso tipo, no sólo numéricos sino también imágenes, sonido, etc. Una de las ventajas de esta herramienta es que reconoce directamente ---entre otros--- los archivos creados por las hojas de cálculo.
-\begin{figure}[h]
-	\centering
-		\includegraphics[width=10cm]{Wizard1.png}
-	\caption{Aspecto de la herramienta de importación de datos}
-	\label{fig:wizard}
-\end{figure}
+print(m3)
 
-Para abrir en Matlab la herramienta de importación, basta pulsar en la pestaña \emph{home}, situada en la parte superior del IDE de Matlab,   el botón \emph{Import Data}. Matlab abre entonces una ventana que nos permite navegar por el árbol de directorio y seleccionar el archivo del que deseamos importar los datos. Una vez seleccionado, Matlab abre la ventana mostrada en la imagen \ref{fig:wizard}. 
-Se trata de un programa especial ---\emph{import wizard}--- que sirve para guiar al usuario en el proceso de cargar las variables contenidas en el fichero en el \emph{workspace} de Matlab.
+\end{minted}
 
+\begin{minted}{pycon}
+[[0.08 0.91 0.36 0.19]
+ [0.61 0.22 0.7  0.66]
+ [0.77 0.57 0.77 0.4 ]
+ [0.58 0.32 0.89 0.78]
+ [0.63 0.09 0.97 0.78]
+ [0.35 0.7  0.5  0.96]
+ [0.65 0.78 0.04 0.04]
+ [0.96 0.31 0.45 0.26]
+ [0.75 0.51 0.09 0.87]
+ [0.93 0.13 0.8  0.61]
+ [0.67 0.99 0.83 0.76]
+ [0.21 0.72 0.56 0.46]
+ [0.81 0.82 0.67 0.88]
+ [0.12 0.01 0.02 0.55]
+ [0.88 0.08 0.95 0.7 ]
+ [0.74 0.84 0.56 0.3 ]
+ [0.77 0.73 0.67 0.89]
+ [0.44 0.23 0.67 0.18]
+ [0.61 0.4  0.06 0.1 ]
+ [0.55 0.35 0.89 0.11]]
+\end{minted}
+
+\begin{flalign*}
+&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+\end{flalign*}
+
+\begin{paracol}{2}
+\paragraph*{Archivos JSON}
+JSON son las siglas de JavaScript Object Notation y es un formato muy utilizado de archivo de datos, independiente del lenguaje de programación. Un archivo JSON normalmente termina con la extensión ".json". Exploraremos brevemente cómo manejar archivos JSON en Python.
+
+El texto en JSON se guarda mediante cadenas entrecomilladas que contienen valores en pares clave-valor dentro de llaves $\{\}$. En realidad es muy similar al diccionario que vimos en Python. Por ejemplo:
+
+\switchcolumn
+\paragraph*{JSON files}
+JSON stands for JavaScript Object Notation and is a widely used data file format, independent of programming language. A JSON file usually ends with the extension ".json". We will briefly explore how to handle JSON files in Python.
+
+Text in JSON is stored as quoted strings containing values in key-value pairs inside $\{\}$ braces. It's actually very similar to the dictionary we saw in Python. For example:
+\end{paracol}
+\begin{minted}{json}
+  {
+  "id": "Frodo",
+  "tipo" : "Hobbit",    
+  "estado":{
+      "posicion": [2.345,-5.985],
+      "velocidad lineal": 0.15,
+      "velocidad angular": 0,
+      "baterias": 7.32
+      }
+}
+
+\end{minted}
+
+\begin{paracol}{2}
+    Aunque podríamos trabajar directamente con el archivo de texto y todas las funciones anteriores, hay librerías de python que nos ofrecen métodos para guardar, leer y manipular datos en formato JSON de manera sencilla. Una de ellas es la librería \texttt{json}. Importando esta librería tenemos el método \texttt{dump} para guardar un diccionario de python (uni en el ejemplo) en un archivo json. A este proceso se le llama serializar. A \texttt{dump} hay que proporcionarle el objeto python de tipo archivo (por eso abrimos un archivo con \texttt{open} en modo escritura 'w').
+
+    Para leer un archivo de datos de tipo JSON y guardar el contenido en un diccionario de python podemos usar el método \texttt{load} de la librería \texttt{json}. Al igual que a \texttt{dump} tendremos que proporcionarle el objeto archivo (ahora lo abriremos en modo lectura 'r') y nos devolverá un objeto de tipo diccionario.
+    
+\switchcolumn
+    Although we could work directly with the text file and all the above functions, there are Python libraries that provide methods to store, read and manipulate data in JSON format in a simple way. One of them is the \texttt{json} library. Importing this library we have the \texttt{dump} method to save a Python dictionary (uni in the example) in a json file. This process is called serialize. The \texttt{dump} must be provided with the python object of type file (that's why we open a file with \texttt{open} in write mode 'w').
+
+    To read a JSON data file and save the content in a python dictionary we can use the \texttt{load} method of the \texttt{json} library. Like \texttt{dump} we will have to provide it with the file object (now we will open it in read mode 'r') and it will return a dictionary object.
+
+\switchcolumn
+
+
+\end{paracol}
+
+\begin{minted}{python}
+import json as js
+
+robot=    {
+  "id": "Frodo",
+  "tipo" : "Hobbit",    
+  "estado":{
+      "posicion": [2.345,-5.985],
+      "velocidad lineal": 0.15,
+      "velocidad angular": 0,
+      "baterias": 7.32
+      }
+}
+
+
+js.dump(robot,open('jsondat.json','w'))
+
+mi_robot=js.load(open('jsondat.json','r'))
+
+print(mi_robot)
+\end{minted}
+
+\begin{minted}{pycon}
+{'id': 'Frodo', 'tipo': 'Hobbit', 'estado': {'posicion': [2.345, -5.985], 'velocidad lineal': 0.15, 'velocidad angular': 0, 'baterias': 7.32}}
+\end{minted}
+
+\begin{paracol}{2}
+    Python es un lenguaje de programación muy usado para trabajar con datos. Cuenta con librerías muy potentes y apropiadas para el manejo de grandes cantidades de datos como por ejemplo pandas. 
+\switchcolumn
+    Python is a widely used programming language for working with data. It has very powerful libraries suitable for handling large amounts of data such as pandas. 
+\end{paracol}
+
+\begin{flalign*}
+&&\left. \right\rbrace \reversemathwitch*
+\end{flalign*}
 
 \newpage
 \section{Ejercicios}

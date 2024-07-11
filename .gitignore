@@ -1,5 +1,6 @@
 build/
 _minted-lcc_manual/
+_minted-cabecera_numpy/
 __pycache__
 *.aux
 *.idx
@@ -11,6 +12,7 @@ __pycache__
 *.out
 *.pdf
 *.toc
+*.gz
 
 
 

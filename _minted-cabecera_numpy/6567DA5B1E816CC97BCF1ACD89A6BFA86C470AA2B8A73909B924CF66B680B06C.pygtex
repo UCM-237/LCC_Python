@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]:} \PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]:} \PYG{n}{A} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{],[}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{],[}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{]])}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:} \PYG{n}{A}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{]])}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}  \PYG{l+m+mf}{2.71828183}\PYG{p}{,}   \PYG{l+m+mf}{7.3890561} \PYG{p}{],}
+       \PYG{p}{[}  \PYG{l+m+mf}{7.3890561} \PYG{p}{,}   \PYG{l+m+mf}{1.}        \PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mf}{20.08553692}\PYG{p}{,} \PYG{l+m+mf}{148.4131591} \PYG{p}{]])}
+\end{Verbatim}

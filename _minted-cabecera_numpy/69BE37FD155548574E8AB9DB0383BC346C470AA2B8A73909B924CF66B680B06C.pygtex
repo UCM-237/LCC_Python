@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{386}\PYG{p}{]:} \PYG{n}{Aop} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{A}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{387}\PYG{p}{]:} \PYG{n}{A}\PYG{o}{+}\PYG{n}{Aop}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{388}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]])}
+\end{Verbatim}

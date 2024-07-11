@@ -1,4 +1,5 @@
 \chapter{Introducción a matplotlib\\ Introduction to matplotlib}
+\chaptermark{Intro to matplotlib \textreferencemark \ Intro to matplotlib}
 \epigraph{El punto geométrico es invisible. De modo que lo debemos definir como un ente abstracto. Si pensamos en él materialmente, el punto se asemeja a un cero.
 Cero que, sin embargo, oculta diversas propiedades «humanas». Para nuestra percepción este cero —el punto geométrico—está ligado a la mayor concisión. Habla, sin duda, pero con la mayor reserva.}{Vasili Kandinski, Punto y línea sobre plano}
 \begin{paracol}{2}
@@ -584,7 +585,7 @@ X_m=\begin{pmatrix}
 \end{align*}
 
 
-\begin{minted}
+\begin{minted}{python}
 Axes3D.plot_surface(X, Y, Z, *, norm=None, vmin=None, vmax=None, 
 lightsource=None, **kwargs)
 \end{minted}
@@ -781,12 +782,69 @@ Matplotlib también proporciona una interfaz para generar animaciones utilizando
     \switchcolumn
     \section{Animations}
     Based on its plotting functionality, Matplotlib also provides an interface to generate animations using the \textit{animation} module. An animation is a sequence of frames where each frame corresponds to a plot on a figure.
+
+    \switchcolumn
+    Para crear una animación en python usando \textit{matplotlib.animation} seguiremos los siguientes pasos:
+    \begin{enumerate}
+        \item Inicializar los meta datos para la animación.
+        \item Inicializar el fondo de la animación.
+        \item Definir los objetos que van a ir cambiando en cada fotograma.   
+    \end{enumerate}
+
+    \switchcolumn
+
+      To create an animation in python using \textit{matplotlib.animation} we will follow the following steps:
+    \begin{enumerate}
+        \item Initialise the meta data for the animation.
+         \item Initialise the background of the animation.
+        \item Define the objects that are going to change in each frame. 
+    \end{enumerate}
+
+\switchcolumn
+\paragraph{Inicializar los metadatos}. Inicializar los meta datos para la animación creando un diccionario con ellos y pasándoselos al método que va a crear la animación \textit{writers}. Le indicamos tanto los metadatos como el número de frames por segundo con el parámetro \texttt{fps}.
+\switchcolumn
+\paragraph{Initialize the meta data.} Initialise the meta data for the animation by creating a dictionary of it and passing it to the method that will create the animation \textit{writers}.We indicate both the metadata and the number of frames per second with the parameter \texttt{fps}.
+\end{paracol}
+        \begin{minted}{python}
+            FFMpegWriter=manimation.writers["ffmpeg"]
+            metadata = dict(title="GIF Test", artist ="Me", 
+            comment="A red circle following a blue sine wave")
+            writer = FFMpegWriter(fps=15, metadata=metadata)
+        \end{minted}
+\begin{paracol}{2}
+    \paragraph{Inicializar el fondo de la animación}, es decir aquellos elementos que no van a cambiar. Lo haremos definiendo una figura y todo aquello que va a permanecer constante durante la animación, por eso lo llamamos el fondo. En este caso es la curva del seno. También inicializamos el punto vacío rojo, al que le damos unas coordendas vacías, para que Python sepa que esas coordenadas se actualizarán posteriormente. Como las etiquetas no cambian también las ponemos aquí.
     
+    \switchcolumn
+    
+    \paragraph{Initialise the background of the animation},  i.e. those elements that are not going to change. We will do this by defining a figure and everything that will remain constant during the animation, which is why we call it the background. In this case it is the sine curve. We also initialise the red empty point, to which we give empty coordinates, so that Python knows that these coordinates will be updated later. Since the labels don't change, we also put them here.
 \end{paracol}
 
+\begin{minted}{python}
+            fig =plt.figure()
+            n=1000
+            x=np.linspace(0, 6*np.pi,n)
+            y=np.sin(x)
+            sine_line, =plt.plot(x,y,"b")
+            red_circle,=plt.plot([],[],"ro",markersize=10)
+            plt.xlabel("x")
+            plt.ylabel("sin(x)")
+            
+        \end{minted}
 
-
-
+\begin{paracol}{2}
+    \paragraph{Definir los objetos que van a ir cambiando en cada fotograma}. Salvaremos un fichero, indicando qué figura vamos a salvar, el nombre del fichero (\texttt{movie\_test.mpg}) y la resolución de la figura en puntos por pulgada (dpi). En el bucle \textit{for} se actualiza repetidamente la figura para crear el movimiento, en cada iteración se actualiza la posición del punto rojo (usando \texttt{set\_data}). El método \texttt{grab\_frame} captura estos cambios y los muestra con los frames por segundo especificados anteriormente.
+      \switchcolumn
+      \paragraph{Define the objects that are going to change in each frame.} We will save a file, indicating which figure we are going to save, the name of the file (\texttt{movie\_test.mpg}) and the resolution of the figure in dots per inch (dpi). In the \textit{for} loop the figure is repeatedly updated to create the movement, in each iteration the position of the red dot is updated (using \texttt{set\_data}). The \texttt{grab\_frame} method captures these changes and displays them at the frames per second specified above.
+\end{paracol}
+      \begin{minted}{python}
+            with writer.saving(fig,"movie_test.mp4",100):
+                for i in range(n):
+                    x0=x[i]
+                    y0=y[i]
+                    red_circle.set_data([x0],[y0])
+                    writer.grab_frame()
+        \end{minted}
+        
 \newpage
 ===============================================\\
 he traído aquí el examen, porque aquí acababa antes el primer tema de programación\\

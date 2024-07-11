@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{49}\PYG{p}{]:} \PYG{n}{A}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{49}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{]])}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{50}\PYG{p}{]:} \PYG{n}{B}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{50}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{,}  \PYG{l+m+mi}{1}\PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mi}{0}\PYG{p}{,}  \PYG{l+m+mi}{2}\PYG{p}{],}
+       \PYG{p}{[} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{]])}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{51}\PYG{p}{]:} \PYG{n}{A}\PYG{o}{*}\PYG{n}{B}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{51}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{,}   \PYG{l+m+mi}{2}\PYG{p}{],}
+       \PYG{p}{[}  \PYG{l+m+mi}{0}\PYG{p}{,}   \PYG{l+m+mi}{0}\PYG{p}{],}
+       \PYG{p}{[}  \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{]])}
+\end{Verbatim}

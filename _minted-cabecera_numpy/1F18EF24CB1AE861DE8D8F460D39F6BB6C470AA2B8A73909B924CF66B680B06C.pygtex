@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{395}\PYG{p}{]:} \PYG{n}{A}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{395}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{],}
+       \PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{]])}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{396}\PYG{p}{]:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{matrix\PYGZus{}rank}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{396}\PYG{p}{]:} \PYG{l+m+mi}{2}
+\end{Verbatim}

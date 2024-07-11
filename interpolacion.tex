@@ -1,22 +1,23 @@
 \chapter{Interpolación y ajuste de funciones}\label{interpolacion}
 
-\epigraph{digo que ya tú sabes que la humildad es la basa y fundamento de todas las virtudes, y que sin ella no hay alguna que lo sea. Ella allana inconvenientes, vence dificultades, y es un medio que siempre a gloriosos fines nos conduce; de los enemigos hace amigos, templa la cólera de los airados y menoscaba la arrogancia de los soberbios; es madre de la modestia y hermana de la templanza; en fin, con ella no pueden atravesar triunfo que les sea de provecho los vicios, porque en su blandura y mansedumbre se embotan y despuntan las flechas de los pecados.}{el coloquio de los perros. Miguel de Cervantes}
+\epigraph{Digo que ya tú sabes que la humildad es la basa y fundamento de todas las virtudes, y que sin ella no hay alguna que lo sea. Ella allana inconvenientes, vence dificultades, y es un medio que siempre a gloriosos fines nos conduce; de los enemigos hace amigos, templa la cólera de los airados y menoscaba la arrogancia de los soberbios; es madre de la modestia y hermana de la templanza; en fin, con ella no pueden atravesar triunfo que les sea de provecho los vicios, porque en su blandura y mansedumbre se embotan y despuntan las flechas de los pecados.}{El coloquio de los perros. Miguel de Cervantes}
 
 
-
+\begin{paracol}{2}
 En este capítulo vamos a estudiar distintos métodos de aproximación polinómica. En términos generales el problema consiste en sustituir una función $f(x)$ por un polinomio,
+\end{paracol}
 \begin{equation*}
 f(x)\approx p(x)=a_0+a_1\cdot x+a_2\cdot x^2+a_3\cdot x^3+\cdots +a_n \cdot x^n
 \end{equation*}
-
+\begin{paracol}{2}
 Para obtener la aproximación podemos partir de la ecuación que define $f(x)$,  por ejemplo la función error,
-
+\end{paracol}
 \begin{equation*}
 erf(x)=\frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}dt
 \end{equation*}
-
+\begin{paracol}{2}
 O bien, puede suceder que solo conozcamos algunos valores de la función, por ejemplo a través de una tabla de datos,
-
+\end{paracol}
 \begin{table}[h]
 \caption{$f(x)=erf(x)$}
 \centering
@@ -32,7 +33,8 @@ $0.5$&$0.5205$\\
 \end{tabular}
 \label{tpuntos2}
 \end{table}
- 
+
+\begin{paracol}{2}
 La aproximación de una función por un polinomio, tiene ventajas e inconvenientes. 
 
 Probablemente la principal ventaja, desde el punto de vista del cómputo, es que un polinomio es fácil de evaluar  mediante un ordenador ya que solo involucra operaciones aritméticas sencillas. Además, los polinomios son fáciles de derivar e integrar, dando lugar a otros polinomios.
@@ -47,39 +49,43 @@ El uso de uno u otro de estos métodos esta asociado a la información disponibl
 \section{El polinomio de Taylor.}\index{Polinomio de Taylor}
 
 Supongamos una función infinitamente derivable en un entorno de un punto $x_0$. Su expansión en serie de Taylor se define como,
-
+\end{paracol}
 \begin{equation*}
 f(x)=f(x_0)+f'(x_0)\cdot (x-x_0)+\frac{1}{2} f''(x_0)\cdot (x-x_0)^2+\cdots + \frac{1}{n!}f^{(n)}(x_0)\cdot (x-x_0)^n+ \frac{1}{(n+1)!}f^{(n+1)}(z)\cdot (x-x_0)^{n+1}
 \end{equation*}
 
-Donde $z$ es un punto sin determinar situado entre $x$  y $x_0$.   Si eliminamos el último término, la función puede aproximarse por un polinomio de grado $n$																						\begin{equation*}
+\begin{paracol}{2}
+Donde $z$ es un punto sin determinar situado entre $x$  y $x_0$.   Si eliminamos el último término, la función puede aproximarse por un polinomio de grado $n$								
+\end{paracol}
+\begin{equation*}
 f(x)\approx f(x_0)+f'(x_0)\cdot (x-x_0)+\frac{1}{2}f''(x_0)\cdot (x-x_0)^2+\cdots + \frac{1}{n!}f^{(n)}(x_0)\cdot (x-x_0)^n
 \end{equation*}
-
+\begin{paracol}{2}
 El error cometido al aproximar una función por un polinomio de Taylor de grado $n$, viene dado por el término,
 \index{Polinomio de Taylor! Error de la aproximación}
+\end{paracol}
 \begin{equation*}
 e(x)=\lvert f(x) -p(x)\rvert=\left\lvert\frac{1}{(n+1)!} f^{(n+1)}(z)\cdot (x-x_0)^{n+1}\right\rvert
 \end{equation*}
-
+\begin{paracol}{2}
 Es fácil deducir de la ecuación que el error disminuye con el grado del polinomio empleado y aumenta con la distancia entre $x$ y $x_0$. Además cuanto más suave es la función (derivadas pequeñas) mejor es la aproximación.
 
 Por ejemplo para la función exponencial, el polinomio de Taylor de orden $n$ desarrollado en torno al punto $x_0=0$ es, \index{Polinomio de Taylor! Serie de la función exponencial}
-
+\end{paracol}
 \begin{equation*}
 e^x\approx 1+x+\frac{1}{2}x^2+\cdots+\frac{1}{n!}x^n=\sum_{i=0}^n\frac{1}{i!}x^i
 \end{equation*}
-
+\begin{paracol}{2}
 y el del logaritmo natural, desarrollado en torno al punto $x_0=1$, \index{Polinomio de Taylor! Serie del logaritmo natural}
-
+\end{paracol}
 \begin{equation*}
 \log(x)\approx (x-1)-\frac{1}{2}(x-1)^2+\cdots+\frac{(-1)^{n+1}}{n}(x-1)^n=\sum_{i=1}^n\frac{(-1)^{i+1}}{i}(x-1)^i
 \end{equation*}
-
+\begin{paracol}{2}
 La existencia de un término general para los desarrollos de Taylor de muchas funciones elementales lo hace particularmente atractivo para aproximar funciones mediante un ordenador. Así por ejemplo, la siguiente función de Matlab, aproxima el valor del logaritmo natural en un punto, empleando un polinomio de Taylor del grado que se desee,
-
-\begin{lstlisting}
-function y=taylorln(x,n)
+\end{paracol}
+%\begin{lstlisting}
+%function y=taylorln(x,n)
 % Esta función aproxima el valor del logaritmo natural de un numero
 % empleando para ello un polinomio de Taylor de grado n desarrollado en 
 % torno a x=1. Las variables de entrada son: x, valor para el que se desea 
@@ -88,26 +94,26 @@ function y=taylorln(x,n)
 % es un vector, calculará el logaritmo para todos los puntos del vector)
 
 % iniciliazamos la variable de salida y
-y=0;
+%y=0;
 
 % construimos un búcle para ir añadiendo términos al desarrollo
-for i=1:n
-    y=y+(-1)^(i+1)*(x-1).^i/i;
-end
-\end{lstlisting}
-
+%for i=1:n
+%    y=y+(-1)^(i+1)*(x-1).^i/i;
+%end
+%\end{lstlisting}
+\begin{paracol}{2}
 La aproximación funciona razonablemente bien para puntos comprendidos en el intervalo $0<x<2$. La figura \ref{fig:ln} muestra los resultados obtenidos en dicho intervalo para polinomios de Taylor del logaritmo natural de grados 2, 5, 10 20. La linea continua azul representa el valor del logaritmo obtenido con la función de Matlab \texttt{log}.
-
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{ln.eps}
 \caption{Comparación entre resultados obtenidos para polinomios de Taylor del logaritmo natural. (grados 2, 3, 5, 10, 20)}
 \label{fig:ln}
 \end{figure}
-
+\begin{paracol}{2}
 \index{Polinomio de Taylor! Series de las funciones seno y coseno}
 Las funciones $\sin(x)$ y $\cos(x)$, son también simples de aproximar mediante polinomios de Taylor. Si desarrollamos en torno a $x_0=0$, la serie del coseno solo tendrá potencias pares mientras que la del seno solo tendrá potencias impares,
-
+\end{paracol}
 \begin{align*}
 \cos(x)&\approx \sum_{i=0}^n \frac{(-1)^i}{(2i)!}x^{2i}\\
 \sin(x)&\approx \sum_{i=0}^n \frac{(-1)^i}{(2i+1)!}x^{2i+1}
@@ -119,7 +125,7 @@ Las funciones $\sin(x)$ y $\cos(x)$, son también simples de aproximar mediante 
 \subfigure[$\sin(x)$, polinomios  3, 5, 7 y 9  grados \label{fig:sin}]{\includegraphics[width=10.5cm]{sin.eps}}\\
 \caption{Polynomios de Taylor para las funciones coseno y seno  }
 \end{figure}
-
+\begin{paracol}{2}
 En las figuras \ref{fig:cos} y \ref{fig:sin} Se muestran las aproximaciones mediante polinomios de Taylor de las funciones coseno y seno. Para el coseno se han empleado polinomios hasta grado 8 y para el seno hasta grado 9. En ambos casos se dan los resultados correspondientes a un periodo $(-\pi, \pi)$. Si se comparan los resultados con las funciones \texttt{cos} y \texttt{sin}, suministradas por Matlab, puede observarse que la aproximación es bastante buena para los polinomios de mayor grado empleados en cada caso.
 
 \section{Interpolación polinómica.}
@@ -132,6 +138,7 @@ Si tratamos de interpolar los puntos con un polinomio de grado menor que $n$, es
 
 \subsection{La matriz de Vandermonde} \index{Matriz de Vandermonde}
 Supongamos que tenemos un conjunto de pares de puntos $\mathcal{A}$, 
+\end{paracol}
 \begin{table}[h]
 %\caption{$f(x)=erf(x)$}
 \centering
@@ -146,22 +153,23 @@ $x_n$&$y_n$
 \end{tabular}
 \label{tpuntos3}
 \end{table}
-
+\begin{paracol}{2}
 Para que un polinomio de orden $n$,
+\end{paracol}
 \begin{equation*}
 p(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n
 \end{equation*}
-
+\begin{paracol}{2}
 pase por todos los pares de $\mathcal{A}$ debe cumplir,
-
+\end{paracol}
 \begin{equation*}
 y_i=a_0+a_1x_i+a_2x_i^2+\cdots+a_nx_i^n, \ \forall (x_i,y_i) \in \mathcal{A}
 \end{equation*}
-
+\begin{paracol}{2}
 Es decir, obtendríamos un sistema de $n$ ecuaciones lineales, una para cada par de valores, en la que las incógnitas son precisamente los $n$ coeficientes $a_i$ del polinomio.
 
 Por ejemplo para los puntos,
-
+\end{paracol}
 \begin{table}[h]
 %\caption{$f(x)=erf(x)$}
 \centering 
@@ -174,18 +182,17 @@ $3$&$-2$
 \end{tabular}
 \label{tpuntos4}
 \end{table}
-
+\begin{paracol}{2}
 Obtendríamos,
-
+\end{paracol}
 \begin{align*}
 a_0+a_1\cdot 1+ a_2\cdot 1^2&=2\\
 a_0+a_1\cdot 2+ a_2\cdot 2^2&=1\\
 a_0+a_1\cdot 3+ a_2\cdot 3^2&=-2
 \end{align*}
-
+\begin{paracol}{2}
 que podríamos expresar en forma matricial como,
-
-
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -202,9 +209,9 @@ a_2
 -2
 \end{pmatrix}
 \end{equation*}
-
+\begin{paracol}{2}
 Y en general, para $n$ pares de datos,
-
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 1&x_0&x_0^2&\cdots &x_0^n\\
@@ -224,19 +231,20 @@ y_1\\
 y_n
 \end{pmatrix}
 \end{equation*}
-
+\begin{paracol}{2}
 La matriz de coeficientes del sistema resultante recibe el nombre de matriz de Vandermonde. Está formada por la $n$ primeras potencias de cada uno de los valores de la variable independiente, colocados por filas. Es evidente que cuanto mayor es el número de datos, mayor tenderá a ser la diferencia de tamaño entre los elementos de cada fila. Por ello, en la mayoría de los casos, resulta ser una matriz mal condicionada para resolver el sistema numéricamente. En la práctica, para obtener el polinomio interpolador, se emplean otros métodos alternativos,
 
 \subsection{El polinomio interpolador de Lagrange.} \label{sec:lagranje}\index{Interpolación! Polinomio de Lagrange} \index{Polinomio de Lagrange}
 
 A partir de los valores $x_0, x_1,\cdots, x_n$, se construye el siguiente conjunto de $n+1$ polinomios de grado $n$
+\end{paracol}
 \begin{equation*}
 l_j(x)=\prod_{\substack{k=0\\
 k\neq j}}^n\frac{x-x_k}{x_j-x_k}=\frac{(x-x_0)(x-x_1)\cdots(x-x_{j-1})(x-x_{j+1})\cdots(x-x_n)}{(x_j-x_0)(x_j-x_1)\cdots(x_j-x_{j-1})(x_j-x_{j+1})\cdots(x_j-x_n)}
 \end{equation*}
-
+\begin{paracol}{2}
 Los polinomios así definidos cumplen una interesante propiedad en  relación con los valores $x_0, x_1,\cdots, x_n$, empleados para construirlos,
-
+\end{paracol}
 \begin{equation*}
 l_j(x_i)= \left\{ 
 \begin{aligned}
@@ -245,57 +253,59 @@ l_j(x_i)= \left\{
 \end{aligned}
 \right.
 \end{equation*}
-
+\begin{paracol}{2}
 A partir de estos polinomios podemos construir ahora el siguiente polinomio de interpolación empleando las imágenes $y_0,y_1\cdots, y_n$ correspondientes a los valores $x_0, x_1,\cdots, x_n$,
-
+\end{paracol}
 \begin{equation*}
 p(x)=\sum_{j=0}^n l_j(x)\cdot y_j
 \end{equation*}
-
+\begin{paracol}{2}
 Efectivamente, es fácil comprobar que, tal y como se ha construido, este polinomio pasa por los pares de puntos $x_i,y_i$, puesto que $p(x_i)=y_i$.
 
 El siguiente código de Matlab calcula el valor en un punto x cualquiera del polinomio de interpolación de Lagrange construido a partir un conjunto de puntos $\mathcal{A}\equiv \{(x_i,y_i)\}$ . 
-
-\begin{lstlisting}
-function y1=Lagrange(x,y,x1)
+\end{paracol}
+%\begin{lstlisting}
+%function y1=Lagrange(x,y,x1)
 % este programa obtiene el valor interpolado y1 correspondiente al valor x1
 % empleando el polinomio interpolador de Lagrange de grado n, obtenido a 
 % partir de los vectores x e y (de longitud n)
 
 % obtenemos el tamaño del conjunto de datos,
 
-n=length(x);
+%n=length(x);
 % inicializamos la variable de salida
-y1=0;
+%y1=0;
 % construimos el valor a partir de los polinomios de Lagrange,
-for j=1:n
+%for j=1:n
     % inicializamos el polinomio de Lagrange correspondiente al dato i
-    lj=1;
+%    lj=1;
     % y lo calculamos...
-    for i=1:j-1
-        lj=lj*(x1-x(i))/(x(j)-x(i));
-    end
-    for i=j+1:n
-       lj=lj*(x1-x(i))/(x(j)-x(i));
-    end 
+%    for i=1:j-1
+%       lj=lj*(x1-x(i))/(x(j)-x(i));
+%    end
+%    for i=j+1:n
+%       lj=lj*(x1-x(i))/(x(j)-x(i));
+%    end 
     
     % sumamos la contribución del polinomio de Lagrange lj
-    y1=y1+lj*y(j);
-end
-\end{lstlisting}
-
+%    y1=y1+lj*y(j);
+%end
+%\end{lstlisting}
+\begin{paracol}{2}
 \section{Diferencias divididas.}\label{sec:difdiv} \index{Interpolación! Diferencias Divididas} \index{Diferencias Divididas}
 Tanto el método de la matriz de Vandermonde como el de los polinomios de Lagrange, presentan el inconveniente de que si se añade un dato más $(x_{n+1}, y_{n+1})$ a la colección de datos ya existentes, es preciso recalcular el polinomio de interpolación desde el principio. 
 
 El método de las diferencias divididas, permite obtener el polinomio de interpolación en un número menor de operaciones que en el caso del polinomio de Lagrange y además, el cálculo se hace escalonadamente, aprovechando todos los resultados anteriores cuando se añade al polinomio la contribución de un nuevo dato.
 
 El polinomio de orden $n$ de diferencias divididas se construye de la siguiente manera,
-
+\end{paracol}
 \begin{equation*}
 p_n(x)=a_0+(x-x_0)\cdot a_1+(x-x_0)\cdot (x-x_1)\cdot a_2+\cdots +(x-x_0)\cdot (x-x_1)\cdots (x-x_{n-2})\cdot(x-x_{n-1})\cdot a_n
 \end{equation*}
 
+\begin{paracol}{2}
 Donde, como siempre, $(x_0, y_0), (x_1,y_1), \cdots (x_n, y_n)$, representan los datos para los que se quiere calcular el polinomio interpolador de grado $n$. Si sustituimos las datos en el polinomio, llegamos a un sistema de ecuaciones, triangular inferior, en el que las incógnitas son los coeficientes del polinomio.
+\end{paracol}
 \begin{align*}
 a_0&&=y_0\\
 a_0&+(x_1-x_0)a_1&=y_1\\
@@ -303,26 +313,28 @@ a_0&+(x_2-x_0)a_1+(x_2-x_0)(x_2-x_1)a_2&=y_2\\
 \cdots\\
 a_0&+(x_n-x_0)a_1+\cdots+(x_n-x_0)(x_n-x_1)\cdots (x_n-x_{n-2})(x_n-x_{n-1})a_n&=y_n
 \end{align*}
-
+\begin{paracol}{2}
 Este sistema se resuelve explícitamente empleando un esquema de diferencias divididas. 
 
 La diferencia divida de primer orden entre dos puntos $(x_0,y_0)$ y $(x_1,y_1)$ se define como,
+\end{paracol}
 \begin{equation*}
 f\left[x_0,x_1\right]=\frac{y_1-y_0}{x_1-x_0}
 \end{equation*}														
-
+\begin{paracol}{2}
 Para tres puntos se define la diferencia dividida de segundo orden como, $(x_0,y_0)$, $(x_1,y_1)$ y $(x_2,y_2)$
-
+\end{paracol}
 \begin{equation*}
 f\left[x_0,x_1,x_2\right]=\frac{f\left[x_1,x_2\right]-f\left[x_0,x_1\right]}{x_2-x_0}
 \end{equation*}
-
+\begin{paracol}{2}
 y, en general definiremos la diferencia dividida de orden $i$ para $i+1$ puntos como,
-
+\end{paracol}
 \begin{equation*}
 f\left[x_0,x_1,\cdots,x_i\right]=\frac{f\left[x_1,x_2,\cdots,x_i\right]-f\left[x_0,x_1,\cdots,x_{i-1}\right]}{x_i-x_0}
-\end{equation*}																												
+\end{equation*}																					\begin{paracol}{2}	
 Si despejamos por sustitución progresiva los coeficientes del polinomio de interpolación del sistema triangular inferior obtenido, cada coeficiente puede asociarse a una diferencia dividida,
+\end{paracol}
 \begin{align*}
 a_0&=f\left[x_0\right]=y_0\\
 a_1&=f\left[x_0,x_1\right]\\
@@ -330,9 +342,9 @@ a_1&=f\left[x_0,x_1\right]\\
 a_i&=f\left[x_0,x_1,\cdots,x_i\right]\\
 \vdots\\
 a_n&=f\left[x_0,x_1,\cdots,x_n\right]\\
-\end{align*}																								
+\end{align*}																					\begin{paracol}{2}			
 Por tanto, podemos obtener directamente los coeficientes del polinomio calculando las diferencias divididas. Veamos un ejemplo empleando el siguiente conjunto de cuatro datos,
-
+\end{paracol}
 \begin{table}[h]
 \centering
 \begin{tabular}{c|cccc}
@@ -341,9 +353,9 @@ x&0&1&3&4\\
 y&1&-1&2&3
 \end{tabular}
 \end{table}
-
+\begin{paracol}{2}
 Habitualmente, se construye a partir de los datos una tabla, como la  \ref{tabdif}, de diferencias divididas. Las primera columna contiene los valores de la variable $x$, la siguiente los valores de las diferencias divididas de orden cero (valores de $y$). A partir de la segunda, las siguientes columnas contienen las diferencias dividas de los elementos de la columna anterior, calculados entre los elementos que ocupan filas consecutivas. La tabla va perdiendo cada vez una fila, hasta llegar a la diferencia dividida de orden $n$ de todos los datos iniciales.
-
+\end{paracol}
 \begin{table}[h]
 \centering
 \caption{Tabla de diferencia divididas para cuatro datos}
@@ -358,51 +370,52 @@ $x_3=4$&$y_3=\ \ 3$\\
 \end{tabular}
 \label{tabdif}
 \end{table}
-
+\begin{paracol}{2}
 Los coeficientes del polinomio de diferencias divididas se corresponden con los elementos de la primera fila de la tabla. Por lo que en nuestro ejemplo el polinomio resultante sería,
-
+\end{paracol}
 \begin{equation*}
 p_3(x)=1-2x+\frac{7}{6}x(x-1)-\frac{1}{3}x(x-1)(x-3)
 \end{equation*}
-
+\begin{paracol}{2}
 Es importante hacer notar que el polinomio de interpolación obtenido por diferencias divididas siempre aparece representado como suma de productos de binomios $(x-x_0)(x-x_1)\cdots$ y los coeficientes obtenidos corresponden a esta representación y no a la representación habitual de un polinomio como suma de potencias de la variable $x$. 
 
 El siguiente código permite calcular los coeficientes del polinomio de diferencias divididas a partir de un conjunto de $n$ datos.
-
-\begin{lstlisting}
-function a=difdiv(x,y)
+\end{paracol}
+%\begin{lstlisting}
+%function a=difdiv(x,y)
 % este polinomio permite obtener los coeficientes del polinomio de
 % diferencias divididas que interpola los datos contenidos el los vectores x
 % e y. Da como resultado un vector fila a con los coeficientes
 
 % miramos cuantos datos tenemos
-n=length(x);
+%n=length(x);
 
 % inicializamos el vector de coeficientes con las diferencias de orden 0, es
 % decir los valores de y,
 
-a=y;
+%a=y;
 
 % y ahora montamos un bucle, si tenemos n datos debemos calcular n
 % diferencias, como ya tenenos la primera, iniciamos el bucle en 2,
-for j=2:n
+%for j=2:n
     % en cada iteración calculamos las diferencias de un orden superior,
     % como solo nos vale la primera diferencia de cada orden empezamos el
     % bucle interior en el valor del exterior j
-    for i=j:n
-        a(i)=(a(i)-y(i-1))/(x(i)-x(i-j+1));
-    end
+%    for i=j:n
+%        a(i)=(a(i)-y(i-1))/(x(i)-x(i-j+1));
+%    end
     % volvemos a copiar en y las diferencias obtenidas para emplearlas en la
     % siguiente iteracion
-    y=a;
+%    y=a;
     
-end
-\end{lstlisting}
-
+%end
+%\end{lstlisting}
+\begin{paracol}{2}
 Como el polinomio de diferencias divididas toma una forma especial, es preciso tenerlo en cuenta a la hora de calcular su valor en un punto $x$ determinado. Es siguiente código permite evaluar un polinomio de diferencias divididas en un punto dado, conocidos sus coeficientes y los valores $x_1,\cdots, x_n$ a partir de los cuales se obtuvo el polinomio,
+\end{paracol}
 
-\begin{lstlisting}
-function y=evdif(a,x,x1)
+%\begin{lstlisting}
+%function y=evdif(a,x,x1)
 % esta función obtiene el valor de un polinomio de diferencias divididas a
 % partir de los coeficientes (a) del polinomio, los puntos (x) sobre los que
 % se ha calculado el polinomio y el punto o vector de puntos (x1) para el
@@ -410,91 +423,79 @@ function y=evdif(a,x,x1)
 
 % obtenemos el tamaño del vector de coeficientes del polinomio,
 
-n=length(a);
+%n=length(a);
 
 % Construimos un bucle para calcular el valor del polinomio,
-y=a(1);
-for k=1:n-1
+%y=a(1);
+%for k=1:n-1
     % calculamos el valor del producto de los binomios que multiplican al
     % coeficiente i
-    binprod=1;
-    for j=1:k
-        binprod=binprod.*(x1-x(j));
-    end
-    y=y+a(k+1)*binprod;
-end
-\end{lstlisting}
-
-Por último se podrían reunir las dos funciones anteriores en una única función que permitiera obtener directamente el valor que toma el polinomio de diferencias divididas en un punto x, partiendo de los datos interpolados. Una solución sencilla, es crear una función que llame a las dos anteriores,
-
-\begin{lstlisting}
-function y=intdifdiv(x,xp,yp)
-% Esta función calcula el valor del polinomio de diferencias divididas que 
-% interpola los puntos (xp,yp) el el punto, o % los puntos contenidos en x. 
-% Empleando las funciones, difdiv, para calcular los coeficientes del
-% polinomio y evdif para evaluarlo
-
-% llamamos a difdiv
-a=difdiv(xp,yp);
- 
- % y a continuación llamamos a evdif
-  y=evdif(a,xp,x);
- \end{lstlisting} 
- 
+%    binprod=1;
+%    for j=1:k
+%        binprod=binprod.*(x1-x(j));
+%    end
+%    y=y+a(k+1)*binprod;
+%end
+%\end{lstlisting}
+% y=evdif(a,xp,x);
+%\end{lstlisting} 
+\begin{paracol}{2} 
  \subsection{El polinomio de Newton-Gregory} \label{sec:newgre} \index{Interpolación!Polinomio de Newton-gregory} \index{Polinomio de Newton-Gregory}
  Supone una simplificación al cálculo del polinomio de diferencias divididas para el caso particular en que los datos se encuentran equiespaciados y dispuestos en orden creciente con respecto a los valores de la coordenada $x$.
  
 En este caso, calcular los valores de las diferencias es mucho mas sencillo.  Si pensamos en las diferencias de primer orden, los denominadores de todas ellas son iguales, puesto que los datos están equiespaciados,
-
+\end{paracol}
 \begin{equation*}
 \Delta x \equiv x_i-x_{i-1} =h
 \end{equation*}
-
+\begin{paracol}{2}
 En cuanto a los numeradores, se calcularían de modo análogo al de las diferencias divididas normales,
-
+\end{paracol}
 \begin{equation*}
 \Delta y_0= y_1-y_0, \Delta y_1=y_2-y_1, \cdots, \Delta y_i=y_{i+1}-y_i, \cdots, \Delta y_{n-1}=y_{n}-y_{n-1}
 \end{equation*}
-
+\begin{paracol}{2}
 Las diferencias de orden superior para los numeradores se pueden obtener de modo recursivo, a partir de las de orden uno, puesto que los denominadores de todas ellas $h$, son iguales.
-
+\end{paracol}
 
 \begin{equation*}
 \Delta^2 y_0=\Delta \left(\Delta y_0 \right) =(y_2-y_1)-(y_1-y_0)=(y_2-2y_1+y_0)
 \end{equation*}
-
+\begin{paracol}{2}
 En este caso, el denominador de la diferencia sería $x_2-x_0=2h$, y la diferencia tomaría la forma,
-
+\end{paracol}
 \begin{equation*}
 f[x_0,x_1,x_2]=\frac{\Delta^2y_0}{2h^2}
 \end{equation*}
-
+\begin{paracol}{2}
 En general, para la diferencias de orden n tendríamos,
+\end{paracol}
 \begin{equation*}
 \Delta^n y_0=y_n-\binom{n}{1}\cdot y_{n-1}+\binom{n}{2}\cdot y_{n-2}-\cdots+(-1)^n\cdot y_0
 \end{equation*}
-
+\begin{paracol}{2}
 Donde se ha hecho uso de la expresión binomial,
-
+\end{paracol}
 \begin{equation*}
 \binom{k}{l}=\frac{k!}{l!\cdot(k-l)!}
 \end{equation*}
-
+\begin{paracol}{2}
 Para obtener la diferencia dividida de orden n, bastaría ahora dividir por $n!\cdot h^n$.
+\end{paracol}
 \begin{equation*}
 f\left[x_0,x_1,\cdots,x_n\right]=\frac{\Delta^n y_0}{n!\cdot h^n}
 \end{equation*}
-
+\begin{paracol}{2}
 A partir de las diferencias, podemos representar el polinomio de diferencias divididas resultante como,
-
+\end{paracol}
 \begin{equation*}
 p_n(x)=y_0+\frac{x-x_0}{h}\Delta y_0+\frac{(x-x_1)\cdot (x-x_0)}{2\cdot h^2}\Delta^2 y_0+\cdots +\frac{(x-x_{n-1}) \cdots (x-x_1)\cdot (x-x_0)}{n! \cdot h^n}\Delta^n y_0
 \end{equation*}
-
+\begin{paracol}{2}
 Este polinomio se conoce como el polinomio de Newton-Gregory, y podría considerarse como una aproximación  numérica al polinomio de Taylor de orden n de la posible función asociada a los datos empleados. 
 
 En este caso, podríamos construir la tabla para obtener los coeficientes de diferencias, calculando en cada columna simplemente las diferencias de los elementos de la columna anterior. Por ejemplo,
-
+\end{paracol}
 \begin{table}[h]
 \centering
 \caption{Tabla de diferencias para el polinomio de Newton -Gregory de cuatro datos}
@@ -509,17 +510,17 @@ $x_3=3$&$y_3=\ \ 3$\\
 \end{tabular}
 \label{tabnewton}
 \end{table}
-
+\begin{paracol}{2}
 Una vez calculadas las diferencias, basta dividir por $n!\cdot h^n$ los elementos de la primera fila de la tabla,
-
+\end{paracol}
 \begin{equation*}
 a_0=1, a_1=\frac{-2}{1}, a_2=\frac{5}{2\cdot 1^2}, a_3=\frac{-7}{6\cdot 1^3}
 \end{equation*}
-
+\begin{paracol}{2}
 El siguiente código muestra un ejemplo de implementación en Matlab del polinomio de Newton-Gregory
-
-\begin{lstlisting}
-function [a,y1]=newgre(x,y,x1)
+\end{paracol}
+%\begin{lstlisting}
+%function [a,y1]=newgre(x,y,x1)
 % este polinomio permite obtener los coeficientes del polinomio de
 % newton-gregory que interpola los datos contenidos en los vectores 
 % x e y. Da como resultado un vector fila a con los coeficientes,  
@@ -527,58 +528,58 @@ function [a,y1]=newgre(x,y,x1)
 % valoresque toma el polinomio en dichos puntos.
 
 % miramos cuantos datos tenemos
-n=length(x);
+%n=length(x);
 
 % inicializamos el vector de coeficientes con las diferencias de 
 % orden 0, es decir los valores de y,
-a=y;
-h=x(2)-x(1);
+%a=y;
+%h=x(2)-x(1);
 
 % y ahora montamos un bucle, si tenemos n datos debemos calcular n
 % diferencias, como ya tenenos la primera, iniciamos el bucle en 2,
-for j=2:n
+%for j=2:n
     % en cada iteración calculamos las diferencias de un orden 
     % superior. Como solo nos vale la primera diferencia de cada 
     % orden empezamos el bucle interior en el valor del exterior j
-    for i=j:n
+%    for i=j:n
         % ahora basta dividir en todos los casos por la distancia h
         % multiplicada por el orden de la diferencia
-        a(i)=(a(i)-y(i-1))/((j-1)*h);
-    end
+%        a(i)=(a(i)-y(i-1))/((j-1)*h);
+%    end
     % volvemos acopiar en y las diferencias obtenidas para 
     % emplearlas en la siguiente iteracion
-    y=a;
+%    y=a;
     
-end
-y1=[];
-if nargin==3
+%end
+%y1=[];
+%if nargin==3
     % Construimos un bucle para calcular el valor del polinomio,
-    y1=a(1);
-    for k=1:n-1
+%    y1=a(1);
+%    for k=1:n-1
         % calculamos el valor del producto de los binomios que 
         % multiplican al coeficiente i
-        binprod=1;
-        for j=1:k
-            binprod=binprod.*(x1-x(j));
-        end
-        y1=y1+a(k+1)*binprod;
-    end
-end
-\end{lstlisting}
+%        binprod=1;
+%        for j=1:k
+%            binprod=binprod.*(x1-x(j));
+%        end
+%        y1=y1+a(k+1)*binprod;
+%    end
+%end
+%\end{lstlisting}
 
 
-\section{Interpolación por intervalos.}
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{intpoli.eps}
 \caption{Polinomio de interpolación de grado nueve obtenido a partir de un conjunto de diez datos} 
 \label{fig:intepol}
 \end{figure}
-
+\begin{paracol}{2}
+\section{Interpolación por intervalos.}
 Hasta ahora, hemos visto cómo interpolar un conjunto de $n+1$ datos mediante un polinomio de grado $n$. En muchos casos, especialmente cuando el número de datos es suficientemente alto, los resultados de dicha interpolación pueden no ser satisfactorios.  La razón es que el grado del polinomio de interpolación crece linealmente con el número de puntos a interpolar, así por ejemplo para interpolar 11 datos necesitamos un polinomio de grado 10. Desde un punto de vista numérico, este tipo de polinomios pueden dar grandes errores debido al redondeo. Por otro lado, y dependiendo de la disposición de los datos para los que se realiza la interpolación, puede resultar que el polinomio obtenido tome una forma demasiado complicada para los valores comprendidos entres los datos interpolados..  
 
 La figura \ref{fig:intepol} muestra el polinomio de interpolación de grado nueve para un conjunto de 10 datos. Es fácil darse cuenta, simplemente observando los datos, que no hay ninguna razón que justifique las curvas que traza el polinomio entre los puntos $1$ y $2$  o los puntos $9$ y $10$, por ejemplo.
-
+\end{paracol}
 \begin{figure}
 \centering
 \subfigure[Interpolación de orden cero  \label{fig:stepwise}]{\includegraphics[width=7cm]{steps.eps}} %\qquad 
@@ -586,7 +587,7 @@ La figura \ref{fig:intepol} muestra el polinomio de interpolación de grado nuev
 \caption{Interpolaciones de orden cero y lineal para los datos de la figura \ref{fig:intepol} }
 \end{figure}
 
-
+\begin{paracol}{2}
 En muchos casos es preferible no emplear todos los datos disponibles para obtener un único polinomio de interpolación. En su lugar, lo que se hace es dividir el conjunto de datos en varios grupos ---normalmente se agrupan formando intervalos de datos consecutivos--- y obtener varios polinomios de menor grado, de modo que cada uno interpole los datos de un grupo distinto. 
 
 El grado de los polinomios empleados deberá estar, en principio, relacionado con los datos contenidos en cada tramo.
@@ -604,7 +605,7 @@ Hemos descrito antes cómo el polinomio interpolador de orden $n$ para un conjun
 Una función \emph{spline} está formado por un conjunto de polinomios, cada uno definido en un intervalo, que se unen entre sí obedeciendo a ciertas condiciones de continuidad.
 
 Supongamos que tenemos una tabla de datos cualquiera,
-
+\end{paracol}
 \begin{table}[h]
 \centering
 \begin{tabular}{c|cccc}
@@ -613,9 +614,9 @@ x&$x_0$&$x_1$&$\cdots$&$x_n$\\
 y&$y_0$&$y_1$&$\cdots$&$y_n$
 \end{tabular}
 \end{table}
-
+\begin{paracol}{2}
 Para construir una función \emph{spline} $S$ de orden $m$, que interpole los datos de la tabla, se definen intervalos tomando como extremos dos puntos consecutivos de la tabla y un polinomio de grado $m$ para cada uno de los intervalos,
-
+\end{paracol}
 \begin{equation*}
 S= \left\{ 
 \begin{aligned}
@@ -628,10 +629,11 @@ S_{n-1}(x),& \ x\in [x_{n-1},x_n]
 \end{aligned}
 \right.
 \end{equation*}
-
+\begin{paracol}{2}
 Para que $S$ sea una función Spline de orden $m$ debe cumplir que sea continua y tenga $m-1$ derivadas continuas en el intervalo $[x_0,x_n]$ en que se desean interpolar los datos.
    
 Para asegurar la continuidad, los polinomios que forman $S$ deben cumplir las siguientes condiciones en sus extremos;
+\end{paracol}
 \begin{align*}
 S_i(x_{i+1})&=S_{i+1}(x_{i+1}),\ (1\leq i \leq n-1)\\
 S'_i(x_{i+1})&=S'_{i+1}(x_{i+1}),\ (1\leq i \leq n-1)\\
@@ -639,7 +641,7 @@ S''_i(x_{i+1})&=S''_{i+1}(x_{i+1}),\ (1\leq i \leq n-1)\\
 \vdots \\
 S^{m-1}_i(x_{i+1})&=S^{m-1}_{i+1}(x_{i+1}),\ (1\leq i \leq n-1)\\
 \end{align*}
-
+\begin{paracol}{2}
 Es decir, dos polinomios consecutivos del spline y sus $m-1$ primeras derivadas, deben tomar los mismos valores en el extremo común. 
 
 Una consecuencia inmediata de las condiciones de continuidad exigidas a los splines es que sus derivadas sucesivas, $S',\ S'', \cdots$ son a su vez funciones spline de orden $m-1,\ m-2, \cdots$. Por otro lado, las condiciones de continuidad suministran  $(n-1)\cdot m$ ecuaciones que, unidas a las $n+1$ condiciones de interpolación ---cada polinomio debe pasar por los datos que constituyen los extremos de su intervalo de definición---,  suministran un total de  $n\cdot (m+1)-(m-1)$ ecuaciones. Este número es insuficiente para determinar los $(m+1)\cdot n$ parámetros correspondientes a los $n$ polinomios de grado $m$ empleados en la interpolación. Las $m-1$ ecuaciones que faltan se obtienen imponiendo a los splines condiciones adicionales.
@@ -662,7 +664,7 @@ S''(x_0)&=S''(x_n)
 \end{enumerate}
 
 Intentar construir un sistema de ecuaciones para obtener a la vez todos los coeficientes de todos los polinomios es una tarea excesivamente compleja porque hay demasiados parámetros.  Para abordar el problema partimos del hecho de que $S''(x)$ es también un spline de orden 1 para los puntos interpolados. Si los definimos como,
-
+\end{paracol}
 \begin{equation*}
 S''_i(x)=-M_i\frac{x-x_{i+1}}{h_i}+M_{i+1}\frac{x-x_i}{h_i},\   i=0,\cdots, n-1
 \end{equation*}
@@ -768,8 +770,8 @@ Donde,
 
 La siguiente función permite obtener los coeficientes y el resultado de interpolar un conjunto de puntos mediante splines cúbicos,
 
-\begin{lstlisting}
-function [c,yi]=spcubic(x,y,xi)
+%\begin{lstlisting}
+%function [c,yi]=spcubic(x,y,xi)
 % uso [c,yi]=spcubic(x,y,xi)
 % Esta funci?n interpola los puntos contenidos en los vectores columna x e y
 % empleando parae ello splines c?bicos naturales. devuelve los coeficientes
@@ -780,75 +782,75 @@ function [c,yi]=spcubic(x,y,xi)
 % contenidos en el intervalo definido por los valores de x
 
 % obtenemos la longitud de los datos...
-l=length(x);
+%l=length(x);
 % obtencion de los coeficientes M
 % Construimos el vector de diferencias h y un vector de diferencias
 % Dy=y(i+1)-y(i) Que nos ser? muy ?til a la hora de calcular el vector de
 % t?rminos independientes del sistema
 
-for i=1:l-1
-    h(i)=x(i+1)-x(i);
-    Dy(i)=y(i+1)-y(i);
-end
+%for i=1:l-1
+%    h(i)=x(i+1)-x(i);
+%    Dy(i)=y(i+1)-y(i);
+%end
 
 % Construimos la matriz del sistema. (Lo ideal seria definirla como una
 % matriz sparse pero en fin no sabeis, porque sois todav?a peque?os, etc...)
 
-CSP(l-2,l-2)=2*(h(l-2)+h(l-1));
-b(l-2,1)=6*(Dy(l-1)/h(l-1)-Dy(l-2)/h(l-2));
-for i=1:l-3
-    CSP(i,i)=2*(h(i)+h(i+1));
-    CSP(i,i+1)=h(i+1);
-    CSP(i+1,i)=h(i+1);
-    b(i,1)=6*(Dy(i+1)/h(i+1)-Dy(i)/h(i));
-end
+%CSP(l-2,l-2)=2*(h(l-2)+h(l-1));
+%b(l-2,1)=6*(Dy(l-1)/h(l-1)-Dy(l-2)/h(l-2));
+%for i=1:l-3
+%    CSP(i,i)=2*(h(i)+h(i+1));
+%    CSP(i,i+1)=h(i+1);
+%    CSP(i+1,i)=h(i+1);
+%    b(i,1)=6*(Dy(i+1)/h(i+1)-Dy(i)/h(i));
+%end
 
 % calculamos los coeficientes M,
-M=CSP\b;
+%M=CSP\b;
 
 % A?adimos el primer y el ?ltimo valor como ceros (Splines naturales)
-M=[0;M;0];
+%M=[0;M;0];
 
 % calulamos los coeficientes A,
-for i=1:l-1
-    A(i)=Dy(i)/h(i)-(M(i+1)-M(i))*h(i)/6;
-end
+%for i=1:l-1
+%    A(i)=Dy(i)/h(i)-(M(i+1)-M(i))*h(i)/6;
+%end
 % Calculamos los coeficientes B,
-for i=1:l-1
-    B(i)=y(i)-M(i)*h(i)^2/6;
-end
+%for i=1:l-1
+%    B(i)=y(i)-M(i)*h(i)^2/6;
+%end
 % Podemos ahora calcular el valor que toma el polinomio para los puntos
 % que se desea interpolar
 
 % miramos cuantos puntos tenemos
-l2=length(xi);
-for i=1:l2
+%l2=length(xi);
+%for i=1:l2
     % miramos en que intervalo esta el punto xi(i)
-    j=1;
-    while xi(i)>x(j)
-        j=j+1;
-    end
-    if j>l-1
-        j=l-1; % aunque estamos extrapolando
-    elseif j<2
-        j=2; % estamos calculando el primer punto o estamos tanbien
+%    j=1;
+%    while xi(i)>x(j)
+%        j=j+1;
+%    end
+%    if j>l-1
+%        j=l-1; % aunque estamos extrapolando
+%    elseif j<2
+%        j=2; % estamos calculando el primer punto o estamos tanbien
         % extrapolando
-    end
+%    end
     
-    yi(i)=-M(j-1)*(xi(i)-x(j))^3/(6*h(j-1))+...
-        M(j)*(xi(i)-x(j-1))^3/(6*h(j-1))+A(j-1)*(xi(i)-x(j-1))+B(j-1);
-end
+%    yi(i)=-M(j-1)*(xi(i)-x(j))^3/(6*h(j-1))+...
+%        M(j)*(xi(i)-x(j-1))^3/(6*h(j-1))+A(j-1)*(xi(i)-x(j-1))+B(j-1);
+%end
 
 % calcumos los coeficientes c del spline en forma 'normal'
 % la primera columna, son los valores de i,
-c=zeros(l-1,4);
-for i=1:l-1
-    c(i,1)=y(i);
-    c(i,2)=Dy(i)/h(i)-M(i)*h(i)/3-M(i+1)*h(i)/6;
-    c(i,3)=M(i)/2;
-    c(i,4)=(M(i+1)-M(i))/(6*h(i));
-end
-\end{lstlisting}
+%c=zeros(l-1,4);
+%for i=1:l-1
+%    c(i,1)=y(i);
+%    c(i,2)=Dy(i)/h(i)-M(i)*h(i)/3-M(i+1)*h(i)/6;
+%    c(i,3)=M(i)/2;
+%    c(i,4)=(M(i+1)-M(i))/(6*h(i));
+%end
+%\end{lstlisting}
 
 
 
