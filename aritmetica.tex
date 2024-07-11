@@ -65,7 +65,7 @@ Rational numbers always have a finite representation or a periodic infinite one.
 
 The rational number $1/3=(0.333\cdots)_{10} = (0.010101\cdots)_2$ has a periodic infinite representation both in basis ten and in basis 2. However, it has a finite representation in base 3: $1/3=(0.1)_{3}= 0 \times 3^0 + 1\times 3^{-1}$.
 
-Usually, in ordinary life, we represent the number using basis 10. However, as we saw in chapter \ref{ch1}, computers use a binary representation. The first consequence of this difference is that we alter number precision when we change them from one representation to another. Thus, this representation difference is, in fact, the first cause of errors that we must take into account when we want to use a computer to perform scientific computing. In this chapter, we will find more causes.
+Usually, in ordinary life, we represent the number using base-ten. However, as we saw in chapter \ref{ch1}, computers use a binary representation. The first consequence of this difference is that we alter number precision when we change them from one representation to another. Thus, this representation difference is, in fact, the first cause of errors that we must take into account when we want to use a computer to perform scientific computing. In this chapter, we will find more causes.
 
 \section{Computer number representation}
 \paragraph{positive integers.} The most straightforward method for representing numbers would be using the memory registers directly to store the numbers in binary format. Considering a computer with 16-bit size registers, we can save numbers between 0 and $2^{16}-1=65535$. This maximum number would be represented by filling each register position with a 1, so 16 ones in total. This number is the largest one we can represent using 16 bits:
@@ -535,7 +535,7 @@ Ya tenemos casi completa la descripción del éstandar. Solo faltan unos detalle
 
 Todo esto hace que el exponente mayor que realmente representa un número sea el 127. \index{IEEE 754! número más grande representable en simple precisión} Como ejemplo podemos construir el número más grande que podemos representar distinto de infinito. Se trata del número con la mantisa más grande posible, una mantisa formada exclusivamente por unos, seguida por el exponente más grande posible. El exponente mas grande en exceso es 127, que corresponde a un exponente en binario $127+127=254 \equiv [11111110]$. Por tanto el número se representaría como,
 \switchcolumn
-In conclusion: the 8 bits of the simple precision standard allows us to represent all integer exponents from $127$ to $128$. 
+In conclusion: the 8 bits of the simple precision standard allows us to represent all integer exponents from $-127$ to $128$. 
 
 We have almost ready the description of the IEEE standard. However, some essential details about representing very large and very small numbers remain. Let's start with the very large numbers. What is the most significant number we could represent using the simple precision standard? We could suppose that, in principle, the number with all its mantissa values set to one (the most significant possible mantissa) and all its exponent values set to one (the largest possible exponent). However, the standard was thought to protect the computer operations against overflow errors (see section \ref{errn} below). That protection is carried out by reserving the largest possible value of the exponent. Therefore, when a register holds an exponent equal to $128$, this value is not considered a proper number. It is necessary to see the mantissa to know what the register does represent:
 \begin{itemize}
@@ -554,8 +554,9 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \hline
 0&11111111111111111111111&11111110\\
 \hline
-\end{tabular}\\
+\end{tabular}
 \end{minipage}
+\ \\
 \begin{paracol}{2}
 En base 10 el número representado sería, $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{127}\approx 3.402823466385289\times10^{38}$. Donde hemos representado en negrita el 1 implícito, no presente en la mantisa.
  
@@ -563,13 +564,15 @@ Veamos ahora los números mas pequeños, de acuerdo con lo dicho, el número má
 
 \index{IEEE 754! Números desnormalizados} Es evidente que si no fuera por el 1 implícito de la mantisa sería posible representar números aún más pequeños. Por otro lado, si consideramos siempre la mantisa como normalizada, es imposible representar el número 0. Para permitir la representación de números más pequeños, incluido el cero, los desarrolladores del estándar decidieron añadir la siguiente regla: \emph{Si los bits del exponente de un número son todos ceros, es decir, si el exponente representado es -127, se considera que la mantisa de ese número \textbf{no} lleva un 1 entero implícito. Además el  exponente del número se toma como -126}. Los números así representados reciben el nombre de números desnormalizados. Veamos algunos ejemplos.
 \switchcolumn
-This number in basis 10 will take the form, $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{127}\approx 3.402823466385289\times10^{38}$. Where we have write in bold letter the implicit 1, which is not present in the matissa.
+This number in base-ten will take the form, $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{127}\approx 3.402823466385289\times10^{38}$. Where we have write in bold letter the implicit 1, which is not present in the matissa.
 
 Let's turn now to the smallest numbers, according to the method we are using to represent the numbers, the number closest to zero we can build would be the number with the smallest mantissa and the smallest exponent. That is, a mantissa with all its bits set to zero and also an exponent with only zeros. This number will be, $(1\cdot 2^0)\cdot2^{-127}$ (remember that the standard uses a normalised mantissa, hence it has a implicit integer 1).
- 
+
+If the standard would not use a mantissa with an implicit one, we could represent smaller numbers. On the other hand, using a normalised mantissa, it is impossible to represent the number zero. The standard developers decided to add the following  rule to allow representing small numbers, including the zero: \emph{If the exponent bits of a number are all equal to zero, that is, if the exponent of the number is -127, the standard considers that the number's mantissa has \textbf{not} got an integer 1 implicit. In addition, the exponent of the number is taken as -126.} This special numbers are called denormalised numbers. Let's see some examples.   
 \end{paracol}
 \ \\
 \begin{minipage}{\textwidth}
+\centering
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -581,6 +584,8 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 
 \begin{paracol}{2}
 El exponente del número representado en la tabla anterior es 0. Por tanto, en exceso a 127 el exponente sería $0-127=-127$. Este exponente corresponde a un número desnormalizado por tanto el número expresado en base 10 sería,
+\switchcolumn
+The exponent  of the number represented in the table above is 0. Therefore, using a 127 biased representation the exponent is $0-127 = -127$. Then, this exponent belongs to a denormalised and so, the number represented in base-ten will be,   
 \end{paracol}
 \begin{equation*}
 (1\cdot 2^{-1}+ 0\cdot 2^{-2}+1\cdot2^{-3}+0\cdots)\times2^{-126}
@@ -589,8 +594,15 @@ El exponente del número representado en la tabla anterior es 0. Por tanto, en e
 Nótese como el exponente ha sido reducido en una unidad ($-126$) a la hora de calcular la representación decimal del número.
 
 \index{IEEE 754! Número desnormalizado más próximo a cero en simple precisión} El número más próximo a cero que podemos representar mediante números desnormalizados, será aquel que tenga la menor mantisa posible distinta de cero,\\ 
+
+\switchcolumn
+Notice how the exponent has been reduced one unit (-126) to calculate the decimal representation of the number.
+
+\index[eng]{IEEE 754!Closest Number to zero in simple precision} The closest number to zero we can represent using denormalised number, will be that with the minimum non-zero mantissa, 
 \end{paracol}
+
 \begin{minipage}{\textwidth}
+\centering
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -599,10 +611,16 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \hline
 \end{tabular}\\
 \end{minipage}
+
 \begin{paracol}{2}
-que representado en base 10 sería el número: $(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$. Podemos calcular para comparar cual sería el número normalizado más próximo a cero, se trata del número que tiene una mantisa formada solo por ceros, multiplicada por el exponente más pequeño distinto de cero (un exponente igual a cero, implica automáticamente un número desnormalizado),\\ 
+que representado en base 10 sería el número: $(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$. Podemos calcular para comparar cual sería el número normalizado más próximo a cero, se trata del número que tiene una mantisa formada solo por ceros y el exponente más pequeño distinto de cero (un exponente igual a cero, implica automáticamente un número desnormalizado),\\ 
+\switchcolumn
+Which represented in base-ten will be the number: $(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$.
+We can compare this number with the closest number to zero we can represent using a normalised mantissa. This number has all zeros mantissa and the smallest possible non-zero exponent (Recall; an all-zero exponent automaticaly implies a denormalised number),    
 \end{paracol}
 
+\begin{minipage}{\textwidth}
+	\centering
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -610,13 +628,21 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&0000000000000000000000&00000001\\
 \hline
 \end{tabular}\\
+\end{minipage}
 
 \begin{paracol}{2}
 Si lo representamos en formato decimal obtenemos: $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}=2^{-126}\approx   1.175494350822288\times10^{-38}$
 
 Como un último ejemplo, podemos calcular cual es el número desnormalizado más grande. Debería tener la mantisa más grande posible (todo unos) con un exponente formado exclusivamente por ceros,
+\switchcolumn
+If we now represent the number in denary system we obtain: $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}=2^{-126}\approx   1.175494350822288\times10^{-38}$.
+
+We will calculate, as a final example, the largest number we can represented using denormalised numbers. In this case, the number should have the largest possible mantissa (all ones) and a all-zeros exponent,    
+
 \end{paracol}
 \ \\
+\begin{minipage}{\textwidth}
+|\centering	
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -624,14 +650,27 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&11111111111111111111111&00000000\\
 \hline
 \end{tabular}\\
-\begin{paracol}{2}
-En formato decimal, el número sería: $(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}\approx 1.175494210692441\times10^{-38}$. Los dos últimos números representados, son muy próximos entre sí. De hecho, hemos calculado ya su diferencia, al obtener el número desnomarlizado más próximo a cero representable, $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}-(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}=(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$.
+\end{minipage}
 
+\begin{paracol}{2}
+En formato decimal, el número sería: $(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}\approx 1.175494210692441\times10^{-38}$. Los dos últimos números representados, son muy próximos entre sí. De hecho, hemos calculado ya su diferencia, al obtener el número desnomarlizado más próximo a cero, $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}-(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}=(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$.
+  
 \subparagraph*{Doble precisión} \index{Estándar IEEE 754! Doble precisión} La diferencia entre los estándares de simple y doble precisión está en el tamaño de los registros empleados para representar los números. En doble precisión se emplea un registro de 64 bits. Es decir, el tamaño de los registros es el doble que el empleado en simple precisión. El resto del estándar se adapta al tamaño de la representación; se emplea 1 bit para el signo del número, 52 bits para la mantisa y 11 bits para el exponente.
 
-En este caso el exponente puede almacenar $2^{11}=2048$ números (desde el 0 al 2047) como en el caso de estándar de simple precisión se dividen los números por la mitad, con lo que los exponentes se representan ahora en exceso a 1023. por tanto el exponente 0 representa el valor $0-1023=-1023$ y el exponente 2047 representa el valor $2047-1023=1024$.
+En este caso el exponente puede almacenar $2^{11}=2048$ números (desde el 0 al 2047). Como en el caso de estándar de simple precisión se dividen los números por la mitad, con lo que los exponentes se representan ahora en exceso a 1023. por tanto el exponente 0 representa el valor $0-1023=-1023$ y el exponente 2047 representa el valor $2047-1023=1024$.
 
 De nuevo, el valor mayor del exponente, 1024 se emplea para representar el infinito $\infty$, si va acompañado de una mantisa formada exclusivamente por ceros. En caso de que acompañe a una mantisa no nula, el contenido del registro se considera que no representa un número NaN (error de desbordamiento) \index{IEEE 754! Número más grande representable en doble precisión}. Podemos, como ejemplo, obtener para el estándar de doble precisión el número más grande representable,\\
+
+\switchcolumn
+In base-ten the number would be: $(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}\approx 1.175494210692441\times10^{-38}$. These last two represented number are really near one to another. In fact, we have already calculate their difference, when we got the denormalised  number closest to zero, $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}-(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}=(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$.
+
+\subparagraph{Double precision}
+\index[eng]{IEEE 237 standard! Doble precision} The difference between the single and the double precision standards is in the size of the registers we use to represent the numbers. When working with double precision, we use 64-bits size registers. Therefore, the size of the register is double than the size we use for simple precision. The standard is just fit to the larger size of the registers; we reserve a bit for the number's sign, 52 bits for the mantissa and 11 bits for the exponent.
+
+In this case the exponent can store $2^{11}=2048$ different numbers (from 0 to 2047). Very much alike the simple precision case, we split the  exponent numbers into two halves, representing the values with a 1023 bias. Therefore, the an exponent equal to zero represent the value  $0-1023=-1023$ and the exponent 2047 represent the value, $2047-1023=1024$.
+
+Again, we use the largest exponent value 1024 to represent the infinite $\infty$,     
+
 \end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
