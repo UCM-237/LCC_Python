@@ -1,0 +1,81 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[pdftex]{graphicx}
+\usepackage{epigraph}
+\usepackage{epstopdf}
+\usepackage{subfigure}
+\usepackage{amsmath,amsthm}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.multipart}
+\textwidth= 15cm
+\evensidemargin=0cm
+\usepackage[utf8]{inputenc}
+\usepackage[english,spanish]{babel}
+\usepackage[lang=english]{bicaption}
+\usepackage{textcomp}
+\usepackage{amstext}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{halloweenmath}
+\usepackage{multicol}
+\usepackage[hyperindex=true,breaklinks=true,colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage{tabularx}
+\renewcommand\spanishtablename{Tabla}
+\renewcommand{\listtablename}{\'Indice de Tablas}
+\addto\captionsspanish{\renewcommand{\chaptername}{Capítulo/Chapter}}
+\usepackage{paracol}
+%\usepackage{tableof}
+\columnseprule=0.4pt
+\columnsep=30pt 
+\normalcolseprulecolor
+\usepackage{minted}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage[splitindex]{imakeidx}
+
+%\usepackage{draftwatermark}
+%\SetWatermarkText{Borrador,juan.jimenez@fis.ucm.es}
+%\SetWatermarkScale{2}
+
+
+\graphicspath{{./figuras/}}
+\makeindex[title =Índice alfabético]
+\makeindex[name =eng, title =Alphabetic Index]
+\begin{document}
+\title{
+\begin{flushleft}
+\includegraphics[width=2.5cm]{ucm2.pdf}
+Universidad Complutense de Madrid\\
+---------------------------------------------------------------------\
+\end{flushleft}
+Laboratorio de Computaci\'on Cient\'ifica\\ Aritmética del Computador \textreferencemark\ Computer Arithmetic }
+\author{ Juan Jim\'enez\\ H\'ector Garc\'ia de Marina\\ L\'ia Garc\'ia }
+\maketitle
+\vspace*{\fill}
+
+\includegraphics[scale=1]{by-sa.eps}\\
+El contenido de estos apuntes est\'a bajo licencia Creative Commons Atribution-ShareAlike 4.0\\
+\href{http://creativecommons.org/licenses/by-sa/4.0/}{http://creativecommons.org/licenses/by-sa/4.0/}\\
+\copyright Juan Jim\'enez
+
+\bigskip
+\tableofcontents
+\listoffigures
+\listoftables
+
+%\include{preface}
+%\include{introduccion}
+%\include{introprog}
+%\include{intronumpy}
+%\include{matplotlib}
+\include{aritmetica}
+%\include{calraiz}
+%\include{algebra}
+%\include{sistemas}
+%\include{interpolacion}
+%\include{integracion}
+%\include{tratamientoest}
+%\include{simbolico}
+\printindex
+\printindex[eng]
+\end{document} 

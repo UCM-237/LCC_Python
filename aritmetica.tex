@@ -56,8 +56,7 @@ El número racional $1/3=(0.333\cdots)_{10}=(0.010101\cdots)_2$ solo admite repr
 Habitualmente, en la vida ordinaria, representamos los números en base 10, sin embargo, como hemos visto en el capítulo 1 el ordenador emplea una representación binaria. Como acabamos de ver, una primera consecuencia de esta diferencia, es que al pasar números de una representación a otra estemos alterando la precisión con la que manejamos dichos números. Esta diferencia de representación supone ya una primera fuente de errores, que es preciso tener en cuenta cuando lo que se pretende es hacer cálculo científico con un ordenador. Como iremos viendo a lo largo de este capítulo, no será la única.
 
 \section{Representación de nú\-meros en el ordenador}\index{Representación numérica}
-\sectionmark{Rep, de nums. en el ord.\textreferencemark Compt. Num. Rep.}
-\chaptermark{Intro al sw. científico  \ Intro to scientific sw.}
+\sectionmark{Rep, de nums. en el ordenador.\textreferencemark Computer. Num. Rep.}
 \paragraph{Enteros positivos} La forma mas fácil de representar números sería empleando directamente los registros de memoria para guardar números en binario.  Si suponemos un ordenador que tenga registros de 16 bits. Podríamos guardar en ellos números comprendidos entre el $0$ y el $2^{16}-1=65535$. Este último se representaría con un $1$ en cada una de las posiciones del registro, en total 16 unos. Se trata del entero más grande que podríamos representar con un registro de 16 bits:
 
 \switchcolumn
@@ -117,7 +116,7 @@ Our current representation system only accepts positive integer numbers. The low
  \begin{table}
  \centering
  \begin{tabular}{r  l  r  r}
- Decimal&  (4 bits) &\ $C_2=2^n-x$ & n. representado\\
+ Decimal&  (4 bits) &\ $C_2=2^n-x$ & n. represent-ado-ed\\
  \hline
 15& 1111&$(16-1)=15$&-1\\
 14& 1110&$(16-2)=14$&-2\\
@@ -210,7 +209,7 @@ La representación de números no enteros se emplea para representar de modo apr
 Por ejemplo, si tenemos un registro de 16 bits podemos reservar 1 bit para el signo, 7 para la parte entera y 8 para la parte decimal.  La representación en punto fijo del número binario $-10111.0011101101$ sería: \\
 \switchcolumn
 The result of the addition yields a number with its first four bits as 0. The bit with value one cannot be accommodated in a 4-bit register. We refer to the result as an \emph{overflow} of the register size. This bit that can not be stored is discarded after the addition. Thus, the result will be zero, as can be expected after adding $2+(-2)$. This is a fundamental motivation to use the 2's complement representation: we do not need any additional special circuits to compute the difference between two numbers because we can represent it straightforwardly by adding the minuend plus the 2's complement of the subtrahend. 
-\subsection{Non-integer numbers: fixed point and floating point representations.}We use the non-integer representation to approximately represent real numbers. As we have seen before, periodic rational numbers and irrational numbers cannot be exactly represented using a finite number of decimals. This is the reason why their representation is always an approximation. In the case of non-periodic rational numbers, the representation will be exact or approximated depending on the number itself, the size of the computer registers and the representation system we use. The two most common representation systems are the fixed-point and the floating-point representations.   \paragraph{fixed-point representation.} To represent a number using a fixed-point representation, we divide the register into three parts:
+\subsection{Non-integer numbers: fixed-point and floating-point representations.}We use the non-integer representation to approximately represent real numbers. As we have seen before, periodic rational numbers and irrational numbers cannot be exactly represented using a finite number of decimals. This is the reason why their representation is always an approximation. In the case of non-periodic rational numbers, the representation will be exact or approximated depending on the number itself, the size of the computer registers and the representation system we use. The two most common representation systems are the fixed-point and the floating-point representations.   \paragraph{fixed-point representation.} To represent a number using a fixed-point representation, we divide the register into three parts:
 \begin{itemize}
     \item We set aside one bit to store the number sign.
     \item We represent the integer part of the number using a fixed-size field of bits.
@@ -272,7 +271,7 @@ Similarly, we can calculate the largest representable number,
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
-s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
+s&\multicolumn{7}{c||}{p. entera/ integer p.}&\multicolumn{8}{c|}{p. decimal/decimal p.}\\
 \hline
 0&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1\\
 \hline
@@ -295,7 +294,7 @@ The lowest representable number,
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
-s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
+s&\multicolumn{7}{c||}{p. entera / integer p.}&\multicolumn{8}{c|}{p. decimal/ decimal p.}\\
 \hline
 1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1\\
 \hline
@@ -318,7 +317,7 @@ The largest integer,
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
-s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
+s&\multicolumn{7}{c||}{p. entera / integer p.}&\multicolumn{8}{c|}{p. decimal/ decimal p.}\\
 \hline
 0&1&1&1&1&1&1&1&0&0&0&0&0&0&0&0\\
 \hline
@@ -341,7 +340,7 @@ The positive decimal number closest to 1,\\
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
-s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
+s&\multicolumn{7}{c||}{p. entera / integer p.}&\multicolumn{8}{c|}{p. decimal/ decimal p.}\\
 \hline
 0&0&0&0&0&0&0&0&1&1&1&1&1&1&1&1\\
 \hline
@@ -364,7 +363,7 @@ Or the positive decimal number closest to 0,
 
 \begin{tabular}{|c||c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
 \hline
-s&\multicolumn{7}{c||}{p. entera}&\multicolumn{8}{c|}{p. decimal}\\
+s&\multicolumn{7}{c||}{p. entera / integer p.}&\multicolumn{8}{c|}{p. decimal/ decimal p.}\\
 \hline
 0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&1\\
 \hline
@@ -385,10 +384,10 @@ La representación en punto fijo fue la más usada en los primeros computadores.
 \paragraph*{Representación en punto flotante.} \index{Representación numérica! en punto flotante}
 La representación de números en el ordenador en formato de punto flotante, es similar a la forma de representar los números en la llamada notación científica. \index{Notación científica} En notación científica los números se representan como el producto de una cantidad por una potencia de diez:
 \switchcolumn
-The fixed point representation was widely used in the first computers. However, using the same register size, it is possible to represent a much wider spectrum of numbers using the floating point representation.
+The fixed point representation was widely used in the first computers. However, using the same register size, it is possible to represent a much wider spectrum of numbers using the floating-point representation.
 
-\paragraph{Floating point representation.} \index[eng]{Number representation! Floating point}
-The floating point representation of numbers in a computer is similar to the numeric representation known as scientific notation.\index[eng]{Scientific Notation} In scientific notation, number are represented as the product of a quantity by a power of ten:
+\paragraph{floating-point representation.} \index[eng]{Number representation! floating-point}
+The floating-point representation of numbers in a computer is similar to the numeric representation known as scientific notation.\index[eng]{Scientific Notation} In scientific notation, number are represented as the product of a quantity by a power of ten:
 \end{paracol}
 \begin{equation*}
 234.25\equiv 2.345\times 10^2,\ 0.000234\equiv 2.34\times 10^{-5},\ -56.238 \equiv -5.6238\times 10^1.    
@@ -398,36 +397,54 @@ The floating point representation of numbers in a computer is similar to the num
 La idea es desplazar el punto decimal hasta que solo quede una cifra significativa en la parte entera del número y multiplicar el resultado por 10 elevado a la potencia adecuada para recuperar el número original.
 
 Muchas calculadoras y programas de cálculo científico presentan los resultados por pantalla en formato científico. Habitualmente lo hacen con la siguiente notación,
+\switchcolumn
+We shift the decimal point till just a single figure remains at its left, i.e, only a figure is use to represent the integer part of the number. We need to multiply the result for the power of ten that allows us to recovery the original number.
+
+Many calculator a scientific computing sofware show the computed results on the screen using the scientific format. Usually they utilize the following notation to do it,    
+
 \end{paracol}
 
 \begin{equation*}
--5.3572\times 10^{-3}  \xrightarrow[Calculator]{calculadora}  -5.3572e-03
+-5.3572\times 10^{-3}  \xrightarrow[calculator]{calculadora}  -5.3572e-03
 \end{equation*}
 
 \begin{paracol}{2}
 Es decir, en primer lugar se representa el signo del número si es negativo (si es positivo lo habitual es omitirlo). A continuación la parte significativa, $5.3572$, que recibe el nombre de mantisa  \index{Mantisa}. Y por último se representa el valor del exponente de la potencia de 10, $-3$, precedido por la letra e, ---e de exponente---. En notación científica se asume que el exponente corresponde siempre a una potencia de diez. Es evidente que tenemos el número perfectamente descrito sin más que indicar los valores de su signo, mantisa y exponente,\\
-\end{paracol}
 
+\switchcolumn
+First, if the number is negative, we represent the sign. (Usually, if the number is positive we omit the sign symbol). Then, the part of the number $5.3572$ which, when  multiplied by the power of ten, retrieves the number represented, this part is called the mantissa of the number. Eventually, we represent the value of the $(10)$ power's  exponent, $-3$, preceded by the letter e, which stand for exponent. Scientific notation always assumes that the exponent belongs to a power of ten. It is clear that we have the number thoroughly described if we supply its sing, mantissa and exponent.  
+\end{paracol}
+\begin{table}[H]
+\centering
 \begin{tabular}{|c||c||c||c|c|c|}
 \hline
 numero&r. científica&r. calculadora&signo&mantisa&exponente\\
+number&scientific r.&calculator r.&sign&mantissa&exponent\\
 \hline
 $-327.43$&$-3.2743\times 10^2$&$-3.2743e2$&$-$&$3.2743$&$2$\\
 \hline
-\end{tabular}\\
+\end{tabular}
+\end{table}
 
 \begin{paracol}{2}
-La representación binaria en punto flotante sigue exactamente la misma representación que acabamos de describir para la notación científica. La única diferencia es que en lugar de trabajar con potencias de diez, se trabaja con potencias de dos, que son las que corresponden a la representación de números en binario.  Así por ejemplo, el número binario $-1101.00101$ se representaría como $-1.10100101\times 2^3$, y el número $0.001011101$ se representaría como $1.011101\times 2^{-3}$. 
+La representación binaria en punto flotante sigue exactamente la misma representación que acabamos de describir para la notación científica. La única diferencia es que en lugar de trabajar con potencias de diez, se trabaja con potencias de dos, que son las que corresponden a la representación de números en binario.\\ Así, el número binario $-1101.00101$ se representaría como $-1.10100101\times 2^3$, y el número $0.001011101$ se representaría como $1.011101\times 2^{-3}$. 
 
-El término punto flotante viene del hecho de que el punto decimal de la mantisa, no separa la parte entera del número de su parte decimal. Para poder separar la parte entera de la parte decimal del número es preciso emplear el valor del exponente. Así, para exponente $0$, el punto decimal de la mantisa estaría en el sitio que corresponde al número representado, para exponente $1$ habría que desplazarlo una posición a la izquierda, para exponente $-1$ habría que desplazarlo una posición a la derecha, para exponente 2, dos posiciones a la izquierda, para exponente -2, dos posiciones a las derecha, etc.
+El término punto flotante viene del hecho de que el punto decimal de la mantisa, no separa la parte entera del número de su parte decimal. Para poder separar la parte entera de la parte decimal del número es preciso emplear el valor del exponente. Así, para exponente $0$, el punto decimal de la mantisa estaría en el sitio que corresponde al número representado, para exponente $1$ habría que desplazarlo una posición a la izquierda, para exponente $-1$ habría que desplazarlo una posición a la derecha, para exponente $2$, dos posiciones a la izquierda, para exponente $-2$, dos posiciones a las derecha, etc.
 
 ¿Cómo representar números binarios en punto flotante empleando los registros de un computador? Una solución inmediata es dividir el registro en tres partes. Una para el signo, otra para la mantisa y otra para el exponente. Supongamos, como en el caso de la representación en punto fijo, que contamos con registros de 16 bits.  Podemos dividir el registro en tres zonas, la primera, de un solo bit la empleamos para guardar el signo. La segunda de, por ejemplo 11 bits, la empleamos para guardar la mantisa del número y por último los cuatro bits restantes los empleamos para guardar el exponente en binario. Podríamos entonces representar el número  $-1.10100101\times 2^3$ como,
+\switchcolumn
+The floating-point follows exactly the same representation that we just described for the scientific notation. The only difference is that we now use powers of two, which are the proper powers of binary representation, instead of powers of ten.\\ So, we would represent the binary number\\ $-1101.00101$ as $-1.10100101\times 2^3$, and the binary number $0.001011101$ as $1.011101\times 2^{-3}$.
+
+ The term floating-point means that the mantissa decimal point does not split the integer part of the number from its decimal part. We need to use the exponent value to split the integer and decimal part of the number. So, for an exponent equal to zero, the mantissa decimal point is in the correct position to represent the number. For an exponent equal to $1$, we must move the decimal point one position towards the left. For an exponent equal to $-1$, one position towards the right. For exponent $2$, two positions towards the left. For exponent $-2$, two positions towards the right. And so on.
+ 
+ How can we represent floating points binary numbers using a computer register? A straightforward solution is to divide the register into three parts, One for the sign, another to store the mantissa and the third part for the exponent. Suppose that, as in the case of the fixed point representation, we have got 16-bit registers. We can divide the register in three zones. The first one, with a single bit to save the number sign. A second one of, let say 11 bits, to save the number mantissa and we reserve the remaining four bits to hold the exponent in binary representation. We could, then, represent the number $-1.10100101\times 2^3$ as,      
 \end{paracol}
 
-\begin{table}
+\begin{table}[h]
+	\centering
 \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c||c|c|c|c|}
 \hline
-sig.&\multicolumn{11}{c||}{mantisa}&\multicolumn{4}{c|}{exponente}\\
+sign.&\multicolumn{11}{c||}{mantissa}&\multicolumn{4}{c|}{exponent.}\\
 \hline
 1&1&1&0&1&0&0&1&0&1&0&0&0&0&1&1\\
 \hline
@@ -435,7 +452,7 @@ sig.&\multicolumn{11}{c||}{mantisa}&\multicolumn{4}{c|}{exponente}\\
 \hline
 \end{tabular}
 \end{table}
-
+Podríamos entonces representar el número  $-1.10100101\times 2^3$ como,
 \begin{paracol}{2}
 Si bien la representación que acabamos de ver sirve para el número representado, es evidente que no podemos representar así un número con exponente negativo como por ejemplo $1.011101\times 2^{-3}$. Además la división que hemos hecho del registro de 16 bits es arbitraria; podríamos haber elegido un reparto distinto de bits entre mantisa y exponente. De hecho, hasta la década de los noventa del siglo XX, cada ordenador adoptaba su propia representación de números en punto flotante. La consecuencia era que los mismos programas, ejecutados en máquinas distintas daban diferentes soluciones. 
 
@@ -448,9 +465,28 @@ En primer lugar, el estándar se estableció pensando en dos tamaños de registr
 
 \index{Mantisa! normalizada}Si analizamos como es la mantisa de un número binario en representación de punto flotante, nos damos cuenta de que la parte entera siempre debería valer 1. Por tanto, podemos guardar en la mantisa solo la parte del número que está a la derecha del punto decimal, y considerar que el  1 correspondiente a la parte entera está implícito. Por ejemplo, si tenemos el número binario $1.010111\times 2^{3}$ solo guardaríamos la cifra $010111$. El 1 de la parte entera sabemos que está ahí pero no lo representamos. A este tipo de mantisa la llamaremos normalizada, más adelante veremos por qué.
 
-\index{Exponente! Representación en exceso} En cuanto al exponente, es preciso buscar una forma de representar exponentes positivos y negativos. El estándar establece para ello lo que se llama la representación en \emph{exceso}. Con ocho bits podemos representar hasta $2^8=256$ números distintos. Éstos irían desde el $[00000000]=0$ hasta el $[11111111]=255$. Si partimos nuestra colección de números en dos, podríamos emplear la primera mitad para representar números negativos, reservando el mayor de ellos para representar el cero, y la segunda para representar números positivos. Para obtener el valor de un número basta restar al contenido del exponente el número reservado para representar el cero. Se dice entonces que la representación se realiza \emph{en exceso} a dicho número.
+\index{Exponente! Representación en exceso} En cuanto al exponente, es preciso buscar una forma de representar exponentes positivos y negativos. El estándar establece para ello lo que se llama la representación en \emph{exceso}. Con ocho bits podemos representar hasta $2^8=256$ números distintos. Éstos irían desde el $[00000000]=0$ hasta el $[11111111]=255$. 
 
-En el caso del estándar de simple precisión la primera mitad de los números disponibles iría del 0 al 127 y la segunda mitad del 128 al 255. La representación se realiza entonces en exceso a 127. La tabla \ref{tabex} muestra unos cuanto ejemplos de cálculo de la representación \emph{en exceso}.
+Si partimos nuestra colección de números en dos, podríamos emplear la primera mitad para representar números negativos, reservando el mayor de ellos para representar el cero, y la segunda para representar números positivos. Para obtener el valor de un número basta restar al contenido del exponente el número reservado para representar el cero. Se dice entonces que la representación se realiza \emph{en exceso} a dicho número.
+
+En el caso del estándar de simple precisión la primera mitad de los números disponibles iría del 0 al 127 y la segunda mitad del 128 al 255. La representación se realiza entonces en exceso a 127. La tabla \ref{tabex} muestra unos cuanto ejemplos de cálculo de la representación \emph{en exceso}
+
+\switchcolumn
+Although the representation just described suits well the represented number, it is clear that we cannot represent with it a negative number like, for example, $1.011101\times 2^{-3}$. Furthermore, we have arbitrarily divided the 16-bit register; we could have chosen a different allocation of bits between the mantissa and exponent. In fact, until the 1990s, each computer adopted its own representation for floating-point numbers. As a consequence, the same programs run on different computers yield different results.
+
+already in 1974, John Palmer from INTEL company, promote the creation of a standard, that is, of a floating-point representation which might be adopted for all computers manufactures. The first draft of the standard, inspired in Kahan's work for the IBM 7094 computer (1968), was prepare by Willian Kahan (Intel), Jerome Coonen (Berkeley) and Harold Stone (Berkeley): K-C-S document. The standardisation process was slow. The first version of the standard was no ready till the year 1985. The result of these works was the current standard, known as the IEEE 754 standard. IEEE are the acronym of Institute of Electrical and Electronic Engineers. The Institute is an association born in the United States in the XIX century, and it has evolved to become an international. The IEEE is devoted, among other things, to stablish international industrial standards on the electricity, electronics and computer fields. Let's see in some detail the IEEE 754 standard.
+
+\paragraph{the IEEE 745 standard.}\index[eng]{IEEE 754 Standard} The standard was established thinking in register of two different size. The first one uses 32 bits to save floating-point numbers. It is known as the simple precision standard. The second one uses 64 bits and it is Known as the double precision standard.
+
+\subparagraph{Simple precision.}\index[eng]{IEEE 754 Standard! Simple precision} We will start describing the simple precision standard. First we take a bit to save the sign. If the bits is one, then the number is negative. If the bits is zero the number is positive. We use 23 bits of the remaining 32, to represent the number mantissa and the other last 8 bits to represent the exponent. 
+ 
+\index[eng]{Mantissa! normalised} If we examine a binary number's mantissa when using the floating-point representation, we realize that it must always take a value equal to one. Therefore, we only need to save in the chunk of the register reserved for the mantissa the decimal part, i.e., the digits located on the right of the decimal point, and consider the leading 1, belonging to the integer part of the number, implicit. For instance, if we have the binary number $1.010111\times 2^{3}$ we only save the figure $010111$. We Know the leading $1$ of integer part is there, but we do not represent it. We will call this kind of mantissa a normalised mantissa, we shall see why later on.
+
+\index[eng]{Exponent! Biased} We need a way to represent positive and negative exponents. The standard prescribes the use of representation known as biased exponent representation. Using 8 bits, we can represent up to $2^8 = 256$ different numbers. These numbers expand from $[00000000] = 0$ to $[11111111] = 255$. 
+
+We divide our numbers into two halves and take the lower half to represent negative numbers, using the largest number to represent the zero. Of course, we use the upper half to represent positive numbers. It is enough to subtract the number reserved to represent the zero to recover the \emph{real} exponent of the number. So we can consider that our representation of the exponent is \emph{biased} by the number used to represent the zero.
+
+For the simple precision standard, the first half of available numbers ranges from 0 to 127 and the second half from 128 to 255. Then, the representation is biased by 127. Table \ref{tabex} shows several examples on how to calculate this \emph{biased} representation.   
 \end{paracol}
 
 \begin{table}
@@ -490,7 +526,7 @@ Tenemos por tanto que el exponente de 8 bits del estándar de precisión simple 
 
 Ya tenemos casi completa la descripción del éstandar. Solo faltan unos detalles --aunque muy importantes-- relativos a la representación de números muy grandes y muy pequeños. Empecemos con los números muy grandes.
 
-¿Cúal es el número más grande que podríamos representar en estándar de simple precisión? En principio cabría suponer que el correspondiente a escribir un 1 en todos los bits correspondientes a la mantisa (la mayor mantisa posible) y escribir también un 1 en todos los bits correspondientes al exponente (el mayor exponente posible). Sin embargo, el estándar está pensado para proteger las operaciones del computador de los errores de desbordamiento (ver sección \ref{errn} más adelante). Para ello reserva el valor más alto del exponente. Así cuando el exponente contenido en un registro es 128, dicho valor no se considera propiamente un número, de hecho es preciso mirar el contenido de la mantisa para saber qué es lo que representa el registro: 
+¿Cúal es el número más grande que podría\-mos representar en estándar de simple precisión? En principio cabría suponer que el correspondiente a escribir un 1 en todos los bits correspondientes a la mantisa (la mayor mantisa posible) y escribir también un 1 en todos los bits correspondientes al exponente (el mayor exponente posible). Sin embargo, el están\-dar está pensado para proteger las operaciones del computador de los errores de desbordamiento (ver sección \ref{errn} más adelante). Para ello reserva el valor más alto del exponente. Así cuando el exponente contenido en un registro es 128, dicho valor no se considera propiamente un número, de hecho es preciso mirar el contenido de la mantisa para saber qué es lo que representa el registro: 
 
 \begin{itemize}
 \item Si los bits de la mantisa son todos cero, el registro contiene la representación del infinito $\infty$.  El estándar específica el resultado de algunas operaciones en el infinito: $1/\infty=0$, $\arctan(\infty)=\pi/2$. 
@@ -498,8 +534,20 @@ Ya tenemos casi completa la descripción del éstandar. Solo faltan unos detalle
 \item \index{NaN} \index{Not a Number} Si por el contrario, el contenido de la mantisa es distinto de cero, se considera el contenido del registro como no numérico (NaN, abreviatura en ingles de \emph{Not a Number}). Este tipo de resultados, considerados no numéricos, surgen en algunas operaciones que carecen de sentido matémático: $0/0, \ \infty\times0,\ \infty -\infty$. \end{itemize}
 
 Todo esto hace que el exponente mayor que realmente representa un número sea el 127. \index{IEEE 754! número más grande representable en simple precisión} Como ejemplo podemos construir el número más grande que podemos representar distinto de infinito. Se trata del número con la mantisa más grande posible, una mantisa formada exclusivamente por unos, seguida por el exponente más grande posible. El exponente mas grande en exceso es 127, que corresponde a un exponente en binario $127+127=254 \equiv [11111110]$. Por tanto el número se representaría como,
+\switchcolumn
+In conclusion: the 8 bits of the simple precision standard allows us to represent all integer exponents from $127$ to $128$. 
+
+We have almost ready the description of the IEEE standard. However, some essential details about representing very large and very small numbers remain. Let's start with the very large numbers. What is the most significant number we could represent using the simple precision standard? We could suppose that, in principle, the number with all its mantissa values set to one (the most significant possible mantissa) and all its exponent values set to one (the largest possible exponent). However, the standard was thought to protect the computer operations against overflow errors (see section \ref{errn} below). That protection is carried out by reserving the largest possible value of the exponent. Therefore, when a register holds an exponent equal to $128$, this value is not considered a proper number. It is necessary to see the mantissa to know what the register does represent:
+\begin{itemize}
+	\item If the mantissa bits are all zero, the register holds the representation of infinite $\infty$. The standard specifies the results of some operations on infinite: $1/\infty = 0, arctan(\infty) = \pi/2$.
+	\item On the contrary, if the content of the mantissa is not zero, the content of the register is consider as non-numeric (NaN, acronym of Not a Number). Some computations, which lack of mathematical sense like $0/=, \infty\times 0, \infty -\infty$, yields this NaN kind of results.      
+\end{itemize}       
+ 
+ Therefore, the standard limits to 127 the maximum exponent which can be use to represent a finite number.  We can build as an example the largest number we can represent, different to infinity. This number should have the largest possible mantissa, i.e. a mantissa with all values set to one, and the largest possible exponent, 127, using the biasing representation of the simple precision standard. This exponent correspond to a binary exponent $127+127=254 \equiv [11111110]$. Thus, the largest number for simple precision representation would be, 
 \end{paracol}
-\ \\
+
+\begin{minipage}{\textwidth}
+	\centering
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -507,23 +555,29 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&11111111111111111111111&11111110\\
 \hline
 \end{tabular}\\
-
+\end{minipage}
 \begin{paracol}{2}
 En base 10 el número representado sería, $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{127}\approx 3.402823466385289\times10^{38}$. Donde hemos representado en negrita el 1 implícito, no presente en la mantisa.
  
 Veamos ahora los números mas pequeños, de acuerdo con lo dicho, el número más próximo a cero que podríamos construir sería aquel que tuviera la mantisa más pequeña y el exponente más pequeño, es decir una mantisa formada solo por ceros y un exponente formado solo por ceros. Ese número sería $(1\cdot 2^0)\cdot2^{-127}$ (se debe recordar que la mantisa en la representación del estándar esta normalizada; lleva un 1 entero implícito). 
 
 \index{IEEE 754! Números desnormalizados} Es evidente que si no fuera por el 1 implícito de la mantisa sería posible representar números aún más pequeños. Por otro lado, si consideramos siempre la mantisa como normalizada, es imposible representar el número 0. Para permitir la representación de números más pequeños, incluido el cero, los desarrolladores del estándar decidieron añadir la siguiente regla: \emph{Si los bits del exponente de un número son todos ceros, es decir, si el exponente representado es -127, se considera que la mantisa de ese número \textbf{no} lleva un 1 entero implícito. Además el  exponente del número se toma como -126}. Los números así representados reciben el nombre de números desnormalizados. Veamos algunos ejemplos.
+\switchcolumn
+This number in basis 10 will take the form, $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{127}\approx 3.402823466385289\times10^{38}$. Where we have write in bold letter the implicit 1, which is not present in the matissa.
+
+Let's turn now to the smallest numbers, according to the method we are using to represent the numbers, the number closest to zero we can build would be the number with the smallest mantissa and the smallest exponent. That is, a mantissa with all its bits set to zero and also an exponent with only zeros. This number will be, $(1\cdot 2^0)\cdot2^{-127}$ (remember that the standard uses a normalised mantissa, hence it has a implicit integer 1).
+ 
 \end{paracol}
 \ \\
-
+\begin{minipage}{\textwidth}
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
 \hline
 0&10100000000000000000000&00000000\\
 \hline
-\end{tabular}\\
+\end{tabular}
+\end{minipage}
 
 \begin{paracol}{2}
 El exponente del número representado en la tabla anterior es 0. Por tanto, en exceso a 127 el exponente sería $0-127=-127$. Este exponente corresponde a un número desnormalizado por tanto el número expresado en base 10 sería,
@@ -536,7 +590,7 @@ Nótese como el exponente ha sido reducido en una unidad ($-126$) a la hora de c
 
 \index{IEEE 754! Número desnormalizado más próximo a cero en simple precisión} El número más próximo a cero que podemos representar mediante números desnormalizados, será aquel que tenga la menor mantisa posible distinta de cero,\\ 
 \end{paracol}
-
+\begin{minipage}{\textwidth}
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -544,7 +598,7 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&0000000000000000000001&00000000\\
 \hline
 \end{tabular}\\
-
+\end{minipage}
 \begin{paracol}{2}
 que representado en base 10 sería el número: $(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$. Podemos calcular para comparar cual sería el número normalizado más próximo a cero, se trata del número que tiene una mantisa formada solo por ceros, multiplicada por el exponente más pequeño distinto de cero (un exponente igual a cero, implica automáticamente un número desnormalizado),\\ 
 \end{paracol}
@@ -718,7 +772,7 @@ Con lo cual la representación de $\frac{5}{3}$ es,
 $0.666666\cdots\times 2=1.333333\cdots$\\
 $0.333333\cdots\times 2=0.666666\cdots$\\
 from this point on the period $\widehat{10}$ repeats indefinitely: $1.666666  \xrightarrow{binario} 1.101010\cdots$ 
-\item Mantissa: the number representation in binary is: $1.101010 \cdots$, and the same floating point representation, $1.101010\cdots \times 2^0$. The mantissa is, $10101010101010101010101$
+\item Mantissa: the number representation in binary is: $1.101010 \cdots$, and the same floating-point representation, $1.101010\cdots \times 2^0$. The mantissa is, $10101010101010101010101$
 
 \item Exponent:\\
 $0 \xrightarrow{exceso\ 127} 127+0=127  \xrightarrow{binario \ 8 \ bits} 01111111$
