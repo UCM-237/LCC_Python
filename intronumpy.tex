@@ -831,9 +831,9 @@ Para que dos matrices puedan multiplicarse es imprescindible que el número de c
 Podemos entender la mecánica del producto de matrices de una manera más fácil si consideramos  la primera matriz como un grupo de vectores fila,
 
 \switchcolumn
-So, we get the entry of the product matrix which ocupies the the row $i$ and the column $j$, by multiplying in turn the entries of the row $i$ of matrix $A$ with the entries of the column $j$ of matrix $B$ and adding up the resulting products. 
+So, we get the entry of the product matrix, which occupies the row $i$ and the column $j$, by multiplying in turn the entries of the row $i$ of matrix $A$ with the entries of the column $j$ of matrix $B$ and adding up the resulting products. 
 
-Two matrix can be multiply only if the number of columns of the first matrix columns dimension is equal to the second matrix rows dimension.
+Two matrix can be multiplied only if the number of columns in the first matrix dimension is equal to the second matrix row dimension.
 
 We may understand better the matrix product mechanism if we consider the first matrix as a group of row vectors,  
 \end{paracol}
@@ -981,7 +981,7 @@ array([[-2, -3, -4, -5],
 \begin{paracol}{2}
 En la Línea In [384] se ha calculado el producto escalar de los vectores \mintinline{python}{a} y \mintinline{python}{b}. En este caso, la única condición requerida es que tengan la misma dimensión. En la línea In [388] se calcula el producto de la matriz \mintinline{python}{A} por el vector \mintinline{python}{b}. El requisito ahora es que la dimensión de la matriz ($2\times 4$), que corresponde al número de columnas, coincida con la única dimensión del vector ($4$). En la línea In [389] calculamos el producto del vector \mintinline{python}{b} por la transpuesta de la matriz \mintinline{python}{A}. La operación es posible porque la única dimensión del vector y coincide con la dimensión  de la matriz transpuesta $(4\time2)$, que corresponde con a número de filas. Sin embargo, no es posible calcular el producto del vector \mintinline{python}{b} por la matriz \mintinline{python}{A}, ya que la dimensión del vector no coincide con la primera dimensión de la matriz $(2\times4)$. En la línea In [399] hemos multiplicado las matrices \mintinline{python}{A} $(2\times 4$) por la matriz \mintinline{python}{B} $(4\times 2)$. Como coinciden las dimensiones ``internas'', --numero de columnas de la primera matriz con número de filas de la segunda-- La operación puede llevarse a cabo. Si invertimos el orden de las matrices, (línea In [400]) el producto también es posible, ya que en también coincidirían las dimensiones "internas". Sin embargo, es fácil ver que los resultados son complementamente distintos.
 \switchcolumn
-In line In[384] we calcuted the scalar product of vectors \mintinline{python}{a} and \mintinline{python}{b}. In this case, the only requirement is that both vector have the same dimension. In line In [388] we calculated the product of matrix \mintinline{python}{A} and the vector \mintinline{python}{b}. Now the requirement is the dimension of the matrix ($2\times 4$) correspondint to the number of columns, meets the the single dimension of the vector ($4$). In lin [389] we multiplied vector \mintinline{python}{b} with the traspose of matrix \mintinline{python}{A}. This operation can be carried uot because the single dimension of vector \mintinline{python}{b} is the same that the dimension of the traspose of the matrix $(4\times 2)$, which corresponds with the number of rows of the matrix. However, we cannot multiply vector \mintinline{python}{b} by matrix \mintinline{python}{A} because the dimension of the vector does not meet the first dimension of the matrix $(2\times 4)$. In line In [399] we multiplied matrix \mintinline{python}{A} $(2\times 4)$ by matix \mintinline{python}{B} $(4\times 2)$. We can carry out the operation because the ``inner'' dimensions of the matrices --number of columns of the first matrix and number of rows of the second one--, meet. If we invert the order of the matrices, (line In [400]) we can still multiply the matrix, because in this particular case the new ``inner'' also dimensions meet. However the result is entirely different        
+In line In[384] we calcuted the scalar product of vectors \mintinline{python}{a} and \mintinline{python}{b}. In this case, the only requirement is that both vectors have the same dimension. In line In [388] we calculated the product of matrix \mintinline{python}{A} and the vector \mintinline{python}{b}. Now the requirement is the dimension of the matrix ($2\times 4$), corresponding to the number of columns, meets the the single dimension of the vector ($4$). In line [389], we multiplied vector \mintinline{python}{b} with the transpose of matrix \mintinline{python}{A}. This operation can be carried out because the single dimension of vector \mintinline{python}{b} is the same as the dimension of the transpose of the matrix $(4\times 2)$, which corresponds with the number of rows of the matrix. However, we cannot multiply vector \mintinline{python}{b} by matrix \mintinline{python}{A} because the dimension of the vector does not meet the first dimension of the matrix $(2\times 4)$. In line In [399] we multiplied matrix \mintinline{python}{A} $(2\times 4)$ by matix \mintinline{python}{B} $(4\times 2)$. We can carry out the operation because the ``inner'' dimensions of the matrices --number of columns of the first matrix and number of rows of the second one--, meet. If we invert the order of the matrices (line In [400]), we can still multiply the matrix because, in this particular case, the new ``inner'' dimensions also meet. However, the result is entirely different        
 \end{paracol}
 \begin{paracol}{2}
 \paragraph{Matriz identidad} La matriz identidad de orden $n\times n$ se 
@@ -1061,7 +1061,7 @@ A^T\cdot A=I
 \begin{paracol}{2}
 \paragraph{Norma de un vector.} La longitud euclídea, módulo,  norma 2 o simplemente norma  de un vector se define como,
 \switchcolumn
-\paragraph{Vector norm} The Euclidean length, module, norm 2 or just norm of a vector is defined as follows,
+\paragraph{Vector norm} The Euclidean length, module, norm two or just norm of a vector is defined as follows,
 \end{paracol}
 \begin{equation*}
 \Vert x \Vert_2 =\Vert x \Vert =\sqrt{x\cdot x}=\sqrt{x^Tx}=\sqrt{x_1^2+x_2^2+\cdots x_n^2}=\left( \sum_{i=1}^nx_i^2 \right)^\frac{1}{2}
@@ -1094,7 +1094,7 @@ Out[425]: 5.477225575051661
 \begin{paracol}{2}
 A partir de la norma de un vector es posible obtener una expresión alternativa para el producto escalar de dos vectores,
 \switchcolumn
-We can derive an alternative expression of the scalar product of two vector, using the vector norm
+We can derive an alternative expression of the scalar product of two vectors, using the vector norm
 \end{paracol}
 \begin{equation*}
 a\cdot b=\Vert a \Vert \Vert b \Vert \cos \theta
@@ -1206,7 +1206,7 @@ Dos vectores $a$ y $b$ son ortogonales si cumplen que su producto escalar es nul
 \switchcolumn
 Vectors $u$ with $\Vert u \Vert=1$ are called unitary vectors.
 
-Two vectors $a$ and $b$ are orthogonal if their scalar product is zero, $a^Tb = 0 \Rightarrow a\bot b$. Besides, if the vectors have norm one them they are called orthonormal vectors. From the point of view of the geometrical representation, the angle between two orthogonal vectors is a square angle.
+Two vectors $a$ and $b$ are orthogonal if their scalar product is zero, $a^Tb = 0 \Rightarrow a\bot b$. Besides, if the vectors have norm one them, they are called orthonormal vectors. From the point of view of the geometrical representation, the angle between two orthogonal vectors is a square angle.
 
 \paragraph{Matrix's trace.} The trace of a square matrix is the sum of the entries located in the matrix's main diagonal. 
 \end{paracol}

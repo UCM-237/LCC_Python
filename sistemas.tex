@@ -469,68 +469,38 @@ A=np.array([[4,1],[2,0.499]])
 np.linalg.cond(A)
 Out[7]: 5312.250061755533
 \end{minted}
-\begin{verbatim}
->> A=[4 1; 2, 0.499]
 
-A =
-
-    4.0000    1.0000
-    2.0000    0.4990
-
->> nc=cond(A)
-
-nc =
-
-  5.3123e+003
-\end{verbatim}
-
+\begin{paracol}{2}
 El número está bastante alejado de uno, lo que, en principio, indica un mal condicionamiento del sistema. 
 
 Incidentalmente, podemos calcular la factorización svd de la matriz de coeficientes y dividir el valor singular mayor entre el menor para comprobar que el resultado es el mismo que nos da la función \texttt{cond},
-\begin{verbatim}
->> [U,S,V]=svd(A)
 
-U =
+\switchcolumn
+The number is quite far from one, which, in principle, indicates a ill-condition of the system. 
 
-   -0.8944   -0.4472
-   -0.4472    0.8944
+Incidentally, we can calculate the factorisation svd of the coefficient matrix and divide the largest singular value by the smallest to check that the result is the same as that given by the function \texttt{cond},
+\end{paracol}
 
+\begin{minted}{pycon}
+[U,S,Vt]=np.linalg.svd(A)
 
-S =
+S[0]/S[1]
+Out[14]: 5312.250061755533
+\end{minted}
 
-    4.6097         0
-         0    0.0009
-
-
-V =
-
-   -0.9702    0.2424
-   -0.2424   -0.9702
-
->> nc=S(1,1)/S(2,2)
-
-nc =
-
-  5.3123e+003
-\end{verbatim}
-
-Matlab emplea también la función \texttt{rnc=rcond(A)} para estimar el condicionamiento de una matriz. No describiremos el método, simplemente diremos que en lugar de obtener un número de condición para la matriz, se utiliza un valor recíproco. De este modo, cuanto más se aproxima a uno el resultado de \texttt{rcond}, mejor condicionada está la matriz, y cuanto más se aproxime a cero peor. Para nuestro ejemplo anterior,
-
-\begin{verbatim}
->> rnc=rcond(A)
-
-rnc =
-
-  1.3333e-004
-
-\end{verbatim}
-
-Próximo a cero, lo que indica un mal condicionamiento de $A$. Nótese que el resultado de \texttt{rcond}, no es el inverso del valor de \texttt{cond}.
-
+\begin{paracol}{2}
 \section{Métodos directos}
 \subsection{Sistemas triangulares}
 Vamos a empezar el estudio de los métodos directos por los algoritmos de resolución de los sistemas más simples posibles, aquellos cuya matriz de coeficientes es una matriz diagonal, triangular superior o triangular inferior.
 \paragraph{Sistemas diagonales.} Un sistema diagonal es aquel cuya matriz de coeficientes es una matriz diagonal. 
+
+\switchcolumn
+
+\subsection{Direct methods}
+\subsection{Triangular systems}
+We are going to begin the study of direct methods with the algorithms for solving the simplest possible systems, those whose coefficient matrix is a diagonal, upper triangular or lower triangular matrix.
+\paragraph{ Diagonal systems.} A diagonal system is one whose coefficient matrix is a diagonal matrix. 
+\end{paracol}
 
 \begin{equation*}
 \left. \begin{aligned}
@@ -556,19 +526,38 @@ b_n
 \end{pmatrix}}^b
 \end{equation*}
 
+\begin{paracol}{2}
 Su resolución es trivial, basta dividir cada término independiente por el elemento correspondiente de la diagonal de la matriz de coeficientes,
 \begin{equation*}
 x_i=\frac{b_i}{a_{ii}}
 \end{equation*}
 
-Para obtener la solución basta crear en Matlab un sencillo bucle \texttt{for},
-\begin{verbatim}
-n=size(A,1);
-x=zeros(n,1);
-for i=1:n
-    x(i)=b(i)/A(i,i);
-end
-\end{verbatim} 
+\switchcolumn
+Its resolution is trivial, just divide each independent term by the corresponding element of the diagonal of the coefficient matrix,
+\begin{equation*}
+x_i=\frac{b_i}{a_{ii}}
+\end{equation*}
+
+\switchcolumn
+Para obtener la solución basta crear en Python un sencillo bucle \texttt{for},
+
+\switchcolumn
+To compute the solution it is enough to code a simple \texttt{for} loop,
+\end{paracol}
+
+\begin{minted}{python}
+import numpy as np
+
+def diag_sys(A,b):
+    [f,c]=np.shape(A)
+    x=np.zeros(f)
+    for i in range(f):
+        x[i]=b[i]/A[i,i]
+    return x
+\end{minted}
+
+
+%%%%%% FRONTERA %%%%%%%%%%%%%%%%
 
 \paragraph{Sistemas triangulares inferiores: método de sustituciones progresivas.} Un sistema triangular inferior de $n$ ecuaciones con $n$ incógnitas tendrá la forma general,
 
