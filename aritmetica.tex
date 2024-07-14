@@ -19,7 +19,7 @@ Algunos números racionales se reducen a su vez a números enteros, $6/3$, otros
 \switchcolumn
 In chapter one, we introduced the binary representation of numbers and the conversion from decimal to binary and from binary to decimal. In this chapter, we will get deep into how a computer represents and operates numbers. We also discuss one of its direct consequences: the imprecision of the results.
 
-\section{Binary and decimal representations}\index[eng]{Binary}
+\section{Binary and denary representations}\index[eng]{Binary}
 
 Real numbers can be represented on a line extending from $-\infty$ to $\infty$. Most do not have exact numerical representations because they have infinite decimals.
 
@@ -472,7 +472,7 @@ Si partimos nuestra colección de números en dos, podríamos emplear la primera
 En el caso del estándar de simple precisión la primera mitad de los números disponibles iría del 0 al 127 y la segunda mitad del 128 al 255. La representación se realiza entonces en exceso a 127. La tabla \ref{tabex} muestra unos cuanto ejemplos de cálculo de la representación \emph{en exceso}
 
 \switchcolumn
-Although the representation just described suits well the represented number, it is clear that we cannot represent with it a negative number like, for example, $1.011101\times 2^{-3}$. Furthermore, we have arbitrarily divided the 16-bit register; we could have chosen a different allocation of bits between the mantissa and exponent. In fact, until the 1990s, each computer adopted its own representation for floating-point numbers. As a consequence, the same programs run on different computers yield different results.
+Although the representation just described suits well the represented number, it is clear that we cannot represent with it a negative number like, for example, $1.011101\times 2^{-3}$. Fur\-thermore, we have arbitrarily divided the 16-bit register; we could have chosen a different allocation of bits between the mantissa and exponent. In fact, until the 1990s, each computer adopted its own representation for float\-ing-point numbers. As a consequence, the same programs run on different computers yield different results.
 
 already in 1974, John Palmer from INTEL company, promote the creation of a standard, that is, of a floating-point representation which might be adopted for all computers manufactures. The first draft of the standard, inspired in Kahan's work for the IBM 7094 computer (1968), was prepare by Willian Kahan (Intel), Jerome Coonen (Berkeley) and Harold Stone (Berkeley): K-C-S document. The standardisation process was slow. The first version of the standard was no ready till the year 1985. The result of these works was the current standard, known as the IEEE 754 standard. IEEE are the acronym of Institute of Electrical and Electronic Engineers. The Institute is an association born in the United States in the XIX century, and it has evolved to become an international. The IEEE is devoted, among other things, to stablish international industrial standards on the electricity, electronics and computer fields. Let's see in some detail the IEEE 754 standard.
 
@@ -493,8 +493,10 @@ For the simple precision standard, the first half of available numbers ranges fr
 \centering
 \begin{tabular}{ccc}
 &&Exceso a 127\\
+&& 127 biased\\
 \hline
 Bits de exponente&equivalente decimal&Exponente representado\\
+Exponent's bits&base-ten equivalent&represented exponent\\
 \hline      
 $00000000$&$0$&$0-127=-127$\\
 \hline
@@ -517,7 +519,7 @@ $11111110$&$254$&$254-127=127$\\
 $11111111$&$255$&$255-127=128$\\
 \hline
 \end{tabular}
-\caption{Representación \emph{en exceso a} 127, para un exponente de 8 bits.}
+\bicaption{Representación \emph{en exceso a} 127, para un exponente de 8 bits.}{127-\emph{biased} representation for a 8-bit exponent}
 \label{tabex}
 \end{table}
 
@@ -575,7 +577,7 @@ If the standard would not use a mantissa with an implicit one, we could represen
 \centering
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 0&10100000000000000000000&00000000\\
 \hline
@@ -605,7 +607,7 @@ Notice how the exponent has been reduced one unit (-126) to calculate the decima
 \centering
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+ssig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 0&0000000000000000000001&00000000\\
 \hline
@@ -623,7 +625,7 @@ We can compare this number with the closest number to zero we can represent usin
 	\centering
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 0&0000000000000000000000&00000001\\
 \hline
@@ -645,7 +647,7 @@ We will calculate, as a final example, the largest number we can represented usi
 |\centering	
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 0&11111111111111111111111&00000000\\
 \hline
@@ -662,19 +664,19 @@ En este caso el exponente puede almacenar $2^{11}=2048$ números (desde el 0 al 
 De nuevo, el valor mayor del exponente, 1024 se emplea para representar el infinito $\infty$, si va acompañado de una mantisa formada exclusivamente por ceros. En caso de que acompañe a una mantisa no nula, el contenido del registro se considera que no representa un número NaN (error de desbordamiento) \index{IEEE 754! Número más grande representable en doble precisión}. Podemos, como ejemplo, obtener para el estándar de doble precisión el número más grande representable,\\
 
 \switchcolumn
-In base-ten the number would be: $(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}\approx 1.175494210692441\times10^{-38}$. These last two represented number are really near one to another. In fact, we have already calculate their difference, when we got the denormalised  number closest to zero, $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}-(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}=(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$.
+In base-ten representation the number wo\-uld be: $(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}\approx 1.175494210692441\times10^{-38}$. These last two represented number are really near one to another. In fact, we have already calculate their difference, when we got the denormalised  number closest to zero, $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}-(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}=(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$.
 
 \subparagraph{Double precision}
 \index[eng]{IEEE 237 standard! Doble precision} The difference between the single and the double precision standards is in the size of the registers we use to represent the numbers. When working with double precision, we use 64-bits size registers. Therefore, the size of the register is double than the size we use for simple precision. The standard is just fit to the larger size of the registers; we reserve a bit for the number's sign, 52 bits for the mantissa and 11 bits for the exponent.
 
 In this case the exponent can store $2^{11}=2048$ different numbers (from 0 to 2047). Very much alike the simple precision case, we split the  exponent numbers into two halves, representing the values with a 1023 bias. Therefore, the an exponent equal to zero represent the value  $0-1023=-1023$ and the exponent 2047 represent the value, $2047-1023=1024$.
 
-Again, we use the largest exponent value 1024 to represent the infinite $\infty$,     
+Again, we use the largest exponent value 1024 to represent the infinite $\infty$ with an all-zeros companying mantissa. Otherwise, if the companying mantissa has any non-zero bit, then the register does not represent a number NaN (overflow error). As an example, We can obtain the largest representable number using the double precision standard,     
 
 \end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 52 bits $\rightarrow$&$\leftarrow$ exponente, 11 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 52 bits $\rightarrow$&$\leftarrow$ exponent., 11 bits $\rightarrow$\\
 \hline
 0&111111111111111111111111111111111111111111111111111&11111111110\\
 \hline
@@ -683,30 +685,40 @@ sig.&$\leftarrow$mantisa, 52 bits $\rightarrow$&$\leftarrow$ exponente, 11 bits 
 El número representado toma en base 10 el valor: $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-52})\times2^{1023}\approx 1.797693134862316\times10^{308}$
 
 Por último, para exponente -1023 es decir, un exponente formado exclusivamente por ceros, el número representado se considera desnormalizado; se elimina el 1 entero implícito de la representación de la mantisa y se aumenta en una unidad el exponente, que pasa así a valer -1022. \index{IEEE 754! Número desnormalizado más próximo a cero en doble precisión} Como ejemplo, podemos calcular el número más próximo a cero representable en doble precisión,\\
+
+\switchcolumn
+The value in base-ten of the represented number is: $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-52})\times2^{1023}\approx 1.797693134862316\times10^{308}$
+
+Lastly, numbers with an exponent -1023, that is, numbers with an all-zero exponent, represent denormalised numbers. We remove the implicit one from the mantissa and increase the exponent on one unit, which takes the value -1022. For instance, we can compute the closest to zero number using the double precision representation,  
 \end{paracol}
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 52 bits $\rightarrow$&$\leftarrow$ exponente, 11 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 52 bits $\rightarrow$&$\leftarrow$ exponent., 11 bits $\rightarrow$\\
 \hline
 0&000000000000000000000000000000000000000000000000001&00000000000\\
 \hline
 \end{tabular}\\
 \begin{paracol}{2}
 El número representado toma el base 10 el valor: $(0\cdot2^{-1}+0\cdot2^{-2}+0\cdots+1\cdot2^{-52})\times2^{-1022}\approx  4.940656458412465\times10^{-324}$
-
+ 
 La tabla \ref{tbieee} resume y compara las características de los dos estándares vistos,
+\switchcolumn
+The number represented takes in base-ten the value: $(0\cdot2^{-1}+0\cdot2^{-2}+0\cdots+1\cdot2^{-52})\times2^{-1022}\approx  4.940656458412465\times10^{-324}$
+
+Table \ref{tbieee} summarises and compares the characteristics of both standards we have seen, 
 \end{paracol}
 \begin{table}[h]
 \begin{tabular}{ccc}
 \multicolumn{3}{c}{\textbf{Precisión simple. Registro de 32 bits. Exponente exceso a 127}}\\
+\multicolumn{3}{c}{\textbf{Simple precision. 32-bits Register. Biased exponent a 127}}\\
 \hline
-Mantisa&exponente (8 bits)&número representado\\
- (23 bits)&(-exceso)\\
+Mantissa&exponent. (8 bits)&número representado/represented number\\
+ (23 bits)&(-exceso)(-bias)&\\
 $0$&$0-127=-127$&$(-1)^{bs}\cdot(0\cdot2^{-1}+\cdots+0\cdot2^{-23})\times2^{0-127}=0$\\
 $\neq 0$&$0-127\equiv\mathbf{-126}$&$(-1)^{bs}\cdot(m_1\cdot2^{-1}+\cdots+m_{23}\cdot2^{-23})\times2^{0-127\equiv \mathbf{-126}}$\\
 \hline
 \multirow{3}*{$\forall$} &$1-127=-126 $&\multirow{3}*{$(-1)^{bs}\cdot(\mathbf{1}+m_1\cdot2^{-1}+\cdots+m_{23}\cdot2^{-23})\times2^{(e_{8}\cdot2^8+\cdots+e_1\cdot2^0)-127}$}\\
-& hasta &\\
+& hasta/until &\\
 &$254-127=127$& \\
 \hline
 $0$&$255-127=128$&$(-1)^{bs}\cdot(0\cdot2^{-1}+\cdots+0\cdot2^{-23})\times2^{255-127}\equiv\infty$\\
@@ -714,35 +726,43 @@ $\neq 0$&$255-127=128$&$(-1)^{bs}\cdot(m_1\cdot2^{-1}+\cdots+m_{23}\cdot2^{-23})
 \hline
 \\
 \multicolumn{3}{c}{\textbf{Precisión doble. Registro de 64 bits. Exponente exceso a 1023}}\\
+\multicolumn{3}{c}{\textbf{Double precision. 64-bits register.  Biased exponent 1023}}\\
 \hline
-Mantisa &exponente (11 bits)&número representado\\
-(52 bits)&(-exceso)\\
+Mantissa &exponent. (11 bits)&número representado/represented number\\
+(52 bits)&(-exceso)(-bias)\\
 $0$&$0-1023=-1023$&$(-1)^{bs}\cdot(0\cdot2^{-1}+\cdots+0\cdot2^{-52})\times2^{0-1023}=0$\\
 $\neq 0$&$0-1023\equiv \mathbf{-1022}$&$(-1)^{bs}\cdot(m_1\cdot2^{-1}+\cdots+m_{23}\cdot2^{-52})\times2^{0-1023\equiv \mathbf{-1022}}$\\
 \hline
 \multirow{3}*{$\forall$} &$1-1023=-1022 $&\multirow{3}*{$(-1)^{bs}\cdot(\mathbf{1}+m_1\cdot2^{-1}+\cdots+m_{52}\cdot2^{-52})\times2^{(e_{11}\cdot2^{10}+\cdots+e_1\cdot2^0)-1023}$}\\
-& hasta &\\
+& hasta &until\\
 &$2046-1023=1023$& \\
 \hline
 $0$&$2047-1023=1024$&$(-1)^{bs}\cdot(0\cdot2^{-1}+\cdots+0\cdot2^{-52})\times2^{2047-1023}\equiv\infty$\\
 $\neq 0$&$2047-1023=1024$&$(-1)^{bs}\cdot(m_1\cdot2^{-1}+\cdots+m_{52}\cdot2^{-52})\times2^{2047-1023}\equiv \text{NaN}$\\
 \hline
 \end{tabular}
-\caption{Comparación entre los estándares del IEEE para la representación en punto flotante. ($bs$ bit de signo, $m_i$ bit de mantisa, $e_i$ bit de exponente)}
+\bicaption{Comparación entre los estándares del IEEE para la representación en punto flotante. ($bs$ bit de signo, $m_i$ bit de mantisa, $e_i$ bit de exponente)}{Comparison between the IEEE standards for floating point representation.  ($bs$ sign bit, $m_i$ mantissa bit, $e_i$ exponent bit)}
 \label{tbieee}
 \end{table}
 \begin{paracol}{2}
 Para terminar veamos algunos ejemplos de representación de números en el estándar IEEE 754:
 
 1. ¿Cúal es el valor decimal del siguiente número expresado en el estándar del IEEE 754 de simple precisión precisión?
+\switchcolumn
+We will finish with some examples of number representation using the IEEE 754 standard:
+
+1. Which is the base-ten representation of the following number represented in the simple precision IEEE 754 standard?
 \end{paracol}
+\begin{minipage}{\textwidth}
+	\centering
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 1&11000000000000000000000&01111100\\
 \hline
 \end{tabular}\\
+\end{minipage}
 \begin{paracol}{2}
 \begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
 \item El bit de signo es 1, por lo tanto el número es negativo.
@@ -752,14 +772,26 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \end{itemize}
 
 2. ¿Cúal es el valor decimal del siguiente número expresado en el estándar del IEEE 754 de simple precisión?
+\switchcolumn
+\begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
+	\item The bit sign is 1 therefore, it is a negative number.
+	\item The exponent is  $0\cdot2^7+1\cdot2^6+1\cdot2^5+1\cdot2^4+1\cdot2^3+1\cdot2^2+0\cdot2^1+0\cdot2^0-127=124-127=-3$
+	\item looking at the exponent we realise that the number has a normalised mantissa, $\mathbf{1}+1\cdot2^{-1}+1\cdot2^{-2}=1.75$
+	\item Thus, the number in denary representation is: $ (-1)^1\times(1.75)\times2^{-3}=-0,21875$
+\end{itemize}
+
+2. Which is the base-ten representation of the following number represented in the simple precision IEEE 754 standard? 
 \end{paracol}
+\begin{minipage}{\textwidth}
+\centering
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 0&01000000000000000000000&10000001\\
 \hline
 \end{tabular}\\
+\end{minipage}
 \begin{paracol}{2}
 \begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
 \item El bit de signo es 0, por lo tanto el número es positivo.
@@ -768,23 +800,44 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \item Por tanto el número en representación decimal es: $ (-1)^0\times(0.25)\times2^{2}=+5.0$
 \end{itemize}
 
-3. ¿Cúal es la representación en el estándar IEEE 754 de simple precisión del número: $347.625$?
-\begin{itemize}[leftmargin=\dimexpr 26pt-.5in]
-\item  Convertimos el número a binario, $347.625 = 101011011.101$
+3. ¿Cúal es la representación en el estándar IEEE 754 de simple precisión del número:\\ $347.625$?
+\begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
+\item  Convertimos el número a binario,\\ $347.625 = 101011011.101$
 \item Representamos el número en formato de coma flotante, $1.01011011101\times 2^{8}$
 \item mantisa: 01011011101 (normalizada)
-\item exponente: $8 \xrightarrow{exceso\ 127} 127+8=135  \xrightarrow{binario \ 8 \ bits} 10000111$
+\item exponente:\\ $8 \xrightarrow{exceso\ 127} 127+8=135  \xrightarrow{binario \ 8 \ bits} 10000111$
 \item signo: 0 (positivo)
 \end{itemize}
 Con lo cual la representación de $347.625$ es, 
+\switchcolumn
+\begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
+	\item The sign bit is 0, therefore is a positive number.
+	\item The exponent is, $1\cdot2^7+0\cdot2^6+0\cdot2^5+0\cdot2^4+0\cdot2^3+0\cdot2^2+0\cdot^1+1\cdot2^0-127=129-127=2$
+	\item looking at the exponent we see that it is a normalised number, $\mathbf{1\cdot 2^0}+1\cdot2^{-2}=0.25$
+	\item Then, the denary representation of the number is: $ (-1)^0\times(0.25)\times2^{2}=+5.0$
+\end{itemize}
+
+3. Which is the simple precision standard IEEE 754 representation of the number \\ $347.625$?
+\begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
+	\item  We change the number to binary representation, $347.625 = 101011011.101$
+	\item  We get the floating point representation of the number, $1.01011011101\times 2^{8}$
+	\item mantissa: 01011011101 (normalised)
+	\item exponent:\\ $8 \xrightarrow{bias\ 127} 127+8=135  \xrightarrow{binary \ 8 \ bits} 10000111$
+	\item sign: 0 (positive)
+\end{itemize}
+Then the representation of $347.625$ is, 
 \end{paracol}
+\begin{minipage}{\textwidth}
+	\centering
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 0&0101101110100000000000&10000111\\
 \hline
 \end{tabular}\\
+\end{minipage}
+
 \begin{paracol}{2}
 4. ¿cúal el la representación en el estándar IEEE 754 de simple precisión del número: $\frac{5}{3}$
 \begin{itemize}[leftmargin=\dimexpr 26pt-.25in]
@@ -819,6 +872,8 @@ $0 \xrightarrow{exceso\ 127} 127+0=127  \xrightarrow{binario \ 8 \ bits} 0111111
 \end{itemize}
 therefore, $\frac{5}{3}$ binary representation is,
 \end{paracol}
+\begin{minipage}{\textwidth}
+\centering
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -827,8 +882,10 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \hline
 \end{tabular}\\
 
+\end{minipage}
 \begin{paracol}{2}
 \section{Errores en la representación numérica.}\label{errn}
+\sectionmark{Rep, de nums. errores. \textreferencemark\ Num. Rep. errors}
 Como se ha indicado anteriormente, cualquier representación numérica que empleemos con el ordenador, está sometida a errores derivados del tamaño finito de los registros empleados. Vamos a centrarnos en el estudio de los errores cometidos cuando representamos números empleando el formato de punto flotante del estándar del IEEE754.
 
 En primer lugar, solo hay una cantidad finita de números que admiten una representación exacta, son los que se obtienen directamente de los valores --unos y ceros-- contenidos en un registro al interpretarlos de acuerdo con las especificaciones del estándar. Estos números reciben el nombre de números máquina. 
@@ -838,12 +895,12 @@ Un número real no será un número máquina si, \index{Número máquina}
 \begin{enumerate}
 \item Una vez representado en formato de punto flotante su exponente esta fuera del rango admitido para los exponentes: es demasiado grande o demasiado pequeño.
 
-\item Una vez representado en formato de punto flotante su mantisa contiene más dígitos de los bits que puede almacenar la mantisas del formato. 
+\item Una vez representado en formato de punto flotante su mantisa contiene más dígitos de los bits que puede almacenar la mantisas del estándar. 
 \end{enumerate}
  
 Si el exponente se sale del rango admitido, se produce un error de desbordamiento. Si se trata de un valor demasiado grande, el error de desbordamiento se produce por exceso (\emph{overflow}). El ordenador asignará al número el valor $\pm \infty$. Si el exponente es demasiado pequeño , entonces el desbordamiento se produce por defecto (\emph{underflow}) y el ordenador asignará al número el valor cero.
 
-Si el tamaño de la mantisa del número excede el de la mantisas representables, la mantisa se trunca al tamaño adecuado para que sea representable. Es decir, se sustituye el número por un número máquina cercado, este proceso se conoce como redondeo y el error cometido en la representación como error de redondeo.
+Si el tamaño de la mantisa del número excede el de la mantisas representables, la mantisa se trunca al tamaño adecuado para que sea representable. Es decir, se sustituye el número por un número máquina cercano, este proceso se conoce como redondeo y el error cometido en la representación como error de redondeo.
 
 \subsection{Error de redondeo unitario} \index{Error de redondeo}
 
@@ -859,6 +916,20 @@ Supongamos que tenemos un número no máquina $x=(1.a_1a_2\cdots a_{23}a_{24}\cd
 
 En general, el criterio que se sigue es aproximar cada número real, por truncamiento o exceso, empleando en cada caso el número máquina más cercano. 
 Siempre que redondeamos un número cometemos un error, que podemos definir como el valor absoluto de la diferencia entre  el valor real  del número y su aproximación. Este error recibe el nombre de error absoluto,
+\switchcolumn
+\section{Numerical representations Errors.}
+As we have already stated before, whatever numerical representation we use with a computer is subject to errors due to the computer register's finite size. We are going to focus on the mistakes we make when using the IEEE754 standard for floating point representation to represent real numbers.
+
+First, there is only a finite set of numbers with an exact representation. These number are those directly obtained from the values ---ones and zeros---  contained in the register and interpreted according to the standard specifications. These numbers are called machine numbers.
+
+A real number will not be a machine number if,
+\begin{enumerate}
+	\item Once we have represented it in floating point format, the number exponent is out of the admitted range for exponents: it is too large or too small.
+	\item Once we have represented it in floating point format, the number mantissa has got more digits than bits can store the IEEE 754 standard mantissa.	  
+\end{enumerate}
+If the exponent is beyond the admissible range, it lead to overflow or underflow. Overflow happens when the exponent is too large, while underflow occurs when the exponent is too small. In the first case (overflow) the computer will assign the number the value $pm \infty$. IN teh second case, (underflow) the computer will assign the number the value zero.  
+
+If a number mantissa size exceeds the size of a representable mantissa, it is cut off to a suitable size to make it representable. In other words, we replace the number with a nearby machine number. this process is know as rounding-off and the error we make as rounding error.  
 \end{paracol}
 \begin{equation*}
 \text{Error absoluto}=\vert x-x_r\vert
@@ -941,6 +1012,8 @@ x_r=x\cdot (1+ \delta); | \delta| \leq \frac{1}{2}\cdot eps
 Un último comentario sobre el \emph{epsilon} del computador, entendido como precisión. La diferencia entre dos números máquina consecutivos está estrechamente  relacionada con el \emph{epsilon}. Si tenemos un número máquina y queremos incrementarlo en la cantidad más pequeña posible, dicha cantidad es precisamente el \emph{epsilon}, multiplicado por 2 elevado al exponente del número. La razón de que esto sea así está relacionada con el modo en que se suman dos números en la representación en punto flotante. Supongamos que tenemos un número cualquiera representado en el estándar de precisión simple,
 \end{paracol}
 
+\begin{minipage}{\textwidth}
+	\centering	
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -948,9 +1021,13 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&11110000000000000000000&10000000\\
 \hline
 \end{tabular}\\
+\ \\
+\end{minipage}
 \begin{paracol}{2}
 El número representado tiene de exponente $2^7-127=1$. Supongamos ahora que quisieramos sumar a este número la cantidad $2^{-22}$ su representación en el estándar emplearía una mantisa de ceros (recordar el 1 ímplicito) y un exponente $-22+127=105$. Sería por tanto,
 \end{paracol}
+\begin{minipage}{\textwidth}
+	\centering	
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -958,10 +1035,15 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&00000000000000000000000&01101001\\
 \hline
 \end{tabular}\\
+\ \\
+\end{minipage}
 \begin{paracol}{2}
 Para sumar dos números en notación científica es imprescindible que los dos estén representados con el mismo exponente, para entonces poder sumar directamente las mantisas. Disminuir el exponente del mayor de ellos hasta que coincida con el del menor no es posible, ya que eso supondría añadir dígitos a la parte entera de la mantisa, pero no hay bits disponibles para ello entre los asignados a la mantisa. Por tanto, la solución es aumentar el exponente del menor de los números, hasta que alcance el valor del exponente del mayor, y disminuir el valor de la mantisa desnormalizándola, es decir sin considerar el 1 implícito. 
 Por tanto en nuestro ejemplo, debemos representar $2^{-22}$ empleando un exponente 1, $2^{-22}\rightarrow 2^{-23}\cdot 2^1$,
 \end{paracol}
+
+\begin{minipage}{\textwidth}
+	\centering	
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa \textbf{(desnorm.)}, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -969,10 +1051,15 @@ sig.&$\leftarrow$mantisa \textbf{(desnorm.)}, 23 bits $\rightarrow$&$\leftarrow$
 0&00000000000000000000001&100000000\\
 \hline
 \end{tabular}\\
+\ \\
+\end{minipage}
+
 \begin{paracol}{2}
 La suma de ambos números se obtiene sumando directamente las mantisas,
 \end{paracol}
 
+\begin{minipage}{\textwidth}
+	\centering	
 \begin{tabular}{|c||c||c|}
 \hline
 sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
@@ -980,6 +1067,8 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 0&1111000000000000000000\textbf{1}&10000000\\
 \hline
 \end{tabular}\\
+\ \\
+\end{minipage}
 
 \begin{paracol}{2}
 ¿Qué pasa si tratamos de sumar un número más pequeño,por ejemplo $2^{-23}$? Al representarlo con exponente 1 para poder sumarlo el número tomaría la forma, $2^{-23}\rightarrow 2^{-24}\cdot2^{1}$. Es fácil ver el problema, con una mantisa de 23 bits nos se puede representar el número $2^{-24}$ porque ya no hay \emph{hueco} para él. La mantisa sería cero y --dado que se trata de una representación desnormalizada--, el número resultante sería cero. Por tanto, al sumarlo con el número inicial nos daría este mismo número.
