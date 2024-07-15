@@ -914,7 +914,7 @@ Supongamos que tenemos un número no máquina $x=(1.a_1a_2\cdots a_{23}a_{24}\cd
 \paragraph{Redondeo} Es evidente que cualquier número real que admita una representación aproximada en el formato del estándar estará comprendido entre dos números máquina: $x_T\leq x\leq x_E$. 
 
 
-En general, el criterio que se sigue es aproximar cada número real, por truncamiento o exceso, empleando en cada caso el número máquina más cercano. 
+En general, el criterio que se sigue es aproximar cada número real, por truncamiento o exceso, empleando en cada caso el número má\-quina más cercano. 
 Siempre que redondeamos un número cometemos un error, que podemos definir como el valor absoluto de la diferencia entre  el valor real  del número y su aproximación. Este error recibe el nombre de error absoluto,
 \switchcolumn
 \section{Numerical representations Errors.}
@@ -927,18 +927,36 @@ A real number will not be a machine number if,
 	\item Once we have represented it in floating point format, the number exponent is out of the admitted range for exponents: it is too large or too small.
 	\item Once we have represented it in floating point format, the number mantissa has got more digits than bits can store the IEEE 754 standard mantissa.	  
 \end{enumerate}
-If the exponent is beyond the admissible range, it lead to overflow or underflow. Overflow happens when the exponent is too large, while underflow occurs when the exponent is too small. In the first case (overflow) the computer will assign the number the value $pm \infty$. IN teh second case, (underflow) the computer will assign the number the value zero.  
+If the exponent is beyond the admissible range, it lead to overflow or underflow. Overflow happens when the exponent is too large, while underflow occurs when the exponent is too small. In the first case (overflow) the computer will assign the number the value $pm \infty$. In the second case, (underflow) the computer will assign the number the value zero.  
 
-If a number mantissa size exceeds the size of a representable mantissa, it is cut off to a suitable size to make it representable. In other words, we replace the number with a nearby machine number. this process is know as rounding-off and the error we make as rounding error.  
+If a number mantissa size exceeds the size of a representable mantissa, it is cut off to a suitable size to make it representable. In other words, we replace the number with a nearby machine number. this process is know as rounding-off and the error we make as rounding error.
+
+\subsection{round-off error}
+Suppose we have a non-machine number $x=(1.a_1a_2\cdots a_{23}a_{24}\cdots)\times2^{\text{exp}}$.
+
+\paragraph{Approximation by Truncation.} If we want to represent the number using the simple precision standard, we can only represent the first 23 bit of its mantissa. A possible solution is to truncate the number, eliminating all mantissa bits beyond the 23rd, $x\approx x_E=  (1.a_1a_2\cdots a_{23}+2^{-23})\times2^{\text{exp}}$. Because we have eliminated some bits, the machine number $x_T$ we have taken to approximate our number is less than it.
+ 
+\paragraph{Approximation by Excess.} Another option is to approximate the number using the next upper machine number. This is the same that eliminate all mantissa bits beyond the 23th and then, and add bit to the 23th mantissa position value, $x\approx x_E=  (1.a_1a_2\cdots a_{23}+2^{-23})\times2^{\text{exp}}$. Notice that now, we are using a machine number greater than the number we are approximating.
+
+\paragraph{Rounding.} Whatever number admits an approximate representation using the standard format will be comprised of two machine numbers: $x_T\leq x\leq x_E$. 
+
+We will follow, as a general criterion, to approximate each real number, either by truncation or excess, always using the nearest number. Whenever we round a number, we are getting an error that we can define as the absolute value of the difference between the actual valor of the number and the machine number chosen to represent it. This error is called absolute error. 
+
+
 \end{paracol}
 \begin{equation*}
-\text{Error absoluto}=\vert x-x_r\vert
+\text{Error absoluto/absolute error}=\vert x-x_r\vert
 \end{equation*}
 
 \begin{paracol}{2}
 Donde $x_r=x_T$ si se redondeó por truncamiento o $x_r=x_E$ si se redondeó por exceso.
 
 El intervalo entre dos números máquina consecutivos puede obtenerse restando el menor del mayor,
+
+\switchcolumn
+Where $x_r=x_T$, if we rounded the number by truncation or $x_r=x_E$ if we rounded the number by excess.
+
+We can obtain the interval between two consecutive machine numbers by subtracting the lower from the larger. 
 \end{paracol}
 
 \begin{equation*}
@@ -947,6 +965,8 @@ x_E-x_T= (1.a_1a_2\cdots a_{23}+2^{-23})\times2^\text{exp}- (1.a_1a_2\cdots a_{2
 
 \begin{paracol}{2}
 Si aproximamos ahora cualquier número real comprendido en el intervalo $x_T$ y $x_E$ por el más cercano de estos dos, el error absoluto que cometemos, sera siempre menor o como mucho igual que la mitad del intervalo,
+\switchcolumn
+If we approximate any real number inside the interval $(x_T,x_E)$ by the nearest of this last two, the absolute error we get is always less or as much equal to half the interval, 
 \end{paracol}
 
 \begin{equation*}
