@@ -5,18 +5,24 @@
 
 \begin{paracol}{2}
 En este capítulo vamos a estudiar distintos métodos de aproximación polinómica. En términos generales el problema consiste en sustituir una función $f(x)$ por un polinomio,
+\switchcolumn
+In this chapter, we will explore different methods of polynomial approximation. We can define the problem in general terms as finding a polynomial to represent a function $f(x)$. 
 \end{paracol}
 \begin{equation*}
 f(x)\approx p(x)=a_0+a_1\cdot x+a_2\cdot x^2+a_3\cdot x^3+\cdots +a_n \cdot x^n
 \end{equation*}
 \begin{paracol}{2}
 Para obtener la aproximación podemos partir de la ecuación que define $f(x)$,  por ejemplo la función error,
+\switchcolumn
+To obtain the approximation, we can start from the equation that defines $f(x)$, for instance, the error function,
 \end{paracol}
 \begin{equation*}
 erf(x)=\frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}dt
 \end{equation*}
 \begin{paracol}{2}
 O bien, puede suceder que solo conozcamos algunos valores de la función, por ejemplo a través de una tabla de datos,
+\switchcolumn
+Nevertheless, it is possible that we only have some values of the function, such as when we only have a data table. 
 \end{paracol}
 \begin{table}[h]
 \caption{$f(x)=erf(x)$}
@@ -84,23 +90,17 @@ y el del logaritmo natural, desarrollado en torno al punto $x_0=1$, \index{Polin
 \begin{paracol}{2}
 La existencia de un término general para los desarrollos de Taylor de muchas funciones elementales lo hace particularmente atractivo para aproximar funciones mediante un ordenador. Así por ejemplo, la siguiente función de Matlab, aproxima el valor del logaritmo natural en un punto, empleando un polinomio de Taylor del grado que se desee,
 \end{paracol}
-%\begin{lstlisting}
-%function y=taylorln(x,n)
-% Esta función aproxima el valor del logaritmo natural de un numero
-% empleando para ello un polinomio de Taylor de grado n desarrollado en 
-% torno a x=1. Las variables de entrada son: x, valor para el que se desea 
-% calcular el logaritmo. n Grado del polinomio que se empleará en el 
-% cálculo. La variable de salida y es el logaritmo de x. (nota si x
-% es un vector, calculará el logaritmo para todos los puntos del vector)
 
-% iniciliazamos la variable de salida y
-%y=0;
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=series\_de\_taylor.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/interpolacion/codigo_abierto/series_de_taylor.py}
 
-% construimos un búcle para ir añadiendo términos al desarrollo
-%for i=1:n
-%    y=y+(-1)^(i+1)*(x-1).^i/i;
-%end
-%\end{lstlisting}
 \begin{paracol}{2}
 La aproximación funciona razonablemente bien para puntos comprendidos en el intervalo $0<x<2$. La figura \ref{fig:ln} muestra los resultados obtenidos en dicho intervalo para polinomios de Taylor del logaritmo natural de grados 2, 5, 10 20. La linea continua azul representa el valor del logaritmo obtenido con la función de Matlab \texttt{log}.
 \end{paracol}
@@ -119,7 +119,7 @@ Las funciones $\sin(x)$ y $\cos(x)$, son también simples de aproximar mediante 
 \sin(x)&\approx \sum_{i=0}^n \frac{(-1)^i}{(2i+1)!}x^{2i+1}
 \end{align*}
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 \subfigure[$\cos(x)$, polinomios 2, 4, 6 y 8 grados  \label{fig:cos}]{\includegraphics[width=10.5cm]{cos.eps}} \qquad 
 \subfigure[$\sin(x)$, polinomios  3, 5, 7 y 9  grados \label{fig:sin}]{\includegraphics[width=10.5cm]{sin.eps}}\\
@@ -669,58 +669,60 @@ Intentar construir un sistema de ecuaciones para obtener a la vez todos los coef
 S''_i(x)=-M_i\frac{x-x_{i+1}}{h_i}+M_{i+1}\frac{x-x_i}{h_i},\   i=0,\cdots, n-1
 \end{equation*}
 
+\begin{paracol}{2}
 donde $h_i=x_{i+1}-x_i$ representa el ancho de cada intervalo y donde cada valor $M_i=S''(x_i)$ será una de las incógnitas que deberemos resolver.
 
 Si integramos dos veces la expresión anterior,
+\end{paracol}
 \begin{align*}
 S'_i(x)&=-M_i\frac{(x-x_{i+1})^2}{2\cdot h_i}+M_{i+1}\frac{(x-x_i)^2}{2\cdot h_i}+A_i,\   i=0,\cdots, n-1\\
 S_i(x)&=-M_i\frac{(x-x_{i+1})^3}{6\cdot h_i}+M_{i+1}\frac{(x-x_i)^3}{6\cdot h_i}+A_i(x-x_i)+B_i,\   i=0,\cdots, n-1\\
 \end{align*}
-
+\begin{paracol}{2}
 Empezamos por imponer las condiciones de interpolación: el polinomio $S_i$ debe pasar por el punto $(x_i,y_i)$,
-
+\end{paracol}
 \begin{equation*}
 S_i(x_i)=-M_i\frac{(x_i-x_{i+1})^3}{6\cdot h_i}+B_i=y_i \Rightarrow B_i=y_i-\frac{M_i\cdot h_i^2}{6},\ i=0,\cdots, n-1
 \end{equation*}
-
+\begin{paracol}{2}
 A continuación imponemos continuidad del spline en los nodos comunes: El polinomio $S_{i-1}$ también debe pasar por el punto $(x_i, y_i)$,
-
+\end{paracol}
 \begin{align*}
 S_{i-1}(x_i)&=M_i\frac{(x_i-x_{i-1})^3}{6\cdot h_i}+A_{i-1}(x_i-x_{i-1})+\overbrace{y_{i-1}-\frac{M_{i-1}\cdot h_{i-1}^2}{6}}^{B_{i-1}}=y_i \Rightarrow\\
 \Rightarrow A_{i-1}&=\frac{y_i-y_{i-1}}{h_{i-1}}-\frac{M_i-M_{i-1}}{6}\cdot h_{i-1}, \ i=1,\cdots, n
 \end{align*}
-
+\begin{paracol}{2}
 Y por tanto,
-
+\end{paracol}
 \begin{equation*}
 A_i=\frac{y_{i+1}-y_i}{h_i}-\frac{M_{i+1}-M_i}{6}\cdot h_i, \ i=0,\cdots, n-1
 \end{equation*}
-
+\begin{paracol}{2}
 En tercer lugar imponemos la condición de que las derivadas también sean continuas en los nodos comunes,
-
+\end{paracol}
 \begin{align*}
 S'_i(x_i)&=-M_i\frac{(x_i-x_{i+1})^2}{2\cdot h_i}+M_{i+1}\frac{(x_i-x_i)^2}{2\cdot h_i}+\frac{y_{i+1}-y_i}{h_i}-\frac{M_{i+1}-M_i}{6}\cdot h_i,\   i=0,\cdots, n-1\\
 S'_{i-1}(x_i)&=-M_{i-1}\frac{(x_i-x_i)^2}{2\cdot h_{i-1}}+M_{i}\frac{(x_i-x_{i-1})^2}{2\cdot h_{i-1 }}+\frac{y_i-y_{i-1}}{h_{i-1}}-\frac{M_i-M_{i-1}}{6}\cdot h_{i-1},\   i=1,\cdots, n\\
 S'_i(x_i)&=S'_{i-1}(x_i) ,\   i=1,\cdots, n-1 \Rightarrow\\
 &\Rightarrow -M_i\frac{h_i}{2}+\frac{y_{i+1}-y_i}{h_i}-\frac{M_{i+1}-M_i}{6}\cdot h_i=M_{i}\frac{h_{i-1}}{2}+\frac{y_i-y_{i-1}}{h_{i-1}}-\frac{M_i-M_{i-1}}{6}\cdot h_{i-1}
 \end{align*}
-
+\begin{paracol}{2}
 Si agrupamos a un lado los valores $M_{i-1}, M_i, M_{i+1}$,
-
+\end{paracol}
 \begin{align*}
 h_{i-1}\cdot M_{i-1}+2\cdot (h_{i-1}+h_i)\cdot M_i+h_i\cdot M_{i+1}=6\cdot \left(\frac{y_{i+1}-y_i}{h_i}-\frac{y_i-y_{i-1}}{h_{i-1}}\right)\\
 i=1,\cdots ,n-1
 \end{align*}
-
+\begin{paracol}{2}
 En total tenemos $M_0,\cdots, M_n$, $n+1$ incógnitas y la expresión anterior, solo nos suministra $n-1$ ecuaciones. Necesitamos dos ecuaciones más, Si imponemos la condición de splines naturales, Para el extremo de la izquierda del primer polinomio y para el extremo de la derecha del último,
-
+\end{paracol}
 \begin{align*}
 M_0=S''(x_0)=0\\
 M_n=S''(x_n)=0
 \end{align*}
-
+\begin{paracol}{2}
 Con estas condiciones y la expresión obtenida para el resto de los $M_i$, podemos construir un sistema de ecuaciones tridiagonal
-
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 2(h_0+h_1) & h_1 & 0 &0&\cdots &0&0\\
@@ -743,33 +745,33 @@ b_3\\
 b_{n-1}
 \end{pmatrix}
 \end{equation*}
-
+\begin{paracol}{2}
 Donde hemos hecho,
-
+\end{paracol}
 \begin{equation*}
 b_i=6\cdot \left(\frac{y_{i+1}-y_i}{h_i}-\frac{y_i-y_{i-1}}{h_{i-1}}\right)
 \end{equation*}
-
+\begin{paracol}{2}
 Tenemos un sistema de ecuaciones en el que la matriz de coeficientes es tridiagonal y además diagonal dominante, por lo que podríamos emplear cualquiera de los métodos vistos en capítulo  
 \ref{sistemas}.  Una vez resuelto el sistema y obtenidos los valores de $M_i$, obtenemos los valores de $A_i$ y $B_i$ a Partir de las ecuaciones obtenidas más arriba.
 
 Por último, la forma habitual de definir el polinomio de grado 3 $S_i$, empleado para interpolar los valores del intervalo $[x_i,x_{i+1}]$, mediante splines cúbicos se define como, 
-
+\end{paracol}
 \begin{equation*}
 S_i(x)=\alpha_i+\beta_i(x-x_i)+\gamma_i(x-x_i)^2+\delta_i(x-x_i)^3, \ x\in [x_i,x_{i+1}],\ (i=0,1,\cdots,n-1)
 \end{equation*}
-
+\begin{paracol}{2}
 Donde,
-
+\end{paracol}
 \begin{align*}
 \alpha_i &=y_i\\
 \beta_i &=\frac{y_{i+1}-y_i}{h_i}-\frac{M_i \cdot h_i}{3}-\frac{M_{i+1} \cdot h_i}{6}\\
 \gamma_i &=\frac{M_i}{2}\\
 \delta_i &=\frac{M_{i+1}-M_i}{6\cdot h_i}
 \end{align*}
-
+\begin{paracol}{2}
 La siguiente función permite obtener los coeficientes y el resultado de interpolar un conjunto de puntos mediante splines cúbicos,
-
+\end{paracol}
 %\begin{lstlisting}
 %function [c,yi]=spcubic(x,y,xi)
 % uso [c,yi]=spcubic(x,y,xi)
@@ -853,9 +855,10 @@ La siguiente función permite obtener los coeficientes y el resultado de interpo
 %\end{lstlisting}
 
 
-
+\begin{paracol}{2}
  La figura, \ref{fig:splines} muestra el resultado de interpolar mediante un spline cúbico, los datos contenidos en la figura \ref{fig:intepol}. Es fácil observar cómo ahora los polinomios de interpolación dan como resultado una curva suave en los datos interpolados y en la que además las curvas son también suaves, sin presentar variaciones extrañas, para los puntos contenidos en cada intervalo entre dos datos.
- 
+\end{paracol}
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{splines.eps}
@@ -863,7 +866,7 @@ La siguiente función permite obtener los coeficientes y el resultado de interpo
 \label{fig:splines}
 \end{figure} 
  
- 
+\begin{paracol}{2} 
 \subsection{Funciones propias de Matlab para interpolación por intervalos} \index{interp1@\texttt{interp1}}
 
 Para realizar una interpolación por intervalos mediante cualquiera de los procedimientos descritos, Matlab incorpora la función propia \texttt{interp1}. Esta función admite como variables de entrada dos vectores con los valores de las coordenadas $x$ e $y$ de los datos que se desea interpolar y un tercer vector $x1$ con los puntos para los que se desea calcular el valor de la interpolación. Además, admite como variable  de entrada una cadena de caracteres que indica el método con el que se quiere realizar la interpolación. Dicha variable puede tomar los valores:
@@ -875,7 +878,7 @@ Para realizar una interpolación por intervalos mediante cualquiera de los proce
 \end{enumerate} 
 
 La función devuelve como salida los valores interpolados correspondientes a los puntos de $x1$. El siguiente código muestra el modo de usar el comando \texttt{interp1}. Para probarlo se han creado dos vectores \texttt{x} e \texttt{y} que contienen el conjunto de datos que se empleará para calcular la interpolación. Además, se ha creado otro vector \texttt{x1} que contiene los puntos para los que se quiere calcular el resultado de la interpolación.
-
+\end{paracol}
 \begin{verbatim}
 >> x=[1:2:16]
 x =
@@ -908,12 +911,12 @@ y1 =
 y1 =
     3.3438    1.1938
 \end{verbatim}
-
+\begin{paracol}{2}
 \section{Ajuste polinómico por el método de mínimos cuadrados}\label{sec:mc}\index{Mínimos cuadrados} \index{Ajuste polinómico}
 Los métodos de interpolación que hemos descrito en las secciones anteriores pretenden encontrar un polinomio o una función definida a partir de polinomios que pase por un conjunto de datos. En el caso del ajuste por mínimos cuadrados, lo que se pretende es buscar el polinomio, de un grado dado, que mejor se aproxime a un conjunto de datos.
 
 Supongamos que tenemos un conjunto de $m$ datos, 
-
+\end{paracol}
 \begin{table}[h]
 \centering
 \begin{tabular}{c|cccc}
@@ -922,83 +925,83 @@ x&$x_1$&$x_2$&$\cdots$&$x_m$\\
 y&$y_1$&$y_2$&$\cdots$&$y_m$
 \end{tabular}
 \end{table} 
- 
+\begin{paracol}{2}
 Queremos construir un polinomio $p(x)$  de grado $n < m-1$, de modo que los valores que toma el polinomio para los datos $p(x_i)$ sean lo más cercanos posibles a los correspondientes valores $y_i$. 
 
 En primer lugar, necesitamos clarificar qué entendemos por \emph{lo más cercano posible}.  Una posibilidad, es medir la diferencia, $y_i-p(x_i)$ para cada par de datos del conjunto. Sin embargo, es más frecuente emplear el cuadrado de dicha diferencia, $\left(y_i-p(x_i)\right)^2$. Esta cantidad tiene, entre otras, la ventaja de que su valor es siempre positivo con  independencia de que la diferencia sea positiva o negativa. Además, representa el cuadrado de la distancia entre $p(x_i)$ e $y_i$. Podemos tomar la suma de dichas distancias al cuadrado, obtenidas por el polinomio para todos los pares de puntos, 
-
+\end{paracol}
 \begin{equation*}
 \sum_{i=1}^m \left(y_i-p(x_i)\right)^2
 \end{equation*}
-
-como una medida de la distancia del polinomio a los datos.  De este modo,  el polinomio \emph{lo más cercano posible}  a los datos sería aquel que minimice la suma de diferencias al cuadrado que acabamos de definir. De ahí el nombre del método.
+\begin{paracol}{2}
+\noindent como una medida de la distancia del polinomio a los datos.  De este modo,  el polinomio \emph{lo más cercano posible}  a los datos sería aquel que minimice la suma de diferencias al cuadrado que acabamos de definir. De ahí el nombre del método.
 
 En muchos casos, los datos a los que se pretende ajustar un polinomio por mínimos cuadrados son datos experimentales. En función del entorno experimental y del método con que se han adquirido los datos, puede resultar que algunos resulten más fiables que otros. En este caso, sería deseable hacer que el polinomio se aproxime más a los datos más fiables. Una forma de hacerlo es añadir unos \emph{pesos}, $\omega_i$, a las diferencias al  cuadrado en función de la confianza que nos merece cada dato,
-
+\end{paracol}
 \begin{equation*}
 \sum_{i=1}^m \omega_i \left(y_i-p(x_i)\right)^2
 \end{equation*}
-
+\begin{paracol}{2}
 Los datos fiables se multiplican por valores de $\omega$ grandes y los poco fiables por valores pequeños.
 
 Para ver cómo obtener los coeficientes de un polinomio de mínimos cuadrados, empezaremos con el caso más sencillo; un polinomio de grado $0$. En este caso, el polinomio es una constante, definida por su término independiente $p(x)=a_0$. El objetivo a minimizar sería entonces,
-
+\end{paracol}
 \begin{equation*}
 g(a_0)=\sum_{i=1}^m \omega_i \left(y_i-a_0\right)^2
 \end{equation*}
-
+\begin{paracol}{2}
 El valor mínimo de esta función debe cumplir que su derivada primera $g'(a_0)=0$ y que su derivada segunda  $g''(a_0)\geq 0$,
-
+\end{paracol}
 \begin{align*}
 g'(a_0)&=-2\sum_{i=1}^m \omega_i \left(y_i-a_0\right)=0 \Rightarrow a_0=\frac{\sum_{i=1}^m \omega_i\cdot y_i}{ \sum_{i=1}^m \omega_i}\\
 g''(a_0)&=2\sum_{i=1}^m \omega_i \Rightarrow  g''(a_0) \geq 0
 \end{align*}
-
+\begin{paracol}{2}
 El resultado obtenido para el valor de $a_0$ es una media, ponderada con los pesos $w_i$ de los datos. Si hacemos $w_i=1 \ \forall w_i$ obtendríamos exactamente la media de los datos. Este resultado resulta bastante razonable. Aproximar un conjunto de valores por un polinomio de grado cero, es tanto como suponer que la variable $y$ permanece constante para cualquier valor de $x$. Las diferencias observadas deberían deberse entonces a errores aleatorios experimentales, y la mejor estima del valor de $y$ será precisamente el valor medio de los valores disponibles. La figura \ref{fig:mc0} muestra el resultado de  calcular el polinomio de mínimos cuadrados de grado cero para un conjunto de datos.
-
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{mc0.eps}
 \caption{Polinomio de mínimos cuadrados de grado 0} 
 \label{fig:mc0}
 \end{figure} 
-
+\begin{paracol}{2}
 El siguiente paso en dificultad sería tratar de aproximar un conjunto de datos por un polinomio de grado 1, es decir, por una linea recta, $p(x)=a_0+a_1 x$. En este caso, la suma de diferencias al cuadrado toma la forma,
-
+\end{paracol}
 \begin{equation*}
 g(a_0,a_1)=\sum_{i=1}^m \omega_i\left(y_i-a_0-a_1 x_i \right)^2
 \end{equation*}
- 
+\begin{paracol}{2} 
 En este caso, tenemos dos coeficientes sobre los que calcular el mínimo. Éste se obtiene cuando las derivadas parciales de $g(a_0,a_1)$ respecto a ambos coeficientes son iguales a cero. 
-
+\end{paracol}
 \begin{align*}
 \frac{\partial g}{\partial a_0}&=-2\sum_{i=1}^m \omega_i (y_i-a_0-a_1 x_i) = 0\\
 \frac{\partial g}{\partial a_1}&=-2\sum_{i=1}^m \omega_i x_i(y_i-a_0-a_1 x_i) = 0
 \end{align*} 
- 
+\begin{paracol}{2}
 Si reordenamos las ecuaciones anteriores, 
-
+\end{paracol}
 \begin{align*}
 &\left(\sum_{i=1}^m \omega_i\right)a_0+ \left(\sum_{i=1}^m \omega_ix_i\right)a_1 =\sum_{i=1}^m \omega_iy_i\\
 &\left(\sum_{i=1}^m \omega_ix_i\right)a_0+ \left(\sum_{i=1}^m \omega_ix_i^2\right)a_1 =\sum_{i=1}^m \omega_ix_iy_i
 \end{align*}
-
+\begin{paracol}{2}
 Obtenemos un sistema de dos ecuaciones lineales cuyas incógnitas son precisamente los coeficientes de la recta de mínimos cuadrados.
 
 Podemos ahora generalizar el resultado para un polinomio de grado $n$, $p(x)=a_0+a_1x+a_2x^2+\cdots +a_nx^n$. La función $g$ toma la forma,
-
+\end{paracol}
 \begin{equation*}
 g(a_0,a_1,\cdots, a_n)=\sum_{i=1}^m \omega_i \left (a_0+a_1x_i+\cdots+ a_nx_i^n-y_i\right)^2
 \end{equation*}
-
+\begin{paracol}{2}
 De nuevo, para obtener los coeficientes del polinomio igualamos las derivadas parciales a cero,
-
+\end{paracol}
 \begin{equation*}
 \frac{\partial g(a_0,a_1,\cdots, a_n)}{\partial a_j}=0 \Rightarrow \sum_{i=1}^m \omega_i x_i^j \left( a_0+a_1x_i+\cdots + a_nx_i^n-y_i\right)=0, \ j=0,1\cdots, n
 \end{equation*} 
-
+\begin{paracol}{2}
 Si reordenamos las expresiones anteriores, llegamos a un sistema de $n+1$ ecuaciones lineales, cuyas incógnitas son los coeficientes del polinomio de mínimos cuadrados,
-
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 s_0& s_1& \cdots s_n\\
@@ -1017,84 +1020,85 @@ c_1\\
 c_n
 \end{pmatrix}
 \end{equation*} 
-
+\begin{paracol}{2}
 Donde hemos definido $s_j$ y $c_j$ como,
-
+\end{paracol}
 \begin{align*}
 s_j&=\sum_{i=1}^m \omega_ix_i^j\\
 c_j&=\sum_{i=1}^m \omega_ix_i^jy_i
 \end{align*}
- 
+\begin{paracol}{2} 
 El siguiente código permite obtener el polinomio de mínimos cuadrados que aproxima un conjunto de $n$ datos,
-
-\begin{lstlisting}
-function a=mc(x,y,n,w)
-% uso: a=mc(x,y,n,w). Esta función permite obtener los coeficientes del
-% polinomio de mínimos cuadrados que ajusta un conjunto de datos. Las
-% variables de entrada son: x, vector con la componente x de los datos a
-% ajustar. y, vector con la componente y de los datos a ajustar. n grado del
-% polinomio de minimos cuadrados. w vector de pesos asociados a los datos. si no
-% se sumininstra se toman todos los pesos como 1. Salidas: vector columna con
-% los coeficientes del polinomio=> a(1)+a(2)*x+a(3)*x^2+a(n+1)*x^n
-
-% comprobamos en primer lugar que tenemos datos suficientes,
-
-m=length(x);
-if m<n+1
-    error('no hay datos sufiecientes para calcular el polinomio pedido')
-end
-% Si no se ha suministrado vector de pesos construimos uno formado por unos,
-if nargin < 4
-	w=ones(m,1);
-end
-% Montamos un bucle para crear los elementos s de la matriz de coeficientes,
-for j=1:2*n+1
-    s(j)=0;    
-for i=1:m
-    s(j)=s(j)+w(i)*x(i)^(j-1);
-end
-end
-
-
-% y un segundo bucle para crear los términos independientes...
-for j=1:n+1
-    c(j,1)=0;
-    for i=1:m
-        c(j,1)=c(j,1)+w(i)*x(i)^(j-1)*y(i)
-    end
-end
-
-%  a partir de los valores de s, construimos la matriz del sistema,
-for i=1:n+1
-    for j=1:n+1
-        A(i,j)=s(i+j-1)
-    end
-end
-
-% solo nos queda resolver el sistema... Empleamos la division por la
-% izquierda de matlab
-
-a=A\c;
-\end{lstlisting}
-
+\end{paracol}
+%\begin{lstlisting}
+%function a=mc(x,y,n,w)
+%% uso: a=mc(x,y,n,w). Esta función permite obtener los coeficientes del
+%% polinomio de mínimos cuadrados que ajusta un conjunto de datos. Las
+%% variables de entrada son: x, vector con la componente x de los datos a
+%% ajustar. y, vector con la componente y de los datos a ajustar. n grado del
+%% polinomio de minimos cuadrados. w vector de pesos asociados a los datos. si no
+%% se sumininstra se toman todos los pesos como 1. Salidas: vector columna con
+%% los coeficientes del polinomio=> a(1)+a(2)*x+a(3)*x^2+a(n+1)*x^n
+%
+%% comprobamos en primer lugar que tenemos datos suficientes,
+%
+%m=length(x);
+%if m<n+1
+%    error('no hay datos sufiecientes para calcular el polinomio pedido')
+%end
+%% Si no se ha suministrado vector de pesos construimos uno formado por unos,
+%if nargin < 4
+%	w=ones(m,1);
+%end
+%% Montamos un bucle para crear los elementos s de la matriz de coeficientes,
+%for j=1:2*n+1
+%    s(j)=0;    
+%for i=1:m
+%    s(j)=s(j)+w(i)*x(i)^(j-1);
+%end
+%end
+%
+%
+%% y un segundo bucle para crear los términos independientes...
+%for j=1:n+1
+%    c(j,1)=0;
+%    for i=1:m
+%        c(j,1)=c(j,1)+w(i)*x(i)^(j-1)*y(i)
+%    end
+%end
+%
+%%  a partir de los valores de s, construimos la matriz del sistema,
+%for i=1:n+1
+%    for j=1:n+1
+%        A(i,j)=s(i+j-1)
+%    end
+%end
+%
+%% solo nos queda resolver el sistema... Empleamos la division por la
+%% izquierda de matlab
+%
+%a=A\c;
+%\end{lstlisting}
+\begin{paracol}{2}
 Una última observación importante es que si intentamos calcular el polinomio de mínimos cuadrados de grado $m-1$ que aproxima un conjunto de $m$ datos, lo que obtendremos será el polinomio de interpolación. En general, cuanto mayor sea el grado del polinomio más posibilidades hay de que la matriz de sistema empleado para obtener los coeficientes del polinomio esté mal condicionada.
 
 \subsection{Mínimos cuadrados en Matlab.}
 
 Matlab suministra dos maneras distintas de ajustar un polinomio a unos datos por mínimos cuadrados. La primera es mediante el uso del comando \texttt{polyfit}. Este comando admite como entradas un vector de coordenadas $x$ y otro de coordenadas $y$, de los datos que se quieren aproximar, y una tercera variable con el grado del polinomio. Como resultado devuelve un vector con los coeficientes del polinomio de mínimos cuadrados. Ordenados en orden de potencias decrecientes \texttt{a(1)*x\^\  n+a(2)*x\^\  (n-1)+...+a(n+1)}. La siguiente secuencia de comandos crea un par de vectores y muestra como manejar el comando,
-
+\end{paracol}
 
 
 \begin{verbatim}>> x=[1:10]
 x =
      1     2     3     4     5     6     7     8     9    10
->> y=[-1 0 3 4 5.2 6 10 12 13 15.5];\index{Raíces de un polinomio}
+>> y=[-1 0 3 4 5.2 6 10 12 13 15.5];
 >> a=polyfit(x,y,3)
 a =
     0.0001    0.0411    1.3774   -2.4133
 \end{verbatim}
+\begin{paracol}{2}
 A continuación, podemos emplear el comando \texttt{polyval}, para obtener en valor del polinomio de mínimos cuadrados obtenido en cualquier punto. En particular, si lo aplicamos a los datos $x$,
-
+\end{paracol}
 \begin{verbatim}
 >> yhat=polyval(a,x)
 yhat =
@@ -1103,8 +1107,9 @@ yhat =
   Columns 8 through 10
    11.2790   13.3727   15.5529
 \end{verbatim}
-
+\begin{paracol}{2}
 Por último, podemos calcular el error cometido por el polinomio $e_i=\vert p(x_i-y_i \vert$
+\end{paracol}
 \begin{verbatim}
 >> error=abs(yhat-y)
 error =
@@ -1112,9 +1117,9 @@ error =
     0.0053    0.5067    0.9087    0.2404    0.3121    1.3491    0.7287
   Columns 8 through 10
     0.7210    0.3727    0.0529
-\end{verbatim} 
+\end{verbatim}
+\begin{paracol}{2}
 Además del comando \texttt{polyfit} Matlab permite ajustar un polinomio por mínimos cuadrados a un conjunto de datos a través de la ventana gráfica de Matlab. Para ello, es suficiente representar los datos con el comando \texttt{plot(x,y)}. Una vez que Matlab muestra la ventana gráfica con los datos representados, se selecciona en el menú desplegable \texttt{tools} la opción \texttt{Basic Fitting}. Matlab abre una segunda ventana que permite seleccionar el polinomio de mínimos cuadrados que se desea ajustar a los datos, así como otras opciones que permiten obtener los coeficientes del polinomio y analizar la bondad del ajuste a partir de los residuos (ver sección siguiente). La figuras \ref{fig:minimos}, muestra un ejemplo de uso de la ventana gráfica de Matlab para obtener un ajuste por mínimos cuadrados 
-
 
 \subsection{Análisis de la bondad de un ajuste por mínimos cuadrados.} \index{Mínimos cuadrados! Residuos}
 Supongamos que tenemos un conjunto de datos obtenidos como resultado de un experimento. En muchos casos la finalidad de un ajuste por mínimos cuadrados, es encontrar una ley que nos permita relacionar los datos de la variable independiente con la variable dependiente. Por ejemplo si aplicamos distintas fuerzas a muelle y medimos la elongación sufrida por el muelle, esperamos obtener, en primera aproximación una relación lineal: $\Delta x\propto F$. (Ley de Hooke). 
@@ -1124,7 +1129,7 @@ Sin embargo, los resultados de un experimento no se ajustan nunca exactamente a 
 Cuando realizamos un ajuste por mínimos cuadrados, podemos emplear cualquier polinomio desde grado $0$ hasta grado $m-1$. Desde el punto de vista del error cometido con respecto a los datos disponibles el mejor polinomio sería precisamente el de grado $m-1$ que da error cero para todos los datos, por tratarse del polinomio de interpolación. Sin embargo, si los datos son experimentales estamos incluyendo los errores experimentales en el ajuste.
 
 Por ello, para datos experimentales y suponiendo que los datos solo contienen errores aleatorios, el mejor ajuste lo dará el polinomio de menor grado para el cual las diferencias entre los datos y el polinomio $y_i-p(x_i)$ se distribuyan aleatoriamente. Estas diferencias reciben habitualmente el nombre de residuos. \index{Residuos} 
-
+\end{paracol}
 \begin{figure}[h]
 \centering
 \subfigure[Menu desplegable para abrir ventana auxiliar  \label{fig:minimos1}]{\includegraphics[width=5cm]{minimos.pdf}} \qquad 
@@ -1133,12 +1138,12 @@ Por ello, para datos experimentales y suponiendo que los datos solo contienen er
 \label{fig:minimos}
 \end{figure}
 
-
+\begin{paracol}{2}
 Entre las herramientas que suministra la ventanas gráficas de Matlab para el ajuste por mínimos cuadrados hay una que calcula y representa los residuos.  La figura \ref{fig:residuos} muestra un ejemplo de ajuste por mínimos cuadrados empleando cada vez un polinomio de mayor grado. \index{Residuos!Cálculo con Matlab}
   
   
 En la figura \ref{fig:residuos1} se observa claramente que el ajusto no es bueno, la recta de mínimos cuadrados no es capaz de adaptarse a la forma que presentan los datos. Los residuos muestran claramente esta tendencia: no están distribuidos de forma aleatoria. En la figura \ref{fig:residuos2}, la parábola aproxima mucho mejor el conjunto de datos, a simple vista parece un buen ajuste. Sin embargo, los residuos presenta una forma funcional clara que recuerda la forma de un polinomio de tercer grado. En la figura \ref{fig:residuos3}, los residuos están distribuidos de forma aleatoria. Si comparamos estos resultados con los de la figura \ref{fig:residuos4} vemos que en este último caso los residuos son más pequeños, pero conservan esencialmente la misma distribución aleatoria que en la figura anterior. La aproximación de los datos empleando un polinomio de cuarto grado no añade información sobre la forma de la función que siguen los datos, y ha empezado a incluir en el ajuste los errores de los datos. 
-
+\end{paracol}
 \begin{figure}[h]
 \centering
 \subfigure[Recta de mínimos cuadrados y residuos obtenidos \label{fig:residuos1}]{\includegraphics[width=6.5cm]{residuos1.eps}} \qquad 
@@ -1148,86 +1153,90 @@ En la figura \ref{fig:residuos1} se observa claramente que el ajusto no es bueno
 \caption{Comparación entre los residuos obtenidos para los ajustes de mínimos cuadrados de un conjunto de datos empleando polinomios de grados 1 a 4.} 
 \label{fig:residuos}
 \end{figure}
- 
+\begin{paracol}{2} 
 \section{Curvas de Bézier}\index{Bézier}\index{Curvas de Bézier}
 Las curvas de Bézier permiten unir puntos mediante curvas de forma arbitraria.  Una curva de Bézier viene definida por un conjunto de $n+1$ puntos, $\left\lbrace\vec{p}_0, \vec{p}_2, \cdots, \vec{p}_n\right\rbrace$, que reciben el nombre de puntos de control. El orden en que se presentan los puntos de control es importante para la definición de la curva de Bézier correspondiente. Ésta pasa siempre por los puntos $\vec{p_0}$ y $\vec{p_n}$. El resto de los puntos de control permiten dar forma a la curva, que tiene siempre la propiedad de ser tangente en el punto $\vec{p}_0$ a la recta que une $\vec{p}_0$ con $\vec{p}_1$ y tangente en el punto $\vec{p}_n$ a la recta que une $\vec{p}_{n-1}$ con $\vec{p}_n$.
 
 Para definir la curva, se asocia a cada punto de control $\vec{p}_i$ una función conocida con el nombre de función de fusión. En el caso de las curvas de Bézier, las funciones de fusión empleadas son los polinomios de Bernstein, \index{Polinomios de Bernstein}
-
+\end{paracol}
 \begin{equation*}
 B_i^n (t)=\binom{n}{i}\left(1-t\right)^{n-i}t^i, \quad i = 0, 1, \dots, n
 \end{equation*}
-
+\begin{paracol}{2}
 El grado de los polinomios de Bernstein empleados está asociado al número de puntos de control; para un conjunto de $n+1$ puntos, los polinomios empleados son de grado $n$. La variable $t$ es un parámetro que varía entre $0$ y $1$.
 
 La ecuación de la curva de Bézier que pasa por un conjunto de $n+1$ puntos de control, $\left\lbrace\vec{p}_0, \vec{p}_2, \cdots, \vec{p}_n\right\rbrace$, se define a partir de los polinomios de Bernstein como,
-
+\end{paracol}
 \begin{equation*}
 \vec{p}(t) = \sum_{i = 0}^n B_i^n(t) \cdot \vec{p}_i = \sum_{i = 0}^n \binom{n}{i}\left(1-t\right)^{n-i}t^i  \cdot \vec{p}_i
 \end{equation*}
-
+\begin{paracol}{2}
 La expresión anterior da como resultado $\vec{p}_0$ si hacemos $t = 0$ y $\vec{p}_n$ si hacemos $t = 1$. para los valores comprendidos entre $t=0$ y $t=1$, los puntos $\vec{p}(t)$  trazarán una curva entre $\vec{p}_0$  y $\vec{p}_n$.
 
 Veamos un ejemplo sencillo. Supongamos que queremos unir los puntos $\vec{p}_0 = (0,1)$ y $\vec{p}_n = (3,1)$ mediante curvas de Bézier. Si no añadimos ningún punto más de control, $\lbrace\vec{p}_0 = (0,1), \vec{p}_1 = (3,1)\rbrace$, el polinomio de Bézier que obtendremos será una recta que unirá los dos puntos,
-
+\end{paracol}
 \begin{equation*}
 \vec{p}(t) = \binom{1}{0}\left(1-t\right)^{1}t^0  \cdot (0,1) +  \binom{1}{1}\left(1-t\right)^{0}t^1  \cdot (3,1) = \left(1-t\right)  \cdot (0,1) + t\cdot (3,1)
 \end{equation*} 
-
+\begin{paracol}{2}
 Si separamos las componentes $x$ e $y$ del vector $\vec{p}(t)$,
+\end{paracol}
+
 \begin{align*}
 x &= 3t\\
 y &= 1
 \end{align*}
+\begin{paracol}{2}
 Se trata de la ecuación del segmento horizontal que une los puntos $\vec{p}_0 = (0,1)$ y $\vec{p}_n = (3,1)$ 
 
 Si añadimos un punto más de control, por ejemplo:  $\vec{p}_1 = (1,2) \rightarrow \lbrace\vec{p}_0 = (0,1), \vec{p}_1 = (1,2), \vec{p}_2 = (3,1)\rbrace$,  la curva resultante será ahora un segmento de un polinomio de segundo grado en la variable $t$,
-
+\end{paracol}
 \begin{align*}
 \vec{p}(t) &= \binom{2}{0}\left(1-t\right)^{2}t^0  \cdot (0,1) +  \binom{2}{1}\left(1-t\right)t \cdot (1,2) + \binom{2}{2}\left(1-t\right)^{0}t^2  \cdot (3,1) =\\
 &= \left(1-t\right)^{2} \cdot (0,1) + 2 \left(1-t\right)t \cdot (1,2) + t^2  \cdot (3,1) 
 \end{align*} 
-
+\begin{paracol}{2}
 Según vamos aumentando el número de los puntos de control, iremos empleando polinomios de mayor grado. El segmento de polinomio empleado en cada caso para unir los puntos de control inicial y final variará dependiendo de los puntos de control intermedios empleados.
 
 La figura \ref{fig:bezier} muestra un ejemplo en el que se han construido varias curvas de Bézier sobre los mismos puntos de paso inicial y final. Es fácil observar cómo la forma de la curva depende del número y la posición de los puntos de control. Si unimos éstos por orden mediante segmentos rectos, obtenemos un polígono que recibe el nombre de polígono de control. En la figura \ref{fig:bezier} se han representado los polígonos de control mediante líneas de puntos.
 
 El siguiente código permite calcular y dibujar una curva de Bézier a partir de sus puntos de control.
-\begin{lstlisting}
-function ber = bezier(p,res)
-% estas funcion pinta la curva de Bezier correspondiente a los puntos de 
-% control p. 
-% p debe ser una matriz de dimension n*2 donde n es el número de puntos de 
-% control empleados La primera columna contiene las coordenadas x 
-% y la segunda las coordenas y.
-% El codigo sigue directamente la definicion de los polinomios de Bernstain
-% por tanto, NO es un codigo optimo. Calcula varias veces las mismas
-% cantidades.
-% Los coeficientes binomiales de los polinomios de Berstein se 
-% pueden calcular directamente con el comando de matlab nchoosek. Sin 
-% enbargo, en el programa se han calculado a partir de la definicion:
-%  n!/((n-k)!k!)
-% la variable de entrada res nos da el paso que empleará el parámatro t
-% para calcular y dibujar el polinomio
-
-t = 0:res:1;
-ber = zeros(2,length(t));
-% calculamos un vector de coeficientes para los polinomios.
-
-% coeficientes para la coordenada x.
-
-n = size(p,1)-1;
-num = factorial(n);
-for i = 0:n    
-    f=num/factorial(i)/factorial(n-i);
-    ber(1,:) = ber(1,:) + f*p(i+1,1)*(1-t).^(n-i).*t.^i;
-    ber(2,:) = ber(2,:) + f*p(i+1,2)*(1-t).^(n-i).*t.^i;
-end
-plot(p(:,1),p(:,2),'or')
-hold on
-plot(p(:,1),p(:,2),'r')
-plot(ber(1,:),ber(2,:))
-\end{lstlisting}
+\end{paracol}
+%\begin{lstlisting}
+%function ber = bezier(p,res)
+%% estas funcion pinta la curva de Bezier correspondiente a los puntos de 
+%% control p. 
+%% p debe ser una matriz de dimension n*2 donde n es el número de puntos de 
+%% control empleados La primera columna contiene las coordenadas x 
+%% y la segunda las coordenas y.
+%% El codigo sigue directamente la definicion de los polinomios de Bernstain
+%% por tanto, NO es un codigo optimo. Calcula varias veces las mismas
+%% cantidades.
+%% Los coeficientes binomiales de los polinomios de Berstein se 
+%% pueden calcular directamente con el comando de matlab nchoosek. Sin 
+%% enbargo, en el programa se han calculado a partir de la definicion:
+%%  n!/((n-k)!k!)
+%% la variable de entrada res nos da el paso que empleará el parámatro t
+%% para calcular y dibujar el polinomio
+%
+%t = 0:res:1;
+%ber = zeros(2,length(t));
+%% calculamos un vector de coeficientes para los polinomios.
+%
+%% coeficientes para la coordenada x.
+%
+%n = size(p,1)-1;
+%num = factorial(n);
+%for i = 0:n    
+%    f=num/factorial(i)/factorial(n-i);
+%    ber(1,:) = ber(1,:) + f*p(i+1,1)*(1-t).^(n-i).*t.^i;
+%    ber(2,:) = ber(2,:) + f*p(i+1,2)*(1-t).^(n-i).*t.^i;
+%end
+%plot(p(:,1),p(:,2),'or')
+%hold on
+%plot(p(:,1),p(:,2),'r')
+%plot(ber(1,:),ber(2,:))
+%\end{lstlisting}
 
 \begin{figure}[h]
 \centering
@@ -1235,17 +1244,17 @@ plot(ber(1,:),ber(2,:))
 \caption{Curvas de Bézier trazadas entre los puntos $P_0 = (0,0)$ y $P_n = (2,1)$, variando el número y posición de los puntos de control.} 
 \label{fig:bezier}
 \end{figure}
-
+\begin{paracol}{2}
 \paragraph{Curvas equivalentes de grado superior.} Dada una curva de Bézier, representada por un polinomio de Bernstein de grado $n$, es posible encontrar polinomios de grado superior que representan la misma curva de Bézier. Lógicamente esto supone un aumento del número de puntos de control.
 
 Supongamos que tenemos una curva de Bézier con cuatro puntos de control,
-
+\end{paracol}
 \begin{equation*}
 \vec{p}(t) = \vec{p}_0B_0^3(t) + \vec{p}_1B_1^3(t) + \vec{p}_2B_2^3(t) + \vec{p}_3B_3^3(t)
 \end{equation*}
-
+\begin{paracol}{2}
 Si multiplicamos este polinomio por $ t + (1 -t) \equiv 1$ El polinomio no varía y por tanto representa la misma curva de Bézier. Sin embargo, tendríamos ahora un polinomio un grado superior al inicial.  Si después de la multiplicación agrupamos términos de la forma $(1-t)^{n-1}t^i$, Podríamos obtener el valor de los nuevos puntos de control,
-
+\end{paracol}
 \begin{align*}
 \vec{p}_0^+&= \vec{p}_0\\
 \vec{p}_1^+&= \frac{1}{4}\vec{p}_0 + \frac{3}{4}\vec{p}_1\\
@@ -1253,17 +1262,17 @@ Si multiplicamos este polinomio por $ t + (1 -t) \equiv 1$ El polinomio no varí
 \vec{p}_3^+&= \frac{3}{4}\vec{p}_2 + \frac{1}{4}\vec{p}_3\\
 \vec{p}_4^+&= \vec{p}_3\\
 \end{align*}
-
+\begin{paracol}{2}
 y, en general, los puntos de control de la curva de Bézier de grado $n+1$ equivalente  a una dada de grado $n$ puede obtenerse como,
-
+\end{paracol}
 \begin{equation*}
 \vec{p}_i^+ = \alpha_i\vec{p}_{i-1} + (1-\alpha_i)\vec{p}_i, \qquad \alpha_i =\frac{i}{n+1}
 \end{equation*}
-
+\begin{paracol}{2}
 Mediante la ecuación anterior, es posible obtener iterativamente los puntos de control de la curva de Bézier equivalente a una dada de cualquier grado. Una propiedad interesante es que según aumentamos el número de puntos de control empleados, estos y el polígono de control correspondiente, van convergiendo a la curva de Bézier. 
 
 La figura \ref{fig:bzgrad} muestra un ejemplo para una curva de Bézier construida a partir de tres puntos de control. Es fácil ver cómo a pesar de aumentar el número de puntos de control, la curva resultante es siempre la misma.  También es fácil ver en la figura (\ref{fig:bz4}) la convergencia de los polígonos de control hacia la curva.
-
+\end{paracol}
 \begin{figure}[h]
 \centering
 \subfigure[Curva original (3 puntos) \label{fig:bz1}]{\includegraphics[width=6.8cm]{bezier3p.eps}} \qquad 
@@ -1273,73 +1282,75 @@ La figura \ref{fig:bzgrad} muestra un ejemplo para una curva de Bézier construi
 \caption{Curvas de Bézier equivalentes, construidas a partir de una curva con tres puntos de control} 
 \label{fig:bzgrad}
 \end{figure}
-
+\begin{paracol}{2}
 El siguiente código permite calcular la curva equivalente de Bézier a una dada, para cualquier número de puntos de control que se desee. \index{Curvas de Bézier equivalentes}
-
-\begin{lstlisting}
-function  pp = bzeq(p,n)
-% Esta funcion calcula los puntos de control de una curva de Bezier
-% equivalente de grado superior. p es matriz de tamaño mx2 que contiene 
-% los puntos de control originales. n es el número de puntos de paso de 
-% la nueva curva de Bezier equivalente. n tiene que ser mayor que m.
-% pp contiene los n puntos de control de la curva de Bézier resultante.
-
-% Construimos un vector  con una fila mas para guardar un nuevo elemento
-c = size(p,1);
-% La siguiente linea sirve solo para ir pintando los resultados y ver 
-%que  efectivamente todos los polinomios dan la misma curva de Bezier 
-%  (si se tiene la funcion bezier).
-bezier(p,0.01);
-if c == n
-    pp = p;
-    return
-else
-    p = [p;zeros(1,2)];
-    pp = p;
-    for i = 2 : c+1
-        pp(i,:) = p(i-1,:)*(i-1)/(c) + (1 -(i-1)/(c))*p(i,:);
-        
-    end
-    % llamamos a la funcion recursivamente hasta tener n puntos de 
-    % control el grado del polinomio sera n-1...
-    pp = bzeq(pp,n);
-end
-\end{lstlisting}
-
+\end{paracol}
+%\begin{lstlisting}
+%function  pp = bzeq(p,n)
+%% Esta funcion calcula los puntos de control de una curva de Bezier
+%% equivalente de grado superior. p es matriz de tamaño mx2 que contiene 
+%% los puntos de control originales. n es el número de puntos de paso de 
+%% la nueva curva de Bezier equivalente. n tiene que ser mayor que m.
+%% pp contiene los n puntos de control de la curva de Bézier resultante.
+%
+%% Construimos un vector  con una fila mas para guardar un nuevo elemento
+%c = size(p,1);
+%% La siguiente linea sirve solo para ir pintando los resultados y ver 
+%%que  efectivamente todos los polinomios dan la misma curva de Bezier 
+%%  (si se tiene la funcion bezier).
+%bezier(p,0.01);
+%if c == n
+%    pp = p;
+%    return
+%else
+%    p = [p;zeros(1,2)];
+%    pp = p;
+%    for i = 2 : c+1
+%        pp(i,:) = p(i-1,:)*(i-1)/(c) + (1 -(i-1)/(c))*p(i,:);
+%        
+%    end
+%    % llamamos a la funcion recursivamente hasta tener n puntos de 
+%    % control el grado del polinomio sera n-1...
+%    pp = bzeq(pp,n);
+%end
+%\end{lstlisting}
+\begin{paracol}{2}
 \paragraph{Derivadas.} Las derivadas de una curva de Bézier con respecto al parámetro $t$ son particularmente fáciles de obtener a partir de los puntos de control. Si tenemos una curva de Bézier de grado $n$, definida mediante puntos de control $\vec{p}_i$ su derivada primera con respecto a $t$ será una curva de Bézier de grado $n-1$ Cuyos puntos de control $\vec{d}_i$  puede obtenerse como:
+\end{paracol}
 \begin{equation*}
 \vec{d_i} = n\left(\vec{p_{i+1}} -\vec{p_i}\right)
 \end{equation*}
-
+\begin{paracol}{2}
 La nueva curva de Bézier obtenida de este modo, es una hodógrafa; representa el extremo de un vector tangente en cada punto a la curva de Bézier original  y guarda una relación directa con la velocidad a la que se recorrería dicha curva. \index{hodógrafa}
 
 La figura \ref{fig:bzc}, muestra una curva de Bézier sobre la que se ha trazado el vector derivada para algunos puntos. La figura \ref{fig:bzd} muestra la hodógrafa correspondiente y de nuevo los mismos vectores derivada de la figura \ref{fig:bzc}
 
 El siguiente código muestra como calcular los puntos de control de la derivada de una curva de Bézier.
-\begin{lstlisting}
-function d = dbez(p)
+\end{paracol}
+%\begin{lstlisting}
+%function d = dbez(p)
 % esta función obtiene los puntos de control de la derivada con 
 % respecto al parametro de una curva de bezier cuyos puntos de  
 % control están contenidos la matriz p. p de be ser una matriz de 
 % nx2 donde n es el número de puntos de control.
-grado = size(p,1) -1
-d = zeros(grado,2)
-for i = 1:grado
-    d(i,:) = (grado-1)*(p(i+1,:)-p(i,:))
-end
+%grado = size(p,1) -1
+%d = zeros(grado,2)
+%for i = 1:grado
+%    d(i,:) = (grado-1)*(p(i+1,:)-p(i,:))
+%end
 % Codigo añadido para dibujar y analizar los resultados
 % pintamos la hodografa
-v = bezier(d,0.01)
+%v = bezier(d,0.01)
 % le añadimos algunos vectores para que se vea que tocan la hodografa
- hold on
- compass(v(1,1:10:size(v,2)),v(2,1:10:size(v,2)))
- figure
-% las pintamos además como vectores tangentes a la curva original
-x = bezier(p,0.01)
-hold on
-quiver(x(1,1:10:size(v,2)),x(2,1:10:size(v,2)),v(1,1:10:size(v,2))...
-    ,v(2,1:10:size(v,2)))
-\end{lstlisting}
+% hold on
+% compass(v(1,1:10:size(v,2)),v(2,1:10:size(v,2)))
+% figure
+%% las pintamos además como vectores tangentes a la curva original
+%x = bezier(p,0.01)
+%hold on
+%quiver(x(1,1:10:size(v,2)),x(2,1:10:size(v,2)),v(1,1:10:size(v,2))...
+%    ,v(2,1:10:size(v,2)))
+%\end{lstlisting}
 
 \begin{figure}
 \centering
@@ -1348,17 +1359,17 @@ quiver(x(1,1:10:size(v,2)),x(2,1:10:size(v,2)),v(1,1:10:size(v,2))...
 \caption{Curva de Bézier y su derivada con respecto al parámetro del polinomio de Bernstein que la define: $t \in [0,1]$} 
 \label{fig:bzder}
 \end{figure} 
-
+\begin{paracol}{2}
 \paragraph{Interpolación con curvas de Bézier} Podemos emplear curvas de Bézier para interpolar un conjunto de puntos $\lbrace \vec{p}_0, \cdots  \vec{p}_m\rbrace$. Si empleamos un curva para interpolar cada par de puntos, $\vec{p}_i, \vec{p}_{i+1}, \qquad i =1, \cdots m-1$ tenemos asegurada la continuidad en los puntos interpolados puesto que las curvas tienen que pasar por ellos. Como en el caso de la interpolación mediante splines, podemos imponer continuidad en las derivadas para conseguir una curva de interpolación suave. En el caso de las curvas de Bézier esto es particularmente simple. Si llamamos $B$ a la curva de Bézier de grado $n$ construida entre los puntos $\vec{p}_{i-1}, \vec{p}_{i}$  con puntos de control, $\vec{p}_{i-1}, b_1, \vec{b}_2,\cdots, \vec{b}_{n-1},\vec{p}_{i}$. Y  $C$ a la curva de Bézier de grado $s$ construida entre los puntos $\vec{p}_{i}, \vec{p}_{i+1}$  con puntos de control, $\vec{p}_{i}, \vec{c}_1, \vec{c}_2,\cdots, \vec{c}_{s-1},\vec{p}_{i+1}$. Para asegurar la continuidad en la primera derivada en el punto $\vec{p_i}$ basta imponer,
-
+\end{paracol}
 \begin{equation*}
 n\cdot\left(\vec{p}_i-\vec{b}_{n-1}\right) = s\cdot\left(\vec{c}_1-\vec{p}_i\right)
 \end{equation*}
-
+\begin{paracol}{2}
 Esta condición impone una relación entre el penúltimo punto de control de la curva $B$ y el segundo punto de control de la curva $C$. Pero deja completa libertad sobre el resto de los puntos de control elegidos para construir las curvas.
 
 Podemos, por ejemplo, elegir libremente todos los puntos de control de la curva $B$ y obtener a partir de ella el punto $\vec{c}_1$,
-
+\end{paracol}
 \begin{equation*}
 \vec{c}_1 = \frac{n+s}{s}\vec{p}_i - \frac{n}{s}\vec{b}_{n-1}
 \end{equation*}
@@ -1371,9 +1382,9 @@ Podemos, por ejemplo, elegir libremente todos los puntos de control de la curva 
 \label{fig:ibz3}
 \end{figure}
  
-
+\begin{paracol}{2}
 La figura \ref{fig:ibz3} muestra un ejemplo de interpolación en la que se ha aplicado la condición de continuidad en la derivada que acabamos de describir.
-
+\end{paracol}
 \section{ejercicios}
 \begin{enumerate}
 \item Carga en Matlab los datos del fichero \texttt{datos.txt}\footnote{disponible en \url{https://github.com/UCM-237/LCC/tree/master/datos}} y realiza las siguientes tareas:
