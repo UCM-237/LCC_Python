@@ -975,6 +975,8 @@ If we approximate any real number inside the interval $(x_T,x_E)$ by the nearest
 
 \begin{paracol}{2}
 Este resultado se ilustra gráficamente en la figura 	\ref{fig:errorred}
+\switchcolumn
+This result is graphically illustrated in figure \ref{fig:errorred}  
 \end{paracol}
 
 \begin{figure}[h]
@@ -994,12 +996,14 @@ Este resultado se ilustra gráficamente en la figura 	\ref{fig:errorred}
 \draw(7,0.25)node{$\frac{1}{2}\vert x_E-x_T\vert$};
 
 \end{tikzpicture}
-\caption{Posición relativa de un número no máquina $x$ y su redondeo a número máquina por truncamiento $x_T$ y por exceso $x_E$ Si redondeamos al más próximo de los dos, el error es siempre menor o igual a la mitad del intervalo $x_E-x_T$.}
+\bicaption{Posición relativa de un número no máquina $x$ y su redondeo a número máquina por truncamiento $x_T$ y por exceso $x_E$. Si redondeamos al más próximo de los dos, el error es siempre menor o igual a la mitad del intervalo $x_E-x_T$.}{Location of a non-machine number in relation to its rounding to a machine number through truncation ($x_T$) and excess ($x_E$). When we round the number to the nearest of the two, the error is always less than half the interval $x_E-x_T$.}
 \label{fig:errorred}
 \end{figure} 
 
 \begin{paracol}{2}
 Examinando con un poco de detalle el resultado anterior, vemos que consta de tres términos. El término $\frac{1}{2}$ surge de aproximar un número real por su número máquina más cercano, El termino $2^\text{exp}$ depende del tamaño del número. Para números grandes este factor será grande y para números pequeños será un factor pequeño. Por último queda el factor $2^{-23}$;  este factor está directamente relacionado con la mantisa empleada en la representación. Efectivamente, si hubiéramos  representado el número en el estándar de doble precisión, es fácil demostrar que el error absoluto cometido habría quedado acotado como,
+\switchcolumn
+If we look at the previous result in more detail, we can see that is the product of three factors: the term $\frac{1}{2}$ comes from approximating a real number by its nearest machine number. The term $2^{exp}$ depends on the size of the number. For large numbers, this factor will be large, for small numbers, small. The last term is a fixed factor $2^{-23}$ and it is directly related with the mantissa size used in the representation. Indeed, if we had used the double precision standard, the absolute error we would have gotten would be limited as,  
 \end{paracol}
  \begin{equation*}
 \vert x-x_r \vert \leq \frac{1}{2}\vert x_E-x_T \vert= \frac{1}{2}\cdot 2^{-52}\cdot 2^\text{exp}
@@ -1007,21 +1011,28 @@ Examinando con un poco de detalle el resultado anterior, vemos que consta de tre
 
 \begin{paracol}{2}
 \index{epsilon del computador} Es decir, el único factor que cambia en el error es precisamente el término relacionado con el tamaño de la mantisa. Este término recibe el nombre de precision del computador o \emph{epsilon del computador} (eps). Y vale siempre 2 elevado a menos ($-$) el  número de bits de la mantisa. Por tanto, podemos generalizar la expresión parar la cota del error absoluto como,
+\switchcolumn
+\index[eng]{machine epsilon} That is, the only factor which changes is precisely the term related with the mantise size. This term is known as the machine precision or the \emph{machine epsilon} (eps) and it takes always the value 2 raises to minus (-) the mantissa number-of-bits. Therfore, we can generalise the upper limit of the absolute error as,   
 \end{paracol}
-
   \begin{equation*}
 \vert x-x_r \vert \leq \frac{1}{2}\vert x_E-x_T \vert= \frac{1}{2}\cdot\ \text{eps}\cdot2^\text{exp}
 \end{equation*}
 \begin{paracol}{2}
-El significado del \emph{epsilon} del computador queda aún más claro si definimos el error relativo..
+El significado del \emph{epsilon} del computador queda aún más claro si definimos el error relativo,
+\switchcolumn
+The machine \emph{epsilon} meaning is still easy to understand  if we define relative error,
 \end{paracol}
 \begin{equation*}
-\text{Error relativo}=\frac{\vert x-x_r \vert}{\vert x \vert} \leq \frac{1}{2}\frac{\vert x_E-x_T \vert}{\vert x \vert}= \frac{1}{2}\cdot \frac{\text{eps}\cdot2^\text{exp}}{(1.a_1a_2\cdots a_{23}a_{24}\cdots)\times2^{\text{exp}}}\leq \frac{1}{2}\text{eps}
+\text{Error relativo/Relative error}=\frac{\vert x-x_r \vert}{\vert x \vert} \leq \frac{1}{2}\frac{\vert x_E-x_T \vert}{\vert x \vert}= \frac{1}{2}\cdot \frac{\text{eps}\cdot2^\text{exp}}{(1.a_1a_2\cdots a_{23}a_{24}\cdots)\times2^{\text{exp}}}\leq \frac{1}{2}\text{eps}
 \end{equation*}
 \begin{paracol}{2}
 El error relativo pondera el valor del error cometido con la magnitud del número representado.  Un ejemplo sencillo ayudará a entender mejor su significado. Imaginemos que tuviéramos un sistema de representación que solo nos permitiera representar número enteros. Si queremos representar los números $1.5$ y $1000000.5$ su representación sería $1$ y $1000000$ en ambos casos hemos cometido un error absoluto de 0.5. Sin embargo si comparamos con los números representados, en el primer caso el error vale la mitad del número mientras que en el segundo no llega a una millonésima parte.
 
 En el caso de la representación que estamos estudiando, el error relativo cometido para cualquier número representable es siempre más pequeño que la mitad del \emph{epsilon} del computador,
+\switchcolumn
+The relative error weighs the value of the gotten error wit the magnitude of the represented number. A simple example may help to better understand it meaning. Consider a representation system that only allows as ti represent integer numbers. If we what to represent the numbers $1.5$ and $1000000.5$ their representations would be $1$ and $1000000$. In both cases we get an absolute error equal to $0.5$. But if we compare this results with the represented numbers, on the first case the error is half the number represented while in the second case this error does not reach the millionth part of the number.
+
+For the representations we are studying, the relative error we get for whatever representable number is always least than half the machine \emph{epsilon},     
 \end{paracol}
 
 \begin{equation*}
@@ -1030,13 +1041,15 @@ x_r=x\cdot (1+ \delta); | \delta| \leq \frac{1}{2}\cdot eps
 
 \begin{paracol}{2}
 Un último comentario sobre el \emph{epsilon} del computador, entendido como precisión. La diferencia entre dos números máquina consecutivos está estrechamente  relacionada con el \emph{epsilon}. Si tenemos un número máquina y queremos incrementarlo en la cantidad más pequeña posible, dicha cantidad es precisamente el \emph{epsilon}, multiplicado por 2 elevado al exponente del número. La razón de que esto sea así está relacionada con el modo en que se suman dos números en la representación en punto flotante. Supongamos que tenemos un número cualquiera representado en el estándar de precisión simple,
+\switchcolumn
+A last comment on the machine \emph{epsilon} considering it from the machine precision point of view. The difference between two consecutive machine numbers is tightly related to the \emph{epsilon}. If we have a machine number and we want to increase it by the least possible quantity, such quantity is precisely the \emph{epsilon} times two rises to the number exponent. The reason for this is the way we add numbers when using the numbers floating point representation. Suppose we have a number whatsoever represented using the simple precision standard,  
 \end{paracol}
 
 \begin{minipage}{\textwidth}
 	\centering	
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 0&11110000000000000000000&10000000\\
 \hline
@@ -1045,12 +1058,14 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \end{minipage}
 \begin{paracol}{2}
 El número representado tiene de exponente $2^7-127=1$. Supongamos ahora que quisieramos sumar a este número la cantidad $2^{-22}$ su representación en el estándar emplearía una mantisa de ceros (recordar el 1 ímplicito) y un exponente $-22+127=105$. Sería por tanto,
+\switchcolumn
+The represented number has exponent $2^7-127=1$. Suppose now that we want to add to this number the quantity $2^{-22}$ Its representation in the standard should use an all-zeros mantissa (recall the implicit 1) and an exponent $-22-127 = 105$. So it should be,
 \end{paracol}
 \begin{minipage}{\textwidth}
 	\centering	
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 0&00000000000000000000000&01101001\\
 \hline
@@ -1058,8 +1073,10 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \ \\
 \end{minipage}
 \begin{paracol}{2}
-Para sumar dos números en notación científica es imprescindible que los dos estén representados con el mismo exponente, para entonces poder sumar directamente las mantisas. Disminuir el exponente del mayor de ellos hasta que coincida con el del menor no es posible, ya que eso supondría añadir dígitos a la parte entera de la mantisa, pero no hay bits disponibles para ello entre los asignados a la mantisa. Por tanto, la solución es aumentar el exponente del menor de los números, hasta que alcance el valor del exponente del mayor, y disminuir el valor de la mantisa desnormalizándola, es decir sin considerar el 1 implícito. 
+Para sumar dos números en notación cientí\-fica es imprescindible que los dos estén representados con el mismo exponente, para entonces poder sumar directamente las mantisas. Disminuir el exponente del mayor de ellos hasta que coincida con el del menor no es posible, ya que eso supondría añadir dígitos a la parte entera de la mantisa, pero no hay bits disponibles para ello entre los asignados a la mantisa. Por tanto, la solución es aumentar el exponente del menor de los números, hasta que alcance el valor del exponente del mayor, y disminuir el valor de la mantisa desnormalizándola, es decir sin considerar el 1 implícito. 
 Por tanto en nuestro ejemplo, debemos representar $2^{-22}$ empleando un exponente 1, $2^{-22}\rightarrow 2^{-23}\cdot 2^1$,
+\switchcolumn
+To add two numbers using scientific notation, we have to represent both numbers using the same exponent and then directly add their mantissa. We cannot decrease the exponent of the larger number to reach the exponent of the lower one because this means adding numbers to the mantissa integer part. However, this is impossible because there are no more bits available to enlarge the mantissa integer part. Therefore, the only solution available is to increase the exponent of the lower number till it reaches the value of the larger number exponent and to diminish the value of the mantissa, de-normalising it; that is, no longer considering the implicit 1. So, in our example, we must represent  $2^{-22}$ using a exponent equal to 1, $2^{-22}\rightarrow 2^{-23}\cdot 2^1$,
 \end{paracol}
 
 \begin{minipage}{\textwidth}
@@ -1076,6 +1093,8 @@ sig.&$\leftarrow$mantisa \textbf{(desnorm.)}, 23 bits $\rightarrow$&$\leftarrow$
 
 \begin{paracol}{2}
 La suma de ambos números se obtiene sumando directamente las mantisas,
+\switchcolumn
+We can now get the sum the numbers, just adding their mantissas. 
 \end{paracol}
 
 \begin{minipage}{\textwidth}
@@ -1093,28 +1112,67 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \begin{paracol}{2}
 ¿Qué pasa si tratamos de sumar un número más pequeño,por ejemplo $2^{-23}$? Al representarlo con exponente 1 para poder sumarlo el número tomaría la forma, $2^{-23}\rightarrow 2^{-24}\cdot2^{1}$. Es fácil ver el problema, con una mantisa de 23 bits nos se puede representar el número $2^{-24}$ porque ya no hay \emph{hueco} para él. La mantisa sería cero y --dado que se trata de una representación desnormalizada--, el número resultante sería cero. Por tanto, al sumarlo con el número inicial nos daría este mismo número.
 
-Esto nos lleva a que la precisión del computador no es igual para todos los números representables, sino que depende de su magnitud. la precisión, tomada en función de la distancia entre dos números consecutivos, es: $\text{precisión}=\text{eps}\cdot 2^{exp}$ y su valor se duplica cada vez que aumentamos el exponente en una unidad. La figura \ref{fig:precision} muestra esquemáticamente este fenómeno.
+Esto nos lleva a que la precisión del computador no es igual para todos los números representables, sino que depende de su magnitud. La precisión, tomada en función de la distancia entre dos números consecutivos, es:\\ $\text{precisión} = \text{eps}\cdot 2^{exp}$ y su valor se duplica cada vez que aumentamos el exponente en una unidad. La figura \ref{fig:precision} muestra esquemáticamente este fenómeno.
+\switchcolumn
+What happen if we sum a smaller number, for example $2^{-23}$? When we try to represent the number with exponent $1$, the number will takes the form $2^{-23}\rightarrow 2^{-24}\cdot2^{1}$.  It is easy to see the problem, with a 23-bits mantissa it is not possible to represent the number $2^{-24}$ because there is not \emph{place} for it. the mantissa would be equal to zero and, due to we are using a denormalised representation, the resulting number is zero. Therefore, when wi try to add it to the other number we obtain this same number again.
+
+This lead us to realise that the precision is not equal for every representable number but it depends on the number size. If we associate the precision with the distance between to consecutive machine numbers we may write: $\text{precision} = \text{eps}\cdot 2^{exp}$ and its values duplicates each time we increase the exponent in one unit. Figure \ref{fig:precision} depicts this phenomenon.  
 \end{paracol}
 
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=10cm]{precision.pdf}
-	\caption{Ilustración del cambio de precisión con la magnitud de los números representados.}
+	\bicaption{Ilustración del cambio de precisión con la magnitud de los números representados.}{Graphic illustration of precision change with the magnitude of represented numbers}
 	\label{fig:precision}
 \end{figure}
 
 \begin{paracol}{2}
 \subsection{Errores de desbordamiento}\index{Desbordamiento}
 En el apartado anterior hemos visto una de las limitaciones de la representación numérica de los ordenadores; el hecho de usar una mantisa finita hace que solo unos pocos números tengan representación exacta, el resto hay que aproximarlos cometiendo errores de redondeo. En este apartado nos centraremos en estudiar las limitaciones debidas al hecho de usar un exponente finito; solo podemos representar un rango limitado de valores.
+
 La figura \ref{fig:desbord} muestra esquemáticamente el rango de números representables. El número negativo más pequeño representable, viene definido, por un bit de signo 1, para indicar que se trata de un número negativo y la mantisa y el exponente más grandes que, dentro de las especificaciones del estándar, todavía representan un número finito. Cualquier número negativo menor que éste, produce un error de desbordamiento conocido en la literatura técnica con el nombre de \emph{overflow} negativo. El número negativo más próximo a cero, que se puede representar será aquel que tenga bit de signo 1, la mantisa (desnormalizada) más pequeña posible y el exponente más pequeño posible. Cualquier número más próximo a cero que este, será representado por el ordenador como cero. Se ha producido en este caso un error de desbordamiento conocido como \emph{underflow} negativo. 
 
 De modo análogo a como hemos definido el número negativo más pequeño representable, podemos definir el número positivo más grande representable. La única diferencia será que en este caso el bit de signo toma valor cero para indicar que es un  número positivo. Cualquier número mayor que éste que queramos representar, provocará un error de desbordamiento (\emph{overflow} positivo.) Por último, el número positivo más próximo a cero representable coincide con el correspondiente negativo, de nuevo salvo en el bit de signo, que ahora deberá ser cero. En el caso de tratar de representar un número más pequeño el ordenador no lo distinguirá de cero, produciéndose un desbordamiento denominado \emph{underflow} positivo. 
+\switchcolumn
+\subsection{Underflow and Overflow errors}\index[eng]{Underflow} \index[eng]{Overflow} 
+In previous sections we have seen one of the computer limitations to represent numbers; a finite mantissa makes that only a few numbers has an exact representation. We need to approximate the remaining numbers, getting in the process round-off errors. In this section, we focus on the limitations derived from the use of finite exponents, which the range of number we can represent using a computer.
+
+Figure \ref{fig:desbord} shows a schematic view of the representable numbers range. The lowest negative representable number is define using a sign bit equal to 1, to indicate that it is a negative number, an the largest mantissa and exponent which, according to the standard specification, still represent a finite number. Any lowest negative number will produce an error technically known as negative overflow error. The negative number closest to zero that we can represent will be that which has a sign bit 1, the (denormalised) smallest possible mantissa and the lowest possible exponent. Whatever number closer than it to zero will be represented as zero by the computer. In this case we get an error known as negative underflow error.
+
+In the same way we have defined the lower negative number we can represent, we can also define the largest positive representable number. In this case, the only difference will be the sign bit which now is equal to zero to indicate that the represented number is positive.  
+
+          
+
 \end{paracol}
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=10cm]{underandover.pdf}
-	\caption{Números representables y desbordamientos en el estándar IEEE 754 de precisión simple.}	
+	\sffamily
+		\begin{tikzpicture}
+			%\usetikzlibrary{shapes.multipart}
+			\draw(0,0) -- (10,0);
+			\draw(4.8,-0.3) node[below=6pt,right=-5pt]{$0$};
+			\draw(0.8,-0.6) node[anchor=east]{\footnotesize{$-(2.0-2^{-23})\cdot 2^{127}$}}--(0.8,0.6);
+			\draw(4.2,-0.5) node[anchor=east]{\footnotesize{$-2^{-23}\cdot 2^{-126}$}}--(4.2,0.5);
+			\draw(5.8,-0.5) node[anchor=west]{\footnotesize{$ 2^{-23}\cdot 2^{-126}$}}--(5.8,0.5);
+			\draw(9.2,-0.6) node[anchor=west]{\footnotesize{$(2.0-2^{-23})\cdot 2^{127}$}}--(9.2,0.6);
+			\draw(5,-0.5)--(5,0.5);
+			\draw[blue,latex-latex](0.8,0.3)--(4.2,0.3);
+			\draw[red, -latex](-0.5,0.3)--(0.8,0.3);
+			\draw[blue, latex-latex](5.8,0.3)--(9.2,0.3);
+			\draw[red, latex-](9.2,0.3)--(10.2,0.3);
+			\draw(2.5,0.3)node[align=center,blue]{\scriptsize{Negativos expresables}\\ \scriptsize{Negative expressible}};
+			\draw(-0.5,0.3)node[align=center,red]{\scriptsize{No representable}\\ \scriptsize{Non-representable}};
+			\draw(7.5,0.3)node[align=center,blue]{\scriptsize{Positivos expresables}\\ \scriptsize{Positive expressible}};
+			\draw(10.5,0.3)node[align=center,red]{\scriptsize{No representable}\\ \scriptsize{Non-representable}};
+			\draw[red, latex-latex](4.2,0.3)--(5,0.3);
+			\draw[red, latex-latex](5,0.3)--(5.8,0.3);
+			\draw [decorate,decoration={brace,amplitude=5pt}]
+			(4.2,0.6) -- (5.8,0.6) node[red,midway,yshift=0.8em]{\scriptsize{No Representable}};
+			\draw [decorate,decoration={brace,mirror,amplitude=5pt}]
+			(4.2,-0.6) -- (5.8,-0.6) node[red,midway,yshift=-0.8em]{\scriptsize{Non-representable}};
+		\end{tikzpicture}
+	\bicaption{Números representables y desbordamientos en el estándar IEEE 754 de precisión simple.}{Representable numbers and over/under-flows in the IEEE 754 simple precision standard.}	
 	\label{fig:desbord}
 \end{figure}
 
