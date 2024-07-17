@@ -903,7 +903,6 @@ Si el exponente se sale del rango admitido, se produce un error de desbordamient
 Si el tamaño de la mantisa del número excede el de la mantisas representables, la mantisa se trunca al tamaño adecuado para que sea representable. Es decir, se sustituye el número por un número máquina cercano, este proceso se conoce como redondeo y el error cometido en la representación como error de redondeo.
 
 \subsection{Error de redondeo unitario} \index{Error de redondeo}
-
 Supongamos que tenemos un número no máquina $x=(1.a_1a_2\cdots a_{23}a_{24}\cdots)\times2^{\text{exp}}$. 
 
 \paragraph{Aproximación por truncamiento.} \index{truncamiento}Si queremos representarlo empleando el estándar de simple precisión, solo podremos representar 23 bits de los que componen su mantisa. Una solución es truncar el número, eliminando directamente todos los bits de la mantisa más allá del 23 $x\approx x_T= (1.a_1a_2\cdots a_{23})\times2^{\text{exp}}$. Como hemos eliminado algunos bits, el número máquina $x_T$, por el que hemos aproximado nuestro número, es menor que él. 
@@ -918,6 +917,7 @@ En general, el criterio que se sigue es aproximar cada número real, por truncam
 Siempre que redondeamos un número cometemos un error, que podemos definir como el valor absoluto de la diferencia entre  el valor real  del número y su aproximación. Este error recibe el nombre de error absoluto,
 \switchcolumn
 \section{Numerical representations Errors.}
+\sectionmark{Rep, de nums. errores. \textreferencemark\ Num. Rep. errors}
 As we have already stated before, whatever numerical representation we use with a computer is subject to errors due to the computer register's finite size. We are going to focus on the mistakes we make when using the IEEE754 standard for floating point representation to represent real numbers.
 
 First, there is only a finite set of numbers with an exact representation. These number are those directly obtained from the values ---ones and zeros---  contained in the register and interpreted according to the standard specifications. These numbers are called machine numbers.
@@ -975,6 +975,8 @@ If we approximate any real number inside the interval $(x_T,x_E)$ by the nearest
 
 \begin{paracol}{2}
 Este resultado se ilustra gráficamente en la figura 	\ref{fig:errorred}
+\switchcolumn
+This result is graphically illustrated in figure \ref{fig:errorred}  
 \end{paracol}
 
 \begin{figure}[h]
@@ -994,12 +996,14 @@ Este resultado se ilustra gráficamente en la figura 	\ref{fig:errorred}
 \draw(7,0.25)node{$\frac{1}{2}\vert x_E-x_T\vert$};
 
 \end{tikzpicture}
-\caption{Posición relativa de un número no máquina $x$ y su redondeo a número máquina por truncamiento $x_T$ y por exceso $x_E$ Si redondeamos al más próximo de los dos, el error es siempre menor o igual a la mitad del intervalo $x_E-x_T$.}
+\bicaption{Posición relativa de un número no máquina $x$ y su redondeo a número máquina por truncamiento $x_T$ y por exceso $x_E$. Si redondeamos al más próximo de los dos, el error es siempre menor o igual a la mitad del intervalo $x_E-x_T$.}{Location of a non-machine number in relation to its rounding to a machine number through truncation ($x_T$) and excess ($x_E$). When we round the number to the nearest of the two, the error is always less than half the interval $x_E-x_T$.}
 \label{fig:errorred}
 \end{figure} 
 
 \begin{paracol}{2}
 Examinando con un poco de detalle el resultado anterior, vemos que consta de tres términos. El término $\frac{1}{2}$ surge de aproximar un número real por su número máquina más cercano, El termino $2^\text{exp}$ depende del tamaño del número. Para números grandes este factor será grande y para números pequeños será un factor pequeño. Por último queda el factor $2^{-23}$;  este factor está directamente relacionado con la mantisa empleada en la representación. Efectivamente, si hubiéramos  representado el número en el estándar de doble precisión, es fácil demostrar que el error absoluto cometido habría quedado acotado como,
+\switchcolumn
+If we look at the previous result in more detail, we can see that is the product of three factors: the term $\frac{1}{2}$ comes from approximating a real number by its nearest machine number. The term $2^{exp}$ depends on the size of the number. For large numbers, this factor will be large, for small numbers, small. The last term is a fixed factor $2^{-23}$ and it is directly related with the mantissa size used in the representation. Indeed, if we had used the double precision standard, the absolute error we would have gotten would be limited as,  
 \end{paracol}
  \begin{equation*}
 \vert x-x_r \vert \leq \frac{1}{2}\vert x_E-x_T \vert= \frac{1}{2}\cdot 2^{-52}\cdot 2^\text{exp}
@@ -1007,21 +1011,28 @@ Examinando con un poco de detalle el resultado anterior, vemos que consta de tre
 
 \begin{paracol}{2}
 \index{epsilon del computador} Es decir, el único factor que cambia en el error es precisamente el término relacionado con el tamaño de la mantisa. Este término recibe el nombre de precision del computador o \emph{epsilon del computador} (eps). Y vale siempre 2 elevado a menos ($-$) el  número de bits de la mantisa. Por tanto, podemos generalizar la expresión parar la cota del error absoluto como,
+\switchcolumn
+\index[eng]{machine epsilon} That is, the only factor which changes is precisely the term related with the mantise size. This term is known as the machine precision or the \emph{machine epsilon} (eps) and it takes always the value 2 raises to minus (-) the mantissa number-of-bits. Therfore, we can generalise the upper limit of the absolute error as,   
 \end{paracol}
-
   \begin{equation*}
 \vert x-x_r \vert \leq \frac{1}{2}\vert x_E-x_T \vert= \frac{1}{2}\cdot\ \text{eps}\cdot2^\text{exp}
 \end{equation*}
 \begin{paracol}{2}
-El significado del \emph{epsilon} del computador queda aún más claro si definimos el error relativo..
+El significado del \emph{epsilon} del computador queda aún más claro si definimos el error relativo,
+\switchcolumn
+The machine \emph{epsilon} meaning is still easy to understand  if we define relative error,
 \end{paracol}
 \begin{equation*}
-\text{Error relativo}=\frac{\vert x-x_r \vert}{\vert x \vert} \leq \frac{1}{2}\frac{\vert x_E-x_T \vert}{\vert x \vert}= \frac{1}{2}\cdot \frac{\text{eps}\cdot2^\text{exp}}{(1.a_1a_2\cdots a_{23}a_{24}\cdots)\times2^{\text{exp}}}\leq \frac{1}{2}\text{eps}
+\text{Error relativo/Relative error}=\frac{\vert x-x_r \vert}{\vert x \vert} \leq \frac{1}{2}\frac{\vert x_E-x_T \vert}{\vert x \vert}= \frac{1}{2}\cdot \frac{\text{eps}\cdot2^\text{exp}}{(1.a_1a_2\cdots a_{23}a_{24}\cdots)\times2^{\text{exp}}}\leq \frac{1}{2}\text{eps}
 \end{equation*}
 \begin{paracol}{2}
 El error relativo pondera el valor del error cometido con la magnitud del número representado.  Un ejemplo sencillo ayudará a entender mejor su significado. Imaginemos que tuviéramos un sistema de representación que solo nos permitiera representar número enteros. Si queremos representar los números $1.5$ y $1000000.5$ su representación sería $1$ y $1000000$ en ambos casos hemos cometido un error absoluto de 0.5. Sin embargo si comparamos con los números representados, en el primer caso el error vale la mitad del número mientras que en el segundo no llega a una millonésima parte.
 
 En el caso de la representación que estamos estudiando, el error relativo cometido para cualquier número representable es siempre más pequeño que la mitad del \emph{epsilon} del computador,
+\switchcolumn
+The relative error weighs the value of the gotten error wit the magnitude of the represented number. A simple example may help to better understand it meaning. Consider a representation system that only allows as ti represent integer numbers. If we what to represent the numbers $1.5$ and $1000000.5$ their representations would be $1$ and $1000000$. In both cases we get an absolute error equal to $0.5$. But if we compare this results with the represented numbers, on the first case the error is half the number represented while in the second case this error does not reach the millionth part of the number.
+
+For the representations we are studying, the relative error we get for whatever representable number is always least than half the machine \emph{epsilon},     
 \end{paracol}
 
 \begin{equation*}
@@ -1030,13 +1041,15 @@ x_r=x\cdot (1+ \delta); | \delta| \leq \frac{1}{2}\cdot eps
 
 \begin{paracol}{2}
 Un último comentario sobre el \emph{epsilon} del computador, entendido como precisión. La diferencia entre dos números máquina consecutivos está estrechamente  relacionada con el \emph{epsilon}. Si tenemos un número máquina y queremos incrementarlo en la cantidad más pequeña posible, dicha cantidad es precisamente el \emph{epsilon}, multiplicado por 2 elevado al exponente del número. La razón de que esto sea así está relacionada con el modo en que se suman dos números en la representación en punto flotante. Supongamos que tenemos un número cualquiera representado en el estándar de precisión simple,
+\switchcolumn
+A last comment on the machine \emph{epsilon} considering it from the machine precision point of view. The difference between two consecutive machine numbers is tightly related to the \emph{epsilon}. If we have a machine number and we want to increase it by the least possible quantity, such quantity is precisely the \emph{epsilon} times two rises to the number exponent. The reason for this is the way we add numbers when using the numbers floating point representation. Suppose we have a number whatsoever represented using the simple precision standard,  
 \end{paracol}
 
 \begin{minipage}{\textwidth}
 	\centering	
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 0&11110000000000000000000&10000000\\
 \hline
@@ -1045,12 +1058,14 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \end{minipage}
 \begin{paracol}{2}
 El número representado tiene de exponente $2^7-127=1$. Supongamos ahora que quisieramos sumar a este número la cantidad $2^{-22}$ su representación en el estándar emplearía una mantisa de ceros (recordar el 1 ímplicito) y un exponente $-22+127=105$. Sería por tanto,
+\switchcolumn
+The represented number has exponent $2^7-127=1$. Suppose now that we want to add to this number the quantity $2^{-22}$ Its representation in the standard should use an all-zeros mantissa (recall the implicit 1) and an exponent $-22-127 = 105$. So it should be,
 \end{paracol}
 \begin{minipage}{\textwidth}
 	\centering	
 \begin{tabular}{|c||c||c|}
 \hline
-sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $\rightarrow$\\
+sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits $\rightarrow$\\
 \hline
 0&00000000000000000000000&01101001\\
 \hline
@@ -1058,8 +1073,10 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \ \\
 \end{minipage}
 \begin{paracol}{2}
-Para sumar dos números en notación científica es imprescindible que los dos estén representados con el mismo exponente, para entonces poder sumar directamente las mantisas. Disminuir el exponente del mayor de ellos hasta que coincida con el del menor no es posible, ya que eso supondría añadir dígitos a la parte entera de la mantisa, pero no hay bits disponibles para ello entre los asignados a la mantisa. Por tanto, la solución es aumentar el exponente del menor de los números, hasta que alcance el valor del exponente del mayor, y disminuir el valor de la mantisa desnormalizándola, es decir sin considerar el 1 implícito. 
+Para sumar dos números en notación cientí\-fica es imprescindible que los dos estén representados con el mismo exponente, para entonces poder sumar directamente las mantisas. Disminuir el exponente del mayor de ellos hasta que coincida con el del menor no es posible, ya que eso supondría añadir dígitos a la parte entera de la mantisa, pero no hay bits disponibles para ello entre los asignados a la mantisa. Por tanto, la solución es aumentar el exponente del menor de los números, hasta que alcance el valor del exponente del mayor, y disminuir el valor de la mantisa desnormalizándola, es decir sin considerar el 1 implícito. 
 Por tanto en nuestro ejemplo, debemos representar $2^{-22}$ empleando un exponente 1, $2^{-22}\rightarrow 2^{-23}\cdot 2^1$,
+\switchcolumn
+To add two numbers using scientific notation, we have to represent both numbers using the same exponent and then directly add their mantissa. We cannot decrease the exponent of the larger number to reach the exponent of the lower one because this means adding numbers to the mantissa integer part. However, this is impossible because there are no more bits available to enlarge the mantissa integer part. Therefore, the only solution available is to increase the exponent of the lower number till it reaches the value of the larger number exponent and to diminish the value of the mantissa, de-normalising it; that is, no longer considering the implicit 1. So, in our example, we must represent  $2^{-22}$ using a exponent equal to 1, $2^{-22}\rightarrow 2^{-23}\cdot 2^1$,
 \end{paracol}
 
 \begin{minipage}{\textwidth}
@@ -1076,6 +1093,8 @@ sig.&$\leftarrow$mantisa \textbf{(desnorm.)}, 23 bits $\rightarrow$&$\leftarrow$
 
 \begin{paracol}{2}
 La suma de ambos números se obtiene sumando directamente las mantisas,
+\switchcolumn
+We can now get the sum the numbers, just adding their mantissas. 
 \end{paracol}
 
 \begin{minipage}{\textwidth}
@@ -1093,41 +1112,89 @@ sig.&$\leftarrow$mantisa, 23 bits $\rightarrow$&$\leftarrow$ exponente, 8 bits $
 \begin{paracol}{2}
 ¿Qué pasa si tratamos de sumar un número más pequeño,por ejemplo $2^{-23}$? Al representarlo con exponente 1 para poder sumarlo el número tomaría la forma, $2^{-23}\rightarrow 2^{-24}\cdot2^{1}$. Es fácil ver el problema, con una mantisa de 23 bits nos se puede representar el número $2^{-24}$ porque ya no hay \emph{hueco} para él. La mantisa sería cero y --dado que se trata de una representación desnormalizada--, el número resultante sería cero. Por tanto, al sumarlo con el número inicial nos daría este mismo número.
 
-Esto nos lleva a que la precisión del computador no es igual para todos los números representables, sino que depende de su magnitud. la precisión, tomada en función de la distancia entre dos números consecutivos, es: $\text{precisión}=\text{eps}\cdot 2^{exp}$ y su valor se duplica cada vez que aumentamos el exponente en una unidad. La figura \ref{fig:precision} muestra esquemáticamente este fenómeno.
+Esto nos lleva a que la precisión del computador no es igual para todos los números representables, sino que depende de su magnitud. La precisión, tomada en función de la distancia entre dos números consecutivos, es:\\ $\text{precisión} = \text{eps}\cdot 2^{exp}$ y su valor se duplica cada vez que aumentamos el exponente en una unidad. La figura \ref{fig:precision} muestra esquemáticamente este fenómeno.
+\switchcolumn
+What happen if we sum a smaller number, for example $2^{-23}$? When we try to represent the number with exponent $1$, the number will takes the form $2^{-23}\rightarrow 2^{-24}\cdot2^{1}$.  It is easy to see the problem, with a 23-bits mantissa it is not possible to represent the number $2^{-24}$ because there is not \emph{place} for it. the mantissa would be equal to zero and, due to we are using a denormalised representation, the resulting number is zero. Therefore, when wi try to add it to the other number we obtain this same number again.
+
+This lead us to realise that the precision is not equal for every representable number but it depends on the number size. If we associate the precision with the distance between to consecutive machine numbers we may write: $\text{precision} = \text{eps}\cdot 2^{exp}$ and its values duplicates each time we increase the exponent in one unit. Figure \ref{fig:precision} depicts this phenomenon.  
 \end{paracol}
 
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=10cm]{precision.pdf}
-	\caption{Ilustración del cambio de precisión con la magnitud de los números representados.}
+	\bicaption{Ilustración del cambio de precisión con la magnitud de los números representados.}{Graphic illustration of precision change with the magnitude of represented numbers}
 	\label{fig:precision}
 \end{figure}
 
 \begin{paracol}{2}
 \subsection{Errores de desbordamiento}\index{Desbordamiento}
 En el apartado anterior hemos visto una de las limitaciones de la representación numérica de los ordenadores; el hecho de usar una mantisa finita hace que solo unos pocos números tengan representación exacta, el resto hay que aproximarlos cometiendo errores de redondeo. En este apartado nos centraremos en estudiar las limitaciones debidas al hecho de usar un exponente finito; solo podemos representar un rango limitado de valores.
+
 La figura \ref{fig:desbord} muestra esquemáticamente el rango de números representables. El número negativo más pequeño representable, viene definido, por un bit de signo 1, para indicar que se trata de un número negativo y la mantisa y el exponente más grandes que, dentro de las especificaciones del estándar, todavía representan un número finito. Cualquier número negativo menor que éste, produce un error de desbordamiento conocido en la literatura técnica con el nombre de \emph{overflow} negativo. El número negativo más próximo a cero, que se puede representar será aquel que tenga bit de signo 1, la mantisa (desnormalizada) más pequeña posible y el exponente más pequeño posible. Cualquier número más próximo a cero que este, será representado por el ordenador como cero. Se ha producido en este caso un error de desbordamiento conocido como \emph{underflow} negativo. 
 
 De modo análogo a como hemos definido el número negativo más pequeño representable, podemos definir el número positivo más grande representable. La única diferencia será que en este caso el bit de signo toma valor cero para indicar que es un  número positivo. Cualquier número mayor que éste que queramos representar, provocará un error de desbordamiento (\emph{overflow} positivo.) Por último, el número positivo más próximo a cero representable coincide con el correspondiente negativo, de nuevo salvo en el bit de signo, que ahora deberá ser cero. En el caso de tratar de representar un número más pequeño el ordenador no lo distinguirá de cero, produciéndose un desbordamiento denominado \emph{underflow} positivo. 
+\switchcolumn
+\subsection{Underflow and Overflow errors}\index[eng]{Underflow} \index[eng]{Overflow} 
+In previous sections we have seen one of the computer limitations to represent numbers; a finite mantissa makes that only a few numbers has an exact representation. We need to approximate the remaining numbers, getting in the process round-off errors. In this section, we focus on the limitations derived from the use of finite exponents, which the range of number we can represent using a computer.
+
+Figure \ref{fig:desbord} shows a schematic view of the representable numbers range. The lowest negative representable number is define using a sign bit equal to 1, to indicate that it is a negative number, an the largest mantissa and exponent which, according to the standard specification, still represent a finite number. Any lowest negative number will produce an error technically known as negative overflow error. The negative number closest to zero that we can represent will be that which has a sign bit 1, the (denormalised) smallest possible mantissa and the lowest possible exponent. Whatever number closer than it to zero will be represented as zero by the computer. In this case we get an error known as negative underflow error.
+
+Similar to how we have defined the lower negative number we can represent, we can also define the largest positive representable number. The only difference with the lower number case will be the sign bit, which now is equal to zero, to indicate that the represented number is positive. If we try to represent a number greater than largest representable, we will get a positive overflow error. Lastly, the positive number closest to zero we can represent is equal to the negative one except for the sign bit, which must now be equal to zero. If we try to represent a smaller number than the smallest representable, the computer cannot tell one from the other, producing a positive underflow and taking zero as the representation of the number.    
+
 \end{paracol}
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=10cm]{underandover.pdf}
-	\caption{Números representables y desbordamientos en el estándar IEEE 754 de precisión simple.}	
+	\sffamily
+		\begin{tikzpicture}
+			%\usetikzlibrary{shapes.multipart}
+			\draw(0,0) -- (10,0);
+			\draw(4.8,-0.3) node[below=6pt,right=-5pt]{$0$};
+			\draw(0.8,-0.6) node[anchor=east]{\footnotesize{$-(2.0-2^{-23})\cdot 2^{127}$}}--(0.8,0.6);
+			\draw(4.2,-0.5) node[anchor=east]{\footnotesize{$-2^{-23}\cdot 2^{-126}$}}--(4.2,0.5);
+			\draw(5.8,-0.5) node[anchor=west]{\footnotesize{$ 2^{-23}\cdot 2^{-126}$}}--(5.8,0.5);
+			\draw(9.2,-0.6) node[anchor=west]{\footnotesize{$(2.0-2^{-23})\cdot 2^{127}$}}--(9.2,0.6);
+			\draw(5,-0.5)--(5,0.5);
+			\draw[blue,latex-latex](0.8,0.3)--(4.2,0.3);
+			\draw[red, -latex](-0.5,0.3)--(0.8,0.3);
+			\draw[blue, latex-latex](5.8,0.3)--(9.2,0.3);
+			\draw[red, latex-](9.2,0.3)--(10.2,0.3);
+			\draw(2.5,0.3)node[align=center,blue]{\scriptsize{Negativos expresables}\\ \scriptsize{Negative expressible}};
+			\draw(-0.5,0.3)node[align=center,red]{\scriptsize{No representable}\\ \scriptsize{Non-representable}};
+			\draw(7.5,0.3)node[align=center,blue]{\scriptsize{Positivos expresables}\\ \scriptsize{Positive expressible}};
+			\draw(10.5,0.3)node[align=center,red]{\scriptsize{No representable}\\ \scriptsize{Non-representable}};
+			\draw[red, latex-latex](4.2,0.3)--(5,0.3);
+			\draw[red, latex-latex](5,0.3)--(5.8,0.3);
+			\draw [decorate,decoration={brace,amplitude=5pt}]
+			(4.2,0.6) -- (5.8,0.6) node[red,midway,yshift=0.8em]{\scriptsize{No Representable}};
+			\draw [decorate,decoration={brace,mirror,amplitude=5pt}]
+			(4.2,-0.6) -- (5.8,-0.6) node[red,midway,yshift=-0.8em]{\scriptsize{Non-representable}};
+		\end{tikzpicture}
+	\bicaption{Números representables y desbordamientos en el estándar IEEE 754 de precisión simple.}{Representable numbers and over/under-flows in the IEEE 754 simple precision standard.}	
 	\label{fig:desbord}
 \end{figure}
 
 \begin{paracol}{2}
 \section{Errores derivados de las operaciones aritméticas}\index{Errores aritméticos}
+\sectionmark{Errores op. aritm. \textreferencemark\ op. arithm. errors}
 Hasta ahora, nos hemos centrado siempre en el problema de la representación numérica del computador. En esta sección vamos a introducir un nuevo tipo de errores que tienen si cabe todavía más importancia desde el punto de vista del cálculo científico. Se trata de los errores derivados de las operaciones aritméticas.
 
-Indirectamente ya se introdujo el problema en la sección anterior al hablar de la precisión del computador, y de la necesidad de igualar los exponentes de los sumandos al mayor de ellos antes de poder sumar en formato de punto flotante. Veamos en más detalle algunas consecuencias de la aritmética en punto flotante.
+Indirectamente ya se introdujo el problema en la sección anterior al hablar de la precisión del computador y de la necesidad de igualar los exponentes de los sumandos al mayor de ellos antes de poder sumar en formato de punto flotante. Veamos en más detalle algunas consecuencias de la aritmética en punto flotante.
 \subsection{Acumulación de errores de redondeo}\index{Acumulación de errores}
 
 Para empezar, se ilustrará el proceso de la suma de dos números representados en base 10 en formato de punto flotante. Supongamos que queremos sumar los números $99.99$ y $0.161$. Supongamos además que seguimos una representación en punto flotante con las siguientes limitaciones la mantisa es de cuatro dígitos, el exponente es de dos dígitos.
 
 Si sumamos los números, tal y como los hemos escrito más arriba, sin seguir formato de punto flotante, el resultado sería,
+\switchcolumn
+\section{Errors derived from arithmetic operation}\index[eng]{Arithmetic errors}
+\sectionmark{Errores op. aritm. \textreferencemark\ op. arithm. errors}
+So far, we have focused on the numerical representation problem. In this section we will introduce a new kind of errors we are still more critical from the point of view of scientific computing; these are errors derived from the arithmetic operations.
+
+We partially introduced the problem in the previous section when we spoke about computer precision and how we need to match the exponents of the addends, making them equal to the largest one, before performing the addition in floating-point representation. Let see in more detail some consequences of performing floating point arithmetic operations.
+\subsection{Accumulation of round-off errors.} \index[eng]{errors accumulation}
+We start looking at the addition process of two base-ten numbers represented on floating-point format. Suppose we want to add number $99.99$ and $0.161$. Besides, suppose we use the floating-point representation with the following two limitation: the mantissa is four digit size and the exponent has only two digits.
+
+If we add the number as they are written above, without use the floating-point format the result would be,  
 \end{paracol}
 \begin{equation*}
 99.99+0.161=100.151
@@ -1137,6 +1204,11 @@ Si sumamos los números, tal y como los hemos escrito más arriba, sin seguir fo
 Supongamos que los representamos ahora en el formato de punto flotante descrito más arriba, $99.99=9.999\times10^1$, $0.161=1.610\times10^{-1}$. Vamos a descomponer el proceso de sumar estos dos números en cuatro pasos, que reflejan, esquemáticamente, el proceso que seguiría un computador.
 
 1. \textbf{Alineamiento.} \index{Alineamiento}Consiste en representar el número más pequeño empleando el exponente del mayor. Para ellos se desplazan hacia la derecha los dígitos del número más pequeño tantas posiciones como indique la diferencia de los exponentes de los dos números y se cambiar el exponente del número mas pequeño por el del más grande.
+
+\switchcolumn
+Suppose now that we represent the number following the floating-point format previously described, $99.99 = 9,999\times 10^1$, $0.161 = 1.610\times 10^{-1}$. We will divided the addition process of this two numbers in four steps which, schematically, shows the procedure the computer will carry out.
+
+1. \textbf{Alignment.} This first step involves representing the smaller number using the exponent of the larger one: We shift the smaller number digits rightwards so many positions as the difference between the exponents of the numbers, and we equal the exponent of the smaller number to the larger one.  
 \end{paracol}
 
 \begin{equation*}
@@ -1149,18 +1221,37 @@ Como cabía esperar, el desplazamiento hacia la derecha de la mantisa produce la
 Una vez que los operandos están alineados, se puede realizar la operación. Si la operación es suma y los signos son iguales o si la operación es resta y los signos son diferentes, se suman las mantisa. En otro caso se restan.
 
 Es importante comprobar tras realizar la operación si se ha producido desbordamiento de la mantisa; en el ejemplo propuesto:
+
+\switchcolumn
+As it can be expected,  the rightwards shift of the mantissa digits causes the lost of the last digits of the number. So we find here a first rounding error in the alignment procedure.
+
+2. \textbf{Operation.} Once the addends have been aligned, we can carry out the operation. Whether the operation is an addition and the number signs are equal or whether the operation is a subtraction and the signs are different, it is enough to add the mantissas. Otherwise, we subtract them.
+
+We must check after perform the computation if the mantissa has overflowed. In our example,      
 \end{paracol}
-\begin{tabular}{c r}
+\begin{minipage}{\textwidth}
+	\centering
+\ \\
+\begin{tabular}{r r}
 &$9.999\cdot10^1$\\
 $+$&$0.016\cdot10^1$\\
 \hline
 &$10.015\cdot10^1$
 \end{tabular}\\
+\ \\
+\end{minipage}
+
 \begin{paracol}{2}
 No es posible emplear directamente el resultado de la suma de las mantisas de los sumandos como mantisa de la suma ya que requeriría emplear un dígito más. El resultado obtenido desborda el tamaño de la mantisa.
 
 3. \textbf{Normalización.}
 Si se ha producido desbordamiento de la mantisa, es preciso volver a normalizarla,
+
+\switchcolumn
+We cannot use directly the result of the addends mantissas sum as the mantissa of the result because it need an extra digit, i.e., this addition yields a result which overflows the size of the mantissa.
+
+3. \textbf{Normalisation.}
+If the mantissa has overflowed then, it is necessary to normalise it again,  
 \end{paracol}
 
 \begin{equation*}
@@ -1169,6 +1260,9 @@ Si se ha producido desbordamiento de la mantisa, es preciso volver a normalizarl
 
 \begin{paracol}{2}
 4. \textbf{Redondeo.} El desplazamiento de la mantisa hace que no quepan todo los dígitos, por lo que es necesario redondearla (por truncamiento o por exceso),
+
+\switchcolumn
+4. \textbf{Rounding.} The shifting of the digits makes that not all the digits can be accommodate inside the mantissa. Therefore, it is necessary to round it (by truncation or excess).   
 \end{paracol}
 \begin{equation*}
 1.0015\times10^2=1.002\times10^2
@@ -1176,9 +1270,15 @@ Si se ha producido desbordamiento de la mantisa, es preciso volver a normalizarl
 \begin{paracol}{2}
 Por último, se comprueba si las operaciones realizadas han producido desbordamiento del exponente, en cuyo caso el resultado sería un número no representable: $\infty$ ó $0$.
 
-5. \textbf{Renormalización} Para números en representación binaria es preciso a veces volver a normalizar la mantisa después del redondeo. Supongamos, como en el ejemplo anterior, una mantisa de cuatro bits, ---ahora con números representados en binario--- y que tras realizar una operación suma el resultado que se obtiene es $11.111\times2^1$. La mantisa ha desbordado y hay que normalizarla $11.111\times2^1\rightarrow1.1111\times2^2$. Tenemos que redondear la mantisa y lo normal en este caso dado que el número estaría exactamente en la mitad del intervalo entre dos números representables, es hacerlo por exceso: $1.1111\times2^2\rightarrow10.000\times2^2$. la operación de redondeo por exceso ha vuelto a desbordar la mantisa y, por tanto, hay que volver a normalizarla: $10.000\times2^2\rightarrow1.000\times2^3$.
+5. \textbf{Renormalización.} Para números en representación binaria es preciso a veces volver a normalizar la mantisa después del redondeo. Supongamos, como en el ejemplo anterior, una mantisa de cuatro bits, ---ahora con números representados en binario--- y que tras realizar una operación suma el resultado que se obtiene es $11.111\times2^1$. La mantisa ha desbordado y hay que normalizarla $11.111\times2^1\rightarrow1.1111\times2^2$. Tenemos que redondear la mantisa y lo normal en este caso, dado que el número estaría exactamente en la mitad del intervalo entre dos números representables, es hacerlo por exceso: $1.1111\times2^2\rightarrow10.000\times2^2$. La operación de redondeo por exceso ha vuelto a desbordar la mantisa y, por tanto, hay que volver a normalizarla: $10.000\times2^2\rightarrow1.000\times2^3$.
 
 Analicemos el error cometido para la suma empleada en los ejemplos anteriores. En aritmética exacta, el número obtenido tras la suma es $100.152$. Empleando la representación en punto flotante, con una mantisa de cuatro dígitos el resultado es $1.002\times10^2=100.2$. por tanto, el error absoluto cometido es,
+\switchcolumn	
+Eventually, we check if the operations we have carried out have produce an exponent overflow, because in this case the number would be not representable: $\infty$ or $0$.  
+
+5. \textbf{Renormalisation.} For number in binary representation is sometimes necessary to normalise again the mantissa after carried out the rounding. Suppose as in the previous example that we have a four-bit size mantissa, but now we numbers in binary representation, and that after performing an addition operation it yield the result $11.111\times2^1$. The mantissa has overflowed and then we have to normalised it $11.111\times2^1\rightarrow1.1111\times2^2$. We have to round the mantissa and, due to the number is just on the interval half between two machine number, we round it by excess: $1.1111\times2^2\rightarrow10.000\times2^2$. The round-by-excess process has overflowed the mantissa one more time and, thus, we have to nomarlise it again $10.000\times2^2\rightarrow1.000\times2^3$.
+
+If we analise the error we get after perform the addition in our previous example, In exact arithmetic, the sum of the numbers yields $100.152$. When  we use floating-point representation with a four-bit mantissa the result is $1.002\times10^2=100.2$. Then, the absolute error we get is,     
 \end{paracol}
 
 \begin{equation*}
@@ -1186,22 +1286,33 @@ Analicemos el error cometido para la suma empleada en los ejemplos anteriores. E
 \end{equation*}
 \begin{paracol}{2}
 y el error relativo,
+\switchcolumn
+and the relative error,
 \end{paracol}
 \begin{equation*}
 \left\vert\frac{100.151-100.2 }{100.152}\right\vert\approx 0.000489
 \end{equation*}
 \begin{paracol}{2}
-En general puede comprobarse que para cualquier operación aritmética básica $\odot \ $(suma, resta, multiplicación división) y dos números máquina $x$, $y$ se cumple,
+En general puede comprobarse que para cualquier operación aritmética básica $\odot \ $(suma, resta, multiplicación, división) y dos números máquina $x$, $y$ se cumple,
+\switchcolumn
+In general, it is possible to demonstrate that for any basic arithmetic operation $\odot \ $(addition, subtraction, multiplication, division) and two machine numbers $x$, $y$, it fulfils that,
 \end{paracol}
 \begin{equation*}
 \text{flotante}(x\odot y)=(x\odot y)\cdot(1+\delta) \ \ \vert \delta \vert \leq eps
 \end{equation*}
 \begin{paracol}{2}
-Este enunciado se conoce como el axioma fundamental de la aritmética en punto flotante:\emph{ El eps del computador es la cota superior del error relativo en cualquier operación aritmética básica realizada en punto flotante entre números máquina.} 
+Este enunciado se conoce como el axioma fundamental de la aritmética en punto flotante:\emph{ El eps del computador es la cota superior del error relativo en cualquier operación aritmética  básica realizada en punto flotante entre números máquina.} 
 
 El axioma fundamental de la aritmética en punto flotante establece una cota superior para el error. En la práctica, es frecuente que se encadenen un gran número de operaciones aritméticas elementales. Al encadenar operaciones, los errores cometidos en cada una de ellas se acumulan.
 
-Supongamos por ejemplo que queremos realizar la operación $x\cdot(y+z)$ en aritmética flotante la operación podríamos describirla como,
+Supongamos por ejemplo que queremos realizar la operación $x\cdot(y+z)$ en aritmética flotante. La operación podríamos describirla como,
+
+\switchcolumn
+This assertion is know as the fundamental axiom of floating-point arithmetic: \emph{the machine eps is the upper bound of the relative error in any basic floating-point arithmetic operation performed between to machine numbers.}
+
+The fundamental axiom of floating-point arithmetic sets an error upper bound. In practice, when computing, we link many basic arithmetical operations. This operation linking will lead to an accumulation of the errors we get in each basic operation.
+
+for instance, suppose we want to carry out the operation, $x\cdot(y+z)$ in floating-point arithmetic. We may describe the operation as follows,     
 \end{paracol}
 
 \begin{align*}
@@ -1212,6 +1323,9 @@ Supongamos por ejemplo que queremos realizar la operación $x\cdot(y+z)$ en arit
 
 \begin{paracol}{2}
 Donde $\delta_1$ representa el error relativo cometido en el producto y $\delta_2$ el error relativo cometido en la suma. Ambos errores están acotados por el \emph{eps} del ordenador ($\delta_1, \ \delta_2 \leq eps$). El valor $\delta$ se puede obtener como,
+
+\switchcolumn
+Where $\delta_1$ represents the relative error after performing the product and $\delta_2$ the error derived from the addition. Both errors are bounded by the machine \emph{eps}. ($\delta_1, \ \delta_2 \leq eps$). Notice that $\delta$ can be approximated as, 
 \end{paracol}
 
 \begin{equation*}
@@ -1221,7 +1335,12 @@ Donde $\delta_1$ representa el error relativo cometido en el producto y $\delta_
 \begin{paracol}{2}
 Podemos concluir que, en este caso, el error de redondeo relativo duplica al de una operación aritmética sencilla. En general, el error tenderá a multiplicarse con el número de operaciones aritméticas encadenadas.
 
-Hay situaciones en las cuales los errores de redondeo que se producen durante una operación aritmética son considerables por ejemplo, cuando se suman cantidades grandes con cantidades pequeñas,
+Hay situaciones en las cuales los errores de redondeo que se producen durante una operación aritmética son considerables. Por ejemplo, cuando se suman cantidades grandes con cantidades pequeñas,
+
+\switchcolumn
+We may conclude that, in this case, the rounding error doubles the error of a simple arithmetical operation. An, in general, the error tends to multiply with the number of linked operations.
+
+In some situations, the rounding errors derived from an arithmetical operation are notable. For example, when we add small quantities with large ones,
 \end{paracol}
 \begin{equation*}
 \text{flotante}(1.5\cdot10^{38}+1.0\cdot10^0)=1.5\cdot10^{38} + 0
@@ -1230,6 +1349,11 @@ Hay situaciones en las cuales los errores de redondeo que se producen durante un
 En este caso, durante el proceso de alineamiento, es preciso desplazar la mantisa del número pequeño 38 posiciones decimales para poder sumarlo. Con cualquier mantisa que tenga menos de 38 dígitos el resultado es equivalente a convertir el segundo sumando en cero.
 
 Otro ejemplo es la pérdida de la propiedad asociativa,
+
+\switchcolumn
+In this case, on the alignment process, it is necessary to shift the small number mantissa 38 decimal places to be able to sum it to the large one. Using any mantissa with less than 38 digits is as much as converting the second addend into zero.
+
+Another example is the lost of the associative property,
 \end{paracol}
 \begin{equation*}
 \left. \begin{aligned}
@@ -1248,7 +1372,11 @@ x+(y+1)=0
 Los resultados pueden estar sometidos a errores muy grandes cuando la operación aritmética es la sustracción de cantidades muy parecidas. Si, por ejemplo, queremos realizar la operación $100.1-99.35=0.75$ y suponemos que estamos empleando una representación en punto flotante con una mantisa de cuatro dígitos y los números representados en base 10 ($100.1=1.001\cdot10^2$, $99.35=9.935\cdot 10^1$) 
 
  1. \textbf{Alineamiento}
- \end{paracol}
+ \switchcolumn
+ The results may be subject to very large errors when the arithmetical operation is the subtraction of two very similar quantities. Suppose we want to carry out the operation $100.1-99.35=0.75$  using a floating-point representation with 4-digits mantissa and the numbers represented in base-10. ($100.1=1.001\cdot10^2$, $99.35=9.935\cdot 10^1$) 
+
+1. \textbf{Alignment} 
+\end{paracol}
  
 \begin{equation*}
 9.935\cdot 10^1\rightarrow 0.994 \cdot 10^2
@@ -1256,16 +1384,22 @@ Los resultados pueden estar sometidos a errores muy grandes cuando la operación
 
 \begin{paracol}{2}
 2. \textbf{Operación}
+\switchcolumn
+2. \textbf{Operation}
 \end{paracol}
+\begin{minipage}{\textwidth}
+	\centering
 \begin{tabular}{c r}
 &$1.001\cdot10^2$\\
 $-$&$0.994\cdot10^2$\\
 \hline
 &$0.007\cdot10^2$
 \end{tabular}\\
-
+\end{minipage}
 \begin{paracol}{2}
-3. \textbf{normalización}
+3. \textbf{Normalización}
+\switchcolumn
+3. \textbf{Normalisation}
 \end{paracol}
 \begin{equation*}
 0.007\cdot10^2\rightarrow 7.000\cdot10^{-1}
@@ -1380,30 +1514,58 @@ y=(\sqrt{x^2+1}-1)\cdot\left(\frac{\sqrt{x^2+1}+1}{\sqrt{x^2+1}+1}\right)=\frac{
 \begin{paracol}{2}
 \subsection{Errores de desbordamiento}
 
-Al, hablar del rango finito de los números representables, se indicó cómo trata el éstandar IEEE 754 los números que desbordan los límites de representación. Al realizar operaciones aritméticas, es posibles llegar a situaciones en las que el resultado sea un número no representable bien por se demasiado grande en magnitud, (\emph{Overflow} positivo o negativo) o por ser demasiado pequeño, (\emph{underflow} positivo o negativo.) Un ejemplo que nos permite ilustrar este fenómeno es el del cálculo del módulo de un vector,
+Al, hablar del rango finito de los números representables, se indicó cómo trata el éstandar IEEE 754 los números que desbordan los límites de representación. Al realizar operaciones aritméticas, es posibles llegar a situaciones en las que el resultado sea un número no representable bien por se demasiado grande en magnitud, (\emph{Overflow} positivo o negativo) o por ser demasiado pequeño, (\emph{underflow} positivo o negativo). Un ejemplo que nos permite ilustrar este fenómeno; es el del cálculo del módulo de un vector,
+
+\switchcolumn
+\subsection{Overflow and underflow\\ errors}
+When we spoke above the representable numbers finite rank, we showed how the IEEE 754 standard deals with the numbers that overflows the representation boundaries. When we perform arithmetic operations it is possible to arrive to situations where the operation result be a non-representable number because its magnitude is too large (positive or negative overflow) or because its magnitude  is too small (positive or negative underflow). We will present an example that allows us to show this phenomenon; the computing of a vector module,     
 \end{paracol}
 
 \begin{equation*}
 \vert\vert\vec{v}\vert\vert=\vert\vert(v_1, v_2\cdots v_n\vert\vert=\sqrt{\sum_{i=1}^nv_i^2}
 \end{equation*}
 \begin{paracol}{2}
-Supongamos que creamos el siguiente programa en Matlab para calcular el módulo de un vector
+El siguiente módulo de python contiene dos funciones para calcular la norma de un vector. Vamos a fijarnos en primer lugar en la funcion \mintinline{python}{norma_naive}.
+\switchcolumn
+The following Python module includes two functions to calculate a vector norm. Let's first examine the function \mintinline{python}{norma_naive}.
 \end{paracol}
-% \begin{lstlisting}
-% function m=norma(x)
-% %inicializamos a cero la variable que contendrá la norma del vector.
-% m=0;
-% n=length(x) %calculamos la longitud del vector.
-% %creamos un bucle para ir sumando los cuadrados de las componentes
-% for i=1:n
-% m=m+x(i)^2;
-% end
-
-% %calculamos la raíz cuadrada del resultado del bucle
-% m=sqrt(m)
-% \end{lstlisting}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=norm\_naive.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/aritmetica_del_computador/codigo_abierto/norm_naive.py}
 \begin{paracol}{2}
-El programa anterior provocará un error de desbordamiento incluso para n=1, si introducimos un número cuyo cuadrado sea mayor que el mayor número representable. Por ejemplo si introducimos el número, $ 2^{1024/2}=1.340780792994260e+154$ en nuestro programa Matlab devolverá como solución \emph{inf}. Es decir, el resultado produce un error de desbordamiento. El problema se produce en el bucle, al calcular el cuadrado del número,
+\mintinline{python}{norm_naive} provocará un error de desbordamiento incluso para n=1, si introducimos un número cuyo cuadrado sea mayor que el mayor número representable. Si
+ introducimos el número, $ 2^{1024/2} =1.340780792994260e+154$ en nuestro programa, Python devolverá como solución \emph{inf}.
+
+\switchcolumn
+\mintinline{python}{norm_naive} will generate an overflow error even for n=1, provide we introduce a number whose square is greater that the largest representable number. If we introduce the number $ 2^{1024/2}=1.340780792994260e+154$, our function will return \emph{inf} and we also get a warning from Python. 
+\end{paracol}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+	\begin{minted}{python}
+In [77]: x= np.array([2**(1024/2)])
+		
+In [78]: m = norma(x)
+/home/juan/LCC_Python/codigos/aritmetica_del_computador/codigo_abierto/norm_naive.py:28:
+RuntimeWarning: overflow encountered in scalar power
+m = m +e**2
+		
+In [79]: m
+Out[79]: inf
+	\end{minted}
+\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
+ Es decir, el resultado produce un error de desbordamiento. El problema se produce en el bucle, al calcular el cuadrado del número,
+ \switchcolumn
+ So, the result we get is an overflow error. The problem takes place in the loop when it calculate the square of the number,
 \end{paracol}
 \begin{equation*}
 \left(2^{1024/2}\right)^2=2^{1024}> (2-2^{-52})\cdot 2^{1023}
@@ -1412,66 +1574,67 @@ El programa anterior provocará un error de desbordamiento incluso para n=1, si 
 Una vez producido el desbordamiento el resto de las operaciones quedan invalidadas. Como en casos anteriores, la solución a este tipo de problemas exige modificar la forma en que se realizan los cálculos. Un primer paso sería igualar el módulo al valor absoluto del número cuando n=1. De este modo, el modulo del número propuesto en el ejemplo anterior se podría calcular correctamente.
 
 Todavía es posible mejorar el programa, y ampliar el rango de vectores para los que es posible calcular el módulo. Para ello es suficiente recurrir a un pequeño artificio: dividir los elementos del vector por el elemento de mayor tamaño en valor absoluto, calcular el módulo del vector resultante, y multiplicar el resultado de nuevo por el elemento de mayor tamaño,
+
+\switchcolumn
+once the programs produces the overflow, the remaining operation are invalid. Like in previous cases, we can solve this kind of problems modifying the method we follow to compute the result. A first step would be to make the norm equal to the absolute value of the number in case n=1. This way we can correctly compute the norm of the number proposed in the previous example.
+
+However, if we can widen the rank of the vector for which we want to compute the norm, more than this fix is needed. We can improve our code using a small trick: we divide the elements of the vector for the largest element in absolute value, then calculate the module of the vector so obtained, and eventually multiply again the result for the largest number. 
 \end{paracol}
 \begin{align*}
 \sqrt{\sum_{i=1}^nv_i^2}=\vert\max{v_i}\vert\cdot\sqrt{\sum_{i=1}^n\left(\frac{v_i}{\vert\max{v_i}\vert}\right)^2}
 \end{align*}
 \begin{paracol}{2}
-El siguiente código permite calcular el módulo de un vector usando este procedimiento\footnote{El programa no funcionará correctamente para vectores cuyos primeros elementos sean 0, $(0,0,0\cdots$},
+La segunda función incluida en el anterior script the python, \mintinline{python}{norm_robust}, calcula la norma de un vector empleando el procedimiento que acabamos de describir.	
+\switchcolumn
+The second function included in the python script above, \mintinline{python}{norm_robust}, computes the norm of a vector using the procedure just described,
 \end{paracol}
-% \begin{lstlisting}
-% function m=norma(x)
-% n=length(x); %calculamos la longitud del vector.
-% %si n=1 nos limitamos a devolver el valor absoluto del número introducido
-% if n==1
-% 	x=abs(x);
-% else
-% % inicializamos con el primer elemento la variable que contendrá
-% % al mayor de los elementos del vector
-% mayor=abs(x(1));
+%ojo aquí iba el segundo código, ahora van los dos en uno
+\begin{center}
+	\begin{minipage}{\textwidth}
+		\begin{minted}{python}
+In [109]: x = np.array([0,0,0,0,0,2**(1024/2),2**(1024/2)])
 
-% % inicialimos a 1 la variable que contendrá la suma de
-% % los cuadrados de los elementos divididos por el valor de ello
+In [110]: x
+Out[110]: 
+array([0.00000000e+000, 0.00000000e+000, 0.00000000e+000, 0.00000000e+000,
+0.00000000e+000, 1.34078079e+154, 1.34078079e+154])
 
-% nscalado=1
+In [111]: m = norma_naive(x)
+/home/juan/LCC_Python/codigos/aritmetica_del_computador/codigo_abierto/norm_naive.py:28:
+RuntimeWarning: overflow encountered in scalar power
+m = m +e**2
 
-% % creamos un bucle para ir sumando los cuadrados de las componentes.
-% % empezamos en el segundo elemento, puesto que el primero ya lo tenemos.
-% 	for i=2:n	
-% 		% calculamos el valor absoluto del elemento i
-% 		modxi=abs(x(i))
-% 		% comparamos con modxi con el mayor elemento obtenido hasta
-% 		% aquí
-% 		if mayor<modxi
-% 			% si modxi es mayor, será el elemento más grande encontrado
-% 			% hasta esta iteración
-% 			% cambiamos el valor de la suma 
-% 			mscalado=1+mscalado*(modxi/mayor)^2;
-% 			% definimos mayor como el nuevo valor encontrado
-% 			mayor=modxi;
-% 		else
-% 			% si no es el más grande, nos limitamos a sumarlo al resto
-% 			mscalado=mscalado+(modxi/mayor)^2;
-	
-% 		end
-% % una vez completado el bucle que calcula la suma de cuadrados,
-% % obtenemos la raíz cuadrada, y multiplicamos por el mayor.
-% m=mayor*sqrt(mscalado)
-% \end{lstlisting}
+In [112]: m
+Out[112]: inf
+
+In [113]: m = norma_robust(x)
+
+In [114]: m
+Out[114]: 1.8961503816218355e+154
+	    
+\end{minted}
+\end{minipage}
+\end{center}
 \begin{paracol}{2}
 Si aplicamos este programa a obtener la norma del vector,
+\switchcolumn
+If we apply this program to obtaint the norm of the vector,
 \end{paracol}
 \begin{equation*}
 x=[2^{1024/2}\ 2^{1024/2}]
 \end{equation*}
 \begin{paracol}{2}
 obtenemos como resultado,
+\switchcolumn
+We get the folloing result,
 \end{paracol}
 \begin{equation*}
-m=1.896150381621836\cdot10^{154}
+m=1.8961503816218355\cdot10^{154}
 \end{equation*}
 \begin{paracol}{2}
 En lugar de un error de desbordamiento (\emph{inf}).
+\switchcolumn
+Instead an overflow error (\emph{inf}) 
 \end{paracol}
 
 
