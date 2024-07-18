@@ -1407,13 +1407,17 @@ $-$&$0.994\cdot10^2$\\
 
 \begin{paracol}{2}
 Los pasos $4$ y $5$ no son necesarios en este ejemplo. Si calculamos ahora el error absoluto de redondeo cometido,
+\switchcolumn
+Steps 4 and 5 are not necessary in this example If we now calculate the absolute rounding error we get, 
 \end{paracol}
 \begin{equation*}
 \vert 0.75-0.7 \vert =0.05
 \end{equation*} 
 \begin{paracol}{2}
 Y el error relativo,
-\end{paracol}{2}
+\switchcolumn
+And the relative error,
+\end{paracol}
 
 \begin{equation*}
 \left\vert\frac{0.75-0.7}{0.75}\right\vert\approx 0.0666
@@ -1424,6 +1428,13 @@ Es decir, se comete un error de un $6,7\%$. El problema en este caso surge porqu
  En un sistema de representación en punto flotante en que los números se representan en base $\beta$ y el tamaño de la mantisa es $p$, Si las sustracciones se realizan empleando $p$ dígitos, el error de redondeo relativo puede llegar a ser $\beta-1$.
  
 Veamos un ejemplo para números en base 10 ($\beta=10$). Supongamos que empleamos una mantisa de cuatro dígitos y que queremos realizar la operación $1.000\cdot10^0-9.999\cdot10^{-1}$. El resultado exacto sería, $1-0.9999=0.0001$. Sin embargo, en el proceso de alineamiento,
+
+\switchcolumn
+Hence, we have approximately a $6.7\%$ error. In this case the problem arises during the alignment process, because we lost a significant digit.
+
+In a floating-point representation system, where we represent the number in base-$\beta$ and the mantissa size is $p$, if we perform differentiation using $p$ digits, we can expect a relative rounding error that can reach a maximum value of $\beta-1$.
+
+Let's see an example for numbers written in base-10 ($\beta=10$). Suppose we are using a four-digits mantissa and we want to carry out the operation $1.000\cdot10^0-9.999\cdot10^{-1}$. The exact result would be, $1-0.9999=0.0001$. Nevertheless, in the alignment process,
 \end{paracol}
 
 \begin{equation*}
@@ -1431,16 +1442,24 @@ Veamos un ejemplo para números en base 10 ($\beta=10$). Supongamos que empleamo
 \end{equation*} 
 \begin{paracol}{2}
 Si redondeamos el número por exceso, el resultado de la sustracción sería cero. Si lo redondeamos por defecto,
+
+\switchcolumn
+If we round the number by excess the result of the substraction will be zero. If we round the number by truncation, 
 \end{paracol}
+\begin{minipage}{\textwidth}
+	\centering
 \begin{tabular}{c r}
 &$1.000\cdot10^0$\\
 $-$&$0.999\cdot10^0$\\
 \hline
 &$0.001\cdot10^0$
 \end{tabular}\\
+\end{minipage}
 
 \begin{paracol}{2}
 y el error relativo cometido sería,
+\switchcolumn
+and the relative error we get would be,
 \end{paracol}
 
 \begin{equation*}
@@ -1452,6 +1471,13 @@ Para paliar estos problemas, el estándar IEEE 754 establece que las operaciones
 Si repetimos la sustracción, $100.1-99.35$, empleando los dos dígitos de guarda,
 
 1. \textbf{Alineamiento}
+
+\switchcolumn
+To alleviate these problems, the IEEE 754 standard establishes that arithmetical operation should be performed always using two extra digits to save the intermediate results. These two extra bits are called protection digit or guard digits.
+If we repeat the subtraction, $100.1-99.35$, but using now the two guard digits,
+
+1. \textbf{Alignment.}  
+
 \end{paracol}
 \begin{equation*}
 9.935{\color{red}00}\cdot=10^1\rightarrow 0.993{\color{red}50} \cdot 10^2
@@ -1459,13 +1485,18 @@ Si repetimos la sustracción, $100.1-99.35$, empleando los dos dígitos de guard
 
 \begin{paracol}{2}
 2. \textbf{Operación}
+\switchcolumn
+2. \textbf{Operation}
 \end{paracol}
+\begin{minipage}{\textwidth}
+\centering
 \begin{tabular}{c r}
 &$1.001{\color{red}00} \cdot10^2$\\
 $-$&$0.993{\color{red}50}\cdot10^2$\\
 \hline
 &$0.007{\color{red}50}\cdot10^2$
 \end{tabular}\\
+\end{minipage}
 
 \begin{paracol}{2}
 3. \textbf{normalización}
@@ -1477,11 +1508,18 @@ $-$&$0.993{\color{red}50}\cdot10^2$\\
 \begin{paracol}{2}
 En este caso, obtenemos el resultado exacto. En general, empleando dos bits de guarda para realizar las sustracciones el error de redondeo es siempre menor que el \emph{eps} del computador.
 
-
-\subsection{Anulación catastrófica}\index{Anulación catastrófica}
-La anulación catastrófica se produce cuando en una operación aritmética, típicamente la sustracción,  los dígitos más significativos de los operandos, que no están afectados por el redondeo, se cancelan entre sí. El resultado contendrá fundamentalmente dígitos que sí están afectados por errores de redondeo. Veamos un ejemplo,
+\subsection{Anulación catastrófica}\index{Anulación catastrófica.}
+La anulación catastrófica se produce cuando en una operación aritmética, típicamente la sustracción,  los dígitos más significativos de los operandos, que no están afectados por el redondeo, se cancelan entre sí. El resultado contendrá fundamentalmente dígitos que sí están afectados por errores de redondeo. Veamos un ejemplo.
 
 Supongamos que queremos realizar la operación $b^2-4\cdot a \cdot c$ empleando números en base 10, y una mantisa de 5 dígitos. Supongamos que los números empleados son: $b= 3.3357\cdot10^0$, $a=1.2200\cdot10^0$, $c=2.2800\cdot10^0$. El resultado exacto de la operación es,
+
+\switchcolumn
+In this case we obtain the exact result. In general, using two guards bit to perform subtractions, the rounding error is always less than the machine \emph{epsilon}. 
+
+\subsection{Catastrophic cancellation.}\index[eng]{Catastrophic cancellation.}
+Catastrophic cancellation takes place when performing an arithmetical operation --typically the subtraction-- the more significant digits that are not affected by the rounding cancel between them. The result will then contain digits that are indeed affected by the rounding. Let's see an example,
+
+Suppose we can carry out the operation $b^2-4\cdot a \cdot c$ using base-10 numbers and a five-digit mantissa. Suppose also that we employ the numbers: $b= 3.3357\cdot10^0$, $a=1.2200\cdot10^0$, $c=2.2800\cdot10^0$. The exact result of the operation is,
 \end{paracol}
 \begin{equation}
 b^2-4\cdot a\cdot c=4.944\cdot10^{-4}
@@ -1489,6 +1527,9 @@ b^2-4\cdot a\cdot c=4.944\cdot10^{-4}
 
 \begin{paracol}{2}
 Si realizamos las operaciones en la representación pedida,
+\switchcolumn
+If we perform the operations in the requested representation,
+
 \end{paracol}
 \begin{align*}
 b^2=1.1126{\color{red}89}\cdot10^1\\
@@ -1499,6 +1540,11 @@ b^2-4\cdot a\cdot c=5.0000\cdot10^{-4}
 El error relativo cometido es aproximadamente un 1\%. Como se han utilizado dos bits de guarda en las operaciones intermedias, la sustracción no comente en este caso error alguno. El error se debe a los redondeos de los resultados anteriores. Una vez realizada la sustracción, el resultado solo contiene los dígitos sometidos a redondeo ya que los anteriores se han anulado en la operación.
 
 Como regla práctica se debe evitar al realizar operaciones aritméticas aquellas situaciones en las que se sustraen cantidades casi iguales. Veamos otro ejemplo, para ilustrar esta idea. Supongamos que queremos realizar la operación,
+
+\switchcolumn
+We get a relative error of around a $1\%$. We used two guard bits in the intermediate operations, so the subtraction makes no mistake. The error is due to the rounding of previous results. Once the subtraction is performed, the result only holds digits affected by the previous rounding because the first (more significant) digits have been cancelled during the operation.
+
+As a thumb rule, we have to avoid, when performing arithmetical operation, the subtraction of of almost equal quantities. Let's see another example, to clarify this idea. Suppose we whant to carry out the operation,          
 \end{paracol}
 
 \begin{equation*}
@@ -1506,6 +1552,9 @@ y=\sqrt{x^2+1}-1
 \end{equation*}
 \begin{paracol}{2}
 Para valores pequeños de $x$, esta operación implica una anulación con pérdida de dígitos significativos. Una posible solución es utilizar una forma alternativa de construir la ecuación. Si multiplicamos y dividimos por el conjugado,
+
+\switchcolumn
+For small values of $x$, this operation implies a cancellation with the loss of significant digits. A possible solution is to write the equation using an alternative form. If we multiply and divide by the conjugate,
 \end{paracol}
 \begin{equation*}
 y=(\sqrt{x^2+1}-1)\cdot\left(\frac{\sqrt{x^2+1}+1}{\sqrt{x^2+1}+1}\right)=\frac{x^2}{\sqrt{x^2+1}+1}
