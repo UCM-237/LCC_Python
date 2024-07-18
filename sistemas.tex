@@ -557,9 +557,11 @@ def diag_sys(A,b):
 \end{minted}
 
 
-%%%%%% FRONTERA %%%%%%%%%%%%%%%%
-
+\begin{paracol}{2}
 \paragraph{Sistemas triangulares inferiores: método de sustituciones progresivas.} Un sistema triangular inferior de $n$ ecuaciones con $n$ incógnitas tendrá la forma general,
+\switchcolumn
+\paragraph{Lower triangular systems: method of progressive substitutions.} A lower triangular system of $n$ equations with $n$ unknowns will have the general form,
+\end{paracol}
 
 \begin{equation*}
 \left. \begin{aligned}
@@ -585,16 +587,32 @@ b_n
 \end{pmatrix}}^b
 \end{equation*}
 
+\begin{paracol}{2}
 El procedimiento para resolverlo a \emph{mano} es muy sencillo,
 despejamos la primera la primera incógnita de la primera ecuación,
 \begin{equation*}
 x_1=\frac{b_1}{a_{11}}
 \end{equation*}
+\switchcolumn  
+The procedure to solve to "hand" is very simple,
+we clear the first unknown from the first equation,
+\begin{equation*}
+x_1=\frac{b_1}{a_{11}}
+\end{equation*}
 
+\switchcolumn
 A continuación sustituimos este resultado en la segunda ecuación, y despejamos $x_2$,
 \begin{equation*}
 x_2=\frac{b_2-a_{21}x_1}{a_{22}}
 \end{equation*}
+
+\switchcolumn
+Next, we substitute this result in the second equation and clear $x_2$
+\begin{equation*}
+x_2=\frac{b_2-a_{21}x_1}{a_{22}}
+\end{equation*}
+
+\switchcolumn
 
 De cada ecuación vamos obteniendo una componente del vector solución, sustituyendo las soluciones obtenidas en las ecuaciones anteriores, así cuando llegamos a la ecuación $i$,
 
@@ -602,45 +620,61 @@ De cada ecuación vamos obteniendo una componente del vector solución, sustituy
 x_i=\frac{b_i-\sum_{j=1}^{i-1}a_{ij}x_j}{a_{ii}}
 \end{equation*}
 
+\switchcolumn
+From each equation we obtain a component of the solution vector, substituting the solutions obtained in the previous equations, so when we arrive at the equation $i$,
+
+\begin{equation*}
+x_i=\frac{b_i-\sum_{j=1}^{i-1}a_{ij}x_j}{a_{ii}}
+\end{equation*}
+
+\switchcolumn
 Si repetimos este mismo proceso hasta llegar a la última ecuación del sistema, $n$, habremos obtenido la solución completa.
 
 EL siguiente código calcula la solución de un sistema triangular inferior mediante sustituciones progresivas,
 
-\begin{lstlisting}
-function x = progresivas(A,b)
-% Esta Función permite obtener la solucion de un sistema triangular inferior
-% empleando sustituciones progresivas. La variables de entrada son la matriz
-% de coeficientes A  y el vector de terminos independientes b. la solucion se
-% devuelve como un vector columna en la varible x
+\switchcolumn
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+If we repeat this same process until we reach the last equation of the system, $n$, we will have obtained the complete solution.
 
-% Obtenemos el tamaño de la matriz de coeficientes y comprobamos que es
-% cuadrada,
-[f,c]=size(A);
-if f~=c
-    error('la matriz de coeficientes no es cuadrada')
-end
-% construimos un vector solucion, inicialmente formado por ceros,
-x=zeros(f,1);
-% construimos un bucle for para ir calculando progresivamente las soluciones
-% del sistema
-for i=1:f
-    % primero igualamos la solución al termino independiente de la ecuación
-    % que toque...
-    x(i)=b(i)
-    % y luego creamos un bucle para ir restando todas las soluciones
-    % anteriores...
-    for j=1:i-1
-    x(i)=x(i)-A(i,j)*x(j)
-    end
-    % para terminar dividimos por el elemento de la diagonal de la matriz de
-    % coeficientes...
-    x(i)=x(i)/A(i,i)
-end
-\end{lstlisting}
+The following code calculates the solution of a lower triangular system by progressive substitutions,
+\end{paracol}
+
+\begin{minted}{python}
+import numpy as np
+
+def progressive(A,b):
+    ''' This function computes the solution of a lower equation system using 
+    progressive substitution. It receives the coefficient matriz A and the 
+    independent term vector b. It returns the vector solution x
+    '''
+    # Coefficient matrix size. Return error if not square
+    [f,c]=np.shape(A)
+    if f!=c:
+        print("A is not square")
+        return
+    # To build the solution vector x
+    x=np.zeros(f)
+    x=b
+
+    for i in range(f):
+        '''The inner block subtracts to the independent term the previous solution
+         multiplied by the correspondent coefficient'''
+        for j in range(0,i):
+            x[i]-=x[j]*A[i,j]
+        '''Finaly divide the result by the diagonal coefficient'''
+        x[i]=(x[i])/A[i,i]
+    return x
+
+\end{minted}
+
+\begin{paracol}{2}
+
 
 \paragraph{Sistemas triangulares superiores: método de sustituciones regresivas.} En este caso, el sistema general de $n$ ecuaciones con $n$ incógnitas tendrá la forma general,
+
+\switchcolumn
+\paragraph{Upper triangular systems: method of backward substitutions.} In this case, the general system of $n$ equations with $n$ unknowns will have the general form,
+\end{paracol}
 
 \begin{equation*}
 \left. \begin{aligned}
@@ -666,8 +700,8 @@ b_n
 \end{pmatrix}}^b
 \end{equation*}
 
-
-El método de resolución es idéntico al de un sistema triangular inferior, simplemente que ahora, empezamos a resolver por la última ecuación,
+\begin{paracol}{2}
+    El método de resolución es idéntico al de un sistema triangular inferior, simplemente que ahora, empezamos a resolver por la última ecuación,
 \begin{equation*}
 x_n=\frac{b_n}{a_{nn}}
 \end{equation*}
@@ -680,18 +714,53 @@ x_{n-1}=\frac{b_{n-1}-a_{(n-1)n}x_{n}}{a_{(n-1)(n-1)}}
 x_i=\frac{b_i-\sum_{j=i+1}^{n}a_{ij}x_j}{a_{ii}}
 \end{equation*}
 
-El código para implementar este método es similar al de las sustituciones progresivas. Se deja como ejercicio el construir una función en Matlab que calcule la solución de un sistema triangular superior por el método de las sustituciones regresivas.
+\switchcolumn
+  El método de resolución es idéntico al de un sistema triangular inferior, simplemente que ahora, empezamos a resolver por la última ecuación,
+\begin{equation*}
+x_n=\frac{b_n}{a_{nn}}
+\end{equation*}
+And we keep substituting upwards,
+\begin{equation*}
+x_{n-1}=\frac{b_{n-1}-a_{(n-1)n}x_{n}}{a_{(n-1)(n-1)}}
+\end{equation*}
 
+\begin{equation*}
+x_i=\frac{b_i-\sum_{j=i+1}^{n}a_{ij}x_j}{a_{ii}}
+\end{equation*}
 
+\switchcolumn
+
+El código para implementar este método es similar al de las sustituciones progresivas. Se deja como ejercicio el construir una función en Python que calcule la solución de un sistema triangular superior por el método de las sustituciones regresivas.
+
+\switchcolumn
+The code to implement this method is similar to that of forward substitutions. It is left as an exercise to build a Python function that calculates the solution of an upper triangular system by the method of backward substitutions.
+\switchcolumn
 \subsection{Métodos basados en las factorizaciones}
-Puesto que sabemos como resolver sistemas triangulares, una manera de resolver sistemas más complejos sería encontrar métodos para reducirlos a sistemas triangulares. De este modo evitamos invertir la matriz de coeficientes y los posibles problemas de estabilidad numérica derivados de dicha operación. En el capítulo anterior \ref{sec:fact}, vimos varios métodos de factorizar una matriz, que permiten una aplicación directa a la resolución de sistemas.
-\paragraph{Factorización LU.} En el capítulo anterior \ref{sec:LU} vimos como factorizar una matriz en el producto de dos, una triangular inferior $L$ y una triangular superior $U$. La factorización podía incluir pivoteo de filas, para alcanzar una solución numéricamente estable. En este caso la factorización LU tomaba la forma,
+Puesto que sabemos como resolver sistemas triangulares, una manera de resolver sistemas más complejos sería encontrar métodos para reducirlos a sistemas triangulares. De este modo evitamos invertir la matriz de coeficientes y los posibles problemas de estabilidad numérica derivados de dicha operación. Si podemos expresar la matriz $A$ como el producto de matrices diagonales o triangulares podremos resolver el sistema usando los métodos anteriores. \textbf{Factorizar} una matriz es descomponer la misma en el producto de dos o más matrices de alguna forma canónica.
+
+\switchcolumn
+\subsection{Methods based on factorisations}
+
+Since we know how to solve triangular systems, one way to solve more complex systems would be to find methods to reduce them to triangular systems. In this way we avoid inverting the matrix of coefficients and the possible problems of numerical stability derived from such an operation. If we can express the matrix $A$ as the product of diagonal or triangular matrices we can solve the system using the above methods. \textbf{To factorise} a matrix is to decompose it into the product of two or more matrices of some canonical form.
+
+\switchcolumn
+\paragraph{Factorización LU.} La factorización LU consiste en factorizar una matriz en el producto de dos, una triangular inferior $L$ y una triangular superior $U$. La factorización podía incluir pivoteo de filas, para alcanzar una solución numéricamente estable. En este caso la factorización LU toma la forma,
 \begin{equation*}
 P\cdot A = L\cdot U
 \end{equation*}
 
 Donde $P$ representa una matriz de permutaciones.
 
+\switchcolumn
+
+\paragraph{LU factorisation}. LU factorisation consists of factoring a matrix into the product of two, a lower triangular $L$ and an upper triangular $U$. The factorisation could include pivoting rows, to achieve a numerically stable solution. In this case the LU factorisation takes the form,
+\begin{equation*}
+P\cdot A = L\cdot U
+\end{equation*}
+
+Where $P$ represents a matrix of permutations.
+
+\switchcolumn
 Supongamos que queremos resolver un sistema de $n$ ecuaciones lineales con $n$ incógnitas que representamos genéricamente en forma matricial, como siempre,
 \begin{equation*}
 A\cdot x=b
@@ -703,33 +772,81 @@ Si calculamos la fatorización LU de su matriz de  coeficientes,
 A \rightarrow P\cdot A = L\cdot U
 \end{equation*}
 
+\switchcolumn
+Suppose we want to solve a system of $n$ linear equations with $n$ unknowns that we represent generically in matrix form, as usual,
+\begin{equation*}
+A\cdot x=b
+\end{equation*}
+
+If we compute the LU factorisation of the coefficient matrix,
+
+\begin{equation*}
+A \rightarrow P\cdot A = L\cdot U
+\end{equation*}
+
+\switchcolumn
 Podemos transformar nuestro sistema de ecuaciones en uno equivalente aplicando la matriz de permutaciones, por la izquierda, a ambos lados del igual. El efecto es equivalente a que cambiáramos el orden en que se presentan las ecuaciones del sistema,
 
 \begin{equation*}
 A\cdot x=b\rightarrow P\cdot A \cdot x=P\cdot b
 \end{equation*}
 
+\switchcolumn
+We can transform our system of equations into an equivalent one by applying the matrix of permutations, from the left, to both sides of the equal one. The effect is equivalent to changing the order in which the equations of the system are presented,
+
+\begin{equation*}
+A\cdot x=b\rightarrow P\cdot A \cdot x=P\cdot b
+\end{equation*}
+
+\switchcolumn
 Si sustituimos ahora $P\cdot A$ por su factorización LU,
 
 \begin{equation*}
 P\cdot A \cdot x=P\cdot b \rightarrow L\cdot U \cdot x= P\cdot b
 \end{equation*}
 
+\switchcolumn
+Now, we substitute $P \cdot A$ with its LU factorisation,
+\begin{equation*}
+P\cdot A \cdot x=P\cdot b \rightarrow L\cdot U \cdot x= P\cdot b
+\end{equation*}
+
+\switchcolumn
 El nuevo sistema puede resolverse en dos pasos empleando sustituciones regresivas y sustituciones progresivas. Para ello, asociamos el producto $U\cdot x$, a un vector de incógnitas auxiliar al que llamaremos $z$,
 
 \begin{equation*}
 U\cdot x=z
 \end{equation*}
 
+\switchcolumn
+The new system can be solved in two steps using backward and forward substitutions. To do this, we associate the product $U \cdot x$, to a vector of auxiliary unknowns which we will call $z$,
+
+\switchcolumn
 Si sustituimos nuestro vector auxiliar $z$ en la expresión matricial de nuestro sistema de ecuaciones,
 
 \begin{equation*}
 L\cdot \overbrace{U\cdot x}^z=P\cdot b \rightarrow L\cdot z=P\cdot b
 \end{equation*}
 
+\switchcolumn
+If we substitute our auxiliary vector $z$ into the matrix expression of our system of equations,
+
+\begin{equation*}
+L\cdot \overbrace{U\cdot x}^z=P\cdot b \rightarrow L\cdot z=P\cdot b
+\end{equation*}
+
+\switchcolumn
 El sistema resultante es triangular inferior, por lo que podemos resolverlo por sustituciones progresivas, y obtener de este modo los valores de $z$. Podemos finalmente obtener la solución del sistema a través de la definición de $z$; $U\cdot x =z$, se trata de un sistema triangular superior, que podemos resolver mediante sustituciones regresivas.
 
+\switchcolumn
+The resulting system is lower triangular, so we can solve it by forward substitutions, and thus obtain the values of $z$. We can finally obtain the solution of the system through the definition of $z$; $U \cdot x =z$, it is an upper triangular system, which we can solve by backward substitutions.
+
+\switchcolumn
 Veamos un ejemplo. Supongamos que queremos resolver el sistema de ecuaciones lineales,
+\switchcolumn
+Let us look at an example. Suppose we want to solve the system of linear equations,
+\end{paracol}
+
 
 \begin{equation*}
 \begin{pmatrix}
@@ -747,7 +864,18 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
+    
 En primer lugar deberíamos comprobar que la matriz de coeficiente esta bien condicionada,
+
+\switchcolumn
+First we should check that the coefficient matrix is well conditioned,
+\end{paracol}
+
+%%%%%% FRONTERA %%%%%%%%%%%%%%%%
+
+
+
 \begin{verbatim}
 >> A=[1 3 2;2 -1 1;1 4 3]
 A =
