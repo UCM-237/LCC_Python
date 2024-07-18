@@ -1,0 +1,65 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python3}
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Wed Jul 17 14:43:50 2024}
+\PYG{l+s+sd}{This }
+\PYG{l+s+sd}{@author: juan}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+
+\PYG{k}{def} \PYG{n+nf}{norma\PYGZus{}naive}\PYG{p}{(}\PYG{n}{x}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    This program (naive) calculates the norm of a vector}
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    x : TYPE Real Vector}
+\PYG{l+s+sd}{        DESCRIPTION. imput vector  whose norm we wamma get}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    m: Type Real number}
+\PYG{l+s+sd}{       Description. The vector norm }
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    
+    
+    \PYG{n}{m} \PYG{o}{=} \PYG{l+m+mf}{0.} 
+    \PYG{k}{for} \PYG{n}{e} \PYG{o+ow}{in} \PYG{n}{x}\PYG{p}{:}
+        \PYG{n}{m} \PYG{o}{=} \PYG{n}{m} \PYG{o}{+}\PYG{n}{e}\PYG{o}{**}\PYG{l+m+mi}{2}
+        
+    \PYG{n}{m} \PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{m}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{m}
+
+\PYG{k}{def} \PYG{n+nf}{norma\PYGZus{}robust}\PYG{p}{(}\PYG{n}{x}\PYG{p}{):}
+\PYG{+w}{       }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{       This program calculates the norm of a vector}
+\PYG{l+s+sd}{       Parameters}
+\PYG{l+s+sd}{       \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{       x : TYPE Real Vector}
+\PYG{l+s+sd}{           DESCRIPTION. imput vector  whose norm we wamma get}
+
+\PYG{l+s+sd}{       Returns}
+\PYG{l+s+sd}{       \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{       m: Type Real number}
+\PYG{l+s+sd}{          Description. The vector norm }
+\PYG{l+s+sd}{       \PYGZdq{}\PYGZdq{}\PYGZdq{}} 
+       \PYG{n}{l} \PYG{o}{=}\PYG{n}{x}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+       \PYG{k}{if} \PYG{n}{l}\PYG{o}{==}\PYG{l+m+mi}{1}\PYG{p}{:}
+           \PYG{n}{m} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+       \PYG{k}{else}\PYG{p}{:}
+           \PYG{n}{mayor}  \PYG{o}{=} \PYG{l+m+mi}{0}
+           \PYG{n}{mscalado} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+           \PYG{k}{for} \PYG{n}{e} \PYG{o+ow}{in} \PYG{n}{x}\PYG{p}{:}
+               \PYG{k}{if} \PYG{n}{e} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                   \PYG{k}{continue}
+               \PYG{n}{modxi} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{e}\PYG{p}{)}
+               \PYG{k}{if} \PYG{n}{mayor}\PYG{o}{\PYGZlt{}}\PYG{n}{modxi}\PYG{p}{:}
+                   \PYG{n}{mscalado} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{mscalado}\PYG{o}{*}\PYG{p}{(}\PYG{n}{mayor}\PYG{o}{/}\PYG{n}{modxi}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}
+                   \PYG{n}{mayor} \PYG{o}{=} \PYG{n}{modxi}
+               \PYG{k}{else}\PYG{p}{:}
+                   \PYG{n}{mscalado} \PYG{o}{=} \PYG{n}{mscalado}\PYG{o}{+}\PYG{p}{(}\PYG{n}{modxi}\PYG{o}{/}\PYG{n}{mayor}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}
+               \PYG{n}{m} \PYG{o}{=} \PYG{n}{mayor}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{mscalado}\PYG{p}{)}
+       \PYG{k}{return} \PYG{n}{m}
+               
+\end{Verbatim}

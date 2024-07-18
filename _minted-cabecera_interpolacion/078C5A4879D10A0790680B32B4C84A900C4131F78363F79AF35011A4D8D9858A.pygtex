@@ -1,0 +1,68 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python3}
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Fri Jul 12 15:02:07 2024}
+
+
+\PYG{l+s+sd}{@author: juan}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{matplotlib} \PYG{k+kn}{import} \PYG{n}{pyplot} \PYG{k}{as} \PYG{n}{pl}
+\PYG{k}{def} \PYG{n+nf}{taylorln}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{n}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Esta función aproxima el valor del logaritmo natural de un numero}
+\PYG{l+s+sd}{    empleando para ello un polinomio de Taylor de grado n desarrollado en }
+\PYG{l+s+sd}{    torno a x=1. Las variables de entrada son: x, valor para el que se desea }
+\PYG{l+s+sd}{    calcular el logaritmo. n Grado del polinomio que se empleará en el }
+\PYG{l+s+sd}{     cálculo. La variable de salida y es el logaritmo de x. }
+\PYG{l+s+sd}{    This fuction computes (approx) the value of the natural logarithm for a number }
+\PYG{l+s+sd}{    using a degree n Taylor\PYGZsq{}s polynomial, at x0=1. input variables are: x, value to}
+\PYG{l+s+sd}{    calculate its logarithm. n degree of the polynomial useto aporaches the log.}
+\PYG{l+s+sd}{    the funtion returns the locarithm computed. }
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    x : Real}
+\PYG{l+s+sd}{        }
+\PYG{l+s+sd}{    n : int}
+\PYG{l+s+sd}{        Taylor\PYGZsq{}s polinomial Degree }
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    y : real}
+\PYG{l+s+sd}{        log(x)}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{):}
+        \PYG{n}{y} \PYG{o}{=} \PYG{n}{y}\PYG{o}{+}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{**}\PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{**}\PYG{n}{i}\PYG{o}{/}\PYG{n}{i}
+        
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}
+    
+
+\PYG{k}{def} \PYG{n+nf}{taylorcum}\PYG{p}{(}\PYG{n}{fun}\PYG{p}{,}\PYG{n}{n}\PYG{p}{,}\PYG{n}{x}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    }
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    fun : takes the taylor series of degree n, described in input function fun}
+\PYG{l+s+sd}{          and calculates and draws the result for an array of points, x }
+\PYG{l+s+sd}{        DESCRIPTION.}
+\PYG{l+s+sd}{    n : TYPE int}
+\PYG{l+s+sd}{        DESCRIPTION.}
+\PYG{l+s+sd}{        Taylor\PYGZsq{}s polynomial degree\PYGZsq{}}
+\PYG{l+s+sd}{    x : TYPE array of real numbers}
+\PYG{l+s+sd}{        DESCRIPTION. point to calculate the Taylor series}
+
+\PYG{l+s+sd}{    Returns }
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    y : Type real}
+\PYG{l+s+sd}{        DESCRIPTION: array of values computed }
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    
+    \PYG{n}{y} \PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([}\PYG{n}{fun}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{x}\PYG{p}{])}
+    \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{)}
+\end{Verbatim}
