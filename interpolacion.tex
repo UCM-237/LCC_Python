@@ -1,5 +1,5 @@
 \chapter{Interpolación y ajuste de funciones}\label{interpolacion}
-
+\chaptermark{Interp. y ajust. funciones.  \textreferencemark\ Interp. \& funct fitting}
 \epigraph{Digo que ya tú sabes que la humildad es la basa y fundamento de todas las virtudes, y que sin ella no hay alguna que lo sea. Ella allana inconvenientes, vence dificultades, y es un medio que siempre a gloriosos fines nos conduce; de los enemigos hace amigos, templa la cólera de los airados y menoscaba la arrogancia de los soberbios; es madre de la modestia y hermana de la templanza; en fin, con ella no pueden atravesar triunfo que les sea de provecho los vicios, porque en su blandura y mansedumbre se embotan y despuntan las flechas de los pecados.}{El coloquio de los perros. Miguel de Cervantes}
 
 
@@ -55,20 +55,37 @@ El uso de uno u otro de estos métodos esta asociado a la información disponibl
 \section{El polinomio de Taylor.}\index{Polinomio de Taylor}
 
 Supongamos una función infinitamente derivable en un entorno de un punto $x_0$. Su expansión en serie de Taylor se define como,
+
+\switchcolumn
+To approximate a function using  a polynomial has pros and cons. 
+
+Perhaps the main advantage, from a computing point of view, is that a polynomial is easy to evaluate using a computer as it only involves simple arithmetical operations. Besides, Polynomial integration and derivation are operations that are easy to carry out, yielding other polynomials. 
+
+Among their drawbacks we have to remark the polynomial growing towards infinity or minus infinity as the independent variable goes away zero. This can give rise in some cases to rounding errors that are difficult to handle, making the approximation for non-increasing functions very difficult.
+
+We will study three different methods: first we will see the approximation using the Taylor polynomial, very useful to approximate a function close to a point for which we know the function value. Later, we will discus polynomial interpolation and finally we present mean square polynomial fitting. 
+
+We may relate the use of one or another method to the available information on the function we want to approximate and to the objectives we want to reach with the approximation.
 \end{paracol}
 \begin{equation*}
 f(x)=f(x_0)+f'(x_0)\cdot (x-x_0)+\frac{1}{2} f''(x_0)\cdot (x-x_0)^2+\cdots + \frac{1}{n!}f^{(n)}(x_0)\cdot (x-x_0)^n+ \frac{1}{(n+1)!}f^{(n+1)}(z)\cdot (x-x_0)^{n+1}
 \end{equation*}
 
 \begin{paracol}{2}
-Donde $z$ es un punto sin determinar situado entre $x$  y $x_0$.   Si eliminamos el último término, la función puede aproximarse por un polinomio de grado $n$								
+Donde $z$ es un punto sin determinar situado entre $x$  y $x_0$. Si eliminamos el último término, la función puede aproximarse por un polinomio de grado $n$
+\switchcolumn
+Where $z$ is an indeterminate point located between $x$ and $x_0$. If we eliminate the last term the function would be approximated by a degree $n$ polynomial. 								
 \end{paracol}
+
 \begin{equation*}
 f(x)\approx f(x_0)+f'(x_0)\cdot (x-x_0)+\frac{1}{2}f''(x_0)\cdot (x-x_0)^2+\cdots + \frac{1}{n!}f^{(n)}(x_0)\cdot (x-x_0)^n
 \end{equation*}
+
 \begin{paracol}{2}
 El error cometido al aproximar una función por un polinomio de Taylor de grado $n$, viene dado por el término,
 \index{Polinomio de Taylor! Error de la aproximación}
+\switchcolumn
+The error we get when approximating a function by a degree $n$ Taylor polynomial can be obtained as, 
 \end{paracol}
 \begin{equation*}
 e(x)=\lvert f(x) -p(x)\rvert=\left\lvert\frac{1}{(n+1)!} f^{(n+1)}(z)\cdot (x-x_0)^{n+1}\right\rvert
@@ -77,6 +94,7 @@ e(x)=\lvert f(x) -p(x)\rvert=\left\lvert\frac{1}{(n+1)!} f^{(n+1)}(z)\cdot (x-x_
 Es fácil deducir de la ecuación que el error disminuye con el grado del polinomio empleado y aumenta con la distancia entre $x$ y $x_0$. Además cuanto más suave es la función (derivadas pequeñas) mejor es la aproximación.
 
 Por ejemplo para la función exponencial, el polinomio de Taylor de orden $n$ desarrollado en torno al punto $x_0=0$ es, \index{Polinomio de Taylor! Serie de la función exponencial}
+
 \end{paracol}
 \begin{equation*}
 e^x\approx 1+x+\frac{1}{2}x^2+\cdots+\frac{1}{n!}x^n=\sum_{i=0}^n\frac{1}{i!}x^i
