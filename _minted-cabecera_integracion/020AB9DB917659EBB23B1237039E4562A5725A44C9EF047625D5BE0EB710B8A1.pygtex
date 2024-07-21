@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{92}\PYG{p}{]:} \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{35}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{93}\PYG{p}{]:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{93}\PYG{p}{]:} \PYG{n+nb}{int}
+\end{Verbatim}

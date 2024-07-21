@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{40}\PYG{p}{]:} \PYG{n}{tex}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{40}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}o\PYGZsq{}}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{41}\PYG{p}{]:} \PYG{n}{tex}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{]}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{41}\PYG{p}{]:} \PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}
+\end{Verbatim}

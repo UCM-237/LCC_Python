@@ -1,5 +1,7 @@
 \chapter{Diferenciación e Integración numérica}
 
+\epigraph{You never really understand a person until you consider things from his point of view...until you climb into his skin and walk around in it.}{Harper Lee, To kill a mokingbird}
+
 La diferenciación, y sobre todo la integración son operaciones habituales en cálculo numérico. En muchos casos obtener la expresión analítica de la derivada o la integral de una función puede ser muy complicado o incluso imposible. Además en ocasiones no disponemos de una expresión analítica para la función que necesitamos integrar o derivar, sino tan solo de un conjunto de valores numéricos de la misma. Este es el caso, por ejemplo, cuando estamos trabajando con datos experimentales. Si solo disponemos de valores numéricos, entonces solo podemos calcular la integral o la derivada numéricamente.
 
 Los sistemas físicos se describen generalmente mediante ecuaciones diferenciales.  La mayoría de las ecuaciones diferenciales no poseen una solución analítica, siendo posible únicamente obtener soluciones numéricas. 
@@ -374,95 +376,95 @@ En este caso también se divide el intervalo en $n$ subintervalos pero ahora se 
 
 A continuación se incluye un código que permite permite aproximar la integral definida de una función en un intervalo por cualquiera de los tres métodos descritos: Trapecio, Simpson o Simpson $3/8$,
 
-\begin{lstlisting}
-function int=integra(fun,met,inter,dib)
-% implementa los metodos del trapecio, etc...
-% Uso: int=integra(fun,inter,dib)
-% fun, nombre de la función que se desea intergrar, debe ir entre comillas
-% met, método que se desea emplear para calcular la integral. los nombres
-% validos para los metodos son: 'trapecio', 'simpson' y simpsom38'
-% inter, es un vector de dos elementos que contiene lo extremos de intervalo
-% de integracion [a,b]
-% dib, si se da un valor a esta variable de entrada, dibuja la función en el
-% intervalo de integración y la integral obtenida. Si se omite no dibuja
-% nada.
-% int, valor de la integral obtenida.
-% Este programa no divide el intervalo de integración en subintervalos...
-% para calcular la integral empleando subintervalos usar la función trocea,
-
-if strcmp(met,'trapecio')
-    f0=feval(fun,inter(1));
-    f1=feval(fun,inter(2));
-    h=inter(2)-inter(1);
-    int=h*(f0+f1)/2;
-    if nargin==4
-        x=inter(1):(inter(2)-inter(1))/100:inter(2);
-        yfuncion=feval(fun,x);
-        ypolinomio=f0+(x-inter(1))*(f1-f0)/h;
-        plot(x,yfuncion,x,ypolinomio,'r')
-        hold on
-        fill([x(1) x x(length(x))],[0 ypolinomio 0],'r') 
-    end
-elseif strcmp(met,'simpson')
-    pmedio=(inter(2)+inter(1))/2;
-    f0=feval(fun,inter(1));
-    f1=feval(fun,pmedio);
-    f2=feval(fun,inter(2));
-    h=(inter(2)-inter(1))./2;
-    int=h*(f0+4*f1+f2)/3;
-    if nargin==4
-        x=inter(1):(inter(2)-inter(1))/100:inter(2);
-        yfuncion=feval(fun,x);
-        ypolinomio=f0+(x-inter(1)).*(f1-f0)/h+(x-inter(1)).*(x-pmedio).*(f2...
-        -2*f1+f0)./(2*h^2);
-        plot(x,yfuncion,x,ypolinomio,'r')
-        hold on
-        fill([x(1) x x(length(x))],[0 ypolinomio 0],'r') 
-    end        
-elseif strcmp(met,'simpsom38')
-    inter=inter(1):(inter(2)-inter(1))/3:inter(2);
-
-    f=feval(fun,inter);
-    h=(inter(4)-inter(1))/3;
-    int=3*h*(f(1)+3*f(2)+3*f(3)+f(4))/8;
-    if nargin==4
-        x=inter(1):(inter(4)-inter(1))/100:inter(4);
-        yfuncion=feval(fun,x);
-        ypolinomio=f(1)+(x-inter(1)).*(f(2)-f(1))/h+(x-inter(1)).*(x...
-        -inter(2)).*(f(3)-2*f(2)+f(1))./(2*h^2)+(x-inter(1)).*(x...
-        -inter(2)).*(x-inter(3)).*(f(4)-3*f(3)+3*f(2)-f(1))./(6*h^3);
-        plot(x,yfuncion,x,ypolinomio,'r')
-        hold on
-        fill([x(1) x x(length(x))],[0 ypolinomio 0],'r') 
-    end
-else
-    int='metodo desconocido, los metodos conocidos son ''trapecio'', ...
-    ''simpson' y ''simpsom38'''
-end
-\end{lstlisting}
+%\begin{lstlisting}
+%function int=integra(fun,met,inter,dib)
+%% implementa los metodos del trapecio, etc...
+%% Uso: int=integra(fun,inter,dib)
+%% fun, nombre de la función que se desea intergrar, debe ir entre comillas
+%% met, método que se desea emplear para calcular la integral. los nombres
+%% validos para los metodos son: 'trapecio', 'simpson' y simpsom38'
+%% inter, es un vector de dos elementos que contiene lo extremos de intervalo
+%% de integracion [a,b]
+%% dib, si se da un valor a esta variable de entrada, dibuja la función en el
+%% intervalo de integración y la integral obtenida. Si se omite no dibuja
+%% nada.
+%% int, valor de la integral obtenida.
+%% Este programa no divide el intervalo de integración en subintervalos...
+%% para calcular la integral empleando subintervalos usar la función trocea,
+%
+%if strcmp(met,'trapecio')
+%    f0=feval(fun,inter(1));
+%    f1=feval(fun,inter(2));
+%    h=inter(2)-inter(1);
+%    int=h*(f0+f1)/2;
+%    if nargin==4
+%        x=inter(1):(inter(2)-inter(1))/100:inter(2);
+%        yfuncion=feval(fun,x);
+%        ypolinomio=f0+(x-inter(1))*(f1-f0)/h;
+%        plot(x,yfuncion,x,ypolinomio,'r')
+%        hold on
+%        fill([x(1) x x(length(x))],[0 ypolinomio 0],'r') 
+%    end
+%elseif strcmp(met,'simpson')
+%    pmedio=(inter(2)+inter(1))/2;
+%    f0=feval(fun,inter(1));
+%    f1=feval(fun,pmedio);
+%    f2=feval(fun,inter(2));
+%    h=(inter(2)-inter(1))./2;
+%    int=h*(f0+4*f1+f2)/3;
+%    if nargin==4
+%        x=inter(1):(inter(2)-inter(1))/100:inter(2);
+%        yfuncion=feval(fun,x);
+%        ypolinomio=f0+(x-inter(1)).*(f1-f0)/h+(x-inter(1)).*(x-pmedio).*(f2...
+%        -2*f1+f0)./(2*h^2);
+%        plot(x,yfuncion,x,ypolinomio,'r')
+%        hold on
+%        fill([x(1) x x(length(x))],[0 ypolinomio 0],'r') 
+%    end        
+%elseif strcmp(met,'simpsom38')
+%    inter=inter(1):(inter(2)-inter(1))/3:inter(2);
+%
+%    f=feval(fun,inter);
+%    h=(inter(4)-inter(1))/3;
+%    int=3*h*(f(1)+3*f(2)+3*f(3)+f(4))/8;
+%    if nargin==4
+%        x=inter(1):(inter(4)-inter(1))/100:inter(4);
+%        yfuncion=feval(fun,x);
+%        ypolinomio=f(1)+(x-inter(1)).*(f(2)-f(1))/h+(x-inter(1)).*(x...
+%        -inter(2)).*(f(3)-2*f(2)+f(1))./(2*h^2)+(x-inter(1)).*(x...
+%        -inter(2)).*(x-inter(3)).*(f(4)-3*f(3)+3*f(2)-f(1))./(6*h^3);
+%        plot(x,yfuncion,x,ypolinomio,'r')
+%        hold on
+%        fill([x(1) x x(length(x))],[0 ypolinomio 0],'r') 
+%    end
+%else
+%    int='metodo desconocido, los metodos conocidos son ''trapecio'', ...
+%    ''simpson' y ''simpsom38'''
+%end
+%\end{lstlisting}
 
 Este programa aplica directamente el método deseado sobre el intervalo de integración. Para obtener los métodos extendidos, podemos emplear un segundo programa que divida el intervalo de integración inicial en el número de subintervalos que deseemos, aplique el programa anterior a cada subintervalo, y, por último, sume todo los resultados para obtener el valor de la integral en el intervalo deseado. El siguiente programa, muestra un ejemplo de como hacerlo,
 
-\begin{lstlisting}
-function total=trocea(fun,met,inter,div,dib)
-% esta funcion lo unico que hace es trocear un intervalo en el numero de
-% tramos indicados por div, y llamar a la funcion integra para que integre
-% en cada intervalo.
-% USO: total=trocea(fun,met,inter,div,dib)
-%  las variables de emtrada son la mismas que las de integra, salvo div que
-%  representa el numero de subintervalos en que se desea dividir el
-%  intervalo de integración.
-tramos=inter(1):(inter(2)-inter(1))/div:inter(2);
-total=0;
-if nargin==5
-    hold on
-end
-for i=1:size(tramos,2)-1
-    int=integra(fun,met,[tramos(i) tramos(i+1)],dib);
-    total=total+int;
-end
-hold off
-\end{lstlisting}t
+%\begin{lstlisting}
+%function total=trocea(fun,met,inter,div,dib)
+%% esta funcion lo unico que hace es trocear un intervalo en el numero de
+%% tramos indicados por div, y llamar a la funcion integra para que integre
+%% en cada intervalo.
+%% USO: total=trocea(fun,met,inter,div,dib)
+%%  las variables de emtrada son la mismas que las de integra, salvo div que
+%%  representa el numero de subintervalos en que se desea dividir el
+%%  intervalo de integración.
+%tramos=inter(1):(inter(2)-inter(1))/div:inter(2);
+%total=0;
+%if nargin==5
+%    hold on
+%end
+%for i=1:size(tramos,2)-1
+%    int=integra(fun,met,[tramos(i) tramos(i+1)],dib);
+%    total=total+int;
+%end
+%hold off
+%\end{lstlisting}t
 
 Por último indicar que Matlab posee un comando propio para calcular la integral definida de una función, el comando \texttt{quad}. Este comando admite como variables de entrada el nombre de una función, y dos valores que representan los límites de integración. Como variable de salida devuelve el valor de la integral definida en el intervalo introducido. Por ejemplo,
 
@@ -551,37 +553,37 @@ x_{i+1}&=x_i+hf(a+ih,x_i)
 
 El siguiente código implementa el método de Euler para resolver un problema de condiciones iniciales de primer orden a partir de una función $f(t)$ y un valor inicial $x_0$.
 
-\begin{lstlisting}
-function y=euler(fun,ya,a,b,h)
-% implimentacion del metodo de Euler para resolver el problema y'(t)=f(y,t)
-% con condición inicial ya
-% Admite funciones sobre un vector de variables, en ese caso las
-% condiciones iniciales serán también un vector
-%Uso: y=euler(fun,ya,a,b,h)
-%variables de entrada: fun, debe contener el nombre de una función (sera la
-%función f) entrecomillas. ya, condición inicial. a, instante de tiempo 
-%inicial o valor inicial de la variable independiente (t). 
-%b, instante de tiempo final o valor final de la variable independiente
-%h paso de integración
-%podemos por elemental prudencia, comprobar que b>a
-%lo elegante no es pasar el paso como he hecho aqui, sino calcularlo en
-%funcion de cuantos puntos de la solucion queremos en el intervalo...
-if a>=b
-y='el intervalo debe ser creciente, para evitarse lios';
-return
-end
-y=ya;
-paso=1;
-t(paso)=a;
-while t(paso)<=b
-t(paso+1)=t(paso)+h;
-y(paso+1,:)=y(paso,:)+h*feval(fun,t(paso),y(paso,:));
-paso=paso+1;
-end
-%dibuja la solucion,
-plot(t,y)
-
-\end{lstlisting}
+%\begin{lstlisting}
+%function y=euler(fun,ya,a,b,h)
+%% implimentacion del metodo de Euler para resolver el problema y'(t)=f(y,t)
+%% con condición inicial ya
+%% Admite funciones sobre un vector de variables, en ese caso las
+%% condiciones iniciales serán también un vector
+%%Uso: y=euler(fun,ya,a,b,h)
+%%variables de entrada: fun, debe contener el nombre de una función (sera la
+%%función f) entrecomillas. ya, condición inicial. a, instante de tiempo 
+%%inicial o valor inicial de la variable independiente (t). 
+%%b, instante de tiempo final o valor final de la variable independiente
+%%h paso de integración
+%%podemos por elemental prudencia, comprobar que b>a
+%%lo elegante no es pasar el paso como he hecho aqui, sino calcularlo en
+%%funcion de cuantos puntos de la solucion queremos en el intervalo...
+%if a>=b
+%y='el intervalo debe ser creciente, para evitarse lios';
+%return
+%end
+%y=ya;
+%paso=1;
+%t(paso)=a;
+%while t(paso)<=b
+%t(paso+1)=t(paso)+h;
+%y(paso+1,:)=y(paso,:)+h*feval(fun,t(paso),y(paso,:));
+%paso=paso+1;
+%end
+%%dibuja la solucion,
+%plot(t,y)
+%
+%\end{lstlisting}
 
 Un ejemplo sencillo de problema de condiciones iniciales de primer orden, nos los suministra la ecuación diferencial de la carga y descarga de un condensador eléctrico. La figura \ref{fig:RC}, muestra un circuito eléctrico elemental formado por una resistencia $R$ en serie con un condensador $C$. \index{Circuito RC}
 
@@ -630,23 +632,23 @@ V_0(t)=V_i\left(1-e^{-t/R\cdot C}\right)
 
 
 Podemos resolver el problema de la carga del condensador, empleando el código de la función de Euler incluido más arriba. Lo único que necesitamos es definir una función de Matlab  para representar la función $f(x,t)$ de nuestro problema de valor inicial, t
-\begin{lstlisting}
-function s=condensador(~,Vo)
-% t tiempo en este ejemplo la función no depende del tiempo por lo que esta
-% variable realmente no se usa... pero como el programa Euler se la pasa, 
-% empleamos el simbolo ~ para que no de errores...
-% Vo Valor del voltaje en cada iteración
-
-% hay que definir los parametros fijos del circuito...
-C=0.0001; % Capacidad del condesador en Faradios
-R=1000; % resitencia en Ohmios
-% el voltaje de entrada podría Vi podria ser una función del tiempo... Aquí
-% vamos a considerar que es constante...
-Vi=10; % Voltaje suministrado al circuito en Voltios
-% Aqui cosntruimos la funcion que representa el circuito RC,
-
-s=(Vi-Vo)/R/C;
-\end{lstlisting}
+%\begin{lstlisting}
+%function s=condensador(~,Vo)
+%% t tiempo en este ejemplo la función no depende del tiempo por lo que esta
+%% variable realmente no se usa... pero como el programa Euler se la pasa, 
+%% empleamos el simbolo ~ para que no de errores...
+%% Vo Valor del voltaje en cada iteración
+%
+%% hay que definir los parametros fijos del circuito...
+%C=0.0001; % Capacidad del condesador en Faradios
+%R=1000; % resitencia en Ohmios
+%% el voltaje de entrada podría Vi podria ser una función del tiempo... Aquí
+%% vamos a considerar que es constante...
+%Vi=10; % Voltaje suministrado al circuito en Voltios
+%% Aqui cosntruimos la funcion que representa el circuito RC,
+%
+%s=(Vi-Vo)/R/C;
+%\end{lstlisting}
 
 \begin{figure}[h]
 \centering
@@ -682,22 +684,22 @@ Tenemos un problema de valor inicial de segundo orden, con una ecuación en la q
 
 Ese sistema de ecuaciones de primer orden se puede resolver usando el método de Euler. Necesitamos definir una función de Matlab para representar el sistema de ecuaciones diferenciales
 
-\begin{lstlisting}
-function [dydt] = amortiguador(~,y)
-% y(1) posición
-% y(2) velocidad
-% k constante del muelle
-% mu coeficiente de rozamiento
-% g aceleración de la gravedad
-% m masa
-g=9.8;
-k=10.0;
-m=2.0;
-mu=0.5;
-dydt(1)=y(2);
-dydt(2)=g-(k/m)*y(1)-(mu/m)*y(2);
-end
-\end{lstlisting}
+%\begin{lstlisting}
+%function [dydt] = amortiguador(~,y)
+%% y(1) posición
+%% y(2) velocidad
+%% k constante del muelle
+%% mu coeficiente de rozamiento
+%% g aceleración de la gravedad
+%% m masa
+%g=9.8;
+%k=10.0;
+%m=2.0;
+%mu=0.5;
+%dydt(1)=y(2);
+%dydt(2)=g-(k/m)*y(1)-(mu/m)*y(2);
+%end
+%\end{lstlisting}
 
 Empleando la función descrita \texttt{euler('amortiguador',[0 0],0,50,0.01)} obtenemos la evolución temporal de la posición y la velocidad de la masa unida al resorte como puede verse en la figura \ref{fig:amortiguador1}. En esta figura se aprecia como la masa oscila en torno a la posición de equilibrio hasta que finalmente se para.
 
@@ -778,34 +780,34 @@ x_{i+1}&=x_i+h\cdot f(t_i+\frac{h}{2},x_i+\frac{h}{2}f(t_i,x_i))\\
 \end{align*}
 La siguiente función de Matlab implementa el método del punto medio,
 
-\begin{lstlisting}
-function y=pmedio(fun,ya,a,b,h)
-% metodo de rungekutta de segundo orden mas conocido como del punto medio
-% uso: y=pmedio(fun,ya,a,b,h)
-%  variables de entrada: fun, nombre entre comillas de la función que define
-%  el problema de valor inicial que se desea resolver. ya, valor inicial. a,
-% instante de tiempo inicial o valor inicial de la variable independiente.
-% b valor de tiempo final o valor final de la variable independiente. h,
-% paso de integracion
-% podemos por elemental prudencia, comprobar que b>a
-% lo elegante no es pasar el paso como he hecho aqui, sino calcularlo en
-% funcion de cuantos puntos de la solucion queremos en el intervalo...
-if a>=b
-    y='el intervalo debe ser creciente, para evitarse lios'
-    return
-end
-y=ya;
-paso=1;
-t(paso)=a;
-while t(paso)<=b
-    t(paso+1)=t(paso)+h;
-    y(paso+1)=y(paso)+h*feval(fun,t(paso)+h/2,y(paso)+h*feval(fun,t(paso),y(paso))/2);
-    paso=paso+1;
-end
-% pintamos la solucion,
-plot(t,y)
-
-\end{lstlisting}
+%\begin{lstlisting}
+%function y=pmedio(fun,ya,a,b,h)
+%% metodo de rungekutta de segundo orden mas conocido como del punto medio
+%% uso: y=pmedio(fun,ya,a,b,h)
+%%  variables de entrada: fun, nombre entre comillas de la función que define
+%%  el problema de valor inicial que se desea resolver. ya, valor inicial. a,
+%% instante de tiempo inicial o valor inicial de la variable independiente.
+%% b valor de tiempo final o valor final de la variable independiente. h,
+%% paso de integracion
+%% podemos por elemental prudencia, comprobar que b>a
+%% lo elegante no es pasar el paso como he hecho aqui, sino calcularlo en
+%% funcion de cuantos puntos de la solucion queremos en el intervalo...
+%if a>=b
+%    y='el intervalo debe ser creciente, para evitarse lios'
+%    return
+%end
+%y=ya;
+%paso=1;
+%t(paso)=a;
+%while t(paso)<=b
+%    t(paso+1)=t(paso)+h;
+%    y(paso+1)=y(paso)+h*feval(fun,t(paso)+h/2,y(paso)+h*feval(fun,t(paso),y(paso))/2);
+%    paso=paso+1;
+%end
+%% pintamos la solucion,
+%plot(t,y)
+%
+%\end{lstlisting}
 
 
 El resto de los métodos de Runge-Kutta, los dejaremos para cuando seáis más mayores... Pero que conste que es de lo más interesante de los métodos numéricos.
