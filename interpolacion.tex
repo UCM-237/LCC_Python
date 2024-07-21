@@ -1,22 +1,28 @@
 \chapter{Interpolación y ajuste de funciones}\label{interpolacion}
-
+\chaptermark{Interp. y ajust. funciones.  \textreferencemark\ Interp. \& funct fitting}
 \epigraph{Digo que ya tú sabes que la humildad es la basa y fundamento de todas las virtudes, y que sin ella no hay alguna que lo sea. Ella allana inconvenientes, vence dificultades, y es un medio que siempre a gloriosos fines nos conduce; de los enemigos hace amigos, templa la cólera de los airados y menoscaba la arrogancia de los soberbios; es madre de la modestia y hermana de la templanza; en fin, con ella no pueden atravesar triunfo que les sea de provecho los vicios, porque en su blandura y mansedumbre se embotan y despuntan las flechas de los pecados.}{El coloquio de los perros. Miguel de Cervantes}
 
 
 \begin{paracol}{2}
 En este capítulo vamos a estudiar distintos métodos de aproximación polinómica. En términos generales el problema consiste en sustituir una función $f(x)$ por un polinomio,
+\switchcolumn
+In this chapter, we will explore different methods of polynomial approximation. We can define the problem in general terms as finding a polynomial to represent a function $f(x)$. 
 \end{paracol}
 \begin{equation*}
 f(x)\approx p(x)=a_0+a_1\cdot x+a_2\cdot x^2+a_3\cdot x^3+\cdots +a_n \cdot x^n
 \end{equation*}
 \begin{paracol}{2}
 Para obtener la aproximación podemos partir de la ecuación que define $f(x)$,  por ejemplo la función error,
+\switchcolumn
+To obtain the approximation, we can start from the equation that defines $f(x)$, for instance, the error function,
 \end{paracol}
 \begin{equation*}
 erf(x)=\frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}dt
 \end{equation*}
 \begin{paracol}{2}
 O bien, puede suceder que solo conozcamos algunos valores de la función, por ejemplo a través de una tabla de datos,
+\switchcolumn
+Nevertheless, it is possible that we only have some values of the function, such as when we only have a data table. 
 \end{paracol}
 \begin{table}[h]
 \caption{$f(x)=erf(x)$}
@@ -47,22 +53,43 @@ El uso de uno u otro de estos métodos esta asociado a la información disponibl
 
 
 \section{El polinomio de Taylor.}\index{Polinomio de Taylor}
+\sectionmark{El polinomio de Taylor  \textreferencemark\ Taylor's polynomial}
 
 Supongamos una función infinitamente derivable en un entorno de un punto $x_0$. Su expansión en serie de Taylor se define como,
+
+\switchcolumn
+To approximate a function using  a polynomial has pros and cons. 
+
+Perhaps the main advantage, from a computing point of view, is that a polynomial is easy to evaluate using a computer as it only involves simple arithmetical operations. Besides, Polynomial integration and derivation are operations that are easy to carry out, yielding other polynomials. 
+
+Among their drawbacks we have to remark the polynomial growing towards infinity or minus infinity as the independent variable goes away zero. This can give rise in some cases to rounding errors that are difficult to handle, making the approximation for non-increasing functions very difficult.
+
+We will study three different methods: first we will see the approximation using the Taylor polynomial, very useful to approximate a function close to a point for which we know the function value. Later, we will discus polynomial interpolation and finally we present mean square polynomial fitting. 
+
+We may relate the use of one or another method to the available information on the function we want to approximate and to the objectives we want to reach with the approximation.
+
+\section{The Taylor's polynomi\-al.}\index[eng]{Taylor's polynomial}
+Suppose we have an function infinitely derivable around a point $x_0$. We define the function taylor series expansion as,
 \end{paracol}
 \begin{equation*}
 f(x)=f(x_0)+f'(x_0)\cdot (x-x_0)+\frac{1}{2} f''(x_0)\cdot (x-x_0)^2+\cdots + \frac{1}{n!}f^{(n)}(x_0)\cdot (x-x_0)^n+ \frac{1}{(n+1)!}f^{(n+1)}(z)\cdot (x-x_0)^{n+1}
 \end{equation*}
 
 \begin{paracol}{2}
-Donde $z$ es un punto sin determinar situado entre $x$  y $x_0$.   Si eliminamos el último término, la función puede aproximarse por un polinomio de grado $n$								
+Donde $z$ es un punto sin determinar situado entre $x$  y $x_0$. Si eliminamos el último término, la función puede aproximarse por un polinomio de grado $n$
+\switchcolumn
+Where $z$ is an indeterminate point located between $x$ and $x_0$. If we eliminate the last term the function would be approximated by a degree $n$ polynomial. 								
 \end{paracol}
+
 \begin{equation*}
 f(x)\approx f(x_0)+f'(x_0)\cdot (x-x_0)+\frac{1}{2}f''(x_0)\cdot (x-x_0)^2+\cdots + \frac{1}{n!}f^{(n)}(x_0)\cdot (x-x_0)^n
 \end{equation*}
+
 \begin{paracol}{2}
 El error cometido al aproximar una función por un polinomio de Taylor de grado $n$, viene dado por el término,
 \index{Polinomio de Taylor! Error de la aproximación}
+\switchcolumn
+The error we get when approximating a function by a degree $n$ Taylor polynomial can be obtained as, 
 \end{paracol}
 \begin{equation*}
 e(x)=\lvert f(x) -p(x)\rvert=\left\lvert\frac{1}{(n+1)!} f^{(n+1)}(z)\cdot (x-x_0)^{n+1}\right\rvert
@@ -71,18 +98,27 @@ e(x)=\lvert f(x) -p(x)\rvert=\left\lvert\frac{1}{(n+1)!} f^{(n+1)}(z)\cdot (x-x_
 Es fácil deducir de la ecuación que el error disminuye con el grado del polinomio empleado y aumenta con la distancia entre $x$ y $x_0$. Además cuanto más suave es la función (derivadas pequeñas) mejor es la aproximación.
 
 Por ejemplo para la función exponencial, el polinomio de Taylor de orden $n$ desarrollado en torno al punto $x_0=0$ es, \index{Polinomio de Taylor! Serie de la función exponencial}
+
+\switchcolumn
+Looking at the error function, it is easy to realize that decreases when the polynomial degree increases and increases when the distance between $x$ and $x_0$ increases.
+
+For instance, the Taylor polynomial of degree $n$ for the exponential functions, around the point $x_0=0$ is, \index[eng]{Taylor Polynomial! Series expansion for the exponential function}
 \end{paracol}
 \begin{equation*}
 e^x\approx 1+x+\frac{1}{2}x^2+\cdots+\frac{1}{n!}x^n=\sum_{i=0}^n\frac{1}{i!}x^i
 \end{equation*}
 \begin{paracol}{2}
 y el del logaritmo natural, desarrollado en torno al punto $x_0=1$, \index{Polinomio de Taylor! Serie del logaritmo natural}
+\switchcolumn
+and the Taylor polynomial for the logarithm, around the point $x-= =1$ is, \index{Taylor polynomial for the logaritm function} 
 \end{paracol}
 \begin{equation*}
 \log(x)\approx (x-1)-\frac{1}{2}(x-1)^2+\cdots+\frac{(-1)^{n+1}}{n}(x-1)^n=\sum_{i=1}^n\frac{(-1)^{i+1}}{i}(x-1)^i
 \end{equation*}
 \begin{paracol}{2}
-La existencia de un término general para los desarrollos de Taylor de muchas funciones elementales lo hace particularmente atractivo para aproximar funciones mediante un ordenador. Así por ejemplo, la siguiente función de Matlab, aproxima el valor del logaritmo natural en un punto, empleando un polinomio de Taylor del grado que se desee,
+La existencia de un término general para los desarrollos de Taylor de muchas funciones elementales lo hace particularmente atractivo para aproximar funciones mediante un ordenador. Así por ejemplo, la siguiente función escrita en Python, aproxima el valor del logaritmo natural en un punto, empleando un polinomio de Taylor del grado que se desee,
+\switchcolumn
+The existence of a general term for Taylor's expansion of many essential functions makes it highly interesting to approximate functions using a computer. For example, the following function, written in Python, approximates the natural logarithm using Taylor's polynomial of any degree we want.   
 \end{paracol}
 
 \inputminted[
@@ -90,57 +126,46 @@ frame=lines,
 framesep=2mm,
 baselinestretch=1.2,
 %bgcolor=LightGray,
-label=determinante.py,
+label=series\_de\_taylor.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/Algebra/codigo_abierto/determinante.py}
+]{python}{./codigos/interpolacion/codigo_abierto/series_de_taylor.py}
 
-
-%\begin{lstlisting}
-%function y=taylorln(x,n)
-% Esta función aproxima el valor del logaritmo natural de un numero
-% empleando para ello un polinomio de Taylor de grado n desarrollado en 
-% torno a x=1. Las variables de entrada son: x, valor para el que se desea 
-% calcular el logaritmo. n Grado del polinomio que se empleará en el 
-% cálculo. La variable de salida y es el logaritmo de x. (nota si x
-% es un vector, calculará el logaritmo para todos los puntos del vector)
-
-% iniciliazamos la variable de salida y
-%y=0;
-
-% construimos un búcle para ir añadiendo términos al desarrollo
-%for i=1:n
-%    y=y+(-1)^(i+1)*(x-1).^i/i;
-%end
-%\end{lstlisting}
 \begin{paracol}{2}
-La aproximación funciona razonablemente bien para puntos comprendidos en el intervalo $0<x<2$. La figura \ref{fig:ln} muestra los resultados obtenidos en dicho intervalo para polinomios de Taylor del logaritmo natural de grados 2, 5, 10 20. La linea continua azul representa el valor del logaritmo obtenido con la función de Matlab \texttt{log}.
+La aproximación funciona razonablemente bien para puntos comprendidos en el intervalo $0<x<2$. La figura \ref{fig:ln} muestra los resultados obtenidos en dicho intervalo para polinomios de Taylor del logaritmo natural de grados 2, 5, 10 20. La linea continua azul representa el valor del logaritmo obtenido con la función de Numpy \mintinline{python}{log}.
+\switchcolumn
+The approximation works reasonably well for points inside the interval $0<x<2$. Figure \ref{fig:ln} shows the results achieved inside such interval, using Taylor's polynomial with degrees 2, 5, 10 and 20. The blue line represent the logarithm values we get using the numpy function \mintinline{python}{log}. 
 \end{paracol}
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm]{ln.eps}
-\caption{Comparación entre resultados obtenidos para polinomios de Taylor del logaritmo natural. (grados 2, 3, 5, 10, 20)}
+\includegraphics[width=10cm]{ln.eps}
+\bicaption{Comparación entre resultados obtenidos para polinomios de Taylor del logaritmo natural. (grados 2, 3, 5, 10, 20)}{A comparison among the results achieved using Taylor polynomials to approach the logarithm. (2, 3, 5, 10, 20 degrees)  }
 \label{fig:ln}
 \end{figure}
 \begin{paracol}{2}
 \index{Polinomio de Taylor! Series de las funciones seno y coseno}
 Las funciones $\sin(x)$ y $\cos(x)$, son también simples de aproximar mediante polinomios de Taylor. Si desarrollamos en torno a $x_0=0$, la serie del coseno solo tendrá potencias pares mientras que la del seno solo tendrá potencias impares,
+\switchcolumn
+\index[eng]{Tailor's polynomial! Sine and consine function expansion.} Functions $\sin(x)$ and $\cos(x)$, are also easy to approach using Taylor's polynomials. If we expand around $x_0=0$, the cosine series will have only even powers and the sine series will only have odd powers,
 \end{paracol}
 \begin{align*}
-\cos(x)&\approx \sum_{i=0}^n \frac{(-1)^i}{(2i)!}x^{2i}\\
-\sin(x)&\approx \sum_{i=0}^n \frac{(-1)^i}{(2i+1)!}x^{2i+1}
+	\cos(x)&\approx \sum_{i=0}^n \frac{(-1)^i}{(2i)!}x^{2i}\\
+	\sin(x)&\approx \sum_{i=0}^n \frac{(-1)^i}{(2i+1)!}x^{2i+1}
 \end{align*}
 
-\begin{figure}[h]
-\centering
-\subfigure[$\cos(x)$, polinomios 2, 4, 6 y 8 grados  \label{fig:cos}]{\includegraphics[width=10.5cm]{cos.eps}} \qquad 
-\subfigure[$\sin(x)$, polinomios  3, 5, 7 y 9  grados \label{fig:sin}]{\includegraphics[width=10.5cm]{sin.eps}}\\
-\caption{Polynomios de Taylor para las funciones coseno y seno  }
+\begin{figure}
+	\centering
+	\subfigure[$\cos(x)$, polinomios 2, 4, 6 y 8 grados \textreferencemark\ polynomials 2, 4, 6 and 8 degrees  \label{fig:cos}]{\includegraphics[width=10.5cm]{cos.eps}} \qquad 
+	\subfigure[$\sin(x)$, polinomios  3, 5, 7 y 9  grados \textreferencemark polynomials 2, 4, 6 and 8 degrees \label{fig:sin}]{\includegraphics[width=10.5cm]{sin.eps}}\\
+	\bicaption{Polynomios de Taylor para las funciones coseno y seno}{Taylor polynomial for cosine and sine functions}
 \end{figure}
+
+
 \begin{paracol}{2}
-En las figuras \ref{fig:cos} y \ref{fig:sin} Se muestran las aproximaciones mediante polinomios de Taylor de las funciones coseno y seno. Para el coseno se han empleado polinomios hasta grado 8 y para el seno hasta grado 9. En ambos casos se dan los resultados correspondientes a un periodo $(-\pi, \pi)$. Si se comparan los resultados con las funciones \texttt{cos} y \texttt{sin}, suministradas por Matlab, puede observarse que la aproximación es bastante buena para los polinomios de mayor grado empleados en cada caso.
+En las figuras \ref{fig:cos} y \ref{fig:sin} Se muestran las aproximaciones mediante polinomios de Taylor de las funciones coseno y seno. Para el coseno se han empleado polinomios hasta grado 8 y para el seno hasta grado 9. En ambos casos se dan los resultados correspondientes a un periodo $(-\pi, \pi)$. Si se comparan los resultados con las funciones \texttt{cos} y \texttt{sin}, suministradas por Numpy, puede observarse que la aproximación es bastante buena para los polinomios de mayor grado empleados en cada caso.
 
 \section{Interpolación polinómica.}
+\sectionmark{Interpolación polinómica \textreferencemark\ Polynomial interpolation}
 
 Se entiende por interpolación el proceso por el cual, dado un conjunto de pares de puntos $(x_0,y_0),(x_1,y_1),\cdots (x_n,y_n)$ se obtiene una función $f(x)$, tal que, $y_i=f(x_i)$, para cada par de puntos $(x_i,y_i)$ del conjunto. Si, en particular, la función empleada es un polinomio $f(x)\equiv p(x)$, entonces se trata de interpolación polinómica. \index{Interpolación! Polinómica}
 
@@ -150,6 +175,21 @@ Si tratamos de interpolar los puntos con un polinomio de grado menor que $n$, es
 
 \subsection{La matriz de Vandermonde} \index{Matriz de Vandermonde}
 Supongamos que tenemos un conjunto de pares de puntos $\mathcal{A}$, 
+
+\switchcolumn
+Figures \ref{fig:cos} and \ref{fig:sin} show aproximations to sine and consine functions using Taylor's polynomials. We have use polynomias up to 8 degree for the cosine function and up to degree 9 for the sine function. In both cases we have calculated the results inside the interval $(-\pi, \pi)$. When we compare these results with those yielded by Numpy functions \mintinline{python}{cos} and \mintinline{python}{sin}, we see that the approximation is quite good for the higher degree  polynomials we have used in each case.
+
+\section{Polynomial interpolati\-on.}
+\sectionmark{Interpolación polinómica  \textreferencemark\ Polynomial interpolation}
+We define the interpolation as a process that, departing from a set of data pairs \\ $(x_0,y_0),(x_1,y_1), \cdots (x_n,y_n)$, allows us to find a function $f(x)$ such that $y_i = f(x_i)$ for all pairs $(x_i,y_i)$ of the set. In the case we use a polynomial as the interpolating function $f(x)\equiv p(x)$, we denote it as polynomial Interpolation. \index{Interpolation! Polynomial}
+
+\paragraph{The interpolation theorem.}\index[eng]{Interpolation! Interpolation theorem}
+For any set of $n+1$ pairs of data points\\ $(x_0,y_0) ,(x_1,y_1),\cdots (x_n,y_n)$ , where no two $x_i$ are the same, there is one and only one polynomial $p(x)$ of degree $n$ that interpolates these points, i.e, it satisfies that $y_i=p(x_i)$ for all pairs on the dataset.
+
+If we try to interpolate the points with a polynomial whose degree is less than $n$, it is possible that we will not find one that fits all the pairs in the dataset. Conversely, if we try to use a polynomial with a degree greater than $n$, it will not unique. Eventually, if we use a degree $n$ polynomial, this polynomial is always the same regardless method used to build it.        
+
+\subsection{The Vandermonde's matrix}\index[eng]{Intrpolation! Vandermonde's matrix}
+Suppose we have a set $\mathcal{A}$ of data points.
 \end{paracol}
 \begin{table}[h]
 %\caption{$f(x)=erf(x)$}
@@ -167,20 +207,30 @@ $x_n$&$y_n$
 \end{table}
 \begin{paracol}{2}
 Para que un polinomio de orden $n$,
+
+\switchcolumn
+For a polynomial of degree $n$,
 \end{paracol}
 \begin{equation*}
 p(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n
 \end{equation*}
 \begin{paracol}{2}
 pase por todos los pares de $\mathcal{A}$ debe cumplir,
+\switchcolumn
+to go through all pairs in $\mathcal{A}$, it must satisfy,
 \end{paracol}
 \begin{equation*}
 y_i=a_0+a_1x_i+a_2x_i^2+\cdots+a_nx_i^n, \ \forall (x_i,y_i) \in \mathcal{A}
 \end{equation*}
 \begin{paracol}{2}
-Es decir, obtendríamos un sistema de $n$ ecuaciones lineales, una para cada par de valores, en la que las incógnitas son precisamente los $n$ coeficientes $a_i$ del polinomio.
+Es decir, obtendríamos un sistema de $n$ ecuaciones lineales, una para cada par de valores, en la que las incógnitas son precisamente los $n+1$ coeficientes $a_i$ del polinomio.
 
 Por ejemplo para los puntos,
+\switchcolumn
+So, we would have a system of $n$ linear equations, one for each pair of data points, where the unknowns are the $n+1$ coefficients $a_i$ of the polynomial.
+
+for example, for the dataset,  
+
 \end{paracol}
 \begin{table}[h]
 %\caption{$f(x)=erf(x)$}
@@ -196,6 +246,8 @@ $3$&$-2$
 \end{table}
 \begin{paracol}{2}
 Obtendríamos,
+\switchcolumn
+we get,
 \end{paracol}
 \begin{align*}
 a_0+a_1\cdot 1+ a_2\cdot 1^2&=2\\
@@ -204,6 +256,8 @@ a_0+a_1\cdot 3+ a_2\cdot 3^2&=-2
 \end{align*}
 \begin{paracol}{2}
 que podríamos expresar en forma matricial como,
+\switchcolumn
+which we can express in matrix form as,
 \end{paracol}
 
 \begin{equation*}
@@ -223,6 +277,8 @@ a_2
 \end{equation*}
 \begin{paracol}{2}
 Y en general, para $n$ pares de datos,
+\switchcolumn
+And, in general, for $n$ data pairs,
 \end{paracol}
 \begin{equation*}
 \begin{pmatrix}
@@ -249,6 +305,9 @@ La matriz de coeficientes del sistema resultante recibe el nombre de matriz de V
 \subsection{El polinomio interpolador de Lagrange.} \label{sec:lagranje}\index{Interpolación! Polinomio de Lagrange} \index{Polinomio de Lagrange}
 
 A partir de los valores $x_0, x_1,\cdots, x_n$, se construye el siguiente conjunto de $n+1$ polinomios de grado $n$
+
+\switchcolumn
+The coefficient matrix of the resulting system is called the Vandermonde's matrix. Its elements are hte $n$ first powers of the independent variable values, allocated by rows. It is easy to notice that when the number of data increases the difference among the elements of a row will tend to increase also. For this reason in most cases the Vandermonde's matrix is a poor conditioned matrix and so not suitable for solving the system numerically.  For this reason, in practice,the interpolation polynomial is computed using other alternative methods.  
 \end{paracol}
 \begin{equation*}
 l_j(x)=\prod_{\substack{k=0\\
