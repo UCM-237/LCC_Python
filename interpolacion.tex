@@ -308,6 +308,9 @@ A partir de los valores $x_0, x_1,\cdots, x_n$, se construye el siguiente conjun
 
 \switchcolumn
 The coefficient matrix of the resulting system is called the Vandermonde's matrix. Its elements are hte $n$ first powers of the independent variable values, allocated by rows. It is easy to notice that when the number of data increases the difference among the elements of a row will tend to increase also. For this reason in most cases the Vandermonde's matrix is a poor conditioned matrix and so not suitable for solving the system numerically.  For this reason, in practice,the interpolation polynomial is computed using other alternative methods.  
+
+\subsection{Lagrange Interpolating Polynomial}\index[eng]{Interpolation!Lagrange Polynomial} \index[eng]{Lagrange Polynomial}
+Departing from the values $x_0,x_1,\cdots,x_n$, We build the following set of $n+1$ polynomial of degree $n$ 
 \end{paracol}
 \begin{equation*}
 l_j(x)=\prod_{\substack{k=0\\
@@ -315,6 +318,8 @@ k\neq j}}^n\frac{x-x_k}{x_j-x_k}=\frac{(x-x_0)(x-x_1)\cdots(x-x_{j-1})(x-x_{j+1}
 \end{equation*}
 \begin{paracol}{2}
 Los polinomios así definidos cumplen una interesante propiedad en  relación con los valores $x_0, x_1,\cdots, x_n$, empleados para construirlos,
+\switchcolumn
+These polynomial exhibit an interesting property when evaluated at the points $x_0, x_1,\cdots, x_n$, we have used for building them.
 \end{paracol}
 \begin{equation*}
 l_j(x_i)= \left\{ 
@@ -326,6 +331,8 @@ l_j(x_i)= \left\{
 \end{equation*}
 \begin{paracol}{2}
 A partir de estos polinomios podemos construir ahora el siguiente polinomio de interpolación empleando las imágenes $y_0,y_1\cdots, y_n$ correspondientes a los valores $x_0, x_1,\cdots, x_n$,
+\switchcolumn
+From this polynomials we can build a interporlation polynomial using the codomain values $y_0,y_1\cdots, y_n$  corresponding to the domain values $x_0, x_1,\cdots, x_n$,
 \end{paracol}
 \begin{equation*}
 p(x)=\sum_{j=0}^n l_j(x)\cdot y_j
@@ -333,7 +340,11 @@ p(x)=\sum_{j=0}^n l_j(x)\cdot y_j
 \begin{paracol}{2}
 Efectivamente, es fácil comprobar que, tal y como se ha construido, este polinomio pasa por los pares de puntos $x_i,y_i$, puesto que $p(x_i)=y_i$.
 
-El siguiente código de Matlab calcula el valor en un punto x cualquiera del polinomio de interpolación de Lagrange construido a partir un conjunto de puntos $\mathcal{A}\equiv \{(x_i,y_i)\}$ . 
+El siguiente código de en Python calcula el valor en un punto x cualquiera del polinomio de interpolación de Lagrange construido a partir un conjunto de puntos $\mathcal{A}\equiv \{(x_i,y_i)\}$.
+\switchcolumn
+It is ease to check that, using this method for building the interpolation polynomial, it passes through all pairs of points $x_i,y_i$, because $p(x_i)=y_i$.
+
+The following python function \mintinline{python}{lagrang} calculates, at any point x, the Lagrange interpolating polynomial value built from a set of pairs of points $\mathcal{A}\equiv \{(x_i,y_i)\}$.   
 \end{paracol}
 %\begin{lstlisting}
 %function y1=Lagrange(x,y,x1)
@@ -363,19 +374,28 @@ El siguiente código de Matlab calcula el valor en un punto x cualquiera del pol
 %end
 %\end{lstlisting}
 \begin{paracol}{2}
-\section{Diferencias divididas.}\label{sec:difdiv} \index{Interpolación! Diferencias Divididas} \index{Diferencias Divididas}
+\subsection{Diferencias divididas.}\label{sec:difdiv} \index{Interpolación! Diferencias Divididas} \index{Diferencias Divididas}
 Tanto el método de la matriz de Vandermonde como el de los polinomios de Lagrange, presentan el inconveniente de que si se añade un dato más $(x_{n+1}, y_{n+1})$ a la colección de datos ya existentes, es preciso recalcular el polinomio de interpolación desde el principio. 
 
 El método de las diferencias divididas, permite obtener el polinomio de interpolación en un número menor de operaciones que en el caso del polinomio de Lagrange y además, el cálculo se hace escalonadamente, aprovechando todos los resultados anteriores cuando se añade al polinomio la contribución de un nuevo dato.
 
 El polinomio de orden $n$ de diferencias divididas se construye de la siguiente manera,
+\switchcolumn
+\subsection{Divided diferences.}\index{Interpolation! Divided diferences} \index{Divided diferences}
+The two method we have studied so far, Vadermonde matrix and Lagrange polynomial, have a common drawback. If we add a new pair of data $(x_{n+1},y_{n+1})$ to the existing data collection, it is necessary to recalculate the interpolation polynomial from scratch.
+
+The divided differences algorithm allows us to build the interpolation polynomial performing less operations than in the case of Lagrange polynomial. Besides, the computing is carried out stepwise, making use of all previous results when a new data  pair is added to calculate the interpolation polynomial.
+
+We build the divided differences polynomial of degree $n$ as follows, 
 \end{paracol}
 \begin{equation*}
 p_n(x)=a_0+(x-x_0)\cdot a_1+(x-x_0)\cdot (x-x_1)\cdot a_2+\cdots +(x-x_0)\cdot (x-x_1)\cdots (x-x_{n-2})\cdot(x-x_{n-1})\cdot a_n
 \end{equation*}
 
 \begin{paracol}{2}
-Donde, como siempre, $(x_0, y_0), (x_1,y_1), \cdots (x_n, y_n)$, representan los datos para los que se quiere calcular el polinomio interpolador de grado $n$. Si sustituimos las datos en el polinomio, llegamos a un sistema de ecuaciones, triangular inferior, en el que las incógnitas son los coeficientes del polinomio.
+Donde, $(x_0, y_0), (x_1,y_1), \cdots (x_n, y_n)$, representan los datos para los que se quiere calcular el polinomio interpolador de grado $n$. Si sustituimos las datos en el polinomio, llegamos a un sistema de ecuaciones, triangular inferior, en el que las incógnitas son los coeficientes del polinomio.
+\switchcolumn
+Where $(x_0, y_0), (x_1,y_1), \cdots (x_n, y_n)$, represent the dataset for which we want to calculate the interpolation polynomial of degree $n$. If we evaluate the polynomial using the dataset we arrive to a lower triangular system of linear equation, where the polynomial coefficients are the unknowns.    
 \end{paracol}
 \begin{align*}
 a_0&&=y_0\\
@@ -388,23 +408,33 @@ a_0&+(x_n-x_0)a_1+\cdots+(x_n-x_0)(x_n-x_1)\cdots (x_n-x_{n-2})(x_n-x_{n-1})a_n&
 Este sistema se resuelve explícitamente empleando un esquema de diferencias divididas. 
 
 La diferencia divida de primer orden entre dos puntos $(x_0,y_0)$ y $(x_1,y_1)$ se define como,
+\switchcolumn
+This system can be solved using the divided differences algorithm.
+
+We define the first-order two-point divided difference $(x_0,y_0)$ y $(x_1,y_1)$ as, 
 \end{paracol}
 \begin{equation*}
 f\left[x_0,x_1\right]=\frac{y_1-y_0}{x_1-x_0}
 \end{equation*}														
 \begin{paracol}{2}
-Para tres puntos se define la diferencia dividida de segundo orden como, $(x_0,y_0)$, $(x_1,y_1)$ y $(x_2,y_2)$
+Para tres puntos, $(x_0,y_0)$, $(x_1,y_1)$ y $(x_2,y_2)$, se define la diferencia dividida de segundo orden como,  
+\switchcolumn
+For three point, $(x_0,y_0)$, $(x_1,y_1)$ y $(x_2,y_2)$, we define the second-order divided  difference as, 
 \end{paracol}
 \begin{equation*}
 f\left[x_0,x_1,x_2\right]=\frac{f\left[x_1,x_2\right]-f\left[x_0,x_1\right]}{x_2-x_0}
 \end{equation*}
 \begin{paracol}{2}
 y, en general definiremos la diferencia dividida de orden $i$ para $i+1$ puntos como,
+\switchcolumn
+and eventually, we can define the $i-\text{order}$ divide diference for $i+1$ points as,
 \end{paracol}
 \begin{equation*}
 f\left[x_0,x_1,\cdots,x_i\right]=\frac{f\left[x_1,x_2,\cdots,x_i\right]-f\left[x_0,x_1,\cdots,x_{i-1}\right]}{x_i-x_0}
 \end{equation*}																					\begin{paracol}{2}	
 Si despejamos por sustitución progresiva los coeficientes del polinomio de interpolación del sistema triangular inferior obtenido, cada coeficiente puede asociarse a una diferencia dividida,
+\switchcolumn
+We can now get the polynomial coefficients applying progressive substitutions to the lower triangular system defined above, then, each coefficient may be related with a divided difference, 
 \end{paracol}
 \begin{align*}
 a_0&=f\left[x_0\right]=y_0\\
@@ -415,6 +445,8 @@ a_i&=f\left[x_0,x_1,\cdots,x_i\right]\\
 a_n&=f\left[x_0,x_1,\cdots,x_n\right]\\
 \end{align*}																					\begin{paracol}{2}			
 Por tanto, podemos obtener directamente los coeficientes del polinomio calculando las diferencias divididas. Veamos un ejemplo empleando el siguiente conjunto de cuatro datos,
+\switchcolumn
+Therefore we can get the polynomial coefficients straightforwardly if we compute the divided differences. Let's see an example using the following four data set. 
 \end{paracol}
 \begin{table}[h]
 \centering
@@ -425,11 +457,13 @@ y&1&-1&2&3
 \end{tabular}
 \end{table}
 \begin{paracol}{2}
-Habitualmente, se construye a partir de los datos una tabla, como la  \ref{tabdif}, de diferencias divididas. Las primera columna contiene los valores de la variable $x$, la siguiente los valores de las diferencias divididas de orden cero (valores de $y$). A partir de la segunda, las siguientes columnas contienen las diferencias dividas de los elementos de la columna anterior, calculados entre los elementos que ocupan filas consecutivas. La tabla va perdiendo cada vez una fila, hasta llegar a la diferencia dividida de orden $n$ de todos los datos iniciales.
+Habitualmente, se construye a partir de los datos una tabla, como la  \ref{tabdif}, de diferencias divididas. Las primera columna contiene los valores de la variable $x$, la siguiente los valores de las diferencias divididas de orden cero (valores de $y$). A partir de la segunda, las siguientes columnas contienen las diferencias dividas de los elementos de la columna anterior, calculados entre los elementos que ocupan filas consecutivas. La tabla va perdiendo cada vez una fila, hasta llegar a la diferencia dividida de orden $n-1$ de todos los datos iniciales.
+\switchcolumn
+Usually, we build the divided difference polynomial, using a table such as table \ref{tabdif}. the first column contains the values of variable $x$ the second the values of the cero-order divided differences (values of variable $y$). From the second one on, the following columns contain the divided differences of the elements held in the  previous column. These differences are calculated using the elements located on consecutive rows. The table lost a row each time we advance a column. When we arrive to the $n-1$-order divided difference, we have a single value that depends on all initial data.     
 \end{paracol}
 \begin{table}[h]
 \centering
-\caption{Tabla de diferencia divididas para cuatro datos}
+\bicaption{Tabla de diferencia divididas para cuatro datos}{four data divided difference table}
 \begin{tabular}{ccccc}
 $x_i$&$y_i$&$f\left[x_i,x_{i+1}\right]$&$f\left[x_i,x_{i+1},x_{i+2}\right]$&$f\left[x_i,x_{i+1},x_{i+2},x_{i+3}\right]$\\
 \hline
@@ -443,6 +477,8 @@ $x_3=4$&$y_3=\ \ 3$\\
 \end{table}
 \begin{paracol}{2}
 Los coeficientes del polinomio de diferencias divididas se corresponden con los elementos de la primera fila de la tabla. Por lo que en nuestro ejemplo el polinomio resultante sería,
+\switchcolumn
+The divided differences polynomial coefficients are the elements held in the first row of the table. So, for our example, we obtain the following interpolation polynomial, 
 \end{paracol}
 \begin{equation*}
 p_3(x)=1-2x+\frac{7}{6}x(x-1)-\frac{1}{3}x(x-1)(x-3)
@@ -482,7 +518,7 @@ El siguiente código permite calcular los coeficientes del polinomio de diferenc
 %end
 %\end{lstlisting}
 \begin{paracol}{2}
-Como el polinomio de diferencias divididas toma una forma especial, es preciso tenerlo en cuenta a la hora de calcular su valor en un punto $x$ determinado. Es siguiente código permite evaluar un polinomio de diferencias divididas en un punto dado, conocidos sus coeficientes y los valores $x_1,\cdots, x_n$ a partir de los cuales se obtuvo el polinomio,
+Como el polinomio de diferencias divididas toma una forma especial, es preciso tenerlo en cuenta a la hora de calcular su valor en un punto $x$ determinado. El siguiente código permite evaluar un polinomio de diferencias divididas en un punto dado, conocidos sus coeficientes y los valores $x_1,\cdots, x_n$ a partir de los cuales se obtuvo el polinomio,
 \end{paracol}
 
 %\begin{lstlisting}
