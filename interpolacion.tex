@@ -346,33 +346,17 @@ It is ease to check that, using this method for building the interpolation polyn
 
 The following python function \mintinline{python}{lagrang} calculates, at any point x, the Lagrange interpolating polynomial value built from a set of pairs of points $\mathcal{A}\equiv \{(x_i,y_i)\}$.   
 \end{paracol}
-%\begin{lstlisting}
-%function y1=Lagrange(x,y,x1)
-% este programa obtiene el valor interpolado y1 correspondiente al valor x1
-% empleando el polinomio interpolador de Lagrange de grado n, obtenido a 
-% partir de los vectores x e y (de longitud n)
 
-% obtenemos el tamaño del conjunto de datos,
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=lgr\_pol.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/interpolacion/codigo_abierto/lgr_pol.py}
 
-%n=length(x);
-% inicializamos la variable de salida
-%y1=0;
-% construimos el valor a partir de los polinomios de Lagrange,
-%for j=1:n
-    % inicializamos el polinomio de Lagrange correspondiente al dato i
-%    lj=1;
-    % y lo calculamos...
-%    for i=1:j-1
-%       lj=lj*(x1-x(i))/(x(j)-x(i));
-%    end
-%    for i=j+1:n
-%       lj=lj*(x1-x(i))/(x(j)-x(i));
-%    end 
-    
-    % sumamos la contribución del polinomio de Lagrange lj
-%    y1=y1+lj*y(j);
-%end
-%\end{lstlisting}
 \begin{paracol}{2}
 \subsection{Diferencias divididas.}\label{sec:difdiv} \index{Interpolación! Diferencias Divididas} \index{Diferencias Divididas}
 Tanto el método de la matriz de Vandermonde como el de los polinomios de Lagrange, presentan el inconveniente de que si se añade un dato más $(x_{n+1}, y_{n+1})$ a la colección de datos ya existentes, es preciso recalcular el polinomio de interpolación desde el principio. 
@@ -486,83 +470,48 @@ p_3(x)=1-2x+\frac{7}{6}x(x-1)-\frac{1}{3}x(x-1)(x-3)
 \begin{paracol}{2}
 Es importante hacer notar que el polinomio de interpolación obtenido por diferencias divididas siempre aparece representado como suma de productos de binomios $(x-x_0)(x-x_1)\cdots$ y los coeficientes obtenidos corresponden a esta representación y no a la representación habitual de un polinomio como suma de potencias de la variable $x$. 
 
-El siguiente código permite calcular los coeficientes del polinomio de diferencias divididas a partir de un conjunto de $n$ datos.
-\end{paracol}
-%\begin{lstlisting}
-%function a=difdiv(x,y)
-% este polinomio permite obtener los coeficientes del polinomio de
-% diferencias divididas que interpola los datos contenidos el los vectores x
-% e y. Da como resultado un vector fila a con los coeficientes
+El siguiente código permite calcular el polinomio de diferencias divididas a partir de un conjunto de $n$ datos. Como el polinomio de diferencias divididas toma una forma especial, es preciso tenerlo en cuenta a la hora de calcular su valor en un punto $x$ determinado. La función \mintinline{python}{difdiv} permite obtener los coeficientes del polinomio de diferencias divididas a partir de una coleccion de datos $x,y$. La función \mintinline{python}{evdif} permite calcular el valor que toma el polinomio en un punto cualquiera $x_i$, a partir de los coeficientes calculados y los valores $x$ de la collección de datos.
+\switchcolumn
+Notice that the interpolation polynomial, built using divided differences, it always represented as a sum of binomials products $(x-x_0)(x-x_1)\cdots$ and the coefficients computed belong to this representation a not to the standard polynomial representation as a sum of variable $x$ powers.
 
-% miramos cuantos datos tenemos
-%n=length(x);
-
-% inicializamos el vector de coeficientes con las diferencias de orden 0, es
-% decir los valores de y,
-
-%a=y;
-
-% y ahora montamos un bucle, si tenemos n datos debemos calcular n
-% diferencias, como ya tenenos la primera, iniciamos el bucle en 2,
-%for j=2:n
-    % en cada iteración calculamos las diferencias de un orden superior,
-    % como solo nos vale la primera diferencia de cada orden empezamos el
-    % bucle interior en el valor del exterior j
-%    for i=j:n
-%        a(i)=(a(i)-y(i-1))/(x(i)-x(i-j+1));
-%    end
-    % volvemos a copiar en y las diferencias obtenidas para emplearlas en la
-    % siguiente iteracion
-%    y=a;
-    
-%end
-%\end{lstlisting}
-\begin{paracol}{2}
-Como el polinomio de diferencias divididas toma una forma especial, es preciso tenerlo en cuenta a la hora de calcular su valor en un punto $x$ determinado. El siguiente código permite evaluar un polinomio de diferencias divididas en un punto dado, conocidos sus coeficientes y los valores $x_1,\cdots, x_n$ a partir de los cuales se obtuvo el polinomio,
+The following code implement the divided differences polynomial from a set of $n$ data. We must take into account the special form of the polynomial to calculate the value ot takes in an specific $x$ point. Function \mintinline{python}{difdiv} computes the polynomiañ coefficients departing from a set $x,y$ of data. Function \mintinline{python}{evdif} calculates the value of the polynomial in a point whatsoever, using the computed coefficientes and the $x$ values of the data set.  
 \end{paracol}
 
-%\begin{lstlisting}
-%function y=evdif(a,x,x1)
-% esta función obtiene el valor de un polinomio de diferencias divididas a
-% partir de los coeficientes (a) del polinomio, los puntos (x) sobre los que
-% se ha calculado el polinomio y el punto o vector de puntos (x1) para el
-% que se quiere calcular el valor que toma el polinomio.
-
-% obtenemos el tamaño del vector de coeficientes del polinomio,
-
-%n=length(a);
-
-% Construimos un bucle para calcular el valor del polinomio,
-%y=a(1);
-%for k=1:n-1
-    % calculamos el valor del producto de los binomios que multiplican al
-    % coeficiente i
-%    binprod=1;
-%    for j=1:k
-%        binprod=binprod.*(x1-x(j));
-%    end
-%    y=y+a(k+1)*binprod;
-%end
-%\end{lstlisting}
-% y=evdif(a,xp,x);
-%\end{lstlisting} 
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=dif\_div.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/interpolacion/codigo_abierto/dif_div.py}
 \begin{paracol}{2} 
- \subsection{El polinomio de Newton-Gregory} \label{sec:newgre} \index{Interpolación!Polinomio de Newton-gregory} \index{Polinomio de Newton-Gregory}
+ \subsection{El polinomio de Newton-Gregory} \label{sec:newgre} \index{Interpolación!Polinomio de Newton-Gregory} \index{Polinomio de Newton-Gregory}
  Supone una simplificación al cálculo del polinomio de diferencias divididas para el caso particular en que los datos se encuentran equiespaciados y dispuestos en orden creciente con respecto a los valores de la coordenada $x$.
  
 En este caso, calcular los valores de las diferencias es mucho mas sencillo.  Si pensamos en las diferencias de primer orden, los denominadores de todas ellas son iguales, puesto que los datos están equiespaciados,
+\switchcolumn
+\subsection{The Newton-Gregory polynomial}\index[eng]{Interpolation!The Newton-Gregory polynomial}\index[eng]{The Newton-Gregory polynomial}
+This polynomial is a simplification of the divided difference polynomial for the case in which the $x$ data of the data set are equispaced and increasingly ordered.
+
+For this case, it is much easier to compute the values of the differences. Think, for instance, in the first-order differences, as far as the data are equispaced ll denominators are equal,  
 \end{paracol}
 \begin{equation*}
 \Delta x \equiv x_i-x_{i-1} =h
 \end{equation*}
 \begin{paracol}{2}
 En cuanto a los numeradores, se calcularían de modo análogo al de las diferencias divididas normales,
+\switchcolumn
+Concerning the numerators, they are computed as in the standard case of divided differences,
 \end{paracol}
 \begin{equation*}
 \Delta y_0= y_1-y_0, \Delta y_1=y_2-y_1, \cdots, \Delta y_i=y_{i+1}-y_i, \cdots, \Delta y_{n-1}=y_{n}-y_{n-1}
 \end{equation*}
 \begin{paracol}{2}
 Las diferencias de orden superior para los numeradores se pueden obtener de modo recursivo, a partir de las de orden uno, puesto que los denominadores de todas ellas $h$, son iguales.
+\switchcolumn
+Higher order differences can be computed recursively from the first-order differences because the denominator of them all, $h$ are equal.
 \end{paracol}
 
 \begin{equation*}
@@ -570,42 +519,58 @@ Las diferencias de orden superior para los numeradores se pueden obtener de modo
 \end{equation*}
 \begin{paracol}{2}
 En este caso, el denominador de la diferencia sería $x_2-x_0=2h$, y la diferencia tomaría la forma,
+\switchcolumn
+In this case, the difference denominator would be $x_2-x_0=2h$, and the difference would take the form,  
 \end{paracol}
 \begin{equation*}
 f[x_0,x_1,x_2]=\frac{\Delta^2y_0}{2h^2}
 \end{equation*}
 \begin{paracol}{2}
 En general, para la diferencias de orden n tendríamos,
+\switchcolumn
+In genral, for the order-n differences we obtain,
+
 \end{paracol}
 \begin{equation*}
 \Delta^n y_0=y_n-\binom{n}{1}\cdot y_{n-1}+\binom{n}{2}\cdot y_{n-2}-\cdots+(-1)^n\cdot y_0
 \end{equation*}
 \begin{paracol}{2}
 Donde se ha hecho uso de la expresión binomial,
+\switchcolumn
+Where we have used the binomial expression,
 \end{paracol}
 \begin{equation*}
 \binom{k}{l}=\frac{k!}{l!\cdot(k-l)!}
 \end{equation*}
 \begin{paracol}{2}
 Para obtener la diferencia dividida de orden n, bastaría ahora dividir por $n!\cdot h^n$.
+\switchcolumn
+And, eventually, we obtain the order-n divided difference just dividing by  $n!\cdot h^n$.
 \end{paracol}
 \begin{equation*}
 f\left[x_0,x_1,\cdots,x_n\right]=\frac{\Delta^n y_0}{n!\cdot h^n}
 \end{equation*}
 \begin{paracol}{2}
 A partir de las diferencias, podemos representar el polinomio de diferencias divididas resultante como,
+\switchcolumn
+Once we have got the differences we can write the divided differences polynomial as,
+
 \end{paracol}
 \begin{equation*}
 p_n(x)=y_0+\frac{x-x_0}{h}\Delta y_0+\frac{(x-x_1)\cdot (x-x_0)}{2\cdot h^2}\Delta^2 y_0+\cdots +\frac{(x-x_{n-1}) \cdots (x-x_1)\cdot (x-x_0)}{n! \cdot h^n}\Delta^n y_0
 \end{equation*}
 \begin{paracol}{2}
-Este polinomio se conoce como el polinomio de Newton-Gregory, y podría considerarse como una aproximación  numérica al polinomio de Taylor de orden n de la posible función asociada a los datos empleados. 
+Este polinomio se conoce como el polinomio de Newton-Gregory, y podría considerarse como una aproximación  numérica al polinomio de Taylor de orden n de la posible función asociada a los datos empleados.
 
-En este caso, podríamos construir la tabla para obtener los coeficientes de diferencias, calculando en cada columna simplemente las diferencias de los elementos de la columna anterior. Por ejemplo,
+En este caso, podríamos construir la tabla para obtener los coeficientes del polinomio, calculando en cada columna simplemente las diferencias de los elementos de la columna anterior. Por ejemplo,
+\switchcolumn
+This polynomial is known as the Newton-Gregory polynomial, and it could be considered as a numerical approximation to the n-degree Taylor polynomial of the (possible) function associated to the dataset. 
+
+In this case, we can build the table to  obtain the polynomial coefficients, computing in each column just the differences of the previous column. For example,  
 \end{paracol}
 \begin{table}[h]
 \centering
-\caption{Tabla de diferencias para el polinomio de Newton -Gregory de cuatro datos}
+\bicaption{Tabla de diferencias para el polinomio de Newton-Gregory de cuatro datos}{Table of differences for a Newton-Gregory polynomial of four data}
 \begin{tabular}{ccccc}
 $x_i$&$y_i$&$\Delta y_i$&$\Delta^2 y_i$&$\Delta^3 y_i$\\
 \hline
@@ -619,79 +584,53 @@ $x_3=3$&$y_3=\ \ 3$\\
 \end{table}
 \begin{paracol}{2}
 Una vez calculadas las diferencias, basta dividir por $n!\cdot h^n$ los elementos de la primera fila de la tabla,
+\switchcolumn
+Once we have computed the differences, it is enough to divide by $n!\cdot h^n$ the elements of the table first row, 
 \end{paracol}
 \begin{equation*}
 a_0=1, a_1=\frac{-2}{1}, a_2=\frac{5}{2\cdot 1^2}, a_3=\frac{-7}{6\cdot 1^3}
 \end{equation*}
 \begin{paracol}{2}
-El siguiente código muestra un ejemplo de implementación en Matlab del polinomio de Newton-Gregory
+El siguiente código muestra un ejemplo de implementación en Python del polinomio de Newton-Gregory
+\switchcolumn
+The following code shows an example of Python implementation for the Newton-Gregory polynomial
 \end{paracol}
-%\begin{lstlisting}
-%function [a,y1]=newgre(x,y,x1)
-% este polinomio permite obtener los coeficientes del polinomio de
-% newton-gregory que interpola los datos contenidos en los vectores 
-% x e y. Da como resultado un vector fila a con los coeficientes,  
-% si se le da ademas un punto o vector de puntos calcula los  
-% valoresque toma el polinomio en dichos puntos.
-
-% miramos cuantos datos tenemos
-%n=length(x);
-
-% inicializamos el vector de coeficientes con las diferencias de 
-% orden 0, es decir los valores de y,
-%a=y;
-%h=x(2)-x(1);
-
-% y ahora montamos un bucle, si tenemos n datos debemos calcular n
-% diferencias, como ya tenenos la primera, iniciamos el bucle en 2,
-%for j=2:n
-    % en cada iteración calculamos las diferencias de un orden 
-    % superior. Como solo nos vale la primera diferencia de cada 
-    % orden empezamos el bucle interior en el valor del exterior j
-%    for i=j:n
-        % ahora basta dividir en todos los casos por la distancia h
-        % multiplicada por el orden de la diferencia
-%        a(i)=(a(i)-y(i-1))/((j-1)*h);
-%    end
-    % volvemos acopiar en y las diferencias obtenidas para 
-    % emplearlas en la siguiente iteracion
-%    y=a;
-    
-%end
-%y1=[];
-%if nargin==3
-    % Construimos un bucle para calcular el valor del polinomio,
-%    y1=a(1);
-%    for k=1:n-1
-        % calculamos el valor del producto de los binomios que 
-        % multiplican al coeficiente i
-%        binprod=1;
-%        for j=1:k
-%            binprod=binprod.*(x1-x(j));
-%        end
-%        y1=y1+a(k+1)*binprod;
-%    end
-%end
-%\end{lstlisting}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=newton\_gregory.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/interpolacion/codigo_abierto/newton_gregory.py}
 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{intpoli.eps}
-\caption{Polinomio de interpolación de grado nueve obtenido a partir de un conjunto de diez datos} 
+\bicaption{Polinomio de interpolación de grado nueve obtenido a partir de un conjunto de diez datos}{Nine degree interpoling polynomial obtained using a set of ten data}
 \label{fig:intepol}
 \end{figure}
 \begin{paracol}{2}
 \section{Interpolación por intervalos.}
+\sectionmark{Interp. por intervalos \textreferencemark\ Piecewise interpolation}
 Hasta ahora, hemos visto cómo interpolar un conjunto de $n+1$ datos mediante un polinomio de grado $n$. En muchos casos, especialmente cuando el número de datos es suficientemente alto, los resultados de dicha interpolación pueden no ser satisfactorios.  La razón es que el grado del polinomio de interpolación crece linealmente con el número de puntos a interpolar, así por ejemplo para interpolar 11 datos necesitamos un polinomio de grado 10. Desde un punto de vista numérico, este tipo de polinomios pueden dar grandes errores debido al redondeo. Por otro lado, y dependiendo de la disposición de los datos para los que se realiza la interpolación, puede resultar que el polinomio obtenido tome una forma demasiado complicada para los valores comprendidos entres los datos interpolados..  
 
 La figura \ref{fig:intepol} muestra el polinomio de interpolación de grado nueve para un conjunto de 10 datos. Es fácil darse cuenta, simplemente observando los datos, que no hay ninguna razón que justifique las curvas que traza el polinomio entre los puntos $1$ y $2$  o los puntos $9$ y $10$, por ejemplo.
+
+\switchcolumn
+\section{Piecewise interpolation}
+\sectionmark{Interp. por intervalos \textreferencemark\ Piecewise interpolation}
+So far, we have seen how to interpolate a set of $n+1$ data using a degree $n$ polynomial. In many case, in particular when the number of data is high, the results of such interpolation could be very poor. The problem comes from the linear increasing of the polynomial degree with the number of data. So, if we want to build the interpolation polynomial for a 11 data, we come up with a 10-degree polynomial. From a numerical point of view, this kinda polynomial are prone to cast large errors due to the rounding process. On the other hand, depending on how data used to compute the interpolation are distributed, the polynomial could take a too complicate shape that hardly can be related with the information held in the dataset.
+
+Figure \ref{fig:intepol} shows a interpolating polynomial of degree nine obtained from a set of ten data. It is easy to realise, just for simple inspection, that there in not reason to justify the polynomial curvature between points $1$ and $2$ or between the points $9$ and $10$.     
 \end{paracol}
 \begin{figure}
 \centering
-\subfigure[Interpolación de orden cero  \label{fig:stepwise}]{\includegraphics[width=7cm]{steps.eps}} %\qquad 
-\subfigure[Interpolación lineal  \label{fig:lineal}]{\includegraphics[width=7cm]{lineal.eps}}\\
-\caption{Interpolaciones de orden cero y lineal para los datos de la figura \ref{fig:intepol} }
+\subfigure[Interpolación de orden cero / Zero-order interpolation  \label{fig:stepwise}]{\includegraphics[width=7cm]{steps.eps}} %\qquad 
+\subfigure[Interpolación lineal 7 Linear interpolation  \label{fig:lineal}]{\includegraphics[width=7cm]{lineal.eps}}\\
+\bicaption{Interpolaciones de orden cero y lineal para los datos de la figura \ref{fig:intepol} }{Zero-order and linear interpolation for the figure data}
 \end{figure}
 
 \begin{paracol}{2}
@@ -709,9 +648,27 @@ Siguiendo el mismo procedimiento, aumentando el número de datos contenidos en c
 \subsection{Interpolación mediante splines cúbicos} \index{Interpolación!Splines}\index{Splines}
 Hemos descrito antes cómo el polinomio interpolador de orden $n$ para un conjunto de $n+1$ datos puede presentar el inconveniente de complicar excesivamente la forma de  la curva obtenida entre los puntos interpolados. La interpolación a tramos que acabamos de describir, simplifica la forma de la curva entre los puntos pero presenta el problemas de la continuidad en las uniones entre tramos sucesivos. Sería deseable encontrar métodos de interpolación que fueran capaces de solucionar ambos problemas simultáneamente. Una buena aproximación a dicha solución la proporcionan los \emph{splines}.
 
-Una función \emph{spline} está formado por un conjunto de polinomios, cada uno definido en un intervalo, que se unen entre sí obedeciendo a ciertas condiciones de continuidad.
+Una función \emph{spline} está formada por un conjunto de polinomios, cada uno definido en un intervalo, que se unen entre sí obedeciendo a ciertas condiciones de continuidad.
 
 Supongamos que tenemos una tabla de datos cualquiera,
+
+\switchcolumn
+For these reasons, in many cases it is better not to use the whole dataset to build a single interpolation polynomial of maximum degree. Instead, a common practice is to divide the dataset in several groups of data ---usually they are gathered using interval of consecutive data-- and build several polynomial of lower degree, each one interpolating the data of  a different group.
+
+The  degree of the polynomials should be related with the number of data allocated in each interval.
+
+\paragraph{Zero-order interpolation.} \index[eng]{zero-order interpolation} If we get interval which only hold a single  data pair $X,y$, then we get zero-order interpolating polynomials, $a_{0i} = y_i$. The result is a stepwise interpolation which values changes from one interval to the next,  taken the data value defined for each interval according to the dataset.   Figure \ref{fig:stepwise} shows the zero-order interpolation result for the same ten data of figure \ref{fig:intepol}. 
+
+\paragraph{Linear interpolation.} \index[eng]{Linear interpolation} In this case, we divide the dataset in groups of two data. Each two consecutive data are interpolated calculating the line that pass through them. The linear interpolation is very commonly used due to its computing simplicity. Figure \ref{fig:lineal} shows the result of interpolating the same data utilised in previous examples, using linear interpolation. 
+
+Following the same procedure, we can increase the number of data include in each interval and define quadratic interpolation, using second-degree polynomials and taking three points in each interval; cubic interpolation,using  third-degree polynomial and four point intervals. etc.
+
+\subsection{Cubic spline interpolation}\index[eng]{Interpolation!Splines}\index[eng]{Splines}
+WE have seen how the $n$-degree interpolating polynomial for a set of $n+1$ data, could present a quite complex shape that does not represent well the information supplied by the dataset. The piecewise interpolation that we have described so far, simplifies the shape of the interpolating curve but have in turn the problem that it loses the continuity in the union between consecutive intervals. It could be valuable to find interpolation methods that may be able to cope with both problems simultaneously. A good approach to solve these problem is supplied by \emph{spline} interpolation. 
+
+A \emph{spline} is function built using a set of polynomials, any one of them defined in an interval. The spline polynomial are connected in the ends of the intervals meeting certain continuity conditions.
+
+Suposse we have a data table whatsoever,
 \end{paracol}
 \begin{table}[h]
 \centering
@@ -723,6 +680,8 @@ y&$y_0$&$y_1$&$\cdots$&$y_n$
 \end{table}
 \begin{paracol}{2}
 Para construir una función \emph{spline} $S$ de orden $m$, que interpole los datos de la tabla, se definen intervalos tomando como extremos dos puntos consecutivos de la tabla y un polinomio de grado $m$ para cada uno de los intervalos,
+\switchcolumn
+To build a $m$ order \emph{spline} function $S$ for interpolating the table data, we define intervals taking two consecutive point onn the table as limits. Then, we define an $m$ degree polynomial for each interval.
 \end{paracol}
 \begin{equation*}
 S= \left\{ 
@@ -740,6 +699,10 @@ S_{n-1}(x),& \ x\in [x_{n-1},x_n]
 Para que $S$ sea una función Spline de orden $m$ debe cumplir que sea continua y tenga $m-1$ derivadas continuas en el intervalo $[x_0,x_n]$ en que se desean interpolar los datos.
    
 Para asegurar la continuidad, los polinomios que forman $S$ deben cumplir las siguientes condiciones en sus extremos;
+\switchcolumn
+For $s$ to be a order $m$ spline function it should be continue and it should have $m-1$ continue derivatives in the interval $[x_0,x_n]$ in which we want to interpolate the data.
+
+To ensure the continuity of the polynomials that build $S$ they must satisfy the following condition at their ends, 
 \end{paracol}
 \begin{align*}
 S_i(x_{i+1})&=S_{i+1}(x_{i+1}),\ (1\leq i \leq n-1)\\
@@ -753,12 +716,24 @@ Es decir, dos polinomios consecutivos del spline y sus $m-1$ primeras derivadas,
 
 Una consecuencia inmediata de las condiciones de continuidad exigidas a los splines es que sus derivadas sucesivas, $S',\ S'', \cdots$ son a su vez funciones spline de orden $m-1,\ m-2, \cdots$. Por otro lado, las condiciones de continuidad suministran  $(n-1)\cdot m$ ecuaciones que, unidas a las $n+1$ condiciones de interpolación ---cada polinomio debe pasar por los datos que constituyen los extremos de su intervalo de definición---,  suministran un total de  $n\cdot (m+1)-(m-1)$ ecuaciones. Este número es insuficiente para determinar los $(m+1)\cdot n$ parámetros correspondientes a los $n$ polinomios de grado $m$ empleados en la interpolación. Las $m-1$ ecuaciones que faltan se obtienen imponiendo a los splines condiciones adicionales.
 
-
 \paragraph{Splines cúbicos.} \index{Splines! Cubicos} Los splines más empleados son los formados por polinomios de tercer grado. En total, tendremos que determinar $(m+1)\cdot n=4\cdot n$ coeficientes para obtener todos los polinomios que componen el spline. Las condiciones de continuidad más la de interpolación suministran en total $3\cdot (n-1)+n+1=4\cdot n-2$  ecuaciones. Necesitamos imponer al spline dos condiciones más. Algunas típicas son,
 \begin{enumerate}
 \item Splines naturales $S''(x_0)=S''(x_n)=0$
 \item Splines con valor conocido en la primera derivada de los extremos $S'(x_0)=y'_0, S'(x_n)=y'_n$
 \item Splines periódicos,
+\end{enumerate}
+\switchcolumn
+That is, two consecutive polynomial belonging to the spline and their $m-1$ first derivatives must take the same values in the common end.
+
+A straightforward consequence of the continuity conditions impose to spline functions is that their successive derivatives $S'.\ S'', \cdots$ are in turn order $m-1, \ m-2 \cdots$ spline functions too. Besides, the continuity conditions supply $(n-1) \cdot m$ equations that, together with the interpolation conditions ---each polynomial should pass through the two data point that defines the ends of its definition interval---, sum up $n\cdot (m+1)-(m-1)$ equations. This number is insufficient for obtaining the $(m+1\cdot n)$ parameters belonging to the the $n$ polynomial of degree $m$ used in the spline interpolation. We need $m-1$ equations more that are defined imposing to the polynomials additional conditions.
+
+\paragraph{Cubic Spline.} Probably, the most used splines are those composed of third-degree polynomials. We must need to determine $(m+1)\dot n = 4\cdot n$ coefficients to obtain all the polynomials that compose the spline. The continuity plus the interpolation conditions supply $3\cdot (n-1)+n+1 = 4\cdot n - 2$ equations. We need to impose two more conditions to the spline. Some frecuently used conditions are,
+\begin{enumerate}
+	\item natural Spline $S''(x_0)=S''(x_n)=0$
+	\item Spline with a known value for the derivatives at the ends of the interval $S'(x_0)=y'_0, S'(x_n)=y'_n$
+	\item Periodic Spline,
+\end{enumerate}  
+\end{paracol}     
 \begin{equation*}
 \left\{ 
 \begin{aligned}
@@ -768,9 +743,10 @@ S''(x_0)&=S''(x_n)
 \end{aligned}
 \right.
 \end{equation*}
-\end{enumerate}
-
+\begin{paracol}{2}
 Intentar construir un sistema de ecuaciones para obtener a la vez todos los coeficientes de todos los polinomios es una tarea excesivamente compleja porque hay demasiados parámetros.  Para abordar el problema partimos del hecho de que $S''(x)$ es también un spline de orden 1 para los puntos interpolados. Si los definimos como,
+\switchcolumn
+Try to build a system of equations to obtain all the coefficients of all the polynomial at a time, is an arduous task. There are too many parameters. We can address the problem starting with $S''(x)$, which it is also a order-1 spline for the points we want to interpolate. If we define it as,  
 \end{paracol}
 \begin{equation*}
 S''_i(x)=-M_i\frac{x-x_{i+1}}{h_i}+M_{i+1}\frac{x-x_i}{h_i},\   i=0,\cdots, n-1
@@ -780,6 +756,10 @@ S''_i(x)=-M_i\frac{x-x_{i+1}}{h_i}+M_{i+1}\frac{x-x_i}{h_i},\   i=0,\cdots, n-1
 donde $h_i=x_{i+1}-x_i$ representa el ancho de cada intervalo y donde cada valor $M_i=S''(x_i)$ será una de las incógnitas que deberemos resolver.
 
 Si integramos dos veces la expresión anterior,
+\switchcolumn
+Where  $h_i=x_{i+1}-x_i$ stand for each interval width and where the value $M_i=S''(x_i)$ will be the unknown we have to solve. 
+
+Now, we integrate two times this expression, $S_i''(x)$, to obtain,
 \end{paracol}
 \begin{align*}
 S'_i(x)&=-M_i\frac{(x-x_{i+1})^2}{2\cdot h_i}+M_{i+1}\frac{(x-x_i)^2}{2\cdot h_i}+A_i,\   i=0,\cdots, n-1\\
@@ -787,12 +767,17 @@ S_i(x)&=-M_i\frac{(x-x_{i+1})^3}{6\cdot h_i}+M_{i+1}\frac{(x-x_i)^3}{6\cdot h_i}
 \end{align*}
 \begin{paracol}{2}
 Empezamos por imponer las condiciones de interpolación: el polinomio $S_i$ debe pasar por el punto $(x_i,y_i)$,
+
+\switchcolumn
+Let's start imposing the interpolation conditions: the polynomial $S_i$ must to pass through the point $(x_i,y_i)$,
 \end{paracol}
 \begin{equation*}
 S_i(x_i)=-M_i\frac{(x_i-x_{i+1})^3}{6\cdot h_i}+B_i=y_i \Rightarrow B_i=y_i-\frac{M_i\cdot h_i^2}{6},\ i=0,\cdots, n-1
 \end{equation*}
 \begin{paracol}{2}
 A continuación imponemos continuidad del spline en los nodos comunes: El polinomio $S_{i-1}$ también debe pasar por el punto $(x_i, y_i)$,
+\switchcolumn
+Then, we impose the continuity of the spline in the points common to two polynomials: Polynomial $S_{i-1}$ must also pass through the point $(x_i, y_i)$, 
 \end{paracol}
 \begin{align*}
 S_{i-1}(x_i)&=M_i\frac{(x_i-x_{i-1})^3}{6\cdot h_i}+A_{i-1}(x_i-x_{i-1})+\overbrace{y_{i-1}-\frac{M_{i-1}\cdot h_{i-1}^2}{6}}^{B_{i-1}}=y_i \Rightarrow\\
@@ -800,12 +785,16 @@ S_{i-1}(x_i)&=M_i\frac{(x_i-x_{i-1})^3}{6\cdot h_i}+A_{i-1}(x_i-x_{i-1})+\overbr
 \end{align*}
 \begin{paracol}{2}
 Y por tanto,
+\switchcolumn
+and thus,
 \end{paracol}
 \begin{equation*}
 A_i=\frac{y_{i+1}-y_i}{h_i}-\frac{M_{i+1}-M_i}{6}\cdot h_i, \ i=0,\cdots, n-1
 \end{equation*}
 \begin{paracol}{2}
 En tercer lugar imponemos la condición de que las derivadas también sean continuas en los nodos comunes,
+\switchcolumn
+Thirdly, we impose that continuity condition to the derivatives, in the common end of two consecutive polynomials,
 \end{paracol}
 \begin{align*}
 S'_i(x_i)&=-M_i\frac{(x_i-x_{i+1})^2}{2\cdot h_i}+M_{i+1}\frac{(x_i-x_i)^2}{2\cdot h_i}+\frac{y_{i+1}-y_i}{h_i}-\frac{M_{i+1}-M_i}{6}\cdot h_i,\   i=0,\cdots, n-1\\
@@ -815,13 +804,18 @@ S'_i(x_i)&=S'_{i-1}(x_i) ,\   i=1,\cdots, n-1 \Rightarrow\\
 \end{align*}
 \begin{paracol}{2}
 Si agrupamos a un lado los valores $M_{i-1}, M_i, M_{i+1}$,
+
+\switchcolumn
+If we group at one side the values $M_{i-1}, M_i, M_{i+1}$,
 \end{paracol}
 \begin{align*}
 h_{i-1}\cdot M_{i-1}+2\cdot (h_{i-1}+h_i)\cdot M_i+h_i\cdot M_{i+1}=6\cdot \left(\frac{y_{i+1}-y_i}{h_i}-\frac{y_i-y_{i-1}}{h_{i-1}}\right)\\
 i=1,\cdots ,n-1
 \end{align*}
 \begin{paracol}{2}
-En total tenemos $M_0,\cdots, M_n$, $n+1$ incógnitas y la expresión anterior, solo nos suministra $n-1$ ecuaciones. Necesitamos dos ecuaciones más, Si imponemos la condición de splines naturales, Para el extremo de la izquierda del primer polinomio y para el extremo de la derecha del último,
+En total tenemos $M_0,\cdots, M_n$, $n+1$ incógnitas y la expresión anterior, solo nos suministra $n-1$ ecuaciones. Necesitamos dos ecuaciones más. Si imponemos la condición de splines naturales, para el extremo de la izquierda del primer polinomio y para el extremo de la derecha del último,
+\switchcolumn
+We have in total  $M_0,\cdots, M_n$, $n+1$ unknowns and the above expression only supply $n-1$ equations. We need two more equations. If we impose the conditions for a natural spline for the left end of the first polynomial and for the right end of the last one,  
 \end{paracol}
 \begin{align*}
 M_0=S''(x_0)=0\\
@@ -829,6 +823,8 @@ M_n=S''(x_n)=0
 \end{align*}
 \begin{paracol}{2}
 Con estas condiciones y la expresión obtenida para el resto de los $M_i$, podemos construir un sistema de ecuaciones tridiagonal
+\switchcolumn
+With these last conditions and the expression obtained for the remaining $M_i$, we can build a tridiagonal system of equations
 \end{paracol}
 \begin{equation*}
 \begin{pmatrix}
@@ -854,21 +850,30 @@ b_{n-1}
 \end{equation*}
 \begin{paracol}{2}
 Donde hemos hecho,
+\switchcolumn
+Where,
 \end{paracol}
 \begin{equation*}
 b_i=6\cdot \left(\frac{y_{i+1}-y_i}{h_i}-\frac{y_i-y_{i-1}}{h_{i-1}}\right)
 \end{equation*}
 \begin{paracol}{2}
-Tenemos un sistema de ecuaciones en el que la matriz de coeficientes es tridiagonal y además diagonal dominante, por lo que podríamos emplear cualquiera de los métodos vistos en capítulo  
+Tenemos un sistema de ecuaciones en el que la matriz de coeficientes es tridiagonal y además diagonal dominante, por lo que podríamos emplear cualquiera de los métodos vistos en el capítulo  
 \ref{sistemas}.  Una vez resuelto el sistema y obtenidos los valores de $M_i$, obtenemos los valores de $A_i$ y $B_i$ a Partir de las ecuaciones obtenidas más arriba.
 
 Por último, la forma habitual de definir el polinomio de grado 3 $S_i$, empleado para interpolar los valores del intervalo $[x_i,x_{i+1}]$, mediante splines cúbicos se define como, 
+
+\switchcolumn
+So, we have a system of equations for which the coefficients matrix is tridiagonal and, besides, it is a dominant diagonal matrix. For this reason, we can solve it with anyone of the methods described in chapter \ref{sistemas}. Once the system is solved, we get the values of $M_i$ and the values of $A_i$ and $B_i$ using the equations described above. 
+
+A last remark: we usually define the 3-degree polynomial, $S_i$ used for interpolating the values inside the interval $[x_i,x_{i+1}]$ as follows, 
 \end{paracol}
 \begin{equation*}
 S_i(x)=\alpha_i+\beta_i(x-x_i)+\gamma_i(x-x_i)^2+\delta_i(x-x_i)^3, \ x\in [x_i,x_{i+1}],\ (i=0,1,\cdots,n-1)
 \end{equation*}
 \begin{paracol}{2}
 Donde,
+\switchcolumn
+Where,
 \end{paracol}
 \begin{align*}
 \alpha_i &=y_i\\
@@ -878,6 +883,8 @@ Donde,
 \end{align*}
 \begin{paracol}{2}
 La siguiente función permite obtener los coeficientes y el resultado de interpolar un conjunto de puntos mediante splines cúbicos,
+\switchcolumn
+The following Python code computed the coefficients of the cubic spline defined using a dataset and the value taken by the spline at any point.
 \end{paracol}
 %\begin{lstlisting}
 %function [c,yi]=spcubic(x,y,xi)
@@ -974,7 +981,7 @@ La siguiente función permite obtener los coeficientes y el resultado de interpo
 \end{figure} 
  
 \begin{paracol}{2} 
-\subsection{Funciones propias de Matlab para interpolación por intervalos} \index{interp1@\texttt{interp1}}
+\subsection{Funciones propias de Python para interpolación por intervalos} \index{interp1@\texttt{interp1}}
 
 Para realizar una interpolación por intervalos mediante cualquiera de los procedimientos descritos, Matlab incorpora la función propia \texttt{interp1}. Esta función admite como variables de entrada dos vectores con los valores de las coordenadas $x$ e $y$ de los datos que se desea interpolar y un tercer vector $x1$ con los puntos para los que se desea calcular el valor de la interpolación. Además, admite como variable  de entrada una cadena de caracteres que indica el método con el que se quiere realizar la interpolación. Dicha variable puede tomar los valores:
 \begin{enumerate}

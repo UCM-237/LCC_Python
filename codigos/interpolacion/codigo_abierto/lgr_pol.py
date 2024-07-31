@@ -24,7 +24,7 @@ def lagrang(x,y,x1):
     Returns
     -------
     y1 : TYPE real
-        DESCRIPTION. Lagrange polynomial Valueat x1. y1 = PLagrange(x1) 
+        DESCRIPTION. Lagrange polynomial Value at x1. y1 = lagrang(x1) 
 
     """
     y1 = 0

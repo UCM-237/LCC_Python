@@ -1,0 +1,63 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Thu Jul 25 20:12:49 2024}
+\PYG{l+s+sd}{A gruby version of Newton\PYGZhy{}Gregory polynomial }
+\PYG{l+s+sd}{@author: abierto}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{dif\PYGZus{}div} \PYG{k+kn}{import} \PYG{n}{evdif}
+\PYG{k}{def} \PYG{n+nf}{newgre}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{n}{x1}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    }
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    x : TYPE numpy array of data}
+\PYG{l+s+sd}{        DESCRIPTION.}
+\PYG{l+s+sd}{    y : TYPE numpy array of data }
+\PYG{l+s+sd}{        DESCRIPTION.}
+\PYG{l+s+sd}{    x1 : TYPE a point to calculate the value the polynomial}
+\PYG{l+s+sd}{         takes}
+\PYG{l+s+sd}{        DESCRIPTION.}
+\PYG{l+s+sd}{        This function takes a data set, represented by the}
+\PYG{l+s+sd}{        x and y array and obtain the corresponding }
+\PYG{l+s+sd}{        newton\PYGZhy{}gregory polynomial.Besides it calculates the}
+\PYG{l+s+sd}{        value of the polypolimial at the point x1. if no x1}
+\PYG{l+s+sd}{        value is supplied then it takes x1 =0 by default.}
+\PYG{l+s+sd}{        The program returns the polynomial coeficients and}
+\PYG{l+s+sd}{        the value calculated at point x1}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    a : TYPE numpy array of polynomial coeficients}
+\PYG{l+s+sd}{        DESCRIPTION.}
+\PYG{l+s+sd}{    y1: TYPE real value}
+\PYG{l+s+sd}{        DESCRIPTION. The value the polynomial takes at x1}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{n} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+    \PYG{n}{a} \PYG{o}{=} \PYG{n}{y}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()} \PYG{c+c1}{\PYGZsh{}we start the coefficient with the 0\PYGZhy{}order differences,i.e. }
+               \PYG{c+c1}{\PYGZsh{}y values. remember use a copy to avoid overwrite the arrays}
+    \PYG{n}{h} \PYG{o}{=} \PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+    \PYG{c+c1}{\PYGZsh{}here start the loop to calculate the differences}
+    \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{}for each iteration we calculate the differences}
+        \PYG{c+c1}{\PYGZsh{}of higher order. But we only need the first difference. So we restart}
+        \PYG{c+c1}{\PYGZsh{}the inner loop in the value j of the outer one}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,}\PYG{n}{n}\PYG{p}{):}
+            \PYG{c+c1}{\PYGZsh{}now it is enough to divide for the distance h betwwen x point }
+            \PYG{c+c1}{\PYGZsh{}multiplied by order j of the diference}
+            \PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{y}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}\PYG{o}{/}\PYG{p}{(}\PYG{n}{j}\PYG{o}{*}\PYG{n}{h}\PYG{p}{)}
+        \PYG{n}{y} \PYG{o}{=} \PYG{n}{a}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+    \PYG{c+c1}{\PYGZsh{}now we calculate the value(s) of the polynomial using the}
+    \PYG{c+c1}{\PYGZsh{}function built to evaluate divided diferences polynomials }
+    \PYG{c+c1}{\PYGZsh{} if type(x1) != np.ndarray:}
+    \PYG{c+c1}{\PYGZsh{}     x1 = np.array([x1])}
+    \PYG{c+c1}{\PYGZsh{} y1 = []    }
+    \PYG{c+c1}{\PYGZsh{} for i in x1:}
+    \PYG{c+c1}{\PYGZsh{}     y1.append(evdif(a,x,i))}
+    \PYG{c+c1}{\PYGZsh{} y1 = np.array(y1)}
+    \PYG{n}{y1} \PYG{o}{=} \PYG{n}{evdif}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{x1}\PYG{p}{)}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{y1}\PYG{p}{)}
+\end{Verbatim}

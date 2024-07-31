@@ -1,0 +1,69 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python3}
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Tue Jul 23 10:40:23 2024}
+
+\PYG{l+s+sd}{@author: juan}
+\PYG{l+s+sd}{A code to implement the Lagrange polynomial}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+
+\PYG{k}{def} \PYG{n+nf}{lagrang}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{n}{x1}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Function to calculate the Lagrange interpolating polynomial at point x1}
+\PYG{l+s+sd}{    }
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    x : TYPE real np array}
+\PYG{l+s+sd}{        DESCRIPTION. Table Values x to be interpolated }
+\PYG{l+s+sd}{    y : TYPE real np array}
+\PYG{l+s+sd}{        DESCRIPTION. Table values y to be interpolated}
+\PYG{l+s+sd}{    x1 : TYPE real}
+\PYG{l+s+sd}{        DESCRIPTION. Point a which the polynomial is evaluated}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    y1 : TYPE real}
+\PYG{l+s+sd}{        DESCRIPTION. Lagrange polynomial Value at x1. y1 = lagrang(x1) }
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{y1} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{n}{n} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+    \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{n}\PYG{p}{):}
+        \PYG{n}{lj} \PYG{o}{=} \PYG{l+m+mi}{1}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{j}\PYG{p}{):}
+            \PYG{n}{lj} \PYG{o}{=} \PYG{n}{lj}\PYG{o}{*}\PYG{p}{(}\PYG{n}{x1}\PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}\PYG{o}{/}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{):}
+            \PYG{n}{lj} \PYG{o}{=} \PYG{n}{lj}\PYG{o}{*}\PYG{p}{(}\PYG{n}{x1}\PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}\PYG{o}{/}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+        \PYG{n}{y1} \PYG{o}{=} \PYG{n}{y1} \PYG{o}{+}\PYG{n}{lj}\PYG{o}{*}\PYG{n}{y}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{y1}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{langrmult}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{n}{x1}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Takes the funtion lagrang and calculates the values of the Lagrange}
+\PYG{l+s+sd}{    polinomial at any point in array x1}
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    x : TYPE real np array}
+\PYG{l+s+sd}{        DESCRIPTION. Table Values x to be interpolated }
+\PYG{l+s+sd}{    y : TYPE real np array}
+\PYG{l+s+sd}{        DESCRIPTION. Table values y to be interpolated}
+\PYG{l+s+sd}{    x1 : TYPE real}
+\PYG{l+s+sd}{        DESCRIPTION. array  of point a which the polynomial is evaluated}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    y1 : TYPE real}
+\PYG{l+s+sd}{        DESCRIPTION. Lagrange polynomial Valueat x1. y1 = PLagrange(x1)}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{yaux} \PYG{o}{=} \PYG{p}{[]} \PYG{c+c1}{\PYGZsh{}fast way to create an array same size as x }
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{x1}\PYG{p}{:}
+        \PYG{n}{yaux}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{lagrang}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{n}{i}\PYG{p}{))}
+    \PYG{n}{y1} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{yaux}\PYG{p}{)}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{y1}\PYG{p}{)}
+    
+       
+\end{Verbatim}
