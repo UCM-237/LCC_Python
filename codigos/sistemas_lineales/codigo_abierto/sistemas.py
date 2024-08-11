@@ -11,7 +11,7 @@ import scipy as sc
 
 def diag_sys(A,b):
     [f,c]=np.shape(A)
-    x=np.zeros(f)
+    x=np.zeros([f,1])
     for i in range(f):
         x[i]=b[i]/A[i,i]
     return x
@@ -91,7 +91,7 @@ print("Lz: ",L.dot(z))
 x=regressive(U, z)
 print("x:",x)
 print(A.dot(x))
-'''
+
 
 A=np.array([[2., 5., 1.],[5., 14., 2.],[1., 2., 6.]])
 b=np.array([[15.],[39.],[23.]])
@@ -104,3 +104,28 @@ print("LT: ",LT)
 x=regressive(LT,z)
 print("x: ", x)
 print(A.dot(x))
+
+# QR factorising
+A=np.array([[1, 3, 2],[2, -1, 1],[1, 4, 3]])
+b=np.array([[13],[3],[18]])
+Q,R=sc.linalg.qr(A)
+print("Q: ",Q)
+print("R: ", R)
+Qb=np.transpose(Q).dot(b)
+x=regressive(R, Qb)
+print("x: ",x)'''
+
+#SVD decomposition
+A=np.array([[1, 3, 2],[2, -1, 1],[1, 4, 3]])
+b=np.array([[13],[3],[18]])
+U,s,V=sc.linalg.svd(A)
+print("U: ",U)
+print("V: ",V)
+print("s: ",s)
+S=np.diag(s)
+print("S: ",S)
+Utb=np.transpose(U).dot(b)
+z=diag_sys(S, Utb)
+print("z: ",z)
+x=np.transpose(V).dot(z)
+print("x:",x)
