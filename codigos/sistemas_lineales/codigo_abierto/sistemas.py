@@ -62,6 +62,25 @@ def regressive(A,b):
         x[i]=(x[i])/A[i,i]
     return x
 
+def eligauss(A):
+    '''This function obtains an upper triangular matrix, starting from a given
+    matrix, by applying the Gaussian elimination method.
+    It does not perform row piboting'''
+    
+    #Matrix shape
+    [f,c]=np.shape(A)
+    U=A
+    #For all the columns in A (except the last one)
+    for i in range(c-1):
+        # For all the rows below the diagonal
+        for j in range(i+1,f):
+            U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
+            print("(i,j): ",i," ,",j)
+            print(U)
+    return U
+
+
+
 '''A=np.diag([1,2,3,4])
 print(A)
 b=np.ones([4,1])
@@ -113,8 +132,7 @@ print("Q: ",Q)
 print("R: ", R)
 Qb=np.transpose(Q).dot(b)
 x=regressive(R, Qb)
-print("x: ",x)'''
-
+print("x: ",x)
 #SVD decomposition
 A=np.array([[1, 3, 2],[2, -1, 1],[1, 4, 3]])
 b=np.array([[13],[3],[18]])
@@ -128,4 +146,9 @@ Utb=np.transpose(U).dot(b)
 z=diag_sys(S, Utb)
 print("z: ",z)
 x=np.transpose(V).dot(z)
-print("x:",x)
+print("x:",x)'''
+
+A=np.array([[3.,4.,2.,5.],[2.,0.,1.,-2.],[3.,2.,1.,8.],[5.,2.,3.,2.]])
+print(A)
+U=eligauss(A)
+print(U)
