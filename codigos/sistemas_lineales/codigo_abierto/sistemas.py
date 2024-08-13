@@ -75,11 +75,41 @@ def eligauss(A):
         # For all the rows below the diagonal
         for j in range(i+1,f):
             U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
-            print("(i,j): ",i," ,",j)
-            print(U)
     return U
 
+def eligaussp(A):
+    '''This function obtains an upper triangular matrix, starting from a given
+    matrix, by applying the Gaussian elimination method.
+    It includes row piboting. If the diagonal element is less than the same
+    element in next rows, rows are interchanged'''
+    
+    #Matrix shape
+    [f,c]=np.shape(A)
+    U=A
+    #For all the columns in A (except the last one)
+    for i in range(c-1):
+        #Row pivoting
+        # Search the maximun in column i
+        maxcol= np.abs(U[i,i])
+        index = i
+        for l in range(i,f):
+            if np.abs(U[l,i])>maxcol:
+                maxcol=np.abs(U[l,i])
+                index=l
+        # If we have found an element U[l,i] greater than U[i,i] we interchange
+        # row l with row i
+        if index!=i:
+            aux=np.array([U[i,:]])
+            U[i,:]=U[index,:]
+            U[index,:]=aux[:]
+        # End of Row pivoting
+        # For all the rows below the diagonal
+        print(U)
+        for j in range(i+1,f):
+            U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
+    return U
 
+    
 
 '''A=np.diag([1,2,3,4])
 print(A)
@@ -146,9 +176,23 @@ Utb=np.transpose(U).dot(b)
 z=diag_sys(S, Utb)
 print("z: ",z)
 x=np.transpose(V).dot(z)
-print("x:",x)'''
+print("x:",x)
 
 A=np.array([[3.,4.,2.,5.],[2.,0.,1.,-2.],[3.,2.,1.,8.],[5.,2.,3.,2.]])
 print(A)
 U=eligauss(A)
-print(U)
+print(U)'''
+
+A=np.array([[1., 3., 2.],[2., -1., 1.],[1., 4., 3.]])
+b=np.array([[13.],[3.],[18.]])
+# Extended matrix
+AM=np.concatenate((A,b),axis=1)
+print("AM: ",AM)
+GA=eligaussp(AM)
+print("GA: ",GA)
+RA=GA[:,0:3]
+nb=GA[:,3]
+print("RA: ",RA)
+print("nb: ",nb)
+x=regressive(RA, nb)
+print("x: ",x)
