@@ -28,7 +28,7 @@ def progressive(A,b):
         return
     # To build the solution vector x
     x=np.zeros(f)
-    x=b
+    x=b.copy()
     for i in range(f):
         '''The inner block subtracts to the independent term the previous solution
          multiplied by the correspondent coefficient'''
@@ -50,7 +50,7 @@ def regressive(A,b):
         return
     # To build the solution vector x
     x=np.zeros(f)
-    x=b
+    x=b.copy()
 
     for i in range(f-1,-1,-1):
         '''The inner block subtracts to the independent term the previous solution
@@ -69,7 +69,7 @@ def eligauss(A):
     
     #Matrix shape
     [f,c]=np.shape(A)
-    U=A
+    U=A.copy()
     #For all the columns in A (except the last one)
     for i in range(c-1):
         # For all the rows below the diagonal
@@ -86,7 +86,7 @@ def eligaussp(A):
    
     #Matrix shape
     [f,c]=np.shape(A)
-    U=A
+    U=A.copy()
     #For all the columns in A (except the last one)
     for i in range(c-1):
         #Row pivoting
@@ -117,7 +117,7 @@ def gaussjordan(A):
     
     #Matrix shape
     [f,c]=np.shape(A)
-    U=A
+    U=A.copy()
     # Step 1: reduce matrix A to a triangular matrix
     #For all the columns in A (except the last one)
     for i in range(c-1):
@@ -147,6 +147,74 @@ def gaussjordan(A):
         for j in range(i-1,-1,-1):
             U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
     return U
+
+def jacobiIt(A,b,x0,tol,itmax):
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    while error>tol:
+        # For all the equations
+        xs1=b.copy()
+        for i in range(nf):
+            for j in range(i):
+                xs1[i]-=A[i,j]*xs[j]
+
+            for j in range(i+1,nf):
+                xs1[i]-=A[i,j]*xs[j]
+            xs1[i]=xs1[i]/A[i,i]
+        error= np.linalg.norm(xs1-xs)
+        xs=xs1.copy()
+        it+=1
+        if it>itmax:
+            break
+    return xs,error,it
+
+def jacobi(A,b,x0,tol,itmax):
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    D=np.diag(np.diag(A))
+    U=np.triu(A)-D
+    L=np.tril(A)-D
+    invD=np.linalg.inv(D)
+    f=(invD).dot(b)
+    H=-invD.dot(L+U)
+    while error>tol:
+        xs1=f+H.dot(xs)
+        error=np.linalg.norm(xs1-xs)
+        it+=1
+        xs=xs1.copy()
+        if it>itmax:
+            break
+    return xs,error,it
+    
+    def gaussSeidelIt(A,b,x0,tol,itmax):
+        [nf,nc]=np.shape(A)
+        xs=x0.copy()
+        xs1=b.copy()
+        error= np.linalg.norm(xs1-xs)
+        it=0
+        while error>tol:
+            # For all the equations
+            xs1=b.copy()
+            for i in range(nf):
+                # For all the terms above x[i]
+                for j in range(i):
+                    xs1[i]-=A[i,j]*xs1[j]
+                #For all the terms below x[i]    
+                for j in range(i+1,nf):
+                    xs1[i]-=A[i,j]*xs[j]
+                xs1[i]=xs1[i]/A[i,i]
+            error= np.linalg.norm(xs1-xs)
+            xs=xs1.copy()
+            it+=1
+            if it>itmax:
+                break
+        return xs,error,it
 
 '''A=np.diag([1,2,3,4])
 print(A)
@@ -232,7 +300,7 @@ nb=GA[:,3]
 print("RA: ",RA)
 print("nb: ",nb)
 x=regressive(RA, nb)
-print("x: ",x)'''
+print("x: ",x)
 
 A=np.array([[1., 3., 2.],[2., -1., 1.],[1., 4., 3.]])
 b=np.array([[13.],[3.],[18.]])
@@ -245,3 +313,33 @@ RA=U[:,0:3]
 x=U[:,3]
 x=x/np.diag(RA)
 print(x)
+
+
+A=np.array([[4., 2.,-1.],[3., -5., 1.],[1., -1., 6.]])
+b=np.array([[5.],[-4.],[17.]])
+x0=np.zeros([3,1])
+tol=0.00001
+itmax=50
+x,error,it=jacobiIt(A, b, x0, tol, itmax)
+print("x:",x,"\n error: ",error, "\n it= ",it)
+print("b: ",b)
+print(A.dot(x))
+
+A=np.array([[4., 2.,-1.],[3., -5., 1.],[1., -1., 6.]])
+b=np.array([[5.],[-4.],[17.]])
+x0=np.zeros([3,1])
+tol=0.00001
+itmax=50
+x,error,it=jacobi(A, b, x0, tol, itmax)
+print("x:",x,"\n error: ",error, "\n it= ",it)
+print(A.dot(x))'''
+
+
+A=np.array([[4., 2.,-1.],[3., -5., 1.],[1., -1., 6.]])
+b=np.array([[5.],[-4.],[17.]])
+x0=np.zeros([3,1])
+tol=0.00001
+itmax=50
+x,error,it=gaussSeidelIt(A, b, x0, tol, itmax)
+print("x:",x,"\n error: ",error, "\n it= ",it)
+print(A.dot(x))
