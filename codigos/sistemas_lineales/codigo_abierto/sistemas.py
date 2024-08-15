@@ -171,6 +171,30 @@ def jacobiIt(A,b,x0,tol,itmax):
             break
     return xs,error,it
 
+def jacobiItW(A,b,x0,tol,itmax,w):
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    while error>tol:
+        # For all the equations
+        xs1=b.copy()
+        for i in range(nf):
+            for j in range(i):
+                xs1[i]-=A[i,j]*xs[j]
+
+            for j in range(i+1,nf):
+                xs1[i]-=A[i,j]*xs[j]
+            xs1[i]=xs1[i]/A[i,i]
+        xs1=w*xs1+(1-w)*xs
+        error= np.linalg.norm(xs1-xs)
+        xs=xs1.copy()
+        it+=1
+        if it>itmax:
+            break
+    return xs,error,it
+
 def jacobi(A,b,x0,tol,itmax):
     [nf,nc]=np.shape(A)
     xs=x0.copy()
@@ -192,29 +216,121 @@ def jacobi(A,b,x0,tol,itmax):
             break
     return xs,error,it
     
-    def gaussSeidelIt(A,b,x0,tol,itmax):
-        [nf,nc]=np.shape(A)
-        xs=x0.copy()
+
+def jacobiW(A,b,x0,tol,itmax,w):
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    D=np.diag(np.diag(A))
+    U=np.triu(A)-D
+    L=np.tril(A)-D
+    invD=np.linalg.inv(D)
+    I=np.eye(nf)
+    f=w*(invD).dot(b)
+    H=(1-w)*I-w*invD.dot(L+U)
+    while error>tol:
+        xs1=f+H.dot(xs)
+        error=np.linalg.norm(xs1-xs)
+        it+=1
+        xs=xs1.copy()
+        if it>itmax:
+            break
+    return xs,error,it
+
+def gaussSeidelIt(A,b,x0,tol,itmax):
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    while error>tol:
+        # For all the equations
         xs1=b.copy()
+        for i in range(nf):
+            # For all the terms above x[i]
+            for j in range(i):
+                xs1[i]-=A[i,j]*xs1[j]
+            #For all the terms below x[i]    
+            for j in range(i+1,nf):
+                xs1[i]-=A[i,j]*xs[j]
+            xs1[i]=xs1[i]/A[i,i]
         error= np.linalg.norm(xs1-xs)
-        it=0
-        while error>tol:
-            # For all the equations
-            xs1=b.copy()
-            for i in range(nf):
-                # For all the terms above x[i]
-                for j in range(i):
-                    xs1[i]-=A[i,j]*xs1[j]
-                #For all the terms below x[i]    
-                for j in range(i+1,nf):
-                    xs1[i]-=A[i,j]*xs[j]
-                xs1[i]=xs1[i]/A[i,i]
-            error= np.linalg.norm(xs1-xs)
-            xs=xs1.copy()
-            it+=1
-            if it>itmax:
-                break
-        return xs,error,it
+        xs=xs1.copy()
+        it+=1
+        if it>itmax:
+            break
+    return xs,error,it
+
+def gaussSeideSORlIt(A,b,x0,tol,itmax,w):
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    while error>tol:
+        # For all the equations
+        xs1=b.copy()
+        for i in range(nf):
+            # For all the terms above x[i]
+            for j in range(i):
+                xs1[i]-=A[i,j]*xs1[j]
+            #For all the terms below x[i]    
+            for j in range(i+1,nf):
+                xs1[i]-=A[i,j]*xs[j]
+            xs1[i]=xs1[i]/A[i,i]
+        xs1=w*xs1+(1-w)*xs
+        error= np.linalg.norm(xs1-xs)
+        xs=xs1.copy()
+        it+=1
+        if it>itmax:
+            break
+    return xs,error,it
+
+def gaussSeidel(A,b,x0,tol,itmax):
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    D=np.diag(np.diag(A))
+    U=np.triu(A)-D
+    L=np.tril(A)-D
+    invD=np.linalg.inv(D+L)
+    f=(invD).dot(b)
+    H=-invD.dot(U)
+    while error>tol:
+        xs1=f+H.dot(xs)
+        error=np.linalg.norm(xs1-xs)
+        it+=1
+        xs=xs1.copy()
+        if it>itmax:
+            break
+    return xs,error,it
+
+
+def SOR(A,b,x0,tol,itmax,w):
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    D=np.diag(np.diag(A))
+    U=np.triu(A)-D
+    L=np.tril(A)-D
+    invD=np.linalg.inv(D+L)
+    I=np.eye(nf)
+    f=w*(invD).dot(b)
+    H=(1-w)*I-w*invD.dot(U)
+    while error>tol:
+        xs1=f+H.dot(xs)
+        error=np.linalg.norm(xs1-xs)
+        it+=1
+        xs=xs1.copy()
+        if it>itmax:
+            break
+    return xs,error,it
 
 '''A=np.diag([1,2,3,4])
 print(A)
@@ -332,8 +448,7 @@ tol=0.00001
 itmax=50
 x,error,it=jacobi(A, b, x0, tol, itmax)
 print("x:",x,"\n error: ",error, "\n it= ",it)
-print(A.dot(x))'''
-
+print(A.dot(x))
 
 A=np.array([[4., 2.,-1.],[3., -5., 1.],[1., -1., 6.]])
 b=np.array([[5.],[-4.],[17.]])
@@ -342,4 +457,34 @@ tol=0.00001
 itmax=50
 x,error,it=gaussSeidelIt(A, b, x0, tol, itmax)
 print("x:",x,"\n error: ",error, "\n it= ",it)
-print(A.dot(x))
+print(A.dot(x))'''
+
+
+A=np.array([[4., 2.,-1.],[3., -5., 1.],[1., -1., 6.]])
+b=np.array([[5.],[-4.],[17.]])
+x0=np.zeros([3,1])
+tol=0.00001
+itmax=50
+x,error,it=jacobi(A, b, x0, tol, itmax)
+print("Jacobi")
+print("x:",x,"\n error: ",error, "\n it= ",it)
+
+x,error,it=gaussSeidel(A, b, x0, tol, itmax)
+print("Gauss Seidel")
+print("x:",x,"\n error: ",error, "\n it= ",it)
+
+print("Jacobi amortiguado")
+x,error,it=jacobiItW(A, b, x0, tol, itmax, 0.8)
+print("x:",x,"\n error: ",error, "\n it= ",it)
+
+print("Jacobi amortiguado matricial")
+x,error,it=jacobiW(A, b, x0, tol, itmax, 0.8)
+print("x:",x,"\n error: ",error, "\n it= ",it) 
+
+print("SOR")
+x,error,it=gaussSeideSORlIt(A, b, x0, tol, itmax, 0.8)
+print("x:",x,"\n error: ",error, "\n it= ",it)
+
+print("SOR matricial")
+x,error,it=SOR(A, b, x0, tol, itmax, 0.8)
+print("x:",x,"\n error: ",error, "\n it= ",it)
