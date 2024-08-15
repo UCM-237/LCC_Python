@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{n}{spnat} \PYG{o}{=} \PYG{n}{CubicSpline}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}natural\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{yi} \PYG{o}{=} \PYG{n}{spnat}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{)}
+\end{Verbatim}

@@ -629,7 +629,7 @@ Figure \ref{fig:intepol} shows a interpolating polynomial of degree nine obtaine
 \begin{figure}
 \centering
 \subfigure[Interpolación de orden cero / Zero-order interpolation  \label{fig:stepwise}]{\includegraphics[width=7cm]{steps.eps}} %\qquad 
-\subfigure[Interpolación lineal 7 Linear interpolation  \label{fig:lineal}]{\includegraphics[width=7cm]{lineal.eps}}\\
+\subfigure[Interpolación lineal  Linear interpolation  \label{fig:lineal}]{\includegraphics[width=7cm]{lineal.eps}}\\
 \bicaption{Interpolaciones de orden cero y lineal para los datos de la figura \ref{fig:intepol} }{Zero-order and linear interpolation for the figure data}
 \end{figure}
 
@@ -884,152 +884,118 @@ Where,
 \begin{paracol}{2}
 La siguiente función permite obtener los coeficientes y el resultado de interpolar un conjunto de puntos mediante splines cúbicos,
 \switchcolumn
-The following Python code computed the coefficients of the cubic spline defined using a dataset and the value taken by the spline at any point.
+The following Python code computes the coefficients of the cubic spline defined using a dataset and the value taken by the spline at any point.
 \end{paracol}
-%\begin{lstlisting}
-%function [c,yi]=spcubic(x,y,xi)
-% uso [c,yi]=spcubic(x,y,xi)
-% Esta funci?n interpola los puntos contenidos en los vectores columna x e y
-% empleando parae ello splines c?bicos naturales. devuelve los coeficientes
-% de los polinomios en una matriz de dimension (n-1)*4. Cada fila contiene
-% un splin desde So a Sn-1 los coeficiente est?n guardados el la fila en
-% orden depotencia creciente: ejemplo c(i,1)+c(i,2)*x+c(i,3)*x^2+c(i,4)*x^3
-% ademas devuelve los valores interpolados yi correspondientes a puntos xi
-% contenidos en el intervalo definido por los valores de x
 
-% obtenemos la longitud de los datos...
-%l=length(x);
-% obtencion de los coeficientes M
-% Construimos el vector de diferencias h y un vector de diferencias
-% Dy=y(i+1)-y(i) Que nos ser? muy ?til a la hora de calcular el vector de
-% t?rminos independientes del sistema
-
-%for i=1:l-1
-%    h(i)=x(i+1)-x(i);
-%    Dy(i)=y(i+1)-y(i);
-%end
-
-% Construimos la matriz del sistema. (Lo ideal seria definirla como una
-% matriz sparse pero en fin no sabeis, porque sois todav?a peque?os, etc...)
-
-%CSP(l-2,l-2)=2*(h(l-2)+h(l-1));
-%b(l-2,1)=6*(Dy(l-1)/h(l-1)-Dy(l-2)/h(l-2));
-%for i=1:l-3
-%    CSP(i,i)=2*(h(i)+h(i+1));
-%    CSP(i,i+1)=h(i+1);
-%    CSP(i+1,i)=h(i+1);
-%    b(i,1)=6*(Dy(i+1)/h(i+1)-Dy(i)/h(i));
-%end
-
-% calculamos los coeficientes M,
-%M=CSP\b;
-
-% A?adimos el primer y el ?ltimo valor como ceros (Splines naturales)
-%M=[0;M;0];
-
-% calulamos los coeficientes A,
-%for i=1:l-1
-%    A(i)=Dy(i)/h(i)-(M(i+1)-M(i))*h(i)/6;
-%end
-% Calculamos los coeficientes B,
-%for i=1:l-1
-%    B(i)=y(i)-M(i)*h(i)^2/6;
-%end
-% Podemos ahora calcular el valor que toma el polinomio para los puntos
-% que se desea interpolar
-
-% miramos cuantos puntos tenemos
-%l2=length(xi);
-%for i=1:l2
-    % miramos en que intervalo esta el punto xi(i)
-%    j=1;
-%    while xi(i)>x(j)
-%        j=j+1;
-%    end
-%    if j>l-1
-%        j=l-1; % aunque estamos extrapolando
-%    elseif j<2
-%        j=2; % estamos calculando el primer punto o estamos tanbien
-        % extrapolando
-%    end
-    
-%    yi(i)=-M(j-1)*(xi(i)-x(j))^3/(6*h(j-1))+...
-%        M(j)*(xi(i)-x(j-1))^3/(6*h(j-1))+A(j-1)*(xi(i)-x(j-1))+B(j-1);
-%end
-
-% calcumos los coeficientes c del spline en forma 'normal'
-% la primera columna, son los valores de i,
-%c=zeros(l-1,4);
-%for i=1:l-1
-%    c(i,1)=y(i);
-%    c(i,2)=Dy(i)/h(i)-M(i)*h(i)/3-M(i+1)*h(i)/6;
-%    c(i,3)=M(i)/2;
-%    c(i,4)=(M(i+1)-M(i))/(6*h(i));
-%end
-%\end{lstlisting}
-
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=cubic\_spline.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/interpolacion/codigo_abierto/cubic_spline.py}
 
 \begin{paracol}{2}
  La figura, \ref{fig:splines} muestra el resultado de interpolar mediante un spline cúbico, los datos contenidos en la figura \ref{fig:intepol}. Es fácil observar cómo ahora los polinomios de interpolación dan como resultado una curva suave en los datos interpolados y en la que además las curvas son también suaves, sin presentar variaciones extrañas, para los puntos contenidos en cada intervalo entre dos datos.
-\end{paracol}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=12cm]{splines.eps}
-\caption{Interpolación mediante spline cúbico de los datos de la figura \ref{fig:intepol}} 
-\label{fig:splines}
-\end{figure} 
  
-\begin{paracol}{2} 
-\subsection{Funciones propias de Python para interpolación por intervalos} \index{interp1@\texttt{interp1}}
+\subsection{Funciones propias de Py\-thon para interpolación por intervalos} \index{interp1@\texttt{interp1}}
 
-Para realizar una interpolación por intervalos mediante cualquiera de los procedimientos descritos, Matlab incorpora la función propia \texttt{interp1}. Esta función admite como variables de entrada dos vectores con los valores de las coordenadas $x$ e $y$ de los datos que se desea interpolar y un tercer vector $x1$ con los puntos para los que se desea calcular el valor de la interpolación. Además, admite como variable  de entrada una cadena de caracteres que indica el método con el que se quiere realizar la interpolación. Dicha variable puede tomar los valores:
+Para realizar una interpolación por intervalos mediante cualquiera de los procedimientos descritos, podemos emplear el subpaquete de scipy \mintinline{python}{Scipy.interpolate}. Este paquete incorpora múltiples métodos de interpolación; solo veremos dos: 
+
+La función \texttt{interp1d}. Esta función admite como variables de entrada dos arrays con los valores de las coordenadas $x$ e $y$ de los datos que se desea interpolar. Además, admite como variable  de entrada una cadena de caracteres que indica el método con el que se quiere realizar la interpolación. Dicha variable puede tomar los valores:
 \begin{enumerate}
 \item \texttt{'nearest'}. Interpola el intervalo empleando el valor $y_i$ correspondiente al valor  $x_i$ más cercano al punto que se quiere interpolar. El resultado es una interpolación a escalones.
-\item \texttt{'linear'} realiza una interpolación lineal entre los puntos del conjunto de datos que se desea interpolar.
-\item \texttt{'spline'}. Interpola empleando splines cúbicos naturales.
-\item \texttt{'cubic'} o \texttt{'pchip} Emplea polinomios de Hermite cúbicos. Es un método similar al de los splines que no describiremos en estos apuntes.
+ del conjunto de datos que se desea interpolar.
+\item \texttt{'next'}. Interpola el interpalo empleando el valor de $y_i$ correspondiente al punto $x_i$ de los datos que cierra el intervalo.
+\item \texttt{'previous'} Interpola el interpalo empleando el valor de $y_i$ correspondiente al punto $x_i$ de los datos que abre el intervalo.
+\item \texttt{'linear'} realiza una interpolación lineal entre los extremos del intervalo que se desea intepolar. Esta es la opción por defecto.
 \end{enumerate} 
 
-La función devuelve como salida los valores interpolados correspondientes a los puntos de $x1$. El siguiente código muestra el modo de usar el comando \texttt{interp1}. Para probarlo se han creado dos vectores \texttt{x} e \texttt{y} que contienen el conjunto de datos que se empleará para calcular la interpolación. Además, se ha creado otro vector \texttt{x1} que contiene los puntos para los que se quiere calcular el resultado de la interpolación.
+\mintinline{python}{interp1d} Devuelve una funcion que admite como variable de entrada un array con los puntos para para los que se quiere calcular el valor de la interpolación y devuelve como salidad un array con los resultados obtenidos. El siguiente código muestra el modo de usar el comando \texttt{interp1d}. Para probarlo se han creado dos array \texttt{x} e \texttt{y} que contienen el conjunto de datos que se empleará para calcular la interpolación. Además, se ha creado otro vector \texttt{xi} que contiene los puntos para los que se quiere calcular el resultado de la interpolación.
+\switchcolumn
+Figure \ref{fig:splines} shows the result of interpolating the same data of figure \ref{fig:intepol} using a cubic spline. It is ease to check how the interpolation polynomials which compose the spline cast a smooth result in the points interpolated and how the curves shapes are reasonable smooth also in the intervals between the data. They do not present variations difficult to explain using the data.
+
+\subsection{Python functions for piecewise interpolation}
+To carry out a piecewise interpolation using anyone of the method above described, we can use the \mintinline{python}{scipy } sub-package \mintinline{python}{scypi.interpolate}. This package includes many intepolation me\-thods; we will only describe two of them:
+
+The \mintinline{python}{interp1d} function. This function takes two arrays as inpunt variables with the ccordenates $x$ and $y$ values belonging to the data we want to interpolate. In addition, the function may take also a character string, as an input variable which defines the method we want to use to carry out the interpolation. This last variable can take the following values:
+\begin{enumerate}
+	\item \texttt{'nearest'}. It interpolates the interval using the value  $y_i$ corresponding to the value $x_i$ nearest to the point at which we want to compute the interpolation. The result is stepwise interpolation.
+	\item \texttt{'next'}. It interpolates the interval using the value  $y_i$ corresponding to the value $x_i$ which closes the interval  in  which we want to compute the interpolation.
+	\item \texttt{'previous'} It interpolates the interval using the value  $y_i$ corresponding to the value $x_i$ which opens the interval in which we want to compute the interpolation.
+	
+	\item \texttt{'linear'} It calculates a linear interpolation between the points at the ends of the interval we want to interpolate. This is the default option.
+\end{enumerate}
+
+\mintinline{python}{interp1d} returns a function that, in turn, takes as input variable an array with the points we want to calculate the interpolation at, and returns an array we the computed results. The following code shows how to use the function \mintinline{python}{interp1d}. To try it we have created two arrays \mintinline{python}{x} and \mintinline{python}{y} which contain the dataset we want to interpolate. Besidas, we have created another array \mintinline{python}{xi} with the point we want to compute the interpolation at.  
 \end{paracol}
-\begin{verbatim}
->> x=[1:2:16]
-x =
-     1     3     5     7     9    11    13    15
->> y=[1 3 4 2 -1 4 -5 3]
-y =
-     1     3     4     2    -1     4    -5     3
->> x1=[3.5 7.5]
-x1 =
-    3.5000    7.5000
->> y1=interp1(x,y,x1,'spline')
-y1 =
-    3.4110    0.7575
->> x=[1:2:16]
-x =
-     1     3     5     7     9    11    13    15
->> y=[1 3 4 2 -1 4 -5 3]
-y =
-     1     3     4     2    -1     4    -5     3
->> x1=[3.5 7.5]
-x1 =
-    3.5000    7.5000
->> y1=interp1(x,y,x1,'nearest')
-y1 =
-     3     2
->> y1=interp1(x,y,x1,'linear')
-y1 =
-    3.2500    1.2500
->> y1=interp1(x,y,x1,'cubic')
-y1 =
-    3.3438    1.1938
-\end{verbatim}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=12cm]{splines.eps}
+	\bicaption{Interpolación mediante spline cúbico de los datos de la figura}{Cubic Spline interpolation for the data represented in the figure} \ref{fig:intepol} 
+	\label{fig:splines}
+\end{figure} 
+
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=ejemplo\_interp1d.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/interpolacion/codigo_abierto/ejemplo_interp1d.py}
+
+
+
+\begin{paracol}{2}
+La segunda función interpoladora de\\ \mintinline{python}{scipy.interpolation} que vamos a describir se llama \mintinline{python}{CubicSpline}. Permite interpolar empleando Splines cúbicos. En este caso, además de los datos $x$ e $y$ necesarios para definir el spline, la función admite el parametro \mintinline{python}{bc_type}, que permite determinar las condiciones de contorno en los extremos del spline. Las opciones posibles son: 
+
+\mintinline{python}{bc_type='not__knot'}. Es la opcion por defecto. Hace que el polinomio empleado en el primer y segundo segmento en los extremos del spline sea el mismo.
+ 
+\mintinline{python}{bc_type='natural'}. Spline natural.
+
+\mintinline{python}{bc_type='periodic'}. Spline periódico.
+
+Hay más opciones; los interesados pueden encontrarlas en la documentación de \mintinline{python}{scipy}. El uso es similar al descrito para \mintinline{python}{interp1d}. A partir de los datos se crea una función interpoladora que permite calcular el valor de la imagen en los puntos que se desee. Por ejemplo, para splines naturales sería,
+\switchcolumn
+ The second interpolating function, from\\ \mintinline{python}{scipy.interpolation} we are going to describe is \mintinline{python}{CubicSpline}. This function, as can be expected, uses cubic splines to perform the interpolation of a dataset. In this cases, in addition to the $x$ and $y$ data needed to define the spline, the function defines an input paramenter \mintinline{python}{bc_type}, which allows us to stablish the boundary conditions in the ends of the spline. Some of the available options are:
+ 
+\mintinline{python}{bc_type='not__knot'}. This is the default option. The first and second segments at an end of the spline uses the same polynomial.
+
+\mintinline{python}{bc_type='natural'}. Natural spline.
+
+\mintinline{python}{bc_type='periodic'}. Periodic spline.
+
+There are more options. Those interested can find them in \mintinline{python}{scipy} documentation. Its use  is similar to the use of \mintinline{python}{interp1d}. From the data we want to interpolate \mintinline{python}{CubiSpline} generates an interpoling function which alows us to compute the spline value in the point we wish. For instance, for natural splines we write, 
+ 
+  
+\end{paracol}
+\begin{center}
+\begin{minipage}{.5\textwidth}
+\begin{minted}{python}
+	spnat = CubicSpline(x,y,'natural')
+	yi = spnat(xi)
+\end{minted}
+\end{minipage}
+\end{center}
+
 \begin{paracol}{2}
 \section{Ajuste polinómico por el método de mínimos cuadrados}\label{sec:mc}\index{Mínimos cuadrados} \index{Ajuste polinómico}
-Los métodos de interpolación que hemos descrito en las secciones anteriores pretenden encontrar un polinomio o una función definida a partir de polinomios que pase por un conjunto de datos. En el caso del ajuste por mínimos cuadrados, lo que se pretende es buscar el polinomio, de un grado dado, que mejor se aproxime a un conjunto de datos.
+\sectionmark{Mínimos cuadrados \textreferencemark\ Least squares}
 
-Supongamos que tenemos un conjunto de $m$ datos, 
+Los métodos de interpolación que hemos descrito hasta ahora, pretenden encontrar un polinomio o una función definida a partir de polinomios que pase por un conjunto de datos. En el caso del ajuste por mínimos cuadrados, lo que se pretende es buscar el polinomio, de un grado dado, que mejor se aproxime a un conjunto de datos.
+
+Supongamos que tenemos un conjunto de $m$ datos,
+\switchcolumn
+ \section{Least squared error me\-thod for polynomial data fitting}\index[eng]{Polinomial fitting}\index[eng]{Least Squared Error}
+ 
+ The interpolation methods we have described so far, try to find a polynomial of a function defined using polynomials that passes through a set of data. In the case of Least squared error fitting, the aim is to find the polynomial of a specific degree that better approximates a dataset.
+ 
+ Suppose we have a dataset holding $m$ data,        
 \end{paracol}
 \begin{table}[h]
 \centering
@@ -1043,6 +1009,10 @@ y&$y_1$&$y_2$&$\cdots$&$y_m$
 Queremos construir un polinomio $p(x)$  de grado $n < m-1$, de modo que los valores que toma el polinomio para los datos $p(x_i)$ sean lo más cercanos posibles a los correspondientes valores $y_i$. 
 
 En primer lugar, necesitamos clarificar qué entendemos por \emph{lo más cercano posible}.  Una posibilidad, es medir la diferencia, $y_i-p(x_i)$ para cada par de datos del conjunto. Sin embargo, es más frecuente emplear el cuadrado de dicha diferencia, $\left(y_i-p(x_i)\right)^2$. Esta cantidad tiene, entre otras, la ventaja de que su valor es siempre positivo con  independencia de que la diferencia sea positiva o negativa. Además, representa el cuadrado de la distancia entre $p(x_i)$ e $y_i$. Podemos tomar la suma de dichas distancias al cuadrado, obtenidas por el polinomio para todos los pares de puntos, 
+\switchcolumn
+We want to build a polynomial $p(x)$ with degree $n < m-1$ so that the values it takes for the data $p(x_i)$ are the nearest possible to the values  $y_i$ of the data table.
+
+First, we must clarify what means \emph{the nearest possible}. One option is to measure the difference $y_i -p(x_i)$ for each pair of data in the dataset. However, using the square of such difference  $\left(y_i-p(x_i)\right)^2$ is more common. This quantity has the advantage, among others, of being always positive, no matter whether the difference is positive or negative. Besides, it represents the square distance between $p(x_i)$ and $y_i$. We can take the sum of these differences for all pairs in the dataset,
 \end{paracol}
 \begin{equation*}
 \sum_{i=1}^m \left(y_i-p(x_i)\right)^2
@@ -1051,6 +1021,10 @@ En primer lugar, necesitamos clarificar qué entendemos por \emph{lo más cercan
 \noindent como una medida de la distancia del polinomio a los datos.  De este modo,  el polinomio \emph{lo más cercano posible}  a los datos sería aquel que minimice la suma de diferencias al cuadrado que acabamos de definir. De ahí el nombre del método.
 
 En muchos casos, los datos a los que se pretende ajustar un polinomio por mínimos cuadrados son datos experimentales. En función del entorno experimental y del método con que se han adquirido los datos, puede resultar que algunos resulten más fiables que otros. En este caso, sería deseable hacer que el polinomio se aproxime más a los datos más fiables. Una forma de hacerlo es añadir unos \emph{pesos}, $\omega_i$, a las diferencias al  cuadrado en función de la confianza que nos merece cada dato,
+\switchcolumn
+\noindent as a measure of the distance from the polynomial to the data. In this way, the \emph{nearest possible to the data} would be the polynomial that minimised the sum of square differences we have just defined. Indeed, this is the origin of the method's name.
+
+The data we often want to fit a polynomial using the least square method are experimental data. Depending on the environment and the method used for data acquisition, some data may be more reliable than others. In this case, it is interesting that the polynomial passes closest to the more reliable data. One way to achieve it is to add some \emph{weights}, $\omega_i$ to the square differences according to the confidence that each data deserves,    
 \end{paracol}
 \begin{equation*}
 \sum_{i=1}^m \omega_i \left(y_i-p(x_i)\right)^2
@@ -1059,12 +1033,18 @@ En muchos casos, los datos a los que se pretende ajustar un polinomio por mínim
 Los datos fiables se multiplican por valores de $\omega$ grandes y los poco fiables por valores pequeños.
 
 Para ver cómo obtener los coeficientes de un polinomio de mínimos cuadrados, empezaremos con el caso más sencillo; un polinomio de grado $0$. En este caso, el polinomio es una constante, definida por su término independiente $p(x)=a_0$. El objetivo a minimizar sería entonces,
+\switchcolumn
+We will multiply more reliable data by large values of $\omega$ and the less reliable by small values.
+
+To see how to obtain the coefficients of a least square polynomial, we will start with the simplest case; a 0-degree polynomial. In this case the polynomial is a simple constant value, defined by its constant term $p(x) = a_0$. Then the fucntion to be minimised would be,
 \end{paracol}
 \begin{equation*}
 g(a_0)=\sum_{i=1}^m \omega_i \left(y_i-a_0\right)^2
 \end{equation*}
 \begin{paracol}{2}
 El valor mínimo de esta función debe cumplir que su derivada primera $g'(a_0)=0$ y que su derivada segunda  $g''(a_0)\geq 0$,
+\switchcolumn
+The minimum of this function must meet that its first derivative $g'(a_0)=0$ and its second derivative  $g''(a_0)\geq 0$,
 \end{paracol}
 \begin{align*}
 g'(a_0)&=-2\sum_{i=1}^m \omega_i \left(y_i-a_0\right)=0 \Rightarrow a_0=\frac{\sum_{i=1}^m \omega_i\cdot y_i}{ \sum_{i=1}^m \omega_i}\\
@@ -1072,28 +1052,35 @@ g''(a_0)&=2\sum_{i=1}^m \omega_i \Rightarrow  g''(a_0) \geq 0
 \end{align*}
 \begin{paracol}{2}
 El resultado obtenido para el valor de $a_0$ es una media, ponderada con los pesos $w_i$ de los datos. Si hacemos $w_i=1 \ \forall w_i$ obtendríamos exactamente la media de los datos. Este resultado resulta bastante razonable. Aproximar un conjunto de valores por un polinomio de grado cero, es tanto como suponer que la variable $y$ permanece constante para cualquier valor de $x$. Las diferencias observadas deberían deberse entonces a errores aleatorios experimentales, y la mejor estima del valor de $y$ será precisamente el valor medio de los valores disponibles. La figura \ref{fig:mc0} muestra el resultado de  calcular el polinomio de mínimos cuadrados de grado cero para un conjunto de datos.
+\switchcolumn
+We obtain that the value for $a_0$ is a mean of the data, weighted by the values $\omega_i$ assigned to the data. If we take  $w_i=1 \ \forall w_i$, we obtain the mean value of the data. This result is quite reasonable. Approximating a set of values with a 0-degree polynomial is equivalent to considering that variable $y$ remains constant for every value of $x$. In this case, we may attribute the observed differences among the values of the table to experimental random errors. Consequently, the best estimation of $y$ would be the mean value of the available data.       
 \end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{mc0.eps}
-\caption{Polinomio de mínimos cuadrados de grado 0} 
+\bicaption{Polinomio de mínimos cuadrados de grado 0}{0-degree least squared error polynomial} 
 \label{fig:mc0}
 \end{figure} 
 \begin{paracol}{2}
 El siguiente paso en dificultad sería tratar de aproximar un conjunto de datos por un polinomio de grado 1, es decir, por una linea recta, $p(x)=a_0+a_1 x$. En este caso, la suma de diferencias al cuadrado toma la forma,
+\switchcolumn The nest step would be to approximate the data using a 1-degree polynomial, i.e., a straight line, $p(x) = a_0+a_1x$. Inn this case, the sum of squared differences takes the form,
 \end{paracol}
 \begin{equation*}
 g(a_0,a_1)=\sum_{i=1}^m \omega_i\left(y_i-a_0-a_1 x_i \right)^2
 \end{equation*}
 \begin{paracol}{2} 
-En este caso, tenemos dos coeficientes sobre los que calcular el mínimo. Éste se obtiene cuando las derivadas parciales de $g(a_0,a_1)$ respecto a ambos coeficientes son iguales a cero. 
+En este caso, tenemos dos coeficientes sobre los que calcular el mínimo. Éste se obtiene cuando las derivadas parciales de $g(a_0,a_1)$ respecto a ambos coeficientes son iguales a cero.
+\switchcolumn
+We have now two coefficient for computing the minimum. We get the minimum making the function $g(a_0,a_1)$ partial derivatives equal to zero.   
 \end{paracol}
 \begin{align*}
 \frac{\partial g}{\partial a_0}&=-2\sum_{i=1}^m \omega_i (y_i-a_0-a_1 x_i) = 0\\
 \frac{\partial g}{\partial a_1}&=-2\sum_{i=1}^m \omega_i x_i(y_i-a_0-a_1 x_i) = 0
 \end{align*} 
 \begin{paracol}{2}
-Si reordenamos las ecuaciones anteriores, 
+Si reordenamos las ecuaciones anteriores,
+\switchcolumn
+And after rearranging the previous equations,
 \end{paracol}
 \begin{align*}
 &\left(\sum_{i=1}^m \omega_i\right)a_0+ \left(\sum_{i=1}^m \omega_ix_i\right)a_1 =\sum_{i=1}^m \omega_iy_i\\
@@ -1103,18 +1090,27 @@ Si reordenamos las ecuaciones anteriores,
 Obtenemos un sistema de dos ecuaciones lineales cuyas incógnitas son precisamente los coeficientes de la recta de mínimos cuadrados.
 
 Podemos ahora generalizar el resultado para un polinomio de grado $n$, $p(x)=a_0+a_1x+a_2x^2+\cdots +a_nx^n$. La función $g$ toma la forma,
+
+\switchcolumn
+We get a linear system with two equations and two unknowns, which are the coefficients of the least squares line.
+
+We can now generalised this result for a $n$-degree polynomial $p(x)=a_0+a_1x+a_2x^2+\cdots +a_nx^n$. Function $g$ would be now,
 \end{paracol}
 \begin{equation*}
 g(a_0,a_1,\cdots, a_n)=\sum_{i=1}^m \omega_i \left (a_0+a_1x_i+\cdots+ a_nx_i^n-y_i\right)^2
 \end{equation*}
 \begin{paracol}{2}
 De nuevo, para obtener los coeficientes del polinomio igualamos las derivadas parciales a cero,
+\switchcolumn
+Again, we can get the polynomial coefficents making the partial derivatives equal to zero,
 \end{paracol}
 \begin{equation*}
 \frac{\partial g(a_0,a_1,\cdots, a_n)}{\partial a_j}=0 \Rightarrow \sum_{i=1}^m \omega_i x_i^j \left( a_0+a_1x_i+\cdots + a_nx_i^n-y_i\right)=0, \ j=0,1\cdots, n
 \end{equation*} 
 \begin{paracol}{2}
 Si reordenamos las expresiones anteriores, llegamos a un sistema de $n+1$ ecuaciones lineales, cuyas incógnitas son los coeficientes del polinomio de mínimos cuadrados,
+\switchcolumn
+If we rearrange the previous equation, we arrive to a linear system of $n+1$ equations whose unknowns are the coefficients of the least squares polynomial,
 \end{paracol}
 \begin{equation*}
 \begin{pmatrix}
@@ -1136,6 +1132,8 @@ c_n
 \end{equation*} 
 \begin{paracol}{2}
 Donde hemos definido $s_j$ y $c_j$ como,
+\switchcolumn
+Where we have defined $s_j$ and $c_j$ as,
 \end{paracol}
 \begin{align*}
 s_j&=\sum_{i=1}^m \omega_ix_i^j\\
@@ -1143,143 +1141,178 @@ c_j&=\sum_{i=1}^m \omega_ix_i^jy_i
 \end{align*}
 \begin{paracol}{2} 
 El siguiente código permite obtener el polinomio de mínimos cuadrados que aproxima un conjunto de $n$ datos,
+\switchcolumn
+h following code calculates the coefficients of the least squares polynomial that approximate a set of $n$ data.
 \end{paracol}
-%\begin{lstlisting}
-%function a=mc(x,y,n,w)
-%% uso: a=mc(x,y,n,w). Esta función permite obtener los coeficientes del
-%% polinomio de mínimos cuadrados que ajusta un conjunto de datos. Las
-%% variables de entrada son: x, vector con la componente x de los datos a
-%% ajustar. y, vector con la componente y de los datos a ajustar. n grado del
-%% polinomio de minimos cuadrados. w vector de pesos asociados a los datos. si no
-%% se sumininstra se toman todos los pesos como 1. Salidas: vector columna con
-%% los coeficientes del polinomio=> a(1)+a(2)*x+a(3)*x^2+a(n+1)*x^n
-%
-%% comprobamos en primer lugar que tenemos datos suficientes,
-%
-%m=length(x);
-%if m<n+1
-%    error('no hay datos sufiecientes para calcular el polinomio pedido')
-%end
-%% Si no se ha suministrado vector de pesos construimos uno formado por unos,
-%if nargin < 4
-%	w=ones(m,1);
-%end
-%% Montamos un bucle para crear los elementos s de la matriz de coeficientes,
-%for j=1:2*n+1
-%    s(j)=0;    
-%for i=1:m
-%    s(j)=s(j)+w(i)*x(i)^(j-1);
-%end
-%end
-%
-%
-%% y un segundo bucle para crear los términos independientes...
-%for j=1:n+1
-%    c(j,1)=0;
-%    for i=1:m
-%        c(j,1)=c(j,1)+w(i)*x(i)^(j-1)*y(i)
-%    end
-%end
-%
-%%  a partir de los valores de s, construimos la matriz del sistema,
-%for i=1:n+1
-%    for j=1:n+1
-%        A(i,j)=s(i+j-1)
-%    end
-%end
-%
-%% solo nos queda resolver el sistema... Empleamos la division por la
-%% izquierda de matlab
-%
-%a=A\c;
-%\end{lstlisting}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=minimos\_cuadrados.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/interpolacion/codigo_abierto/minimos_cuadrados.py}
+
+
 \begin{paracol}{2}
 Una última observación importante es que si intentamos calcular el polinomio de mínimos cuadrados de grado $m-1$ que aproxima un conjunto de $m$ datos, lo que obtendremos será el polinomio de interpolación. En general, cuanto mayor sea el grado del polinomio más posibilidades hay de que la matriz de sistema empleado para obtener los coeficientes del polinomio esté mal condicionada.
 
-\subsection{Mínimos cuadrados en Matlab.}
+\subsection{Mínimos cuadrados en Py\-thon.}
 
-Matlab suministra dos maneras distintas de ajustar un polinomio a unos datos por mínimos cuadrados. La primera es mediante el uso del comando \texttt{polyfit}. Este comando admite como entradas un vector de coordenadas $x$ y otro de coordenadas $y$, de los datos que se quieren aproximar, y una tercera variable con el grado del polinomio. Como resultado devuelve un vector con los coeficientes del polinomio de mínimos cuadrados. Ordenados en orden de potencias decrecientes \texttt{a(1)*x\^\  n+a(2)*x\^\  (n-1)+...+a(n+1)}. La siguiente secuencia de comandos crea un par de vectores y muestra como manejar el comando,
+Hay varias formas de llevar a cabo un ajuste polinómico por mínimos cuadrados empleando Python. Solo vamos a describir uno de ellos. El subpaquete de \mintinline{python}{numpy}, \mintinline{python}{numpy.polynomial} incluye una clase llamada \mintinline{python}{Polynomial} (con mayúscula) permite, entre otras cosas, crear polinomios como objetos de programación. Una de las formas de crear un polinomio, es como resultado del ajuste por mínimos cuadrados a un conjunto de datos. Para ello, \mintinline{python}{Polynomial}, cuenta con la función \mintinline{python}{fit}. Este comando admite como entradas un vector de coordenadas $x$ y otro de coordenadas $y$, de los datos que se quieren aproximar, y una tercera variable con el grado del polinomio. Opcionalmente se puede añadir un vector de pesos, si se quiere ponderar la importancia que damos a cada dato. 
+
+La funcion \mintinline{python}{Polynomial.fit} devuelve como resultado un 'objeto' polinomio. Este objeto contiene toda la información sobre el polinomio creado y puede usarse directamente como una función para calcular el valor del polinomio en un punto. El siguiente script de Python crea un par de vectores y muestra como manejar el comando,
+\switchcolumn
+A last important remark: If we try to compute the least squared error polynomial of degree $m-1$ to approximate a set of $m$ data, we will get the interpolating polynomial. In general, if we increase the degree of the least squared polynomial, we increase the probability that the system matrix we use to obtain the polynomial coefficients will be poorly conditioned.
+
+\subsection{Least squares in Python.}
+There are several ways to compute the Le\-ast squares polynomial for a set of data using Py\-thon. We will describe only one of them. The \mintinline{python}{numpy} sub-package \mintinline{python}{numpy.polynomial} includes a class called \mintinline{python}{Polynomial} (Mean the first capital letter!) allows us, among many other things, to create polynomial as programming objects. One way to create a polynomial is to compute the least squares polynomial from a dataset. The class \mintinline{python}{Polynomial} has a special function \mintinline{python}{fit} to accomplish it. This command takes as inputs two arrays of data, one with the coordinates $x$ and the other with the coordinates $y$ of the value we want to interpolate, plus a third variable for the polynomial degree. Optionally, we can add an array of weights to balance the importance we give to each data.
+
+Function \mintinline{python}{Polynomial.fit} returns a polynomial 'object'. This object contains all the information on the polynomial it represents and it can be use straightforwardly as a function to compute the value of the polynomial in any point. The following Python's script generates a pair of vectors and shows how to deal with the \mintinline{python}{fit} command. 
 \end{paracol}
 
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=ejemplo\_ajuste.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/interpolacion/codigo_abierto/ejemplo_ajuste.py}
 
-\begin{verbatim}>> x=[1:10]
-x =
-     1     2     3     4     5     6     7     8     9    10
->> y=[-1 0 3 4 5.2 6 10 12 13 15.5];
->> a=polyfit(x,y,3)
-a =
-    0.0001    0.0411    1.3774   -2.4133
-\end{verbatim}
 \begin{paracol}{2}
-A continuación, podemos emplear el comando \texttt{polyval}, para obtener en valor del polinomio de mínimos cuadrados obtenido en cualquier punto. En particular, si lo aplicamos a los datos $x$,
-\end{paracol}
-\begin{verbatim}
->> yhat=polyval(a,x)
-yhat =
-  Columns 1 through 7
-   -0.9947    0.5067    2.0913    3.7596    5.5121    7.3491    9.2713
-  Columns 8 through 10
-   11.2790   13.3727   15.5529
-\end{verbatim}
-\begin{paracol}{2}
-Por último, podemos calcular el error cometido por el polinomio $e_i=\vert p(x_i-y_i \vert$
-\end{paracol}
-\begin{verbatim}
->> error=abs(yhat-y)
-error =
-  Columns 1 through 7
-    0.0053    0.5067    0.9087    0.2404    0.3121    1.3491    0.7287
-  Columns 8 through 10
-    0.7210    0.3727    0.0529
-\end{verbatim}
-\begin{paracol}{2}
-Además del comando \texttt{polyfit} Matlab permite ajustar un polinomio por mínimos cuadrados a un conjunto de datos a través de la ventana gráfica de Matlab. Para ello, es suficiente representar los datos con el comando \texttt{plot(x,y)}. Una vez que Matlab muestra la ventana gráfica con los datos representados, se selecciona en el menú desplegable \texttt{tools} la opción \texttt{Basic Fitting}. Matlab abre una segunda ventana que permite seleccionar el polinomio de mínimos cuadrados que se desea ajustar a los datos, así como otras opciones que permiten obtener los coeficientes del polinomio y analizar la bondad del ajuste a partir de los residuos (ver sección siguiente). La figuras \ref{fig:minimos}, muestra un ejemplo de uso de la ventana gráfica de Matlab para obtener un ajuste por mínimos cuadrados 
+Vamos a revisar algunos puntos importantes de este código. en la línea 8, importamos el objeto \mintinline{python}{Polynomial}. Lo hacemos siguiendo el mismo método con que habríamos importado un submódulo cualquiera de \mintinline{python}{numpy}. Le asignamos el alias \mintinline{python}{py}.
+En la línea 12 hemos importado la función lse. Se trata de la función que hemos creado nosotros para realizar ajustes por mínimos cuadrados y cuyo código hemos incluido mas arriba. En las líneas 15 y 16 creamos un conjunto de datos.
 
+En la línea 20 creamos un polinomio de minimos cuadrados de grado 3, \mintinline{python}{p3}, que ajusta los datos anteriores. \mintinline{python}{p3}, contiene toda la información del polynomio creado. En la línea 22, empleamos el comando \mintinline{python}{convert} para obtener un array con los coeficientes del polinomio, ordenados de menor a mayor grado. $p(x)=a_0 + a_1x +a_2x^2+\cdots+a_nx^n$. En la línea 27 empleamos directamente \mintinline{python}{p3} como una función, pasándole los valores del array \mintinline{python}{xi}, para evaluar el polinomio en dichos puntos.
+
+En las líneas 29-34 repetimos el cálculo, pero ahora empleando pesos. Damos a todos los pesos un valor $1$ excepto para el quinto dato, al que damos un peso menor.
+
+Las líneas 39 a 45 repiten los mismos cálculos, pero ahora empleando la función \mintinline{python}{lse}, creada por nosotros.
+
+Por último, dibujamos los resultados para compararlos, tal y como se muestran en la figura \ref{fig:lse}
+\switchcolumn
+We are going to review some important points of the previous code. In line 8, we import the object \mintinline{python}{Polynomial}. We do it in the same way that we import whatever \mintinline{python}{numpy} submodule. We have assigned to \mintinline{python}{Polynomial} the alias \mintinline{python}{py}. In line 12 we import the function \mintinline{python}{lse}. This is the function we previously created to perform least squares fits and whose code we included above. In lines 15 and 16 we create a dataset.
+
+In line 20, we create a 3-degree least squares polynomial, \mintinline{python}{p3}, which fits the previous data. \mintinline{python}{p3} holds all the information on the polynomial we have created. In line 22, we use the command \mintinline{python}{convert} to obtain an array with the polynomial coefficients, ordered in ascending degree. $p(x)=a_0 + a_1x +a_2x^2+\cdots+a_nx^n$. In line 27, we use \mintinline{python}{p3} straightforwardly, as a function, to obtain the values the polynomial takes at the points held by the array \mintinline{python}{x_i}.
+
+We repeat the same computation in lines 29-34 but now use weights. We assign a value of $1$ to every weight except for the fifth data point, to which we assign a smaller weight.
+
+In lines 39 to 45 we repeat the the same computation but this time using our own function, \mintinline{python}{lse}
+
+Lastly, we draw the results to compare, as can be seen in figure \ref{fig:lse}.
+\end{paracol}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{ejemplo_lse.eps}
+	\bicaption{Ejemplo de cálculo de ajuste por mínimos cuadrados empleando la función fit de Polynomial y nuestra función lse.}{An example of least squares polynomial fit, using the function fit from Polynomial and our function lse.}
+	\label{fig:lse}
+\end{figure}
+
+
+\begin{paracol}{2}
+La figura muestra claramente el efecto de los pesos en la regresión. Al atenuar la influencia del quinto punto, que claramente parece fuera de rango, la curva se acerca más al resto de los puntos.
+
+Si miramos con atención ambos gráficos, es fácil darse cuenta que la función de Python acerca más el polinomio a los puntos que la que hemos escrito nosotros. La razón está en que hemos usado un modo distinto de introducir los pesos. La función \mintinline{python}{fit}, aplica el el peso directamente a la diferencia entre el dato y el valor del polinomio $\omega_i \vert y_i - p(x_i)\vert$ mientras que nosotros aplicamos los pesos al cuadrado de dicha diferencia $\omega_i(y_i-p(x_i))^2$. Si comparamos lo coeficientes de los polinomios obtenidos,
+
+\switchcolumn
+The figure clearly shows the effect the we\-ights have on the regression results. When we attenuate the influence of the fifth point, which appears to be quite an outlier, the curve approaches more to the remaining points.
+
+If we look at both graphics attentively, we will see that the Python function approximates the polynomial more to the points than the function we have written. The difference comes from how we introduce the weights, which are not the same as those used by Python. Function \mintinline{python}{fit}, applies the weights directly to the difference between the data an the value taken by the polynomial $\omega_i \vert y_i - p(x_i)\vert$, whike our function applies the weights to the squared difference  $\omega_i(y_i-p(x_i))^2$. If we compare the coefficients of the polynomials computed by both methods,
+\end{paracol}
+
+\begin{minted}{python}
+In [47]: p3w.convert().coef
+Out[47]: array([-40.71774313,  33.22583298,  -1.61930914,   0.1854822 ])
+	
+In [48]: aw
+Out[48]: array([-68.26797522,  56.50545799,  -5.31193931,   0.34603134])
+\end{minted}
+
+\begin{paracol}{2}
+vemos que no coinciden. Para obtener el mismo resultado, deberíamos introducir el cuadrado del valor de los pesos cuando usamos nuestra funcion,
+\switchcolumn
+We can see they are different. To get the same result, we must introduce the squared values of our weight when we use our function,
+
+\end{paracol}
+\begin{minted}{python}
+In [49]: aw2 = lse(x,y,3,w**2)
+
+In [50]: aw2
+Out[50]: array([-40.71774313,  33.22583298,  -1.61930914,   0.1854822 ])
+\end{minted}
+
+\begin{paracol}{2}
+Esto nos enseña una lección muy importante: no se deben emplear nunca paquetes de cálculo numérico sin saber qué están calculando exactamente. 	
 \subsection{Análisis de la bondad de un ajuste por mínimos cuadrados.} \index{Mínimos cuadrados! Residuos}
-Supongamos que tenemos un conjunto de datos obtenidos como resultado de un experimento. En muchos casos la finalidad de un ajuste por mínimos cuadrados, es encontrar una ley que nos permita relacionar los datos de la variable independiente con la variable dependiente. Por ejemplo si aplicamos distintas fuerzas a muelle y medimos la elongación sufrida por el muelle, esperamos obtener, en primera aproximación una relación lineal: $\Delta x\propto F$. (Ley de Hooke). 
+Supongamos que tenemos un conjunto de datos obtenidos como resultado de un experimento. En muchos casos la finalidad de un ajuste por mínimos cuadrados, es encontrar una ley que nos permita relacionar los datos de la variable independiente con la variable dependiente. Por ejemplo si aplicamos distintas fuerzas a un muelle y medimos la elongación sufrida por el muelle, esperamos obtener, en primera aproximación, una relación lineal: $\Delta x\propto F$. (Ley de Hooke). 
 
-Sin embargo, los resultados de un experimento no se ajustan nunca exactamente a una ley debido a errores aleatorios que no es posible corregir.
+Sin embargo, los resultados de un experimento rara vez se ajustan a una ley debido a errores aleatorios que no es posible corregir.
 
-Cuando realizamos un ajuste por mínimos cuadrados, podemos emplear cualquier polinomio desde grado $0$ hasta grado $m-1$. Desde el punto de vista del error cometido con respecto a los datos disponibles el mejor polinomio sería precisamente el de grado $m-1$ que da error cero para todos los datos, por tratarse del polinomio de interpolación. Sin embargo, si los datos son experimentales estamos incluyendo los errores experimentales en el ajuste.
+Cuando realizamos un ajuste por mínimos cuadrados de $m$ datos, podemos emplear cualquier polinomio desde grado $0$ hasta grado $m-1$. Desde el punto de vista del error cometido con respecto a los datos disponibles el mejor polinomio sería precisamente el de grado $m-1$ que da error cero para todos los datos, por tratarse del polinomio de interpolación. Sin embargo, si los datos son experimentales estamos incluyendo los errores experimentales en el ajuste.
 
 Por ello, para datos experimentales y suponiendo que los datos solo contienen errores aleatorios, el mejor ajuste lo dará el polinomio de menor grado para el cual las diferencias entre los datos y el polinomio $y_i-p(x_i)$ se distribuyan aleatoriamente. Estas diferencias reciben habitualmente el nombre de residuos. \index{Residuos} 
-\end{paracol}
-\begin{figure}[h]
-\centering
-\subfigure[Menu desplegable para abrir ventana auxiliar  \label{fig:minimos1}]{\includegraphics[width=5cm]{minimos.pdf}} \qquad 
-\subfigure[ventana auxiliar para realizar el ajuste y analizar resultados  \label{fig:minimos2}]{\includegraphics[width=10cm]{minimos2.pdf}}\\
-\caption{Ejemplo de uso de la ventana gráfica de Matlab para realizar un ajuste por mínimos cuadrados}
-\label{fig:minimos}
-\end{figure}
 
-\begin{paracol}{2}
-Entre las herramientas que suministra la ventanas gráficas de Matlab para el ajuste por mínimos cuadrados hay una que calcula y representa los residuos.  La figura \ref{fig:residuos} muestra un ejemplo de ajuste por mínimos cuadrados empleando cada vez un polinomio de mayor grado. \index{Residuos!Cálculo con Matlab}
-  
-  
-En la figura \ref{fig:residuos1} se observa claramente que el ajusto no es bueno, la recta de mínimos cuadrados no es capaz de adaptarse a la forma que presentan los datos. Los residuos muestran claramente esta tendencia: no están distribuidos de forma aleatoria. En la figura \ref{fig:residuos2}, la parábola aproxima mucho mejor el conjunto de datos, a simple vista parece un buen ajuste. Sin embargo, los residuos presenta una forma funcional clara que recuerda la forma de un polinomio de tercer grado. En la figura \ref{fig:residuos3}, los residuos están distribuidos de forma aleatoria. Si comparamos estos resultados con los de la figura \ref{fig:residuos4} vemos que en este último caso los residuos son más pequeños, pero conservan esencialmente la misma distribución aleatoria que en la figura anterior. La aproximación de los datos empleando un polinomio de cuarto grado no añade información sobre la forma de la función que siguen los datos, y ha empezado a incluir en el ajuste los errores de los datos. 
+\switchcolumn
+This result teaches us a fundamental lesson: never use a numerical computing software package without understanding its operations.
+
+\subsection{Analyzing goodness of fit using least squares method.}
+Suppose we have a dataset we have obtained as a result of an experiment. In many cases, least squares data fitting aims to find a law that allows us to establish a mathematical relationship between the independent and dependent variables. For instance, if we apply different stresses to a spring and measure the elongation acquired by the spring, we expect to get a linear relationship between stress and elongation as a first approximation: $\Delta x\propto F$. (Hooke's law).
+
+However, the results of an experiment hardly ever fit precisely into any law due to random errors, which we cannot amend.
+
+When we carry out a least squares fitting, we may use any polynomial of degrees 0 to $m-1$. From the point of view of the error we make, considering only the available data, the best polynomial would be the $m-1$-degree polynomial because this is the interpolation polynomial, and, so, it makes a zero error for every data. Nevertheless, if we are trying to fit experimental data, we are including the experimental errors in the fitting.
+
+As a consequence, for experimental data and assuming that the data only are affected by random errors, we get the best fitting using the polynomial of lest degree for which the differences between data and polynomial value $y_i-p(x_i)$ are randomly distributed. Such differences are usually called residuals. \index[eng]{residuals}
 \end{paracol}
-\begin{figure}[h]
-\centering
-\subfigure[Recta de mínimos cuadrados y residuos obtenidos \label{fig:residuos1}]{\includegraphics[width=6.5cm]{residuos1.eps}} \qquad 
-\subfigure[Parabola de mínimos cuadrados y residuos obtenidos  \label{fig:residuos2}]{\includegraphics[width=6.5cm]{residuos2.eps}}\\
-\subfigure[polinomio de tercer grado  de mínimos cuadrados y residuos obtenidos \label{fig:residuos3}]{\includegraphics[width=6.5cm]{residuos3.eps}} \qquad 
-\subfigure[polinomio de cuarto grado  de mínimos cuadrados y residuos obtenidos  \label{fig:residuos4}]{\includegraphics[width=6.5cm]{residuos4.eps}}
-\caption{Comparación entre los residuos obtenidos para los ajustes de mínimos cuadrados de un conjunto de datos empleando polinomios de grados 1 a 4.} 
-\label{fig:residuos}
+
+\begin{figure}
+	\centering
+	\subfigure[Recta de mínimos cuadrados y residuos obtenidos / Least squares line and residuals.  \label{fig:residuos1}]{\includegraphics[width=7cm]{lse1.png}} \qquad 
+	\subfigure[Parabola de mínimos cuadrados y residuos obtenidos / Least squares parabola and residuals.  \label{fig:residuos2}]{\includegraphics[width=7cm]{lse2.png}}\\
+	\subfigure[polinomio de tercer grado  de mínimos cuadrados y residuos obtenidos / 3-degree polynomial and residuals  \label{fig:residuos3}]{\includegraphics[width=7cm]{lse3.png}} \qquad 
+	\subfigure[polinomio de cuarto grado  de mínimos cuadrados y residuos obtenidos / 4-degree polynomial and residuals \label{fig:residuos4}]{\includegraphics[width=7cm]{lse4.png}}
+	\bicaption{Comparación entre los residuos obtenidos para los ajustes de mínimos cuadrados de un conjunto de datos empleando polinomios de grados 1 a 4.}{Comparison among the residuals resulting from a dataset least squares fitting, using polynomials of degrees 1 to 4.} 
+	\label{fig:residuos}
 \end{figure}
-\begin{paracol}{2} 
+\begin{paracol}{2}
+La figura \ref{fig:residuos} muestra un ejemplo de ajuste por mínimos cuadrados empleando cada vez un polinomio de mayor grado.
+    
+En la figura \ref{fig:residuos1} se observa claramente que el ajusto no es bueno, la recta de mínimos cuadrados no es capaz de adaptarse a la forma que presentan los datos. Los residuos muestran claramente esta tendencia: no están distribuidos de forma aleatoria. En la figura \ref{fig:residuos2}, la parábola aproxima mejor el conjunto de datos. Sin embargo, los residuos presentan un máximo y un mínimo suaves, no son realmente aleatorio. En la figura \ref{fig:residuos3}, los residuos están distribuidos de forma aleatoria. Si comparamos estos resultados con los de la figura \ref{fig:residuos4} vemos que en este último caso los residuos son más pequeños, pero conservan esencialmente la misma distribución aleatoria que en la figura anterior. La aproximación de los datos empleando un polinomio de cuarto grado no añade información sobre la forma de la función que siguen los datos, y ha empezado a incluir en el ajuste los errores de los datos.
+\switchcolumn
+Figure \ref{fig:residuos} shows a least square fitting  example, using polynomials of increasing degrees.  
+
+The residual also shows the data shape; they are not randomly distributed. In figure \ref{fig:residuos2}, we can see how a parabola better approximates the data but cannot follow the data up and down. The residuals clearly show a smooth maximum and minimum, but they are not actually random. In figure \ref{fig:residuos3}, the polynomial fits better the data, and the residuals are randomly distributed. If we compare them with the residuals presented in figure \ref{fig:residuos4}, we see these last are smaller but present essentially the same random distribution. We may conclude that the data approximation using a fourth-degree polynomial does not add any useful information on the function shape the data follow, and, worse than this, we are starting to include the data errors in the fitting.
+\end{paracol}
+\begin{flalign*}
+	&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+\end{flalign*}
+\begin{paracol}{2}
 \section{Curvas de Bézier}\index{Bézier}\index{Curvas de Bézier}
+\sectionmark{Curvas de Bézier \textreferencemark\ Bézier's curves}
 Las curvas de Bézier permiten unir puntos mediante curvas de forma arbitraria.  Una curva de Bézier viene definida por un conjunto de $n+1$ puntos, $\left\lbrace\vec{p}_0, \vec{p}_2, \cdots, \vec{p}_n\right\rbrace$, que reciben el nombre de puntos de control. El orden en que se presentan los puntos de control es importante para la definición de la curva de Bézier correspondiente. Ésta pasa siempre por los puntos $\vec{p_0}$ y $\vec{p_n}$. El resto de los puntos de control permiten dar forma a la curva, que tiene siempre la propiedad de ser tangente en el punto $\vec{p}_0$ a la recta que une $\vec{p}_0$ con $\vec{p}_1$ y tangente en el punto $\vec{p}_n$ a la recta que une $\vec{p}_{n-1}$ con $\vec{p}_n$.
 
 Para definir la curva, se asocia a cada punto de control $\vec{p}_i$ una función conocida con el nombre de función de fusión. En el caso de las curvas de Bézier, las funciones de fusión empleadas son los polinomios de Bernstein, \index{Polinomios de Bernstein}
+\switchcolumn	
+\section{Bézier Curves} \index[eng]{Bézier}\index[eng]{Bézier's curves}
+Bezier's curves can connect points using curves with arbitrary shape. We define a Bezier's curve using a set of of $n+1$ points, $\left\lbrace\vec{p}_0, \vec{p}_2, \cdots, \vec{p}_n\right\rbrace$ which are known as control points. The order of the control points play a key role in the definition of the corresponding Bézier's curve. The curve pass through the end points $\vec{p}_0$ and $\vec{p}_n$. The remaining control points allow us to define the curve shape, which has the interesting properties of being always tangent in point $\vec{p}_0$ to the line that connects $\vec{p}_0$ with $\vec{p}_1$ and tangent in point $\vec{p}_n$ to the line that connect $\vec{p}_{n-1}$ with $\vec{p}_n$.
+
+ To define the curve, we associate to the control point $\vec{p}_i$, a function known as fusion function. In the case of Bezier's curves, we use as fusion function Berstein's polynomials,   
 \end{paracol}
 \begin{equation*}
 B_i^n (t)=\binom{n}{i}\left(1-t\right)^{n-i}t^i, \quad i = 0, 1, \dots, n
 \end{equation*}
 \begin{paracol}{2}
-El grado de los polinomios de Bernstein empleados está asociado al número de puntos de control; para un conjunto de $n+1$ puntos, los polinomios empleados son de grado $n$. La variable $t$ es un parámetro que varía entre $0$ y $1$.
+El grado de los polinomios de Bernstein empleados depende del número de puntos de control; para un conjunto de $n+1$ puntos, los polinomios son de grado $n$. La variable $t$ es un parámetro que varía entre $0$ y $1$.
 
-La ecuación de la curva de Bézier que pasa por un conjunto de $n+1$ puntos de control, $\left\lbrace\vec{p}_0, \vec{p}_2, \cdots, \vec{p}_n\right\rbrace$, se define a partir de los polinomios de Bernstein como,
+La ecuación de la curva de Bézier que utiliza un conjunto de $n+1$ puntos de control, $\left\lbrace\vec{p}_0, \vec{p}_2, \cdots, \vec{p}_n\right\rbrace$, se define a partir de los polinomios de Bernstein como,
+\switchcolumn
+The Berstein's polynomials degree we use depends on the number of control points; for a set of $n+1$, we need polynomials of degree $n$. Variable $t$ is a parameter which varies between 0 and 1.
+
+The Bezier's curve for a set of $n+1$ control points,  $\left\lbrace\vec{p}_0, \vec{p}_2, \cdots, \vec{p}_n\right\rbrace$, can be defined using Berstein's polynomials, according to the following equation,  
 \end{paracol}
 \begin{equation*}
 \vec{p}(t) = \sum_{i = 0}^n B_i^n(t) \cdot \vec{p}_i = \sum_{i = 0}^n \binom{n}{i}\left(1-t\right)^{n-i}t^i  \cdot \vec{p}_i
@@ -1287,13 +1320,21 @@ La ecuación de la curva de Bézier que pasa por un conjunto de $n+1$ puntos de 
 \begin{paracol}{2}
 La expresión anterior da como resultado $\vec{p}_0$ si hacemos $t = 0$ y $\vec{p}_n$ si hacemos $t = 1$. para los valores comprendidos entre $t=0$ y $t=1$, los puntos $\vec{p}(t)$  trazarán una curva entre $\vec{p}_0$  y $\vec{p}_n$.
 
-Veamos un ejemplo sencillo. Supongamos que queremos unir los puntos $\vec{p}_0 = (0,1)$ y $\vec{p}_n = (3,1)$ mediante curvas de Bézier. Si no añadimos ningún punto más de control, $\lbrace\vec{p}_0 = (0,1), \vec{p}_1 = (3,1)\rbrace$, el polinomio de Bézier que obtendremos será una recta que unirá los dos puntos,
+Veamos un ejemplo sencillo. Supongamos que queremos unir los puntos $\vec{p}_0 = (0,1)$ y $\vec{p}_n = (3,1)$ mediante curvas de Bézier. Si no añadimos ningún punto más de control, $\lbrace\vec{p}_0 = (0,1), \vec{p}_1 = (3,1)\rbrace$, la curva de Bézier que obtendremos será una recta que unirá los dos puntos,
+
+\switchcolumn
+The above expression yields $\vec{p}_0$ as a result, if we take $t=0$ and $\vec{p}_n$ for $t=1$. For values of $t$ between $t=0$ and $t=1$, points $\vec{p}(t)$ will describe a curve between $\vec{p}_0$  y $\vec{p}_n$.  
+
+Let's see a basic example. Suppose we want to connect point $\vec{p}_0 = (0,1)$ with point $\vec{p}_1$ using a Bezier's curve. If we do not define any other control point, $\lbrace\vec{p}_0 = (0,1), \vec{p}_1 = (3,1)\rbrace$, The Bezier's curve we will obtain will be a line connection both points.
 \end{paracol}
 \begin{equation*}
 \vec{p}(t) = \binom{1}{0}\left(1-t\right)^{1}t^0  \cdot (0,1) +  \binom{1}{1}\left(1-t\right)^{0}t^1  \cdot (3,1) = \left(1-t\right)  \cdot (0,1) + t\cdot (3,1)
 \end{equation*} 
 \begin{paracol}{2}
 Si separamos las componentes $x$ e $y$ del vector $\vec{p}(t)$,
+
+\switchcolumn
+If we split the components $x$ and $y$ of vector $\vec{p}(t)$,
 \end{paracol}
 
 \begin{align*}
@@ -1304,6 +1345,10 @@ y &= 1
 Se trata de la ecuación del segmento horizontal que une los puntos $\vec{p}_0 = (0,1)$ y $\vec{p}_n = (3,1)$ 
 
 Si añadimos un punto más de control, por ejemplo:  $\vec{p}_1 = (1,2) \rightarrow \lbrace\vec{p}_0 = (0,1), \vec{p}_1 = (1,2), \vec{p}_2 = (3,1)\rbrace$,  la curva resultante será ahora un segmento de un polinomio de segundo grado en la variable $t$,
+\switchcolumn
+It is the equation of the horizontal segment that joints the points $\vec{p}_0 = (0,1)$ y $\vec{p}_n = (3,1)$
+
+If we add a control point more, for instance:  $\vec{p}_1 = (1,2) \rightarrow \lbrace\vec{p}_0 = (0,1), \vec{p}_1 = (1,2), \vec{p}_2 = (3,1)\rbrace$, the resulting curve will be now a segment of a second degree polynomial on the variable $t$,
 \end{paracol}
 \begin{align*}
 \vec{p}(t) &= \binom{2}{0}\left(1-t\right)^{2}t^0  \cdot (0,1) +  \binom{2}{1}\left(1-t\right)t \cdot (1,2) + \binom{2}{2}\left(1-t\right)^{0}t^2  \cdot (3,1) =\\
@@ -1314,60 +1359,49 @@ Según vamos aumentando el número de los puntos de control, iremos empleando po
 
 La figura \ref{fig:bezier} muestra un ejemplo en el que se han construido varias curvas de Bézier sobre los mismos puntos de paso inicial y final. Es fácil observar cómo la forma de la curva depende del número y la posición de los puntos de control. Si unimos éstos por orden mediante segmentos rectos, obtenemos un polígono que recibe el nombre de polígono de control. En la figura \ref{fig:bezier} se han representado los polígonos de control mediante líneas de puntos.
 
-El siguiente código permite calcular y dibujar una curva de Bézier a partir de sus puntos de control.
-\end{paracol}
-%\begin{lstlisting}
-%function ber = bezier(p,res)
-%% estas funcion pinta la curva de Bezier correspondiente a los puntos de 
-%% control p. 
-%% p debe ser una matriz de dimension n*2 donde n es el número de puntos de 
-%% control empleados La primera columna contiene las coordenadas x 
-%% y la segunda las coordenas y.
-%% El codigo sigue directamente la definicion de los polinomios de Bernstain
-%% por tanto, NO es un codigo optimo. Calcula varias veces las mismas
-%% cantidades.
-%% Los coeficientes binomiales de los polinomios de Berstein se 
-%% pueden calcular directamente con el comando de matlab nchoosek. Sin 
-%% enbargo, en el programa se han calculado a partir de la definicion:
-%%  n!/((n-k)!k!)
-%% la variable de entrada res nos da el paso que empleará el parámatro t
-%% para calcular y dibujar el polinomio
-%
-%t = 0:res:1;
-%ber = zeros(2,length(t));
-%% calculamos un vector de coeficientes para los polinomios.
-%
-%% coeficientes para la coordenada x.
-%
-%n = size(p,1)-1;
-%num = factorial(n);
-%for i = 0:n    
-%    f=num/factorial(i)/factorial(n-i);
-%    ber(1,:) = ber(1,:) + f*p(i+1,1)*(1-t).^(n-i).*t.^i;
-%    ber(2,:) = ber(2,:) + f*p(i+1,2)*(1-t).^(n-i).*t.^i;
-%end
-%plot(p(:,1),p(:,2),'or')
-%hold on
-%plot(p(:,1),p(:,2),'r')
-%plot(ber(1,:),ber(2,:))
-%\end{lstlisting}
+El siguiente código permite calcular y dibujar una curva de Bézier a partir de sus puntos de control, empleando las funciones \mintinline{python}{bezier} y \mintinline{python}{bezier_sc}
+\switchcolumn
+As we increase the number of control points, we also increase de degree of the polynomial used to connect the first and last control points. The shape of this polynomial will change depending on the intermediate control point we use. 
 
-\begin{figure}[h]
+Figure \ref{fig:bezier} shows an example in which we have built several Bézier's curves using the same initial and final controls points. Notice how the shape of the curve depends on the number and position of the control points. If we orderly connect the control points using straight segments we get a polygon know as control polygon. In figure \ref{fig:bezier} the control polygons have been represented using dashed lines.
+
+The following code includes functions  \mintinline{python}{bezier} and \mintinline{python}{bezier_sc} to compute and draw Bezier's curves define from their control points.
+\end{paracol}
+
+\begin{figure}
 \centering
 \includegraphics[width=10cm]{bezier.eps} 
-\caption{Curvas de Bézier trazadas entre los puntos $P_0 = (0,0)$ y $P_n = (2,1)$, variando el número y posición de los puntos de control.} 
+\bicaption{Curvas de Bézier trazadas entre los puntos $P_0 = (0,0)$ y $P_n = (2,1)$, variando el número y posición de los puntos de control.}{Bézier curves traced between points $P_0 = (0,0)$ y $P_n = (2,1)$, variating the control points number and positions} 
 \label{fig:bezier}
 \end{figure}
+
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=bezier.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/interpolacion/codigo_abierto/bezier.py}
+
 \begin{paracol}{2}
 \paragraph{Curvas equivalentes de grado superior.} Dada una curva de Bézier, representada por un polinomio de Bernstein de grado $n$, es posible encontrar polinomios de grado superior que representan la misma curva de Bézier. Lógicamente esto supone un aumento del número de puntos de control.
 
-Supongamos que tenemos una curva de Bézier con cuatro puntos de control,
+Supongamos que tenemos una curva de Bé\-zier con cuatro puntos de control,
+
+\switchcolumn
+\paragraph{Upper degree equivalent curves.} Given a Bezier's curve, represented by a Berstein's polynomial of degree $n$, it is possible to find Berstein's polynomials of higher degree, which also describes this same Beezier's curve. Indeed, this means an increase in the number of the control points.
+
+Suposse we have a Bezier's curve defined by four control points,
 \end{paracol}
 \begin{equation*}
 \vec{p}(t) = \vec{p}_0B_0^3(t) + \vec{p}_1B_1^3(t) + \vec{p}_2B_2^3(t) + \vec{p}_3B_3^3(t)
 \end{equation*}
 \begin{paracol}{2}
-Si multiplicamos este polinomio por $ t + (1 -t) \equiv 1$ El polinomio no varía y por tanto representa la misma curva de Bézier. Sin embargo, tendríamos ahora un polinomio un grado superior al inicial.  Si después de la multiplicación agrupamos términos de la forma $(1-t)^{n-1}t^i$, Podríamos obtener el valor de los nuevos puntos de control,
+Si multiplicamos este polinomio por $ t + (1 -t) \equiv 1$, el polinomio no varía y por tanto representa la misma curva de Bézier. Sin embargo, tendríamos ahora un polinomio un grado superior al inicial.  Si después de la multiplicación agrupamos términos de la forma $(1-t)^{n-1}t^i$, Podríamos obtener el valor de los nuevos puntos de control,
+\switchcolumn
+If we multiply this polynomial by $ t + (1 -t) \equiv 1$, the polynomial remains the same an so it represent the same Bezier's curve too. However, we have now a polynomial one degree higher than the initial one. If after multiplying we group terms like $(1-t)^{n-1}t^i$, we can compute the value of the new control points,
 \end{paracol}
 \begin{align*}
 \vec{p}_0^+&= \vec{p}_0\\
@@ -1378,6 +1412,8 @@ Si multiplicamos este polinomio por $ t + (1 -t) \equiv 1$ El polinomio no varí
 \end{align*}
 \begin{paracol}{2}
 y, en general, los puntos de control de la curva de Bézier de grado $n+1$ equivalente  a una dada de grado $n$ puede obtenerse como,
+\switchcolumn
+And, in general, we can compute the control points for the Bezier's curve of degree $n+1$ equivalent to a previous defined curve of degree $n$ as,
 \end{paracol}
 \begin{equation*}
 \vec{p}_i^+ = \alpha_i\vec{p}_{i-1} + (1-\alpha_i)\vec{p}_i, \qquad \alpha_i =\frac{i}{n+1}
@@ -1385,52 +1421,34 @@ y, en general, los puntos de control de la curva de Bézier de grado $n+1$ equiv
 \begin{paracol}{2}
 Mediante la ecuación anterior, es posible obtener iterativamente los puntos de control de la curva de Bézier equivalente a una dada de cualquier grado. Una propiedad interesante es que según aumentamos el número de puntos de control empleados, estos y el polígono de control correspondiente, van convergiendo a la curva de Bézier. 
 
-La figura \ref{fig:bzgrad} muestra un ejemplo para una curva de Bézier construida a partir de tres puntos de control. Es fácil ver cómo a pesar de aumentar el número de puntos de control, la curva resultante es siempre la misma.  También es fácil ver en la figura (\ref{fig:bz4}) la convergencia de los polígonos de control hacia la curva.
+La figura \ref{fig:bzgrad} muestra un ejemplo para una curva de Bézier construida a partir de tres puntos de control. Es fácil ver cómo a pesar de aumentar el número de puntos de control, la curva resultante es siempre la misma.  También es fácil ver en la figura \ref{fig:bz4} la convergencia de los polígonos de control hacia la curva.
+
+\switchcolumn
+Using the above equation, we can iteratively obtain the control points of a Bezier's curve equivalent to any other given of whatever degree. An interesting property is that, as we increase the number of control points, these and the control polygon tend to converge to the Bezier's curve.
+
+Figure \ref{fig:bzgrad} shows an example using a Bézier's curve built from three control points. As can be seen, we always obtain the same curve, although we have increased the number of control points. It is also easy to see in figure \ref{fig:bz4} that the control polygons also converge to the Bezier's curve. 
 \end{paracol}
 \begin{figure}[h]
 \centering
-\subfigure[Curva original (3 puntos) \label{fig:bz1}]{\includegraphics[width=6.8cm]{bezier3p.eps}} \qquad 
-\subfigure[Curvas equivalentes de 4 a 6 puntos  \label{fig:bz2}]{\includegraphics[width=6.8cm]{bezier6p.eps}}\\
-\subfigure[Curvas equivalentes de 4 a 12 puntos  \label{fig:bz3}]{\includegraphics[width=6.8cm]{bezier12p.eps}} \qquad 
-\subfigure[Curvas equivalentes de de 4 a 30 puntos  \label{fig:bz4}]{\includegraphics[width=6.8cm]{bezier30p.eps}}
-\caption{Curvas de Bézier equivalentes, construidas a partir de una curva con tres puntos de control} 
+\subfigure[Curva original (3 puntos) / Original curve (3 points) \label{fig:bz1}]{\includegraphics[width=6.8cm]{bezier3p.eps}} \qquad 
+\subfigure[Curvas equivalentes de 4 a 6 puntos / 4 to 6 points equivalent curves  \label{fig:bz2}]{\includegraphics[width=6.8cm]{bezier6p.eps}}\\
+\subfigure[Curvas equivalentes de 4 a 12 puntos / 4 to 12 points Equivalent curves   \label{fig:bz3}]{\includegraphics[width=6.8cm]{bezier12p.eps}} \qquad 
+\subfigure[Curvas equivalentes de de 4 a 30 puntos / 4 to 30 points equivalent curve \label{fig:bz4}]{\includegraphics[width=6.8cm]{bezier30p.eps}}
+\bicaption{Curvas de Bézier equivalentes, construidas a partir de una curva con tres puntos de control.}{Equivalent curves, built from a three control point Bézier's curve.} 
 \label{fig:bzgrad}
 \end{figure}
 \begin{paracol}{2}
-El siguiente código permite calcular la curva equivalente de Bézier a una dada, para cualquier número de puntos de control que se desee. \index{Curvas de Bézier equivalentes}
+La función \mintinline{python}{bzeq} del módulo \mintinline{python}{bezier.py}, incluido más arriba  permite calcular la curva equivalente de Bézier a una dada, para cualquier número de puntos de control que se desee. \index{Curvas de Bézier equivalentes}
+\paragraph{Derivadas.} Las derivadas de una curva de Bézier con respecto al parámetro $t$ son particularmente fáciles de obtener a partir de los puntos de control. Si tenemos una curva de Bézier de grado $n$, definida mediante puntos de control $\vec{p}_i$. Su derivada primera con respecto a $t$ será una curva de Bézier de grado $n-1$, cuyos puntos de control $\vec{d}_i$  puede obtenerse como:
+
+\switchcolumn
+Function \mintinline{python}{bzeq} in \mintinline{python}{bezier.py} module above include, allows us to calculate the Bezier's curve equivalent to any other given, using any number of control points. \index[eng]{Equivalent Bezier's curves}
+
+
+
+\paragraph{Derivatives.} To compute the derivatives of a Bezier's curve  with respect to parameter $t$ is particularly easy, using the control points. Suppose we have a degree $n$ Bezier's curve, defined from control points $\vec{p}_i$. It first derivative with respect to $t$ will be a Bezier's curve of degree $n-1$, whose control point we can compute as: 
 \end{paracol}
-%\begin{lstlisting}
-%function  pp = bzeq(p,n)
-%% Esta funcion calcula los puntos de control de una curva de Bezier
-%% equivalente de grado superior. p es matriz de tamaño mx2 que contiene 
-%% los puntos de control originales. n es el número de puntos de paso de 
-%% la nueva curva de Bezier equivalente. n tiene que ser mayor que m.
-%% pp contiene los n puntos de control de la curva de Bézier resultante.
-%
-%% Construimos un vector  con una fila mas para guardar un nuevo elemento
-%c = size(p,1);
-%% La siguiente linea sirve solo para ir pintando los resultados y ver 
-%%que  efectivamente todos los polinomios dan la misma curva de Bezier 
-%%  (si se tiene la funcion bezier).
-%bezier(p,0.01);
-%if c == n
-%    pp = p;
-%    return
-%else
-%    p = [p;zeros(1,2)];
-%    pp = p;
-%    for i = 2 : c+1
-%        pp(i,:) = p(i-1,:)*(i-1)/(c) + (1 -(i-1)/(c))*p(i,:);
-%        
-%    end
-%    % llamamos a la funcion recursivamente hasta tener n puntos de 
-%    % control el grado del polinomio sera n-1...
-%    pp = bzeq(pp,n);
-%end
-%\end{lstlisting}
-\begin{paracol}{2}
-\paragraph{Derivadas.} Las derivadas de una curva de Bézier con respecto al parámetro $t$ son particularmente fáciles de obtener a partir de los puntos de control. Si tenemos una curva de Bézier de grado $n$, definida mediante puntos de control $\vec{p}_i$ su derivada primera con respecto a $t$ será una curva de Bézier de grado $n-1$ Cuyos puntos de control $\vec{d}_i$  puede obtenerse como:
-\end{paracol}
+
 \begin{equation*}
 \vec{d_i} = n\left(\vec{p_{i+1}} -\vec{p_i}\right)
 \end{equation*}
@@ -1439,69 +1457,68 @@ La nueva curva de Bézier obtenida de este modo, es una hodógrafa; representa e
 
 La figura \ref{fig:bzc}, muestra una curva de Bézier sobre la que se ha trazado el vector derivada para algunos puntos. La figura \ref{fig:bzd} muestra la hodógrafa correspondiente y de nuevo los mismos vectores derivada de la figura \ref{fig:bzc}
 
-El siguiente código muestra como calcular los puntos de control de la derivada de una curva de Bézier.
-\end{paracol}
-%\begin{lstlisting}
-%function d = dbez(p)
-% esta función obtiene los puntos de control de la derivada con 
-% respecto al parametro de una curva de bezier cuyos puntos de  
-% control están contenidos la matriz p. p de be ser una matriz de 
-% nx2 donde n es el número de puntos de control.
-%grado = size(p,1) -1
-%d = zeros(grado,2)
-%for i = 1:grado
-%    d(i,:) = (grado-1)*(p(i+1,:)-p(i,:))
-%end
-% Codigo añadido para dibujar y analizar los resultados
-% pintamos la hodografa
-%v = bezier(d,0.01)
-% le añadimos algunos vectores para que se vea que tocan la hodografa
-% hold on
-% compass(v(1,1:10:size(v,2)),v(2,1:10:size(v,2)))
-% figure
-%% las pintamos además como vectores tangentes a la curva original
-%x = bezier(p,0.01)
-%hold on
-%quiver(x(1,1:10:size(v,2)),x(2,1:10:size(v,2)),v(1,1:10:size(v,2))...
-%    ,v(2,1:10:size(v,2)))
-%\end{lstlisting}
+La función \mintinline{python}{dbez}, incluida en el módulo \mintinline{python}{bezier.py} permite calcular los puntos de control de la derivada de una curva de Bézier.
 
-\begin{figure}
+\switchcolumn
+The new Bézier curve we obtain is a hodograph. It represents the position of the tips of vectors tangent in each point to the original Bézier curve and has a direct relationship with the speed at which you can travel across the curve at any point.
+
+Figure \ref{fig:bzc} shows a Bezier's curve an the derivative vector at some points of the curve. Figure \ref{fig:bzd} show the hodograph corresponding to and the same derivative vectors of de curve presented in figure \ref{fig:bzc}  
+
+Function \mintinline{python}{dbez}, belonging to the module \mintinline{python}{bezier.py} included above, allows us to compute  the derivative of any Bezier's curve.
+\end{paracol}
+
+\begin{figure}[h]
 \centering
-\subfigure[Curva de Bézier (4 puntos) \label{fig:bzc}]{\includegraphics[width=7cm]{bezierder.eps}} \qquad 
-\subfigure[Derivada (hodógrafa)  \label{fig:bzd}]{\includegraphics[width=7cm]{bezierhodg.eps}}
-\caption{Curva de Bézier y su derivada con respecto al parámetro del polinomio de Bernstein que la define: $t \in [0,1]$} 
+\subfigure[Curva de Bézier (4 puntos) / Bézier's curve (4 points) \label{fig:bzc}]{\includegraphics[width=7cm]{bezierder.eps}} \qquad 
+\subfigure[Derivada (hodógrafa) / Derivative (hodograph) \label{fig:bzd}]{\includegraphics[width=7cm]{bezierhodg.eps}}
+\bicaption{Curva de Bézier y su derivada con respecto al parámetro del polinomio de Bernstein que la define: $t \in [0,1]$}{Bézier's curve and its derivative with respect to the Berstein's polynomial parameter which defines the curve $ t \in [0,1]$} 
 \label{fig:bzder}
 \end{figure} 
+
 \begin{paracol}{2}
-\paragraph{Interpolación con curvas de Bézier} Podemos emplear curvas de Bézier para interpolar un conjunto de puntos $\lbrace \vec{p}_0, \cdots  \vec{p}_m\rbrace$. Si empleamos un curva para interpolar cada par de puntos, $\vec{p}_i, \vec{p}_{i+1}, \qquad i =1, \cdots m-1$ tenemos asegurada la continuidad en los puntos interpolados puesto que las curvas tienen que pasar por ellos. Como en el caso de la interpolación mediante splines, podemos imponer continuidad en las derivadas para conseguir una curva de interpolación suave. En el caso de las curvas de Bézier esto es particularmente simple. Si llamamos $B$ a la curva de Bézier de grado $n$ construida entre los puntos $\vec{p}_{i-1}, \vec{p}_{i}$  con puntos de control, $\vec{p}_{i-1}, b_1, \vec{b}_2,\cdots, \vec{b}_{n-1},\vec{p}_{i}$. Y  $C$ a la curva de Bézier de grado $s$ construida entre los puntos $\vec{p}_{i}, \vec{p}_{i+1}$  con puntos de control, $\vec{p}_{i}, \vec{c}_1, \vec{c}_2,\cdots, \vec{c}_{s-1},\vec{p}_{i+1}$. Para asegurar la continuidad en la primera derivada en el punto $\vec{p_i}$ basta imponer,
+\paragraph{Interpolación con curvas de Bézier} Podemos emplear curvas de Bézier para interpolar un conjunto de puntos $\lbrace \vec{p}_0, \cdots  \vec{p}_m\rbrace$. Si empleamos un curva para interpolar cada par de puntos, $\vec{p}_i, \vec{p}_{i+1}, \; i =1, \cdots m-1$ tenemos asegurada la continuidad en los puntos interpolados puesto que las curvas tienen que pasar por ellos. Como en el caso de la interpolación mediante splines, podemos imponer continuidad en las derivadas para conseguir una curva de interpolación suave. En el caso de las curvas de Bézier esto es particularmente simple. Si llamamos $B$ a la curva de Bézier de grado $n$ construida entre los puntos $\vec{p}_{i-1}, \vec{p}_{i}$  con puntos de control, $\vec{p}_{i-1}, b_1, \vec{b}_2,\cdots, \vec{b}_{n-1},\vec{p}_{i}$, y  $C$ a la curva de Bézier de grado $s$ construida entre los puntos $\vec{p}_{i}, \vec{p}_{i+1}$  con puntos de control, $\vec{p}_{i}, \vec{c}_1, \vec{c}_2,\cdots, \vec{c}_{s-1},\vec{p}_{i+1}$. Para asegurar la continuidad en la primera derivada en el punto $\vec{p_i}$ basta imponer,
+
+\switchcolumn
+\paragraph{Interpolation using Bézier's curves} We can use Bézier's curve for interpolating a set of points, $\lbrace \vec{p}_0, \cdots  \vec{p}_m\rbrace$. If we use a curve to interpolate every pair of consecutive points, $\vec{p}_i, \vec{p}_{i+1}, \; i =1, \cdots m-1$ we assure the continuity in the interpolated points because the curves have necessarily to pass through them. As in the case of spline interpolation, we can also impose continuity to the derivatives to get a smooth interpolating curve. In the case of Bèzier's curves, this is especially simple. If we call $B$ to the $n$-degree Bezier's curve built between the points $\vec{p}_{i-1}, \vec{p}_{i}$  with control points, $\vec{p}_{i-1}, b_1, \vec{b}_2,\cdots, \vec{b}_{n-1},\vec{p}_{i}$, and $C$ to the $s$-degree Bezier's curve built between the points $\vec{p}_{i}, \vec{p}_{i+1}$  with control points, $\vec{p}_{i}, \vec{c}_1, \vec{c}_2,\cdots, \vec{c}_{s-1},\vec{p}_{i+1}$; we can assure the continuity of the first derivative in the point $\vec{p_i}$ just imposing that,   
 \end{paracol}
 \begin{equation*}
 n\cdot\left(\vec{p}_i-\vec{b}_{n-1}\right) = s\cdot\left(\vec{c}_1-\vec{p}_i\right)
 \end{equation*}
-\begin{paracol}{2}
+\begin{paracol}{2} 
 Esta condición impone una relación entre el penúltimo punto de control de la curva $B$ y el segundo punto de control de la curva $C$. Pero deja completa libertad sobre el resto de los puntos de control elegidos para construir las curvas.
 
 Podemos, por ejemplo, elegir libremente todos los puntos de control de la curva $B$ y obtener a partir de ella el punto $\vec{c}_1$,
+
+\switchcolumn
+This condition imposes a link between the second-last control point of the curve $B$ and the second control point of the curve $C$. However, it allows free election of the remaining control points to build the curves as desired.
+
+For instance we can freely choose all control points of curve $B$ and use it to compute the point $\vec{c}_1$,
 \end{paracol}
 \begin{equation*}
 \vec{c}_1 = \frac{n+s}{s}\vec{p}_i - \frac{n}{s}\vec{b}_{n-1}
 \end{equation*}
+\begin{paracol}{2}
+	La figura \ref{fig:ibz3} muestra un ejemplo de interpolación en la que se ha aplicado la condición de continuidad en la derivada que acabamos de describir.
+	
+	\switchcolumn
+	Figure \ref{fig:ibz3} shoes an example of interpolation in which we have applied the derivative continuity condition we have described. 
+\end{paracol}
 
 \begin{figure}[h]
 \centering
-\subfigure[Interpolación mediante curvas de Bézier de 3 puntos) \label{fig:ibz}]{\includegraphics[width=7cm]{bezierint.eps}} \qquad 
-\subfigure[Interpolación mediante curvas de Bézier de 3 y 4 puntos  \label{fig:ibz2}]{\includegraphics[width=7cm]{bezierint2.eps}}
-\caption{Interpolación de tres puntos mediante dos curvas de Bézier} 
+\subfigure[Interpolación mediante curvas de Bézier de 3 puntos / Interpolation using three control points Bezier's curves) \label{fig:ibz}]{\includegraphics[width=7cm]{bezierint.eps}} \qquad 
+\subfigure[Interpolación mediante curvas de Bézier de 3 y 4 puntos / iNterpolation using 3 and 4 control points Beziers's curves   \label{fig:ibz2}]{\includegraphics[width=7cm]{bezierint2.eps}}
+\bicaption{Interpolación de tres puntos mediante dos curvas de Bézier}{interpolating three point using two Bezier's curves} 
 \label{fig:ibz3}
 \end{figure}
- 
+ \begin{flalign*}
+ 	&&\reversemathwitch*    
+ \end{flalign*}
+\newpage
 \begin{paracol}{2}
-La figura \ref{fig:ibz3} muestra un ejemplo de interpolación en la que se ha aplicado la condición de continuidad en la derivada que acabamos de describir.
-\end{paracol}
 \section{ejercicios}
 \begin{enumerate}
-\item Carga en Matlab los datos del fichero \texttt{datos.txt}\footnote{disponible en \url{https://github.com/UCM-237/LCC/tree/master/datos}} y realiza las siguientes tareas:
+\item Carga en python los datos del fichero \texttt{datos.txt}\footnote{disponible en \url{https://github.com/UCM-237/LCC/tree/master/datos}} y realiza las siguientes tareas:
 \begin{enumerate}
 \item \label{ej1a} Crea una función que a partir de dos vectores de datos $x,y$ de igual longitud $n+1$, calcula la matriz de Vandermonde necesaria   para obtener el polinomio de interpolación asociado a los puntos. Empleando la primera columna de datos contenida en \texttt{datos.txt} como datos $x$ y la segunda como datos $y$, genera el polinomio de interpolación,
 \begin{equation*}
@@ -1510,26 +1527,47 @@ p(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n
 
 Calcula el valor que toma el polinomio de interpolación en 100 puntos equiespaciados entre los valores $x_0$ y $x_{n}$ de los datos del fichero. Dibuja en una misma gráfica los resultados obtenidos, empleando una línea continua, y los valores del fichero, mediante puntos separados empleando el símbolo que prefieras. Comprueba que el polinomio pasa por los puntos contenidos en el fichero.
 
-\item Reproduce en matlab la función 'Lagrange' de la sección \ref{sec:lagranje} para calcular el polinomio interpolador de Lagrange. Emplea la función que acabas de crear para recalcular los valores del polinomio de interpolación realizado en el ejercicio anterior y comprueba que los resultados obtenidos son los mismos que empleando la matriz de Vandermonde.
+\item Reproduce en python la función 'Lagrange' de la sección \ref{sec:lagranje} para calcular el polinomio interpolador de Lagrange. Emplea la función que acabas de crear para recalcular los valores del polinomio de interpolación realizado en el ejercicio anterior y comprueba que los resultados obtenidos son los mismos que empleando la matriz de Vandermonde.
 
 \item A partir de los ejemplos de la sección  sección \ref{sec:difdiv}, crea un programa que calcule los coeficientes del polinomio interpolador de diferencias divididas a partir de dos vectores de datos  $x,y$ de igual longitud $n+1$ y un segundo programa que calcule el valor del polinomio en un punto cualquiera a partir de los coeficientes obtenidos con el primer programa. Vuelve a calcular, empelando ahora el polinomio de diferencias dividas, los valores del polinomio de interpolación sobre los mismos datos empleados en los ejercicios anteriores y comprueba que da los mismos resultados.
 
-\item Por último, crea una función que calcule el polinomio de interpolación de Newton-Gregory (sección \ref{sec:newgre}). ¿Es posible usarlos para interpolar los datos del archivo \texttt{datos.txt}? Si la respuesta el afirmativa, repite el cálculo del polinomio de interpolación, empleando Newton-Gregory y comprueba si coincide con lo obtenido en los ejercicios anteriores.
+\item Por último, crea una función que calcule el polinomio de interpolación de Newton-Gregory (sección \ref{sec:newgre}). ¿Es posible usarlos para interpolar los datos del archivo\\ \texttt{datos.txt}? Si la respuesta el afirmativa, repite el cálculo del polinomio de interpolación, empleando Newton-Gregory y comprueba si coincide con lo obtenido en los ejercicios anteriores.
 
-\item Usa el comando \texttt{help} para conocer los distintos métodos de interpolación por intervalos disponibles  para la función \texttt{interp1}. Empleando de nuevo los datos del fichero \texttt{datos.txt}, obtén el resultado de interpolar los valores en 100 puntos equiespaciados entre los valores $x_0$ y $x_{n}$ de los datos del fichero mediante \texttt{interp1}.  Emplea para ello los métodos \texttt{'nearest','linear'} y \texttt{'spline'}. Dibuja los resultados en la misma gráfica empleada en el ejercicio  \ref{ej1a})
+\item Usa la función de numpy \mintinline{python}{interp1d} y emplea de nuevo los datos del fichero \texttt{datos.txt}, para obtener el resultado de interpolar los valores en 100 puntos equiespaciados entre los valores $x_0$ y $x_{n}$ del fichero.  Emplea para ello los métodos \texttt{'nearest'} y \texttt{'linear'}. Repite el cálculo empleando ahora la función de numpy  \texttt{'CubicSpline'}. Dibuja los resultados en la misma gráfica empleada en el ejercicio  \ref{ej1a})
 \end{enumerate}
-\item Construye a partir del código de ejemplo de la sección \ref{sec:mc}, una función que calcule el polinomio de grado $n$ que ajusta por mínimos cuadrados un conjunto de pares de datos datos $(x, y)$. Pruébalo sobre los datos del fichero \texttt{datos.txt}, sin emplear pesos. Compara los coeficientes del polinomio obtenido con los que se obtienen empleando el comando \texttt{polyfit} de Matlab. ¿Qué conclusión sacas?
+\item Construye a partir del código de ejemplo de la sección \ref{sec:mc}, una función que calcule el polinomio de grado $n$ que ajusta por mínimos cuadrados un conjunto de pares de datos $(x, y)$. Pruébalo sobre los datos del fichero \texttt{datos.txt}, sin emplear pesos. Compara los coeficientes del polinomio obtenido con los que se obtienen empleando la función \texttt{Polynomial.fit} de Numpy. ¿Qué conclusión sacas?
 
 \item Añade el código necesario al programa anterior para que, una vez obtenidos los coeficientes del polinomio de mínimos cuadrados, la función calcule y devuelva un vector $r$ con los valores de los residuos, $r = y -p(x)$, donde $x$ e $y$ son los vectores del conjunto de datos para los que se ha obtenido el polinomio de mínimos cuadrados y $p$ los valores obtenidos aplicando el polinomio a los valores $x$ de la colección de datos.
 \end{enumerate}
+\switchcolumn
+\section{exercises}
+\begin{enumerate}
+	\item Load in Python the date held in file\\ \mintinline{python}{datos.txt}\footnote{available in \url{https://github.com/UCM-237/LCC/tree/master/datos}} an carry out the following tasks:
+\begin{enumerate}
+	\item Build a function that taking two data vector, $x$, $y$ of the same length, $n+1$, computes the Vandermonde's matrix needed for obtaining the interpolating polynomial associated to the points. Using the first data column in \mintinline{python}{data.txt} as $x$ and the second column as $y$ compute the the interpolating polynomial,
+	\begin{equation*}
+		p(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n
+	\end{equation*}
+	
+	Compute the values of the interpolating polynomial in 100 equispaced points between values $x_0$ and $x_{n}$ of the data file. In the same gra\-phic, draw the results obtained using a continuous line and the file data as single points, using the symbol you prefer. Check that the polynomial passes through the data point included in the file.
+	
+	\item Write the 'Lagrange' function for computing the Interpolating Lagrange polynomial in Python, included in section \ref{sec:lagranje}. Use the function you just created to recompute the values of the interpolating polynomial obtained in the previous exercise and check that you get the same results as using Vandermonde's matrix.
+	
+	\item Departing from the examples in section \ref{sec:difdiv}, build a program for computing the divided differences polynomial coefficients, usin two data arrays $x$ and $y$ with the same length, $n+1$. Buid also a second program for computing the value of the polynomial in any point, using the coefficients computed with the previous program. Recompute one more time, now using the divided differences polynomial the values of the interpolation polynomial, of the same data use in previous exercises. Check that you get the same results.
+	
+	\item Lastly, build a function that compute the Newton-Gregory's interpolating polynomials (section \ref{sec:newgre}). It is possible to interpolate the data held in the file \mintinline{python}{datos.txt} using the Newton-Gregory's polynomial? If the answer is 'yes', use your function just writen to repeat the computing of the intepolation polynomial carried out in previous section and check that the results meet those obtained in previous sections.
+	
+	\item Using the Numpy's function\\ \mintinline{python}{interp1d} and the data contained in file \mintinline{python}{datos.txt}, compute the result of interpolating in 100 equispaced points between values $x_0$ and $x_n$ of the file dataset. Do it using the method \texttt{'nearest'} and \texttt{'linear'}. Repeat the computing but now using the  Numpy function   \texttt{'CubicSpline'}. Draw the results in the same graphic where you drew exercise \ref{ej1a}) results.  
+\end{enumerate}
+\item create a function that calculates the $n$-degree polynomial using the least squared method to fit a set of data pairs $(x,y)$, using the code in section \ref{sec:mc} as a reference. Test your function with the data in the file \mintinline{python}{datos.txt} without employing weights. Afterward, compare the coefficients produced by your program with those obtained using the Numpy function \mintinline{python}{Polynomial.fit}. What conclusion can you draw from the comparison?
 
-
+\item Add the necessary code to the previous program so that, once the coefficients of the least square polynomials has been obtained, the function calculates and return a vector $r$ with the values of the residuals, $r = y -p(x)$, where $x$ and $y$ are the data set for which the function has computed the least square polynomial and $p$ the values obtained applying the polynomial to the $x$ values of the data set.
+\end{enumerate}
+\end{paracol}
+\begin{paracol}{2}
 \section{Test del curso 2020/21}
 
-% El archivo con los datos lo puedes encontrar en
-%\url{}
-
-\noindent \textbf{Problema 1}. Una cuerda de escalada aumenta su longitud cuando está sometida a una tensión estacionaria en uno de sus extremos. En particular, el aumento de longitud sigue la siguiente ley
+\noindent \textbf{Problema 1}. Una cuerda de escalada aumenta su longitud cuando está sometida a una tensión estacionaria. En particular, el aumento de longitud sigue la siguiente ley
 \begin{equation}\label{eq:0}
 T = b\tanh(ax),
 \end{equation}
@@ -1573,28 +1611,98 @@ donde $m =1000$ Kg y $g = 9.8$ m/s$^2$. Representa gráficamente los datos: $T_i
 \begin{equation}
 \omega_i = e^{-10x_i^2}.
 \end{equation}
-\item (\textbf{1 punto})  Representa, sobre la gráfica dibujada en el apartado 2a, el polinomio obtenido en el apartado 3a. Según tu criterio, ¿es razonable el ajuste realizado? \\ \textbf{Nota:} Recuerda que el vector de coeficientes, obtenido con el algoritmo de mínimos cuadrados del manual, está ordenado al revés con respecto a lo que esperan las funciones de Matlab. Puedes reordenarlo a mano o con el comando \texttt{flipud(p)}.
+\item (\textbf{1 punto})  Representa, sobre la gráfica dibujada en el apartado 2a, el polinomio obtenido en el apartado 3a. Según tu criterio, ¿es razonable el ajuste realizado?
 \end{enumerate}
 
 \item (\textbf{1 punto})  Los coeficientes de las ecuaciones (\ref{eq:0}) y (\ref{eq:1}) están relacionados por las siguientes expresiones
 \begin{equation}
 \kappa = b\cdot a, \quad \gamma = \frac{b\cdot a^3}{3}. \nonumber
 \end{equation}
-		Calcula los valores de $a$ y $b$ a partir de los coeficiente del polinomio obtenido en el apartado 3a. Representa, en la misma gráfica de los apartados anteriores, la función $T(x) = b\tanh(ax)$. Explica, a la vista del gráfico, si los resultados obtenidos son razonables o no. 
+		Calcula los valores de $a$ y $b$ a partir de los coeficientes del polinomio obtenido en el apartado 3a. Representa, en la misma gráfica de los apartados anteriores, la función $T(x) = b\tanh(ax)$. Explica, a la vista del gráfico, si los resultados obtenidos son razonables o no. 
 
 \item (\textbf{1 punto}) Calcula el valor de los residuos $r_i = T_i - P_3(x_i)$, donde $P_3(x)$ es el polinomio de grado tres obtenido en el apartado 3a. Si la cota $x_{le}$ para el comportamiento elástico de la cuerda viene definida cuando $r_i \approx 500 N$. Encuentra un valor aproximado para $x_{le}$. \\
 \textbf{Nota:} Hay que buscar $x_{le}$ empleando código. No vale dibujar los residuos y estimarlo a vista.
 \end{enumerate}
 
-\noindent \textbf{Problema 2.} Dados los siguiente valores de la función $f(x)$:
-\begin{equation}
-f(0) = 1, \quad f \left(\frac{\pi}{4}\right)= \frac{\sqrt{2}}{2}, \quad f \left(\frac{\pi}{2}\right) = 0, \quad f \left(\frac{3\pi}{4}\right) = -\frac{\sqrt{2}}{2}, \quad f(\pi) = -1 \nonumber
+\switchcolumn
+\section{Course 2020/21 test}
+\noindent \textbf{Question 1.} A Climbing rope stretches when it suffers a stationary strain. Specifically, the increase in length follows the following law,
+
+\begin{equation}\label{eq:0}
+	T = b\tanh(ax),
 \end{equation}
+Where $T \in \mathbb{R}^+$ is the applied strain in Newtons, $x \in \mathbb{R}^+$ is the rope stretching in meters and  $a, b \ \in \mathbb{R}^+$ are constant parameter which depend on the rope characteristics.
+
+According to the rope physical behaviour, we can observe three regimes.
+
+\begin{itemize}
+	 \item \emph{elastic behaviour}: The rope follows an elastic behaviour if it recovers its original length once we withdraw the strain. This is the normal behaviour under small stationary strains. In this case, the stretching is upper bounded by a positive value $x_{le}$, that is, $0 \le x \le x_{le}$. In the elastic regime equation \label{eq:0} can be approximated by the following expression,
+	
+	\begin{equation}\label{eq:1}
+		T = \kappa x - \gamma x^3,
+	\end{equation}
+	where $\kappa, \gamma \in \mathbb{R}^+$ are also constant.
+	
+	\item \emph{Plastic behaviour:} The rope behaviour is considered plastic if the rope deforms after removing the strain and does not recover its original length. This behaviour takes place for intermediate strains and, in this plastic regime, the rope stretching is also bounded between two limits $x_{le} < x \le x_{max}$ .
+	
+	\item \emph{Breaking off:} The rope does not admit a bigger stretching and breaks off for larger strains.
+\end{itemize}
+
+ The climbing ropes company \emph{Slink Yer Hook, ltd.} conducted a study on a new brand of rope. They attached one end of the rope to a tilting table, which was used as an inclined plane, and the other to a weight for the study. The angle between the table and the horizontal was gradually increased. The test started with a zero-degree angle, and the angle was increased until the rope reached the length $x_{max}$ and broke.
+ 
+During the study, the stretching suffered by the rope for different tilting angles $i \in \{1,\cdots,52\}$ was registered. These data are available in the file \texttt{cuerda.txt}\footnote{Available in \url{https://github.com/UCM-237/LCC/tree/master/datos}}, where:
+
+\begin{itemize}
+	\item The first column holds the angles $\theta_i$ measured in radians.
+	\item The second column holds the elongations $x_i$ measured in meters.
+\end{itemize}
+
 \begin{enumerate}
-\item (\textbf{1.5 puntos}) Utilizando el comando de Matlab correspondiente. Obtener mediante interpolación con splines cúbicos los valores de la función $f(x)$ sobre cien puntos equiespaciados en el intervalo $[0,\pi]$.
-
-\item (\textbf{1.5 puntos}) Dibuja mediante un diagrama de barras los errores cometidos entre los $f(x)$ y la función $\cos(x)$ de Matlab en los mismos puntos del intervalo anterior. Considera que no necesitamos saber más de dos decimales para el cálculo de la función coseno; ¿podríamos utilizar la interpolación para $f(x)$?
+	\item (\textbf{1 point}) Estimate the stretching limit value $x_{max}$ beyond which the rope breaks.
+	
+	\item (\textbf{1 point}) compute the strain exerted to the rope for the weight at any table tilting angle $\theta_i$, that is,
+	 \begin{equation} \label{eq:2}
+	 	T_i = mg\sin(\theta_i),
+	 \end{equation}
+	 where  $m =1000$ Kg and $g = 9.8$ m/s$^2$. Draw a  $T_i$ vs $x_i$ graph.
+	 \item From data pairs $T_i$ and $x_i$ we can estimate equation  (\ref{eq:1}).
+	 \begin{enumerate}
+	 	\item (\textbf{2 points})To fit the data, utilize a three-degree least squares polynomial. Because this method is only suitable for elastic behavior, it's important to assign weights to the data when calculating the polynomial. Use the following expression to define the weights, which will enhance the influence of small elongations and reduce the impact of larger ones.
+	 	\begin{equation}
+	 		\omega_i = e^{-10x_i^2}.
+	 	\end{equation}
+	 	\item (\textbf{1 point}) Plot on top the graph drew in question 2a, the polynomial you have computed in question 3b. Is it reasonable the fitting carried out? explain why.
+	 \end{enumerate}
+	 \item (\textbf{1 point}) Coefficient in equations  (\ref{eq:0}) y (\ref{eq:1}) are related by the following expressions,
+	 \begin{equation}
+	 	\kappa = b\cdot a, \quad \gamma = \frac{b\cdot a^3}{3}. \nonumber
+	 \end{equation}
+	 Compute the values of parameters $a$ and $b$ departing from the coefficients of the polynomial obtained in question 3a. Plot the function $T(x) = b\tanh(ax)$ in the same graphic used in the previous questions. Explain, according to the graphic, is the results achieved are reasonable or not.
+	 \item (\textbf{1 point}) Compute the value of residuals $r_i=T_i-P_3(x_i)$ where $P_3(x)$ is the polynomial obtained in question 3a. Suppose that the limit $x_{le}$ for the rope elastic behaviour is reached when $r_i \approx 500 N$, Find an approximated value for $x_{le}$.\\
+	 \textbf{Note:} It is not enough to draw the residuals and estimate $x_{le}$ by simple inspection. You must use code to do it.	     
 \end{enumerate}
+\end{paracol}
+\begin{paracol}{2}
+\noindent \textbf{Problema 2.} Dados los siguiente valores de la función $f(x)$:
+\switchcolumn
+\noindent \textbf{Problem 2.} Given the following values belonging to function $f(x)$:
+\end{paracol}
 
+\begin{equation}
+	f(0) = 1, \quad f \left(\frac{\pi}{4}\right)= \frac{\sqrt{2}}{2}, \quad f \left(\frac{\pi}{2}\right) = 0, \quad f \left(\frac{3\pi}{4}\right) = -\frac{\sqrt{2}}{2}, \quad f(\pi) = -1 \nonumber
+\end{equation}
 
+\begin{paracol}{2}
+\begin{enumerate}
+	\item (\textbf{1.5 puntos}) Utilizando el comando de Numpy correspondiente, obtener mediante interpolación con splines cúbicos los valores de la función $f(x)$ sobre cien puntos equiespaciados en el intervalo $[0,\pi]$.
+	
+	\item (\textbf{1.5 puntos}) Dibuja mediante un diagrama de barras las differencias entre los $f(x)$ y la función $\cos(x)$ de Python en los mismos puntos del intervalo anterior. Considera que no necesitamos más de dos decimales para la precisión el cálculo de la función coseno; ¿podríamos utilizar la interpolación para $f(x)$?
+\end{enumerate}
+\switchcolumn
+\begin{enumerate}
+	\item (\textbf{1.5 points}) Using an appropriate Numpy function, compute using cubic splines interpolation the values of function $f(c)$ at 100  equispaced points into the interval $[0,\pi]$.
+	
+	\item (\textbf{1.5 points})  Use a bar plot to draw the differences between $f(x)$ and the function $\cos(x)$ in the same points interpolated in the previous question. Suppose we only need up to two decimal precisions to calculate the cosine function. Could we then use the interpolation calculated for $f(x)$?    
+\end{enumerate}
+\end{paracol}
 

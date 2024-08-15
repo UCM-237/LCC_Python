@@ -1,0 +1,33 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Fri Aug  2 16:55:04 2024}
+\PYG{l+s+sd}{Ejemplo de uso de la función interp1d de Scipy}
+\PYG{l+s+sd}{@author: abierto}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy.interpolate} \PYG{k+kn}{import} \PYG{n}{interp1d}
+\PYG{k+kn}{from} \PYG{n+nn}{matplotlib} \PYG{k+kn}{import} \PYG{n}{pyplot} \PYG{k}{as} \PYG{n}{pl}
+\PYG{n}{x} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([} \PYG{l+m+mf}{1.}\PYG{p}{,}  \PYG{l+m+mf}{2.}\PYG{p}{,}  \PYG{l+m+mf}{3.}\PYG{p}{,}  \PYG{l+m+mf}{4.}\PYG{p}{,}  \PYG{l+m+mf}{5.}\PYG{p}{,}  \PYG{l+m+mf}{6.}\PYG{p}{,}  \PYG{l+m+mf}{7.}\PYG{p}{,}  \PYG{l+m+mf}{8.}\PYG{p}{,}  \PYG{l+m+mf}{9.}\PYG{p}{,} \PYG{l+m+mf}{10.}\PYG{p}{])}
+\PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.8143451}\PYG{p}{,} \PYG{l+m+mf}{20.914356}\PYG{p}{,} \PYG{l+m+mf}{26.714303}\PYG{p}{,} \PYG{l+m+mf}{61.129501}\PYG{p}{,}\PYGZbs{}
+              \PYG{l+m+mf}{76.414728}\PYG{p}{,} \PYG{l+m+mf}{123.00032}\PYG{p}{,} \PYG{l+m+mf}{167.06809}\PYG{p}{,} \PYG{l+m+mf}{212.97832}\PYG{p}{,}\PYGZbs{}
+              \PYG{l+m+mf}{258.67911}\PYG{p}{,} \PYG{l+m+mf}{320.53422}\PYG{p}{])}
+\PYG{c+c1}{\PYGZsh{}dibujamos los puntos}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}o\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}creamos unos puntos sobre los que interpolar}
+\PYG{n}{xi} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mf}{1.}\PYG{p}{,}\PYG{l+m+mf}{10.}\PYG{p}{,}\PYG{l+m+mf}{0.01}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}creamos la función interpoladora empleando inter1d}
+\PYG{n}{flin} \PYG{o}{=} \PYG{n}{interp1d}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}linear\PYGZsq{}}\PYG{p}{)}\PYG{c+c1}{\PYGZsh{}puede omitirse linear el la opcion por defecto}
+\PYG{c+c1}{\PYGZsh{}empleamos la funcion para obtener los valores de los puntos interpolados}
+\PYG{n}{yi} \PYG{o}{=} \PYG{n}{flin}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{,}\PYG{n}{yi}\PYG{p}{)}
+
+\PYG{n}{fnear} \PYG{o}{=} \PYG{n}{interp1d}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}nearest\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{yi} \PYG{o}{=} \PYG{n}{fnear}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{,}\PYG{n}{yi}\PYG{p}{)}
+
+\PYG{n}{fnext} \PYG{o}{=} \PYG{n}{interp1d}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}next\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{yi} \PYG{o}{=} \PYG{n}{fnext}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{,}\PYG{n}{yi}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}and so on and so forth...}
+\end{Verbatim}
