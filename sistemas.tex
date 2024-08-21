@@ -550,7 +550,7 @@ import numpy as np
 
 def diag_sys(A,b):
     [f,c]=np.shape(A)
-    x=np.zeros(f)
+    x=np.zeros([f,1])
     for i in range(f):
         x[i]=b[i]/A[i,i]
     return x
@@ -654,8 +654,7 @@ def progressive(A,b):
         return
     # To build the solution vector x
     x=np.zeros(f)
-    x=b
-
+    x=b.copy()
     for i in range(f):
         '''The inner block subtracts to the independent term the previous solution
          multiplied by the correspondent coefficient'''
@@ -664,7 +663,6 @@ def progressive(A,b):
         '''Finaly divide the result by the diagonal coefficient'''
         x[i]=(x[i])/A[i,i]
     return x
-
 \end{minted}
 
 \begin{paracol}{2}
@@ -751,6 +749,8 @@ P\cdot A = L\cdot U
 
 Donde $P$ representa una matriz de permutaciones.
 
+Podemos verlo también de otra manera, $A=P^T\cdot L \cdot U$ ya que al ser $P$ una matriz de permutación es invertible y $P^{-1}=P^T$.
+
 \switchcolumn
 
 \paragraph{LU factorisation}. LU factorisation consists of factoring a matrix into the product of two, a lower triangular $L$ and an upper triangular $U$. The factorisation could include pivoting rows, to achieve a numerically stable solution. In this case the LU factorisation takes the form,
@@ -759,6 +759,7 @@ P\cdot A = L\cdot U
 \end{equation*}
 
 Where $P$ represents a matrix of permutations.
+We can also look at it in another way, $A=P^T$, $A=P^{-1}=P^T$, since $P$ is a permutation matrix and $P^{-1}=P^T$.
 
 \switchcolumn
 Supongamos que queremos resolver un sistema de $n$ ecuaciones lineales con $n$ incógnitas que representamos genéricamente en forma matricial, como siempre,
@@ -769,7 +770,7 @@ A\cdot x=b
 Si calculamos la fatorización LU de su matriz de  coeficientes,
 
 \begin{equation*}
-A \rightarrow P\cdot A = L\cdot U
+A \rightarrow A =  P\cdot  L\cdot U
 \end{equation*}
 
 \switchcolumn
@@ -781,34 +782,34 @@ A\cdot x=b
 If we compute the LU factorisation of the coefficient matrix,
 
 \begin{equation*}
-A \rightarrow P\cdot A = L\cdot U
+A \rightarrow  A = P\cdot L\cdot U
 \end{equation*}
 
 \switchcolumn
-Podemos transformar nuestro sistema de ecuaciones en uno equivalente aplicando la matriz de permutaciones, por la izquierda, a ambos lados del igual. El efecto es equivalente a que cambiáramos el orden en que se presentan las ecuaciones del sistema,
+
+Podemos transformar nuestro sistema de ecuaciones en uno equivalente sustituyendo $A$ por su descomposición.
 
 \begin{equation*}
-A\cdot x=b\rightarrow P\cdot A \cdot x=P\cdot b
+A\cdot x=b\rightarrow P\cdot L \cdot U \cdot x= b
 \end{equation*}
 
 \switchcolumn
-We can transform our system of equations into an equivalent one by applying the matrix of permutations, from the left, to both sides of the equal one. The effect is equivalent to changing the order in which the equations of the system are presented,
+We can transform our system of equations into an equivalent replacing $A$ by its lu factorisation,
 
 \begin{equation*}
-A\cdot x=b\rightarrow P\cdot A \cdot x=P\cdot b
+A\cdot x=b\rightarrow P\cdot L \cdot U \cdot x= b
 \end{equation*}
 
 \switchcolumn
-Si sustituimos ahora $P\cdot A$ por su factorización LU,
-
+Para poder resolver el sistema usando sustituciones progresivas y reversivas vamos a multiplicar ambos términos de la ecuación por $P^{-1}$, recordando que $P^{-1}=P^T$
 \begin{equation*}
-P\cdot A \cdot x=P\cdot b \rightarrow L\cdot U \cdot x= P\cdot b
+P^{-1} \cdot P\cdot L \cdot U \cdot x=P^{-1}\cdot b \rightarrow L\cdot U \cdot x= P^T\cdot b
 \end{equation*}
 
 \switchcolumn
-Now, we substitute $P \cdot A$ with its LU factorisation,
+In order to solve the system using progressive and reversible substitutions we will multiply both terms of the equation by $P^{-1}$, remembering that $P^{-1}=P^T$.
 \begin{equation*}
-P\cdot A \cdot x=P\cdot b \rightarrow L\cdot U \cdot x= P\cdot b
+P^{-1} \cdot P\cdot L \cdot U \cdot x=P^{-1}\cdot b \rightarrow L\cdot U \cdot x= P^T\cdot b
 \end{equation*}
 
 \switchcolumn
@@ -825,14 +826,14 @@ The new system can be solved in two steps using backward and forward substitutio
 Si sustituimos nuestro vector auxiliar $z$ en la expresión matricial de nuestro sistema de ecuaciones,
 
 \begin{equation*}
-L\cdot \overbrace{U\cdot x}^z=P\cdot b \rightarrow L\cdot z=P\cdot b
+L\cdot \overbrace{U\cdot x}^z=P^T\cdot b \rightarrow L\cdot z=P^T\cdot b
 \end{equation*}
 
 \switchcolumn
 If we substitute our auxiliary vector $z$ into the matrix expression of our system of equations,
 
 \begin{equation*}
-L\cdot \overbrace{U\cdot x}^z=P\cdot b \rightarrow L\cdot z=P\cdot b
+L\cdot \overbrace{U\cdot x}^z=P^T\cdot b \rightarrow L\cdot z=P^T\cdot b
 \end{equation*}
 
 \switchcolumn
@@ -868,115 +869,178 @@ x_3
     
 En primer lugar deberíamos comprobar que la matriz de coeficiente esta bien condicionada,
 
+
 \switchcolumn
 First we should check that the coefficient matrix is well conditioned,
+
 \end{paracol}
 
-%%%%%% FRONTERA %%%%%%%%%%%%%%%%
+\begin{minted}{pycon}
+import numpy as np
 
+A=np.array([[1, 3, 2],[2, -1, 1],[1, 4, 3]])
 
+cond=np.linalg.cond(A)
 
-\begin{verbatim}
->> A=[1 3 2;2 -1 1;1 4 3]
-A =
+print(cond)
+24.382675394986972
+\end{minted}
 
-     1     3     2
-     2    -1     1
-     1     4     3
->> nc=cond(A)
-nc =
-
-   24.3827
-\end{verbatim}
+\begin{paracol}{2}
 No es un valor grande, con lo que podemos considerar que $A$ está bien condicionada. 
-Calculamos la factorización LU de la matriz de coeficientes, para ello podemos emplear el programa lufact.m, incluido en el capítulo anterior \ref{lufact}, o bien la función \texttt{lu} de Matlab,
+Calculamos la factorización LU de la matriz de coeficientes, para ello podemos emplear el método \texttt{lu} del paquete de álgebra lineal de scipy. Este método nos devuelve las matrices $P$, $L$ y $U$ que satisfacen que $A=P \cdot L \cdot U$
 
-\begin{verbatim}
->> [L U P]=lufact(A)
+\switchcolumn
+It is not a large value, so we can consider that $A$ is well conditioned. 
+We compute the LU factorisation of the coefficient matrix, for this we can use the \texttt{lu} method of the scipy linear algebra package. This method returns the matrices $P$, $L$ and $U$ that satisfy that $A=P \cdot L \cdot U$
 
-L =
+\end{paracol}
 
-    1.0000         0         0
-    0.5000    1.0000         0
-    0.5000    0.7778    1.0000
+\begin{minted}{python}
+import numpy as np
+import scipy as sc 
 
-U =
+A=np.array([[1, 3, 2],[2, -1, 1],[1, 4, 3]])
+b=np.array([[13],[3],[18]])
+cond=np.linalg.cond(A)
+P,L,U=sc.linalg.lu(A)
 
-    2.0000   -1.0000    1.0000
-         0    4.5000    2.5000
-         0         0   -0.4444
+\end{minted}
 
-P =
+\begin{minted}{pycon}
+L: [[1.         0.         0.        ]
+ [0.5        1.         0.        ]
+ [0.5        0.77777778 1.        ]]
+U: [[ 2.         -1.          1.        ]
+ [ 0.          4.5         2.5       ]
+ [ 0.          0.         -0.44444444]]
+P:  [[0. 0. 1.]
+ [1. 0. 0.]
+ [0. 1. 0.]]
+\end{minted}
 
-     0     1     0
-     0     0     1
-     1     0     0
-\end{verbatim}
+\begin{paracol}{2}
+A continuación debemos aplicar la matriz de permutaciones transpuesta, al vector de términos independientes del sistema, para poder construir el sistema equivalente $L\cdot U \cdot x=P^T\cdot b$,
 
-A continuación debemos aplicar la matriz de permutaciones, al vector de términos independientes del sistema, para poder construir el sistema equivalente $L\cdot U=P\cdot b$,
-\begin{verbatim}
->> b=[13;3;18]
+\switchcolumn
+Next we must apply the transpose matrix of permutations to the vector of independent terms of the system, in order to construct the equivalent system $L\cdot U \cdot x= P^T\cdot b$,
 
-b =
+\end{paracol}
 
-    13
-     3
-    18
+\begin{minted}{python}
+Pb=np.transpose(P).dot(b)
+print("Pb: ",Pb)
+\end{minted}
 
->> bp=P*b
+\begin{minted}{pycon}
+Pb:  [[ 3.]
+ [18.]
+ [13.]]  
+\end{minted}
 
-bp =
+\begin{paracol}{2}
 
-     3
-    18
-    13
+Empleamos la matriz $L$ obtenida y el producto $bp=P^T\cdot b$ que acabamos de calcular, para obtener, por sustituciones progresivas, el vector auxiliar $z$ descrito más arriba. Empleamos para ello la función \texttt{progressive}, cuyo código incluimos en la sección anterior, 
+\switchcolumn
+We use the matrix $L$ obtained and the product $bp=P^T\cdot b$ that we have just calculated, to obtain, by progressive substitutions, the auxiliary vector $z$ described above. To do this we use the function \textt{progressive}, whose code is included in the previous section, 
+\end{paracol}
 
-\end{verbatim}
+\begin{minted}{python}
+z=progressive(L, bP)
+print("z:",z)    
+\end{minted}
 
-Empleamos la matriz $L$ obtenida y el producto $bp=P\cdot b$ que acabamos de calcular, para obtener, por sustituciones progresivas, el vector auxiliar $z$ descrito más arriba. Empleamos para ello la función \texttt{progresivas}, cuyo código incluimos en la sección anterior, 
-\begin{verbatim}
->> z=progresivas(L,bp)
-z =
+\begin{minted}{pycon}
+z: [[ 3.        ]
+ [16.5       ]
+ [-1.33333333]]  
+\end{minted}
 
-    3.0000
-   16.5000
-   -1.3333
-\end{verbatim}
+\begin{paracol}{2}
 
-Finalmente, podemos obtener la solución del sistema sin más que aplicar el método de las sustituciones regresiva a la matriz $U$ y al vector auxiliar $z$ que acabamos de obtener,\footnote{La función \texttt{regresivas} no se ha suministrado ni existe en Matlab. Su construcción se ha dejado como ejercicio en la sección anterior.}
+Finalmente, podemos obtener la solución del sistema sin más que aplicar el método de las sustituciones regresiva a la matriz $U$ y al vector auxiliar $z$ que acabamos de obtener,\footnote{La función \texttt{regressive} no se ha suministrado. Su construcción se ha dejado como ejercicio en la sección anterior.}
 
-\begin{verbatim}
->> x=regresivas(U,z)
-x =
+\switchcolumn
+Finally, we can obtain the solution of the system by simply applying the method of regressive substitutions to the matrix $U$ and the auxiliary vector $z$ that we have just obtained,\footnote{ The function \texttt{regressive} has not been supplied. Its construction has been left as an exercise in the previous section.}
+\end{paracol}
 
-    1.0000
-    2.0000
-    3.0000
+\begin{minted}{python}
+x=regressive(U, z)
+print("x:",x)
+\end{minted}
+
+\begin{minted}{pycon}
+x: [[1.]
+ [2.]
+ [3.]]
+\end{minted}
+
+\begin{paracol}{2}
+    Para comprobar que la solución es correcta basta multiplicar la matriz de coeficientes del sistema original por el resultado obtenido para $x$ y comprobar que obtenemos como resultado el vector de términos independientes.
+\switchcolumn
+
+To check that the solution is correct, it is enough to multiply the matrix of coefficients of the original system by the result obtained for $x$ and check that we obtain as a result the vector of independent terms.
+
+\end{paracol}
+\begin{minted}{python}
+print(A.dot(x))
+\end{minted}
+
+\begin{minted}{pycon}
+ [[13.]
+ [ 3.]
+ [18.]]   
+\end{minted}
 
 
-\end{verbatim}
-Para comprobar que la solución es correcta basta multiplicar la matriz de coeficientes del sistema original por el resultado obtenido para $x$ y comprobar que obtenemos como resultado el vector de términos independientes.
-\begin{verbatim}
->> A*x
+\begin{flalign*}
+&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+\end{flalign*}
 
-ans =
+\begin{paracol}{2}
+    Al resolver un sistema de ecuaciones mediante la factorización \texttt{lu} estamos operando únicamente sobre la matriz de coeficientes, de manera que si hay que resolver múltiples veces sistemas con esa misma matriz en los que varía el vector de términos independientes los cálculos son mínimos. Son métodos muy eficaces.
 
-    13
-     3
-    18
-\end{verbatim}
- 
-\paragraph{Factorización de Cholesky.} Como vimos en el capitulo anterior \ref{chol}, la factorización de Cholesky permite descomponer una matriz $A$ en el producto de de una matriz triangular inferior, por su traspuesta. 
+    Además de la factorización \texttt{lu} hay otras maneras de factorizar matrices que son útiles para resolver sistemas de ecuaciones. 
+
+    \switchcolumn
+    When solving a system of equations by factoring, we are only operating on the matrix of coefficients, so that if we have to solve multiple times systems with the same matrix in which the vector of independent terms varies, the calculations are minimal. These methods are very efficient.
+
+    In addition to factoring, there are other ways of factoring matrices that are useful for solving systems of equations. 
+
+    \switchcolumn
+
+    \paragraph{Factorización de Cholesky.} La factorización de Cholesky permite descomponer una matriz $A$ en el producto de de una matriz triangular inferior, por su traspuesta. 
 \begin{equation*}
 A=L\cdot L^T
 \end{equation*}
-Para ello, es preciso que $A$ sea simétrica y definida positiva (ver \ref{tiposm}). 
+Para ello, es preciso que $A$ sea simétrica y definida positiva. Una Matriz $A_{n \times n}$ es definida positiva si dado un vector $x$ no nulo cumple,
+\begin{equation*}
+x^T\cdot A \cdot x > 0, \ \forall x\neq 0
+\end{equation*}
 
 Por tanto, en el caso particular de un sistema cuya matriz de coeficientes fuera simétrica y definida positiva, podríamos descomponerla empleando la factorización de Cholesky y resolver el sistema de modo análogo a como hicimos con con la factorización LU, sustituimos $A$ por el producto $L\cdot L^T$,
+
 \begin{equation*}
 A\cdot x = b \rightarrow L\cdot L^T\cdot x= b
 \end{equation*}
 
+
+\switchcolumn
+\paragraph{Cholesky factorisation}. The Cholesky factorisation allows to decompose a matrix $A$ into the product of a lower triangular matrix, by its transpose. 
+\begin{equation*}
+A=L \cdot L^T
+\end{equation*}
+For this, $A$ must be symmetric and positive definite. A Matrix $A_{n \times n}$ is positive definite if given a non-zero vector $x$ it satisfies,
+\begin{equation*}
+x^Tdot A \cdot x > 0, \forall x \neq 0
+\end{equation*}
+
+Therefore, in the particular case of a system whose coefficient matrix is symmetric and positive definite, we could decompose it using the Cholesky factorisation and solve the system in a similar way as we did with the LU factorisation, substituting $A$ for the product $L^T$,
+\begin{equation*}
+A\cdot x = b \rightarrow L\cdot L^T\cdot x= b
+\end{equation*}
+
+\switchcolumn
 Definimos el vector auxiliar $z$,
 \begin{equation*}
 L^T\cdot x= z
@@ -994,7 +1058,29 @@ y por último obtenemos $x$ resolviendo por sustituciones regresivas el sistema,
 L^T\cdot x=z
 \end{equation*}
 
-La siguiente secuencia de comandos de Matlab muestra la resolución del sistema,
+\switchcolumn
+We define the auxiliary vector $z$,
+\begin{equation*}
+L^T\cdot x= z
+\end{equation*}
+
+We solve the system by progressive substitutions,
+
+\begin{equation*}
+L^T\cdot z=b
+\end{equation*}
+
+and finally we obtain $x$ by solving the system by backward substitutions,
+
+\begin{equation*}
+L^T\cdot x=z
+\end{equation*}
+
+\switchcolumn
+La siguiente secuencia de código muestra la resolución en python del sistema
+\switchcolumn
+Next python code sequence shows the resolution of the system 
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 2& 5& 1\\
@@ -1011,60 +1097,94 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-\begin{verbatim}
->> A=[2 5 1;5 14 2;1 2 6]
-A =
-     2     5     1
-     5    14     2
-     1     2     6
+\begin{paracol}{2}
+    Para ello usaremos la función \texttt{cholesky} del paquete \texttt{linalg} de \texttt{scipy}. Esta función nos devuelve por defecto la matriz triangular superior de la descomposición de cholesky $A=U^T\cdot U$. Para que nos devuelva la descomposición usando la triangular inferior, $A=L\cdot L^T$ le tendremos que indicar que el parámetro \mintinline{python}{lower=True}.
+    \switchcolumn
+ To do so, we will use the \texttt{cholesky} function from the \texttt{linalg} package of \texttt{scipy}. By default, this function returns the upper triangular matrix of the cholesky decomposition $A=U^T{U}$. In order to return the decomposition using the lower triangular one, $A=L \cdot L^T$, we will have to set the parameter \mintinline{python}{lower=True}.
+\switchcolumn
+Si queremos usar directamente la función \texttt{cholesky} sin indicar \mintinline{python}{lower=True}, simplemente tendremos que tener en cuenta que $L^T = U$ y $L = U^T$. Por tanto, si se emplea directamente el comando \texttt{cholesky}: $A\cdot x = b \rightarrow U^T\cdot U\cdot x= b$.
+\switchcolumn
 
->> b=[15;39;23]
-b =
-    15
-    39
-    23
+If we want to use directly the function \texttt{cholesky} without indicating \mintinline{python}{lower=True}, we will simply have to take into account that $L^T = U$ and $L = U^T$. Therefore, if the command \texttt{cholesky} is used directly: $A \cdot x = b \rightarrow U^T \cdot U^T \cdot x= b$.
 
->> L=cholesky(A)
-L =
-    1.4142         0         0
-    3.5355    1.2247         0
-    0.7071   -0.4082    2.3094
+\end{paracol}
+\begin{minted}{python}
+A=np.array([[2., 5., 1.],[5., 14., 2.],[1., 2., 6.]])
+b=np.array([[15.],[39.],[23.]])
+L=sc.linalg.cholesky(A,lower=True)
+print("L: ",L)
+z=progressive(L, b)
+print("z: ",z)
+LT=np.transpose(L)
+print("LT: ",LT)
+x=regressive(LT,z)
+print("x: ", x)
+print(A.dot(x))
+\end{minted}
 
->> z=progresivas(L,b)
-z =
-   10.6066
-    1.2247
-    6.9282
+\begin{minted}{pycon}
+L:  [[ 1.41421356  0.          0.        ]
+ [ 3.53553391  1.22474487  0.        ]
+ [ 0.70710678 -0.40824829  2.30940108]]
+z:  [[10.60660172]
+ [ 1.22474487]
+ [ 6.92820323]]
+LT:  [[ 1.41421356  3.53553391  0.70710678]
+ [ 0.          1.22474487 -0.40824829]
+ [ 0.          0.          2.30940108]]
+x:  [[1.]
+ [2.]
+ [3.]]
+[[15.]
+ [39.]
+ [23.]]    
+\end{minted}
 
->> x=regresivas(L',z)
-x =
-    1.0000
-    2.0000
-    3.0000
+\begin{paracol}{2}
+\paragraph{Factorización QR} La factorización QR, descompone una matriz en el producto de una matriz ortogonal $Q$  por una matriz triangular superior $R$.  Una matriz $A_{n\times n}$ es ortogonal cuando su inversa coincide con su traspuesta.
+\begin{equation*}
+A^T=A^{-1}
+\end{equation*}
 
->> A*x
-ans =
-    15
-    39
-    23
-\end{verbatim}
-
-En este ejemplo se ha empleado la función \texttt{cholesky}, cuyo código se incluyó en el capítulo anterior \ref{chol}, para factorizar la matriz de coeficientes del sistema. La factorización se podría haber llevado a cabo igualmente, empleando la función de Matlab \texttt{chol}\footnote{Matlab, por defecto, devuelve una matriz triangular superior: \texttt{U = chol(A)}. La factorización es la misma que la descrita en este apartado. Simplemente $L^T = U$ y $L = U^T$. Por tanto, si se emplea directamente el comando \texttt{chol}   de matlab: $A\cdot x = b \rightarrow U^T\cdot U\cdot x= b$}
-
-\paragraph{Factorización QR} Como vimos en el capítulo anterior \ref{QR}, la factorización QR, descompone una matriz en el producto de una matriz ortogonal  (ver \ref{tiposm}) $Q$  por una matriz triangular superior $R$. Si obtenemos la factorización QR de la matriz de coeficientes de un sistema,
+Si obtenemos la factorización QR de la matriz de coeficientes de un sistema,
 
 \begin{equation*}
 A\cdot x=b \rightarrow Q\cdot R\cdot x =b
 \end{equation*}
 
+\switchcolumn
+\paragraph{QR factorisation}. The QR factorisation decomposes a matrix into the product of an orthogonal matrix $Q$ by an upper triangular matrix $R$.  A matrix $A_{ntimes n}$ is orthogonal when its inverse coincides with its transpose.
+\begin{equation*}
+A^T=A^{-1}
+\end{equation*}
+
+If we obtain the QR factorisation of the coefficient matrix of a system,
+
+\begin{equation*}
+A\cdot x=b \rightarrow Q\cdot R\cdot x =b
+\end{equation*}
+
+\switchcolumn
+
 Podemos resolver ahora el sistema en dos pasos. En primer lugar, como Q es ortogonal, $Q^{-1}=Q^T$, podemos multiplicar por $Q^T$ a ambos lados de la igualdad,
 
+\switchcolumn
+We can now solve the system in two steps. First, since Q is orthogonal, $Q^{-1}=Q^T$, we can multiply by $Q^T$ on both sides of the equality,
+
+\end{paracol}
+ 
 \begin{equation*}
 Q\cdot R\cdot x =b \rightarrow Q^T\cdot Q\cdot R\cdot x = Q^T \cdot b \rightarrow R\cdot x= Q^T\cdot b
 \end{equation*}
 
+\begin{paracol}{2}
 Pero el sistema resultante, es un sistema triangular superior, por lo que podemos resolverlo por sustituciones regresivas. Tomando el mismo ejemplo que resolvimos antes por factorización LU,
 
+\switchcolumn
+
+But the resulting system is an upper triangular system, so we can solve it by backward substitutions. Taking the same example we solved before by LU factorisation,
+
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 1& 3& 2\\
@@ -1081,68 +1201,44 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-podemos ahora resolverlo mediante factorización QR. Para ello aplicamos la función \texttt{QRF2} incluida en el capítulo anterior \ref{QR}, o directamente la función de Matlab \texttt{qr}, a la matriz de coeficientes del sistema,
+\begin{paracol}{2}
+podemos ahora resolverlo mediante factorización QR. Para ello aplicamos la función \texttt{qr} incluida en el paquete \texttt{linalg} de \texttt{scipy}, a la matriz de coeficientes del sistema. A continuación multiplicamos $Q^T$ por el vector de términos independientes y resolvemos el sistema triangular $R \cdot x = Q^T \cdot b$ usando la función \texttt{regressive}.
 
-\begin{verbatim}
->> A=[1 3 2;2 -1 1;1 4 3]
-A =
-     1     3     2
-     2    -1     1
-     1     4     3
 
->> [Q,R]=QRF2(A)
-Q =
-    0.4082    0.4637   -0.7863
-    0.8165   -0.5707    0.0874
-    0.4082    0.6777    0.6116
+\switchcolumn
+we can now solve it by QR factorisation. To do so, we apply the \texttt{qr} function included in the \texttt{linalg} package of \texttt{scipy}, to the coefficient matrix of the system. Next we multiply $Q^T$ by the independent term vector and solve the $R\cdot x = Q^T \cdot b$ using the \texttt{regressive} function.
 
-R =
-    2.4495    2.0412    2.8577
-         0    4.6726    2.3898
-         0         0    0.3495
-\end{verbatim}
+\end{paracol}
+\begin{minted}{python}
+# QR factorising
+A=np.array([[1, 3, 2],[2, -1, 1],[1, 4, 3]])
+b=np.array([[13],[3],[18]])
+Q,R=sc.linalg.qr(A)
+print("Q: ",Q)
+print("R: ", R)
+Qb=np.transpose(Q).dot(b)
+x=regressive(R, Qb)
+print("x: ",x)    
+\end{minted}
 
-A continuación multiplicamos $Q^T$ por el vector de términos independientes,
+\begin{minted}{pycon}
+Q:  [[-0.40824829  0.46369464 -0.78633365]
+ [-0.81649658 -0.5707011   0.08737041]
+ [-0.40824829  0.67770756  0.61159284]]
+R:  [[-2.44948974 -2.04124145 -2.85773803]
+ [ 0.          4.67261526  2.38981086]
+ [ 0.          0.          0.34948162]]
+x:  [[1.]
+ [2.]
+ [3.]]  
+\end{minted}
 
-\begin{verbatim}
->> b=[13;3;18]
-b =
-    13
-     3
-    18
-
->> z=Q'*b
-z =
-   15.1052
-   16.5147
-    1.0484
-\end{verbatim}
-
-Por último resolvemos el sistema $R\cdot x= Q^T\cdot b$ mediante sustituciones regresivas y comprobamos el resultado,
-
-\begin{verbatim}
->> x=regresivas(R,z)
-
-x =
-
-    1.0000
-    2.0000
-    3.0000
-
->> A*x
-
-ans =
-
-   13.0000
-    3.0000
-   18.0000
-\end{verbatim}
-
-\paragraph{Factorización SVD.} La  factorización svd \ref{sec:SVD}, descompone una matriz cualquiera en el producto de tres matrices,
+\begin{paracol}{2}
+\paragraph{Factorización SVD.} La  descomposición en valores singulares de una matriz (svd), descompone una matriz cualquiera en el producto de tres matrices,
 \begin{equation*}
 A=U\cdot S\cdot V^T
 \end{equation*}
-Donde $U$ y $V$ son matrices ortogonales y S es una matriz diagonal. Si calculamos la factorización svd de la matriz de coeficiente de un sistema,
+Donde $U$ y $V$ son matrices ortogonales y $S$ es una matriz diagonal con los valores singulares. Si calculamos la factorización svd de la matriz de coeficiente de un sistema,
 
 \begin{equation*}
 A\cdot x=b \rightarrow U\cdot S\cdot V^T\cdot x=b
@@ -1150,10 +1246,27 @@ A\cdot x=b \rightarrow U\cdot S\cdot V^T\cdot x=b
 
 Como en el caso de la factorización QR, podemos aprovechar la ortogonalidad de las matrices $U$ y $V$ para simplificar el sistema,
 
+\switchcolumn
+\paragraph{SVD factorisation}. The singular value decomposition (svd), decomposes any matrix into the product of three matrices,
+\begin{equation}
+A=U=U{sec:SVD}, S=V^T
+\end{equation}
+Where $U$ and $V$ are orthogonal matrices and $S$ is the singular value diagonal matrix. If we calculate the factorisation svd of the coefficient matrix of a system,
+
+\begin{equation}
+A = x=b \rightarrow U = S = V^T = x=b
+\end{equation}
+
+As in the case of QR factorisation, we can take advantage of the orthogonality of the $U$ and $V$ matrices to simplify the system,
+
+\end{paracol}
+
+
 \begin{equation*}
 U\cdot S\cdot V^T\cdot x=b \rightarrow U^T\cdot U\cdot S\cdot V^T \cdot x= U^T\cdot b \rightarrow S\cdot V^T \cdot x=U^T\cdot b
 \end{equation*}
 
+\begin{paracol}{2}
 Como en casos anteriores, podemos crear un vector auxiliar $z$,
 \begin{equation*}
 V^T\cdot x=z
@@ -1166,13 +1279,37 @@ S\cdot z= U^T\cdot b
 
 Como la matriz $S$ es diagonal, se trata de un sistema diagonal que, como hemos visto, es trivial de resolver.
 
-Una vez conocido $Z$ podemos obtener la solución del sistema original, haciendo ahora uso de la ortogonalidad de la matriz $V$,
+Una vez conocido $z$ podemos obtener la solución del sistema original, haciendo ahora uso de la ortogonalidad de la matriz $V$,
+
+\switchcolumn
+
+As in previous cases, we can create an auxiliary vector $z$,
+\begin{equation*}
+V^Tdot x=z
+\end{equation*}
+
+so we solve the system first,
+\begin{equation*}
+S^T\cdot z= U^T\cdot b
+\end{equation*}
+
+Since the matrix $S$ is diagonal, this is a diagonal system which, as we have seen, is trivial to solve.
+
+Once $z$ is known, we can obtain the solution of the original system, making use of the orthogonality of the matrix $V$,
+\end{paracol}
+
 
 \begin{equation*}
 V^T\cdot x=z \rightarrow V\cdot V^T\cdot x=V\cdot z \rightarrow x=V\cdot z
 \end{equation*}
 
+\begin{paracol}{2}
 Volvamos a nuestro ejemplo,
+\switchcolumn
+Back to our example,
+\end{paracol}
+
+
 \begin{equation*}
 \begin{pmatrix}
 1& 3& 2\\
@@ -1189,75 +1326,66 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-En primer lugar factorizamos la matriz de coeficientes empleando el comando \texttt{svd} de Matlab,
+\begin{paracol}{2}
+En primer lugar hallamos la descomposición en valores singulares (svd)  de la matriz de coeficientes del sistema empleando la función \texttt{svd} del paquete \texttt{linalg} de \texttt{scipy}. Esta función nos devuelve las matrices ortogonales $U$ y $V^T$ y un vector fila con los autovalores de $A$ ordenados de mayor a menor. El siguiente paso será construir la matriz $S$ con los autovalores, para ello podemos usar la función \texttt{diag} de \texttt{numpy}: \mintinline{python}{S=np.diag(s)} y construir el vector $U^T \cdot b$. 
 
-\begin{verbatim}
->> A=[1 3 2;2 -1 1;1 4 3]
-A =
+Con las matrices ya construidas resolvemos el sistema diagonal $S\cdot z = U^T \cdot b$ con la función \texttt{diag\_sys}. Una vez conocido $z$ calculamos $x$ sabiendo que la matriz $V$ es ortogonal ($x=V \cdot z$).
 
-     1     3     2
-     2    -1     1
-     1     4     3
+\switchcolumn
+First we find the singular value decomposition (svd) of the coefficient matrix of the system using the function \texttt{svd} from the \texttt{linalg} package of \texttt{scipy}. This function returns the orthogonal matrices $U$ and $V^T$ and a row vector with the eigenvalues of $A$ ordered from largest to smallest. The next step will be to construct the matrix $S$ with the eigenvalues, for this we can use the function \texttt{diag} of \texttt{numpy}: \mintinline{python}{S=np.diag(s)} and construct the vector $U^T \cdot b$. 
 
->> [U,S,V]=svd(A)
-U =
+With the matrices already constructed, we solve the diagonal system $S^T \cdot z = U^T \cdot b$ with the function \texttt{diag\_sys}. Once $z$ is known we calculate $x$ knowing that the matrix $V$ is orthogonal ($x=V \cdot z$).
 
-   -0.5908   -0.0053   -0.8068
-   -0.0411   -0.9985    0.0366
-   -0.8058    0.0548    0.5897
+\end{paracol}
+\begin{minted}{python}
 
-S =
+#SVD decomposition
+A=np.array([[1, 3, 2],[2, -1, 1],[1, 4, 3]])
+b=np.array([[13],[3],[18]])
+U,s,V=sc.linalg.svd(A)
+print("U: ",U)
+print("V: ",V)
+print("s: ",s)
+S=np.diag(s)
+print("S: ",S)
+Utb=np.transpose(U).dot(b)
+z=diag_sys(S, Utb)
+print("z: ",z)
+x=np.transpose(V).dot(z)
+print("x:",x)
+    
+\end{minted}
 
-    6.3232         0         0
-         0    2.4393         0
-         0         0    0.2593
+\begin{minted}{pycon}
+U:  [[-0.59080923 -0.00525033 -0.80679421]
+ [-0.04109702 -0.99848485  0.03659281]
+ [-0.80576392  0.0547762   0.58969829]]
+V:  [[-0.23386523 -0.78353016 -0.5756627 ]
+ [-0.79834737  0.49268931 -0.34626396]
+ [-0.55493111 -0.3785997   0.74075213]]
+s:  [6.32315973 2.43934396 0.25933002]
+S:  [[6.32315973 0.         0.        ]
+ [0.         2.43934396 0.        ]
+ [0.         0.         0.25933002]]
+z:  [[-3.52791365]
+ [-0.85176062]
+ [ 0.91012588]]
+x: [[1.]
+ [2.]
+ [3.]]    
+\end{minted}
+\begin{flalign*}
+&&\left. \right\rbrace \reversemathwitch*
+\end{flalign*}
 
+\begin{paracol}{2}
+\subsection{El método de eliminación de Gauss.}\index{Gauss! Método de eliminación gaussiana} El método de eliminación gaussiana consiste en \emph{hacer  cero} todos los elementos situados por debajo de la diagonal de una matriz. Para ello se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones adecuadas de dicha fila con las anteriores.
 
-V =
+\switchcolumn
+\subsection{The Gaussian elimination method.} \index{Gaussian elimination method} The Gaussian elimination method consists of making all the elements below the diagonal of a matrix zero. This is done by progressively replacing the rows of the matrix, except for the first row, with suitable combinations of that row with the previous rows.
 
-   -0.2339   -0.7983   -0.5549
-   -0.7835    0.4927   -0.3786
-   -0.5757   -0.3463    0.7408
-
-\end{verbatim}
-
-Calculamos a continuación el valor del vector auxiliar $z$,
-
-\begin{verbatim}
->> ba=U'*b
-ba =
-  -22.3076
-   -2.0777
-    0.2360
-
->> z=S^-1*ba
-z =
-   -3.5279
-   -0.8518
-    0.9101
-\end{verbatim}
-por último, calculamos $x$ y comprobamos la solución obtenida,
-
-\begin{verbatim}
->> x=V*z
-x =
-    1.0000
-    2.0000
-    3.0000
-
->> A*x
-ans =
-   13.0000
-    3.0000
-   18.0000
-\end{verbatim}
-
-\subsection{El método de eliminación de Gauss.}\index{Gauss! Método de eliminación gaussiana} El método de eliminación gaussiana es el mismo descrito en el capítulo anterior \ref{sec:LU} para obtener la matriz triangular superior $U$ en la factorización LU de una matriz. Como ya se explicó en detalle, el método consiste en \emph{hacer  cero} todos los elementos situados por debajo de la diagonal de una matriz. Para ello se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones adecuadas de dicha fila con las anteriores.
-
-Toda la discusión incluida en el capítulo anterior sobre la eliminación de Gauss, es válida también para la resolución de sistemas, por lo que no volveremos a repetirla. Nos centraremos solo en su aplicación al problema de resolver un sistema de ecuaciones lineales.
-===========Traido del capituilo anterior=============================
-Uno de los métodos más empleados para calcular la factorización LU de una matriz, se basa en el método conocido como eliminación gaussiana. La idea es convertir en ceros los elementos situados por debajo de la diagonal de la matriz. Para ello, se sustituyen progresivamente las filas de la matriz, exceptuando la primera, por combinaciones  formadas con la fila que se sustituye y la fila anterior.
- veamos en qué consiste con un ejemplo. Supongamos que tenemos la siguiente matriz de orden $4 \times 4$, 
+\switchcolumn
+Veamos en qué consiste con un ejemplo. Supongamos que tenemos la siguiente matriz de orden $4 \times 4$, 
 
 \begin{equation*}
 A=\begin{pmatrix}
@@ -1268,7 +1396,27 @@ A=\begin{pmatrix}
 \end{pmatrix} 
 \end{equation*}
 
+\switchcolumn
+Let's see what it consists of with an example. Let's suppose we have the following matrix of order $4 \times 4$, 
+
+\begin{equation*}
+A=\begin{pmatrix}
+3& 4& 2&5\\
+2& 0& 1& -2\\
+3& 2& 1& 8\\
+5& 2& 3& 2
+\end{pmatrix} 
+\end{equation*}
+
+\switchcolumn
+
 Si sustituimos la segunda fila por el resultado de restarle la primera multiplicada por $2$ y dividida por $3$ obtendríamos la matriz,
+
+\switchcolumn
+
+If we replace the second row by the result of subtracting the first row multiplied by $2$ and divided by $3$ we obtain the matrix,
+
+\end{paracol}
 
 \begin{equation*}
 A=\begin{pmatrix}
@@ -1284,8 +1432,16 @@ A=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
+
 De modo análogo, si sustituimos ahora la tercera fila por el resultado de restarle la primera multiplicada por $3$ y dividida $3$,
+
+\switchcolumn
+
+Similarly, if we now replace the third row by the result of subtracting the first row multiplied by $3$ and dividing $3$,
  
+\end{paracol}
+
 \begin{equation*}
 U_1=\begin{pmatrix}
 3& 4& 2&5\\
@@ -1295,12 +1451,18 @@ U_1=\begin{pmatrix}
 \end{pmatrix} \rightarrow [3\ 2\ 1\ 8]-\frac{3}{3} [3\ 4\ 2\ 5] \rightarrow U_1=\begin{pmatrix}
 3& 4& 2&5\\
 0& -2.6& -0.33& -5.33\\
-0& -2& -1& -3\\
+0& -2& -1& 3\\
 5& 2& 3& 2
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
+
 Por último si sustituimos la última fila por el resultado de restarle la primera multiplicada por $5$ y dividida por $3$,
+
+\switchcolumn
+Finally, if we replace the last row by the result of subtracting the first row multiplied by $5$ and divided by $3$,
+\end{paracol}
 
 \begin{equation*}
 U_1=\begin{pmatrix}
@@ -1316,9 +1478,18 @@ U_1=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
+
 El resultado que hemos obtenido, tras realizar esta transformación , es una nueva matriz $U$ en la que todos los elementos de su primera columna, por debajo de la diagonal, son ceros.
 
 Podemos proceder de modo análogo para \emph{eliminar} ahora los elementos de la segunda columna situados por debajo de la diagonal. Para ellos sustituimos la tercera fila  por la diferencia entre ella y las segunda fila multiplicada por 	$-2$  y dividida por $-2.6$.
+
+\switchcolumn
+
+The result we have obtained, after performing this transformation, is a new matrix $U$ in which all the elements of its first column, below the diagonal, are zeros.
+
+We can proceed in a similar way to \emph{eliminate} now the elements of the second column below the diagonal. For them we replace the third row by the difference between it and the second row multiplied by $-2$ and divided by $-2.6$.
+\end{paracol}
 
 \begin{align*}
 U_1 &=\begin{pmatrix}
@@ -1335,7 +1506,13 @@ U_1 &=\begin{pmatrix}
 \end{pmatrix}
 \end{align*}
 
+\begin{paracol}{2}
 Y sustituyendo la última fila por  la diferencia entre ella y la segunda multiplicada por $-4.66$ y dividida por $-2.6$,
+
+\switchcolumn
+And substituting the last row by the difference between it and the second row multiplied by $-4.66$ and divided by $-2.6$,
+\end{paracol}
+
 
 \begin{align*}
 U_2 &=\begin{pmatrix}
@@ -1352,7 +1529,12 @@ U_2 &=\begin{pmatrix}
 \end{pmatrix}
 \end{align*}
 
+\begin{paracol}{2}
 De este modo, los elementos de la segunda columna situados debajo de la diagonal, han sido sustituidos por ceros. Un último paso, nos llevará hasta una matriz triangular superior; sustituimos la última fila por la diferencia entre ella y la tercera fila multiplicada por $0.25$ y dividida por $-0.75$,
+
+\switchcolumn
+In this way, the elements of the second column below the diagonal have been replaced by zeros. A final step will lead us to an upper triangular matrix; we replace the last row by the difference between it and the third row multiplied by $0.25$ and divided by $-0.75$,
+\end{paracol}
 
 \begin{align*}
  U_2 &=\begin{pmatrix}
@@ -1369,58 +1551,77 @@ De este modo, los elementos de la segunda columna situados debajo de la diagonal
 \end{pmatrix}=U
 \end{align*}
 
+\begin{paracol}{2}
+
+
 Podemos ahora, a partir del ejemplo, deducir un procedimiento general. Para \emph{eliminar} ---convertir en 0--- el elemento $a_{ij}$ situado por debajo de la diagonal principal,  $i>j$:
 \begin{enumerate}
-\item Dividimos los elementos de la fila $j$ por el elemento de dicha fila que a su vez pertenece a la diagonal, $a_{jj}$
-\begin{equation*}
-\begin{bmatrix}
-0/ a_{jj}& 0/ a_{jj}& \cdots & a_{jj}/ a_{jj}& a_{jj+1}/ a_{jj}& \cdots
-\end{bmatrix}
-\end{equation*}
-
-\item Multiplicamos el resultado de la operación anterior por el elemento $a_{ij}$,
-\begin{equation*}
-\begin{bmatrix}
-a_{ij} \cdot 0/ a_{jj}& a_{ij} \cdot 0/ a_{jj}& \cdots & a_{ij} \cdot a_{jj}/ a_{jj}& a_{ij} \cdot a_{jj+1}/ a_{jj}& \cdots
-\end{bmatrix}
-\end{equation*}
-\item Finalmente, sustituimos la fila $i$ de la matriz de partida por la diferencia  entre ella y el resultado de la operación anterior.
-\begin{equation*}
-\begin{bmatrix}
-0& 0& \cdots& a_{ij}& a_{ij+1}& \cdots
-\end{bmatrix}-\begin{bmatrix}
-a_{ij} \cdot 0/ a_{jj}& a_{ij} \cdot 0/ a_{jj}& \cdots & a_{ij} \cdot a_{jj}/ a_{jj}& a_{ij} \cdot a_{jj+1}/ a_{jj}& \cdots
-\end{bmatrix}
-\end{equation*}
+\item Dividimos los elementos de la fila $j$ por el elemento de dicha fila que a su vez pertenece a la diagonal, $a_{jj}$, eq. \ref{eq:gauss-step1}
+\item Multiplicamos el resultado de la operación anterior por el elemento $a_{ij}$, eq. \ref{eq:gauss-step2}
+\item Finalmente, sustituimos la fila $i$ de la matriz de partida por la diferencia  entre ella y el resultado de la operación anterior, eq \ref{eq:gauss-step3}.
 \end{enumerate}
+
+\switchcolumn
+We can now, from the example, deduce a general procedure. To \emph{eliminate} ---convert to 0--- the element $a_{ij}$ below the main diagonal, $i>j$:
+\begin{enumerate}
+    \item Divide the row $j$ elements by the diagonal element of the same row, $a_{jj}$, eq. \ref{eq:gauss-step1}:
+    \item Multiply the previous result by the element $a_{ij}$, eq. \ref{eq:gauss-step2}
+    \item Finally, substitute initial matrix row $i$ by the difference between it ant the previous result, eq. \ref{eq:gauss-step3}.
+\end{enumerate}
+\end{paracol}
+
+\begin{equation}\label{eq:gauss-step1}
+    \begin{bmatrix}
+    0/ a_{jj}& 0/ a_{jj}& \cdots & a_{jj}/ a_{jj}& a_{jj+1}/ a_{jj}& \cdots
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}\label{eq:gauss-step2}
+    \begin{bmatrix}
+    a_{ij} \cdot 0/ a_{jj}& a_{ij} \cdot 0/ a_{jj}& \cdots & a_{ij} \cdot a_{jj}/ a_{jj}& a_{ij} \cdot a_{jj+1}/ a_{jj}& \cdots
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}\label{eq:gauss-step3}
+    \begin{bmatrix}
+    0& 0& \cdots& a_{ij}& a_{ij+1}& \cdots
+    \end{bmatrix}-\begin{bmatrix}
+    a_{ij} \cdot 0/ a_{jj}& a_{ij} \cdot 0/ a_{jj}& \cdots & a_{ij} \cdot a_{jj}/ a_{jj}& a_{ij} \cdot a_{jj+1}/ a_{jj}& \cdots
+\end{bmatrix}
+\end{equation}
+ 
+\begin{paracol}{2}
 
 Este procedimiento se aplica iterativamente empezando en por el elemento  $a_{21}$ de la matriz y desplazando el cómputo hacia abajo, hasta llegar a la última fila y hacia la derecha hasta llegar en cada fila al elemento anterior a la diagonal.
 
-El siguiente código aplica el procedimiento descrito a una matriz de cualquier orden,\label{elig}
+El siguiente código aplica el procedimiento descrito a una matriz de cualquier orden,\label{cod: elig}
 
-\begin{lstlisting}
-function U=eligauss(A)
-% Esta función obtiene una matriz triangular superior, a partir de una
-% matriz dada, aplicando el método de eliminación gaussiana.
-% No realiza piboteo de filas, así que si algún elemento de la diagonal de A
-% queda cero o proximo a cero al ir eliminado dará problemas...
+\switchcolumn
 
-% Obtenemos el número de filas de la matriz..
-nf=size(A,1);
-U=A
-%
-for j=1:nf-1 % recorro todas la columnas menos la última
-    for i=j+1:nf % Recorro las filas desde debajo de la diagonal hasta la última
-        % en Matlab tengo la suerte de poder manejar cada fila de un solo
-        % golpe.
-        U(i,:)=U(i,:)-U(j,:)*U(i,j)/U(j,j)
-    end
-end
+This procedure is applied iteratively starting at the $a_{21}$ element of the matrix and moving the computation downwards until the last row is reached and rightwards until the element before the diagonal is reached in each row.
 
-\end{lstlisting}
+The following code applies the procedure described above to a matrix of any order,\label{cod:elig}
+\end{paracol}
 
-=====================================================================
+\begin{minted}{python}
+import numpy as np
+def eligauss(A):
+    '''This function obtains an upper triangular matrix, starting from a given
+    matrix, by applying the Gaussian elimination method.
+    It does not perform row piboting'''
+    
+    #Matrix shape
+    [f,c]=np.shape(A)
+    U=A.copy()
+    #For all the columns in A (except the last one)
+    for i in range(c-1):
+        # For all the rows below the diagonal
+        for j in range(i+1,f):
+            U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
+    return U
+\end{minted}
 
+\begin{paracol}{2}
 La idea fundamental, es sacar partido de las siguientes propiedades de todo sistema de ecuaciones lineales;
 \begin{enumerate}
 \item Un sistema de ecuaciones lineales no cambia aunque se altere el orden de sus ecuaciones.
@@ -1429,6 +1630,19 @@ La idea fundamental, es sacar partido de las siguientes propiedades de todo sist
 \end{enumerate}
  
 Si usamos la representación matricial de un sistema de ecuaciones, Cualquiera de los cambios descritos en las propiedades anteriores afecta tanto a la matriz de coeficientes como al vector de términos independientes, por ejemplo dado el sistema,
+
+\switchcolumn
+
+The basic idea is to take advantage of the following properties of any system of linear equations;
+\begin{enumerate}
+\item A system of linear equations does not change even if the order of its equations is altered.
+\item A system of linear equations does not change even if any of its equations is multiplied by a non-zero constant.
+\item A system of equations does not change if you replace any of its equations by a linear combination of it with another equation.
+\end{enumerate}
+ 
+If we use the matrix representation of a system of equations, any of the changes described in the above properties affect both the matrix of coefficients and the vector of independent terms, e.g. given the system,
+\end{paracol}
+
  
 \begin{equation*}
 \begin{pmatrix}
@@ -1445,7 +1659,12 @@ x_3
 18
 \end{pmatrix}
 \end{equation*}
+
+\begin{paracol}{2}
 Si cambio de orden la segunda ecuación con la primera obtengo el siguiente sistema equivalente,
+\switchcolumn
+If I change the order of the second equation with the first equation I obtain the following equivalent system,
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1463,9 +1682,17 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 Es decir, se intercambia la primera fila de la matriz de coeficientes con la segunda, y el primer elemento del vector de términos independientes con el segundo. El vector de incógnitas permanece inalterado. 
 
 Si ahora sustituimos la segunda fila, por la diferencia entre ella y la primera multiplicada por $0.5$, obtenemos de nuevo un sistema equivalente, 
+
+    \switchcolumn
+That is, the first row of the coefficient matrix is exchanged with the second, and the first element of the vector of independent terms with the second. The vector of unknowns remains unchanged. 
+
+If we now substitute the second row, by the difference between it and the first row multiplied by $0.5$, we obtain again an equivalent system, 
+\end{paracol}
+
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1483,15 +1710,29 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 Acabamos de dar los dos primeros pasos en el proceso de eliminación de Gauss para convertir la matriz de coeficientes del sistema en una matriz triangular superior: hemos 'pivoteado' las dos primeras filas y después hemos transformado en cero el primer elemento de la segunda fila, combinándola con la primera. Hemos aplicado también esta misma combinación al segundo elemento del vector de términos independientes, para que el sistema obtenido sea equivalente al original.
 
 Para poder trabajar de una forma cómoda con el método de eliminación de Gauss, se suele construir una matriz, --conocida con el nombre de matriz ampliada--, añadiendo a la matriz de coeficientes, el vector de términos independientes como una columna más,
+
+
+\begin{equation*}
+A,\ b \rightarrow AM=(A\vert b)
+\end{equation*} 
+En nuestro ejemplo,
+
+\switchcolumn
+We have just taken the first two steps in the Gaussian elimination process to convert the coefficient matrix of the system into an upper triangular matrix: we have 'pivoted' the first two rows and then transformed the first element of the second row to zero, combining it with the first row. We have also applied this same combination to the second element of the vector of independent terms, so that the system obtained is equivalent to the original.
+
+In order to work comfortably with the Gaussian elimination method, a matrix is usually constructed, known as an extended matrix, by adding the vector of independent terms to the coefficient matrix as an additional column,
 
 \begin{equation*}
 A,\ b \rightarrow AM=(A\vert b)
 \end{equation*} 
 
-En nuestro ejemplo,
+In our example,
+\end{paracol}
+
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1510,39 +1751,42 @@ En nuestro ejemplo,
 \end{pmatrix}
 \end{equation*}
 
-Podemos aplicar directamente a la matriz ampliada $AM$ el programa de eliminación de Gauss, \texttt{eligauss}, que incluimos en el capítulo anterior \ref{elig}, en la sección dedicada a la factorización LU. Si aplicamos \texttt{eligauss} a la matriz ampliada del sistema del ejemplo, 
+\begin{paracol}
 
-\begin{verbatim}
->> A=[1 3 2;2 -1 1;1 4 3]
-A =
+    
+Podemos aplicar directamente a la matriz ampliada $AM$ el programa de eliminación de Gauss, \texttt{eligauss} anterior \ref{elig}. Si aplicamos \texttt{eligauss} a la matriz ampliada del sistema del ejemplo. Para construir la matriz ampliada podemos usar el método \texttt{concatenate} de  \texttt{numpy} indicando que el  eje en el que deseamos concatenar $A$ y $b$ es el 1 (columnas): \mintinline{python}{AM=np.concatenate((A,b),axis=1}
 
-     1     3     2
-     2    -1     1
-     1     4     3
+\switchcolumn
 
->> b=[13;3;18]
-b =
+We can apply directly to the extended matrix $AM$ the Gaussian elimination program, \texttt{eligauss} \ref{elig}. If we apply \texttt{eligauss} to the extended matrix of the system of the example. 
+To construct the extended matrix we can use the \texttt{concatenate} method of \texttt{numpy} indicating that the axis on which we want to concatenate $A$ and $b$ is 1 (columns): \mintinline{python}{AM=np.concatenate((A,b),axis=1}
+\end{paracol}
 
-    13
-     3
-    18
+\begin{minted}{2}
+A=np.array([[1., 3., 2.],[2., -1., 1.],[1., 4., 3.]])
+b=np.array([[13.],[3.],[18.]])
+# Extended matrix
+AM=np.concatenate((A,b),axis=1)
+print("AM: ",AM)
+GA=eligauss(AM)
+print("GA: ",GA)    
+\end{minted}
 
->> AM=[A b]
-AM =
-     1     3     2    13
-     2    -1     1     3
-     1     4     3    18
-     
+\begin{minted}{pycon}
+AM:  [[ 1.  3.  2. 13.]
+ [ 2. -1.  1.  3.]
+ [ 1.  4.  3. 18.]]
+GA:  [[  1.           3.           2.          13.        ]
+ [  0.          -7.          -3.         -23.        ]
+ [  0.           0.           0.57142857   1.71428571]]   
+\end{minted}
 
->> GA=eligauss(AM)
-GA =
-
-    1.0000    3.0000    2.0000   13.0000
-         0   -7.0000   -3.0000  -23.0000
-         0         0    0.5714    1.7143
-\end{verbatim}
-
+\begin{paracol}{2}
 El programa ha obtenido como resultado una nueva matriz en la que los elementos situados por debajo de la diagonal son ahora cero. Podemos reconstruir, a partir del resultado obtenido un sistema equivalente actual Separando la última columna del resultado,
+
+\switchcolumn
+The program has obtained as a result a new matrix in which the elements below the diagonal are now zero. We can reconstruct, from the result obtained, a current equivalent system by separating the last column of the result,
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1564,104 +1808,120 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
+
 El sistema resultante de la eliminación de Gauss es triangular superior, con lo que podemos resolverlo directamente mediante sustituciones regresivas,
+\switchcolumn
 
-\begin{verbatim}
->> G=GA(:,1:3)
-G =
+The system resulting from Gaussian elimination is upper triangular, so we can solve it directly by backward substitutions,
+\end{paracol}
 
-    1.0000    3.0000    2.0000
-         0   -7.0000   -3.0000
-         0         0    0.5714
->> bp=GA(:,4)
-bp =
+\begin{minted}{python}
+RA=GA[:,0:3]
+nb=GA[:,3]
+print("RA: ",RA)
+print("nb: ",nb)
+x=regressive(RA, nb)
+print("x: ",x)
+\end{minted}
 
-   13.0000
-  -23.0000
-    1.7143
->> x=regresivas(G,bp)
-x =
-    1.0000
-    2.0000
-    3.0000
-\end{verbatim}
+\begin{minted}{pycon}
+RA:  [[ 1.          3.          2.        ]
+ [ 0.         -7.         -3.        ]
+ [ 0.          0.          0.57142857]]
+nb:  [ 13.         -23.           1.71428571]
+x:  [1. 2. 3.]
+\end{minted}
 
-El programa \texttt{eligauss}, presenta el problema de que no incluye el pivoteo de filas. Como se explicó en el capítulo anterior este en necesario para evitar que un cero o un valor relativamente pequeño en la diagonal, impida completar el proceso de eliminación o haga los cálculos inestables. A continuación, incluimos una versión modificada de \texttt{eligauss} que incluye el pivoteo de filas.
+\begin{paracol}{2}
 
-\begin{lstlisting}
-function U=eligaussp(A)
-% Esta función obtiene una matriz triangular superior, a partir de una
-% matriz dada, aplicando el método de eliminación gaussiana.
-% realiza pivoteo de filas, así que lo primero que hace es comprobar si el
-% el elemento de la diagonal, de la fila que se va a emplear para eliminar
-% el mayor que los que tiene por debajo en su columna, si no es así,
-% intercambia la fila con la que tenga el elemento mayor en dicha columna.
+El programa \texttt{eligauss} presenta un problema: ¿qué ocurre si el elemento de la diagonal es cero o un valor relativamente pequeño?. Si eso ocurre es posible que no pueda completarse el proceso de eliminación o bien que los cálculos sean inestables. Para ello vamos a  incluir el pivoteo de filas, es decir, reordenaremos las filas de la matriz para que el elemento de la diagonal sea mayor que ese mismo elemento de las filas posteriores. A continuación, incluimos una versión modificada de \texttt{eligauss} que incluye el pivoteo de filas.
 
-% Obtenemos el número de filas de la matriz..
-nf=size(A,1);
-U=A;
-%
-for j=1:nf-1 % recorro todas la columnas menos la última
-%%%%%   pivoteo de filas%%%%%%%%%%%%%%%%%%%%%%%%%%    
-    % Buscamos el elemento mayor de la columna j de la diagonal para abajo
-    maxcol=abs(U(j,j));
-    index=j;
-    for l=j:nf
-        if abs(U(l,j))>maxcol
-            maxcol=abs(U(l,j));
-            index=l;
-        end
-    end
-    % si el mayor no era el elemento de la diagonal U(j,j), intecambiamos la
-    % fila l con la fila j
-    if index~=j
-        aux=U(j,:);
-        U(j,:)=U(index,:);
-        U(index,:)=aux;
-    end
-%%%%%    fin del pivoteo de filas%%%%%%%%%%%%%%%%%%%%%    
-    for i=j+1:nf % Recorro las filas desde debajo de la diagonal hasta la 
-        % última en Matlab tengo la suerte de poder manejar cada fila de un 
-        % solo golpe.
-        U(i,:)=U(i,:)-U(j,:)*U(i,j)/U(j,j);
-    end
-end
-\end{lstlisting}
+\switchcolumn
+The \texttt{eligauss} program has a problem: what happens if the diagonal element is zero or a relatively small value? If that happens, it is possible that the elimination process cannot be completed or that the calculations are unstable. For this we will include row pivoting, i.e. we will rearrange the rows of the matrix so that the element on the diagonal is larger than the same element in the rows after it. Below, we include a modified version of \texttt{eligauss} that includes row pivoting.
+\end{paracol}
 
-Si aplicamos esta función a nuestro ejemplo de siempre,
-\begin{verbatim}
->> GA=eligaussp(AM)
-GA =
+\begin{minted}{python}
+def eligaussp(A):
+    '''This function obtains an upper triangular matrix, starting from a given
+    matrix, by applying the Gaussian elimination method.
+    It includes row piboting. If the diagonal element is less than the same
+    element in next rows, rows are interchanged'''
+   
+    #Matrix shape
+    [f,c]=np.shape(A)
+    U=A.copy()
+    #For all the columns in A (except the last one)
+    for i in range(c-1):
+        #Row pivoting
+        # Search the maximun in column i
+        maxcol= np.abs(U[i,i])
+        index = i
+        for l in range(i,f):
+            if np.abs(U[l,i])>maxcol:
+                maxcol=np.abs(U[l,i])
+                index=l
+        # If we have found an element U[l,i] greater than U[i,i] we interchange
+        # row l with row i
+        if index!=i:
+            aux=np.array([U[i,:]])
+            U[i,:]=U[index,:]
+            U[index,:]=aux[:]
+        # End of Row pivoting
+        # For all the rows below the diagonal
+        print(U)
+        for j in range(i+1,f):
+            U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
+    return U
+    
+\end{minted}
 
-     1     4     3    18
-     0    -1    -1    -5
-     0     0     4    12
-\end{verbatim}
+\begin{paracol}{2}
+   Podemos aplicar esta funión a nuestro ejemplo de siempre y separando en la matriz ampliada la matriz de coeficientes y el vector de términos independientes podemos resolver el sistema por sustituciones regresivas,
+\switchcolumn
+   We can apply this function to our usual example and by separating the coefficient matrix and the vector of independent terms in the extended matrix we can solve the system by backward substitutions,
+\end{paracol}
 
-y separando en la matriz ampliada la matriz de coeficientes y el vector de términos independientes podemos resolver el sistema por sustituciones regresivas,
+\begin{minted}{python}
+ A=np.array([[1., 3., 2.],[2., -1., 1.],[1., 4., 3.]])
+b=np.array([[13.],[3.],[18.]])
+# Extended matrix
+AM=np.concatenate((A,b),axis=1)
+print("AM: ",AM)
+GA=eligaussp(AM)
+print("GA: ",GA)
+RA=GA[:,0:3]
+nb=GA[:,3]
+print("RA: ",RA)
+print("nb: ",nb)
+x=regressive(RA, nb)
+print("x: ",x)   
+\end{minted}
 
-\begin{verbatim}
->> G=GA(:,1:3)
-G =
+\begin{minted}{pycon}
+AM:  [[ 1.  3.  2. 13.]
+ [ 2. -1.  1.  3.]
+ [ 1.  4.  3. 18.]]
+[[ 2. -1.  1.  3.]
+ [ 1.  3.  2. 13.]
+ [ 1.  4.  3. 18.]]
+[[ 2.  -1.   1.   3. ]
+ [ 0.   4.5  2.5 16.5]
+ [ 0.   3.5  1.5 11.5]]
+[[ 2.         -1.          1.          3.        ]
+ [ 0.          4.5         2.5        16.5       ]
+ [ 0.          0.         -0.44444444 -1.33333333]]
+GA:  [[ 2.         -1.          1.          3.        ]
+ [ 0.          4.5         2.5        16.5       ]
+ [ 0.          0.         -0.44444444 -1.33333333]]
+RA:  [[ 2.         -1.          1.        ]
+ [ 0.          4.5         2.5       ]
+ [ 0.          0.         -0.44444444]]
+nb:  [ 3.         16.5        -1.33333333]
+x:  [1. 2. 3.]    
+\end{minted}
 
-     1     4     3
-     0    -1    -1
-     0     0     4
-
->> bp=GA(:,4)
-bp =
-    18
-    -5
-    12
-
->> x=regresivas(G,bp)
-x =
-     1
-     2
-     3
-
-\end{verbatim}
-
+\begin{paracol}{2}
 \subsection{Gauss-Jordan  y matrices en forma reducida escalonada}\index{Gauss-Jordan! eliminación}
 El método de eliminación de Gauss, permite obtener a partir de una matriz arbitraria, una  matriz triangular superior. Una vez obtenida ésta, podríamos seguir transformando la matriz de modo que hiciéramos cero todos los elementos situados por encima de su diagonal. Para ello bastaría aplicar el mismo método de eliminación de Gauss, la diferencia es que ahora eliminaríamos --haríamos ceros-- los elementos situados por encima de la diagonal principal de la matriz, empezando por la última columna y moviéndonos de abajo a arriba y de derecha a izquierda. Este proceso se conoce con el nombre de eliminación de Gauss-Jordan.
 Por ejemplo supongamos que partimos de la matriz que acabamos de obtener por eliminación de Gauss en ejemplo anterior,
@@ -1674,7 +1934,29 @@ GA=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}  
 
+\switchcolumn
+
+\subsection{Gauss-Jordan and matrices in stepwise reduced form}\index{Gauss-Jordan! elimination}.
+The Gaussian elimination method allows us to obtain an upper triangular matrix from an arbitrary matrix. Once this has been obtained, we could continue transforming the matrix in such a way as to make all the elements located above its diagonal zero. To do this, we would simply apply the same Gaussian elimination method, the difference being that we would now eliminate - make zeros - the elements located above the main diagonal of the matrix, starting with the last column and moving from bottom to top and from right to left. This process is known as Gauss-Jordan elimination.
+For example, suppose we start from the matrix we have just obtained by Gaussian elimination in the previous example,
+\begin{equation*}
+GA=\begin{pmatrix}
+1&     4&     3&    18\\
+ 0&    -1&    -1&    -5\\
+ 0&     0&     4&    12
+\end{pmatrix}
+\end{equation*}  
+
+\switchcolumn
+
 Empezaríamos por hacer cero el elemento $ga_{23}$ que es el que está situado encima de último elemento de la diagonal principal, para ello restaríamos a la segunda columna la tercera multiplicada por $-1$ y dividida por $4$,
+
+\switchcolumn
+
+
+We would start by making the element $ga_{23}$, which is the one located above the last element of the main diagonal, zero. To do this we would subtract the third column multiplied by $-1$ and divided by $4$ from the second column,
+
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1688,7 +1970,15 @@ Empezaríamos por hacer cero el elemento $ga_{23}$ que es el que está situado e
  \end{pmatrix}
 \end{equation*}  
 
+\begin{paracol}{2}
+
 A continuación, eliminaríamos el elemento situado en la misma columna, una fila por encima. Para ello restamos a la primera la tercera multiplicada por $3$ y dividida por $4$,
+
+\switchcolumn
+
+Next, we would eliminate the element located in the same column, one row above. To do this we subtract from the first the third multiplied by $3$ and divided by $4$,
+
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1702,7 +1992,15 @@ A continuación, eliminaríamos el elemento situado en la misma columna, una fil
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
+
 Como hemos llegado a la primera columna, pasamos a eliminar los elementos de la siguiente columna de la izquierda. En este ejemplo solo tenemos un elemento por encima de la diagonal. Para eliminarlo restamos de la primera fila la segunda multiplica por $4$ y dividida por $-1$,
+
+\switchcolumn
+
+As we have reached the first column, we move on to remove the elements in the next column on the left. In this example we only have one element above the diagonal. To eliminate it we subtract from the first row the second row multiplied by $4$ and divided by $-1$,
+
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1716,7 +2014,11 @@ Como hemos llegado a la primera columna, pasamos a eliminar los elementos de la 
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 Si ahora separamos en la matriz ampliada resultante, la matriz de coeficientes y el vector de términos independientes, obtenemos un sistema diagonal, cuya solución es trivial,
+\switchcolumn
+If we now separate the coefficient matrix and the vector of independent terms into the resulting expanded matrix, we obtain a diagonal system whose solution is trivial,
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -1742,61 +2044,61 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 El siguiente programa \texttt{gauss-jordan}, añade las líneas de código necesarias a \texttt{eligaussp} para realizar la eliminación de Gauss-Jordan completa de una matriz.
+\switchcolumn
+The following program, \texttt{gauss-jordan}, adds the necessary lines of code to \texttt{eligaussp} to perform the complete Gauss-Jordan elimination of a matrix.
+\end{paracol}
 
-\begin{lstlisting}
-function U=gauss_jordan(A)
-% Esta función realiza  la eliminación de GAUSS-JORDAN, que permite obtener,
-% a partir de una matriz dada, una matriz cuyos elementos por encima y 
-% debajo de la diagonal son todos cero.
+\begin{minted}{python}
+def gaussjordan(A):
+    '''This function implements gauss-jordan elimination to obtain a diagonal
+    matrix'''    
+    
+    #Matrix shape
+    [f,c]=np.shape(A)
+    U=A.copy()
+    # Step 1: reduce matrix A to a triangular matrix
+    #For all the columns in A (except the last one)
+    for i in range(c-1):
+        #Row pivoting
+        # Search the maximun in column i
+        maxcol= np.abs(U[i,i])
+        index = i
+        for l in range(i,f):
+            if np.abs(U[l,i])>maxcol:
+                maxcol=np.abs(U[l,i])
+                index=l
+        # If we have found an element U[l,i] greater than U[i,i] we interchange
+        # row l with row i
+        if index!=i:
+            aux=np.array([U[i,:]])
+            U[i,:]=U[index,:]
+            U[index,:]=aux[:]
+        # End of Row pivoting
+        # For all the rows below the diagonal
+        print(U)
+        for j in range(i+1,f):
+            U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
+    # Step 2: obtain the diagonal matrix
+    # For all the columns begining by the end
+    for i in range(c-2,-1,-1):
+        # For all the rows above the diagonal
+        for j in range(i-1,-1,-1):
+            U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
+    return U
+    
+\end{minted}
 
-% Obtenemos el número de filas de la matriz..
-nf=size(A,1);
-U=A;
-%
-% primera parte: reducción a una matriz triangular pro eliminación
-% progresiva
-for j=1:nf-1 % recorro todas la columnas menos la última
-%%%%%%     pivoteo de filas%%%%%%%%%%%%%%%%%%%%%%%%    
-    % Buscamos el elemento mayor de la columna j de la diagonal para abajo
-    maxcol=abs(U(j,j));
-    index=j;
-    for l=j:nf
-        if abs(U(l,j))>maxcol
-            maxcol=abs(U(l,j));
-            index=l;
-        end
-    end
-    % si el mayor no era el elemento de la diagonal U(j,j), intecambiamos la
-    % fila l con la fila j
-    if index~=j
-        aux=U(j,:);
-        U(j,:)=U(index,:);
-        U(index,:)=aux;
-    end
-%%%%    fin del pivoteo de filas%%%%%%%%%%%%%%%%%%%%%%    
-    for i=j+1:nf % Recorro las filas desde debajo de la diagonal hasta la 
-        % última en Matlab tengo la suerte de poder manejar cada fila de un 
-        % solo golpe.
-        U(i,:)=U(i,:)-U(j,:)*U(i,j)/U(j,j);
-    end
-end
-
-
-% segunda parte, obtención de una matriz diagonal mediante eliminación
-% regresiva, Recorremos ahora las columnas en orden inverso empezando por el
-% final... (Eliminación de Gauss Jordan)
-
-for j=nf:-1:2
-    for i=j-1:-1:1 % Recorro las filas desde encima de la diagonal hasta la
-        % primera, 
-        U(i,:)=U(i,:)-U(j,:)*U(i,j)/U(j,j);
-    end
-end
-\end{lstlisting}
+\begin{paracol}{2}
 
 Si tras aplicar la eliminación de Gauss-Jordan a la matriz ampliada de un sistema, dividimos cada fila por el elemento que ocupa la diagonal principal, obtendríamos en la última columna las soluciones del sistema. En nuestro ejemplo,
 
+\switchcolumn
+
+If, after applying the Gauss-Jordan elimination to the extended matrix of a system, we divide each row by the element occupying the main diagonal, we obtain the solutions of the system in the last column. In our example,
+
+\end{paracol}
 \begin{equation*}
 \begin{pmatrix}
 1&     0&     0&    1\\
@@ -1804,37 +2106,30 @@ Si tras aplicar la eliminación de Gauss-Jordan a la matriz ampliada de un siste
  0&     0&     1&    3
 \end{pmatrix}
 \end{equation*}
-La matriz resultante se dice que esta en \emph{forma escalonada reducida por filas}\index{Matrices escalonadas}. Se deja como un ejercicio, añadir el código necesario al programa anterior para que dé como resultado la \emph{forma escalonada reducida por filas} de la matriz ampliada de un sistema. Como siempre, Matlab tiene su propia función para obtener formas escalonadas reducidas por filas. Se trata de la función \texttt{rref} (el nombre es la abreviatura en inglés de Row Reduced Echelon Form).
 
-\begin{verbatim}
->> A
-A =
-
-     1     3     4     5    39
-     2    -1     2     3    18
-     4    -3     2     1     8
-     2     3     4    -2    12
-
->> EF=rref(A)
-EF =
-
-     1     0     0     0     1
-     0     1     0     0     2
-     0     0     1     0     3
-     0     0     0     1     4
-\end{verbatim}
- 
+\begin{paracol}{2}
+La matriz resultante se dice que esta en \emph{forma escalonada reducida por filas}. Se deja como un ejercicio, añadir el código necesario al programa anterior para que dé como resultado la \emph{forma escalonada reducida por filas} de la matriz ampliada de un sistema. 
+\switchcolumn
+The resulting matrix is said to be in \emph{row echelon form}. It is left as an exercise to add the necessary code to the above program to result in the \emph{row-reduced echelon form} of the expanded matrix of a system. 
+\end{paracol}
+\begin{paracol}{2}
 \section{Métodos iterativos}
 Los métodos iterativos se basan en una aproximación distinta al problema de la resolución de sistemas de ecuaciones lineales. La idea en todos ellos es buscar un método que, a partir de un valor inicial para la solución del sistema, vaya refinándolo progresivamente, acercándose cada vez más a la solución real. La figura \ref{fig:itera}, muestra un diagrama de flujo general para todos los métodos iterativos de resolución de sistemas.
+
+\switchcolumn
+\section{Iterative methods}
+Iterative methods are based on a different approach to the problem of solving systems of linear equations. The idea in all of them is to find a method that, starting from an initial value for the solution of the system, refines it progressively, getting closer and closer to the real solution. Figure \ref{fig:itera}, shows a general flow diagram for all iterative methods of solving systems.
+    
+\end{paracol}
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
 %\usetikzlibrary{shapes.geometric}
-\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Solución inicial $x^{(s)}=x^{(0)}$}
-(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Calculamos\\ $x^{(s+1)}=M(x^{(s)})$}
+\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Initial solution $x^{(s)}=x^{(0)}$}
+(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Compute\\ $x^{(s+1)}=M(x^{(s)})$}
 (5,-4) node(c)[diamond,aspect=3,draw=red,thick]{es $\lVert  x^{(s+1)}-x^{(s)} \rVert \le \text{tol}$?}
-(9.5,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{convergencia:\\ terminar}
+(9.5,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{convergence:\\ end}
 (5,-6) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$x^{(s)}=x^{(s+1)}$};
 \draw[blue,-latex](a.south)--(b);
 \draw[blue,-latex](b.south)--(c);
@@ -1845,10 +2140,11 @@ Los métodos iterativos se basan en una aproximación distinta al problema de la
 \draw[blue,-latex](g.south)|-(2,-7)|-(b);
 
 \end{tikzpicture}
-\caption{Diagrama de flujo general de los métodos iterativos para resolver sistemas de ecuaciones. La función $M(x)$ es la que especifica en cada caso el método.}
+\bicaption{Diagrama de flujo general de los métodos iterativos para resolver sistemas de ecuaciones. La función $M(x)$ es la que especifica en cada caso el método.}{General flowchart of iterative methods for solving systems of equations. The function $M(x)$ is the one that specifies the method in each case.}
 \label{fig:itera}
 \end{figure}
 
+\begin{paracol}{2}
 Siguiendo el diagrama de flujo, el primer paso, es proponer un vector con soluciones del sistema. Si se conocen valores próximos a las soluciones reales se eligen dichos valores como solución inicial. Si, como es habitual, no se tiene idea alguna de cuales son las soluciones, lo más habitual es empezar con el vector $(0)$,
 \begin{equation*}
 x^{(0)}=\begin{pmatrix}
@@ -1859,76 +2155,160 @@ x^{(0)}=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
+    \switchcolumn
+Following the flow chart, the first step is to propose a vector with solutions of the system. If values close to the real solutions are known, these values are chosen as the initial solution. If, as usual, you have no idea what the solutions are, it is most usual to start with the vector $(0)$,    
+\begin{equation*}
+x^{(0)}=\begin{pmatrix}
+0\\
+0\\
+\vdots \\
+0
+\end{pmatrix}
+\end{equation*}
+
+\switchcolumn
 A partir de la primera solución, se calcula una segunda, siguiendo la especificaciones concretas del método que se esté usando. En el diagrama de flujo se ha representado de modo genérico el método mediante la función $M(\cdot)$. Dedicaremos buena parte de esta sección a estudiar algunos de los métodos más usuales.
 
+\switchcolumn
+From the first solution, a second solution is calculated, following the specific specifications of the method being used. In the flowchart, the method is represented in a generic way by the function $M(\cdot)$. We will spend a good part of this section looking at some of the more common methods.
+
+\switchcolumn
 Una vez que se tienen dos soluciones se comparan. Para ello, se ha utilizado el módulo del vector diferencia de las dos soluciones. Este módulo nos da una medida de cuanto se parecen entre sí las dos soluciones. Si la diferencia es suficientemente pequeña, --menor que un cierto valor de tolerancia $tol$-- damos la solución por buena y el algoritmo termina. En caso contrario, copiamos la última solución obtenida en la penúltima y repetimos todo el proceso. El bucle se repite hasta que se cumpla la condición de que el módulo de la diferencia de dos soluciones sucesivas sea menor que la tolerancia establecida.
+
+\switchcolumn
+Once two solutions are available, they are compared. To do this, the modulus of the difference vector of the two solutions has been used. This modulus gives us a measure of how much the two solutions resemble each other. If the difference is small enough, --less than a certain tolerance value $tol$-- we consider the solution to be good and the algorithm terminates. Otherwise, we copy the last solution obtained into the penultimate one and repeat the whole process. The loop repeats until the condition that the modulus of the difference of the difference of two successive solutions is less than the set tolerance is fulfilled.
+
+\switchcolumn
 
 Una pregunta que surge de modo inmediato del esquema general que acabamos de introducir es si el proceso descrito converge; y, caso de hacerlo, si converge a la solución correcta del sistema. 
 
+\switchcolumn
+
+One question that immediately arises from the general scheme just introduced is whether the process described converges; and, if it does, whether it converges to the correct solution of the system. 
+\switchcolumn
 La respuesta es que los sistemas iterativos no siempre convergen, es decir, no esta garantizado que tras un cierto número de iteraciones la diferencia entre dos soluciones sucesivas sea menor que un valor de tolerancia arbitrario. La convergencia, como veremos más adelante, dependerá tanto del sistema que se quiere resolver como del método iterativo empleado. Por otro lado, lo que sí se cumple siempre es que, si el método converge, las sucesivas soluciones obtenidas se van aproximando a la solución real del sistema.
 
+\switchcolumn
+The answer is that iterative systems do not always converge, that is, it is not guaranteed that after a certain number of iterations the difference between two successive solutions will be less than an arbitrary tolerance value. Convergence, as we will see later, will depend both on the system to be solved and on the iterative method used. On the other hand, what is always true is that, if the method converges, the successive solutions obtained approach the real solution of the system.
+
+
+\switchcolumn
 \subsection{El método de Jacobi.} \index{Método de Jacobi}
 
 \paragraph{Obtención del algoritmo.}Empezaremos por introducir el método iterativo de Jacobi, por ser el más intuitivo de todos. Para introducirlo, emplearemos un ejemplo sencillo. Supongamos que queremos resolver el siguiente sistema de ecuaciones,
+
+\switchcolumn
+\subsection{Jacobi's method}. \index{Jacobi's method.}
+
+\paragraph{Obtaining the algoritm.} We will begin by introducing Jacobi's iterative method, as it is the most intuitive of all. To introduce it, we will use a simple example. Suppose we want to solve the following system of equations,
+\end{paracol}
+
 
 \begin{align*}
 3x_1+3x_2&=6\\
 3x_1+4x_2&=7
 \end{align*}
 
+\begin{paracol}{2}
 Supongamos que supiéramos de antemano el valor de $x_2$, para obtener $x_1$, bastaría entonces despejar $x_1$, por ejemplo de la primera ecuación, y sustituir el valor conocido de $x_2$,
+
+    \switchcolumn
+Suppose we knew the value of $x_2$ beforehand, to obtain $x_1$, it would then suffice to clear $x_1$, for example from the first equation, and substitute the known value of $x_2$,
+\end{paracol}
+
 
 \begin{equation*}
 x_1=\frac{6-3x_2}{3}
 \end{equation*}
 
+\begin{paracol}{2}
+
 De modo análogo, si conociéramos previamente $x_1$, podríamos despejar $x_2$, ahora por ejemplo de la segunda ecuación, y sustituir el valor conocido de $x_1$,
+
+    \switchcolumn
+In the same way, if we knew previously $x_1$, we could clear $x_2$, now in the second equation and substitute the $x_1$ known value.
+\end{paracol}
 
 \begin{equation*}
 x_2=\frac{7-3x_1}{4}
 \end{equation*}
 
+\begin{paracol}{2}
 El método de Jacobi lo que hace es \emph{suponer} conocido el valor de $x_2$, $x_2^{(0)}=0$, y con él obtener un valor de $x_1^{(1)}$,
+\switchcolumn
+Jacobi's method does this by assuming the known value of $x_2$, $x_2^{(0)}=0$, and using it to obtain a value of $x_1^{(1)}$,
+\end{paracol}
+
 \begin{equation*}
 x_1^{(1)}=\frac{6-3x_2^{(0)}}{3}=\frac{6-3\cdot 0}{3}=2
 \end{equation*}
 
+\begin{paracol}{2}
+
 a continuación \emph{supone} conocido el valor de $x_1$, $x_1^{(0)}=0$ y con el obtiene un nuevo valor para $x_2$,
+
+    \switchcolumn
+then $x_1$, $x_1^{(0)}=0$ and with it obtains a new value for $x_2$,
+\end{paracol}
 
 \begin{equation*}
 x_2^{(1)}=\frac{7-3x_1^{(0)}}{4}=\frac{7-3\cdot 0}{4}=1.75
 \end{equation*}
 
+\begin{paracol}{2}
 En el siguiente paso, tomamos los valores obtenidos, $x_1^{(1)}$ y $x_2^{(1)}$ como punto de partida para calcular unos nuevos valores,
+\switchcolumn
+In the next step, we take the obtained values, $x_1^{(1)}$ and $x_2^{(1)}$ as a starting point to calculate new values,
+\end{paracol}
+
 \begin{align*}
 x_1^{(2)}&=\frac{5-3x_2^{(1)}}{3}=\frac{6-3\cdot 1.75}{3}=0.25\\
 x_2^{(2)}&=\frac{7-3x_1^{(1)}}{4}=\frac{7-3\cdot 1.67}{4}=0.25
 \end{align*}
 
+\begin{paracol}{2}
 y en general,
+\switchcolumn
+and in general,
+\end{paracol}
 
 \begin{align*}
 x_1^{(s+1)}&=\frac{6-3x_2^{(s)}}{3}\\
 x_2^{(s+1)}&=\frac{7-3x_1^{(s)}}{4}
 \end{align*}
 
+\begin{paracol}{2}
 Si repetimos el mismo cálculo diez veces obtenemos,
+\switchcolumn
+If we repeat the same calculation ten times we get,
+\end{paracol}
 
 \begin{align*}
 x_1^{(10)}&=0.7627\\
 x_2^{(10)}&=0.7627
 \end{align*}
 
+\begin{paracol}{2}
 Si lo repetimos veinte veces,
+\switchcolumn
+If we repeat it twenty times,
+\end{paracol}
 
 \begin{align*}
 x_1^{(20)}&=0.9437\\
 x_2^{(20)}&=0.9437
 \end{align*}
 
+\begin{paracol}{2}
 La solución exacta del sistema es $x_1=1$, $x_2=1$. Según aumentamos el número de iteraciones, vemos cómo las soluciones obtenidas se aproximan cada vez más a la solución real.
 
 A partir del ejemplo, podemos generalizar el método de Jacobi para un sistema cualquiera de $n$ ecuaciones con $n$ incógnitas,
+
+\switchcolumn
+The exact solution of the system is $x_1=1$, $x_2=1$. As we increase the number of iterations, we see how the solutions obtained get closer and closer to the real solution.
+
+From the example, we can generalise Jacobi's method for any system of $n$ equations with $n$ unknowns,
+\end{paracol}
 
 \begin{align*}
 a_{11}&x_1+a_{12}x_2+\cdots +a_{1n}x_n=b_1\\
@@ -1937,33 +2317,49 @@ a_{21}&x_1+a_{22}x_2+\cdots +a_{2n}x_n=b_2\\
 a_{n1}&x_1+a_{n2}x_2+\cdots +a_{nn}x_n=b_n
 \end{align*}
 
+\begin{paracol}{2}
+
 La solución para la incógnita $x_i$ en la iteración, $s+1$ a partir de la solucione obtenida en la iteración $s$ toma la forma,
 
+\switchcolumn
+The solution for the unknown $x_i$ in iteration $s+1$ from the solution obtained in iteration $s$ takes the form,
+
+\end{paracol}
 \begin{equation*}
 x_i^{(s+1)}=\frac{b_i-\sum_{j\neq i}a_{ij}x_j^{(s)}}{a_{ii}}
 \end{equation*}
 
+\begin{paracol}{2}
+
 A continuación, incluimos el código correspondiente al cálculo de una iteración del algoritmo de Jacobi. Este código es el que corresponde, para el método de jacobi, a la función $M(\cdot)$ del diagrama de flujo de la figura \ref{fig:itera}.
 
-\begin{lstlisting}
- 	xs=xs1;
-    % volvemos a inicializar el vector de soluciones al valor de los
-    % terminos independientes
-    xs1=b; 
-    for i=1:n % bucle para recorrer todas las ecuaciones
-        for j=1:i-1 % restamos la contribucion de todas las incognitas
-            xs1(i)=xs1(i)-A(i,j)*xs(j);       % por encima de x(i)
-        end
-        for j=i+1:n % restamos la contribución de todas las incognitas
-            % por debajo de x(i)
-            xs1(i)=xs1(i)-A(i,j)*xs(j);
-        end
-        % dividimos por el elemento de la diagonal,
-        xs1(i)=xs1(i)/A(i,i);
-    end
-\end{lstlisting}
+\switchcolumn
 
-\paragraph{Expresión matricial para el método de Jacobi.} \index{Método de Jacobi! Expresión matricial} El método de Jacobi que acabamos de exponer puede expresarse también en forma matricial. En Matlab, el empleo en forma matricial, tiene la ventaja de ahorrar bucles en el cálculo de la nueva solución a partir de la anterior. Si expresamos un sistema general de orden $n$ en forma matricial,
+Below, we include the code corresponding to the calculation of one iteration of Jacobi's algorithm. This code corresponds, for Jacobi's method, to the function $M(\cdot)$ in the flowchart in figure \ref{fig:itera}.
+
+\end{paracol}
+\begin{minted}{python}
+        # For all the equations
+        xs1=b.copy()
+        for i in range(nf):
+            for j in range(i):
+                xs1[i]-=A[i,j]*xs[j]
+
+            for j in range(i+1,nf):
+                xs1[i]-=A[i,j]*xs[j]
+            xs1[i]=xs1[i]/A[i,i]
+
+        
+\end{minted}
+
+\begin{paracol}{2}
+
+\paragraph{Expresión matricial para el método de Jacobi.} \index{Método de Jacobi! Expresión matricial} El método de Jacobi que acabamos de exponer puede expresarse también en forma matricial. En python, el empleo en forma matricial, tiene la ventaja de ahorrar bucles en el cálculo de la nueva solución a partir de la anterior. Si expresamos un sistema general de orden $n$ en forma matricial,
+
+\switchcolumn
+
+\paragraph{Matrix expression for Jacobi's method}. \index{Jacobi's method! Matrix expression} Jacobi's method as described above can also be expressed in matrix form. In python, the use of matrix form has the advantage of saving loops in the calculation of the new solution from the previous one. If we express a general system of order $n$ in matrix form,
+\end{paracol}
 
 \begin{equation*}
 \overbrace{\begin{pmatrix}
@@ -1984,7 +2380,15 @@ b_n
 \end{pmatrix}}^b
 \end{equation*}
 
+\begin{paracol}{2}
+
 Podríamos separar en tres sumandos la expresión de la izquierda del sistema: una matriz diagonal $D$, una matriz estrictamente diagonal superior $U$, y una matriz estrictamente triangular inferior $L$,
+
+\switchcolumn
+
+We could separate the left-hand expression of the system into three summands: a diagonal matrix $D$, a strictly upper diagonal matrix $U$, and a strictly lower triangular matrix $L$,
+
+\end{paracol}
 
 \begin{equation*}
 \left[\overbrace{\begin{pmatrix}
@@ -2016,7 +2420,11 @@ b_n
 \end{pmatrix}}^b
 \end{equation*}
 
+\begin{paracol}{2}
 Si pasamos los términos correspondientes a las dos matrices triangulares al lado derecho de la igualdad,
+\switchcolumn
+If we pass the terms corresponding to the two triangular matrices to the right-hand side of the equality,
+\end{paracol}
 
 \begin{align*}
 \overbrace{\begin{pmatrix}
@@ -2055,7 +2463,12 @@ x_n
 \end{pmatrix}}^x
 \end{align*}
 
+\begin{paracol}{2}
 Si examinamos las filas de la matrices resultantes a uno y otro lado del igual, es fácil ver que cada una de ellas coincide con la expresión correspondiente a una iteración del método de Jacobi, sin mas que cambiar los valores de las incógnitas a la izquierda del igual por $x^{(s+1)}$ y la derecha por $x^{(s)}$,
+
+\switchcolumn
+If we examine the rows of the resulting matrices on either side of the equal, it is easy to see that each of them coincides with the expression corresponding to an iteration of Jacobi's method, simply by changing the values of the unknowns on the left of the equal by $x^{(s+1)}$ and on the right by $x^{(s)}$,
+\end{paracol}
 
 \begin{align*}
 \overbrace{\begin{pmatrix}
@@ -2094,8 +2507,15 @@ x_n^s
 \end{pmatrix}}^{x^s}
 \end{align*}
 
+\begin{paracol}{2}
  y multiplicar a ambos lados por la inversa de la matriz $D$\footnote{$D$ es una matriz diagonal su inversa se calcula trivialmente sin más cambiar cada elemento de la diagonal por su inverso.},
  
+\switchcolumn
+ and multiply both sides by the inverse of the matrix $D$\footnote{$D$ is a diagonal matrix and its inverse is trivially calculated by simply changing each element of the diagonal by its inverse,}
+ 
+
+\end{paracol}
+
  \begin{align*}
  \overbrace{\begin{pmatrix}
 x_1^{(s+1)}\\
@@ -2133,17 +2553,38 @@ x_n^s
 \end{pmatrix}}^{x^s}\right]  
 \end{align*}
 
+\begin{paracol}{2}
+
 El resultado final es una operación matricial,
+
+\switchcolumn
+The final result is a matrix operation,
+\end{paracol}
 
 \begin{equation*}
 x^{(s+1)}=D^{-1}\cdot b- D^{-1}\cdot\left(L+U\right)\cdot x^s
 \end{equation*}
 
+\begin{paracol}{2}
 que equivale al código para una iteración y, por tanto a la función $M(\cdot)$ del método de Jacobi. 
 
 Si analizamos la ecuación anterior, observamos que el término, $D^{-1}\cdot b$ es fijo. Es decir, permanece igual en todas la iteraciones que necesitemos realizar para que la solución converja. El segundo término, tiene también una parte fija, $-D^{-1}(L+U)$ Se trata de una matriz de orden $n$, igual al del sistema que tratamos de resolver, Esta matriz, recibe el nombre de matriz del método, se suele representar por la letra $H$ y como veremos después esta directamente relaciona con la convergencia del método.
 
-Si queremos implementar en Matlab el método de Jacobi en forma matricial, lo mas eficiente es que calculemos en primer lugar las matrices $D, L, U, f=D^{-1}\cdot b$ y $H$. Una vez calculadas, empleamos el resultado para aproximar la solución iterativamente. Veamos con con un ejemplo como construir la matrices en Matlab. Supongamos que tenemos el siguiente sistema,
+\switchcolumn
+which is equivalent to the code for one iteration and, therefore, to the function $M(\cdot)$ of Jacobi's method. 
+
+If we analyse the above equation, we observe that the term, $D^{-1}\cdot b$ is fixed. That is, it remains the same in all the iterations we need to perform for the solution to converge. The second term also has a fixed part, $-D^{-1}(L+U)$ This is a matrix of order $n$, equal to that of the system we are trying to solve. This matrix, called the method matrix, is usually represented by the letter $H$ and, as we shall see later, it is directly related to the convergence of the method.
+
+\switchcolumn
+
+Si queremos implementar en python el método de Jacobi en forma matricial, lo mas eficiente es que calculemos en primer lugar las matrices $D, L, U, f=D^{-1}\cdot b$ y $H$. Una vez calculadas, empleamos el resultado para aproximar la solución iterativamente. Veamos con con un ejemplo como construir la matrices. Supongamos que tenemos el siguiente sistema,
+
+\switchcolumn
+
+If we want to implement Jacobi's method in python in matrix form, the most efficient way is to first calculate the matrices $D, L, U, f=D^{-1}{-1} b$ and $H$. Once calculated, we use the result to approximate the solution iteratively. Let's see with an example how to construct the matrices. Suppose we have the following system,
+
+\end{paracol}
+
 \begin{equation*}
 \begin{pmatrix}
 4& 2& -1\\
@@ -2160,270 +2601,298 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
-
-En primer lugar, calculamos la matriz D, a partir de la matriz de coeficientes del sistema, empleando el comando de Matlab \texttt{diag}. Aplicando \texttt{diag} a una matriz extraemos en un vector los elementos de su diagonal, 
-
-\begin{verbatim}
-A =
-
-     4     2    -1
-     3    -5     1
-     1    -1     6
->> d=diag(A)
-d =
-     4
-    -5
-     6
-\end{verbatim}
+\begin{paracol}{2}
+En primer lugar, calculamos la matriz D, a partir de la matriz de coeficientes del sistema, empleando la función \texttt{diag} de \texttt{numpy}. Aplicando \texttt{diag} a una matriz extraemos en un vector los elementos de su diagonal, 
 
 Aplicando \texttt{diag} a un vector construimos una matriz con los elementos del vector colocados sobre la diagonal de la matriz. El resto de los elementos son cero.
 
-\begin{verbatim}
->> D=diag(d)
-D =
-
-     4     0     0
-     0    -5     0
-     0     0     6
-\end{verbatim}
-
 Si aplicamos dos veces \texttt{diag} sobre la matriz de coeficientes de un sistema, obtenemos directamente la matriz $D$,
 
-\begin{verbatim}
->> D=diag(diag(A))
-D =
+\switchcolumn
+First, we calculate the matrix D, from the coefficient matrix of the system, using the \texttt{diag} function of \texttt{numpy}. Applying \texttt{diag} to a matrix, we extract the elements of its diagonal into a vector, 
 
-     4     0     0
-     0    -5     0
-     0     0     6
-\end{verbatim}
+Applying \texttt{diag} to a vector constructs a matrix with the elements of the vector placed on the diagonal of the matrix. The rest of the elements are zero.
 
-Para calcular las matrices $L$ y $U$, podemos emplear los comandos de Matlab, \texttt{triu} y \texttt{tril} que extraen una matriz triangular superior y una matriz triangular inferior, respectivamente, a partir de una matriz dada.
-\begin{verbatim}
->> TU=triu(A)
-TU =
+If we apply \texttt{diag} twice on the matrix of coefficients of a system, we obtain directly the matrix $D$,
+\end{paracol}
 
-     4     2    -1
-     0    -5     1
-     0     0     6
+\begin{minted}{pycon}
+A=np.array([[4., 2.,-1.],[3., -5., 1.],[1., -1., 6.]])
 
->> TL=tril(A)
-TL =
+np.diag(A)
+Out[1]: array([ 4., -5.,  6.])
 
-     4     0     0
-     3    -5     0
-     1    -1     6
-\end{verbatim}
+np.diag(np.diag(A))
+Out[2]: 
+array([[ 4.,  0.,  0.],
+       [ 0., -5.,  0.],
+       [ 0.,  0.,  6.]])
+\end{minted}
 
+\begin{paracol}{2}
+Para calcular las matrices $L$ y $U$, podemos emplear las funciones de \texttt{numpy} \texttt{triu} y \texttt{tril} que extraen una matriz triangular superior y una matriz triangular inferior, respectivamente, a partir de una matriz dada.
+\switchcolumn
+To compute the $L$ and $U$ matrices, we can use the \texttt{numpy} \texttt{triu} and \texttt{tril} which extract an upper triangular matrix and a lower triangular matrix, respectively, from a given matrix.
+\end{paracol}
+\begin{minted}{pycon}
+np.triu(A)
+Out[3]: 
+array([[ 4.,  2., -1.],
+       [ 0., -5.,  1.],
+       [ 0.,  0.,  6.]])
+
+np.tril(A)
+Out[4]: 
+array([[ 4.,  0.,  0.],
+       [ 3., -5.,  0.],
+       [ 1., -1.,  6.]])
+\end{minted}
+\begin{paracol}{2}
+    
 Las matrices $L$ y $U$ son estrictamente triangulares superior e inferior, Podemos obtenerlas restando a las matrices que acabamos de obtener la matriz $D$,
+\switchcolumn
 
-\begin{verbatim}
->> U=triu(A)-D
-U =
+The matrices $L$ and $U$ are strictly upper and lower triangular. We can obtain them by subtracting the matrix $D$ from the matrices we have just obtained,
 
-     0     2    -1
-     0     0     1
-     0     0     0
+\end{paracol}
+\begin{minted}{pycon}
+np.triu(A)-np.diag(np.diag(A))
+Out[5]: 
+array([[ 0.,  2., -1.],
+       [ 0.,  0.,  1.],
+       [ 0.,  0.,  0.]])
 
->> L=tril(A)-D
-L =
+np.tril(A)-np.diag(np.diag(A))
+Out[6]: 
+array([[ 0.,  0.,  0.],
+       [ 3.,  0.,  0.],
+       [ 1., -1.,  0.]])
+\end{minted}
 
-     0     0     0
-     3     0     0
-     1    -1     0
-\end{verbatim}
-
+\begin{paracol}{2}
 También podemos obtenerlas directamente, empleando solo la matriz de coeficientes,
+\switchcolumn
+We can also obtain them directly, using only the coefficient matrix,
+\end{paracol}
 
-\begin{verbatim}
->> U=A-tril(A)
+\begin{minted}{pycon}
+A-np.tril(A)
+Out[7]: 
+array([[ 0.,  2., -1.],
+       [ 0.,  0.,  1.],
+       [ 0.,  0.,  0.]])
 
-U =
+A-np.triu(A)
+Out[8]: 
+array([[ 0.,  0.,  0.],
+       [ 3.,  0.,  0.],
+       [ 1., -1.,  0.]])
+\end{minted}
 
-     0     2    -1
-     0     0     1
-     0     0     0
+\begin{paracol}{2}
+Construimos a continuación el vector $f$, \mintinline{python}{f=(np.linalg.inv(A)).dot(b)} y la matriz del sistema $H$ \mintinline{python}{H=-(np.linalg.inv(A)).dot(U+L)}
+\switchcolumn
+We then construct the vector $f$ \mintinline{python}{f=(np.linalg.inv(A)).dot(b)}, and the matrix of the system $H$ \mintinline{python}{H=-(np.linalg.inv(A)).dot(U+L)}
+\switchcolumn
+A partir de las matrices construidas, el código para calcular una iteración por el método de Jacobi sería simplemente, \mintinline{python}{xs1=f+H.dot(xs)}
+\switchcolumn
 
->> L=A-triu(A)
-
-L =
-
-     0     0     0
-     3     0     0
-     1    -1     0
-\end{verbatim}
-
-Construimos a continuación el vector $f$,
-
-\begin{verbatim}
->> f=D^-1*b
-f =
-
-    1.2500
-    0.8000
-    2.8333
-\end{verbatim}
-
-Construimos la matriz del sistema,
-
-\begin{verbatim}
->> H=-D^-1*(L+U)
-H =
-
-         0    -0.5000   0.2500
-    0.6000          0   0.2000
-   -0.1667     0.1667        0
-\end{verbatim}
-
-
-A partir de las matrices construidas, el código para calcular una iteración por el método de Jacobi sería simplemente,
-
-\begin{verbatim}
-xs1=f+H*xs
-\end{verbatim}
-
-
+From the constructed matrices, the code to compute an iteration by Jacobi's method would be simply, \mintinline{python}{xs1=f+H.dot(xs)}.
+\switchcolumn
 En el siguiente fragmento de código se reúnen todas las operaciones descritas,
+\switchcolumn
+The following code fragment brings together all the operations described,
+\end{paracol}
+\begin{minted}{python}
+def jacobi(A,b,x0,tol,itmax):
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    it=0
+    # Build the matrices D,U,f,H
+    D=np.diag(np.diag(A))
+    U=np.triu(A)-D
+    L=np.tril(A)-D
+    invD=np.linalg.inv(D)
+    f=(invD).dot(b)
+    H=-invD.dot(L+U)
+    # First iteration
+    xs1=f+H.dot(xs)
+    error=np.linalg.norm(xs1-xs)
+    #Iteration counter
+    it+=1
+    '''From here would come the code needed to calculate the successive iterations 
+    until the solution converges''
 
-\begin{lstlisting}
-...
-...
-% obtenemos el tamaño del sistema,
+\end{minted}
 
-n=size(A,1);
-% creamos un vector de soluciones inicial,
-xs=zeros(n,1);
-% creamos las matrices del método
-D=diag(diag(A));
-U=A-tril(A);
-L=A-triu(A);
-% ALternativamente para jacobi podemos crear una solo matriz equivalente a
-% L+U, LpU=A-D
-f=D^-1*b;
-H=-D^-1*(L+U);
-
-% calculamos la primera iteración,
-xs1=f+H*xs;
-% calculamos la diferencia entre las dos soluciones,
-tolf=norm(xs1-xs);
-% ponemos a 1 el contador de iteraciones.
-it=1;
-
-% a partir de aquí vendría el código necesario para calcular las
-% sucesivas iteraciones hasta que la solución converja
-...
-...
-\end{lstlisting}
-
+\begin{paracol}{2}
 \subsection{El método de Gauss-Seidel.} \index{Método de Gauss-Seidel}
 \paragraph{Obtención del algoritmo.} Este método aplica una mejora, sencilla y lógica al método de Jacobi que acabamos de estudiar. Si volvemos a escribir la expresión general para calcular una iteración de una de las componentes de la solución de un sistema por el método de Jacobi,
+\switchcolumn
+\subsection{The Gauss-Seidel method}. \index{Gauss-Seidel's method.}
+\paragraph{Obtaining the algorithm}. This method applies a simple and logical improvement to the Jacobi method we have just studied. If we rewrite the general expression for calculating an iteration of one of the components of the solution of a system by Jacobi's method,
+\end{paracol}
 
 \begin{equation*}
 x_i^{(s+1)}=\frac{b_i-\sum_{j\neq i}a_{ij}x_j^{(s)}}{a_{ii}}
 \end{equation*}
+\begin{paracol}{2}
 
 Observamos que para obtener el término $x_i^{(s+1)}$ empleamos todos los términos $x_j^{(s)}, \ j\neq i$ de la iteración anterior. Sin embargo, es fácil darse cuenta que, como el algoritmo va calculando las componentes de cada iteración por orden, cuando vamos a calcular $x_i^{(s+1)}$, disponemos ya del resultado de todas las componentes anteriores de la solución para la iteración $s+1$. Es decir, sabemos ya cuál es el resultado de $x_l^{(s+1)}, \  l<i$. Si el algoritmo converge, esta soluciones serán mejores que las obtenidas en la iteración anterior. Si las usamos para calcular $x_i^{(s+1)}$ el resultado que obtendremos, será más próximo a la solución exacta y por tanto el algoritmo converge más deprisa.
 
 La idea, por tanto sería: 
 
 Para calcular $x_1^{(s+1)}$ procedemos igual que en el método de Jacobi. 
+
+\switchcolumn
+
+We observe that to obtain the term $x_i^{(s+1)}$ we use all the terms $x_j^{(s)}, jneq i$ of the previous iteration. However, it is easy to realise that, as the algorithm calculates the components of each iteration in order, when we calculate $x_i^{(s+1)}$, we already have the result of all the previous components of the solution for iteration $s+1$. That is, we already know the result of $x_l^{(s+1)}$, \ $l<i$. If the algorithm converges, these solutions will be better than those obtained in the previous iteration. If we use them to calculate $x_i^{(s+1)}$, the result we obtain will be closer to the exact solution and therefore the algorithm converges faster.
+
+The idea, therefore, would be: 
+
+To calculate $x_1^{(s+1)}$ we proceed in the same way as in Jacobi's method. 
+
+\end{paracol}
+
 \begin{equation*}
 x_1^{(s+1)}=\frac{b_1-\sum_{j=2}^n a_{1j}x_j^{(s)}}{a_{11}}
 \end{equation*}
+
+\begin{paracol}{2}
 Para calcular $x_2^{(s+1)}$ usamos la solución que acabamos de obtener  $x_1^{(s+1)}$ y todas las restantes soluciones de las iteraciones anteriores,
+\switchcolumn
+To calculate $x_2^{(s+1)}$ we use the solution we have just obtained $x_1^{(s+1)}$ and all the remaining solutions from the previous iterations,
+\end{paracol}
 \begin{equation*}
 x_2^{(s+1)}=\frac{b_2-a_{21}x_1^{s+1}-\sum_{j=3}^na_{2j}x_j^{(s)}}{a_{22}}
 \end{equation*}
+\begin{paracol}{2}
 
 Para calcular $x_3^{(s+1)}$ usamos las dos soluciones que acabamos de obtener  $x_1^{(s+1)}$, $x_2^{(s+1)}$ y todas las restantes soluciones de las iteraciones anteriores,
+\switchcolumn
+
+To calculate $x_3^{(s+1)}$ we use the two solutions we have just obtained $x_1^{(s+1)}$, $x_2^{(s+1)}$ and all the remaining solutions from the previous iterations,
+\end{paracol}
 
 \begin{equation*}
 x_3^{(s+1)}=\frac{b_3-a_{31}x_1^{s+1}-a_{32}x_2^{s+1}-\sum_{j=4}^na_{3j}x_j^{(s)}}{a_{33}}
 \end{equation*}
-
+\begin{paracol}{2}
 Y para una componente $i$ cualquiera de la solución, obtenemos la expresión expresión general del método de Gauss-Seidel,
+\switchcolumn
+And for any $i$ component of the solution, we obtain the general expression of the Gauss-Seidel method,
+\end{paracol}
   
 \begin{equation*}
 x_i^{(s+1)}=\frac{b_i-\sum_{j< i}a_{ij}x_j^{(s+1)}-\sum_{j> i}a_{ij}x_j^{(s)}}{a_{ii}}
 \end{equation*}
 
-El siguiente código de Matlab implementa una iteración del método de Gauss-Seidel y puede considerarse como la función $M(\cdot)$, incluida en el diagrama de flujo de la figura \ref{fig:itera}, para dicho método.
+\begin{paracol}{2}
 
-\begin{lstlisting}
-    xs=xs1;
-    % volvemos a inicializar el vector de soluciones al valor de los
-    % terminos independientes
-    xs1=b; 
-    for i=1:n % bucle para recorrer todas las ecuaciones
-        for j=1:i-1 % restamos la contribucion de todas las incognitas
-            xs1(i)=xs1(i)-A(i,j)*xs1(j);       % por encima de x(i)
-        end
-        for j=i+1:n % restamos la contribución de todas las incognitas
-            % por debajo de x(i)
-            xs1(i)=xs1(i)-A(i,j)*xs(j);
-        end
-        % dividimos por el elemento de la diagonal,
-        xs1(i)=xs1(i)/A(i,i);
-    end
-     % calculamos la diferencia entre las dos soluciones,
-        tolf=norm(xs1-xs);
-        % incrementamos el contador de iteraciones
-        it=it+1;
-\end{lstlisting}
+El siguiente código implementa una iteración del método de Gauss-Seidel y puede considerarse como la función $M(\cdot)$, incluida en el diagrama de flujo de la figura \ref{fig:itera}, para dicho método. 
 
+\switchcolumn
+The following code implements an iteration of the Gauss-Seidel method and can be considered as the function $M(\cdot)$, included in the flowchart in figure \ref{fig:itera}, for the Gauss-Seidel method.    
+
+\switchcolumn
 Es interesante destacar, que el único cambio en todo el código respecto al método de Jacobi es la sustitución de la variable \texttt{xs(j)} por la variable \texttt{xs1(j)} al final del primer bucle for anidado.
-
+\switchcolumn
+Interestingly, the only change in the entire code from Jacobi's method is the replacement of the variable \texttt{xs(j)} with the variable \texttt{xs1(j)} at the end of the first nested for loop.
+\end{paracol}
+\begin{minted}{python}
+        # For all the equations
+        xs1=b.copy()
+        for i in range(nf):
+            # For all the terms above x[i]
+            for j in range(i):
+                xs1[i]-=A[i,j]*xs1[j]
+            #For all the terms below x[i]    
+            for j in range(i+1,nf):
+                xs1[i]-=A[i,j]*xs[j]
+            xs1[i]=xs1[i]/A[i,i]
+        error= np.linalg.norm(xs1-xs)
+        xs=xs1.copy()
+        it+=1
+\end{minted}
+\begin{paracol}{2}
 \paragraph{Forma matricial del método de Gauss-Seidel.} \index{Método de Gauss-Seidel! Forma matricial} De modo análogo a cómo hicimos para el método de Jacobi, es posible obtener una solución matricial para el método de Gauss-Seidel. 
+\switchcolumn
 
-Supongamos que realizamos la misma descomposición en sumandos de la matriz de coeficientes que empleamos para el método de Jacobi,
+\paragraph{Matrix form of the Gauss-Seidel method}. \index{Gauss-Seidel's method! Matrix form} Analogous to how we did for Jacobi's method, it is possible to obtain a matrix solution for the Gauss-Seidel method. 
+\switchcolumn
+Supongamos que realizamos la misma descomposición en sumandos de la matriz de coeficientes que empleamos para el método de Jacobi,    
+\switchcolumn
+
+Suppose we perform the same decomposition into summands of the coefficient matrix as we did for Jacobi's method,
+
+\end{paracol}
 
 \begin{equation*}
 A\cdot x =b \rightarrow (D+L+U)\cdot x=b
 \end{equation*}  
+
+\begin{paracol}{2}
 En este caso, en cálculo de cada componente de la solución en una iteración intervienen las componentes de la iteración anterior que están por debajo de la que queremos calcular, por tanto solo deberemos pasar a la derecha de la igualdad, la matriz $U$, Que contiene los coeficientes que multiplican a dichas componentes,
+\switchcolumn
+In this case, the calculation of each component of the solution in an iteration involves the components of the previous iteration that are below the one we want to calculate, therefore we only have to pass to the right of the equality, the matrix $U$, which contains the coefficients that multiply these components,
+\end{paracol}
 
 \begin{equation*}
 (D+L+U)\cdot x=b \rightarrow (D+L)\cdot x= b-U\cdot x
 \end{equation*}
 
+\begin{paracol}{2}
+    
 Sustituyendo $x$ a cada lado de la igualdad por $x^{(s+1)}$ y $x^{(s)}$ y multiplicando por la inversa de $D+U$ a ambos lados, obtenemos la expresión en forma matricial del cálculo de una iteración por el método de Gauss-Seidel,
+
+\switchcolumn
+
+Substituting $x$ on each side of the equality for $x^{(s+1)}$ and $x^{(s)}$ and multiplying by the inverse of $D+U$ on both sides, we obtain the expression in matrix form of the calculation of an iteration by the Gauss-Seidel method,
+
+\end{paracol}
 
 \begin{equation*}
 x^{(s+1)}= (D+L)^{-1}\cdot b-(D+L)^{-1}\cdot U\cdot x^{(s)}
 \end{equation*}
 
+\begin{paracol}{2}
+
 Igual que hemos hecho en con el método de Jacobi, podemos identificar las partes fijas que no cambian al iterar: $f=(D+L)^{-1}\cdot b$ y la matriz del método, que en este caso es, $H=-(D+L)^{-1}\cdot U$.
 
-El siguiente fragmento de código muestra la construcción de las matrices necesarias para implementar en Matlab el método de Gauss-Seidel,
-\begin{lstlisting}
-...
-...
-% obtenemos el tamaño del sistema,
+El siguiente fragmento de código muestra la construcción de las matrices necesarias para implementar el método de Gauss-Seidel,
 
-n=size(A,1);
-% creamos un vector de soluciones inicial,
-xs=zeros(n,1);
-% calculamos las matrices necesarias
+\switchcolumn
+As we have done with Jacobi's method, we can identify the fixed parts that do not change when iterating:  $f=(D+L)^{-1}\cdot b$ and the method matrix, that in this case is, $H=-(D+L)^{-1}\cdot U$. 
 
-D=diag(diag(A));
-U=A-tril(A);
-L=A-triu(A);
+The following code fragment shows the construction of the matrices needed to implement the Gauss-Seidel method,
+\end{paracol}
 
-f=(D+L)^(-1)*b;
-H=-(D+L)^(-1)*U
+\begin{minted}{python}
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    D=np.diag(np.diag(A))
+    U=np.triu(A)-D
+    L=np.tril(A)-D
+    invD=np.linalg.inv(D+L)
+    f=(invD).dot(b)
+    H=-invD.dot(U)
+    # First iteration
+    xs1=f+H.dot(xs)
+    error=np.linalg.norm(xs1-xs)
+    it+=1
+    '''From here would come the code needed to calculate the 
+    successive iterations until the solution converges''
 
-% calculamos la primera iteración
-xs1=f+H*xs;
-% calculamos la diferencia entre las dos soluciones,
-tolf=norm(xs1-xs);
-% ponemos a 1 el contador de iteraciones.
-it=1;
-
-% A partir de aquí vendría el código necesario para calcular las 
-% Sucesivas iteraciones hasta que la solución converja.
-\end{lstlisting}
-
+\end{minted}
+\begin{paracol}{2}
 En general, el método de Gauss-Seidel es capaz de obtener soluciones, para un sistema dado y un cierto valor de tolerancia, empleando menos iteraciones que el método de Jacobi. Por ejemplo, si aplicamos ambos métodos a la resolución del sistema,
+\switchcolumn
+In general, the Gauss-Seidel method is able to obtain solutions, for a given system and a certain tolerance value, using fewer iterations than the Jacobi method. For example, if we apply both methods to the solution of the system,
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -2440,173 +2909,226 @@ x_3
 17
 \end{pmatrix}
 \end{equation*}
+\begin{paracol}{2}
+Empleando en ambos casos una tolerancia $tol=0.00001$, el método de Jacobi necesita 23 iteraciones para lograr una solución, mientras que el de Gauss-Seidel solo necesita 13. La figura \ref{fig:gjcom}, muestra la evolución de la tolerancia $tol=\lVert x^{(s+1)}-x^{(s)} \rVert$, en función del número de iteración. En ambos casos el valor inicial de la solución se tomó como el vector $(0,0,0)^T$.
+\switchcolumn
+Using in both cases a tolerance $tol=0.00001$, the Jacobi method needs 23 iterations to achieve a solution, while the Gauss-Seidel method needs only 13. The figure \ref{fig:gjcom}, shows the evolution of the tolerance $tol=\lVert x^{(s+1)}-x^{(s)} \rVert$, as a function of the iteration number. In both cases the initial value of the solution was taken as the vector $(0,0,0)^T$.
+\end{paracol}
 
-Empleando en ambos casos una tolerancia $tol=0.0000	1$, el método de Jacobi necesita 23 iteraciones para lograr una solución, mientras que el de Gauss-Seidel solo necesita 13. La figura \ref{fig:gjcom}, muestra la evolución de la tolerancia $tol=\lVert x^{(s+1)}-x^{(s)} \rVert$, en función del número de iteración. En ambos casos el valor inicial de la solución se tomó como el vector $(0,0,0)^T$.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=16cm]{gjcom.eps}
-\caption{evolución de la tolerancia (módulo de la diferencia entre dos soluciones sucesivas) para un mismo sistema resuelto mediante el método de Gauss-Seidel y el método de Jacobi}
+\bicaption{evolución de la tolerancia (módulo de la diferencia entre dos soluciones sucesivas) para un mismo sistema resuelto mediante el método de Gauss-Seidel y el método de Jacobi}{evolution of the tolerance (modulus of the difference between two successive solutions) for the same system solved by the Gauss-Seidel method and the Jacobi method}
 \label{fig:gjcom}
 \end{figure}
+\begin{paracol}{2}
 
 \subsection{Amortiguamiento.} \index{Métodos amortiguados} El amortiguamiento consiste en modificar un método iterativo, de modo que en cada iteración, se da como solución la media ponderada de los resultados de dos iteraciones sucesivas,
 \begin{equation*}
 x^{(s+1)}=\omega \cdot x^{*}+(1-\omega) \cdot x^{(s)}
 \end{equation*}
 
+\switchcolumn
+\subsection{Weighted methods.} \index{Weighted methods} In weighted iterations we  modify an iterative method so that at each iteration, the weighted average of the results of two successive iterations is given as the solution,
+\begin{equation*}
+x^{(s+1)}=\omega \cdot x^{*}+(1-\omega) \cdot x^{(s)}
+\end{equation*}
+
+\switchcolumn
+
 Donde $x^{(*)}$ representa el valor que se obtendría aplicando una iteración del método a $x^{(s)}$, es decir sería el valor de $x^{(s+1)}$ si no se aplica amortiguamiento.
 
-El parámetro $\omega$ recibe el nombre de factor de relajamiento. Si $0<\omega<1$ se trata de un método de subrelajación. Su uso permite resolver sistemas que no convergen si se usa el mismo método sin relajación. Si $w>1$ el método se llama de sobrerelajación, permite acelerar la convergencia respecto al mismo método sin relajación. Por último, si hacemos $\omega=1$, recuperamos el método original sin relajación.
+El parámetro $\omega$ recibe el nombre de factor de relajamiento. Si $0<\omega<1$ se trata de un método de subrelajación. Su uso permite resolver sistemas que no convergen si se usa el mismo método sin relajación. Si $\omega>1$ el método se llama de sobrerelajación, permite acelerar la convergencia respecto al mismo método sin relajación. Por último, si hacemos $\omega=1$, recuperamos el método original sin relajación.
+
+\switchcolumn
+Where $x^{(*)}$ represents the value that would be obtained by applying one iteration of the method to $x^{(s)}$, i.e. it would be the value of $x^{(s+1)}$ if no weight were applied.
+
+The parameter $\omega$ is called the relaxation factor. If $$0<\omega<1$$ this is a method of under-relaxation. Its use makes it possible to solve systems that do not converge if the same method is used without relaxation. If $\omega>1$ the method is called over-relaxation, it allows to accelerate the convergence with respect to the same method without relaxation. Finally, if we make $\omegaº=1$, we recover the original method without relaxation.
+
+\switchcolumn
 
 \paragraph{El método de Jacobi amortiguado.} \index{Método de Jacobi amortiguado} Se obtiene aplicando el método de relajación que acabamos de describir, al método de Jacobi. La expresión general de una iteración del método de Jacobi amortiguando sería,
+
+\switchcolumn
+\paragraph{The weighted Jacobi method.} \index{Weighted Jacobi method}This is obtained by applying the relaxation method just described to Jacobi's method. The general expression for an iteration of the damped Jacobi method would be,
+\end{paracol}
+
 \begin{equation*}
 x_i^{(s+1)}=\omega\cdot \overbrace{\frac{b_i-\sum_{j\neq i}a_{ij}x_j^{(s)}}{a_{ii}}}^{x^{(*)}}+(1- \omega)\cdot x_i^{s}
 \end{equation*}
 
-Para implementarlo en Matlab, bastaría añadir al código del método de Jacobi una línea incluyendo el promedio entre las dos soluciones sucesivas,
+\begin{paracol}{2}
+    Para implementarlo, bastaría añadir al código del método de Jacobi una línea incluyendo el promedio entre las dos soluciones sucesivas,
+    \switchcolumn
+To implement it, it would be sufficient to add to the code of Jacobi's method a line including the average between the two successive solutions,
+\end{paracol}
 
-\begin{lstlisting}
-while norm(xs1-xs)>tol
- 	xs=xs1;
-    % volvemos a inicializar el vector de soluciones al valor de los
-    % terminos independientes
-    xs1=b; 
-    for i=1:n % bucle para recorrer todas las ecuaciones
-        for j=1:i-1 % restamos la contribucion de todas las incognitas
-            xs1(i)=xs1(i)-A(i,j)*xs(j);       % por encima de x(i)
-        end
-        for j=i+1:n % restamos la contribución de todas las incognitas
-            % por debajo de x(i)
-            xs1(i)=xs1(i)-A(i,j)*xs(j);
-        end
-        % dividimos por el elemento de la diagonal,
-        xs1(i)=xs1(i)/A(i,i);
-    end
-    % promediamos la solución obtenida con la anterior (amortiguamiento)
-    xs1=w*xs1+(1-w)*xs
-end
-\end{lstlisting}
+\begin{minted}{python}
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    while error>tol:
+        # For all the equations
+        xs1=b.copy()
+        for i in range(nf):
+            for j in range(i):
+                xs1[i]-=A[i,j]*xs[j]
+
+            for j in range(i+1,nf):
+                xs1[i]-=A[i,j]*xs[j]
+            xs1[i]=xs1[i]/A[i,i]
+        # Weighted iteration
+        xs1=w*xs1+(1-w)*xs
+        error= np.linalg.norm(xs1-xs)
+        xs=xs1.copy()
+        it+=1
+        if it>itmax:
+            break
+\end{minted}
+
+\begin{paracol}{2}
 
 En forma matricial, la expresión general del método de Jacobi amortiguado sería,
-
+\switchcolumn
+In matrix form, the general expression for the damped Jacobi method would be,
+\end{paracol}
 \begin{equation*}
 x^{(s+1)}=\omega\cdot\overbrace{\left(D^{-1}\cdot b- D^{-1}\cdot\left(L+U\right)\cdot x^{(s)}\right)}^{x^{(*)}}+(1-w)x^{(s)}
 \end{equation*}
+
+\begin{paracol}
 Si reorganizamos esta expresión,
+\switchcolumn
+Reordering the expression,
+\end{paracol}
+
 
 \begin{equation*}
 x^{(s+1)}=\omega\cdot D^{-1}\cdot b+ \left[(1-w)\cdot I - w\cdot  D^{-1}\cdot  \left(L+U \right)\right]\cdot x^{(s)}
 \end{equation*}
 
+\begin{paracol}{2}
 Podemos identificar fácilmente el termino fijo, $f=\omega\cdot D^{-1}\cdot b$ y la matriz del método $H=\left((1-w)\cdot I - w\cdot  D^{-1}\cdot  \left(L+U \right)\right)$.
 
-Para implementar el código del método de Jacobi amortiguado en Matlab, debemos calcular la matriz identidad del tamaño de sistema y modificar las expresiones de $f$ y $H$,
+Para implementar el código del método de Jacobi amortiguado, debemos calcular la matriz identidad del tamaño de sistema y modificar las expresiones de $f$ y $H$,
 
-\begin{lstlisting}
-...
-...
-% obtenemos el tamaño del sistema,
+\switchcolumn
+We can easily identify the fixed term  $f=\omega\cdot D^{-1}\cdot b$ and the method matrix $H=\left((1-w)\cdot I - w\cdot  D^{-1}\cdot  \left(L+U \right)\right)$.
 
-n=size(A,1);
-% creamos un vector de soluciones inicial,
-xs=zeros(n,1);
-% creamos las matrices del método
-D=diag(diag(A));
-U=A-tril(A);
-L=A-triu(A);
-I=eye(n);
-% Alternativamente para jacobi podemos crear una solo matriz equivalenta a
-% L+U, LpU=A-D
-f=w*D^-1*b;
-H=-w*D^-1*(L+U)+(1-w)*I;
+To implement the code of the damped Jacobi method, we must calculate the identity matrix of the system size and modify the expressions of $f$ and $H$,
 
-% calculamos la primera iteración,
-xs1=f+H*xs;
-% calculamos la diferencia entre las dos soluciones,
-tolf=norm(xs1-xs);
-% ponemos a 1 el contador de iteraciones.
-it=1;
+\end{paracol}
 
-% a partir de aquí vendría el código necesario para calcular las
-% sucesivas iteraciones hasta que la solución converja
-...
-...
-\end{lstlisting}
+\begin{minted}{python}
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    D=np.diag(np.diag(A))
+    U=np.triu(A)-D
+    L=np.tril(A)-D
+    invD=np.linalg.inv(D)
+    I=np.eye(nf)
+    f=w*(invD).dot(b)
+    H=(1-w)*I-w*invD.dot(L+U)
+    # First iteration
+    xs1=f+H.dot(xs)
+    error=np.linalg.norm(xs1-xs)
+    it+=1
+    '''From here would come the code needed to calculate the 
+    successive iterations until the solution converges''
 
+\end{minted}
+\begin{paracol}{2}
 \paragraph{El método SOR.} \index{Método SOR}El método SOR --\emph{Succesive OverRelaxation}-- se obtiene aplicando amortiguamiento al método de Gauss-Seidel. Aplicando el mismo razonamiento que el caso de Jacobi amortiguado, la expresión general para una iteración del método SOR es,
+\switchcolumn
+\paragraph{The SOR method}. \index{SOR method}The SOR method -- ‘successive over-relaxation’ -- is obtained by applying a weigth to the Gauss-Seidel method. Applying the same reasoning as the weighted Jacobi case, the general expression for an iteration of the SOR method is,
+\end{paracol}
 
 \begin{equation*}
 x_i^{(s+1)}=\omega\cdot \overbrace{\frac{b_i-\sum_{j< i}a_{ij}x_j^{(s+1)}-\sum_{j> i}a_{ij}x_j^{(s)}}{a_{ii}}}^{x^{(*)}}+(1-\omega)\cdot x_i^{(s)}
 \end{equation*}
 
-Al igual que en el caso de Jacobi amortiguado, para implementar en Matlab el método SOR es suficiente añadir una línea que calcule el promedio de dos soluciones sucesivas,
+\begin{paracol}{2}
 
-\begin{lstlisting}
-    xs=xs1;
-    % volvemos a inicializar el vector de soluciones al valor de los
-    % terminos independientes
-    xs1=b; 
-    for i=1:n % bucle para recorrer todas las ecuaciones
-        for j=1:i-1 % restamos la contribucion de todas las incognitas
-            xs1(i)=xs1(i)-A(i,j)*xs1(j);       % por encima de x(i)
-        end
-        for j=i+1:n % restamos la contribución de todas las incognitas
-            % por debajo de x(i)
-            xs1(i)=xs1(i)-A(i,j)*xs(j);
-        end
-        % dividimos por el elemento de la diagonal,
-        xs1(i)=xs1(i)/A(i,i);
-    end
-     % amortiguamos la solución
-      xs1=w*xs1+(1-w)*xs;
-     % calculamos la diferencia entre las dos soluciones,
-        tolf=norm(xs1-xs);
-        % incrementamos el contador de iteraciones
-        it=it+1;
-\end{lstlisting}
+Al igual que en el caso de Jacobi amortiguado, para implementar el método SOR es suficiente añadir una línea que calcule el promedio de dos soluciones sucesivas,
+\switchcolumn
+As in the case of the damped Jacobi, to implement the SOR method it is sufficient to add a line that calculates the average of two successive solutions,
+\end{paracol}
 
+\begin{minted}{python}
+        # For all the equations
+        xs1=b.copy()
+        for i in range(nf):
+            # For all the terms above x[i]
+            for j in range(i):
+                xs1[i]-=A[i,j]*xs1[j]
+            #For all the terms below x[i]    
+            for j in range(i+1,nf):
+                xs1[i]-=A[i,j]*xs[j]
+            xs1[i]=xs1[i]/A[i,i]
+        xs1=w*xs1+(1-w)*xs
+        error= np.linalg.norm(xs1-xs)
+        xs=xs1.copy()
+        it+=1
+ 
+\end{minted}
+
+\begin{paracol}{2}
 En forma matricial la expresión para una iteración del método SOR sería,
+\switchcolumn
+In matrix form the expression for one iteration of the SOR method would be,
+\end{paracol}
 \begin{equation*}
 x^{(s+1)}= \omega\cdot\overbrace{\left((D+L)^{-1}\cdot b-(D+L)^{-1}\cdot U\cdot x^{(s)}\right)}^{x^{(*)}}+(1-\omega)\cdot x^{(s)}
 \end{equation*}
+\begin{paracol}{2}
 
 Y tras reordenar,
+
+\switchcolumn
+And after reordering,
+
+\end{paracol}
 
 \begin{equation*}
 x^{(s+1)}= \omega\cdot\left((D+L)^{-1}\cdot b\right)+\left[(1-\omega)\cdot I-\omega\cdot(D+L)^{-1}\cdot U\right]\cdot x^{(s)}
 \end{equation*}
 
+\begin{paracol}{2}
 De nuevo, podemos identificar, el término fijo, $f=\omega\cdot\left((D+L)^{-1}\cdot b\right)$ y la matriz del método, $H=\left((1-\omega)\cdot I-\omega\cdot(D+L)^{-1}\cdot U\right)$.
 
 El siguiente fragmento de código muestra la obtención de $f$ y $H$ para el método SOR,
 
-\begin{lstlisting}
-% obtenemos el tamaño del sistema,
+\switchcolumn
 
-n=size(A,1);
-% creamos un vector de soluciones inicial,
-xs=zeros(n,1);
-% calculamos las matrices necesarias
+Again, we can identify the fixed term, $f=\omega\cdot\left((D+L)^{-1}\cdot b\right)$ and the method matrix, $H=\left((1-\omega)\cdot I-\omega\cdot(D+L)^{-1}\cdot U\right)$.
 
-D=diag(diag(A));
-U=A-tril(A);
-L=A-triu(A);
-I=eye(n);
+The following code fragment shows how $f$ and $H$ are obtained for the SOR method,    
+\end{paracol}
 
-
-f=w*(D+L)^(-1)*b;
-H=(1-w)*I-w*(D+L)^(-1)*U;
-
-
-% calculamos la primera iteración
-xs1=f+H*xs;
-
-% calculamos la diferencia entre las dos soluciones,
-tolf=norm(x-x0);
-% ponemos a 1 el contador de iteraciones.
-it=1;
-\end{lstlisting}
+\begin{minted}{python}
+    [nf,nc]=np.shape(A)
+    xs=x0.copy()
+    xs1=b.copy()
+    error= np.linalg.norm(xs1-xs)
+    it=0
+    D=np.diag(np.diag(A))
+    U=np.triu(A)-D
+    L=np.tril(A)-D
+    invD=np.linalg.inv(D+L)
+    I=np.eye(nf)
+    f=w*(invD).dot(b)
+    H=(1-w)*I-w*invD.dot(U)
+    #First iteration
+    xs1=f+H.dot(xs)
+    error=np.linalg.norm(xs1-xs)
+    it+=1
+    xs=xs1.copy()
+    
+\end{minted}
+%%%%%% FRONTERA %%%%%%%%%%%%%%%%
 
 \subsection{Análisis de convergencia}\index{Análisis de convergencia}
 En la introducción a los métodos iterativos dejamos abierta la cuestión de su convergencia. Vamos a analizar en más detalle en qué condiciones podemos asegurar que un método iterativo, aplicado a un sistema de ecuaciones lineales concreto, converge. 
