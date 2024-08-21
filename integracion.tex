@@ -1,16 +1,32 @@
-\chapter{Diferenciación e Integración numérica}
-
+\chapter{Diferenciación e Integración numérica\\ Numerical differentiation and integration}
+\chaptermark{Difer. e integr. num. \textreferencemark\ NUm. Diff. and Integr. }
 \epigraph{You never really understand a person until you consider things from his point of view...until you climb into his skin and walk around in it.}{Harper Lee, To kill a mokingbird}
 
-La diferenciación, y sobre todo la integración son operaciones habituales en cálculo numérico. En muchos casos obtener la expresión analítica de la derivada o la integral de una función puede ser muy complicado o incluso imposible. Además en ocasiones no disponemos de una expresión analítica para la función que necesitamos integrar o derivar, sino tan solo de un conjunto de valores numéricos de la misma. Este es el caso, por ejemplo, cuando estamos trabajando con datos experimentales. Si solo disponemos de valores numéricos, entonces solo podemos calcular la integral o la derivada numéricamente.
+
+\begin{paracol}{2}
+La diferenciación, y sobre todo la integración son operaciones habituales en cálculo nu\-mérico. En muchos casos obtener la expresión analítica de la derivada o la integral de una función puede ser muy complicado o incluso imposible. Además en ocasiones no disponemos de una expresión analítica para la función que necesitamos integrar o derivar, sino tan solo de un conjunto de valores numéricos de la misma. Este es el caso, por ejemplo, cuando estamos trabajando con datos experimentales. Si solo disponemos de valores numéricos, entonces solo podemos calcular la integral o la derivada numéricamente.
 
 Los sistemas físicos se describen generalmente mediante ecuaciones diferenciales.  La mayoría de las ecuaciones diferenciales no poseen una solución analítica, siendo posible únicamente obtener soluciones numéricas. 
 
-En términos generales la diferenciación numérica consiste en aproximar el valor que toma la derivada de una función en un punto. De modo análogo, la integración numérica aproxima el valor que toma la integral de una función en un intervalo.
+En términos generales la diferenciación nu\-mérica consiste en aproximar el valor que toma la derivada de una función en un punto. De modo análogo, la integración numérica aproxima el valor que toma la integral de una función en un intervalo.
 
 \section{Diferenciación numérica.}
-
+\sectionmark{Diferenciación numérica. \textreferencemark\ Nunerical differentiation.}
 Como punto de partida, supondremos que tenemos un conjunto de puntos $\{x_i,y_i\}$,
+
+\switchcolumn
+
+
+Differentiation and, above all, integration are very common operations in numerical computing. In many cases, obtaining the analytical expression for a function derivative or integral can be very complex or even impossible. Besides, sometimes we have not an analytical expression for the function we need to derivate of integrate, but only a set of numerical values of it. This is the case, for example, when we are worming with experimental data. If we only have numerical values of the function, we can only compute the derivative or integral numerically.
+
+Physical systems are usually describe by differential equations. Most differential equations do not have an analytical solution and thus, we can only obtain numerical solution for them.
+
+In general, numerical differentiation approximates the value taken by the derivative of a function at a specific point. Similarly, numerical integration approximates the value taken by the integral of a function in an interval.
+
+\section{Numerical differentiation.}
+We start taking a set of pairs of points $\{x_i,y_i\}$,
+\end{paracol}
+
 \begin{table}[h]
 \centering
 \begin{tabular}{c|cccc}
@@ -19,31 +35,45 @@ x&$x_0$&$x_1$&$\cdots$&$x_n$\\
 y&$y_0$&$y_1$&$\cdots$&$y_n$
 \end{tabular}
 \end{table} 
-
+\begin{paracol}{2}
 Que pertenecen a una función $y=f(x)$ que podemos o no conocer analíticamente. El objetivo de la diferenciación numérica es estimar el valor de la derivada $f'(x)$ de la función, en alguno de los puntos $x_i$ en los que el valor de $f(x)$ es conocido. 
 
 En general existen dos formas de aproximar la derivada:
 
-\begin{enumerate}
-\item Derivando el polinomio de interpolación. De este modo, obtenemos un nuevo polinomio que aproxima la derivada.
+1. Derivando el polinomio de interpolación. De este modo, obtenemos un nuevo polinomio que aproxima la derivada.
+
+\switchcolumn	
+Which belong to a function $y = f(x)$ whose analytical expression we may know or may not know. The goal of numerical differentiation is to estimate the value of the function derivative $f'(x)$, in any of the points $x_i$ where the function value $f(x)$ is known.
+
+We can distinguish two different method to approximate the derivative:
+
+1. WE can derivate the polynomial that interpolates the point. So, we get a new polynomial that approximate the derivative.  
+\end{paracol}
 \begin{equation*}
 f(x)\approx P_n(x) \Rightarrow f'(x) \approx P'_n(x)
 \end{equation*}
+\begin{paracol}{2}
+2. Estimando la derivada como una fórmula de diferencias finitas obtenida a partir de la aproximación del polinomio de Taylor. 
 
-\item Estimando la derivada como una fórmula de diferencias finitas obtenida a partir de la aproximación del polinomio de Taylor. 
+Si partimos de la definición de derivada,
 
-Si partimos de la definición de derivada, 
+\switchcolumn
+2. Estimating the derivativa using a finite differences quotient obtained from the Taylor polinomial expansion.
+
+If we start from the definition of derivative,
+\end{paracol} 
 \begin{equation*}
 f'(x_0)=\lim_{h\rightarrow 0}\frac{f(x_0+h)-f(x_0)}{h} \approx \frac{f(x_0+h)-f(x_0)}{h} 
 \end{equation*}
-\end{enumerate}
-
+\begin{paracol}{2}
 Podemos asociar esta aproximación con el polinomio de Taylor de primer orden de la función $f(x)$,
-
+\switchcolumn
+We can associate this approach with the first-degree Taylor polynomial expansion of functions $f(x)$
+\end{paracol}
 \begin{equation*}
 f(x)\approx f(x_0)+f'(x_0)\cdot(x-x_0) \Rightarrow f'(x_0)\approx \frac{f(x)-f(x_0)}{x-x_0}
 \end{equation*}
-
+\begin{paracol}{2}
 Si hacemos $x-x_0=h$, ambas expresiones coinciden.
  
 En general, los algoritmos de diferenciación numérica son inestables. Los errores iniciales que puedan contener los datos debido a factores experimentales o al redondeo del ordenador, aumentan en el proceso de diferenciación. Por eso no se pueden calcular derivadas de orden alto y, los resultados obtenidos de la diferenciación numérica deben tomarse siempre extremando la precaución.
@@ -53,42 +83,67 @@ En general, los algoritmos de diferenciación numérica son inestables. Los erro
 El método consiste en derivar el polinomio $P_n(x)$ de interpolación obtenido por alguno de los métodos estudiados en el capítulo \ref{interpolacion} y evaluar el polinomio derivada $P'_n(x)$ en el punto deseado.
 
 Un ejemplo particularmente sencillo, para la expresión del polinomio derivada se obtiene  en el caso de datos equidistantes interpolados mediante el polinomio de Newton-Gregory,
+\switchcolumn	
+If we take $x-x_0 = h$ both expressions meet.
 
+In general, the numerical differentiation algorithms are unstable. Initial data errors due to experimental factors or computer rounding off increase with the differentiation process. For this reason, it is not possible to compute high-order derivatives, and the results achieved from numerical differentiation must always be considered extremely carefully.
+
+\subsection{Numerical differentiation\\ base on the interpolation polynomial.}\index[eng]{differentiation! interpolation polynomial}
+
+The method involves deriving the polynomial $P_n(x)$ using any of the methods described in chapter \ref{interpolacion} and then evaluating the derivative polynomial $P_n'(x)$ at the desired point.
+
+WE can obtain a specially simple expression for the derivative polynomial, in the case o equispaced points interpolated by the newton-Gregory polynomial, 
+\end{paracol}
 \begin{equation*}
 p_n(x)=y_0+\frac{x-x_0}{h}\Delta y_0+\frac{(x-x_1)\cdot (x-x_0)}{2\cdot h^2}\Delta^2 y_0+\cdots +\frac{(x-x_{n-1}) \cdots (x-x_1)\cdot (x-x_0)}{n! \cdot h^n}\Delta^n y_0
 \end{equation*}
-
+\begin{paracol}{2}
 Si lo derivamos, obtenemos un nuevo polinomio,
-
+\switchcolumn
+And after deriving, we obtain a new polynomial,
+\end{paracol}
 \begin{align*}
 p'_n(x)&=\frac{\Delta y_0}{h}+\frac{\Delta^2 y_0}{2\cdot h^2}\left[(x-x_1)+(x-x_0) \right] +\\
 &+\frac{\Delta^3 y_0}{3! \cdot h^3}\left[(x-x_1)(x-x_2)+(x-x_0)(x-x_1)+(x-x_0)(x-x_2)\right]+\cdots +\\
 &+\frac{\Delta^n y_0}{n! \cdot h^n}\sum_{k=0}^{n-1}\frac{(x-x_0)(x-x_1)\cdots (x-x_{n-1})}{x-x_k}
 \end{align*}
-
+\begin{paracol}{2}
 Este polinomio es especialmente simple de evaluar en el punto $x_0$,
-
+\switchcolumn
+To evaluate this polynomial at point $x_0$ is particularly easy,
+\end{paracol}
 \begin{align*}
 p'_n(x_0)&=\frac{\Delta y_0}{h}+\frac{\Delta^2 y_0}{2\cdot h^2}\overbrace{(x_0-x_1)}^{-h}+\cdots +
 \frac{\Delta^n y_0}{n! \cdot h^n}[\overbrace{(x_0-x_1)}^{-h}\overbrace{(x_0-x_2)}^{-2h}\cdots \overbrace{(x_0-x_{n-1})}^{-(n-1)h}]\\
 p'_n(x_0)&=\frac{1}{h}\left(\Delta y_0-\frac{\Delta^2 y_0}{2}+\frac{\Delta^3 y_0}{3}+\cdots +
 \frac{\Delta^n y_0}{n}(-1)^{n-1}\right)
 \end{align*}
+\begin{paracol}{2}
+Es interesante remarcar como en la expresión anterior, el valor de la derivada se va haciendo más preciso a medida que vamos añadiendo diferencias de orden superior. Si solo conociéramos dos datos, $(x_0, y_0)$ y $(x_1, y_1)$, solo podríamos calcular la diferencia dividida de primer orden. En este caso nuestro cálculo aproximado de la derivada de $x_0$ sería,
+\switchcolumn
+It is worth notice that the previous expression represent de derivative with increasing precision as we add new higher-order differences. If we would only know two data, $(x_0,y_0)$ y $(x_1,y_1)$, we could only calculate the first-order divided difference. In which case, our approximate derivative computation at $x_0$ would be,  
 
-Es interesante remarcar como en la expresión anterior, el valor de la derivada se va haciendo más preciso a medida que vamos añadiendo diferencias de orden superior. Si solo conociéramos dos datos, $(x_0, y_0)$ y $(x_1, y_1)$. Solo podríamos calcular la diferencia dividida de primer orden. En esta caso nuestro cálculo aproximado de la derivada de $x_0$ sería,
+\end{paracol}
 \begin{equation*}
 p'_1(x_0)=\frac{1}{h}\Delta y_0
 \end{equation*}
-
+\begin{paracol}{2}
 Si conocemos tres datos, podríamos calcular $\Delta^2y_0$ y añadir un segundo término a nuestra estima de la derivada,
+\switchcolumn
+If we have three data, we could compute $\Delta^2y_0$ and add second term to our derivative estimation.
+\end{paracol}
 \begin{equation*}
 p'_2(x_0)=\frac{1}{h}\left(\Delta y_0-\frac{\Delta^2 y_0}{2}\right)
 \end{equation*}
-
+\begin{paracol}{2}
 y así sucesivamente, mejorando cada vez más la precisión.
 
-Veamos como ejemplo el cálculo la derivada en el punto $x_0=0.0$, a partir de la siguiente tabla de datos,
+Veamos como ejemplo el cálculo la derivada en el punto $x_0=0.0$ a partir de la siguiente tabla de datos,
+\switchcolumn
+And so on, precision is increasingly improving.
 
+Let see the computing of the derivative at point $x_0 =0.0$ using the following data table,
+\end{paracol}
 \begin{table}[h]
 \centering
 \begin{tabular}{cccccc}
@@ -102,85 +157,127 @@ $0.8$ &$1.030$\\
 \end{tabular}
 \end{table} 
 
-\begin{itemize}
-\item Empleando los dos primeros puntos,
+\begin{paracol}{2}
+1. Empleando los dos primeros puntos,
+\switchcolumn
+1. Using the two first points,
+\end{paracol}
 \begin{equation*}
 y'(0,0)=p_1^1(0.0)=\frac{1}{0.2}\cdot 0.203= 1.015
 \end{equation*}
-\item Empleando los tres primeros puntos,
+\begin{paracol}{2}
+2. Empleando los tres primeros puntos,
+\switchcolumn
+2. Using the three first points,
+\end{paracol}
 \begin{equation*}
 y'(0,0)=p_2^1(0.0)=\frac{1}{0.2}\left( 0.203-\frac{0.017}{2}\right)= 0.9725
 \end{equation*}
-\item Empleando los cuatro primeros puntos,
+\begin{paracol}{2}
+3. Empleando los cuatro primeros puntos,
+\switchcolumn
+3. Using the four first points,
+\end{paracol}
 \begin{equation*}
 y'(0,0)=p_3^1(0.0)=\frac{1}{0.2}\left( 0.203-\frac{0.017}{2}+\frac{0.024}{3}\right)= 1.0125
 \end{equation*}
-\item Empleando los cinco puntos disponibles
+\begin{paracol}{2}
+4. Empleando los cinco puntos disponibles,
+\switchcolumn
+4. Using the four available points,
+\end{paracol}
 \begin{equation*}
 y'(0,0)=p_4^1(0.0)=\frac{1}{0.2}\left( 0.203-\frac{0.017}{2}+\frac{0.024}{3}-\frac{0.020}{4}\right)= 0.9875
 \end{equation*}
-\end{itemize}
 
-\subsection{Diferenciación numérica basada en diferencias finitas}
+\begin{paracol}{2}
+\subsection{Diferenciación numérica basada\\ en diferencias finitas}
 \index{Diferenciación! diferencias finitas}
 Como se explicó en la introducción, la idea es emplear el desarrollo de Taylor para aproximar la derivada de una función en punto. Si empezamos con el ejemplo más sencillo, podemos aproximar la derivada suprimiendo de su definición el \emph{paso al límite}\index{Diferenciación!Diferencia adelantada de dos puntos},
 
+\switchcolumn
+\subsection{Numerical differentiation base\\ on finite differences}
+\index[eng]{Differentiation! finite differences}
+As we explained in the introduction to the chapter, the idea is to take the Taylor's expansion to approximate a function derivative at a specific point. If we start with the simplest case, we can approximate the derivative suppressing the \emph{limit computation} in its definition\index[eng]{Diferentiation! Two point forward diference}
+\end{paracol}
 \begin{equation*}
 f'(x_k)=\lim_{h\rightarrow 0}\frac{f(x_k+h)-f(x_k)}{h} \approx \frac{f(x_k+h)-f(x_k)}{h} 
 \end{equation*}
-
+\begin{paracol}{2}
 La expresión obtenida, se conoce con el nombre de formula de diferenciación adelantada de dos puntos. El error cometido debido a la elección de un valor de $h$ finito, se conoce con el nombre de error de truncamiento\index{Error de Truncamiento}. Es evidente que desde un punto de vista puramente matemático, la aproximación es mejor cuanto menor es $h$. Sin embargo, desde un punto de vista numérico esto no es así. A medida que hacemos más pequeño el valor de $h$, aumenta el error de redondeo debido a la aritmética finita del computador\index{Error de redondeo}. Por tanto, el error cometido es la suma de ambos errores,
+\switchcolumn
+The expression we have achieved is know as two-point forward difference formula. The error we make due to the finite value we chose for $h$ is called as truncation error. It is clear that from a purely mathematical point of view, the approximation is better the smaller $h$ is. However, this is not true from a numerical point of view. As we make smaller the value of $h$, the rounding-off error increases due to the computer finite arithmetic. Then we have to take into account the sum of both errors,   
+\end{paracol}
 \begin{equation*}
-f'(x)=\frac{f(x+h)-f(x)}{h}+\overbrace{C\cdot h}^{\mathtt{e.\ de\  truncamiento}}+\underbrace{D\cdot \frac{1}{h}}_{\mathtt{e.\ de\  redondeo}}, \ C>>D 
+f'(x)=\frac{f(x+h)-f(x)}{h}+\underbrace{\overbrace{C\cdot h}^{\mathrm{ truncating}}}_{\mathrm{truncamiento}}+\underbrace{\overbrace{D\cdot \frac{1}{h}}^{redondeo}}_{\mathtt{rounding}}, \ C>>D 
 \end{equation*}
-
+\begin{paracol}{2}
 El valor óptimo de $h$ es aquel que hace mínima la suma del error de redondeo y el error de truncamiento. La figura \ref{fig:errores} muestra de modo esquemático como domina un error u otro según hacemos crecer o decrecer el valor de $h$ en torno a su valor óptimo.
+\switchcolumn
 
+The optimal value for $h$ is that what minimised the rounding-off error plus the truncating error sum. figure \ref{fig:errores} shows schematically  how truncating or rounding-off error dominates as we do grow or decrease the value of $h$ around its optimal value.
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{errores.eps}
-\caption{Variación del error cometido al aproximar la derivada de una función empleando una fórmula de diferenciación de dos puntos.} 
+\bicaption{Variación del error cometido al aproximar la derivada de una función empleando una fórmula de diferenciación de dos puntos.}{Function derivative approximation error, using a a two-points differentiation formula. Dependency on the difference $h$ value} 
 \label{fig:errores}
 \end{figure}
-
+\begin{paracol}{2}
 Como vimos en la introducción a esta sección, partiendo de el desarrollo de Taylor de una función es posible obtener fórmulas de diferenciación numérica y poder estimar el error cometido. Así por ejemplo, a  partir del polinomio de Taylor de primer orden,
+\switchcolumn
+A we sow in the introducction to the present section, departing from a function Taylor's expansion it is possible to arrive to different numerical differentiation formulae and estimate the error made. So, for instance, departing from the fist order Taylor's polynomial,
+\end{paracol}
 \begin{equation*}
 f(x+h)=f(x)+hf'(x)+\frac{h^2}{2}f''(z) \Rightarrow f'(x)=\frac{f(x+h)-f(x)}{h}-\frac{h}{2}f''(z), \ x<z<x+h
 \end{equation*}
-
-El error que se comete debido a la aproximación, es proporcional al tamaño del intervalo empleado $h$ La constante de proporcionalidad depende de la derivada segunda de la función, $f''(z)$ en algún punto indeterminado ($z\in x,x+h$). Para indicar esta relación lineal entre el error cometido y el valor de $h$, se dice que el error es del \emph{orden} de $h$ y se representa como $O(h)$.
+\begin{paracol}{2}
+El error que se comete debido a la aproximación, es proporcional al tamaño del intervalo empleado $h$ La constante de proporcionalidad depende de la derivada segunda de la función, $f''(z)$ en algún punto indeterminado $z\in (x,x+h)$. Para indicar esta relación lineal entre el error cometido y el valor de $h$, se dice que el error es del \emph{orden} de $h$ y se representa como $O(h)$.
+\switchcolumn
+The error we make is proportional to the interval $h$ that we use. The constant of proportionality depends on the second derivative of the function, $f''(z)$, at an undetermined point $z \in (x, x+h)$. We express this error as having a linear dependency on the value of $h$, stating that the error is of order $h$, and we represent it as $O(h)$.
+\end{paracol}
 \begin{equation*}
 f'(x)=\frac{f(x+h)-f(x)}{h}+O(h)
 \end{equation*}
 
 \begin{figure}[h]
 \centering
-\subfigure[Diferencia de dos puntos adelantada \label{fig:diffin1}]{\includegraphics[width=7cm]{diffin1.eps}} \qquad 
-\subfigure[Diferencia de dos puntos centrada \label{fig:diffin2}]{\includegraphics[width=7cm]{diffin2.eps}}
-\caption{Comparación entre las aproximaciones a la derivada de una función obgtenidas mediante las diferencias de dos puntos adelantada y centrada} 
+\subfigure[Diferencia de dos puntos adelantada / Two points forward difference \label{fig:diffin1}]{\includegraphics[width=7cm]{diffin1.eps}} \qquad 
+\subfigure[Diferencia de dos puntos centrada / Two point central difference \label{fig:diffin2}]{\includegraphics[width=7cm]{diffin2.eps}}
+\bicaption{Comparación entre las aproximaciones a la derivada de una función obtenidas mediante las diferencias de dos puntos adelantada y centrada.}{Comparison between the approximations achieved for a function derivative using two point forward difference and two point central difference.}
 \label{fig:diffin}
 \end{figure}
-
+\begin{paracol}{2}
 Podemos mejorar la aproximación, calculando el valor de polinomio de Taylor de tercer orden para dos puntos equidistantes situados a la izquierda y la derecha del punto x, restando dichas expresiones y despejando la derivada primera del resultado,
 
+\switchcolumn
+
+To enhance the accuracy, we can calculate the value of the third-order Taylor polynomials at two equally spaced points to the left and right of the point x. Then we find the difference between these values and solve for the first derivative.
+\end{paracol}
 \begin{equation*}
 \left. \begin{aligned}
 f(x+h)=f(x)+hf'(x)+\frac{h^2}{2}f''(x)+\frac{h^3}{3!}f'''(z)\\
 f(x-h)=f(x)-hf'(x)+\frac{h^2}{2}f''(x)-\frac{h^3}{3!}f'''(z)
 \end{aligned} \right\rbrace \Rightarrow f'(x)=\frac{f(x+h)-f(x-h)}{2h}-\frac{h^2}{6}f'''(z) 
 \end{equation*}
-
+\begin{paracol}{2}
 En esta caso, el error es proporcional al cuadrado de $h$, por tanto,
-
+\switchcolumn
+In this case, we get an error proportional to $h$ square, thus,
+\end{paracol}
 \begin{equation*}
 f'(x_0)=\frac{f(x_1)-f(x_{-1})}
 {2h}+O(h^2)
 \end{equation*}
-
+\begin{paracol}{2}
 Donde hemos hecho $x\equiv x_0$, $x+h\equiv x_1$ y $x-h\equiv x_{-1}$. Esta aproximación recibe el nombre de diferencia de dos puntos centrada.\index{Diferenciación! Diferencia de dos puntos centrada} La figura \ref{fig:diffin1} muestra una comparación entre la derivada real de una función y su aproximación mediante una diferencia adelantada de dos puntos. La figura \ref{fig:diffin2} muestra la misma comparación empleando esta vez la aproximación de dos punto centrada. En este ejemplo es fácil ver como la aproximación centrada da un mejor resultado. No hay que olvidar que  la bondad del resultado, para un valor de $h$ dado, depende también del valor de las derivadas de orden superior de la función, por lo que no es posible asegurar que el resultado de la diferencia centrada sea siempre mejor.
 
 Empleando el desarrollo de Taylor y tres puntos podemos aproximar la derivada por la diferencia de tres puntos adelantada,
+\switchcolumn
+Where we have taken $x\equiv x_0$, $x+h\equiv x_1$ y $x-h\equiv x_{-1}$. This approximation is called two point central difference.\index{Diferentiation! Two point central difference} Figure \ref{fig:diffin1} shows a comparison between an actual function derivative and its approximation using a two point forward difference formula. Figure \ref{fig:diffin2} Compares, for the same function, the actual derivative with a two points central difference approximation. In this example, we can see how the central approximation yields better results. However, the accuracy of a result also depends on the higher-order derivative values of the function.  Therefore, it is not possible to claim that the central difference will always result in better outcomes.
 
+ With three points and the Tylor's expansion we can approximate the derivative using a three forward difference formula,   
+\end{paracol}
 \begin{align*}
 \left. \begin{aligned}
 4\cdot\left(f(x_1)=f(x_0)+hf'(x_0)+\frac{h^2}{2}f''(x_0)+\frac{h^3}{3!}f'''(z)\right)\\
@@ -188,16 +285,23 @@ f(x_2)=f(x_0)+2hf'(x_0)+2{h^2}{2}f''(x_0)+\frac{4h^3}{3}f'''(z)
 \end{aligned} \right\rbrace \Rightarrow \\
 \Rightarrow f'(x_0)=\frac{-f(x_2)+4f(x_1)-3f(x_0)}{2h}-\frac{h^2}{3}f'''(z) 
 \end{align*} 
-
+\begin{paracol}{2}
 En este caso e error es también de  orden $h^2$ pero vale el doble que para la diferencia de dos puntos centrada.
 
 A partir del desarrollo de Taylor y mediante el uso del número de puntos adecuado, es posible obtener aproximaciones a la derivada primera y a las sucesivas derivadas de una función, procediendo de modo análogo a como acaba de mostrarse para el caso de las diferencias de dos y tres puntos. La tabla \ref{tabdiff} muestra algunas de las fórmulas de derivación mediante diferencias finitas más empleadas. Para simplificar la notación, en todos los casos se ha tomado $y_i=f(x_i), \ y_i^{(j)}=f^{(j)}(x_i)$.
 
+\switchcolumn
+In this case the also get a order $h^2$ error but its two times the value achieved for the two point central difference.
+
+From Taylor's expansion and using the appropriated number of points, it si possible to compute approximation for the first and successive derivatives of a function. The procedure is similar to the one we employed in the two and tree points differences. Table \ref{tabdiff} shows some derivative approximations using the most common finite differences formulae. To simplify notation, in every case we have taken $y_i=f(x_i), \ y_i^{(j)}=f^{(j)}(x_i)$. 
+
+\end{paracol}
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|}
 \hline
 Fórmulas primera derivada & Fórmulas segunda derivada\\
+First derivative formulae & Second derivative formulae\\
 \hline
 \ & \\
 $y'_0=\frac{y_1-y_0}{h}+O(h)$ & $y''_0=\frac{y_2-2y_1+y_0}{h^2}+O(h)$\\
@@ -210,6 +314,7 @@ $y'_0=\frac{-y_2+8y_1-8y_{-1}+y_{-2}}{12h}+O(h^4)$ &$y''_0=\frac{-y_2+16y_1-30y_
 \ & \\
 \hline
 Fórmulas tercera derivada & Fórmulas cuarta derivada\\
+Third derivative formulae & Fourth derivative formulae\\
 \hline
 \ & \\
 $y'''_0=\frac{y_3-3y_2+3y_1-y_0}{h^3}+O(h)$ &$y^{iv}_0=\frac{y_4-4y_3+6y_2-4y_1+y_0}{h^4}+O(h)$\\
@@ -218,331 +323,395 @@ $y'''_0=\frac{y_2-2y_1+2yx_{-1}-y_{-2}}{2h^3}+O(h^2)$ &$y^{iv}_0=\frac{y_2-4y_1+
 \ &  \\
 \hline
 \end{tabular}
-\caption{Fórmulas de derivación basadas en diferencias finitas}
+\bicaption{Fórmulas de derivación basadas en diferencias finitas}{Derivative formulae based on finite differences}
 \label{tabdiff}
 \end{table}
 
-
+\begin{paracol}{2}
 \section{Integración numérica.}\label{sec:inum}
+\sectionmark{Integración numérica. \textreferencemark\ Numerical Integration.}
 
 Dada una función arbitraria $f(x)$ es en muchos casos posible obtener de modo analítico su primitiva $F(x)$ de modo que $f(x)=F'(x)$. En estos casos, la integral definida de $f(x)$ en un intervalo $[a,b]$ puede obtenerse directamente a partir de su primitiva,
+
+\switchcolumn
+\section{Numerical Integration.}
+Given an arbitrary function $f(x)$ it is in many cases possible to obtain analitically is primitive $F(x)$ such that, $f(x)=F'(x)$. In these cases, the function $f(x)$ definite integral in an interval $[a,b]$ can be obtained from its primitive.
+
+\end{paracol}
 \begin{equation*}
 I(f)=\int_a^bf(x)dx=F(x)\vert_a^b=F(b)-F(a)
 \end{equation*}
-Hay sin embargo muchos casos en los cuales se desconoce la función $F(x)$ y otros en los que ni siquiera se conoce la expresión de la función $f(x)$, como por ejemplo, cuando solo se dispone de una tabla de valores $\left\lbrace x_i,y_i=f(x_i) \right\rbrace$ para representar la función. En estos casos se puede aproximar la integral definida de la función $f(x)$ en un intervalo $[a,b]$, a partir de los puntos disponibles, mediante lo que se conoce con el nombre de una fórmula de cuadratura,
+\begin{paracol}{2}
+Hay sin embargo muchos casos en los cuales se desconoce la función $F(x)$ y otros en los que ni siquiera se conoce la expresión de la función $f(x)$, como por ejemplo, cuando solo se dispone de una tabla de valores $\{ x_i,y_i=f(x_i) \}$ para representar la función. En estos casos se puede aproximar la integral definida de la función $f(x)$ en un intervalo $[a,b]$, a partir de los puntos disponibles, mediante lo que se conoce con el nombre de una fórmula de cuadratura,
 
+\switchcolumn
+There are many cases for which we do not know function $F(x)$, and there are others where we do not even know the function $f(x)$ as, for example, when we only have a data table $\{x_i,y_i = f(x_i)\}$ that represents the function. In these cases, it is possible to approximate the de definite integral of a function $f(x)$ in an interval $[a,b]$ using available points and methods known as quadrature formulae.
+\end{paracol}
 \begin{equation*}
 I(f)=\int_a^bf(x)dx \approx \sum_{i=0}^nA_if(x_i)
 \end{equation*}
-
+\begin{paracol}{2}
 Una técnica habitual de obtener los coeficientes $A_i$, es hacerlo de modo implícito a partir de la integración  de los polinomios de interpolación,
-
+\switchcolumn
+A common  technique to obtain $A_i$ coefficients is to use an implicit method by interpolating polynomial integration,
+\end{paracol}
  \begin{equation*}
 I(f)=\int_a^bf(x)dx \approx \int_a^bP_n(x)dx
 \end{equation*}
-
+\begin{paracol}{2}
 Para ello, se identifican los extremos del intervalo de integración con el primer y el último de los datos disponibles, $[a,b]\equiv [x_0,x_n]$.
 
 Así por ejemplo, a partir de los polinomios de Lagrange, definidos en la sección \ref{sec:lagranje},
+\switchcolumn
+To do this, we first takes the ends of the interval as the first and last data available, $[a,b]\equiv [x_0,x_n]$.
 
+So, for example, we using Lagrange's polynomials defined in section \ref{sec:lagranje},
+\end{paracol}
 \begin{equation*}
 p(x)=\sum_{j=0}^n l_j(x)\cdot y_j
 \end{equation*}
-
+\begin{paracol}{2}
 Podemos obtener los coeficientes $A_i$ como,
-
+\switchcolumn	
+We can compute the $A_i$ coefficientes as,
+\end{paracol}
 \begin{equation*}
 I(f)=\int_a^bf(x)dx \approx \int_a^bP_n(x)dx=\int_{x_0}^{x_n}\left( \sum_{j=0}^n l_j(x)\cdot y_j \right) dx \Rightarrow A_j=\int_{x_0}^{x_n}l_j(x)dx
 \end{equation*}
-
+\begin{paracol}{2}
 La familia de métodos de integración, conocidas como fórmulas de Newton-Cotes, puede obtenerse a partir del polinomio de interpolación de Newton-Gregory descrito en la sección \ref{sec:newgre}\index{Integración! Formulas de Newton-Cotes}. Supongamos que tenemos la función a integrar definida a partir de un conjunto de puntos equiespaciados a lo largo del intervalo de integración $\{(x_i,y_i)\}_{0,\cdots n}$. Podemos aproximar la integral $I(y)$ como,
-
+\switchcolumn
+The family of numerical integration me\-thods known as Newton-Cotes formulae, can be obtained from the Newton-Gregory's interpolation polynomial described in section \ref{sec:newgre} \index[eng]{Integration! Newton-Cotes formulae}. Suppose we have a function defined as a set of $n+1$ equispaced points along an integrating interval $\{(x_i,y_i)\}_{0,\cdots n}$. We can approximate the integral $I(y)$ as, 
+\end{paracol}
 \begin{equation*}
 \int_{x_0}^{x_n}ydx \approx \int_{x_0}^{x_n}\left(y_0+\frac{x-x_0}{h}\Delta y_0+\frac{(x-x_0)(x-x_1)}{2!h^2}\Delta ^2 y_0+\cdots +\frac{(x-x_0)\cdots(x-x_{n-1})}{n!h^n}\Delta^n y_0 \right)
 \end{equation*}
-
+\begin{paracol}{2}
 Las fórmulas de Newton-Cotes se asocian con el grado del polinomio de interpolación empleado en su obtención:
 
-\begin{itemize}
-\item Para $n=1$, se obtiene la regla del trapecio,
+1. Para $n=1$, se obtiene la regla del trapecio,
+
+\switchcolumn
+Newton-Cotes formulae are associated with the degree of the interpolation polynomial employed to obtain the formula:
+
+1. for n=1, we obtain the Trapezium rule.
+\end{paracol}
 \begin{equation*}
 I(y)=\int_{x_0}^{x_1}ydx \approx \frac{h}{2}(y_0+y_1)
 \end{equation*}
-\item Para $n=2$, se obtiene la regla de Simpson 
+\begin{paracol}{2}
+2. Para $n=2$, se obtiene la regla de Simpson
+\switchcolumn
+2. for $n=2$, we obtain the Simpson's rule.
+\end{paracol} 
 \begin{equation*}
 I(y)=\int_{x_0}^{x_2}ydx \approx \frac{h}{3}(y_0+4y_1+y_2)
 \end{equation*}
-\item Para $n=3$, se obtiene la regla de 3/8 de Simpson
+\begin{paracol}{2}
+3. Para $n=3$, se obtiene la regla de 3/8 de Simpson
+\switchcolumn
+3. for $n = 3$, we obtain the Simpson's 3/8 rule.
+\end{paracol}
 \begin{equation*}
 I(y)=\int_{x_0}^{x_3}ydx \approx \frac{3h}{8}(y_0+3y_1+3y_2+y_3)
 \end{equation*}
-\end{itemize}
 
+\begin{paracol}{2}
 No se suelen emplear polinomios de interpolación de mayor grado debido a los errores de redondeo y a las oscilaciones locales que dichos polinomios presentan.
  
 \subsection{La fórmula del trapecio.}
 
 La fórmula del trapecio emplea tan solo dos puntos para obtener la integral de la función en el intervalo definido por ellos. \index{Integración! Fórmula del trapecio}
 
+\switchcolumn
+We do not usually use interpolation polynomials with larger degrees due to rounding-off errors and the local oscillations of such polynomials.
+
+\subsection{ Trapezium formula}
+
+The trapezium formula uses only two points to obtain the function integral in the interval defined by the points. \index[eng]{Integration! Trapezium rule}
+\end{paracol}
 \begin{equation*}
 I(y)=\int_{x_0}^{x_1}ydx \approx \int_{x_0}^{x_1}\left(y_0+\frac{x-x_0}{h}\Delta y_0\right)dx =y_0x+\left. \frac{\Delta y_0}{h}\frac{(x-x_0)^2}{2} \right\rvert_{x_0}^{x_1}=\frac{h}{2}(y_0+y_1)
 \end{equation*}
-
+\begin{paracol}{2}
 La figura \ref{fig:trapecio} muestra gráficamente el resultado de aproximar la integral definida de una función $y=f(x)$ mediante la fórmula del trapecio. Gráficamente la integral coincide con el área del \emph{trapecio} formado por los puntos $(x_0,0)$, $(x_0,y_0)$, $(x_1,y_1)$ y $(x_1,0)$.  De ahí su nombre y la expresión matemática obtenida,
 
+\switchcolumn
+Figure \ref{fig:trapecio} shows graphically the results of approximating a function $y = f(x)$ defined integral using the trapezium rule. The integral fits the area of the \emph{trapezium} formed by points $(x_0,0)$, $(x_0,y_0)$, $(x_1,y_1)$ y $(x_1,0)$. This is the reason why the method is known as trapezium formula or trapezium rule and the mathematical expression we get,
+\end{paracol}
 \begin{equation*}
-I(y)=\frac{h}{2}(y_0+y_1)
+I(y)=\frac{h}{2}(y_0+y_1),
 \end{equation*}
-
+\begin{paracol}{2}
 que coincide con el área del trapecio mostrado en la figura.
+\switchcolumn
+which coincides with the expression to compute the area of the trapezium showed in the figure
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=9cm]{trapecio.eps}
-\caption{Interpretación gráfica de la fórmula del trapecio.} 
+\bicaption{Interpretación gráfica de la fórmula del trapecio.}{Graphical interpretation of trapezium rule.} 
 \label{fig:trapecio}
 \end{figure}
+\begin{paracol}{2}
+\paragraph*{Formula extendida (o compuesta) del trapecio.}\index{Integración! Fórmula compuesta del trapecio} La figura \ref{fig:trapecio} permite observar la diferencia entre el área calculada y el área comprendida entre la curva real y el eje $x$. Como se ha aproximado  la curva en el intervalo de integración por un línea recta (polinomio de grado 1 $p_1$), el error será tanto mayor cuando mayor sea el intervalo de integración y/o la variación de la función en dicho intervalo.
 
-\paragraph*{Formula extendida (o compuesta) del trapecio.}\index{Integración! Fórmula compuesta del trapecio} La figura \ref{fig:trapecio} permite observar la diferencia entre el área calculada y el área comprendida entre la curva real y el eje $x$. Como se ha aproximado  la curva en el intervalo de integración por un línea recta (polinomio de grado 1 $p_1$), El error será tanto mayor cuando mayor sea el intervalo de integración y/o la variación de la función en dicho intervalo. Una solución a este problema, si se conoce la expresión analítica de la función que  se desea integrar o se conocen suficientes puntos es subdividir el intervalo de integración en intervalos más pequeños y aplicar a cada uno de ellos la fórmula de trapecio,
+ Una solución a este problema, si se conoce la expresión analítica de la función que  se desea integrar o se conocen suficientes puntos es subdividir el intervalo de integración en intervalos más pequeños y aplicar a cada uno de ellos la fórmula de trapecio,
+\switchcolumn
+\paragraph{Extended (or composed) trapezium formula.} \index[eng]{Integration ! Composed trapezium formula} Figure \ref{fig:trapecio} allows us to observe the difference between the area computed and the actual area comprised between the curve and the $x$ axis. As we have approximated the curve by a straight line (1-degree interpolation polynomial $p_1$) in the integration interval, the larger the integration interval and/or the variation of the function in the interval, the larger the error we make.
 
+One solution to this problem, if we know the analytic expression for the function we wish to integrate or we have enough points, is to divide the integration interval into shorter intervals and apply the trapezium formula in any of them.
+
+   
+\end{paracol}
 \begin{equation*}
 I(y)=\int_{x_0}^{x_n}ydx \approx \sum_{i=0}^{n-1}\int_{x_i}^{x_{i+1}}y(x)dx=\sum_{i=0}^{n-1}\frac{h}{2}(y_i+y_{i+1})=\frac{h}{2}\left(y_0+2y_1+2y_2+\cdots+2y_{n-1}+y_n \right)
 \end{equation*}
-
+\begin{paracol}{2}
 La figura \ref{fig:trapecio2}, muestra el resultado de aplicar la fórmula extendida del trapecio a la misma función de la figura \ref{fig:trapecio}. En este caso, se ha dividido el intervalo de integración en cuatro subintervalos. Es inmediato observar a partir de la figura, que la aproximación mejorará progresivamente si se aumenta el número de subintervalos y se reduce el tamaño de los mismos.
-
+\switchcolumn
+Figure \ref{fig:trapecio2}, shows the result obtained after applying the extended trapezium formula to the same function of figure \ref{fig:trapecio}. In the present case, we have divided the integration interval into four subintervals. It is evident from the figure that the approximation will progress as the number of intervals increases and their size decreases. 
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=9cm]{trapecio2.eps}
-\caption{Interpretación gráfica de la fórmula extendida del trapecio.} 
+\bicaption{Interpretación gráfica de la fórmula extendida del trapecio.}{Extended trapezium formula graphical interpretation } 
 \label{fig:trapecio2}
 \end{figure}
-
-\section{Las fórmulas de Simpson.}
+\begin{paracol}{2}
+\subsection{Las fórmulas de Simpson.}
 Se conocen con el nombre de fórmulas integrales de Simpson, a las aproximaciones a la integral definida obtenida a partir de los polinomios interpoladores de Newton-Gregory de grado dos (Simpson $1/3$) y de grado tres (Simpson $3/8$) . \index{Integración! Fórmulas de Simpson}
 
 En el primer caso, es preciso conocer tres valores equiespaciados de la función en el intervalo de integración y en el segundo es preciso conocer cuatro puntos. 
 
 \paragraph*{Fórmula de Simpson $1/3$.} La fórmula de Simpson, o Simpson $1/3$,  emplea un polinomio de interpolación de Newton-Gregory de grado dos para  obtener la aproximación a la integral,
 
+\switchcolumn
+\subsection{Simpson's formulae}
+The integral Simpson's formulae (or rules) are two approximations to the definite integral of a function, obtained from the Newton-Gregory's interpolation polynomials of degree two (Simpson 1/3) and degree 3 (Simpson 3/8).
+
+In the first case we need to know three equispaced values of the function in the integration interval. In the second case we need to know four points.
+
+\paragraph{Simpson's 1/3 formula.} The Simpson's rule or Simpson's 1/3 rule employs a 2-degree Newton-Gregory's interpolation polynomial to obtain the approximation of the integral, 
+\end{paracol}
 \begin{equation*}
 I(y)\approx \int_{x_0}^{x_2}P_2(x)dx=\int_{x_0}^{x_2}\left(y_0+\frac{x-x_0}{h}\Delta y_0+\frac{(x-x_0)\cdot(x-x_1)}{2h^2}\Delta^2 y_0 \right)dx= \frac{h}{3}(y_0+4y_1+y_2)
 \end{equation*}
-
+\begin{paracol}{2}
 La figura \ref{fig:simpsom}, muestra gráficamente el resultado de aplicar el método de Simpson a la misma función de los ejemplos anteriores.  De nuevo, la bondad de la aproximación depende de lo que varíe la función en el intervalo.  La diferencia fundamental con el método del trapecio es que ahora el área calculada esta limitada por el segmento de parábola definido por el polinomio de interpolación empleado.
-
+\switchcolumn
+Figure, \ref{fig:simpsom} shows graphically the result of applying the Simpson's method to the same function used in previous examples. Again, the goodness of the approximation depends on the function variation in the integration interval. The main difference with the trapezium method is that the area is now bounded by the parabolic segment defined by the polynomial we have utilized.   
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=8cm]{simpsom.eps}
-\caption{Interpretación gráfica de la fórmula $1/3$ de Simpson.} 
+\bicaption{Interpretación gráfica de la fórmula $1/3$ de Simpson.}{Graphical interpretation of Simpson's 1/3 formula} 
 \label{fig:simpsom}
 \end{figure}
 
+\begin{paracol}{2}
 \paragraph*{Fórmula de Simpson $3/8$.} En este caso, se emplea un polinomio de Newton-Gregory de grado 3 para obtener la aproximación a la integral,
-
+\switchcolumn
+\paragraph{Simpson's 3/8 Formula.} In this case, we use a Newton-Gregory's polynomial of degree 3 to obtain the approximation for the integral. 
+\end{paracol}
 \begin{align*}
 I(y)&\approx \int_{x_0}^{x_3}P_2(x)dx=\\
 &=\int_{x_0}^{x_3}\left(y_0+\frac{x-x_0}{h}\Delta y_0+\frac{(x-x_0)\cdot(x-x_1)}{2h^2}\Delta^2 y_0 +\frac{(x-x_0)\cdot(x-x_1)\cdot (x-x_2)}{3!h^3}\Delta^3 y_0\right)dx\\
 &= \frac{3h}{8}(y_0+3y_1+3y_2+y_3)
 \end{align*}
 
+\begin{paracol}{2}
 La figura  \ref{fig:simpsom38} muestra el resultado de aplicar la fórmula de Simpson $3/8$ a la misma función de los ejemplos anteriores. En este caso, la integral sería exacta porque la función de ejemplo elegida es un polinomio de tercer grado y coincide exactamente con el polinomio de interpolación construido para obtener la integral.
-
+\switchcolumn
+Figure \ref{fig:simpsom38} shows the result of applying Simpson's $3/8$ formula to the same function utilized in previous examples. In this case, the integral is exact because the example function is a three degree polynomial and fit exactly the interpolating polynomial we have built to compute the integral.
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=9cm]{simpsom38.eps}
-\caption{Interpretación gráfica de la fórmula $3/8$ de Simpson.} 
+\bicaption{Interpretación gráfica de la fórmula $3/8$ de Simpson.}{Graphical interpretation of Simpson's 3/8 formula} 
 \label{fig:simpsom38}
 \end{figure}
-
+\begin{paracol}{2}
 Al igual que en el caso del método del trapecio, lo normal no es aplicar los métodos de Simpson a todo el intervalo de integración, sino dividirlo en subintervalos más pequeños y aplicar el método sobre dichos subintervalos. El resultado se conoce como métodos extendidos de Simpson. Al igual que sucede con la fórmula del trapecio, los métodos extendidos de Simpson mejoran la aproximación obtenida para la integral tanto más cuanto más pequeño es el tamaño de los subintervalos empleados. 
 
 Así, la fórmula extendida de Simpson $1/3$ toma la forma,
- 
+
+\switchcolumn
+Like the trapezium formula, we hardly ever apply Simpson's methods to the whole integration interval. Instead, we divide the integration interval into smaller subintervals and apply the method to such subintervals. The results are known as extended Simpson's methods. As in the case of the trapezium formula, the extended Simpson's methods improve the approximation computed for the integral as much as the smaller the size of the subinterval we use.
+
+So the extended Simpson 1/3 formula takes the form,
+\end{paracol}
 \begin{align*}
 	I(y)&\approx \sum_{i=0}^{\frac{n}{2}-1}\int_{x_{2i}}^{x_{2i+2}}P_2(x)dx=\sum_{i=0}^{\frac{n}{2}-1}\frac{h}{3}(y_{2i}+4y_{2i+1}+y_{2i+2})\\
 &= \frac{h}{3}(y_0+4y_1+2y_2+4y_3+2y_4+\cdots + 2y_{n-2}+4y_{n-1}+y_n)
 \end{align*}
-
+\begin{paracol}{2}
 Donde se ha dividido el intervalo de integración en $n$ subintervalos, la fórmula de Simpson se ha calculado para cada dos subintevalos y se han sumado los resultados.
 
 Por último para la fórmula extendida de Simpson $3/8$ se puede emplear la expresión,
-
+\switchcolumn
+Where we have divided the integration interval in $n$ subintervals, the Simpson's formula has been applied to every two consecutive subintervals and, eventually we have summed the results together.
+\end{paracol}
 \begin{align*}
 	I(y)&\approx \sum_{i=0}^{\frac{n}{3}-1}\int_{x_{3i}}^{x_{3i+3}}P_3(x)dx=\sum_{i=0}^{\frac{n}{3}-1}\frac{3h}{8}(y_{3i}+3y_{3i+1}+3y_{3i+2}+y_{3i+3})\\
 &= \frac{3h}{8}(y_0+3y_1+3y_2+2y_3+3y_4+3y_5+2y_6+ \cdots + 2y_{n-3}+3y_{n-2}+3y_{n-1}+y_n)
 \end{align*}
-
+\begin{paracol}{2}
 En este caso también se divide el intervalo en $n$ subintervalos pero ahora se ha aplicado la regla de Simpson $3/8$ a cada tres subintevalos.
 
 A continuación se incluye un código que permite permite aproximar la integral definida de una función en un intervalo por cualquiera de los tres métodos descritos: Trapecio, Simpson o Simpson $3/8$,
+\switchcolumn
+In this case, we have also divided the interval in $n$ subintervals but now we apply the Simpson's 3/8 rule to each group of three successive subintervals.
 
-%\begin{lstlisting}
-%function int=integra(fun,met,inter,dib)
-%% implementa los metodos del trapecio, etc...
-%% Uso: int=integra(fun,inter,dib)
-%% fun, nombre de la función que se desea intergrar, debe ir entre comillas
-%% met, método que se desea emplear para calcular la integral. los nombres
-%% validos para los metodos son: 'trapecio', 'simpson' y simpsom38'
-%% inter, es un vector de dos elementos que contiene lo extremos de intervalo
-%% de integracion [a,b]
-%% dib, si se da un valor a esta variable de entrada, dibuja la función en el
-%% intervalo de integración y la integral obtenida. Si se omite no dibuja
-%% nada.
-%% int, valor de la integral obtenida.
-%% Este programa no divide el intervalo de integración en subintervalos...
-%% para calcular la integral empleando subintervalos usar la función trocea,
-%
-%if strcmp(met,'trapecio')
-%    f0=feval(fun,inter(1));
-%    f1=feval(fun,inter(2));
-%    h=inter(2)-inter(1);
-%    int=h*(f0+f1)/2;
-%    if nargin==4
-%        x=inter(1):(inter(2)-inter(1))/100:inter(2);
-%        yfuncion=feval(fun,x);
-%        ypolinomio=f0+(x-inter(1))*(f1-f0)/h;
-%        plot(x,yfuncion,x,ypolinomio,'r')
-%        hold on
-%        fill([x(1) x x(length(x))],[0 ypolinomio 0],'r') 
-%    end
-%elseif strcmp(met,'simpson')
-%    pmedio=(inter(2)+inter(1))/2;
-%    f0=feval(fun,inter(1));
-%    f1=feval(fun,pmedio);
-%    f2=feval(fun,inter(2));
-%    h=(inter(2)-inter(1))./2;
-%    int=h*(f0+4*f1+f2)/3;
-%    if nargin==4
-%        x=inter(1):(inter(2)-inter(1))/100:inter(2);
-%        yfuncion=feval(fun,x);
-%        ypolinomio=f0+(x-inter(1)).*(f1-f0)/h+(x-inter(1)).*(x-pmedio).*(f2...
-%        -2*f1+f0)./(2*h^2);
-%        plot(x,yfuncion,x,ypolinomio,'r')
-%        hold on
-%        fill([x(1) x x(length(x))],[0 ypolinomio 0],'r') 
-%    end        
-%elseif strcmp(met,'simpsom38')
-%    inter=inter(1):(inter(2)-inter(1))/3:inter(2);
-%
-%    f=feval(fun,inter);
-%    h=(inter(4)-inter(1))/3;
-%    int=3*h*(f(1)+3*f(2)+3*f(3)+f(4))/8;
-%    if nargin==4
-%        x=inter(1):(inter(4)-inter(1))/100:inter(4);
-%        yfuncion=feval(fun,x);
-%        ypolinomio=f(1)+(x-inter(1)).*(f(2)-f(1))/h+(x-inter(1)).*(x...
-%        -inter(2)).*(f(3)-2*f(2)+f(1))./(2*h^2)+(x-inter(1)).*(x...
-%        -inter(2)).*(x-inter(3)).*(f(4)-3*f(3)+3*f(2)-f(1))./(6*h^3);
-%        plot(x,yfuncion,x,ypolinomio,'r')
-%        hold on
-%        fill([x(1) x x(length(x))],[0 ypolinomio 0],'r') 
-%    end
-%else
-%    int='metodo desconocido, los metodos conocidos son ''trapecio'', ...
-%    ''simpson' y ''simpsom38'''
-%end
-%\end{lstlisting}
+The code included below compute an approximation to de definite integral of a function using any one the three method we have described: Trapezium, Simpson's or Simpson's 3/8, 
+\end{paracol}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=integrador.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/diferenciacion_integracion/codigo_abierto/integrador.py}
 
-Este programa aplica directamente el método deseado sobre el intervalo de integración. Para obtener los métodos extendidos, podemos emplear un segundo programa que divida el intervalo de integración inicial en el número de subintervalos que deseemos, aplique el programa anterior a cada subintervalo, y, por último, sume todo los resultados para obtener el valor de la integral en el intervalo deseado. El siguiente programa, muestra un ejemplo de como hacerlo,
+\begin{paracol}{2}
+Este programa contiene dos funciones. La primera \mintinline{python}{integra } aplica directamente el método deseado sobre el intervalo de integración. Para obtener los métodos extendidos, podemos emplear la segunda función \mintinline{python}{trocea} que divide el intervalo de integración inicial en el número de subintervalos que deseemos, apliqua el programa anterior a cada subintervalo, y, por último, suma todo los resultados para obtener el valor de la integral en el intervalo deseado.
 
-%\begin{lstlisting}
-%function total=trocea(fun,met,inter,div,dib)
-%% esta funcion lo unico que hace es trocear un intervalo en el numero de
-%% tramos indicados por div, y llamar a la funcion integra para que integre
-%% en cada intervalo.
-%% USO: total=trocea(fun,met,inter,div,dib)
-%%  las variables de emtrada son la mismas que las de integra, salvo div que
-%%  representa el numero de subintervalos en que se desea dividir el
-%%  intervalo de integración.
-%tramos=inter(1):(inter(2)-inter(1))/div:inter(2);
-%total=0;
-%if nargin==5
-%    hold on
-%end
-%for i=1:size(tramos,2)-1
-%    int=integra(fun,met,[tramos(i) tramos(i+1)],dib);
-%    total=total+int;
-%end
-%hold off
-%\end{lstlisting}t
+Por último, indicar que el modulo de Py\-thon, Scipy  posee varias funciones para calcular la integral definida de una función. Se encuentran dentro del submódulo \mintinline{python}{integrate}. Para calcular la integral definida de una función lo más sencillo es usar el comando\\ \texttt{integrate.quad}. Este comando admite como variables de entrada el nombre de una función, y dos valores que representan los límites de integración. Como variable de salida devuelve el valor de la integral definida en el intervalo introducido y una estimación del error cometido. El siguiente código muestra un ejemplo de uso de la función \mintinline{python}{quad} y compara los resultados con la funcion \mintinline{python}{trocea} cuyo código hemos incluido más arriba.
+\switchcolumn
+This program holds two functions. The first one \mintinline{python}{integra} applies the method directly over the integration interval. To obtain the extended methods, we can employ the second included function \mintinline{python}{trocea}, which divides the initial integration interval into the number of subintervals we wish, applies the function \mintinline{python}{integra} to any subinterval and, eventually, add all the results together to obtain the value of the integral in the wished interval.
 
-Por último indicar que Matlab posee un comando propio para calcular la integral definida de una función, el comando \texttt{quad}. Este comando admite como variables de entrada el nombre de una función, y dos valores que representan los límites de integración. Como variable de salida devuelve el valor de la integral definida en el intervalo introducido. Por ejemplo,
+Lastly, the Python module Scipy has several functions to compute a function's definite integral. It is located in the submodule \mintinline{python}{integrate}. The easiest way To compute the integral of a function is to use the function \mintinline{python}{integrate.quad}. This function takes a funtion name and two variables which represent the integration limits as imputs and returns the integral value in the interval introduced and an estimation of the committed error. The following code shows a use example of the function \mintinline{python}{quad} and compares the results with those of the function \mintinline{python}{trocea} whose code we have included above. 
+\end{paracol}
 
-\begin{verbatim}
->> i=integral(@sin,0,pi)
+\begin{minted}{python}
+In [56]: import scipy.integrate as integ
 
-i =
+In [57]: def probando(x):
+...:     """test funtion to be integrate"""
+...:     return((x-1)*x*(x-2))+6
+...:     
 
-    2.0000
-\end{verbatim}
+In [58]: inte.quad(probando,-5,2.5)
+Out[58]: (-260.85937499999994, 3.3240810849038596e-12)
 
+In [59]: trocea(probando,'simpson',[-5,2.5],5)
+Out[59]: -260.859375
+\end{minted}
 
+\begin{paracol}{2}
 \section{Problemas de valor inicial en ecuaciones diferenciales}
+\sectionmark{Problemas de valor inicial. \textreferencemark\ Initial value problems.}
 Las leyes de la física están escritas en forma de ecuaciones diferenciales. \index{Ecuación diferencial} \index{Problemas de valor inicial}
 
 Una ecuación diferencial establece una relación matemática entre una variable y sus derivadas respecto a otra u otras variables de las que depende. El ejemplo más sencillo lo encontramos en las ecuaciones de la dinámica en una sola dimensión que relacionan la derivada segunda de la posición de un cuerpo con respecto al tiempo, con la fuerza que actúa sobre el mismo.
+\switchcolumn
+\section{Differential equations. Initial value problems}
+The laws of physics are written as differential equations \index[eng]{Differential equation}\index[eng]{Initial value problems.}
 
+Differential equations establish a mathematical relationship between a variable and its derivatives with respect to another variable or other variables the first variable depends upon. We can find the simplest example watching the one dimensional dynamics equations which link the second derivative of a body position with the force acting on the body.  
+\end{paracol}
 \begin{equation*}
 m\cdot \frac{d^2x}{dt^2}=F
 \end{equation*}
-
+\begin{paracol}{2}
 Si la fuerza es constante, o conocemos explícitamente como varía con el tiempo, podemos integrar la ecuación anterior para obtener la derivada primera de la posición con respecto al tiempo ---la velocidad--- de una forma directa,
 
+\switchcolumn
+If the force applied is constant or we know explicitly how it evolves on time, we can integrate the previous equation to straightforwardly obtain the position first derivative with respect to time ---the velocity---,
+\end{paracol}
 \begin{equation*}
 m\cdot \frac{d^2x}{dt^2}=F \rightarrow v(t)=\frac{dx}{dt}=\int \frac{F(t)}{m}dt +v(0)
 \end{equation*}
-
+\begin{paracol}{2}
 Donde suponemos conocido el valor $v(0)$ de la velocidad del cuerpo en el instante inicial.
 
 Si volvemos a integrar ahora la expresión obtenida para la velocidad, obtendríamos la posición en función del tiempo,
 
+\switchcolumn
+When we consider we know the body velocity $v(0)$ at the initial time.
+
+If we now integrate the expression we have got for the the velocity, we obtain the position as a function of time,
+\end{paracol}
 \begin{equation*}
 v(t)=\frac{dx}{dt}=\int \frac{F(t)}{m}dt +v(0)\rightarrow x(t)=\int\left(\int \frac{F(t)}{m}dt +v(0)\right)dt+x(0)
 \end{equation*}
-
+\begin{paracol}{2}
 Donde suponemos conocida la posición inicial $x(0)$.
 
 Quizá el sistema físico idealizado más conocido y estudiado es el oscilador armónico. En este caso, el sistema está sometido a una fuerza que depende de la posición y, si existe disipación, a una fuerza que depende de la velocidad,
 
+\switchcolumn
+Were we suppose the initial position $x(0)$ is known.
+
+Perhaps the better known and most studied physical idealised system is the harmonic oscillator. In this case, the system suffers a force that depends on the position and, if the oscillator is damped, it suffer also a force that depends on the speed,  
+
+\end{paracol}
 \begin{equation*}
 m\frac{d^2x}{dt^2}=-kx-\mu \frac{dx}{dt}
 \end{equation*}
-
-En este caso, la expresión obtenida constituye una ecuación diferencial ordinaria y ya no es tan sencillo obtener una expresión analítica para x(t). Para obtener dicha expresión analítica, es preciso emplear métodos de resolución de ecuaciones diferenciales.
+\begin{paracol}{2}
+En este caso, la expresión obtenida constituye una ecuación diferencial ordinaria y ya no es tan sencillo obtener una expresión analítica para $x(t)$. Para obtener dicha expresión analítica, es preciso emplear métodos de resolución de ecuaciones diferenciales.
 
 El problema del oscilador armónico, pertenece a una familia de problemas conocida como problemas de valores iniciales. En general, un problema de valores iniciales de primer orden consiste en obtener la función $x(t)$, que satisface la ecuación,
+\switchcolumn
+In this last case, the expression we obtain is an ordinary differential equation (ODE), and it is no longer so easy to solve and obtain an analytical expression for $x(t)$. To obtain such a expression we need to use specific methods to solve differential equations
+
+The harmonic oscillator problem belongs to a problems family knows as initial value problems. In general, to solve a first order initial value problem is to obtain the function $x(t)$, that satisfies the equation, 
+\end{paracol} 
 \begin{equation*}
 x'(t)\equiv \frac{dx}{dt}=f(x(t),t), \ x(t_0)
 \end{equation*}
-
+\begin{paracol}{2}
 Donde $x(t_0)$ representa un valor inicial conocido de la función $x(t)$.
 
 En muchos casos, las ecuaciones diferenciales que describen los fenómenos físicos no admiten una solución analítica, es decir no permiten obtener una función para $x(t)$. En estos caso, es posible obtener soluciones numéricas empleando un computador. El problema de valores iniciales se reduce entonces a encontrar un aproximación discretizada de la función $x(t)$. 
 
-El desarrollo de técnicas de integración numérica de ecuaciones diferenciales constituye uno de los campos de trabajo más importantes de los métodos de computación científica. Aquí nos limitaremos a ver los más sencillos.
+El desarrollo de técnicas de integración nu\-mérica de ecuaciones diferenciales constituye uno de los campos de trabajo más importantes de los métodos de computación científica. Aquí nos limitaremos a ver los más sencillos.
 
-Esencialmente, los métodos que vamos a describir se basan en discretizar el dominio donde se quiere conocer el valor de la función $x(t)$. Así por ejemplo si se quiere conocer el valor que toma la función en el intervalo $t \in [a,b]$ Se divide el intervalo en $n$ subintervalos cada uno de tamaño $h_i$. Los métodos que vamos a estudiar nos proporcionan una aproximación de la función $x(t)$, $x_0,x_2\cdots x_n$ en los $n+1$ puntos $t_0,t_1,\cdot, t_n$, donde $t_0=a$, $t_n=b$, y $t_{i+1}-t_i=h_i$. El valor de $h_i$ recibe el nombre de paso de integración. Además se supone conocido el valor que toma la función $x(t)$ en el extremo inicial $a$, $x(a)=x_a$.
+Esencialmente, los métodos que vamos a describir se basan en discretizar el dominio donde se quiere conocer el valor de la función $x(t)$. Así por ejemplo si se quiere conocer el valor que toma la función en el intervalo $t \in [a,b]$, se divide el intervalo en $n$ subintervalos cada uno de tamaño $h_i$. Los métodos que vamos a estudiar nos proporcionan una aproximación de la función $x(t)$, $x_0,x_2\cdots x_n$ en los $n+1$ puntos $t_0,t_1,\cdot, t_n$, donde $t_0=a$, $t_n=b$, y $t_{i+1}-t_i=h_i$. El valor de $h_i$ recibe el nombre de paso de integración. Además se supone conocido el valor que toma la función $x(t)$ en el extremo inicial $a$, $x(a)=x_a$.
   
 \subsection{El método de Euler.}
 El método de Euler, puede obtenerse a partir del desarrollo de Taylor de la función $x$, entorno al valor conocido $(a,x_a)$. La idea es empezar en el valor conocido e ir obteniendo iterativamente el resto de los valores $x_1,\cdots$ hasta llegar al extremos $b$ del intervalo en que queremos conocer el valor de la función $x$. En general podemos expresar la relación entre dos valores sucesivos a partir del desarrollo de Taylor como, \index{Método de Euler}
+\switchcolumn
+Where $x(t_0)$ represents a known initial value of the function $x(t)$.
 
+In many cases, differential equations describe physical phenomena that not have an analytical solution. That is, there in no analytical function $x(t)$ that satisfies de differential equation. In these cases is still possible to compute numerical solutions using a computer. The initial value problems reduces then to find  a discretised version of the function $x(t)$.
+
+Developing techniques to numerically solve differential equations is perhaps one of the most important fields of scientific computing. Here, we will describe only me most basic me\-thods.
+
+The methods we are going to introduce are essentially base on discretising the domain in which we want to know the value of the function $x(t)$. For instance, If we want to know the values of the function in the interval $t \in [a,b]$, we divide the interval in $n$ subinterval, each one of size $h_i$. The methods qe are going to study give us an approximation of the function $x(t)$, $x_0,x_2\cdots x_n$ in the $n+1$ points $t_0,t_1,\cdot, t_n$, where $t_0=a$, $t_n=b$, y $t_{i+1}-t_i=h_i$. The value $h_i$ is known as the integration step. Besides, we suppose that we know the value the function $x(t)$ takes in the interval initial side $a$, $x(a) = x_a$.
+
+\subsection{the Euler's method.}
+The Euler's method can be obtained from the Taylor's expansion of the function $x$, around the known value $(a,x_a)$. The idea is to start at the known value an compute iteratively the remaining values $x_1\cdots$ until we arrive to the end of the interval $b$, at which we want to know the value function $x$ takes.
+
+We can obtain the relationship between to consecutive values of the function from the Taylor's expansion as, 
+\end{paracol}
 \begin{equation*}
 x(t_{i+1})=x(t_i)+(t_{i+1}-t_{i})x'(t_i)+\frac{(t_{i+1}-t_{i})^2}{2}x''(t_i)+\cdots+ \frac{(t_{i+1}-t_i)^n}{n!}x^{(n)}(t_i)+\cdots
 \end{equation*}
-
-Como se trata de un problema de condiciones iniciales, conocemos la derivada primera de la función $x(t)$, explícitamente,$x'(t)=f(x(t),t)$. Por tanto podemos sustituir las derivadas de $x$ por la función $f$ y sus derivadas,t
-
+\begin{paracol}{2}
+Como se trata de un problema de condiciones iniciales, conocemos la derivada primera de la función $x(t)$, explícitamente,$x'(t)=f(x(t),t)$. Por tanto podemos sustituir las derivadas de $x$ por la función $f$ y sus derivadas con respecto a t,
+\switchcolumn
+As we are solving an initial condition problem, we know first the derivative of function $x(t)$ at the initial point $x'(t) = f(x(t),t)$. Therefore, we may substitute  the derivatives of $x$ by the funtion $f$ an its derivatives with respect to t.
+\end{paracol}
 \begin{equation*}
 x(t_{i+1})=x(t_i)+(t_{i+1}-t_{i})f(t_i,x_i)+\frac{(t_{i+1}-t_{i})^2}{2}f'(t_i,x_i)+\cdots+ \frac{(t_{i+1}-t_i)^n}{n!}f^{(n-1)}(t_i,x_i)+\cdots
 \end{equation*}
-
+\begin{paracol}{2}
 Donde $x_i\equiv x(t_i)$. Si truncamos el polinomio de Taylor, quedándonos solo con el término de primer grado, y hacemos que el paso de integración sea fijo, $h_i\equiv h=\mathrm{cte}$ obtenemos el método de Euler,
-
+\switchcolumn	
+Where $x_i\equiv x(t_i)$. If we truncate the Taylor's polynomial, leaving only the first order term and set the integration step to a constant value, $h_i \equiv h = cte$ we arrive to the Euler's method,
+\end{paracol}
 \begin{equation*}
 x_{i+1}=x_i+h\cdot f(t_i,x_i)
 \end{equation*}
-
+\begin{paracol}{2}
 A partir de un valor inicial, $x_0$ es posible obtener valores sucesivos mediante un algoritmo iterativo simple,
+\switchcolumn
+Departing from a known initial value, $x_0$, we can obtain the successive values using a simple iterative algorithm,
+\end{paracol}
 \begin{align*}
 x_0&=x(a)\\
 x_1&=x_0+hf(a,x_0)\\
@@ -550,120 +719,122 @@ x_2&=x_1+hf(a+h,x_1)\\
 \vdots \\
 x_{i+1}&=x_i+hf(a+ih,x_i)
 \end{align*}
-
+\begin{paracol}{2}
 El siguiente código implementa el método de Euler para resolver un problema de condiciones iniciales de primer orden a partir de una función $f(t)$ y un valor inicial $x_0$.
+\switchcolumn
+The following code implements the Euler's method using a function $f(t)$ and an initial value $x_0$ as inputs,
+\end{paracol}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=Euler\_method.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/diferenciacion_integracion/codigo_abierto/Euler_method.py}
 
-%\begin{lstlisting}
-%function y=euler(fun,ya,a,b,h)
-%% implimentacion del metodo de Euler para resolver el problema y'(t)=f(y,t)
-%% con condición inicial ya
-%% Admite funciones sobre un vector de variables, en ese caso las
-%% condiciones iniciales serán también un vector
-%%Uso: y=euler(fun,ya,a,b,h)
-%%variables de entrada: fun, debe contener el nombre de una función (sera la
-%%función f) entrecomillas. ya, condición inicial. a, instante de tiempo 
-%%inicial o valor inicial de la variable independiente (t). 
-%%b, instante de tiempo final o valor final de la variable independiente
-%%h paso de integración
-%%podemos por elemental prudencia, comprobar que b>a
-%%lo elegante no es pasar el paso como he hecho aqui, sino calcularlo en
-%%funcion de cuantos puntos de la solucion queremos en el intervalo...
-%if a>=b
-%y='el intervalo debe ser creciente, para evitarse lios';
-%return
-%end
-%y=ya;
-%paso=1;
-%t(paso)=a;
-%while t(paso)<=b
-%t(paso+1)=t(paso)+h;
-%y(paso+1,:)=y(paso,:)+h*feval(fun,t(paso),y(paso,:));
-%paso=paso+1;
-%end
-%%dibuja la solucion,
-%plot(t,y)
-%
-%\end{lstlisting}
-
+\begin{paracol}{2}
 Un ejemplo sencillo de problema de condiciones iniciales de primer orden, nos los suministra la ecuación diferencial de la carga y descarga de un condensador eléctrico. La figura \ref{fig:RC}, muestra un circuito eléctrico elemental formado por una resistencia $R$ en serie con un condensador $C$. \index{Circuito RC}
-
+\switchcolumn
+The differential equation that models the charge and discharge of an electronic capacitor supplies a simple example of an first order initial condition problem. Figure \ref{fig:RC} shows a electronic circuit composed of a resistor $R$ in series with a capacitor $C$. \index[eng]{RC circuit}
+   
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[width=9cm]{rc.pdf}
 \caption{Circuito RC}
 \label{fig:RC}
 \end{figure}
-
+\begin{paracol}{2}
 La intensidad eléctrica que atraviesa un condensador depende de su capacidad, y de la variación con respecto al tiempo del voltaje entre sus extremos,
-
+\switchcolumn	
+The electric current that passes through a capacitor depends on the capacitor capacity and on the variation on time of the voltage applied to it.
+ 
+\end{paracol}
 \begin{equation*}
 I=c\frac{dV_o}{dt}
 \end{equation*}
-
+\begin{paracol}{2}
 La intensidad que atraviesa la resistencia se puede obtener a partir de la ley de Ohm,
-
+\switchcolumn
+the current through the resistor can be computed using Ohm's law.
+\end{paracol}
 \begin{equation*}
 V_R=I\cdot R
 \end{equation*}
-
+\begin{paracol}{2}
 Por otro lado, la intensidad que recorre el circuito es común para la resistencia y el condensador. El voltaje suministrado tiene que ser la suma de las caídas de voltaje en la resistencia y en el condensador, $V_i=V_o+V_R$. Sustituyendo y despejando,
 
+\switchcolumn
+Additionally, the current flowing through the circuit is the same for both the resistor and the capacitor. The voltage supplied to the circuit should equal the sum of the resistor and capacitor voltage drop, expressed as $V_i = V_o + V_R$. By substituting and solving,
+\end{paracol}
 \begin{equation*}
 V_i=V_o+V_R \rightarrow V_i=V_o+I\cdot R \rightarrow V_i=V_o+R\cdot C\frac{dV_0}{dt}
 \end{equation*}
-
-Si reordenamos el resultado, 
-
+\begin{paracol}{2}
+Si reordenamos el resultado,
+\switchcolumn
+And, after rearranging the result,  
+\end{paracol}
 \begin{equation*}
 \frac{dV_o}{dt}=\frac{V_i-V_o}{R \cdot C}
 \end{equation*}
-
+\begin{paracol}{2}
 Obtenemos una ecuación diferencial para el valor del voltaje en los extremos del condensador que puede tratarse como un  problema de valor inicial. Para este problema, la función $f(t,x)$ toma la forma,
-
+\switchcolumn
+We get a differential equation for the capacitor tension drop that could be solve as a initial value problem. For this problem the function $f(t,x)$ takes the form,
+\end{paracol}
 \begin{equation*}
-f(t,x) \equiv \frac{V_i-V_o}{R \cdot C}
+f(t,V_0 \equiv x) = \frac{V_i-V_o}{R \cdot C}
 \end{equation*}
-
-además necesitamos conocer un valor inicial $V_o(0)$ para el voltaje en el condensador. Si suponemos que el condensador se encuentra inicialmente descargado, entonces $V_o(0)=0$. Para este problema se conoce la solución analítica. El voltaje del condensador en función del tiempo viene dado por la función,
-
+\begin{paracol}{2}
+Además necesitamos conocer un valor inicial $V_o(0)$ para el voltaje en el condensador. Si suponemos que el condensador se encuentra inicialmente descargado, entonces $V_o(0)=0$. Para este problema se conoce la solución analítica. El voltaje del condensador en función del tiempo viene dado por la función,
+\switchcolumn
+In addition, we need to know an initial value $V_o(0)$ for the voltage across the capacitor. If we consider the capacitor is initially discharged, then $V_o(0) = 0$. For this problem we know the analytic solution. We can express the voltage across the capacitor as a function fo time,
+\end{paracol}
 \begin{equation*}
 V_0(t)=V_i\left(1-e^{-t/R\cdot C}\right)
 \end{equation*} 
 
-
-Podemos resolver el problema de la carga del condensador, empleando el código de la función de Euler incluido más arriba. Lo único que necesitamos es definir una función de Matlab  para representar la función $f(x,t)$ de nuestro problema de valor inicial, t
+\begin{paracol}{2}
+Podemos resolver el problema de la carga del condensador, empleando la función  \mintinline{python}{Euler} incluida más arriba. Lo único que necesitamos es definir una función en Python  para representar la función $f(x,t)$ de nuestro problema de valor inicial,
+\switchcolumn
+We can solve the capacitor problem using the function \mintinline{python}{euler} included above. WE only need to define a Python funtion to represent the funtion $f(x,t)$ for our initial value problem,
+\end{paracol}
 %\begin{lstlisting}
-%function s=condensador(~,Vo)
-%% t tiempo en este ejemplo la función no depende del tiempo por lo que esta
-%% variable realmente no se usa... pero como el programa Euler se la pasa, 
-%% empleamos el simbolo ~ para que no de errores...
-%% Vo Valor del voltaje en cada iteración
-%
-%% hay que definir los parametros fijos del circuito...
-%C=0.0001; % Capacidad del condesador en Faradios
-%R=1000; % resitencia en Ohmios
-%% el voltaje de entrada podría Vi podria ser una función del tiempo... Aquí
-%% vamos a considerar que es constante...
-%Vi=10; % Voltaje suministrado al circuito en Voltios
-%% Aqui cosntruimos la funcion que representa el circuito RC,
-%
-%s=(Vi-Vo)/R/C;
-%\end{lstlisting}
+\begin{minted}{python}
+	In [151]: def condensador(t,Vo,C=1.,R=1.,Vi=10.):
+	...:     dVo = (Vi-Vo)/(R*C)
+	...:     return(dVo)
+\end{minted}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{solrc.eps}
-\caption{Comparacion entre los resultados obtenidos mediante el método de Euler para dos pasos de integración $h=0.05$ y $h=0.001$ y la solución analítica para el voltaje $V_o$ de un condensador durante su carga.}
+\bicaption{Comparacion entre los resultados obtenidos mediante el método de Euler para dos pasos de integración $h=0.5$ y $h=0.25$ y la solución analítica para el voltaje $V_o$ de un condensador durante su carga. Hemos tomado $C=R=1$ y $V_i=10$}{Comparison among the results obtained using Euler's method with two different integration steps $h=0.5$ y $h=0.25$, and the analytic solution for voltage $V_o$ across a capacitor. We took $C=R=1$ and $V_i=10$.}
 \label{fig:solrc}
 \end{figure}
-
-La figura \ref{fig:solrc} compara gráficamente los resultados obtenido si empleamos la función descrita más arriba, \texttt{euler('condensador',0,0,1,h)}, para obtener el resultado de aplicar al circuito un voltaje de entrada constante $V_i=10$V durante un segundo, empleando dos pasos de integración distintos $h=0.05$s  y $h=0.01$s. Además, se ha añadido a la gráfica el resultado analítico.
+\begin{paracol}{2}
+La figura \ref{fig:solrc} compara gráficamente los resultados obtenidos si empleamos la función\\ \texttt{euler(condensador,0,0,10,h)}, para obtener el resultado de aplicar al circuito un voltaje de entrada constante $V_i=10$V durante 10 segundos, empleando dos pasos de integración distintos $h=0.5$s  y $h=0.025$s. Además, se ha añadido a la gráfica el resultado analítico.
 
 En primer lugar, es interesante observar como el voltaje $V_0$ crece hasta alcanzar el valor $V_i=10$ V del voltaje suministrado al circuito. El tiempo que tarda el condensador en alcanzar dicho voltaje y quedar completamente cargado depende de su capacidad y de la resistencia presente en el circuito.
 
 Como era de esperar, al hacer menor el paso de integración la solución numérica se aproxima más a la solución analítica. Sin embargo, como pasaba en el caso de los métodos de diferenciación de funciones, hay un valor de $h$ óptimo. Si disminuimos el paso de integración por debajo de ese valor, los errores de redondeo empiezan a dominar haciendo que la solución empeore.
 
 \paragraph{Problema de segundo orden.} Vamos a considerar ahora un sistema con una masa colgada de un resorte con un dispositivo mecánico (amortiguador) que ejerce una fuerza opuesta al movimiento proporcional a la velocidad. En este caso la ecuación diferencial sería la siguiente:
+
+\switchcolumn
+Figure \ref{fig:solrc} graphically compares the results achieved using the function\\ \texttt{euler(condensador,0,0,10,h)} to compute the voltage across the capacitor after supplying a constant input voltage $V_i = 10V$ during ten seconds, using two different integration steps, $h=0.5s$ ans $h=0.25s$. We have also added the analytical solution to the problem to the graphic. 
+
+It's interesting to observe how the voltage, denoted as $V_0$, increases until it reaches the value $V_i = 10V$, which corresponds to the voltage supplied to the circuit. The time it takes for the capacitor to reach this voltage and become fully charged depends on its capacitance and the value of the resistor in the circuit.
+
+As expected, when we diminish the integration step, the numerical solution approximates the analytical solution better. However, as we saw for the case of numerical differentiation, there is an optimal $h$. If we take the integration step value below this optimal value, the round-off errors worsen the solution.
+
+\paragraph{a Second-order problem.} Let's consider now a system with a mass hanging of a spring and with a mechanical gadget (damper) that exerts a force  opposite to the mass movement and proportional to the mass speed. For this system the differential equation is as follows:
+
+\end{paracol}
+
 \begin{equation*}
 m\frac{d^2 y}{dt^2}=m\cdot g-k \cdot y-\mu \frac{dy}{dt}
 \end{equation*}
@@ -671,18 +842,26 @@ m\frac{d^2 y}{dt^2}=m\cdot g-k \cdot y-\mu \frac{dy}{dt}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=6cm]{figura_amortiguador.pdf}
-	\caption{Masa suspendida en vertical de un muelle con rozamiento.}
+	\bicaption{Masa suspendida en vertical de un muelle con rozamiento.}{A mass vertically hanging of a sprint with a damping resistance}.
 	\label{fig:masa_suspendida}
 \end{figure}
 
+\begin{paracol}{2}
 Tenemos un problema de valor inicial de segundo orden, con una ecuación en la que conviven la variable $y$ su derivada $\frac{dy}{dt}$ y su derivada segunda $\frac{d^2y}{dt^2}$. Para resolver este tipo de problemas lo que hacemos es reescribir la ecuación como dos ecuaciones de primer orden, una para la posición $y$ y otra para la velocidad $v_y=\frac{dy}{dt}$ de manera que obtendríamos un sistema de dos ecuaciones de primer orden acopladas:
-
+\switchcolumn
+We have a second-order initial values problem, with an equation that links the variable $y$ its first derivative $\frac{dy}{dt}$ and its second derivative $\frac{d^2y}{dt^2}$. To solve this kinda problem, we rewrite the differential equation using  two first-order differential equations. one for the position $y$ and the other for the velocity $v_y = \frac{dx}{dt}$. IN this way, we obtain two coupled first-order equations:    
+\end{paracol}
 \begin{align*}
 \frac{dy}{dt}&=v_y \\
 \frac{dv_y}{dt}&=g-\frac{k}{m}\cdot y - \frac{\mu}{m}\cdot v_y 
 \end{align*}
 
-Ese sistema de ecuaciones de primer orden se puede resolver usando el método de Euler. Necesitamos definir una función de Matlab para representar el sistema de ecuaciones diferenciales
+\begin{paracol}{2}
+Ese sistema de ecuaciones de primer orden se puede resolver usando el método de Euler. Necesitamos definir una función de Python para representar el sistema de ecuaciones diferenciales,
+
+\switchcolumn
+This system can be solve using the Euler's method, but we need to define a Python function to represent the system of differential equations,
+\end{paracol}
 
 %\begin{lstlisting}
 %function [dydt] = amortiguador(~,y)
@@ -701,17 +880,18 @@ Ese sistema de ecuaciones de primer orden se puede resolver usando el método de
 %end
 %\end{lstlisting}
 
+\begin{paracol}{2}
 Empleando la función descrita \texttt{euler('amortiguador',[0 0],0,50,0.01)} obtenemos la evolución temporal de la posición y la velocidad de la masa unida al resorte como puede verse en la figura \ref{fig:amortiguador1}. En esta figura se aprecia como la masa oscila en torno a la posición de equilibrio hasta que finalmente se para.
-
+\end{paracol}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=12cm]{amortiguador_1.png}
 	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento.}
 	\label{fig:amortiguador1}
 \end{figure}
-
+\begin{paracol}{2}
 Si cambiamos el valor de la constante del muelle a $k=100$ ($kg/s^2$) y volvemos a aplicar el método de Euler para resolver obtenemos el resultado mostrado en la figura \ref{fig:amortiguador2}. En la gráfica puede observarse que la masa comienza a oscilar con oscilaciones de amplitud creciente. Para analizar este comportamiento anómalo vamos a repetir el método de Euler reduciendo en un orden de magnitud el paso de integración. Si lo hacemos así obtenemos los resultados de la figura \ref{fig:amortiguador3}. Al reducir el paso vemos que la masa oscila en torno a la posición de equilibrio hasta que se estabiliza. El comportamiento observado en la figura \ref{fig:amortiguador2} se debe a errores de integración del algoritmo de Euler.
-
+\end{paracol}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=12cm]{amortiguador_2.png}
@@ -725,23 +905,29 @@ Si cambiamos el valor de la constante del muelle a $k=100$ ($kg/s^2$) y volvemos
 	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento $k=100$ y paso $h=0.001$.}
 	\label{fig:amortiguador3}
 \end{figure}
-
+\begin{paracol}{2}
 En la práctica se emplean algoritmos más precisos (y complejos) que el de Euler para resolver problemas de valor inicial, por ejemplo los métodos de Runge-Kutta.
 
 \subsection{Métodos de Runge-Kutta} \index{Método de Runge-Kutta}
 Si intentamos emplear polinomios de Taylor de grado superior, al empleado en el método de Euler, nos encontramos con la dificultad de obtener las derivadas sucesivas, con respecto al tiempo, de la función $f$. Así, si quisiéramos emplear el polinomio de Taylor de segundo grado, para la función x, tendríamos,
+\end{paracol}
+
 \begin{equation*}
 x(t_{i+1})=x(t_i)+h\cdot f(t_i,x_i)+\frac{h^2}{2}f'(t_i,y_i)
 \end{equation*}
+\begin{paracol}{2}
 Pero,
+\end{paracol}
 \begin{equation*}
 f'(t,x)=\frac{\partial f(t,x)}{\partial t}+\frac{\partial f(t,x)}{\partial x}\cdot f(t,x)
 \end{equation*}
+\begin{paracol}{2}
 Sacando factor común a h, obtenemos,
+\end{paracol}
 \begin{equation*}
 x(t_{i+1})=x(t_i)+h\left(f(t_i,x_i)+\frac{h}{2}\left(\frac{\partial f(t_i,x_i)}{\partial t}+\frac{\partial f(t_i,x_i)}{\partial x}\cdot f(t_i,x_i)\right)\right)
 \end{equation*}
-
+\begin{paracol}{2}
 A partir de este resultado, es fácil comprender que resulte complicado obtener métodos de resolución basados en el desarrollo de Taylor. De hecho, se vuelven cada vez más complicados según vamos empleando polinomios de Taylor de mayor grado.
 
 Desde un punto de vista práctico, lo que se hace es buscar aproximaciones a los términos sucesivos del desarrollo de Taylor, para evitar tener que calcularlos explícitamente. Estas aproximaciones se basan a su vez, en el desarrollo de Taylor para funciones de dos variables.
@@ -749,37 +935,44 @@ Desde un punto de vista práctico, lo que se hace es buscar aproximaciones a los
 Los métodos de integración resultantes, se conocen con el nombre genérico de métodos de Runge-Kutta. Veamos cómo se haría para el caso que acabamos de mostrar del polinomio de Taylor de segundo grado.
 
 En primer lugar obtenemos el desarrollo del polinomio de Taylor de primer grado, en dos variables de la función $f(t,x)$, en un entorno del punto $t_i,x_i$,
+\end{paracol}
+
 \begin{equation*}
 f(t,x)=f(t_i,x_i)+\left((t-t_i)\frac{\partial f(t_i,x_i)}{\partial t}+(x-x_i)\frac{\partial f(t_i,x_i)}{\partial x}\right)
 \end{equation*}
 
+\begin{paracol}{2}
 Si ahora comparamos este resultado con la ecuación anterior, podríamos tratar de identificar entre sí los términos que acompañan las derivadas parciales, 
-
+\end{paracol}
 \begin{align*}
 t-t_i&=\frac{h}{2} \rightarrow t=t_i+\frac{h}{2}\\
 x-x_i&=\frac{h}{2}\cdot f(t_i,x_i) \rightarrow x=x_i+\frac{h}{2}\cdot f(t_i,x_i)
 \end{align*}
-
+\begin{paracol}{2}
 Es decir,
-
+\end{paracol}
 \begin{equation*}
 f(t_i,x_i)+\frac{h}{2}\left(\frac{\partial f(t_i,x_i)}{\partial t}+\frac{\partial f(t_i,x_i)}{\partial x}\cdot f(t_i,x_i)\right)=f(t_i+\frac{h}{2},x_i+\frac{h}{2}\cdot f(t_i,x_i))
 \end{equation*}
-
+\begin{paracol}{2}
 Si ahora sustituimos este resultado en nuestra expresión del polinomio de Taylor de segundo grado de la función $x(t)$,
-
+\end{paracol}
 \begin{equation*}
 x(t_{i+1})=x(t_i)+h\cdot f(t_i+\frac{h}{2},x_i+\frac{h}{2}f(t_i,x_i))
 \end{equation*}
-Donde $x_i\equiv x(t_i)$. Esta aproximación da lugar al primero y más sencillo de los métodos de Runge-Kutta, conocido como método del punto medio. El nombre es debido a que la función $f$ se evalúa en un punto a mitad de camino entre $t_i$ y $t_{i+1}=t_i+h$. El cálculo de la solución de un problema de valor inicial mediante este método, se puede expresar de un modo análogo al del método de Euler, 
+
+\begin{paracol}{2}
+Donde $x_i\equiv x(t_i)$. Esta aproximación da lugar al primero y más sencillo de los métodos de Runge-Kutta, conocido como método del punto medio. El nombre es debido a que la función $f$ se evalúa en un punto a mitad de camino entre $t_i$ y $t_{i+1}=t_i+h$. El cálculo de la solución de un problema de valor inicial mediante este método, se puede expresar de un modo análogo al del método de Euler,
+\end{paracol} 
 \begin{align*}
 x_0&=x(a)\\
 x_1&=x_0+h\cdot f(a+\frac{h}{2},x_0+\frac{h}{2}f(a,x_0))\\
 \vdots \\
 x_{i+1}&=x_i+h\cdot f(t_i+\frac{h}{2},x_i+\frac{h}{2}f(t_i,x_i))\\
 \end{align*}
+\begin{paracol}{2}
 La siguiente función de Matlab implementa el método del punto medio,
-
+\end{paracol}
 %\begin{lstlisting}
 %function y=pmedio(fun,ya,a,b,h)
 %% metodo de rungekutta de segundo orden mas conocido como del punto medio
@@ -808,9 +1001,9 @@ La siguiente función de Matlab implementa el método del punto medio,
 %plot(t,y)
 %
 %\end{lstlisting}
-
-
+\begin{paracol}{2}
 El resto de los métodos de Runge-Kutta, los dejaremos para cuando seáis más mayores... Pero que conste que es de lo más interesante de los métodos numéricos.
+\end{paracol}
 
 \section{Ejercicios}
 \begin{enumerate}
