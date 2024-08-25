@@ -276,7 +276,7 @@ Empleando el desarrollo de Taylor y tres puntos podemos aproximar la derivada po
 \switchcolumn
 Where we have taken $x\equiv x_0$, $x+h\equiv x_1$ y $x-h\equiv x_{-1}$. This approximation is called two point central difference.\index{Diferentiation! Two point central difference} Figure \ref{fig:diffin1} shows a comparison between an actual function derivative and its approximation using a two point forward difference formula. Figure \ref{fig:diffin2} Compares, for the same function, the actual derivative with a two points central difference approximation. In this example, we can see how the central approximation yields better results. However, the accuracy of a result also depends on the higher-order derivative values of the function.  Therefore, it is not possible to claim that the central difference will always result in better outcomes.
 
- With three points and the Tylor's expansion we can approximate the derivative using a three forward difference formula,   
+ With three points and the Tylor's expansion we can approximate the derivative using a three points forward difference formula,   
 \end{paracol}
 \begin{align*}
 \left. \begin{aligned}
@@ -683,7 +683,7 @@ Developing techniques to numerically solve differential equations is perhaps one
 
 The methods we are going to introduce are essentially base on discretising the domain in which we want to know the value of the function $x(t)$. For instance, If we want to know the values of the function in the interval $t \in [a,b]$, we divide the interval in $n$ subinterval, each one of size $h_i$. The methods qe are going to study give us an approximation of the function $x(t)$, $x_0,x_2\cdots x_n$ in the $n+1$ points $t_0,t_1,\cdot, t_n$, where $t_0=a$, $t_n=b$, y $t_{i+1}-t_i=h_i$. The value $h_i$ is known as the integration step. Besides, we suppose that we know the value the function $x(t)$ takes in the interval initial side $a$, $x(a) = x_a$.
 
-\subsection{the Euler's method.}
+\subsection{The Euler's method.}
 The Euler's method can be obtained from the Taylor's expansion of the function $x$, around the known value $(a,x_a)$. The idea is to start at the known value an compute iteratively the remaining values $x_1\cdots$ until we arrive to the end of the interval $b$, at which we want to know the value function $x$ takes.
 
 We can obtain the relationship between to consecutive values of the function from the Taylor's expansion as, 
@@ -863,66 +863,99 @@ Ese sistema de ecuaciones de primer orden se puede resolver usando el método de
 This system can be solve using the Euler's method, but we need to define a Python function to represent the system of differential equations,
 \end{paracol}
 
-%\begin{lstlisting}
-%function [dydt] = amortiguador(~,y)
-%% y(1) posición
-%% y(2) velocidad
-%% k constante del muelle
-%% mu coeficiente de rozamiento
-%% g aceleración de la gravedad
-%% m masa
-%g=9.8;
-%k=10.0;
-%m=2.0;
-%mu=0.5;
-%dydt(1)=y(2);
-%dydt(2)=g-(k/m)*y(1)-(mu/m)*y(2);
-%end
-%\end{lstlisting}
+\begin{minted}{python}
+	def amortiguador(t,y):
+	"""
+	Defines the set of differetial equations for a damping
+	oscilator 
+	
+	Parameters
+	----------
+	t : TYPE double 
+	DESCRIPTION. time
+	y : TYPE numpy array
+	DESCRIPTION. y[0] ->> position
+	y[1] ->> velocity
+	
+	Returns
+	-------
+	dydt : TYPE numpy arra
+	DESCRIPTION. dydt[0] ->> velocity
+	dydt[1] ->> acceleration
+	
+	"""
+	g = 9.8 #gravity accel.
+	k = 100. #spring constant
+	m = 2.  #mass
+	mu = 0.5 #friction constant
+	dydt = np.zeros(2) 
+	dydt[0]=y[1]
+	dydt[1]=g-(k/m)*y[0]-(mu/m)*y[1];
+	return(dydt)
+\end{minted}
 
 \begin{paracol}{2}
-Empleando la función descrita \texttt{euler('amortiguador',[0 0],0,50,0.01)} obtenemos la evolución temporal de la posición y la velocidad de la masa unida al resorte como puede verse en la figura \ref{fig:amortiguador1}. En esta figura se aprecia como la masa oscila en torno a la posición de equilibrio hasta que finalmente se para.
+Empleando la función descrita \\ \texttt{euler('amortiguador',[0 0],0,50,0.01)} obtenemos la evolución temporal de la posición y la velocidad de la masa unida al resorte como puede verse en la figura \ref{fig:amortiguador1}. En esta figura se aprecia como la masa oscila en torno a la posición de equilibrio hasta que finalmente se para.
+\switchcolumn
+Using the function just described \\ \texttt{euler('amortiguador',[0 0],0,50,0.01)} we compute the temporal evoluntion of position and velocity for the mass attached to the spring. Figure \ref{fig:amortiguador1} shows the result, the mass oscillates around an equilibrium position until the damping mechanism, eventually, stops it. 
 \end{paracol}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=12cm]{amortiguador_1.png}
-	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento.}
+	\bicaption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento.}{Results achieved using Euler's method to solve the damped oscillator problem.}
 	\label{fig:amortiguador1}
 \end{figure}
 \begin{paracol}{2}
 Si cambiamos el valor de la constante del muelle a $k=100$ ($kg/s^2$) y volvemos a aplicar el método de Euler para resolver obtenemos el resultado mostrado en la figura \ref{fig:amortiguador2}. En la gráfica puede observarse que la masa comienza a oscilar con oscilaciones de amplitud creciente. Para analizar este comportamiento anómalo vamos a repetir el método de Euler reduciendo en un orden de magnitud el paso de integración. Si lo hacemos así obtenemos los resultados de la figura \ref{fig:amortiguador3}. Al reducir el paso vemos que la masa oscila en torno a la posición de equilibrio hasta que se estabiliza. El comportamiento observado en la figura \ref{fig:amortiguador2} se debe a errores de integración del algoritmo de Euler.
+\switchcolumn
+If we change the values of the spring constant to $k=100$ ($kg/s^2$) and repeat the Euler's method, we arrive to the results showed figure \ref{fig:amortiguador2}. We can see in the graphic how the mass oscillates with increasing oscillation amplitude. To analyse this unexpected result we are going to repeat the Euler's method computing, this time using an integration step one order of magnitude less. We obtain for this new calculation the behaviour showed in figure \ref{fig:amortiguador3}. Notice how reducing the integrations step reverts the situation and now, the solution of the problem is reasonable, the mass oscillations diminish until, eventually, it stops. The behaviour observed in figure \ref{fig:amortiguador2} is due to Euler's method integration error.   
 \end{paracol}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=12cm]{amortiguador_2.png}
-	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento $k=100$.}
+	\bicaption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento $k=100$.}{Result achieved using Euler's method to solve the damped oscillator problem. $K=100$}
 	\label{fig:amortiguador2}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=12cm]{amortiguador_3.png}
-	\caption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento $k=100$ y paso $h=0.001$.}
+	\bicaption{Resultado de aplicar el método de Euler a una masa suspendida en vertical de un muelle con rozamiento $k=100$ y paso $h=0.001$.}{Result achieved using Euler's method to solve the damped oscillator problem. $K=100$, $h = 0.001$}
 	\label{fig:amortiguador3}
 \end{figure}
 \begin{paracol}{2}
 En la práctica se emplean algoritmos más precisos (y complejos) que el de Euler para resolver problemas de valor inicial, por ejemplo los métodos de Runge-Kutta.
+\switchcolumn
+In practice, there are more precise (an complex) algorithms than Euler's to solve initial value problems. For instance, the family of Runge-Kutta methods.
+\end{paracol}
+\begin{flalign*}
+	&\mathwitch*_{i=0}^{\infty} \Biggl \{&     
+\end{flalign*}
+
+\begin{paracol}{2}
 
 \subsection{Métodos de Runge-Kutta} \index{Método de Runge-Kutta}
-Si intentamos emplear polinomios de Taylor de grado superior, al empleado en el método de Euler, nos encontramos con la dificultad de obtener las derivadas sucesivas, con respecto al tiempo, de la función $f$. Así, si quisiéramos emplear el polinomio de Taylor de segundo grado, para la función x, tendríamos,
-\end{paracol}
+Si intentamos emplear polinomios de Taylor de grado superior, al empleado en el método de Euler, nos encontramos con la dificultad de obtener las derivadas sucesivas, de la función $f$. Así, si quisiéramos emplear el polinomio de Taylor de segundo grado, para la función $x$, tendríamos,
 
+\switchcolumn
+\subsection{The Runge-Kutta methods}\index[eng]{RUnge-Kutta methods}
+If we try to use Taylor's polynomials of higher degree than that used in Euler's method, we have the find the problem of computing the successive derivatives of the function $f$. So if we want to use the Taylor's second-degree polynomial, to compute the values of $x$, we have,   
+\end{paracol}  
 \begin{equation*}
 x(t_{i+1})=x(t_i)+h\cdot f(t_i,x_i)+\frac{h^2}{2}f'(t_i,y_i)
 \end{equation*}
 \begin{paracol}{2}
 Pero,
+\switchcolumn
+but,
 \end{paracol}
 \begin{equation*}
 f'(t,x)=\frac{\partial f(t,x)}{\partial t}+\frac{\partial f(t,x)}{\partial x}\cdot f(t,x)
 \end{equation*}
 \begin{paracol}{2}
-Sacando factor común a h, obtenemos,
+Sacando factor común $h$, obtenemos,
+\switchcolumn
+Taking out common factor $h$, we get,
 \end{paracol}
 \begin{equation*}
 x(t_{i+1})=x(t_i)+h\left(f(t_i,x_i)+\frac{h}{2}\left(\frac{\partial f(t_i,x_i)}{\partial t}+\frac{\partial f(t_i,x_i)}{\partial x}\cdot f(t_i,x_i)\right)\right)
@@ -935,6 +968,14 @@ Desde un punto de vista práctico, lo que se hace es buscar aproximaciones a los
 Los métodos de integración resultantes, se conocen con el nombre genérico de métodos de Runge-Kutta. Veamos cómo se haría para el caso que acabamos de mostrar del polinomio de Taylor de segundo grado.
 
 En primer lugar obtenemos el desarrollo del polinomio de Taylor de primer grado, en dos variables de la función $f(t,x)$, en un entorno del punto $t_i,x_i$,
+\switchcolumn
+This result clearly shows that developing methods for solving initial value problems based on Taylor's expansion is challenging. In fact, it becomes increasingly complex as we employ Tailor's polynomials of a higher degree.
+
+From a practical point of view, the common practice is to search for approximations to successive Taylor's expansion terms rather than calculate them explicitly. These approximation are, in turn, based on Taylor's expansion for two variable functions.
+
+The resulting methods are known in general as the Runge-Kutta methods. Let us see how to do it for the case we have just shown of a second-degree Taylor's polynomial.
+
+First, we will find the first-degree Taylor expansion polynomial for the function $f(t,x)$ around the point $t_i,x_i$ with respect to two variables,
 \end{paracol}
 
 \begin{equation*}
@@ -942,7 +983,9 @@ f(t,x)=f(t_i,x_i)+\left((t-t_i)\frac{\partial f(t_i,x_i)}{\partial t}+(x-x_i)\fr
 \end{equation*}
 
 \begin{paracol}{2}
-Si ahora comparamos este resultado con la ecuación anterior, podríamos tratar de identificar entre sí los términos que acompañan las derivadas parciales, 
+Si ahora comparamos este resultado con la ecuación anterior, podríamos tratar de identificar entre sí los términos que acompañan las derivadas parciales,
+\switchcolumn
+If we compare this result with the previous equation, we can establish a relationship between the coefficients accompanying the partial derivatives.
 \end{paracol}
 \begin{align*}
 t-t_i&=\frac{h}{2} \rightarrow t=t_i+\frac{h}{2}\\
@@ -950,12 +993,16 @@ x-x_i&=\frac{h}{2}\cdot f(t_i,x_i) \rightarrow x=x_i+\frac{h}{2}\cdot f(t_i,x_i)
 \end{align*}
 \begin{paracol}{2}
 Es decir,
+\switchcolumn
+That is,
 \end{paracol}
 \begin{equation*}
 f(t_i,x_i)+\frac{h}{2}\left(\frac{\partial f(t_i,x_i)}{\partial t}+\frac{\partial f(t_i,x_i)}{\partial x}\cdot f(t_i,x_i)\right)=f(t_i+\frac{h}{2},x_i+\frac{h}{2}\cdot f(t_i,x_i))
 \end{equation*}
 \begin{paracol}{2}
 Si ahora sustituimos este resultado en nuestra expresión del polinomio de Taylor de segundo grado de la función $x(t)$,
+\switchcolumn
+And after substituting this result in our expression for function $x(t)$ second-degree Taylor's polynomial expansion, 
 \end{paracol}
 \begin{equation*}
 x(t_{i+1})=x(t_i)+h\cdot f(t_i+\frac{h}{2},x_i+\frac{h}{2}f(t_i,x_i))
@@ -963,6 +1010,8 @@ x(t_{i+1})=x(t_i)+h\cdot f(t_i+\frac{h}{2},x_i+\frac{h}{2}f(t_i,x_i))
 
 \begin{paracol}{2}
 Donde $x_i\equiv x(t_i)$. Esta aproximación da lugar al primero y más sencillo de los métodos de Runge-Kutta, conocido como método del punto medio. El nombre es debido a que la función $f$ se evalúa en un punto a mitad de camino entre $t_i$ y $t_{i+1}=t_i+h$. El cálculo de la solución de un problema de valor inicial mediante este método, se puede expresar de un modo análogo al del método de Euler,
+\switchcolumn
+ Where $x_i \equiv x(t_i)$. This approximation paves the way for the first and simplest of Runge-Kutta methods, the midpoint method. This name comes from evaluating the function $f$ at a point midway between $t_i$ and $t_{i+1} = t_i +h$. We can write the midpoint method algorithm to compute an initial value problem solution in a similar way to Euler's method.   
 \end{paracol} 
 \begin{align*}
 x_0&=x(a)\\
@@ -971,75 +1020,92 @@ x_1&=x_0+h\cdot f(a+\frac{h}{2},x_0+\frac{h}{2}f(a,x_0))\\
 x_{i+1}&=x_i+h\cdot f(t_i+\frac{h}{2},x_i+\frac{h}{2}f(t_i,x_i))\\
 \end{align*}
 \begin{paracol}{2}
-La siguiente función de Matlab implementa el método del punto medio,
+La siguiente función en Python implementa el método del punto medio,
+\switchcolumn
+The following Python code implement the midpoint method,
 \end{paracol}
-%\begin{lstlisting}
-%function y=pmedio(fun,ya,a,b,h)
-%% metodo de rungekutta de segundo orden mas conocido como del punto medio
-%% uso: y=pmedio(fun,ya,a,b,h)
-%%  variables de entrada: fun, nombre entre comillas de la función que define
-%%  el problema de valor inicial que se desea resolver. ya, valor inicial. a,
-%% instante de tiempo inicial o valor inicial de la variable independiente.
-%% b valor de tiempo final o valor final de la variable independiente. h,
-%% paso de integracion
-%% podemos por elemental prudencia, comprobar que b>a
-%% lo elegante no es pasar el paso como he hecho aqui, sino calcularlo en
-%% funcion de cuantos puntos de la solucion queremos en el intervalo...
-%if a>=b
-%    y='el intervalo debe ser creciente, para evitarse lios'
-%    return
-%end
-%y=ya;
-%paso=1;
-%t(paso)=a;
-%while t(paso)<=b
-%    t(paso+1)=t(paso)+h;
-%    y(paso+1)=y(paso)+h*feval(fun,t(paso)+h/2,y(paso)+h*feval(fun,t(paso),y(paso))/2);
-%    paso=paso+1;
-%end
-%% pintamos la solucion,
-%plot(t,y)
-%
-%\end{lstlisting}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=midpoint\_method.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/diferenciacion_integracion/codigo_abierto/midpoint_method.py}
+
 \begin{paracol}{2}
 El resto de los métodos de Runge-Kutta, los dejaremos para cuando seáis más mayores... Pero que conste que es de lo más interesante de los métodos numéricos.
+\switchcolumn
+ We leave the remaining Runge-Kutta method until you are grown up. But notice that it is one of the most interesting topics in numerical methods.
 \end{paracol}
+\begin{flalign*}
+	&& \Biggr \}\reversemathwitch*    
+\end{flalign*}
 
+\begin{paracol}{2}
 \section{Ejercicios}
-\begin{enumerate}
-\item Crea una función de matlab que tomo como variables de entrada en handle de otra función \texttt{@f}, un valor $x_0$, un intervalo $h$ y una última variable \texttt{metodo }que contenga el nombre de un método y devuelva el valor de la derivada de f calculada en el punto $x_0$, empleando el método indicado en la variable \texttt{metodo}.  Los métodos pueden ser:
+\sectionmark{Ejercicios \textreferencemark\ Exercises.}
+\paragraph{1.} Crea una función en Python que tomo como variables de entrada otra función $f$, un valor $x_0$, un intervalo $h$ y una última variable \texttt{metodo } que contenga el nombre de un método y devuelva el valor de la derivada de $f$ calculada en el punto $x_0$, empleando el método indicado en la variable \texttt{metodo}.  Los métodos pueden ser:
 \begin{itemize}
 \item \texttt{metodo = '2ad'}: diferencia de dos puntos adelantada
 \item \texttt{metodo = '2ce'}: diferencia de dos puntos centrada
 \item \texttt{metodo = '3ad'}: diferencia de tres puntos adelantada
 \end{itemize}
-Emplea la función que acabas de crear para obtener la derivada de la función $f(x) = 1/x$ en el punto $x_0 = 1$. Prueba para valores de $h$ $0.1$, $0.5$,$1.5$. Explica los resultados. 
+Emplea la función que acabas de crear para obtener la derivada de la función $f(x) = 1/x$ en el punto $x_0 = 1$. Prueba para valores de $h$ $0.1$, $0.5$, $1.5$. Explica los resultados. 
 
-\item Analiza los programas mostrados en la sección \ref{sec:inum} para el calculo de integrales empleando los métodos deTrapecio, Simpson y Simpson 3/8 y la función para calcular los métodos extendidos. Comprueba la precisión de los métodos calculando la integral,
+\paragraph{2.} Analiza los programas mostrados en la sección \ref{sec:inum} para el calculo de integrales empleando los métodos de Trapecio, Simpson y Simpson 3/8 y la función para calcular los métodos extendidos. Comprueba la precisión de los métodos calculando la integral,
+
+\switchcolumn
+\section{Exercises}
+\paragraph{1.} Build a Python function that takes another function $f$, a value $x_0$, an interval $h$ and a variable \texttt{method} as input variables, and return the derivative of $f$ calculated at point $x_0$. The function should use the method indicated in the input variable \texttt{method} to calculate the derivative. Possible method to chose should be:
+\begin{itemize}
+	\item \texttt{metodo = '2ad'}: two points forward difference
+	\item \texttt{metodo = '2ce'}: two points central difference
+	\item \texttt{metodo = '3ad'}: three points forward difference
+\end{itemize}
+Employ the function just built to compute the function $f(x) = 1/x$ derivative at point $x_0 = 1$. Try for $h$ values,  $0.1$, $0.5$, $1.5$. Explain the result you get.
+
+\paragraph{2.} Analyse the programs for computing integrals using the trapezium, Simpson's and Simpson's 3/8 described in section \ref{sec:inum}, and also the function for the extended methods. Check the precision of the different methods by computing the following integral,  
+\end{paracol}
 \begin{equation*}
 \int_0^{\pi} \sin(x) = 2
 \end{equation*}
+\begin{paracol}{2}
+	
+\paragraph{3.} El programa del apartado anterior, solo es útil cuando se conoce la función que se desea integrar. Sin embargo es posible aplicar los métodos de integración numérica descritos cuando solo se dispone de una tabla de datos. 
 
-\item El programa del apartado anterior, solo es útil cuando se conoce la función que se desea integrar. Sin embargo es posible aplicar los métodos de integración numérica descritos cuando solo se dispone de una tabla de datos. 
 
-\begin{enumerate}
-\item Escribe una función admita como entrada un vector de datos equiespaciados $[y= y_0,y_1,\cdots,y_n]$, un intervalo de integración $h=x_i - x_{i-1}$, y una variable con el nombre de un método (de modo análogo a como se ha hecho en el ejercicio anterior). La función deberá devolver la integral de la función que representan los datos de la tabla, aplicando el correspondiente método extendido, sobre los datos de $y$:
+a) Escribe una función admita como entrada un vector de datos equiespaciados $[y= y_0,y_1,\cdots,y_n]$, un intervalo de integración $h=x_i - x_{i-1}$, y una variable con el nombre de un método (de modo análogo a como se ha hecho en el ejercicio anterior). La función deberá devolver la integral de la función que representan los datos de la tabla, aplicando el correspondiente método extendido, sobre los datos de $y$:
+
+\switchcolumn
+\paragraph{3.} The previous question program is only useful when you know the function you intend to integrate. However, it is possible to applying the method also when you only have a data table.
+
+a)Write a function that takes as inputs a vector of equispaced data $[y= y_0,y_1,\cdots,y_n]$, an integration interval $h=x_i - x_{i-1}$,  and a variable with a method name (as in the previous exercise). The function should return the integral of the function represented by the data table, applying the  indicated (extended) method onto the $y$ data:
+\end{paracol}
 \begin{align*}
- &\text{Trapecio:}\\
+ &\text{Trapecio/Trapezium:}\\
 I(y)&=\int_{x_0}^{x_n}ydx \approx \sum_{i=0}^{n-1}\int_{x_i}^{x_{i+1}}y(x)dx=\sum_{i=0}^{n-1}\frac{h}{2}(y_i+y_{i+1})\\
 &=\frac{h}{2}\left(y_0+2y_1+2y_2+\cdots+2y_{n-1}+y_n \right)\\
- &\text{Simpson:} \\
+ &\text{Simpson's:} \\
 I(y)&\approx \sum_{i=0}^{\frac{n}{2}-1}\int_{x_{2i}}^{x_{2i+2}}P_2(x)dx=\sum_{i=0}^{\frac{n}{2}-1}\frac{h}{3}(y_{2i}+4y_{2i+1}+y_{2i+2})\\
 &= \frac{h}{3}(y_0+4y_1+2y_2+4y_3+2y_4+\cdots + 2y_{n-2}+4y_{n-1}+y_n)\\
-&\text{Simpson 3/8}\\
+&\text{Simpson's 3/8}\\
 I(y)&\approx \sum_{i=0}^{\frac{n}{3}-1}\int_{x_{3i}}^{x_{3i+3}}P_3(x)dx=\sum_{i=0}^{\frac{n}{3}-1}\frac{3h}{8}(y_{3i}+3y_{3i+1}+3y_{3i+2}+y_{3i+3})\\
 &= \frac{3h}{8}(y_0+3y_1+3y_2+2y_3+3y_4+3y_5+2y_6+ \cdots + 2y_{n-3}+3y_{n-2}+3y_{n-1}+y_n)
 \end{align*}
 
-\item Es importante tener en cuenta que, para el caso de Simpson, $n$ --El número de datos del vector $y$ menos 1-- debe ser divisible entre dos. Añade el código necesario al programa realizado integre el último intervalo empleando el método del trapecio. Del mismo modo, para Simpson 3/8, $n$ debe ser divisible entre tres. Añada el código necesario para que, si no se cumple esta condición, integre por el método del trapecio, si sobra un intervalo o por el método de Simpson si sobran dos.
+\begin{paracol}{2}
+ b) Es importante tener en cuenta que, para el caso de Simpson, $n$ --El número de datos del vector $y$ menos 1-- debe ser divisible entre dos. Añade el código necesario al programa realizado para que integre el último intervalo empleando el método del trapecio, caso de no cumplirse la condición anterior. Del mismo modo, para Simpson 3/8, $n$ debe ser divisible entre tres. Añada el código necesario para que, si no se cumple esta condición, integre por el método del trapecio, si sobra un intervalo o por el método de Simpson si sobran dos.
 
-\item Aplica la función de los apartados anteriores a la siguiente tabla de datos,
+c) Aplica la función de los apartados anteriores a la siguiente tabla de datos,
 
+\switchcolumn	
+b)It is important to note that in the case of Simpson's method, $n$ --the number of elements in the array $y$ minus one-- should be divisible by two. Add the required code to the existing program to integrate the last interval using the trapezium method if the previous condition is not met. Similarly, for Simpson's 3/8 the number of elements minus one should be divisible by 3. Add the necessary code so that, if this condition is not met, the function uses the trapezoid method if there is one interval leftover or the Simpson method if there are two left.    
+
+c) Apply the function built in the previous sections to the following data table,
+\end{paracol}
+\ \\
 %\begin{table}[h]
 %\centering
 \begin{tabular}{r r r r r r r r r r r r}
@@ -1049,89 +1115,148 @@ y & 0. &0.309 &	0.587 &	0.809 &	0.951 &	1.000 &	0.951 &    0.809 &	0.587 &	0.309
 \hline
 \end{tabular}
 %\end{table}
-calcula el resultado empleando los tres métodos, y compáralos con el que da la función de Matlab \texttt{trapz}
-\end{enumerate}
+\ \\
+\begin{paracol}{2}
+\noindent calcula el resultado empleando los tres métodos, y compáralos con el que dan las funciones de Scipy,  \mintinline{python}{scipy.integrate.trapezoid} y \mintinline{python}{scipy.integrate.simpson}.
 
-\item La ecuación diferencial de un péndulo físico toma la forma,
+\paragraph{4.} La ecuación diferencial de un péndulo físico toma la forma,
+\switchcolumn	
+\noindent compute the results using the three methods and compare them with the results yielded by Scipy functions, \mintinline{python}{scipy.integrate.trapezoid} y \mintinline{python}{scipy.integrate.simpson}.
+
+\paragraph{4.} The simple pendulum differential equation takes the following form, 
+\end{paracol}
 \begin{equation*}
 \frac{d^2\theta}{dt} =-\frac{g}{l}\sin(\theta),
 \end{equation*}
+\begin{paracol}{2}
 donde $\theta$ es el ángulo que el péndulo forma con la vertical, $g\approx9.8 m/s^2$ es la aceleración de la gravedad y $l$ es la longitud del péndulo.
-\begin{enumerate}
-\item Reescribe la ecuación del péndulo en dos ecuaciones de primer orden, una para el angulo en función de la velocidad angular $\omega = \frac{d\theta}{dt}$ y otra para la velocidad angular $\frac{d\omega}{dt} = \frac{d^2\theta}{dt}$
 
-\item \label{ap:4b} crea un programa que permita obtener los valores de $\omega$ y $\theta$ en función de tiempo, a partir de las ecuaciones obtenidas en el apartado anterior, empleando el método de Euler. El programa deberá permitir dar valores iniciales $\theta_0$ y $\omega_o$ a la posición y velocidad angulares, definir un intervalo de tiempo de integración $[t_0,t_f]$ y un paso de integración $\Delta t$
+a) Reescribe la ecuación del péndulo en dos ecuaciones de primer orden, una para el angulo en función de la velocidad angular $\omega = \frac{d\theta}{dt}$ y otra para la velocidad angular $\frac{d\omega}{dt} = \frac{d^2\theta}{dt}$
 
-\item Para desplazamientos  pequeños de $\theta$, tomando $\sin(\theta) \approx \theta$, es posible aproximar  la ecuación exacta del péndulo por la siguiente ecuación,
+b) Crea un programa que permita obtener los valores de $\omega$ y $\theta$ en función de tiempo, a partir de las ecuaciones obtenidas en el apartado anterior, empleando el método de Euler. El programa deberá permitir dar valores iniciales $\theta_0$ y $\omega_o$ a la posición y velocidad angulares, definir un intervalo de tiempo de integración $[t_0,t_f]$ y un paso de integración $\Delta t$
+
+c) Para desplazamientos  pequeños de $\theta$, tomando $\sin(\theta) \approx \theta$, es posible aproximar  la ecuación exacta del péndulo por la siguiente ecuación,
+
+\switchcolumn
+where $\theta$ is the angle of the pendulum with respect to the vertical, $g \approx 9.8 m/s^2$ is the gravity acceleration and $l$ is the pendulum length.
+
+a) Rewrite the pendulum equation as two first order differential equations, one for the angle, depending on the angular velocity $\omega = \frac{d\theta}{dt}$ and another for the angular velocity $\frac{d\omega}{dt} = \frac{d^2\theta}{dt}$.
+
+b) Write a program that obtains $\omega$ and $\theta$ values as time functions using the equations obtained in the previous section and Euler's method. The program should get as input variables: Initial values $\theta_0$ y $\omega_o$  for angular position and velocity, an integration time interval $[t_0,t_f]$ and an integration step $\Delta t$
+
+c) For small $\theta$ displacements, we can approximate $ \sin(\theta) \approx \theta$, then the pendulum equation can be approximate as,   
+\end{paracol}
 \begin{equation*}
 \frac{d^2\theta}{dt} =-\frac{g}{l}\theta,
 \end{equation*}
-Añade al programa realizado en el apartado \ref{ap:4b} el código necesario para que integre simultáneamente las ecuaciones del péndulo exacta y la aproximada.
 
-\item Compara gráficamente los resultados para la posición y velocidad obtenidas a partir de las ecuaciones exacta y aproximada para un péndulo de longitud $l=0.1m$. Si parte del reposo con ángulos iniciales $\theta_0$, $\pi/10, pi/6, pi/4, pi/3$. Emplea para la integración un intervalo de tiempo de $t_f-t_0 = 1s$ y un paso de integración $\Delta t=1e-3$
-\end{enumerate}
-\item La dinámica de un planeta que gira en torno a una estrella viene dada por las siguiente ecuaciones del movimiento,
+\begin{paracol}{2}
+\noindent Añade al programa realizado en el apartado 4b) el código necesario para que integre simultáneamente las ecuaciones del péndulo exacta y la aproximada.
+
+d) Compara gráficamente los resultados para la posición y velocidad obtenidas a partir de las ecuaciones exacta y aproximada para un péndulo de longitud $l=0.1m$, si parte del reposo, tomando ángulos iniciales $\theta_0$: $\pi/10, pi/6, pi/4, pi/3$. Emplea para la integración un intervalo de tiempo de $t_f-t_0 = 1s$ y un paso de integración $\Delta t=1E-3s$
+
+\paragraph{5.} La dinámica de un planeta que gira en torno a una estrella viene dada por las siguiente ecuaciones del movimiento,
+
+\switchcolumn
+\noindent add to the program made in section 4b) the code necessary to integrate simultaneously the exact and the approximate pendulum equations.
+
+d) Compare graphically the position and velocity obtained using the exact and the approximate pendulum equations for a pendulum of length $l = 0.1m$. Consider the pendulum initial velocity equal to zero and initial angular positions $\theta_0$: $\pi/10, pi/6, pi/4, pi/3$. Employ an integration time interval $t_f-t_0 =1s$ and an integration step $\delta t = 1E-3 s$
+
+\paragraph{5.} The dynamic of planet that rotates around a star is defined by the following dynamical equations, 
+\end{paracol}
+
 \begin{align*}
 \frac{d^2x}{dt^2} &= -G\frac{M}{(x^2+y^2)^{3/2}}x\\
 \frac{d^2y}{dt^2} &= -G\frac{M}{(x^2+y^2)^{3/2}}y
 \end{align*}
-Donde $G$ es la constante universal de la gravedad, $M$ la masa de la estrella, que se encuentra situada en el origen del coordenadas, y $(x,y)$ las coordenadas del vector posición del planeta.
-\begin{enumerate}
-\item transforma las ecuaciones del movimiento en un sistema de cuatro ecuaciones de primer orden, empleando la velocidad del planeta, $v_x = \frac{dx}{dt},\ v_y = \frac{dy}{dt} $. 
-\item Escribe un programa que permita obtener la trayectoria (órbita) de un planeta resolviendo mediante el método de Euler las ecuaciones obtenidas en el apartado anterior.
-\item Obtén la trayectoria (órbita) de un planeta que gira en torno a una estrella, empleando los siguientes datos, medidos en unidades arbitrarias: Masa de la estrella:$M=1$. Constante de la gravedad $G=1$. Posición inicial del planeta: $x_0 = 1$, $y_0=0$. Velocidad inicial $v_x = 0$, $v_y = 0.7$. Emplea un paso de integración $\Delta t =0.01$. Calcula la solución durante un tiempo total $t = 10$.
-\end{enumerate}
+
+\begin{paracol}{2}
+Donde $G$ es la constante universal de la gravedad, $M$ la masa de la estrella, que se encuentra situada en el origen del sistema de coordenadas, y $(x,y)$ las coordenadas del vector posición del planeta.
+
+a). transforma las ecuaciones del movimiento en un sistema de cuatro ecuaciones de primer orden, empleando la velocidad del planeta, $v_x = \frac{dx}{dt},\ v_y = \frac{dy}{dt} $. 
+
+b). Escribe un programa que permita obtener la trayectoria (órbita) de un planeta resolviendo mediante el método de Euler las ecuaciones obtenidas en el apartado anterior.
+
+c). Obtén la trayectoria (órbita) de un planeta que gira en torno a una estrella, empleando los siguientes datos, medidos en unidades arbitrarias: Masa de la estrella: $M=1$. Constante de la gravedad: $G=1$. Posición inicial del planeta: $x_0 = 1$, $y_0=0$. Velocidad inicial $v_x = 0$, $v_y = 0.7$. Emplea un paso de integración $\Delta t =0.01$. Calcula la solución durante un tiempo total $t = 10$.
+
+
 \textbf{Nota:} El método de Euler no es suficientemente preciso para resolver este tipo de problemas. Es fácil obtener resultados muy alejados de la realidad en función del valor que tomen las condiciones iniciales. 
-\end{enumerate}
 
+\switchcolumn
+Where $G$ is the universal gravity constant, $M$ is the star mass, which is located in the origin of the coordinate system, and  $(x,y)$ are the coordinates of the planet position vector.
+
+a). Transform the dynamical equations in a set of four first-order equations, using the planet velocity, $v_x = \frac{dx}{dt},\ v_y = \frac{dy}{dt} $.
+
+b). Write a program to compute the trajectory (orbit) of the planet, solving by Euler's method the equations obtained in the previous section. 
+
+c). Compute the trajectory (orbit) of a plane that rotates around a star, using the following data, defined in arbitrary units: Star mass $M=1$. Gravity constant: $G=1$. Planet initial position : $x_0 = 1$, $y_0=0$. Planet initial velocity $v_x = 0$, $v_y = 0.7$. Step size $\Delta t =0.01$. Compute the solution for a total time $t = 10$. 
+
+\textbf{Note:} The Euler's method is not accurate enough to solve this kind of problem. For this reason, it is likely to obtain results far away from the actual solution, depending on the initial condition values.  
+\end{paracol}
+
+\begin{paracol}{2}
 \section{Test del curso 2020/21}
-
+\sectionmark{Test curso 2020/21 \textreferencemark\ Course 2020/21 test}
+\switchcolumn
+\section{Course 2020/21 test.}
+\end{paracol}
 \begin{figure}[h]
 \begin{minipage}{0.5\textwidth} \ 
 \includegraphics[width=\textwidth]{dibujillo.eps}
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \begin{align*}
-g &= 10 \, \text{m}/\text{s}^2 \text{\ gravedad}\\
-k &= 60 \, \text{N}/\text{m} \text{\ constante recuperadora del muelle}\\
-m &= 2 \, \text{kg} \text{\ masa del bloque}\\
-\alpha &= \frac{\pi}{6} \text{\ ángulo del plano inclinado}\\
-N &= \text{Reacción normal del plano}\\
+g &= 10 \, \text{m}/\text{s}^2 \text{\ gravedad/gravity}\\
+k &= 60 \, \text{N}/\text{m} \text{\ constante del muelle/ spring constant}\\
+m &= 2 \, \text{kg} \text{\ masa del bloque/block mass}\\
+\alpha &= \frac{\pi}{6} \text{\ ángulo del plano inclinado/inclined plane angle}\\
+N &= \text{Reacción normal del plano/ plane normal force}\\
 p &= mg\\
-	\mu &= 0.1 \, \text{kg}/\text{s} \text{\ coeficiente de rozamiento}\\
+	\mu &= 0.1 \, \text{kg}/\text{s} \text{\ coeficiente de rozamiento/friction coefficient}\\
 \end{align*}
 
 \end{minipage}
-\caption{Sistema masa-muelle-plano inclinado.}
+\bicaption{Sistema masa-muelle-plano inclinado.}{Mass-spring-inclined plane system.}
 \label{fig1}
 \end{figure}
-
+\begin{paracol}{2}
 Sobre un plano inclinado se coloca un bloque sujeto por un muelle, tal y como muestra en la Figura \ref{fig1}. La superficie de contacto entre el bloque y el plano está muy pulida; por lo que se puede considerar que el rozamiento entre ambos es proporcional a la velocidad $v_x(t(t))\in\mathbb{R}$ a lo largo del eje paralelo al plano.
 
 El movimiento del bloque en la dirección del plano puede determinarse mediante la ecuación
+\switchcolumn
+A block attached to a spring is placed on an inclined plane, as shown in figure \ref{fig1}. The contact surface between the plane and the block is very smooth, and the friction between both then can be considered proportional to the speed $v_x(t(t))\in\mathbb{R}$ along the plane surface.
+
+The displacement of the block along the plane can be described using the following equation,
+\end{paracol}
 \begin{equation}
 	ma_{x}(t) = -kx(t) -\mu \lvert N \lvert v_x(t) + p_x, \label{eq: f}
 \end{equation}
-donde $a(t)\in\mathbb{R}$ representa la aceleración del bloque, $x(t)\in\mathbb{R}$ su posición y el resto constantes se describen en la Figura \ref{fig1}. El origen, $x=0$, se toma en el punto en donde la fuerza recuperadora del muelle es nula. La posición crece en el sentido de bajada a lo largo del plano.
+\begin{paracol}{2}
+donde $a(t)\in\mathbb{R}$ representa la aceleración del bloque,$v_x(t) \in\mathbb{R}$ la velocidad, $x(t)\in\mathbb{R}$ su posición y el resto constantes se describen en la Figura \ref{fig1}. El origen, $x=0$, se toma en el punto en donde la fuerza recuperadora del muelle es nula. La posición crece en el sentido de bajada a lo largo del plano.
 
-\begin{enumerate}
+\paragraph{1.} \label{p1} Emplea el método de Euler para estimar las posición $x(t)$ y la velocidad $v_x(t)$ del bloque a partir de la ecuación (\ref{eq: f}). Utiliza un paso de integración $h =10^{-3}\text{s}$. Considera una posición inicial $x(0) =0\text{m}$, una velocidad inicial $v(0) = 0\text{m/s}$ y un tiempo final de integración $t_{f}=11\text{s}$.
 
-	\item \label{p1} Emplea el método de Euler para estimar las posición $x(t)$ y las velocidad $v_x(t)$ del bloque a partir de la ecuación (\ref{eq: f}). Utiliza un paso de integración $h =10^{-3}\text{s}$. Considera una posición inicial $x(0) =0\text{m}$, una velocidad inicial $v(0) = 0\text{m/s}$ y un tiempo final de integración $t_{f}=11\text{s}$.
+\paragraph{2.} \label{p2} Representa gráficamente los resultados obtenidos: Posición frente a tiempo y velocidad frente a tiempo. Emplea una figura distinta para cada representación. No olvides añadir rótulos a los ejes indicando las variables representadas con sus unidades.
 
-\item \label{p2} Representa gráficamente los resultados obtenidos: Posición frente a tiempo y velocidad frente a tiempo. Emplea una figura distinta para cada representación. No olvides añadir rótulos a los ejes indicando las variables representadas con sus unidades.
+\paragraph{3.} La solución analítica del problema, para velocidad inicial $v(0)=0$ y cualquier posición inicial $x(0)$ toma la siguiente forma,
 
-\item La solución analítica del problema, para velocidad inicial $v(0)=0$ y cualquier posición inicial $x(0)$ toma la siguiente forma,
+\switchcolumn
+Where  $a(t)\in\mathbb{R}$ represents the block acceleration, $v_x(t) \in\mathbb{R}$ the block velocity, $x(t)\in\mathbb{R}$ its position and the remaining constant are described in figure \ref{fig1}. The coordinate origin $x=0$ is taken where the spring recovery strength is null. The block position increases in the downward direction along the plane.
 
-%\begin{equation}
-%x(t) = \frac{mp_x}{k}-\left(\frac{mp_x}{k}-x_0\right)\frac{e^{-\frac{Fr}{2}t}}{\sqrt{1-\frac{F^2_r m}{4k}}}\cos\left(\sqrt{\frac{k}{m}-\frac{F^2_r}{4}}\cdot t-\text{asin}\left(\frac{F_r}{2}\sqrt{\frac{m}{k}}\right)   \right)
-%\end{equation}
-%
+\paragraph{1.} \label{p1} Employ the Euler's method to stimate the block position $x(t)$ and velocity $v_x(t)$ from equation (\ref{eq: f}). Use a step size $h = 10^{-3}\text{s}$. Take $x(0) = 0\text{m}$ as the initial position, $v(0) = 0\text{m/s}$ as the initial velocity and a final integration time $t_{f}=11\text{s}$.
 
+\paragraph{2.} \label{p2} Represent graphically the results achieved: Position versus time and velocity versus time, using a different figure for each representation. Do not forget to add axis labels indicating the variables and their units.	 
+
+\paragraph{3.} The problem analytical solution, for $v(0)=0$ initial speed and an arbitrary initial position $x(0)$ is, 
+\end{paracol}
 \begin{equation}\label{eq2}
 	x(t) = \frac{p_x}{k}-\left(\frac{p_x}{k}-x(0)\right)\frac{\omega_0}{\omega}e^{-\eta t}\cos\left(\omega t-\phi \right)
 \end{equation}
+\begin{paracol}{2}
 donde,
-
+\switchcolumn
+where,
+\end{paracol}
 \begin{equation}
 \begin{matrix}
 \omega_0 = \sqrt{\frac{k}{m}} & \eta = \frac{\mu N}{2m}\\
@@ -1141,30 +1266,58 @@ donde,
 \end{matrix} \nonumber
 \end{equation}
  
-\begin{enumerate}
-\item Calcula la posición del bloque mediante la ecuación (\ref{eq2}). Emplea para ello el mismo intervalo y los mismos instantes de tiempo empleados en el apartado \ref{p1}. Representa los resultados sobre el gráfico  para la posición calculada mediante el método de Euler que has obtenido en el apartado \ref{p2}. 
-\item Representa en un gráfico de barras los residuos resultantes de comparar la solución analítica con la obtenida por el método de Euler.
-\item Calcula el error cuadrático medio cometido al emplear el método de Euler. Considera como exacta la solución analítica (\ref{eq2}).
-\end{enumerate}
+\begin{paracol}{2}
+a) Calcula la posición del bloque mediante la ecuación (\ref{eq2}). Emplea para ello el mismo intervalo y los mismos instantes de tiempo empleados en el apartado \ref{p1}. Representa los resultados sobre el gráfico  para la posición calculada mediante el método de Euler que has obtenido en el apartado \ref{p2}. 
 
-\item Los instantes de tiempo para los que la posición del bloque alcanza un máximo o un mínimo local puede obtenerse a partir de la frecuencia de oscilación $\omega$,
+b) Representa en un gráfico de barras los residuos resultantes de comparar la solución analítica con la obtenida por el método de Euler.
+
+c) Calcula el error cuadrático medio cometido al emplear el método de Euler. Considera como exacta la solución analítica (\ref{eq2}).
+
+
+\paragraph{4.} Los instantes de tiempo para los que la posición del bloque alcanza un máximo o un mínimo local pueden obtenerse a partir de la frecuencia de oscilación $\omega$,
+
+\switchcolumn
+a) Compute the block position using equation (\ref{eq2}). Employ the same interval and the same time instants, used in section ref{p1}, to do it. Draw the result on top the position graphic computed in section \ref{p2}, using the Euler's method.
+
+b) Compare the analytical solution with Euler's method solution and represent, using a bar graphic, the residual obtained from this comparison.
+
+c) Compute the quadratic error made using the Euler's method. Take the analytical solution as the exact solution.  
+
+\paragraph{4.} We can obtain the time instant at which the block position reaches a local maximum or minimum using the the oscillation frequency $\omega$,
+\end{paracol}
 \begin{equation}\label{eq4}
 t_{max/min} = \frac{n \pi}{\omega}, n = 1,2,3,\cdots, \infty
 \end{equation}
-\begin{enumerate}
-\item \label{p4}Emplea las ecuaciónes (\ref{eq4}) y (\ref{eq2}) para obtener los primeros 20 puntos singulares (máximos o mínimos) del movimiento del bloque. Represéntalos sobre el gráfico de la posición, obtenido en el apartado \ref{p2}.
-\item Utilizando los datos obtenidos en el apartado \ref{p4}, emplea el método de diferencia de dos puntos centrada para obtener las derivadas de las posiciones en los máximos y mínimos locales con respecto al tiempo. Si hay puntos para los que no es posible aplicar este método, calcula su derivada empleando otra aproximación razonable.
- 
-\item Representa los resultados obtenidos en el apartado anterior sobre el gráfico de la velocidad obtenido en el ejercicio \ref{p2}. A la vista de los resultados, ¿Cómo valorarías la precisión del método empleado para obtener las derivadas? 
-\end{enumerate}
 
-\item A partir de los resultados obtenidos para la velocidad en el apartado \ref{p1}, calcula la posición del bloque en el instante de tiempo $t=1s$ mediante la siguiente integral
+\begin{paracol}{2}	
+a) Emplea las ecuaciones (\ref{eq4}) y (\ref{eq2}) para obtener los primeros 20 puntos singulares (máximos o mínimos) del movimiento del bloque. Represéntalos sobre el gráfico de la posición, obtenido en el apartado 3.b).
+
+b) Utilizando los datos obtenidos en el apartado 4.a), emplea el método de diferencia de dos puntos centrada para obtener las derivadas de las posiciones en los máximos y mínimos locales con respecto al tiempo. Si hay puntos para los que no es posible aplicar este método, calcula su derivada empleando otra aproximación razonable.
+ 
+c) Representa los resultados obtenidos en el apartado anterior sobre el gráfico de la velocidad obtenido en el ejercicio \ref{p2}. A la vista de los resultados, ¿Cómo valorarías la precisión del método empleado para obtener las derivadas? 
+
+\paragraph{5.} A partir de los resultados obtenidos para la velocidad en el apartado \ref{p1}, calcula la posición del bloque en el instante de tiempo $t=1s$ mediante la siguiente integral
+
+\switchcolumn
+a) Use equations (\ref{eq4}) and (\ref{eq2}) to obtain the first twenty singular points (maxima or minima) for the block displacement. Draw them on top the position graph obtained in section 3.b).  
+
+b) Using the data obtained in section 4.a), employ the two point central difference method to obtain the time derivatives of the block position at the local maxima and minima. It there are points for which it is not possible to apply this method, compute the derivative using another reasonable approach.
+
+c) Represent the result obtained on top of the graphic for the velocity drawn in section \ref{p2}. According to the resulting graphic, how do you consider the precision of the method used for computing the derivatives?
+
+\paragraph{5.} From the results obtained for the velocity in section \ref{p1}, compute the the position of the block at time $t=1s$ using the following integral,  
+\end{paracol}
 \begin{equation}
 x(1) = \int_0^1v_x(t)dt,
 \end{equation}
-\begin{enumerate}
-\item Emplea para ello el método del trapecio.
-\item Compara el resultado con los valores obtenidos tanto mediante el método de Euler como a partir de la solución analítica.\\ 
-\textbf{Nota:} Ten en cuenta que el método de Euler puede que no calcule $x(1)$ y $v(1)$ ya que por error de precisión el computador no obtiene exactamente $t=1$s. Por tanto, emplea para el cálculo y la comparativa los valores de $x(t)$ y $v(t)$ correspondientes al tiempo más próximo a $t=1\text{s}$.
-\end{enumerate}
-\end{enumerate}
+\begin{paracol}{2}
+a) Emplea para ello el método del trapecio.
+
+b) Compara el resultado con los valores obtenidos tanto mediante el método de Euler como a partir de la solución analítica.
+
+\switchcolumn
+a) Employ to do it the trapezium formula
+b) Compare the results with those obtained from the Euler's method and from the analytical solution.
+
+
+\end{paracol}

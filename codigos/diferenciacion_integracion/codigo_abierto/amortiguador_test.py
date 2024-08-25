@@ -39,8 +39,8 @@ def amortiguador(t,y):
 
 yini = np.array([0,0])
 pl.figure(1)
-euler(amortiguador,yini,0,50,0.01)
+euler(amortiguador,yini,0,50,0.001)
 pl.xlabel('t(s.)')
 pl.ylabel('(-)')
-pl.title('Amortiguador k= 100, mu = 0.5, m = 2, step/paso = 0.01')
+pl.title('Amortiguador k= 100, mu = 0.5, m = 2, step/paso = 0.001')
 pl.legend(['v m/s', 'y m'])

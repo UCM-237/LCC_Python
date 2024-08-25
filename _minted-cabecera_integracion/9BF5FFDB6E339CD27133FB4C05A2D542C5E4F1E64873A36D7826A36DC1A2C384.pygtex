@@ -32,9 +32,10 @@
 \PYG{l+s+sd}{    Returns}
 \PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
 \PYG{l+s+sd}{    x : TYPE numpy array}
-\PYG{l+s+sd}{        Description: intial value dx/dt = f(x) solution at points}
+\PYG{l+s+sd}{        DESCRIPTION. intial value dx/dt = f(x) solution at points}
 \PYG{l+s+sd}{        a, a+h a+2h ... b}
-
+\PYG{l+s+sd}{    t. TYPE numpy array}
+\PYG{l+s+sd}{       DESCRIPTION. times x has been computed at }
 \PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
     \PYG{k}{if} \PYG{n}{a} \PYG{o}{\PYGZgt{}=} \PYG{n}{b}\PYG{p}{:}
         \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}I need an increasing interval\PYGZsq{}}\PYG{p}{)}
@@ -56,7 +57,7 @@
     \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{pt}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{):}
         \PYG{n}{x}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{x}\PYG{p}{[:,}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{hft}\PYG{o}{*}\PYG{n}{fun}\PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{x}\PYG{p}{[:,}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}
     \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{x}\PYG{o}{.}\PYG{n}{T}\PYG{p}{)}
-      
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{x}\PYG{p}{)}
         
                
 \end{Verbatim}
