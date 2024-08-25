@@ -942,7 +942,7 @@ Pb:  [[ 3.]
 
 Empleamos la matriz $L$ obtenida y el producto $bp=P^T\cdot b$ que acabamos de calcular, para obtener, por sustituciones progresivas, el vector auxiliar $z$ descrito más arriba. Empleamos para ello la función \texttt{progressive}, cuyo código incluimos en la sección anterior, 
 \switchcolumn
-We use the matrix $L$ obtained and the product $bp=P^T\cdot b$ that we have just calculated, to obtain, by progressive substitutions, the auxiliary vector $z$ described above. To do this we use the function \textt{progressive}, whose code is included in the previous section, 
+We use the matrix $L$ obtained and the product $bp=P^T\cdot b$ that we have just calculated, to obtain, by progressive substitutions, the auxiliary vector $z$ described above. To do this we use the function \texttt{progressive}, whose code is included in the previous section, 
 \end{paracol}
 
 \begin{minted}{python}
@@ -1751,9 +1751,7 @@ In our example,
 \end{pmatrix}
 \end{equation*}
 
-\begin{paracol}
-
-    
+\begin{paracol}{2}   
 Podemos aplicar directamente a la matriz ampliada $AM$ el programa de eliminación de Gauss, \texttt{eligauss} anterior \ref{elig}. Si aplicamos \texttt{eligauss} a la matriz ampliada del sistema del ejemplo. Para construir la matriz ampliada podemos usar el método \texttt{concatenate} de  \texttt{numpy} indicando que el  eje en el que deseamos concatenar $A$ y $b$ es el 1 (columnas): \mintinline{python}{AM=np.concatenate((A,b),axis=1}
 
 \switchcolumn
@@ -1762,7 +1760,7 @@ We can apply directly to the extended matrix $AM$ the Gaussian elimination progr
 To construct the extended matrix we can use the \texttt{concatenate} method of \texttt{numpy} indicating that the axis on which we want to concatenate $A$ and $b$ is 1 (columns): \mintinline{python}{AM=np.concatenate((A,b),axis=1}
 \end{paracol}
 
-\begin{minted}{2}
+\begin{minted}{python}
 A=np.array([[1., 3., 2.],[2., -1., 1.],[1., 4., 3.]])
 b=np.array([[13.],[3.],[18.]])
 # Extended matrix
@@ -1772,7 +1770,7 @@ GA=eligauss(AM)
 print("GA: ",GA)    
 \end{minted}
 
-\begin{minted}{pycon}
+\begin{minted}{python}
 AM:  [[ 1.  3.  2. 13.]
  [ 2. -1.  1.  3.]
  [ 1.  4.  3. 18.]]
@@ -2996,7 +2994,7 @@ In matrix form, the general expression for the damped Jacobi method would be,
 x^{(s+1)}=\omega\cdot\overbrace{\left(D^{-1}\cdot b- D^{-1}\cdot\left(L+U\right)\cdot x^{(s)}\right)}^{x^{(*)}}+(1-w)x^{(s)}
 \end{equation*}
 
-\begin{paracol}
+\begin{paracol}{2}
 Si reorganizamos esta expresión,
 \switchcolumn
 Reordering the expression,
