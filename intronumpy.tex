@@ -3,6 +3,7 @@
 \epigraph{When the going gets tough, the tough get going}{Popular Witticism (US)}
 \begin{paracol}{2}
 \section{Numpy: un paquete de Python para cálculo nu\-mérico}
+\sectionmark{Numpy: módulo mat. \textreferencemark\ Numpy: a math. Pack.}
 En el capítulo \ref{ch:intpr}, vimos cómo importar mó\-dulos de python en un script o directamente en el terminal de Ipython, de modo que podamos reutilizar el código contenido en ellos. Numpy es un libraría de python que contiene funciones y variables específicamente diseñadas para el cálculo numérico. Está estructurada en forma de módulos y submódulos de modo que para utilizarla en nuestros programas basta  importarla en nuestros script, importar sus submodulos o importar sus funciones.
 La base de Numpy la constituyen objetos y operaciones algebráicas. En esta sección vamos a repasar algunos conceptos fundamentales de  álgebra lineal y cómo pueden manejarse empleando Python. No daremos definiciones precisas ni tampoco demostraciones, ya que tanto unas como otras se verán en detalle en la asignatura de álgebra.
 
@@ -10,7 +11,9 @@ La base de Numpy la constituyen objetos y operaciones algebráicas. En esta secc
 \switchcolumn
 
 \section{Numpy: a Python library for scientific computing}
-In chapter \ref{ch:intpr}, we have seen how to import Python modules to a script or to the Ipython console. In this way, we can reuse the code available in the modules. Numpy is a Python library with functions and variables specifically intended to perform scientific computing. Numpy is structured in modules and submodules so that we can import the whole library, its submodules, or just any of its functions into our scripts. The background of Numpy is built of algebraic objects and operations. In this section, we will review some fundamental notions of linear algebra and how to deal with them using Numpy. We will not provide formal definitions or demonstrations because both will be studied in detail in algebra during the next term.
+\sectionmark{Numpy: módulo mat. \textreferencemark\ Numpy: a math. Pack.}
+
+In chapter \ref{ch:intpr}, we have seen how to import Python modules to a script or the Ipython console. In this way, we can reuse the code available in the modules. Numpy is a Python library with functions and variables specifically intended to perform scientific computing. Numpy is structured in modules and submodules so that we can import the whole library, its submodules, or just any of its functions into our scripts. The background of Numpy is built of algebraic objects and operations. In this section, we will review some fundamental notions of linear algebra and how to deal with them using Numpy. We will not provide formal definitions or demonstrations because both will be studied in detail in algebra during the next term.
 \paragraph{Matrices} From a functional perspective, we will define a matrix as a table of numbers ordered by rows and columns,
 \end{paracol}
 
@@ -37,7 +40,7 @@ Mientras no se diga expresamente lo contrario, emplearemos letras mayúsculas $A
 Each horizontal line of numbers forms a matrix row, and each vertical line a matrix column.
 A matrix with $m$ rows and $n$ columns is denoted as a matrix of order $m\times n$. $m$ and $n$ are the matrix dimensions, and they are always defined in the same order: first, the number of rows and then the number of columns. So matrix $A$ in the example above is a $3\times 4$ matrix, and as it is built of real numbers, we say that $A\in \mathbb{R}^{3\times 4}$. The matrix order defines the size of the matrix.
 
-Two matrices are equal if they have the same order and the entries located in both matrices in the same place are equal. A matrix is square when it has the same number of rows and columns. That is, it is an $n\times n$ matrix.
+Two matrices are equal if they have the same order and the entries located in both matrices in the same place are equal. A matrix is square whenever it has the same number of rows and columns. That is, it is an $n\times n$ matrix.
 
 From now on, we will use capital letters $A,\ B,\cdots$ to name matrices. The expression $A_{m\times n}$ means that matrix $A$ has dimensions $m\times n$. We will refer to the entries of a matrix using the same letter used to name the matrix but in lowercase and using subindexes to indicate the row and column the entry belongs to. The first subindex always represents the row, and the second is the column. For instance, $a_{ij}$ Represents the matrix $A$ entry that belongs to row $i$ and to column $j$.
 \end{paracol}
@@ -139,8 +142,8 @@ Evidentemente para vectores de mayor dimensión, no es posible obtener una repre
 \switchcolumn 
 Obviously, it is impossible to get a graphic representation for vectors of larger dimensions. Nevertheless, many geometrical properties owned by 2D and 3D vectors can be applied to vectors of whatever dimension.
 
-\subsection{Vectors and matrices in\\ Numpy.}\index[eng]{Vectors! in Numpy}\index[eng]{Matrices! in Numpy}
-\paragraph{Matrices.} One interesting feature of numpy is that it allows us to create matrices easily. There are several methods to create them, but using the Numpy function \mintinline{python}{array} with a Python list with the rows of the matrix we want to build is probably the easiest method. Each row should be, in turn, a list of numbers, i.e., matrix entries. Of course, to build a matrix all rows should have the same number of entries. The following example shows how to build a matrix of two rows and three columns.
+\subsection{Vectors and matrices in \\ Numpy.}\index[eng]{Vectors! in Numpy}\index[eng]{Matrices! in Numpy}
+\paragraph{Matrices.} One interesting feature of numpy is that it allows us to create matrices easily. There are several methods to create them, but using the Numpy function \mintinline{python}{array} with a Python list with the rows of the matrix we want to build is probably the easiest method. Each row should be, in turn, a list of numbers, i.e., matrix entries. Of course, to build a matrix, all rows should have the same number of entries. The following example shows how to build a matrix of two rows and three columns.
 \end{paracol}
 
 \begin{center}
