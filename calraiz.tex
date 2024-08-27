@@ -1507,7 +1507,175 @@ For the case of the bisection method the flowchart can be modified as shown in t
 \end{figure}
 
 \begin{paracol}{2}
-Es más, en el método de la bisección se puede calcular en función del intervalo inicial el número de iteraciones necesario para alcanzar la máxima precisión, puesto que en cada iteración el intervalo se reduce a la mitad. Si llamamos $d$ al intervalo de partida $d=\vert a-b \vert$, en la iteración $n$ la longitud del intervalo será $\frac{d}{2^{n-1}}$. Se alcanzará el intervalo mínimo posible cuando su longitud sea la de \texttt{np.spacing(a)}. Pero según se explicaba en la sección \ref{errn} el valor de \texttt{eps} es igual a $2$ elevado al número de bits de la mantisa. En el caso de un número de doble precisión la mantisa tiene $52$ bits y por lo tanto:
+Es más, en el método de la bisección se puede calcular en función del intervalo inicial el número de iteraciones necesario para alcanzar la máxima precisión, puesto que en cada iteración el intervalo se reduce a la mitad. Si llamamos $d$ al intervalo de partida $d=\vert a-b \vert$, en la iteración $n$ la longitud del intervalo será $\frac{d}{2^{n-1}}$. Se alcanzará el intervalo mínimo posible cuando su longitud sea la de \texttt{np.spacing(a)}. Pero según se explicaba en la sección \ref{err98 CAP´ITULO/CHAPTER 2. INTRO A PYTHON ※ INTRO TO PYTHON
+29
+30 i = 0 #indice de para recorrer las listas de n´umeros
+31 #numbers to cover the list of number list
+32 C =[]
+33 n_lista = len(A)
+34 while i < n_lista:
+35 n_num = len(A[i])
+36 j = 0 #indice para recorrer los numeros de cada lista de numeros
+37 #index to cover the number of each number list
+38 C.append([])
+39 while j < n_num:
+40 C[i].append(A[i][j]+B[i][j])
+41 j = j+1
+42 i = i+1
+43 return C
+La funci´on pmax, toma como entradas dos
+n´umeros y calcula a qu´e exponente es nece-
+sario elevar el primero de los n´umeros para
+que el resultado sea mayor que el segundo. El
+c´odigo del bucle while comienza en la l´ınea 16
+comprobando si el n´umero elevado al valor de
+n es menor que el valor de la segunda variable
+de entrada M. Si efectivamente se cumple esta
+condici´on, se ejecuta la l´ınea 17 que lo ´unico
+que hace es incrementar en una unidad el va-
+lor de n. A continuaci´on el programa vuelve
+de nuevo a la l´ınea 16 y comprueba si se cum-
+ple la condici´on para el nuevo valor de n. Este
+proceso contin´ua hasta que la condici´on deja
+de cumplirse. En ese momento, el programa
+sale del bucle while y ejecuta la instrucci´on
+return, devolviendo el ´ultimo valor calculado
+de n.
+Un aspecto muy importante del bucle while
+es que al programarlo hay que asegurarse de
+que dentro del bucle existe la posibilidad de
+cambiar la condici´on de entrada. Si no, el pro-
+grama no podr´a terminar nunca el bucle5. Las
+sentencias break y continue son id´enticas a
+las descritas en el caso de los bucles for, por
+lo que no insistiremos m´as sobre el asunto.
+Bucles while anidados. Del mismo modo
+que se anidan los bucles for, es posible anidar
+bucles while. En el c´odigo de ejemplo anterior
+se ha definido una funci´on, L_suma, Que em-
+5Cuando se produce esta situaci´on por un error en
+el dise˜no del programa, el bucle se puede parar pul-
+sando a la vez las teclas ctrl+c
+The function pmax takes two numbers as
+input and calculates the exponent you have
+to raise the first number to obtain a result
+greater than the second one. The while loop
+code starts at line 16, checking whether the
+first input variable raises to n is less than the
+second input variable. When this condition is
+fulfilled, the program executes line 17 that in-
+creases in one unit the value of n. Then, the
+program returns to line 16 and checks if the
+condition is met for a new value of n. This pro-
+cess goes on until the condition is no longer
+met. At this moment, the program exits the
+while loop and executes the return instruc-
+tion, returning the last value of n the program
+calculated.
+A critical point to consider when program-
+ming a while is ensuring that the input to
+the loop condition will change inside the loop.
+Otherwise, the program will get into an infini-
+te loop and never stop5. The commands break
+and continue are identical to those described
+for the for loops. For this reason, we will not
+insist on them any more.
+Nested while loops. In a similar way as
+with the for loops, it is possible to nest while
+loops. We have defined the function L_suma, in
+the above code example, which uses two nes-
+ted while loops to add the values of two lists
+located at the same position in each list. The
+5If you get into this situation for an error in the pro-
+gram design, please don‘t panic: press the board keys
+Control + C simultaneously and breathe normally.
+2.7. CONTROL DE FLUJO ※ FLOW CONTROL. 99
+pela dos bucles while anidados para sumar los
+valores de dos listas de listas de n´umeros que
+ocupan la misma posici´on. Las listas deben
+tener las mismas dimensiones, mismo n´ume-
+ro de listas de n´umeros y mismo n´umero de
+valores en cada lista de n´umero. Lo primero
+que se hace en definir un ´ındice, para ir re-
+corriendo cada una de las listas de n´umeros
+contenidas en las listas de entrada A y B. Des-
+pu´es se crea una nueva lista C, vac´ıa. En la
+l´ınea 34 se empieza el bucle while exterior.
+Este bucle se ejecutar´a mientras le ´ındice i
+sea menor que el n´umero de listas de n´umeros
+contenidas en las listas de entrada. Una vez
+que se entra en dicho bucle, lo primero que se
+hace es comprobar cuantos numeros hay en la
+lista i y se a˜nade una nueva lista (de n´ume-
+ros) vac´ıa a la lista C. El programa entra en
+el while interior, que va recorriendo los valo-
+res de las listas de n´umeros i contenidas en
+las listas de entrada, los suma y los a˜nade a
+la lista C. Cada vez que termina con una de
+las listas de n´umeros, j = n_num, El progra-
+ma sale del bucle interior, incrementa en una
+unidad el valor de i, cuenta cuantos n´umeros
+hay en la nueva lista y a˜nade una nueva lista
+vac´ıa a C y vuelve a entrar en el bucle inte-
+rior. El proceso contin´ua hasta que se agotan
+las listas de n´umeros, i = n_lista; cuando
+se cumple esta condici´on, el programa sale del
+bucle while exterior y devuelve el valor de C.
+lists should have the same dimension, the sa-
+me number of lists of numbers and the same
+number of numbers in each list of numbers.
+We first define an index to cover the lists of
+numbers contained in the input lists A and B.
+Then, a new empty list C is created. An outer
+while loop starts at line 34. This loop will run
+while the index i is less than the number of list
+of numbers contained in the input lists. Once
+the program gets into this outer loop, the pro-
+gram checks first of all how many numbers the
+list i contains and appends a new empty list
+(of numbers) to list C. The program then gets
+into the inner while loop, which covers the
+values of the lists of numbers i contained in
+the input lists, adds these values between then
+and appends the result to the list C. Any ti-
+me a list of numbers is completed, j = n_num,
+the program jumps off the inner loop, increa-
+ses in one unit the value of i, checks how many
+numbers are in the new list of numbers, adds
+a new empty list to C and get again into the
+inner loop. The process goes on till the lists of
+numbers are exhausted, i = n_lista; when
+this condition is met, the program gets out
+the outer while loop and returns the value of
+C.
+2.7.3. Funciones recursivas.
+Una funci´on recursiva es una funci´on que
+se llama a s´ı misma. Hemos esperado hasta
+aqu´ı para hablar de ellas porque, de alguna
+manera, se comportan como un bucle y nece-
+sitan una condici´on de salida para dejar de lla-
+marse a s´ı mismas y terminar su ejecuci´on. En
+general, son delicadas de manejar y tienden a
+consumir mucha memoria ya que cada vez que
+la funci´on se llama a s´ı misma necesita crear
+un nuevo espacio de memoria independiente.
+Veamos un ejemplo de funci´on recurrente que
+permite obtener el t´ermino en´esimo de la su-
+cesi´on de Fibonacci.
+2.7.3. recursive functions.
+A recursive function is a function that calls
+itself. We have waited till now to speak of
+them because, in some ways, they behave li-
+ke a loop and need an output condition to
+stop their execution. Speaking in general, they
+are difficult to deal with and tend to be very
+memory-consuming because any time a fun-
+ction calls itself creates a new memory inde-
+pendent memory area. We are going to see an
+example of a recursive function which allows
+for obtaining the Fibonacci series n term.
+f0 = 0, f1 = 1, f2 = 1, f3 = 2, f4 = 3, f5 = 5, f6 = 8, · · · fi = fi−1 + fi−2 · · ·
+n} el valor de \texttt{eps} es igual a $2$ elevado al número de bits de la mantisa. En el caso de un número de doble precisión la mantisa tiene $52$ bits y por lo tanto:
 
 \begin{equation*}
 \frac{\vert d \vert}{2^{n-1}}<2^{-52} 
