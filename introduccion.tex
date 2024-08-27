@@ -45,7 +45,7 @@ Lastly, computing \index[eng]{Scientific computing}. It can be said that scienti
 %\section{Introducción a los computadores.\\ Introduction to computers.} \index{Computador} \index{Ordenador}
 
 \begin{paracol}{2}
-\section[Introducción a los computadores.]{Introducción a los com\-putadores.\sectionmark{Intro  a los computadores \textreferencemark \ Intro to computers}}
+\section[Introducción a los computadores.]{Introducción a los com\-putadores.}
 \sectionmark{Intro  a los computadores \textreferencemark \ Intro to computers}
 Más o menos todos estamos familiarizados con lo que es un computador, los encontramos a diario continuamente  y, de hecho, hay muchos aspectos de nuestra vida actual que serían inimaginables sin los computadores.  En términos muy generales, podemos definir un computador como una máquina que es capaz de recibir instrucciones y realizar operaciones (cálculos) a partir de las instrucciones recibidas. Precisamente es la capacidad de recibir instrucciones lo que hace del ordenador una herramienta versátil; según las instrucciones recibidas y de acuerdo también a sus posibilidades como máquina,  el ordenador puede realizar tareas muy distintas, entre las que cabe destacar como más generales, las siguientes:
 \begin{itemize}
@@ -414,48 +414,69 @@ and for a binary number,
 101.01 = 1\times2^2+0\times2^1+1\times2^0+0\times2^{-1}+1\times2^{-2} 
 \end{equation}
 
+\begin{paracol}{2}
 De nuevo, basta calcular el término de la derecha de la expresión anterior para obtener la representación decimal del número $101.01$.
 
 \index{Conversión! decimal a binario. números enteros}¿Cómo transformar la representación de un número de decimal a binario? De nuevo nos da la clave la representación en sumas de productos de dígitos por potencias de dos. Empecemos por el caso de un número entero. Supongamos un número D, representado en decimal. Queremos expandirlo en una suma de potencias de dos. Si dividimos el número por 2, podríamos representarlo cómo:
- 
+\switchcolumn
+Again, it is enough to compute the previous expression's right-side term to obtain the decimal representation for the number $101.01$
+
+\index[eng]{Conversion! decimal to binary. Integer numbers} How to convert a number representations from decimal to binary? One more time, the key is to look at the number representation as a digits multiplied by powers of two. Let us start with an integer number. SUpose we have a number D, represented in decimal basis. We can expand it a sum of powers of two. If we divide the nuber by two, we could represent it as:
+\end{paracol} 
 \begin{equation*}
 \label{eq:1}
 D=2\cdot C_1+R_1
 \end{equation*}
-
+\begin{paracol}{2}
 donde $C_1$ representa el cociente de la división y $R_1$ el resto. Como estamos dividiendo por dos, el resto solo puede valer cero o uno. Supongamos ahora que volvemos a dividir el cociente obtenido por dos,
-
+\switchcolumn
+where $C_1$ represents the division quotient and $R_1$ the remaining after division. As we are dividing by two, the remainder can only be zero or one. Suppose that we divide again the quotient by two, 
+\end{paracol}
  \begin{equation*}
  \label{eq:2}
 C_1=2\cdot C_2+R_2 \
 \end{equation*}
-
-Si sustituimos el valor obtenido para $C_1$ en la ecuación inicial obtenemos,   
+\begin{paracol}{2}
+Si sustituimos el valor obtenido para $C_1$ en la ecuación inicial obtenemos,
+\switchcolumn
+If we replace the value we got for $C_1$ in the initial equation, we get,
+\end{paracol}  
 \begin{equation*}
 D=2\cdot(2\cdot C_2+R_2)+R_1= 2^2\cdot C_2+R_2\cdot 2^1+R_1\cdot 2^0 
 \end{equation*}
-
+\begin{paracol}{2}
 Si volvemos a dividir el nuevo cociente obtenido $C_2$ por dos, y volvemos a sustituir,
-
+\switchcolumn
+If we divide the newly obtained quotient $C_2$ by two and replace the value again,
+\end{paracol}
  \begin{align*}
 C_2&=2\cdot C_3+R_3 \\
 D&=2^2\cdot(2\cdot C_3+R_3)+R_2\cdot 2^1+R_1\cdot 2^0=2^3\cdot C_3+R_3\cdot 2^2 +R_2\cdot 2^1+R_1\cdot 2^0
 \end{align*}
-
-Supongamos que tras repetir este proceso $n$ veces, obtenemos un conciente $C_n=1$. Lógicamente no tiene sentido seguir dividiendo ya que a partir de este punto, cualquier división posterior que hagamos nos dará cociente $0$ y resto igual a $C_n$. Por tanto, 
-
+\begin{paracol}{2}
+Supongamos que tras repetir este proceso $n$ veces, obtenemos un conciente $C_n=1$. Lógicamente no tiene sentido seguir dividiendo ya que a partir de este punto, cualquier división posterior que hagamos nos dará cociente $0$ y resto igual a $C_n$. Por tanto,
+\switchcolumn
+After repeating the process $n$ times, suppose we get a quotient $C_n=1$. There is no point in keeping on dividing because, after this point, any division we do will yield a $0$ quotient and a remainder equal to $C_n$. Therefore, 
+\end{paracol}
  \begin{align*}
 D&=1\cdot 2^n+R_n\cdot 2^{n-1}\cdots +R_3\cdot 2^2 +R_2\cdot 2^1+R_1\cdot 2^0
 \end{align*}
-
+\begin{paracol}{2}
 La expresión obtenida, coincide precisamente con la expansión en potencias de dos del número binario $1R_n \cdots R_3R_2R_1$.
 
 
-Como ejemplo,podemos obtener la representación en binario del número $234$, empleando el método descrito: vamos dividiendo el número y los cocientes sucesivos entre dos, hasta obtener un cociente igual a uno y a continuación, construimos la representación binaria del número colocando por orden, de derecha a izquierda.  los restos  obtenidos de las sucesivas divisiones y añadiendo un uno más a la izquierda de la cifra construida con los restos:
+Como ejemplo,podemos obtener la representación en binario del número $234$, empleando el método descrito: vamos dividiendo el número y los cocientes sucesivos entre dos, hasta obtener un cociente igual a uno y a continuación, construimos la representación binaria del número colocando por orden, de derecha a izquierda, los restos  obtenidos de las sucesivas divisiones y añadiendo un uno más a la izquierda de la cifra construida con los restos:
 
+\switchcolumn
+The expression we have obtained fits the binary number $1R_n\cdots R_3R_2R_1$ expansion in powers of two.
+
+For instance, we can compute the binary expression of $234$ using the method already described. We divide the number and the successive quotients by two until we get a quotient equal to one. Then, we build the number binary representation, placing the remainders obtained from the consecutive divisions in order, from left to right, and adding a one on the left of the remainders.  
+\end{paracol}
 \begin{table}[h]
+	\centering
 \begin{tabular}{|r|r|r|r|}
 Dividendo& &Cociente $\div 2$&Resto\\
+Dividend& &Quotient $\div 2$&Remainder\\
 \hline
 234& &117&0\\
 117& &58&1\\
@@ -466,51 +487,81 @@ Dividendo& &Cociente $\div 2$&Resto\\
 3& &1&1
 \end{tabular}
 \end{table}
+ \begin{paracol}{2}
+ Por tanto, la representación en binario de $234$ es 11101010.
  
- Por tanto, la representación en binario de 234 es 11101010.
- 
-\index{Conversión! decimal a binario, números no entero}Supongamos ahora un número no entero, representado en decimal, de la forma $0,d$ . Si lo multiplicamos por dos:
+\index{Conversión! decimal a binario, números no entero}Supongamos ahora un número no entero, representado en decimal, de la forma $0.d$ . Si lo multiplicamos por dos:
+
+\switchcolumn
+
+Therefore, the binary representation of $234$ is $11101010$.
+
+\index[eng]{Conversion! denary to binary, non-integer numbers} Suppose now, that we have non-integer number in denary representation as $0.d$. If we multiply the number by two:
+\end{paracol}
+
 
 \begin{equation}
-E_1,d_1=0,d\cdot 2
+E_1.d_1=0.d\cdot 2
 \end{equation}
+\begin{paracol}{2}
 Donde $E_1$ representa la parte entera y $d_1$ la parte decimal del número calculado.
-Podemos entonces representar $0,d$ como,
+Podemos entonces representar $0.d$ como,
+
+\switchcolumn
+
+Where $E_1$ represents the integer part and $d_1$ the decimal part of the computed number. We can then represent $0.d$ as,
+\end{paracol}
 \begin{equation}
 \label{eq:5}
-0,d=(E_1,d_1)\cdot 2^{-1}=E_1\cdot 2^{-1}+0,d_1\cdot 2^{-1}
+0.d=(E_1.d_1)\cdot 2^{-1}=E_1\cdot 2^{-1}+0.d_1\cdot 2^{-1}
 \end{equation}  
-
-Si volvemos a multiplicar $0,d_1$ por dos,
-
+\begin{paracol}{2}
+Si volvemos a multiplicar $0.d_1$ por dos,
+\switchcolumn
+If we multiply $0.d_1$ by two again,
+\end{paracol}
 \begin{equation}
-E_2,d_2 = 0,d_1\cdot 2
+E_2.d_2 = 0.d_1\cdot 2
 \end{equation}
 
 \begin{equation}
 0,d_1=E_2\cdot 2^{-1}+0,d_2\cdot 2^{-1}
 \end{equation}  
-
+\begin{paracol}{2}
 y sustituyendo en \ref{eq:5}
-
+\switchcolumn
+and, after substituting in \ref{eq:5}
+\end{paracol}
 \begin{equation}
-0,d=E_1\cdot 2^{-1}+E_2\cdot 2^{-2}+0,d_2\cdot 2^{-2}
+0.d=E_1\cdot 2^{-1}+E_2\cdot 2^{-2}+0,d_2\cdot 2^{-2}
 \end{equation}
+\begin{paracol}{2}
+¿Hasta cuando repetir el proceso? En principio hasta que obtengamos un valor cero para la parte decimal, $0.d_n=0$. Pero esta condición puede no cumplirse nunca. Puede darse el caso --de hecho es lo más probable-- de que un número que tiene una representación exacta en decimal, no la tenga en binario. El criterio para detener el proceso será entonces obtener un determinado número de decimales o bien seguir el proceso hasta que la parte decimal obtenida vuelva a repetirse. Puesto que los ordenadores tienen un tamaño de registro limitado, también está limitado el número de dígitos con el que pueden representar un número decimal. Por eso, lo habitual será truncar el número asumiendo el error que se comete al proceder así.  De este modo, obtenemos la expansión del número original en potencias de dos,
 
-¿Hasta cuando repetir el proceso? En principio hasta que obtengamos un valor cero para la parte decimal, $0,d_n=0$. Pero esta condición puede no cumplirse nunca. Puede darse el caso --de hecho es lo más probable-- de que un número que tiene una representación exacta en decimal, no la tenga en binario. El criterio para detener el proceso será entonces obtener un determinado número de decimales o bien seguir el proceso hasta que la parte decimal obtenida vuelva a repetirse. Puesto que los ordenadores tienen un tamaño de registro limitado, también está limitado el número de dígitos con el que pueden representar un número decimal. Por eso, lo habitual será truncar el número asumiendo el error que se comete al proceder así.  De este modo, obtenemos la expansión del número original en potencias de dos,
-
+\switchcolumn
+When do we stop the consecutive multiplication process? Basically, we stop when the decimal part becomes zero, $0.d_n = 0.$ However, it's unlikely that we will reach exactly zero. It's possible that a number with an exact decimal representation does not have an exact binary representation. To stop the process, we can choose to get a predefined number of decimals or continue until the computed decimal part starts repeating. Since computers have limited register size, they can only represent a limited number of decimal digits. Therefore, we often truncate the number, accepting the error it introduces. Thus, we get the original number expansion in powers of two,    
+\end{paracol}
 \begin{equation}
-0,d\cdot 2=E_1\cdot 2^{-1}+E_2\cdot 2^{-2}+\cdots+ E_n\cdot 2^{-3}+\cdots
+0.d\cdot 2=E_1\cdot 2^{-1}+E_2\cdot 2^{-2}+\cdots+ E_n\cdot 2^{-3}+\cdots
 \end{equation} 
-
+\begin{paracol}{2}
 Donde los valores $E_1\cdots E_n$ son precisamente los dígitos correspondientes a la representación del número en binario: $0.E_1E_2\cdots E_n$. (Es trivial comprobar que solo pueden valer $0$ ó $1$).
 
 
-Veamos un ejemplo de cada caso, obteniendo la representación binaria del número $0,625$, que tiene representación exacta, y la del número $0,626$, que no la tiene. En este segundo caso, calcularemos una representación aproximada, tomando 8 decimales.
+Veamos un ejemplo de cada caso, obteniendo la representación binaria del número $0.625$, que tiene representación exacta, y la del número $0,626$, que no la tiene. En este segundo caso, calcularemos una representación aproximada, tomando 8 decimales.
+
+\switchcolumn
+Where values $E_1 \dots E_n$ are precisely the digits corresponding to the binary number representation: $0.E_1E_2\cdots E_n$.  (It is trivial to check that they can only be $0$ or $1$). 
+
+Let us see an example of each case, computing the binary representation of the number $0.625$ which has an exact binary representation and of the number $0.626$ wit do not have it. In the second case, we will compute an approximate representation, taking 8 decimals.
+
+\end{paracol}
 
 \begin{table}[h]
+	\centering
 \begin{tabular}{|r|r|r|r|r r|r|r|r|r|}
 P decimal& &$\times 2$& P entera& &&P decimal& &$\times 2$& P entera\\
+Decimal P.& &$\times 2$&Integer P.& && Decimal P.& &$\times 2$& Integer P\\  
 \cline{1-4}
 \cline{7-10}
 0,625& &1,25&1& &&0,623& &1,246&1\\
@@ -523,18 +574,25 @@ P decimal& &$\times 2$& P entera& &&P decimal& &$\times 2$& P entera\\
          & &       &  & &&0.744& &1.488&1\\
 \end{tabular}
 \end{table}
-
-Para construir la representación binaria del primero de los números, nos basta tomar las partes enteras obtenidas, por orden, de derecha a izquierda y añadir un $0$ y la coma decimal a la izquierda. Por tanto  la representación binaria de $0,625$ es $0,101$.  Si expandimos su valor en potencias de dos, volvemos a recuperar el número original en su representación decimal.
+\begin{paracol}{2}
+Para construir la representación binaria del primero de los números, nos basta tomar las partes enteras obtenidas, por orden, de derecha a izquierda y añadir un $0$ y la coma decimal a la izquierda. Por tanto  la representación binaria de $0.625$ es $0.101$.  Si expandimos su valor en potencias de dos, volvemos a recuperar el número original en su representación decimal.
 
  En el segundo caso, la representación binaria, tomando nueve decimales de $0,623$ es $0.10011111$. Podemos calcular el error que cometemos al despreciar el resto de los decimales, volviendo a convertir el resultado obtenido a su representación en base diez,
+ 
+ \switchcolumn
+ For building the binary representation for the first number, it is enough to take the computed integer parts by order, from left to right, and add on the left a zero and the decimal point. Therefore, the binary representation of $0.625$ is $0.101$. If we expand its value in powers of two, we recover the original number in its decimal representation.
+ 
+ In the second case, the binary representation, taking nine decimals, of the number $0.623$ is $0.10011111$. We can compute the error made by neglecting the remaining decimals, converting back the number from binary to decimal,   
 
+\end{paracol}
  \begin{equation*}
 0\cdot 2^{0}+1\cdot 2^{-1}+0\cdot 2^{-2}+ 0\cdot 2^{-3}+1\cdot 2^{-4}+1\cdot 2^{-5}+ 1\cdot 2^{-6}+1\cdot 2^{-7}+1\cdot 2^{-8}=0,62109375
 \end{equation*} 
-
+\begin{paracol}{2}
 El error cometido es, en este caso: $\text{Error}=0,623-0,62109375=0,00190625$.
   
  \section{Aplicaciones de Software Científico}
+ \sectionmark{Apls. al software cientifíco \textreferencemark \ Software Scientific Apps.}
 Dentro del mundo de las aplicaciones, merecen una mención aparte las dedicadas al cálculo científico, por su conexión con la asignatura. 
 
 Es posible emplear lenguajes de alto nivel para construir rutinas y programas que permitan resolver directamente un determinado problema de cálculo. En este sentido, el lenguaje FORTRAN se ha empleado durante años para ese fin, y todavía sigue empleándose en muchas disciplinas científicas y de la Ingeniería.  Sin embargo, hay muchos aspectos no triviales del cálculo con un computador, que obligarían al científico que tuviera que programar sus propios programas a ser a la vez un experto en computadores.  Por esta razón, se han ido desarrollando aplicaciones específicas para cálculo científico que permiten al investigador centrarse en la resolución de su problema y no en el desarrollo de la herramienta adecuada para resolverlo.  
@@ -542,4 +600,19 @@ Es posible emplear lenguajes de alto nivel para construir rutinas y programas qu
 En algunos casos, se trata de aplicaciones a medida, relacionadas directamente con algún área científica concreta. En otros, consisten en paquetes de funciones específicos para realizar de forma eficiente determinados cálculos, como por ejemplo
 el paquete SPSS para cálculo estadístico.
 
-Un grupo especialmente interesante lo forman algunos paquetes de software que podríamos situar a mitad de camino entre los lenguajes de alto nivel y las aplicaciones: Contienen extensas librerías de funciones, que pueden ser empleadas de una forma directa para realizar cálculos y además permiten realizar programas específicos empleando su propio lenguaje. Entre estos podemos destacar Mathematica, Maple , Matlab, Octave y Scilab y Python. El uso de estas herramientas se ha extendido enormemente en la comunidad científica. Algunas como Matlab  constituyen casi un estándar en determinadas áreas de conocimiento.
+Un grupo especialmente interesante lo forman algunos paquetes de software que podríamos situar a mitad de camino entre los lenguajes de alto nivel y las aplicaciones: Contienen extensas librerías de funciones, que pueden ser empleadas de una forma directa para realizar cálculos y además permiten realizar programas específicos empleando su propio lenguaje. Entre estos podemos destacar Mathematica, Maple , Matlab, Octave y Scilab y Python. 
+\switchcolumn
+The error we made is in this case,
+
+\section{Scientific software application}
+\sectionmark{Apls. al software cientifíco \textreferencemark \ Software Scientific Apps.}
+
+mong the computer software applications, those devoted to scientific computing are worth mentioning due to their close connection with the subject.
+
+It is possible to use high-level language to write programs and routines that allow solving specific computation problems. Languages such as FORTRAN have been used for decades to do it, and they are still used in many disciplines of science and engineering. However, many non-trivial software and hardware computing details should force the scientist who writes their own programs to be an expert in computer science. For this reason, specific software applications for scientific computing have been developed, allowing researchers to focus on solving their problems without worrying about creating a suitable tool to solve them.
+
+Some of these applications are ad-hoc, designed specifically for a particular scientific area. Others are packages of specific functions, intended to carry out computations efficiently. For example, the software package SPPS is tailored for statistical computation, providing a high level of efficiency for researchers.
+
+There is a particularly interesting group of software packages that bridge the gap between high-level languages and applications. These packages contain extensive function libraries that can be used for a wide range of computations. They also allow the creation of specific programs using their own languages. Among them, we can highlight Mathematica, Maple, Matlab, Octave, Scilab, and Python.   
+
+\end{paracol}
