@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{while} \PYG{n}{condición}\PYG{o}{/}\PYG{n}{condition}\PYG{p}{:}
+\end{Verbatim}

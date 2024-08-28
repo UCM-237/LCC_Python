@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n+nt}{\PYGZdq{}id\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Frodo\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n+nt}{\PYGZdq{}tipo\PYGZdq{}}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Hobbit\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n+nt}{\PYGZdq{}estado\PYGZdq{}}\PYG{p}{:\PYGZob{}}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}posicion\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mf}{2.345}\PYG{p}{,}\PYG{l+m+mf}{\PYGZhy{}5.985}\PYG{p}{],}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}velocidad lineal\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.15}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}velocidad angular\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n+nt}{\PYGZdq{}baterias\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+m+mf}{7.32}
+\PYG{+w}{      }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\end{Verbatim}

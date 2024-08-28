@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{IPdb} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]:} \PYG{err}{!}\PYG{k}{continue}
+\PYG{o}{\PYGZgt{}} \PYG{n}{c}\PYG{p}{:}\PYGZbs{}\PYG{n}{users}\PYGZbs{}\PYG{n}{abierto}\PYGZbs{}\PYG{n}{documents}\PYGZbs{}\PYG{n}{borrar}\PYGZbs{}\PYG{n}{eq\PYGZus{}seg\PYGZus{}grado}\PYG{o}{.}\PYG{n}{py}\PYG{p}{(}\PYG{l+m+mi}{35}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{n}{module}\PYG{o}{\PYGZgt{}}\PYG{p}{()}
+     \PYG{l+m+mi}{33} \PYG{c+c1}{\PYGZsh{}here, we add a \PYGZsq{}how to use\PYGZsq{} example that\PYGZsq{}s not part of the function}
+     \PYG{l+m+mi}{34}
+\PYG{l+m+mi}{2}\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{l+m+mi}{35} \PYG{n}{solplus}\PYG{p}{,} \PYG{n}{solminus} \PYG{o}{=} \PYG{n}{soleq2}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+     \PYG{l+m+mi}{36}
+     \PYG{l+m+mi}{37} \PYG{c+c1}{\PYGZsh{}comprobacion}
+
+
+\PYG{n}{IPdb} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]:}
+\end{Verbatim}

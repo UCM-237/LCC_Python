@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{json} \PYG{k}{as} \PYG{n+nn}{js}
+
+\PYG{n}{robot}\PYG{o}{=}    \PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}id\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Frodo\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}tipo\PYGZdq{}} \PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Hobbit\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}estado\PYGZdq{}}\PYG{p}{:\PYGZob{}}
+      \PYG{l+s+s2}{\PYGZdq{}posicion\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mf}{2.345}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{5.985}\PYG{p}{],}
+      \PYG{l+s+s2}{\PYGZdq{}velocidad lineal\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mf}{0.15}\PYG{p}{,}
+      \PYG{l+s+s2}{\PYGZdq{}velocidad angular\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
+      \PYG{l+s+s2}{\PYGZdq{}baterias\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mf}{7.32}
+      \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+
+\PYG{n}{js}\PYG{o}{.}\PYG{n}{dump}\PYG{p}{(}\PYG{n}{robot}\PYG{p}{,}\PYG{n+nb}{open}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}jsondat.json\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}w\PYGZsq{}}\PYG{p}{))}
+
+\PYG{n}{mi\PYGZus{}robot}\PYG{o}{=}\PYG{n}{js}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}jsondat.json\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{))}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{mi\PYGZus{}robot}\PYG{p}{)}
+\end{Verbatim}

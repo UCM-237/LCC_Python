@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{newlist} \PYG{o}{=} \PYG{p}{[}\PYG{n}{expression} \PYG{k}{for} \PYG{n}{item} \PYG{o+ow}{in} \PYG{n}{iterable} \PYG{k}{if} \PYG{n}{condition} \PYG{o}{==} \PYG{k+kc}{True}\PYG{p}{]}
+\end{Verbatim}

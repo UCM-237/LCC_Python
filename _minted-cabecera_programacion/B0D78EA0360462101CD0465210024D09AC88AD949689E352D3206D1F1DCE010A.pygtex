@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{63}\PYG{p}{]:} \PYG{n}{D} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}nombre\PYGZsq{}}\PYG{p}{:}\PYG{l+s+s1}{\PYGZsq{}Pepe\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}día\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{27}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}mes\PYGZsq{}}\PYG{p}{:}\PYG{l+s+s1}{\PYGZsq{}Febrero\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}datos\PYGZsq{}}\PYG{p}{:[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mf}{3.5}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mf}{0.0}\PYG{p}{]\PYGZcb{}}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{64}\PYG{p}{]:} \PYG{n}{D}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{64}\PYG{p}{]:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}nombre\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}Pepe\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}día\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{27}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}mes\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}Febrero\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}datos\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mf}{3.5}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mf}{0.0}\PYG{p}{]\PYGZcb{}}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{65}\PYG{p}{]:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{D}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{65}\PYG{p}{]:} \PYG{n+nb}{dict}
+\end{Verbatim}

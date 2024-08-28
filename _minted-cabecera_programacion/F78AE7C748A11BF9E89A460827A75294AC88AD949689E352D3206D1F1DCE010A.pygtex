@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{n}{uno} \PYG{o}{=} \PYG{l+m+mi}{2}
+	\PYG{n}{dos} \PYG{o}{=} \PYG{l+m+mi}{4}
+	\PYG{n}{resultado} \PYG{o}{=} \PYG{n}{mifun}\PYG{p}{([}\PYG{n}{uno}\PYG{p}{,}\PYG{n}{dos}\PYG{p}{])}
+	\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{resultado}\PYG{p}{)}
+	\PYG{n}{me}\PYG{p}{,} \PYG{n}{da} \PYG{o}{=} \PYG{n}{mifun}\PYG{p}{(}\PYG{n}{resultado}\PYG{p}{)}
+	\PYG{n}{la}\PYG{p}{,}\PYG{n}{risa} \PYG{o}{=} \PYG{n}{mifun}\PYG{p}{(}\PYG{n}{mifun}\PYG{p}{([}\PYG{n}{uno}\PYG{p}{,}\PYG{n}{dos}\PYG{p}{]))}
+	\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{me}\PYG{p}{,}\PYG{n}{da}\PYG{p}{,}\PYG{n}{la}\PYG{p}{,}\PYG{n}{risa}\PYG{p}{)}
+
+\PYGZbs{}\PYG{n}{item} \PYG{n}{Define} \PYG{n}{en} \PYG{n}{la} \PYGZbs{}\PYG{n}{emph}\PYG{p}{\PYGZob{}}\PYG{n}{línea} \PYG{n}{de} \PYG{n}{comandos}\PYG{p}{\PYGZcb{}} \PYG{n}{las} \PYG{n}{matriz} \PYG{err}{\PYGZdl{}}\PYG{n}{M}\PYG{err}{\PYGZdl{}} \PYG{n}{y} \PYG{err}{\PYGZdl{}}\PYG{n}{N}\PYG{err}{\PYGZdl{}} \PYG{n}{e} \PYG{n}{interpreta} \PYG{n}{el} \PYG{n}{resultado} \PYG{n}{de} \PYG{n}{las} \PYG{n}{condiciones} \PYG{n}{lógicas} \PYG{n}{impuestas}\PYG{o}{.}
+\end{Verbatim}

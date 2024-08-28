@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{\PYGZsh{} Col1 Col2 Col3}
+\PYG{g+go}{0.300 4.300 3.500}
+\PYG{g+go}{\PYGZhy{}1.230 0.032 \PYGZhy{}3.230}
+
+\PYG{g+go}{[[ 0.3    4.3    3.5  ]}
+\PYG{g+go}{ [\PYGZhy{}1.23   0.032 \PYGZhy{}3.23 ]]}
+\end{Verbatim}

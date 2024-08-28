@@ -2861,93 +2861,31 @@ print(mi_robot)
 \end{enumerate}
 \end{multicols}
 \item Obtén empleando la \emph{línea de comandos} de Ipython el resultado de las siguientes expresiones:
-\begin{multicols}{2}
 \begin{align*}
 \frac{5+3x^2}{6y}\\
 \frac{1+4\sqrt{2x}}{6}y \\
 \frac{-x+\sqrt{x^2-4xy}}{2x}
 \end{align*}
 
-\begin{align*}
-\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(x-1)^2}\\
-\sin^2(2x)+\cos^2(2x) \\
-\arctan(\infty)\\
-\arctan\left(\frac{y}{x}\right)
-\end{align*}
-\end{multicols}
 Emplea para $x$ e $y$
 los valores que prefieras.
 
 \item Abre un fichero nuevo en el editor de textos de Spyder.
 Escribe las siguiente líneas:\\
-\texttt{
-x = A*B\\
-y = A+B\\
-z = A*sin(B)}\\
-Guarda el fichero. Emplea el comando \verb|clear| all para limpiar el \emph{workspace}
-Invoca el fichero desde matlab. ¿Qué sucede?\\
-Crea en la ventana de comandos las matrices,
-\begin{equation*}
-A =\begin{pmatrix}
-1&3&4\\
-2&5&6\\
-7&8&9
-\end{pmatrix}, \ B=\begin{pmatrix}
-2&6&8\\
-3&7&8\\
-2&7&9
-\end{pmatrix}
-\end{equation*}
-Vuelve a ejecutar el programa guardado en el fichero.\\
-Añade al programa, al principio del todo, la línea \texttt{clear all}. Guarda y vuelve a ejecutar el
-programa. ¿Qué sucede ahora?\\
-Introduce las matrices A y B directamente en el código del programa debajo de la línea \texttt{clear all}. Analiza qué sucede al ejecutar de nuevo el programa.\\
- Eliminar la línea \texttt{clear all}. Introduce a través de la ventana de comando dos matrices $A$ y $B$ distintas de las que contiene el programa. Ejecuta el programa y comprueba qué matrices utiliza para realizar los cálculos.\\
-Comenta la(s) línea(s) de código donde has definido las matrices $A$ y $B$ en el programa. Añade al principio del programa una línea para convertir el script en una función:\\
-\verb|function [x] = nombre_de_tu_programa(A,B)| \\
-Invoca la función recién creada desde la \emph{línea de comandos} de matlab. Observa lo que pasa si la invocas como:
-\begin{verbatim}
->>nombre_de_tu_programa
->>nombre_de_tu_programa(F)
->>nombre_de_tu_programa(F,J)
-\end{verbatim}
-Introduce, en el  workspace de matlab --usando la \emph{línea de comandos}--  las matrices $F$ y $J$, dondo,
-\begin{equation*}
-F =\begin{pmatrix}
-1&0&1\\
-2&0&4\\
-3&5&0
-\end{pmatrix}, \ J=\begin{pmatrix}
-1&6&7\\
-2&9&0\\
-4&4&4
-\end{pmatrix}
-\end{equation*}
-Vuelve a ejecutar, \verb|>>nombre_de_tu_programa(F,J)| \\
-Genera dos matrices de tamaño $(3\times 3)$. Nómbralas como prefieras: \verb|mi_matriz1, mi_matriz2|. Ejecuta ahora,
-\begin{verbatim}
->>nombre_de_tu_programa(mi_matriz1,J)
->>nombre_de_tu_programa(mi_matriz2,F)
->>nombre_de_tu_programa(mi_matriz1,mi_matriz2)
->>resultado=nombre_de_tu_programa(F,J)
->>[r1,r2]=nombre_de_tu_programa(F,J)
->>[A,B;r3]=nombre_de_tu_programa(F,J)
->>[A,B;C]=nombre_de_tu_programa(A,B)
-\end{verbatim}
-Crea un nuevo fichero, con el siguiente código:
-% \begin{lstlisting}
-% A=sin(B).*cos(C)
-% [D,E,F]=nombre_de_tu_programa(A,C)
-% G = D + E - F
-% \end{lstlisting}
-Guárdalo con el nombre que quieras.\\
-Define en la \emph{línea de comandos} matrices $B$ y $C$ adecuadas para el programa que acabas de escribir y ejecútalo.\\
-Añade al programa una primera línea de código que lo convierta en una función que tome como entradas las matrices $B$ y $C$  y que:\\
-devuelva solo la matriz $G$\\
-devuelva las matrices $G$ y $D$\\ 
-devuelva las matrices $G$,$D$,$E$ y $F$.
+\begin{minted}{python}
+	A = [35,23]
+	B = [12,-12.34]
+	x = [A[0]*B[0],A[1]*B[1]]
+	y = [A[0]+B[0],A[1]+B[1]] 
+\end{minted}
+Guarda el fichero con el \emph{primero.py}. Emplea el comando \mintinline{python}{%reset} en el terminal de IPython para borrar cualquier variable anterior. Ejecuta el fichero y comprueba que existen las variables \mintinline{python}{A, B, x ,y}.\\
+Vuelve ejecutar el comando \mintinline{python}{%reset}. Emplea el comando \mintinline{python}{import primero}. ¿Se han creado las variables¿ ¿qué ha pasado ahora?\\
+Vuelve a borrar las variables del namespace de Python e importa de nuevo tu programa con \mintinline{python}{import primero as kiki}. ¿Donde estan ahora las variables \mintinline{python}{A, B, x ,y}?\\
+Crea una variable \mintinline{python}{x = 'nueva'}  Compueba que las variables \mintinline{python}{x} y \mintinline{python}{kiki.x}
+son distintas.\\
+Importa la variable \mintinline{python}{x} del modulo \mintinline{python}{primero} directamente usando la expresion:\\ \mintinline{python}{from primero import x}.\\ ¿Cuánto vale ahora la variable x?
 
-Escribe una nueva función con el siguiente código,
+\item Crea en el terminal de IPython la siguiente función, ponle el nombre que quieras
 \begin{minted}[
 frame=lines,
 framesep=2mm,
@@ -2956,22 +2894,25 @@ baselinestretch=1.2,
 fontsize=\footnotesize,
 linenos
 ]{python}
-import numpy as np
-def nombre_de_la_funcion(B,C):
-    E= B + C**2
-    D =B - C.inv()
-    return(E,D)
-% A=nombre_funcion_dentro(E,D);
-% end;
-% function s=nombre_funcion_dentro(l,p);
-% s=l + p - 2;
-% end;
+def mifun(A):
+E = A[0] + A[1]**2
+D = A[0] - A[1]**-1
+return(E,D)
 \end{minted}
 
-Crea matrices $B$ y $C$ adecuadas y ejecuta la función que acabas de crear. Describe cómo funciona.
+Crea variables adecuadas, ejecuta la función que has creado, guardando el resultado en una sola variable \mintinline{python}{resultado}.\\
+Ejecuta las siguientes líneas de comando y trata de explicar lo que hacen\\
+\begin{minted}{python}
+	uno = 2
+	dos = 4
+	resultado = mifun([uno,dos])
+	print(resultado)
+	me, da = mifun(resultado)
+	la,risa = mifun(mifun([uno,dos]))
+	print(me,da,la,risa) 
 
 \item Define en la \emph{línea de comandos} las matriz $M$ y $N$ e interpreta el resultado de las condiciones lógicas impuestas.
-
+\end{minted}
 \begin{equation*}
 M =\begin{pmatrix}
 1&2&3\\
@@ -3016,25 +2957,33 @@ M =\begin{pmatrix}
 Repite el estudio de las condiciones lógicas cambiando \& por \textbar
 
 \item Escribe el siguiente código en un fichero. Ejecútalo y analiza los resultados,
-% \begin{lstlisting}
-% dato=rand(1)
-% if dato==0.5
-%  dato=0
-% elseif dato<0.5
-%  dato=-dato*10
-% else
-%  dato=dato*10
-% end
-% \end{lstlisting}
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	%bgcolor=LightGray,
+	fontsize=\footnotesize,
+	linenos
+	]{python}
+	from random import random
+	dato = random()
+	if dato == 0.5:
+	dato = 0
+	elif dato < 0.5:
+	dato = -dato*10
+	else:
+	dato = dato*10
+	print(dato)
+\end{minted}
 
 Modifica el programa,
 \begin{enumerate}
-\item Para que no muestre los resultados de los cálculos por pantalla
-\item para que, utilizando comandos \verb|elseif, &| devuelva una variable (distinta de 'dato') con valor $-1$ si se cumple que 'dato' es menor o igual que $0.3$, con valor $-0.5$ si 'dato' es mayor que $0.3$ y menor que $0.5$, con valor $0$ si 'dato' es mayor o igual que $0.5$ y menor  o igual que $0.7$ y con valor $1$ en cualquier otro caso.
-\item Convierte el \emph{script}, en una función, que tome 'dato' como variable de entrada, y devuelva el valor de la variable obtenida, según la condición que se cumpla. (Lógicamente se debe eliminar o comentar la línea \verb|dato=rand(1)|).
+\item Para que muestre los resultados de los cálculos por pantalla
+\item para que, genere una variable (distinta de 'dato') con valor $-1$ si se cumple que 'dato' es menor o igual que $0.3$, con valor $-0.5$ si 'dato' es mayor que $0.3$ y menor que $0.5$, con valor $0$ si 'dato' es mayor o igual que $0.5$ y menor  o igual que $0.7$ y con valor $1$ en cualquier otro caso.
+\item Convierte el \emph{script}, en una función, que tome 'dato' como variable de entrada, y devuelva el valor de la variable obtenida, según la condición que se cumpla. (Lógicamente se debe eliminar o comentar la línea \verb|dato=random()|).
 \end{enumerate}
 
-\item Crea un scrip de matlab con el siguiente código y trata de adivinar qué hace antes de ejecutarlo. Utiliza el \emph{help} de matlab para averiguar lo que hace la función \verb|abs|.
+\item Crea un scrip de python con el siguiente código y trata de adivinar qué hace antes de ejecutarlo. Utiliza el \emph{help} de Spyder o el interrogante \mintinline{python}{abs?} en el terminal, para averiguar lo que hace la función \verb|abs|.
 % \begin{lstlisting}
 % n=10
 % for i=1:n

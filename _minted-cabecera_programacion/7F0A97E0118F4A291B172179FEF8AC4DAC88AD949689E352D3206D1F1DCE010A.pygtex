@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{100}\PYG{p}{]:} \PYG{n}{d} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{n}{j}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{101}\PYG{p}{]:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{d}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{101}\PYG{p}{]:} \PYG{n+nb}{complex}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{102}\PYG{p}{]:} \PYG{n}{d}\PYG{o}{.}\PYG{n}{real} \PYG{c+c1}{\PYGZsh{}parte real}
+\PYG{c+c1}{\PYGZsh{}del número d}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{102}\PYG{p}{]:} \PYG{l+m+mf}{2.0}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{103}\PYG{p}{]:} \PYG{n}{d}\PYG{o}{.}\PYG{n}{imag} \PYG{c+c1}{\PYGZsh{}parte imagi\PYGZhy{}}
+\PYG{c+c1}{\PYGZsh{}naria del número d}
+\end{Verbatim}
