@@ -119,7 +119,7 @@ This (Spyder) window has three different panels\footnote{We describe here the de
 
 \begin{paracol}{2}
 \paragraph{El terminal mejorado de Python}\index{Ipython}
-De los tres paneles mostrados en la figura \ref{fig:ide}, vamos a describir primero el situado abajo a la derecha. Este panel es un terminal, se conoce con el nombre de Ipython (Interactive python) y e incluye muchas mejoras sobre el terminal est estándar de python. Ipython nos muestra el símbolo \mintinline{python}{In [1]:}, que recibe el nombre de \emph{prompt}, y a continuacion una barra vertical $|$ parpadeante. El terminal permite al usuario interactuar directamente con Python; es decir, Python puede recibir instrucciones directamente a través del terminal, ejecutar las instrucciones, y devolver y/o guardar en memoria los resultados obtenidos.  Veamos un ejemplo. Si escribimos en el terminal:
+De los tres paneles mostrados en la figura \ref{fig:ide}, vamos a describir primero el situado abajo a la derecha. Este panel es un terminal, se conoce con el nombre de Ipython (Interactive python) e incluye muchas mejoras sobre el terminal estándar de python. Ipython nos muestra el símbolo \mintinline{python}{In [1]:}, que recibe el nombre de \emph{prompt}, y a continuacion una barra vertical $|$ parpadeante. El terminal permite al usuario interactuar directamente con Python; es decir, Python puede recibir instrucciones directamente a través del terminal, ejecutar las instrucciones, y devolver y/o guardar en memoria los resultados obtenidos.  Veamos un ejemplo. Si escribimos en el terminal:
 \begin{minted}{python}
 In [1]: 2+2
 \end{minted}
@@ -153,17 +153,17 @@ In programming slang, it is usual to call the answer the computer shows on the s
 
 \begin{paracol}{2}
 \subsection{Variables}\index{Variables}
-El uso de Python como si fuera una calculadora no tiene demasiado interés. Una vez ejecutada la orden, tras pulsar la teccla \emph{intro} el ordenador no guarda ninguna información sobre la operación realizada. Si queremos realizar un cálculo complejo descomponiéndolo en más sencillas, deberemos anotar los resultados parciales y volver a copiarlos en el terminal si queremos emplearlos de nuevo. Por supuesto, hace ya mucho tiempo que alguien encontró una buena solución, para este y otros problemas similares: el uso de variables.
+El uso de Python como si fuera una calculadora no tiene demasiado interés. Una vez ejecutada la orden, tras pulsar la tecla \emph{intro} el ordenador no guarda ninguna información sobre la operación realizada. Si queremos realizar un cálculo complejo descomponiéndolo en operaciones más sencillas, deberemos anotar los resultados parciales y volver a copiarlos en el terminal si queremos emplearlos de nuevo. Por supuesto, hace ya mucho tiempo que alguien encontró una buena solución, para este y otros problemas similares: el uso de variables.
 
 \switchcolumn
 \subsection{Variables}\index[eng]{Variables}
 Nevertheless, handling Python as a calculator is hardly ever enjoyable. Once a command has been executed after pressing the \emph{intro} key, the computer keeps no memory of the operation. If we wish to make a complex computation, splitting it into simpler operations, we should take note of the partial results and copy them again on the console to be used again. Of course, a long time ago, somebody found a good solution for this and other similar problems: using variables.
 
 \switchcolumn
-Podemos ver una variable como una región de la memoria del computador, donde un programa guarda una determina información: números, letras, etc. Una característica fundamental de una variable es su nombre, ya que permite identificarla. \index{Variable! nombre} Como nombre para una variable se puede escoger cualquier combinación de letras y números, empezando siempre con una letra, en el caso de Python\footnote{Como se verá más adelante, Python tiene un conjunto de nombres de instrucciones y comandos ya definidos. Se debe evitar emplear dichos nombres, ya que de hacerlo se puede perder acceso al comando de Python que representan}. Se puede además emplear el signo "\_". Python distingue entre mayúsculas y minúsculas, por lo que si elegimos como nombres de variable Pino, PINO y PiNo, Matlab las considerará como variables distintas. 
+Podemos ver una variable como una región de la memoria del computador, donde un programa guarda una determina información: números, letras, etc. Una característica fundamental de una variable es su nombre, ya que permite identificarla. \index{Variable! nombre} Como nombre para una variable se puede escoger cualquier combinación de letras y números, empezando siempre con una letra, en el caso de Python\footnote{Como se verá más adelante, Python tiene un conjunto de nombres de instrucciones y comandos ya definidos. Se debe evitar emplear dichos nombres, ya que de hacerlo se puede perder acceso al comando de Python que representan}. Se puede además emplear el signo "\_". Python distingue entre mayúsculas y minúsculas, por lo que si elegimos como nombres de variable Pino, PINO y PiNo, Python las considerará como variables distintas. 
 
 \switchcolumn
-We can consider a variable as a computer memory region where a program has allocated specific information: numbers, characters, etc. A variable fundamental characteristic is its name because it permits one to identify it univocally. \index[eng]{Variable! name}. We can take as a variable name whatever combination of lowercase and uppercase letters and numbers, provided that the first character is always a letter. When using Python\footnote{As we shall see later on, Python has a set of command names and keywords already defined. We should avoid using these names or keywords as names for our variables. Otherwise, we could lose access to the corresponding Python command or keyword.}, We may also use the symbol ''\_". For Python, uppercase and lowercase letters are different symbols. Thus, if we choose variable names, such as Oack, OACK, and OaCk, they represent different variables for phyton.
+We can consider a variable as a computer memory region where a program has allocated specific information: numbers, characters, etc. A variable fundamental characteristic is its name because it permits one to identify it univocally. \index[eng]{Variable! name}. We can take as a variable name whatever combination of lowercase and uppercase letters and numbers, provided that the first character is always a letter. When using Python\footnote{As we shall see later on, Python has a set of command names and keywords already defined. We should avoid using these names or keywords as names for our variables. Otherwise, we could lose access to the corresponding Python command or keyword.}, We may also use the symbol ''\_". For Python, uppercase and lowercase letters are different symbols. Thus, if we choose variable names, such as Oack, OACK, and OaCk, they represent different variables for Phyton.
 
 \switchcolumn
 El método más elemental de crear o emplear una variable es asignarle la información para la que se creó. Para hacerlo, se emplea el símbolo de asignación \index{"= Símbolo de asignación} \index{Símbolo de asignación}, que coincide con el signo $=$ empleado en matemáticas. Como veremos más adelante la asignación en programación y la igualdad en matemáticas no representan exáctamente lo mismo. La manera de asignar directamente información a una variable es escribir el nombre de la variable, a continuación  el signo de asignación y, por último, la información asignada, \mintinline{python}{variable_1 = 18}. Si escribimos dicha expresión en la terminal de Python y pulsamos la tecla \emph{intro}:
@@ -2707,7 +2707,7 @@ print(m3)
 \end{minted}
 
 \begin{flalign*}
-&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+&\mathwitch*_{i=0}^{\infty}\Xi_i(t)\Biggl \{&     
 \end{flalign*}
 
 \begin{paracol}{2}
@@ -2744,7 +2744,7 @@ Text in JSON is stored as quoted strings containing values in key-value pairs in
 \switchcolumn
     Although we could work directly with the text file and all the above functions, there are Python libraries that provide methods to store, read and manipulate data in JSON format in a simple way. One of them is the \texttt{json} library. Importing this library we have the \texttt{dump} method to save a Python dictionary (uni in the example) in a json file. This process is called serialize. The \texttt{dump} must be provided with the python object of type file (that's why we open a file with \texttt{open} in write mode 'w').
 
-    To read a JSON data file and save the content in a python dictionary we can use the \texttt{load} method of the \texttt{json} library. Like \texttt{dump} we will have to provide it with the file object (now we will open it in read mode 'r') and it will return a dictionary object.
+    To read a JSON data file and save the content in a Python dictionary, we can use the \texttt{load} method of the \texttt{json} library. Like \texttt{dump} we will have to provide it with the file object (now we will open it in read mode 'r') and it will return a dictionary object.
 
 \switchcolumn
 
@@ -2784,134 +2784,83 @@ print(mi_robot)
 \end{paracol}
 
 \begin{flalign*}
-&&\left. \right\rbrace \reversemathwitch*
+&& \Biggr \rbrace \reversemathwitch*
 \end{flalign*}
 
 \newpage
+
 \section{Ejercicios}
 \begin{enumerate}
 \item Tipos de variables en Matlab; matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{línea de comandos} de Matlab e interpreta los resultados que obtienes. En los casos en que Matlab devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunos operaciones se apoyan en los resultados de operaciones anteriores.
+
 \begin{multicols}{2}
 \begin{enumerate}
 \renewcommand{\labelenumii}{\arabic{enumii}}
 \texttt{
-\item a=[1 2 3; 4 5 6]
-\item a=[1 2 3; 4 5]
-\item a=[ 1 2 3\\
-1 2 3\\
-1 2]
-\item[*] Operador (:) para crear vectores
-\item a=[1:10:0]
-\item a=1:10:2
-\item a=1:0.05:2
-\item a=1:-0.05:-1
-\item a=[1:10;2:12;3:13]
-\item a=[1:10;2:11;3:12]
-\item a=[1 2 7\\
-5 6 8\\
-3 2 6]
-\item b=[1 2 3]
+\item a=[[1,2,3],[4,5,6]]
+\item a=[1,2,3],4,5]
+\item a=[[1 2 3] 1 2 3]
+\item a=[[1,2,3],[5,6,8],[3,2,6]]
+\item b=[1,2,3]
 \item c=[a b]
-\item c=[a;b]
-\item d=[b;a]
-\item[*] Operador (:) para indexar
-\item c=[a(1,:) b]
-\item c=[a(1:2,:);b]
-\item c=[a(1:2,:);b;a(size(a,1),:)]
-\item[*] Funciones para manipulación de matrices
-\item a=[1 2 3]
-\item b=diag(a)
-\item c=diag(b)
-\item M=size(c)
-\item \ [m,n]=size(c)
-\item m=size(c)
-\item m=size(c,1)
-\item m=size(c,2)
-\item d=ones(size(a))
-\item d=ones(size(b))
-\item  d=ones(size(b,1))
-\item d=ones(size(b,1),size(c,2))
-\item f=eye(size(d,1))
-\item who
-\item whos
-\item clear all
-\item who
-\item q=[1 2 3\\
-4 5 6\\
-7 8 9]
-\item  r=diag(q,1)
-\item  r=diag(q,2)
-\item  r=diag(q,0)
-\item  r=diag(q,-1)
-\item  r=diag(q,-2)
-\item  tt=eye(1,3)
-\item  tt=eye(3,1)
-\item  tt=eye(3)
-\item  tt=eye(5)
-\item  tt=eye(5,3)\\
-\item  tt=eye(3,5)\\
-\item a=[1 3 4\\
-2 4 6]\\
-\item  b=[2 3\\
-4 5\\
-6 7]
-\item[*] Operadores aplicados a matrices
-\item c=a*b
-\item d=b*a
-\item e=[ 1 2\\
-4 5]
+\item c=[a,b]
+\item d=[b,a]
+\item[*] function/function type()
+\item type(a)
+\item type(a[0])
+\item type(a[0][1])
+\item a[2][2] = 'b'
+\item type(a[2][2])
+\item[*] cambiando listas copiadas/changing copied lists 
+\item c[1] = 'ojo'
+\item print('c=',c)
+\item print('a=',a)
+\item print('b=',b)
+\item print('d=',d)
+\item e = a.copy()
+\item a[2][2] = 'cambia tb c'
+\item print('c=',c)
+\item print('a=',a)
+\item print('b=',b)
+\item print('d=',d)
+\item print('e=',e)
+\item[0] = 'pero no al reves'
+\item print('c=',c)
+\item print('a=',a)
+\item print('b=',b)
+\item print('d=',d)
+\item print('e=',e)
+\item \%who
+\item \%whos
+\item del(d)
+\item \%reset
+\item[*] Operadores/operators
+\item a = -6
+\item b = 5
+\item c = 3.5
+\item e = 0.9
 \item a*e
 \item g=a*e
 \item g=e*a
 \item a*b
-\item a=[1 3 4\\
-5 6 8]
-\item b=3
-\item a*b
-\item a.*b
-\item b=[2 3]
-\item a.*b
-\item b=[ 2 3 4\\
-5 6 7]
-\item a.*b
-\item c=b'
-\item d=a'
 \item r=a-b
-\item h=a-a'
-\item j=a+b
-\item j=a'+b
-\item d=(a+b)*b'
-\item f=(a+b)*b'
-\item f=(a-b)'*b
-\item a=[ 1 3 5\\
-2 5 6
-3 4 2]
-\item p=a\^{}2
-\item r=a\^{}2-a*a
-\item r=a.\^{}2-a*a
-\item r=a\^{}2-a.*a
-\item b=[ 3 5 6\\
-2 1 1\\
-1 2 3]
-\item[*] Encadenando operaciones
-\item w=a*b\^{}(-1)
-\item w=a*inv(b)
+\item f=(a+b)*c
+\item f= a+b*c
+\item p=a**2
+\item r=a**2-a*a
+\item[*] Encadenando operaciones/linking operations
+\item w=a*b**-1
 \item w=a/b
-\item w= a*b\^{}(-1)-a*inv(b)
-\item w= a*b\^{}(-1)-a/b
-\item w=a\^{}(-1)*b
-\item w=inv(a)*b
-\item w=a\textbackslash b
-\item w= a\^{}(-1)*b-inv(a)*b
-\item w=a\textbackslash b-inv(a)*b
-\item w=a./b
-\item w=a.\textbackslash b
-\item w=a.\^{}(-1)*b
-\item w=a.\^{}(-1)*b-a.\textbackslash b
+\item w=a//b
+\item w=a*b**-1-a/b
+\item w=a**-1*b
+\item w=(a*b)**-1
+\item w=a**-1*b-1/a*b
+\item w=a**-1*b-a
 }
 \end{enumerate}
 \end{multicols}
-\item Obtén empleando la \emph{línea de comandos} de matlab el resultado de las siguientes expresiones:
+\item Obtén empleando la \emph{línea de comandos} de Ipython el resultado de las siguientes expresiones:
 \begin{multicols}{2}
 \begin{align*}
 \frac{5+3x^2}{6y}\\
@@ -2926,9 +2875,10 @@ print(mi_robot)
 \arctan\left(\frac{y}{x}\right)
 \end{align*}
 \end{multicols}
-Emplea para $x$ e $y$ tanto valores escalares como matrices.
+Emplea para $x$ e $y$
+los valores que prefieras.
 
-\item Abre un fichero nuevo en el editor de textos de matlab.
+\item Abre un fichero nuevo en el editor de textos de Spyder.
 Escribe las siguiente líneas:\\
 \texttt{
 x = A*B\\

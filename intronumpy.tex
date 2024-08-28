@@ -295,11 +295,11 @@ Hemos dicho que la línea [95] nos devuelve un vector columna. Bueno, sí y no; 
 \paragraph{Vectores.}
 Cuando introducimos los vectores, distinguimos entre vectores filas y columna, definiéndolos como matrices de una sola fila o una sola columna. Sin embargo, en Numpy, se sigue un criterio distinto que permite generalizar el concepto de matriz asociándolo con el de tensor. Sin entrar en detalles\footnote{Una definición formal del concepto de tensor, queda fuera del alcance de estos apuntes.}, podemos decir que un tensor es un objeto algebráico caracterizado por dos parámetros; el orden y la dimensión. Así un escalar $a \in \mathbb{R}$ es un tensor de orden cero. Un vector $b \in \mathbb{R}^n$ es un tensor de orden 1 y dimesión $n$. Una matriz $A \in \mathbb{R}^{m\times n}$ Es un tensor de orden dos y dimensiones $m,n$. Un tensor de orden 3, $T \in \mathbb{R}^{n\times m \times l}$, etc. Podemos asociar el orden al número mínimo de índices que necesitamos para definir de forma unívoca los elementos de un Tensor: para un escalar, no nos hace faltar ningún indice, solo tenemos un elemento que es el propio escalar, por tanto le asociamos orden cero. Para un vector es suficiente emplear un índice para definir sus elementos, $b=(b_i),\ i=1,\cdots, n$, $b \in \mathbb{R}^n$. Para una matriz necesito dos índices, $A=(a_{ij}),\ i =1, \cdots n, j = 1,\ \cdots, m$, $A \in \mathbb{R}^{n\times m}$. Para un tensor de orden tres necesitaría tres índices, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ y así sucesivamente. Numpy permite definir estructuras de cualquier orden y dimensión que queramos. Pero nosotros nos vamos a limitar a vectores (orden 1) y matrices (orden 2). ¿Tiene sentido entonces distiguir entre vectores fila y columna? Solo si consideramos siempre los vectores como matrices (orden 2) y dimesiones $1\times n$ (vector fila) ó $n \times 1$ (vector columna). Para Numpy, sin embargo, vectores y matrices son estructuras de distinto orden. Veamos con algunos ejemplo cómo se diferencian. Para verlo mejor podemos emplear la propiedad \mintinline{python}{shape} de los arrays en numpy, Dicha propiedad nos devuelve una tupla con las dimensiones del array, el número de elementos que contine la tupla nos da el orden,
 \switchcolumn
-Line [90] extracts a row vector from the first row of matrix \mintinline{python}{D}. Line [91] extracts a $2\times 2$ matrix using the four entries located on the left-up corner of the original, \mintinline{python}{D}, matrix. Line [92] extracts a single matrix entry, but notice that it takes the form of a $1\times 1$ matrix. Thus, this result is different than the result achieved when we directly use the indexes of the entry: \mintinline{python}{D[2,1]}. Lain [93] returns a row vector with the entries of the matrix's last row. Lastly, line [95] returns a column vector with the entries of the matrix's last column.
+Line [90] extracts a row vector from the first row of matrix \mintinline{python}{D}. Line [91] extracts a $2\times 2$ matrix using the four entries located on the left-up corner of the original, \mintinline{python}{D}, matrix. Line [92] extracts a single matrix entry, but notice that it is a $1\times 1$ matrix. Thus, this result is different than the result achieved when we directly use the indexes of the entry: \mintinline{python}{D[2,1]}. Line [93] returns a row vector with the matrix's last row entries. Lastly, line [95] returns a column vector with the matrix's last column entries.
 
-We have said that line [95] returns a column vector. well, yes and not; let's see it in more detail.
+We have said that line [95] returns a column vector. Well, yes and no; let's examine it in more detail.
 
-\paragraph{Vectors.} When we introduced vectors in the previous section, we made a distinction between row and column vectors, defining them as matrices with a single row or a single column. Nevertheless, Numpy follows another criterion that allows us to generalise the idea of matrix linking it with the concept of tensor. we do not get into details\footnote{A formal definition of tensors is far beyond the scope of these notes.} and simply say that a tensor is an algebraic object defined by two parámeters, its order, and its dimension. So, a scalar $a \in \mathbb{R}$ is a tensor of order zero. A vector $b \in \mathbb{R}^n$ is a tensor of order one and dimension $n$. A matrix $A\in \mathbb{R}^{m\times n}$ is a tensor of order two and dimensions $m,n$. A third order tensor, $T\in\mathbb{R}^{n\times m\times l}$, etc. We can relate the order with the minimum number of indexes we need to univocally define the tensor entry: for a scalar, we don't need an index at all; we have only a single entry, the scalar itself. For this reason, we associate scalars with a zero-order tensor. For a vector, it is enough to use a single index to define its entries, $b=(b_i), i = 1,\cdots, n,\ b \in \mathbb{R}^n$. For a matrix, we need two indexes, $A = (a_{ij}), i =1,\dots,n,\ j = 1,\dots,m,\ A \in \mathbb{R}^{n\times m}$. For third-order tensors, we need three indexes, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ and so on. In Numpy, we can define structures of whatever order and dimensions we want, but we will only use vectors (order 1) and matrices (order 2). Has, then, any sense to distinguish between row and column vector? Only if we always consider vectors as matrices (order 2) and dimensions $1\times n$ (row vector) or $n\times 1$ (column vector). For Numpy, however, vectors an matrices are structures of different order. Let's see some examples of their differences. To appreciate it better we can use the Numpy arrays attribute \mintinline{python}{shape}, which gives us a tuple containing the dimensions of the array. The number of entries of the tuple tells us the order of the array,     
+\paragraph{Vectors.} When we introduced vectors in the previous section, we distinguished between row and column vectors, defining them as matrices with a single row or column. Nevertheless, Numpy follows another criterion that allows us to generalise the idea of matrix, linking it with the concept of tensor. we do not get into details\footnote{A formal definition of tensors is far beyond the scope of these notes.} and simply say that a tensor is an algebraic object defined by two parámeters, its order, and its dimension. So, a scalar $a \in \mathbb{R}$ is a tensor of order zero. A vector $b \in \mathbb{R}^n$ is a tensor of order one and dimension $n$. A matrix $A\in \mathbb{R}^{m\times n}$ is a tensor of order two and dimensions $m,n$. A third order tensor, $T\in\mathbb{R}^{n\times m\times l}$, etc. We can relate the order with the minimum number of indexes we need to univocally define the tensor entry: for a scalar, we don't need an index at all; we have only a single entry, the scalar itself. For this reason, we associate scalars with a zero-order tensor. For a vector, it is enough to use a single index to define its entries, $b=(b_i), i = 1,\cdots, n,\ b \in \mathbb{R}^n$. For a matrix, we need two indexes, $A = (a_{ij}), i =1,\dots,n,\ j = 1,\dots,m,\ A \in \mathbb{R}^{n\times m}$. For third-order tensors, we need three indexes, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ and so on. In Numpy, we can define structures of whatever order and dimensions we want, but we will only use vectors (order 1) and matrices (order 2). Has, then, any sense to distinguish between row and column vector? Only if we always consider vectors as matrices (order 2) and dimensions $1\times n$ (row vector) or $n\times 1$ (column vector). For Numpy, however, vectors an matrices are structures of different order. Let's see some examples of their differences. To appreciate it better, we can use the Numpy arrays attribute \mintinline{python}{shape}, which gives us a tuple containing the dimensions of the array. The number of entries of the tuple tells us the order of the array,     
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.3\textwidth}
@@ -3718,4 +3718,393 @@ El número de condición de una matriz, es una propiedad importante que permite 
 \switchcolumn
 The condition number of a matrix, is very useful property that allows us to estimate how stable will be the operations performed using the matrix, i particular, those  operations with involve directly or indirectly the computing of the matrix inverse.
 \end{paracol}
+
+\section{Ejercicios}
+\begin{enumerate}
+\item Tipos de variables en Matlab; matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{línea de comandos} de Matlab e interpreta los resultados que obtienes. En los casos en que Matlab devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunos operaciones se apoyan en los resultados de operaciones anteriores.
+
+
+
+
+\begin{multicols}{2}
+
+\begin{enumerate}
+\renewcommand{\labelenumii}{\arabic{enumii}}
+\texttt{
+\item a=[[1, 2, 3],[4, 5, 6]]
+\item a=[1, 2, 3], 4, 5]
+\item a=[[1  2 3] 1 2 3]
+\item[*] Operador (:) para crear vectores
+\item a=[1:10:0]
+\item a=1:10:2
+\item a=1:0.05:2
+\item a=1:-0.05:-1
+\item a=[1:10;2:12;3:13]
+\item a=[1:10;2:11;3:12]
+\item a=[1 2 7\\
+5 6 8\\
+3 2 6]
+\item b=[1 2 3]
+\item c=[a b]
+\item c=[a;b]
+\item d=[b;a]
+\item[*] Operador (:) para indexar
+\item c=[a(1,:) b]
+\item c=[a(1:2,:);b]
+\item c=[a(1:2,:);b;a(size(a,1),:)]
+\item[*] Funciones para manipulación de matrices
+\item a=[1 2 3]
+\item b=diag(a)
+\item c=diag(b)
+\item M=size(c)
+\item \ [m,n]=size(c)
+\item m=size(c)
+\item m=size(c,1)
+\item m=size(c,2)
+\item d=ones(size(a))
+\item d=ones(size(b))
+\item  d=ones(size(b,1))
+\item d=ones(size(b,1),size(c,2))
+\item f=eye(size(d,1))
+\item who
+\item whos
+\item clear all
+\item who
+\item q=[1 2 3\\
+4 5 6\\
+7 8 9]
+\item  r=diag(q,1)
+\item  r=diag(q,2)
+\item  r=diag(q,0)
+\item  r=diag(q,-1)
+\item  r=diag(q,-2)
+\item  tt=eye(1,3)
+\item  tt=eye(3,1)
+\item  tt=eye(3)
+\item  tt=eye(5)
+\item  tt=eye(5,3)\\
+\item  tt=eye(3,5)\\
+\item a=[1 3 4\\
+2 4 6]\\
+\item  b=[2 3\\
+4 5\\
+6 7]
+\item[*] Operadores aplicados a matrices
+\item c=a*b
+\item d=b*a
+\item e=[ 1 2\\
+4 5]
+\item a*e
+\item g=a*e
+\item g=e*a
+\item a*b
+\item a=[1 3 4\\
+5 6 8]
+\item b=3
+\item a*b
+\item a.*b
+\item b=[2 3]
+\item a.*b
+\item b=[ 2 3 4\\
+5 6 7]
+\item a.*b
+\item c=b'
+\item d=a'
+\item r=a-b
+\item h=a-a'
+\item j=a+b
+\item j=a'+b
+\item d=(a+b)*b'
+\item f=(a+b)*b'
+\item f=(a-b)'*b
+\item a=[ 1 3 5\\
+2 5 6
+3 4 2]
+\item p=a\^{}2
+\item r=a\^{}2-a*a
+\item r=a.\^{}2-a*a
+\item r=a\^{}2-a.*a
+\item b=[ 3 5 6\\
+2 1 1\\
+1 2 3]
+\item[*] Encadenando operaciones
+\item w=a*b\^{}(-1)
+\item w=a*inv(b)
+\item w=a/b
+\item w= a*b\^{}(-1)-a*inv(b)
+\item w= a*b\^{}(-1)-a/b
+\item w=a\^{}(-1)*b
+\item w=inv(a)*b
+\item w=a\textbackslash b
+\item w= a\^{}(-1)*b-inv(a)*b
+\item w=a\textbackslash b-inv(a)*b
+\item w=a./b
+\item w=a.\textbackslash b
+\item w=a.\^{}(-1)*b
+\item w=a.\^{}(-1)*b-a.\textbackslash b
+}
+\end{enumerate}
+\end{multicols}
+\item Obtén empleando la \emph{línea de comandos} de matlab el resultado de las siguientes expresiones:
+\begin{multicols}{2}
+\begin{align*}
+\frac{5+3x^2}{6y}\\
+\frac{1+4\sqrt{2x}}{6}y \\
+\frac{-x+\sqrt{x^2-4xy}}{2x}
+\end{align*}
+
+\begin{align*}
+\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(x-1)^2}\\
+\sin^2(2x)+\cos^2(2x) \\
+\arctan(\infty)\\
+\arctan\left(\frac{y}{x}\right)
+\end{align*}
+\end{multicols}
+Emplea para $x$ e $y$ tanto valores escalares como matrices.
+
+\item Abre un fichero nuevo en el editor de textos de matlab.
+Escribe las siguiente líneas:\\
+\texttt{
+x = A*B\\
+y = A+B\\
+z = A*sin(B)}\\
+Guarda el fichero. Emplea el comando \verb|clear| all para limpiar el \emph{workspace}
+Invoca el fichero desde matlab. ¿Qué sucede?\\
+Crea en la ventana de comandos las matrices,
+\begin{equation*}
+A =\begin{pmatrix}
+1&3&4\\
+2&5&6\\
+7&8&9
+\end{pmatrix}, \ B=\begin{pmatrix}
+2&6&8\\
+3&7&8\\
+2&7&9
+\end{pmatrix}
+\end{equation*}
+Vuelve a ejecutar el programa guardado en el fichero.\\
+Añade al programa, al principio del todo, la línea \texttt{clear all}. Guarda y vuelve a ejecutar el
+programa. ¿Qué sucede ahora?\\
+Introduce las matrices A y B directamente en el código del programa debajo de la línea \texttt{clear all}. Analiza qué sucede al ejecutar de nuevo el programa.\\
+ Eliminar la línea \texttt{clear all}. Introduce a través de la ventana de comando dos matrices $A$ y $B$ distintas de las que contiene el programa. Ejecuta el programa y comprueba qué matrices utiliza para realizar los cálculos.\\
+Comenta la(s) línea(s) de código donde has definido las matrices $A$ y $B$ en el programa. Añade al principio del programa una línea para convertir el script en una función:\\
+\verb|function [x] = nombre_de_tu_programa(A,B)| \\
+Invoca la función recién creada desde la \emph{línea de comandos} de matlab. Observa lo que pasa si la invocas como:
+\begin{verbatim}
+>>nombre_de_tu_programa
+>>nombre_de_tu_programa(F)
+>>nombre_de_tu_programa(F,J)
+\end{verbatim}
+Introduce, en el  workspace de matlab --usando la \emph{línea de comandos}--  las matrices $F$ y $J$, dondo,
+\begin{equation*}
+F =\begin{pmatrix}
+1&0&1\\
+2&0&4\\
+3&5&0
+\end{pmatrix}, \ J=\begin{pmatrix}
+1&6&7\\
+2&9&0\\
+4&4&4
+\end{pmatrix}
+\end{equation*}
+Vuelve a ejecutar, \verb|>>nombre_de_tu_programa(F,J)| \\
+Genera dos matrices de tamaño $(3\times 3)$. Nómbralas como prefieras: \verb|mi_matriz1, mi_matriz2|. Ejecuta ahora,
+\begin{verbatim}
+>>nombre_de_tu_programa(mi_matriz1,J)
+>>nombre_de_tu_programa(mi_matriz2,F)
+>>nombre_de_tu_programa(mi_matriz1,mi_matriz2)
+>>resultado=nombre_de_tu_programa(F,J)
+>>[r1,r2]=nombre_de_tu_programa(F,J)
+>>[A,B;r3]=nombre_de_tu_programa(F,J)
+>>[A,B;C]=nombre_de_tu_programa(A,B)
+\end{verbatim}
+Crea un nuevo fichero, con el siguiente código:
+% \begin{lstlisting}
+% A=sin(B).*cos(C)
+% [D,E,F]=nombre_de_tu_programa(A,C)
+% G = D + E - F
+% \end{lstlisting}
+Guárdalo con el nombre que quieras.\\
+Define en la \emph{línea de comandos} matrices $B$ y $C$ adecuadas para el programa que acabas de escribir y ejecútalo.\\
+Añade al programa una primera línea de código que lo convierta en una función que tome como entradas las matrices $B$ y $C$  y que:\\
+devuelva solo la matriz $G$\\
+devuelva las matrices $G$ y $D$\\ 
+devuelva las matrices $G$,$D$,$E$ y $F$.
+
+Escribe una nueva función con el siguiente código,
+\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]{python}
+import numpy as np
+def nombre_de_la_funcion(B,C):
+    E= B + C**2
+    D =B - C.inv()
+    return(E,D)
+% A=nombre_funcion_dentro(E,D);
+% end;
+% function s=nombre_funcion_dentro(l,p);
+% s=l + p - 2;
+% end;
+\end{minted}
+
+Crea matrices $B$ y $C$ adecuadas y ejecuta la función que acabas de crear. Describe cómo funciona.
+
+\item Define en la \emph{línea de comandos} las matriz $M$ y $N$ e interpreta el resultado de las condiciones lógicas impuestas.
+
+\begin{equation*}
+M =\begin{pmatrix}
+1&2&3\\
+4&5&6\\
+7&8&9
+\end{pmatrix}, \ N=\begin{pmatrix}
+2&3&4\\
+5&6&7\\
+8&9&10
+\end{pmatrix}
+\end{equation*}
+\begin{verbatim}
+>>y=m<2
+>>y=m<=2
+>>y=m>2
+>>y=m>=2
+>>y=m==2
+>>y=m~=2
+>>y=any(m<2)
+>>y=any(m<2,1)
+>>y=any(m<2,2)
+>>y=any(m==2)
+>>y=all(m>=2)
+>>y=all(m~=0)
+>>y=all(any(m<2))
+>>y=any(all(m<2))
+
+>> index=find(m>2)
+>>[i,j]=find(m<5)
+
+>> y=any(m<2)&any(n>4)
+>> y=any(m<2)&any(n>10)
+>> y=any(m<2)&any(n>6)
+>> y=any(m<2)&any(n>7)
+>> y=any(m<2)&any(n>3)
+>> y=any(m<2)&any(n>2)
+>> y=any(m>2)&any(n>2)
+>> y=any(m>4)&any(n>2)
+>> y=any(m>4,1)&any(n>2)
+>> y=any(m>4,2)'&any(n>2)
+\end{verbatim}
+Repite el estudio de las condiciones lógicas cambiando \& por \textbar
+
+\item Escribe el siguiente código en un fichero. Ejecútalo y analiza los resultados,
+% \begin{lstlisting}
+% dato=rand(1)
+% if dato==0.5
+%  dato=0
+% elseif dato<0.5
+%  dato=-dato*10
+% else
+%  dato=dato*10
+% end
+% \end{lstlisting}
+
+Modifica el programa,
+\begin{enumerate}
+\item Para que no muestre los resultados de los cálculos por pantalla
+\item para que, utilizando comandos \verb|elseif, &| devuelva una variable (distinta de 'dato') con valor $-1$ si se cumple que 'dato' es menor o igual que $0.3$, con valor $-0.5$ si 'dato' es mayor que $0.3$ y menor que $0.5$, con valor $0$ si 'dato' es mayor o igual que $0.5$ y menor  o igual que $0.7$ y con valor $1$ en cualquier otro caso.
+\item Convierte el \emph{script}, en una función, que tome 'dato' como variable de entrada, y devuelva el valor de la variable obtenida, según la condición que se cumpla. (Lógicamente se debe eliminar o comentar la línea \verb|dato=rand(1)|).
+\end{enumerate}
+
+\item Crea un scrip de matlab con el siguiente código y trata de adivinar qué hace antes de ejecutarlo. Utiliza el \emph{help} de matlab para averiguar lo que hace la función \verb|abs|.
+% \begin{lstlisting}
+% n=10
+% for i=1:n
+%  for j=1:n
+%   if i==j
+%    a(i,j)=1;
+%   elseif abs(i-j)==1
+%    a(i,j)=-1
+%   else
+%    a(i,j)=0
+%   end
+%  end
+% end
+% \end{lstlisting}
+
+Introduce un punto de ruptura (\emph{breakpoint}) en el código, por ejemplo en la línea 12. Ejecuta paso a paso el programa para ver como va generando el resultado. Intercambia los índices \verb|i,j| de la matriz \verb|a|. \verb|a(j,i)|.¿Se obtiene el mismo resultado? ¿Cómo se construye ahora la matriz?
+
+\item Crea un script con el siguiente código,
+\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]{python}
+i=0
+while i<10:
+    i=i+1
+    j=0
+    while j<10:
+        j=j+1
+        if i==j:
+            a[i,j+=1;
+        elif abs(i-j)==1:
+            a[i,j]=-1
+        else:
+            a(i,j)=0
+\end{minted}
+
+Repite el estudio del programa anterior
+
+\item Modifica el \emph{script} anterior de modo que quede el siguiente código,
+% \begin{lstlisting}
+% i=0
+% while(1)
+%  i=i+1
+%  j=0
+%  while(1)
+%   j=j+1
+%   if i==j
+%    a(i,j)=1;
+%   elseif abs(i-j)==1
+%    a(i,j)=-1
+%   else
+%    a(i,j)=0
+%   end
+%   if j==10
+%    break
+%   end
+%  end
+%  if i==10
+%   break
+%  end
+% end
+% \end{lstlisting}
+Repite el estudio del programa anterior. ¿Qué sucede si comentamos la(s) línea(s) que contiene la sentencia \verb|break|?
+Reconvierte los \emph{scrips} anteriores en funciones que admitan como variable de entrada el tamaño de la matriz que se desea generar y devuelvan como variable de salida la matriz creada.
+
+\item Dada una matriz $A \in \mathbb{R}^{n\times n}$ y un vector columna $v \in \mathbb{R}^n-{\mathbf{0}}$. Se dice que el vector $v$ pertenece al \emph{Kernel} de $A$ si se cumple que $Av =\mathbf{0}$.
+
+
+
+Crea una función que tome como variables de entrada una matriz $A$ cuadrada de cualquier dimension $n\times n$ y un vector columna de dimensión $n$ y compruebe si$n$ pertenece o no al \emph{kernel} de $A$. \textbf{Nota:} Considera que la condición se cumple si todos los elementos del vector $Av$ son menores que $1e-12$.
+
+\item Escribe ---empleando bucles y sin hacer uso del operador ( \^\ ) --- una función \verb|potencia.m| que reciba como argumentos de entrada un número real $x\in \mathbb{R}$ y un entero $n \in \mathbb{Z}$ y devuelva el valor de la n-ésima potencia de $x$ ($x^n$). El segundo argumento de entrada puede ser opcional. Si se omite debe tomarse como $n=2$ (devolviendo el cuadrado de $x$). Ver la función interna nargin. \textbf{Nota:} Ten en cuenta que $n$ puede ser positivo, negativo o cero.
+
+\item Crea una función que determine la suma de los inversos de los números naturales impares menores de 1000. Usa las funciones tic y toc para determinar el tiempo que se tarda. Emplea bucles para el cálculo.
+\begin{equation*}
+S_{imp} = \sum_{n=1}^{500}\frac{1}{2n-1} =\frac{1}{1}+\frac{1}{3}+\frac{1}{5}+\cdots+\frac{1}{999}
+\end{equation*}
+Modifica tu programa, de modo que admita como variable de entrada un número $m\in\mathbb{N}$ y calcule el valor de la suma de los inversos de los impares menores o iguales que $m$.
+
+\item Los números de Fibonacci, $F(n)$ son una serie de números naturales. Los dos primeros valores de la serie son:  $F(1)=1$ y $F(2)=2$. Los demás términos se calculan como la suma de los dos anteriores: $F(n) = F(n-1) + F(n-2)$.
+Escribe un script que genere los primeros $m$ números de la serie de Fibonacci, almacenándolos en un vector \verb|F|. Emplea para el cálculo la estructura \verb|while|.
+
+\item Sin utilizar las funciones de matlab \verb|flip,fliplr, flipud,...|, escribe las líneas de código para que, dado un vector \verb|x|, genere otro vector con el orden de los elementos invertido.
+\end{enumerate}
 
