@@ -2,10 +2,10 @@
 	\PYG{k+kn}{from} \PYG{n+nn}{random} \PYG{k+kn}{import} \PYG{n}{random}
 	\PYG{n}{dato} \PYG{o}{=} \PYG{n}{random}\PYG{p}{()}
 	\PYG{k}{if} \PYG{n}{dato} \PYG{o}{==} \PYG{l+m+mf}{0.5}\PYG{p}{:}
-	\PYG{n}{dato} \PYG{o}{=} \PYG{l+m+mi}{0}
+		\PYG{n}{dato} \PYG{o}{=} \PYG{l+m+mi}{0}
 	\PYG{k}{elif} \PYG{n}{dato} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.5}\PYG{p}{:}
-	\PYG{n}{dato} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{dato}\PYG{o}{*}\PYG{l+m+mi}{10}
+		\PYG{n}{dato} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{dato}\PYG{o}{*}\PYG{l+m+mi}{10}
 	\PYG{k}{else}\PYG{p}{:}
-	\PYG{n}{dato} \PYG{o}{=} \PYG{n}{dato}\PYG{o}{*}\PYG{l+m+mi}{10}
+		\PYG{n}{dato} \PYG{o}{=} \PYG{n}{dato}\PYG{o}{*}\PYG{l+m+mi}{10}
 	\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{dato}\PYG{p}{)}
 \end{Verbatim}

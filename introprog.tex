@@ -1967,6 +1967,12 @@ In [12]: par2(3)
 3  es un numero impar
 3 is an odd number
 Out[12]: ()
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
 
 In [13]: par2(8)
 8  es un numero par
@@ -2600,19 +2606,19 @@ Another line
  \paragraph*{Working with numbers and arrays}
  In many cases we will need to save and read numbers or arrays. We could use the above methods to save the numbers or arrays to a file and read them back. However, a better way to do this is to use the numpy package to directly save and read an array.
  \switchcolumn
- Dentro de numpy tenemos los métodos \texttt{savetxt} y \texttt{loadtxt} para guardar arrays en archivos de texto o cargarlos desde archivos de texto. 
+ Dentro de numpy tenemos los métodos\\ \texttt{savetxt} y \texttt{loadtxt} para guardar arrays en archivos de texto o cargarlos desde archivos de texto. 
 
  Para usar \texttt{savetxt} tenemos que porporcionar los siguientes argumentos: un string con el nombre del archivo y la variable que contiene el array que vamos a guardar. Además, de manera opcional se pueden proporcionar más. Por ejemplo el formato, bajo la clave de \texttt{fmt} (en el ejemplo el formato es un número (\%), con tres cifras decimales ($.3$) de tipo float (f). El tipo de delimitador entre elementos, una cabecera etc. Se puede consultar la documentación para verlos todos.
  
  \switchcolumn
 
- Within numpy we have the methods \texttt{savetxt} and \texttt{loadtxt} to save arrays to text files or load them from text files. 
+ Within numpy we have the methods\\ \texttt{savetxt} and \texttt{loadtxt} to save arrays to text files or load them from text files. 
 
  To use \texttt{savetxt} we have to provide the following arguments: a string with the name of the file and the variable containing the array to be saved. In addition, you can optionally provide more. For example the format, under the key of \texttt{fmt} (in the example the format is a number (\%), with three decimal digits ($.3$) of type float (f). The type of delimiter between elements, a header etc. You can consult the documentation to see them all.
 
  \switchcolumn
  El método \texttt{loadtxt} nos permite leer un array de un archivo y guardarlo directamente en una variable de tipo array de numpy. Para ello simplemente proporcionaremos el archivo donde está almacenado el array y el método nos devolverá el array. En el ejemplo puede verse cómo se guarda una matriz $2x3$ en un archivo de texto, con una cabecera, cómo se lee usando las funciones \texttt{open} y \texttt{read} y cómo se lee la matriz y se almacena en un array de numpy usando el método \texttt{savetxt}.
-
+ 
  \switchcolumn
 
  The \texttt{loadtxt} method allows us to read an array from a file and store it directly into a numpy array variable. To do this we simply provide the file where the array is stored and the method will return the array. In the example you can see how a $2x3$ array is stored in a text file, with a header, how it is read using the \texttt{open} and \texttt{read} functions and how the array is read and stored in a numpy array using the \texttt{savetxt} method.
@@ -2968,11 +2974,11 @@ Repite el estudio de las condiciones lógicas cambiando \& por \textbar
 	from random import random
 	dato = random()
 	if dato == 0.5:
-	dato = 0
+		dato = 0
 	elif dato < 0.5:
-	dato = -dato*10
+		dato = -dato*10
 	else:
-	dato = dato*10
+		dato = dato*10
 	print(dato)
 \end{minted}
 
@@ -2984,22 +2990,27 @@ Modifica el programa,
 \end{enumerate}
 
 \item Crea un scrip de python con el siguiente código y trata de adivinar qué hace antes de ejecutarlo. Utiliza el \emph{help} de Spyder o el interrogante \mintinline{python}{abs?} en el terminal, para averiguar lo que hace la función \verb|abs|.
-% \begin{lstlisting}
-% n=10
-% for i=1:n
-%  for j=1:n
-%   if i==j
-%    a(i,j)=1;
-%   elseif abs(i-j)==1
-%    a(i,j)=-1
-%   else
-%    a(i,j)=0
-%   end
-%  end
-% end
-% \end{lstlisting}
-
-Introduce un punto de ruptura (\emph{breakpoint}) en el código, por ejemplo en la línea 12. Ejecuta paso a paso el programa para ver como va generando el resultado. Intercambia los índices \verb|i,j| de la matriz \verb|a|. \verb|a(j,i)|.¿Se obtiene el mismo resultado? ¿Cómo se construye ahora la matriz?
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	%bgcolor=LightGray,
+	fontsize=\footnotesize,
+	linenos
+	]{python}
+	n = 5
+	x = []
+	for i in range(n):
+		x.append([])
+		for j in range(n):
+			if i == j:
+				x[i].append(1)
+			elif abs(i-j) == 1:
+				x[i].append(-1)
+			else:
+				x[i].append(0)
+\end{minted}
+Introduce un punto de ruptura (\emph{breakpoint}) en el código, por ejemplo en la línea 12. Ejecuta paso a paso el programa para ver como va generando el resultado.
 
 \item Crea un script con el siguiente código,
 \begin{minted}[
@@ -3010,66 +3021,72 @@ baselinestretch=1.2,
 fontsize=\footnotesize,
 linenos
 ]{python}
-i=0
-while i<10:
-    i=i+1
-    j=0
-    while j<10:
-        j=j+1
-        if i==j:
-            a[i,j+=1;
-        elif abs(i-j)==1:
-            a[i,j]=-1
-        else:
-            a(i,j)=0
+n = 5
+x = []
+i = 0
+
+	while i<n:
+		j=0
+		x.append([])
+		while j<n:        
+			if i==j:
+				x[i].append(1)
+			elif abs(i-j)==1:
+				x[i].append(-1)
+			else:
+				x[i].append(0)
+			j = j + 1
+		i = i+1
 \end{minted}
 
 Repite el estudio del programa anterior
 
 \item Modifica el \emph{script} anterior de modo que quede el siguiente código,
-% \begin{lstlisting}
-% i=0
-% while(1)
-%  i=i+1
-%  j=0
-%  while(1)
-%   j=j+1
-%   if i==j
-%    a(i,j)=1;
-%   elseif abs(i-j)==1
-%    a(i,j)=-1
-%   else
-%    a(i,j)=0
-%   end
-%   if j==10
-%    break
-%   end
-%  end
-%  if i==10
-%   break
-%  end
-% end
-% \end{lstlisting}
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	%bgcolor=LightGray,
+	fontsize=\footnotesize,
+	linenos
+	]{python}
+n = 5
+x = []
+i = 0
+	while 1:
+		j=0
+		x.append([])
+		while 1:        
+			if i==j:
+				x[i].append(1)
+			elif abs(i-j)==1:
+				x[i].append(-1)
+			else:
+				x[i].append(0)
+			j = j + 1
+			if j==n:
+			break
+		i = i+1
+		if i==n:
+			break
+\end{minted}
 Repite el estudio del programa anterior. ¿Qué sucede si comentamos la(s) línea(s) que contiene la sentencia \verb|break|?
-Reconvierte los \emph{scrips} anteriores en funciones que admitan como variable de entrada el tamaño de la matriz que se desea generar y devuelvan como variable de salida la matriz creada.
+Reconvierte los \emph{scrips} anteriores en funciones que admitan como variable de entrada el tamaño de la lista que se desea generar y devuelvan como variable de salida la lista creada.
 
-\item Dada una matriz $A \in \mathbb{R}^{n\times n}$ y un vector columna $v \in \mathbb{R}^n-{\mathbf{0}}$. Se dice que el vector $v$ pertenece al \emph{Kernel} de $A$ si se cumple que $Av =\mathbf{0}$.
+\item Escribe ---empleando bucles y sin hacer uso del operador ( ** ) --- una función \verb|potencia| que reciba como argumentos de entrada un número real $x\in \mathbb{R}$ y un entero $n \in \mathbb{Z}$ y devuelva el valor de la n-ésima potencia de $x$ ($x^n$). El segundo argumento de entrada puede ser opcional. Si se omite debe tomarse como $n=2$ (devolviendo el cuadrado de $x$).
 
-
-
-Crea una función que tome como variables de entrada una matriz $A$ cuadrada de cualquier dimension $n\times n$ y un vector columna de dimensión $n$ y compruebe si$n$ pertenece o no al \emph{kernel} de $A$. \textbf{Nota:} Considera que la condición se cumple si todos los elementos del vector $Av$ son menores que $1e-12$.
-
-\item Escribe ---empleando bucles y sin hacer uso del operador ( \^\ ) --- una función \verb|potencia.m| que reciba como argumentos de entrada un número real $x\in \mathbb{R}$ y un entero $n \in \mathbb{Z}$ y devuelva el valor de la n-ésima potencia de $x$ ($x^n$). El segundo argumento de entrada puede ser opcional. Si se omite debe tomarse como $n=2$ (devolviendo el cuadrado de $x$). Ver la función interna nargin. \textbf{Nota:} Ten en cuenta que $n$ puede ser positivo, negativo o cero.
-
-\item Crea una función que determine la suma de los inversos de los números naturales impares menores de 1000. Usa las funciones tic y toc para determinar el tiempo que se tarda. Emplea bucles para el cálculo.
+\item Crea una función que determine la suma de los inversos de los números naturales impares menores de 1000. Emplea bucles para el cálculo.
 \begin{equation*}
 S_{imp} = \sum_{n=1}^{500}\frac{1}{2n-1} =\frac{1}{1}+\frac{1}{3}+\frac{1}{5}+\cdots+\frac{1}{999}
 \end{equation*}
 Modifica tu programa, de modo que admita como variable de entrada un número $m\in\mathbb{N}$ y calcule el valor de la suma de los inversos de los impares menores o iguales que $m$.
 
 \item Los números de Fibonacci, $F(n)$ son una serie de números naturales. Los dos primeros valores de la serie son:  $F(1)=1$ y $F(2)=2$. Los demás términos se calculan como la suma de los dos anteriores: $F(n) = F(n-1) + F(n-2)$.
-Escribe un script que genere los primeros $m$ números de la serie de Fibonacci, almacenándolos en un vector \verb|F|. Emplea para el cálculo la estructura \verb|while|.
+Escribe un script que genere los primeros $m$ números de la serie de Fibonacci, almacenándolos en una lista \verb|F|. Emplea para el cálculo la estructura \verb|while|.
 
-\item Sin utilizar las funciones de matlab \verb|flip,fliplr, flipud,...|, escribe las líneas de código para que, dado un vector \verb|x|, genere otro vector con el orden de los elementos invertido.
+\item Escribe una función que admita como variable de entrada una lista y devuelva como variable de salida otra lista de igual tamaño con los elementos colocados en orden inverso a los de la lista original.
+
+¿Sabrias hacerlo con una única línea de código? Pista: Usa \emph{List comprehesion}
+
 \end{enumerate}
 
