@@ -8,6 +8,7 @@ Sistemas de ecuaciones
 """
 import numpy as np
 import scipy as sc 
+import matplotlib.pyplot as plt
 
 def diag_sys(A,b):
     [f,c]=np.shape(A)
@@ -137,7 +138,6 @@ def gaussjordan(A):
             U[index,:]=aux[:]
         # End of Row pivoting
         # For all the rows below the diagonal
-        print(U)
         for j in range(i+1,f):
             U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
     # Step 2: obtain the diagonal matrix
@@ -146,6 +146,20 @@ def gaussjordan(A):
         # For all the rows above the diagonal
         for j in range(i-1,-1,-1):
             U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
+    return U
+
+def gaussSolve(A,b):
+    Ab=np.concatenate((A,b),axis=1)
+    U=eligaussp(Ab)
+    x=regressive(U[:,0:3], U[:,3])
+    return U,x
+    
+def gaussJordanC(A,b):
+    Ab=np.concatenate((A,b),axis=1)
+    U=gaussjordan(Ab)
+    [f,c]=np.shape(U)
+    for i in range(f):
+        U[i,:]=U[i,:]/U[i,i]
     return U
 
 def jacobiIt(A,b,x0,tol,itmax):
@@ -207,6 +221,11 @@ def jacobi(A,b,x0,tol,itmax):
     invD=np.linalg.inv(D)
     f=(invD).dot(b)
     H=-invD.dot(L+U)
+    eigenvalues,eigenvectors=np.linalg.eig(H)
+    spectral_rad=np.max(np.abs(eigenvalues))
+    if spectral_rad >1.0:
+        print("The system does not converge. Spectral radius greater than 1: ",spectral_rad)
+        return xs,error,it
     while error>tol:
         xs1=f+H.dot(xs)
         error=np.linalg.norm(xs1-xs)
@@ -230,6 +249,12 @@ def jacobiW(A,b,x0,tol,itmax,w):
     I=np.eye(nf)
     f=w*(invD).dot(b)
     H=(1-w)*I-w*invD.dot(L+U)
+    eigenvalues,eigenvectors=np.linalg.eig(H)
+    spectral_rad=np.max(np.abs(eigenvalues))
+    if spectral_rad >1.0:
+        print("The system does not converge. Spectral radius greater than 1: ",spectral_rad)
+        return xs,error,it
+
     while error>tol:
         xs1=f+H.dot(xs)
         error=np.linalg.norm(xs1-xs)
@@ -323,6 +348,12 @@ def SOR(A,b,x0,tol,itmax,w):
     I=np.eye(nf)
     f=w*(invD).dot(b)
     H=(1-w)*I-w*invD.dot(U)
+    eigenvalues,eigenvectors=np.linalg.eig(H)
+    spectral_rad=np.max(np.abs(eigenvalues))
+    if spectral_rad >1.0:
+        print("The system does not converge. Spectral radius greater than 1: ",spectral_rad)
+        return xs,error,it
+
     while error>tol:
         xs1=f+H.dot(xs)
         error=np.linalg.norm(xs1-xs)
@@ -331,6 +362,33 @@ def SOR(A,b,x0,tol,itmax,w):
         if it>itmax:
             break
     return xs,error,it
+
+def spectralRadPlot(A,met):
+    w=np.linspace(0,1.5,100)
+    spectral_rad=np.zeros([len(w)])
+    D=np.diag(np.diag(A))
+    U=np.triu(A)-D
+    L=np.tril(A)-D
+    invD=np.linalg.inv(D+L)
+    [nf,nc]=np.shape(A)
+    I=np.eye(nf)
+    for i in range(len(w)):
+        if met==1:
+            H=(1-w[i])*I-w[i]*invD.dot(U)
+        else:
+            H=(1-w[i])*I-w[i]*invD.dot(L+U)
+        eigenvalues,eigenvectors=np.linalg.eig(H)
+        spectral_rad[i]=np.max(np.abs(eigenvalues))
+    plt.figure()
+    plt.plot(w,spectral_rad,'b.')
+    plt.xlabel("w")
+    plt.ylabel("Spectral Radius")
+    if met==1:
+        plt.title("SOR")
+    else:
+        plt.title("Weighted Jacobi")
+    return
+
 
 '''A=np.diag([1,2,3,4])
 print(A)
@@ -457,7 +515,7 @@ tol=0.00001
 itmax=50
 x,error,it=gaussSeidelIt(A, b, x0, tol, itmax)
 print("x:",x,"\n error: ",error, "\n it= ",it)
-print(A.dot(x))'''
+print(A.dot(x))
 
 
 A=np.array([[4., 2.,-1.],[3., -5., 1.],[1., -1., 6.]])
@@ -488,3 +546,22 @@ print("x:",x,"\n error: ",error, "\n it= ",it)
 print("SOR matricial")
 x,error,it=SOR(A, b, x0, tol, itmax, 0.8)
 print("x:",x,"\n error: ",error, "\n it= ",it)
+
+# Convergence
+A=np.array([[1,2,-1],[2,-5,1],[1,-1,3]])
+D=np.diag(np.diag(A))
+U=np.triu(A)-D
+L=np.tril(A)-D
+invD=np.linalg.inv(D)
+H=invD.dot(L+U)
+eigenvalues,eigenvectors=np.linalg.eig(H)
+spectral_rad=np.max(np.abs(eigenvalues))
+print("Eigenvalues: ",eigenvalues)
+print("Spectral radius: ", spectral_rad)
+w=0.5
+I=np.eye(3)
+H=(1-w)*I-w*invD.dot(L+U)
+eigenvalues,eigenvectors=np.linalg.eig(H)
+spectral_rad=np.max(np.abs(eigenvalues))
+print("Eigenvalues: ",eigenvalues)
+print("Spectral radius: ", spectral_rad)'''
