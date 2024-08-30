@@ -171,7 +171,7 @@ In [10]: print(B)
 \end{minipage}
  \end{center}
 \begin{paracol}{2} 
-Lo primero que hacemos es importar Numpy, lo importamos usando como alias la abreviatura np, porque es más cómodo a la hora de llamar a funciones específicas de Numpy.  Hemmos construido dos matrices iguales \mintinline{python}{A} y \mintinline{python}{B}. En el primer caso hemos creado directamente dentro de la llamada a la función \mintinline{python}{array}, la lista a partir de la cual construimos la matriz. En el segundo caso, hemos construido primero una lista \mintinline{python}{L}, y luego hemos empleado dicha lista como variable de entrada de la función \mintinline{python}{array}. Si nos fijamos en las líneas [9] y [10], vemos como Python distingue la lista ---todos sus elementos aparacen representados en la misma línea---, de la matriz en la que cada fila ocupa una línea distinta. Podemos construir matrices a partir de listas y variables ya definidas, siempre que seamos coherentes con el criterio de que cada fila se cree a partir de una lista y que todas las filas tengan los mismos elementos,
+Lo primero que hacemos es importar Numpy, lo importamos usando como alias la abreviatura np, porque es más cómodo a la hora de llamar a funciones específicas de Numpy.  Hemos construido dos matrices iguales \mintinline{python}{A} y \mintinline{python}{B}. En el primer caso hemos creado directamente dentro de la llamada a la función \mintinline{python}{array}, la lista a partir de la cual construimos la matriz. En el segundo caso, hemos construido primero una lista \mintinline{python}{L}, y luego hemos empleado dicha lista como variable de entrada de la función \mintinline{python}{array}. Si nos fijamos en las líneas [9] y [10], vemos como Python distingue la lista ---todos sus elementos aparacen representados en la misma línea---, de la matriz en la que cada fila ocupa una línea distinta. Podemos construir matrices a partir de listas y variables ya definidas, siempre que seamos coherentes con el criterio de que cada fila se cree a partir de una lista y que todas las filas tengan los mismos elementos,
 \switchcolumn
 First, we import Numpy; we do it using \mintinline{python}{np} as an alias. The reason is that \mintinline{python}{np} is shorter than \mintinline{python}{numpy}, and it eases the calls to specific Numpy functions. We have built two identical matrices \mintinline{python}{a} and \mintinline{python}{B}. In the first case, we have straightforwardly created the list needed to make the matrix inside the call to the function \mintinline{python}{array}. In the second case, we first created a list \mintinline{python}{L}, and then we used it as an input variable to the function \mintinline{python}{array}. Focusing on lines [9] and [10], we see how Python can tell a list and a matrix apart. For a list, Python represents all entries in the same line. For a matrix, each row is written in a different line.
 We can build matrices from lists and variables already defined as long as we follow the criteria that each row be created from a list and all rows have the same number of entries,  
@@ -1746,7 +1746,7 @@ array([[  2.71828183,   7.3890561 ],
 \end{center}
 
 \begin{flalign*}
-	&\mathwitch*_{i=0}^{\infty}\left\lbrace \right.&     
+	&\mathwitch*_{i=0}^{\infty}\biggl \{&     
 \end{flalign*}
 \begin{paracol}{2}
 \section{Operadores vectoriales}\label{opvect}
@@ -2525,7 +2525,7 @@ x\cdot A_s\cdot >0, \forall x \neq 0 \Rightarrow x\cdot A\cdot >0, \forall x \ne
 \end{equation*}
 
 \begin{flalign*}
-&&\rbrace \reversemathwitch*
+&&\biggr \} \reversemathwitch*
 \end{flalign*}
 
 \begin{paracol}{2}
@@ -3755,7 +3755,7 @@ The condition number of a matrix, is very useful property that allows us to esti
 \item duf = a[:,1]
 \item duc = a[1,:]
 \item dd = a[0:2,1:3]
-\item c=[a(1,:) b]
+\item c=[a[1,:) b]
 \item c=[a(1:2,:);b]
 \item c=[a(1:2,:);b;a(size(a,1),:)]
 \item[*] Funciones para manipulación de matrices

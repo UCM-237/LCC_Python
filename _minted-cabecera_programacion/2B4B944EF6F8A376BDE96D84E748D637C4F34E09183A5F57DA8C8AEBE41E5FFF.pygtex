@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{88}\PYG{p}{]:} \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{3}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{89}\PYG{p}{]:} \PYG{n}{a}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()}
+\PYG{n}{Traceback} \PYG{p}{(}\PYG{n}{most} \PYG{n}{recent} \PYG{n}{call} \PYG{n}{last}\PYG{p}{):}
+  \PYG{n}{Cell} \PYG{n}{In}\PYG{p}{[}\PYG{l+m+mi}{89}\PYG{p}{],} \PYG{n}{line} \PYG{l+m+mi}{1}
+    \PYG{n}{a}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()}
+\PYG{n+ne}{AttributeError}\PYG{p}{:}
+\PYG{l+s+s1}{\PYGZsq{}int\PYGZsq{}} \PYG{n+nb}{object} \PYG{n}{has} \PYG{n}{no} \PYG{n}{attribute} \PYG{l+s+s1}{\PYGZsq{}pop\PYGZsq{}}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{90}\PYG{p}{]:}
+\end{Verbatim}

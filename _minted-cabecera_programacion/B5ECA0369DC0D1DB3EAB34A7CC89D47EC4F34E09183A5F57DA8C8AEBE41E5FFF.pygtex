@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{eq\PYGZus{}sec\PYGZus{}grado}
+\PYG{k+kn}{import} \PYG{n+nn}{eq\PYGZus{}sec\PYGZus{}grado} \PYG{k}{as} \PYG{n+nn}{sec}
+\PYG{k+kn}{from} \PYG{n+nn}{eq\PYGZus{}sec\PYGZus{}grado} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{eq\PYGZus{}sec\PYGZus{}grado} \PYG{k+kn}{import} \PYG{n}{soleq2}
+\PYG{k+kn}{from} \PYG{n+nn}{eq\PYGZus{}sec\PYGZus{}grado} \PYG{k+kn}{import} \PYG{n}{soleq2} \PYG{k}{as} \PYG{n}{cuqui}
+\end{Verbatim}

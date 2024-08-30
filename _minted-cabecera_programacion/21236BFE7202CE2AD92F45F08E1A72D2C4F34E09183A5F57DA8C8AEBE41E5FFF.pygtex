@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{18}\PYG{p}{]:} \PYG{k+kn}{from} \PYG{n+nn}{numero\PYGZus{}div2\PYGZus{}div3} \PYG{k+kn}{import} \PYG{n}{parthree}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{19}\PYG{p}{]:} \PYG{n}{parthree}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{l+m+mi}{4}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{par}
+\PYG{l+m+mi}{4} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{even} \PYG{n}{number}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{19}\PYG{p}{]:} \PYG{p}{()}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{]:} \PYG{n}{parthree}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)}
+\PYG{l+m+mi}{6}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{par}
+\PYG{l+m+mi}{6} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{even} \PYG{n}{number}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{]:} \PYG{p}{()}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{21}\PYG{p}{]:} \PYG{n}{parthree}\PYG{p}{(}\PYG{l+m+mi}{9}\PYG{p}{)}
+\PYG{l+m+mi}{9}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{divisible} \PYG{n}{por} \PYG{n}{tres}
+\PYG{l+m+mi}{9} \PYG{o+ow}{is} \PYG{n}{a} \PYG{n}{number} \PYG{n}{divisible} \PYG{n}{by} \PYG{n}{three}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{21}\PYG{p}{]:} \PYG{p}{()}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{22}\PYG{p}{]:} \PYG{n}{parthree}\PYG{p}{(}\PYG{l+m+mi}{7}\PYG{p}{)}
+\PYG{l+m+mi}{7}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{impar} \PYG{n}{pero} \PYG{n}{no} \PYG{n}{divisible} \PYG{n}{por} \PYG{n}{tres}
+\PYG{l+m+mi}{7} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{odd} \PYG{n}{number} \PYG{n}{but} \PYG{n}{it} \PYG{o+ow}{not} \PYG{n}{divisible} \PYG{n}{by} \PYG{n}{three}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{22}\PYG{p}{]:} \PYG{p}{()}
+\end{Verbatim}

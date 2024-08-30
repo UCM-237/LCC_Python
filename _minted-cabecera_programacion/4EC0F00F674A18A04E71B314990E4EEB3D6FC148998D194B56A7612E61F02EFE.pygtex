@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{Line 0}
+\PYG{g+go}{Line 1}
+\PYG{g+go}{Line 2}
+\PYG{g+go}{Line 3}
+\PYG{g+go}{Line 4}
+
+\PYG{g+go}{[\PYGZsq{}Line 0\PYGZbs{}n\PYGZsq{}, \PYGZsq{}Line 1\PYGZbs{}n\PYGZsq{}, \PYGZsq{}Line 2\PYGZbs{}n\PYGZsq{}, \PYGZsq{}Line 3\PYGZbs{}n\PYGZsq{}, \PYGZsq{}Line 4\PYGZbs{}n\PYGZsq{}, \PYGZsq{}Another line\PYGZsq{}]}
+\PYG{g+go}{Line 0}
+
+\PYG{g+go}{Line 1}
+
+\PYG{g+go}{Line 2}
+
+\PYG{g+go}{Line 3}
+
+\PYG{g+go}{Line 4}
+
+\PYG{g+go}{Another line}
+\end{Verbatim}

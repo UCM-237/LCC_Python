@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{25}\PYG{p}{]:} \PYG{n}{vdo} \PYG{o}{=} \PYG{l+m+mf}{7.5}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{26}\PYG{p}{]:} \PYG{n}{fls} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{27}\PYG{p}{]:} \PYG{n}{vdo2} \PYG{o}{=} \PYG{l+m+mi}{1}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{28}\PYG{p}{]:} \PYG{n}{vdo3} \PYG{o}{=} \PYG{l+m+mi}{18}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{29}\PYG{p}{]:} \PYG{n}{vdo} \PYG{o+ow}{and} \PYG{n}{fls}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{29}\PYG{p}{]:} \PYG{l+m+mi}{0}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{30}\PYG{p}{]:} \PYG{n}{vdo} \PYG{o+ow}{or} \PYG{n}{fls}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{30}\PYG{p}{]:} \PYG{l+m+mf}{7.5}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{31}\PYG{p}{]:} \PYG{n}{vdo} \PYG{o+ow}{and} \PYG{n}{vdo2}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{31}\PYG{p}{]:} \PYG{l+m+mi}{1}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{32}\PYG{p}{]:} \PYG{n}{vdo2} \PYG{o+ow}{and} \PYG{n}{vdo}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{32}\PYG{p}{]:} \PYG{l+m+mf}{7.5}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{33}\PYG{p}{]:} \PYG{n}{vdo} \PYG{o+ow}{or} \PYG{n}{vdo2}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{33}\PYG{p}{]:} \PYG{l+m+mf}{7.5}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{34}\PYG{p}{]:} \PYG{n}{vdo2} \PYG{o+ow}{or} \PYG{n}{vod}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{34}\PYG{p}{]:} \PYG{l+m+mi}{1}
+\end{Verbatim}
