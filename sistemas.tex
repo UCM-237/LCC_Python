@@ -51,7 +51,7 @@ a_{21}x_1+a_{22}x_2&=b_2
 \end{align*}
 
 \switchcolumn
-As we have already pointed out above, a two-dimensional equation admits a straight line as geometrical representation, a three-dimensional equation will admit a plane and for dimensions greater than three each equation will represent a hyperplane of dimension n. Of course, for dimensions greater than three, it is not possible to obtain a graphical representation of the equation.
+As we have already pointed out above, a two-dimensional equation admits a straight line as geometrical representation, a three-\-di\-men\-sio\-nal equation will admit a plane and for dimensions greater than three each equation will represent a hyperplane of dimension n. Of course, for dimensions greater than three, it is not possible to obtain a graphical representation of the equation.
 
 Linear equations play a very important role in physics and, in general, in science and technology. The reason is that they are the simplest mathematical approximation of the relationship between physical quantities. For example, when we say that the force applied to a spring and the elongation it undergoes are related by Hooke's law, $F=Kx$, we are establishing a linear relationship between the quantities force and elongation. Does this relationship always hold true? Certainly not. But it is reasonably true for small elongations and, based on this simple \emph{linear} model of reality, a lot of physics can be learned.
 
@@ -292,17 +292,17 @@ Por último, el sistema,
 2x_1+\frac{1}{2} x_2&=3
 \end{align*}
 
-posee infinitas soluciones. la razón es que la segunda ecuación es igual que la primera multiplicada por dos: es decir, representa exactamente la misma relación lineal entre las variables $x_1$ y $x_2$, por tanto, todos los puntos de la recta son solución del sistema. De nuevo, la matriz de coeficientes del sistema no tiene inversa ya que su determinante es cero.
+posee infinitas soluciones. La razón es que la segunda ecuación es igual que la primera multiplicada por dos: es decir, representa exactamente la misma relación lineal entre las variables $x_1$ y $x_2$, por tanto, todos los puntos de la recta son solución del sistema. De nuevo, la matriz de coeficientes del sistema no tiene inversa ya que su determinante es cero.
 
 \switchcolumn
 Finally, the system,
 
 \begin{align*}
-4x_1+x_2&=6.
-2x_1+frac{1}{2} x_2&=3
+4x_1+x_2&=6 \\
+2x_1+\frac{1}{2} x_2&=3
 \end{align*}
 
-has infinite solutions.The reason is that the second equation is the same as the first equation multiplied by two: that is, it represents exactly the same linear relationship between the variables $x_1$ and $x_2$, therefore, all the points on the line are solutions of the system. Again, the coefficient matrix of the system has no inverse since its determinant is zero.
+has infinite solutions. The reason is that the second equation is the same as the first equation multiplied by two: that is, it represents exactly the same linear relationship between the variables $x_1$ and $x_2$, therefore, all the points on the line are solutions of the system. Again, the coefficient matrix of the system has no inverse since its determinant is zero.
 \end{paracol}
 
 \begin{figure}[h]
@@ -594,7 +594,7 @@ despejamos la primera la primera incógnita de la primera ecuación,
 x_1=\frac{b_1}{a_{11}}
 \end{equation*}
 \switchcolumn  
-The procedure to solve to "hand" is very simple,
+The procedure to solve to \emph{hand} is very simple,
 we clear the first unknown from the first equation,
 \begin{equation*}
 x_1=\frac{b_1}{a_{11}}
@@ -713,7 +713,7 @@ x_i=\frac{b_i-\sum_{j=i+1}^{n}a_{ij}x_j}{a_{ii}}
 \end{equation*}
 
 \switchcolumn
-  El método de resolución es idéntico al de un sistema triangular inferior, simplemente que ahora, empezamos a resolver por la última ecuación,
+  The method of solution is identical to that of a lower triangular system, except that now, we start solving for the last equation,
 \begin{equation*}
 x_n=\frac{b_n}{a_{nn}}
 \end{equation*}
@@ -3126,8 +3126,8 @@ The following code fragment shows how $f$ and $H$ are obtained for the SOR metho
     xs=xs1.copy()
     
 \end{minted}
-%%%%%% FRONTERA %%%%%%%%%%%%%%%%
 
+\begin{paracol}{2}
 \subsection{Análisis de convergencia}\index{Análisis de convergencia}
 En la introducción a los métodos iterativos dejamos abierta la cuestión de su convergencia. Vamos a analizar en más detalle en qué condiciones podemos asegurar que un método iterativo, aplicado a un sistema de ecuaciones lineales concreto, converge. 
 
@@ -3137,10 +3137,33 @@ En primer lugar, tenemos que definir qué entendemos por convergencia. Cuando un
 x^{(0)}\rightarrow x^{(1)} \rightarrow x^{(2)}\rightarrow \cdots \rightarrow x^{(\infty)}=x
 \end{equation*}
 
+\switchcolumn
+
+\subsection{Convergence analysis}\index{Convergence analysis}
+In the introduction to iterative methods we left open the question of their convergence. Let us analyse in more detail under what conditions we can ensure that an iterative method, applied to a particular system of linear equations, converges. 
+
+First of all, we have to define what we mean by convergence. When an iterative method converges, it does so asymptotically. That is, it would take an infinite number of iterations to reach the exact solution.
+
+\begin{equation*}
+x^{(0)}\rightarrow x^{(1)} \rightarrow x^{(2)}\rightarrow \cdots \rightarrow x^{(\infty)}=x
+\end{equation*}
+
+\switchcolumn
+
 Lógicamente, es inviable realizar un número infinito de iteraciones. Por esta razón, las soluciones de los métodos iterativos son siempre aproximadas; realizamos un número finito de iteraciones hasta cumplir una determinada condición de convergencia. Como no conocemos la solución exacta, imponemos dicha condición entre dos iteraciones sucesivas,
+
 \begin{equation*}
  \lVert x^{(s+1)}-x^{(s)}\rVert \leq C \Rightarrow  \lVert x^{(s+1)}-x\rVert = \lvert e^{(s+1)} \rvert
 \end{equation*}
+
+\switchcolumn
+Logically, it is unfeasible to perform an infinite number of iterations. For this reason, the solutions of iterative methods are always approximate; we perform a finite number of iterations until a certain convergence condition is met. Since we do not know the exact solution, we impose this condition between two successive iterations,
+
+\begin{equation*}
+ \lVert x^{(s+1)}-x^{(s)}\rVert \leq C \Rightarrow  \lVert x^{(s+1)}-x\rVert = \lvert e^{(s+1)} \rvert
+\end{equation*}
+
+\switchcolumn
 Donde $e^{(s+1)}$ representaría el error \emph{real} de convergencia cometido en la iteración $s+1$.
 
 Tomando como punto de partida la expresión general del cálculo de una iteración en forma matricial,
@@ -3148,22 +3171,56 @@ Tomando como punto de partida la expresión general del cálculo de una iteraci�
 x^{(s+1)}=f+H\cdot x^{(s)}
 \end{equation*}
 
+\switchcolumn
+Where $e^{(s+1)}$ would represent the real convergence error committed in iteration $s+1$.
+
+Taking as a starting point the general expression for the calculation of an iteration in matrix form,
+\begin{equation*}
+x^{(s+1)}=f+H\cdot x^{(s)}
+\end{equation*}
+
+\switchcolumn
 Podemos expresar el error de convergencia como,
 \begin{equation*}
 e^{(s+1)}=x^{(s+1)}-x=f+H\cdot x^{(s)}-x
 \end{equation*}
 
+\switchcolumn
+We can express the convergence error as,
+\begin{equation*}
+e^{(s+1)}=x^{(s+1)}-x=f+H\cdot x^{(s)}-x
+\end{equation*}
+
+\switchcolumn
 Pero la solución exacta, si pudiera alcanzarse, cumpliría,
 
 \begin{equation*}
 x=f+H\cdot x
 \end{equation*}
 
+\switchcolumn
+
+But the exact solution, if it could be achieved, would comply,
+\begin{equation*}
+x=f+H\cdot x
+\end{equation*}
+
+\switchcolumn
 Y si sustituimos en la expresión del error de convergencia,
 
 \begin{equation*}
 e^{(s+1)}=f+H\cdot x^{(s)}-f-H\cdot x
 \end{equation*}
+
+\switchcolumn
+
+And if we substitute in the expression for the convergence error,
+
+\begin{equation*}
+e^{(s+1)}=f+H\cdot x^{(s)}-f-H\cdot x
+\end{equation*}
+
+\switchcolumn
 
 Llegamos finalmente a la siguiente expresión, que relaciona los errores de convergencia de dos iteraciones sucesivas,
 
@@ -3171,15 +3228,39 @@ Llegamos finalmente a la siguiente expresión, que relaciona los errores de conv
 e^{(s+1)}=H\cdot e^{(s)}
 \end{equation*}
 
+\switchcolumn
+
+We finally arrive to the following expression, that relates the convergence errors between two sucessive iterations,
+
+\begin{equation*}
+e^{(s+1)}=H\cdot e^{(s)}
+\end{equation*}
+
+\switchcolumn
 Para que el error disminuya de iteración en iteración y el método converja, es necesario que la matriz del método $H$ tenga norma-2  menor que la unidad.
 
-Supongamos que un sistema de dimension $n$ su matriz del método $H$, tiene un conjunto de $n$ autovectores linealmente independientes, $w_1, \ w_2, \cdots, \ w_n$, cada uno asociado a su correspondiente autovalor, $\lambda_1, \ \lambda_2, \ \cdots,\ \lambda_n$. El error de convergencia, es también un vector de dimensión $n$, por tanto podemos expresarlo como una combinación lineal de los $n$ autovectores linealmente independientes de la matriz $H$. Supongamos que lo hacemos para el error de convergencia $e^{(0)}$correspondiente al valor inicial de la solución $x^{(0)}$,
+\switchcolumn
+For the error to decrease from iteration to iteration and for the method to converge, the method matrix $H$ must have norm-2 less than unity.
+
+\switchcolumn
+Supongamos que un sistema de dimension $n$ su matriz del método $H$, tiene un conjunto de $n$ autovectores linealmente independientes, $w_1, \ w_2, \cdots, \ w_n$, cada uno asociado a su correspondiente autovalor, $\lambda_1, \ \lambda_2, \ \cdots,\ \lambda_n$. El error de convergencia, es también un vector de dimensión $n$, por tanto podemos expresarlo como una combinación lineal de los $n$ autovectores linealmente independientes de la matriz $H$. Supongamos que lo hacemos para el error de convergencia $e^{(0)}$ correspondiente al valor inicial de la solución $x^{(0)}$,
+
+\switchcolumn
+Suppose that a system of dimension $n$ its method matrix $H$, has a set of $n$ linearly independent eigenvectors, $w_1, w_2, \cdots, w_n$, each one associated to its corresponding eigenvalue, $\lambda_1, \lambda_2, \cdots, \lambda_n$. The convergence error is also a vector of dimension $n$, so we can express it as a linear combination of the $n$ linearly independent eigenvectors of the matrix $H$. Suppose we do this for the convergence error $e^{(0)}$ corresponding to the initial value of the solution $x^{(0)}$,
+\end{paracol}
 
 \begin{equation*}
 e^{(0)}=\alpha_1\cdot w_1+\alpha_2\cdot w_2+\cdots+\alpha_n\cdot w_n
 \end{equation*}
 
+\begin{paracol}{2}
 Si empleamos la ecuación deducida antes para la relación del error entre dos iteraciones sucesivas y recordando que aplicar una matriz a un autovector, es equivalente a multiplicarlo por el autovalor correspondientes: $H\cdot w_i=\lambda_i\cdot w_i$, obtenemos para el error de convergencia en la iteración $s$,
+
+\switchcolumn
+If we use the equation deduced earlier for the error ratio between two successive iterations and remembering that applying a matrix to an eigenvector is equivalent to multiplying it by the corresponding eigenvalue: $H\cdot w_i=\lambda_i\cdot w_i$, we obtain for the error of convergence at iteration $s$,
+\end{paracol}
+
+
 
 \begin{align*}
 e^{(1)}&=H\cdot e^{(0)}=\alpha_1\cdot \lambda_1 \cdot  w_1+\alpha_2\cdot \lambda_2 \cdot  w_2+\cdots+\alpha_n\cdot \lambda_n \cdot w_n\\
@@ -3188,37 +3269,81 @@ e^{(2)}&=H\cdot e^{(1)}=H^2\cdot e^{(0)}=\alpha_1\cdot \lambda_1^2 \cdot  w_1+\a
 e^{(s)}&=H\cdot e^{(s-1)}=H^s\cdot e^{(0)}=\alpha_1\cdot \lambda_1^s \cdot  w_1+\alpha_2\cdot \lambda_2^s \cdot  w_2+\cdots+\alpha_n\cdot \lambda_n^s \cdot w_n
 \end{align*}
 
+\begin{paracol}{2}
 Para que el error tienda a cero, $e^{(s)}\rightarrow 0$ al aumentar $s$, para cualquier combinación inicial de valores $\alpha_i$, esto es para cualquier aproximación inicial $x^{(0)}$, es necesario que todos los autovalores de la matriz del método cumplan,
 
 \begin{equation*}
 \vert \lambda_i \vert < 1
 \end{equation*}
 
-Por tanto, el sistema converge si el radio espectral de la matriz del método es menor que la unidad. \footnote{El radio espectral de una matriz es el mayor de sus autovalores en valor absoluto. Ver capítulo \ref{resp}.}
+\switchcolumn
+For the error to tend to zero, $e^{(s)}\rightarrow 0$ as $s$ increases, for any initial combination of values $\alpha_i$, i.e. for any initial approximation $x^{(0)}$, it is necessary that all the eigenvalues of the method matrix satisfy,
+
+\begin{equation*}
+\vert \lambda_i \vert < 1
+\end{equation*}
+
+\switchcolumn
+
+Por tanto, el sistema converge si el radio espectral de la matriz del método es menor que la unidad. \footnote{El radio espectral de una matriz es el mayor de sus autovalores en valor absoluto.}
 
 \begin{equation*}
 \rho(H)<1 \Rightarrow \lim_{s\rightarrow \infty}e^{(s)}=0
 \end{equation*}
 
+\switchcolumn
+Therefore, the system converges if the spectral radius of the method matrix is less than unity. \footnote{The spectral radius of a matrix is the largest of its eigenvalues in absolute value.}
+
+\begin{equation*}
+\rho(H)<1 \Rightarrow \lim_{s\rightarrow \infty}e^{(s)}=0
+\end{equation*}
+
+\end{paracol}
+
+\begin{paracol}{2}
 \paragraph{Velocidad de convergencia.} \index{Velocidad de convergencia}Para un número de iteraciones suficientemente grande, el radio espectral de la matriz del método nos da la velocidad de convergencia. Esto es debido a que el resto de los términos del error, asociados a otros autovalores más pequeños tienden a cero más  deprisa. Por tanto podemos hacer la siguiente aproximación, donde estamos suponiendo que el autovalor $\lambda_n$ es el radio espectral,
+
+\switchcolumn
+\paragraph{Speed of convergence}. \index{Speed of convergence}For a sufficiently large number of iterations, the spectral radius of the method matrix gives the speed of convergence. This is because the remaining error terms associated with other smaller eigenvalues tend to zero faster. We can therefore make the following approximation, where we are assuming that the eigenvalue $\lambda_n$ is the spectral radius,
+\end{paracol}
 
 \begin{equation*}
 e^{(s)}\approx c_n \rho(H)^s w_n= c_n \lambda_n^s w_n
 \end{equation*}
 
+\begin{paracol}{2}
+
 Podemos ahora calcular cuantas iteraciones nos costará reducir un error inicial por debajo de un determinado valor. Esto dependerá de la solución inicial y de radio espectral de la matriz del método,
+
+\switchcolumn
+We can now calculate how many iterations it will take to reduce an initial error below a certain value. This will depend on the initial solution and the spectral radius of the method matrix,
+
+\end{paracol}
+
 \begin{equation*}
 e^{(s)}\approx  \rho(H)^s e^{(0)} \Rightarrow \frac{e^{(s)}}{e^{(0)}} \approx \rho(H)^s
 \end{equation*}
 
+\begin{paracol}{2}
 así por ejemplo si queremos reducir el error inicial en $m$ dígitos,
+\switchcolumn
+so for example if we want to reduce the initial error by $m$ digits,
+\end{paracol}
+
 \begin{equation*}
 \frac{e^{(s)}}{e^{(0)}} \approx \rho(h)^s \leq 10^{-m} \Rightarrow s \geq \frac{-m}{\log_{10}\left(\rho(H)\right)}
 \end{equation*}
 
+\begin{paracol}{2}
 La matriz del método juega por tanto un papel fundamental tanto en la convergencia del método, como en la velocidad (número de iteraciones) con la que el método converge. Los métodos amortiguados, permiten modificar la matriz de convergencia, gracias al factor de amortiguamiento $\omega$, haciendo que sistemas para los que no es posible encontrar una solución mediante un método iterativo converjan.
 
 Como ejemplo, el sistema,
+
+\switchcolumn
+The method matrix therefore plays a fundamental role both in the convergence of the method and in the speed (number of iterations) with which the method converges. Damped methods allow the convergence matrix to be modified, thanks to the damping factor $omega$, making systems for which it is not possible to find a solution by means of an iterative method converge.
+
+As an example, the system,
+\end{paracol}
 
 \begin{equation*}
 \begin{pmatrix}
@@ -3236,87 +3361,99 @@ x_3
 \end{pmatrix}
 \end{equation*}
 
+\begin{paracol}{2}
 No converge si tratamos de resolverlo por el método de Jacobi. Sin embargo si es posible obtener su solución empleando el método de Jacobi Amortiguado. La figura \ref{fig:cjjam}  muestra la evolución de la tolerancia para dicho sistema empleando ambos métodos.
+\switchcolumn
+It does not converge if we try to solve it by the Jacobi method. However, it is possible to obtain its solution using the Weighted Jacobi method. Figure \ref{fig:cjjam} shows the evolution of the tolerance for this system using both methods.
+\end{paracol}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{comjjam.eps}
-\caption{Evolución de la tolerancia para un mismo sistema empleando el metodo de Jacobi (diverge) y el de Jacobi amortiguado (converge).}
+\bicaption{Evolución de la tolerancia para un mismo sistema empleando el metodo de Jacobi (diverge) y el de Jacobi amortiguado (converge).}{Tolerance evolution for the same system using the Jacobi method (diverges) and the weighted Jacobi method (converges).}
 \label{fig:cjjam}
 
 
 \end{figure}
 
+\begin{paracol}{2}
 Si calculamos el radio espectral de la matriz del método, para el método de Jacobi tendríamos,
-\begin{verbatim}
->> A=[1 2 -1  ; 2 -5 1;1 -1 3]
+\switchcolumn
+If we calculate the spectral radius of the method matrix, for the Jacobi method we would have,
 
-A =
+\end{paracol}
 
-     1     2    -1
-     2    -5     1
-     1    -1     3
+\begin{minted}{python}
+import numpy as np
+A=np.array([[1,2,-1],[2,-5,1],[1,-1,3]])
+D=np.diag(np.diag(A))
+U=np.triu(A)-D
+L=np.tril(A)-D
+invD=np.linalg.inv(D)
+H=invD.dot(L+U)
+eigenvalues,eigenvectors=np.linalg.eig(H)
+spectral_rad=np.max(np.abs(eigenvalues))
+print("Eigenvalues: ",eigenvalues)
+print("Spectral radius: ", spectral_rad)
+\end{minted}
 
->> H=diag(diag(A))^-1*(A-diag(diag(A)))
+\begin{minted}{pycon}
+Eigenvalues:  [ 0.11872445+1.05306845j  0.11872445-1.05306845j -0.2374489 +0.j        ]
+Spectral radius:  1.0597398959658624
+\end{minted}
 
-H =
-
-         0    2.0000   -1.0000
-   -0.4000         0   -0.2000
-    0.3333   -0.3333         0
-
->> l=eig(H)
-l =
-
-   0.1187 + 1.0531i
-   0.1187 - 1.0531i
-  -0.2374          
-
->> radio_espectral=max(abs(l))
-radio_espectral =
-
-    1.0597
-\end{verbatim}
-
+\begin{paracol}{2}
 El radio espectral es mayor que la unidad y el método no converge.
 
 Si repetimos el cálculo para el método de Jacobi amortiguado, con $\omega=0.5$
-\begin{verbatim}
->> H=(1-0.5)*eye(3)-0.5*diag(diag(A))^-1*(A-diag(diag(A)))
 
-H =
+\switchcolumn
+The spectral radius is greater than unity and the method does not converge.
 
-    0.5000   -1.0000    0.5000
-    0.2000    0.5000    0.1000
-   -0.1667    0.1667    0.5000
+If we repeat the calculation for the weighted Jacobi method, with $\omega=0.5$,
+\end{paracol}
 
->> l=eig(H)
+\begin{minted}{python}
+D=np.diag(np.diag(A))
+U=np.triu(A)-D
+L=np.tril(A)-D
+invD=np.linalg.inv(D)
+w=0.5
+I=np.eye(3)
+H=(1-w)*I-w*invD.dot(L+U)
+eigenvalues,eigenvectors=np.linalg.eig(H)
+spectral_rad=np.max(np.abs(eigenvalues))
+print("Eigenvalues: ",eigenvalues)
+print("Spectral radius: ", spectral_rad)
 
-l =
+\end{minted}
 
-   0.4406 + 0.5265i
-   0.4406 - 0.5265i
-   0.6187          
+\begin{minted}{pycon}
+Eigenvalues:  [0.44063777+0.52653422j 0.44063777-0.52653422j 0.61872445+0.j        ]
+Spectral radius:  0.6865857095839855
+\end{minted}
 
->> radio_espectral=max(abs(l))
-
-radio_espectral =
-
-    0.6866
-\end{verbatim}
+\begin{paracol}{2}
 
 El radio espectral es ahora menor que la unidad y el método converge.
 
 Por último indicar que cualquiera de los métodos iterativos descrito converge para un sistema que cumpla que su matriz de coeficientes es estrictamente diagonal dominante.
+
+\switchcolumn
+The spectral radius is now smaller than unity and the method converges.
+
+Finally, it should be noted that any of the iterative methods described converges for a system whose coefficient matrix is strictly diagonally dominant.
+
+\end{paracol}
 \section{Ejercicios}
 \begin{enumerate}
-\item Crea una función en matlab que calcule la solución de un sistema de ecuaciones triangular inferior empleando el método de sustituciones progresivas. La función deberá tomar como valores de entrada una matriz triangular inferior de dimensión $(n\times n)$ arbitraria y un vector columna $(n\times 1)$ de términos independientes. Deberá devolver como variable de salida un vector columna $(n\times 1)$ con las soluciones del sistema.
+\item Crea una función en python que calcule la solución de un sistema de ecuaciones triangular inferior empleando el método de sustituciones progresivas. La función deberá tomar como valores de entrada una matriz triangular inferior de dimensión $(n\times n)$ arbitraria y un vector columna $(n\times 1)$ de términos independientes. Deberá devolver como variable de salida un vector columna $(n\times 1)$ con las soluciones del sistema.
 
-\item \label{eje62} Crea una función en matlab que calcule la solución de un sistema de ecuaciones triangular superior empleando el método de sustituciones regresivas. La función deberá tomar como valores de entrada una matriz triangular inferior de dimensión $(n\times n)$ arbitraria y un vector columna $(n\times 1)$ de términos independientes. Deberá devolver un vector columna $(n\times 1)$ con las soluciones del sistema.
+\item \label{eje62} Crea una función en python que calcule la solución de un sistema de ecuaciones triangular superior empleando el método de sustituciones regresivas. La función deberá tomar como valores de entrada una matriz triangular inferior de dimensión $(n\times n)$ arbitraria y un vector columna $(n\times 1)$ de términos independientes. Deberá devolver un vector columna $(n\times 1)$ con las soluciones del sistema.
 
 \item Crea una función que dadas una matriz cuadrada  $ A,\ (n\times n)$ y un  vector columna $b,\ (n\times 1)$, construya la matriz ampliada $Ab$, Aplique el método de eliminación gausiana a la matriz ampliada y llame a la función creada en el ejercicio \ref{eje62} Para resolver el sistema $Ax=b$. La función deberá devolver como variables de salida, La matriz resultante de la aplicar la eliminación gaussiana a la ampliada y un vector columna con las soluciones del sistema resuelto. 
 
-\item Crea una función que dadas una matriz cuadrada  $ A,\ (n\times n)$ y un  vector columna $b,\ (n\times 1)$, construya la matriz ampliada $Ab$,aAplique el método de eliminación Gauss-Jordan a la matriz ampliada y devuelva como variable de salida la matriz en forma escalonada reducida por filas, de modo que la última fila sea la solución del sistema $Ax=b$  
+\item Crea una función que dadas una matriz cuadrada  $ A,\ (n\times n)$ y un  vector columna $b,\ (n\times 1)$, construya la matriz ampliada $Ab$. Aplique el método de eliminación Gauss-Jordan a la matriz ampliada y devuelva como variable de salida la matriz en forma escalonada reducida por filas, de modo que la última fila sea la solución del sistema $Ax=b$  
 
 \item Construye un programa que resuelva un sistema de ecuaciones de dimensión arbitraria, empleando el método de Jacobi simple (no en forma matricial). El programa deberá admitir como variables de entrada, una matriz de coeficientes $ A,\ (n\times n)$, un vector de términos independientes $b,\ (n\times 1)$, una solución inicial $x_0 ,\ (n\times 1)$, un valor para la tolerancia máxima entre dos iteraciones sucesivas y un número máximo de iteraciones permitido. El programa deberá devolver un vector columna con las soluciones del sistema, el número de iteraciones empleado y el error relativo entre las dos últimas iteraciones realizadas.
 
@@ -3335,7 +3472,7 @@ Por último indicar que cualquiera de los métodos iterativos descrito converge 
 \item Repite el ejercicio anterior empleando ahora el método SOR matricial. Añade el código necesario para que calcule en primer lugar el radio espectral de la matriz del método y caso de no cumplirse  la condición de convergencia, el programa interrumpa su ejecución y devuelva un mensaje de error indicando el valor del radio espectral.
 
 
-\item Resuelve el siguiente sistema de ecuaciones, empleando las factorización LU de matlab. Indica todos los pasos empleados hasta obtener las solución del sistema. \textbf{(1.5 puntos)}
+\item Resuelve el siguiente sistema de ecuaciones, empleando la factorización LU. Indica todos los pasos empleados hasta obtener las solución del sistema.
 \begin{align*}
 3x_1&+3x_2-2x_3 +\ x_4= 13\\
  &+2x_2-\ x_3  \hspace{30pt} =\ 3\\
@@ -3385,18 +3522,18 @@ i_1\\ i_2\\ i_3\\ i_4\\ i_5\\ i_6
 
 
 \begin{enumerate}
-\item Define en Matlab{$^\copyright$} el sistema de ecuaciones (\ref{cucu}). Obtén los valores de las intensidades en todas las ramas del circuito empleando directamente un solo comando o función de Matlab{$^\copyright$}. Emplea el comando \texttt{cond} y dí si en tu opinión el sistema está bien o mal condicionado. (1 punto)
+\item Define en python el sistema de ecuaciones (\ref{cucu}). Obtén los valores de las intensidades en todas las ramas del circuito empleando directamente un solo comando o función de python. Calcula el condicionamiento del sustema y dí si en tu opinión el sistema está bien o mal condicionado.
 
-\item Emplea la factorización QR para obtener de nuevo la solución del sistema.  (1 punto)
+\item Emplea la factorización QR para obtener de nuevo la solución del sistema. 
 
-\item Utilizando la versión permutada del sistema, obtenida mediante la factorización LU, es decir, usando $P\cdot A$ como matriz del sistema y $P\cdot b$, como término independiente, calcula el radio espectral correspondiente al método de Jacobi e indica si tiene sentido o no emplear este método para obtener las intensidades del circuito de la figura. (2 puntos)
+\item Utilizando la versión permutada del sistema, obtenida mediante la factorización LU, es decir, usando $P\cdot A$ como matriz del sistema y $P\cdot b$, como término independiente, calcula el radio espectral correspondiente al método de Jacobi e indica si tiene sentido o no emplear este método para obtener las intensidades del circuito de la figura.
 
-\item Emplea el método de Jacobi amortiguado, con un amortiguamiento de $\omega =0.1$ para calcular las intensidades del circuito de la figura, con una tolerancia de $10^{-5}$. Indica el número de iteraciones empleado hasta alcanzar la solución.  (\emph{Nota importante:} Usa la versión permutada del sistema y ten en cuenta que va a necesitar bastantes iteraciones --más de $3000$-- para converger). (2 puntos)
+\item Emplea el método de Jacobi amortiguado, con un amortiguamiento de $\omega =0.1$ para calcular las intensidades del circuito de la figura, con una tolerancia de $10^{-5}$. Indica el número de iteraciones empleado hasta alcanzar la solución.  (\emph{Nota importante:} Usa la versión permutada del sistema y ten en cuenta que va a necesitar bastantes iteraciones --más de $3000$-- para converger).
 
 \item Emplea el método SOR, con un amortiguamiento de $\omega =0.2$ para calcular las intensidades del circuito de la figura, con una tolerancia de $10^{-5}$. Indica el número de iteraciones empleado hasta alcanzar la solución (\emph{Nota importante:} Usa la versión permutada del sistema).
-Discute, a la vista de los resultados, cúal método funciona mejor. (2 puntos)
+Discute, a la vista de los resultados, cúal método funciona mejor.
 
-\item Escribe un código que permita dibujar el radio espectral de un método amortiguado en función de la matriz del método, para distintos valores del amortiguamiento. Emplea el programa para los casos de las dos preguntas anteriores. ¿Ha sido razonable la elección de los valores de $\omega$ realizada en dichas preguntas? (2 puntos) 
+\item Escribe un código que permita dibujar el radio espectral de un método amortiguado en función de la matriz del método, para distintos valores del amortiguamiento. Emplea el programa para los casos de las dos preguntas anteriores. ¿Ha sido razonable la elección de los valores de $\omega$ realizada en dichas preguntas?
 \end{enumerate}
 \end{enumerate}
 
@@ -3413,7 +3550,7 @@ x^{(s+1)} = x^{(s)} + \omega\left( b - Ax^{(s)}\right),
 x^{(s+1)} = f + Hx^{(s)}.
 \end{equation}
 
-\item {\bf 2 puntos.} Construye una función em Matlab que implemente el método de Richardson enpleando la forma matricial estándar, es decir, en cada iteración aplicamos la ecuación (\ref{eq:2}). La función deberá tomar como variables de entrada: 
+\item {\bf 2 puntos.} Construye una función en python que implemente el método de Richardson enpleando la forma matricial estándar, es decir, en cada iteración aplicamos la ecuación (\ref{eq:2}). La función deberá tomar como variables de entrada: 
 \begin{enumerate}
 	\item La matriz de coeficientes $A$.
 	\item El vector de términos independientes $b$.
