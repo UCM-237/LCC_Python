@@ -171,7 +171,7 @@ In [10]: print(B)
 \end{minipage}
  \end{center}
 \begin{paracol}{2} 
-Lo primero que hacemos es importar Numpy, lo importamos usando como alias la abreviatura np, porque es más cómodo a la hora de llamar a funciones específicas de Numpy.  Hemmos construido dos matrices iguales \mintinline{python}{A} y \mintinline{python}{B}. En el primer caso hemos creado directamente dentro de la llamada a la función \mintinline{python}{array}, la lista a partir de la cual construimos la matriz. En el segundo caso, hemos construido primero una lista \mintinline{python}{L}, y luego hemos empleado dicha lista como variable de entrada de la función \mintinline{python}{array}. Si nos fijamos en las líneas [9] y [10], vemos como Python distingue la lista ---todos sus elementos aparacen representados en la misma línea---, de la matriz en la que cada fila ocupa una línea distinta. Podemos construir matrices a partir de listas y variables ya definidas, siempre que seamos coherentes con el criterio de que cada fila se cree a partir de una lista y que todas las filas tengan los mismos elementos,
+Lo primero que hacemos es importar Numpy, lo importamos usando como alias la abreviatura np, porque es más cómodo a la hora de llamar a funciones específicas de Numpy.  Hemos construido dos matrices iguales \mintinline{python}{A} y \mintinline{python}{B}. En el primer caso hemos creado directamente dentro de la llamada a la función \mintinline{python}{array}, la lista a partir de la cual construimos la matriz. En el segundo caso, hemos construido primero una lista \mintinline{python}{L}, y luego hemos empleado dicha lista como variable de entrada de la función \mintinline{python}{array}. Si nos fijamos en las líneas [9] y [10], vemos como Python distingue la lista ---todos sus elementos aparacen representados en la misma línea---, de la matriz en la que cada fila ocupa una línea distinta. Podemos construir matrices a partir de listas y variables ya definidas, siempre que seamos coherentes con el criterio de que cada fila se cree a partir de una lista y que todas las filas tengan los mismos elementos,
 \switchcolumn
 First, we import Numpy; we do it using \mintinline{python}{np} as an alias. The reason is that \mintinline{python}{np} is shorter than \mintinline{python}{numpy}, and it eases the calls to specific Numpy functions. We have built two identical matrices \mintinline{python}{a} and \mintinline{python}{B}. In the first case, we have straightforwardly created the list needed to make the matrix inside the call to the function \mintinline{python}{array}. In the second case, we first created a list \mintinline{python}{L}, and then we used it as an input variable to the function \mintinline{python}{array}. Focusing on lines [9] and [10], we see how Python can tell a list and a matrix apart. For a list, Python represents all entries in the same line. For a matrix, each row is written in a different line.
 We can build matrices from lists and variables already defined as long as we follow the criteria that each row be created from a list and all rows have the same number of entries,  
@@ -1109,7 +1109,7 @@ where $\theta$ is the angle between the two vectors.
 \end{paracol}
 
 \begin{flalign*}
-&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+&\mathwitch*_{i=0}^{\infty} \biggl \{ &     
 \end{flalign*}
 
 \begin{paracol}{2}
@@ -1197,7 +1197,7 @@ In general, a norm can be define as functions $\mathbb{R}^n \rightarrow \mathbb{
 \end{align*}
 
 \begin{flalign*}
-&&\reversemathwitch*    
+&& \Biggr \} \reversemathwitch*    
 \end{flalign*}
 
 \begin{paracol}{2}
@@ -1285,7 +1285,7 @@ Out[203]: 20.000000000000007
 \end{center}
 
 \begin{flalign*}
-&\mathwitch*_{i=0}^{\infty}\Xi_i(t)&     
+&\mathwitch*_{i=0}^{\infty}\Biggl \{&     
 \end{flalign*}
 \begin{paracol}{2}
 El determinante de una matriz $A$, se representa habitualmente como $\vert A \vert$ o, en ocasiones como $det(A)$. Para poder definir el determinante de una matriz, necesitamos antes introducir una serie de conceptos previos. En primer lugar, si consideramos un escalar como una matriz de un solo elemento, el determinante  sería precisamente el valor de ese único elemento,
@@ -1451,7 +1451,7 @@ fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/Algebra/codigo_abierto/determinante.py}
 \begin{flalign*}
-&&\reversemathwitch*
+&&\biggr \}\reversemathwitch* 
 \end{flalign*}
 \begin{paracol}{2}
 Entre las propiedades de los determinantes, destacaremos las siguientes,
@@ -1580,7 +1580,7 @@ array([[ 1.29166667, -0.58333333, -0.04166667],
 \end{minipage}
 \end{center}
 \begin{flalign*}
-&\mathwitch*_{i=0}^{\infty}\Xi_i(t) \lbrace &     
+&\mathwitch*_{i=0}^{\infty}\Biggl \{ &     
 \end{flalign*}
 \begin{paracol}{2}
 La inversa de una matriz puede obtenerse a partir de la expresión,
@@ -1606,7 +1606,7 @@ linenos
 ]{python}{./codigos/Algebra/codigo_abierto/inversa.py}
 
 \begin{flalign*}
-&&\rbrace \reversemathwitch*
+&&\Biggr \} \reversemathwitch*
 \end{flalign*}
 
 \begin{paracol}{2}
@@ -1647,7 +1647,7 @@ Some properties relate with matrix inversion are,
 \end{enumerate}
 \end{paracol}
 
-\begin{table}[h]
+\begin{table}[H]
 \bicaption{Algunas funciones matemáticas en Numpy de uso frecuente}{frecuently used mathematical functions included in Numpy} \label{tabfun}
 
 \begin{tabular}{c|c|c|c}
@@ -1746,7 +1746,7 @@ array([[  2.71828183,   7.3890561 ],
 \end{center}
 
 \begin{flalign*}
-	&\mathwitch*_{i=0}^{\infty}\left\lbrace \right.&     
+	&\mathwitch*_{i=0}^{\infty}\biggl \{&     
 \end{flalign*}
 \begin{paracol}{2}
 \section{Operadores vectoriales}\label{opvect}
@@ -1772,7 +1772,7 @@ Gráficamente, si $\alpha$ es un número positivo y mayor que la unidad, el resu
 \switchcolumn
 If $\alpha$ is a positive number and greater than one, we observe graphically that the result of the product will be a vector larger than $a$ and with the same direction and sense. Conversely, if $\alpha$ is positive but less than one, the resulting vector will be shorter than $a$. Lastly if $\alpha$ is negative, a change of sense with respect to $a$ is added to the previously obtained results. Figure \ref{fig:vmod} shows graphically and example of the product of a vector by a scalar.
 \end{paracol}
-\begin{figure}[h]
+\begin{figure}
 \centering
 \includegraphics[width=7cm]{vmod.eps}
 \bicaption{efecto del producto de un escalar por un vector}{effect of the product of a vector by a scalar}
@@ -1824,7 +1824,7 @@ x_2
 
 
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 \includegraphics[width=10cm]{clineal.eps}
 \bicaption{Representación gráfica de los vectores $a=(1,2)$, $b=(-1,1)$ y algunos vectores, combinación lineal de $a$ y $b$.}{A graphic representations of Vectors $a=(1,2)$, $b=(-1,1)$ and some vectors obtained from a lineal combination of $a$ and $b$.}
@@ -2525,7 +2525,7 @@ x\cdot A_s\cdot >0, \forall x \neq 0 \Rightarrow x\cdot A\cdot >0, \forall x \ne
 \end{equation*}
 
 \begin{flalign*}
-&&\rbrace \reversemathwitch*
+&&\biggr \} \reversemathwitch*
 \end{flalign*}
 
 \begin{paracol}{2}
@@ -3498,7 +3498,10 @@ In [274]: [autovalores, autovectores] = np.linalg.eig(A)
 
 In [275]: autovalores
 Out[275]: array([10.71154715, -4.45608147,  0.70096017, -0.95642586])
-
+\end{minted}
+\end{minipage}
+\begin{minipage}{\textwidth}
+	\begin{minted}{python}
 In [276]: autovectores
 Out[276]: 
 array([[-0.5482369 , -0.40905141, -0.34168564,  0.53836293],
@@ -3507,12 +3510,6 @@ array([[-0.5482369 , -0.40905141, -0.34168564,  0.53836293],
        [-0.54561146,  0.43962336,  0.2152735 ,  0.04314365]])
 
 In [277]: Results = np.linalg.eig(A)
-\end{minted}    
-\end{minipage}
-\end{center}
-\begin{center}
-\begin{minipage}{0.9\textwidth}
-\begin{minted}{python}
 In [278]: Results
 Out[278]: 
 EigResult(eigenvalues=array([10.71154715, -4.45608147,  0.70096017,
@@ -3720,391 +3717,168 @@ The condition number of a matrix, is very useful property that allows us to esti
 \end{paracol}
 
 \section{Ejercicios}
-\begin{enumerate}
-\item Tipos de variables en Matlab; matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{línea de comandos} de Matlab e interpreta los resultados que obtienes. En los casos en que Matlab devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunos operaciones se apoyan en los resultados de operaciones anteriores.
 
-
-
-
-\begin{multicols}{2}
-
-\begin{enumerate}
-\renewcommand{\labelenumii}{\arabic{enumii}}
-\texttt{
-\item a=[[1, 2, 3],[4, 5, 6]]
-\item a=[1, 2, 3], 4, 5]
-\item a=[[1  2 3] 1 2 3]
-\item[*] Operador (:) para crear vectores
-\item a=[1:10:0]
-\item a=1:10:2
-\item a=1:0.05:2
-\item a=1:-0.05:-1
-\item a=[1:10;2:12;3:13]
-\item a=[1:10;2:11;3:12]
-\item a=[1 2 7\\
-5 6 8\\
-3 2 6]
-\item b=[1 2 3]
-\item c=[a b]
-\item c=[a;b]
-\item d=[b;a]
-\item[*] Operador (:) para indexar
-\item c=[a(1,:) b]
-\item c=[a(1:2,:);b]
-\item c=[a(1:2,:);b;a(size(a,1),:)]
-\item[*] Funciones para manipulación de matrices
-\item a=[1 2 3]
-\item b=diag(a)
-\item c=diag(b)
-\item M=size(c)
-\item \ [m,n]=size(c)
-\item m=size(c)
-\item m=size(c,1)
-\item m=size(c,2)
-\item d=ones(size(a))
-\item d=ones(size(b))
-\item  d=ones(size(b,1))
-\item d=ones(size(b,1),size(c,2))
-\item f=eye(size(d,1))
-\item who
-\item whos
-\item clear all
-\item who
-\item q=[1 2 3\\
-4 5 6\\
-7 8 9]
-\item  r=diag(q,1)
-\item  r=diag(q,2)
-\item  r=diag(q,0)
-\item  r=diag(q,-1)
-\item  r=diag(q,-2)
-\item  tt=eye(1,3)
-\item  tt=eye(3,1)
-\item  tt=eye(3)
-\item  tt=eye(5)
-\item  tt=eye(5,3)\\
-\item  tt=eye(3,5)\\
-\item a=[1 3 4\\
-2 4 6]\\
-\item  b=[2 3\\
-4 5\\
-6 7]
-\item[*] Operadores aplicados a matrices
-\item c=a*b
-\item d=b*a
-\item e=[ 1 2\\
-4 5]
-\item a*e
-\item g=a*e
-\item g=e*a
-\item a*b
-\item a=[1 3 4\\
-5 6 8]
-\item b=3
-\item a*b
-\item a.*b
-\item b=[2 3]
-\item a.*b
-\item b=[ 2 3 4\\
-5 6 7]
-\item a.*b
-\item c=b'
-\item d=a'
-\item r=a-b
-\item h=a-a'
-\item j=a+b
-\item j=a'+b
-\item d=(a+b)*b'
-\item f=(a+b)*b'
-\item f=(a-b)'*b
-\item a=[ 1 3 5\\
-2 5 6
-3 4 2]
-\item p=a\^{}2
-\item r=a\^{}2-a*a
-\item r=a.\^{}2-a*a
-\item r=a\^{}2-a.*a
-\item b=[ 3 5 6\\
-2 1 1\\
-1 2 3]
-\item[*] Encadenando operaciones
-\item w=a*b\^{}(-1)
-\item w=a*inv(b)
-\item w=a/b
-\item w= a*b\^{}(-1)-a*inv(b)
-\item w= a*b\^{}(-1)-a/b
-\item w=a\^{}(-1)*b
-\item w=inv(a)*b
-\item w=a\textbackslash b
-\item w= a\^{}(-1)*b-inv(a)*b
-\item w=a\textbackslash b-inv(a)*b
-\item w=a./b
-\item w=a.\textbackslash b
-\item w=a.\^{}(-1)*b
-\item w=a.\^{}(-1)*b-a.\textbackslash b
-}
-\end{enumerate}
-\end{multicols}
-\item Obtén empleando la \emph{línea de comandos} de matlab el resultado de las siguientes expresiones:
-\begin{multicols}{2}
-\begin{align*}
-\frac{5+3x^2}{6y}\\
-\frac{1+4\sqrt{2x}}{6}y \\
-\frac{-x+\sqrt{x^2-4xy}}{2x}
-\end{align*}
-
-\begin{align*}
-\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(x-1)^2}\\
-\sin^2(2x)+\cos^2(2x) \\
-\arctan(\infty)\\
-\arctan\left(\frac{y}{x}\right)
-\end{align*}
-\end{multicols}
-Emplea para $x$ e $y$ tanto valores escalares como matrices.
-
-\item Abre un fichero nuevo en el editor de textos de matlab.
-Escribe las siguiente líneas:\\
-\texttt{
-x = A*B\\
-y = A+B\\
-z = A*sin(B)}\\
-Guarda el fichero. Emplea el comando \verb|clear| all para limpiar el \emph{workspace}
-Invoca el fichero desde matlab. ¿Qué sucede?\\
-Crea en la ventana de comandos las matrices,
-\begin{equation*}
-A =\begin{pmatrix}
-1&3&4\\
-2&5&6\\
-7&8&9
-\end{pmatrix}, \ B=\begin{pmatrix}
-2&6&8\\
-3&7&8\\
-2&7&9
-\end{pmatrix}
-\end{equation*}
-Vuelve a ejecutar el programa guardado en el fichero.\\
-Añade al programa, al principio del todo, la línea \texttt{clear all}. Guarda y vuelve a ejecutar el
-programa. ¿Qué sucede ahora?\\
-Introduce las matrices A y B directamente en el código del programa debajo de la línea \texttt{clear all}. Analiza qué sucede al ejecutar de nuevo el programa.\\
- Eliminar la línea \texttt{clear all}. Introduce a través de la ventana de comando dos matrices $A$ y $B$ distintas de las que contiene el programa. Ejecuta el programa y comprueba qué matrices utiliza para realizar los cálculos.\\
-Comenta la(s) línea(s) de código donde has definido las matrices $A$ y $B$ en el programa. Añade al principio del programa una línea para convertir el script en una función:\\
-\verb|function [x] = nombre_de_tu_programa(A,B)| \\
-Invoca la función recién creada desde la \emph{línea de comandos} de matlab. Observa lo que pasa si la invocas como:
-\begin{verbatim}
->>nombre_de_tu_programa
->>nombre_de_tu_programa(F)
->>nombre_de_tu_programa(F,J)
-\end{verbatim}
-Introduce, en el  workspace de matlab --usando la \emph{línea de comandos}--  las matrices $F$ y $J$, dondo,
-\begin{equation*}
-F =\begin{pmatrix}
-1&0&1\\
-2&0&4\\
-3&5&0
-\end{pmatrix}, \ J=\begin{pmatrix}
-1&6&7\\
-2&9&0\\
-4&4&4
-\end{pmatrix}
-\end{equation*}
-Vuelve a ejecutar, \verb|>>nombre_de_tu_programa(F,J)| \\
-Genera dos matrices de tamaño $(3\times 3)$. Nómbralas como prefieras: \verb|mi_matriz1, mi_matriz2|. Ejecuta ahora,
-\begin{verbatim}
->>nombre_de_tu_programa(mi_matriz1,J)
->>nombre_de_tu_programa(mi_matriz2,F)
->>nombre_de_tu_programa(mi_matriz1,mi_matriz2)
->>resultado=nombre_de_tu_programa(F,J)
->>[r1,r2]=nombre_de_tu_programa(F,J)
->>[A,B;r3]=nombre_de_tu_programa(F,J)
->>[A,B;C]=nombre_de_tu_programa(A,B)
-\end{verbatim}
-Crea un nuevo fichero, con el siguiente código:
-% \begin{lstlisting}
-% A=sin(B).*cos(C)
-% [D,E,F]=nombre_de_tu_programa(A,C)
-% G = D + E - F
-% \end{lstlisting}
-Guárdalo con el nombre que quieras.\\
-Define en la \emph{línea de comandos} matrices $B$ y $C$ adecuadas para el programa que acabas de escribir y ejecútalo.\\
-Añade al programa una primera línea de código que lo convierta en una función que tome como entradas las matrices $B$ y $C$  y que:\\
-devuelva solo la matriz $G$\\
-devuelva las matrices $G$ y $D$\\ 
-devuelva las matrices $G$,$D$,$E$ y $F$.
-
-Escribe una nueva función con el siguiente código,
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-%bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos
-]{python}
-import numpy as np
-def nombre_de_la_funcion(B,C):
-    E= B + C**2
-    D =B - C.inv()
-    return(E,D)
-% A=nombre_funcion_dentro(E,D);
-% end;
-% function s=nombre_funcion_dentro(l,p);
-% s=l + p - 2;
-% end;
+Para los siguientes ejercicios, es necesario importar Numpy. Se puede hacer de tres maneras distintas:
+\begin{minted}{python}
+	import numpy
+	import numpy as alias
+	from numpy import *
 \end{minted}
-
-Crea matrices $B$ y $C$ adecuadas y ejecuta la función que acabas de crear. Describe cómo funciona.
-
-\item Define en la \emph{línea de comandos} las matriz $M$ y $N$ e interpreta el resultado de las condiciones lógicas impuestas.
-
-\begin{equation*}
-M =\begin{pmatrix}
-1&2&3\\
-4&5&6\\
-7&8&9
-\end{pmatrix}, \ N=\begin{pmatrix}
-2&3&4\\
-5&6&7\\
-8&9&10
-\end{pmatrix}
-\end{equation*}
-\begin{verbatim}
->>y=m<2
->>y=m<=2
->>y=m>2
->>y=m>=2
->>y=m==2
->>y=m~=2
->>y=any(m<2)
->>y=any(m<2,1)
->>y=any(m<2,2)
->>y=any(m==2)
->>y=all(m>=2)
->>y=all(m~=0)
->>y=all(any(m<2))
->>y=any(all(m<2))
-
->> index=find(m>2)
->>[i,j]=find(m<5)
-
->> y=any(m<2)&any(n>4)
->> y=any(m<2)&any(n>10)
->> y=any(m<2)&any(n>6)
->> y=any(m<2)&any(n>7)
->> y=any(m<2)&any(n>3)
->> y=any(m<2)&any(n>2)
->> y=any(m>2)&any(n>2)
->> y=any(m>4)&any(n>2)
->> y=any(m>4,1)&any(n>2)
->> y=any(m>4,2)'&any(n>2)
-\end{verbatim}
-Repite el estudio de las condiciones lógicas cambiando \& por \textbar
-
-\item Escribe el siguiente código en un fichero. Ejecútalo y analiza los resultados,
-% \begin{lstlisting}
-% dato=rand(1)
-% if dato==0.5
-%  dato=0
-% elseif dato<0.5
-%  dato=-dato*10
-% else
-%  dato=dato*10
-% end
-% \end{lstlisting}
-
-Modifica el programa,
+En el primer caso, hay que escribir las funciones precedidas del nombre del módulo: \mintinline{python}{numpy.fun}. EN el segundo caso,hy que precederlas del alias elegido, en los ejercicios que siguen es la opcion elegida y el alias empleado es np: \mintinline{python}{np.fun}. EN eñ tercer caso, importamos directamente las funciones y submódulos por lo que pudríamos emplearlos usando directamente su nombre \mintinline{python}{fun}. Este último método tiene el riesgo de sobreescribir accidentalmente alguna función de Numpy. 
 \begin{enumerate}
-\item Para que no muestre los resultados de los cálculos por pantalla
-\item para que, utilizando comandos \verb|elseif, &| devuelva una variable (distinta de 'dato') con valor $-1$ si se cumple que 'dato' es menor o igual que $0.3$, con valor $-0.5$ si 'dato' es mayor que $0.3$ y menor que $0.5$, con valor $0$ si 'dato' es mayor o igual que $0.5$ y menor  o igual que $0.7$ y con valor $1$ en cualquier otro caso.
-\item Convierte el \emph{script}, en una función, que tome 'dato' como variable de entrada, y devuelva el valor de la variable obtenida, según la condición que se cumpla. (Lógicamente se debe eliminar o comentar la línea \verb|dato=rand(1)|).
+	\item Arrays en Numpy; matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{línea de comandos} de Ipython e interpreta los resultados que obtienes. En los casos en que Python devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunos operaciones se apoyan en los resultados de operaciones anteriores. 
+\begin{multicols}{2}			
+			\texttt{
+			\begin{enumerate}
+			\renewcommand{\labelenumii}{\arabic{enumii}}
+			\item a =np.array([[1, 2, 3],[4, 5, 6]])
+			\item b =np.array([[1, 2, 3],[4, 5]])
+			\item c  = np.array([1,2,3])
+			\item d = np.array([[1,2,3]])
+			\item e = np.array([[1],[2],[3]])
+			\item f = np.zeros((3,3))
+			\item f1 = np.zeros(3)
+			\item f2 = np.zeros((3,))
+			\item f3 = np.zeros((3,1))
+			\item g = np.eye(4)
+			\item h = np.eye(4,3)
+			\item i = np.eye(4,6)
+			\item j = np.identity(4)
+			\item q = np.arange(0,1,0.2)
+			\item k = np.diag(c)
+			\item l = np.diag(k)
+			\item  r=np.diag(q,1)
+			\item  r=np.diag(q,2)
+			\item  r=np.diag(q,0)
+			\item  r=np.diag(q,-1)
+			\item  r=np.diag(q,-2)
+			\item[*] indexing and slicing
+			\item n = a[0,1]
+			\item du = a[0]
+			\item duf = a[:,1]
+			\item duc = a[1,:]
+			\item dd = a[0:2,1:3]
+			\item[*] Operadores aplicados a matrices
+			\item ash = np.shape(a)
+			\item fa,ca =a.shape
+			\item fc,cc = np.shape(c)
+			\item shc = c.shape
+			\item a1= a.shape[0]
+			\item a2= c.shape[1]
+			\item o1=ones(a.shape[1])
+			\item o2=ones(c.shape[0])
+			\item o3=ones((c.shape[0],a.shape[0]))
+			\item  tt=eye(1,3)
+			\item p1=a*c
+			\item p2=c*a
+			\item p3 = a*e
+			\item p4 = a@c
+			\item p5 = c@a
+			\item p6 = a@e
+			\item p7 = e@a
+			\item p10 = dd@duf
+			\item p11 = duf@dd
+			\item p8 = a*3
+			\item b = np.array([[3,5,6],[5,6,7]])
+			\item bt=b.T
+			\item aT=a.T
+			\item r=a-b
+			\item z=a-a
+			\item j1=a+b
+			\item j2=a.T+b
+			\item j3 = a.T+b.T
+			\item d=(a+b)@b.T
+			\item f=(a+b)*b.T
+			\item f=(a-b).T*b.T
+			\item p=a**2
+			\item r=a**2-a*a
+			\item A = np.append(a,[[3,-2,1]],axis=0)
+			\item B = np.append(b,[[1,0,-1]],axis=0)
+			\item[*] Encadenando operaciones
+			\item w1 = A@np.linalg.inv(B)
+			\item w2 = A@np.linalg.matrix\_power(B,-1)
+			\item w3 = A/B 
+			\item w4 = B/A
+			\item[*] importamos linalg / we import lialg
+			\item from numpy import linalg as la
+			\item w5 = A@la.inv(B)-A@la.matrix\_power(B,-1)
+			\item w6 = A@la.matrix\_power(B,-1)\\-la.solve(la.inv(A),la.inv(B))
+			\item C = np.append(A,[[4,0,-3],[2,2,4]],axis=0)
+			\item C =np.append(C,array([[4,3,2,1,0]]).T,axis = 1)
+			\item C1 = C[0:4:2,3]
+			\item C2=C[0:3,:]
+			\item C3 = C[1:3,1:3]
+		\end{enumerate}
+			}
+	\end{multicols}
+	\item Define en un terminal de Ipython las matriz $M$ y $N$ e interpreta el resultado de las condiciones lógicas impuestas.
+	
+	\begin{equation*}
+		M =\begin{pmatrix}
+			1&2&3\\
+			4&5&6\\
+			7&8&9
+		\end{pmatrix}, \ N=\begin{pmatrix}
+			2&3&4\\
+			5&6&7\\
+			8&9&10
+		\end{pmatrix}
+	\end{equation*}
+	nota \mintinline{python}{&} es equivalente a \mintinline{python}{and}
+	\begin{verbatim}
+		y1=M<2
+		y2=M<=2
+		y3=M>2
+		y4=M>=2
+		y5=M==2
+		y6=M!=2
+		y7=any(M<2)
+		y8=any(M<2,0)
+		y9=any(M<2,1)
+		y10=any(M==2)
+		y11=all(M>=2)
+		y12=all(M!=0)
+		y13=all(any(M<2))
+		y14=any(all(M<2))
+		index=np.argwhere(M>2)
+		y15=any(M<2)&any(N>4)
+		y16=any(M<2)&any(N>10)
+		y17=any(M<2)&any(N>6)
+		y18=any(M<2)&any(N>7)
+		y19=any(M<2)&any(N>3)
+		y20=any(M<2)&any(N>2)
+		y21=any(M>2)&any(N>2)
+		y22=any(M>4)&any(N>2)
+		y23=any(M>4,0)&any(N>2)
+		y24=any(M>4,1).T&any(N>2)
+	\end{verbatim}
+	Repite el estudio de las condiciones lógicas cambiando \& por \textbar, (equivalente a \mintinline{python}{or})
+	\item Obtén empleando el terminal de Ipython el resultado de las siguientes expresiones:
+	\begin{multicols}{2}
+		\begin{align*}
+			\frac{5+3x^2}{6y}\\
+			\frac{1+4\sqrt{2x}}{6}y \\
+			\frac{-x+\sqrt{x^2-4xy}}{2x}
+		\end{align*}
+		\begin{align*}
+			\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(x-1)^2}\\
+			\sin^2(2x)+\cos^2(2x) \\
+			\arctan(\infty)\\
+			\arctan\left(\frac{y}{x}\right)
+		\end{align*}
+	\end{multicols}
+	Emplea para $x$ e $y$ tanto valores escalares como matrices.
+	
+	\item Dada una matriz $A \in \mathbb{R}^{n\times n}$ y un vector columna $v \in \mathbb{R}^n-{\mathbf{0}}$. Se dice que el vector $v$ pertenece al \emph{Kernel} de $A$ si se cumple que $Av =\mathbf{0}$.
+	
+	Crea una función que tome como variables de entrada una matriz $A$ cuadrada de cualquier dimension $n\times n$ y un vector columna de dimensión $n$ y compruebe si$n$ pertenece o no al \emph{kernel} de $A$. \textbf{Nota:} Considera que la condición se cumple si todos los elementos del vector $Av$ son menores que $1e-12$. Hazlo sin emplear el operador \mintinline{python}{@}.
+	
+	\item Escribe ---empleando bucles una función que reciba como argumentos de entrada dos matrices $X$ e $Y$ y devuelva el valor de su suma $S=X+Y$. El programa debe comprobar si es posible la operación indicada y, caso de no serlo, interrupir la ejecución y mostrar un mensaje de error.
+	
+	\item Implementa una función SumoDiag.m que tome como entrada una matriz cuadrada A y que
+	devuelva la suma de todos los elementos de las 2 diagonales principales de dicha matriz. No utilizar la
+	función diag().
+	
+	\item Escribe ---empleando bucles y sin hacer uso del operador \mintinline{python}{@} ---  que reciba como argumentos de entrada dos matrices $X$ e $Y$ y devuelva el valor del producto $P=XY$. El programa debe comprobar si es posible la operación indicada y, caso de no serlo, interrupir la ejecución y mostrar un mensaje de error.
+	
 \end{enumerate}
-
-\item Crea un scrip de matlab con el siguiente código y trata de adivinar qué hace antes de ejecutarlo. Utiliza el \emph{help} de matlab para averiguar lo que hace la función \verb|abs|.
-% \begin{lstlisting}
-% n=10
-% for i=1:n
-%  for j=1:n
-%   if i==j
-%    a(i,j)=1;
-%   elseif abs(i-j)==1
-%    a(i,j)=-1
-%   else
-%    a(i,j)=0
-%   end
-%  end
-% end
-% \end{lstlisting}
-
-Introduce un punto de ruptura (\emph{breakpoint}) en el código, por ejemplo en la línea 12. Ejecuta paso a paso el programa para ver como va generando el resultado. Intercambia los índices \verb|i,j| de la matriz \verb|a|. \verb|a(j,i)|.¿Se obtiene el mismo resultado? ¿Cómo se construye ahora la matriz?
-
-\item Crea un script con el siguiente código,
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-%bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos
-]{python}
-i=0
-while i<10:
-    i=i+1
-    j=0
-    while j<10:
-        j=j+1
-        if i==j:
-            a[i,j+=1;
-        elif abs(i-j)==1:
-            a[i,j]=-1
-        else:
-            a(i,j)=0
-\end{minted}
-
-Repite el estudio del programa anterior
-
-\item Modifica el \emph{script} anterior de modo que quede el siguiente código,
-% \begin{lstlisting}
-% i=0
-% while(1)
-%  i=i+1
-%  j=0
-%  while(1)
-%   j=j+1
-%   if i==j
-%    a(i,j)=1;
-%   elseif abs(i-j)==1
-%    a(i,j)=-1
-%   else
-%    a(i,j)=0
-%   end
-%   if j==10
-%    break
-%   end
-%  end
-%  if i==10
-%   break
-%  end
-% end
-% \end{lstlisting}
-Repite el estudio del programa anterior. ¿Qué sucede si comentamos la(s) línea(s) que contiene la sentencia \verb|break|?
-Reconvierte los \emph{scrips} anteriores en funciones que admitan como variable de entrada el tamaño de la matriz que se desea generar y devuelvan como variable de salida la matriz creada.
-
-\item Dada una matriz $A \in \mathbb{R}^{n\times n}$ y un vector columna $v \in \mathbb{R}^n-{\mathbf{0}}$. Se dice que el vector $v$ pertenece al \emph{Kernel} de $A$ si se cumple que $Av =\mathbf{0}$.
-
-
-
-Crea una función que tome como variables de entrada una matriz $A$ cuadrada de cualquier dimension $n\times n$ y un vector columna de dimensión $n$ y compruebe si$n$ pertenece o no al \emph{kernel} de $A$. \textbf{Nota:} Considera que la condición se cumple si todos los elementos del vector $Av$ son menores que $1e-12$.
-
-\item Escribe ---empleando bucles y sin hacer uso del operador ( \^\ ) --- una función \verb|potencia.m| que reciba como argumentos de entrada un número real $x\in \mathbb{R}$ y un entero $n \in \mathbb{Z}$ y devuelva el valor de la n-ésima potencia de $x$ ($x^n$). El segundo argumento de entrada puede ser opcional. Si se omite debe tomarse como $n=2$ (devolviendo el cuadrado de $x$). Ver la función interna nargin. \textbf{Nota:} Ten en cuenta que $n$ puede ser positivo, negativo o cero.
-
-\item Crea una función que determine la suma de los inversos de los números naturales impares menores de 1000. Usa las funciones tic y toc para determinar el tiempo que se tarda. Emplea bucles para el cálculo.
-\begin{equation*}
-S_{imp} = \sum_{n=1}^{500}\frac{1}{2n-1} =\frac{1}{1}+\frac{1}{3}+\frac{1}{5}+\cdots+\frac{1}{999}
-\end{equation*}
-Modifica tu programa, de modo que admita como variable de entrada un número $m\in\mathbb{N}$ y calcule el valor de la suma de los inversos de los impares menores o iguales que $m$.
-
-\item Los números de Fibonacci, $F(n)$ son una serie de números naturales. Los dos primeros valores de la serie son:  $F(1)=1$ y $F(2)=2$. Los demás términos se calculan como la suma de los dos anteriores: $F(n) = F(n-1) + F(n-2)$.
-Escribe un script que genere los primeros $m$ números de la serie de Fibonacci, almacenándolos en un vector \verb|F|. Emplea para el cálculo la estructura \verb|while|.
-
-\item Sin utilizar las funciones de matlab \verb|flip,fliplr, flipud,...|, escribe las líneas de código para que, dado un vector \verb|x|, genere otro vector con el orden de los elementos invertido.
-\end{enumerate}
-
