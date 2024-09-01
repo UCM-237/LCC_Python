@@ -1618,7 +1618,7 @@ baselinestretch=1.2,
 label=Example\_import.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/introduccion/codigo_abierto/Example_import.py}
+]{python}{./codigos/introduccion/Example_import.py}
 
 \begin{paracol}{2}
 La línea $10$ de ejemplo \mintinline{python}{Example_import.py}, usa el comando \mintinline{python}{import} para \emph{importar} el contenido del script \mintinline{python}{eq_seg_grado.py}. Importante: se escribe el nombre del archivo sin la extensión \mintinline{python}{.py}. Cuando se ejecuta esta línea de código, se ejecuta el script \mintinline{python}{eq_seg_grado.py} y se crea un namespace global que contiene todas las funciones y variables creadas por dicho script.
@@ -1900,7 +1900,7 @@ baselinestretch=1.2,
 label=numero\_par.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/introduccion/codigo_abierto/numero_par.py}
+]{python}{./codigos/introduccion/numero_par.py}
 
 \begin{paracol}{2}
 El script genera una función \mintinline{python}{par(a)}. En la línea $17$ aparece definida la entrada a una bloque \mintinline{python}{if}. Empieza con la palabra clave \emph{if} que va siempre seguida de una expresión que da un resultado lógico: verdadero ($1$) o falso ($0$). Esta expresión puede ser cualquier combinación válida de expresiones relacionales o lógicas.  
@@ -1946,7 +1946,7 @@ baselinestretch=1.2,
 label=numero\_par\_mod.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/introduccion/codigo_abierto/numero_par_mod.py}
+]{python}{./codigos/introduccion/numero_par_mod.py}
 \begin{paracol}{2}
 Hemos añadido a nuestro script una segunda función a la que hemos llamado \mintinline{python}{par2}. El código es idéntico al de la función \mintinline{python}{par}, hasta que llegamos a 
 la palabra clave \mintinline{python}{else}, que marca la disyuntiva; si el número es par, el programa ejecuta las líneas de código entre el \mintinline{python}{if} y el \mintinline{python}{else}, si el número no es par ejecutará las líneas situadas debajo del \mintinline{python}{else} y que aparecen indentadas. En cualquiera de los dos caso, ejecutará la línea $35$ que no pertenece al bloque condicional.
@@ -1967,6 +1967,12 @@ In [12]: par2(3)
 3  es un numero impar
 3 is an odd number
 Out[12]: ()
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
 
 In [13]: par2(8)
 8  es un numero par
@@ -1990,7 +1996,7 @@ baselinestretch=1.2,
 label=numero\_div2\_div3.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/introduccion/codigo_abierto/numero_div2_div3.py}
+]{python}{./codigos/introduccion/numero_div2_div3.py}
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
@@ -2068,7 +2074,7 @@ baselinestretch=1.2,
 label=numero\_parytres\_nested.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/introduccion/codigo_abierto/numero_parytres_nested.py}
+]{python}{./codigos/introduccion/numero_parytres_nested.py}
 
 \begin{paracol}{2}
 la modificación realizada está en las líneas $23$-$25$. Se trata de una nueva estructura \mintinline{python}{if} definida dentro de la que comienza en la línea $20$ comprobando si el número es par. El programa solo llegará a comprobar este nuevo \mintinline{python}{if}, si efectivamente se a cumplido la condición de que el número sea par. Si nos fijamos en la estructura del código, vemos que tiene tres niveles de indentación: El primero corresponde al código perteneciente a la función \mintinline{python}{parthreenested}, el segundo corresponde al código la estructura \mintinline{python}{if} más externa y el tercero al código del \mintinline{python}{if} anidado. Si añadieramos un nuevo \mintinline{python}{if} dentro de éste último, deberíamos indentar su código un nivel más.
@@ -2149,7 +2155,7 @@ baselinestretch=1.2,
 label=numero\_par.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/introduccion/codigo_abierto/ejemplo_for.py}
+]{python}{./codigos/introduccion/ejemplo_for.py}
 
 \begin{paracol}{2}
 La funcion \mintinline{python}{sumalist}, toma como variable de entrada una lísta de números de cualquier longitud y devuelve como salida la suma de todos los números contenidos en la lista. Además, imprime en el terminal de Ipython cada uno de los números. El bucle \mintinline{python}{for} comienza en la línea $22$. La primera vez que el código llega a dicha línea asigna a la variable \mintinline{python}{i} el primer elemento de la lista \mintinline{python}{A}. En la línea $23$ muestra por pantalla el valor de dicho elemento. En la línea $24$ suma su contendido a la variable \mintinline{python}{y} y vuelve de nuevo a la línea $22$ y asigna a la variable \mintinline{python}{i} el valor del segundo elemento de \mintinline{python}{A}. El proceso se repite hasta que se han recorrido todos los elementos de la lista. Es entonces cuando el programa termina el bucle y ejecuta la linea $25$, devolviendo el valor de la variable $y$, en la que se ha acumulado la suma de los elementos de la lista.
@@ -2228,7 +2234,7 @@ baselinestretch=1.2,
 label=List\_comprehesion\_example.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/introduccion/codigo_abierto/List_comprehesion_example.py}
+]{python}{./codigos/introduccion/List_comprehesion_example.py}
 
 \begin{paracol}{2}
 La función \mintinline{python}{lc_demo}, Crea una lista con los números impares contendidos en otra lista. Es fácil ver la estructura de la \emph{list comprehesion}, creada en la línea $18$: la lista \mintinline{python}{B}, está formada por los elementos \mintinline{python}{i} incluidos en la lista \mintinline{python}{A}, que cumplan \mintinline{python}{i%2 != 0}, es decir, que no sean divisibles por dos y, por tanto, impares. 
@@ -2273,7 +2279,7 @@ baselinestretch=1.2,
 label=examples\_while.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/introduccion/codigo_abierto/examples_while.py}
+]{python}{./codigos/introduccion/examples_while.py}
 \begin{paracol}{2}
 La función \mintinline{python}{pmax}, toma como entradas dos números y calcula a qué exponente es necesario elevar el primero de los números para que el resultado sea mayor que el segundo. El código del bucle \mintinline{python}{while} comienza en la línea $16$ comprobando si el número elevado al valor de \mintinline{python}{n} es menor que el valor de la segunda variable de entrada \mintinline{python}{M}. Si efectivamente se cumple esta condición, se ejecuta la línea $17$ que lo único que hace es incrementar en una unidad el valor de \mintinline{python}{n}. A continuación el programa vuelve de nuevo a la línea $16$ y comprueba si se cumple la condición para el nuevo valor de \mintinline{python}{n}. Este proceso continúa hasta que la condición deja de cumplirse. En ese momento, el programa sale del bucle \mintinline{python}{while} y ejecuta la instrucción \mintinline{python}{return}, devolviendo el último valor calculado de \mintinline{python}{n}.
 
@@ -2315,7 +2321,7 @@ baselinestretch=1.2,
 label=ejemplo\_recursivas.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/introduccion/codigo_abierto/ejemplo_recursivas.py}
+]{python}{./codigos/introduccion/ejemplo_recursivas.py}
 
 \begin{paracol}{2}
 Si n es menor que dos, la función \mintinline{python}{fibonacci} da como valor el término correspondiente (1 o 0). Si n es mayor que dos, vuelve a llamarse a si misma con entrada \texttt{n-1} y \texttt{n-2}, para calcular el valor enésimo de la sucesión a partir de la suma de los dos anteriores, la función se irá llamando a sí misma hasta  llegar a $n<2$. A partir de ahí ira devolviendo los valores obtenidos en cada llamada hasta obtener el enésimo término.
@@ -2480,7 +2486,7 @@ baselinestretch=1.2,
 label=primos.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/introduccion/codigo_abierto/primos.py}
+]{python}{./codigos/introduccion/primos.py}
 
 \begin{paracol}{2}
 \subsection{Exportar e importar datos en Python} \label{fpf}
@@ -2600,19 +2606,19 @@ Another line
  \paragraph*{Working with numbers and arrays}
  In many cases we will need to save and read numbers or arrays. We could use the above methods to save the numbers or arrays to a file and read them back. However, a better way to do this is to use the numpy package to directly save and read an array.
  \switchcolumn
- Dentro de numpy tenemos los métodos \texttt{savetxt} y \texttt{loadtxt} para guardar arrays en archivos de texto o cargarlos desde archivos de texto. 
+ Dentro de numpy tenemos los métodos\\ \texttt{savetxt} y \texttt{loadtxt} para guardar arrays en archivos de texto o cargarlos desde archivos de texto. 
 
  Para usar \texttt{savetxt} tenemos que porporcionar los siguientes argumentos: un string con el nombre del archivo y la variable que contiene el array que vamos a guardar. Además, de manera opcional se pueden proporcionar más. Por ejemplo el formato, bajo la clave de \texttt{fmt} (en el ejemplo el formato es un número (\%), con tres cifras decimales ($.3$) de tipo float (f). El tipo de delimitador entre elementos, una cabecera etc. Se puede consultar la documentación para verlos todos.
  
  \switchcolumn
 
- Within numpy we have the methods \texttt{savetxt} and \texttt{loadtxt} to save arrays to text files or load them from text files. 
+ Within numpy we have the methods\\ \texttt{savetxt} and \texttt{loadtxt} to save arrays to text files or load them from text files. 
 
  To use \texttt{savetxt} we have to provide the following arguments: a string with the name of the file and the variable containing the array to be saved. In addition, you can optionally provide more. For example the format, under the key of \texttt{fmt} (in the example the format is a number (\%), with three decimal digits ($.3$) of type float (f). The type of delimiter between elements, a header etc. You can consult the documentation to see them all.
 
  \switchcolumn
  El método \texttt{loadtxt} nos permite leer un array de un archivo y guardarlo directamente en una variable de tipo array de numpy. Para ello simplemente proporcionaremos el archivo donde está almacenado el array y el método nos devolverá el array. En el ejemplo puede verse cómo se guarda una matriz $2x3$ en un archivo de texto, con una cabecera, cómo se lee usando las funciones \texttt{open} y \texttt{read} y cómo se lee la matriz y se almacena en un array de numpy usando el método \texttt{savetxt}.
-
+ 
  \switchcolumn
 
  The \texttt{loadtxt} method allows us to read an array from a file and store it directly into a numpy array variable. To do this we simply provide the file where the array is stored and the method will return the array. In the example you can see how a $2x3$ array is stored in a text file, with a header, how it is read using the \texttt{open} and \texttt{read} functions and how the array is read and stored in a numpy array using the \texttt{savetxt} method.
@@ -2818,13 +2824,13 @@ print(mi_robot)
 \item print('b=',b)
 \item print('d=',d)
 \item e = a.copy()
-\item a[2][2] = 'cambia tb c'
+\item a[2][2] = 'cambia tb e'
 \item print('c=',c)
 \item print('a=',a)
 \item print('b=',b)
 \item print('d=',d)
 \item print('e=',e)
-\item[0] = 'pero no al reves'
+\item e[2][2]= 'pero no al reves'
 \item print('c=',c)
 \item print('a=',a)
 \item print('b=',b)
@@ -2857,97 +2863,46 @@ print(mi_robot)
 \item w=(a*b)**-1
 \item w=a**-1*b-1/a*b
 \item w=a**-1*b-a
+\item[*] Relacionales y lógicos / relational and logic
+\item y0 = p<2
+\item y1 = p<=2
+\item y2 = p>2
+\item y3 = p>=2
+\item y4 = p==2
+\item y5 = p!=36
+\item r1 = a<5 and b==5
+\item r2 = a<b or b>=5
+\item r3 = a<b or b>5
+\item r4 = (a<b or b>=5) and not(a<b and b>=5)
 }
 \end{enumerate}
 \end{multicols}
 \item Obtén empleando la \emph{línea de comandos} de Ipython el resultado de las siguientes expresiones:
-\begin{multicols}{2}
 \begin{align*}
 \frac{5+3x^2}{6y}\\
 \frac{1+4\sqrt{2x}}{6}y \\
 \frac{-x+\sqrt{x^2-4xy}}{2x}
 \end{align*}
 
-\begin{align*}
-\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(x-1)^2}\\
-\sin^2(2x)+\cos^2(2x) \\
-\arctan(\infty)\\
-\arctan\left(\frac{y}{x}\right)
-\end{align*}
-\end{multicols}
 Emplea para $x$ e $y$
 los valores que prefieras.
 
 \item Abre un fichero nuevo en el editor de textos de Spyder.
 Escribe las siguiente líneas:\\
-\texttt{
-x = A*B\\
-y = A+B\\
-z = A*sin(B)}\\
-Guarda el fichero. Emplea el comando \verb|clear| all para limpiar el \emph{workspace}
-Invoca el fichero desde matlab. ¿Qué sucede?\\
-Crea en la ventana de comandos las matrices,
-\begin{equation*}
-A =\begin{pmatrix}
-1&3&4\\
-2&5&6\\
-7&8&9
-\end{pmatrix}, \ B=\begin{pmatrix}
-2&6&8\\
-3&7&8\\
-2&7&9
-\end{pmatrix}
-\end{equation*}
-Vuelve a ejecutar el programa guardado en el fichero.\\
-Añade al programa, al principio del todo, la línea \texttt{clear all}. Guarda y vuelve a ejecutar el
-programa. ¿Qué sucede ahora?\\
-Introduce las matrices A y B directamente en el código del programa debajo de la línea \texttt{clear all}. Analiza qué sucede al ejecutar de nuevo el programa.\\
- Eliminar la línea \texttt{clear all}. Introduce a través de la ventana de comando dos matrices $A$ y $B$ distintas de las que contiene el programa. Ejecuta el programa y comprueba qué matrices utiliza para realizar los cálculos.\\
-Comenta la(s) línea(s) de código donde has definido las matrices $A$ y $B$ en el programa. Añade al principio del programa una línea para convertir el script en una función:\\
-\verb|function [x] = nombre_de_tu_programa(A,B)| \\
-Invoca la función recién creada desde la \emph{línea de comandos} de matlab. Observa lo que pasa si la invocas como:
-\begin{verbatim}
->>nombre_de_tu_programa
->>nombre_de_tu_programa(F)
->>nombre_de_tu_programa(F,J)
-\end{verbatim}
-Introduce, en el  workspace de matlab --usando la \emph{línea de comandos}--  las matrices $F$ y $J$, dondo,
-\begin{equation*}
-F =\begin{pmatrix}
-1&0&1\\
-2&0&4\\
-3&5&0
-\end{pmatrix}, \ J=\begin{pmatrix}
-1&6&7\\
-2&9&0\\
-4&4&4
-\end{pmatrix}
-\end{equation*}
-Vuelve a ejecutar, \verb|>>nombre_de_tu_programa(F,J)| \\
-Genera dos matrices de tamaño $(3\times 3)$. Nómbralas como prefieras: \verb|mi_matriz1, mi_matriz2|. Ejecuta ahora,
-\begin{verbatim}
->>nombre_de_tu_programa(mi_matriz1,J)
->>nombre_de_tu_programa(mi_matriz2,F)
->>nombre_de_tu_programa(mi_matriz1,mi_matriz2)
->>resultado=nombre_de_tu_programa(F,J)
->>[r1,r2]=nombre_de_tu_programa(F,J)
->>[A,B;r3]=nombre_de_tu_programa(F,J)
->>[A,B;C]=nombre_de_tu_programa(A,B)
-\end{verbatim}
-Crea un nuevo fichero, con el siguiente código:
-% \begin{lstlisting}
-% A=sin(B).*cos(C)
-% [D,E,F]=nombre_de_tu_programa(A,C)
-% G = D + E - F
-% \end{lstlisting}
-Guárdalo con el nombre que quieras.\\
-Define en la \emph{línea de comandos} matrices $B$ y $C$ adecuadas para el programa que acabas de escribir y ejecútalo.\\
-Añade al programa una primera línea de código que lo convierta en una función que tome como entradas las matrices $B$ y $C$  y que:\\
-devuelva solo la matriz $G$\\
-devuelva las matrices $G$ y $D$\\ 
-devuelva las matrices $G$,$D$,$E$ y $F$.
+\begin{minted}{python}
+	A = [35,23]
+	B = [12,-12.34]
+	x = [A[0]*B[0],A[1]*B[1]]
+	y = [A[0]+B[0],A[1]+B[1]] 
+\end{minted}
+Guarda el fichero con el \emph{primero.py}. Emplea el comando \mintinline{python}{%reset} en el terminal de IPython para borrar cualquier variable anterior. Ejecuta el fichero y comprueba que existen las variables \mintinline{python}{A, B, x ,y}.\\
+Vuelve ejecutar el comando \mintinline{python}{%reset}. Emplea el comando \mintinline{python}{import primero}. ¿Se han creado las variables¿ ¿qué ha pasado ahora?\\
+Vuelve a borrar las variables del namespace de Python e importa de nuevo tu programa con \mintinline{python}{import primero as kiki}. ¿Donde estan ahora las variables \mintinline{python}{A, B, x ,y}?\\
+Crea una variable \mintinline{python}{x = 'nueva'}  Compueba que las variables \mintinline{python}{x} y \mintinline{python}{kiki.x}
+son distintas.\\
+Importa la variable \mintinline{python}{x} del modulo \mintinline{python}{primero} directamente usando la expresion:\\ \mintinline{python}{from primero import x}.\\ ¿Cuánto vale ahora la variable x?
 
-Escribe una nueva función con el siguiente código,
+\item Crea en el terminal de IPython la siguiente función, ponle el nombre que quieras
 \begin{minted}[
 frame=lines,
 framesep=2mm,
@@ -2956,101 +2911,73 @@ baselinestretch=1.2,
 fontsize=\footnotesize,
 linenos
 ]{python}
-import numpy as np
-def nombre_de_la_funcion(B,C):
-    E= B + C**2
-    D =B - C.inv()
-    return(E,D)
-% A=nombre_funcion_dentro(E,D);
-% end;
-% function s=nombre_funcion_dentro(l,p);
-% s=l + p - 2;
-% end;
+def mifun(A):
+E = A[0] + A[1]**2
+D = A[0] - A[1]**-1
+return(E,D)
 \end{minted}
 
-Crea matrices $B$ y $C$ adecuadas y ejecuta la función que acabas de crear. Describe cómo funciona.
-
-\item Define en la \emph{línea de comandos} las matriz $M$ y $N$ e interpreta el resultado de las condiciones lógicas impuestas.
-
-\begin{equation*}
-M =\begin{pmatrix}
-1&2&3\\
-4&5&6\\
-7&8&9
-\end{pmatrix}, \ N=\begin{pmatrix}
-2&3&4\\
-5&6&7\\
-8&9&10
-\end{pmatrix}
-\end{equation*}
-\begin{verbatim}
->>y=m<2
->>y=m<=2
->>y=m>2
->>y=m>=2
->>y=m==2
->>y=m~=2
->>y=any(m<2)
->>y=any(m<2,1)
->>y=any(m<2,2)
->>y=any(m==2)
->>y=all(m>=2)
->>y=all(m~=0)
->>y=all(any(m<2))
->>y=any(all(m<2))
-
->> index=find(m>2)
->>[i,j]=find(m<5)
-
->> y=any(m<2)&any(n>4)
->> y=any(m<2)&any(n>10)
->> y=any(m<2)&any(n>6)
->> y=any(m<2)&any(n>7)
->> y=any(m<2)&any(n>3)
->> y=any(m<2)&any(n>2)
->> y=any(m>2)&any(n>2)
->> y=any(m>4)&any(n>2)
->> y=any(m>4,1)&any(n>2)
->> y=any(m>4,2)'&any(n>2)
-\end{verbatim}
-Repite el estudio de las condiciones lógicas cambiando \& por \textbar
+Crea variables adecuadas, ejecuta la función que has creado, guardando el resultado en una sola variable \mintinline{python}{resultado}.\\
+Ejecuta las siguientes líneas de comando y trata de explicar lo que hacen\\
+\begin{minted}{python}
+	uno = 2
+	dos = 4
+	resultado = mifun([uno,dos])
+	print(resultado)
+	me, da = mifun(resultado)
+	la,risa = mifun(mifun([uno,dos]))
+	print(me,da,la,risa) 
+\end{minted}
 
 \item Escribe el siguiente código en un fichero. Ejecútalo y analiza los resultados,
-% \begin{lstlisting}
-% dato=rand(1)
-% if dato==0.5
-%  dato=0
-% elseif dato<0.5
-%  dato=-dato*10
-% else
-%  dato=dato*10
-% end
-% \end{lstlisting}
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	%bgcolor=LightGray,
+	fontsize=\footnotesize,
+	linenos
+	]{python}
+	from random import random
+	dato = random()
+	if dato == 0.5:
+		dato = 0
+	elif dato < 0.5:
+		dato = -dato*10
+	else:
+		dato = dato*10
+	print(dato)
+\end{minted}
 
 Modifica el programa,
 \begin{enumerate}
-\item Para que no muestre los resultados de los cálculos por pantalla
-\item para que, utilizando comandos \verb|elseif, &| devuelva una variable (distinta de 'dato') con valor $-1$ si se cumple que 'dato' es menor o igual que $0.3$, con valor $-0.5$ si 'dato' es mayor que $0.3$ y menor que $0.5$, con valor $0$ si 'dato' es mayor o igual que $0.5$ y menor  o igual que $0.7$ y con valor $1$ en cualquier otro caso.
-\item Convierte el \emph{script}, en una función, que tome 'dato' como variable de entrada, y devuelva el valor de la variable obtenida, según la condición que se cumpla. (Lógicamente se debe eliminar o comentar la línea \verb|dato=rand(1)|).
+\item Para que muestre los resultados de los cálculos por pantalla
+\item para que, genere una variable (distinta de 'dato') con valor $-1$ si se cumple que 'dato' es menor o igual que $0.3$, con valor $-0.5$ si 'dato' es mayor que $0.3$ y menor que $0.5$, con valor $0$ si 'dato' es mayor o igual que $0.5$ y menor  o igual que $0.7$ y con valor $1$ en cualquier otro caso.
+\item Convierte el \emph{script}, en una función, que tome 'dato' como variable de entrada, y devuelva el valor de la variable obtenida, según la condición que se cumpla. (Lógicamente se debe eliminar o comentar la línea \verb|dato=random()|).
 \end{enumerate}
 
-\item Crea un scrip de matlab con el siguiente código y trata de adivinar qué hace antes de ejecutarlo. Utiliza el \emph{help} de matlab para averiguar lo que hace la función \verb|abs|.
-% \begin{lstlisting}
-% n=10
-% for i=1:n
-%  for j=1:n
-%   if i==j
-%    a(i,j)=1;
-%   elseif abs(i-j)==1
-%    a(i,j)=-1
-%   else
-%    a(i,j)=0
-%   end
-%  end
-% end
-% \end{lstlisting}
-
-Introduce un punto de ruptura (\emph{breakpoint}) en el código, por ejemplo en la línea 12. Ejecuta paso a paso el programa para ver como va generando el resultado. Intercambia los índices \verb|i,j| de la matriz \verb|a|. \verb|a(j,i)|.¿Se obtiene el mismo resultado? ¿Cómo se construye ahora la matriz?
+\item Crea un scrip de python con el siguiente código y trata de adivinar qué hace antes de ejecutarlo. Utiliza el \emph{help} de Spyder o el interrogante \mintinline{python}{abs?} en el terminal, para averiguar lo que hace la función \verb|abs|.
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	%bgcolor=LightGray,
+	fontsize=\footnotesize,
+	linenos
+	]{python}
+	n = 5
+	x = []
+	for i in range(n):
+		x.append([])
+		for j in range(n):
+			if i == j:
+				x[i].append(1)
+			elif abs(i-j) == 1:
+				x[i].append(-1)
+			else:
+				x[i].append(0)
+\end{minted}
+Introduce un punto de ruptura (\emph{breakpoint}) en el código, por ejemplo en la línea 12. Ejecuta paso a paso el programa para ver como va generando el resultado.
 
 \item Crea un script con el siguiente código,
 \begin{minted}[
@@ -3061,65 +2988,70 @@ baselinestretch=1.2,
 fontsize=\footnotesize,
 linenos
 ]{python}
-i=0
-while i<10:
-    i=i+1
-    j=0
-    while j<10:
-        j=j+1
-        if i==j:
-            a[i,j+=1;
-        elif abs(i-j)==1:
-            a[i,j]=-1
-        else:
-            a(i,j)=0
+n = 5
+x = []
+i = 0
+
+	while i<n:
+		j=0
+		x.append([])
+		while j<n:        
+			if i==j:
+				x[i].append(1)
+			elif abs(i-j)==1:
+				x[i].append(-1)
+			else:
+				x[i].append(0)
+			j = j + 1
+		i = i+1
 \end{minted}
 
 Repite el estudio del programa anterior
 
 \item Modifica el \emph{script} anterior de modo que quede el siguiente código,
-% \begin{lstlisting}
-% i=0
-% while(1)
-%  i=i+1
-%  j=0
-%  while(1)
-%   j=j+1
-%   if i==j
-%    a(i,j)=1;
-%   elseif abs(i-j)==1
-%    a(i,j)=-1
-%   else
-%    a(i,j)=0
-%   end
-%   if j==10
-%    break
-%   end
-%  end
-%  if i==10
-%   break
-%  end
-% end
-% \end{lstlisting}
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	%bgcolor=LightGray,
+	fontsize=\footnotesize,
+	linenos
+	]{python}
+n = 5
+x = []
+i = 0
+	while 1:
+		j=0
+		x.append([])
+		while 1:        
+			if i==j:
+				x[i].append(1)
+			elif abs(i-j)==1:
+				x[i].append(-1)
+			else:
+				x[i].append(0)
+			j = j + 1
+			if j==n:
+			break
+		i = i+1
+		if i==n:
+			break
+\end{minted}
 Repite el estudio del programa anterior. ¿Qué sucede si comentamos la(s) línea(s) que contiene la sentencia \verb|break|?
-Reconvierte los \emph{scrips} anteriores en funciones que admitan como variable de entrada el tamaño de la matriz que se desea generar y devuelvan como variable de salida la matriz creada.
+Reconvierte los \emph{scrips} anteriores en funciones que admitan como variable de entrada el tamaño de la lista que se desea generar y devuelvan como variable de salida la lista creada.
 
-\item Dada una matriz $A \in \mathbb{R}^{n\times n}$ y un vector columna $v \in \mathbb{R}^n-{\mathbf{0}}$. Se dice que el vector $v$ pertenece al \emph{Kernel} de $A$ si se cumple que $Av =\mathbf{0}$.
+\item Escribe ---empleando bucles y sin hacer uso del operador ( ** ) --- una función \verb|potencia| que reciba como argumentos de entrada un número real $x\in \mathbb{R}$ y un entero $n \in \mathbb{Z}$ y devuelva el valor de la n-ésima potencia de $x$ ($x^n$). El segundo argumento de entrada puede ser opcional. Si se omite debe tomarse como $n=2$ (devolviendo el cuadrado de $x$).
 
-
-
-Crea una función que tome como variables de entrada una matriz $A$ cuadrada de cualquier dimension $n\times n$ y un vector columna de dimensión $n$ y compruebe si$n$ pertenece o no al \emph{kernel} de $A$. \textbf{Nota:} Considera que la condición se cumple si todos los elementos del vector $Av$ son menores que $1e-12$.
-
-\item Escribe ---empleando bucles y sin hacer uso del operador ( \^\ ) --- una función \verb|potencia.m| que reciba como argumentos de entrada un número real $x\in \mathbb{R}$ y un entero $n \in \mathbb{Z}$ y devuelva el valor de la n-ésima potencia de $x$ ($x^n$). El segundo argumento de entrada puede ser opcional. Si se omite debe tomarse como $n=2$ (devolviendo el cuadrado de $x$). Ver la función interna nargin. \textbf{Nota:} Ten en cuenta que $n$ puede ser positivo, negativo o cero.
-
-\item Crea una función que determine la suma de los inversos de los números naturales impares menores de 1000. Usa las funciones tic y toc para determinar el tiempo que se tarda. Emplea bucles para el cálculo.
+\item Crea una función que determine la suma de los inversos de los números naturales impares menores de 1000. Emplea bucles para el cálculo.
 \begin{equation*}
 S_{imp} = \sum_{n=1}^{500}\frac{1}{2n-1} =\frac{1}{1}+\frac{1}{3}+\frac{1}{5}+\cdots+\frac{1}{999}
 \end{equation*}
 Modifica tu programa, de modo que admita como variable de entrada un número $m\in\mathbb{N}$ y calcule el valor de la suma de los inversos de los impares menores o iguales que $m$.
 
 \item Los números de Fibonacci, $F(n)$ son una serie de números naturales. Los dos primeros valores de la serie son:  $F(1)=1$ y $F(2)=2$. Los demás términos se calculan como la suma de los dos anteriores: $F(n) = F(n-1) + F(n-2)$.
-Escribe un script que genere los primeros $m$ números de la serie de Fibonacci, almacenándolos en un vector \verb|F|. Emplea para el cálculo la estructura \verb|while|.
+Escribe un script que genere los primeros $m$ números de la serie de Fibonacci, almacenándolos en una lista \verb|F|. Emplea para el cálculo la estructura \verb|while|.
 
-\item Sin utilizar las funciones de matlab \verb|flip,fliplr, flipud,...|, escribe las líneas de código para que, dado un vector \verb|x|, genere otro vector con el orden de los elementos invertido.
+\item Escribe una función que admita como variable de entrada una lista y devuelva como variable de salida otra lista de igual tamaño con los elementos colocados en orden inverso a los de la lista original.
+
+¿Sabrias hacerlo con una única línea de código? Pista: Usa \emph{List comprehesion}
 \end{enumerate}
