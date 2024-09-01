@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+go}{\PYGZob{}\PYGZsq{}id\PYGZsq{}: \PYGZsq{}Frodo\PYGZsq{}, \PYGZsq{}tipo\PYGZsq{}: \PYGZsq{}Hobbit\PYGZsq{}, \PYGZsq{}estado\PYGZsq{}: \PYGZob{}\PYGZsq{}posicion\PYGZsq{}: [2.345, \PYGZhy{}5.985], \PYGZsq{}velocidad lineal\PYGZsq{}: 0.15, \PYGZsq{}velocidad angular\PYGZsq{}: 0, \PYGZsq{}baterias\PYGZsq{}: 7.32\PYGZcb{}\PYGZcb{}}
-\end{Verbatim}

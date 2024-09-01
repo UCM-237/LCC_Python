@@ -8,35 +8,16 @@
 `No indeed!' she answered, and her smile faded. `That would indeed be a burden,' she added in a low voice, as if to herself. `The trees and the grasses and all things growing or living in the land belong each to themselves. Tom Bombadil is the Master.}{J.R.R Tolkien, The Lord of the Rings.}
 \begin{paracol}{2}
 Estos apuntes cubren de forma aproximada  el contenido del \emph{Laboratorio de computación científica} del primer curso del grado en física.
-La idea de esta asignatura es  introducir al estudiante a las estructuras elementales de programación y al cálculo numérico, como herramientas imprescindibles para el trabajo de investigación.
-
-Los capítulos uno al cuatro ofrecen una introducción a la programación en python, incluyendo algunas de las librerías más empleadas en computación científica. El resto de los capítulos describen técnicas clásicas para la resolución de problemas numéricos.
-
-Los párrafos encerrados entre 'brujas'
-\begin{equation*}
-	\mathwitch* \biggl \{ \text{parrafo} \biggr \} \reversemathwitch*,
-\end{equation*}
-contienen material avanzado, pueden saltarse y son para aquellos que quieran ampliar conocimientos.
-
+La idea de esta asignatura es  introducir al estudiante a las estructuras elementales de programaci`0 y al cálculo numérico, como herramientas imprescindibles para el trabajo de investigación.
 \switchcolumn
-These lecture notes cover the contents  of the \emph{scientific computing lab}: a first course in scientific computing teaching during the first semester of the degree in physics. The aim is to introduce the student to computer programming and numerical calculus, which are invaluable tools in scientific research.
-
-Chapters one to four present an introduction to Python programming, including some of the most common used libraries for scientific computing. The remaining chapters describe classical techniques to solve numerical problems.
-
-Paragraphs enclosed in 'witches',
-\begin{equation*}
-\mathwitch* \biggl \{ \text{paragraph} \biggr \}\reversemathwitch*,
-\end{equation*}
-
-contain advanced material. They are optional for those interested in deepening their knowledge.
-  
+These lecture notes cover the contents  of the \emph{scientific computing lab}: a first course in scientific computing teaching during the first semester of the degree in physics. The aim is to introduce the student to computer programing and numerical calculus, which are invaluable tools in scientific research.
 \switchcolumn         
 Casi todos los métodos que se describen en estos apuntes fueron desarrollados hace siglos por los grandes: Newton, Gauss, Lagrange, etc.  Métodos que no han perdido su utilidad y que, con el advenimiento de los computadores digitales, han ganado todavía más si cabe en atractivo e interés. Se cumple una vez más la famosa frase atribuida a Bernardo de Chartres:
 \begin{quote}
 ``Somos como enanos a los hombros de gigantes. Podemos ver más, y más lejos que ellos, no por que nuestra vista sea más aguda, sino porque somos levantados sobre su gran altura."
 \end{quote}
 \switchcolumn
-Almost every method described in these notes was developed, centuries ago, by the \emph{big ones}: Newton, Gauss, Lagrange, etc. But they are methods that are still usefull and, with the comming up of digital computers, they are more interesting than ever. We can indeed quote the famous sentence from The scholar Bernardo de Chartres:
+Almos every method described in these notes was developed, centuries ago, by the \emph{big ones}: Newton, Gauss, Lagrange, etc. But they are methods that are still usefull and, with the comming up of digital computers, they are more interesting than ever. We can indeed quote the famous sentence from The scholar Bernardo de Chartres:
 \begin{quote}
 ``We are like dwarfs sitting on the shoulders of giants. We see more, and things that are more distant, than they did, not because our sight is superior or because we are taller than they, but because they raise us up, and by their great stature add to ours."
 \end{quote}          
@@ -50,16 +31,21 @@ The contents, examples, code, etc. of this notes, are the results of the effort 
 \switchcolumn
 En segundo lugar a mis compañeros de los departamentos de  \emph{Física de la Tierra, Astronomía y Astrofísica I} y  \emph{Arquitectura de computadores y Automática} que han impartido la asignatura durante estos años: 
 
-Rosa González Barras, Belén Rodríguez Fonseca, Maurizio Matessini, Pablo Zurita, Vicente Carlos Ruíz Martínez, Encarna Serrano, Carlos García Sánchez, Jose Antonio Martín, Victoria López López,  Alberto del Barrio, Blanca Ayarzagüena, Javier Gómez Selles, Nacho Gómez Pérez, Marta Ávalos, Iñaqui Hidalgo, Daviz sánchez,  Juan Rodriguez, María Ramirez, Álvaro de la Cámara, Marta Martín (Espero no haberme olvidado de nadie). Mchas gracias a todos por tantas horas de trabajo compartidas
+Rosa González Barras, Belén Rodríguez Fonseca, Maurizio Matessini, Pablo Zurita, Vicente Carlos Ruíz Martínez, Encarna Serrano, Carlos García Sánchez, Jose Antonio Martín, Victoria López López,  Alberto del Barrio, Blanca Ayarzagüena, Javier Gómez Selles, Nacho Gómez Pérez, Marta Ávalos, Iñaqui Hidalgo, Daviz sánchez,  Juan Rodriguez, María Ramirez, Álvaro de la Cámara (Espero no haberme olvidado de nadie).
 
 \switchcolumn
 Second, I also want to thanks to my colleges from \emph{Física de la Tierra, Astronomía y Astrofísica I} and  \emph{Arquitectura de computadores y Automática} Who have taught the subject since the begining of : 
 
-Rosa González Barras, Belén Rodríguez Fonseca, Maurizio Matessini, Pablo Zurita, Vicente Carlos Ruíz Martínez, Encarna Serrano, Carlos García Sánchez, Jose Antonio Martín, Victoria López López,  Alberto del Barrio, Blanca Ayarzagüena, Javier Gómez Selles, Nacho Gómez Pérez, Marta Ávalos, Iñaqui Hidalgo, Daviz sánchez,  Juan Rodriguez, María Ramirez, Álvaro de la Cámara, Marta Martín (I hope don't forget anybody). Thank you very much for sharing so many work hours.
+Rosa González Barras, Belén Rodríguez Fonseca, Maurizio Matessini, Pablo Zurita, Vicente Carlos Ruíz Martínez, Encarna Serrano, Carlos García Sánchez, Jose Antonio Martín, Victoria López López,  Alberto del Barrio, Blanca Ayarzagüena, Javier Gómez Selles, Nacho Gómez Pérez, Marta Ávalos, Iñaqui Hidalgo, Daviz sánchez,  Juan Rodriguez, María Ramirez, Álvaro de la Cámara (I hope don't forget anybody).
 
+\switchcolumn
+Por último, los errores y erratas que encuentres en estas notas, esos sí que son de mi exclusiva responsabilidad.  Puedes ---si quieres--- ayudarme a corregirlos en futuras ediciones escribiendo a: juan.jimenez@fis.ucm.es 
+
+\switchcolumn
+Lastly, Those error and bugs, you can find in this notes, are my own fault. You can help my to amend them, if you please, by sending me an e-mail whenever you find out one:\\ juan.jimenez@fis.ucm.es 
 \end{paracol}
 
 \begin{flushright}
-Juan Jiménez, Lia García y Héctor García de Marina.
+Juan Jiménez.
 \end{flushright}
 

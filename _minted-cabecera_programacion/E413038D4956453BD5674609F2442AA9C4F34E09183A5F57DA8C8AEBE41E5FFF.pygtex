@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:} \PYG{n}{tex1} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}a\PYGZsq{}}
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{tex1}\PYG{p}{)}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:} \PYG{n+nb}{str}
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]}  \PYG{n}{tex2} \PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}perro\PYGZsq{}}
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{tex2}\PYG{p}{)}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]:} \PYG{n+nb}{str}
-\end{Verbatim}
