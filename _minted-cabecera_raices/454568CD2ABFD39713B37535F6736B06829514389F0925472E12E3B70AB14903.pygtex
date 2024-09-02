@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{k+kn}{import} \PYG{n+nn}{scipy.optimize} \PYG{k}{as} \PYG{n+nn}{opt}
+
+ \PYG{n}{roots}\PYG{o}{=}\PYG{n}{opt}\PYG{o}{.}\PYG{n}{fsolve}\PYG{p}{(}\PYG{n}{fun}\PYG{p}{,[}\PYG{n}{x0}\PYG{p}{])}
+\end{Verbatim}

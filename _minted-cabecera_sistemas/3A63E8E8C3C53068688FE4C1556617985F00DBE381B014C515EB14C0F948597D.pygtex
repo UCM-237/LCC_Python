@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{scipy} \PYG{k}{as} \PYG{n+nn}{sc}
+
+\PYG{n}{A}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{],[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{],[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{]])}
+\PYG{n}{b}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mi}{13}\PYG{p}{],[}\PYG{l+m+mi}{3}\PYG{p}{],[}\PYG{l+m+mi}{18}\PYG{p}{]])}
+\PYG{n}{cond}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{cond}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+\PYG{n}{P}\PYG{p}{,}\PYG{n}{L}\PYG{p}{,}\PYG{n}{U}\PYG{o}{=}\PYG{n}{sc}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{lu}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+
+\end{Verbatim}

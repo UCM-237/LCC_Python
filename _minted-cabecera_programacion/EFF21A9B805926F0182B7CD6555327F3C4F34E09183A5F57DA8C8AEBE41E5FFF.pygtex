@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{funcion\PYGZus{}name}\PYG{p}{(}\PYG{n}{e1}\PYG{p}{,}\PYG{n}{e2}\PYG{p}{,}\PYG{o}{...}\PYG{p}{):}
+    \PYG{n}{function} \PYG{n}{code}
+    \PYG{k}{return}\PYG{p}{,} \PYG{n}{r1}\PYG{p}{,} \PYG{n}{r2}\PYG{p}{,} \PYG{o}{...}
+\end{Verbatim}

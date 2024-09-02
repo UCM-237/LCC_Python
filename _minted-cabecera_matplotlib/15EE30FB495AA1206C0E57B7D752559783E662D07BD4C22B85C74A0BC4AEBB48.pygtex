@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Axes3D}\PYG{o}{.}\PYG{n}{plot\PYGZus{}surface}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y}\PYG{p}{,} \PYG{n}{Z}\PYG{p}{,} \PYG{o}{*}\PYG{p}{,} \PYG{n}{norm}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,} \PYG{n}{vmin}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,} \PYG{n}{vmax}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,}
+\PYG{n}{lightsource}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,} \PYG{o}{**}\PYG{n}{kwargs}\PYG{p}{)}
+\end{Verbatim}

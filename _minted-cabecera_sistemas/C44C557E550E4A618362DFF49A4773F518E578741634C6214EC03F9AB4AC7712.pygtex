@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{[U,S,Vt]=np.linalg.svd(A)}
+
+\PYG{g+go}{S[0]/S[1]}
+\PYG{g+go}{Out[14]: 5312.250061755533}
+\end{Verbatim}

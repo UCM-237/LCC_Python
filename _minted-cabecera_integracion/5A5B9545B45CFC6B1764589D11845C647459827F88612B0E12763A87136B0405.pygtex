@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{151}\PYG{p}{]:} \PYG{k}{def} \PYG{n+nf}{condensador}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{Vo}\PYG{p}{,}\PYG{n}{C}\PYG{o}{=}\PYG{l+m+mf}{1.}\PYG{p}{,}\PYG{n}{R}\PYG{o}{=}\PYG{l+m+mf}{1.}\PYG{p}{,}\PYG{n}{Vi}\PYG{o}{=}\PYG{l+m+mf}{10.}\PYG{p}{):}
+	\PYG{o}{...}\PYG{p}{:}     \PYG{n}{dVo} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Vi}\PYG{o}{\PYGZhy{}}\PYG{n}{Vo}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{n}{R}\PYG{o}{*}\PYG{n}{C}\PYG{p}{)}
+	\PYG{o}{...}\PYG{p}{:}     \PYG{k}{return}\PYG{p}{(}\PYG{n}{dVo}\PYG{p}{)}
+\end{Verbatim}

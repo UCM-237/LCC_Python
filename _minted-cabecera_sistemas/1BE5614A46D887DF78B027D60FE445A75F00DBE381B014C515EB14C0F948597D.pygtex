@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k}{def} \PYG{n+nf}{eligauss}\PYG{p}{(}\PYG{n}{A}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}This function obtains an upper triangular matrix, starting from a given}
+\PYG{l+s+sd}{    matrix, by applying the Gaussian elimination method.}
+\PYG{l+s+sd}{    It does not perform row piboting\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+
+    \PYG{c+c1}{\PYGZsh{}Matrix shape}
+    \PYG{p}{[}\PYG{n}{f}\PYG{p}{,}\PYG{n}{c}\PYG{p}{]}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+    \PYG{n}{U}\PYG{o}{=}\PYG{n}{A}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+    \PYG{c+c1}{\PYGZsh{}For all the columns in A (except the last one)}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{c}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} For all the rows below the diagonal}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{f}\PYG{p}{):}
+            \PYG{n}{U}\PYG{p}{[}\PYG{n}{j}\PYG{p}{,:]}\PYG{o}{=}\PYG{n}{U}\PYG{p}{[}\PYG{n}{j}\PYG{p}{,:]}\PYG{o}{\PYGZhy{}}\PYG{n}{U}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,:]}\PYG{o}{*}\PYG{n}{U}\PYG{p}{[}\PYG{n}{j}\PYG{p}{,}\PYG{n}{i}\PYG{p}{]}\PYG{o}{/}\PYG{n}{U}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,}\PYG{n}{i}\PYG{p}{]}
+    \PYG{k}{return} \PYG{n}{U}
+\end{Verbatim}

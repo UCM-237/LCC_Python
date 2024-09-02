@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{    [Xm,Ym]=np.meshgrid(x,y)}
+\PYG{g+go}{Xm}
+\PYG{g+go}{Out[20]:}
+\PYG{g+go}{array([[0, 1, 2, 3],}
+\PYG{g+go}{       [0, 1, 2, 3],}
+\PYG{g+go}{       [0, 1, 2, 3],}
+\PYG{g+go}{       [0, 1, 2, 3]])}
+
+\PYG{g+go}{Ym}
+\PYG{g+go}{Out[21]:}
+\PYG{g+go}{array([[0, 0, 0, 0],}
+\PYG{g+go}{       [1, 1, 1, 1],}
+\PYG{g+go}{       [2, 2, 2, 2],}
+\PYG{g+go}{       [3, 3, 3, 3]])}
+\end{Verbatim}

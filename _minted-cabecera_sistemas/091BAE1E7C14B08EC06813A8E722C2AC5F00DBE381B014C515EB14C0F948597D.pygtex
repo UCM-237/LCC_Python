@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{z}\PYG{o}{=}\PYG{n}{progressive}\PYG{p}{(}\PYG{n}{L}\PYG{p}{,} \PYG{n}{bP}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}z:\PYGZdq{}}\PYG{p}{,}\PYG{n}{z}\PYG{p}{)}
+\end{Verbatim}

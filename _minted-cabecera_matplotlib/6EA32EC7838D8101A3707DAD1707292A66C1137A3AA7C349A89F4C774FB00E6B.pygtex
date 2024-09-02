@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{x=np.linspace(\PYGZhy{}1.5,1.5,25)}
+\PYG{g+go}{y=np.linspace(\PYGZhy{}2,2,50)}
+\PYG{g+go}{[Xm,Ym]=np.meshgrid(x,y)}
+\end{Verbatim}

@@ -1,0 +1,56 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Sat Aug  3 20:15:18 2024}
+\PYG{l+s+sd}{Function to obtain the least squared error polynomial from a dataset}
+\PYG{l+s+sd}{@author: abierto}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k}{def} \PYG{n+nf}{lse}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{n}{n}\PYG{p}{,}\PYG{n}{w}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}none\PYGZsq{}}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    This function compute the least squared error polynomial of}
+\PYG{l+s+sd}{    degree n from a set of data x,y. Optionally it can use a}
+\PYG{l+s+sd}{    set of weights to perform the computation}
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    x : TYPE numpy array}
+\PYG{l+s+sd}{        DESCRIPTION. x data to be fitted}
+\PYG{l+s+sd}{    y : TYPE numpy array }
+\PYG{l+s+sd}{        DESCRIPTION. y data to be fitted}
+\PYG{l+s+sd}{    n : TYPE integer}
+\PYG{l+s+sd}{        DESCRIPTION. Polynomial degree}
+\PYG{l+s+sd}{    w : TYPE numpy array with the same length than x and y}
+\PYG{l+s+sd}{        DESCRIPTION.}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    a: TYPE numpy array }
+\PYG{l+s+sd}{       DESCRITION.  polynomial coefficients in increasing powers}
+\PYG{l+s+sd}{           a[0]+a[1]x+a[2]x**2+...+a[n]x**n}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{m} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} 
+    \PYG{c+c1}{\PYGZsh{}first we check that we have enought points}
+    \PYG{k}{if} \PYG{n}{m} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{Warning}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}the degree is greater than the number of data\PYGZsq{}}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{}if there is no weight array generate an arry of ones}
+    \PYG{k}{if} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}\PYG{o}{==}\PYG{n+nb}{str}\PYG{p}{:}
+        \PYG{n}{w} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{ones}\PYG{p}{(}\PYG{n}{m}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{}we build the s elements of the system coefficient matrix}
+    \PYG{n}{n} \PYG{o}{=} \PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1} \PYG{c+c1}{\PYGZsh{} for degree n I need n+1 coeficientes}
+    \PYG{n}{s} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{n}\PYG{p}{)}
+    \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{n}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{m}\PYG{p}{):}
+            \PYG{n}{s}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{s}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{+} \PYG{n}{w}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{*}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{**}\PYG{n}{j}
+    \PYG{n}{c} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+    \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{m}\PYG{p}{):}
+            \PYG{n}{c}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{c}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{+} \PYG{n}{w}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{*}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{**}\PYG{n}{j}\PYG{o}{*}\PYG{n}{y}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+    \PYG{n}{A} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{n}{n}\PYG{p}{,}\PYG{n}{n}\PYG{p}{])}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+            \PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{n}{j}\PYG{p}{]}
+    \PYG{n}{a} \PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{solve}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{c}\PYG{p}{)}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}
+
+\end{Verbatim}

@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{numpy.polynomial} \PYG{k+kn}{import} \PYG{n}{Polynomial} \PYG{k}{as} \PYG{n}{P}
+
+\PYG{c+c1}{\PYGZsh{}Create a polynomial with roots 3, \PYGZhy{}2, 2}
+\PYG{n}{p3}\PYG{o}{=}\PYG{n}{P}\PYG{o}{.}\PYG{n}{fromroots}\PYG{p}{([}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{])}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{p3}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}Compute the polynomial that is its derivative}
+\PYG{n}{pdot}\PYG{o}{=}\PYG{n}{p3}\PYG{o}{.}\PYG{n}{deriv}\PYG{p}{()}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Derivative:\PYGZdq{}}\PYG{p}{,} \PYG{n}{pdot}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}Compute the polynomial that is the integral}
+\PYG{n}{pint}\PYG{o}{=}\PYG{n}{p3}\PYG{o}{.}\PYG{n}{integ}\PYG{p}{()}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Integral:\PYGZdq{}}\PYG{p}{,} \PYG{n}{pint}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}Create polynomial p4 as a copy of pint}
+\PYG{n}{p4}\PYG{o}{=}\PYG{n}{pint}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{p4}\PYG{p}{)}
+\end{Verbatim}

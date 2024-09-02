@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{p}{[}\PYG{n}{nf}\PYG{p}{,}\PYG{n}{nc}\PYG{p}{]}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+    \PYG{n}{xs}\PYG{o}{=}\PYG{n}{x0}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+    \PYG{n}{xs1}\PYG{o}{=}\PYG{n}{b}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+    \PYG{n}{error}\PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{xs1}\PYG{o}{\PYGZhy{}}\PYG{n}{xs}\PYG{p}{)}
+    \PYG{n}{it}\PYG{o}{=}\PYG{l+m+mi}{0}
+    \PYG{n}{D}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{diag}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{diag}\PYG{p}{(}\PYG{n}{A}\PYG{p}{))}
+    \PYG{n}{U}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{triu}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{D}
+    \PYG{n}{L}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{tril}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{D}
+    \PYG{n}{invD}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{inv}\PYG{p}{(}\PYG{n}{D}\PYG{p}{)}
+    \PYG{n}{I}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{eye}\PYG{p}{(}\PYG{n}{nf}\PYG{p}{)}
+    \PYG{n}{f}\PYG{o}{=}\PYG{n}{w}\PYG{o}{*}\PYG{p}{(}\PYG{n}{invD}\PYG{p}{)}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}
+    \PYG{n}{H}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{n}{w}\PYG{p}{)}\PYG{o}{*}\PYG{n}{I}\PYG{o}{\PYGZhy{}}\PYG{n}{w}\PYG{o}{*}\PYG{n}{invD}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{L}\PYG{o}{+}\PYG{n}{U}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} First iteration}
+    \PYG{n}{xs1}\PYG{o}{=}\PYG{n}{f}\PYG{o}{+}\PYG{n}{H}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{xs}\PYG{p}{)}
+    \PYG{n}{error}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{xs1}\PYG{o}{\PYGZhy{}}\PYG{n}{xs}\PYG{p}{)}
+    \PYG{n}{it}\PYG{o}{+=}\PYG{l+m+mi}{1}
+    \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}\PYGZsq{}From here would come the code needed to calculate the}
+\PYG{l+s+s1}{    successive iterations until the solution converges\PYGZsq{}\PYGZsq{}}
+
+\end{Verbatim}

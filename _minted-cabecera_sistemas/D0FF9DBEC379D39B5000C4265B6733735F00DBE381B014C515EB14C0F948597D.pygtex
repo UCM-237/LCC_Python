@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{xs1}\PYG{o}{=}\PYG{n}{f}\PYG{o}{+}\PYG{n}{H}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{xs}\PYG{p}{)}
+\end{Verbatim}

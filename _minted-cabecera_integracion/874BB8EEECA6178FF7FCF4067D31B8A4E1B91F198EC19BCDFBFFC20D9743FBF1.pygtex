@@ -1,0 +1,115 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Sun Aug 18 16:21:54 2024}
+
+\PYG{l+s+sd}{@author: abierto}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{matplotlib} \PYG{k+kn}{import} \PYG{n}{pyplot} \PYG{k}{as} \PYG{n}{pl}
+\PYG{k}{def} \PYG{n+nf}{integra}\PYG{p}{(}\PYG{n}{fun}\PYG{p}{,}\PYG{n}{met}\PYG{p}{,}\PYG{n}{inter}\PYG{p}{,}\PYG{n}{dib}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    function numerical integration, using trapezium, Simpson\PYGZsq{}s}
+\PYG{l+s+sd}{    1/3 or Simpson 3/8 methods}
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    fun : TYPE function}
+\PYG{l+s+sd}{        DESCRIPTION. Function to be integrated}
+\PYG{l+s+sd}{    met : TYPE char array }
+\PYG{l+s+sd}{        DESCRIPTION. method should be one of \PYGZsq{}trap\PYGZsq{} \PYGZsq{}simpson\PYGZsq{} }
+\PYG{l+s+sd}{        or \PYGZsq{}simpson38\PYGZsq{}}
+\PYG{l+s+sd}{    inter : TYPE array [a,b]}
+\PYG{l+s+sd}{        DESCRIPTION. integration interval limits}
+\PYG{l+s+sd}{    dib : TYPE logical}
+\PYG{l+s+sd}{        DESCRIPTION. yes : draw the results no: skip the drawing}
+\PYG{l+s+sd}{        }
+\PYG{l+s+sd}{    Returns }
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    intg: TYPE double}
+\PYG{l+s+sd}{        DESCRIPTION. Integral value}
+\PYG{l+s+sd}{        f1 = fun(inter[1])}
+\PYG{l+s+sd}{        h = inter[1] \PYGZhy{} inter[0]}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{k}{if} \PYG{n}{met} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}trap\PYGZsq{}}\PYG{p}{:}
+        \PYG{n}{f0} \PYG{o}{=} \PYG{n}{fun}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+        \PYG{n}{f1} \PYG{o}{=} \PYG{n}{fun}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}
+        \PYG{n}{h} \PYG{o}{=} \PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{n}{intg} \PYG{o}{=} \PYG{n}{h}\PYG{o}{*}\PYG{p}{(}\PYG{n}{f0}\PYG{o}{+}\PYG{n}{f1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}
+        \PYG{k}{if} \PYG{n}{dib}\PYG{p}{:}
+            \PYG{n}{x} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{l+m+mi}{100}\PYG{p}{)}
+            \PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([}\PYG{n}{fun}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{x}\PYG{p}{])}
+            \PYG{n}{ypol} \PYG{o}{=} \PYG{n}{f0} \PYG{o}{+} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{*}\PYG{p}{(}\PYG{n}{f1}\PYG{o}{\PYGZhy{}}\PYG{n}{f0}\PYG{p}{)}\PYG{o}{/}\PYG{n}{h}
+            \PYG{n}{pl}\PYG{o}{.}\PYG{n}{fill\PYGZus{}between}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{ypol}\PYG{p}{,}\PYGZbs{}
+                            \PYG{n}{where}\PYG{o}{=}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{\PYGZlt{}=}\PYG{n}{x}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZlt{}=}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]))}
+            \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{elif} \PYG{n}{met} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}simpson\PYGZsq{}}\PYG{p}{:}
+        \PYG{n}{pmedio} \PYG{o}{=} \PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{/}\PYG{l+m+mi}{2}
+        \PYG{n}{f0} \PYG{o}{=} \PYG{n}{fun}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+        \PYG{n}{f1} \PYG{o}{=} \PYG{n}{fun}\PYG{p}{(}\PYG{n}{pmedio}\PYG{p}{)}
+        \PYG{n}{f2} \PYG{o}{=} \PYG{n}{fun}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}
+        \PYG{n}{h} \PYG{o}{=}  \PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{/}\PYG{l+m+mi}{2}
+        \PYG{n}{intg} \PYG{o}{=} \PYG{n}{h}\PYG{o}{*}\PYG{p}{(}\PYG{n}{f0}\PYG{o}{+}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{f1}\PYG{o}{+}\PYG{n}{f2}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{3}
+        \PYG{k}{if} \PYG{n}{dib}\PYG{p}{:}
+            \PYG{n}{x} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{l+m+mi}{100}\PYG{p}{)}
+            \PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([}\PYG{n}{fun}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{x}\PYG{p}{])}
+            \PYG{n}{ypol} \PYG{o}{=} \PYG{n}{f0}\PYG{o}{+}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{*}\PYG{p}{(}\PYG{n}{f1}\PYG{o}{\PYGZhy{}}\PYG{n}{f0}\PYG{p}{)}\PYG{o}{/}\PYG{n}{h}\PYGZbs{}
+                \PYG{o}{+}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{*}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{pmedio}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{f2}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{f1}\PYG{o}{+}\PYG{n}{f0}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{h}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+            \PYG{n}{pl}\PYG{o}{.}\PYG{n}{fill\PYGZus{}between}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{ypol}\PYG{p}{,}\PYGZbs{}
+                            \PYG{n}{where}\PYG{o}{=}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{\PYGZlt{}=}\PYG{n}{x}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZlt{}=}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]))}
+            \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{ypol}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}k\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{elif} \PYG{n}{met} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}simpson38\PYGZsq{}}\PYG{p}{:}
+        \PYG{n}{inter} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{l+m+mi}{4}\PYG{p}{)}
+        \PYG{n}{f} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([}\PYG{n}{fun}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{inter}\PYG{p}{])}
+        \PYG{n}{h} \PYG{o}{=} \PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{n}{intg} \PYG{o}{=} \PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{h}\PYG{o}{*}\PYG{p}{(}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{o}{+}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{])}\PYG{o}{/}\PYG{l+m+mi}{8}
+        \PYG{k}{if} \PYG{n}{dib}\PYG{p}{:}
+            \PYG{n}{x} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{],}\PYG{l+m+mi}{100}\PYG{p}{)}
+            \PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([}\PYG{n}{fun}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{x}\PYG{p}{])}
+            \PYG{n}{ypol} \PYG{o}{=} \PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{+}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{*}\PYG{p}{(}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{/}\PYG{n}{h}\PYGZbs{}
+                   \PYG{o}{+}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{*}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}\PYGZbs{}
+                   \PYG{o}{*}\PYG{p}{(}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{+}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{h}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}\PYGZbs{}
+                   \PYG{o}{+}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{*}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}\PYG{o}{*}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{])}\PYGZbs{}
+                   \PYG{o}{*}\PYG{p}{(}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{o}{*}\PYG{n}{h}\PYG{o}{**}\PYG{l+m+mi}{3}\PYG{p}{)}    
+            \PYG{n}{pl}\PYG{o}{.}\PYG{n}{fill\PYGZus{}between}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{ypol}\PYG{p}{,}\PYGZbs{}
+                          \PYG{n}{where}\PYG{o}{=}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{\PYGZlt{}=}\PYG{n}{x}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZlt{}=}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]))}
+            \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{ypol}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}k\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{intg}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{trocea}\PYG{p}{(}\PYG{n}{fun}\PYG{p}{,}\PYG{n}{met}\PYG{p}{,}\PYG{n}{inter}\PYG{p}{,}\PYG{n}{div}\PYG{p}{,}\PYG{n}{dib}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    This funtion divide a interval into the number of subintervals indicate}
+\PYG{l+s+sd}{    by div and calls function integra to obtain the integral in }
+\PYG{l+s+sd}{    any subinterval. Eventually sums all results to compute the}
+\PYG{l+s+sd}{    integral over the whole interval}
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    fun : TYPE function}
+\PYG{l+s+sd}{        DESCRIPTION. function to be integrate}
+\PYG{l+s+sd}{    met : TYPE character string }
+\PYG{l+s+sd}{        DESCRIPTION. Method it should be one of \PYGZsq{}trap\PYGZsq{} \PYGZsq{}simpson\PYGZsq{} }
+\PYG{l+s+sd}{        or \PYGZsq{}simpson38\PYGZsq{}can be \PYGZsq{}trap\PYGZsq{}, }
+\PYG{l+s+sd}{    inter : TYPE array or list }
+\PYG{l+s+sd}{        DESCRIPTION. limits for the integration interval [a,b]}
+\PYG{l+s+sd}{    div : TYPE integer}
+\PYG{l+s+sd}{        DESCRIPTION. Number of subintervals}
+\PYG{l+s+sd}{    dib : TYPE bool}
+\PYG{l+s+sd}{        DESCRIPTION. True draw the result False does not draw}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    total : TYPE double}
+\PYG{l+s+sd}{          DSCRIPTION Definite integral value of fun in inter}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{tramos} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{inter}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{div}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{n}{total} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{n}{div}\PYG{p}{):}
+        \PYG{n+nb}{int} \PYG{o}{=} \PYG{n}{integra}\PYG{p}{(}\PYG{n}{fun}\PYG{p}{,}\PYG{n}{met}\PYG{p}{,[}\PYG{n}{tramos}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],}\PYG{n}{tramos}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]],}\PYG{n}{dib}\PYG{p}{)}
+        \PYG{n}{total} \PYG{o}{=} \PYG{n}{total} \PYG{o}{+} \PYG{n+nb}{int}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{total}\PYG{p}{)}
+\end{Verbatim}

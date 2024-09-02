@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{1.0 \PYGZhy{} 6.0·x + 11.0·x² \PYGZhy{} 6.0·x³}
+\PYG{g+go}{The roots are:	 [0.33333333 0.5        1.        ]}
+
+\end{Verbatim}

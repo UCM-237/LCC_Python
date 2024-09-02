@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{solplus}\PYG{p}{,} \PYG{n}{solminus} \PYG{o}{=} \PYG{n}{eq\PYGZus{}seg\PYGZus{}grado}\PYG{o}{.}\PYG{n}{soleq2}\PYG{p}{(}\PYG{n}{e}\PYG{p}{,} \PYG{n}{f}\PYG{p}{,} \PYG{n}{g}\PYG{p}{)}
+\end{Verbatim}

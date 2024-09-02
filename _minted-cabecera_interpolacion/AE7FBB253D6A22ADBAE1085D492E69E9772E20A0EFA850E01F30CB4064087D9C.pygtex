@@ -1,0 +1,60 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Sun Aug  4 16:00:12 2024}
+\PYG{l+s+sd}{Example of least squares fit using the numpy.polynomial class Polynomial}
+\PYG{l+s+sd}{@author: abierto}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{numpy.polynomial} \PYG{k+kn}{import} \PYG{n}{Polynomial} \PYG{k}{as} \PYG{n}{py}
+\PYG{k+kn}{from} \PYG{n+nn}{matplotlib} \PYG{k+kn}{import} \PYG{n}{pyplot} \PYG{k}{as} \PYG{n}{pl}
+\PYG{c+c1}{\PYGZsh{}we import the function included above to compare the result}
+\PYG{c+c1}{\PYGZsh{}with the numpy.polynomial function}
+\PYG{k+kn}{from} \PYG{n+nn}{minimos\PYGZus{}cuadrados} \PYG{k+kn}{import} \PYG{n}{lse}
+ 
+\PYG{c+c1}{\PYGZsh{}define a data set to play with}
+\PYG{n}{x} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([} \PYG{l+m+mf}{1.}\PYG{p}{,}  \PYG{l+m+mf}{2.}\PYG{p}{,}  \PYG{l+m+mf}{3.}\PYG{p}{,}  \PYG{l+m+mf}{4.}\PYG{p}{,}  \PYG{l+m+mf}{5.}\PYG{p}{,}  \PYG{l+m+mf}{6.}\PYG{p}{,}  \PYG{l+m+mf}{7.}\PYG{p}{,}  \PYG{l+m+mf}{8.}\PYG{p}{,}  \PYG{l+m+mf}{9.}\PYG{p}{,} \PYG{l+m+mf}{10.}\PYG{p}{])}
+\PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.8143451}\PYG{p}{,} \PYG{l+m+mf}{20.914356}\PYG{p}{,} \PYG{l+m+mf}{26.714303}\PYG{p}{,} \PYG{l+m+mf}{61.129501}\PYG{p}{,}\PYGZbs{}
+              \PYG{l+m+mf}{350.414728}\PYG{p}{,} \PYG{l+m+mf}{123.00032}\PYG{p}{,} \PYG{l+m+mf}{167.06809}\PYG{p}{,} \PYG{l+m+mf}{212.97832}\PYG{p}{,}\PYGZbs{}
+              \PYG{l+m+mf}{258.67911}\PYG{p}{,} \PYG{l+m+mf}{320.53422}\PYG{p}{])}
+    
+\PYG{n}{p3} \PYG{o}{=} \PYG{n}{py}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}we are not including weight}
+\PYG{c+c1}{\PYGZsh{}we get the polynomial coefficients just to see them}
+\PYG{n}{a} \PYG{o}{=} \PYG{n}{p3}\PYG{o}{.}\PYG{n}{convert}\PYG{p}{()}\PYG{o}{.}\PYG{n}{coef}
+
+\PYG{c+c1}{\PYGZsh{}a set of point to evaluate the polynomial}
+\PYG{n}{xi} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mf}{1.}\PYG{p}{,}\PYG{l+m+mf}{10.}\PYG{p}{,}\PYG{l+m+mf}{0.01}\PYG{p}{)}
+
+\PYG{n}{yi} \PYG{o}{=} \PYG{n}{p3}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}point y[4] (see graphics bellow) apears to be an outlayer we can}
+\PYG{c+c1}{\PYGZsh{}use weights to atenuate its influence}
+\PYG{n}{w} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{ones}\PYG{p}{(}\PYG{n}{x}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+\PYG{n}{w}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mf}{0.5} \PYG{c+c1}{\PYGZsh{}we reduce the weight of the outlayer}
+\PYG{n}{p3w} \PYG{o}{=} \PYG{n}{py}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{n}{w}\PYG{o}{=}\PYG{n}{w}\PYG{p}{)}
+\PYG{n}{yiw} \PYG{o}{=} \PYG{n}{p3w}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{}we repeate the calculation using our own funtion lse }
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{n}{an} \PYG{o}{=} \PYG{n}{lse}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{p} \PYG{o}{=} \PYG{n}{py}\PYG{p}{(}\PYG{n}{an}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}we create a polynomial object using the coeficients}
+\PYG{n}{yin} \PYG{o}{=} \PYG{n}{p}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}repeat the computing using the weight}
+\PYG{n}{aw} \PYG{o}{=} \PYG{n}{lse}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{n}{w}\PYG{p}{)}
+\PYG{n}{pw} \PYG{o}{=} \PYG{n}{py}\PYG{p}{(}\PYG{n}{aw}\PYG{p}{)}
+\PYG{n}{yinw} \PYG{o}{=} \PYG{n}{pw}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}drawing the results to compare}
+\PYG{n}{ax1} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{subplot}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}o\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{,}\PYG{n}{yi}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{,}\PYG{n}{yiw}\PYG{p}{)}
+\PYG{n}{ax1}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{([}\PYG{l+s+s1}{\PYGZsq{}Data\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}Polynomial.fit\PYGZsq{}}\PYG{p}{,}\PYGZbs{}
+            \PYG{l+s+s1}{\PYGZsq{}Polynomial.fit (weights)\PYGZsq{}}\PYG{p}{])}
+\PYG{n}{ax2} \PYG{o}{=} \PYG{n}{pl}\PYG{o}{.}\PYG{n}{subplot}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}o\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{,}\PYG{n}{yin}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{xi}\PYG{p}{,}\PYG{n}{yinw}\PYG{p}{)}
+\PYG{n}{ax2}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{([}\PYG{l+s+s1}{\PYGZsq{}Data\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}lse\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}lse (weights)\PYGZsq{}}\PYG{p}{])}
+\end{Verbatim}

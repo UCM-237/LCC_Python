@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{x=np.arange(0,4)}
+
+\PYG{g+go}{x}
+\PYG{g+go}{Out[23]: array([0, 1, 2, 3])}
+
+\PYG{g+go}{y=np.arange(0,4)}
+
+\PYG{g+go}{y}
+\PYG{g+go}{Out[25]: array([0, 1, 2, 3])}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{primero} \PYG{k+kn}{import} \PYG{n}{x}
+\end{Verbatim}

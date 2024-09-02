@@ -1,0 +1,161 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Thu Aug  8 19:41:24 2024}
+\PYG{l+s+sd}{This module defines a functions to generate Bezier Polynomials}
+\PYG{l+s+sd}{bezier returns the value of the curve as a function of t}
+\PYG{l+s+sd}{bezier\PYGZus{}rc uses function bezier to obtain the values of the curve}
+\PYG{l+s+sd}{y an array of point a draw the result}
+\PYG{l+s+sd}{@author: abierto}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{pl}
+    
+
+\PYG{k}{def} \PYG{n+nf}{bezier}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{n}{t}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Calculates de value of a bezier curve with control points}
+\PYG{l+s+sd}{    in the array p at value t}
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    p : TYPE numpy array}
+\PYG{l+s+sd}{        DESCRIPTION. Numpy array of dimension 2Xn where n is the}
+\PYG{l+s+sd}{        number of control points. first row contains x coordinate }
+\PYG{l+s+sd}{        and second row contain y coordinate, the curve pass through}
+\PYG{l+s+sd}{        the first a last control points}
+\PYG{l+s+sd}{    t : TYPE }
+\PYG{l+s+sd}{        DESCRIPTION. Berstein\PYGZsq{}s polynomial parameter t belongs }
+\PYG{l+s+sd}{        to [0,1]}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    ber : TYPE np.array }
+\PYG{l+s+sd}{          DESCRIPTION. ber[0] x coordinate of the bezier\PYGZsq{}s curve }
+\PYG{l+s+sd}{          at t. ber[1] y coordinate of the bezier\PYGZsq{}s curve at t}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{n} \PYG{o}{=} \PYG{n}{p}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
+    \PYG{n}{num} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{o}{.}\PYG{n}{prod}\PYG{p}{()}
+    \PYG{c+c1}{\PYGZsh{}we firt calculate all factorial needed}
+    \PYG{n}{ftal} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mf}{1.}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{o}{.}\PYG{n}{cumprod}\PYG{p}{(),}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{n}{ber} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+        \PYG{n}{f} \PYG{o}{=} \PYG{n}{num}\PYG{o}{/}\PYG{n}{ftal}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{/}\PYG{n}{ftal}\PYG{p}{[}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{n}{i}\PYG{p}{]}
+        \PYG{n}{ber} \PYG{o}{=} \PYG{n}{ber} \PYG{o}{+} \PYG{n}{f}\PYG{o}{*}\PYG{n}{p}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{]}\PYG{o}{*}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{n}{t}\PYG{p}{)}\PYG{o}{**}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{n}{i}\PYG{p}{)}\PYG{o}{*}\PYG{n}{t}\PYG{o}{**}\PYG{n}{i}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{ber}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{bezier\PYGZus{}sc}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{n}{t}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    This function use funtion bezier to reproduce the bezier curve}
+\PYG{l+s+sd}{    with control point containing in p. }
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    p : TYPE numpy array}
+\PYG{l+s+sd}{        DESCRIPTION. Numpy array of dimension 2Xn where n is the}
+\PYG{l+s+sd}{        number of control points. first row contains x coordinate }
+\PYG{l+s+sd}{        and second row contain y coordinate, the curve pass through}
+\PYG{l+s+sd}{        the first a last control points}
+\PYG{l+s+sd}{    t : TYPE numpy array }
+\PYG{l+s+sd}{        DESCRIPTION. It should be an array of ordered values for}
+\PYG{l+s+sd}{        parameter t. To reproduce de whole Bezier\PYGZsq{}s curve use}
+\PYG{l+s+sd}{        t = numpy.arange(0,1+step,step) the smaller step the smoother}
+\PYG{l+s+sd}{        the result}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    pt : TYPE numpy array}
+\PYG{l+s+sd}{         DESCRIPTION. a 2xm array with m the number of data in t}
+\PYG{l+s+sd}{         first row containts the x coordinates at the values of t}
+\PYG{l+s+sd}{         and second row the y coordinates at the values of t}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{pt} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([}\PYG{n}{bezier}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{t}\PYG{p}{])}\PYG{o}{.}\PYG{n}{T}
+    \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{p}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{l+s+s1}{\PYGZsq{}or\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{p}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}.\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{pt}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{pt}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{pt}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{bzeq}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{n}{n}\PYG{p}{,}\PYG{n}{step}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Computes Bezier\PYGZsq{}s curves of higher degree, equivalent to a}
+\PYG{l+s+sd}{    given Bezier\PYGZsq{}s curve}
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    p : TYPE numpy array}
+\PYG{l+s+sd}{        DESCRIPTION. 2xn array containing the control points of}
+\PYG{l+s+sd}{        the Bezier\PYGZsq{}s curve to be derivate. (each column a point) }
+\PYG{l+s+sd}{    n : TYPE integer }
+\PYG{l+s+sd}{        DESCRIPTION. Degree of the equivalent Bezier\PYGZsq{}s, it should}
+\PYG{l+s+sd}{        be greater than the number of points in p.}
+\PYG{l+s+sd}{    step : TYPE double}
+\PYG{l+s+sd}{        DESCRIPTION. a step to generate an ordered,  array which}
+\PYG{l+s+sd}{        equispaciate values in [0,1]. }
+
+\PYG{l+s+sd}{    Returns }
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    p : TYPE numpy array}
+\PYG{l+s+sd}{        DESCRIPTION. 2x(n\PYGZhy{}1) array containing the control points}
+\PYG{l+s+sd}{        of the equivalent Bezier\PYGZsq{}s curve}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{c} \PYG{o}{=} \PYG{n}{p}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
+    \PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{o}{+}\PYG{n}{step}\PYG{p}{,}\PYG{n}{step}\PYG{p}{)}
+    \PYG{n}{bezier\PYGZus{}sc}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,} \PYG{n}{t}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}draw the Bz curve}
+    \PYG{k}{if} \PYG{n}{c} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{}adding one more control point and recalculating}
+        \PYG{c+c1}{\PYGZsh{} the control points}
+        \PYG{n}{p} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,[[}\PYG{l+m+mi}{0}\PYG{p}{],[}\PYG{l+m+mi}{0}\PYG{p}{]],}\PYG{n}{axis}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{n}{pp} \PYG{o}{=}\PYG{n}{p}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{c}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{):}
+            \PYG{n}{pp}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{p}\PYG{p}{[:,}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{*}\PYG{n}{i}\PYG{o}{/}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)} \PYG{o}{+} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}}\PYG{n}{i}\PYG{o}{/}\PYG{p}{(}\PYG{n}{c}\PYG{p}{))}\PYG{o}{*}\PYG{n}{p}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{]}
+        \PYG{c+c1}{\PYGZsh{}the function calls itself till the number of points}
+        \PYG{c+c1}{\PYGZsh{}equals n}
+        \PYG{n}{p} \PYG{o}{=} \PYG{n}{bzeq}\PYG{p}{(}\PYG{n}{pp}\PYG{p}{,}\PYG{n}{n}\PYG{p}{,}\PYG{n}{step}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} and it returns the control points. In the meanwhile it}
+    \PYG{c+c1}{\PYGZsh{}has drawn all the equivalent curves with degrees between}
+    \PYG{c+c1}{\PYGZsh{} c and n    }
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{dbez}\PYG{p}{(}\PYG{n}{p}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Compute a Bezier\PYGZsq{}s . Curve derivative, defined by control }
+\PYG{l+s+sd}{    points in p. It also draw de odograph and the derivatives}
+\PYG{l+s+sd}{    at some selected points and the Bezier\PYGZsq{}s curve and}
+\PYG{l+s+sd}{    the derivative, as tangents vector, as some selected points.}
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    p : TYPE numpy array}
+\PYG{l+s+sd}{        DESCRIPTION. Control points of the Bezier\PYGZsq{}s curve we }
+\PYG{l+s+sd}{        wanna derivate.}
+
+\PYG{l+s+sd}{    Returns }
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    d : TYPE numpy array}
+\PYG{l+s+sd}{        DESCRIPTION. Controls points of the derivative. }
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{grado} \PYG{o}{=} \PYG{n}{p}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+    \PYG{n}{d} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{grado}\PYG{p}{])}
+    \PYG{c+c1}{\PYGZsh{}compute the control points of the derivativa}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{grado}\PYG{p}{):}
+        \PYG{n}{d}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{grado}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{p}\PYG{p}{[:,}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{])}
+    \PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{o}{+}\PYG{l+m+mf}{0.01}\PYG{p}{,}\PYG{l+m+mf}{0.01}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{}plot de odograph }
+    \PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{n}{v} \PYG{o}{=} \PYG{n}{bezier\PYGZus{}sc}\PYG{p}{(}\PYG{n}{d}\PYG{p}{,} \PYG{n}{t}\PYG{p}{)}    
+    \PYG{n}{pl}\PYG{o}{.}\PYG{n}{quiver}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{),}\PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{),}\PYGZbs{}
+              \PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,::}\PYG{l+m+mi}{9}\PYG{p}{],}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,::}\PYG{l+m+mi}{9}\PYG{p}{],}\PYGZbs{}
+              \PYG{n}{angles}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}xy\PYGZsq{}}\PYG{p}{,} \PYG{n}{scale\PYGZus{}units}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}xy\PYGZsq{}}\PYG{p}{,} \PYG{n}{scale}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+    
+    \PYG{c+c1}{\PYGZsh{}plot the curve and its derivative. (the escale of the }
+    \PYG{c+c1}{\PYGZsh{}vector is arbitrary)}
+    \PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}
+    \PYG{n}{ptos} \PYG{o}{=} \PYG{n}{bezier\PYGZus{}sc}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}
+    \PYG{n}{pl}\PYG{o}{.}\PYG{n}{quiver}\PYG{p}{(}\PYG{n}{ptos}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,::}\PYG{l+m+mi}{9}\PYG{p}{],}\PYG{n}{ptos}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,::}\PYG{l+m+mi}{9}\PYG{p}{],}\PYGZbs{}
+              \PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,::}\PYG{l+m+mi}{9}\PYG{p}{],}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,::}\PYG{l+m+mi}{9}\PYG{p}{])}
+    \PYG{n}{pl}\PYG{o}{.}\PYG{n}{axis}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}equal\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{d}\PYG{p}{)}        
+\end{Verbatim}

@@ -1,0 +1,70 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python3}
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Wed Jul 24 15:22:01 2024}
+\PYG{l+s+sd}{This file define two funtion. one to calculate the divided differences }
+\PYG{l+s+sd}{polynomial coefficients and the second one to evaluate the divided differences}
+\PYG{l+s+sd}{polynomial any point}
+\PYG{l+s+sd}{@author: juan}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{pl}
+\PYG{k}{def} \PYG{n+nf}{difdiv}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    This functions computes the coefficient of a the divided differences }
+\PYG{l+s+sd}{    polynomial using thw data arrays x,y }
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    x : TYPE double}
+\PYG{l+s+sd}{        DESCRIPTION. numpy array with data x}
+\PYG{l+s+sd}{    y : TYPE double}
+\PYG{l+s+sd}{        DESCRIPTION. numpy array with data y}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    a : TYPE double}
+\PYG{l+s+sd}{        DESCRIPTION: coefficientes of the polynomial}
+\PYG{l+s+sd}{        p\PYGZus{}n(x)=a\PYGZus{}0+(x\PYGZhy{}x\PYGZus{}0)a\PYGZus{}1+(x\PYGZhy{}x\PYGZus{}0)(x\PYGZhy{}x\PYGZus{}1)a\PYGZus{}2+...}
+\PYG{l+s+sd}{        ...+(x\PYGZhy{}x\PYGZus{}0)(x\PYGZhy{}x\PYGZus{}1)...(x\PYGZhy{}x\PYGZus{}\PYGZob{}n\PYGZhy{}2\PYGZcb{})(x\PYGZhy{}x\PYGZus{}\PYGZob{}n\PYGZhy{}1\PYGZcb{})a\PYGZus{}n}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{n} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{}number of data}
+    \PYG{c+c1}{\PYGZsh{}we use the y variable to inisialise the vector of coefficients}
+    \PYG{n}{a} \PYG{o}{=} \PYG{n}{y}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()} \PYG{c+c1}{\PYGZsh{}warning I need to copy to avoid overwrite the values of y}
+    \PYG{c+c1}{\PYGZsh{}we must compute n differences }
+    \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{):} \PYG{c+c1}{\PYGZsh{}start in 1 we alredy have the order zero differences    }
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,}\PYG{n}{n}\PYG{p}{):}
+            \PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{y}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}\PYG{o}{/}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{n}{j}\PYG{p}{])}
+        \PYG{n}{y} \PYG{o}{=} \PYG{n}{a}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{evdif}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{xi}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Evaluates the divided diferences polynomial from points x and coefficients}
+\PYG{l+s+sd}{    y. }
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    y : TYPE double}
+\PYG{l+s+sd}{        DESCRIPTION. numpu arrray with divided differences polynomial coefficients}
+\PYG{l+s+sd}{    x : TYPE double}
+\PYG{l+s+sd}{        DESCRIPTION. numpy array with x data from the table to be interpolated}
+\PYG{l+s+sd}{    xi : TYPE double}
+\PYG{l+s+sd}{        DESCRIPTION. point to calculate the polynomial at. It can be also an array}
+
+\PYG{l+s+sd}{    Returns }
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    y1: TYPE: double}
+\PYG{l+s+sd}{        DESCRIPTION: computed value of the polynomial at x1}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{n} \PYG{o}{=} \PYG{n}{a}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+    \PYG{n}{yi} \PYG{o}{=} \PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{}copy the first coefficient into the result }
+    \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{}product of binomials to be multiplied for the coefficients}
+        \PYG{n}{binprod} \PYG{o}{=} \PYG{l+m+mi}{1}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{k}\PYG{p}{):}
+            \PYG{n}{binprod} \PYG{o}{=} \PYG{n}{binprod}\PYG{o}{*}\PYG{p}{(}\PYG{n}{xi}\PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])}
+        \PYG{n}{yi} \PYG{o}{=} \PYG{n}{yi} \PYG{o}{+}\PYG{n}{a}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}\PYG{o}{*}\PYG{n}{binprod}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{yi}\PYG{p}{)}
+\end{Verbatim}

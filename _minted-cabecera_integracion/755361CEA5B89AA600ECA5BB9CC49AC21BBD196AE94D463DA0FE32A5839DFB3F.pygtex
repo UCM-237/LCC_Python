@@ -1,0 +1,58 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Fri Aug 23 16:10:09 2024}
+\PYG{l+s+sd}{The Runge\PYGZhy{}Kutta midpoint method}
+\PYG{l+s+sd}{@author: abierto}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{pl}
+\PYG{k}{def} \PYG{n+nf}{pmedio}\PYG{p}{(}\PYG{n}{fun}\PYG{p}{,}\PYG{n}{xa}\PYG{p}{,}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{h}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    This funtion implements the second\PYGZhy{}order Runge\PYGZhy{}Kutta method}
+\PYG{l+s+sd}{    better known as the midpoint method}
+
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    fin : TYPE function}
+\PYG{l+s+sd}{        DESCRIPTION. a funtion describing the initial value problem}
+\PYG{l+s+sd}{        derivative to be integrate}
+\PYG{l+s+sd}{    xa : TYPE numpy array}
+\PYG{l+s+sd}{        DESCRIPTION. initial condition}
+\PYG{l+s+sd}{    a : TYPE double}
+\PYG{l+s+sd}{        DESCRIPTION. initial integratio point}
+\PYG{l+s+sd}{    b : TYPE double }
+\PYG{l+s+sd}{        DESCRIPTION. final integration point}
+\PYG{l+s+sd}{    h : TYPE double}
+\PYG{l+s+sd}{        DESCRIPTION. integration step}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    x: TYPE numpy array }
+\PYG{l+s+sd}{       DESCRIPTION. solutions at points a, a+h, a+2h etc}
+\PYG{l+s+sd}{    t. TYPE numpy array}
+\PYG{l+s+sd}{       DESCRIPTION. times x has been computed at }
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{k}{if} \PYG{n}{a} \PYG{o}{\PYGZgt{}=} \PYG{n}{b}\PYG{p}{:}
+        \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}I need an increasing interval\PYGZsq{}}\PYG{p}{)}
+    
+    \PYG{c+c1}{\PYGZsh{}to arrive to the final condition, we modify slighly the}
+    \PYG{c+c1}{\PYGZsh{}integration step. First we calculate the aproximate number}
+    \PYG{c+c1}{\PYGZsh{}of intervals between a and b of size h and round it towards}
+    \PYG{c+c1}{\PYGZsh{}infinite.}
+    \PYG{n}{pt} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{ceil}\PYG{p}{((}\PYG{n}{b}\PYG{o}{\PYGZhy{}}\PYG{n}{a}\PYG{p}{)}\PYG{o}{/}\PYG{n}{h}\PYG{p}{))}
+    \PYG{c+c1}{\PYGZsh{}then, we modify the integration step to acomodate at }
+    \PYG{c+c1}{\PYGZsh{}the rounded number of interval. This is, of course, not}
+    \PYG{c+c1}{\PYGZsh{}necessary to implement the method, there are other}
+    \PYG{c+c1}{\PYGZsh{}posibilities to deal with the integration step and}
+    \PYG{c+c1}{\PYGZsh{}the limit b}
+    \PYG{n}{hft} \PYG{o}{=} \PYG{p}{(}\PYG{n}{b}\PYG{o}{\PYGZhy{}}\PYG{n}{a}\PYG{p}{)}\PYG{o}{/}\PYG{n}{pt}
+    \PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{o}{+}\PYG{n}{hft}\PYG{p}{,}\PYG{n}{hft}\PYG{p}{)}
+    \PYG{n}{x} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{n}{xa}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{pt}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{])}
+    \PYG{n}{x}\PYG{p}{[:,}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{xa}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{pt}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{):}
+        \PYG{n}{x}\PYG{p}{[:,}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{x}\PYG{p}{[:,}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{hft}\PYG{o}{*}\PYG{n}{fun}\PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{+}\PYG{n}{hft}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{x}\PYG{p}{[:,}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYGZbs{}
+                 \PYG{o}{+}\PYG{n}{hft}\PYG{o}{*}\PYG{n}{fun}\PYG{p}{(}\PYG{n}{t}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{x}\PYG{p}{[:,}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)}
+    \PYG{n}{pl}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{x}\PYG{o}{.}\PYG{n}{T}\PYG{p}{)}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{x}\PYG{p}{)}
+\end{Verbatim}
