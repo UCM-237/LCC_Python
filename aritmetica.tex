@@ -1586,7 +1586,7 @@ baselinestretch=1.2,
 label=norm\_naive.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/aritmetica_del_computador/codigo_abierto/norm_naive.py}
+]{python}{./codigos/aritmetica_del_computador/norm_naive.py}
 \begin{paracol}{2}
 \mintinline{python}{norm_naive} provocará un error de desbordamiento incluso para n=1, si introducimos un número cuyo cuadrado sea mayor que el mayor número representable. Si
  introducimos el número, $ 2^{1024/2} =1.340780792994260e+154$ en nuestro programa, Python devolverá como solución \emph{inf}.
@@ -1601,7 +1601,7 @@ linenos
 In [77]: x= np.array([2**(1024/2)])
 		
 In [78]: m = norma(x)
-/home/juan/LCC_Python/codigos/aritmetica_del_computador/codigo_abierto/norm_naive.py:28:
+/home/juan/LCC_Python/codigos/aritmetica_del_computador/norm_naive.py:28:
 RuntimeWarning: overflow encountered in scalar power
 m = m +e**2
 		
@@ -1649,7 +1649,7 @@ array([0.00000000e+000, 0.00000000e+000, 0.00000000e+000, 0.00000000e+000,
 0.00000000e+000, 1.34078079e+154, 1.34078079e+154])
 
 In [111]: m = norma_naive(x)
-/home/juan/LCC_Python/codigos/aritmetica_del_computador/codigo_abierto/norm_naive.py:28:
+/home/juan/LCC_Python/codigos/aritmetica_del_computador/norm_naive.py:28:
 RuntimeWarning: overflow encountered in scalar power
 m = m +e**2
 

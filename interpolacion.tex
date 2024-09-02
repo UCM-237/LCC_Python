@@ -129,7 +129,7 @@ baselinestretch=1.2,
 label=series\_de\_taylor.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/interpolacion/codigo_abierto/series_de_taylor.py}
+]{python}{./codigos/interpolacion/series_de_taylor.py}
 
 \begin{paracol}{2}
 La aproximación funciona razonablemente bien para puntos comprendidos en el intervalo $0<x<2$. La figura \ref{fig:ln} muestra los resultados obtenidos en dicho intervalo para polinomios de Taylor del logaritmo natural de grados 2, 5, 10 20. La linea continua azul representa el valor del logaritmo obtenido con la función de Numpy \mintinline{python}{log}.
@@ -355,7 +355,7 @@ baselinestretch=1.2,
 label=lgr\_pol.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/interpolacion/codigo_abierto/lgr_pol.py}
+]{python}{./codigos/interpolacion/lgr_pol.py}
 
 \begin{paracol}{2}
 \subsection{Diferencias divididas.}\label{sec:difdiv} \index{Interpolación! Diferencias Divididas} \index{Diferencias Divididas}
@@ -485,7 +485,7 @@ baselinestretch=1.2,
 label=dif\_div.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/interpolacion/codigo_abierto/dif_div.py}
+]{python}{./codigos/interpolacion/dif_div.py}
 \begin{paracol}{2} 
  \subsection{El polinomio de Newton-Gregory} \label{sec:newgre} \index{Interpolación!Polinomio de Newton-Gregory} \index{Polinomio de Newton-Gregory}
  Supone una simplificación al cálculo del polinomio de diferencias divididas para el caso particular en que los datos se encuentran equiespaciados y dispuestos en orden creciente con respecto a los valores de la coordenada $x$.
@@ -603,7 +603,7 @@ baselinestretch=1.2,
 label=newton\_gregory.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/interpolacion/codigo_abierto/newton_gregory.py}
+]{python}{./codigos/interpolacion/newton_gregory.py}
 
 
 \begin{figure}[h]
@@ -895,7 +895,7 @@ baselinestretch=1.2,
 label=cubic\_spline.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/interpolacion/codigo_abierto/cubic_spline.py}
+]{python}{./codigos/interpolacion/cubic_spline.py}
 
 \begin{paracol}{2}
  La figura, \ref{fig:splines} muestra el resultado de interpolar mediante un spline cúbico, los datos contenidos en la figura \ref{fig:intepol}. Es fácil observar cómo ahora los polinomios de interpolación dan como resultado una curva suave en los datos interpolados y en la que además las curvas son también suaves, sin presentar variaciones extrañas, para los puntos contenidos en cada intervalo entre dos datos.
@@ -947,7 +947,7 @@ baselinestretch=1.2,
 label=ejemplo\_interp1d.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/interpolacion/codigo_abierto/ejemplo_interp1d.py}
+]{python}{./codigos/interpolacion/ejemplo_interp1d.py}
 
 
 
@@ -1152,7 +1152,7 @@ baselinestretch=1.2,
 label=minimos\_cuadrados.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/interpolacion/codigo_abierto/minimos_cuadrados.py}
+]{python}{./codigos/interpolacion/minimos_cuadrados.py}
 
 
 \begin{paracol}{2}
@@ -1180,7 +1180,7 @@ baselinestretch=1.2,
 label=ejemplo\_ajuste.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/interpolacion/codigo_abierto/ejemplo_ajuste.py}
+]{python}{./codigos/interpolacion/ejemplo_ajuste.py}
 
 \begin{paracol}{2}
 Vamos a revisar algunos puntos importantes de este código. en la línea 8, importamos el objeto \mintinline{python}{Polynomial}. Lo hacemos siguiendo el mismo método con que habríamos importado un submódulo cualquiera de \mintinline{python}{numpy}. Le asignamos el alias \mintinline{python}{py}.
@@ -1383,7 +1383,7 @@ baselinestretch=1.2,
 label=bezier.py,
 fontsize=\footnotesize,
 linenos
-]{python}{./codigos/interpolacion/codigo_abierto/bezier.py}
+]{python}{./codigos/interpolacion/bezier.py}
 
 \begin{paracol}{2}
 \paragraph{Curvas equivalentes de grado superior.} Dada una curva de Bézier, representada por un polinomio de Bernstein de grado $n$, es posible encontrar polinomios de grado superior que representan la misma curva de Bézier. Lógicamente esto supone un aumento del número de puntos de control.
