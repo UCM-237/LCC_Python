@@ -768,7 +768,7 @@ We can represent the surface using the \textit{wireframe} method or the \textit{
 
 \end{paracol}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \subfigure[Función $z=x^3+y^2$ representada con \texttt{wireframe}\label{fig:wireframe}]{\includegraphics[width=8cm]{figuras/wireframe.png}} %\qquad 
 \subfigure[Función $z=x^3+y^2$ representada con \texttt{surf} \label{fig:surface}]{\includegraphics[width=8cm]{figuras/surface.png}}\\
@@ -846,9 +846,70 @@ Matplotlib también proporciona una interfaz para generar animaciones utilizando
         \end{minted}
         
 \newpage
-===============================================\\
-he traído aquí el examen, porque aquí acababa antes el primer tema de programación\\
-=================================================
+
+\section{Ejercicios}
+\begin{enumerate}
+    \item 1. Escribe una función que muestre paso a paso en una figura la trayectoria del tiro parabólico para $v_0=40$ (m/s) $\theta=45 $ grados  y para $v_0=60$ (m/s) $\theta=60 $ grados. En cada instante se mostrará con un círculo rojo la posición (x, y). 
+\begin{align*}
+    x&=v_0 \cdot \cos(\theta) \cdot t \\
+    y&=v_0 \cdot \sin(\theta) \cdot t -\frac{1}{2}\cdot g \cdot t^2
+\end{align*}
+Añade el nombre de cada eje y el título de la figura.
+
+\item Usa únicamente una sola figura para representar en diferentes paneles las siguientes funciones. 
+\begin{itemize}
+    \item $y=e^{-x^2}$ en el intervalo $[-2,2]$ empleando $100$ datos equiespaciados
+    \item $y=e^{-((\frac{x}{2})^2))}$
+    \item $y=e^{-((2x)^2)}$
+    \item La función $y=e^{-((2x)^2)}$ pero en escala logarítmica
+\end{itemize}
+
+\item Crear una función dibujatriangul que tenga como argumento de entrada los 3 vértices de un triángulo y devuelva una figura con el triángulo dibujado.
+\item Crea una función \emph{dibujaMUC} que dibuje la trayectoria circular de una partícula conociendo su velocidad angular $\omega$ y el radio de giro $r$. 
+Las ecuaciones cartesianas son:
+\begin{align*}
+    x&=r\cos(\omega \cdot t)\\
+    y&=r\sin (\omega \cdot t)
+\end{align*}
+\begin{itemize}
+    \item Añadir a la trayectoria en cada punto el vector velocidad con el comando quiver mediante las ecuaciones de la velocidad:
+    \begin{align*}
+        v_x&=-r\cdot \omega \cdot \sin(\omega \cdot t)\\
+        v_x&=r\cdot \omega \cdot \cos(\omega \cdot t)
+    \end{align*}
+\end{itemize}
+
+\item Crea una función que tenga como parámetros de entrada el radio $r$ y
+la velocidad angular $\omega$ y dibuje la trayectoria en 3 dimensiones de una partícula que describe un MCU en el plano XY moviéndose en el eje z con una velocidad constante $v_z$.
+
+\item Crea una función que represente el tiro parabólico en 3D sabiendo
+que la función tiene como entrada los ángulos $\psi$ y $\theta$ , de acuerdo con las siguientes expresiones:
+\begin{align*}
+    x&=v_0 \cdot \cos(\psi)\cdot \cos(\theta) \cdot t \\
+    y&=v_0 \cdot \sin(\psi)\cdot \cos(\theta) \cdot t  \\
+    z&=v_0 \cdot \sin(\theta) \cdot t- \frac{1}{2} \cdot g \cdot t^2
+\end{align*}
+
+\item Usando el Comando meshgrid, crea una retícula cuadrada en el intervalo $x = [-1 1]$ e  $y = [-2 2]$ emplea para ello un paso de malla de valor $0.1$. Crea una matriz de ceros del tamaño de las matrices que definen la retícula. Representa, empleando el comando mesh, la matriz de ceros
+creada sobre la retícula. Representa gráficamente la superficie $z = e^{-(x^2+y^2)}$. 
+
+\item Genera $1000$ números aleatorios distribuidos normalmente (usa para ello la función \emph{np.random.randn}. Usa la función \emph{plt.hist} para dibujar el histograma de los números aleatorios generados. 
+\begin{itemize}
+    \item Sepáralos en $10$ contenedores.
+    \item Crea un diagrama de barras de los datos del apartado anterior usando  \emph{plt.bar}.
+    \item ¿Crees que la función \emph{np.random.randn} es una buena aproximación de una distribución normal?
+\end{itemize}
+
+\item  Crea una función \emph{my\_poly\_plot(n,x)} que dibuje los polinomios $p(x)=x^k$ para $k=1,...,n$.
+
+\item Supón que tienes tres puntos que forman las esquinas de un triángulo equilátero $P_1=(0,0)$, $P_2=(0.5,\frac{\sqrt{2}}{2})$ y $P_3=(1,0)$. Crea una función que:
+\begin{itemize}
+    \item Genere un conjunto de $n$ puntos $p_i=(x_i,y_i)$ tales que $p_1=(0,0)$ y $p_{i+1}$  es el punto medio entre $p_i$ y $P_1$ con un $33\%$ de probabilidad, el punto medio entre  $p_i$ y $P_2$ con un $33\%$ de probabilidad y  el punto medio entre $p_i$ y $P_3$ con un $33\%$ de probabilidad.
+    \item Dibuje los puntos obtenidos en el plano.
+    \item Prueba la función para $n=100$ y  $n=1000$ puntos.
+\end{itemize}
+
+\end{enumerate}
 \section{Test del curso 2020/21}
 \begin{enumerate}
 
@@ -878,7 +939,7 @@ donde $x,y,z$ representan las coordenadas del cuerpo en el instante de tiempo $t
 	\item El resultado deberá también representarse gráficamente, pero solo en dos dimensiones, y devolver la variable $z$ como un vector vacío. 
 	\end{enumerate}
 
-\item \label{ap2} (\textbf{1.5 puntos}) Crea un un \emph{live script} que genere dos  vectores de frecuencias: \texttt{W1} y \texttt{W2} de  modo que el primero contenga los números impares comprendidos entre $1$ y $7$ y el segundo los números pares comprendidos entres $2$ y $8$.  Emplea la función creada en el apartado anterior para calcular el valor de las trayectorias obtenidas tomando como entradas para  $\omega_1, \omega_2$,  todos los pares posibles de la forma: \texttt{W1(i)} y \texttt{W2(j)}. Supón que no hay tercera entrada $a$. Realiza los cálculos empleando bucles.
+\item \label{ap2} (\textbf{1.5 puntos}) Genera dos  vectores de frecuencias: \texttt{W1} y \texttt{W2} de  modo que el primero contenga los números impares comprendidos entre $1$ y $7$ y el segundo los números pares comprendidos entres $2$ y $8$.  Emplea la función creada en el apartado anterior para calcular el valor de las trayectorias obtenidas tomando como entradas para  $\omega_1, \omega_2$,  todos los pares posibles de la forma: \texttt{W1(i)} y \texttt{W2(j)}. Supón que no hay tercera entrada $a$. Realiza los cálculos empleando bucles.
 
 \item (\textbf{1 punto}) Añade a tu programa el código necesario para que dibuje cada resultado en un \emph{subplot} de modo que la figura resultante tenga $4\times4$ \emph{subplots} (ver figura al dorso).  Debes crear los \emph{subplots} empleando los mismos bucles del apartados anterior. 
 

@@ -2489,7 +2489,7 @@ linenos
 ]{python}{./codigos/introduccion/primos.py}
 
 \begin{paracol}{2}
-\subsection{Exportar e importar datos en Python} \label{fpf}
+\section{Exportar e importar datos en Python} \label{fpf}
 Almacenar datos es importante para trabajar en varias sesiones y compartir resultados. Dado que cuando Python se cierra, todas las variables de la memoria se pierden, los datos deben almacenarse de alguna otra forma. A veces también es necesario leer datos que están almacenados en un archivo.
 \switchcolumn
 \subsection{Reading and writing data in Pyhton}\label{fpf_eng}
@@ -3049,9 +3049,14 @@ S_{imp} = \sum_{n=1}^{500}\frac{1}{2n-1} =\frac{1}{1}+\frac{1}{3}+\frac{1}{5}+\c
 Modifica tu programa, de modo que admita como variable de entrada un número $m\in\mathbb{N}$ y calcule el valor de la suma de los inversos de los impares menores o iguales que $m$.
 
 \item Los números de Fibonacci, $F(n)$ son una serie de números naturales. Los dos primeros valores de la serie son:  $F(1)=1$ y $F(2)=2$. Los demás términos se calculan como la suma de los dos anteriores: $F(n) = F(n-1) + F(n-2)$.
-Escribe un script que genere los primeros $m$ números de la serie de Fibonacci, almacenándolos en una lista \verb|F|. Emplea para el cálculo la estructura \verb|while|.
+Escribe un script que genere los primeros $m$ números de la serie de Fibonacci, almacenándolos en una lista \verb|F|. Emplea para el cálculo la estructura \verb|while|.\label{fibonacci}
 
 \item Escribe una función que admita como variable de entrada una lista y devuelva como variable de salida otra lista de igual tamaño con los elementos colocados en orden inverso a los de la lista original.
 
 ¿Sabrias hacerlo con una única línea de código? Pista: Usa \emph{List comprehesion}
+
+\item Modifica el programa del ejercicio \ref{fibonacci} para que guarde la lista con los números de Fibonacci creada en un archivo de texto.
+\begin{itemize}
+    \item Modifícala ahora para que los guarde en un archivo \emph{CSV}.
+\end{itemize}
 \end{enumerate}
