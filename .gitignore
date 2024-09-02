@@ -10,6 +10,7 @@ __pycache__
 *.log
 *.lot
 *.out
+/*.pdf
 *.toc
 *.gz
 
