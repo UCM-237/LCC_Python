@@ -908,7 +908,40 @@ creada sobre la retícula. Representa gráficamente la superficie $z = e^{-(x^2+
     \item Dibuje los puntos obtenidos en el plano.
     \item Prueba la función para $n=100$ y  $n=1000$ puntos.
 \end{itemize}
+\item El fichero de precipitaciones \textit{precip.dat} es un fichero de texto plano que contiene 14 columnas, la primera se corresponde con el campo \textbf{Año}, de la segunda a la decimotercera que contiene los datos de precipitación de cada mes (enero, febrero....noviembre, diciembre), la última columna contiene el campo \textbf{Precipitación Total Anual}. Las unidades de precipitación vienen dadas en mm/mes o mm/año, según el caso.
 
+En el fichero \textit{precip.dat} hay dos tipos de errores:
+\begin{itemize}
+    \item La precipitación de uno de los meses es muy superior a la precipitación total que debería corresponder a la suma de la precipitación mensual de ese año. Esto ocurre en dos años.
+    \item En otros cuatro años la suma total de la precipitación es diferente a la precipitación
+acumulada o total para ese año. A diferencia de lo que ocurría en el caso (a), la diferencia
+entre los valores de precipitación de los distintos meses no es muy grande. 
+\end{itemize}
+El objetivo de este ejercicio es identificar los meses (y los años) en los que se da alguno de
+estos dos errores y sustituirlo por el valor correcto. Para ello debes realizar las siguientes
+operaciones:
+\begin{enumerate}
+    \item Extrae las precipitaciones en cada uno de los meses. Asigna la información de la precipitación total anual en un array unidimensional y el resto de las
+precipitaciones a una variable matricial.
+    \item Dibuja en una gráfica la evolución de la precipitación anual del mes de enero en los
+diferentes años.
+    \item Dibuja en una única gráfica la evolución de la precipitación anual para cada uno de los meses, junto con el campo \textbf{Precipitación Total Anual}.
+    \item Crea un script que realice las siguientes operaciones:
+    \begin{enumerate}
+        \item Chequear, para cada año, si la columna de precipitación total corresponde a la suma total de las precipitaciones de los meses. Si no fuera así, el script debe identificar el tipo de error encontrado:
+        \begin{itemize}
+            \item Si la discrepancia entre la suma de todos los meses difiere mucho del dato de
+\textbf{Precipitación Total Anual} (error tipo (a)), se debe calcular el valor correcto de
+precipitación para ese mes, considerando que el dato de \textbf{Precipitación Total Anual}
+es correcto.
+            \item Si el dato de \textbf{Precipitación Total Anual} no difiere mucho de la suma de las precipitaciones mensuales (error tipo (b)), considera que el dato de precipitación total es erróneo y sustitúyelo por el valor de esta suma.
+
+        \end{itemize}
+\item El script debe incorporar la visualización por pantalla de lo siguiente: (1) año donde se ha detectado un error, (2) suma total mensual para ese año, (3) dato de precipitación total anual de ese año y (4) si el error es del tipo (a), el mes en el que se encuentra dicho error.
+
+\item Además, el script debe crear un fichero de texto en el que se guarden los datos iniciales con los errores corregidos.
+    \end{enumerate}
+\end{enumerate}
 \end{enumerate}
 \section{Test del curso 2020/21}
 \begin{enumerate}
