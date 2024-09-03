@@ -1752,12 +1752,12 @@ In our example,
 \end{equation*}
 
 \begin{paracol}{2}   
-Podemos aplicar directamente a la matriz ampliada $AM$ el programa de eliminación de Gauss, \texttt{eligauss} anterior \ref{elig}. Si aplicamos \texttt{eligauss} a la matriz ampliada del sistema del ejemplo. Para construir la matriz ampliada podemos usar el método \texttt{concatenate} de  \texttt{numpy} indicando que el  eje en el que deseamos concatenar $A$ y $b$ es el 1 (columnas): \mintinline{python}{AM=np.concatenate((A,b),axis=1}
+Podemos aplicar directamente a la matriz ampliada $AM$ el programa de eliminación de Gauss, \texttt{eligauss} anterior. Si aplicamos \\ \texttt{eligauss} a la matriz ampliada del sistema del ejemplo. Para construir la matriz ampliada podemos usar el método \texttt{concatenate} de  \texttt{numpy} indicando que el  eje en el que deseamos concatenar $A$ y $b$ es el 1 (columnas):\\ \mintinline{python}{AM=np.concatenate((A,b),axis=1}
 
 \switchcolumn
 
-We can apply directly to the extended matrix $AM$ the Gaussian elimination program, \texttt{eligauss} \ref{elig}. If we apply \texttt{eligauss} to the extended matrix of the system of the example. 
-To construct the extended matrix we can use the \texttt{concatenate} method of \texttt{numpy} indicating that the axis on which we want to concatenate $A$ and $b$ is 1 (columns): \mintinline{python}{AM=np.concatenate((A,b),axis=1}
+We can apply directly to the extended matrix $AM$ the Gaussian elimination program, \texttt{eligauss}. If we apply \texttt{eligauss} to the extended matrix of the system of the example. 
+To construct the extended matrix we can use the \texttt{concatenate} method of \texttt{numpy} indicating that the axis on which we want to concatenate $A$ and $b$ is 1 (columns):\\ \mintinline{python}{AM=np.concatenate((A,b),axis=1}
 \end{paracol}
 
 \begin{minted}{python}
@@ -2510,9 +2510,10 @@ x_n^s
  
 \switchcolumn
  and multiply both sides by the inverse of the matrix $D$\footnote{$D$ is a diagonal matrix and its inverse is trivially calculated by simply changing each element of the diagonal by its inverse,}
- 
-
 \end{paracol}
+\\ \ 
+
+
 
  \begin{align*}
  \overbrace{\begin{pmatrix}
