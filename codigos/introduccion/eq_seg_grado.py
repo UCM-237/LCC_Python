@@ -34,5 +34,6 @@ solplus, solminus = soleq2(2, 3, 1)
 
 #comprobacion
 #checking
+print('comprobación/cheking')
 print('raíz positiva/positive root:', 2*solplus**2+3*solplus+1)
 print('raiz negativa/negative root:', 2*solminus**2+3*solminus+1)

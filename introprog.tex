@@ -1452,56 +1452,15 @@ it has the following general solutions,
     x_{1,2} = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 \end{equation*}
 \end{paracol}
-
-\begin{minted}[
+\inputminted[
 frame=lines,
 framesep=2mm,
 baselinestretch=1.2,
 %bgcolor=LightGray,
-label=eq\_seg\_grado.py,
+label=Example\_import.py,
 fontsize=\footnotesize,
 linenos
-]{python}
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 18 18:33:43 2024
-Este script contiene una función para obtener la solucion de una 
-ecuación de segundo grado.
-This script defines a function to solve a quadratic equation
-@author: abierto
-"""
-def soleq2(a,b,c):
-    """
-    Esta función calcula las soluciones de la ecuación general,
-    ax**2 + b*x + c = 0
-    Variables de entrada:
-        coeficientes a, b y c
-    Variables de salida:
-        xp Solucion para la raíz cuadrada positiva
-        xm solucion para la raiz cuadrada negativa
-        
-    this function calculates the solutions of the general equation
-    a*x**2 + b*x + c = 0
-    input variables:
-        a,b and c coeficients
-    output variables;
-        xp solution using positive square root
-        xm solutions using negative square root
-    """
-    xp = (-b+(b**2-4*a*c)**(1/2))/2/a
-    xm = (-b-(b**2-4*a*c)**(1/2))/2/a
-    return xp, xm
-
-#aquí añadimos un ejemplo de uso que no es parte de la funcion
-#here we add a 'how to use' example that's not part of the function
-
-solplus, solminus = soleq2(2, 3, 1)
-
-#comprobacion
-#checking
-print('raíz positiva/positive root:', 2*solplus**2+3*solplus+1)
-print('raiz negativa/negative root:', 2*solminus**2+3*solminus+1)
-\end{minted}
+]{python}{./codigos/introduccion/eq_seg_grado.py}
 
 \begin{paracol}{2}
     Para definir nuestra función hemos abierto un nuevo script en el editor de texto de Spyder y lo hemos guardado con el nombre \texttt{eq\_seg\_grado.py}. Evidentemente, se puede guardar con cualquier nombre, aunque es buena costumbre tratar de buscar uno que nos de alguna pista de qué contiene el script.
@@ -1537,12 +1496,11 @@ print('raiz negativa/negative root:', 2*solminus**2+3*solminus+1)
 \end{paracol}
 
 \begin{minted}{python}
-In [1]: runfile('C:/Users/abierto/boya/USV_modelling/eq_seg_grado.py',
-wdir='C:/Users/abierto/boya/USV_modelling')
+In [21]: runfile('/home/juan/LCC_Python/codigos/introduccion/eq_seg_grado.py',
+wdir='/home/juan/LCC_Python/codigos/introduccion')
+comprobación/cheking
 raíz positiva/positive root: 0.0
-raiz negativa/negative root: 0.0
-
-In [2]:    
+raiz negativa/negative root: 0.0  
 \end{minted}
 
 \begin{paracol}{2}
