@@ -4,9 +4,9 @@
 \begin{paracol}{2}
 Este capítulo presenta una introducción general a la programación. Para su desarrollo, vamos a emplear uno de los lenguajes de progaramción que  que más aceptación ha tenido en los últimos años: Python. Este lenguaje fue desarrollado por Guiod van Rosssum a finales de los años 80 del siglo pasado. El un lenguaje de alto nivel de propósito general.
 
-El porqué emplear python está relacionado con la existencia de un gran número de \emph{módulos} expecialmente diseñados para el cálculo científico. Además, al tratarse de un lenguaje interpretado, es posible centrarse en el estudio de la programación en sí, sin tener que preocuparse de la compilación. En resumen, emplearemos Python tanto par aprender a programar como para a resolver problemas de calculo científico.
+El porqué emplear python está relacionado con la existencia de un gran número de \emph{módulos} expecialmente diseñados para el cálculo científico. Además, al tratarse de un lenguaje interpretado, es posible centrarse en el estudio de la programación en sí, sin tener que preocuparse de la compilación. En resumen, emplearemos Python tanto par aprender a programar como para resolver problemas de cálculo científico.
 
-Este capítulo no pretende ser exhaustivo, --cosa que por otro lado resulta imposible en el caso de Python--, sino tan solo dar una breve introducción a su uso. Afortunadamente, Python cuenta con una muy buena documentación, accesible a través de la Red. 
+Este capítulo no pretende ser exhaustivo, -cosa que, por otro lado, resulta imposible en el caso de Python--, sino tan sólo dar una breve introducción a su uso. Afortunadamente, Python cuenta con una muy buena documentación, accesible a través de la Red. 
 \switchcolumn 
 This chapter presents a general introduction to programming. We will use Python, one of the currently most used programming languages, along their pages. Guido van Rossum developed Python in the late 1980s. It is a high-level, general-purpose programming language. 
 
@@ -19,7 +19,7 @@ This chapter is by no means exhaustive. It would be impossible in the case of a 
 \begin{paracol}{2}
 \section[Un entorno de programación para Python]{Un entorno de programación para Python\sectionmark{Un entorno para Python \textreferencemark \ an environment for Python}}\index{Python! entorno de programación}
 \sectionmark{Un entorno para Python \textreferencemark \ An environment for Python}
-En primer lugar antes de empezar a describir el lenguaje de programación, vamos a introducir las herramientas  que usaramos. Es frecuente que los lenguajes de programación cuenten con lo que se conoce como un entorno de desarrollo integrado o, abreviadamente IDE (acrónimo tomado de su nombre en inglés: \emph{integrated development environment}. Un IDE suministra un habitualmente un entorno gráfico y un conjunto de herramientas tales como ayuda en línea, un depurador o un editor que facilitan la construcción y el depurado del código. Nosotros vamos a emplear un IDE específicamente diseñada para cálculo científico, no es el único, ni es necesariamente el mejor. Pero es adecuado para empezar a trabajar con Python. Se trata de \emph{Spyder}. Veamos en primer lugar como conseguirlo y como instalarlo en un ordenador personal.
+En primer lugar antes de empezar a describir el lenguaje de programación, vamos a introducir las herramientas  que usaramos. Es frecuente que los lenguajes de programación cuenten con lo que se conoce como un entorno de desarrollo integrado o, abreviadamente, IDE (acrónimo tomado de su nombre en inglés: \emph{integrated development environment}. Un IDE suministra habitualmente un entorno gráfico y un conjunto de herramientas tales como ayuda en línea, un depurador o un editor que facilitan la construcción y el depurado del código. Nosotros vamos a emplear un IDE específicamente diseñada para cálculo científico, no es el único, ni es necesariamente el mejor. Pero es adecuado para empezar a trabajar con Python. Se trata de \emph{Spyder}. Veamos en primer lugar como conseguirlo y como instalarlo en un ordenador personal.
 
 \switchcolumn
 \section{A python's development environment}\index[eng]{Python! IDE}
@@ -68,7 +68,7 @@ Among the many ways you may follow to install Python and some of its development
 
  \paragraph{Instalación de spyder-notebook.} para instalar el plug-in de Spyder que permite manejar notas de jupyter-notes, pulsamos en la ventana de Anaconda-Navigator el botón \emph{Environmets}, (enmarcado en rojo en la figura \ref{fig:anaconda2}). La ventana de Anaconda-Navigator nos muestra ahora los entornos de trabajo de Anaconda, (figura \ref{fig:ntb1}). Por defecto, estaremos en el entorno base (root). Este será además el único entorno disponible si acabamos de hacer una instalación de Anaconda nueva en el ordenador. Si seleccionamos \emph{All} en el menu desplegable situado en la parte superior izquierda del panel de la derecha,  obtenemos una relación de todos los paquetes disponibles en anaconda. Aquellos que ya están instalados aparecen marcados a la izquierda con un cuadro verde, mientras que para aquellos disponibles pero no instalados el cuadro aparece en blanco.
 
- En la parte superior derecha de éste panel hay un buscador. Si introducimos en el la palabra spyder, El panel nos mostrará los paquetes relacionados con Spyder (figura \ref{fig:ntb2}). Seleccionamos el paquete spyder notebook y en la parte inferior derecha del panel nos aparaceran dos nuevos botones. Si seleccionamos el botón \emph{apply}, Anaconda commenzará el proceso de instalación del paquete. Lo primero que hace es abrir un pop-up y comprobar las dependencias, una vez terminada la comprobación, pulsamos el botón apply del pop-up y dejamos que Anaconda instale spyder notebook.
+ En la parte superior derecha de este panel hay un buscador. Si introducimos en el la palabra spyder, El panel nos mostrará los paquetes relacionados con Spyder (figura \ref{fig:ntb2}). Seleccionamos el paquete spyder notebook y en la parte inferior derecha del panel nos aparaceran dos nuevos botones. Si seleccionamos el botón \emph{apply}, Anaconda commenzará el proceso de instalación del paquete. Lo primero que hace es abrir un pop-up y comprobar las dependencias, una vez terminada la comprobación, pulsamos el botón apply del pop-up y dejamos que Anaconda instale spyder notebook.
  
 
  \switchcolumn
@@ -106,9 +106,9 @@ Among the many ways you may follow to install Python and some of its development
 
 \begin{paracol}{2}
 \subsection{Spyder}\index{Spyder}
-Vamos a centrarnos en esta sección en describir Spyder. Como ya dijimos, Spyder es unn entorno de programación integrado, especialmente pensado para trabajar con Python en computación científica. Para lanzar el entorno basta con que pulsemos el botón \emph{launch} del icono de Spyder, en la ventana de Anaconda-navigator (figura: \ref{fig:anaconda}). Al hacerlo, se nos abrirá una nueva ventana como la que se muestra en la figura \ref{fig:ide}.
+Vamos a centrarnos en esta sección en describir Spyder. Como ya dijimos, Spyder es un entorno de programación integrado, especialmente pensado para trabajar con Python en computación científica. Para lanzar el entorno basta con que pulsemos el botón \emph{launch} del icono de Spyder, en la ventana de Anaconda-navigator (figura: \ref{fig:anaconda}). Al hacerlo, se nos abrirá una nueva ventana como la que se muestra en la figura \ref{fig:ide}.
 
-En la ventana de Spyder podemos distiguir tres paneles distintos\footnote{La configuración que Spyder que se describe  aquí, es la configuración por defecto. El usuario puede cambiarla a su gusto modificando los valores por defecto.}. Además, en la  parte superior de las ventamos tenemos una barra con menús deplegables y otra con botones. Vamos a describir brevemente algunas de las características principales del entorno a la vez que nos vamos introduciendo en las caracterís- ticas fundamentales de la programación en Py- thon. En cualquier caso, no vamos a dar una descripción exhaustiva. La mejor manera de aprender a manejar Spyder es usarlo y consultar la abundante documentación disponible.
+En la ventana de Spyder podemos distiguir tres paneles distintos\footnote{La configuración que Spyder que se describe  aquí, es la configuración por defecto. El usuario puede cambiarla a su gusto modificando los valores por defecto.}. Además, en la  parte superior de las ventamos tenemos una barra con menús deplegables y otra con botones. Vamos a describir brevemente algunas de las características principales del entorno a la vez que nos vamos introduciendo en las características fundamentales de la programación en Python. En cualquier caso, no vamos a dar una descripción exhaustiva. La mejor manera de aprender a manejar Spyder es usarlo y consultar la abundante documentación disponible.
 \switchcolumn
 
 \subsection{Spyder}\index[eng]{Spyder}
@@ -166,7 +166,7 @@ Podemos ver una variable como una región de la memoria del computador, donde un
 We can consider a variable as a computer memory region where a program has allocated specific information: numbers, characters, etc. A variable fundamental characteristic is its name because it permits one to identify it univocally. \index[eng]{Variable! name}. We can take as a variable name whatever combination of lowercase and uppercase letters and numbers, provided that the first character is always a letter. When using Python\footnote{As we shall see later on, Python has a set of command names and keywords already defined. We should avoid using these names or keywords as names for our variables. Otherwise, we could lose access to the corresponding Python command or keyword.}, We may also use the symbol ''\_". For Python, uppercase and lowercase letters are different symbols. Thus, if we choose variable names, such as Oack, OACK, and OaCk, they represent different variables for Phyton.
 
 \switchcolumn
-El método más elemental de crear o emplear una variable es asignarle la información para la que se creó. Para hacerlo, se emplea el símbolo de asignación \index{"= Símbolo de asignación} \index{Símbolo de asignación}, que coincide con el signo $=$ empleado en matemáticas. Como veremos más adelante la asignación en programación y la igualdad en matemáticas no representan exáctamente lo mismo. La manera de asignar directamente información a una variable es escribir el nombre de la variable, a continuación  el signo de asignación y, por último, la información asignada, \mintinline{python}{variable_1 = 18}. Si escribimos dicha expresión en la terminal de Python y pulsamos la tecla \emph{intro}:
+El método más elemental de crear o emplear una variable es asignarle la información para la que se creó. Para hacerlo, se emplea el símbolo de asignación \index{"= Símbolo de asignación} \index{Símbolo de asignación}, que coincide con el signo $=$ empleado en matemáticas. Como veremos más adelante la asignación en programación y la igualdad en matemáticas no representan exáctamente lo mismo. La manera de asignar directamente información a una variable es escribir el nombre de la variable, a continuación  el signo de asignación y, por último, la información asignada, \mintinline{python}{variable_1 = 18}. Si escribimos dicha expresión en el terminal de Py\-thon y pulsamos la tecla \emph{intro}:
 \begin{minted}{python}
 In [2]: variable_1 = 18
 In [3]:
@@ -198,7 +198,7 @@ In this case, the computer doesn't echo the result. Anyway,  the variable has be
 
 \begin{minted}{python}
 In [3]: variable_1
-Out[3]: 18
+Out[3]: 18Ipython
 
 In [4]: print(variable_1)
 18
@@ -231,7 +231,7 @@ variable_1	 variable_2
 \end{center}
 
 \begin{paracol}{2}
- En el primer caso, hemos empleado el comando de Ipython \mintinline{python}{whos}. Delante del comando hemos puesto el carácter \%, que sirve para indicar al ordonedar que se trata de un comando de de la Consola y no de Python. El ordenador nos muestra todas las variables que hemos definido, el tipo de variable y el dato que contienen. En el segundo caso hemos empleado el comando \mintinline{python}{who}, que nos da simplemente una lista de las variables contenidas en memoria. 
+ En el primer caso, hemos empleado el comando de Ipython \mintinline{python}{whos}. Delante del comando hemos puesto el carácter \%, que sirve para indicar al ordenador que se trata de un comando de de la Consola y no de Python. El ordenador nos muestra todas las variables que hemos definido, el tipo de variable y el dato que contienen. En el segundo caso hemos empleado el comando \mintinline{python}{who}, que nos da simplemente una lista de las variables contenidas en memoria. 
 
  \switchcolumn
  In the first case, we used the Ipyhon command \mintinline{python}{whos}. Notice that we have written the symbol \% just before the command. This tells the computer we are introducing a console (Ipython) command, not an ordinary Python command. The computer displays the variables we have defined until this point, the variable Type, and the data contained. In the second case, we have used the command \mintinline{python}{who}, which shows us the bare list of the variables saved in the computer memory.
@@ -273,8 +273,7 @@ Notice that \mintinline{python}{a = 3} creates an integer variable, but \mintinl
 \begin{minted}{python}
 In [95]: b = -3.5
 In [96]: type(b)
-In [94]: type(a)
-Out[94]: intOut[96]: float
+Out[96]: float
 In [98]: c = 3e -4
 In [99]: type(c)
 Out[99]: float
@@ -433,9 +432,9 @@ Out[13]: list
 \end{center}
 
 \begin{paracol}{2}
-Hemos construido una lista en la que el primer elemento es una cadena, el segundo un entero, el tercero un float y el cuarto un número complejo. Debido a su versatilidad, las listas son un tipo de variable muy empleado en Python. Pdemos copiar elementos de una lista a otra variable empleando índices, y tambien podemos asignar a un elemento de una lista un valor nuevo, por supuesto, perderemos el valor antiguo,
+Hemos construido una lista en la que el primer elemento es una cadena, el segundo un entero, el tercero un float y el cuarto un número complejo. Debido a su versatilidad, las listas son un tipo de variable muy empleado en Python. Podemos copiar elementos de una lista a otra variable empleando índices, y tambien podemos asignar a un elemento de una lista un valor nuevo, por supuesto, perderemos el valor antiguo,
 \switchcolumn
-We had built a list in which the first element is a string, the second an integer, the third a real --float type-- number, and the fourth is a complex number. Due to their versatility, the Lists are a very useful type in Python. We can copy elements of a list in another variable using indexes and assign a new value to an element of a list. Of course, in this case, we will lose the old value. 
+We built a list in which the first element is a string, the second an integer, the third a real—- float type-- number, and the fourth a complex number. Due to their versatility, Lists are a very useful type in Python. We can copy elements of a list into another variable using indexes and assign a new value to an element of a list. Of course, in this case, we will lose the old value. 
 \end{paracol}
 
 \begin{center}
@@ -512,13 +511,13 @@ In [19]: print(LL)
      count()& Cuenta el número de elementos de una lista & \mintinline{python}{L.count()}\\
      &Counts the elements of a list&\\
      \hline
-     insert() & Inserta un nuevo elemento en una posición específica & \mintinline{python}{L.insert(i,-4}\\
+     insert() & Inserta un nuevo elemento en una posición específica & \mintinline{python}{L.insert(i,-4)}\\
      &Inserts an element at a specific position in a list &\\
      \hline
      pop() & Extrae el ultimo elemento de una lista.  &\mintinline{python}{a =L.pop()}\\
      & Si se añade un índide extrae el elemnto indicado &\mintinline{python}{a=L.pop(i)}\\
-     & extract the last element of a list. &\\
-     &Addind and index, extract the specific element& \\
+     & extracts the last element of a list. &\\
+     &Adding and index, extracts the specific element& \\
      \hline
     \end{tabular}
     \bicaption{Algunos métodos de las Listas en Python}{Some methods of Python's List}
@@ -561,10 +560,10 @@ Out[23]: 0
 
 \begin{paracol}{2}
 
-\emph{Tuplas} Las tuplas, son similares a las listas. La principal diferencia es que son inmutable. es decir, una vez que se han creado no se puede modificar el valors de los elementos que contiene. Para crearlas se encierran los elementos que constituyen la tupla entre paréntesis y separados con comas. En el ejemplo que sigue se observa como al intentar modificar un elemento de una tupla una vez creada, Python nos desvuelve un aviso de error.
+\emph{Tuplas} Las tuplas, son similares a las listas. La principal diferencia es que son inmutable. es decir, una vez que se han creado no se puede modificar el valor de los elementos que contiene. Para crearlas se encierran los elementos que constituyen la tupla entre paréntesis y separados con comas. En el ejemplo que sigue se observa como al intentar modificar un elemento de una tupla una vez creada, Python nos desvuelve un aviso de error.
 \switchcolumn
 
-\emph{tuples} Tuples are similar to List. The main difference between them is that Tuples are immutable, i.e., once created, the elements of a Tuple cannot be modified. To build a Tuple, we enclose their elements into brackets, separated by commas. The following example shows how Python throws an error message when we try to modify a Tupla element once it has been built.
+\emph{tuples} Tuples are similar to List. The main difference between them is that Tuples are immutable, i.e., once created, their elements cannot be modified. To build a Tuple, we enclose its elements into brackets separated by commas. The following example shows how Python throws an error message when we try to modify a Tuple element once it has been built.
 \end{paracol}
 
 \begin{center}
@@ -639,7 +638,7 @@ Out[82]:
 
 
 \begin{paracol}{2}
-\paragraph{Set.} Los conjuntos son colecciones datos no repetidos e inmutables. Para crear un conjunto en Python se escriben sus elementos separados por comas y encerrados entre llaves. Si hay elementos repetidos en la definicion, el conjunto creado solo los contendrá una vez. No vamos a verlos en más detalle.
+\paragraph{Set.} Los conjuntos son colecciones de datos no repetidos e inmutables. Para crear un conjunto en Python se escriben sus elementos separados por comas y encerrados entre llaves. Si hay elementos repetidos en la definicion, el conjunto creado solo los contendrá una vez. No vamos a verlos en más detalle.
 \switchcolumn
 \paragraph{Set.} Sets are inmutable non-repited data collections. To make a set in Python we writen its elements separated by commas and enclosed in curly braces. If there are repited elements in its definition, the set created will containt a single instace of the repited element.
 \end{paracol}
@@ -1103,9 +1102,9 @@ Out[15]: True
 \end{center}
 
 \begin{paracol}{2}
-Es importante destacar que para Python, las operaciones lógicas devuelven valores $=0$, si el resultado es cierto ó $\neq 0$ si es falso, mientras que las operaciones relaciones y el complemento (la negación) devuelven valores lógicos \emph{True} o \emph{False}. En realidad, esto no supone ningún problema, ya que el lenguaje maneja estos valores lógicos igual que sus equivalentes enteros $1$ y $0$. Otro aspecto interesante tiene que ver con el hecho de que Python considere como verdadera, cualquier variable que tomo un valor distinto de cero. Esto no vas a pemitir comentar algunos aspectos del modo en que se llevan a cabo las operaciones lógicas. observa los siguientes ejemplos,
+Es importante destacar que para Python, las operaciones lógicas devuelven valores $\neq 0$, si el resultado es cierto ó $=0$ si es falso, mientras que las operaciones relaciones y el complemento (la negación) devuelven valores lógicos \emph{True} o \emph{False}. En realidad, esto no supone ningún problema, ya que el lenguaje maneja estos valores lógicos igual que sus equivalentes enteros $1$ y $0$. Otro aspecto interesante tiene que ver con el hecho de que Python considere como verdadera, cualquier variable que tomo un valor distinto de cero. Esto no vas a pemitir comentar algunos aspectos del modo en que se llevan a cabo las operaciones lógicas. observa los siguientes ejemplos,
 \switchcolumn
-It is important to remark that logical operations in Python cast a value $=0$ if the result is true or $\neq 0$ if the result is false, while relational operations and the complement (negation) cast boolean values \emph{True} or \emph{false}. That is not a problem at all because Python manages these boolean values as their integer counterpart $1$ and $0$. The fact that Python considers true any value not equal to zero will help us to show how it carries out logical operations, get a lookout to the next examples,  
+It is important to remark that logical operations in Python cast a value $\neq 0$ if the result is true or $=0$ if the result is false, while relational operations and the complement (negation) cast boolean values \emph{True} or \emph{false}. That is not a problem at all because Python manages these boolean values as their integer counterpart $1$ and $0$. The fact that Python considers true any value not equal to zero will help us to show how it carries out logical operations, get a lookout to the next examples,  
 \end{paracol}
 
 \begin{center}
@@ -1307,7 +1306,7 @@ Created on Sat Mar 16 20:05:44 2024
 \end{minted}
 
 \begin{paracol}{2}
-En nuestro caso, Spyder nos ha escrito un comentario de línea indicando la codificación con la que se guarda el texto del archivo (\emph{utf8}). Después crea un área para un comentario del segundo tipo, (líneas 2  a 6 del código). Nos escribe la fecha en que se ha creado el archivo y el autor. Evidentemente estos valores pueden modificarse. Este espacio para comentarios creado por Python, es un buen sitio para que nosotros añadamos información sobre para qué sirve el fichero de código, el tipo e variables que define, etc.
+En nuestro caso, Spyder nos ha escrito un comentario de línea indicando la codificación con la que se guarda el texto del archivo (\emph{utf8}). Después crea un área para un comentario del segundo tipo, (líneas 2  a 6 del código). Nos escribe la fecha en que se ha creado el archivo y el autor. Evidentemente estos valores pueden modificarse. Este espacio para comentarios creado por Python, es un buen sitio para que nosotros añadamos información sobre para qué sirve el fichero de código, el tipo de variables que define, etc.
 
 Para seguir con el mismo ejemplo, vamos a escribir algunas líneas de código y vamos a guardar el fichero con un nombre nuevo. El fichero se guarda, bien pulsando el tercer icono por la izquierda de los que se muestran encima del panel del editor de texto, o desplegando el menú File y pulsando la opción Save as. En nuestro caso, lo vamos a guardar con el nombre \emph{ejemplo.py}.
 \switchcolumn
@@ -1367,7 +1366,7 @@ Una vez que hemos terminado de escribir nuestro código, necesitamos ejecutarlo,
 Los resultados de la ejecución aparecen en la consola de Ipython,
 \switchcolumn
 \subsection{Running a script}
-Once we have finished our code edition, we need to run it to obtain the results. Using the Spyder environment, we run a script by clicking the green triangle icon located on top of the editor panel or unfolding the Run menu and selecting the option Run.
+Once we have finished our code edition, we need to run it to obtain the results. Using the Spyder environment, we run a script by clicking the green triangle icon at the top of the editor panel or unfolding the Run menu and selecting the option Run.
 
 The results are shown on the Ipython console,
 \end{paracol}
@@ -1404,7 +1403,7 @@ In [9]:
 \begin{paracol}{2}
 
 \section{Funciones en Python} \index{funciones}
-en la sección anterior hemos visto como emplear scripts para guaradr nuestro código y poder reutilizarlo siempre que queramos. Aunque esto supone una mejora respecto a reescribir nuestros comandos de nuevo en la consola, todavía da lugar a código poco flexible y reutilizable. Vamos a introducir en esta sección una estructura de programación que va hacer de nuestro código una herramienta mucho más potente. Se trata de las funciones.
+En la sección anterior hemos visto como emplear scripts para guardar nuestro código y poder reutilizarlo siempre que queramos. Aunque esto supone una mejora respecto a reescribir nuestros comandos de nuevo en la consola, todavía da lugar a código poco flexible y reutilizable. Vamos a introducir en esta sección una estructura de programación que va hacer de nuestro código una herramienta mucho más potente. Se trata de las funciones.
 
 En Python podemos definir funciones directamente en la consola, pero esto no es, en general, una buena idea; cuando cerramos Spyder perdemos el trabajo hecho. Vamos por tanto a utilizar scripts para definir nuestras funciones.
 
@@ -1418,9 +1417,9 @@ def nombre_de_la_funcion(e1,e2,...):
 
 La primera línea de la definición de una función recibe el nombre de cabecera. La cabecera de la función empieza siempre con la palabra clave \mintinline{python}{def}. A continuación se indica el nombre que tendrá la función. Los nombre válidos deben empezar por letras y en general no es buena idea emplear caractéres especiales. A continuación, entre paréntesis y separadas por comas se incluyen las variables de entrada, es decir, aquella variables que la función va  a emplear para realizar sus cálculos. Si no necesita tomar variables de entrada, se deja es paréntesis vacío, pero no se omite. Por último se añade el símbolo ':' para indicar que se ha terminado de definir la cabecera de la función.
 
-Debajo de la cabecera, viene las líneas de código de la función, que constituyen el cuerpo de la misma. Una caracterítica importante de Python es que todas las líneas de código pertencientes a una función deben estar indentadas, es decir, deben empezar dejando un número igual de espacios en blanco al principio de todas las lineas. Una de las ventajas de emplear el editor de textos de Spyder es que, si definimos una línea de cabecera correctamente,  y pulsamos la tecla intro, directamente nos indenta las líneas siguientes. La última línea duna función suele emplearse para devolver variables que contienen los resultados que desamos optener de las operaciones realizadas por la función. Empieza con la palabra clave \mintinline{python}{return} y va seguida de una lista de variables separadas por comas. Por supuesto dichas variables se tienen que haber definido antes en las líneas de código de la función. A continuación vamos a ver un ejemplo de una función construida para obtener las soluciones de una ecuación de segundo grado,
+Debajo de la cabecera, viene las líneas de código de la función, que constituyen el cuerpo de la misma. Una caracterítica importante de Python es que todas las líneas de código pertencientes a una función deben estar indentadas, es decir, deben empezar dejando un número igual de espacios en blanco al principio de todas las líneas. Una de las ventajas de emplear el editor de textos de Spyder es que, si definimos una línea de cabecera correctamente,  y pulsamos la tecla intro, directamente nos indenta las líneas siguientes. La última línea duna función suele emplearse para devolver variables que contienen los resultados que desamos optener de las operaciones realizadas por la función. Empieza con la palabra clave \mintinline{python}{return} y va seguida de una lista de variables separadas por comas. Por supuesto dichas variables se tienen que haber definido antes en las líneas de código de la función. A continuación vamos a ver un ejemplo de una función construida para obtener las soluciones de una ecuación de segundo grado,
 \begin{equation*}
-    ax^2+b^x+c = 0
+    ax^2+bx+c = 0
 \end{equation*}
 Cuyas soluciones toman la forma general,
 \begin{equation*}
@@ -1438,9 +1437,6 @@ def funcion_name(e1,e2,...):
     function code
     return, r1, r2, ...
 \end{minted}
-\begin{equation*}
-    ax^2+b^x+c = 0
-\end{equation*}
 
 The first line of a function definition is known as the function header. It always starts with the keyword \mintinline{python}{def}. Following this, we write the name of the function. Valid function names follow the same rules as file names. After the function name, we enclose input variables in parentheses, separated by commas. These input variables are the variables that the function will use to perform its operations. When the function does not need input variables, we leave the parentheses empty but never omit them. Eventually, we write the symbol ':' to end the function header.
 
@@ -1517,7 +1513,7 @@ print('raiz negativa/negative root:', 2*solminus**2+3*solminus+1)
 
     Aquí termina la definición de la función. Por eso, las líneas siguientes de código, que no forman parte de la función, no están indentadas. Las hemos añadido simplemente para mostrar cómo utilizar la función \mintinline{python}{soleq2} y comprobar que los resultados son correctos.
 
-    En la línea $34$ se muestra cómo emplear (llamar) a la función que acabamos de crear. En primer lugar definimos dos variables en los que guardar los resultados \mintinline{python}{solplus} y \mintinline{python}{solminus}. Python asociará, por orden, estas variables separadas por comas, a las varibles definidas tras la palabra clave \mintinline{python}{return}. Es decir, copiará el contenido de la variable \mintinline{python}{xp} en la variable \mintinline{python}{solplus} y el de la variable \mintinline{python}{xm} en la variable \mintinline{python}{solminus}. Evidentemente, podemos elegir cualquier nonmbre de variable válido para guardar los resultados. A continuación escribimos el símbolo de asignación $=$, seguido del nombre de la función. Por último, damos valores a las variables de entrada \mintinline{python}{a,b,c}.
+    En la línea $34$ se muestra cómo emplear (llamar) a la función que acabamos de crear. En primer lugar definimos dos variables en los que guardar los resultados \mintinline{python}{solplus} y \mintinline{python}{solminus}. Python asociará, por orden, estas variables separadas por comas, a las varibles definidas tras la palabra clave \mintinline{python}{return}. Es decir, copiará el contenido de la variable \mintinline{python}{xp} en la variable \mintinline{python}{solplus} y el de la variable \mintinline{python}{xm} en la variable \mintinline{python}{solminus}. Evidentemente, podemos elegir cualquier nombre de variable válido para guardar los resultados. A continuación escribimos el símbolo de asignación $=$, seguido del nombre de la función. Por último, damos valores a las variables de entrada \mintinline{python}{a,b,c}.
 
      Las líneas $38$ y $39$ comprueban que las dos raíces obtenidas satisfacen la ecuación de segundo grado, $2x^2+3x+1 = 0$. Hemos añadido al comando \mintinline{python}{print}, un texto entre comillas para que nos indique qué resultado de las comprobaciones corresponde a cada solución obtenida.
 
@@ -1585,7 +1581,7 @@ The last two lines, In[16] and In[17], are used to show the value of \mintinline
 Acabamos de ver que python conserva en la memoria las variables creadas para emplearlas posteriormente. Es importante entender cómo python lleva a cabo la gestión de las variables creadas en memoria. Esto nos lleva al concepto de \emph{namespace}.
 Por \emph{namespace} entendemos un espacio de memoria, reservado por Python donde los programas y funciones puedes acceder para buscar variables, funciones y, en general, objetos de programación.
 
-En Python se definen cuatro \emph{namespaces} diferentes. Su definición es dinámica, es decir, tienen una duración en tiempo límitada: se crean cuando son neceserios y se destruyen una vez que que una vez que dejan de ser necesarios. Habitualmente varios \emph{namespaces} coexisten a la vez. Veamos cuales son:
+En Python se definen cuatro \emph{namespaces} diferentes. Su definición es dinámica, es decir, tienen una duración en tiempo límitada: se crean cuando son neceserios y se destruyen una vez que dejan de ser necesarios. Habitualmente varios \emph{namespaces} coexisten a la vez. Veamos cuales son:
 
 \switchcolumn
 \section[Namespace and scope in Python]{Namespace and Scope in Python\sectionmark{Namespace y ámbito \textreferencemark \ Namespace and scope.}}\index[eng][Variable! Namespace]\index[eng]{Variable! Scope}
@@ -1627,11 +1623,7 @@ En las líneas $11-13$ definimos tres variables, para usarlas como coeficientes 
 \mint{python}{eq_se_grado.soleq2}
 Es decir: primero indicamos el namespace y, separado por un punto, el nombre de la función. Esta es la forma en que podemos acceder a cualquiera de las funciones o variables definidas en un script a través de otro script.
 
-¿por qué definir las variables y funciones en namespaces separados? Una razón es que permite repetir nombres de variables y funciones en distintas partes de nuestro código sin que accidentalmente unos borren a otros. En el ejemplo anterior, en la línea $14$ hemos guardo los resultados de las soluciones de la ecuación de segundo grado en las variables \mintinline{python}{solplus} y \mintinline{python}{solminus}. Pero estos nombres de variable ya existían. Hemos dicho que al importar \mintinline{python}{eq_seg_grado}, este script se ejecuta. Si revisamos sú codigo, vemos que en la línea $34$ \mintinline{python}{solplus, solminus = soleq2(2, 3, 1)}, Se llama a la función \mintinline{python}{soleq2}, y se emplean exáctamente los mismos nombres de variable para guardar los resultados. Aunque ambos resultados se guardan con los mismos nombres, pertenecen a namespaces distintos. Si ejecutamos el script \mintinline{python}{Example_import.py} obtenemos en el terminal de Ipython los siguiente resultados,
-
-En términos generales, cuando se importa un script, lo que se crea es una estructura de programación, que en Python se conoce con el nombre de módulo. El módulo toma el nombre del script que lo genera, exceptuando la extensión. Para acceder a las funciones contenidas en el módulo, basta anteponer al nombre de la variable o función el nombre del módulo separado por un punto.
-
-Si descontamos las funciones y variables definidas en el Built-in, todo el resto de código escrito en Python, está pensado para crear módulos. Lo habitual es que estos módulos se agrupen en paquetes de software que engloban funciones y objetos orientados a tareas específicas. A lo largo de estos apuntes, veremos algunos de ellos como numpy, orientado al cálculo científico o matplotlib, dedicado a la realización de gráficos.
+¿por qué definir las variables y funciones en namespaces separados? Una razón es que permite repetir nombres de variables y funciones en distintas partes de nuestro código sin que accidentalmente unos borren a otros. En el ejemplo anterior, en la línea $14$ hemos guardo los resultados de las soluciones de la ecuación de segundo grado en las variables \mintinline{python}{solplus} y \mintinline{python}{solminus}. Pero estos nombres de variable ya existían. Hemos dicho que al importar \mintinline{python}{eq_seg_grado}, este script se ejecuta. Si revisamos sú codigo, vemos que en la línea $34$ \mintinline{python}{solplus, solminus = soleq2(2, 3, 1)}, Se llama a la función \mintinline{python}{soleq2}, y se emplean exáctamente los mismos nombres de variable para guardar los resultados. Aunque ambos resultados se guardan con los mismos nombres, pertenecen a namespaces distintos. Si ejecutamos el script \mintinline{python}{Example_import.py} obtenemos en el terminal de Ipython los siguientes resultados,
 \switchcolumn
 Line number $10$ on \mintinline{python}{Example_import.py} example, uses the command \mintinline{python}{import} to \emph{import} the content of script \mintinline{python}{eq_seg_grado.py}. Attention: we write the name of the file without the extension \mintinline{python}{.py}. When program line number $10$ is executed, the script \mintinline{python}{eq_seg_grado.py} is thoroughly executed, and a global namespace is created to save the variables and functions created by this script.
 
@@ -1641,12 +1633,7 @@ We indicate the namespace first and then the function name, separated by a point
 
 Why is it convenient to define variables and functions in separated namespaces? One reason is that it allows repeating the same variable and function names in different locations of our code, avoiding them clashing accidentally. In the last example, in line $14$, we saved the quadratic equation solutions in variables \mintinline{python}{solplus} y \mintinline{python}{solminus}. But these variable names have already been used. We said we were running it when we imported \mintinline{python}{eq_seg_grado}. If we review the code of this script we can see that in line $34$\\ \mintinline{python}{solplus, solminus = soleq2(2, 3, 1)},\\ the program calls \mintinline{python}{soleq2} and the results are saved in variables with identical names,\\ \mintinline{python}{solplus} y \mintinline{python}{solminus}. Although we are saving the solutions in both cases with the same names, they belong to different namespaces. After running the script \mintinline{python}{Example_import.py}, we achieve the following result,   
 
-Generally, a programming structure is created whenever we import a script. In Python, these program structures are called modules. A  script and the module generated when the script is imported share the same name (except for the extension). To access the functions and 
-variables held in the module, it is enough to put the name of the module before the name of the function or variable separated with a point.
-
-Except for the functions and variables defined in the Built-in namespace, the remaining code written in Python is intended to create modules. Usually, the modules are grouped into software packages which enclose functions and programming objects devoted to specific tasks. In these lecture notes, we will meet some of them, like numpy, oriented to scientific computing or matplotlib, devoted to graphical representation.    
 \end{paracol}
-
 \begin{minted}{python}
 In [1]: runfile('C:/Users/abierto/Documents/borrar/Example_import.py',
 wdir='C:/Users/abierto/Documents/borrar')
@@ -1659,6 +1646,18 @@ eqseg_grado: -1.0
 
 In [2]: 
 \end{minted}
+
+\begin{paracol}{2}
+En términos generales, cuando se importa un script, lo que se crea es una estructura de programación, que en Python se conoce con el nombre de módulo. El módulo toma el nombre del script que lo genera, exceptuando la extensión. Para acceder a las funciones contenidas en el módulo, basta anteponer al nombre de la variable o función el nombre del módulo separado por un punto.
+
+Si descontamos las funciones y variables definidas en el Built-in, todo el resto de código escrito en Python, está pensado para crear módulos. Lo habitual es que estos módulos se agrupen en paquetes de software que engloban funciones y objetos orientados a tareas específicas. A lo largo de estos apuntes, veremos algunos de ellos como numpy, orientado al cálculo científico o matplotlib, dedicado a la realización de gráficos.
+\switchcolumn
+Generally, a programming structure is created whenever we import a script. In Python, these program structures are called modules. A  script and the module generated when the script is imported share the same name (except for the extension). To access the functions and 
+variables held in the module, it is enough to put the name of the module before the name of the function or variable separated with a point.
+
+Except for the functions and variables defined in the Built-in namespace, the remaining code written in Python is intended to create modules. Usually, the modules are grouped into software packages which enclose functions and programming objects devoted to specific tasks. In these lecture notes, we will meet some of them, like numpy, oriented to scientific computing or matplotlib, devoted to graphical representation.    
+\end{paracol}
+
 \begin{paracol}{2}
 Al importar \mintinline{python}{eq_seg_grado}, se ejecuta dicho script. Se calcula por tanto la solución de la ecuación de segundo grado: $x^2+2x+3=0$ y se muestran en el terminal las comprobaciones de los resultados. Una vez terminada la importación, todas las variables y funciones creadas por \mintinline{python}{eq_seg_grado}, están disponibles en su namespace global. despues, observamos en el terminal los resultados de las dos ecuaciones de segundo grado resueltas. Las dos primeras, corresponden a la ecuación $2x^2+3x+1=0$, y las dos últimas a la ecuación $x^2+2x+3=0$. Para imprimir estas últimas, hemos empleado \mintinline{python}{eq_seg_grado.solplus}\\
 \mintinline{python}{eq_seg_grado.solminus},\\ 
@@ -1734,11 +1733,11 @@ When the function is called, variables \mintinline{python}{e,f,g}, which belong 
 In general, when a function calls another, the namespace of the first function is considered the Enclosing namespace of the second function. The reason for this name may be better understood by explaining the concept of variable scope.
 
 \switchcolumn
-\paragraph{Ámbito.}\index{Ámbito de una variable o función} Acabamos de describir el concepto de \emph{namespace} como una región de memoria, asociada a un módulo o a una función. La existencia de distintos namespace, hace que no todas las variables y/o funciones puedan se manipuladas desde cualquier lado. El ámbito de una variable o función define las funciones, módulos, etc desde lo que es posible acceder y manipular dicha variable o función. Los ámbitos, están fuertemente relacionados con las namespace y en python se cumple una regla general conocida como la regla "LEGB" (Local->Enclosing->Global->Built-in). Nos da, el orden de precedencia de los namespace. Así, una función tiene acceso a todas sus variable y funciones locales (Local namespace) a todas las de la función que la ha llamado, si es el caso (Enclosing namespace), a todas las del módulo que ha llamando a la función (Global namespace) a todas las del Built-in namespace. También se cumple lo contrario: desde la línea de comando solo se tiene acceso a las variables que se han creado en la propia línea de comando. Desde ún módulo se tiene acceso a las variables y funciones built-in y pero no a las de las funciones contenidas en el módulo.
+\paragraph{Ámbito.}\index{Ámbito de una variable o función} Acabamos de describir el concepto de \emph{namespace} como una región de memoria, asociada a un módulo o a una función. La existencia de distintos namespace, hace que no todas las variables y/o funciones puedan se manipuladas desde cualquier lado. El ámbito de una variable o función define las funciones, módulos, etc desde lo que es posible acceder y manipular dicha variable o función. Los ámbitos, están fuertemente relacionados con los namespace y en python se cumple una regla general conocida como la regla "LEGB" (Local-\textgreater Enclosing-\textgreater Global-\textgreater Built-in). Nos da, el orden de precedencia de los namespace. Así, una función tiene acceso a todas sus variable y funciones locales (Local namespace) a todas las de la función que la ha llamado, si es el caso (Enclosing namespace), a todas las del módulo que ha llamando a la función (Global namespace) a todas las del Built-in namespace. También se cumple lo contrario: desde la línea de comando solo se tiene acceso a las variables que se han creado en la propia línea de comando. Desde ún módulo se tiene acceso a las variables y funciones built-in y pero no a las de las funciones contenidas en el módulo.
 Desde una función se tiene acceso al contenido Built-in y al del módulo y, en su caso, la función, que contiene la función, pero no al de las funciones, contenidas o llamadas en dicha función.
 La fígura \ref{fig:amb}, muestra un esquema con el anidamiento de los namespaces en Python.
 \switchcolumn
-\paragraph{Scope} \index[eng]{Varaible and function scope} We have described the concept of \emph{namespace} as a memory area linked to a Python module or function. The namespaces make sure that not all variables or functions can be handled from everywhere. The scope of a variable or a function defines which functions, modules, etc., can manipulate such variable or function. The scopes are tightly related to namespaces. There is the rule known as the "LEGB" rule (Local->Enclosing->Global->Built-in) that establishes the namespace precedence order. So, a function has access to all its local variables and function (Local Namespace), to all ones belonging to the function that calls it, if any  (Enclosingnamespace), to all ones belonging to the module that calls the function (global namespace) to all builtin namespace variables and functions. It is also true that if we follow the opposite direction from the command line, we can only access built-in variables and variables created from the command line itself. From a module, we have only access to variables and functions built-in or created from the module but not to variables belonging to functions contained in the module.
+\paragraph{Scope} \index[eng]{Variable and function scope} We have described the concept of \emph{namespace} as a memory area linked to a Python module or function. The namespaces make sure that not all variables or functions can be handled from everywhere. The scope of a variable or a function defines which functions, modules, etc., can manipulate such variable or function. The scopes are tightly related to namespaces. The rule known as the ``LEGB'' rule (Local--\textgreater Enclosing--\textgreater Global-\textgreater Built-in) establishes the namespace precedence order. So, a function has access to all its local variables and function (Local Namespace), to all ones belonging to the function that calls it, if any  (Enclosingnamespace), to all ones belonging to the module that calls the function (global namespace) to all builtin namespace variables and functions. It is also true that if we follow the opposite direction from the command line, we can only access built-in variables and variables created from the command line itself. From a module, we have only access to variables and functions built-in or created from the module but not to variables belonging to functions contained in the module.
 From a function, access is granted to built-in variables, those belonging to the module that contains the function, those belonging to the function that includes the function, if any, and those belonging to the function itself. However, a function has no direct access to variables belonging to functions contained in or called from the function.
 Figure \ref{fig:amb} shows a schematic view of Python namespace nesting.
 \switchcolumn
@@ -1905,7 +1904,7 @@ linenos
 \begin{paracol}{2}
 El script genera una función \mintinline{python}{par(a)}. En la línea $17$ aparece definida la entrada a una bloque \mintinline{python}{if}. Empieza con la palabra clave \emph{if} que va siempre seguida de una expresión que da un resultado lógico: verdadero ($1$) o falso ($0$). Esta expresión puede ser cualquier combinación válida de expresiones relacionales o lógicas.  
 
-En nuestro caso comparamos el resto de la división del número introducido entre dos con cero. La entrada del bloque constituye una condición, y termina siembre con el símbolo ``dos puntos'' (:). El cuerpo del bloque mintinline{python}{if} lo constituyan las líneas posteriores a la línea de entrada, que deben estar sangradas. Estas líneas solo se ejecutan si se cumple la condición de la entrada del bloque \mintinline{python}{if}. En nuestro caso, el cuerpo lo constituyen las líneas $18$ y $19$. Por último, la línea $20$ corresponde al comando \mintinline{python}{return()} que está alineado con las líneas de código de la función, no con las de bloque mintinline{python}{if}. Por tanto, en nuestro ejemplo, si el número introducido no es par, la función se saltará todas las líneas del cuerpo del bloque \mintinline{python}{if} e irá directamente a la línea $20$.
+En nuestro caso comparamos el resto de la división del número introducido entre dos con cero. La entrada del bloque constituye una condición, y termina siempre con el símbolo ``dos puntos'' (:). El cuerpo del bloque \mintinline{python}{if} lo constituyan las líneas posteriores a la línea de entrada, que deben estar sangradas. Estas líneas solo se ejecutan si se cumple la condición de la entrada del bloque \mintinline{python}{if}. En nuestro caso, el cuerpo lo constituyen las líneas $18$ y $19$. Por último, la línea $20$ corresponde al comando \mintinline{python}{return()} que está alineado con las líneas de código de la función, no con las de bloque \mintinline{python}{if}. Por tanto, en nuestro ejemplo, si el número introducido no es par, la función se saltará todas las líneas del cuerpo del bloque \mintinline{python}{if} e irá directamente a la línea $20$.
 
 En las líneas de código siguientes se muestra un ejemplo del funcionamiento de la función \mintinline{python}{par}. Para probarla hemos importado directamente la función en el terminal de Ipython, y luego la hemos llamado dándole como variable de entrada primero el  número $3$ y luego el número $8$. En el primer caso no se cumple la condición impuesta, ya que el número no es par, por tanto la función se salta todo el bloque condicional, y ejecutamente directamente el comando \mintinline{python}{return()}. Como no hemos pedido que devuelva nada, la función no devuelve nada. En el segundo caso, el número es par y por tanto si se cumple la condición necesaria para ejecutar el bloque \mintinline{python}{if}. Como resultado, la función imprime en el terminal de Ipython el mensaje indicado. Una vez que acaba la ejecución del bloque condicional, ejecuta el comando \mintinline{python}{return()} igual que en el caso anterior.
 \switchcolumn
@@ -2025,7 +2024,7 @@ linenos
 \label{fig:if}
 \end{figure} 
 \begin{paracol}{2}
-Si llamamos ahora a la función dando como valor de entrada un número par, Ejecutará el código situado debajo del\mintinline{python}{if} y antes del \mintinline{python}{elif} y se saltará todo lo demás hasta llegar al final del bloque condicional. Si el número introducido no es par, pero es divisible por tres, se saltará el código situado por debajo del\mintinline{python}{if}, ejecutará el código contenido debajo del \mintinline{python}{elif} hasta el \mintinline{python}{else} y saltará el resto del código hasta llegar al final del bloque condicional. Por último, si el número no es par ni divisible por tres, solo ejecutará el código situado por debajo del \texttt{else}.
+Si llamamos ahora a la función dando como valor de entrada un número par, Ejecutará el código situado debajo del \mintinline{python}{if} y antes del \mintinline{python}{elif} y se saltará todo lo demás hasta llegar al final del bloque condicional. Si el número introducido no es par, pero es divisible por tres, se saltará el código situado por debajo del \mintinline{python}{if}, ejecutará el código contenido debajo del \mintinline{python}{elif} hasta el \mintinline{python}{else} y saltará el resto del código hasta llegar al final del bloque condicional. Por último, si el número no es par ni divisible por tres, solo ejecutará el código situado por debajo del \texttt{else}.
 
 Un aspecto que debemos resaltar, es que el programa ejecutará el código correspondiente a la primera condición que se cumpla, y se saltará el resto hasta llegar al final del bloque condicional. Así por ejemplo, si en nuestro ejemplo introducimos el número $6$, el programa nos mostrará el mensaje ``el número es par", puesto que ésta es la primera condición que se cumple, pero nunca nos mostrará el mensaje ``el número es divisible por 3". Porque una vez comprobada y cumplida la primera condición (ser par) el programa salta directamente al final de la estructura, sin comprobar nada más. La figura \ref{fig:if} muestra el esquema completo de una estructura \mintinline{python}{if}. Los términos entre paréntesis pueden estar o no presentes en una implementación concreta. Las siguientes líneas de comandos muestran la importación y el uso de la función \mintinline{python}{parthree} empleando distintos número como entrada,
 
@@ -2061,7 +2060,7 @@ Out[22]: ()
 
 \begin{paracol}{2}
 \paragraph{Estructuras if anidadas.}\index{Anidación! If anidado} 
-En el ejemplo anterior, hemos visto cómo, si el número introducido en la función era par y además divisible por tres, el programa nunca nos informaría de esta segunda propiedad, debido al carácter excluyente de la estructura \emph{if}. Una manera de resolver este problema, es mediante el uso de estructuras\mintinline{python}{if} anidadas. La idea es muy sencilla, se construye una estructura\mintinline{python}{if} para comprobar una determinada condición, si esta se cumple, dentro de su código se construye otra estructura if para comprobar una segunda condición, y así sucesivamente, todas las veces que sea necesario. Si modificamos nuestro ejemplo anterior, incluyendo un \mintinline{python}{if} anidado,
+En el ejemplo anterior, hemos visto cómo, si el número introducido en la función era par y además divisible por tres, el programa nunca nos informaría de esta segunda propiedad, debido al carácter excluyente de la estructura \emph{if}. Una manera de resolver este problema, es mediante el uso de estructuras \mintinline{python}{if} anidadas. La idea es muy sencilla, se construye una estructura \mintinline{python}{if} para comprobar una determinada condición, si esta se cumple, dentro de su código se construye otra estructura \mintinline{python}{if} para comprobar una segunda condición, y así sucesivamente, todas las veces que sea necesario. Si modificamos nuestro ejemplo anterior, incluyendo un \mintinline{python}{if} anidado,
 \switchcolumn
 \paragraph{Nested if structures}\index[eng]{Nesting! Nested if}
 In the previous example, we saw that the program could not detect if the input number was both even and divisible by three due to the exclusive nature of the \mintinline{python}{if} statement. We can solve this problem using nested \mintinline{python}{if} structures. It is a straightforward idea. We build an \mintinline{python}{if} statement to check a specific condition. If the condition is fulfilled, inside the \mintinline{python}{if} statement, we build another \mintinline{python}{if } statement to check a second condition, and so on as many times as needed. Notice that in a nested \mintinline{python}{if} structure, the inner condition is checked only when the outer one is met. We can modify our previous example, using now a nested \mintinline{python}{if,}
@@ -2301,7 +2300,7 @@ A critical point to consider when programming a \mintinline{python}{while} is en
 \subsection{Funciones recursivas.} \index{Funciones! Recursivas}
 Una función recursiva es una función que se llama a sí misma. Hemos esperado hasta aquí para hablar de ellas porque, de alguna manera, se comportan como un bucle y necesitan una condición de salida para dejar de llamarse a sí mismas y terminar su ejecución. En general, son delicadas de manejar y tienden a consumir mucha memoria ya que cada vez que la función se llama a sí misma necesita crear un nuevo espacio de memoria independiente. Veamos un ejemplo de función recurrente que permite obtener el término enésimo de la sucesión de Fibonacci.
 \switchcolumn
-\subsection{recursive functions.} A recursive function is a function that calls itself. We have waited till now to speak of them because, in some ways, they behave like a loop and need an output condition to stop their execution. Speaking in general, they are difficult to deal with and tend to be very memory-consuming because any time a function calls itself creates a new memory independent memory area. We are going to see an example of a recursive function which allows for obtaining the Fibonacci series $n$ term.  
+\subsection{Recursive functions.} A recursive function is a function that calls itself. We have waited till now to speak of them because, in some ways, they behave like a loop and need an output condition to stop their execution. Speaking in general, they are difficult to deal with and tend to be very memory-consuming because any time a function calls itself creates a new memory independent memory area. We are going to see an example of a recursive function which allows for obtaining the Fibonacci series $n$ term.  
 \end{paracol}
 
 \begin{align*}
@@ -2797,7 +2796,7 @@ print(mi_robot)
 
 \section{Ejercicios}
 \begin{enumerate}
-\item Tipos de variables en Matlab; matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{línea de comandos} de Matlab e interpreta los resultados que obtienes. En los casos en que Matlab devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunos operaciones se apoyan en los resultados de operaciones anteriores.
+\item Tipos de variables en Python; matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{consolaIPython} e interpreta los resultados que obtienes. En los casos en que Python devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunos operaciones se apoyan en los resultados de operaciones anteriores.
 
 \begin{multicols}{2}
 \begin{enumerate}
@@ -2823,6 +2822,26 @@ print(mi_robot)
 \item print('a=',a)
 \item print('b=',b)
 \item print('d=',d)
+\item f = b
+\item f[1] = 'cambia tb b'
+\item print('f=',f)
+\item print('b=',b)
+\item b[2] = 'cambia tb f'
+\item print('f=',f)
+\item print('b=',b)
+\item b = [1,2,3]
+\item g = b.copy()
+\item print('f=',f)
+\item print('b=',b)
+\item print('g=',g)
+\item g[1] = 'no cambia b o f'
+\item print('f=',f)
+\item print('b=',b)
+\item print('g=',g)
+\item b[2] = 'tampoco cambia g pero si f'
+\item print('f=',f)
+\item print('b=',b)
+\item print('g=',g)
 \item e = a.copy()
 \item a[2][2] = 'cambia tb e'
 \item print('c=',c)
@@ -2830,7 +2849,7 @@ print(mi_robot)
 \item print('b=',b)
 \item print('d=',d)
 \item print('e=',e)
-\item e[2][2]= 'pero no al reves'
+\item e[2][2]= 'y tb al reves'
 \item print('c=',c)
 \item print('a=',a)
 \item print('b=',b)
