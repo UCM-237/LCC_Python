@@ -94,7 +94,7 @@ La figura \ref{fig:nivel} muestra un modelo general de un computador descrito po
 	\label{fig:nivel}
 \end{figure}
 \switchcolumn
-Figure \ref{fig:nivele} shows a general computer layout described by levels. Each level lays and assume the previous level. 
+Figure \ref{fig:nivele} shows a general computer layout described by levels. Each level lays and assumes the previous level. 
 \begin{figure}[ht]
 	\centering
 		%\includegraphics[width=10cm]{nivel_descripcion.pdf}
@@ -421,7 +421,7 @@ De nuevo, basta calcular el término de la derecha de la expresión anterior par
 \switchcolumn
 Again, it is enough to compute the previous expression's right-side term to obtain the decimal representation for the number $101.01$
 
-\index[eng]{Conversion! decimal to binary. Integer numbers} How to convert a number representations from decimal to binary? One more time, the key is to look at the number representation as a digits multiplied by powers of two. Let us start with an integer number. SUpose we have a number D, represented in decimal basis. We can expand it a sum of powers of two. If we divide the nuber by two, we could represent it as:
+\index[eng]{Conversion! decimal to binary. Integer numbers} How to convert a number representations from decimal to binary? One more time, the key is to look at the number representation as digits multiplied by powers of two. Let us start with an integer number. Suppose we have a number D, represented in decimal basis. We can expand it a sum of powers of two. If we divide the number by two, we could represent it as:
 \end{paracol} 
 \begin{equation*}
 \label{eq:1}
@@ -582,15 +582,22 @@ Para construir la representación binaria del primero de los números, nos basta
  \switchcolumn
  For building the binary representation for the first number, it is enough to take the computed integer parts by order, from left to right, and add on the left a zero and the decimal point. Therefore, the binary representation of $0.625$ is $0.101$. If we expand its value in powers of two, we recover the original number in its decimal representation.
  
- In the second case, the binary representation, taking nine decimals, of the number $0.623$ is $0.10011111$. We can compute the error made by neglecting the remaining decimals, converting back the number from binary to decimal,   
+ In the second case, the binary representation, taking nine decimals of the number $0.623$, is $0.10011111$. We can compute the error made by neglecting the remaining decimals, converting the number back from binary to decimal,   
 
 \end{paracol}
  \begin{equation*}
 0\cdot 2^{0}+1\cdot 2^{-1}+0\cdot 2^{-2}+ 0\cdot 2^{-3}+1\cdot 2^{-4}+1\cdot 2^{-5}+ 1\cdot 2^{-6}+1\cdot 2^{-7}+1\cdot 2^{-8}=0,62109375
 \end{equation*} 
 \begin{paracol}{2}
-El error cometido es, en este caso: $\text{Error}=0,623-0,62109375=0,00190625$.
+El error cometido es, en este caso: 
+\switchcolumn
+The error we made in the case was,
+\end{paracol}
+\begin{equation*}
+\text{Error}=0,623-0,62109375=0,00190625.
+\end{equation*}
   
+\begin{paracol}{2}
  \section{Aplicaciones de Software Científico}
  \sectionmark{Apls. al software cientifíco \textreferencemark \ Software Scientific Apps.}
 Dentro del mundo de las aplicaciones, merecen una mención aparte las dedicadas al cálculo científico, por su conexión con la asignatura. 
@@ -602,16 +609,15 @@ el paquete SPSS para cálculo estadístico.
 
 Un grupo especialmente interesante lo forman algunos paquetes de software que podríamos situar a mitad de camino entre los lenguajes de alto nivel y las aplicaciones: Contienen extensas librerías de funciones, que pueden ser empleadas de una forma directa para realizar cálculos y además permiten realizar programas específicos empleando su propio lenguaje. Entre estos podemos destacar Mathematica, Maple , Matlab, Octave y Scilab y Python. 
 \switchcolumn
-The error we made is in this case,
 
 \section{Scientific software application}
 \sectionmark{Apls. al software cientifíco \textreferencemark \ Software Scientific Apps.}
 
-mong the computer software applications, those devoted to scientific computing are worth mentioning due to their close connection with the subject.
+Among the computer software applications, those devoted to scientific computing are worth mentioning due to their close connection with the subject.
 
 It is possible to use high-level language to write programs and routines that allow solving specific computation problems. Languages such as FORTRAN have been used for decades to do it, and they are still used in many disciplines of science and engineering. However, many non-trivial software and hardware computing details should force the scientist who writes their own programs to be an expert in computer science. For this reason, specific software applications for scientific computing have been developed, allowing researchers to focus on solving their problems without worrying about creating a suitable tool to solve them.
 
-Some of these applications are ad-hoc, designed specifically for a particular scientific area. Others are packages of specific functions, intended to carry out computations efficiently. For example, the software package SPPS is tailored for statistical computation, providing a high level of efficiency for researchers.
+Some of these applications are ad-hoc and designed specifically for a particular scientific area. Others are packages of specific functions intended to carry out computations efficiently. For example, the software package SPPS is tailored for statistical computation, providing a high level of efficiency for researchers.
 
 There is a particularly interesting group of software packages that bridge the gap between high-level languages and applications. These packages contain extensive function libraries that can be used for a wide range of computations. They also allow the creation of specific programs using their own languages. Among them, we can highlight Mathematica, Maple, Matlab, Octave, Scilab, and Python.   
 
