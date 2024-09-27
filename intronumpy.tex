@@ -207,7 +207,7 @@ In [28]: print(C)
 \begin{paracol}{2}
 \paragraph*{Indexación.} \index{Numpy!indexación}Al igual que se hace en álgebra, Numpy es capaz de referirse a un elemento cualquiera de una matriz empleando índices para determinar su posición (fila y columna) dentro de la matriz.
 \switchcolumn
-\paragraph{Indexing}\index[eng]{Numpy!Indexing} As in algebra, in NUmpy is also possible to refer any entry of a matrix using indexes to indicate its position (row and column) in the matrix. 
+\paragraph{Indexing}\index[eng]{Numpy!Indexing} As in algebra, in Numpy is also possible to refer any entry of a matrix using indexes to indicate its position (row and column) in the matrix. 
 \end{paracol}
 \begin{equation*}
 A=
@@ -555,7 +555,7 @@ array([[0, 0, 0],
 En Numpy el simbolo para la multiplicación elemento a elemento es el asterisco *,
 
 \switchcolumn
-\paragraph{entry-wise multiplication} This is not a proper matrix (algebraic) operation. You can get the entry-wise product of two matrices, $A$ and $B$, with the same dimensions to obtain a new matrix $C$ which entries are $c_{i,j} = a_{i,j}b_{i,j}$. This product, like the matrix addition, is conmutative and asociative. In numpy the entry-wise multiplication symbol is the asterisk *, 
+\paragraph{Entry-wise multiplication} This is not a proper matrix (algebraic) operation. You can get the entry-wise product of two matrices, $A$ and $B$, with the same dimensions to obtain a new matrix $C$ which entries are $c_{i,j} = a_{i,j}b_{i,j}$. This product, like the matrix addition, is conmutative and asociative. In numpy the entry-wise multiplication symbol is the asterisk *, 
 \end{paracol}
 \begin{center}
     \begin{minipage}{.5\textwidth}
@@ -586,9 +586,9 @@ array([[ -3,   2],
 En el ejemplo siguiente, dividimos entre sí las dos matrices del ejemplo anterior, es interesante observar como Python nos advierte de la división entre cero, y asigna al elemento en que se produce el valor \mintinline{python}{inf}.
 
 \switchcolumn
-\paragraph{entry-wise division.} It is verymuch alike the elemet-wise product. If we divide entry-wise a matrix $A$ by another matrix $B$, both of the same dimensions, we get a new matrix $C$ which entries are $c_{ij}  = a_{ij}/b_{ij}$. For matrix entry-wise division, we use the same symbol as in the ordinamry number division.
+\paragraph{Entry-wise division.} It is very much alike the element-wise product. If we divide entry-wise a matrix $A$ by another matrix $B$, both of the same dimensions, we get a new matrix $C$ which entries are $c_{ij}  = a_{ij}/b_{ij}$. For matrix entry-wise division, we use the same symbol as in the ordinary number division.
 
-In the following example, we divide the two matrix of the previous example, it is interesting to see how Python warnings us of a division by zero, and asigns to the resulting entry the value \mintinline{python}{inf}.
+In the following example, we divide the two matrix of the previous example, it is interesting to see how Python warnings us of a division by zero, and assigns to the resulting entry the value \mintinline{python}{inf}.
   
 
  
@@ -1545,7 +1545,7 @@ A\cdot A^{-1}=I_{n\times n}
 \end{equation*}
 Donde $I_{n\times n}$ es la matriz indentidad de dimensión $n$.
 La matriz $A^{-1}$ recibe el nombre de matriz inversa de $A$, y  en numpy puede calcularse a partir de $A$ como \mintinline{python}{np.linalg.inv(A)}, ó \mintinline{python}{np.linalg.matrix_power(A,-1)}
-En el segundo caso, estamos empleando la función, del submódulo linalg de numpy, \mintinline{python}{matrix.power(A,n)} que permite calcular el resultado de elevar una matriz a una pontencia $A^n$.
+En el segundo caso, estamos empleando la función, del submódulo linalg de numpy, \mintinline{python}{matrix.power(A,n)} que permite calcular el resultado de elevar una matriz a una potencia $A^n$.
 \switchcolumn
 \paragraph{Inversion.} For a square non-singular matrix $A$ of dimension $n$ there is a unique matrix $A^{-1}$ of dimension $n$ that satisfies,
 \begin{equation*}
@@ -2594,6 +2594,42 @@ a_{ij}=0,\ \forall i\neq j
 \end{equation*}
 
 \begin{paracol}{2}
+En Numpy, podemos construir una matriz diagonal, a partir de una lista o un array unidimensional la empleando el commando \mintinline{python}{diag}. Además este comando permite también extraer la diagonal de una matrix y convertirla en un array,
+\switchcolumn
+We can build a diagonal matrix departing from a list or an unidimensional array, using the numpy command: \mintinline{python}{diag}. Besides, we can also use this command to get a matrix diagonal an put it into an array,
+\end{paracol}
+
+\begin{center}	
+	\begin{minipage}{0.9\textwidth}
+		\begin{minted}{python}
+			In [105]: A = [1,2,3,4]
+			
+			In [106]: a = np.diag(A)
+			
+			In [107]: a
+			Out[107]: 
+			array([[1, 0, 0, 0],
+			[0, 2, 0, 0],
+			[0, 0, 3, 0],
+			[0, 0, 0, 4]])
+			
+			In [108]: B = np.array([[1,2,3],[4,5,6],[7,8,9]])
+			
+			In [109]: B
+			Out[109]: 
+			array([[1, 2, 3],
+			[4, 5, 6],
+			[7, 8, 9]])
+			
+			In [110]: b = np.diag(B)
+			
+			In [111]: b
+			Out[111]: array([1, 5, 9])
+		\end{minted}
+	\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
 4. Matriz triangular superior: Una matriz cuadrada es triangular superior cuando todos los elementos situados por debajo de la diagonal son cero. Es estrictamente diagonal superior si además los elementos de la diagonal también son cero,
 \switchcolumn
 4. Upper triangular matrix: a square matrix is upper triangular when every entry below its main diagonal is zero, and if it is strictly upper triangular in all the diagonal entries are also zero.   
@@ -2629,6 +2665,8 @@ ETRI& \rightarrow a_{ij} = 0, \ \forall i < j
 \end{align*}
 \begin{paracol}{2}
 ejemplos,
+\switchcolumn
+examples,
 \end{paracol}
 
 \begin{align*}
@@ -2643,6 +2681,46 @@ ETRI&=\begin{pmatrix}
 7 & -1 & 0
 \end{pmatrix}\\
 \end{align*}
+
+\begin{paracol}{2}
+	Podemos emplear los comandos \mintinline{python}{triu} y \mintinline{python}{tril}, para extraer la matriz triangular superior y la matriz triangular inferior de una matriz dada,
+	\switchcolumn
+	We can use the numpy commands \mintinline{python}{triu} and \mintinline{python}{tril} to extract the upper and lower triangular matrices from a given matrix,
+\end{paracol}
+
+\begin{center}
+	\begin{minipage}{0.3\textwidth}
+		\begin{minted}{python}
+In [112]: B
+Out[112]: 
+array([[1, 2, 3],
+[4, 5, 6],
+[7, 8, 9]])
+
+In [113]: bup = np.triu(B)
+
+In [114]: bup
+Out[114]: 
+array([[1, 2, 3],
+[0, 5, 6],
+[0, 0, 9]])
+		\end{minted}
+\end{minipage}
+\end{center}
+\begin{center}
+	\begin{minipage}{0.3\textwidth}
+		\begin{minted}{python}
+In [115]: bdw = np.tril(B)
+
+In [116]: bdw
+Out[116]: 
+array([[1, 0, 0],
+[4, 5, 0],
+[7, 8, 9]])
+		\end{minted}
+	\end{minipage}
+\end{center}
+
 \begin{paracol}{2}
 6. Matriz definida Positiva. Una matriz $A_{n \times n}$ es definida positiva si dado un vector $x$ no nulo cumple,
 \switchcolumn
@@ -2659,6 +2737,7 @@ if,
 \begin{equation*}
 x^T\cdot A \cdot x \geq 0, \ \forall x\neq 0,
 \end{equation*}
+
 \begin{paracol}{2}
 entonces la matriz $A$ es semidefinida positiva.
 
@@ -2675,6 +2754,8 @@ then matrix $A$ is positive semi-definite.
 \end{equation*}
 \begin{paracol}{2}
 ejemplo,
+\switchcolumn
+example,
 \end{paracol}
 \begin{equation*}
 A=\begin{pmatrix}
@@ -2733,7 +2814,7 @@ En el ejemplo anterior,
 \begin{paracol}{2}
 Describir un método para realizar la factorización LU de una matriz, queda fuera de los objetivos de estos apuntes. Sin embargo sí que utilizaremos el comando \mintinline{python}{lu} incluido en una librería de Python llamada Scipy para obtener directamente el resultado de una factorización LU. Es una librería parecida a Numpy y que, al igual que esta última contiene un gran numero de funciones matemáticas. De hecho Numpy y Scipy solapan un poco y hay determinadas funciones que pueden encontrarse en ambas librerías. El comando pertenece a un submodulo de Scipy llamado \mintinline{python}{linalg}. Admite como variable de entrada una matriz cuadrada $A$ y nos devuelve como salida una matriz de permutación $P$, de la que hablaremos enseguida, y una matriz triangular inferior $L$ y otra triangular superior $U$ de modo que se cumple que $A =PLU$.
 
-A veces obtener la factorización LU directa de una matriz, pude llevar a cálculos que son numéricamente inestables afectando a la precisión del resultado. Una manera de paliar este efecto es permutar entre sí algunas de las filas de la matriz que se quiere factorizar y factorizar la versión permutada.
+A veces obtener la factorización LU directa de una matriz, puede llevar a cálculos que son numéricamente inestables afectando a la precisión del resultado. Una manera de paliar este efecto es permutar entre sí algunas de las filas de la matriz que se quiere factorizar y factorizar la versión permutada.
 
 La permutación de las filas de una matriz $A$ de orden $n\times m$, se puede definir a partir del producto con las matrices de permutación de orden $n \times n$. Éstas se obtienen permutando directamente las filas de la matriz identidad $I_{n \times n}$. Si una matriz de permutación multiplica a otra matriz por la izquierda, permuta el orden de sus filas. Si la multiplica por la derecha. permuta el orden de sus columnas. Así por ejemplo, para matrices de orden $3 \times n$,
 
@@ -2919,14 +3000,6 @@ array([[0., 1., 0., 0.],
        [0., 0., 0., 1.],
        [0., 0., 1., 0.],
        [1., 0., 0., 0.]])
-
-
-In [218]: L
-Out[218]: 
-array([[ 1.        ,  0.        ,  0.        ,  0.        ],
-       [ 0.6       ,  1.        ,  0.        ,  0.        ],
-       [ 0.6       ,  0.28571429,  1.        ,  0.        ],
-       [ 0.4       , -0.28571429,  0.16666667,  1.        ]])
 \end{minted}
 \end{minipage}
 \end{center}
@@ -2934,6 +3007,14 @@ array([[ 1.        ,  0.        ,  0.        ,  0.        ],
 \begin{center}
 \begin{minipage}{0.7\textwidth}
 \begin{minted}{python}
+
+In [218]: L
+Out[218]: 
+array([[ 1.        ,  0.        ,  0.        ,  0.        ],
+       [ 0.6       ,  1.        ,  0.        ,  0.        ],
+       [ 0.6       ,  0.28571429,  1.        ,  0.        ],
+       [ 0.4       , -0.28571429,  0.16666667,  1.        ]])
+
 
 In [219]: U
 Out[219]: 
@@ -2992,6 +3073,13 @@ array([[47, 28, 26, 45],
        [28, 24, 16, 40],
        [26, 16, 15, 22],
        [45, 40, 22, 97]])
+          \end{minted}        
+   \end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.5\textwidth}
+\begin{minted}{python}
 
 In [225]: L = np.linalg.cholesky(B)
 
@@ -3001,13 +3089,7 @@ array([[ 6.8556546 ,  0.        ,  0.        ,  0.        ],
        [ 4.08421976,  2.70539257,  0.        ,  0.        ],
        [ 3.79248978,  0.18874832,  0.76249285,  0.        ],
        [ 6.56392462,  4.87599823, -5.00195311,  2.2627417 ]])
-    \end{minted}        
-\end{minipage}
-\end{center}
 
-\begin{center}
-	\begin{minipage}{0.5\textwidth}
-		\begin{minted}{python}
 In [227]: L @ L.T
 Out[227]: 
 array([[47., 28., 26., 45.],
@@ -3484,6 +3566,7 @@ Numpy incluye en el submodulo \mintinline{python}{linalg} la función \mintinlin
 \switchcolumn
 Numpy includes, in the submodule \mintinline{python}{linalg}, the function \mintinline{python}{eig} to calculate the eigenvalues and eigenvector of a matrix. Function \mintinline{python}{eig} takes a square matrix of arbitrary dimensions as input and returns a vector with the eigenvalues of the input matrix and a square matrix, each of its column is an eigenvector. We show next two different ways of calling function \mintinline{python}{eig}. In line \mintinline{python}{In [281]} we computed the operation $X\cdot D \cdot X^{-1}$ to check that the results coincides with matrix $A$.
 \end{paracol}
+
 \begin{center}
     \begin{minipage}{\textwidth}
     \begin{minted}{python}
@@ -3498,17 +3581,13 @@ In [274]: [autovalores, autovectores] = np.linalg.eig(A)
 
 In [275]: autovalores
 Out[275]: array([10.71154715, -4.45608147,  0.70096017, -0.95642586])
-\end{minted}
-\end{minipage}
-\begin{minipage}{\textwidth}
-	\begin{minted}{python}
+
 In [276]: autovectores
 Out[276]: 
 array([[-0.5482369 , -0.40905141, -0.34168564,  0.53836293],
        [-0.05940265,  0.51767323, -0.46625182, -0.17480032],
        [-0.63104339, -0.60944455,  0.78709433, -0.82325502],
        [-0.54561146,  0.43962336,  0.2152735 ,  0.04314365]])
-
 In [277]: Results = np.linalg.eig(A)
 In [278]: Results
 Out[278]: 
@@ -3527,10 +3606,13 @@ array([[-0.5482369 , -0.40905141, -0.34168564,  0.53836293],
        [-0.05940265,  0.51767323, -0.46625182, -0.17480032],
        [-0.63104339, -0.60944455,  0.78709433, -0.82325502],
        [-0.54561146,  0.43962336,  0.2152735 ,  0.04314365]])
+\end{minted}
+\end{minipage}
+\end{center}
 
 \begin{center}
-	\begin{minipage}{\textwidth}
-		\begin{minted}{python}
+\begin{minipage}{\textwidth}
+\begin{minted}{python}
 In [281]: autovectores@np.diag(autovalores)@np.linalg.inv(autovectores)
 Out[281]: 
 array([[ 3.00000000e+00,  4.00000000e+00,  2.00000000e+00,
@@ -3637,7 +3719,13 @@ array([[1, 3, 4],
 In [102]: U,s,VT = np.linalg.svd(A)
 
 In [105]: S[:s.shape[0],:s.shape[0]] = np.diag(s)
+\end{minted}
+\end{minipage}
+\end{center}
 
+\begin{center}
+\begin{minipage}{0.7\textwidth}
+\begin{minted}{python}
 In [106]: S
 Out[106]: 
 array([[10.25447551,  0.        ,  0.        ],
