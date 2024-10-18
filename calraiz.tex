@@ -118,7 +118,8 @@ The well-known Bolzano's theorem provides the simplest method of approximating t
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
+\begin{subfigure}{0.45\textwidth}
+	\begin{tikzpicture}[scale=0.7,transform shape]
 %\usetikzlibrary{shapes.geometric}
 \path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Partimos de $[a,b]$\\ con\\ $f(a)\cdot f(b)<0$}
 (5,-2) node(b)[rectangle,draw=blue, thick,rounded corners]{Calculamos $c=\frac{a+b}{2}, f(c)$}
@@ -140,14 +141,9 @@ The well-known Bolzano's theorem provides the simplest method of approximating t
 \draw[blue,-latex](g.south)|-(2,-9)|-(b);
 \draw[blue,-latex](f.east)-|(11,-2)--(b);
 \end{tikzpicture}
-\caption{Diagrama de flujo del método de la bisección}
-\label{fig:dfbisec}
-\end{figure}
-
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+\begin{tikzpicture}[scale=0.7, transform shape]
 %\usetikzlibrary{shapes.geometric}
 \path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Begin with $[a,b]$\\ such as\\ $f(a)\cdot f(b)<0$}
 (5,-2) node(b)[rectangle,draw=blue, thick,rounded corners]{Compute $c=\frac{a+b}{2}, f(c)$}
@@ -169,8 +165,9 @@ The well-known Bolzano's theorem provides the simplest method of approximating t
 \draw[blue,-latex](g.south)|-(2,-9)|-(b);
 \draw[blue,-latex](f.east)-|(11,-2)--(b);
 \end{tikzpicture}
-\caption{Flowchart of the bisection method}
-\label{fig:dfbisec_eng}
+\end{subfigure}
+\bicaption{Diagrama de flujo del método de la bisección}{Flowchart of the bisection method}
+\label{fig:dfbisec}
 \end{figure}
 
 \begin{paracol}{2}
@@ -179,7 +176,7 @@ En la figura \ref{fig:dfbisec} se muestra un diagrama de flujo correspondiente a
 
 \switchcolumn
 
-Figure \ref{fig:dfbisec_eng} shows a flowchart corresponding to the bisection method. The starting point is an interval $[a,b]$ in which Bolzano's theorem is satisfied, and which therefore contains at least one root. It is interesting to note that Bolzano's theorem is satisfied whenever the function is continuous on the interval $[a,b]$ and there are an odd number of roots. This is why it is important to choose the interval $[a,b]$ carefully. If there is more than one root, the algorithm may not converge.
+Figure \ref{fig:dfbisec} shows a flowchart corresponding to the bisection method. The starting point is an interval $[a,b]$ in which Bolzano's theorem is satisfied, and which therefore contains at least one root. It is interesting to note that Bolzano's theorem is satisfied whenever the function is continuous on the interval $[a,b]$ and there are an odd number of roots. This is why it is important to choose the interval $[a,b]$ carefully. If there is more than one root, the algorithm may not converge.
 
 \switchcolumn
  Una vez que se tiene el intervalo se calcula el punto medio $c$. A continuación se compara el valor que toma la función en $c$, es decir $f(c)$ con la tolerancia. Si el valor es menor que ésta, el algoritmo ha encontrado un valor aproximado de la raíz con la tolerancia requerida, con lo que $c$ es la raíz y no hace falta seguir buscando. Si por el contrario, $f(c)$ está por encima de la tolerancia requerida, comparamos su signo con el que toma la función en uno cualquiera de los extremos del intervalo, En el diagrama de flujo se ha elegido el extremo $a$, pero el algoritmo funcionaría igualmente si eligiéramos $b$. Si el signo de $f(c)$ coincide con el que toma la función en el extremo del intervalo elegido, $c$ sustituye al extremo, (hacemos $a=c$ y $f(a)=f(c)$) si por el contrario el signo es distinto, hacemos que $c$ sustituya al otro extremo del intervalo. (hacemos $b=c$ y $f(b)=f(c)$). Este proceso se repetirá hasta que se cumpla que $f(c)\le \text{tol}$ 
@@ -193,18 +190,32 @@ Figure \ref{fig:dfbisec_eng} shows a flowchart corresponding to the bisection me
 
 \begin{figure}
 \centering
-\subfigure[intervalo inicial]{\includegraphics[width=7cm]{rint0.pdf}} \qquad
-\subfigure[iteracion 1]{\includegraphics[width=7cm]{rint1.pdf}}\\
-\subfigure[iteracion 2]{\includegraphics[width=7cm]{rint2.pdf}}\qquad
-\subfigure[iteracion 3]{\includegraphics[width=7cm]{rint3.pdf}}\\
-\subfigure[iteracion 6: raíz alcanzada]{\includegraphics[width=7cm]{rint4.pdf}}
-
+\begin{subfigure}{0.4\textwidth}
+	{\includegraphics[width=\textwidth]{rint0.pdf}}
+	\caption{intervalo inicial}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+	{\includegraphics[width=\textwidth]{rint1.pdf}}
+	\caption{iteración 1}
+\end{subfigure}	
+\begin{subfigure}{0.4\textwidth}
+	{\includegraphics[width=\textwidth]{rint2.pdf}}
+	\caption{iteracion 2}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+	{\includegraphics[width=\textwidth]{rint3.pdf}}
+	\caption{iteracion 3}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+	{\includegraphics[width=\textwidth]{rint4.pdf}}
+    \caption{iteracion 6: raíz alcanzada}
+\end{subfigure}
 \bicaption{proceso de obtención de la raíz de una función por el método de la bisección.}{process of obtaining the root of a function by the bisection method.}
 \label{fig:bisec}
 \end{figure}
 
 \begin{paracol}{2}
-El proceso se muestra gráficamente en la figura \ref{fig:bisec}, para un caso particular. Se trata de obtener la raíz de la función mostrada en la figura \ref{fig:bolzano}, $f(x)=e^x-x^2$. esta función tiene una única raíz: $r\approx -0.7035$. Para iniciar el algoritmo se ha elegido un intervalo $[a=-2,b=2]$. La figura \ref{fig:bisec}, muestra tres iteraciones sucesivas,y la solución final, que se obtiene al cabo de ocho iteraciones en éste ejemplo, para el que se a empleado una tolerancia $tol=0.01$. En la secuencia de gráficas se puede observar también la evolución del intervalo de búsqueda, $[-2, 2]\rightarrow [-2, 0] \rightarrow [-1, 0] \rightarrow [-1, -0.5] \cdots$; así como el cambio alternativo del límite derecho o izquierdo, para asegurar que la raíz queda siempre dentro de los sucesivos intervalos de búsqueda obtenidos. 
+El proceso se muestra gráficamente en la figura \ref{fig:bisec}, para un caso particular. Se trata de obtener la raíz de la función mostrada en la figura \ref{fig:bolzano}, $f(x)=e^x-x^2$. esta función tiene una única raíz: $r\approx -0.7035$. Para iniciar el algoritmo se ha elegido un intervalo $[a=-2,b=2]$. La figura \ref{fig:bisec}, muestra tres iteraciones sucesivas,y la ´solución final, que se obtiene al cabo de ocho iteraciones en éste ejemplo, para el que se a empleado una tolerancia $tol=0.01$. En la secuencia de gráficas se puede observar también la evolución del intervalo de búsqueda, $[-2, 2]\rightarrow [-2, 0] \rightarrow [-1, 0] \rightarrow [-1, -0.5] \cdots$; así como el cambio alternativo del límite derecho o izquierdo, para asegurar que la raíz queda siempre dentro de los sucesivos intervalos de búsqueda obtenidos. 
 
 \switchcolumn
 
@@ -279,7 +290,8 @@ Figure \ref{fig:regulaf} shows the position of point $c$ computed with this meth
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
+\begin{subfigure}{0.45\textwidth}
+\begin{tikzpicture}[scale=0.7, transform shape]
 %\usetikzlibrary{shapes.geometric}
 \path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Partimos de $[a,b]$\\ con\\ $f(a)\cdot f(b)<0$}
 (5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Calculamos\\ $c=b-\frac{f(b)}{f(b)-f(a)}\cdot(b-a), f(c)$}
@@ -301,15 +313,9 @@ Figure \ref{fig:regulaf} shows the position of point $c$ computed with this meth
 \draw[blue,-latex](g.south)|-(2,-9)|-(b);
 \draw[blue,-latex](f.east)-|(11,-2)--(b);
 \end{tikzpicture}
-\caption{Diagrama de flujo del método de interpolación lineal}
-\label{fig:regula}
-\end{figure}
-
-
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+\begin{tikzpicture}[scale=0.7, transform shape]
 %\usetikzlibrary{shapes.geometric}
 \path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Begin with $[a,b]$\\ being\\ $f(a)\cdot f(b)<0$}
 (5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Compute\\ $c=b-\frac{f(b)}{f(b)-f(a)}\cdot(b-a), f(c)$}
@@ -331,8 +337,9 @@ Figure \ref{fig:regulaf} shows the position of point $c$ computed with this meth
 \draw[blue,-latex](g.south)|-(2,-9)|-(b);
 \draw[blue,-latex](f.east)-|(11,-2)--(b);
 \end{tikzpicture}
-\caption{Flowchart of false position method}
-\label{fig:regula_eng}
+\end{subfigure}
+\bicaption{Diagrama de flujo del método de interpolación lineal}{Flowchart of false position method}
+\label{fig:regula}
 \end{figure}
 
 \begin{paracol}{2}
@@ -364,17 +371,40 @@ Una observación final, se ha dicho al principio que éste método supone una me
 One final remark, it was said at the beginning that this method is an improvement on the previous method of bisection. This is not always true. The bisection method has a constant convergence rate, each iteration halving the search space. However, the convergence of the false position method depends on the function $f(x)$ and the relative position of the initial points $(a, f(a))$ and $(b, f(b))$ with respect to the root. This is why it is not always true that it converges faster than the bisection method. On the other hand, the calculation of the successive values of the point $c$ requires more arithmetic operations in the false position method, making each iteration slower than in the case of bisection.
 
 \end{paracol}
-
 \begin{figure}
-\centering
-\subfigure[intervalo inicial]{\includegraphics[width=7cm]{rinter0.pdf}} \qquad
-\subfigure[iteracion 1]{\includegraphics[width=7cm]{rinter1.pdf}}\\
-\subfigure[iteracion 2]{\includegraphics[width=7cm]{rinter2.pdf}}\qquad
-\subfigure[iteracion 3]{\includegraphics[width=7cm]{rinter3.pdf}}\\
-\subfigure[iteracion 6: raíz alcanzada]{\includegraphics[width=7cm]{rinter4.pdf}}
-
-\bicaption{Proceso de obtención de la raíz de una función por el método de interpolación lineal}{Process of obtaining the root of a function by the method of linear interpolation}\label{fig:iterr2}
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{rinter0.pdf}}
+		\caption{intervalo inicial}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{rinter1.pdf}}
+		\caption{iteración 1}
+	\end{subfigure}	
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{rinter2.pdf}}
+		\caption{iteracion 2}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{rinter3.pdf}}
+		\caption{iteracion 3}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{rinter4.pdf}}
+		\caption{iteracion 6: raíz alcanzada}
+	\end{subfigure}
+	\bicaption{Proceso de obtención de la raíz de una función por el método de interpolación lineal}{Process of obtaining the root of a function by the method of linear interpolation}\label{fig:iterr2}
 \end{figure}
+%\begin{figure}
+%\centering
+%\subfigure[intervalo inicial]{\includegraphics[width=7cm]{rinter0.pdf}} \qquad
+%\subfigure[iteracion 1]{\includegraphics[width=7cm]{rinter1.pdf}}\\
+%\subfigure[iteracion 2]{\includegraphics[width=7cm]{rinter2.pdf}}\qquad
+%\subfigure[iteracion 3]{\includegraphics[width=7cm]{rinter3.pdf}}\\
+%\subfigure[iteracion 6: raíz alcanzada]{\includegraphics[width=7cm]{rinter4.pdf}}
+
+%
+%\end{figure}
 
 \begin{paracol}{2}
 \subsection{Método de Newton-Raphson}
@@ -453,7 +483,8 @@ x_0\rightarrow x_1=x_0-\frac{f(x_0)}{f'(x_0)}\rightarrow x_2=x_1-\frac{f(x_1)}{f
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
+\begin{subfigure}{0.4\textwidth}
+\begin{tikzpicture}[scale=0.7, transform shape]
 %\usetikzlibrary{shapes.geometric}
 \path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Partimos de un punto inicial $x_0$}
 (5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Calculamos\\ $x=x_0-\frac{f(x_0)}{f'(x_0)}, f(x)$}
@@ -467,15 +498,10 @@ x_0\rightarrow x_1=x_0-\frac{f(x_0)}{f'(x_0)}\rightarrow x_2=x_1-\frac{f(x_1)}{f
 \draw[blue,-latex](c.south)--(g);
 \draw (5,-5)node[right]{No};
 \draw[blue,-latex](g.south)|-(2,-7)|-(b);
-
 \end{tikzpicture}
-\caption{Diagrama de flujo del método de Newton-Raphson}
-\label{fig:newton}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+\begin{tikzpicture}[scale=0.7, transform shape]
 %\usetikzlibrary{shapes.geometric}
 \path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Initial point $x_0$}
 (5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Compute\\ $x=x_0-\frac{f(x_0)}{f'(x_0)}, f(x)$}
@@ -489,10 +515,10 @@ x_0\rightarrow x_1=x_0-\frac{f(x_0)}{f'(x_0)}\rightarrow x_2=x_1-\frac{f(x_1)}{f
 \draw[blue,-latex](c.south)--(g);
 \draw (5,-5)node[right]{No};
 \draw[blue,-latex](g.south)|-(2,-7)|-(b);
-
 \end{tikzpicture}
-\caption{Flowchart of Newton-Raphson method}
-\label{fig:newton_eng}
+\end{subfigure}
+\bicaption{Diagrama de flujo del método de Newton-Raphson}{Flowchart of Newton-Raphson method}
+\label{fig:newton}
 \end{figure}
 
 \begin{paracol}{2}
@@ -501,7 +527,7 @@ La figura \ref{fig:newton} muestra un diagrama de flujo correspondiente al méto
 
 \switchcolumn
 
-Figure \ref{fig:newton_eng} shows a flowchart for Newton's method. Compared to the flowcharts of the previous algorithms, Newton's algorithm is somewhat simpler to implement. However, the value of the function and its derivative must be evaluated at each iteration. 
+Figure \ref{fig:newton} shows a flowchart for Newton's method. Compared to the flowcharts of the previous algorithms, Newton's algorithm is somewhat simpler to implement. However, the value of the function and its derivative must be evaluated at each iteration. 
 
 \switchcolumn
 
@@ -512,20 +538,49 @@ El cálculo de la derivada, es el punto débil de este algoritmo, ya que para va
 The calculation of the derivative is the weak point of this algorithm, since for values $x_0$ close to a local minimum or maximum we will obtain values of the derivative close to zero, which may cause an overflow error when calculating the point of intersection of the tangent line with the abscissa axis or cause the algorithm to converge to a root far from the initial search point.
 
 \end{paracol}
-\newpage
+
 \begin{figure}
-
-\centering
-\subfigure[intervalo inicial]{\includegraphics[width=7cm]{newt01.pdf}} \qquad
-\subfigure[iteracion 1]{\includegraphics[width=7cm]{newt02.pdf}}\\
-\subfigure[iteracion 2]{\includegraphics[width=7cm]{newt1.pdf}}\qquad
-\subfigure[iteracion 3]{\includegraphics[width=7cm]{newt2.pdf}}\\
-\subfigure[iteracion 4]{\includegraphics[width=7cm]{newt3.pdf}}\qquad
-\subfigure[iteracion 5: raíz de la función]{\includegraphics[width=7cm]{newt4.pdf}}
-
-\bicaption{Proceso de obtención de la raíz de una función por el método de Newton}{Process of obtaining the root of a function by Newton's method}
-\label{fig:newton2}
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{newt01.pdf}}
+		\caption{intervalo inicial}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{newt02.pdf}}
+		\caption{iteración 1}
+	\end{subfigure}	
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{newt1.pdf}}
+		\caption{iteracion 2}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{newt2.pdf}}
+		\caption{iteración 3}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{newt3.pdf}}
+		\caption{iteración 4}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{newt4.pdf}}
+		\caption{iteración 5: raíz de la función}
+	\end{subfigure}
+	\bicaption{Proceso de obtención de la raíz de una función por el método de Newton}{Process of obtaining the root of a function by Newton's method}
+	\label{fig:newton2}
 \end{figure}
+%\begin{figure}
+%
+%\centering
+%\subfigure[intervalo inicial]{\includegraphics[width=7cm]{newt01.pdf}} \qquad
+%\subfigure[iteracion 1]{\includegraphics[width=7cm]{newt02.pdf}}\\
+%\subfigure[iteracion 2]{\includegraphics[width=7cm]{newt1.pdf}}\qquad
+%\subfigure[iteracion 3]{\includegraphics[width=7cm]{newt2.pdf}}\\
+%\subfigure[iteracion 4]{\includegraphics[width=7cm]{newt3.pdf}}\qquad
+%\subfigure[iteracion 5: raíz de la función]{\includegraphics[width=7cm]{newt4.pdf}}
+%
+%\bicaption{Proceso de obtención de la raíz de una función por el método de Newton}{Process of obtaining the root of a function by Newton's method}
+%\label{fig:newton2}
+%\end{figure}
 
 
 
@@ -534,63 +589,52 @@ The calculation of the derivative is the weak point of this algorithm, since for
 \begin{paracol}{2}
 La figura \ref{fig:newton2} muestra un ejemplo de obtención de la raíz de una función mediante el método de Newton. El método es más rápido que los dos anteriores, es decir, partiendo de una distancia comparable a la raíz, es el que converge en menos iteraciones. 
 
-\switchcolumn
-
-Figure \ref{fig:newton2} shows an example of obtaining the root of a function using Newton's method. The method is faster than the previous two, i.e., starting from a comparable distance to the root, it is the one that converges in the fewest iterations.
-
-\switchcolumn
-
 En el ejemplo de la figura se ha obtenido la raíz para la misma función que en los ejemplos del método de la bisección e interpolación lineal. Se ha empezado sin embargo en un punto más alejado de la raíz, para que pueda observarse mejor en la figura la evolución del algoritmo. En cada uno de los gráficos que componen la figura pueden observarse  los pasos del algoritmo: dado el punto  $x_i$, se calcula  la recta tangente a la función $f(x)$ en el punto y se obtiene un nuevo punto $x_{i+1}$,  como el corte de dicha recta tangente con el eje de abscisas.
-
-\switchcolumn
-
-
-In the example in the figure, the root has been obtained for the same function as in the examples of the bisection and false position method. However, we have started at a point further away from the root, so that the evolution of the algorithm can be better observed in the figure. In each of the graphs that make up the figure, the steps of the algorithm can be observed: given the point $x_i$, the tangent line to the function $f(x)$ at the point is calculated and a new point $x_{i+1}$ is obtained, as the intersection of this tangent line with the abscissa axis.
-
-\switchcolumn
 
 En este ejemplo el algoritmo converge en las cinco iteraciones que se muestran en la figura, para la misma tolerancia empleada en los métodos anteriores, $tol=0.01$. El punto de inicio empleado fue $x_0=2.5$, por tanto esta fuera del intervalo $[-2, 2]$ y más alejado de la raíz que en el caso de los métodos anteriores.   
 
 \switchcolumn
 
+Figure \ref{fig:newton2} shows an example of obtaining the root of a function using Newton's method. The method is faster than the previous two, i.e., starting from a comparable distance to the root, it is the one that converges in the fewest iterations.
+
+In the example in the figure, the root has been obtained for the same function as in the examples of the bisection and false position method. However, we have started at a point further away from the root, so that the evolution of the algorithm can be better observed in the figure. In each of the graphs that make up the figure, the steps of the algorithm can be observed: given the point $x_i$, the tangent line to the function $f(x)$ at the point is calculated and a new point $x_{i+1}$ is obtained, as the intersection of this tangent line with the abscissa axis.
+
 In this example the algorithm converges in the five iterations shown in the figure, for the same tolerance used in the previous methods, $tol=0.01$. The starting point used was $x_0=2.5$, so it is outside the interval $[-2, 2]$ and further away from the root than in the case of the previous methods.   
 
-\switchcolumn
+\end{paracol}
+\begin{figure}
+	\includegraphics[width=14cm]{secante0.pdf}
+	\bicaption{Recta secante a la  función $f(x)$ en los puntos $x_0$ y $x_1$}{Secant line to the function $f(x)$ at points $x_0$ and $x_1$.}
+	\label{fig:secante}
+\end{figure}
+
+
+\begin{paracol}{2}
 
 \subsection{Método de la secante}
 El método de la secante podría considerarse una variante del método de newton en el que se sustituye la recta tangente al punto $x0$ por la recta secante que une dos puntos obtenidos en iteraciones sucesivas. La idea es \emph{aproximar} la derivada a la función $f$ en el punto $x_n$ por la pendiente de una recta secante, es decir de una recta que corta a la función en dos puntos, 
-\begin{equation*}
-f'(x_n)\approx \frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}
-\end{equation*}
 
 \switchcolumn
 
 \subsection{Secant method}
 The secant method could be considered a variant of Newton's method in which the tangent line to the point $x0$ is replaced by the secant line joining two points obtained in successive iterations. The idea is to approximate the derivative of the function $f$ at the point $x_n$ by the slope of a secant line, i.e. a line that cuts the function at two points, 
+\end{paracol}
+
+
 \begin{equation*}
 f'(x_n)\approx \frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}
 \end{equation*}
 
-\switchcolumn
+\begin{paracol}{2}
 Las sucesivas aproximaciones a la raíz de la función se obtienen de modo similar a las del método de Newton, simplemente sustituyendo la derivada de la función por su valor aproximado,
-
-\begin{equation*}
-x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}\approx x_n-\frac{(x_n-x_{n-1})\cdot f(x_n)}{f(x_n)-f(x_{n-1})}
-\end{equation*}
 
 \switchcolumn
 The successive approximations to the root of the function are obtained in a similar way to Newton's method, by simply substituting the derivative of the function by its approximate value,
+\end{paracol}
+
 \begin{equation*}
 x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}\approx x_n-\frac{(x_n-x_{n-1})\cdot f(x_n)}{f(x_n)-f(x_{n-1})}
 \end{equation*}
-
-\end{paracol}
-
-\begin{figure}[h]
-\includegraphics[width=14cm]{secante0.pdf}
-\bicaption{Recta secante a la  función $f(x)$ en los puntos $x_0$ y $x_1$}{Secant line to the function $f(x)$ at points $x_0$ and $x_1$.}
-\label{fig:secante}
-\end{figure}
 
 \begin{paracol}{2}
 Para iniciar el algoritmo, es preciso emplear en este caso dos puntos iniciales. La figura \ref{fig:secante} muestra un ejemplo.
@@ -607,7 +651,8 @@ The method could at this point be confused with false position method, but it ha
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
+\begin{subfigure}{0.4\textwidth}
+\begin{tikzpicture}[scale=0.7, transform shape]
 %\usetikzlibrary{shapes.geometric}
 \path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Partimos de dos puntos inicial $x_0$, $x_1$}
 (5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Calculamos\\ $x=x_1-\frac{(x_1-x_0)\cdot f(x_1)}{f(x_1)-f(x_0)}, f(x)$}
@@ -623,13 +668,9 @@ The method could at this point be confused with false position method, but it ha
 \draw[blue,-latex](g.south)|-(2,-7)|-(b);
 
 \end{tikzpicture}
-\caption{Diagrama de flujo del método de la secante}
-\label{fig:secante2}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+\begin{tikzpicture}[scale=0.7, transform shape]
 %\usetikzlibrary{shapes.geometric}
 \path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Begin with two initial points $x_0$, $x_1$}
 (5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Compute\\ $x=x_1-\frac{(x_1-x_0)\cdot f(x_1)}{f(x_1)-f(x_0)}, f(x)$}
@@ -645,8 +686,9 @@ The method could at this point be confused with false position method, but it ha
 \draw[blue,-latex](g.south)|-(2,-7)|-(b);
 
 \end{tikzpicture}
-\caption{Flowchart of the secant method}
-\label{fig:secante2_eng}
+\end{subfigure}
+\bicaption{Diagrama de flujo del método de la secante}{Flowchart of the secant method}
+\label{fig:secante2}
 \end{figure}
 
 \begin{paracol}{2}
@@ -654,7 +696,7 @@ The method could at this point be confused with false position method, but it ha
 La figura \ref{fig:secante2} muestra un diagrama de flujo para el método de la secante. El diagrama es básicamente el mismo que el empleado para el método de Newton. Las dos diferencias fundamentales son, que ahora en lugar de evaluar la función y la derivada en cada iteración, se calcula  el valor del punto de corte de la recta que pasa por los dos últimos puntos obtenidos (es decir, empleamos una recta secante, que corta a la curva en dos puntos, en lugar de emplear una recta tangente). 
 
 \switchcolumn
-Figure \ref{fig:secante2_eng} shows a flow diagram for the secant method. The diagram is basically the same as the one used for Newton's method. The two fundamental differences are that now, instead of evaluating the function and the derivative at each iteration, we calculate the value of the cut-off point of the line passing through the last two points obtained (i.e. we use a secant line, which cuts the curve at two points, instead of using a tangent line). 
+Figure \ref{fig:secante2} shows a flow diagram for the secant method. The diagram is basically the same as the one used for Newton's method. The two fundamental differences are that now, instead of evaluating the function and the derivative at each iteration, we calculate the value of the cut-off point of the line passing through the last two points obtained (i.e. we use a secant line, which cuts the curve at two points, instead of using a tangent line). 
 
 \switchcolumn
 
@@ -666,19 +708,47 @@ In addition, the value of the last two points obtained must be updated in each i
 
 
 \end{paracol}
-
 \begin{figure}
-\centering
-\subfigure[intervalo inicial]{\includegraphics[width=7cm]{secante0.pdf}} \qquad
-\subfigure[iteracion 1]{\includegraphics[width=7cm]{secante1.pdf}}\\
-\subfigure[iteración 2]{\includegraphics[width=7cm]{secante2.pdf}}\qquad
-\subfigure[iteración 3]{\includegraphics[width=7cm]{secante3.pdf}}\\
-\subfigure[iteración 4]{\includegraphics[width=7cm]{secante31.pdf}}\qquad
-\subfigure[iteración 5]{\includegraphics[width=7cm]{secante4.pdf}}
-
-\caption{proceso de obtención de la raíz de una función por el método de la secante}{process of obtaining the root of a function by the secant method}
-\label{fig:secante3}
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{secante0.pdf}}
+		\caption{intervalo inicial}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{secante1.pdf}}
+		\caption{iteración 1}
+	\end{subfigure}	
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{secante2.pdf}}
+		\caption{iteracion 2}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{secante3.pdf}}
+		\caption{iteracion 3}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{secante31.pdf}}
+		\caption{iteracion 4}
+	\end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
+    	{\includegraphics[width=\textwidth]{secante4.pdf}}
+    	\caption{iteracion 5: Raíz de la función}
+    \end{subfigure}
+	\bicaption{proceso de obtención de la raíz de una función por el método de la secante}{process of obtaining the root of a function by the secant method}
+	\label{fig:secante3}
 \end{figure}
+%\begin{figure}
+%\centering
+%\subfigure[intervalo inicial]{\includegraphics[width=7cm]{secante0.pdf}} \qquad
+%\subfigure[iteracion 1]{\includegraphics[width=7cm]{secante1.pdf}}\\
+%\subfigure[iteración 2]{\includegraphics[width=7cm]{secante2.pdf}}\qquad
+%\subfigure[iteración 3]{\includegraphics[width=7cm]{secante3.pdf}}\\
+%\subfigure[iteración 4]{\includegraphics[width=7cm]{secante31.pdf}}\qquad
+%\subfigure[iteración 5]{\includegraphics[width=7cm]{secante4.pdf}}
+%
+%\caption{proceso de obtención de la raíz de una función por el método de la secante}{process of obtaining the root of a function by the secant method}
+%\label{fig:secante3}
+%\end{figure}
 
 \begin{paracol}{2}
 La figura \ref{fig:secante3} muestra un ejemplo de la obtención de una raíz por el método de la secante. Se ha empleado de nuevo la misma función que en los ejemplos anteriores, tomando como valores iniciales, $x_0=-2.5$ y $x_1=0.5$. La tolerancia se ha fijado en $tol=0.01$ también como en los anteriores algoritmos descritos. En este caso, el algoritmo encuentra la raíz en cinco iteraciones. Cada uno de los gráficos que compone la figura \ref{fig:secante3}, muestra la obtención de un nuevo punto a partir de los dos anteriores. 
@@ -846,39 +916,38 @@ Salvo que, en contra de la hipótesis inicial, se cumpla que  $ x_{f1}=x_{f2}$. 
 \switchcolumn
 Unless, contrary to the initial hypothesis, it is satisfied that $ x_{f1}=x_{f2}$. In which case, there can only be a single fixed point in the interval $[a, b]$ under the conditions imposed by the theorem.
 
-\switchcolumn
-
-\paragraph{Teorema de punto fijo (atractivo).} \footnote{Hay varios teoremas de punto fijo definidos en distintos contextos matemáticos. Aquí se da una versión reducida a funciones $f(x):\mathbb{R} \rightarrow \mathbb{R}$} Dada una función $g(x)$,  continua y diferenciable en un intervalo $[a, b]$, que  cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$ y que  $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, con $0<k<1$, entonces se cumple que, para cualquier punto inicial $x_0$, contenido en el intervalo $[a, b]$, la sucesión  $x_{n+1}=g(x_n)$ converge al único punto fijo del intervalo $[a, b]$.
+\paragraph{Teorema de punto fijo (atractivo).}\footnote{Hay varios teoremas de punto fijo definidos en distintos contextos matemáticos. Aquí se da una versión reducida a funciones $f(x):\mathbb{R} \rightarrow \mathbb{R}$} Dada una función $g(x)$,  continua y diferenciable en un intervalo $[a, b]$, que  cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$ y que  $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, con $0<k<1$, entonces se cumple que, para cualquier punto inicial $x_0$, contenido en el intervalo $[a, b]$, la sucesión  $x_{n+1}=g(x_n)$ converge al único punto fijo del intervalo $[a, b]$.
 La demostración puede obtenerse de nuevo a partir del teorema del valor medio. Si lo aplicamos al valor inicial $x_0$ y al punto fijo $x_f$, obtenemos,
 \switchcolumn
 
 \paragraph{Theorem of the attracting fixed point.} \footnote{There are several fixed point theorems defined in different mathematical contexts. A version reduced to functions $f(x):\mathbb{R} \rightarrow \mathbb{R}$ is given here.} Let $g(x)$,  continuous and differentiable on an interval $[a, b]$, that holds, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$ and that  $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, with $0<k<1$, then it holds that for any $x_0$, in $[a, b]$, the succession  $x_{n+1}=g(x_n)$ converges to the only fixed point of the interval $[a, b]$.
 The proof can again be obtained from the mean value theorem. If we apply it to the initial value $x_0$ and the fixed point $x_f$, we obtain,
 
+\end{paracol}
+
+
 \begin{equation*}
 \vert g(x_0)-g(x_f) \vert =\vert x_0-x_f \vert \cdot \vert g'(\xi) \vert \leq \vert x_0-x_f \vert \cdot k 
 \end{equation*}
 
-\switchcolumn
+\begin{paracol}{2}
 Para la siguiente iteración tendremos,
-
+\switchcolumn
+For the next iteration we will have,
+\end{paracol}
 \begin{equation*}
 \vert g(x_1)-g(x_f) \vert \leq \vert x_1-x_f \vert \cdot k \leq \vert x_0-x_f \vert \cdot k^2 
 \end{equation*}
 
+\begin{paracol}{2}
 puesto que,  $x_1=g(x_0)$ y $x_f = g(x_f)$, puesto que $x_f$ es el punto fijo. 
 
 Por simple inducción tendremos que para el término enésimo de la sucesión,
+
 \switchcolumn
-For the next iteration we will have,
-
-\begin{equation*}
-\vert g(x_1)-g(x_f) \vert \leq \vert x_1-x_f \vert \cdot k \leq \vert x_0-x_f \vert \cdot k^2 
-\end{equation*}
-
 since $x_1=g(x_0)$ y $x_f = g(x_f)$, because $x_f$ is a fixed point.
 
-Using induction we can obtain the ntn term of the sequence,
+Using induction we can obtain the nth term of the sequence,
 \end{paracol}
 \begin{equation*}
 \vert g(x_n)-g(x_f) \vert \leq \vert x_{n-1}-x_f \vert \cdot k \leq \vert x_{n-2}-x_f \vert \cdot k^2 \leq \cdots \leq  \vert x_0-x_f \vert \cdot k^n 
@@ -900,7 +969,9 @@ Es decir, la sucesión  $x_{n+1}=g(x_n)$ converge al punto fijo $x_f$.
 
 \switchcolumn
 That is, the sequence $x_{n+1}=g(x_n)$ converges to the fixed point $x_f$.
-\switchcolumn
+\end{paracol}
+
+\begin{paracol}{2}
 \paragraph{El método del punto fijo.}\index{Punto fijo! Método} Como ya hemos visto, obtener una raíz de una función $f(x)$, consiste en resolver la ecuación $f(x)=0$. Supongamos que podemos descomponer la función $f(x)$ como la diferencia de dos términos, una función auxiliar, $g(x)$, y la propia variable $x$
 \begin{equation*}
 f(x)=g(x)-x
@@ -911,14 +982,64 @@ f(x)=g(x)-x
 f(x)=g(x)-x
 \end{equation*}
 
-\switchcolumn
+\end{paracol}
 
+\begin{figure}{h}
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		\begin{tikzpicture}[scale=0.7, transform shape]
+			%\usetikzlibrary{shapes.geometric}
+			\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Partimos de un punto inicial $x_0$}
+			(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Calculamos\\ $x=g(x_0)$}
+			(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{es $\vert  x-x_0 \vert \le \text{tol}$?}
+			(9,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{convergencia:\\ terminar}
+			(5,-6) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$x_0=x$};
+			\draw[blue,-latex](a.south)--(b);
+			\draw[blue,-latex](b.south)--(c);
+			\draw[blue,-latex](c.east)--(d);
+			\draw (7.5,-4)node[above]{Sí};
+			\draw[blue,-latex](c.south)--(g);
+			\draw (5,-5)node[right]{No};
+			\draw[blue,-latex](g.south)|-(2,-7)|-(b);
+			
+		\end{tikzpicture}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		
+		\begin{tikzpicture}[scale=0.7, transform shape]
+			%\usetikzlibrary{shapes.geometric}
+			\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Initial point $x_0$}
+			(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Compute\\ $x=g(x_0)$}
+			(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{is $\vert  x-x_0 \vert \le \text{tol}$?}
+			(9,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{it converges:\\ The end}
+			(5,-6) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$x_0=x$};
+			\draw[blue,-latex](a.south)--(b);
+			\draw[blue,-latex](b.south)--(c);
+			\draw[blue,-latex](c.east)--(d);
+			\draw (7.5,-4)node[above]{Yes};
+			\draw[blue,-latex](c.south)--(g);
+			\draw (5,-5)node[right]{No};
+			\draw[blue,-latex](g.south)|-(2,-7)|-(b);
+			
+		\end{tikzpicture}
+	\end{subfigure}
+	\bicaption{Diagrama de flujo del método del punto fijo. Nótese que la raíz obtenida corresponde a la función $f(x)=g(x)-x$}{Flowchart of fixed point iteration. Root corresponds to $f(x)=g(x)-x$}
+	\label{fig:fixedp}
+\end{figure}
+
+
+\begin{paracol}{2}
 Encontrar una raíz de $f(x)$ resulta entonces equivalente a buscar un punto fijo de $g(x)$. 
 
 \begin{equation*}
 f(x)=0 \rightarrow g(x)-x=0 \rightarrow g(x)=x
 \end{equation*}
 
+En general, a partir de una función dada $f(x)$, es posible encontrar distintas funciones $g(x)$ que cumplan que $f(x)=g(x)-x$. No podemos garantizar que cualquiera de las descomposiciones que hagamos nos genere una función $g(x)$ que tenga un punto fijo. 
+Además, para funciones que tengan más de una raíz, puede suceder que distintas descomposiciones de la función converjan a distintas raíces.
+Si podemos encontrar una que cumpla las condiciones del teorema de punto fijo que acabamos de enunciar, en un entorno de una raíz de $f(x)$, podemos desarrollar un método que obtenga iterativamente los valores de la sucesión   $x_{n+1}=g(x_n)$, a partir de un valor inicial $x_0$.  El resultado se aproximará al punto fijo de $g(x)$, y por tanto a la raíz de $f(x)$ tanto como queramos. Bastará, como   en los métodos anteriores, definir un valor (tolerancia), por debajo del cual consideramos que el valor obtenido es suficientemente próximo a  la raíz como para darlo por válido. 
+
+La figura \ref{fig:fixedp} muestra un diagrama de flujo del método del punto fijo.
 \switchcolumn
 
 
@@ -928,75 +1049,20 @@ Finding a root of $f(x)$ is then equivalent to finding a fixed point of $g(x)$.
 f(x)=0 \rightarrow g(x)-x=0 \rightarrow g(x)=x
 \end{equation*}
 
-\switchcolumn
-
-En general, a partir de una función dada $f(x)$, es posible encontrar distintas funciones $g(x)$ que cumplan que $f(x)=g(x)-x$. No podemos garantizar que cualquiera de las descomposiciones que hagamos nos genere una función $g(x)$ que tenga un punto fijo. 
-Además, para funciones que tengan más de una raíz, puede suceder que distintas descomposiciones de la función converjan a distintas raíces.
-Si podemos encontrar una que cumpla las condiciones del teorema de punto fijo que acabamos de enunciar, en un entorno de una raíz de $f(x)$, podemos desarrollar un método que obtenga iterativamente los valores de la sucesión   $x_{n+1}=g(x_n)$, a partir de un valor inicial $x_0$.  El resultado se aproximará al punto fijo de $g(x)$, y por tanto a la raíz de $f(x)$ tanto como queramos. Bastará, como   en los métodos anteriores, definir un valor (tolerancia), por debajo del cual consideramos que el valor obtenido es suficientemente próximo a  la raíz como para darlo por válido. 
-
-La figura \ref{fig:pfijo1} muestra un diagrama de flujo del método del punto fijo. 
-
-\switchcolumn
-
 In general, starting from a given function $f(x)$, it is possible to find different functions $g(x)$ that satisfy that $f(x)=g(x)-x$. We cannot guarantee that any of the decompositions we do will generate a function $g(x)$ that has a fixed point. 
 Moreover, for functions that have more than one root, it can happen that different decompositions of the function converge to different roots.
 If we can find one that satisfies the conditions of the fixed point theorem just stated, in an environment of a root of $f(x)$, we can develop a method that iteratively obtains the values of the sequence $x_{n+1}=g(x_n)$, starting from an initial value $x_0$. The result will approximate the fixed point of $g(x)$, and therefore the root of $f(x)$ as much as we want. It will suffice, as in the previous methods, to define a value (tolerance), below which we consider that the value obtained is sufficiently close to the root to be valid.
 
 Figure \ref{fig:fixedp} shows a flowchart of the fixed point iteration. 
-
-
-\switchcolumn
+\end{paracol}
 
 \begin{figure}[h]
-\centering
-\begin{tikzpicture}
-%\usetikzlibrary{shapes.geometric}
-\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Partimos de un punto inicial $x_0$}
-(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Calculamos\\ $x=g(x_0)$}
-(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{es $\vert  x-x_0 \vert \le \text{tol}$?}
-(9,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{convergencia:\\ terminar}
-(5,-6) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$x_0=x$};
-\draw[blue,-latex](a.south)--(b);
-\draw[blue,-latex](b.south)--(c);
-\draw[blue,-latex](c.east)--(d);
-\draw (7.5,-4)node[above]{Sí};
-\draw[blue,-latex](c.south)--(g);
-\draw (5,-5)node[right]{No};
-\draw[blue,-latex](g.south)|-(2,-7)|-(b);
-
-\end{tikzpicture}
-\caption{Diagrama de flujo del método del punto fijo. Nótese que la raíz obtenida corresponde a la función $f(x)=g(x)-x$}
-\label{fig:pfijo1}
+	\includegraphics[width=14cm]{pfijo1.pdf}
+	\bicaption{$g(x)=\pm \sqrt{e^x}$, Solo la rama negativa tiene un punto fijo.}{$g(x)=\pm \sqrt{e^x}$, only negative branch has a fixed point.}
+	\label{fig:pfijo01}
 \end{figure}
 
-\switchcolumn
-
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
-%\usetikzlibrary{shapes.geometric}
-\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Initial point $x_0$}
-(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners,align=center]{Compute\\ $x=g(x_0)$}
-(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{is $\vert  x-x_0 \vert \le \text{tol}$?}
-(9,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{it converges:\\ The end}
-(5,-6) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$x_0=x$};
-\draw[blue,-latex](a.south)--(b);
-\draw[blue,-latex](b.south)--(c);
-\draw[blue,-latex](c.east)--(d);
-\draw (7.5,-4)node[above]{Yes};
-\draw[blue,-latex](c.south)--(g);
-\draw (5,-5)node[right]{No};
-\draw[blue,-latex](g.south)|-(2,-7)|-(b);
-
-\end{tikzpicture}
-\caption{Flowchart of fixed point iteration. Root corresponds to $f(x)=g(x)-x$}
-\label{fig:fixedp}
-\end{figure}
-
-
-\switchcolumn
-
+\begin{paracol}{2}
  La idea es elegir cuidadosamente el punto inicial $x_0$, para asegurar que se encuentra dentro del intervalo de convergencia del punto fijo.  A continuación, calculamos el valor de $g(x_0)$, el resultado será un nuevo valor  $x$ .  Comprobamos la diferencia entre el punto obtenido y el anterior y si es menor que una cierta tolerancia,  consideramos que el método ha convergido, dejamos de iterar, y devolvemos el valor de $x$ obtenido como resultado. Si no, copiamos $x$ en $x_0$ y volvemos a empezar todo el proceso. Es interesante hacer notar que que el algoritmo converge cuando la diferencia entre dos puntos consecutivos es menor que un cierto valor.  De acuerdo con la \emph{condición } de punto fijo $g(x_0)=x_0$, dicha distancia, sería equivalente a la que media entre $f(x_0)=g(x_0)-x_0$, la función para la que queremos obtener la raíz,   y $0$.
 
 Veamos un ejemplo. Supongamos  que queremos calcular por el método del punto fijo la raíz de la  
@@ -1013,8 +1079,6 @@ Let us look at an example. Suppose we want to calculate by the fixed point metho
 function $y=e^x-x^2$, which we have used in the examples of the previous methods.
 
 First, we must obtain from it a new function that satisfies that $f(x)=g(x)-x$. We can do this in several ways by clearing an '$x$' from the equation $e^x-x^2=0$. To illustrate the different cases of convergence, we will clear $x$ in three different ways.
-
-
 \end{paracol}
 
 
@@ -1028,14 +1092,8 @@ x&=\frac{e^x}{x}
 \right.
 \end{equation*}
 
-\begin{figure}[h]
-\includegraphics[width=14cm]{pfijo1.pdf}
-\bicaption{$g(x)=\pm \sqrt{e^x}$, Solo la rama negativa tiene un punto fijo.}{$g(x)=\pm \sqrt{e^x}$, only negative branch has a fixed point.}
-\label{fig:pfijo01}
-\end{figure}
 
-\begin{paracol}{2}
-    
+\begin{paracol}{2}    
 En nuestro ejemplo hemos obtenido tres formas distintas de \emph{despejar} la variable $x$. La cuestión que surge inmediatamente es, si todas las funciones obtenidas, tienen un punto fijo y, en caso de tenerlo, si es posible alcanzarlo iterativamente.
 
 En el primer caso, $x=\pm \sqrt{e^x}$, obtenemos las dos ramas de la raíz cuadrada. Cada una de ellas constituye a los efectos de nuestro cálculo una función distinta. Si las dibujamos junto a la recta $y=x$ (figura \ref{fig:pfijo01}), observamos que solo la rama negativa la corta. Luego será  esta rama $g(x)=-\sqrt{e^x}$,  la que podremos utilizar para obtener la raíz de la función original por el método del punto fijo. La rama positiva, al no cortar a la recta $y=x$ en ningún punto, es una función que carece de punto fijo.
@@ -1045,8 +1103,53 @@ En el primer caso, $x=\pm \sqrt{e^x}$, obtenemos las dos ramas de la raíz cuadr
 In our example we have obtained three different ways of \emph{clearing} the variable $x$. The question that immediately arises is whether all the functions obtained have a fixed point and, if so, whether it is possible to reach it iteratively.
 
 In the first case, $x=\pm \sqrt{e^x}$, we obtain the two branches of the square root. For the purposes of our calculation, each of them constitutes a different function. If we draw them next to the straight line $y=x$ (figure \ref{fig:pfijo01}), we observe that only the negative branch cuts it. Then it will be this branch $g(x)=-$-$sqrt{e^x}$, which we will be able to use to obtain the root of the original function by the fixed point method. The positive branch, as it does not cut the straight line $y=x$ at any point, is a function without a fixed point.
+\end{paracol}
 
-\switchcolumn
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=0.8\textwidth]{pfijo3.pdf}}
+		\caption{intervalo inicial}
+		\label{fig:pfijo21}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=0.8\textwidth]{pfijo4.pdf}}
+		\caption{iteración 1}
+	\end{subfigure}	
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=0.8\textwidth]{pfijo5.pdf}}
+		\caption{iteracion 2}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=0.8\textwidth]{pfijo6.pdf}}
+		\caption{iteracion 3}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=0.8\textwidth]{pfijo7.pdf}}
+		\caption{iteracion 4}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=0.8\textwidth]{pfijo8.pdf}}
+		\caption{iteracion 5: Raíz de la función}
+		\label{fig:pfijo25}
+	\end{subfigure}
+	\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=-\sqrt{e^x}$}{Fixed point iteration to compute the root of $f(x)=e^x-x^2$ using the function $g(x)=-\sqrt{e^x}$}
+	\label{fig:pfijo2}
+\end{figure}
+%TODO REvisar ESTA FIGURA
+%\begin{figure}[h]
+%\centering
+%\subfigure[valor inicial\label{fig:pfijo21}]{\includegraphics[height=5.5cm]{pfijo3.pdf}} \qquad
+%\subfigure[iteracion 1]{\includegraphics[height=5.5cm]{pfijo4.pdf}}\\
+%\subfigure[iteración 2]{\includegraphics[height=5.5cm]{pfijo5.pdf}}\qquad
+%\subfigure[iteración 3]{\includegraphics[height=5.5cm]{pfijo6.pdf}}\\
+%\subfigure[iteración 4]{\includegraphics[height=5.5cm]{pfijo7.pdf}}\qquad
+%\subfigure[iteración 5 \label{fig:pfijo25}]{\includegraphics[height=5.5cm]{pfijo8.pdf}}
+%
+%\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=-\sqrt{e^x}$}{Fixed point iteration to compute the root of $f(x)=e^x-x^2$ using the function $g(x)=-\sqrt{e^x}$}
+%\label{fig:pfijo2}
+%\end{figure}
+\begin{paracol}{2}
 No es difícil demostrar, que la función $g(x)=-\sqrt{e^x} $ cumple las condiciones del teorema de punto fijo descrito más arriba para el intervalo $(-\infty, 0]$. Luego el algoritmo del punto fijo debería converger para cualquier punto de inicio $x_0$ contenido en dicho intervalo. De hecho, para esta función, el algoritmo converge desde cualquier punto de inicio (Si empezamos en punto positivo, el siguiente punto, $x_1$ será negativo, y por tanto estará dentro del intervalo de convergencia). Esta función es un ejemplo de que el teorema suministra una condición suficiente, pero no necesaria para que un punto fijo sea atractivo. 
 \switchcolumn
 
@@ -1062,19 +1165,6 @@ Figure \ref{fig:pfijo2} shows an example of the calculation of the root of the f
 
 \end{paracol}
 
-%TODO REvisar ESTA FIGURA
-\begin{figure}[h]
-\centering
-\subfigure[valor inicial\label{fig:pfijo21}]{\includegraphics[height=5.5cm]{pfijo3.pdf}} \qquad
-\subfigure[iteracion 1]{\includegraphics[height=5.5cm]{pfijo4.pdf}}\\
-\subfigure[iteración 2]{\includegraphics[height=5.5cm]{pfijo5.pdf}}\qquad
-\subfigure[iteración 3]{\includegraphics[height=5.5cm]{pfijo6.pdf}}\\
-\subfigure[iteración 4]{\includegraphics[height=5.5cm]{pfijo7.pdf}}\qquad
-\subfigure[iteración 5 \label{fig:pfijo25}]{\includegraphics[height=5.5cm]{pfijo8.pdf}}
-
-\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=-\sqrt{e^x}$}{Fixed point iteration to compute the root of $f(x)=e^x-x^2$ using the function $g(x)=-\sqrt{e^x}$}
-\label{fig:pfijo2}
-\end{figure}
 
 \begin{paracol}{2}
     
@@ -1090,12 +1180,6 @@ Figure \ref{fig:pfijo03} shows the function $g(x)$, the line $y=x$ and the evolu
 
 \end{paracol}
 
-\begin{figure}[h]
-\includegraphics[width=14cm]{p1fijo0.pdf}
-\bicaption{primeras iteraciones de la obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$.} {first iterations of obtaining the root of the function $f(x)=e^x-x^2$ by applying the fixed point method on the function $g(x)=ln(x^2)$.}
-\label{fig:pfijo03}
-\end{figure}
-
 \begin{paracol}{2}
 La función presenta una asíntota vertical en el $0$. Si se empieza desde $x_0=0$, $x_0=1$ 0 $x_0=-1$ el algoritmo no converge, puesto que la función diverge hacia $-\infty$. Para el resto de los valores, la función oscila entre una rama y otra. Si en alguna de las oscilaciones acierta a pasar suficientemente cerca del punto fijo, $x_n-x_{n-} \leq tol$, el algoritmo habrá aproximado la raíz, aunque propiamente no se puede decir que converja.
 
@@ -1105,9 +1189,16 @@ La función presenta una asíntota vertical en el $0$. Si se empieza desde $x_0=
  The function has a vertical asymptote at $0$. If one starts from $x_0=0$, $x_0=1$ 0 $x_0=-1$ the algorithm does not converge, since the function diverges towards $-\infty$. For the rest of the values, the function oscillates between one branch and another. If in any of the oscillations it manages to pass close enough to the fixed point, $x_n-x_{n-} \leq tol$, the algorithm will have approximated the root, although it cannot properly be said to converge.
 
  Figure \ref{fig:pfijo41}, shows the evolution of the algorithm, taking $x_0=-0.2$ as the starting point. After 211 iterations the algorithm 'catches the root'. In this case the tolerance was set to $tol=0.01$.
+\end{paracol}
 
-  \switchcolumn
-  
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{p1fijo0.pdf}
+	\bicaption{primeras iteraciones de la obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$.} {first iterations of obtaining the root of the function $f(x)=e^x-x^2$ by applying the fixed point method on the function $g(x)=ln(x^2)$.}
+	\label{fig:pfijo03}
+\end{figure}
+
+\begin{paracol}{2}  
  La gráfica \ref{fig:pfijo42} muestra una ampliación de \ref{fig:pfijo41} en la que pueden observarse en detalles los valores obtenidos para las dos últimas iteraciones. Las dos líneas horizontales de puntos marcan los límites $\text{raíz}\pm tol$. 
  
  El algoritmo se detiene porque la diferencia entre los valores obtenidos en las dos últimas iteraciones caen dentro de la tolerancia. El valor obtenido en la penúltima iteración, que proviene de la rama positiva de la función $g(x)$ cae muy cerca del punto fijo. El último valor obtenido, se aleja de hecho del valor de la raíz, respecto al obtenido en la iteración anterior, pero no lo suficiente como para salirse de los límites de la banda marcada por la tolerancia. Como resultado, se cumple la condición de terminación y el algoritmo se detiene.  
@@ -1131,42 +1222,93 @@ The graph \ref{fig:pfijo43} shows the evolution of the error as a function of th
 A simple, but very interesting one is that of the discrete logistic equation, $x_{n+1}=R\cdot (1-x_n)\cdot x_n$. This equation shows very different behaviour, depending on the value of $R$ and the initial value $x_0$ with which we start iterating.
 \end{paracol} 
 
-\begin{figure}[h]
-\centering
-\subfigure[Evolución del algoritmo durante 211 iteraciones \label{fig:pfijo41}]{\includegraphics[width=7cm]{p2fijo1.pdf}} \qquad
-\subfigure[Vista detallada de las ultimas iteraciones de \ref{fig:pfijo41} \label{fig:pfijo42}]{\includegraphics[width=7cm]{p2fijo1d2.eps}}\\
-\subfigure[Evolución del error \label{fig:pfijo43}]{\includegraphics[width=7.2cm]{p2fijo1e.pdf}}
-
-\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$, el método oscila sin converger a la solución.}{Fixed point iteration to compute the root of function $f(x)=e^x-x^2$ using the function $g(x)=ln(x^2)$, iteration oscillates without converging to the solution.}
-\label{fig:pfijo4}
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{p2fijo1.pdf}}
+		\caption{Evolución del algoritmo durante 211 iteraciones}
+		\label{fig:pfijo41}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{p2fijo1d2.eps}}
+		\caption{Vista detallada de las ultimas iteraciones de \ref{fig:pfijo41}}
+		\label{fig:pfijo42}
+	\end{subfigure}	
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{p2fijo1e.pdf}}
+		\caption{Evolución del error}
+		\label{fig:pfijo43}		
+	\end{subfigure}
+	\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$, el método oscila sin converger a la solución.}{Fixed point iteration to compute the root of function $f(x)=e^x-x^2$ using the function $g(x)=ln(x^2)$, iteration oscillates without converging to the solution.}
+	\label{fig:pfijo4}
 \end{figure}
+%\begin{figure}[h]
+%\centering
+%\subfigure[Evolución del algoritmo durante 211 iteraciones \label{fig:pfijo41}]{\includegraphics[width=7cm]{p2fijo1.pdf}} \qquad
+%\subfigure[Vista detallada de las ultimas iteraciones de \ref{fig:pfijo41} \label{fig:pfijo42}]{\includegraphics[width=7cm]{p2fijo1d2.eps}}\\
+%\subfigure[Evolución del error \label{fig:pfijo43}]{\includegraphics[width=7.2cm]{p2fijo1e.pdf}}
+%
+%\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=ln(x^2)$, el método oscila sin converger a la solución.}{Fixed point iteration to compute the root of function $f(x)=e^x-x^2$ using the function $g(x)=ln(x^2)$, iteration oscillates without converging to the solution.}
+%\label{fig:pfijo4}
+%\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{p3fijo0.pdf}}
+		\caption{intervalo inicial}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{p3fijo1.pdf}}
+		\caption{iteración 1}
+	\end{subfigure}	
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{p3fijo2.pdf}}
+		\caption{iteracion 2}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{p3fijo3.pdf}}
+		\caption{iteracion 3}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{p3fijo3.pdf}}
+		\caption{iteracion 4}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		{\includegraphics[width=\textwidth]{p3fijo5.pdf}}
+		\caption{iteracion 5: Raíz de la función}
+	\end{subfigure}
+	\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=\frac{e^x}{x}$, el método diverge rápidamente.}{fixed point iteration to compute the root of function $f(x)=e^x-x^2$ using the function  $g(x)=\frac{e^x}{x}$, the iteration diverges quickly.}
+	\label{fig:pfijo5}
+\end{figure}
+
+%\begin{figure}
+%\centering
+%\subfigure[valor inicial]{\includegraphics[width=7cm]{p3fijo0.pdf}} \qquad
+%\subfigure[iteracion 1]{\includegraphics[width=7cm]{p3fijo1.pdf}}\\
+%\subfigure[iteración 2]{\includegraphics[width=7cm]{p3fijo2.pdf}}\qquad
+%\subfigure[iteración 3]{\includegraphics[width=7cm]{p3fijo3.pdf}}\\
+%\subfigure[iteración 4]{\includegraphics[width=7cm]{p3fijo4.pdf}}\qquad
+%\subfigure[iteración 5]{\includegraphics[width=7cm]{p3fijo5.pdf}}
+%
+%\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=\frac{e^x}{x}$, el método diverge rápidamente.}{fixed point iteration to compute the root of function $f(x)=e^x-x^2$ using the function  $g(x)=\frac{e^x}{x}$, the iteration diverges quickly.}
+%\label{fig:pfijo5}
+%\end{figure}
 
 \begin{paracol}{2}
-Por último, si empleamos la función $g(x)=\frac{e^x}{x}$, no se cumple el teorema de punto fijo en ningún punt. En este caso, el algoritmo diverge siempre.  La figura \ref{fig:pfijo5} muestra la evolución del algoritmo del punto fijo para esta función. Se ha elegido un punto de inicio $x_0=-0.745$, muy próximo al valor de la raíz, para poder observar la divergencia de las soluciones obtenidas con respecto al punto fijo. Como puede verse, el valor de $x_n$ cada vez se aleja más de la raíz. LA solución oscila entre un valor que cada vez se aproxima más a cero y otro que tiende hacia $-\infty$. Si se deja aumentar suficientemente el número de iteraciones, llegará un momento en que se producirá un error de desbordamiento. 
-
-A diferencia de lo que sucedía en la elección de $g(x)=ln(x^2)$, en este caso, el algoritmo no oscila entre las dos ramas. Si empezamos en la rama de la derecha, eligiendo un valor positivo para $x_0$, el algoritmo diverge llevando las soluciones hacia $+\infty$. Es un resultado esperable, ya que dicha rama no tiene ningún punto fijo.
-
-\switchcolumn
-
-Finally, if we use the function $g(x)=\frac{e^x}{x}$, the fixed point theorem is not satisfied at any point. In this case, the algorithm always diverges. Figure \ref{fig:pfijo5} shows the evolution of the fixed-point iteration for this function. A starting point $x_0=-0.745$, very close to the value of the root, has been chosen in order to observe the divergence of the solutions obtained with respect to the fixed point. As can be seen, the value of $x_n$ moves further and further away from the root. The solution oscillates between a value that gets closer and closer to zero and another that tends towards $-\infty$. If the number of iterations is allowed to increase sufficiently, there will come a time when an overflow error will occur. 
-
-Unlike in the choice of $g(x)=ln(x^2)$, in this case, the algorithm does not oscillate between the two branches. If we start on the right-hand branch, choosing a positive value for $x_0$, the algorithm diverges, taking the solutions towards $+\infty$. This is to be expected, since this branch has no fixed point.
-
+	Por último, si empleamos la función $g(x)=\frac{e^x}{x}$, no se cumple el teorema de punto fijo en ningún punt. En este caso, el algoritmo diverge siempre.  La figura \ref{fig:pfijo5} muestra la evolución del algoritmo del punto fijo para esta función. Se ha elegido un punto de inicio $x_0=-0.745$, muy próximo al valor de la raíz, para poder observar la divergencia de las soluciones obtenidas con respecto al punto fijo. Como puede verse, el valor de $x_n$ cada vez se aleja más de la raíz. La solución oscila entre un valor que cada vez se aproxima más a cero y otro que tiende hacia $-\infty$. Si se deja aumentar suficientemente el número de iteraciones, llegará un momento en que se producirá un error de desbordamiento. 
+	
+	A diferencia de lo que sucedía en la elección de $g(x)=ln(x^2)$, en este caso, el algoritmo no oscila entre las dos ramas. Si empezamos en la rama de la derecha, eligiendo un valor positivo para $x_0$, el algoritmo diverge llevando las soluciones hacia $+\infty$. Es un resultado esperable, ya que dicha rama no tiene ningún punto fijo.
+	
+	\switchcolumn
+	
+	Finally, if we use the function $g(x)=\frac{e^x}{x}$, the fixed point theorem is not satisfied at any point. In this case, the algorithm always diverges. Figure \ref{fig:pfijo5} shows the evolution of the fixed-point iteration for this function. A starting point $x_0=-0.745$, very close to the value of the root, has been chosen in order to observe the divergence of the solutions obtained with respect to the fixed point. As can be seen, the value of $x_n$ moves further and further away from the root. The solution oscillates between a value that gets closer and closer to zero and another that tends towards $-\infty$. If the number of iterations is allowed to increase sufficiently, there will come a time when an overflow error will occur. 
+	
+	Unlike in the choice of $g(x)=ln(x^2)$, in this case, the algorithm does not oscillate between the two branches. If we start on the right-hand branch, choosing a positive value for $x_0$, the algorithm diverges, taking the solutions towards $+\infty$. This is to be expected, since this branch has no fixed point.
+	
 \end{paracol}
 
-
-\begin{figure}
-\centering
-\subfigure[valor inicial]{\includegraphics[width=7cm]{p3fijo0.pdf}} \qquad
-\subfigure[iteracion 1]{\includegraphics[width=7cm]{p3fijo1.pdf}}\\
-\subfigure[iteración 2]{\includegraphics[width=7cm]{p3fijo2.pdf}}\qquad
-\subfigure[iteración 3]{\includegraphics[width=7cm]{p3fijo3.pdf}}\\
-\subfigure[iteración 4]{\includegraphics[width=7cm]{p3fijo4.pdf}}\qquad
-\subfigure[iteración 5]{\includegraphics[width=7cm]{p3fijo5.pdf}}
-
-\bicaption{proceso de obtención de la raíz de la función $f(x)=e^x-x^2$ aplicando el método del punto fijo sobre la función $g(x)=\frac{e^x}{x}$, el método diverge rápidamente.}{fixed point iteration to compute the root of function $f(x)=e^x-x^2$ using the function  $g(x)=\frac{e^x}{x}$, the iteration diverges quickly.}
-\label{fig:pfijo5}
-\end{figure}
 \begin{paracol}{2}
 
 \section{Cálculo de raíces de funciones con Python.}
@@ -1480,7 +1622,8 @@ For the case of the bisection method the flowchart can be modified as shown in t
 
 \begin{figure}[h]
 	\centering
-	\begin{tikzpicture}
+	\begin{subfigure}{0.45\textwidth}
+	\begin{tikzpicture}[scale=0.7, transform shape]
 	%\usetikzlibrary{shapes.geometric}
 	\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Partimos de $[a,b]$\\ con\\ $f(a)\cdot f(b)<0$}
 	(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners]{Calculamos $c=\frac{a+b}{2}, f(c)$}
@@ -1502,7 +1645,32 @@ For the case of the bisection method the flowchart can be modified as shown in t
 	\draw[blue,-latex](g.south)|-(2,-9)|-(b);
 	\draw[blue,-latex](f.east)-|(11,-2)--(b);
 	\end{tikzpicture}
-	\caption{Diagrama de flujo del método de la bisección con precisión máxima}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\begin{tikzpicture}[scale=0.7, transform shape]
+			%\usetikzlibrary{shapes.geometric}
+			\path (5,0) node(a) [rectangle,draw=blue, very thick,align=center,rounded corners]{Begin with $[a,b]$\\ such as \\ $f(a)\cdot f(b)<0$}
+			(5,-2) node(b)[rectangle,draw=blue, thick,rounded corners]{Compute $c=\frac{a+b}{2}, f(c)$}
+			(5,-4) node(c)[diamond,aspect=3,draw=red,thick]{es $\vert a-b \vert < \text{eps(a)}$?}
+			(9,-4) node(d)[rectangle,draw=blue,align=center,very thick, rounded corners]{it converges:\\ Then end}
+			(5,-6) node(e)[diamond,aspect=3,draw=red,thick]{es $f(a)\cdot f(c) < 0$?}
+			(9.5,-6) node(f)[rectangle,draw=blue,thick,rounded corners,align=center]{$b=c$\\$f(b)=f(c)$}
+			(5,-8) node(g)[rectangle,draw=blue,thick,rounded corners,align=center]{$a=c$\\$f(a)=f(c)$};
+			\draw[blue,-latex](a.south)--(b);
+			\draw[blue,-latex](b.south)--(c);
+			\draw[blue,-latex](c.east)--(d);
+			\draw (7.5,-4)node[above]{Yes};
+			\draw[blue,-latex](c.south)--(e);
+			\draw (5,-5)node[right]{No};
+			\draw[blue,-latex](e.east)--(f);
+			\draw (8,-6)node[above]{Yes};
+			\draw[blue,-latex](e.south)--(g);
+			\draw (5,-7.2)node[right]{No};
+			\draw[blue,-latex](g.south)|-(2,-9)|-(b);
+			\draw[blue,-latex](f.east)-|(11,-2)--(b);
+		\end{tikzpicture}
+	\end{subfigure}
+	\bicaption{Diagrama de flujo del método de la bisección con precisión máxima}{Flow chart of bisection method with maximal precission}
 	\label{fig:dfbisecprecmax}
 \end{figure}
 
