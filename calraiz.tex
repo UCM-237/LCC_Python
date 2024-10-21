@@ -1750,14 +1750,13 @@ El programa utilizado deberá añadir al gráfico obtenido en  \ref{it1}), un pu
 
 El algoritmo calcula cada iteración usando dos pasos intermedios de acuerdo con el siguiente procedimiento,
 
-% \begin{lstlisting}
-% while{condición} 
-%   x0 = x
-%   x1 = g(x0)
-%   x2 = g(x1)
-%   x  = x0 - (x1 -x0)^2/(x2 - 2x1 + x0)
-% end
-% \end{lstlisting}
+\begin{minted}{python}
+while condición : 
+   x0 = x
+   x1 = g(x0)
+   x2 = g(x1)
+   x  = x0 - (x1 -x0)**2/(x2 - 2*x1 + x0)
+ \end{minted}
 
 Donde $g(x)$ representa la función auxiliar de la que se busca el punto fijo.
 
@@ -1786,14 +1785,15 @@ x^2-2x-3=0 \Rightarrow x=\frac{3}{x-2}
 \begin{equation}
 x_1 = 3t^6 - 2t^5 + t + 25
 \end{equation}
-Donde  $t$ representa el tiempo en segundos y $x_1$ la posición del objeto en metros y \\
+Donde  $t$ representa el tiempo en segundos y $x_1$ la posición del objeto en metros.
+
  Un segundo objeto sale en persecución del primero en el instante de tiempo $t=0$. Su ley del movimiento es:
 \begin{equation}
 x_2 = 4t^6
 \end{equation}
 \begin{enumerate}
 \item Dibuja en un mismo gráfica la posición en función del tiempo para los dos móviles, de modo que se observe el punto de alcance.  
-\item Calcula, empleando el método de la bisección o el de \emph{regula falsi},  el instante de tiempo y la posición en que el segundo móvil alcanza al primero.
+\item Calcula, empleando el método de la \emph{bisección} o el de \emph{regula falsi},  el instante de tiempo y la posición en que el segundo móvil alcanza al primero.
 \end{enumerate}
 
 \item La distribución de Maxwell, 
