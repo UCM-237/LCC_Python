@@ -763,7 +763,7 @@ Zm=Xm**3+Ym**2
 \switchcolumn
 Podemos representar la superfície usando el método \textit{wireframe} o el método \textit{surface}. En el primer caso se dibuja la superfície como una rejilla, figura \ref{fig:wireframe} y en el segundo como las caras rellenas de color de la retícula, figura \ref{fig:surface}.
 
-Igualmente podemos representar una superficie con un mapa de color o de contornos en 2 dimensiones usando el el método \textit{contourf} o el método \textit{pcolor}. En este caso no se emplea \textit{subplot_kw="projection": "3d"} porque no hace falta dibujar en el eje z, ya que se le atribuye un contorno o un color.
+Igualmente podemos representar una superficie con un mapa de color o de contornos en 2 dimensiones usando el el método \textit{contourf} o el método \textit{pcolor}. En este caso no se emplea \textit{subplot\_kw="projection": "3d"} porque no hace falta dibujar en el eje z, ya que se le atribuye un contorno o un color.
 
 \begin{minted}{pycon}
 import numpy as np
@@ -776,16 +776,12 @@ Zm=X**2+Y**2
 fig,(ax1,ax2)=plt.subplots(nrows=1,ncols=2,figsize=(15,10))
 ax2.contourf(X,Y,Zm)
 ax1.contour(X, Y, Zm)
-
 \end{minted}
 
 \switchcolumn
 
 We can represent the surface using the \textit{wireframe} method or the \textit{surface} method. In the first case the surface is drawn as a grid, figure \ref{fig:wireframe}, and in the second as the colour-filled faces of the grid, figure \ref{fig:surface}.
-We can also represent a surface with a color or contour map in 2 dimensions using the \textit{contourf} method or the \textit{pcolor} method. In this case, \textit{subplot_kw=“projection”: “3d”} is not used because it is not necessary to draw on the z-axis, since a contour or a colour is assigned to it.
-
-
-
+We can also represent a surface with a color or contour map in 2 dimensions using the \textit{contourf} method or the \textit{pcolor} method. In this case, \textit{subplot\_kw=“projection”: “3d”} is not used because it is not necessary to draw on the z-axis, since a contour or a colour is assigned to it.
 \end{paracol}
 
 \begin{figure}
