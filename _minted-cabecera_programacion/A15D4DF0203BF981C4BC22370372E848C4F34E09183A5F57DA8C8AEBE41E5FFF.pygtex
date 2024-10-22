@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{21}\PYG{p}{]:} \PYG{n}{runfile}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/home/juan/LCC\PYGZus{}Python/codigos/introduccion/eq\PYGZus{}seg\PYGZus{}grado.py\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{wdir}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}/home/juan/LCC\PYGZus{}Python/codigos/introduccion\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{comprobación}\PYG{o}{/}\PYG{n}{cheking}
+\PYG{n}{raíz} \PYG{n}{positiva}\PYG{o}{/}\PYG{n}{positive} \PYG{n}{root}\PYG{p}{:} \PYG{l+m+mf}{0.0}
+\PYG{n}{raiz} \PYG{n}{negativa}\PYG{o}{/}\PYG{n}{negative} \PYG{n}{root}\PYG{p}{:} \PYG{l+m+mf}{0.0}
+\end{Verbatim}
