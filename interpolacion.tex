@@ -155,8 +155,14 @@ Las funciones $\sin(x)$ y $\cos(x)$, son también simples de aproximar mediante 
 
 \begin{figure}
 	\centering
-	\subfigure[$\cos(x)$, polinomios 2, 4, 6 y 8 grados \textreferencemark\ polynomials 2, 4, 6 and 8 degrees  \label{fig:cos}]{\includegraphics[width=10.5cm]{cos.eps}} \qquad 
-	\subfigure[$\sin(x)$, polinomios  3, 5, 7 y 9  grados \textreferencemark polynomials 2, 4, 6 and 8 degrees \label{fig:sin}]{\includegraphics[width=10.5cm]{sin.eps}}\\
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=10.5cm]{cos.eps}
+		\bicaption{$\cos(x)$, polinomios 2, 4, 6 y 8 grados}{polynomials 2, 4, 6 and 8 degrees}\label{fig:cos}
+	\end{subfigure} 
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=10.5cm]{sin.eps}
+		\bicaption{$\sin(x)$, polinomios  3, 5, 7 y 9  grados}{polynomials 2, 4, 6 and 8 degrees} \label{fig:sin}
+	\end{subfigure}
 	\bicaption{Polynomios de Taylor para las funciones coseno y seno}{Taylor polynomial for cosine and sine functions}
 \end{figure}
 
@@ -628,8 +634,14 @@ Figure \ref{fig:intepol} shows a interpolating polynomial of degree nine obtaine
 \end{paracol}
 \begin{figure}
 \centering
-\subfigure[Interpolación de orden cero / Zero-order interpolation  \label{fig:stepwise}]{\includegraphics[width=7cm]{steps.eps}} %\qquad 
-\subfigure[Interpolación lineal  Linear interpolation  \label{fig:lineal}]{\includegraphics[width=7cm]{lineal.eps}}\\
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=7cm]{steps.eps}
+	\bicaption{Interpolación de orden cero}{Zero-order interpolation}\label{fig:stepwise}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=7cm]{lineal.eps}}
+	\bicaption{Interpolación lineal}{Linear interpolation}\label{fig:lineal}
+\end{subfigure}
 \bicaption{Interpolaciones de orden cero y lineal para los datos de la figura \ref{fig:intepol} }{Zero-order and linear interpolation for the figure data}
 \end{figure}
 
@@ -1271,10 +1283,22 @@ As a consequence, for experimental data and assuming that the data only are affe
 
 \begin{figure}
 	\centering
-	\subfigure[Recta de mínimos cuadrados y residuos obtenidos / Least squares line and residuals.  \label{fig:residuos1}]{\includegraphics[width=7cm]{lse1.png}} \qquad 
-	\subfigure[Parabola de mínimos cuadrados y residuos obtenidos / Least squares parabola and residuals.  \label{fig:residuos2}]{\includegraphics[width=7cm]{lse2.png}}\\
-	\subfigure[polinomio de tercer grado  de mínimos cuadrados y residuos obtenidos / 3-degree polynomial and residuals  \label{fig:residuos3}]{\includegraphics[width=7cm]{lse3.png}} \qquad 
-	\subfigure[polinomio de cuarto grado  de mínimos cuadrados y residuos obtenidos / 4-degree polynomial and residuals \label{fig:residuos4}]{\includegraphics[width=7cm]{lse4.png}}
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=7cm]{lse1.png}
+		\bicaption{Recta de mínimos cuadrados y residuos obtenidos}{Least squares line and residuals.}\label{fig:residuos1}
+	\end{subfigure} 
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=7cm]{lse2.png}
+		\bicaption{Parabola de mínimos cuadrados y residuos obtenidos}{Least squares parabola and residuals.}\label{fig:residuos2}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=7cm]{lse3.png}
+		\bicaption{polinomio de tercer grado  de mínimos cuadrados y residuos obtenidos}{3-degree polynomial and residuals}  \label{fig:residuos3} 
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=7cm]{lse4.png}
+		\bicaption{polinomio de cuarto grado  de mínimos cuadrados y residuos obtenidos}{4-degree polynomial and residuals} \label{fig:residuos4}
+	\end{subfigure}
 	\bicaption{Comparación entre los residuos obtenidos para los ajustes de mínimos cuadrados de un conjunto de datos empleando polinomios de grados 1 a 4.}{Comparison among the residuals resulting from a dataset least squares fitting, using polynomials of degrees 1 to 4.} 
 	\label{fig:residuos}
 \end{figure}
@@ -1430,10 +1454,22 @@ Figure \ref{fig:bzgrad} shows an example using a Bézier's curve built from thre
 \end{paracol}
 \begin{figure}[h]
 \centering
-\subfigure[Curva original (3 puntos) / Original curve (3 points) \label{fig:bz1}]{\includegraphics[width=6.8cm]{bezier3p.eps}} \qquad 
-\subfigure[Curvas equivalentes de 4 a 6 puntos / 4 to 6 points equivalent curves  \label{fig:bz2}]{\includegraphics[width=6.8cm]{bezier6p.eps}}\\
-\subfigure[Curvas equivalentes de 4 a 12 puntos / 4 to 12 points Equivalent curves   \label{fig:bz3}]{\includegraphics[width=6.8cm]{bezier12p.eps}} \qquad 
-\subfigure[Curvas equivalentes de de 4 a 30 puntos / 4 to 30 points equivalent curve \label{fig:bz4}]{\includegraphics[width=6.8cm]{bezier30p.eps}}
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=6.8cm]{bezier3p.eps}
+	\bicaption{Curva original (3 puntos)}{Original curve (3 points)} \label{fig:bz1}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=6.8cm]{bezier6p.eps}
+	\bicaption{Curvas equivalentes de 4 a 6 puntos}{4 to 6 points equivalent curves}\label{fig:bz2}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=6.8cm]{bezier12p.eps}
+	\bicaption{Curvas equivalentes de 4 a 12 puntos}{4 to 12 points Equivalent curves}\label{fig:bz3} 
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=6.8cm]{bezier30p.eps}
+	\bicaption{Curvas equivalentes de de 4 a 30 puntos}{4 to 30 points equivalent curve} \label{fig:bz4}
+\end{subfigure}
 \bicaption{Curvas de Bézier equivalentes, construidas a partir de una curva con tres puntos de control.}{Equivalent curves, built from a three control point Bézier's curve.} 
 \label{fig:bzgrad}
 \end{figure}
@@ -1469,8 +1505,14 @@ Function \mintinline{python}{dbez}, belonging to the module \mintinline{python}{
 
 \begin{figure}[h]
 \centering
-\subfigure[Curva de Bézier (4 puntos) / Bézier's curve (4 points) \label{fig:bzc}]{\includegraphics[width=7cm]{bezierder.eps}} \qquad 
-\subfigure[Derivada (hodógrafa) / Derivative (hodograph) \label{fig:bzd}]{\includegraphics[width=7cm]{bezierhodg.eps}}
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=7cm]{bezierder.eps}
+	\bicaption{Curva de Bézier (4 puntos)}{Bézier's curve (4 points)} \label{fig:bzc} 
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=7cm]{bezierhodg.eps}
+	\bicaption{Derivada (hodógrafa)}{Derivative (hodograph)} \label{fig:bzd}
+\end{subfigure}
 \bicaption{Curva de Bézier y su derivada con respecto al parámetro del polinomio de Bernstein que la define: $t \in [0,1]$}{Bézier's curve and its derivative with respect to the Berstein's polynomial parameter which defines the curve $ t \in [0,1]$} 
 \label{fig:bzder}
 \end{figure} 
@@ -1506,8 +1548,14 @@ For instance we can freely choose all control points of curve $B$ and use it to 
 
 \begin{figure}[h]
 \centering
-\subfigure[Interpolación mediante curvas de Bézier de 3 puntos / Interpolation using three control points Bezier's curves) \label{fig:ibz}]{\includegraphics[width=7cm]{bezierint.eps}} \qquad 
-\subfigure[Interpolación mediante curvas de Bézier de 3 y 4 puntos / iNterpolation using 3 and 4 control points Beziers's curves   \label{fig:ibz2}]{\includegraphics[width=7cm]{bezierint2.eps}}
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=7cm]{bezierint.eps}
+	\bicaption{Interpolación mediante curvas de Bézier de 3 puntos}{Interpolation using three control points Bezier's curves)} \label{fig:ibz} 
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=7cm]{bezierint2.eps}
+	\bicaption{Interpolación mediante curvas de Bézier de 3 y 4 puntos}{Interpolation using 3 and 4 control points Beziers's curves} \label{fig:ibz2}
+\end{subfigure}
 \bicaption{Interpolación de tres puntos mediante dos curvas de Bézier}{interpolating three point using two Bezier's curves} 
 \label{fig:ibz3}
 \end{figure}

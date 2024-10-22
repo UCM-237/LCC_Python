@@ -242,8 +242,14 @@ f'(x)=\frac{f(x+h)-f(x)}{h}+O(h)
 
 \begin{figure}[h]
 \centering
-\subfigure[Diferencia de dos puntos adelantada / Two points forward difference \label{fig:diffin1}]{\includegraphics[width=7cm]{diffin1.eps}} \qquad 
-\subfigure[Diferencia de dos puntos centrada / Two point central difference \label{fig:diffin2}]{\includegraphics[width=7cm]{diffin2.eps}}
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=7cm]{diffin1.eps}
+	\bicaption{Diferencia de dos puntos adelantada}{Two points forward difference} \label{fig:diffin1}
+\end{subfigure} 
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=7cm]{diffin2.eps}
+	\bicaption{Diferencia de dos puntos centrada}{Two point central difference} \label{fig:diffin2}
+\end{subfigure}
 \bicaption{Comparación entre las aproximaciones a la derivada de una función obtenidas mediante las diferencias de dos puntos adelantada y centrada.}{Comparison between the approximations achieved for a function derivative using two point forward difference and two point central difference.}
 \label{fig:diffin}
 \end{figure}

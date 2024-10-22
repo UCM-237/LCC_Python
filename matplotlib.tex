@@ -770,8 +770,14 @@ We can represent the surface using the \textit{wireframe} method or the \textit{
 
 \begin{figure}
 \centering
-\subfigure[Función $z=x^3+y^2$ representada con \texttt{wireframe}\label{fig:wireframe}]{\includegraphics[width=8cm]{figuras/wireframe.png}} %\qquad 
-\subfigure[Función $z=x^3+y^2$ representada con \texttt{surf} \label{fig:surface}]{\includegraphics[width=8cm]{figuras/surface.png}}\\
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=8cm]{figuras/wireframe.png}
+	\bicaption{Función $z=x^3+y^2$ representada con \texttt{wireframe}}{function $z=x^3+y^2$ represented with \texttt{wireframe}}\label{fig:wireframe}
+\end{subfigure} 
+\begin{subfigure}{0.45\textwidth}
+	\includegraphics[width=8cm]{figuras/surface.png}
+	\bicaption{Función $z=x^3+y^2$ representada con \texttt{surf}}{Function $z=x^3+y^2$ represented with \texttt{surf}} \label{fig:surface}
+\end{subfigure}
 \bicaption{Comparación entre \texttt{wireframe} y \texttt{surface}}{Comparison between \texttt{wireframe} and \texttt{surface}}
 \end{figure}
 
