@@ -2145,7 +2145,66 @@ gives the probability that a particle of a gas moves with velocity $v$. Where $m
 	\item {\bf Bonus track: 1 pt.} A Parsec is the distance from the Sun to a star that, when viewed from Earth, subtends a parallax angle of 1 second of a degree. Give two reasons why the Millennium Falcon could never have crossed the Kessel corridor in less than 12 Parsecs, as Han Solo claims.
 
 \end{enumerate}
+
+\end{enumerate}
+\end{paracol}
+
+
+\section*{Ejercicio aplicado. Resolver numéricamente la ecuación de Kepler}
+Kepler descubrió las leyes que rigen el movimiento de los planetas alrededor del Sol. Los planetas giran en una órbita elíptica, uno de cuyos focos F lo ocupa el Sol, pero no lo hacen con un movimiento uniforme, sino que el radio vector Sol-planeta barre áreas iguales en tiempos iguales (ley de las áreas).
+En la figura \ref{fig:my_label} se muestra en color negro la órbita elíptica del planeta y en color azul la circunferencia principal que es la circunferencia auxiliar de radio $a$ que  se usa para demostrar la ecuación de Kepler.
+
+
+\begin{figure}[h]
+    \centering
+    \subfloat[Órbita elíptica y circunferencia auxiliar]{
+    \includegraphics[width=0.5\textwidth]{EcuacionKepler.png}
+    \label{fig:my_label}}
+    \subfloat[Anomalía excéntrica]{
+    \includegraphics[width=0.5\textwidth]{Kepler2.png}
+    \label{fig:kepler2}
+    }
+    \caption{Diagramas explicativos de la ecuación de Kepler}
+\end{figure}
+El semieje mayor de la órbita es $a$, y el semieje menor es $b$ . La excentricidad de la órbita es $e$, y la estrella ocupa uno de los focos $F$ a una distancia $c = a\cdot e $ del centro $C$ de la elipse.
+
+A cualquier punto de la órbita elíptica del planeta le corresponden dos puntos sobre la circunferencia auxiliar:
+\begin{enumerate}
+    \item El punto $x$ de la figura \ref{fig:kepler2} que define la \textbf{anomalía excéntrica} $E$ y es la altura aparente del planeta.
+    \item El punto $y$ de la figura \ref{fig:kepler2}  que es la posición que ocuparía el planeta si se moviese con velocidad constante en la órbita elíptica. Este punto define el ángulo $M$ la \textbf{anomalía verdadera}.
+\end{enumerate}
+
+La expresión matemática de esta ley es la ecuación de Kepler:
+\begin{equation} \label{eq1}
+    M=E-e\sin(E)
+\end{equation}
+
+Fue derivada por primera vez por Johannes Kepler en 1609 en el capítulo 60 de su ‘Astronomia nova’ y en el libro V de su ‘Epitome of Copernican Astronomy’ (1621) Kepler propuso una solución iterativa a la ecuación. La ecuación ha jugado un papel importante en la historia de la física y las matemáticas, en particular en la mecánica celeste clásica.
+
+Si un planeta da una vuelta al Sol en un periodo de tiempo $T_0$. El movimiento medio $n=\frac{2\pi}{T_0}$ es el ángulo girado en la unidad de tiempo suponiendo movimiento uniforme. Si el planeta está en el perihelio  $P$ ( ver figura \ref{fig:my_label}) en  el momento $t_0$ la anomalía media es:
+\begin{equation} \label{eq2}
+     M = n \cdot (t -  t_0)
+\end{equation}
+
+Para un tiempo $t$ dado, $M$ se puede calcular con la ecuación \ref{eq2}, con la que queda una ecuación trascendente en $E$ (ecuación \ref{eq1}) cuya resolución vamos a abordar. 
+
+Una vez calculado $E$ la posición del planeta puede obtenerse con las ecuaciones :
+\begin{align}
+    x &= a \cdot  \cos(E)-e \\
+    y &= a \cdot \sqrt{1-e^2} \cdot \sin(E)
+\end{align}
+
+\subsection*{Ejercicio}
+
+Queremos calcular la posición de Marte respecto al Sol 80 días terrestres después de que el planeta Marte pase por el perihelio, $P$, (punto más cercano al Sol, que es el foco $F$). Dibujar su órbita y la posición orbital en ese momento.
+\paragraph{Datos}: El planeta Marte tiene un año sidéreo de $686.98$ días terrestres, una excentricidad $e=0.09341$ y un semieje mayor $a= 227.9391 \cdot 10^6 $ (km.).
+
+\begin{enumerate}
+    \item Implementar  dos funciones de la forma $E=g(E)$ para la ecuación de Kepler.
+    \item Escribe un programa que resuelva la ecuación de Kepler de forma numérica por el método del punto fijo, con una precisión de $0.001$ (rad.) ¿Qué ocurre con las funciones del apartado 1?
+    \item Representar la evolución del cálculo iterativo de $E$ y su tolerancia. Partir de $E=M$.
+    \item Calcula y representa la órbita de Marte con una resolución de $1$ día. Representa la órbita y la posición orbital en el día $80$.
+    \item Escribe un programa  que resuelva la ecuación de Kepler de forma numérica por el método de Newtom-Raphson. Compara la velocidad de convergencia sobre la gráfica del apartado 3. Nota: Se deben implementar las funciones $f(E)=0$ y $f ’(E)$. Tolerancia $tol=10^{-10}$.
 \end{enumerate}
 
 
-\end{paracol}
