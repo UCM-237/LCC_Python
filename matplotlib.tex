@@ -52,13 +52,19 @@ fig =plt.figure
 
 \section{Dibujar en 2D}
 \begin{paracol}{2}
-    La manera más sencilla de dibujar usando matplotlib.pyplot es mediante el método \texttt{plot}. A este método le pasaremos dos vectores con las coordenadas $x$ e $y$ de los puntos que queremos representar (evidentemente tendremos que asegurarnos de que tienen la misma longitud).
+    Podemos dibujar facilmente usando matplotlib.pyplot es mediante el método \texttt{plot}. A este método le pasaremos dos vectores con las coordenadas $x$ e $y$ de los puntos que queremos representar (evidentemente tendremos que asegurarnos de que tienen la misma longitud).
 
-    Por ejemplo si generamos unos vectores de coordenadas como los siguientes $x=(0,2,-1,-2)$ e $y=(0,3,2,-4)$, y se los pasamos al método \texttt{plot} pyplot dibujará los puntos $(x,y)$ y los unirá con rectas, como puede verse en la figura \ref{fig:pyplot-simple}.
+    Por ejemplo si generamos unos vectores de coordenadas como los siguientes 
+    $$x=(0,2,-1,-2)$$ 
+    $$y=(0,3,2,-4)$$
+    y se los pasamos al método \texttt{plot} pyplot dibujará los puntos $(x,y)$ y los unirá con rectas, como puede verse en la figura \ref{fig:pyplot-simple}.
     \switchcolumn
         The easiest way to draw using matplotlib.pyplot is by using the \texttt{plot} method. To this method we will pass two vectors with the $x$ and $y$ coordinates of the points we want to represent (obviously we will have to make sure that they have the same length).  
 
-            For example, if we generate coordinate vectors such as $x=(0,2,-1,-2)$ and $y=(0,3,2,-4)$, and pass them to the pyplot method, it will draw the points $(x,y)$ and join them with straight lines, as can be seen in the figure \ref{fig:pyplot-simple}.
+            For example, if we generate coordinate vectors such as 
+            $$x=(0,2,-1,-2)$$ 
+            $$y=(0,3,2,-4)$$ 
+            and pass them to the pyplot method, it will draw the points $(x,y)$ and join them with straight lines, as can be seen in the figure \ref{fig:pyplot-simple}.
         
 \end{paracol}
 \begin{minted}{python}
@@ -80,21 +86,21 @@ plt.plot(x,y)
 \begin{paracol}{2}
     Además de las coordenadas de los puntos $(x,y)$ al método \texttt{pyplot.plot} podemos darle un tercer argumento indicando el formato (color y forma) con el que queremos que se grafiquen los puntos y opcionalmente la línea que los una. 
 
-    Algunos de los colores y formatos admitidos están en las tablas \ref{tab:colores}, \ref{tab:puntos} y \ref{tab:lineas}. Para más información consulta la ayuda de \texttt{pyplot.plot}
+    Algunos de los colores y formatos admitidos están en las tablas \ref{tab:colores}, \ref{tab:puntos} y \ref{tab:lineas}. Para más información consulta la ayuda de \texttt{pyplot.plot}.
 
     
     \begin{table}
         \centering
         \begin{tabular}{|c|c|} \hline
         \textbf{Símbolo}     &  \textbf{Color}\\
-             'b'& azul \\ \hline
-             'r'& rojo \\ \hline
-             'g'& verde \\ \hline
-             'm'& magenta\\ \hline
-             'c'& cian\\ \hline
-             'y'& amarillo\\ \hline
-             'k'& negro\\ \hline
-             'w'& blanco\\ \hline
+             b& azul \\ \hline
+             r& rojo \\ \hline
+             g& verde \\ \hline
+             m& magenta\\ \hline
+             c& cian\\ \hline
+             y& amarillo\\ \hline
+             k& negro\\ \hline
+             w& blanco\\ \hline
         \end{tabular}
         \caption{Colores de los puntos}
         \label{tab:colores}
@@ -105,14 +111,14 @@ plt.plot(x,y)
         \centering
         \begin{tabular}{|c|c|} \hline
         \textbf{Símbolo}     &  \textbf{Formato punto}\\
-             '.'& punto \\ \hline
-             ','& píxel\\ \hline
-             'o'& círculo \\ \hline
-             's'& cuadrado\\ \hline
-             '\^'& triángulo hacia abajo\\ \hline
-             'v'& triángulo hacia arriba\\ \hline
-             'p'& pentágono\\ \hline
-             '*'& asterisco\\ \hline
+             .& punto \\ \hline
+             ,& píxel\\ \hline
+             o& círculo \\ \hline
+             s& cuadrado\\ \hline
+             $\wedge$ & triángulo hacia abajo\\ \hline
+             v& triángulo hacia arriba\\ \hline
+             p& pentágono\\ \hline
+             *& asterisco\\ \hline
         \end{tabular}
         \caption{Algunos de los marcadores de puntos}
         \label{tab:puntos}
@@ -122,10 +128,10 @@ plt.plot(x,y)
         \centering
         \begin{tabular}{|c|c|} \hline
         \textbf{Símbolo}     &  \textbf{Tipo de línea}\\
-             '-'& sólida \\ \hline
-             '--'& discontínua\\ \hline
-             '-.'& punto-raya \\ \hline
-             ':'& de puntos\\ \hline
+             -& sólida \\ \hline
+             --& discontínua\\ \hline
+             -.& punto-raya \\ \hline
+             :& de puntos\\ \hline
         \end{tabular}
         \caption{Tipos de línea}
         \label{tab:lineas}
@@ -139,14 +145,14 @@ plt.plot(x,y)
         \centering
         \begin{tabular}{|c|c|} \hline
         \textbf{Symbol}     &  \textbf{Color}\\
-             'b'& blue \\ \hline
-             'r'& red \\ \hline
-             'g'& green \\ \hline
-             'm'& magenta\\ \hline
-             'c'& cyan\\ \hline
-             'y'& yellow\\ \hline
-             'k'& black\\ \hline
-             'w'& white\\ \hline
+             b& blue \\ \hline
+             r& red \\ \hline
+             g& green \\ \hline
+             m& magenta\\ \hline
+             c& cyan\\ \hline
+             y& yellow\\ \hline
+             k& black\\ \hline
+             w& white\\ \hline
         \end{tabular}
         \caption{Point colors}
         \label{tab:colours}
@@ -157,14 +163,14 @@ plt.plot(x,y)
         \centering
         \begin{tabular}{|c|c|} \hline
         \textbf{Symbol}     &  \textbf{Point format}\\
-             '.'& point \\ \hline
-             ','& pixel\\ \hline
-             'o'& circle \\ \hline
-             's'& square\\ \hline
-             '\^'& down triangle\\ \hline
-             'v'& up triangle\\ \hline
-             'p'& pentagon\\ \hline
-             '*'& star\\ \hline
+             .& point \\ \hline
+             ,& pixel\\ \hline
+             o& circle \\ \hline
+             s& square\\ \hline
+             $\wedge$ & down triangle\\ \hline
+             v& up triangle\\ \hline
+             p& pentagon\\ \hline
+             *& star\\ \hline
         \end{tabular}
         \caption{Some point markers}
         \label{tab:dots}
@@ -174,10 +180,10 @@ plt.plot(x,y)
         \centering
         \begin{tabular}{|c|c|} \hline
         \textbf{Symbol}     &  \textbf{Line type}\\
-             '-'& solid \\ \hline
-             '--'& dashed\\ \hline
-             '-.'& dash and dot\\ \hline
-             ':'& dotted\\ \hline
+             -& solid \\ \hline
+             --& dashed\\ \hline
+             -.& dash and dot\\ \hline
+             :& dotted\\ \hline
         \end{tabular}
         \caption{Line types}
         \label{tab:lines}
@@ -239,7 +245,7 @@ Figure \ref{fig:tplot} shows the results of the symbol combinations just describ
 
 \begin{paracol}{2}
 \subsection{Trabajar con múltiples figuras}
-Con \texttt{matplotlib.pyplot} se pueden dibujar diferentes gráficas en una misma figura usando el método \texttt{subplot}. Con este méotod crearemos una figura donde las distintas gráficas estarán dispuestas a modo de tabla. A este método le indicaremos mediante parámetros de entrada el número de filas, el número de columnas y la posición donde se va a dibujar la siguiente gráfica.
+Con \texttt{matplotlib.pyplot} se pueden dibujar diferentes gráficas en una misma figura usando el método \texttt{subplot}. Con este méotodo crearemos una figura donde las distintas gráficas estarán dispuestas a modo de tabla. A este método le indicaremos mediante parámetros de entrada el número de filas, el número de columnas y la posición donde se va a dibujar la siguiente gráfica.
 
 En el siguiente ejemplo se crean dos gráficas dentro de la misma figura en dos filas y una columna. En la primera se dibuja la gráfica del coseno y en la segunda la del seno. El resultado puede verse en la figura \ref{fig:subplot_01}.
 
@@ -546,7 +552,14 @@ Para poder dibujar una superfície con \textit{plot\_surface} hay que generar un
 
 Para definir dicha retícula  se necesitan dos matrices. Una de ellas $X_m$ contiene las coordenadas $x$ de los nodos de la retícula y la otra $Y_m$ las coordenadas $y$. Los elementos que ocupan la misma posición en ambas matrices, representan ---juntos--- un punto en el plano.
 
-Matplotlib emplea dichas matrices como matrices de \emph{adyacencia}. Cada nodo, $(x_m(i,j),y_m(i,j)$, aparecerá en la gráfica conectado por una arista a cada uno de sus cuatros puntos vecinos, $(x_m(i-1,j),y_m(i-1,j)$, $(x_m(i,j-1),y_m(i,j-1)$, $(x_m(i+1,j),y_m(i+1,j)$, $(x_m(i,j+1),y_m(i,j+1)$.
+Matplotlib emplea dichas matrices como matrices de \emph{adyacencia}. Cada nodo, 
+$$(x_m(i,j),y_m(i,j))$$ 
+aparecerá en la gráfica conectado por una arista a cada uno de sus cuatro puntos vecinos, 
+$$(x_m(i-1,j),y_m(i-1,j))$$, 
+$$(x_m(i,j-1),y_m(i,j-1))$$, 
+$$(x_m(i+1,j),y_m(i+1,j))$$, 
+$$(x_m(i,j+1),y_m(i,j+1))$$
+
 Supongamos que empleamos las siguientes matrices, $X_m$ y $Y_m$ para definir una retícula sobre la que dibujar una superficie,
 
 \switchcolumn
@@ -557,7 +570,13 @@ In order to draw a surface with \textit{plot\_surface} we must generate a grid $
 
 To define such a grid, two matrices are needed. One of them $X_m$ contains the $x$ coordinates of the grid nodes and the other $Y_m$ the $y$ coordinates. Elements occupying the same position in both matrices represent - together - a point in the plane.
 
-Matplotlib uses these matrices as adjacency matrices. Each node, $(x_m(i,j),y_m(i,j)$, will appear in the graph connected by an edge to each of its four neighbouring points, $(x_m(i-1,j),y_m(i-1,j)$, $(x_m(i,j-1),y_m(i,j-1)$, $(x_m(i+1,j),y_m(i+1,j)$, $(x_m(i,j+1),y_m(i,j+1)$.
+Matplotlib uses these matrices as adjacency matrices. Each node, $$(x_m(i,j),y_m(i,j))$$,  
+will appear in the graph connected by an edge to each of its four neighbouring points, 
+$$(x_m(i-1,j),y_m(i-1,j))$$, 
+$$(x_m(i,j-1),y_m(i,j-1))$$, 
+$$(x_m(i+1,j),y_m(i+1,j))$$, 
+$$(x_m(i,j+1),y_m(i,j+1))$$
+
 Suppose we use the following matrices, $X_m$ and $Y_m$ to define a lattice on which to draw a surface,$z$.
 
 \end{paracol}
@@ -912,7 +931,7 @@ que la función tiene como entrada los ángulos $\psi$ y $\theta$ , de acuerdo c
     z&=v_0 \cdot \sin(\theta) \cdot t- \frac{1}{2} \cdot g \cdot t^2
 \end{align*}
 
-\item Usando el Comando meshgrid, crea una retícula cuadrada en el intervalo $x = [-1 1]$ e  $y = [-2 2]$ emplea para ello un paso de malla de valor $0.1$. Crea una matriz de ceros del tamaño de las matrices que definen la retícula. Representa, empleando el comando mesh, la matriz de ceros
+\item Usando el Comando meshgrid, crea una retícula cuadrada en el intervalo $x = [-1, 1]$ e  $y = [-2, 2]$ emplea para ello un paso de malla de valor $0.1$. Crea una matriz de ceros del tamaño de las matrices que definen la retícula. Representa, empleando el comando mesh, la matriz de ceros
 creada sobre la retícula. Representa gráficamente la superficie $z = e^{-(x^2+y^2)}$. 
 
 \item Genera $1000$ números aleatorios distribuidos normalmente (usa para ello la función \emph{np.random.randn}. Usa la función \emph{plt.hist} para dibujar el histograma de los números aleatorios generados. 
@@ -986,12 +1005,6 @@ donde $x,y,z$ representan las coordenadas del cuerpo en el instante de tiempo $t
 	\item Haga el cálculo de la trayectoria en tres dimensiones descrita por el cuerpo en el intervalo de tiempo $[0,1]$. Considera incrementos de tiempo de $0.01s$.
 	\item Dibuje en una gráfica la trayectoria descrita por el cuerpo en el espacio. Cada eje del gráfico deberá llevar  una etiqueta indicando de qué variable se trata $x$, $y$ ó $z$.
 	\item La salida serán tres vectores con los valores de $x$, $y$ y $z$ calculados para cada instante de tiempo.
-	\end{enumerate}
-
-\item (\textbf{1.5 puntos}) Añade a la función creada en el apartado anterior el código necesario para que:
-	\begin{enumerate}
-	\item \textbf{Solo si} se le dan dos variables de entrada en lugar de tres, entonces calcule la trayectoria que describiría el cuerpo en el plano si se eliminara la ecuación (\ref{eq:3}) de las ecuaciones del sistema. (NOTA: La función debe seguir funcionando igual que en el apartado anterior si se le dan tres entradas. Emplea el comando nargin).
-	\item El resultado deberá también representarse gráficamente, pero solo en dos dimensiones, y devolver la variable $z$ como un vector vacío. 
 	\end{enumerate}
 
 \item \label{ap2} (\textbf{1.5 puntos}) Genera dos  vectores de frecuencias: \texttt{W1} y \texttt{W2} de  modo que el primero contenga los números impares comprendidos entre $1$ y $7$ y el segundo los números pares comprendidos entres $2$ y $8$.  Emplea la función creada en el apartado anterior para calcular el valor de las trayectorias obtenidas tomando como entradas para  $\omega_1, \omega_2$,  todos los pares posibles de la forma: \texttt{W1(i)} y \texttt{W2(j)}. Supón que no hay tercera entrada $a$. Realiza los cálculos empleando bucles.
