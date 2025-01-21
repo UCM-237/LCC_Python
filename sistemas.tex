@@ -145,7 +145,7 @@ A\cdot x=b \Rightarrow x=A^{-1}\cdot b
 \end{equation*}
 
 \begin{paracol}{2}
-Es decir, bastaría invertir la matriz de coeficientes y multiplicarla por la izquierda por el vector de coeficientes para obtener el vector de  términos independientes. De aquí podemos deducir una segunda condición para que un sistema de ecuaciones tenga una solución única; Su matriz de coeficientes tiene que tener inversa. Veamos algunos ejemplos sencillos.
+Es decir, bastaría invertir la matriz de coeficientes y multiplicarla por la izquierda por el vector de coeficientes para obtener el vector de  términos independientes. De aquí podemos deducir una segunda condición para que un sistema de ecuaciones tenga una solución única.    Su matriz de coeficientes tiene que tener inversa. Veamos algunos ejemplos sencillos.
 
 Tomaremos en primer lugar un sistema de dos ecuaciones con dos incógnitas,
 
@@ -589,7 +589,7 @@ b_n
 
 \begin{paracol}{2}
 El procedimiento para resolverlo a \emph{mano} es muy sencillo,
-despejamos la primera la primera incógnita de la primera ecuación,
+despejamos la primera incógnita de la primera ecuación,
 \begin{equation*}
 x_1=\frac{b_1}{a_{11}}
 \end{equation*}
@@ -734,15 +734,19 @@ El código para implementar este método es similar al de las sustituciones prog
 The code to implement this method is similar to that of forward substitutions. It is left as an exercise to build a Python function that calculates the solution of an upper triangular system by the method of backward substitutions.
 \switchcolumn
 \subsection{Métodos basados en las factorizaciones}
-Puesto que sabemos como resolver sistemas triangulares, una manera de resolver sistemas más complejos sería encontrar métodos para reducirlos a sistemas triangulares. De este modo evitamos invertir la matriz de coeficientes y los posibles problemas de estabilidad numérica derivados de dicha operación. Si podemos expresar la matriz $A$ como el producto de matrices diagonales o triangulares podremos resolver el sistema usando los métodos anteriores. \textbf{Factorizar} una matriz es descomponer la misma en el producto de dos o más matrices de alguna forma canónica.
+Puesto que sabemos como resolver sistemas triangulares, una manera de resolver sistemas más complejos sería encontrar métodos para reducirlos a sistemas triangulares. De este modo evitamos invertir la matriz de coeficientes y los posibles problemas de estabilidad numérica derivados de dicha operación. Si podemos expresar la matriz $A$ como el producto de matrices diagonales o triangulares podremos resolver el sistema usando los métodos anteriores. 
+
+\textbf{Factorizar} una matriz es descomponer la misma en el producto de dos o más matrices de alguna forma canónica.
 
 \switchcolumn
 \subsection{Methods based on factorisations}
 
-Since we know how to solve triangular systems, one way to solve more complex systems would be to find methods to reduce them to triangular systems. In this way we avoid inverting the matrix of coefficients and the possible problems of numerical stability derived from such an operation. If we can express the matrix $A$ as the product of diagonal or triangular matrices we can solve the system using the above methods. \textbf{To factorise} a matrix is to decompose it into the product of two or more matrices of some canonical form.
+Since we know how to solve triangular systems, one way to solve more complex systems would be to find methods to reduce them to triangular systems. In this way we avoid inverting the matrix of coefficients and the possible problems of numerical stability derived from such an operation. If we can express the matrix $A$ as the product of diagonal or triangular matrices we can solve the system using the above methods. 
+
+\textbf{To factorise} a matrix is to decompose it into the product of two or more matrices of some canonical form.
 
 \switchcolumn
-\paragraph{Factorización LU.} La factorización LU consiste en factorizar una matriz en el producto de dos, una triangular inferior $L$ y una triangular superior $U$. La factorización podía incluir pivoteo de filas, para alcanzar una solución numéricamente estable. En este caso la factorización LU toma la forma,
+\paragraph{Factorización LU.} La factorización LU consiste en factorizar una matriz en el producto de dos, una triangular inferior $L$ y una triangular superior $U$. La factorización puede incluir pivoteo de filas, para alcanzar una solución numéricamente estable. En este caso la factorización LU toma la forma,
 \begin{equation*}
 P\cdot A = L\cdot U
 \end{equation*}
@@ -801,7 +805,7 @@ A\cdot x=b\rightarrow P\cdot L \cdot U \cdot x= b
 \end{equation*}
 
 \switchcolumn
-Para poder resolver el sistema usando sustituciones progresivas y reversivas vamos a multiplicar ambos términos de la ecuación por $P^{-1}$, recordando que $P^{-1}=P^T$
+Para poder resolver el sistema usando sustituciones progresivas y regresivas vamos a multiplicar ambos términos de la ecuación por $P^{-1}$, recordando que $P^{-1}=P^T$
 \begin{equation*}
 P^{-1} \cdot P\cdot L \cdot U \cdot x=P^{-1}\cdot b \rightarrow L\cdot U \cdot x= P^T\cdot b
 \end{equation*}
@@ -2686,7 +2690,10 @@ array([[ 0.,  0.,  0.],
 \end{minted}
 
 \begin{paracol}{2}
-Construimos a continuación el vector $f$, \mintinline{python}{f=(np.linalg.inv(A)).dot(b)} y la matriz del sistema $H$ \mintinline{python}{H=-(np.linalg.inv(A)).dot(U+L)}
+Construimos a continuación el vector $f$, 
+\mint{python} f=(np.linalg.inv(A)).dot(b) 
+y la matriz del sistema $H$ 
+\mint{python}H=-(np.linalg.inv(A)).dot(U+L)
 \switchcolumn
 We then construct the vector $f$ \mintinline{python}{f=(np.linalg.inv(A)).dot(b)}, and the matrix of the system $H$ \mintinline{python}{H=-(np.linalg.inv(A)).dot(U+L)}
 \switchcolumn
