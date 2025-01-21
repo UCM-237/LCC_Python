@@ -1569,7 +1569,7 @@ Integral: 0.0 + 12.0·x - 2.0·x² - 1.0·x³ + 0.25·x^4
 \section{Cálculo de raices con la precisión máxima}
 Como ya se vio en la sección \ref{errn} todos los números que empleamos en un ordenador están sometidos a errores a causa del tamaño finito de los registros empleados para guardarlos. Cualquier número que queramos representar ha de aproximarse por un número máquina. Por lo tanto, en vez de buscar la aproximación a la raiz de una función con una tolerancia dada, podemos hallarla con la máxima precisión que nos permita la representación numérica empleada. Esta precisión máxima está relacionada con el \texttt{epsilon} del computador ya que la distancia entre dos números consecutivos es el épsilon multiplicado por dos elevado al exponente del número. De esta manera, por muchas iteraciones que hagamos la mejor aproximación que vamos a poder obtener de una raiz la obtendremos cuando el intervalo en el que se busca la raiz queda reducido a \texttt{eps} y por lo tanto no es posible reducirlo aún más. 
 
-En \texttt{Numpy} el método \texttt{spacing(a)} nos devuelve la distancia entre $a$ y el siguiente número adyacente más próximo. De esta manera si a un número $x$ le sumamos un valor menor que \texttt{spacing(x)} el resultado es el mismo número. Hay que tener en cuenta que para números negativos $x<0$ la distancia que nos devuelve \texttt{spacing(x)} es también negativa. No debería haber ningún número máquina entre $x$y $x+spacing(x)$ para cualquier $x$ finito.
+En \texttt{Numpy} el método \texttt{spacing(a)} nos devuelve la distancia entre $a$ y el siguiente número adyacente más próximo. De esta manera si a un número $x$ le sumamos un valor menor que \texttt{spacing(x)} el resultado es el mismo número. Hay que tener en cuenta que para números negativos $x<0$ la distancia que nos devuelve \texttt{spacing(x)} es también negativa. No debería haber ningún número máquina entre $x$ y $x+spacing(x)$ para cualquier $x$ finito.
 
 \switchcolumn
 \section{Computing roots at maximum precision.}
@@ -1875,8 +1875,7 @@ For methods that do not start from an interval but from an initial point, such a
 
 
 
-%TODO: Lia (18/04/2024)
-\begin{paracol}{2}
+
 \section{Ejercicios}
 \begin{enumerate}
 \item Crea una función en python que implemente el método de  la bisección para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función $f(x)$, un intervalo de búsqueda $[a,b]$, un número máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución. 
@@ -1977,7 +1976,7 @@ da la probabilidad de que una partícula de un gas se mueva con velocidad $v$. D
 \end{enumerate}
 
 \end{enumerate}
-\switchcolumn
+
 \section{Problems}
 \begin{enumerate}
 \item 
@@ -2020,14 +2019,13 @@ The program used must add to the graph obtained in \ref{it1}), a point in the po
 
 The algorithm calculates each iteration using two intermediate steps according to the following procedure,
 
-% \begin{lstlisting}
-% while{condición} 
-%   x0 = x
-%   x1 = g(x0)
-%   x2 = g(x1)
-%   x  = x0 - (x1 -x0)^2/(x2 - 2x1 + x0)
-% end
-% \end{lstlisting}
+\begin{minted}{python}
+while condición : 
+   x0 = x
+   x1 = g(x0)
+   x2 = g(x1)
+   x  = x0 - (x1 -x0)**2/(x2 - 2*x1 + x0)
+\end{minted}
 
 Where $g(x)$ represents the auxiliary function for which the fixed point is sought.
 
@@ -2079,8 +2077,8 @@ gives the probability that a particle of a gas moves with velocity $v$. Where $m
 \end{enumerate}
 
 \end{enumerate}    
-\end{paracol}
-\begin{paracol}{2}
+
+
 \section{Test del curso 2020/2021}
 \begin{enumerate}
 \item Una señal de FM, viene representada por la función
@@ -2113,7 +2111,7 @@ gives the probability that a particle of a gas moves with velocity $v$. Where $m
 
 \end{enumerate}
 \end{enumerate}
-\switchcolumn
+
 \section{2020/21 Test}
 \begin{enumerate}
 \item An FM signal, represented by the function
@@ -2147,7 +2145,7 @@ gives the probability that a particle of a gas moves with velocity $v$. Where $m
 \end{enumerate}
 
 \end{enumerate}
-\end{paracol}
+
 
 
 \section*{Ejercicio aplicado. Resolver numéricamente la ecuación de Kepler}

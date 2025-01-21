@@ -4,7 +4,7 @@
 \begin{paracol}{2}
 \section{Numpy: un paquete de Python para cálculo nu\-mérico}
 \sectionmark{Numpy: módulo mat. \textreferencemark\ Numpy: a math. Pack.}
-En el capítulo \ref{ch:intpr}, vimos cómo importar mó\-dulos de python en un script o directamente en el terminal de Ipython, de modo que podamos reutilizar el código contenido en ellos. Numpy es un libraría de python que contiene funciones y variables específicamente diseñadas para el cálculo numérico. Está estructurada en forma de módulos y submódulos de modo que, para utilizarla en nuestros programas, basta con importarla en nuestros scripts, importar sus submódulos o importar sus funciones.
+En el capítulo \ref{ch:intpr}, vimos cómo importar mó\-dulos de python en un script o directamente en el terminal de Ipython, de modo que podamos reutilizar el código contenido en ellos. Numpy es un librería de python que contiene funciones y variables específicamente diseñadas para el cálculo numérico. Está estructurada en forma de módulos y submódulos de modo que, para utilizarla en nuestros programas, basta con importarla en nuestros scripts, importar sus submódulos o importar sus funciones.
 La base de Numpy la constituyen objetos y operaciones algebráicas. En esta sección vamos a repasar algunos conceptos fundamentales de  álgebra lineal y cómo pueden manejarse empleando Python y la librería numpy. No daremos definiciones precisas ni tampoco demostraciones, ya que tanto unas como otras se verán en detalle en la asignatura de álgebra.
 
 \paragraph{Matrices.} Desde un punto de vista funcional definiremos una matriz como una tabla bidimensional de números ordenados en filas y columnas,
@@ -54,7 +54,7 @@ A=
 \rightarrow a_{23}=-4.6
 \end{equation*}
 \begin{paracol}{2}
-\paragraph{vectores}
+\paragraph{Vectores.}
 A una matriz compuesta por una sola fila, la denominaremos vector fila. A una matriz compuesta por una sola columna la denominaremos vector columna. Siempre que hablemos de un vector, sin especificar más, entenderemos que se trata de un vector columna.\footnote{Esta identificación de los vectores como vectores columna no es general. La introducimos porque simplifica las explicaciones posteriores.} Para representar vectores, emplearemos letras minúsculas. Para representar sus elementos añadiremos a la letra que representa al vector un subíndice indicando la fila a la que pertenece el elemento.
 \switchcolumn
 We call a matrix formed by a single row a row vector. We call a matrix formed by a single column a column vector. Whenever we speak of a vector without further specification, we consider it a column vector.\footnote{This identification of a vector with a column vector is by no means general. We introduce it because it simplifies the exposition.}. To name vectors, we will use lowercase letters. To name the entries of a vector, we will add a subindex to the letter representing the vector to show the row the entry belongs to. 
@@ -982,7 +982,7 @@ array([[-2, -3, -4, -5],
 \end{center}
 
 \begin{paracol}{2}
-En la Línea In [384] se ha calculado el producto escalar de los vectores \mintinline{python}{a} y \mintinline{python}{b}. En este caso, la única condición requerida es que tengan la misma dimensión. En la línea In [388] se calcula el producto de la matriz \mintinline{python}{A} por el vector \mintinline{python}{b}. El requisito ahora es que la dimensión de la matriz ($2\times 4$), que corresponde al número de columnas, coincida con la única dimensión del vector ($4$). En la línea In [389] calculamos el producto del vector \mintinline{python}{b} por la transpuesta de la matriz \mintinline{python}{A}. La operación es posible porque la única dimensión del vector y coincide con la dimensión  de la matriz transpuesta $(4\time2)$, que corresponde con a número de filas. Sin embargo, no es posible calcular el producto del vector \mintinline{python}{b} por la matriz \mintinline{python}{A}, ya que la dimensión del vector no coincide con la primera dimensión de la matriz $(2\times4)$. En la línea In [399] hemos multiplicado las matrices \mintinline{python}{A} $(2\times 4$) por la matriz \mintinline{python}{B} $(4\times 2)$. Como coinciden las dimensiones ``internas'', --numero de columnas de la primera matriz con número de filas de la segunda-- La operación puede llevarse a cabo. Si invertimos el orden de las matrices, (línea In [400]) el producto también es posible, ya que en también coincidirían las dimensiones "internas". Sin embargo, es fácil ver que los resultados son complementamente distintos.
+En la Línea In [384] se ha calculado el producto escalar de los vectores \mintinline{python}{a} y \mintinline{python}{b}. En este caso, la única condición requerida es que tengan la misma dimensión. En la línea In [388] se calcula el producto de la matriz \mintinline{python}{A} por el vector \mintinline{python}{b}. El requisito ahora es que la dimensión de la matriz ($2\times 4$), que corresponde al número de columnas, coincida con la única dimensión del vector ($4$). En la línea In [389] calculamos el producto del vector \mintinline{python}{b} por la transpuesta de la matriz \mintinline{python}{A}. La operación es posible porque la única dimensión del vector y coincide con la dimensión  de la matriz transpuesta $(4\time2)$, que corresponde con a número de filas. Sin embargo, no es posible calcular el producto del vector \mintinline{python}{b} por la matriz \mintinline{python}{A}, ya que la dimensión del vector no coincide con la primera dimensión de la matriz $(2\times4)$. En la línea In [399] hemos multiplicado las matrices \mintinline{python}{A} $(2\times 4$) por la matriz \mintinline{python}{B} $(4\times 2)$. Como coinciden las dimensiones ``internas'', --numero de columnas de la primera matriz con número de filas de la segunda-- La operación puede llevarse a cabo. Si invertimos el orden de las matrices, (línea In [400]) el producto también es posible, ya que en también coincidirían las dimensiones ``internas''. Sin embargo, es fácil ver que los resultados son complementamente distintos.
 \switchcolumn
 In line In[384] we calcuted the scalar product of vectors \mintinline{python}{a} and \mintinline{python}{b}. In this case, the only requirement is that both vectors have the same dimension. In line In [388] we calculated the product of matrix \mintinline{python}{A} and the vector \mintinline{python}{b}. Now the requirement is the dimension of the matrix ($2\times 4$), corresponding to the number of columns, meets the the single dimension of the vector ($4$). In line [389], we multiplied vector \mintinline{python}{b} with the transpose of matrix \mintinline{python}{A}. This operation can be carried out because the single dimension of vector \mintinline{python}{b} is the same as the dimension of the transpose of the matrix $(4\times 2)$, which corresponds with the number of rows of the matrix. However, we cannot multiply vector \mintinline{python}{b} by matrix \mintinline{python}{A} because the dimension of the vector does not meet the first dimension of the matrix $(2\times 4)$. In line In [399] we multiplied matrix \mintinline{python}{A} $(2\times 4)$ by matix \mintinline{python}{B} $(4\times 2)$. We can carry out the operation because the ``inner'' dimensions of the matrices --number of columns of the first matrix and number of rows of the second one--, meet. If we invert the order of the matrices (line In [400]), we can still multiply the matrix because, in this particular case, the new ``inner'' dimensions also meet. However, the result is entirely different        
 \end{paracol}
@@ -2578,7 +2578,7 @@ A=\begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 \begin{paracol}{2}
-3. Matriz Diagonal: Una matriz $A$  es diagonal si solo son distintos de ceros los elementos de su diagonal principal,
+3. Matriz diagonal: Una matriz $A$  es diagonal si solo son distintos de ceros los elementos de su diagonal principal,
 \switchcolumn
 3. Diagonal matrix: A matrix $A$ is diagonal is only the entries of its main diagonal are different from zero.
 \end{paracol}
@@ -2722,7 +2722,7 @@ array([[1, 0, 0],
 \end{center}
 
 \begin{paracol}{2}
-6. Matriz definida Positiva. Una matriz $A_{n \times n}$ es definida positiva si dado un vector $x$ no nulo cumple,
+6. Matriz definida positiva. Una matriz $A_{n \times n}$ es definida positiva si dado un vector $x$ no nulo cumple,
 \switchcolumn
 6. Positive definite matrix: A matrix $A_{n\times n} $ is positive definite is taking a non-null vector $x$ satisfy,
 \end{paracol}
@@ -2741,7 +2741,7 @@ x^T\cdot A \cdot x \geq 0, \ \forall x\neq 0,
 \begin{paracol}{2}
 entonces la matriz $A$ es semidefinida positiva.
 
-7. Una matriz es (strictamente) diagonal dominante si cada uno de los elementos de la diagonal en valor absoluto es ()mayor) mayor o igual que la suma de los valores absolutos de los elementos de la fila a la  que pertenece.
+7. Una matriz es (estrictamente) diagonal dominante si cada uno de los elementos de la diagonal en valor absoluto es  (mayor) mayor o igual que la suma de los valores absolutos de los elementos de la fila a la  que pertenece.
 
 \switchcolumn
 then matrix $A$ is positive semi-definite.
@@ -3812,7 +3812,7 @@ Para los siguientes ejercicios, es necesario importar Numpy. Se puede hacer de t
 	import numpy as alias
 	from numpy import *
 \end{minted}
-En el primer caso, hay que escribir las funciones precedidas del nombre del módulo: \mintinline{python}{numpy.fun}. EN el segundo caso,hy que precederlas del alias elegido, en los ejercicios que siguen es la opcion elegida y el alias empleado es np: \mintinline{python}{np.fun}. EN eñ tercer caso, importamos directamente las funciones y submódulos por lo que pudríamos emplearlos usando directamente su nombre \mintinline{python}{fun}. Este último método tiene el riesgo de sobreescribir accidentalmente alguna función de Numpy. 
+En el primer caso, hay que escribir las funciones precedidas del nombre del módulo: \mintinline{python}{numpy.fun}. En el segundo caso, hay que precederlas del alias elegido, en los ejercicios que siguen es la opcion elegida y el alias empleado es np: \mintinline{python}{np.fun}. En el tercer caso, importamos directamente las funciones y submódulos por lo que pudríamos emplearlos usando directamente su nombre \mintinline{python}{fun}. Este último método tiene el riesgo de sobreescribir accidentalmente alguna función de Numpy. 
 \begin{enumerate}
 	\item Arrays en Numpy; matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{línea de comandos} de Ipython e interpreta los resultados que obtienes. En los casos en que Python devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunos operaciones se apoyan en los resultados de operaciones anteriores. 
 \begin{multicols}{2}			
