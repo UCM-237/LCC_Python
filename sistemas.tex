@@ -2691,11 +2691,11 @@ array([[ 0.,  0.,  0.],
 
 \begin{paracol}{2}
 Construimos a continuación el vector $f$, 
-\mint{python} f=(np.linalg.inv(A)).dot(b) 
+\mint{python} |f=(np.linalg.inv(A)).dot(b)| 
 y la matriz del sistema $H$ 
-\mint{python}H=-(np.linalg.inv(A)).dot(U+L)
+\mint{python}|H=-(np.linalg.inv(A)).dot(U+L)|
 \switchcolumn
-We then construct the vector $f$ \mintinline{python}{f=(np.linalg.inv(A)).dot(b)}, and the matrix of the system $H$ \mintinline{python}{H=-(np.linalg.inv(A)).dot(U+L)}
+We then construct the vector $f$ \mint{python}|{f=(np.linalg.inv(A)).dot(b)}|, and the matrix of the system $H$ \mint{python}|H=-(np.linalg.inv(A)).dot(U+L)|
 \switchcolumn
 A partir de las matrices construidas, el código para calcular una iteración por el método de Jacobi sería simplemente, \mintinline{python}{xs1=f+H.dot(xs)}
 \switchcolumn
@@ -3016,7 +3016,7 @@ Podemos identificar fácilmente el termino fijo, $f=\omega\cdot D^{-1}\cdot b$ y
 Para implementar el código del método de Jacobi amortiguado, debemos calcular la matriz identidad del tamaño de sistema y modificar las expresiones de $f$ y $H$,
 
 \switchcolumn
-We can easily identify the fixed term  $f=\omega\cdot D^{-1}\cdot b$ and the method matrix $H=\left((1-w)\cdot I - w\cdot  D^{-1}\cdot  \left(L+U \right)\right)$.
+We can easily identify the fixed term  $f=\omega\cdot D^{-1}\cdot b$ and the method matrix $$H=\left((1-w)\cdot I - w\cdot  D^{-1}\cdot  \left(L+U \right)\right)$$
 
 To implement the code of the damped Jacobi method, we must calculate the identity matrix of the system size and modify the expressions of $f$ and $H$,
 
@@ -3383,7 +3383,9 @@ It does not converge if we try to solve it by the Jacobi method. However, it is 
 
 \begin{paracol}{2}
 Si calculamos el radio espectral de la matriz del método, para el método de Jacobi tendríamos,
+
 \switchcolumn
+
 If we calculate the spectral radius of the method matrix, for the Jacobi method we would have,
 
 \end{paracol}
