@@ -27,52 +27,52 @@ semilla=&87289689 \rightarrow
 
 El siguiente código de Matlab, permite obtener un vector de números pseudoaleatorios mediante el método \emph{middle square}
 
-\begin{lstlisting}
-function secuencia=middlesquare(semilla, longitud)
-% Este programa obtiene una secuencia de números psduoaleatorios empleado el
-% método 'middle square'.
-% uso: secuencia=middlesquare(semilla, longitud)
-% Variables entrada: semilla, numero inicial que será empleado como semilla.
-% longitud, cantidad de números aleatorios que debe generar la secuencia.
-% variable de salida: secuencia vector de numeros aleatorios resultante
-
-% creamos un vector de ceros para guardar los resultados
-%  convertimos el número a entero de 64 bits, asi todas la operaciones son
-% enteras...
-% ojo si usamos una semilla de mas de nueve digitos, el cuadrado puede
-% desbordar el entero más grande representable.
-
-semilla=uint64(semilla)
-% calculamos la longitud de la semilla
-c=semilla;
-n=0;
-while c>0
-    c=idivide(c,10);
-    % la linea de codigo anterior, puende no funcionar en algunas versiones
-    % antiguas de matlab. Alternativamente, podría implementarse como,
-    % c=(c-rem(c,10))/10;
-    n=n+1;
-end
-
-% creamos un bucle para ir generando los numeros pseudoaleatorio a partir de
-% la semilla
-% elevamos al cuadrado la semilla
-    
-for i=1:longitud     
-    l=semilla.^2
-    % primero extraemos las n/2 cifras menores
-    semilla=idivide(l,10^fix(n/2));
-    % la linea de codigo anterior, puende no funcionar en algunas versiones
-    % antiguas de matlab. Alternativamente, podría implementarse como,
-    % semilla=(l-rem(l,10^fix(n/2)))/10^fix(n/2);
-   
-    % y a continuacion extraemos las n cifras siguiente, que seran el
-    % siguiente numero aleatorio
-    semilla = rem(semilla,10^n)
-    % guardamos el numero generado en el vector de salida
-    secuencia(i,1)=semilla;
-end
-\end{lstlisting} 
+%\begin{lstlisting}
+%function secuencia=middlesquare(semilla, longitud)
+%% Este programa obtiene una secuencia de números psduoaleatorios empleado el
+%% método 'middle square'.
+%% uso: secuencia=middlesquare(semilla, longitud)
+%% Variables entrada: semilla, numero inicial que será empleado como semilla.
+%% longitud, cantidad de números aleatorios que debe generar la secuencia.
+%% variable de salida: secuencia vector de numeros aleatorios resultante
+%
+%% creamos un vector de ceros para guardar los resultados
+%%  convertimos el número a entero de 64 bits, asi todas la operaciones son
+%% enteras...
+%% ojo si usamos una semilla de mas de nueve digitos, el cuadrado puede
+%% desbordar el entero más grande representable.
+%
+%semilla=uint64(semilla)
+%% calculamos la longitud de la semilla
+%c=semilla;
+%n=0;
+%while c>0
+%    c=idivide(c,10);
+%    % la linea de codigo anterior, puende no funcionar en algunas versiones
+%    % antiguas de matlab. Alternativamente, podría implementarse como,
+%    % c=(c-rem(c,10))/10;
+%    n=n+1;
+%end
+%
+%% creamos un bucle para ir generando los numeros pseudoaleatorio a partir de
+%% la semilla
+%% elevamos al cuadrado la semilla
+%    
+%for i=1:longitud     
+%    l=semilla.^2
+%    % primero extraemos las n/2 cifras menores
+%    semilla=idivide(l,10^fix(n/2));
+%    % la linea de codigo anterior, puende no funcionar en algunas versiones
+%    % antiguas de matlab. Alternativamente, podría implementarse como,
+%    % semilla=(l-rem(l,10^fix(n/2)))/10^fix(n/2);
+%   
+%    % y a continuacion extraemos las n cifras siguiente, que seran el
+%    % siguiente numero aleatorio
+%    semilla = rem(semilla,10^n)
+%    % guardamos el numero generado en el vector de salida
+%    secuencia(i,1)=semilla;
+%end
+%\end{lstlisting} 
 
 Las secuencias generadas mediante el método \emph{middle square} no son aleatorias, cada número viene completamente determinado por el número anterior. Sin embargo, dichas secuencias parecen aleatorias. La figura \ref{fig:middlesquare} muestra una secuencia de $100$ valores pseudoaleatorios generados mediante \emph{middle square}. Aparentemente, cada valor parece no guardar ninguna relación con los anteriores.
 
@@ -127,34 +127,34 @@ Es decir, cada número se obtiene como el resto de la división entera del multi
 
 El siguiente código permite calcular una secuencia de números aleatorios por el método \emph{linear congruential}
 
-\begin{lstlisting}
-function secuencia=linealcr(i0,a,c,m,l)
-% Esta función emplea el metodo linear congruential para obtener una
-% secuencia de numeros aleatorios de longitud arbitraria
-% Uso: secuencia=linealcr(i0,a,c,m,l)
-% Variables de entrada: i0=semilla, a=multiplicador, c=incremento, m=modulo.
-% l= longitud de la secuencia obtenida.
-% varibles de salida: secuencia vector columna con los numeros aleatorios
-% generados.
-% nota: para generarlos con el metodo multiplicative congruential tomar c=0
-if (m<=a)||(m<=c)|| (m<=i0)
-    error('el modulo debe ser mayor que los otros tres parametros')
-end
-
-% inicilizamos el vector secuencia
-secuencia=zeros(l,1);
-% guardamos la semilla como el primer numero de la secuencia
-secuencia(1)=i0;
-% Creamos un bucle para ir calculando los sucesivos numeros de la secuencia
-
-for j=2:l
-    secuencia(j)=rem(a*secuencia(j-1)+c,m);
-end
-% para obtener numeros en el intervalo (0,1), dividimos el resultado por el
-% modulo
-
-secuencia=secuencia/m
-\end{lstlisting}
+%\begin{lstlisting}
+%function secuencia=linealcr(i0,a,c,m,l)
+%% Esta función emplea el metodo linear congruential para obtener una
+%% secuencia de numeros aleatorios de longitud arbitraria
+%% Uso: secuencia=linealcr(i0,a,c,m,l)
+%% Variables de entrada: i0=semilla, a=multiplicador, c=incremento, m=modulo.
+%% l= longitud de la secuencia obtenida.
+%% varibles de salida: secuencia vector columna con los numeros aleatorios
+%% generados.
+%% nota: para generarlos con el metodo multiplicative congruential tomar c=0
+%if (m<=a)||(m<=c)|| (m<=i0)
+%    error('el modulo debe ser mayor que los otros tres parametros')
+%end
+%
+%% inicilizamos el vector secuencia
+%secuencia=zeros(l,1);
+%% guardamos la semilla como el primer numero de la secuencia
+%secuencia(1)=i0;
+%% Creamos un bucle para ir calculando los sucesivos numeros de la secuencia
+%
+%for j=2:l
+%    secuencia(j)=rem(a*secuencia(j-1)+c,m);
+%end
+%% para obtener numeros en el intervalo (0,1), dividimos el resultado por el
+%% modulo
+%
+%secuencia=secuencia/m
+%\end{lstlisting}
 
 Una variante del algoritmo descrito, frecuentemente empleada, se obtiene haciendo el incremento igual a cero, $c=0$. Dicha variante se conoce con el nombre de \emph{multiplicative congruential}, su expresión general sería,
 \begin{equation*}
@@ -252,24 +252,24 @@ estado =
 \end{verbatim}
 
 Supongamos que después de obtener el estado del generador, seguimos generando números aleatorios. Podemos hacer que el generador vuelva al estado que tenía empleando la estructura obtenida para leinicializar el generador. A partir de ahí el generador volverá a repetir de nuevo la misma secuencia de números aleatorios. La siguiente secuencia de instrucciones de Matlab ilustra este procedimiento,
-\begin{lstlisting}
-% ejemplo de vuelta del generador de numeros aleatorios a un estado
-% anterior
-
-% generamos una secuencia de 5 números,
-s1=rand(1,5)
-% guardamos el estado actual del generador
-estado=rng;
-
-% generamos una nueva secuencia de 5 números
-s2=rand(1,5)
-
-% volvemos a llevar el generador al estado anterior,
-rng(estado)
-
-% volvemos a generar una secuencia de 5 números que será igual que s2
-s2bis=rand(1,5)
-\end{lstlisting}
+%\begin{lstlisting}
+%% ejemplo de vuelta del generador de numeros aleatorios a un estado
+%% anterior
+%
+%% generamos una secuencia de 5 números,
+%s1=rand(1,5)
+%% guardamos el estado actual del generador
+%estado=rng;
+%
+%% generamos una nueva secuencia de 5 números
+%s2=rand(1,5)
+%
+%% volvemos a llevar el generador al estado anterior,
+%rng(estado)
+%
+%% volvemos a generar una secuencia de 5 números que será igual que s2
+%s2bis=rand(1,5)
+%\end{lstlisting}
 
 Si ejecutamos la secuencia obtendremos,
 
@@ -554,24 +554,24 @@ Además podemos desplazar el centro del intervalo sumando o restando al resultad
 genera un vector de 100 números aleatorios en el intervalo $(-2,3)$.
 
 Para comprobar el teorema del límite central, podemos construir un bucle que genere un vector de $n$ números aleatorios en un determinado intervalo, calcule su media y guarde el resultado en un vector de medias. El siguiente código de Matlab, realiza dicho cálculo primero generando un vector de $10$ números aleatorios ($n = 10$) y después generando un vector de $100$, ($n=100$).  El programa genera en cada caso un millón de vectores distintos.
-\begin{lstlisting}
-% Este código genera un millón de vectores, formados por números 
-% aleatorios distribuidos uniformemente en el intervalo (-1,1).
-% Calcula el valor medio de los valores de cada vector y guarda
-% el resultado en un nuevo vector.
-
-media10 = zeros(1,1000000); % vector para guardar las medias
-for i=1:1000000
- 	media10(i) = mean(2*rand(10,1)-1);
-end
-
-% se repite el mismo calculo pero ahora con vectores de 100
-% elementos
-media100 = zeros(1,1000000)
-for i=1:1000000
-	medias100(i) = mean (2*rand(100,1)-1);
-end	
-\end{lstlisting}s
+%\begin{lstlisting}
+%% Este código genera un millón de vectores, formados por números 
+%% aleatorios distribuidos uniformemente en el intervalo (-1,1).
+%% Calcula el valor medio de los valores de cada vector y guarda
+%% el resultado en un nuevo vector.
+%
+%media10 = zeros(1,1000000); % vector para guardar las medias
+%for i=1:1000000
+% 	media10(i) = mean(2*rand(10,1)-1);
+%end
+%
+%% se repite el mismo calculo pero ahora con vectores de 100
+%% elementos
+%media100 = zeros(1,1000000)
+%for i=1:1000000
+%	medias100(i) = mean (2*rand(100,1)-1);
+%end	
+%\end{lstlisting}s
 
 De acuerdo con el teorema del límite central, los dos vectores de medias obtenidos, \texttt{media10} y \texttt{media100}, deben seguir distribuciones normales tales que,
 \begin{enumerate}
@@ -590,10 +590,17 @@ De acuerdo con el teorema del límite central, los dos vectores de medias obteni
 
 \begin{figure}
 \centering
-\subfigure[Distribución para medias de 10 valores  \label{fig:tlc10}]{\includegraphics[width=10cm]{tlc1.eps}} \qquad 
-\subfigure[Distribución para medias de 100 valores  \label{fig:tlc100}]{\includegraphics[width=10cm]{tlc2.eps}}\\
+\begin{subfigure}{0.35\textwidth}
+	{\includegraphics[width=\textwidth]{tlc1.eps}}
+\caption{Distribución para medias de 10 valores}\label{fig:tlc10}
+\end{subfigure} 
+\begin{subfigure}{0.35\textwidth}
+	{\includegraphics[width=\textwidth]{tlc2.eps}}
+	\caption{Distribución para medias de 100 valores}  \label{fig:tlc100}
+\end{subfigure}
 \caption{Teorema del límite central: Comparación entre histogramas normalizados para un millón de medias y la distribución normal a que pertenecen}
 \end{figure}
+
 
 Por tanto, las distribuciones normales a las que pertenecen las medias calculadas son,
 
