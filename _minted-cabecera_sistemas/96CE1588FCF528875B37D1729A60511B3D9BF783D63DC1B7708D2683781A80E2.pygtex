@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{RA:  [[ 1.          3.          2.        ]}
+\PYG{g+go}{ [ 0.         \PYGZhy{}7.         \PYGZhy{}3.        ]}
+\PYG{g+go}{ [ 0.          0.          0.57142857]]}
+\PYG{g+go}{nb:  [ 13.         \PYGZhy{}23.           1.71428571]}
+\PYG{g+go}{x:  [1. 2. 3.]}
+\end{Verbatim}

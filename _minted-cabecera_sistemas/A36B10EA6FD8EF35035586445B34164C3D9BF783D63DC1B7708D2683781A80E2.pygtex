@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{L: [[1.         0.         0.        ]}
+\PYG{g+go}{ [0.5        1.         0.        ]}
+\PYG{g+go}{ [0.5        0.77777778 1.        ]]}
+\PYG{g+go}{U: [[ 2.         \PYGZhy{}1.          1.        ]}
+\PYG{g+go}{ [ 0.          4.5         2.5       ]}
+\PYG{g+go}{ [ 0.          0.         \PYGZhy{}0.44444444]]}
+\PYG{g+go}{P:  [[0. 0. 1.]}
+\PYG{g+go}{ [1. 0. 0.]}
+\PYG{g+go}{ [0. 1. 0.]]}
+\end{Verbatim}

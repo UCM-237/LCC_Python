@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{Eigenvalues:  [ 0.11872445+1.05306845j  0.11872445\PYGZhy{}1.05306845j \PYGZhy{}0.2374489 +0.j        ]}
+\PYG{g+go}{Spectral radius:  1.0597398959658624}
+\end{Verbatim}

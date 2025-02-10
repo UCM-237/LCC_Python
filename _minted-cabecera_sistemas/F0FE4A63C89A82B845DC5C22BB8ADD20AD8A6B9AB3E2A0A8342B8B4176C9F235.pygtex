@@ -1,0 +1,33 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{eligaussp}\PYG{p}{(}\PYG{n}{A}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{}This function obtains an upper triangular matrix, starting from a given}
+\PYG{l+s+sd}{    matrix, by applying the Gaussian elimination method.}
+\PYG{l+s+sd}{    It includes row piboting. If the diagonal element is less than the same}
+\PYG{l+s+sd}{    element in next rows, rows are interchanged\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+
+    \PYG{c+c1}{\PYGZsh{}Matrix shape}
+    \PYG{p}{[}\PYG{n}{f}\PYG{p}{,}\PYG{n}{c}\PYG{p}{]}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}
+    \PYG{n}{U}\PYG{o}{=}\PYG{n}{A}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+    \PYG{c+c1}{\PYGZsh{}For all the columns in A (except the last one)}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{c}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{}Row pivoting}
+        \PYG{c+c1}{\PYGZsh{} Search the maximun in column i}
+        \PYG{n}{maxcol}\PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{U}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,}\PYG{n}{i}\PYG{p}{])}
+        \PYG{n}{index} \PYG{o}{=} \PYG{n}{i}
+        \PYG{k}{for} \PYG{n}{l} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{f}\PYG{p}{):}
+            \PYG{k}{if} \PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{U}\PYG{p}{[}\PYG{n}{l}\PYG{p}{,}\PYG{n}{i}\PYG{p}{])}\PYG{o}{\PYGZgt{}}\PYG{n}{maxcol}\PYG{p}{:}
+                \PYG{n}{maxcol}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{U}\PYG{p}{[}\PYG{n}{l}\PYG{p}{,}\PYG{n}{i}\PYG{p}{])}
+                \PYG{n}{index}\PYG{o}{=}\PYG{n}{l}
+        \PYG{c+c1}{\PYGZsh{} If we have found an element U[l,i] greater than U[i,i] we interchange}
+        \PYG{c+c1}{\PYGZsh{} row l with row i}
+        \PYG{k}{if} \PYG{n}{index}\PYG{o}{!=}\PYG{n}{i}\PYG{p}{:}
+            \PYG{n}{aux}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([}\PYG{n}{U}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,:]])}
+            \PYG{n}{U}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,:]}\PYG{o}{=}\PYG{n}{U}\PYG{p}{[}\PYG{n}{index}\PYG{p}{,:]}
+            \PYG{n}{U}\PYG{p}{[}\PYG{n}{index}\PYG{p}{,:]}\PYG{o}{=}\PYG{n}{aux}\PYG{p}{[:]}
+        \PYG{c+c1}{\PYGZsh{} End of Row pivoting}
+        \PYG{c+c1}{\PYGZsh{} For all the rows below the diagonal}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{U}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{f}\PYG{p}{):}
+            \PYG{n}{U}\PYG{p}{[}\PYG{n}{j}\PYG{p}{,:]}\PYG{o}{=}\PYG{n}{U}\PYG{p}{[}\PYG{n}{j}\PYG{p}{,:]}\PYG{o}{\PYGZhy{}}\PYG{n}{U}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,:]}\PYG{o}{*}\PYG{n}{U}\PYG{p}{[}\PYG{n}{j}\PYG{p}{,}\PYG{n}{i}\PYG{p}{]}\PYG{o}{/}\PYG{n}{U}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,}\PYG{n}{i}\PYG{p}{]}
+    \PYG{k}{return} \PYG{n}{U}
+\end{Verbatim}

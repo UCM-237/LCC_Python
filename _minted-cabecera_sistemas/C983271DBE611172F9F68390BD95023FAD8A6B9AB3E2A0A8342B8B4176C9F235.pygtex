@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{D}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{diag}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{diag}\PYG{p}{(}\PYG{n}{A}\PYG{p}{))}
+\PYG{n}{U}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{triu}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{D}
+\PYG{n}{L}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{tril}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{D}
+\PYG{n}{invD}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{inv}\PYG{p}{(}\PYG{n}{D}\PYG{p}{)}
+\PYG{n}{w}\PYG{o}{=}\PYG{l+m+mf}{0.5}
+\PYG{n}{I}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{eye}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{H}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{n}{w}\PYG{p}{)}\PYG{o}{*}\PYG{n}{I}\PYG{o}{\PYGZhy{}}\PYG{n}{w}\PYG{o}{*}\PYG{n}{invD}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{L}\PYG{o}{+}\PYG{n}{U}\PYG{p}{)}
+\PYG{n}{eigenvalues}\PYG{p}{,}\PYG{n}{eigenvectors}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{eig}\PYG{p}{(}\PYG{n}{H}\PYG{p}{)}
+\PYG{n}{spectral\PYGZus{}rad}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{eigenvalues}\PYG{p}{))}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Eigenvalues: \PYGZdq{}}\PYG{p}{,}\PYG{n}{eigenvalues}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Spectral radius: \PYGZdq{}}\PYG{p}{,} \PYG{n}{spectral\PYGZus{}rad}\PYG{p}{)}
+\end{Verbatim}

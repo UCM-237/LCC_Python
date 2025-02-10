@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{Q:  [[\PYGZhy{}0.40824829  0.46369464 \PYGZhy{}0.78633365]}
+\PYG{g+go}{ [\PYGZhy{}0.81649658 \PYGZhy{}0.5707011   0.08737041]}
+\PYG{g+go}{ [\PYGZhy{}0.40824829  0.67770756  0.61159284]]}
+\PYG{g+go}{R:  [[\PYGZhy{}2.44948974 \PYGZhy{}2.04124145 \PYGZhy{}2.85773803]}
+\PYG{g+go}{ [ 0.          4.67261526  2.38981086]}
+\PYG{g+go}{ [ 0.          0.          0.34948162]]}
+\PYG{g+go}{x:  [[1.]}
+\PYG{g+go}{ [2.]}
+\PYG{g+go}{ [3.]]}
+\end{Verbatim}
