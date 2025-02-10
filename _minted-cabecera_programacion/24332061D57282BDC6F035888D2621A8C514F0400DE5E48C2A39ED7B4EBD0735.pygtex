@@ -1,0 +1,47 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python3}
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Mon May 13 12:38:14 2024}
+
+\PYG{l+s+sd}{@author: juan}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{fibonacci}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    n : TYPE integer}
+\PYG{l+s+sd}{        DESCRIPTION. n is the fibonacci series term whose value we whant to }
+\PYG{l+s+sd}{        calculate}
+\PYG{l+s+sd}{    n: es el término de la serie de fibonacci cuyo valor queremos calcular}
+\PYG{l+s+sd}{        }
+\PYG{l+s+sd}{    Returns }
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    s : TYPE integer}
+\PYG{l+s+sd}{        DESCRIPTION the value of fibonacci series term n}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{k}{if} \PYG{n}{n} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{}the value of the term is n itself}
+        \PYG{n}{s} \PYG{o}{=} \PYG{n}{n}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{n}{s} \PYG{o}{=} \PYG{n}{fibonacci}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{+}\PYG{n}{fibonacci}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{)}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{fibo\PYGZus{}series}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Parameters}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    n : TYPE integer}
+\PYG{l+s+sd}{        DESCRIPTION. Last number of the series whe want to build}
+
+\PYG{l+s+sd}{    Returns}
+\PYG{l+s+sd}{    \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{    Fs: List with the n first fibonacci series  terms.}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{Fs} \PYG{o}{=} \PYG{p}{[}\PYG{n}{fibonacci}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)]}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{Fs}\PYG{p}{)}    
+\end{Verbatim}

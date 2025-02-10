@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]:} \PYG{n}{runfile}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}C:/Users/abierto/Documents/borrar/Example\PYGZus{}import.py\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{wdir}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}C:/Users/abierto/Documents/borrar\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{raíz} \PYG{n}{positiva}\PYG{o}{/}\PYG{n}{positive} \PYG{n}{root}\PYG{p}{:} \PYG{l+m+mf}{0.0}
+\PYG{n}{raiz} \PYG{n}{negativa}\PYG{o}{/}\PYG{n}{negative} \PYG{n}{root}\PYG{p}{:} \PYG{l+m+mf}{0.0}
+\PYG{n}{Example\PYGZus{}import}\PYG{p}{:} \PYG{l+m+mf}{1.7071067811865475}
+\PYG{n}{Example\PYGZus{}import}\PYG{p}{:} \PYG{l+m+mf}{0.2928932188134524}
+\PYG{n}{eq\PYGZus{}seg\PYGZus{}grado}\PYG{p}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.5}
+\PYG{n}{eqseg\PYGZus{}grado}\PYG{p}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.0}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]:}
+\end{Verbatim}

@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{41}\PYG{p}{]:} \PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{numero\PYGZus{}parytres\PYGZus{}nested}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{parthreenested} \PYG{k}{as} \PYG{n}{piubello}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{42}\PYG{p}{]:} \PYG{n}{piubello}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{)}
+\PYG{l+m+mi}{12}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{par} \PYG{n}{y} \PYG{n}{divisible} \PYG{n}{entre} \PYG{l+m+mi}{3}
+\PYG{l+m+mi}{12} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{even} \PYG{o}{\PYGZam{}} \PYG{n}{divisible} \PYG{n}{by} \PYG{l+m+mi}{3} \PYG{n}{number}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{42}\PYG{p}{]:} \PYG{p}{()}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{43}\PYG{p}{]:} \PYG{n}{piubello}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}
+\PYG{l+m+mi}{5}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{no} \PYG{n}{es} \PYG{n}{divisible} \PYG{n}{entre} \PYG{l+m+mi}{2} \PYG{n}{ni} \PYG{n}{entre} \PYG{l+m+mi}{3}
+\PYG{l+m+mi}{5} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n}{divisible} \PYG{n}{by} \PYG{l+m+mi}{2} \PYG{n}{nor} \PYG{n}{by} \PYG{l+m+mi}{3}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{43}\PYG{p}{]:} \PYG{p}{()}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{44}\PYG{p}{]:} \PYG{n}{piubello}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{l+m+mi}{4}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{par}
+\PYG{l+m+mi}{4} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{even} \PYG{n}{number}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{44}\PYG{p}{]:} \PYG{p}{()}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{45}\PYG{p}{]:} \PYG{n}{piubello}\PYG{p}{(}\PYG{l+m+mi}{9}\PYG{p}{)}
+\PYG{l+m+mi}{9}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{divisible} \PYG{n}{entre} \PYG{l+m+mi}{3}
+\PYG{l+m+mi}{9} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{number} \PYG{n}{divisible} \PYG{n}{by} \PYG{l+m+mi}{3}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{45}\PYG{p}{]:} \PYG{p}{()}
+\end{Verbatim}

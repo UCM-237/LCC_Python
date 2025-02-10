@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python3}
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Fri Apr 19 15:31:19 2024}
+\PYG{l+s+sd}{Script para crear una función que comprueba si un número es par}
+\PYG{l+s+sd}{Script to create a function tha checks if a number is even}
+\PYG{l+s+sd}{@author: juan}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{par}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZsq{}\PYGZsq{}\PYGZsq{} }
+\PYG{l+s+sd}{    Esta función toma como entrada un número n. Si n es par devuelve un mensaje}
+\PYG{l+s+sd}{    indicando que el número es par.}
+\PYG{l+s+sd}{    This funtion takes an integer number n as imput. If n is even then}
+\PYG{l+s+sd}{    it shows a message indicating the number is even.}
+\PYG{l+s+sd}{    \PYGZsq{}\PYGZsq{}\PYGZsq{}}
+    \PYG{k}{if} \PYG{n}{n}\PYG{o}{\PYGZpc{}}\PYG{l+m+mi}{2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{n}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{} es un numero par\PYGZsq{}}\PYG{p}{)}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{n}\PYG{p}{),}\PYG{l+s+s1}{\PYGZsq{}is an even number\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{return}\PYG{p}{()}
+\end{Verbatim}

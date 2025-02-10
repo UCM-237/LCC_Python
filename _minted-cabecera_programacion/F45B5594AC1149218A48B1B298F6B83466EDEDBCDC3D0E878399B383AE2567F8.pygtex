@@ -1,0 +1,41 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Thu Mar 28 17:22:30 2024}
+
+\PYG{l+s+sd}{@author: abierto}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{soleq2}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Esta función calcula las soluciones de la ecuación general,}
+\PYG{l+s+sd}{    ax**2 + b*x + c = 0}
+\PYG{l+s+sd}{    Variables de entrada:}
+\PYG{l+s+sd}{        coeficientes a, b y c}
+\PYG{l+s+sd}{    Variables de salida:}
+\PYG{l+s+sd}{        xp Solucion para la raíz cuadrada positiva}
+\PYG{l+s+sd}{        xm solucion para la raiz cuadrada negativa}
+\PYG{l+s+sd}{        }
+\PYG{l+s+sd}{    this function calculates the solutions of the general equation}
+\PYG{l+s+sd}{    a*x**2 + b*x + c = 0}
+\PYG{l+s+sd}{    input variables:}
+\PYG{l+s+sd}{        a,b and c coeficients}
+\PYG{l+s+sd}{    output variables;}
+\PYG{l+s+sd}{        xp solution using positive square root}
+\PYG{l+s+sd}{        xm solutions using negative square root}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{xp} \PYG{o}{=} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{b}\PYG{o}{+}\PYG{p}{(}\PYG{n}{b}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{a}\PYG{o}{*}\PYG{n}{c}\PYG{p}{)}\PYG{o}{**}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{o}{/}\PYG{n}{a}
+    \PYG{n}{xm} \PYG{o}{=} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{b}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{b}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{a}\PYG{o}{*}\PYG{n}{c}\PYG{p}{)}\PYG{o}{**}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{o}{/}\PYG{n}{a}
+    \PYG{k}{return} \PYG{n}{xp}\PYG{p}{,} \PYG{n}{xm}
+
+\PYG{c+c1}{\PYGZsh{}aquí añadimos un ejemplo de uso que no es parte de la funcion}
+\PYG{c+c1}{\PYGZsh{}here we add a \PYGZsq{}how to use\PYGZsq{} example that\PYGZsq{}s not part of the function}
+
+\PYG{n}{solplus}\PYG{p}{,} \PYG{n}{solminus} \PYG{o}{=} \PYG{n}{soleq2}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}comprobacion}
+\PYG{c+c1}{\PYGZsh{}checking}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}comprobación/cheking\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}raíz positiva/positive root:\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{solplus}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{solplus}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}raiz negativa/negative root:\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{solminus}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{solminus}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}
+\end{Verbatim}

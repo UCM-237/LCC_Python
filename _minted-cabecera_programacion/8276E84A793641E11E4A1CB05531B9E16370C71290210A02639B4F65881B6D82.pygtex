@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{f}\PYG{o}{=}\PYG{n+nb}{open}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}textfile.txt\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}w\PYGZsq{}}\PYG{p}{)}
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{):}
+    \PYG{n}{f}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Line }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{i}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{f}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+\PYG{n}{f}\PYG{o}{=}\PYG{n+nb}{open}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}textfile.txt\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{f}\PYG{o}{.}\PYG{n}{read}\PYG{p}{())}
+\PYG{n}{f}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+\PYG{n}{f}\PYG{o}{=}\PYG{n+nb}{open}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}textfile.txt\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{f}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Another line\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{f}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+\PYG{n}{f}\PYG{o}{=}\PYG{n+nb}{open}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}textfile.txt\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{f}\PYG{o}{.}\PYG{n}{readlines}\PYG{p}{())}
+\PYG{n}{f}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+\PYG{n}{f}\PYG{o}{=}\PYG{n+nb}{open}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}textfile.txt\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{)}
+\PYG{k}{while} \PYG{k+kc}{True}\PYG{p}{:}
+    \PYG{n}{line}\PYG{o}{=}\PYG{n}{f}\PYG{o}{.}\PYG{n}{readline}\PYG{p}{()}
+    \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{line}\PYG{p}{:}
+        \PYG{k}{break}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{line}\PYG{p}{)}
+
+\PYG{n}{f}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+\end{Verbatim}

@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python3}
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Mon May 13 08:59:21 2024}
+\PYG{l+s+sd}{Un par de funciones usando list comprehesion}
+\PYG{l+s+sd}{A pair of function using list comprehesion}
+\PYG{l+s+sd}{@author: juan}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{lc\PYGZus{}demo}\PYG{p}{(}\PYG{n}{A}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    ESta función busca los numeros pares en una lista A y los guarda en }
+\PYG{l+s+sd}{    una nueva lista B}
+\PYG{l+s+sd}{    This function finds the odd number in list A, a created a new list}
+\PYG{l+s+sd}{    B with them}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{B} \PYG{o}{=} \PYG{p}{[}\PYG{n}{i} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{A} \PYG{k}{if} \PYG{n}{i}\PYG{o}{\PYGZpc{}}\PYG{l+m+mi}{2} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{]}
+    \PYG{k}{return} \PYG{n}{B}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{pair\PYGZus{}cmh}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{B}\PYG{p}{):}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    A and B are two list of numbers of the same lenght. The function build a list}
+\PYG{l+s+sd}{    of pairs, taken one element from and one element from b with the condition that }
+\PYG{l+s+sd}{    they should be different. It doesn\PYGZsq{}t the mater the order i.e (1,2) and (2,1)}
+\PYG{l+s+sd}{    are different a valid\PYGZsq{}. But, but we will use a list comprehension}
+
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{pares} \PYG{o}{=} \PYG{p}{[(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{A} \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n}{B} \PYG{k}{if} \PYG{n}{i} \PYG{o}{!=} \PYG{n}{j}\PYG{p}{]}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{pares}\PYG{p}{)}
+\end{Verbatim}

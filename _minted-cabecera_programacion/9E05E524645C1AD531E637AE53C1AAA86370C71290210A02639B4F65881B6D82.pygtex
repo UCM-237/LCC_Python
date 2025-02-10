@@ -1,0 +1,33 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{92}\PYG{p}{]:} \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{5}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{93}\PYG{p}{]:} \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{3}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{94}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{a}\PYG{o}{+}\PYG{n}{b}\PYG{p}{)}
+\PYG{l+m+mi}{8}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{95}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{a}\PYG{o}{\PYGZhy{}}\PYG{n}{b}\PYG{p}{)}
+\PYG{l+m+mi}{2}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{96}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{a}\PYG{o}{*}\PYG{n}{b}\PYG{p}{)}
+\PYG{l+m+mi}{15}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{97}\PYG{p}{]:} \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{5}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{98}\PYG{p}{]:} \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{3}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{99}\PYG{p}{]:} \PYG{n}{suma} \PYG{o}{=} \PYG{n}{a}\PYG{o}{+}\PYG{n}{b}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{100}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{suma}\PYG{p}{)}
+\PYG{l+m+mi}{8}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{101}\PYG{p}{]:} \PYG{n}{dif} \PYG{o}{=} \PYG{n}{a}\PYG{o}{\PYGZhy{}}\PYG{n}{b}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{102}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{dif}\PYG{p}{)}
+\PYG{l+m+mi}{2}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{103}\PYG{p}{]:} \PYG{n}{prod} \PYG{o}{=} \PYG{n}{a}\PYG{o}{*}\PYG{n}{b}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{104}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{prod}\PYG{p}{)}
+\PYG{l+m+mi}{15}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{105}\PYG{p}{]:} \PYG{n}{div} \PYG{o}{=} \PYG{n}{a}\PYG{o}{/}\PYG{n}{b}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{106}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{div}\PYG{p}{)}
+\PYG{l+m+mf}{1.6666666666666667}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{107}\PYG{p}{]:} \PYG{n}{div\PYGZus{}ent} \PYG{o}{=} \PYG{n}{a}\PYG{o}{//}\PYG{n}{b}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{108}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{div\PYGZus{}ent}\PYG{p}{)}
+\PYG{l+m+mi}{1}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{109}\PYG{p}{]:} \PYG{n}{rem} \PYG{o}{=} \PYG{n}{a}\PYG{o}{\PYGZpc{}}\PYG{n}{b}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{110}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{rem}\PYG{p}{)}
+\PYG{l+m+mi}{2}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{111}\PYG{p}{]:} \PYG{n}{pot} \PYG{o}{=} \PYG{n}{a}\PYG{o}{**}\PYG{n}{b}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{112}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{pot}\PYG{p}{)}
+\PYG{l+m+mi}{125}
+\end{Verbatim}

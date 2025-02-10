@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{n}{uno} \PYG{o}{=} \PYG{l+m+mi}{2}
+	\PYG{n}{dos} \PYG{o}{=} \PYG{l+m+mi}{4}
+	\PYG{n}{resultado} \PYG{o}{=} \PYG{n}{mifun}\PYG{p}{([}\PYG{n}{uno}\PYG{p}{,}\PYG{n}{dos}\PYG{p}{])}
+	\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{resultado}\PYG{p}{)}
+	\PYG{n}{me}\PYG{p}{,} \PYG{n}{da} \PYG{o}{=} \PYG{n}{mifun}\PYG{p}{(}\PYG{n}{resultado}\PYG{p}{)}
+	\PYG{n}{la}\PYG{p}{,}\PYG{n}{risa} \PYG{o}{=} \PYG{n}{mifun}\PYG{p}{(}\PYG{n}{mifun}\PYG{p}{([}\PYG{n}{uno}\PYG{p}{,}\PYG{n}{dos}\PYG{p}{]))}
+	\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{me}\PYG{p}{,}\PYG{n}{da}\PYG{p}{,}\PYG{n}{la}\PYG{p}{,}\PYG{n}{risa}\PYG{p}{)}
+\end{Verbatim}

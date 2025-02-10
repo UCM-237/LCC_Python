@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]:} \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{3}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]:} \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{4}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:} \PYG{n}{c} \PYG{o}{=} \PYG{l+m+mf}{12.4}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:} \PYG{n}{d} \PYG{o}{=} \PYG{n}{a} \PYG{o}{+} \PYG{n}{b} \PYG{o}{\PYGZhy{}} \PYG{n}{c}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]:} \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{d}\PYG{p}{)}
+\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{5.4}
+\end{Verbatim}

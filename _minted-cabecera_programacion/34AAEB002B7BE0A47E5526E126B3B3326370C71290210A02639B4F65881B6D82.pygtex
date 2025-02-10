@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]:} \PYG{o}{\PYGZpc{}}\PYG{n}{whos}
+\PYG{n}{Variable}          \PYG{n}{Type}    \PYG{n}{Data}\PYG{o}{/}\PYG{n}{Info}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{n}{variable\PYGZus{}1}        \PYG{n+nb}{int}     \PYG{l+m+mi}{18}
+\PYG{n}{variable\PYGZus{}2}        \PYG{n+nb}{int}     \PYG{l+m+mi}{10}
+
+
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]:} \PYG{o}{\PYGZpc{}}\PYG{n}{who}
+\PYG{n}{variable\PYGZus{}1}	 \PYG{n}{variable\PYGZus{}2}
+\end{Verbatim}

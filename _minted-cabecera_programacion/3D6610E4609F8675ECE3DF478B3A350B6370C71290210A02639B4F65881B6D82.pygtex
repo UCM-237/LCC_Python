@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{13}\PYG{p}{]:} \PYG{n}{par2}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{)}
+\PYG{l+m+mi}{8}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{par}
+\PYG{l+m+mi}{8} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{even} \PYG{n}{number}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{13}\PYG{p}{]:} \PYG{p}{()}
+\end{Verbatim}

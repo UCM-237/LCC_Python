@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+
+\PYG{n}{arr}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mf}{0.3}\PYG{p}{,}\PYG{l+m+mf}{4.3}\PYG{p}{,}\PYG{l+m+mf}{3.5}\PYG{p}{],[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.23}\PYG{p}{,}\PYG{l+m+mf}{0.032}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{3.23}\PYG{p}{]])}
+\PYG{n}{np}\PYG{o}{.}\PYG{n}{savetxt}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}matrix01.txt\PYGZsq{}}\PYG{p}{,} \PYG{n}{arr}\PYG{p}{,}\PYG{n}{fmt}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZpc{}.3f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{delimiter}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}}\PYG{p}{,}\PYG{n}{header}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Col1 Col2 Col3\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{f}\PYG{o}{=}\PYG{n+nb}{open}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}matrix01.txt\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{f}\PYG{o}{.}\PYG{n}{read}\PYG{p}{())}
+\PYG{n}{f}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}Now we read it with loadtxt}
+
+\PYG{n}{m1}\PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{loadtxt}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}matrix01.txt\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{m1}\PYG{p}{)}
+\end{Verbatim}

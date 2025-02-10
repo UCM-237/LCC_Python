@@ -1,0 +1,50 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python3}
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Tue May 14 11:22:29 2024}
+\PYG{l+s+sd}{funcióne para obtener los primeros n numeros primos}
+\PYG{l+s+sd}{En la primera empleamos un flag.}
+\PYG{l+s+sd}{En la segunda empleamos la estructura for else}
+\PYG{l+s+sd}{funtion to get the first n prime numbers}
+\PYG{l+s+sd}{@author: juan}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{numpr}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+    \PYG{n}{primos} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{}introducimos 2 como el primer primo}
+                 \PYG{c+c1}{\PYGZsh{}we take 2 as the first prime number}
+    \PYG{n}{i}  \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{n}{impar} \PYG{o}{=} \PYG{l+m+mi}{3} \PYG{c+c1}{\PYGZsh{}tomamos 3 como el rpier impar para probar}
+              \PYG{c+c1}{\PYGZsh{}we take 3 as the first odd number to test}
+    \PYG{k}{while} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{:}
+        \PYG{n}{pr} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{c+c1}{\PYGZsh{}flag activation}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{primos}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n}{impar}\PYG{o}{\PYGZpc{}}\PYG{n}{i} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{n}{pr} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{c+c1}{\PYGZsh{}flag deactivation}
+                \PYG{k}{break}
+        \PYG{k}{if} \PYG{n}{pr} \PYG{o}{==}\PYG{l+m+mi}{1}\PYG{p}{:}
+            \PYG{n}{primos}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{impar}\PYG{p}{)}
+        
+        \PYG{n}{impar} \PYG{o}{=} \PYG{n}{impar} \PYG{o}{+} \PYG{l+m+mi}{2}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{primos}\PYG{p}{)}
+        
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{numprels}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+    \PYG{n}{primos} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{}introducimos 2 como el primer primo}
+                 \PYG{c+c1}{\PYGZsh{}we take 2 as the first prime number}
+    \PYG{n}{i}  \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{n}{impar} \PYG{o}{=} \PYG{l+m+mi}{3} \PYG{c+c1}{\PYGZsh{}tomamos 3 como el primer impar para probar}
+              \PYG{c+c1}{\PYGZsh{}we take 3 as the first odd number to test}
+    \PYG{k}{while} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{:}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{primos}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n}{impar}\PYG{o}{\PYGZpc{}}\PYG{n}{i} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{k}{break}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{primos}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{impar}\PYG{p}{)}
+        
+        \PYG{n}{impar} \PYG{o}{=} \PYG{n}{impar} \PYG{o}{+} \PYG{l+m+mi}{2}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{primos}\PYG{p}{)}
+        
+
+
+        
+\end{Verbatim}

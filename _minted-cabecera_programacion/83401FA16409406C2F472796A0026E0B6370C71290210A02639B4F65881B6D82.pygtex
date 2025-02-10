@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]:} \PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{numero\PYGZus{}par}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{par}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:} \PYG{n}{par}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:} \PYG{p}{()}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:} \PYG{n}{par}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{)}
+\PYG{l+m+mi}{8}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{par}
+\PYG{l+m+mi}{8} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{even} \PYG{n}{number}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:} \PYG{p}{()}
+\end{Verbatim}

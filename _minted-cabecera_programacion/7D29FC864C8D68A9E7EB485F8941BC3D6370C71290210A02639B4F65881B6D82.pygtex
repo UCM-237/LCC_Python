@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+
+\PYG{c+c1}{\PYGZsh{} Create a random 20x4 matrix}
+\PYG{n}{m2}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{random}\PYG{p}{([}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{])}
+
+\PYG{c+c1}{\PYGZsh{}Save it as a csv file}
+\PYG{n}{np}\PYG{o}{.}\PYG{n}{savetxt}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}randomMat.csv\PYGZsq{}}\PYG{p}{,}\PYG{n}{m2}\PYG{p}{,} \PYG{n}{fmt}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZpc{}.2f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{delimiter}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{},\PYGZsq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}Read ir back with loadtxt}
+\PYG{n}{m3}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{loadtxt}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}randomMat.csv\PYGZsq{}}\PYG{p}{,}\PYG{n}{delimiter}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{},\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{m3}\PYG{p}{)}
+\end{Verbatim}
