@@ -529,7 +529,6 @@ Una característica importante de las listas, son sus métodos. Los métodos son
 \switchcolumn
 An essential feature of Lists is their methods. The methods are special functions that allow us to manipulate the lists in a straight way. Table \ref{Tb:listas} shows some of the most used list methods. To use a method, we write the list name followed by a point and name of the method and, enclosed in brackets, the parameters the method takes. If the method doesn't use parameters, we write an empty bracket after the method name but never leave it off. Let's see some examples:
 \end{paracol}
-
 \begin{center}
     \begin{minipage}{0.5\textwidth}
 \begin{minted}{python}
@@ -565,14 +564,13 @@ Out[23]: 0
 
 \emph{Tuples} Tuples are similar to List. The main difference between them is that Tuples are immutable, i.e., once created, their elements cannot be modified. To build a Tuple, we enclose its elements into brackets separated by commas. The following example shows how Python throws an error message when we try to modify a Tuple element once it has been built.
 \end{paracol}
-
 \begin{center}
 \begin{minipage}{0.4\textwidth}
 \begin{minted}{python}
 In [41]: T = (0,'int',2.4,[1,4,3.5])
 In [42]: T
 Out[42]: (0, 'int', 2.4, [1, 4, 3.5])
-    In [43]: T = (0,'int',2.4,[1,4,3.5])
+In [43]: T = (0,'int',2.4,[1,4,3.5])
 In [44]: print(T)
 (0, 'int', 2.4, [1, 4, 3.5])
 In [45]: type(T)
@@ -582,9 +580,8 @@ Out[46]: [1, 4, 3.5]
 In [47]: T[0] = 12
 Traceback (most recent call last):
   Cell In[47], line 1
-    T[0] = 12
+  T[0] = 12
 TypeError: 'tuple' object does not support item assignment
-
 \end{minted}
 \end{minipage}
 \end{center}
