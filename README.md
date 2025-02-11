@@ -10,7 +10,6 @@ $ pdflatex -synctex=1 -interaction=nonstopmode -shell-escape lcc_manual.tex
 $ pdflatex -synctex=1 -interaction=nonstopmode -shell-escape cabecera_nombredelcapltulo.tex
 
 Por ejemplo: 
-cabecera_numpy.tex
 $ pdflatex -synctex=1 -interaction=nonstopmode -shell-escape cabecera_numpy.tex
 
 Compila solo el capítulo de introducción a numpy
