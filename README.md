@@ -7,9 +7,9 @@ $ pip install Pygments
 $ pdflatex -synctex=1 -interaction=nonstopmode -shell-escape lcc_manual.tex
 
 3. Compilar capítulos por separado: 
-$ pdflatex -synctex=1 -interaction=nonstopmode -shell-escape cabecera_nombredelcapltulo.tex
+$ pdflatex -synctex=1 -interaction=nonstopmode -shell-escape cabecera_nombredelcapitulo.tex
 
-Por ejemplo: 
+Por ejemplo:\\ 
 $ pdflatex -synctex=1 -interaction=nonstopmode -shell-escape cabecera_numpy.tex
 
 Compila solo el capítulo de introducción a numpy
