@@ -1,8 +1,10 @@
-\chapter{Tratamiento estadístico de datos}
+\chapter{Tratamiento estadístico de datos\\ Statistical data analysis}
+\chaptermark{Tratamiento de datos \textreferencemark\ Data analysis}
+\epigraph{Dicen que las buenas mozas en Madrid han decidido, el gastar en vez de lengua una espada de dos filos.
 
+Y si hay guerra en este invierno , los Valones y los Suizos llevarán en vez de espada guardapiés y rebocillo.}{El barberillo de Lavapiés. Luis Mariano de Larra}
+\begin{paracol}{2}
 \section{Secuencias de números aleatorios}
-
-
 Se entiende por secuencia de número aleatorios, aquella en la que no es posible encontrar relación alguna entre un número de la secuencia y los que le preceden.
 
 No es posible general secuencias de números aleatorios con un computador. La razón es que un computador es una máquina completamente determinista; la salidas que puede producir cualquier programa son completamente predecibles. Solo los procesos físicos pueden ser realmente ---intrínsecamente--- aleatorios.
@@ -12,8 +14,21 @@ Sin embargo, es posible con un ordenador generar secuencias de números que simu
 El primer algoritmo para obtener números pseudoaleatorios, lo desarrolló John Von Newman en 1946. Se conoce con el nombre de \emph{Middle Square}.\index{Middle Square} La idea consiste en elegir un número inicial, formado por $n$ cifras, que recibe el nombre de semilla.\index{Números aleatorios! Semilla} A continuación se eleva el número al cuadrado. Por último, se extraen las $n$ cifras centrales del número así generado, que constituye el segundo número en la secuencia de números aleatorios. Este número se vuelve a elevar al cuadrado y se extraen de el las $n$ cifras centrales que constituirán el tercer número aleatorio. Este proceso se repite tantas veces como números aleatorios se deseen generar.
 
 Veamos un ejemplo con una semilla  formada por $n=8$ dígitos,
+\switchcolumn
+\section{Random number sequences}
+A random number sequence is such that it is not possible to find any relationship among a number of the sequence and the previous ones.
+
+It is impossible to generate random numbers using a computer, because a computer is a deterministic machine and then, the outputs of any computer program are always thoroughly predictable. Only physical process could be actually --intrinsically-- unpredictable.
+
+Nevertheless, it is possible to use the computer for generating sequences of number that seem to be random. Such sequences are called \emph{pseudo-random} number sequences.\index[eng]{Pseudo-random numbers}
+
+The first algorithm for obtaining pseudo-random numbers was developed by John Von Newman in 1946. Its is known as the \emph{Middle Square} method. It starts from an initial number made up of n digits which is called the seed. Then, the square of the number is calculated and the n central digits of the result are taken as a new number that will be the second one of the random number sequence. This new number is squared and the n central digit of the result are taken to form the three number of the random sequence. The process is repeated so many times as random numbers you wish to generate.
+
+Let see an example, using a n=8 digits seed, 
+
+\end{paracol}
 \begin{align*}
-semilla=&87289689 \rightarrow
+semilla/seed=&87289689 \rightarrow
 87289689^2={\color{red}7619}\ 48980571\ {\color{red}6721}\\
 &48980571\rightarrow
 48980571^2={\color{red}2399}\ 09633548\ {\color{red}6041}\\
@@ -24,68 +39,40 @@ semilla=&87289689 \rightarrow
 &22827638\\
 &\ \ \ \ \ \vdots
 \end{align*}
+\begin{paracol}{2}
+El siguiente código de Python, permite obtener una lista de números pseudoaleatorios mediante el método \emph{Middle Square}
+\switchcolumn
+The next Python code allows us to get a list a pseudo-random number using the Middle Square method,
+\end{paracol}
 
-El siguiente código de Matlab, permite obtener un vector de números pseudoaleatorios mediante el método \emph{middle square}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=middlesquare.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/tratamiento_datos/middlesquare.py}
 
-%\begin{lstlisting}
-%function secuencia=middlesquare(semilla, longitud)
-%% Este programa obtiene una secuencia de números psduoaleatorios empleado el
-%% método 'middle square'.
-%% uso: secuencia=middlesquare(semilla, longitud)
-%% Variables entrada: semilla, numero inicial que será empleado como semilla.
-%% longitud, cantidad de números aleatorios que debe generar la secuencia.
-%% variable de salida: secuencia vector de numeros aleatorios resultante
-%
-%% creamos un vector de ceros para guardar los resultados
-%%  convertimos el número a entero de 64 bits, asi todas la operaciones son
-%% enteras...
-%% ojo si usamos una semilla de mas de nueve digitos, el cuadrado puede
-%% desbordar el entero más grande representable.
-%
-%semilla=uint64(semilla)
-%% calculamos la longitud de la semilla
-%c=semilla;
-%n=0;
-%while c>0
-%    c=idivide(c,10);
-%    % la linea de codigo anterior, puende no funcionar en algunas versiones
-%    % antiguas de matlab. Alternativamente, podría implementarse como,
-%    % c=(c-rem(c,10))/10;
-%    n=n+1;
-%end
-%
-%% creamos un bucle para ir generando los numeros pseudoaleatorio a partir de
-%% la semilla
-%% elevamos al cuadrado la semilla
-%    
-%for i=1:longitud     
-%    l=semilla.^2
-%    % primero extraemos las n/2 cifras menores
-%    semilla=idivide(l,10^fix(n/2));
-%    % la linea de codigo anterior, puende no funcionar en algunas versiones
-%    % antiguas de matlab. Alternativamente, podría implementarse como,
-%    % semilla=(l-rem(l,10^fix(n/2)))/10^fix(n/2);
-%   
-%    % y a continuacion extraemos las n cifras siguiente, que seran el
-%    % siguiente numero aleatorio
-%    semilla = rem(semilla,10^n)
-%    % guardamos el numero generado en el vector de salida
-%    secuencia(i,1)=semilla;
-%end
-%\end{lstlisting} 
-
+\begin{paracol}{2}
 Las secuencias generadas mediante el método \emph{middle square} no son aleatorias, cada número viene completamente determinado por el número anterior. Sin embargo, dichas secuencias parecen aleatorias. La figura \ref{fig:middlesquare} muestra una secuencia de $100$ valores pseudoaleatorios generados mediante \emph{middle square}. Aparentemente, cada valor parece no guardar ninguna relación con los anteriores.
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=12cm]{middlesquare.eps}
-\caption{Secuencia de $100$ números pseudoaleatorios generada mediante el método \emph{middle square}.}
-\label{fig:middlesquare}0.4
-\end{figure}
-
 El método descrito, presenta sin embargo serios inconvenientes: Si la semilla contiene ceros o unos a la derecha, estos tienden a repetirse indefinidamente. Además todos los métodos inducen ciclos que hacen que los números generados comiencen a repetirse periódicamente. Por ejemplo, si empezamos con la semilla de cuatro dígitos $3708$,  La secuencia cae, tras generar los primeros cuatro números aleatorios, en un ciclo en el que los cuatro siguientes números generados se repiten indefinidamente.
+
+\switchcolumn
+Sequences generated using the middle square method are not random, each number is thoroughly determined by the previous one. Nevertheless, these sequences seems random. Figure \ref{fig:middlesquare} shows a sequence of 100 pseudo-random values generated using the middle square. Apparently, each value doesn't seem to have any relationship with the previous ones.
+
+However, this method has significant drawbacks: if the seed contains zeros or ones on the right side, these values tend to repeat indefinitely. Besides, all methods induce cycles, which make the generated numbers begin to repeat periodically. For instance, If we begin with the four-digit seed $3708$, The sequence gets into a cycle after it generates the first four random numbers. The four subsequent numbers repeat indefinitely.
+\end{paracol}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{middlesquare.eps}
+	\bicaption{Secuencia de $100$ números pseudoaleatorios generada mediante el método \emph{middle square}.}{$100$ pseudo-random numbers sequence generates using the \emph{middle square} method}
+	\label{fig:middlesquare}
+\end{figure}
 \begin{align*}
-semilla=3708 \rightarrow
+semilla/seed=3708 \rightarrow
 &3708^2={\color{red}13}\ 7492\ {\color{red}64}\\
 &7492^2={\color{red}56}\ 1300\ {\color{red}64}\\
 &1300^2={\color{red}01}\ 6900\ {\color{red}00}\\
@@ -100,14 +87,21 @@ semilla=3708 \rightarrow
 &\ \ \ \vdots
 \end{align*}
 
+\begin{paracol}{2}
 Además, en la secuencia generada puede observarse cómo los ceros situados a las derecha una vez que aparecen en la secuencia, se conservan siempre.
 
-En los algoritmos de generación de números aleatorios, la idea es obtener números en el intervalo $(0,1)$ Para ello, se generan números entre $0$ y un número natural $m$ y luego se dividen los números generados, $X_n$ entre $m$,
+En los algoritmos de generación de números aleatorios, la idea es obtener números en el intervalo $[0,1]$. Para ello, se generan números entre $0$ y un número natural $m$ y luego se dividen los números generados, $X_n$ entre $m$,
+\switchcolumn
+Besides, it is possible to see how the the zeros locate at the right size, once they turn up, remain for ever.
+
+Algorithms for random number generation are usually designed to generate numbers in the interval $[0,1]$. This is carried out generating a number between $0$ an a natural number $m$ and, after, dividing the generated numbers $X_n$ by $m$,  
+\end{paracol}
 
 \begin{equation*}
 U_n=\frac{X_n}{m}
 \end{equation*}
 
+\begin{paracol}{2}
 Usualmente, se elige para $m$ un valor tan grande como sea posible. 
 En 1948 Lehmer propuso un algoritmo conocido con el nombre de \emph{linear congruential}. El algoritmo emplea cuatro elementos numéricos,
 
@@ -120,62 +114,86 @@ En 1948 Lehmer propuso un algoritmo conocido con el nombre de \emph{linear congr
  
 El algoritmo de obtención de la secuencia de números pseudoaleatorios se define en este caso como,
 
+\switchcolumn
+Usually, a value as large as possible is chosen for $m$. In 1948 Lehmmer proposed an algorithm known as \emph{linear congruential}. This algorithm uses four numerical items,
+
+\begin{itemize}
+	\item[-] $I_0$, Seed. Similar to \emph{middle square} method.
+	\item[-] $m > I_0$, modulus.  it is chossen as large as posible. The larger the modulus the lager the period of the induced cycle.
+	\item[-] $a$, Multiplier. Should be chosen to meet that $0\le a < m$
+	\item[-] $c$, Increment. Should be chosen to meet that $0\le c < m$
+\end{itemize}
+ 
+ Then, the algorithm to obtain the sequence of random number is defined as,
+\end{paracol}
+
 \begin{equation*}
 I_{n+1}=\text{rem}(a\cdot I_n+c, m)
 \end{equation*}
-Es decir, cada número se obtiene como el resto de la división entera del multiplicador por el número aleatorio anterior más el resto, divido entre el módulo. Por tanto, se trata de un número comprendido entre $0$ y $m-1$. 
+
+\begin{paracol}{2}
+Es decir, cada número se obtiene como el resto de la división entera del producto del multiplicador por el número aleatorio anterior más el incremento, divido entre el módulo. Por tanto, se trata de un número comprendido entre $0$ y $m-1$. 
 
 El siguiente código permite calcular una secuencia de números aleatorios por el método \emph{linear congruential}
 
-%\begin{lstlisting}
-%function secuencia=linealcr(i0,a,c,m,l)
-%% Esta función emplea el metodo linear congruential para obtener una
-%% secuencia de numeros aleatorios de longitud arbitraria
-%% Uso: secuencia=linealcr(i0,a,c,m,l)
-%% Variables de entrada: i0=semilla, a=multiplicador, c=incremento, m=modulo.
-%% l= longitud de la secuencia obtenida.
-%% varibles de salida: secuencia vector columna con los numeros aleatorios
-%% generados.
-%% nota: para generarlos con el metodo multiplicative congruential tomar c=0
-%if (m<=a)||(m<=c)|| (m<=i0)
-%    error('el modulo debe ser mayor que los otros tres parametros')
-%end
-%
-%% inicilizamos el vector secuencia
-%secuencia=zeros(l,1);
-%% guardamos la semilla como el primer numero de la secuencia
-%secuencia(1)=i0;
-%% Creamos un bucle para ir calculando los sucesivos numeros de la secuencia
-%
-%for j=2:l
-%    secuencia(j)=rem(a*secuencia(j-1)+c,m);
-%end
-%% para obtener numeros en el intervalo (0,1), dividimos el resultado por el
-%% modulo
-%
-%secuencia=secuencia/m
-%\end{lstlisting}
+\switchcolumn
+Each number is calculated as the remainder of the product of the multiplier and the previous random number, added to the increment, all divided by the modulus. This results in a number between 0 and m-1.
 
+The following code calculates a sequence of random numbers using the \emph{linear congruential} method. 
+\end{paracol}
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=linearcong.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/tratamiento_datos/linearcong.py}
+
+\begin{paracol}{2}
 Una variante del algoritmo descrito, frecuentemente empleada, se obtiene haciendo el incremento igual a cero, $c=0$. Dicha variante se conoce con el nombre de \emph{multiplicative congruential}, su expresión general sería,
+\switchcolumn
+We can get a frequently used variation of the linear congruential algorithm taking the increment equal to zero, $c=0$. Such variation is known as the \emph{multiplicative congruential} algorithm; a general expression for it would be, 
+\end{paracol}
 \begin{equation*}
 I_{n+1}=\text{rem}(a\cdot I_n)
 \end{equation*}
-
+\begin{paracol}{2}
 Dado que el resto de la división entera de un número cualquiera entre el módulo $m$ solo puede tomar valores enteros comprendidos entre $0$ y $m-1$, es fácil deducir que, en el mejor de los casos, podríamos obtener un ciclo de longitud $m$, antes de que secuencia de números aleatorios comenzara a repetirse. De ahí la importancia de elegir $m$ lo más grande posible. Por otra parte, los valores de $I_0$ e $c$, también influyen en la longitud de los ciclos inducidos.
 
 Si ahora dividimos los numero aleatorios obtenidos por el modulo,  
+\switchcolumn
+
+
+Since the integer division of whatever number by the modulus $m$ can yield results between $0$ and $m-1$, it becomes clear that, in the best-case scenario, we can achieve a cycle of length $m$ before the sequence of random numbers starts to repeat. Hence, the importance of choosing a large as possible value for $m$. On the other hand, the values taken by $I_0$ and $c$ also influence the length of the induced cycles.
+
+If we now divide the random number achieved by the modulus,
+\end{paracol}
 \begin{equation*}
 x_n=\frac{I_n}{m} \Rightarrow x_n \in [0,1]
 \end{equation*}
+
+\begin{paracol}{2}
 Los números así obtenidos pertenecen al intervalo $[0,1]$ y están regularmente distribuidos. 
 
 En la década de los 60 del siglo pasado, La compañía IBM, desarrolló una función, conocida como \emph{Randu}, que utilizaba el algoritmo \emph{multiplicative congruential}. \emph{Randu} tenía definido un multiplicador $c=2^{16}+3$ y un módulo $m=2^{31}$. 
 Se han desarrollado diferentes variante de \emph{Randu}, mejorando progresivamente su rendimiento. Una de las mejoras introducidas fue aumentar el número de semillas empleadas,
+
+\switchcolumn
+The number obtained belong to the interval $[0,1]$ and are regularly distributed.
+
+In the last century sixties, IBM company developed a function known as \emph{Randu} which employed the \emph{multiplication congruential} algorithm. \emph{Randu} had defined a multiplier $c=2^{16}+3$ and modulus $m=2^{31}$.
+Several variations of \emph{Randu} have been developed, gradually improving its performance. One of these improvements was to increase the number of seeds the algorithm uses.  
+\end{paracol}
 \begin{equation*}
 I_{n+1}=\text{rem}(a\cdot I_n+b\cdot I_{n-1}+\cdots)
 \end{equation*} 
-
+\begin{paracol}{2}
 Este método permite obtener periodos mayores.
+\switchcolumn
+This method leads to get longer periods
+\end{paracol}
 
 \subsection{El generador de números aleatorios de Matlab.}\label{rand} Se trata de un generador mucho mas evolucionado que los ejemplo descritos hasta ahora.  La implementación concreta depende de la versión de Matlab empleada. Aquí solo nos referiremos a la conocida como \emph{'twister'}. Se basa en el algoritmo \emph{Mersenne Twister}. Genera números aleatorios, uniformemente distribuidos, en el intervalo $[2^{-53}, 1-2^{-53}] $. El periodo de la secuencia generada es $P=(2^{19937}-1)/2$. Es el algoritmo que emplea Matlab, por defecto, desde al versión 2007 hasta la actualidad.
 
