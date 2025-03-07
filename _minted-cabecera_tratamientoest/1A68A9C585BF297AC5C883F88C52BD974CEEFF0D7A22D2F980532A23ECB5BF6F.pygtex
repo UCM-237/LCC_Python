@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+	
+	\PYG{c+c1}{\PYGZsh{}lo primero de todo es crear un generador de números aleatorios}
+	\PYG{c+c1}{\PYGZsh{}si no le indicamos semilla, el la toma del sistema operativo de modo no}
+	\PYG{c+c1}{\PYGZsh{}determinista, es decir la secuencia de números generada no podrá volver a}
+	\PYG{c+c1}{\PYGZsh{}reproducirse.}
+	
+	\PYG{n}{gen\PYGZus{}num} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{default\PYGZus{}rng}\PYG{p}{()}
+\end{Verbatim}

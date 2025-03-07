@@ -195,118 +195,95 @@ Este método permite obtener periodos mayores.
 This method leads to get longer periods
 \end{paracol}
 
-\subsection{El generador de números aleatorios de Matlab.}\label{rand} Se trata de un generador mucho mas evolucionado que los ejemplo descritos hasta ahora.  La implementación concreta depende de la versión de Matlab empleada. Aquí solo nos referiremos a la conocida como \emph{'twister'}. Se basa en el algoritmo \emph{Mersenne Twister}. Genera números aleatorios, uniformemente distribuidos, en el intervalo $[2^{-53}, 1-2^{-53}] $. El periodo de la secuencia generada es $P=(2^{19937}-1)/2$. Es el algoritmo que emplea Matlab, por defecto, desde al versión 2007 hasta la actualidad.
+\subsection{El generador de números aleatorios de Numpy.}\label{rand} Se trata de un generador mucho mas evolucionado que los ejemplo descritos hasta ahora. ES muy versátil y se puede emplear de muchas maneras. Aquí vamos a ver solo una introducción. Para una visión detallada, lo mejor es leer la documentación de numpy, (\emph{random sampling}).
 
-Para generar números aleatorios se emplea el comando \texttt{rand}, que es capaz de generar una matriz de tamaño arbitrario de números aleatorios.  Si se invoca el comando \texttt{rand}, sin indicar ninguna variable de entrada, 
-\begin{verbatim}
->> y=rand
-y =
-     8.147236863931789e-01
-\end{verbatim}
-Matlab nos devuelve un único número aleatorio. Si introducimos un único valor entero como variable de entrada,
-\begin{verbatim}
->> x=rand(3)
-x =
-     9.057919370756192e-01     6.323592462254095e-01     5.468815192049838e-01
-     1.269868162935061e-01     9.754040499940952e-02     9.575068354342976e-01
-     9.133758561390194e-01     2.784982188670484e-01     9.648885351992765e-01
-\end{verbatim}
-Obtenemos una matriz cuadra de números aleatorios cuyas dimensiones coinciden con el número entero introducido. 
+Numpy contiene un módulo  \mintinline{python}|numpy.random|, que contiene todas las funciones necesarias para generar secuencias de números aleatorios. Lo primero que debemos hacer, es crear un 'generador' (\emph{generator})de numeros aleatorios. La manera más sencilla de hacerlo es emplear la función \mintinline{python}|default_rng()|,
 
-Si empleamos dos enteros como variables de entrada, \texttt{rand(f,c)}, obtenemos una matriz de números aleatorios de dimensión $f\times c$.
-\begin{verbatim}
->> x=rand(3,2)
-x =
-     7.922073295595544e-01     3.571167857418955e-02
-     9.594924263929030e-01     8.491293058687771e-01
-     6.557406991565868e-01     9.339932477575505e-01
-\end{verbatim}
+\begin{minted}{python}
+	import numpy as np
+	
+	#lo primero de todo es crear un generador de números aleatorios
+	#si no le indicamos semilla, el la toma del sistema operativo de modo no
+	#determinista, es decir la secuencia de números generada no podrá volver a 
+	#reproducirse.
+	
+	gen_num = np.random.default_rng()
+\end{minted} 
 
-Cada vez que se arranca Matlab, el generador de números aleatorios es reiniciado. Es decir, cada vez que arrancamos Matlab, volvemos a obtener la misma secuencia de números aleatorios. Podemos hacer que el generador se reinicie siempre que queramos, empleado para ello una semilla constituida por un número entero que debe estar comprendido entre $0$ y $2^{32}-1$. Para cada semilla obtendremos una secuencia de números distinta. Para reiniciar el generador, empleamos  la función \texttt{rng} y el valor de la semilla. Por ejemplo,
-\begin{verbatim}
->> rng(10)
-\end{verbatim}
+El  \emph{objeto} creado \mintinline{python}|gen_num| es un generador de números aleatorios. Lo hemos creado de la forma más sencilla posible. Como no le hemos indicado ningún valor para la semilla, el programa la toma directamente del sistema operativo de un modo aleatorio. Para obtener un número aleatorio en el intervalo $[0,1)$, llamamos directamente al generador que hemos creado.
 
-Si generamos ahora una secuencia de 3 números aleatorios,
-\begin{verbatim}
->> s1=rand(1,3)
-s1 =
-    0.7713    0.0208    0.6336
-\end{verbatim}
-Si reiniciamos de nuevo el algoritmo, con la misma semilla de antes y volvemos a generar una secuencia de 3 números aleatorios,
-\begin{verbatim}
->> rnd(10)
->> s1=rand(1,3)
-s1 =
-    0.7713    0.0208    0.6336
-\end{verbatim}
-Volvemos a obtener los mismo números aleatorios. Esto sucederá siempre que reiniciemos el generador empleado la misma semilla.
+\begin{minted}{python}
+In [2]: n1 = gen_num.random()
+...: print('n1=',n1)
+n1= 0.15431941570206298
+\end{minted}  
 
-Por ultimo, podemos emplear \texttt{rng} para conoces el estado del generador de números aleatorios en cualquier momento, durante una sesión con Matlab. Para ello, usamos \texttt{rng} Sin ninguna variable de entrada,
-\begin{verbatim}
-estado=rnd
-\end{verbatim}
-El resultado es:
-\begin{verbatim}
-estado = 
-  struct with fields:
+Si llamamos al generador con un valor entero como variable de entrada, nos generará un array de numpy con tantos elementos como indique el valor entero,
 
-     Type: 'twister'
-     Seed: 10
-    State: [625x1 uint32]
-\end{verbatim}
-Nos devuelve el generador utilizado para obtener los números aleatorios, la semilla, en este caso \texttt{twister}, La semilla empleada para inicializar el generador y un vector de 625 enteros que son las semillas que el generador empleará para generar el siguiente número aleatorio.
+\begin{minted}{python}
+In [7]: v = gen_num.random(3)
+In [8]: v
+Out[8]: array([0.07971535, 0.38433405, 0.03229333])
+\end{minted}
 
-Si queremos cambiar el generador de números aleatorios empleado por matlab, empleamos de nuevo la función rnd, indicando un valor para la semilla y el nombre del generador entre comillas\footnote{Para obtener una relación completa de generadores, consultar la ayuda de matlab},
-\begin{verbatim}
->> rng(0,'philox')
->> estado = rng
-estado = 
-  struct with fields:
+y si introducimos una tupla o una lista con dos elementos $[m,n]$, devolverá una matriz de números aleatorios de dimensión $n\times m$,
 
-     Type: 'philox'
-     Seed: 0
-    State: [7x1 uint32]
-\end{verbatim}
+\begin{minted}{python}
+In [9]: v = gen_num.random((3,4))
+In [10]: v
+Out[10]: 
+array([[0.06821989, 0.6214247 , 0.07793149, 0.99665013],
+[0.11869072, 0.6999295 , 0.8089612 , 0.02035995],
+[0.67626972, 0.48921183, 0.38843264, 0.71577686]])
+\end{minted}
 
-Supongamos que después de obtener el estado del generador, seguimos generando números aleatorios. Podemos hacer que el generador vuelva al estado que tenía empleando la estructura obtenida para leinicializar el generador. A partir de ahí el generador volverá a repetir de nuevo la misma secuencia de números aleatorios. La siguiente secuencia de instrucciones de Matlab ilustra este procedimiento,
-%\begin{lstlisting}
-%% ejemplo de vuelta del generador de numeros aleatorios a un estado
-%% anterior
-%
-%% generamos una secuencia de 5 números,
-%s1=rand(1,5)
-%% guardamos el estado actual del generador
-%estado=rng;
-%
-%% generamos una nueva secuencia de 5 números
-%s2=rand(1,5)
-%
-%% volvemos a llevar el generador al estado anterior,
-%rng(estado)
-%
-%% volvemos a generar una secuencia de 5 números que será igual que s2
-%s2bis=rand(1,5)
-%\end{lstlisting}
+Cada vez, que ejecutamos, el generador, éste avanza en la secuencia de números aleatorios generados, a partir de la semilla de inicialización. El método empleado por el generador para obtener la secuencia de números aleatorios, se conoce con el nombre de \emph{Permuted Congruential Generator}. Es el método por defecto, y el único que podemos emplear si creamos nuestro generador empleando la la función \mintinline{python}|default_rng()|. Podemos comprobar cual es método empleado por un generador empleando la función print de python,
+\begin{minted}{python}
+In [12]: print(gen_num)
+Generator(PCG64)
+\end{minted}
+Nos devuelve las iniciales del método y el número 64 que hace referencia al tamaño en bits de los números enteros empleados en el proceso de generación. EL periodo de este método es de $2^{128}$.
 
-Si ejecutamos la secuencia obtendremos,
+Podemos controlar la secuencia de números aleatorios suministrando una semilla a la función \mintinline{python}|default_rng|, de este modo, podemos reproducir cualquier secuencia de numeros aleatorios, siempre que creemos un nuevo generador con la misma semilla,
 
-\begin{verbatim}
-s1 =
-    0.3655    0.6975    0.1789    0.4549    0.4396
+\begin{minted}{python}
+In [48]: 
+...: gen_num_1 = np.random.default_rng(100)
+...: #generamos una secuencia de números aleatorios
+...: for i in range(10):
+...:     print(gen_num_1.random())
+...: #volvemos a inicializar el generador con la misma semilla
+...: gen_num_1 = np.random.default_rng(100)
+...: #y nos reproduce exactamente la misma secuencia
+...: print('\n Secuencia repetida. Repited Sequence \n')
+...: for i in range(10):
+...:     print(gen_num_1.random())
+0.8349816305020089
+0.5965540269678873
+0.2888632416912036
+0.042951570694211405
+0.9736543951062142
+0.5964717040646884
+0.7902631644187212
+0.9103393812954528
+0.6881544475917452
+0.18999147338772315
 
-s2 =
-     0.5174    0.7001    0.4564    0.7388    0.4850
-      
-s2bis =
-    0.3655    0.6975    0.1789    0.4549    0.4396
-\end{verbatim}
+Secuencia repetida. Repited sequence
 
-Por último podemos reiniciar el generador empleando,
-\begin{verbatim}
->> rng('shuffle')
-\end{verbatim}
-En este caso, matlab suministra una semilla obtenida a partir de la hora actual.
+0.8349816305020089
+0.5965540269678873
+0.2888632416912036
+0.042951570694211405
+0.9736543951062142
+0.5964717040646884
+0.7902631644187212
+0.9103393812954528
+0.6881544475917452
+0.18999147338772315
+\end{minted}
+
+Las posibilidades del generador de números aleatorios de numpy son muy amplias. Puede generar números aleatorios empleando distintos tipos de distribuciones de probabilidad (Ver sección siguiente), permutar aleatoriamente arrays de números, seleccionar números de modo aleatorio de entre una secuencia de enteros, etc. Para conocer a fondo el proceso, se aconseja consultar la ayda de numpy.
 
 \section{Probabilidad y distribuciones de probabilidad}
 
@@ -559,19 +536,18 @@ $\left\{\bar{x}_{n1}, \bar{x}_{n2} \cdots \bar{x}_{nj} \cdots \right\}$. El teor
 x, \ f(x), \mu, \sigma^2 \Rightarrow \bar{x}_n,\ f(\bar{x}_n)=\frac{1}{\sqrt{2\pi\sigma^2/n}}e^{-\frac{(x-\mu)^2}{2\sigma^2/n}}  
 \end{equation*}
 
-Veamos un ejemplo para ilustrar el teorema. Hemos visto en la sección \ref{rand} que el comando \texttt{rand} de Matlab genera números aleatorio uniformemente distribuidos en el intervalo\footnote{En realidad es el intervalo $[2^{-52},1-2^{-52}]$ podemos considerarlo equivalente al intervalo $(0,1)$ debido a la precisión finita de los números máquina} $(0,1)$. Podemos considerar que el ordenador genera número aleatorios que siguen aproximadamente una distribución continua en dicho intervalo. Podemos alterar dicho intervalo multiplicando el resultado de \texttt{rand} por un número cualquiera. Así, por ejemplo,
-\begin{verbatim}
->> x=5*rand(100)
-\end{verbatim} 
-genera un vector de 100 números aleatorios en el intervalo $(0,5)$.
+Veamos un ejemplo para ilustrar el teorema. Hemos visto en la sección \ref{rand} que podemos construir un generador que genera números aleatorio uniformemente distribuidos en el intervalo $[0,1)$. Podemos considerar que el ordenador genera número aleatorios que siguen aproximadamente una distribución continua en dicho intervalo. Podemos alterar dicho intervalo multiplicando el resultado de \texttt{rand} por un número cualquiera. Así, por ejemplo,
+\begin{minted}{python}
+	In [53]: l = 5*gen_num.random(100)
+\end{minted} 
+genera un array de 100 números aleatorios en el intervalo $(0,5)$.
 Además podemos desplazar el centro del intervalo sumando o restando al resultado anterior un segundo número. Así,
-
-\begin{verbatim}
->> x =5*rand(100) -2
-\end{verbatim}
+\begin{minted}{python}
+	In [53]: l = 5*gen_num.random(100) - 2
+\end{minted} 
 genera un vector de 100 números aleatorios en el intervalo $(-2,3)$.
 
-Para comprobar el teorema del límite central, podemos construir un bucle que genere un vector de $n$ números aleatorios en un determinado intervalo, calcule su media y guarde el resultado en un vector de medias. El siguiente código de Matlab, realiza dicho cálculo primero generando un vector de $10$ números aleatorios ($n = 10$) y después generando un vector de $100$, ($n=100$).  El programa genera en cada caso un millón de vectores distintos.
+Para comprobar el teorema del límite central, podemos construir un bucle que genere un vector de $n$ números aleatorios en un determinado intervalo, calcule su media y guarde el resultado en un vector de medias. El siguiente código de Python, realiza dicho cálculo primero generando un vector de $10$ números aleatorios ($n = 10$) y después generando un vector de $100$, ($n=100$).  El programa genera en cada caso un millón de vectores distintos.
 %\begin{lstlisting}
 %% Este código genera un millón de vectores, formados por números 
 %% aleatorios distribuidos uniformemente en el intervalo (-1,1).

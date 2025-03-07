@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{9}\PYG{p}{]:} \PYG{n}{v} \PYG{o}{=} \PYG{n}{gen\PYGZus{}num}\PYG{o}{.}\PYG{n}{random}\PYG{p}{((}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{))}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{]:} \PYG{n}{v}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{]:}
+\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mf}{0.06821989}\PYG{p}{,} \PYG{l+m+mf}{0.6214247} \PYG{p}{,} \PYG{l+m+mf}{0.07793149}\PYG{p}{,} \PYG{l+m+mf}{0.99665013}\PYG{p}{],}
+\PYG{p}{[}\PYG{l+m+mf}{0.11869072}\PYG{p}{,} \PYG{l+m+mf}{0.6999295} \PYG{p}{,} \PYG{l+m+mf}{0.8089612} \PYG{p}{,} \PYG{l+m+mf}{0.02035995}\PYG{p}{],}
+\PYG{p}{[}\PYG{l+m+mf}{0.67626972}\PYG{p}{,} \PYG{l+m+mf}{0.48921183}\PYG{p}{,} \PYG{l+m+mf}{0.38843264}\PYG{p}{,} \PYG{l+m+mf}{0.71577686}\PYG{p}{]])}
+\end{Verbatim}
