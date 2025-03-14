@@ -5,6 +5,7 @@
 Y si hay guerra en este invierno , los Valones y los Suizos llevarán en vez de espada guardapiés y rebocillo.}{El barberillo de Lavapiés. Luis Mariano de Larra}
 \begin{paracol}{2}
 \section{Secuencias de números aleatorios}
+\sectionmark{Secuencias de números aleatorios. \textreferencemark\ Random number sequences.}
 Se entiende por secuencia de número aleatorios, aquella en la que no es posible encontrar relación alguna entre un número de la secuencia y los que le preceden.
 
 No es posible general secuencias de números aleatorios con un computador. La razón es que un computador es una máquina completamente determinista; la salidas que puede producir cualquier programa son completamente predecibles. Solo los procesos físicos pueden ser realmente ---intrínsecamente--- aleatorios.
@@ -16,6 +17,7 @@ El primer algoritmo para obtener números pseudoaleatorios, lo desarrolló John 
 Veamos un ejemplo con una semilla  formada por $n=8$ dígitos,
 \switchcolumn
 \section{Random number sequences}
+\sectionmark{Secuencias de números aleatorios. \textreferencemark\ Random number sequences.}
 A random number sequence is such that it is not possible to find any relationship among a number of the sequence and the previous ones.
 
 It is impossible to generate random numbers using a computer, because a computer is a deterministic machine and then, the outputs of any computer program are always thoroughly predictable. Only physical process could be actually --intrinsically-- unpredictable.
@@ -195,57 +197,101 @@ Este método permite obtener periodos mayores.
 This method leads to get longer periods
 \end{paracol}
 
-\subsection{El generador de números aleatorios de Numpy.}\label{rand} Se trata de un generador mucho mas evolucionado que los ejemplo descritos hasta ahora. ES muy versátil y se puede emplear de muchas maneras. Aquí vamos a ver solo una introducción. Para una visión detallada, lo mejor es leer la documentación de numpy, (\emph{random sampling}).
+\begin{paracol}{2}
+\subsection{El generador de números aleatorios de Numpy.}\label{rand} Se trata de un generador mucho mas evolucionado que los ejemplo descritos hasta ahora. Es muy versátil y se puede emplear de muchas maneras. Aquí vamos a ver solo una introducción. Para una visión detallada, lo mejor es leer la documentación de numpy, (\emph{random sampling}).
 
-Numpy contiene un módulo  \mintinline{python}|numpy.random|, que contiene todas las funciones necesarias para generar secuencias de números aleatorios. Lo primero que debemos hacer, es crear un 'generador' (\emph{generator})de numeros aleatorios. La manera más sencilla de hacerlo es emplear la función \mintinline{python}|default_rng()|,
+Numpy contiene un módulo  \mintinline{python}|numpy.random|, que contiene todas las funciones necesarias para generar secuencias de números aleatorios. Lo primero que debemos hacer, es crear un 'generador' (\emph{generator}) de numeros aleatorios. La manera más sencilla de hacerlo es emplear la función \mintinline{python}|default_rng()|,
 
+\switchcolumn
+\subsection{Numpy's random numbers generator.} The numpy's random number generator is fairly more evolved than the example generators described so far. It is highly versatile and can be use in many different ways. Here, we are going to offer only an introduction. For a detailed knowledge it is advisable to read numpy documentation, (\emph{random sampling}).
+
+Numpy has a module \mintinline{python}|numpy.random|, which has all the functions needed to generate sequences of random numbers. The first step is to create a \emph{generator} of random numbers. The easiest way to do it is by using the function \mintinline{python}|default_rng()|,  
+\end{paracol}
 \begin{minted}{python}
 	import numpy as np
 	
 	#lo primero de todo es crear un generador de números aleatorios
 	#si no le indicamos semilla, el la toma del sistema operativo de modo no
-	#determinista, es decir la secuencia de números generada no podrá volver a 
-	#reproducirse.
+	#determinista, es decir la secuencia de números generada no podrá volver 
+	#a reproducirse.
 	
 	gen_num = np.random.default_rng()
-\end{minted} 
-
+\end{minted}
+ 
+\begin{paracol}{2}
 El  \emph{objeto} creado \mintinline{python}|gen_num| es un generador de números aleatorios. Lo hemos creado de la forma más sencilla posible. Como no le hemos indicado ningún valor para la semilla, el programa la toma directamente del sistema operativo de un modo aleatorio. Para obtener un número aleatorio en el intervalo $[0,1)$, llamamos directamente al generador que hemos creado.
 
+\switchcolumn
+The \emph{object} so created \mintinline{python}|gen_num| is a random number generator. We have create it in the most simple way. A we haven't supplied any value for the seed, the program takes it directly from the operative system in aleatory mode. To get a random number un the interval $[0,1)$, we call the generator we have created directly, 
+
+\end{paracol}
+\begin{center}
+	\begin{minipage}{0.5\textwidth}
 \begin{minted}{python}
 In [2]: n1 = gen_num.random()
 ...: print('n1=',n1)
 n1= 0.15431941570206298
-\end{minted}  
-
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{paracol}{2}
 Si llamamos al generador con un valor entero como variable de entrada, nos generará un array de numpy con tantos elementos como indique el valor entero,
-
+\switchcolumn
+If we call the generator with an integer number as input variable, it will generate a numpy array with the a number of elements equal to the integer supplied.
+\end{paracol}
+\begin{center}
+	\begin{minipage}{0.5\textwidth}
 \begin{minted}{python}
 In [7]: v = gen_num.random(3)
 In [8]: v
 Out[8]: array([0.07971535, 0.38433405, 0.03229333])
 \end{minted}
+\end{minipage}
+\end{center}
 
-y si introducimos una tupla o una lista con dos elementos $[m,n]$, devolverá una matriz de números aleatorios de dimensión $n\times m$,
+\begin{paracol}{2}
+\noindent y si introducimos una tupla o una lista con dos elementos $[m,n]$, devolverá una matriz de números aleatorios de dimensión $n\times m$,
+\switchcolumn
+\noindent and if we use a tuple or a list with two elements $[m,n]$, the generator will cast a matrix of random number with dimensions $n\times m$.
+\end{paracol}
 
+\begin{center}
+	\begin{minipage}{0.8\textwidth}
 \begin{minted}{python}
-In [9]: v = gen_num.random((3,4))
-In [10]: v
-Out[10]: 
-array([[0.06821989, 0.6214247 , 0.07793149, 0.99665013],
-[0.11869072, 0.6999295 , 0.8089612 , 0.02035995],
-[0.67626972, 0.48921183, 0.38843264, 0.71577686]])
+	In [9]: v = gen_num.random((3,4))
+	In [10]: v
+	Out[10]: 
+	array([[0.06821989, 0.6214247 , 0.07793149, 0.99665013],
+	[0.11869072, 0.6999295 , 0.8089612 , 0.02035995],
+	[0.67626972, 0.48921183, 0.38843264, 0.71577686]])
 \end{minted}
+	\end{minipage}
+\end{center}
 
-Cada vez, que ejecutamos, el generador, éste avanza en la secuencia de números aleatorios generados, a partir de la semilla de inicialización. El método empleado por el generador para obtener la secuencia de números aleatorios, se conoce con el nombre de \emph{Permuted Congruential Generator}. Es el método por defecto, y el único que podemos emplear si creamos nuestro generador empleando la la función \mintinline{python}|default_rng()|. Podemos comprobar cual es método empleado por un generador empleando la función print de python,
+\begin{paracol}{2}
+Cada vez, que ejecutamos, el generador, éste avanza en la secuencia de números aleatorios generados, a partir de la semilla de inicialización. El método empleado por el generador para obtener la secuencia de números aleatorios, se conoce con el nombre de \emph{Permuted Congruential Generator}. Es el método por defecto, y el único que podemos emplear si creamos nuestro generador empleando la función \mintinline{python}|default_rng()|. Podemos comprobar cual es método empleado por un generador empleando la función print de python,
+\switchcolumn
+Any time we run the generator, it goes ahead in the sequence of random numbers	generated from the initial seed. The method used by the generator to get the sequence of random numbers in known as \emph{Permuted Congruential Generator}. It is the default method and the only one we can use if we create a generator using the \mintinline{python}|default_rng()|. We can determine which method a generator is using by utilizing Python's print function.
+\end{paracol}
+
+\begin{center}
+	\begin{minipage}{0.3\textwidth}
 \begin{minted}{python}
 In [12]: print(gen_num)
 Generator(PCG64)
 \end{minted}
+\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
 Nos devuelve las iniciales del método y el número 64 que hace referencia al tamaño en bits de los números enteros empleados en el proceso de generación. EL periodo de este método es de $2^{128}$.
 
 Podemos controlar la secuencia de números aleatorios suministrando una semilla a la función \mintinline{python}|default_rng|, de este modo, podemos reproducir cualquier secuencia de numeros aleatorios, siempre que creemos un nuevo generador con la misma semilla,
+\switchcolumn
+It retrieves the acronym of the method and the number 64 which refers to the bit size of the number used in the random generation process. The period of this method is $2^{128}$.
 
+We can control the random number sequence supplying a seed to function \mintinline{python}|default_rng|; in this way, we can reproduce any sequence of random numbers, provided we create a new generator with the same seed. 
+\end{paracol}
 \begin{minted}{python}
 In [48]: 
 ...: gen_num_1 = np.random.default_rng(100)
@@ -283,13 +329,14 @@ Secuencia repetida. Repited sequence
 0.18999147338772315
 \end{minted}
 
-Las posibilidades del generador de números aleatorios de numpy son muy amplias. Puede generar números aleatorios empleando distintos tipos de distribuciones de probabilidad (Ver sección siguiente), permutar aleatoriamente arrays de números, seleccionar números de modo aleatorio de entre una secuencia de enteros, etc. Para conocer a fondo el proceso, se aconseja consultar la ayda de numpy.
+\begin{paracol}{2}
+Las posibilidades del generador de números aleatorios de numpy son muy amplias. Puede generar números aleatorios empleando distintos tipos de distribuciones de probabilidad (Ver sección siguiente), permutar aleatoriamente arrays de números, seleccionar números de modo aleatorio de entre una secuencia de enteros, etc. Para conocer a fondo el proceso, se aconseja consultar la ayuda de numpy.
 
 \section{Probabilidad y distribuciones de probabilidad}
-
+\sectionmark{Probabilidad y distribuciones. \textreferencemark\ Probability and distributions.}
 La probabilidad es una propiedad asociada a los sucesos aleatorios. Decimos que un suceso es aleatorio cuando no depende de una causa determinista que nos permite predecir cuándo va a suceder. \index{Suceso Aleatorio}
 
-\subsection{Sucesos aleatorios discretos}
+\subsection{Sucesos aleatorios discretos.}
 Por ejemplo, obtener \emph{cara} o \emph{cruz} al lanzar una moneda al aire es un ejemplo sencillo de proceso aleatorio, ya que no es posible conocer de antemano cuál será el resultado del lanzamiento. La probabilidad da una medida de las posibilidades de que un determinado suceso aleatorio tenga lugar.
 
 Volviendo al ejemplo de la moneda  lanzada al aire, las posibilidades son dos:
@@ -320,6 +367,18 @@ P(\text{cara})=\frac{1}{2}=0.5
 P(\text{cara})=\frac{1}{2}=0.5
 \end{equation*} 
 \end{itemize}
+\switchcolumn
+Numpy's random number generator has an extensive range of possibilities. It can generate random numbers using different kinds of probability distributions (see the next section), permuting random number arrays, randomly choosing a number from a sequence of integers, etc. For a complete description of Numpy's random number generator, it is advisable to check Numpy's help. 
+
+\section{Probability and probability distributions.}
+\sectionmark{Probabilidad y distribuciones. \textreferencemark\ Probability and distributions.}
+The probability is a property associated with random events. We say that an event is random whenever it does not depend on a deterministic cause, allowing us to forecast when the event will occur.
+
+\subsection{Discrete random events.}
+
+
+
+\end{paracol}
 
 \begin{figure}
 \centering
@@ -548,24 +607,16 @@ Además podemos desplazar el centro del intervalo sumando o restando al resultad
 genera un vector de 100 números aleatorios en el intervalo $(-2,3)$.
 
 Para comprobar el teorema del límite central, podemos construir un bucle que genere un vector de $n$ números aleatorios en un determinado intervalo, calcule su media y guarde el resultado en un vector de medias. El siguiente código de Python, realiza dicho cálculo primero generando un vector de $10$ números aleatorios ($n = 10$) y después generando un vector de $100$, ($n=100$).  El programa genera en cada caso un millón de vectores distintos.
-%\begin{lstlisting}
-%% Este código genera un millón de vectores, formados por números 
-%% aleatorios distribuidos uniformemente en el intervalo (-1,1).
-%% Calcula el valor medio de los valores de cada vector y guarda
-%% el resultado en un nuevo vector.
-%
-%media10 = zeros(1,1000000); % vector para guardar las medias
-%for i=1:1000000
-% 	media10(i) = mean(2*rand(10,1)-1);
-%end
-%
-%% se repite el mismo calculo pero ahora con vectores de 100
-%% elementos
-%media100 = zeros(1,1000000)
-%for i=1:1000000
-%	medias100(i) = mean (2*rand(100,1)-1);
-%end	
-%\end{lstlisting}s
+
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=central\_limit,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/tratamiento_datos/central_limit.py}
 
 De acuerdo con el teorema del límite central, los dos vectores de medias obtenidos, \texttt{media10} y \texttt{media100}, deben seguir distribuciones normales tales que,
 \begin{enumerate}
@@ -584,15 +635,8 @@ De acuerdo con el teorema del límite central, los dos vectores de medias obteni
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.35\textwidth}
-	{\includegraphics[width=\textwidth]{tlc1.eps}}
-\caption{Distribución para medias de 10 valores}\label{fig:tlc10}
-\end{subfigure} 
-\begin{subfigure}{0.35\textwidth}
-	{\includegraphics[width=\textwidth]{tlc2.eps}}
-	\caption{Distribución para medias de 100 valores}  \label{fig:tlc100}
-\end{subfigure}
-\caption{Teorema del límite central: Comparación entre histogramas normalizados para un millón de medias y la distribución normal a que pertenecen}
+\includegraphics[width=\textwidth]{tlc.eps}
+\caption{Teorema del límite central: Comparación entre histogramas normalizados para un millón de medias y la distribución normal a que pertenecen. Izquierda medias de 10 muestras. Derecha medias de 100 muestras}\label{fig:ctrli}
 \end{figure}
 
 
@@ -603,7 +647,7 @@ Por tanto, las distribuciones normales a las que pertenecen las medias calculada
 f(\bar{x}_{10})=\frac{1}{\sqrt{2\pi\frac{1}{30}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{30}}},\  f(\bar{x}_{100})=\frac{1}{\sqrt{2\pi\frac{1}{300}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{300}}}
 \end{equation*}
 
-Las figuras \ref{fig:tlc10} y \ref{fig:tlc100}, muestran un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total de puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad.}. Sobre dicho histograma se ha trazado mediante una línea roja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
+La figura \ref{fig:ctrli}, muestran un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total de puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad.}. Sobre dicho histograma se ha trazado mediante una línea roja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
 
 De las figuras, es fácil deducir que cuantos más datos empleemos en el cálculo de las medias, más centrados son los resultados obtenidos en torno a la media de la distribución original. Por otro lado, esto es una consecuencia lógica del hecho de que la varianza de la distribución normal que siguen las medias, se obtenga dividiendo la varianza de la distribución original, por el número de datos $n$; cuantos mayor es $n$ más pequeña resulta la varianza de la distribución normal resultante.
  
