@@ -24,7 +24,7 @@ It is impossible to generate random numbers using a computer, because a computer
 
 Nevertheless, it is possible to use the computer for generating sequences of number that seem to be random. Such sequences are called \emph{pseudo-random} number sequences.\index[eng]{Pseudo-random numbers}
 
-The first algorithm for obtaining pseudo-random numbers was developed by John Von Newman in 1946. Its is known as the \emph{Middle Square} method. It starts from an initial number made up of n digits which is called the seed. Then, the square of the number is calculated and the n central digits of the result are taken as a new number that will be the second one of the random number sequence. This new number is squared and the n central digit of the result are taken to form the three number of the random sequence. The process is repeated so many times as random numbers you wish to generate.
+The first algorithm for obtaining pseudo-random numbers was developed by John Von Newman in 1946. Its is known as the \emph{Middle Square} method.\index[eng]{Middle Square} It starts from an initial number made up of n digits which is called the seed.\index[eng]{Random numbers! Seed} Then, the square of the number is calculated and the n central digits of the result are taken as a new number that will be the second one of the random number sequence. This new number is squared and the n central digit of the result are taken to form the three number of the random sequence. The process is repeated so many times as random numbers you wish to generate.
 
 Let see an example, using a n=8 digits seed, 
 
@@ -337,14 +337,14 @@ Las posibilidades del generador de números aleatorios de numpy son muy amplias.
 La probabilidad es una propiedad asociada a los sucesos aleatorios. Decimos que un suceso es aleatorio cuando no depende de una causa determinista que nos permite predecir cuándo va a suceder. \index{Suceso Aleatorio}
 
 \subsection{Sucesos aleatorios discretos.}
-Por ejemplo, obtener \emph{cara} o \emph{cruz} al lanzar una moneda al aire es un ejemplo sencillo de proceso aleatorio, ya que no es posible conocer de antemano cuál será el resultado del lanzamiento. La probabilidad da una medida de las posibilidades de que un determinado suceso aleatorio tenga lugar.
+Obtener \emph{cara} o \emph{cruz} al lanzar una moneda al aire es un ejemplo sencillo de proceso aleatorio, ya que no es posible conocer de antemano cuál será el resultado del lanzamiento. La probabilidad da una medida de las posibilidades de que un determinado suceso aleatorio tenga lugar.
 
 Volviendo al ejemplo de la moneda  lanzada al aire, las posibilidades son dos:
 \begin{enumerate}
 \item Que salga cara.
 \item Que salga cruz.
 \end{enumerate}
-Ambos sucesos son igualmente probable tras un lanzamiento, uno de los dos debe darse necesariamente y no hay, en principio, ningún otro suceso posible. Podemos entonces asociar valores numéricos a la probabilidad con la que se dan las distintas posibilidades:
+Ambos sucesos son igualmente probables tras un lanzamiento, uno de los dos debe darse necesariamente y no hay, en principio, ningún otro suceso posible. Podemos entonces asociar valores numéricos a la probabilidad con la que se dan las distintas posibilidades:
 \begin{itemize}
 \item La probabilidad de que salga cara o cruz ---cualquiera de las dos--- debe tener asociado el valor máximo ya que \emph{necesariamente} ha de salir cara o cruz.  Habitualmente se toma como valor máximo de un suceso aleatorio el valor $1$, que estaría asociado con el suceso necesario o cierto,
 \begin{equation*}
@@ -364,30 +364,61 @@ P(\text{cara})=\frac{1}{2}=0.5
 \item La probabilidad de sacar cruz. De modo análogo al caso anterior será la mitad de la probabilidad de sacar cara o cruz, 
 
 \begin{equation*}
-P(\text{cara})=\frac{1}{2}=0.5
+P(\text{cruz})=\frac{1}{2}=0.5
 \end{equation*} 
 \end{itemize}
 \switchcolumn
 Numpy's random number generator has an extensive range of possibilities. It can generate random numbers using different kinds of probability distributions (see the next section), permuting random number arrays, randomly choosing a number from a sequence of integers, etc. For a complete description of Numpy's random number generator, it is advisable to check Numpy's help. 
 
-\section{Probability and probability distributions.}
+\section{Probability and probability distributions.}\index[eng]{Random event}
 \sectionmark{Probabilidad y distribuciones. \textreferencemark\ Probability and distributions.}
 The probability is a property associated with random events. We say that an event is random whenever it does not depend on a deterministic cause, allowing us to forecast when the event will occur.
 
 \subsection{Discrete random events.}
+Tossing a coin to obtain either a \emph{head} or a \emph{tail} is a simple example of a random process, as it is impossible to know the result beforehand. Probability measures the odds of a specific event occurring.
 
+Comming back to the coin tossing, there are two possibilities:
+\begin{enumerate}
+\item that you get head
+\item that you get tail
+\end{enumerate} 
 
+Both events can occur with the same probability after the tossing, but, necessary, one of them has to occur, and there is not, in principle, any other possible event. We can then associate numerical values with the probability that any possible event will occur:
+
+\begin{itemize}
+	\item The probability of getting head or tail --whatever of them-- should have associated the maximum value because \emph{necessarily} we have to get head or tail. Usually, we take as the maximum value for the probability of a random event the value 1, which would be associated with the necessary or \emph{true} event,
+	
+\begin{equation*}
+	P(\text{head or tail}) = 1
+\end{equation*}
+
+\item The probability of not getting either heads or tails in a coin flip represents an impossible event, as we know that we must obtain either heads or tails. Since this event cannot occur, we assign a probability value of 0 to it.
+
+\begin{equation*}
+	P(\emptyset) = 0
+\end{equation*}
+
+\item The probability of getting head. In a \emph{fair} coin, the probability of getting a head or tail is the same, so the probability of getting a head would be half the probability of getting a head or tail,
+\begin{equation*}
+	P(\text{head})=\frac{1}{2}=0.5
+\end{equation*}
+
+\item The probability of getting a tail, following the same argument as in the previous case, should also be half the probability of getting a head or tail
+\begin{equation*}
+	P(\text{tail})=\frac{1}{2}=0.5
+\end{equation*} 
+\end{itemize} 
 
 \end{paracol}
 
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{probcaracruz.eps}
-\caption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar una moneda al aire.}
+\bicaption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar una moneda al aire.}{Probability distribution and cumulated probability of the results of tossing a coin.}
 \label{fig:moneda}
 \end{figure}
 
-
+\begin{paracol}{2}
 Lanzar una moneda o un dado, elegir una carta al azar, rellenar una quiniela, son ejemplos de fenómenos aleatorios discretos. Reciben este nombre, porque los sucesos posibles asociados al fenómeno son numerables, es decir, se pueden contar.  Así por ejemplo en el lanzamiento de una moneda solo hay dos sucesos posibles (cara o cruz), en el de un dado hay seis (cada una de sus caras), en el de la elección de una carta hay cuarenta (si se trata de una baraja española) etc. El conjunto de sucesos posibles recibe el nombre de variable aleatoria. \index{Variable! aleatoria}
 
 Una distribución de probabilidad discreta, es una función que asocia cada caso posible de un fenómeno aleatorio con su probabilidad. Si vamos sumando sucesivamente las probabilidades de todos los fenómenos posibles, lo que obtenemos es una nueva función que recibe el nombre de probabilidad acumulada (Más adelante volveremos sobre esta idea). La figura \ref{fig:moneda} muestra la distribución de probabilidad y la probabilidad acumulada asociadas al lanzamiento de una moneda al aire.
@@ -403,106 +434,179 @@ Así por ejemplo la probabilidad de sacar un $6$ cuando se laza un dado será,
 \begin{equation*}
 P(a)=\frac{\text{casos en que se da}\ a=1}{\text{numero total de casos posibles}=6}=\frac{1}{6}
 \end{equation*}
+\switchcolumn
+Tossing a coin, rolling a dice, drawing a card at random, or filling in a pool coupon are examples of random discrete phenomena. They are called \emph{discrete} because the outcomes of these activities are numerable, i.e., they can be counted. For instance, there are only to events associated to tossing a coin (head or tail), in the case of rolling a dice we have six events (any one of the dice faces), drawing a card has 40 events associated (well, it depends on the deck, 52 for a french playing card). The set of possible events of a random discrete phenomena are called random variable. \index[eng]{Variable! random}
 
+A discrete probability distribution, us a functions which associates each possible event of a random phenomena with its probability. If we add on the probabilities of every possible event, we obtain a new function called the cumulated probability (More on this later). Figure \ref{fig:moneda} shows the probability distribution and the cumulated probability distribution associated with tossing a coin.
+
+If all possible events belonging to a specific random discrete phenomenon have the same probability of occurring, the probability of any of them can be determined by dividing the number of favorable cases by the number of possible cases,
+\begin{equation*}
+	P(a)=\frac{\text{cases where} \ a \ \text{occurs}}{\text{total number of possible cases}}
+\end{equation*}
+
+So, for instance, the probability of getting a $6$ when rolling a dice would be,
+\begin{equation*}
+	P(a)=\frac{\text{cases where} \ a \ \text{occurs} = 1}{\text{total number of possible cases}=6}=\frac{1}{6}
+\end{equation*}
+\end{paracol}
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{dado.eps}
-\caption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar un dado al aire.}
+\bicaption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar un dado al aire.}{Probability distribution and cumulated probability of the resutls of rolling a dice.}
 \label{fig:dado}
 \end{figure}
 
-
+\begin{paracol}{2}
 Una propiedad que deben cumplir los sucesos aleatorios es que la suma de las probabilidades de todos los sucesos posibles debe ser igual a la unidad,
-
+\switchcolumn
+A property that all aleatory events should fulfill is that the sum of the probability of all possible events must equal one. 
+\end{paracol}
 \begin{equation*}
 \sum_{i=1}^n P(i) = 1
 \end{equation*}
 
+
+\begin{paracol}{2}
 Es decir, \emph{necesariamente} debe darse alguno de los casos posibles.
 
 Esto nos lleva al carácter aditivo o acumulativo de la probabilidad. Si elegimos un conjunto de casos posibles de un fenómeno aleatorio cualquiera, la probabilidad de que se de alguno de ellos será la suma de las probabilidades de los casos individuales. Por ejemplo la probabilidad al lanzar un dado de obtener un $2$, un $3$ ó un $6$ será,
+\switchcolumn
+That is, we have to get \emph{necessarily} one of the possible cases.
 
+This brings us to an important aspect of probability: its additive or accumulative nature. If we select a set of potential events from any random phenomenon, the probability of any one of those events occurring is equal to the sum of the probabilities of each individual case. For example, the probability of rolling a $2$, a $3$, or a $6$ on a dice is,
+\end{paracol}
 \begin{equation*}
 P(2,3,6) = P(2) + P(3) + P(6) = \frac{1}{6}+\frac{1}{6}+\frac{1}{6}=\frac{3}{6} = \frac{1}{2}
-\end{equation*} 
-
+\end{equation*}
+\begin{paracol}{2}
 lo que coincide con lo que intuitivamente cabía esperar, que la probabilidad de sacar uno cualquiera de los tres números fuera $0.5$.
 La figura \ref{fig:dado} muestra la distribución de probabilidad y la probabilidad acumulada para el lanzamiento de un dado. La probabilidad acumulada guarda relación con el carácter aditivo de la probabilidad que acabamos de describir. Si consideramos el conjunto de valores posibles en orden: $1 < 2 < 3 < 4 < 5 < 6$, la probabilidad acumulada para cada valor es la probabilidad de sacar un número al lanzar el dado menor o igual que dicho valor. Así por ejemplo la probabilidad de sacar un número menor o igual que tres sería,
 
+\switchcolumn
+
+This result coincides with what we may intuitively expect; the probability of getting any one of the three numbers would be $0.5$.
+Figure \ref{fig:dado} shows the probability distribution and the cumulate probability for the dice-rolling example. The cumulated probability is related to the additive nature of probability we have already discussed. If we consider the set of possible outcomes in order: $1 < 2 < 3 < 4 < 5 < 6$, the cumulated probability for each value represents the likelihood of rolling a number less than or equal to this value. For instance, the probability of getting a number less than or equal to three will be,
+\end{paracol}
 \begin{equation*}
 P(n\leqslant 3) = P(1) + P(2) + P(3) = \frac{1}{6}+\frac{1}{6}+\frac{1}{6}=\frac{3}{6} = \frac{1}{2}
 \end{equation*} 
-
+\begin{paracol}{2}
 Hasta ahora, todas las distribuciones discretas de probabilidad que hemos visto ---moneda, dado--- asignan la misma probabilidad a todos los sucesos posibles. En general esto no tiene porqué ser así. Supongamos un dado trucado en el que la probabilidad de sacar un $6$ valga $0.5$, es decir en promedio tiende a salir un $6$ la mitad de las veces que se lanza el dado. Supongamos además que todos los demás números salen con la misma probabilidad,
+\switchcolumn
+All discrete probability distributions we have encountered  so far, ---such as coins and dice--, assign equal probability to their possible outcomes. In general, a probability distribution do not have to do so. Consider a biased die where the probability of rolling a 6 is 0.5. This means we will likely obtain a 6 half the times we roll the die. Moreover, suppose that the remaining numbers roll with equal probability.   
+\end{paracol}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=10cm]{dadot.eps}
+	\bicaption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar un dado trucado al aire.}{Probability distribution and cumulated probability of the results of rolling a biased dice.}
+	\label{fig:dadot}
+\end{figure}
+
 \begin{align*}
 P(1)& = P(2) = P(3) = P(4) = P(5) = \frac{1}{10}\\
 P(6)& = \frac{1}{2}\\
 \sum_i P(i)& = 1 
 \end{align*}
-
+\begin{paracol}{2}
 La figura \ref{fig:dadot} muestra la distribución de probabilidad y la probabilidad asociada al lanzamiento del dato trucado del ejemplo.
-\begin{figure}
-\centering
-\includegraphics[width=10cm]{dadot.eps}
-\caption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar un dado trucado al aire.}
-\label{fig:dadot}
-\end{figure}
+\switchcolumn
+Figure \ref{fig:dadot} shows the probability distribution associated the example of the biased dice rolling.
+\end{paracol}
 
-
+\begin{paracol}{2}
 \subsection{Distribuciones de probabilidad continuas}\label{pdfc}
 Hasta ahora, hemos considerado fenómenos en los que los casos posibles ---la variable aleatoria--- son finitos y numerables. Supongamos ahora un fenómeno aleatorio en que su variable aleatoria, $x$, es continua. Esto es: puede tomar todos los valores reales comprendidos en cierto intervalo, $x \in [a,b]$. Supongamos que todos los números contenidos en dicho intervalo pueden ser elegidos con igual probabilidad. Podríamos representar la distribución de probabilidad como una línea horizontal continua $f(x) = c$ que cubriera todo el intervalo $[a,b]$. Para obtener el valor constante $c$ de dicha distribución de probabilidad bastaría \emph{sumar} la probabilidad asociada por la distribución a cada valor del intervalo, igualar el resultado a uno y despejar $c$.
 
 En realidad, no podemos sumar los infinitos valores que contiene el intervalo. De hecho lo que hacemos es sustituir la suma por una integral,
+\switchcolumn
+\subsection{Continuous probability distributions}
+So far, we have considered phenomena in which the possible cases-- the random variable--- are finite and enumerable. Let us suppose now a random phenomenon for which the random variable, $x$, is continuous. It can take every real value in an interval $[a,b]$. Suppose every number in this interval can be chosen with equal probability. We could represent the probability as a continuous horizontal line $f(x) =c$ which would cover the whole interval $[a,b]$. To obtain the constant value $c$ for such probability distribution would be enough to sum up the probability assigned by the distribution to each value in the interval, equal the result to one, and find $c$.
 
+We can not sum up the infinite values contained in the interval. In fact, we have to replace the sum with an integral.
+
+Actually we can not sum up the infinite values contained in the interval. In fact, what we have to do is replace the sum for a in integral.
+\end{paracol}
 \begin{equation*}
 \int_a^b c\cdot dx = 1 \Rightarrow c = \frac{1}{b-a}
 \end{equation*}
-\begin{figure}
-\centering
-\includegraphics[width=10cm]{puniform.eps}
-\caption{Distribución de probabilidad uniforme para un intervalo $[a,b]$ y probabilidad acumulada correspondiente}
-\label{fig:puniform}
-\end{figure}
 
+
+\begin{paracol}{2}
 La figura \ref{fig:puniform} muestra la distribución de probabilidad resultante
 
 Es importante darse cuenta de la diferencia con el caso discreto. El intervalo $[a,b]$ contiene infinitos números. Si tratáramos de asignar un valor a la probabilidad de obtener un número dividiendo casos favorables entre casos posibles, como hacíamos en el caso discreto, obtendríamos un valor $0$ para todos los números. 
 
 La distribución de probabilidad $f(x)\geqslant 0$ representa en el caso continuo una \emph{densidad} de probabilidad. Así, dado un número cualquiera $x_0 \in [a,b]$, el valor que toma la distribución de probabilidad $f(x_0)$ representa la probabilidad de obtener un número al azar en un intervalo $dx$ en torno a $x_0$,
+\switchcolumn
+Figure \ref{fig:puniform} shows the resulting probability distribution. 
+
+It is important to realize that the difference when we compare with the discrete case. The interval $[a,b]$ contains infinite numbers. If we try to assign a value to the probability dividing the favorable cases by the possible cases, as we did in the discrete case,  we would obtain a value $0$ for every number.
+
+The probability distribution  $f(x)\geqslant 0$ represents in the continuous case the a \emph{density} of probability. $f(x_0)$ represents the probability of obtaining a random number in an interval $dx$ around $x_0$,
+\end{paracol}
+
 \begin{equation*}
 P\left(x_0-\frac{dx}{2}\leqslant x_0 \leqslant x_0+\frac{dx}{2}\right) = f(x_0)
 \end{equation*} 
-
+\begin{figure}
+	\centering
+	\includegraphics[width=10cm]{puniform.eps}
+	\bicaption{Distribución de probabilidad uniforme para un intervalo $[a,b]$ y probabilidad acumulada correspondiente.}{Uniform probability distribution and cumulated probability.}
+	\label{fig:puniform}
+\end{figure}
+\begin{paracol}{2}
 La probabilidad, vendrá siempre asociada a un intervalo, y se obtendrá integrando la distribución de probabilidad en dicho intervalo. Así por ejemplo,
+\switchcolumn
+The probability will be always associated to an interval, and it will be obtained integrating the probability distribution on this interval. So, for instance, 
+\end{paracol}
 
 \begin{equation*}
 P(x_1 \leqslant x \leqslant x_2) = \int_{x_1}^{x_2}f(x)dx
 \end{equation*}
 
-representa la probabilidad de obtener un número al azar en intervalo $[x_1,x_2]$. 
-
-La probabilidad acumulada, se obtiene también mediante integración, 
+\begin{paracol}{2}
+\noindent representa la probabilidad de obtener un número al azar en intervalo $[x_1,x_2]$. 
+La probabilidad acumulada, se obtiene también mediante integración,
+\switchcolumn
+\noindent represents the probability of get a random number in the interval $[x_1,x_2]$. The cumulated probability can also be obtained by integration,
+\end{paracol} 
 
 \begin{equation*}
 P(x) = \int_a^xf(x)dx
 \end{equation*}
 
+\begin{paracol}{2}
 Para el caso de la distribución de probabilidad constante descrita más arriba obtendríamos una línea recta que corta el eje de abcisas en $a$ y el valor de ordenada $1$ en b,
+\switchcolumn
+For the constant probability distribution described above, we will obtain a straight line that cuts the abscissa axis on $a$ and takes the ordinate value $1$ on b.
+\end{paracol} 
 \begin{equation*}
 P(x) = \int_a^xf(x)dx = \int_a^x \frac{1}{b-a}dx = \frac{x-a}{b-a}, \ x \in[a,b]
 \end{equation*}
+\begin{paracol}{2}
 La figura \ref{fig:puniform} muestra la probabilidad acumulada para el ejemplo de la distribución uniforme. 
 
 Si integramos la densidad de probabilidad sobre todo el intervalo de definición de la variable aleatoria, el resultado debe ser la unidad, puesto que dicha integral representa la probabilidad de obtener un número cualquiera entre todos los disponibles,
+\switchcolumn
+Figure \ref{fig:puniform} shows the cumulated probability for the case of an uniform distribution.
 
+If we integrate the probability density over the whole definition interval of the random variable, the result should be one due to such integral represents the probability of getting whatever value among the available numbers, 
+\end{paracol}
 \begin{equation*}
 \int_a^b f(x)dx =1, \ a\leqslant x \leqslant b
 \end{equation*}
-
+\begin{paracol}{2}
 En probabilidad se emplean muchos tipos de distribuciones para representar el modo en que se dan los suceso aleatorios en la naturaleza. A continuación presentamos dos ejemplos muy conocidos:
 
 \paragraph{Distribución exponencial} \index{Distribución exponencial}
 La distribución exponencial está definida para sucesos que pueden tomar cualquier valor real positivo ó 0, $x \in [0,\infty)$. se representa mediante una función exponencial decreciente,
+\switchcolumn
+We use many different kind of distributions to represent how random events take place in nature. Let see now two very well known examples: 
+
+\paragraph{Exponential distribution} \index[eng]{Exponential distribution}
+Exponetial distribution are define for events that can take a real positive value or $0$, $x\in [0,\infty)$. It is represent by a decreasing exponetial function,
+\end{paracol}
 \begin{equation*}
 f(x)=\frac{1}{\mu}e^{-\frac{x}{\mu}}
 \end{equation*}
@@ -510,104 +614,205 @@ f(x)=\frac{1}{\mu}e^{-\frac{x}{\mu}}
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{distexp.eps}
-\caption{Distribución de probabilidad exponencial}
+\bicaption{Distribución de probabilidad exponencial}{Exponential probability distribution}
 \label{fig:distexp}
 \end{figure}
 
+\begin{paracol}{2}
 La figura \ref{fig:distexp} muestra un ejemplo de distribución exponencial. Es interesante observar como su probabilidad acumulada tiende a $1$ a medida que $x$ tiende a $\infty$.
+\switchcolumn
+Figure \ref{fig:distexp} shows an example of an exponential distribution. It is interesting to notice how its cumulative probability tends to $1$ as $x$ tends to $\infty$.
+\end{paracol}
 
 \begin{equation*}
 P(0\leqslant x < \infty) = \int_0^{\infty}\frac{1}{\mu}e^{-\frac{x}{\mu}}dx = 1
 \end{equation*}
 
+\begin{paracol}{2}
 \paragraph{Distribución Normal}\index{Distribución normal} Aparece con gran frecuencia en la naturaleza. En particular, como veremos más adelante, está relacionada con la incertidumbre inevitable en la medidas experimentales. Esta definida para sucesos aleatorios que pueden tomar cualquier valor real, $-\infty < x < \infty$. Se representa mediante la función de Gauss,
+\switchcolumn
+\paragraph{Normal distribution}\index[eng]{Normal distribution} It is very frequent to find this distribution in nature. It is related, as we shall see later, with the  uncertainty always present in experimental measurements. It is defined for random events that can take any real value, $-\infty < x < \infty$. It is represented by Gauss' function.
+\end{paracol}
+
 \begin{equation*}
 f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 \end{equation*}
-
-La figura \ref{fig:normal} muestra un ejemplo de distribución normal.
+\begin{paracol}{2}
+\noindent La figura \ref{fig:normal} muestra un ejemplo de distribución normal.
+\switchcolumn
+\noindent Figure \ref{fig:normal} shows an example of normal distribution.
+\end{paracol}
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{normal.eps}
-\caption{Distribución de probabilidad normal}
+\bicaption{Distribución de probabilidad normal}{Normal probability distribution}
 \label{fig:normal}
 \end{figure}
-
+\begin{paracol}{2}
 \paragraph{Parámetros característicos de una distribución}
 
 Los parámetros característicos permiten definir propiedades importantes de las distribuciones de probabilidad. Nos limitaremos a definir los dos más importantes:
 \begin{itemize}\index{Media de una distribución}
 \item \textbf{Media ó valor esperado.} El valor esperado de una distribución se obtiene integrando el producto de cada uno de los valores aleatorios sobre los que está definida la distribución, por su densidad de probabilidad,
+\end{itemize}
+\switchcolumn
+\paragraph{Distributions characteristic parameters}
+The characteristic parameter  allow us to define important properties of probability distributions. We will define only the two main distributions parameters:
+\begin{itemize}\index[eng]{Mean (Distributions)}
+	\item \textbf{Distribution mean or expected value} We get the expected value of a distribution integrating the product of the ramdom variable the distribution is defined on, by its probability density,   
+\end{itemize}
+\end{paracol}
 \begin{equation*}
 \mu = \int_a^b xf(x)dx, \ a\leqslant x \leqslant b
 \end{equation*}
-
+\begin{paracol}{2}
 Así, para una distribución uniforme definida en un intervalo $[a,b]$,
+\switchcolumn
+So, for an uniform distribution defined in the interval $[a,b]$
+\end{paracol}
 \begin{equation*}
 \mu = \int_a^b x\frac{1}{b-a}dx = \frac{a+b}{2}
 \end{equation*}
+\begin{paracol}{2}
 para una distribución exponencial,
+\switchcolumn
+for an exponential distribution
+\end{paracol}
 \begin{equation*}
 \mu = \int_0^{\infty}x\frac{1}{\mu}e^{-\frac{x}{\mu}}dx = \mu
 \end{equation*}
+\begin{paracol}{2}
 y para la distribución normal,
+\switchcolumn
+and for a normal distribution,
+\end{paracol}
+
 \begin{equation*}
 \mu = \int_{-\infty}^{\infty}x \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}= \mu
 \end{equation*}
+\begin{paracol}{2}
 Es interesante observar como en el caso de las distribuciones exponencial y normal la media es un parámetro que forma parte de la definición de la función de distribución.
+\begin{itemize}
+\item \textbf{Varianza}\index{Varianza de una distribución} La varianza da una medida de la dispersión de los valores de 
+la distribución en torno a la media. Se define como,
+\end{itemize}
+\switchcolumn
+It is interesting to notice how for the cases of the exponential and normal distribution the mean is a parameter that is included in the definitions of the distribution function,
+\begin{itemize}
+	\item \textbf{Variance} \index[eng]{Variance (Distribution)} The variance supplies an measurement of the distribution values dispersion around the mean. It is defined as,
+\end{itemize}
+\end{paracol}
 
-\item \textbf{Varianza}\index{Varianza de una distribución} La varianza da una medida de la dispersión de los valores de la distribución en torno a la media. Se define como,
+
 \begin{equation*}
 \sigma^2 = \int_a^b (x-\mu)^2f(x)dx, \ a\leqslant x \leqslant b
 \end{equation*}
+\begin{paracol}{2}
 Para una distribución uniforme definida en el intervalo $[a,b]$, tomará el valor,
+\switchcolumn
+For an uniforme distribution defined in the interval $[a,b]$ it will take the value,
+\end{paracol}
 \begin{equation*}
 \sigma^2 = \int_a^b (x-\mu)^2\frac{1}{b-a}dx = \frac{(b-a)^2}{12}
 \end{equation*}
+\begin{paracol}{2}
 para una distribución exponencial,
+\switchcolumn
+for an exponential distribution,
+\end{paracol}
 \begin{equation*}
 \sigma^2 = \int_0^{\infty}(x-\mu)^2\frac{1}{\mu}e^{-\frac{x}{\mu}}dx = \mu^2
 \end{equation*}
+\begin{paracol}{2}
 y para la distribución normal,
+\switchcolumn
+and for a normal distribution,
+\end{paracol}
 \begin{equation*}
 \sigma^2 = \int_{-\infty}^{\infty}x \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}= \sigma^2
 \end{equation*}
-
+\begin{paracol}{2}
+\begin{itemize}
 \item \textbf{Desviación estándar.} \index{Desviación estándar de una distribución} Es la raíz cuadrada de la varianza: $\sigma =\sqrt{\sigma^2}$  
 \end{itemize}
+\switchcolumn
+\begin{itemize}
+\item \textbf{Standard deviation} \index[eng]{Standard deviation (distribution)} It is the variance square root : $\sigma =\sqrt{\sigma^2}$
+\end{itemize}  
+\end{paracol}
 
+\begin{paracol}{2}
 \section{El teorema del límite central}\label{tlc}
-
+\sectionmark{El teorema del límite central. \textreferencemark\ Central Limit Theorem.}
 El teorema del límite central juega un papel muy importante a la hora de analizar y evaluar resultados experimentales. Nos limitaremos a enunciarlo, pero no daremos una demostración.
 
 Supongamos que tenemos un fenómeno aleatorio continuo que viene caracterizado por una variable aleatoria $x$. Además el fenómeno aleatorio viene descrito por una distribución de probabilidad arbitraria $f(x)$ de media $\mu$ y varianza $\sigma^2$.
 
 Supongamos que realizamos un experimento consistente en obtener $n$ valores de x al azar. Los valores así obtenidos, deberán seguir la distribución de probabilidad $f(x)$. Para caracterizar nuestro experimento, calcularemos la media de los $n$ valores obtenidos,
+\switchcolumn
+\section{The Central Limit Theorem}
+\sectionmark{El teorema del límite central. \textreferencemark\ Central Limit Theorem.}
+The central limit theorem plays a very important role in experimental data analysis. We are going to present it without demonstration.
+
+Suppose we have a continuous random phenomenon with is defined by a random variable $x$. Besides, the phenomenon is described by an arbitrary probability distribution $f(x)$, with mean $\mu$ and variance $\sigma^2$.
+
+Suppose we carry out an experiment and obtain $n$ random samples of $x$. The values so obtained should follow the probability distribution $f(x)$. Tu characterize our experiment we will calculate the mean of the $n$ samples.    
+
+\end{paracol}
 
 \begin{equation*}
 \bar{x}_n=\frac{1}{n}\sum_{i=1}^n x_i
 \end{equation*}
-
+\begin{paracol}{2}
 Si repetimos el experimento muchas veces, obtendremos al final una colección de medias; tantas, como veces hemos repetido el experimento,
 $\left\{\bar{x}_{n1}, \bar{x}_{n2} \cdots \bar{x}_{nj} \cdots \right\}$. El teorema del límite central, establece que las medias así obtenidas constituyen a su vez valores de una variable aleatoria que sigue una distribución normal, cuya media coincide con la media $\mu$ de la distribución original $f(x)$ y cuya varianza coincide con el valor de la varianza de la distribución original $\sigma^2$ dividida por el número $n$ de valores de $x$ obtenidos al azar en cada uno de los experimentos. (En todos los experimentos se obtiene siempre el mismo número de valores de la variable aleatoria $x$).
+\switchcolumn
+If we repeat the experiment many times, we eventually, will obtain a collection of mean values; so many as times we have repeated the experiment, $\left\{\bar{x}_{n1}, \bar{x}_{n2} \cdots \bar{x}_{nj} \cdots \right\}$. The central limit theorem establishes that the set of means so obtained are in turn values of a random variable that follows a normal distribution. The mean of such normal distributions meets the mean $\mu$  of the original distribution $f(x)$ and the its variance is equal to the variance $\sigma^2$ of the original distribution divided by the number $n$ of values of $x$ randomly generated in each one of the experiments. (You should obtain the same number of samples of the random variable $x$ in every experiment). 
+\end{paracol}
 
 \begin{equation*}
 x, \ f(x), \mu, \sigma^2 \Rightarrow \bar{x}_n,\ f(\bar{x}_n)=\frac{1}{\sqrt{2\pi\sigma^2/n}}e^{-\frac{(x-\mu)^2}{2\sigma^2/n}}  
 \end{equation*}
 
-Veamos un ejemplo para ilustrar el teorema. Hemos visto en la sección \ref{rand} que podemos construir un generador que genera números aleatorio uniformemente distribuidos en el intervalo $[0,1)$. Podemos considerar que el ordenador genera número aleatorios que siguen aproximadamente una distribución continua en dicho intervalo. Podemos alterar dicho intervalo multiplicando el resultado de \texttt{rand} por un número cualquiera. Así, por ejemplo,
-\begin{minted}{python}
-	In [53]: l = 5*gen_num.random(100)
-\end{minted} 
+\begin{paracol}{2}
+Veamos un ejemplo para ilustrar el teorema. Hemos visto en la sección \ref{rand} que podemos construir un generador que genera números aleatorio uniformemente distribuidos en el intervalo $[0,1)$. Podemos considerar que el ordenador genera número aleatorios que siguen aproximadamente una distribución continua en dicho intervalo. Podemos alterar dicho intervalo multiplicando por un número cualquiera el resultado de \texttt{gen\_num.random}. Así, por ejemplo,
+\switchcolumn
+Let see an example to show the theorem's result. We have seen in section \ref{rand} that we can build generator to obtain random numbers uniformly distributed in the interval $[0,1)$. We can consider the computer to generate number with approximately follows a continuous distribution in this interval. We can expand the interval multiplying by any number the result of \texttt{gen\_num.random} . So, for instance, 
+\end{paracol}
+\begin{center}
+	\begin{minipage}{\textwidth}
+		\begin{minted}{python}
+			In [53]: l = 5*gen_num.random(100)
+		\end{minted}
+	\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
 genera un array de 100 números aleatorios en el intervalo $(0,5)$.
 Además podemos desplazar el centro del intervalo sumando o restando al resultado anterior un segundo número. Así,
-\begin{minted}{python}
-	In [53]: l = 5*gen_num.random(100) - 2
-\end{minted} 
+\switchcolumn
+generates a 100 random number array in the interval $(0,5)$.
+Moreover, we can shift the center of the interval adding or subtracting a secon number. So, 
+\end{paracol}
+
+
+\begin{center}
+	\begin{minipage}{\textwidth}
+		\begin{minted}{python}
+			In [53]: l = 5*gen_num.random(100)-2
+		\end{minted}
+	\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
 genera un vector de 100 números aleatorios en el intervalo $(-2,3)$.
 
 Para comprobar el teorema del límite central, podemos construir un bucle que genere un vector de $n$ números aleatorios en un determinado intervalo, calcule su media y guarde el resultado en un vector de medias. El siguiente código de Python, realiza dicho cálculo primero generando un vector de $10$ números aleatorios ($n = 10$) y después generando un vector de $100$, ($n=100$).  El programa genera en cada caso un millón de vectores distintos.
+\switchcolumn
+generates a 100 random numbers array in the interval $(-2,3)$.
 
+We can now check the central limit theorem, building a loop that generates a vector of $n$ random number in an specific interval, calculates their mean value and saves the result in a vector of 'means'. The following python code, makes this calculation generating firs a vector of $10$ random numbers ($n=10$) and then generating a vector of $100$ random numbers, ($n=100$). IN both cases, the program generates one million of different vectors.
+\end{paracol}
 \inputminted[
 frame=lines,
 framesep=2mm,
@@ -618,63 +823,97 @@ fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/tratamiento_datos/central_limit.py}
 
+\begin{paracol}{2}
 De acuerdo con el teorema del límite central, los dos vectores de medias obtenidos, \texttt{media10} y \texttt{media100}, deben seguir distribuciones normales tales que,
 \begin{enumerate}
-\item La media de la distribución normal debe coincidir con la media de la distribución a la que pertenecían los datos originales. Como hemos tomado datos distribuidos uniformemente en el intervalo $[-1,1]$, La media de dicha distribución es,
+\item La media de la distribución normal debe coincidir con la media de la distribución a la que pertenecían los datos originales. Como hemos tomado datos distribuidos uniformemente en el intervalo $[-1,1]$, la media de dicha distribución es,
+\end{enumerate}
+\switchcolumn
+According with the central limit theorem, both means vectors obtained by this procedure,  \texttt{media10} y \texttt{media100}, should follow normal distributions such that, 
+\begin{enumerate}
+	\item The mean of the normal distribution sho\-uld meet the mean of the original distribution the data belong to. as we have taken data uniformly distributed in the interval $[-1,1]$, The mean value of this distribution is,
+\end{enumerate}
+
+\end{paracol}
 \begin{equation*}
 \mu = \frac{(b+a)}{2}=\frac{1+(-1)}{2}=0
 \end{equation*}
+\begin{paracol}{2}
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item La varianza de las distribuciones normales a las que pertenecen las medias obtenidas será en cada caso el resultado de dividir la varianza de la distribución uniforme original entre el número de datos empleados para calcular dichas medias,
-
+\end{enumerate}
+\switchcolumn
+\begin{enumerate}
+	\setcounter{enumi}{1}
+	\item The variance of the normal distributions the means obtained belongs to, will be in each case the result of dividing the variance of the original uniform distribution by the number of data used to calculate the means, 
+\end{enumerate}
+\end{paracol}
 
 \begin{align*}
 \sigma_{10}^2 = \frac{\sigma^2}{10}=\frac{\frac{(b-a)^2}{12}}{10}=\frac{\frac{(1-(-1))^2}{12}}{10}=\frac{1}{30}\\
 \sigma_{100}^2 = \frac{\sigma^2}{100}=\frac{\frac{(b-a)^2}{12}}{100}\frac{\frac{(1-(-1))^2}{12}}{10}=\frac{1}{300}
-\end{align*}s
-\end{enumerate}
+\end{align*}
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{tlc.eps}
-\caption{Teorema del límite central: Comparación entre histogramas normalizados para un millón de medias y la distribución normal a que pertenecen. Izquierda medias de 10 muestras. Derecha medias de 100 muestras}\label{fig:ctrli}
+\bicaption{Teorema del límite central: Comparación entre histogramas normalizados para un millón de medias y la distribución normal a que pertenecen. Izquierda medias de 10 muestras. Derecha medias de 100 muestras}{Central Limit Theorem: Comparison between the normalised histograms for a million of means and the normal distribution they belong to. Left, mean of 10 random samples. Right, means of 100 random samples }\label{fig:ctrli}
 \end{figure}
 
-
+\begin{paracol}{2}
 Por tanto, las distribuciones normales a las que pertenecen las medias calculadas son,
-
-
+\switchcolumn
+Thus, the normal distributions the means calculated belong to are,
+\end{paracol}
 \begin{equation*}
 f(\bar{x}_{10})=\frac{1}{\sqrt{2\pi\frac{1}{30}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{30}}},\  f(\bar{x}_{100})=\frac{1}{\sqrt{2\pi\frac{1}{300}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{300}}}
 \end{equation*}
-
-La figura \ref{fig:ctrli}, muestran un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total de puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad.}. Sobre dicho histograma se ha trazado mediante una línea roja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
+\begin{paracol}{2}
+La figura \ref{fig:ctrli}, muestra un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total de puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad.}. Sobre dicho histograma se ha trazado mediante una línea roja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
 
 De las figuras, es fácil deducir que cuantos más datos empleemos en el cálculo de las medias, más centrados son los resultados obtenidos en torno a la media de la distribución original. Por otro lado, esto es una consecuencia lógica del hecho de que la varianza de la distribución normal que siguen las medias, se obtenga dividiendo la varianza de la distribución original, por el número de datos $n$; cuantos mayor es $n$ más pequeña resulta la varianza de la distribución normal resultante.
+\switchcolumn
+Figure \ref{fig:ctrli} shows a normalized histogram of the means obtained with the code described above\footnote{We can obtain a normalized histogram dividing the number of values belonging to a bar by the width of the bar and the total number of value that compose the histogram. IN this way if we sum up the values represented in each bar multiplied by the bar width the result is one. Only if we normalize the histogram can we compare it with the distribution the data belong two which, by definition should have unit area.}. On top of the histogram we have represented, using a orange line, The Gauss function which represent in each case the normal distribution the means belong to. As can be seen, the normalize histograms and the normal distributions feet well.
+
+From the figures it is easy to observe that as many data are uses to calculate the means, more center are the results around the mean of the original distribution. On the other hand, this is a logical consequence of the fact that the variance of the normal distribution the means follow, are obtained dividing the variance of the original distribution by the number of data $n$; as larger is $n$ smaller is the variance of the resulting normal distribution.  
+\end{paracol}
  
-\section{Incertidumbre en las medidas experimentales}
+\begin{paracol}{2}
+\section{Incertidumbre en las medidas experimentales}\index{Incertidumbre}
+\sectionmark{Incertidumbre. \textreferencemark\ Uncertainty.}
 Siempre que realizamos una medida de una cantidad física dicha medida  estará afectada por un cierto error. Dado que no conocemos cual es el valor verdadero que toma la magnitud que estamos midiendo, no podemos tampoco conocer el error que cometemos al medirla. Decimos entonces que toda medida está afectada por un cierto grado de incertidumbre.
 
 Lo que sí es posible hacer, es acotar el grado de incertidumbre de una medida, es decir estimar unos límites con respecto a la medida realizada dentro de los cuales debe estar contenido el verdadero valor que toma la magnitud medida.
 
-Cualquier medida experimental debe incluir junto al resultado de la medida el valor de su incertidumbre y, por supuesto, las unidades empleadas en la medida. La figura \ref{fig:incertidumbre} muestra un modo correcto de expresar una medida experimental, aunque no es el único. Como puede observarse, la medida y su incertidumbre se separan en la representación mediante el símbolo $\pm$.  La incertidumbre se representa como  un entorno alrededor del valor medido, dentro del cual estaría incluido el valor real de la medida\footnote{Como se verá más adelante se debe indicar también el \emph{grado de confianza} con el que esperamos que la medida caiga dentro del intervalo indicado por la incertidumbre}. 
+Cualquier medida experimental debe incluir junto al resultado de la medida el valor de su incertidumbre y, por supuesto, las unidades empleadas en la medida. La figura \ref{fig:incertidumbre} muestra un modo correcto de expresar una medida experimental, aunque no es el único. Como puede observarse, la medida y su incertidumbre se separan en la representación mediante el símbolo $\pm$.  La incertidumbre se representa como  un entorno alrededor del valor medido, dentro del cual estaría incluido el valor real de la medida\footnote{Como se verá más adelante se debe indicar también el \emph{grado de confianza} con el que esperamos que la medida caiga dentro del intervalo indicado por la incertidumbre}.
+\switchcolumn
+\section{Experimental measurement uncertainty}\index[eng]{Uncertainty}
+\sectionmark{Incertidumbre. \textreferencemark\ Uncertainty.}
+Whenever we measure a physical magnitude, such measurement is affected by some error. As we do not know the actual value taken by the magnitude we are measuring, we cannot know the error we make when we take the measure. We say then, that every measurement is affected by some degree of uncertainty.
+
+But we can, a least, calculate bounds on the degree of measurement uncertainty. This means we can estimate limits around the measurement that contain the actual value of the measured quantity.
+
+Any experimental measurement should include, besides the measure's result, the value of its uncertainty and, of course, the units used in the measurement. Figure \ref{fig:incertidumbre} shows the right way of expressing an experimental measurement, although it is not the only one. As seen, the measurement and its uncertainty are separated in the representation by the symbol $\pm$. So, the uncertainty is represented as a contour around the value of the measurement; inside this contour, the actual value of the measured magnitude should be. \footnote{As we shall later, we should also indicate the \emph{degree of confidence} when we expect the actual value to fall inside the interval indicated by the uncertainty.}
+\end{paracol}
 
 \begin{figure}
 \centering
 \begin{tikzpicture}
 %\usetikzlibrary{shapes.geometric}
-\path (3,0) node(a) [rectangle,draw=blue, thick,rounded corners,align=center,font=\large]{Medida: $125.2$}
-(7,-3) node(b)[rectangle,draw=red, thick,rounded corners,align=center,font=\large]{Incertidumbre: $0.5$}
-(9,0) node(c)[rectangle,draw=green, thick,rounded corners,align=center, font=\large]{Unidades: kg}
+\path (3,0) node(a) [rectangle,draw=blue, thick,rounded corners,align=center,font=\large]{Medida/Measurement: $125.2$}
+(7,-3) node(b)[rectangle,draw=red, thick,rounded corners,align=center,font=\large]{Incertidumbre/Uncertainty: $0.5$}
+(9,0) node(c)[rectangle,draw=green, thick,rounded corners,align=center, font=\large]{Unidades/Units: kg}
 (6,-1.5) node(d)[font= \huge]{$125.2 \pm 0.5 \text{kg}$};
 \draw[blue,-latex](a.south)--(4.5,-1.1);
 \draw[red,-latex](b.north)--(7,-1.8);
 \draw[green,-latex](c.south)--(8.0,-1.2);
 \end{tikzpicture}
-\caption{Modo correcto de expresar una medida experimental}
+\bicaption{Modo correcto de expresar una medida experimental.}{A right way to display an experimental measurement.}
 \label{fig:incertidumbre}
 \end{figure} 
 
- 
+\begin{paracol}{2}
 \subsection{Fuentes de incertidumbre.}
 
 Antes de entrar en el estudio de las fuentes de incertidumbre, es importante destacar que el estudio de la medición constituye por sí mismo una ciencia, conocida con el nombre de metrología. Lo que vamos a describir a continuación tanto referido a las fuentes de incertidumbre como al modo de estimarla, es incompleto y representa tan solo una primera aproximación al problema.
@@ -682,6 +921,7 @@ La incertidumbre de una medida tiene fundamentalmente dos causas:
 
 \paragraph{Incertidumbre sistemática de precisión.}\index{Medidas experimentales! precisión}
  La primera es la precisión limitada de los aparatos de medida. Cualquier aparato de medida tiene una precisión que viene determinada por la unidad o fracción de unidad más pequeña que es capaz de resolver. Por ejemplo, una regla normal, es capaz de resolver (distinguir) dos longitudes que se diferencien en $0.5 mm$, un reloj digital sencillo es capaz de resolver tiempos con una diferencia de $1s.$ etc.
+ 
 La incertidumbre debida a la precisión finita de los aparatos de medida recibe el nombre de \emph{Incertidumbre sistemática de precisión.} 
 Se llama así porque depende exclusivamente de las características del aparato de medida que, en principio, son siempre las mismas.
 
@@ -694,41 +934,87 @@ La incertidumbre sistemática de precisión representa una distribución uniform
 
 Afortunadamente, el teorema del límite central, que describimos en al sección \ref{tlc} proporciona un sistema de estimar la incertidumbre estadística.
 
-Supongamos que repetimos $n$ veces la misma medida experimental. Por ejemplo: tenemos un recipiente con agua, lo calentamos y tomamos la temperatura del agua cuando ésta rompe a hervir. Repetimos $n$ veces el experimento y obtenemos un conjunto $\{x_1,x_2,\cdots x_n \}$ de medidas de la temperatura de ebullición del agua. Cabe esperar que, debido a la incertidumbre estadística, los valores obtenidos sean distintos  y, a la vez próximos entre sí\footnote{De hecho, si aparecen algunos valores claramente alejados del resto, lo habitual es considerar que están afectados por algún error desconocido y desecharlos. Dichos valores suelen recibir el nombre de valores o datos aberrantes.}.
+Supongamos que repetimos $n$ veces la misma medida experimental. Por ejemplo: tenemos un recipiente con agua, lo calentamos y tomamos la temperatura del agua cuando ésta rompe a hervir. Obtenemos un conjunto\\ $\{x_1,x_2,\cdots x_n \}$ de medidas de la temperatura de ebullición del agua. Cabe esperar que, debido a la incertidumbre estadística, los valores obtenidos sean distintos  y, a la vez próximos entre sí\footnote{De hecho, si aparecen algunos valores claramente alejados del resto, lo habitual es considerar que están afectados por algún error desconocido y desecharlos. Dichos valores suelen recibir el nombre de valores o datos aberrantes.}.
 
-Sabemos que dichos valores deben seguir una cierta distribución de probabilidad. Podríamos estimar su valor esperado $\mu$ mediante el cálculo de la media aritmética de las medidas tomadas.
+Sabemos que dichos valores deben seguir una cierta distribución de probabilidad. Podría\-mos estimar su valor esperado $\mu$ mediante el cálculo de la media aritmética de las medidas tomadas.
+\switchcolumn
+\subsection{Sources of Uncertainty}
+Before beginning to study the sources of uncertainty, it is important to notice that the study of the 'measure' is science, known as metrology. What we are to present in the following paragraphs, in reference to the sources of uncertainty and the means to estimate this last, is incomplete and only represents a first approach to the problem. The uncertainty of a measurement has mainly two causes:
+
+\paragraph{Systematic accuracy uncertainty.}\index[eng]{Experimental measurements! accuracy}
+The\\ first one is the limited accuracy of the sensors. Any sensor's accuracy is determined by the least unit or fraction of the units the device is able to resolve. For instance, a standard rule can resolve (distinguish) two lengths that are different only by $0.5mm$. A simple digital watch can display times with a resolution of one second, etc.
+
+The uncertainty due to the finite accuracy of the sensors is known as \emph{Systematic accuracy uncertainty}. It is named so because it depends only on the features of the sensor device, which are always the same, at least in principle. 
+
+Systematic accuracy uncertainty is usually shown by adding half the least division of the Sensor device measurement scale to the measurement. So, for instance, if we are taking a measurement of $123 mm$ with a rule graduated in millimetres, we can present the measurement as  $123 \pm 0.5 mm$ or $12,3\pm0.05cm$.
+
+The systematic accuracy uncertainty represents an uniform probability density distribution. The mean is the value measured and the width is the minimum division of the sensor measurement scale. This means, that we consider that the real value of the magnitude is inside this interval (defined by the minimum division value) with a probability of $100\%$. Coming back to the example of the rule, The real value of our measurement will be inside the interval $[122.5,\ 123.5 ]$ and it could take whatever value, inside this interval, with the same probability. 
+
+\paragraph{Statistical uncertainty}
+The second source of uncertainty arises from environmental factors that constantly change the conditions under which a measurement is taken. These factors render the measurement subject to random variations. While we could theoretically describe this variation using a probability distribution $f(x)$, in practice, the specific distribution is unknown. Consequently, we do not know its mean value $\mu$ or its variance $\sigma$.
+
+But, fortunately, the central limit theorem, that we described in section \ref{tlc}, supplies a method to estimate the statical uncertainty.
+
+Let's suppose we repeat the same experimental measurement $n$ times. For example, we have a bowl of water; we heat it and measure the water temperature when it begins to boil. We obtain a set $\{x_1,x_2,\cdots x_n\}$ of boiling water temperature measurements. Due to statistical uncertainty, it is likely that,  the values we obtain will differ from one to another but they will be close together\footnote{In fact, when we obtain data points that are significantly different from the rest, we often consider them to be influenced by some unknown error and will discard them. Such data are known as outlayers}.
+
+We know that this data should follow some probability distribution. We can estimate the expected value, $\mu$, by calculating the arithmetic mean of the collected data.
+\end{paracol}
+
 \begin{equation*}
 \mu \approx \bar{x}_n = \frac{1}{n}\sum_{i=1}^n x_i
 \end{equation*}
 
+\begin{paracol}{2}
 La media así calculada se toma como el valor resultante de la medida realizada.
 
 De acuerdo con el teorema del límite central, $\bar{x}_n$ es una variable aleatoria que debe seguir una distribución normal de media $\mu$ y de varianza $\sigma^2/n$. Como tampoco conocemos el valor de la varianza $\sigma^2$ de la distribución de probabilidad que siguen los datos medidos, la estimamos a partir de los propios datos medidos, de acuerdo con la siguiente ecuación,
+\switchcolumn
+We take the mean so calculated as the resulting value of the performed measure.
+
+According to the central limit theorem, the sample mean $\bar{x}_n$ is a random variable that follows a normal distribution with a mean of $\mu$ and a variance of $\sigma^2/n$. Since we do not know the variance $\sigma^2$ of the underlying probability distribution from which the measured data is drawn, we estimate it using the measured data itself, following this equation,
+\end{paracol}
+
 \begin{equation*}
 \sigma^2 \approx s^2 = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2
 \end{equation*}
 
+\begin{paracol}{2}
 Dividiendo $s^2$ por el número de muestras empleado se puede aproximar la varianza de la distribución normal que debe seguir $\bar{x}_n$,
-
+\switchcolumn
+Dividing $s^2$ by the number of samples, we can approximate the variance of the normal distribution  that $\bar{x}_n$ follows, 
+\end{paracol}
 \begin{equation*}
 \sigma^2_{xn} \approx s^2_{xn} = \frac{s^2}{n}
 \end{equation*}
 
+\begin{paracol}{2}
 La incertidumbre, se puede asociar con la raíz cuadrada la varianza que acabamos de estimar,
-
+\switchcolumn
+We can associate the uncertainty with the square root of the variance just estimated.,
+\end{paracol}
 \begin{equation*}
 s_{xn}=\sqrt{s^2_{xn}}=\sqrt{\frac{\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2}{n}}
 \end{equation*}
 
+\begin{paracol}{2}
 esta cantidad recibe el nombre de desviación estándar.
 
 \subsection{Intervalos de confianza.}
-Como hemos visto, a partir del teorema central del límite podemos asociar la media de los valores obtenidos al repetir una medida y su desviación estándar con una distribución normal. Podemos ahora, en un segundo paso,s asociar la incertidumbre de la medida realizada con la probabilidad representada por dicha distribución normal.
+Como hemos visto, a partir del teorema central del límite podemos asociar la media de los valores obtenidos al repetir una medida y su desviación estándar con una distribución normal. Podemos ahora, en un segundo paso, asociar la incertidumbre de la medida realizada con la probabilidad representada por dicha distribución normal.
 
 Si el valor obtenido tras realizar $n$ repeticiones de una medida es $\bar{x}_n$ y su desviación típica es $s_{xn}$ ¿Cuál es la probabilidad de que el valor medido esté realmente comprendido en el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
 
 Como vimos en el apartado \ref{pdfc}, dicha probabilidad puede calcularse integrando la distribución normal obtenida entre $\bar{x}_n-s_{xn}$ y $\bar{x}_n+s_{xn}$,
+\switchcolumn
+this quantity is known as the standard deviation.
 
+\subsection{Confidence intervals.}
+As we have seen, using the central limit theorem, it is possible to relate the mean of the values obtained by repeating a measure and their standard deviation to a normal distribution. In the second step, we can associate the uncertainty of the performed measure with the probability represented by this normal distribution.
+
+If the mean value after carrying out $n$ repetitions of measurement is $\bar{x}_n$ and the standard deviation is $s_{xn}$ What is the probability that the measured value will be actually inside the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
+
+As we see in section \ref{pdfc}, such probability can be calculated by integrating the normal distribution obtained between the limits $\bar{x}_n-s_{xn}$ y $\bar{x}_n+s_{xn}$,
+\end{paracol}
 \begin{equation*}
 P(\bar{x}_n - s_{xn} \leqslant x \leqslant \bar{x}_n
 + s_{xn}) = \frac{1}{\sqrt{2\pi\sigma^2_{xn}}}\int_{\bar{x}_n-s_{xn}}^{\bar{x}_n+s_{xn}}e^{\frac{-(x-\bar{x}_n)^2}{2s_{xn}^2}}
@@ -740,6 +1026,7 @@ P(\bar{x}_n - s_{xn} \leqslant x \leqslant \bar{x}_n
 \label{fig:ic1}
 \end{figure}
 
+\begin{paracol}{2}
 El valor de dicha integral es $0.6827$. Si expresamos este valor como un tanto por ciento, concluimos que la probabilidad de que el valor medido este en el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ es del $68.27\%$. Dicho de otra manera: el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ corresponde con el \emph{intervalo de confianza} del 68.27\%. La figura \ref{fig:ic1} muestra el área bajo la distribución normal, correspondiente a dicha probabilidad.
 
 Volviendo al problema de la medida, la manera correcta de expresarla sería en nuestro caso:  $\bar{x}\pm s_{xn}$ (unidades). Indicando que la incertidumbre corresponde con el intervalo de confianza del $68.27\%$.
@@ -756,9 +1043,27 @@ Dado que la distribución normal no tiene primitiva, solo puede integrarse numé
 Además, la función \texttt{norminv(p)} calcula la función de probabilidad inversa acumulada para una distribución de probabilidad normal de media $0$ y varianza $1$. En realidad esto no supone ningún problema ya que para obtener el valor correspondiente a cualquier otra distribución normal, basta multiplicar el valor $x$ obtenido con \texttt{norminv(p)} por el valor de la desviación estándar y sumarle el valor de la media de la distribución deseada.
 
 Antes de seguir adelante, veamos algunos ejemplos de uso de esta función. Por ejemplo si introducimos en la función el valor $0.1$,
+
+\switchcolumn
+The value taken by this integral is $0.6827$. If we represent this value using a percentage, We can conclude that the probability of the mean value falling within the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ is a $68.27\%$. In other words, the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ represents a confidence interval  of 68.27\%. Figure \ref{fig:ic1} shows the area beneath the normal distribution corresponding to this probability.
+
+Coming back to the measurement problem, the appropriate way to represent it in our example would be: $\bar{x}\pm s_{xn}$ (units). Indicating that the uncertainty corresponds to a confidence interval of $68.27\%$.
+
+When examining figure \ref{fig:ic1}, one might wonder: What uncertainty value will encompass the true measurement value with a 95\% probability? In other words, how much do we need to \emph{stretch} the integration interval to achieve an area of 0.95 beneath the normal distribution?
+
+We can estimate this interval by using the inverse of the cumulated probability distribution, as we explained in section \ref{pdfc}. We obtain the cumulated probability distribution by integrating the corresponding probability density distribution.     
+
+The cumulative probability function provides the probability of obtaining a result that falls between the lower limit of the probability distribution and a specific value, $x$, for which we are calculating the function's result. The inverse of the cumulative probability function determines which value $x$ corresponds to a given cumulative probability, where that probability is a value between $0$ and $1$.
+
+The normal function has not primitive and it can only be integrated numerically. Thus, its inverse, can only be obtain also by numerical methods. 
+
+
+\end{paracol}
+
+
 \begin{verbatim}
 >> p = 0.1;
->> x = norminv(p)s
+>> x = norminv(p)
 >> x = -1.2815515655446004
 \end{verbatim}
 
@@ -1146,3 +1451,4 @@ u_c(P) = \sqrt{s_c^2(P)} =  1.0678\cdot 10^{-4} W
 
 Con lo que finalmente expresaríamos la medida indirecta de la potencia consumida como, $P = 1.285 \pm 0.10678 $ mW. Si suponemos que la distribución de probabilidad asociada a la incertidumbre de la potencia es normal, la incertidumbre así expresada (mediante la desviación estándar) representaría un intervalo de confianza del $68.27\%$. 
 
+https://demanda.ree.es/visiona/peninsula/nacionalau/total/2025-03-19
