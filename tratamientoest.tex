@@ -541,7 +541,7 @@ La distribución de probabilidad $f(x)\geqslant 0$ representa en el caso continu
 \switchcolumn
 Figure \ref{fig:puniform} shows the resulting probability distribution. 
 
-It is important to realize that the difference when we compare with the discrete case. The interval $[a,b]$ contains infinite numbers. If we try to assign a value to the probability dividing the favorable cases by the possible cases, as we did in the discrete case,  we would obtain a value $0$ for every number.
+It is impointronumpy.texrtant to realize that the difference when we compare with the discrete case. The interval $[a,b]$ contains infinite numbers. If we try to assign a value to the probability dividing the favorable cases by the possible cases, as we did in the discrete case,  we would obtain a value $0$ for every number.
 
 The probability distribution  $f(x)\geqslant 0$ represents in the continuous case the a \emph{density} of probability. $f(x_0)$ represents the probability of obtaining a random number in an interval $dx$ around $x_0$,
 \end{paracol}
@@ -870,7 +870,7 @@ Thus, the normal distributions the means calculated belong to are,
 f(\bar{x}_{10})=\frac{1}{\sqrt{2\pi\frac{1}{30}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{30}}},\  f(\bar{x}_{100})=\frac{1}{\sqrt{2\pi\frac{1}{300}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{300}}}
 \end{equation*}
 \begin{paracol}{2}
-La figura \ref{fig:ctrli}, muestra un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total de puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad.}. Sobre dicho histograma se ha trazado mediante una línea roja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
+La figura \ref{fig:ctrli}, muestra un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total deintronumpy.tex puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad.}. Sobre dicho histograma se ha trazado mediante una línea roja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
 
 De las figuras, es fácil deducir que cuantos más datos empleemos en el cálculo de las medias, más centrados son los resultados obtenidos en torno a la media de la distribución original. Por otro lado, esto es una consecuencia lógica del hecho de que la varianza de la distribución normal que siguen las medias, se obtenga dividiendo la varianza de la distribución original, por el número de datos $n$; cuantos mayor es $n$ más pequeña resulta la varianza de la distribución normal resultante.
 \switchcolumn
@@ -1014,7 +1014,7 @@ As we have seen, using the central limit theorem, it is possible to relate the m
 If the mean value after carrying out $n$ repetitions of measurement is $\bar{x}_n$ and the standard deviation is $s_{xn}$ What is the probability that the measured value will be actually inside the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
 
 As we see in section \ref{pdfc}, such probability can be calculated by integrating the normal distribution obtained between the limits $\bar{x}_n-s_{xn}$ y $\bar{x}_n+s_{xn}$,
-\end{paracol}
+\end{paracol}intronumpy.tex
 \begin{equation*}
 P(\bar{x}_n - s_{xn} \leqslant x \leqslant \bar{x}_n
 + s_{xn}) = \frac{1}{\sqrt{2\pi\sigma^2_{xn}}}\int_{\bar{x}_n-s_{xn}}^{\bar{x}_n+s_{xn}}e^{\frac{-(x-\bar{x}_n)^2}{2s_{xn}^2}}
@@ -1038,11 +1038,19 @@ Para estimarlo se emplea la inversa de la función de probabilidad acumulada. Co
 
 Dicha función representa la probabilidad de obtener un resultado entre el límite inferior para el que está definida la distribución de probabilidad y el valor $x$ para el que se calcula la función. La inversa de la función de probabilidad acumulada nos indica, dado un valor de la probabilidad comprendido entre $0$ y $1$, a qué valor $x$ corresponde dicha probabilidad acumulada. 
 
-Dado que la distribución normal no tiene primitiva, solo puede integrarse numéricamente. Por tanto, su inversa, solo puede obtenerse también numéricamente. Matlab, suministra la función \texttt{norminv(p)}, que permite obtener directamente los valores de la inversa de la función de probabilidad normal acumulada.
+Dado que la distribución normal no tiene primitiva, solo puede integrarse numéricamente. Por tanto, su inversa, solo puede obtenerse también numéricamente. 
 
-Además, la función \texttt{norminv(p)} calcula la función de probabilidad inversa acumulada para una distribución de probabilidad normal de media $0$ y varianza $1$. En realidad esto no supone ningún problema ya que para obtener el valor correspondiente a cualquier otra distribución normal, basta multiplicar el valor $x$ obtenido con \texttt{norminv(p)} por el valor de la desviación estándar y sumarle el valor de la media de la distribución deseada.
+Hay varias posibilidades en Python para obtener tanto los valores de la distribución normal acumulada como los de su inversa. Todos ellos forman parte de módulos especializados en realizar cálculos estadísticos. En esta notas nos vamos a centrar en el uso del módulo Scipy y, en particular, su submódulo stats. Se trata de un módulo especializado en cálculo estadistico, que implementa un buen número de funciones de distribución. 
 
-Antes de seguir adelante, veamos algunos ejemplos de uso de esta función. Por ejemplo si introducimos en la función el valor $0.1$,
+En nuestro caso particular, nos centraremos en la distribución normal. Podemos emplearla de muchas maneras, la más sencilla es importarla directamente desde su módulo, \mintinline{python}|from scipy.stats import norm|.
+
+\mintinline{python}|norm| suministra todas las funciones necesarias para trabajar con distribuciones normales. Por defecto, la distribución normal con la que trabaja es la estádar, es decir una distribucion de media $0$ y desviación estandar $1$. Si queremos cambiar los valores de media y desviaciación estándar, podemos hacerlo empleando los parámetros \mintinline{python}|loc| (media) y \mintinline{python}|scale| (desviación estándar). Entre las funciones sumnistradas, nos vamos a centrar de momento en las tres principales, 
+\begin{itemize}
+	\item \mintinline{python}|norm.pdf(x,loc=0,scale=1)|, suministra valores de la distribucion normal.
+	\item \mintinline{python}|norm.cdf(x,loc=0,scale=1)|, suministra valores de la distribución normal acumulada
+	\item \mintinline{python}|norm.ppf(p,loc=0,scale=1)|, $0\leq q \leq 1$, suministra la inversa de la distribución normal acumulada
+\end{itemize}
+veamos algunos ejemplos del uso de estas funciones,
 
 \switchcolumn
 The value taken by this integral is $0.6827$. If we represent this value using a percentage, We can conclude that the probability of the mean value falling within the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ is a $68.27\%$. In other words, the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ represents a confidence interval  of 68.27\%. Figure \ref{fig:ic1} shows the area beneath the normal distribution corresponding to this probability.
@@ -1055,27 +1063,69 @@ We can estimate this interval by using the inverse of the cumulated probability 
 
 The cumulative probability function provides the probability of obtaining a result that falls between the lower limit of the probability distribution and a specific value, $x$, for which we are calculating the function's result. The inverse of the cumulative probability function determines which value $x$ corresponds to a given cumulative probability, where that probability is a value between $0$ and $1$.
 
-The normal function has not primitive and it can only be integrated numerically. Thus, its inverse, can only be obtain also by numerical methods. 
+The normal function has not primitive and it can only be integrated numerically. Thus, its inverse, can only be obtain also by numerical methods.
 
+There are several means in Python to calculate the values of the normal cumulative distribution and the values of its inverse function. All this methods belong to Python modules devoted to make statistical calculations. In this notes we are going to focus on Scipy module and, specifically in Scipy's submodule stats; a submodule specifically designed to perform statistical computing, which implement a large number of distributions functions.
 
+In our case, we are going to focus on the normal distribution. we can use it in many different ways but perhaps the simplest is just to import in from its module,\\ \mintinline{python}|from scipy.stats import norm|.
+
+\mintinline{python}|norm| supplies all necessary functions to work with normal distributions. It works by default with an standard normal distribution, i.e. a normal distribution of mean $0$ and standard deviation $1$. If we want to change the values of mean and standard deviation, we can do it using the parameters \mintinline{python}|loc| (mean) y \mintinline{python}|scale| (standard deviation). Between the function supplied by \mintinline{python}|norm| we are going to focus now on the three main ones,
+\begin{itemize}
+	\item \mintinline{python}|norm.pdf(x,loc=0,scale=1)|, it supplies normal distribution values .
+	\item \mintinline{python}|norm.cdf(x,loc=0,scale=1)|, it supplies normal cumulated distributions values.
+	\item \mintinline{python}|norm.ppf(p,loc=0,scale=1)|, $0\leq q \leq 1$, it supplies inverse normal cumulated distributions values.
+\end{itemize}
+
+Let's see for these functions some examples of use, 
+  
 \end{paracol}
 
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=normal,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/tratamiento_datos/normal.py}
 
-\begin{verbatim}
->> p = 0.1;
->> x = norminv(p)
->> x = -1.2815515655446004
-\end{verbatim}
+\begin{minted}{python}
+x= [-5. -3.33333333 -1.66666667  0. 1.66666667  3.33333333 5.] 
+
+p= [0. 0.16666667 0.33333333 0.5 0.66666667 0.83333333 1.]
+ 
+pdf standard [1.48671951e-06 1.54227900e-03 9.94771388e-02 3.98942280e-01
+9.94771388e-02 1.54227900e-03 1.48671951e-06] 
+
+cdf standard [2.86651572e-07 4.29060333e-04 4.77903523e-02 5.00000000e-01
+9.52209648e-01 9.99570940e-01 9.99999713e-01] 
+
+ppf standard [-inf -0.96742157 -0.4307273   0. 0.4307273 0.96742157 inf] 
+
+pdf m=10,std=5 [0.00088637 0.0022792  0.00524438 0.01079819 0.01989543 0.03280201 
+0.04839414] 
+
+cdf m=10,std=5 [0.0013499  0.00383038 0.00981533 0.02275013 0.04779035 0.09121122 
+0.15865525] 
+
+ppf m=10,std=5 [-inf  5.16289217  7.8463635  10. 12.1536365  14.83710783 inf] 
+
+mean and std predefined 
+
+pdf m=10,std=5 [0.00088637 0.0022792  0.00524438 0.01079819 0.01989543 0.03280201 
+0.04839414] 
+
+cdf m=10,std=5 [0.0013499  0.00383038 0.00981533 0.02275013 0.04779035 0.09121122
+0.15865525] 
+
+ppf m=10,std=5 [-inf  5.16289217  7.8463635  10. 12.1536365  14.83710783 inf] 
+\end{minted}
+
 
 Es decir la probabilidad de obtener un número en el intervalo $(-\infty, -1.2815515655446004]$ vale $0.1$ o, lo que es equivalente, un 10\%.
 
 Otro ejemplo especialmente significativo: Si introducimos el valor $0.5$, 
-
-\begin{verbatim}
->> p = 0.5;
->> x = norminv(p)
->> x = 0.0
-\end{verbatim}
 
 Como cabría esperar de la simetría de la distribución normal, hay un $0.5$ ---50\%--- de probabilidades de obtener un número entre $-\infty$ y $0$.  La figura \ref{fig:invcum} muestra la función inversa de probabilidad acumulada y en particular el punto  correspondiente al valor 0.5.
 
