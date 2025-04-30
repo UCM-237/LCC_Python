@@ -47,13 +47,13 @@ print('ppf m=10,std=5',val,'\n')
 norm_10_5 = norm(loc=10,scale=5)
 print('mean and std predefined \n')
 #normal distribution mean = 10 std dev = 5
-y = norm.pdf(x,mean,std)
+y = norm_10_5.pdf(x)
 print('pdf m=10,std=5',y,'\n')
 
 #normal cumulative distribution
-ycum = norm.cdf(x,mean,std)
+ycum = norm_10_5.cdf(x)
 print('cdf m=10,std=5',ycum,'\n')
 
 #normal inverse cumulative distribution
-val = norm.ppf(p,mean, std)
+val = norm_10_5.ppf(p)
 print('ppf m=10,std=5',val,'\n')

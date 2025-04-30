@@ -824,7 +824,7 @@ linenos
 ]{python}{./codigos/tratamiento_datos/central_limit.py}
 
 \begin{paracol}{2}
-De acuerdo con el teorema del límite central, los dos vectores de medias obtenidos, \texttt{media10} y \texttt{media100}, deben seguir distribuciones normales tales que,
+De acuerdo con el teorema del límite central, los dos vectores de medias obtenidos,\\ \texttt{media10} y \texttt{media100}, deben seguir distribuciones normales tales que,
 \begin{enumerate}
 \item La media de la distribución normal debe coincidir con la media de la distribución a la que pertenecían los datos originales. Como hemos tomado datos distribuidos uniformemente en el intervalo $[-1,1]$, la media de dicha distribución es,
 \end{enumerate}
@@ -1091,160 +1091,232 @@ linenos
 ]{python}{./codigos/tratamiento_datos/normal.py}
 
 \begin{minted}{python}
-x= [-5. -3.33333333 -1.66666667  0. 1.66666667  3.33333333 5.] 
+x= [-5. -3.33333333 -1.66666667  '0.' 1.66666667  3.33333333 5.] 
 
-p= [0. 0.16666667 0.33333333 0.5 0.66666667 0.83333333 1.]
- 
+p= [0.   0.16666667 0.33333333 '0.5'  0.66666667 0.83333333 1.] 
+
 pdf standard [1.48671951e-06 1.54227900e-03 9.94771388e-02 3.98942280e-01
 9.94771388e-02 1.54227900e-03 1.48671951e-06] 
 
-cdf standard [2.86651572e-07 4.29060333e-04 4.77903523e-02 5.00000000e-01
+cdf standard [2.86651572e-07 4.29060333e-04 4.77903523e-02 '5.00000000e-01'
 9.52209648e-01 9.99570940e-01 9.99999713e-01] 
 
-ppf standard [-inf -0.96742157 -0.4307273   0. 0.4307273 0.96742157 inf] 
+ppf standard [-inf -0.96742157 -0.4307273 '0.' 0.4307273 0.96742157 inf] 
 
-pdf m=10,std=5 [0.00088637 0.0022792  0.00524438 0.01079819 0.01989543 0.03280201 
-0.04839414] 
-
-cdf m=10,std=5 [0.0013499  0.00383038 0.00981533 0.02275013 0.04779035 0.09121122 
-0.15865525] 
-
-ppf m=10,std=5 [-inf  5.16289217  7.8463635  10. 12.1536365  14.83710783 inf] 
-
-mean and std predefined 
-
-pdf m=10,std=5 [0.00088637 0.0022792  0.00524438 0.01079819 0.01989543 0.03280201 
+pdf m=10,std=5 [0.00088637 0.0022792  0.00524438 0.01079819 0.01989543 0.03280201
 0.04839414] 
 
 cdf m=10,std=5 [0.0013499  0.00383038 0.00981533 0.02275013 0.04779035 0.09121122
 0.15865525] 
 
-ppf m=10,std=5 [-inf  5.16289217  7.8463635  10. 12.1536365  14.83710783 inf] 
+ppf m=10,std=5 [-inf 5.16289217 7.8463635  10. 12.1536365 14.83710783 inf] 
+
+mean and std predefined 
+
+pdf m=10,std=5 [0.00088637 0.0022792  0.00524438 0.01079819 0.01989543 0.03280201
+0.04839414] 
+
+cdf m=10,std=5 [0.0013499  0.00383038 0.00981533 0.02275013 0.04779035 0.09121122
+0.15865525] 
+
+ppf m=10,std=5 [-inf 5.16289217 7.8463635 10. 12.1536365  14.83710783 inf] 
+
 \end{minted}
 
+\begin{paracol}{2}
+Si analizamos el código del ejemplo, las líneas 18 y 22 nos dan los valores que toma la ditribución normal estándar y su integral (la distribución normal acumulada) en los puntos\\ $-5,-3.33,-1.66,0,1.66,3.33,5$.
+Para la distribución acumulada, podemos fijarnos en el valor correspondiente a $x=0$, el resultado obtenido es $0.5$. Efectivamente, si obtenemos un número aleatorio, empleando una distribución de probabilidad normal, $0.5$ ---un $50\%$--- es la probabilidad de obtener un número en el intervalo $(-\infty, 0]$.  
 
-Es decir la probabilidad de obtener un número en el intervalo $(-\infty, -1.2815515655446004]$ vale $0.1$ o, lo que es equivalente, un 10\%.
+La línea 26, nos calcula la inversa de la distribución normal acumulada. Es decir nosotros damos un valor para la probabilidad y la función nos devuelve el límite derecho del intervalo al que corresponde dicha probabilidad. Así por ejemplo, para el valor $p=0.5$ que corresponde a una probabilidad del $50\%$, la función \texttt{ppf} nos devuelve el valor $0$. Es decir, para una distribución normal, tenemos una probabilidad del $50\%$ de obtener aleatoriamente un valor en el intervalo $(-\infty, 0]$. La figura \ref{fig:invcum} muestra la función inversa de probabilidad acumulada y en particular el punto  correspondiente al valor 0.5.
 
-Otro ejemplo especialmente significativo: Si introducimos el valor $0.5$, 
 
-Como cabría esperar de la simetría de la distribución normal, hay un $0.5$ ---50\%--- de probabilidades de obtener un número entre $-\infty$ y $0$.  La figura \ref{fig:invcum} muestra la función inversa de probabilidad acumulada y en particular el punto  correspondiente al valor 0.5.
+Los ejemplos incluidos en las líneas de código 33 a 58, repiten los cálculos anteriores pero ahora para una distribución de probabilidad normal de media $10$ y desviación estándar $5$. Lo hace de dos maneras distintas, primero indicando expresamente el valor de la media y la desviación y luego creando una nueva función con dichos valores incluidos por defecto. 
+\switchcolumn
+If we analyze the example code, lines 18 and 22 compute the values taken for the standard normal distribution ant its integral (the standard cumulated normal distribution) on points $-5,-3.33,-1.66,0,1.66,3.33,5$. Focus on the cumulated distribution, we can look at the value corresponding to $x=0$, the result obtained is $0.5$. Indeed, if we get a random number using a normal distribution, de value $0.5$ ---a $50\%$--- is the probability to obtain a number in the interval $(-\infty, 0]$.
+
+Line 26 calculates the inverse of the cumulated normal distribution. That is, we give to the function a probability value and the function yields the value of the right limit of the interval this probability belongs to. So, for instance, for $p=0.5$ the function \texttt{ppf} casts back the value $0$. That is, for a normal distribution the probability of obtain randomly a number in the interval $(-\infty, 0]$ is $50\%$. Figure \ref{fig:invcum} shows the inverse standard cumulated normal distribution and, in particular, the point corresponding to the value $0.5$.
+
+The examples included in code lines 33 to 58, repeat the calculation performed before, but now using normal distributions with mean $10$ and standard deviation $5$. We have obtain the results using to different methods. First we use the function \texttt{norm} passing to it the values of the mean and the deviation and after, we repeat these calculation but now, first we create a new function with the desired values of mean and standard deviation included by default.   
+\end{paracol}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{invcum.eps}
-\caption{Función inversa  de probabilidad normal acumulada}
+\bicaption{Función inversa  de probabilidad normal acumulada}{Inverse standard cumulated normal distribution}
 \label{fig:invcum}s
 \end{figure}
 
-Supongamos ahora que queremos repetir el cálculo para una distribución normal de media $\mu=6$ y desviación típica $\sigma = 2$. Para el valor $0.1$ obtendríamos,
-
-\begin{verbatim}
->> p = 0.1;
->> x = norminv(p)
->> x = -1.2815515655446004
->> mu = 6
->> sigma = 2
->> x2 = sigma*x+mu
->> x2 = -1.5631031310892007
-\end{verbatim}
-
-Por tanto, ahora tenemos un 10\% de probabilidades de obtener un número entre $-\infty$ y $-1.5631031310892007$
-
+\begin{paracol}{2}
 Retomando el hilo de nuestro problema, lo que a nosotros realmente nos interesa, es encontrar intervalos de confianza, es decir conocer el intervalo en torno al valor medio $\bar{x}_n$ que corresponde a una determinada probabilidad. La función inversa de probabilidad acumulada nos da el intervalo entre $-\infty$ y $x$ correspondiente a una determinada probabilidad. Si combinamos los resultados de dicha función con las propiedades de simetría y área unidad de la función normal podemos obtener el intervalo centrado en torno a la media correspondiente a una determinada probabilidad.
 
 Así el intervalo $[-x ,x]$ correspondiente a  una probabilidad del $P\%$, abarca un área bajo la curva $P/100$. Por tanto el área que queda en las colas ---a derecha e izquierda del intervalo--- es $1-x/100$. Como la distribución normal es simétrica, dicha área debe dividirse en dos, una correspondiente a la cola $[-\infty, -x]$ y la otra correspondiente a la cola $[x, \infty]$.
+\switchcolumn
+Coming back to our problem, we are actually interested in finding confidence intervals. That is, get to know the interval around a mean value $\bar{x}_n$ associated to a specific probability. The inverse cumulated normal probability function gives us the interval between $-\infty$ and $x$ associated to a specific probability. If we combine the results of this function with the symmetry and unit area characteristic of the normal function, we can obtain the interval centered around a measurement, associated to a specific probability.
+
+So the interval $[-x ,x]$ corresponding to a $P\%$ probability, Cover an area beneath the curve of a normal funtion equals to $P/100$. Thus, the remaining area in the sides  --- on the left and right the interval--- is $1-x/100$. Moreover, as the normal distribution is symmetric we should divide this area by two. One half correspond to the interval $[-\infty, -x]$ and the other to the interval $[x, \infty]$.
+\end{paracol}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{intervalo.eps}
-\caption{Intervalo de probabilidad P\%}
+\bicaption{Intervalo de probabilidad P\%}{Probability interval P\%}
 \label{fig:intervalo}
 \end{figure}
+\begin{paracol}{2}
 La figura \ref{fig:intervalo} muestra gráficamente la relación de áreas que acabamos de describir; las dos colas aparecen pintadas en azul. 
 
+Para obtener el límite inferior, $-x$, del intervalo de probabilidad $P\%$ basta emplear la función \texttt{norm.ppf}, introduciendo como variable de entrada el área de la cola,\\ \texttt{x=norm.ppf((1-P/100)/2)}. Así por ejemplo, para obtener el límite inferior del intervalo de confianza correspondiente a una probabilidad del $90\%$ siguiendo una distribución normal,
 
-Para obtener el límite inferior, $-x$, del intervalo de probabilidad $P\%$ basta emplear la función \texttt{norminv}, introduciendo como variable de entrada el área de la cola, \texttt{x=norminv((1-P/100)/2)}. Así por ejemplo, para obtener el límite inferior del intervalo de confianza correspondiente a una probabilidad del $90\%$,
+\switchcolumn
+Figure \ref{fig:intervalo} shows graphically the relationship among the areas we have just described; both tip-sides are in blue.
 
-\begin{verbatim}
->> p=(1-0.90)/2
-p =
-    0.0500
+To obtain the lower limit, $-x$, for a probability interval $P\%$ we can use the function \texttt{norm.ppf} giving as input the area of the tip-side.\\
+\texttt{x=norm.ppf((1-P/100)/2)}. So for instance, to obtain the lower limit of the confidence interval for a 90\% probability, following a normal distribution,  
+\end{paracol}
 
->> x=norminv(p)
-x =
-   -1.6449
-\end{verbatim}
+\begin{center}
+\begin{minipage}{0.5\textwidth}
+	\begin{minted}{python}
+In [4]: p = (1-0.90)/2
 
-Por tanto el intervalo de confianza correspondiente a una probabilidad del $90\%$ para una distribución normal de media cero y desviación estándar uno es, $I_{90\%} =[-1.6449\ 1.6449]$
+In [5]: x = norm.ppf(p)
+
+In [6]: print(x)
+-1.6448536269514729
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{paracol}{2}
+Por tanto el intervalo de confianza correspondiente a una probabilidad del $90\%$ para una distribución normal de media cero y desviación estándar uno es, \\$I_{90\%} =[-1.6449,\ 1.6449]$
 
 Supongamos ahora que hemos realizado un conjunto de $n$ medidas de una determinada magnitud física, por ejemplo temperatura en ºC, y obtenemos su media $\bar{x}_n=6.5$ ºC y su desviación estándar $s_{xn}=2$. Si queremos dar el resultado de la medida con una incertidumbre correspondiente a un intervalo de confianza del $95\%$, calculamos el intervalo de confianza empleando la función inversa de probabilidad acumulada normal, y después, multiplicamos el resultado por $s_{xn}$ para ajustarlo a la distribución normal que sigue la media de nuestros datos, 
 
-\begin{verbatim}
->> xm = 6; %media de las medidas
->> sigma = 2; %desviacion de las medidas
->> p = (1-0.95)/2 % probabilidad acumulada hasta limite inferior del intervalo
-p =
-    0.0250
->> i95 = norminv(p) % limite inferior del intervalo
-i95 =
-   -1.9600 
->> incert = i95*sigma %limite inferior de la incertidumbre
-incert =
-   -3.9199
-\end{verbatim}
+\switchcolumn
+Thus the confidence interval corresponding to a $90\%$ probability for a normal distribution with mean cero and deviation standard one is $I_{90\%} =[-1.6449,\ 1.6449]$
 
+Suppose we have taken a set of $n$ measures of a physical magnitude, for instance temperature in ºC, and we calculate it mean value $\bar{x}_n=6.5$ ºC and standard deviation $s_{xn}=2$. If we can represent the result of the measure with an uncertainty corresponding to a $95\%$ confidence interval, we calculate the such confidence intervale using the inverse cumulated normal probability am after, we multiply the result for $s_{xn}$ to fit it to the normal distribution our data belong to,   
+\end{paracol}
+
+\begin{minted}{python}
+In [10]: xm = 6 #media de las medidas //measures mean
+			
+In [11]: sigma = 2 #desviacion de las mendidad // measures deviation
+			
+In [12]: P = (1-0.95)/2 #probalidad acumulada hasta el límite inferior del 
+#intervalo// cumulated probability up to the lower limit of the interval
+			
+In [18]: print(P)
+0.025000000000000022
+			
+In [15]: from scipy.stats import norm
+			
+In [16]: i95 = norm.ppf(P) #limite inferior del intervalo //Lower limit of the interval
+			
+In [19]: print(i95)
+-1.959963984540054
+			
+In [20]: incert = i95*sigma #limite inferior de la 
+#incertidumbre//lower limit of the uncertainty 
+			
+In [21]: print(incert)
+-3.919927969080108
+\end{minted}
+
+\begin{paracol}{2}
 Por tanto, en este ejemplo, debemos expresar la medida como $6.5 \pm 3.92$ ºC indicando que el intervalo de confianza es del $95\%$.
+\switchcolumn
+Thus, in this example, we have to represent the measurement as $6.5 \pm 3.92$ ºC indicating that the confidence interval is $95\%$.
+\end{paracol}
 
-\paragraph{La distribución T de Student.} Habitualmente, cuando el número de medidas que se han tomado para estimar el valor de $\bar{x}_n$ es pequeño, los intervalos de confianza se calculan empleando la distribución t de Student de n-1 grados de libertad, donde  n representa el número de medidas tomadas.
+\begin{paracol}{2}
+\paragraph{La distribución T de Student.} Habitualmente, cuando el número de medidas que se han tomado para estimar el valor de $\bar{x}_n$ es pequeño, los intervalos de confianza se calculan empleando la distribución t de Student de $n-1$ grados de libertad, donde  n representa el número de medidas tomadas.
+
+\switchcolumn
+\paragraph{The Student's T distribution}
+
+Usually, when the number of measurements taken to estimate the value of $\bar{x}_n$ is small, we calculate the confidence intervals using the Studen's T distribution of $n-1$ degrees of freedom, where $n$ represent the number of measurements taken.  
+\end{paracol}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{tdestudent.eps}
-\caption{Comparación entre las distribuciones t de Student de 1, 5, 10, 20 y 30 grados de libertad y la distribución normal.}
+\bicaption{Comparación entre las distribuciones t de Student de 1, 5, 10, 20 y 30 grados de libertad y la distribución normal.}{Comparison among the Student's T dsitributions of 1, 2,10, 20 and 30 dergrees of fredom and the normal distribution}
 \label{fig:tdst}
 \end{figure}
 
+\begin{paracol}{2}
 Para un número pequeño de muestras, la distribución t de Student da una aproximación mejor que la distribución normal. Para un número de muestras grande, ambas distribuciones son prácticamente iguales.  La figura \ref{fig:tdst} muestra una comparación entre la distribución normal y la distribución t de Student, calculada para distintos grados de libertad. De la figura se puede concluir en primer lugar que la desviación estándar de la distribución t de Student es en todos los casos mayor que la de la distribución normal, con lo cual los intervalos de confianza para un valor dado de la probabilidad son siempre mayores. En segundo lugar se observa también que para 30 o más medidas --- $n\geqslant 30$ --- la diferencia entre las distribuciones t de Student y normal es prácticamente despreciable.
 
-El procedimiento de cálculo es el mismo que si empleamos la distribución normal, basta sustituir la inversa de la distribución normal acumulada por la inversa de la distribución t de Student acumulada. En Matlab, esta función esta definida como: \texttt{x = tinv(p,n)}. 
+El procedimiento de cálculo es el mismo que si empleamos la distribución normal, basta sustituir la inversa de la distribución normal acumulada por la inversa de la distribución t de Student acumulada. En Python, podemos importar la distribción t de Student de modo análogo a como hicimos para la distribución normal: \texttt{scipy.stats.t}. Por defecto obtendremos una distribución de media cero y varianza uno y podremos cambiar dichos parámetros empleando las variables \texttt{log} y \texttt{scale}. Disponemos de las mismas funciones \texttt{pdf, cdf, ppf, etc} que para la distribución normal. La única diferencia es que al llamar a estas funciones debemos indicar los grados de libertad de la distribución. \texttt{t.pdf(x,df)}.
 
 Así, para el ejemplo anterior de las medidas de temperatura de media  $\bar{x}_n=6.5$ ºC y  desviación estándar $s_{xn}=2$  si suponemos que el número de medidas tomadas es $n=5$. El intervalo de confianza correspondiente a un $95\%$  lo calcularíamos mediante la inversa de la distribución de probabilidad t de Student de $n-1$ grados de libertad acumulada como,
+\switchcolumn
+For a small number of samples, the Student's T distributions yields a better approximation than the normal distribution. For a large number of samples, both distributions are quite the same. Figure \ref{fig:tdst} shows a comparison among the normal distribution a Student's T distribution calculated for several degrees of freedom. Looking at the figure we may conclude that the standard deviation of the Student's T distribution is in every case larger than the normal distribution standard deviation. This means that the confidence intervals associated with a specific probability value are always larger too. Moreover, we can see also that for 30 or more measurements --- $n\geqslant 30$ --- the difference between the normal and the Student's T distributions is negligible.
 
-\begin{verbatim}
->> xm = 6; %media de las cinco medidas
->> sigma = 2; %desviacion de las cinco medidas
->> p = (1-0.95)/2 % probabilidad acumulada hasta limite inferior del intervalo
-p =
-    0.0250
->> i95 = tinv(p,4) % limite inferior del intervalo 4 =5-1 grados de libertad para cinco medidas
-i95 =
-   -2.7764
->> incert = i95*sigma %limite inferior de la incertidumbre
-incert =
-   -5.5529
-\end{verbatim}
+The method to calculate a confidence interval is identical to the normal distribution case; we just use the inverse cumulated Student's T distribution instead of the inverse cumulated normal distribution. IN python we can import the the Student's T distribution using the same wise that in the normal distribution case: \texttt{scipy.stats.t}. We will obtain a mean zero variance one distribution by default and we can change these parameters using using the variables, \texttt{log} y \texttt{scale}. The same functions \texttt{pdf, cdf, ppf, etc} as for the normal distribution are available The main difference  is that now we can input the distribution degrees of freedom to the functions \texttt{t.pdf(x,df)}. 
 
-Por tanto deberíamos expresar el valor de la medida realizada como, $6.5\pm 5.55$ ºC. Si comparamos este resultado con el obtenido empleando la distribución normal, vemos que el intervalo de confianza y, por tanto, la incertidumbre han aumentado.
+So, for the previous example of temperature measurements, with mean $\bar{x}_n=6.5$ ºC and standard deviation $s_{xn}=2$ supposing that we have taken $n=5$ measurements. We calculate the $95\%$ confident interval using the inverse cumulated Student's T distribution of five degrees of freedom as follows,
+\end{paracol}
+
+\begin{minted}{python}
+In [22]: from scipy.stats import t #importamos la distribucion T de Student//
+#import the Student's T #distribution
+
+In [23]: P = (1-0.95)/2 #probalidad acumulada hasta el límite inferior del 
+#intervalo// cumulated probability up to the lower limit of the interval
+
+In [24]: i95 = t.ppf(P,4) #calculamos con 5-1 grados de libertad// we calculate 
+#with 5-1 degrees of freedom
+
+In [25]: print(i95) #límite inferior del itervalo de confianza// 
+#Confidence interval lower limit 
+-2.7764451051977987
+
+In [26]: incert = i95*sigma #límite inferior de la incertidumbre//
+#Uncertainty lower limit
+
+In [27]: print(incert)
+-5.5528902103955975
+\end{minted}
+
+\begin{paracol}{2}
+Por tanto deberíamos expresar el valor de la medida realizada como $6.5\pm 5.55$ ºC. Si comparamos este resultado con el obtenido empleando la distribución normal, vemos que el intervalo de confianza y, por tanto, la incertidumbre han aumentado.
 
 \subsection{Propagación de la incertidumbre: Estimación de la incertidumbre de medidas indirectas.}
 
 Supongamos que deseamos obtener la incertidumbre de una determinada magnitud física $y$ que no hemos medido directamente, sino que se determina a partir de otras cantidades $x_1,x_2,\cdots,x_n$ empleando una relación funcional $f$,
 
+\switchcolumn
+Therefore, we should represent the measurement value as $6.5 \pm 5.55$ ºC. Comparing this result with the one obtained using the normal distribution, we can see that the confidence interval and, consequently, the uncertainty have increased.
+
+\subsection{Uncertainty propagation:\\ uncertainty estimation of indirect measurements.}
+
+Suppose we wish to get the uncertainty of a physical magnitude $y$ that we have not measured directly, but that is determined from other measurements $x_1,x_2,\cdots,x_n$ using a functional relationship $f$,  
+\end{paracol}
+
 \begin{equation*}
 y = f(x_1,x_2,\cdots,x_n)
 \end{equation*}
 
+\begin{paracol}{2}
 La función $f$ suele recibir el nombre de ecuación de medida, y no tiene por qué representar simplemente una ley física; de hecho, debería incluir entre sus entradas cualquier cantidad que pueda contribuir a modificar significativamente la incertidumbre de $y$. Por ejemplo: diferentes observadores, laboratorios, experimentos, horas a las que se han realizado las observaciones, etc.
 
 La incertidumbre asociada al valor de $y$, a la que llamaremos $u_c(y)$, se expresa en función de la desviación estándar de $y$,  
+\switchcolumn
+Function $f$ is referred to as a measure equation; it does not necessarily represent a physical law. In fact, $f$ should encompass any quantity that can significantly alter the uncertainty of $y$; for instance, different observers, laboratories, experiments, the time the observations have been carried out, etc.   
+
+The uncertainty associated to the value taken for $y$, that we will denote $u_c(y)$, is described using the standard deviation of $y$,
+\end{paracol}
 
 \begin{equation*}
-u_c(y) =\sqrt{s_c^2(y)}
+u_c(y) =\sqrt{s_c^2(y)},
 \end{equation*}
 
-
+\begin{paracol}{2}
 donde  $s_c^2(y)$ se define como la  varianza \emph{combinada} de $y$, que se estima en primera aproximación a partir de la expansión en serie de Taylor\footnote{En primera aproximación empleamos un desarrollo de Taylor de primer orden. En realidad, lo adecuado o no de este método depende de las características de la función $f$. No discutiremos aquí este problema.} de la función $f$	
-
+\switchcolumn
+where $s_c^2(y)$ is defined as the \emph{combined} variance of $y$, that can be estimated in a first approximation 
+\end{paracol}
 \begin{equation*}
 s_c^2(y) = \sum_{i=1}^n\left(\frac{\partial f}{\partial x_i}\right)^2 s^2(x_i) + 2\sum_{i=1}^{n-1}\sum_{i=1}^n \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} c_v(x_i,x_j)
 \end{equation*}
