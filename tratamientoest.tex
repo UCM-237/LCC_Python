@@ -1313,24 +1313,32 @@ u_c(y) =\sqrt{s_c^2(y)},
 \end{equation*}
 
 \begin{paracol}{2}
-donde  $s_c^2(y)$ se define como la  varianza \emph{combinada} de $y$, que se estima en primera aproximación a partir de la expansión en serie de Taylor\footnote{En primera aproximación empleamos un desarrollo de Taylor de primer orden. En realidad, lo adecuado o no de este método depende de las características de la función $f$. No discutiremos aquí este problema.} de la función $f$	
+donde  $s_c^2(y)$ se define como la  varianza \emph{combinada} de $y$, que se estima en primera aproximación a partir de la expansión en serie de Taylor\footnote{En primera aproximación empleamos un desarrollo de Taylor de primer orden. En realidad, lo adecuado o no de este método depende de las características de la función $f$. No discutiremos aquí este problema.} de la función $f$.	
 \switchcolumn
-where $s_c^2(y)$ is defined as the \emph{combined} variance of $y$, that can be estimated in a first approximation 
+where $s_c^2(y)$ is defined as the \emph{combined} variance of $y$, that can be estimated in a first approximation using the Taylor's expansion\footnote{In first approach we use the first-order Taylor's expansion. Actually, this method could be valid or not depending on the features of function $f$. We do not discusse thsi problem here.} of function $f$.    
 \end{paracol}
 \begin{equation*}
 s_c^2(y) = \sum_{i=1}^n\left(\frac{\partial f}{\partial x_i}\right)^2 s^2(x_i) + 2\sum_{i=1}^{n-1}\sum_{i=1}^n \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} c_v(x_i,x_j)
 \end{equation*}
 
+\begin{paracol}{2}
 Donde $s^2(x_i)$  representa la varianza asociada a la entrada $x_i$ y $c_v(x_i, x_j)$ la covarianza entre las entradas $x_i$ y $x_j$. 
 
 La covarianza entre dos variables $z$ y $t$ de las que se tienen $n$ muestras, puede estimarse a partir de las muestras como,
+\switchcolumn
+Were $s^2(x_i)$ represents the variance associated to the input $x_i$ and $c_v(x_i,x_j)$ de covariance between inputs $x_i$ and $x_j$.
 
+If we have $n$ samples of a pair of variables $z$ y $t$ , we can estimate their covariance using the samples as follows, 
+\end{paracol}
 \begin{equation*}
 c_v(z,t) =\frac{1}{n-1}\sum_{i=1}^n(z_i-\bar{z})(t_i-\bar{t})
 \end{equation*}
 
+\begin{paracol}{2}
 De modo análogo a como hicimos en el caso de la varianza de la media de un conjunto de medidas, podemos relacionar la covarianza entre las medias de  de dos variables, con la covarianza entre $n$ medidas de dichas variables como,
+\switchcolumn
 
+\end{paracol}
 \begin{equation*}
 c_v(\bar{z},\bar{t}) =\frac{c_v(z,t)}{n}
 \end{equation*}
