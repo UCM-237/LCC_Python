@@ -39,6 +39,3 @@ pl.figure()
 datosprod1005.plot.pie()
 pl.figure()
 datosprod1230.plot.pie()
-
-
-

@@ -914,7 +914,7 @@ Any experimental measurement should include, besides the measure's result, the v
 \end{figure} 
 
 \begin{paracol}{2}
-\subsection{Fuentes de incertidumbre.}
+\subsection{Fuentes de incertidumbre.}\label{fdi}
 
 Antes de entrar en el estudio de las fuentes de incertidumbre, es importante destacar que el estudio de la medición constituye por sí mismo una ciencia, conocida con el nombre de metrología. Lo que vamos a describir a continuación tanto referido a las fuentes de incertidumbre como al modo de estimarla, es incompleto y representa tan solo una primera aproximación al problema.
 La incertidumbre de una medida tiene fundamentalmente dos causas:
@@ -938,7 +938,7 @@ Supongamos que repetimos $n$ veces la misma medida experimental. Por ejemplo: te
 
 Sabemos que dichos valores deben seguir una cierta distribución de probabilidad. Podría\-mos estimar su valor esperado $\mu$ mediante el cálculo de la media aritmética de las medidas tomadas.
 \switchcolumn
-\subsection{Sources of Uncertainty}
+\subsection{Sources of Uncertainty}\label{fdii}
 Before beginning to study the sources of uncertainty, it is important to notice that the study of the 'measure' is science, known as metrology. What we are to present in the following paragraphs, in reference to the sources of uncertainty and the means to estimate this last, is incomplete and only represents a first approach to the problem. The uncertainty of a measurement has mainly two causes:
 
 \paragraph{Systematic accuracy uncertainty.}\index[eng]{Experimental measurements! accuracy}
@@ -946,7 +946,7 @@ The\\ first one is the limited accuracy of the sensors. Any sensor's accuracy is
 
 The uncertainty due to the finite accuracy of the sensors is known as \emph{Systematic accuracy uncertainty}. It is named so because it depends only on the features of the sensor device, which are always the same, at least in principle. 
 
-Systematic accuracy uncertainty is usually shown by adding half the least division of the Sensor device measurement scale to the measurement. So, for instance, if we are taking a measurement of $123 mm$ with a rule graduated in millimetres, we can present the measurement as  $123 \pm 0.5 mm$ or $12,3\pm0.05cm$.
+Systematic accuracy uncertainty is usually shown by adding half the least division of the Sensor device measurement scale to the measurement. So, for instance, if we are taking a measurement of $123 mm$ with a rule graduated in millimeters, we can present the measurement as  $123 \pm 0.5 mm$ or $12,3\pm0.05cm$.
 
 The systematic accuracy uncertainty represents an uniform probability density distribution. The mean is the value measured and the width is the minimum division of the sensor measurement scale. This means, that we consider that the real value of the magnitude is inside this interval (defined by the minimum division value) with a probability of $100\%$. Coming back to the example of the rule, The real value of our measurement will be inside the interval $[122.5,\ 123.5 ]$ and it could take whatever value, inside this interval, with the same probability. 
 
@@ -1181,7 +1181,7 @@ In [4]: p = (1-0.90)/2
 
 In [5]: x = norm.ppf(p)
 
-In [6]: print(x)
+In [6]: prin2t(x)
 -1.6448536269514729
 \end{minted}
 \end{minipage}
@@ -1335,62 +1335,84 @@ c_v(z,t) =\frac{1}{n-1}\sum_{i=1}^n(z_i-\bar{z})(t_i-\bar{t})
 \end{equation*}
 
 \begin{paracol}{2}
-De modo análogo a como hicimos en el caso de la varianza de la media de un conjunto de medidas, podemos relacionar la covarianza entre las medias de  de dos variables, con la covarianza entre $n$ medidas de dichas variables como,
+De modo análogo a como hicimos en el caso de la varianza de la media de un conjunto de medidas, podemos relacionar la covarianza entre las medias de dos variables, con la covarianza entre $n$ medidas de dichas variables como,
 \switchcolumn
-
+Following the same steps that in the variance calculation for the mean of a set of measurements, we may relate the covariance between the means of two variables with the covariance among the $n$ measurements of such variables as, 
 \end{paracol}
 \begin{equation*}
 c_v(\bar{z},\bar{t}) =\frac{c_v(z,t)}{n}
 \end{equation*}
-
+\begin{paracol}{2}
 En muchos casos de interés no existe correlación entre las variables de entrada. En estos casos, los valores de la covarianza será nulos y podemos simplificar la ecuación empleada en el cálculo de $s_c^2(y)$,
-
+\switchcolumn
+Frequently there is no correlation among input variables. In these cases, the covariance values are zero and we can simplify the equation used for calculating $s_c^2(y)$,
+\end{paracol}
 \begin{equation*}
 s_c^2(y) = \sum_{i=1}^n\left(\frac{\partial f}{\partial x_i}\right)^2 s^2(x_i)
 \end{equation*}
 
-
-Un ejemplo simple lo podemos obtener de la ecuación para la potencia disipada en una resistencia eléctrica. En este caso, el valor de la potencia disipada depende del voltaje, $V$, de la resistencia $R_0$ medida a una temperatura de referencia $t_0$, de la temperatura real a que se encuentra la resistencia $t$ y, en primera aproximación, de un coeficiente que $b$, que establece una relación linea entre temperatura y resistencia. 
-
+\begin{paracol}{2}
+Un ejemplo simple lo podemos obtener de la ecuación para la potencia disipada en una resistencia eléctrica. En este caso, el valor de la potencia disipada depende del voltaje, $V$, de la resistencia $R_0$ medida a una temperatura de referencia $t_0$, de la temperatura real a que se encuentra la resistencia $t$ y, en primera aproximación, de un coeficiente que $b$, que establece una relación linea entre temperatura y resistencia.
+\switchcolumn
+We will show a easy example using the equation to determine the power dissipated in an electric resistance. In this case, the value of the power dissipated depends on the voltage, $V$, on the resistance $R_0$ measured at a reference temperature $t_0$, on the actual resistance temperature $t$ and, in a first approximation, on a coefficient $b$ that defines a linear dependence between the temperatura and the resistance.    
+\end{paracol}
 \begin{equation*}
 P = f(V,R_o,b,t) = \frac{V^2}{R_0\left(1+b(t-t_0)\right)}
 \end{equation*}
-
+\begin{paracol}{2}
 Supongamos que $b$ es un coeficiente numérico no sujeto a incertidumbre y que las  variables $V$, $R_0$, $t$ y $t_0$ no están correlacionadas entre sí. Podemos entonces expresar la varianza  en la  potencia disipada, a partir de las varianzas de las variables de entrada como,
-
+\switchcolumn
+Let's suppose that $b$ is a numerical coefficient with none uncertain and that variables $V$, $R_0$, $t$ y $t_0$ are not correlated. Then, we can determine the variance of the power dissipated from the variance of the input variables as follows,
+\end{paracol}
 \begin{equation*}
 s_c^2(P) = \left(\frac{\partial f}{\partial V}\right)^2 s^2(V)+ \left(\frac{\partial f}{\partial R_0}\right)^2 s^2(R_0)+ \left(\frac{\partial f}{\partial t}\right)^2 s^2(t)+\left(\frac{\partial f}{\partial t_0}\right)^2 s^2(t_0)    
 \end{equation*}
-
+\begin{paracol}{2}
 Por tanto,
-
+\switchcolumn
+Thus,
+\end{paracol}
 \begin{align*}
 s_c^2(P) =& \left(\frac{2V}{R_0\left(1+b(t-t_0)\right)}\right)^2 s^2(V)+ \left(\frac{-V^2\left(1+b(t-t_0)\right)}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(R_0)+\\
 &+ \left(\frac{-V^2R_0b}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(t)+\left(\frac{V^2R_0b}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(t_0)    
 \end{align*}
-
-y la incertidumbre en la potencia disipada será la raíz cuadrada de la expresión que acabamos de obtener: $u_c(P) =\sqrt{s_c^2(P)} $
+\begin{paracol}{2}
+y la incertidumbre en la potencia disipada será la raíz cuadrada de la expresión que acabamos de obtener:  $u_c(P) =\sqrt{s_c^2(P)} $
 
 Establecer los intervalos de confianza, para una incertidumbre propagada no es tan sencillo como en el caso de una incertidumbre obtenida directamente de una medida experimental. En primera aproximación, podemos suponer que $y$ sigue una distribución normal de media el valor obtenido, a partir de la función $f$ y desviación $u_c(p)$ y estimar los intervalos de confianza del mismo modo que se describió anteriormente para una medida directa.  Pero esto no es siempre correcto. No podemos establecer en realidad ninguna ley general que relacione las distribuciones de probabilidad de las incertidumbres de las variables de entrada con la distribución de probabilidad de la incertidumbre de la variable de salida.
+\switchcolumn
+And the dissipated power uncertainty would be the square root of the expression just obtained: $u_c(P) =\sqrt{s_c^2(P)} $
 
-\subsection{Ejemplo de estimación de la incertidumbre con Matlab.}
+To stablish the confidence intervals for a propagated uncertainty is not so easy as in the case o a experimental measurement straightforwardly obtained. On first approximation, we may suppose that $y$ will follow a normal distribution which mean is the value obtained using function $f$ and deviation $u_c(p)$ and obtain the confidence intervals in the same way we used for a straightforward measure. But that it is not always right. We can not stablish a general law that cast the relationship among the input variables probability distributions and the uncertainty of the output variable.   
+\end{paracol}
 
-Para aclarar los métodos descritos en los apartados anteriores, vamos obtener la incertidumbre de la potencia disipada en una resistencia, siguiendo la ecuación descrita en el apartado anterior . La tabla \ref{tabres} muestras los datos obtenidos tras realizar 20 medidas experimentales de la tensión y la temperatura en una resistencia.
+\begin{paracol}{2}
+\subsection{Ejemplo de estimación de la incertidumbre con Python.}
 
+Para aclarar los métodos descritos en los apartados anteriores, vamos obtener la incertidumbre de la potencia disipada en una resistencia, siguiendo la ecuación descrita en el apartado anterior. La tabla \ref{tabres} muestras los datos obtenidos tras realizar 20 medidas experimentales de la tensión y la temperatura en una resistencia.
+\switchcolumn
+\subsection{Example of uncertainty estimation using Python.}
+
+To clarify the methods included in previous sections, we are going to obtain the uncertainty of the power dissipated in a resistance, following the equation described in the previous section. Table \ref{tabres} shows the data obtained after performing 20 experimental measurements of the Voltage and temperature of a resistance. 
+\end{paracol}
 \begin{table}[h]
-\caption{Mediciones de temperatura y Voltaje, sobre una resistencia de prueba de 100 $\Omega$}
+\bicaption{Mediciones de Temperatura y Voltaje, sobre una resistencia de prueba de 100 $\Omega$}{Temperature and Voltage Measurements on a 100 $\Omega$ test resistence  }
 \label{tabres}
 \centering
 \begin{tabular}{cccc}
 \hline
-Valor nominal de la resistencia& $R_0=100 \pm 5 \Omega$ (intervalo confianza 98\%) \\ 
+Valor nominal de la resistencia  & $R_0=100 \pm 5 \Omega$ (intervalo confianza 98\%)\\
+Resistence nominal value&\hspace{2.2cm} (confidence interval 98\%) \\ 
 \hline
 Temperatura de referencia& $t_0=50\pm 0.1 ^oC$ (división menor del sensor $0.2^oC$) \\
+Reference temperature& \hspace{2.2cm}(sensor least count $0.2^oC$)\\
 \hline
 Valor del parámetro b& $b = 0.4\Omega / ^oC$ (incertidumbre despreciable)\\
+b parameter value & \hspace{2.2cm} (negligible uncertainty)\\
 \hline
 \hline
 Temperatura ºC& Votaje mV\\
+Temperature ºC& Voltage mV\\
 \hline
  $55.7$&$761$\\
 \hline 
@@ -1435,110 +1457,161 @@ Temperatura ºC& Votaje mV\\
 \hline
 \end{tabular}
 \end{table}
-
+\begin{paracol}{2}
 Para obtener la incertidumbre en el valor de la potencia disipada por la resistencia debemos en primer lugar calcular la varianza de las medidas directas suministradas en la tabla.
+ 
+\textbullet Varianza del valor nominal de la resistencia $R_0$: En este caso, la tabla nos suministra como dato el intervalo de confianza correspondiente al 98\%.  Podemos emplear la función de Scipy \mintinline{python}|norm.ppf()| para calcular la desviación estándar de $R_0$. Como hemos visto, el límite inferior del intervalo de confianza del 98 \%, corresponde con una probabilidad acumulada de $(1-0.98)/2$,
+\switchcolumn
+To obtain the uncertainty of the resistance dissipated power we need first to calculate the variance of the straightforward measurements supplied on the table.
 
-\begin{itemize} 
+\textbullet Variance of the resistance nominal value $R_0$: In this case the table supplied the confidence interval corresponding to 98\%. we can use the Scipy function \mintinline{python}|norm.ppf()| to calculate the standard deviation of $R_0$. As we have seen, the lower limit of the 98\% confidence interval is associated with a cumulated probability of $(1-0.98)/2$,   
+\end{paracol}
 
-\item Varianza del valor nominal de la resistencia $R_0$: En este caso, la tabla nos suministra como dato el intervalo de confianza correspondiente al 98\%.  Podemos emplear la función de Matlab \texttt{nominv(x)} para calcular la desviación estándar de $R_0$. Como hemos visto, el límite inferior del intervalo de confianza del 98 \%, corresponde con una probabilidad acumulada de $(1-0.98)/2$,
-\begin{verbatim}
->> i98 = norminv((1-0.98)/2)
-i98 =
-   -2.3263
-\end{verbatim} 
+\begin{center}
+	\begin{minipage}{\textwidth}
+		\begin{minted}{python}
+			In [1]: from scipy.stats import norm 
 
+			In [2]: i98 = norm.ppf((1-0.98)/2)
+
+			In [3]: i98
+			Out[3]: -2.3263478740408408
+		\end{minted}
+	\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
 Dicha cantidad, multiplicada por la desviación estándar de $R_0$, corresponde con el limite inferior del intervalo de confianza suministrado en la tabla  para $R_0$. Por tanto,
+\switchcolumn
+This quantity multiplied by $R_0$ standard deviation casts the confidence interval lower limit supplied by the table for $R_0$. Then,  
+\end{paracol}
+\begin{center}
+	\begin{minipage}{0.5\textwidth}
+		\begin{minted}{python}
+In [5]: sR0 = -5/i98
 
-\begin{verbatim}
->> sR0 =-5/i98  %desviación estandar de R0
-sR0 =
-    2.1493
->> s2R0 =sR0^2  %varianza de R0
-s2R0 =
-     4.6195
-\end{verbatim}
+In [6]: sR0 = -5/i98 #R0 standard deviation 
+
+In [7]: s2R0 = sR0**2 #R0 variance
+
+In [8]: print('sR0=',sR0,'s2R0=', s2R0)
+sR0= 2.149291623919966 s2R0= 4.619454484652525
+		\end{minted}
+	\end{minipage}
+\end{center}
+
 
 luego $s^2(R_0)= 4.6195$
+\begin{paracol}{2}
+\textbullet Varianza de la temperatura de referencia $t_0$: En este caso se ha expresado la incertidumbre en función de la mitad de la división más pequeña de la escala del aparato de medida. Podemos considerar por tanto que la incertidumbre estaría representada por una distribución uniforme definida en el intervalo $[-0.1\ 0.1]$. En esta caso, podemos asociar la varianza de la medida directamente con dicha distribución uniforme,
+\switchcolumn
+\textbullet Reference temperature variance $t_0$: In this case, the uncertainty has been expressed as half the sensor least count. We can consider then that the uncertainty is represented by an uniform distribution defined in the interval $[-0.1\ 0.1]$. In this case, we can associate straightforwardly the measurement variance with this uniform distribution.  
+\end{paracol}
 
-\item Varianza de la temperatura de referencia $t_0$: En este caso se ha expresado la incertidumbre en función de la mitad de la división más pequeña de la escala del aparato de medida. Podemos considerar por tanto que la incertidumbre estaría representada por una distribución uniforme definida en el intervalo $[-0.1\ 0.1]$. En esta caso, podemos asociar la varianza de la medida directamente con dicha distribución uniforme, 
+\begin{center}
+	\begin{minipage}{\textwidth}
+		\begin{minted}{python}
+			In [14]: s2t0 = (1-(-1))**2/12
 
-\begin{verbatim}
->> s2t0=(1-(-1))^2/12
-s2t0 =
-    0.3333
-\end{verbatim}
+			In [15]: print(s2t0)
+			0.3333333333333333		
+		\end{minted}
+	\end{minipage}
+\end{center}
 
+\begin{paracol}{2}
 Así, $s^2(t_0)=0.3333$
 
-\item Varianzas de las medidas de temperatura y voltaje:
-En primer lugar promediamos los valores  obtenidos de voltaje y temperatura, para calcular el valor de la medida. Matlab tiene definida la función \texttt{mean(x)} que permite obtener directamente el valor medio de los elementos de \texttt{x}. Podemos por tanto definir en Matlab dos vectores, unos para los datos de temperatura y otro para los datos de voltaje y calcular directamente las medias,
+\textbullet Varianzas de las medidas de temperatura y voltaje:
+En primer lugar promediamos los valores  obtenidos de voltaje y temperatura, para calcular el valor de la medida. Numpy tiene definida la función \mintinline{python}|mean()| que permite obtener directamente el valor medio de los elementos de una array de Numpy. Podemos por tanto definir en Python dos vectores, unos para los datos de temperatura y otro para los datos de voltaje y calcular directamente las medias,
+\switchcolumn
+Thus, $s^2(t_0)=0.3333$
 
-\begin{verbatim}
->> t=[55.7 62.8 58.1 60.9 66.3 59.4 61.8 62.5 59.4 61.4 55.7 65.3 56.9 57.8 62.9...
-59.9 62.6 59.1 57.9 53.8]
+\textbullet temperature measurements and voltage measurements variances:
+First we calculate the mean of the values we have obtained for temperature and voltage, taking these means as the measurement value. Numpy defines the function \mintinline{python}|mean()| which allows us directly to calculate the mean value of a Numpy array. So, we may define in Python two vectors one with the temperature data and other for the voltage data and obtain the means straightforwardly, 
+\end{paracol}
 
-t =
+\begin{center}
+	\begin{minipage}{\textwidth}
+		\begin{minted}{python}
+In[29] t=np.array([55.7, 62.8, 58.1, 60.9, 66.3, 59.4, 61.8, 62.5, 59.4, 61.4,
+55.7, 65.3, 56.9, 57.8, 62.9, 59.9, 62.6, 59.1, 57.9, 53.8])
 
-  Columns 1 through 6
-   55.7000   62.8000   58.1000   60.9000   66.3000   59.4000
-  Columns 7 through 12
-   61.8000   62.5000   59.4000   61.4000   55.7000   65.3000
-  Columns 13 through 18
-   56.9000   57.8000   62.9000   59.9000   62.6000   59.1000
-  Columns 19 through 20
+In[30]: t
+Out[30]: 
+array([55.7, 62.8, 58.1, 60.9, 66.3, 59.4, 61.8, 62.5, 59.4, 61.4, 55.7,
+65.3, 56.9, 57.8, 62.9, 59.9, 62.6, 59.1, 57.9, 53.8])
 
-   57.9000   53.8000
->> v=[761 897 879 767 758 763 762 761 790 852 816 752 848 920 743 858 761...
- 788 775 791]
+In[31]: t.mean()
+Out[31]: 60.00999999999999
+			
+In [32]: v=np.array([761, 897, 879, 767, 758, 763, 762, 761, 790, 852,
+816, 752, 848, 920, 743, 858, 761, 788, 775, 791])
+			
+In [33]: v
+Out[33]: 
+array([761, 897, 879, 767, 758, 763, 762, 761, 790, 852, 816, 752, 848,
+920, 743, 858, 761, 788, 775, 791])
+			
+In [34]: v.mean()
+Out[34]: 802.1
+					
+		\end{minted}
+	\end{minipage}
+\end{center}
 
-v =
+\begin{paracol}{2}
+Una vez estimadas las medias, que emplearemos como valores de las medidas de la temperatura y el voltaje,  podemos ahora estimar la varianza o la desviación estándar de las medias haciendo uso de las función de Numpy \texttt{std()}, para la desviación estándar,  y de \texttt{var()}, para la varianza.  Además, debemos aplicar el teorema central del límite, dividiendo por el número de datos empleados. Un último detalle técnico es que debemos llamar a las funciones con el parámetro \mintinline{python}|var(ddof=1), std(ddof=1)|, para que en el cálculo de la varianza y de la desviación estandar se divida por el número de datos menos uno $(n-1)$, en lugar de entre $n$. (ver sección \ref{fdi}) , 
+\switchcolumn
+Once mean values have been estimated, we will employ them as the values of the temperature and voltage measurements. We can now estimate the variance or the standard deviation of the mean values using the Numpy functions \texttt{std()} for the standard deviation and \texttt{var()} for the variance. Besides, we should apply the central limit theorem, dividing the result by the number of data used. A last technical detail is that we have to call the functions with the parameter \mintinline{python}|var(ddof=1), std(ddof=1)|, in order to have the calculations of the variance and the standard deviation divide by the number of data less one $(n-1)$ instead than by $n$. (see section \ref{fdii}),    
+\end{paracol}
 
-  Columns 1 through 10
-   761   897   879   767   758   763   762   761   790   852
-  Columns 11 through 20
-   816   752   848   920   743   858   761   788   775   791
+\begin{center}
+	\begin{minipage}{\textwidth}
+		\begin{minted}{python}
+In [65]: s2t= t.var(ddof=1)/len(t) #mean temp. variance
 
->> tm =mean(t)
-tm =
-   60.0100
+In [66]: print(s2t)
+0.5328368421052628
 
->> vm =mean(v)
-vm =
-  802.1000
-\end{verbatim}
+In [67]: s2v= v.var(ddof=1)/len(v) #mean volt. variance
 
-Una vez estimadas las medias, que emplearemos como valores de las medidas de la temperatura y el voltaje,  podemos ahora estimar la varianza o la desviación estándar de las medias haciendo uso de las función de Matlab \texttt{std(x)}, para la desviación estándar,  y de \texttt{var(x)}, para la varianza.  Además, debemos aplicar el teorema central del límite, dividiendo por el número de datos disponible.
+In [68]: print(s2v)
+145.58368421052631
 
-\begin{verbatim}
->> s2t=var(t)/length(t) %varianza de la temperatura media
-s2t =
-    0.5328
->> s2t=var(v)/length(v) %varianza del voltaje medio
+In [71]: st= t.std(ddof=1)/np.sqrt(len(t)) #mean volt. standard dev
 
-s2t =
-  145.5837
- >> st=std(v)/sqrt(length(v)) %desviacion del voltaje medio
-st =
-   12.0658
+In [72]: print(st)
+0.7299567398861818
 
->> st=std(t)/sqrt(length(t)) %desviacion de la temperatura media
-st =
-    0.7300
-\end{verbatim} 
+In [73]: sv= v.std(ddof=1)/np.sqrt(len(v)) #mean volt. standard dev
 
+In [74]: print(sv)
+12.065806405314412
+		\end{minted}
+	\end{minipage}
+\end{center} 
+\begin{paracol}{2}
 Lógicamente, los resultados muestran que las desviaciones estándar son las raíces cuadradas de las varianzas. Tenemos por tanto, $\bar{t}=60.01$, $\bar{V}=802,01$, $s^2(t)=0.5382$, $s^2(V)=145.5837$.
+ 
+En este momento, hemos reunido ya toda la información necesaria para estimar la incertidumbre de la potencia consumida en la resistencia de nuestro ejemplo. La tabla \ref{tabdatos} contiene los datos calculados.
 
-\end{itemize} 
+\switchcolumn
+Obviously, the result show that the standard deviation are the square roots of the variances. So, eventually we have, $\bar{t}=60.01$, $\bar{V}=802,01$, $s^2(t)=0.5382$, $s^2(V)=145.5837$.
 
-En este momento, hemos reunido ya toda la información necesaria para estimar la incertidumbre de la potencia consumida en la resistencia de nuestro ejemplo. La tabla \ref{tabdatos} contiene los datos calculados,
+Now we have gathered all needed information to estimate the uncertainty of the power consumed in the resistance of our example. Table \ref{tabdatos} holds of the computed data.
+
+We can now calculate the power,
+\end{paracol}
 
 \begin{table}[h]
-\caption{Medidas y varianzas estimadas}
+\bicaption{Medidas y varianzas estimadas}{Estimated means and variances}
 \label{tabdatos}
 \centering
 \begin{tabular}{cccc}
 \hline
-Variable (unidades) & Valor & Varianza  \\ 
+Variable (unidades) & Valor & Varianza  \\
+Variable (units) & Value & Variance\\ 
 \hline
 \hline
 $R_0$($\Omega$)&$100$&$4.6195$\\
@@ -1555,16 +1628,21 @@ $\bar{V}$(mV)& $802.01$&$145.5837$\\
 \end{tabular}
 \end{table}
 
-Podemos ahora calcular la potencia,
 
 \begin{equation*}
 P = \frac{V^2}{R_0\left(1+b(t-t_0)\right)}=\frac{0.80201^2}{100\left(1+0.4(60.01-50)\right)} =  0.001285 W = 1.285 mW
 \end{equation*}
 
+\begin{paracol}{2}
+
 Donde hemos introducido el voltaje en voltios, para  obtener la potencia directamente en vatios.
 
 A continuación, propagamos la incertidumbre de las variables de entrada a la de salida,
+\switchcolumn
+Where we have introduced the voltage in volts in order to obtain the power directly in watts.
 
+Subsequently, we propagate the uncertainty o the input variables to the output, 
+\end{paracol}
 \begin{align*}
 s_c^2(P) =& \left(\frac{2V}{R_0\left(1+b(t-t_0)\right)}\right)^2 s^2(V)+ \left(\frac{-V^2\left(1+b(t-t_0)\right)}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(R_0)+\\
 &+ \left(\frac{-V^2R_0b}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(t)+\left(\frac{V^2R_0b}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(t_0)=\\
@@ -1573,12 +1651,64 @@ s_c^2(P) =& \left(\frac{2V}{R_0\left(1+b(t-t_0)\right)}\right)^2 s^2(V)+ \left(\
 =&1.4959\cdot10^{-09} + 7.6327\cdot10^{-10} + 5.6252\cdot10^{-09} + 3.5189\cdot10^{-09} =  1.1403\cdot 10^{-08}
 \end{align*} 
 
+\begin{paracol}{2}
 En este caso, hemos multiplicado la varianza del voltaje $s^2(V)$ por $10^{-6}$, para obtener $s_c^2(P)$ en W$^2$. Podemos expresar ahora la incertidumbre de la potencia consumida en función de la desviación estándar como,
 
+\switchcolumn
+In this case, we have multiply the voltage variance $s^2(V)$ by $10^{-6}$, to obtain the $s_c^2(P)$ in W$^2$. We can now represent the uncertainty of the consumed power as a function of the standard deviation as,
+\end{paracol}
 \begin{equation*}
 u_c(P) = \sqrt{s_c^2(P)} =  1.0678\cdot 10^{-4} W
 \end{equation*}
-
+\begin{paracol}{2}
 Con lo que finalmente expresaríamos la medida indirecta de la potencia consumida como, $P = 1.285 \pm 0.10678 $ mW. Si suponemos que la distribución de probabilidad asociada a la incertidumbre de la potencia es normal, la incertidumbre así expresada (mediante la desviación estándar) representaría un intervalo de confianza del $68.27\%$. 
+\switchcolumn
+And eventually we can represent the indirect measurement of the consumed power as, $P = 1.285 \pm 0.10678 $ mW. If we suppose that the probability distribution asociated to the power uncertainty is normal, the uncertainty so represented (using the standard deviation) represents a confidence intervar of $68.27\%$. $s_c^2(P)$ en W$^2$.
+\end{paracol}
+\begin{paracol}{2}
+\section{Una nota sobre Pandas.}
+Python cuenta con un módulo específico para tratar con datos. Se trata de Pandas. Una descripción detallada de este módulo queda fuera del alcance de estos apuntes. Aquí simplemente daremos una muy breve introducción con un ejemplo de uso. Para ello tomaremos datos de la generación de energía electrica en España durante el 19 de marzo de 2025. Los datos están disponibles en la página wed de Red Eléctrica, 
+\end{paracol}
 
-https://demanda.ree.es/visiona/peninsula/nacionalau/total/2025-03-19
+\begin{center}
+\href{https://demanda.ree.es/visiona/peninsula/nacionalau/total/2025-03-19}{https://demanda.ree.es/visiona/peninsula/nacionalau/total/2025-03-19}
+\end{center}
+
+\begin{paracol}{2}
+Para obtenerlos los hemos descargado en formato csv, en un archivo llamado \emph{generacion20250319MW.csv}. Este formato --'comma-separated values'-- es compatible con los programas de hojas de cálculo estándar.
+
+A continuación, incluimos un script de Python en el que se muestra un análisis my sencillo de los datos descargados. 
+\end{paracol} 
+\inputminted[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+label=datos\_electrica\_pandas.py,
+fontsize=\footnotesize,
+linenos
+]{python}{./codigos/tratamiento_datos/datos_electrica_pandas.py}
+\begin{figure}[h]
+\centering
+\includegraphics[width=15cm]{datos_electrica_na.png}
+\bicaption{Datos de generación de energía eléctrica, Red Eléctrica 19.03.2025, cargados en un \emph{Data Frame} de Pandas}{Electrical Power generation, Red Eléctrica 19.03.2025, loaded into a Pandas' Data Frame}
+\label{fig:datafna}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=15cm]{datos_electrica.png}
+	\bicaption{\emph{Data Frame} con los nombres de las columnas corregidos}{Data Frame with the column names fixed}
+	\label{fig:dataf}
+\end{figure}
+\begin{paracol}{2}
+Veamos en detalle lo que hace éste codigo.
+
+En la línea 9 importamos Pandas, del mismo modo que importaríamos cualquier otro módulo de Python. 
+
+En la línea 12 cargamos el fichero de datos en Python. para ello, empleamos una función específica de Pandas \mintinline{python}|pd.read_csv|. Este comando permite leer un fichero tipo csv y lo carga en una variable especial de Pandas cuyo tipo se conoce como \emph{DataFrame}, llamada \mintinline{python}|generacion_mw|. La figura \ref{fig:datafna}, muestra una vista de dicha variable empleando el visor de variables de Spyder. La figura muestra una cabecera, que en este caso, por la estructura del fichero csv cargado, no contiene 
+nombres significativos. Además, tenemos una línea de datos que contiene NaNs. Una de las ventajas de Panda, es que, los \emph{DataFrames} contienen un gran número de funciones propias para su manipulación. Sin nos fijamos, es en la fila dos de la tabla donde aparecen los nombre de las variables contenidas en cada columna.
+
+Nos gustaría que los datos de esta fila dos serían los que dieran nombre a las columnas. Para hacer este cambio, utilizamos el comando \mintinline{python}|rename| mostrado en la línea 13 del script que estamos comentado. El comando pide que se renombren la columnas, empleando los datos de las segunda fila de la tabla mediante el uso de \mintinline{python}|generacion_mw.iloc|. El parámetro \mintinline{python}|inplace = True|, obliga a que el cambio se realice sobre el propio \emph{DataFrame} en lugar de generar uno nuevo con los cambios. 
+\end{paracol}
+
