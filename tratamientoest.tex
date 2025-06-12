@@ -1677,6 +1677,8 @@ Python cuenta con un módulo específico para tratar con datos. Se trata de Pand
 \begin{paracol}{2}
 Para obtenerlos los hemos descargado en formato csv, en un archivo llamado \emph{generacion20250319MW.csv}. Este formato --'comma-separated values'-- es compatible con los programas de hojas de cálculo estándar.
 
+Los datos contenidos en el fichero csv, corresponden a la producción total de energía eléctrica en Megawatios, entre las 21.00 horas del días 18.03.2025 y las 03.00 horas del día 20.03.2025. Los datos se suministran a intervalos de 5 minutos y contienen las cantidades generadas por los distintos sistemas de producción: Eólica, Nuclear, etc.
+
 A continuación, incluimos un script de Python en el que se muestra un análisis my sencillo de los datos descargados. 
 \end{paracol} 
 \inputminted[
@@ -1688,27 +1690,156 @@ label=datos\_electrica\_pandas.py,
 fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/tratamiento_datos/datos_electrica_pandas.py}
-\begin{figure}[h]
-\centering
-\includegraphics[width=15cm]{datos_electrica_na.png}
-\bicaption{Datos de generación de energía eléctrica, Red Eléctrica 19.03.2025, cargados en un \emph{Data Frame} de Pandas}{Electrical Power generation, Red Eléctrica 19.03.2025, loaded into a Pandas' Data Frame}
-\label{fig:datafna}
-\end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=15cm]{datos_electrica.png}
-	\bicaption{\emph{Data Frame} con los nombres de las columnas corregidos}{Data Frame with the column names fixed}
-	\label{fig:dataf}
+	\includegraphics[width=15cm]{datos_electrica_na.png}
+	\bicaption{Datos de generación de energía eléctrica, Red Eléctrica 19.03.2025, cargados en un \emph{Data Frame} de Pandas}{Electrical Power generation, Red Eléctrica 19.03.2025, loaded into a Pandas' Data Frame}
+	\label{fig:datafna}
 \end{figure}
+
 \begin{paracol}{2}
+ 	
 Veamos en detalle lo que hace éste codigo.
 
 En la línea 9 importamos Pandas, del mismo modo que importaríamos cualquier otro módulo de Python. 
 
-En la línea 12 cargamos el fichero de datos en Python. para ello, empleamos una función específica de Pandas \mintinline{python}|pd.read_csv|. Este comando permite leer un fichero tipo csv y lo carga en una variable especial de Pandas cuyo tipo se conoce como \emph{DataFrame}, llamada \mintinline{python}|generacion_mw|. La figura \ref{fig:datafna}, muestra una vista de dicha variable empleando el visor de variables de Spyder. La figura muestra una cabecera, que en este caso, por la estructura del fichero csv cargado, no contiene 
-nombres significativos. Además, tenemos una línea de datos que contiene NaNs. Una de las ventajas de Panda, es que, los \emph{DataFrames} contienen un gran número de funciones propias para su manipulación. Sin nos fijamos, es en la fila dos de la tabla donde aparecen los nombre de las variables contenidas en cada columna.
+En la línea 12 cargamos el fichero de datos en Python. para ello, empleamos una función específica de Pandas \mintinline{python}|pd.read_csv|. Este comando permite leer un fichero tipo csv y lo carga en una variable especial de Pandas, cuyo tipo se conoce como \emph{DataFrame}, llamada \mintinline{python}|generacion_mw|. La figura \ref{fig:datafna}, muestra una vista de dicha variable empleando el visor de variables de Spyder. La primera fila muestra una cabecera, que en este caso, por la estructura del fichero csv cargado, no contiene nombres significativos (Unnamed:\#). Además, tenemos una línea de datos que contiene NaNs. Una de las ventajas de Panda, es que, los \emph{DataFrames} contienen un gran número de funciones propias para su manipulación. Sin nos fijamos, es en la fila dos de la tabla donde aparecen los nombre de las variables contenidas en cada columna.
 
-Nos gustaría que los datos de esta fila dos serían los que dieran nombre a las columnas. Para hacer este cambio, utilizamos el comando \mintinline{python}|rename| mostrado en la línea 13 del script que estamos comentado. El comando pide que se renombren la columnas, empleando los datos de las segunda fila de la tabla mediante el uso de \mintinline{python}|generacion_mw.iloc|. El parámetro \mintinline{python}|inplace = True|, obliga a que el cambio se realice sobre el propio \emph{DataFrame} en lugar de generar uno nuevo con los cambios. 
+Nos gustaría que los datos de esta fila dos fueran los que dieran nombre a las columnas. Para hacer este cambio, utilizamos el comando \mintinline{python}|rename| mostrado en la línea 13 del script que estamos comentado. El comando pide que se renombren la columnas, empleando los datos de las segunda fila de la tabla mediante el uso de \mintinline{python}|generacion_mw.iloc|. El parámetro \mintinline{python}|inplace = True|, obliga a que el cambio se realice sobre el propio \emph{DataFrame} en lugar de generar uno nuevo con los cambios.
+
+Podemos ver los resultados de este cambio en la figura \ref{fig:datafint}. Evectivamente, las columnas han sido renombradas con los valores de los distintos sistemas de producción de energía eléctrica, pero dichos nombres siguen presentes en la fila uno, desde la que se han copiado a la cabecera. Además la fila uno sigue conteniendo NaNs.
+\switchcolumn
+Let see the performance of this program in more detail.                 
 \end{paracol}
+\begin{figure}
+	\centering
+	\includegraphics[width=15cm]{datos_electrica_int.png}
+	\bicaption{\emph{Data Frame} con los nombres de columna corregidos pero repetidos en la fila uno. Además, las fila 0 contiene Nans }{Data Frame with the column names fixed but repeated in row 1. Besides, row 0 holds NaNs}
+	\label{fig:datafint}
+\end{figure}
+
+\begin{paracol}{2}
+Nos gustaría eliminar estas dos filas para dejar nuestro \emph{DataFrame} limpio. Para ello, en la línea 14 del scripts, hemos incluido el comando \mintinline{python}|drop|. Este comando nos permite eliminara líneas enteras de la tabla, empleando directamente su número de índice. En nuestro caso queremos eliminar las filas uno y dos; \mintinline{python}|generacion_mw.drop([0,1],inplace=True))|. Donde, de nuevo hemos empleado la opción \mintinline{python}|inplace = True|, para que los cambios se lleven a cabo sobre el propio 	\emph{DataFrame}. 
+Podemos ver el resultado de la tabla completa en la figura \ref{fig:dataf}. Las filas cero y uno se han eliminado, dejándonos una tabla de datos coherente. 
+Sin embargo, los datos, contenidos en las columnas no son numéricos. Para convertirlos en números y poder trabajar con ellos,
+En la línea 15 copiamos los nombres de las columnas, en una lista, 
+\end{paracol}
+
+\begin{center}
+	\begin{minipage}{0.7\textwidth}
+		\begin{minted}{python}
+In [9]: lista = generacion_mw.columns
+
+In [10]: lista
+Out[10]: 
+Index(['Hora', 'Eólica', 'Nuclear', 'Carbón', 'Ciclo combinado',
+'Intercambios int', 'Solar fotovoltaica', 'Solar térmica',
+'Térmica renovable', 'Motores diésel', 'Turbina de gas',
+'Turbina de vapor', 'Generación auxiliar', 'Cogeneración y residuos',
+'Andorra exportación', 'Marruecos exportación', 'Portugal exportación',
+'Francia exportación', 'Francia importación', 'Portugal importación',
+'Marruecos importación', 'Andorra importación', 'Hidráulica'],
+dtype='object')									 	
+		\end{minted}
+	\end{minipage}
+\end{center}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=15cm]{datos_electrica.png}
+	\bicaption{\emph{Data Frame} con los nombres de las columnas corregidos y NaNs eliminados}{Data Frame with the column names fixed and NaNs eliminated}
+	\label{fig:dataf}
+\end{figure}
+
+\begin{paracol}{2}
+ Despues, empleamos un bucle \mintinline{python}|for| para recorrer las columnas y cambiar el tipo de los datos a \mintinline{python}|float|. Es interesante observar que, tal y como hemos escrito el código, cambiamos los tipos de todos los datos de cada columna en un solo paso.
+
+El comando \mintinline{python}|describe| de la línea 19, nos permite hacernos una idea de la potencia de Pandas.
+
+\end{paracol}
+\begin{center}
+\begin{minipage}{\textwidth}
+	\begin{minted}{python}
+In [3]: des = generacion_mw.describe()
+
+In [4]: des
+Out[4]: 
+	     Eólica      Nuclear  ...  Andorra importación   Hidráulica
+count    361.000000   361.000000  ...                361.0   361.000000
+mean   11429.587258  6041.326870  ...                  0.0  5518.722992
+std     3260.205128   508.590267  ...                  0.0  1199.772571
+min     7740.000000  5640.000000  ...                  0.0  3440.000000
+25%     8727.000000  5667.000000  ...                  0.0  4306.000000
+50%     9830.000000  5673.000000  ...                  0.0  5640.000000
+75%    15167.000000  6410.000000  ...                  0.0  6467.000000
+max    17810.000000  7133.000000  ...                  0.0  8061.000000
+
+[8 rows x 22 columns]	\end{minted}
+\end{minipage}
+\end{center} 
+
+\begin{paracol}{2}
+Con una única instrucción, Pandas nos devuelve un estudio estadístico básico de los datos de nuestra tabla. En el terminal de python se no muestran los nombres de las columnas, con los distintos tipos de generación de energía eléctrica, y en cada columna \texttt{count,mean, std, min, 25\%, 50\%, 75\%, max} los valores del nú\-mero total de datos, el valor medio, el valor mínimo, la desviación estándar, y los valores que marcan los cuartiles 25\%, 50\% (la mediana),75\% y el valor máximo.  En el terminal de python no se muestran todos los datos de la tabla \mintinline{python}|des|, solo las dos primeras columnas y las dos últimas y unos puntos suspensivos entre medias para indicarnos que hay más datos. 
+
+Veamos con detalle el código contenido en la línea 22. Se trata de un comando asociado a los \emph{DataFrames} que permite realizar gráficos tipo 'pastel'. Lo que queremos es obtener una comparativa de la producción media obtenida de las distintas fuentes de energía. El problema es que la tabla que estamos estudiando contiene valores de producción negativos. Se trata en realidad de los intercambios energéticos como, por ejemplo, \texttt{'Francia exportación'} estos datos se toman como negativos porque se trata de energía que 'sale' del sistema español y, por tanto no está disponible para el consumo interno. El problema es que un gráfico tipo pastel, nos da gráficamente una distribución de valores respecto a un total. Debemos excluir los valores negativos. Para ello. dentro del \emph{Dataframe} \mintinline{python}|des|, escogemos los datos de la fila \mintinline{python}|mean| pero solo aquellos que sean mayores que cero: \mintinline{python}|des.loc['mean']>0|. Por último llamamos al comando \mintinline{python}|plot.pie|. Para que nos dibuje el gráfico. EL resultado se puede ver en la figura \ref{fig:pastm}. Es fácil ver la proporción de cada tipo de generación empleado en el periodo que cubren los datos y, en particular, el dominio del consumo de energía eólica.
+\end{paracol}
+	 	
+\begin{figure}
+	\centering
+	\includegraphics[width=13cm]{electrica_prmean.png}
+	\bicaption{Distribución de la producción media de energía eléctrica en Mw en el periodo 18.03.2025:21.00h - 20.03.2025:03.00h}{Electrical mean energy during the period 03.18.2025:21.00h - 03.20.2025:03.00h}
+	\label{fig:pastm}
+\end{figure}
+\begin{paracol}{2}
+	A continuación, en la línea 24 sustituimos la columna de índices por la columna de horas. De este modo, los datos están directamente etiquetados por el tiempo en que se tomaron. El resultado es un \emph{DataFrame} nuevo, \mintinline{python}|gn_Mw_h|, en el que la primera columna son las horas.
+	
+	En la línea 29 empleamos el comando \mintinline{python}|plot|, asociado al nuevo \emph{Dataframe}. Por defecto, no representará los valores de cada columna con respecto a la columna de índices que ahora contiene los tiempos en los que se han realizado las correspondientes medidas. El parámetro \mintinline{python}|rot|, inclina las etiquetas del eje x de modo que no se solapen y sean legibles. Es imposible cubrir aquí todas las posibilidades de modificación que admiten los gráficos de Pandas que, a su vez, dependen del módulo matplotlib. Para más información se aconseja consultar la documentación de Pandas. La figura \ref{fig:datosele}
+	muestra la gráfica resultante. El eje y representa la potencia en Mw generada. Los valores negativos representan exportaciones de electricidad a otros países, como ya se comentó anteriormente.
+\end{paracol}
+\begin{figure}
+	\centering
+	\includegraphics[width=14.5cm]{electrica_tiempo.png}
+	\bicaption{\emph{Data Frame} Potencia en megawatios frente al tiempo}{Electrical Power in megawatts vs time}
+	\label{fig:datosele}
+\end{figure}
+
+
+\begin{paracol}{2}
+La línea de código 32 utiliza el comando \mintinline{python}|boxplot| para dibujar un diagrama de 'bigotes' de los datos . Se trata de un diagrama muy empleado en estadística para analizar como es la distribución de un conjunto de muestras. Para ello, se obtienen los tres primeros cuartiles, es decir los valores de las muestras que superan al 25\% ($Q_1$), al 50\% ($Q_2$ o mediana) y al 75\% ($Q_3$) de los datos. los cuartiles $Q_1$ y $Q_3$ se representa en el gráfico respectivamente como los límites inferior y superior de la 'caja', ademas se señala tambien dentro de la caja la posición de la mediana. El valor $Q_2-Q_1$ recibe el nombre de rango intercuartílico ($RIC$) y habitualmente se emplea para dibujar unas líneas, ---los bigotes del diagrama--- que se extienden desde la caja. Para obtener el límite de estas líneas, se calculan los valores $Q_3+1.5RIC$ y $Q_1-1.5RIC$. De este modo, el límite superior $L_s$ lo marca el valor mayor que cumpla $L_s <= Q_3+1.5RIC$ y el límite inferior $L_i$ se elige como el valor menor que cumpla $L_i >= Q_1-1.5RIC$.
+\end{paracol}
+\begin{figure}
+	\centering
+	\includegraphics[width=14.5cm]{electrica_bigotes.png}
+	\bicaption{Diagrama de bigotes de la potencia generada en Megawatios, distribuido por origen de producción}{Boxplot of Power generation in megawatts, distributed by production source.}
+	\label{fig:datab}
+\end{figure}
+
+\begin{figure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=10cm]{electrica_prod1.png}
+		\bicaption{Distribución de la generación a las 01.05h am}{Generation distribution at 01.05h am}
+		\label{fig:data01}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=10cm]{electrica_prod12.png}
+		\bicaption{Distribución de la generación a las 12.30h am}{Generation distribution at 12.30h am}
+		\label{fig:data12}
+	\end{subfigure}
+	\bicaption{Comparación entre la distribución de generación de energía eléctrica a la 01h am y al las 12.30h pm}{Comparison between the distribution of electricity generation at 01h am and 12.30h pm}
+\end{figure}
+
+\begin{paracol}{2}
+La figura \ref{fig:datab} muestra el diagrama de bigotes obtenidos a partir del \emph{DataFrame} \mintinline{python}|gn_Mw_h|. Los datos aparecen distribuidos por la fuente de generación de energía, es decir, por las columnas del \emph{DataFrame}. Si nos fijamos en la primera, entrada \texttt{Eólica}, observamos que la caja del diagrama, para este tipo de energía va desde apróximadamente desde los 8000 Mw hasta un poco más de 15000. La mediana, aparece rerpresentada como una línea horizontal en la mitad inferior de la caja, estaría alrededor de los 9000 Mw. El límite del bigote inferior estaría cerca de los 6000 Mw y wl límite del bigote superior cerca de 1800. En algunas columnas, como por ejemplo en la que representa la generación de electricida mediante turbinas de ciclo combinado, se observan unos puntos negros más allá de límite de los bigotes. Representan datos atípicos, es decir, valores que no encajan con la distribución estadística del resto de los datos.
+\end{paracol}
+
+
+\begin{paracol}{2}
+La línea de código 36 extrae la fila de datos correspondientes al tiempo \texttt{'2025-03-19 01:05'} y la línea 37 la fila correspondiente al tiempo \texttt{'2025-03-19 12:30'}. A continuación las líneas 41 y 42, dibujan sendos diagramas de pastel, que nos permiten comparar como cambia la distribución de la generación entre ambas horas (una de la madrugada, doce y media del mediodía. Algunas diferencias obvias son la gran generación de energía solar fotovoltaica a mediadía, inexistente a la una de la madrugada.  
+\end{paracol}
+
+
+
 

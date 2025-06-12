@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{9}\PYG{p}{]:} \PYG{n}{lista} \PYG{o}{=} \PYG{n}{generacion\PYGZus{}mw}\PYG{o}{.}\PYG{n}{columns}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{]:} \PYG{n}{lista}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{]:}
+\PYG{n}{Index}\PYG{p}{([}\PYG{l+s+s1}{\PYGZsq{}Hora\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Eólica\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Nuclear\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Carbón\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Ciclo combinado\PYGZsq{}}\PYG{p}{,}
+\PYG{l+s+s1}{\PYGZsq{}Intercambios int\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Solar fotovoltaica\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Solar térmica\PYGZsq{}}\PYG{p}{,}
+\PYG{l+s+s1}{\PYGZsq{}Térmica renovable\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Motores diésel\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Turbina de gas\PYGZsq{}}\PYG{p}{,}
+\PYG{l+s+s1}{\PYGZsq{}Turbina de vapor\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Generación auxiliar\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Cogeneración y residuos\PYGZsq{}}\PYG{p}{,}
+\PYG{l+s+s1}{\PYGZsq{}Andorra exportación\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Marruecos exportación\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Portugal exportación\PYGZsq{}}\PYG{p}{,}
+\PYG{l+s+s1}{\PYGZsq{}Francia exportación\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Francia importación\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Portugal importación\PYGZsq{}}\PYG{p}{,}
+\PYG{l+s+s1}{\PYGZsq{}Marruecos importación\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Andorra importación\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Hidráulica\PYGZsq{}}\PYG{p}{],}
+\PYG{n}{dtype}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}object\PYGZsq{}}\PYG{p}{)}									 	
+\end{Verbatim}
