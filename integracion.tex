@@ -1366,3 +1366,55 @@ x(1) = \int_0^1v_x(t)dt,
 \end{equation}
 a) Employ to do it the trapezium formula
 b) Compare the results with those obtained from the Euler's method and from the analytical solution.
+
+\section*{LCC. Test 4 (curso 2024 -2025) \protect\footnote{Crea las funciones necesarias  y da los resultados y tus comentarios en un \emph{notebook}.}}
+
+Una de las atracciones de mayor éxito en el parque de atracciones de Gotham es la catapulta de Thalia al Ghul. Los participantes son introducidos en una cápsula esférica transparente y lanzados al aire por la catapulta. La cápsula viaja por el aire hasta alcanzar un lago artificial del parque de atracciones.
+
+Thalia está interesada en saber cual es la mejor ubicación para el lago artificial. Para ello hace uso de sus brillantes conocimientos de física de bachillerato y plantea las siguientes ecuaciones,
+
+\begin{align}
+	x &= v_0\cos(\theta)t + x_0 \label{eq1}\\
+	h &= -\frac{1}{2}gt^2 + v_0\sin({\theta})t + h_0 \label{eq2}
+\end{align}
+Donde $v_0$ Representa la velocidad de lanzamiento desde la catapulta en $m/s$, $x_0$ es la posición inicial horizontal de la cápsula en $m$, $h_0$ la altura inicial en $m$, $g=9.8m/s$ la aceleración de la gravedad, $\theta$ el ángulo de lanzamiento en radianes y $t$ el tiempo en segundos.
+
+Lucía y Laura, antiguas compañeras de bachiller de Thalia, se parten de risa al ver sus ecuaciones y le dicen que la cápsula sufre una enorme fuerza de fricción con el aire y que las ecuaciones que plantea no sirven para resolver su problema.
+
+A cambio, le proponen que emplee las siguientes ecuaciones,
+\begin{align}
+	\frac{dx}{dt} &= v_x \label{eq3}\\
+	\frac{dh}{dt} &= v_h\\
+	\frac{dv_x}{dt} &= - \frac{C_d}{m}\rho\pi r^2|v|v_x\\
+	\frac{dv_h}{dt} &= -g - \frac{C_d}{m}\rho\pi r^2|v|v_h \label{eq5}
+\end{align}
+
+Donde $C_d = 0.47$ es el coeficiente de arrastre de una esfera, $\rho = 1.22Kg/m^3$ es la densidad del aire seco a nivel del mar y $30^o$ centígrados de temperatura, $r = 1m$ es el radio de la cápsula esférica y $m=100Kg$ su masa. El resto de variables son iguales a las de las primeras ecuaciones.
+
+Thalia, que no tiene la menor idea de como resolver las ecuaciones que le plantean, enfurece y amenaza a Lucía y a Laura con echarles encima a la Liga de Asesinos si no le resuelven el problema.
+
+Laura y Lucía piden ayuda al resto de sus compañeros de LCC a ver si entre todos consiguen resolverlo.
+
+\begin{enumerate}
+	\item (\textbf{2 ptos}) Emplea las ecuaciones (\ref{eq1}) y (\ref{eq2}) para obtener las posiciones sucesivas de la cápsula desde su lanzamiento hasta que toca la superficie del lago. Considera que la velocidad con la que sale la cápsula de la catapulta es $v_0 = 20 m/s$ y sale formando un ángulo $\theta = \pi/3$ con la horizontal. La altura desde la que sale es $h_0 = 2m$. Toma $x_0=0m$. Dibuja la trayectoria. (Aunque sabemos que no es necesario recordároslo el tiempo máximo de vuelo para el tiro parabólico se puede calcular como $t_{max} = \frac{v_{0y} + \sqrt{v_{0y}^2+2gh_0}}{g}$)
+	
+	
+	\item (\textbf{4 ptos}) Emplea el método de Euler para resolver las ecuaciones (\ref{eq3}) - (\ref{eq5}). Toma para las posiciones y velocidades iniciales los mismo valores del apartado anterior. Integra hasta que la cápsula toque o rebase la superficie del lago. Emplea un incremento de tiempo $\Delta t = 0.0001$. Dibuja la trayectoria resultante en el mismo gráfico del ejercicio anterior.
+	A la vista de los resultados, indica si era acertada la sugerencia de Lucía y Laura.
+	
+	\item \textbf{Bonus track}(\textbf{1 pto}) El cálculo realizado solo el válido para días sin viento, ya que la velocidad empleada para calcular la fricción es relativa al aire. Vuelve a resolver el problema suponiendo una velocidad horizontal del viento $v_{xaire} = -10 m/s$. Compara con los resultados anteriores.
+\end{enumerate}
+Laura y Lucía se han venido arriba y deciden emplear los resultados anteriores para estimar el trabajo realizado por la fricción del aire y comprobar si son ciertos los teoremas de conservación de la energía.
+Para ello, parten de la ecuación del trabajo de una fuerza,
+\begin{equation}\label{eq7}
+	W = \int_0^R F_r\cdot ds = \int_{x_0}^{x_{fin}}F_{rx}dx + \int_{h_0}^{h_{fin}} F_{rh}dh
+\end{equation}
+Con,
+\begin{align}
+	F_{rx} = - C_d\rho\pi r^2|v|v_x\\
+	F_{rh} = - C_d\rho\pi r^2|v|v_h
+\end{align}
+\begin{enumerate}[resume]
+	\item (\textbf{4 ptos}) Empleando el método del trapecio y los valores de $(x,v_x)$, y $(h,v_h)$ obtenidos en el apartado (2), calcula el trabajo realizado por la fricción del aire a partir del término de la derecha de la ecuación (\ref{eq7}).
+	Comprueba que, efectivamente, se aproxima a la pérdida de energía de la cápsula desde su lanzamiento hasta que toca la superficie del agua. (Ten en cuenta que el cálculo es sólo aproximado y mejora si vuelves a obtener la solución mediante el método de Euler, empleando pasos de tiempo más pequeños) \footnote{Si te has atascado en el ejercicio 2 y no tienes los valores de  $(x,v_x)$, y $(h,v_h)$ puedes descargarlos del fichero \textit{"datosLauraLucia.txt"} del campus virtual.}
+\end{enumerate}

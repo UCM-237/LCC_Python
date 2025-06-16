@@ -3607,5 +3607,63 @@ Determina, a la vista de la gráfica, si sería posible encontrar un valor de $\
 \item {\bf 1 punto.} ¿Sabrías decir que relación hay entre las matrices X y A?
 \end{enumerate}
 
+\section{LCC. Test 3 (curso 2024 -2025) \protect\footnote{Crea las funciones necesarias  y da los resultados y tus comentarios en un \emph{notebook}.}}
 
+\subsection*{Ejercicio sistemas (\textbf{10 puntos})}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{noria2.png}
+	\caption{Noria del parque de atracciones de Gotham}
+	\label{fig:1}
+\end{figure}
+
+Nathaniel Finch, más conocido como Gearhead, es el responsable del mantenimiento de la noria del parque de atracciones de Gotham. Para dar mayor emoción a la atracción, desea calcular cuál sería la máxima velocidad a la que puede hacer girar la noria sin que se rompa su estructura.
+
+La figura \ref{fig:1}, muestra una vista instantánea de la noria. los radios están construidos con barras de acero y los extremos de los radios están unido mediante cables de acero. Para calcular las tensiones, en las barras y cables se puede emplear el siguiente sistema de ecuaciones,
+\begin{align}
+	sT_6+sT_{61} &= mg + s\frac{mv^2}{r}\\
+	- cT_6+ cT_{61} &= -c\frac{mv^2}{r}\\
+	-cT_{61} + T_1 - cT_{12} &= -\frac{mv^2}{r}\\
+	- sT_{61} + sT_{12}   &= mg\\
+	-sT_{12} + sT_{2} &= mg -s\frac{mv^2}{r}\\
+	cT_{12}+cT_{2}-T_{23} &= -c\frac{mv^2}{r}
+\end{align}
+Donde $T_{(\cdot)}$ representa la tensión correspondiente a cada una de las barras y cables de la noria indicadas en figura \ref{fig:1}, $v$ la velocidad lineal a la que giran la cabinas de la noria y $m = 100kg$ su masa; $r = 20m$ la longitud de cada barra y $g=10m/s^2$ la aceleración de la gravedad. Por último, $c = \cos(\frac{\pi}{3})$ y $s = \sin(\frac{\pi}{3})$.
+
+El resto de las tensiones, no incluidas en la ecuación son iguales a sus simétricas respecto al eje vertical, excepto la correspondiente al cable horizontal inferior que no sufre tensión en esta posición de la noria.
+\begin{enumerate}
+	\item (\textbf{1 ptos}) Reescribe las ecuaciones para las tensiones en forma matricial $A\cdot T=b$.
+	
+	Donde $A$ representa la matriz de coeficientes, $b$ el vector de términos independientes y $T = [T_6,T_{61},T_1,T_{12},T_2,T_{23}]^T$ el vector de incógnitas.
+	
+	\item (\textbf{2.5 ptos}) Gearhead, ha calculado el radio espectral del método de Gauss-Seidel, para el sistema de ecuaciones del apartado anterior y decide que no puede emplearlo para obtener las tensiones de su noria. Explica razonadamente si tiene razón.
+	
+	\item (\textbf{2.5 ptos}) Empleando un valor para el amortiguamiento $w = 0.6$, obtén las tensiones de las noria cuando está en reposo, empleando para ello el método SOR. Emplea una tolerancia $tol=1e-9$.
+	
+	\item (\textbf{4 ptos}) Para obtener la velocidad máxima a la que puede girar la noria sin romperse, Gearhead repite el cálculo anterior incrementando la velocidad en $1m/s$, cada vez, hasta que uno de los elementos de la noria (barras o cables) supera la tensión máxima admisible que, tanto para los cables como para las barras, es de $10000N$. Emplea las tensiones obtenidas para cada velocidad, como solución inicial para el cálculo de las tensiones de la siguiente velocidad. Para la primera, emplea como solución inicial las tensiones obtenidas en el apartado anterior.
+	
+	¿Cuál es la velocidad máxima a la que puede girar la noria sin romperse? ¿Cual el el primer elemento que se rompería caso de rebasar dicha velocidad? Ten en cuenta que, en algunos casos, la tensión puede tomar un valor negativo, calcula el valor máximo en valor absoluto.
+\end{enumerate}
+
+
+
+\subsection*{Ejercicio interpolación (10 puntos)}
+
+Algo extraño está ocurriendo en el parque de atracciones de Gotham. El anillo de Kriptonita que Lex Luthor lleva siempre puesto ha comenzado a brillar intermitentemente al pasar cerca de la noria. El instinto científico de Lex le hace pensar que tal vez está ante una contaminación radiactiva. Así que pone en marcha el contador Luthor-Geiger y toma medidas durante $16(s)$. 
+
+Como el cálculo numérico no es el fuerte de Lex (no aprobó nunca LCC) le pasa a los estudiantes del grupo D el archivo con los datos \textit{gotham.txt}, para ver si averiguan algo. Este archivo tiene en la primera columna el tiempo en segundos y en la segunda la actividad radiactiva en bequerelios (Bq).
+
+\begin{enumerate}
+	\item (\textbf{2 ptos}) Carga los datos y dibuja en una gráfica la actividad radiactiva $A(t)$ en función del tiempo $t$ que ha medido Lex.
+	%\item Utiliza el método de interpolación de Lagrange para construir un polinomio que pase por todos los puntos de datos de actividad medidos. Representa gráficamente el polinomio interpolador junto con los datos experimentales.
+	\item (\textbf{2 ptos}) Utiliza el método de interpolación de Newton-Gregory o diferencias finitas (el que prefieras o más convenga) para construir un polinomio que pase por todos los puntos de datos de actividad medidos. Representa gráficamente el polinomio interpolador junto con los datos experimentales.
+	\item (\textbf{3 ptos}) Las medidas de actividad tienen pesos diferentes debido a variaciones en las condiciones experimentales. Para tiempos más largos, el error de medida es mayor, por lo que esos datos deberían tener menos peso. Calcula los pesos para cada dato usando la función $\omega=\frac{1}{1+t}$. Ajusta los datos experimentales a un polinomio de grado $n$ mediante el método de mínimos cuadrados ponderados (elige $n$ de forma razonada). Dibuja el ajuste junto con los datos. Discute la calidad del ajuste en función del grado del polinomio.
+	\item (\textbf{3 ptos}) Lex Luthor tenía razón y los datos parecen responder a una desintegración radiactiva. Las desintegraciones radiactivas se comportan en función de una ley de decaimiento exponencial, 
+	\begin{equation}\label{eqd}
+		A(t)=A_0 e^{-\lambda\cdot t}
+	\end{equation}
+	Donde $A_0$ es la actividad radiactiva inicial (en $t=0$) y $\lambda$ es la constante de desintegración radiactiva propia de cada isótopo. Calcula la constante de desintegración radiactiva usando un ajuste por mínimos cuadrados con los pesos del apartado anterior.
+	(Pista: Si tomas logaritmos naturales a ambos lados de la ecuación (\ref{eqd}), obtienes una recta de pendiente $-\lambda$.)
+\end{enumerate}
+%\noindent\rule{\textwidth}{0.4pt}
 

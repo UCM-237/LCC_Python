@@ -1042,3 +1042,72 @@ y calcule un vector con las sumas de los valores pares de los elementos de cada 
 \includegraphics[scale=0.5]{lisa1.eps}
 \caption{vista de la figura con los ocho subplots} \label{fig:1}
 \end{figure}
+\newpage
+\section{LCC. Test 1 (curso 2024 -2025) \protect\footnote{Crea las funciones necesarias  y da los resultados y tus comentarios en un \emph{notebook}. }}
+
+\begin{enumerate}
+	\item Crea una función en Python que:
+	
+	
+	
+	
+	\begin{enumerate}
+		\item \label{apt1} (2 puntos) Toma como variable de entrada una lista que contenga a su vez listas formadas por números enteros y devuelva una sola lista con todos los números contenidos en la lista original. La lista de entrada puede tener cualquier tamaño. Comprueba el funcionamiento de tu programa con las lista,
+		\begin{minted}{python}
+Lista = [[1, -2, 3], [0, -16, 3, -5], [-1, 0, 4, 6], [1, 3]]
+		\end{minted}
+		
+		
+		\item (2 puntos) Modifica la función creada en el apartado anterior para que:
+		\begin{itemize}
+			\item No guardes los valores de las lista original que sean iguales a cero.
+			\item Cambia todos los valores negativos por su valor absoluto.
+			\item Una vez realizados los cambios anteriores, y antes de guardar el resultado en la lista de salida: 
+			
+			Si el resultado es un número impar, le añada un uno. 
+			
+			Si es divisible por cuatro, divida el numero entre dos (división entera). 
+			
+			En cualquier otro caso cambie el número por $-1$.  
+		\end{itemize}
+		Emplea la misma lista del apartado anterior para comprobar el funcionamiento de tu programa.
+	\end{enumerate}
+	
+	\item El Jocker's carousel  situado en el parque de atracciones de Gotham City es una atracción formada por una plataforma con cuatro brazos de longitud $R$ que giran en el plano horizontal. Del extremo de cada brazo cuelga una cabina a una distancia $r$ del centro, que gira en un plano vertical paralelo al brazo. Cuando está en marcha, el movimiento de cada una de sus cabinas se puede describir mediante las siguiente ecuación:
+	
+	\begin{equation*}
+		\begin{split}
+			x_i(t) &= \left(R+\sin(\omega_c t)\right)\cos(\omega_b t+ \theta_i)\\
+			y_i(t) &= \left(R+r\sin(\omega_c t)\right)\sin(\omega_b t+ \theta_i)\\
+			z_i(t) &= -r\cos(\omega_c t) + h_0
+		\end{split}
+	\end{equation*}
+	Donde $t \in [0,\infty)$ es el tiempo en segundos, $x_i(t)$, $y_i(t)$ y $z_i(t) \in \mathbb{R}$ son las coordenadas de la posición de la cabina $i$, ($i = [0,1,2,3]$), en función del tiempo. $\omega_b$ y $\omega_c$ son respectivamente la frecuencia en $rad/s$ a la giran los brazos y la frecuencia a la que giran las cabinas en el extremo de cada brazo. $\theta_i = \frac{\pi}{2}\cdot i$  representa la orientación de cada brazo con el eje de las $x$. Por último, $h_0$ es la altura en metros sobre el suelo a la que se encuentra la plataforma con los cuatro brazos.  
+	
+	\begin{enumerate}
+		\item (3 puntos) Escribe una función en Python que tome como variables de entrada los valores de $R,r,w_b,w_c,t_f,i,h_0$, y devuelva tres \emph{arrays} de Numpy con la posiciones sucesivas (trayectorias) $x,y,z$ de la cabina $i$, para el intervalo de tiempo $t\in [0,t_f]$. Emplea instantes de tiempos separados entre sí $0.01$s.
+		
+		\item (2 puntos) Utilizando para los parámetros del problema los valores de la tabla siguiente,
+		\begin{table}[h]
+			\centering
+			\begin{tabular}{c c c c c c}
+				\hline
+				$R$ & $r$ & $\omega_c$ & $\omega_b$ & $t_f$ & $h_0$\\
+				$20$ & $3$ & $6\pi$ & $0.2\pi$ & $20$ & $6$\\
+				\hline
+			\end{tabular}
+		\end{table}
+		
+		calcula las trayectorias de las cuatro cabinas y dibújalas empleando una figura distinta para cada una de ellas.
+		\item (1 punto) Vuelve a dibujarlas pero ahora todas en el mismo gráfico.
+		\item (Bonus track. 1 punto) Batman ha estudiado el gráfico en que aparecen todas las trayectorias juntas y no entiende por qué se ven solo dos en lugar de cuatro, ¿Podrías explicarle qué pasa?
+		¿Sabrías mostrárselo gráficamente?
+	\end{enumerate}
+	
+	
+	
+\end{enumerate}
+
+
+
+\noindent\rule{\textwidth}{0.4pt}

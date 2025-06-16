@@ -3,6 +3,10 @@
 \epigraph{Dicen que las buenas mozas en Madrid han decidido, el gastar en vez de lengua una espada de dos filos.
 
 Y si hay guerra en este invierno , los Valones y los Suizos llevarán en vez de espada guardapiés y rebocillo.}{El barberillo de Lavapiés. Luis Mariano de Larra}
+
+\begin{flalign*}
+	&\mathwitch*_{i=0}^{\infty}\Biggl \{&     
+\end{flalign*}
 \begin{paracol}{2}
 \section{Secuencias de números aleatorios}
 \sectionmark{Secuencias de números aleatorios. \textreferencemark\ Random number sequences.}
@@ -656,7 +660,7 @@ Los parámetros característicos permiten definir propiedades importantes de las
 \item \textbf{Media ó valor esperado.} El valor esperado de una distribución se obtiene integrando el producto de cada uno de los valores aleatorios sobre los que está definida la distribución, por su densidad de probabilidad,
 \end{itemize}
 \switchcolumn
-\paragraph{Distributions characteristic parameters}
+\paragraph{Characteristic parameters of Distributions}
 The characteristic parameter  allow us to define important properties of probability distributions. We will define only the two main distributions parameters:
 \begin{itemize}\index[eng]{Mean (Distributions)}
 	\item \textbf{Distribution mean or expected value} We get the expected value of a distribution integrating the product of the ramdom variable the distribution is defined on, by its probability density,   
@@ -742,7 +746,7 @@ and for a normal distribution,
 \end{paracol}
 
 \begin{paracol}{2}
-\section{El teorema del límite central}\label{tlc}
+\section{El teorema del límite central}\label{tlc}\index{Teorema del ĺimite central}
 \sectionmark{El teorema del límite central. \textreferencemark\ Central Limit Theorem.}
 El teorema del límite central juega un papel muy importante a la hora de analizar y evaluar resultados experimentales. Nos limitaremos a enunciarlo, pero no daremos una demostración.
 
@@ -750,7 +754,7 @@ Supongamos que tenemos un fenómeno aleatorio continuo que viene caracterizado p
 
 Supongamos que realizamos un experimento consistente en obtener $n$ valores de x al azar. Los valores así obtenidos, deberán seguir la distribución de probabilidad $f(x)$. Para caracterizar nuestro experimento, calcularemos la media de los $n$ valores obtenidos,
 \switchcolumn
-\section{The Central Limit Theorem}
+\section{The Central Limit Theorem} \index[eng]{Central Limit Theorem}
 \sectionmark{El teorema del límite central. \textreferencemark\ Central Limit Theorem.}
 The central limit theorem plays a very important role in experimental data analysis. We are going to present it without demonstration.
 
@@ -930,7 +934,7 @@ La incertidumbre sistemática de precisión suele expresarse añadiendo a la med
 
 La incertidumbre sistemática de precisión representa una distribución uniforme de media el valor de la medida realizada y anchura la división mínima de la escala. Es decir, se considera que el valor real de la medida está dentro de dicho intervalo intervalo con una probabilidad del $100\%$. Volviendo al ejemplo anterior de la regla, el valor real de nuestra medida estaría comprendido en el intervalo $[122.5,\ 123.5 ]$, y podría tomar cualquier valor de dicho intervalo con igual probabilidad. 
 
-\paragraph{Incertidumbre estadística.} La segunda fuente de incertidumbre se debe a factores ambientales, que modifican de una vez para otra las condiciones en que se realiza una medida experimental. Estos factores hacen que la medidas realizadas sean sucesos aleatorios. En principio podría describirse mediante una distribución de probabilidad $f(x)$, pero en la práctica desconocemos de qué distribución se trata y ni siquiera sabemos cual es su valor esperado $\mu$ o su varianza $\sigma$. \index{Medidas experimentales! Incertidumbre estadística}
+\paragraph{Incertidumbre estadística.}\index{Medidas experimentales! Incertidumbre estadística} La segunda fuente de incertidumbre se debe a factores ambientales, que modifican de una vez para otra las condiciones en que se realiza una medida experimental. Estos factores hacen que la medidas realizadas sean sucesos aleatorios. En principio podría describirse mediante una distribución de probabilidad $f(x)$, pero en la práctica desconocemos de qué distribución se trata y ni siquiera sabemos cual es su valor esperado $\mu$ o su varianza $\sigma$. \index{Medidas experimentales! Incertidumbre estadística}
 
 Afortunadamente, el teorema del límite central, que describimos en al sección \ref{tlc} proporciona un sistema de estimar la incertidumbre estadística.
 
@@ -950,7 +954,7 @@ Systematic accuracy uncertainty is usually shown by adding half the least divisi
 
 The systematic accuracy uncertainty represents an uniform probability density distribution. The mean is the value measured and the width is the minimum division of the sensor measurement scale. This means, that we consider that the real value of the magnitude is inside this interval (defined by the minimum division value) with a probability of $100\%$. Coming back to the example of the rule, The real value of our measurement will be inside the interval $[122.5,\ 123.5 ]$ and it could take whatever value, inside this interval, with the same probability. 
 
-\paragraph{Statistical uncertainty}
+\paragraph{Statistical uncertainty}\index[eng]{Experimental measurements! Statistical Uncertainty}
 The second source of uncertainty arises from environmental factors that constantly change the conditions under which a measurement is taken. These factors render the measurement subject to random variations. While we could theoretically describe this variation using a probability distribution $f(x)$, in practice, the specific distribution is unknown. Consequently, we do not know its mean value $\mu$ or its variance $\sigma$.
 
 But, fortunately, the central limit theorem, that we described in section \ref{tlc}, supplies a method to estimate the statical uncertainty.
@@ -999,7 +1003,7 @@ s_{xn}=\sqrt{s^2_{xn}}=\sqrt{\frac{\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2}{n}}
 \begin{paracol}{2}
 esta cantidad recibe el nombre de desviación estándar.
 
-\subsection{Intervalos de confianza.}
+\subsection{Intervalos de confianza.}\index{Intervalos e confianza}
 Como hemos visto, a partir del teorema central del límite podemos asociar la media de los valores obtenidos al repetir una medida y su desviación estándar con una distribución normal. Podemos ahora, en un segundo paso, asociar la incertidumbre de la medida realizada con la probabilidad representada por dicha distribución normal.
 
 Si el valor obtenido tras realizar $n$ repeticiones de una medida es $\bar{x}_n$ y su desviación típica es $s_{xn}$ ¿Cuál es la probabilidad de que el valor medido esté realmente comprendido en el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
@@ -1008,7 +1012,7 @@ Como vimos en el apartado \ref{pdfc}, dicha probabilidad puede calcularse integr
 \switchcolumn
 this quantity is known as the standard deviation.
 
-\subsection{Confidence intervals.}
+\subsection{Confidence intervals.}\index[eng]{Confidence Intervals}
 As we have seen, using the central limit theorem, it is possible to relate the mean of the values obtained by repeating a measure and their standard deviation to a normal distribution. In the second step, we can associate the uncertainty of the performed measure with the probability represented by this normal distribution.
 
 If the mean value after carrying out $n$ repetitions of measurement is $\bar{x}_n$ and the standard deviation is $s_{xn}$ What is the probability that the measured value will be actually inside the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
@@ -1229,11 +1233,11 @@ Thus, in this example, we have to represent the measurement as $6.5 \pm 3.92$ º
 \end{paracol}
 
 \begin{paracol}{2}
-\paragraph{La distribución T de Student.} Habitualmente, cuando el número de medidas que se han tomado para estimar el valor de $\bar{x}_n$ es pequeño, los intervalos de confianza se calculan empleando la distribución t de Student de $n-1$ grados de libertad, donde  n representa el número de medidas tomadas.
+\paragraph{La distribución T de Student.}\index{Distribución T de Student} 
+Habitualmente, cuando el número de medidas que se han tomado para estimar el valor de $\bar{x}_n$ es pequeño, los intervalos de confianza se calculan empleando la distribución t de Student de $n-1$ grados de libertad, donde  n representa el número de medidas tomadas.
 
 \switchcolumn
-\paragraph{The Student's T distribution}
-
+\paragraph{The Student's T distribution}\index[eng]{Student's T Distribution}
 Usually, when the number of measurements taken to estimate the value of $\bar{x}_n$ is small, we calculate the confidence intervals using the Studen's T distribution of $n-1$ degrees of freedom, where $n$ represent the number of measurements taken.  
 \end{paracol}
 
@@ -1667,6 +1671,7 @@ And eventually we can represent the indirect measurement of the consumed power a
 \end{paracol}
 \begin{paracol}{2}
 \section{Una nota sobre Pandas.}
+\sectionmark{Una nota sobre Pandas. \textreferencemark\ A note on Pandas.}
 Python cuenta con un módulo específico para tratar con datos. Se trata de Pandas. Una descripción detallada de este módulo queda fuera del alcance de estos apuntes. Aquí simplemente daremos una muy breve introducción con un ejemplo de uso. Para ello tomaremos datos de la generación de energía electrica en España durante el 19 de marzo de 2025. Los datos están disponibles en la página web de Red Eléctrica,
 \switchcolumn
 \section{A note on Pandas}
@@ -1807,7 +1812,11 @@ max    17810.000000  7133.000000  ...                  0.0  8061.000000
 \begin{paracol}{2}
 Con una única instrucción, Pandas nos devuelve un estudio estadístico básico de los datos de nuestra tabla. En el terminal de python se no muestran los nombres de las columnas, con los distintos tipos de generación de energía eléctrica, y en cada columna \texttt{count,mean, std, min, 25\%, 50\%, 75\%, max} los valores del nú\-mero total de datos, el valor medio, el valor mínimo, la desviación estándar, y los valores que marcan los cuartiles 25\%, 50\% (la mediana),75\% y el valor máximo.  En el terminal de python no se muestran todos los datos de la tabla \mintinline{python}|des|, solo las dos primeras columnas y las dos últimas y unos puntos suspensivos entre medias para indicarnos que hay más datos. 
 
-Veamos con detalle el código contenido en la línea 22. Se trata de un comando asociado a los \emph{DataFrames} que permite realizar gráficos tipo 'pastel'. Lo que queremos es obtener una comparativa de la producción media obtenida de las distintas fuentes de energía. El problema es que la tabla que estamos estudiando contiene valores de producción negativos. Se trata en realidad de los intercambios energéticos como, por ejemplo, \texttt{'Francia exportación'} estos datos se toman como negativos porque se trata de energía que 'sale' del sistema español y, por tanto no está disponible para el consumo interno. El problema es que un gráfico tipo pastel, nos da gráficamente una distribución de valores respecto a un total. Debemos excluir los valores negativos. Para ello. dentro del \emph{Dataframe} \mintinline{python}|des|, escogemos los datos de la fila \mintinline{python}|mean| pero solo aquellos que sean mayores que cero: \mintinline{python}|des.loc['mean']>0|. Por último llamamos al comando \mintinline{python}|plot.pie|. Para que nos dibuje el gráfico. EL resultado se puede ver en la figura \ref{fig:pastm}. Es fácil ver la proporción de cada tipo de generación empleado en el periodo que cubren los datos y, en particular, el dominio del consumo de energía eólica.
+Veamos con detalle el código contenido en la línea 22. Se trata de un comando asociado a los \emph{DataFrames} que permite realizar gráficos tipo 'pastel'. Lo que queremos es obtener una comparativa de la producción media obtenida de las distintas fuentes de energía. El problema es que la tabla que estamos estudiando contiene valores de producción negativos. Se trata en realidad de los intercambios energéticos como, por ejemplo, \texttt{'Francia exportación'} estos datos se toman como negativos porque se trata de energía que 'sale' del sistema español y, por tanto no está disponible para el consumo interno. El problema es que un gráfico tipo pastel, nos da gráficamente una distribución de valores respecto a un total. Debemos excluir los valores negativos. Para ello, dentro del \emph{Dataframe} \mintinline{python}|des|, escogemos los datos de la fila \mintinline{python}|mean| pero solo aquellos que sean mayores que cero: \mintinline{python}|des.loc['mean']>0|. Por último llamamos al comando \mintinline{python}|plot.pie|, para que nos dibuje el gráfico. EL resultado se puede ver en la figura \ref{fig:pastm}. Es fácil ver la proporción de cada tipo de generación empleado en el periodo que cubren los datos y, en particular, el dominio del consumo de energía eólica.
+\switchcolumn
+With a single instruction, Pandas renders a basic statistical study of our table data. On the python terminal we can see the names of the different kinds of Electrical power generators and in each column \texttt{count,mean, std, min, 25\%, 50\%, 75\%, max} the values corresponding to the total number of data, the mean value, the minimum, the standard deviation and the values taken by the 25\%, 50\% (the  median) and 75\% quartiles and the maximum. On the Python terminal no every data of table  \mintinline{python}|des| are shown, but only the two first and two last columns and a ellipsis in between to show us that there are more data available.
+
+Let see in detail the code on line 22. It contains a command associated to \emph{DataFrames} Who allows us to draw Pie charts. We want to get a comparison among the mean power generation from the different generation sources. The problem is that the table we want to study holds negative production values. In fact these correspond to electrical power interchanges with other countries, such France \texttt{'Francia exportación'}. These data are taken negative because it is energy that 'gets out' of the Spanish system and, thus, it is not available for inner consumption. The problem is that a pie chart gives a graphic distribution of values that sum up a total quantity. We should exclude the negative value. To do this we chose from the  \emph{Dataframe} \mintinline{python}|des|, the data on the row \mintinline{python}|mean|, but only those that are greater than zero: \mintinline{python}|des.loc['mean']>0|. Eventually, we call the command \mintinline{python}|plot.pie| to draw the graphic. The result is shown if figure \ref{fig:pastm}. It very clear to see the distribution of each kind of power generation source used in the period covered by the data and, in particular, the dominance of wind power consumption.       
 \end{paracol}
 	 	
 \begin{figure}
@@ -1819,8 +1828,11 @@ Veamos con detalle el código contenido en la línea 22. Se trata de un comando 
 \begin{paracol}{2}
 	A continuación, en la línea 24 sustituimos la columna de índices por la columna de horas. De este modo, los datos están directamente etiquetados por el tiempo en que se tomaron. El resultado es un \emph{DataFrame} nuevo, \mintinline{python}|gn_Mw_h|, en el que la primera columna son las horas.
 	
-	En la línea 29 empleamos el comando \mintinline{python}|plot|, asociado al nuevo \emph{Dataframe}. Por defecto, no representará los valores de cada columna con respecto a la columna de índices que ahora contiene los tiempos en los que se han realizado las correspondientes medidas. El parámetro \mintinline{python}|rot|, inclina las etiquetas del eje x de modo que no se solapen y sean legibles. Es imposible cubrir aquí todas las posibilidades de modificación que admiten los gráficos de Pandas que, a su vez, dependen del módulo matplotlib. Para más información se aconseja consultar la documentación de Pandas. La figura \ref{fig:datosele}
-	muestra la gráfica resultante. El eje y representa la potencia en Mw generada. Los valores negativos representan exportaciones de electricidad a otros países, como ya se comentó anteriormente.
+	En la línea 29 empleamos el comando \mintinline{python}|plot|, asociado al nuevo \emph{Dataframe}. Por defecto, no representará los valores de cada columna con respecto a la columna de índices que ahora contiene los tiempos en los que se han realizado las correspondientes medidas. El parámetro \mintinline{python}|rot|, inclina las etiquetas del eje x de modo que no se solapen y sean legibles. Es imposible cubrir aquí todas las posibilidades de modificación que admiten los gráficos de Pandas que, a su vez, dependen del módulo matplotlib. Para más información se aconseja consultar la documentación de Pandas. La figura \ref{fig:datosele} muestra la gráfica resultante. El eje y representa la potencia en Mw generada. Los valores negativos representan exportaciones de electricidad a otros países, como ya se comentó anteriormente.
+	\switchcolumn
+	Following with the code of the example, in line 24 we change the column of indices by the column of hours. In this way, data are directly label with the time when they were measured. The result is a new \emph{DataFrame}, \mintinline{python}|gn_Mw_h| where the first columns are the hours. 
+	
+	In line 29 we use the command \mintinline{python}|plot|, associated to the new \emph{DataFrame}. By default, it will represent de values each column versus the index column, which, now, has the times when the measurements were taken. The parameter \mintinline{python}|rot| adjusts the tilt of the x-axis labels to prevent overlapping and ensure they remain legible. It is impossible to cover here all possible modifications admitted by Pandas graphics which, in turn, depends on Matplotlib module. For more information it is valuable to consult Panda documentation. Figure \ref{fig:datosele} shows the resulting graphic. The y-axis represents the power generated in Mw. As we said before, negative values are the electrical power exported to other countries.
 \end{paracol}
 \begin{figure}
 	\centering
@@ -1832,6 +1844,8 @@ Veamos con detalle el código contenido en la línea 22. Se trata de un comando 
 
 \begin{paracol}{2}
 La línea de código 32 utiliza el comando \mintinline{python}|boxplot| para dibujar un diagrama de 'bigotes' de los datos . Se trata de un diagrama muy empleado en estadística para analizar como es la distribución de un conjunto de muestras. Para ello, se obtienen los tres primeros cuartiles, es decir los valores de las muestras que superan al 25\% ($Q_1$), al 50\% ($Q_2$ o mediana) y al 75\% ($Q_3$) de los datos. los cuartiles $Q_1$ y $Q_3$ se representa en el gráfico respectivamente como los límites inferior y superior de la 'caja', ademas se señala tambien dentro de la caja la posición de la mediana. El valor $Q_2-Q_1$ recibe el nombre de rango intercuartílico ($RIC$) y habitualmente se emplea para dibujar unas líneas, ---los bigotes del diagrama--- que se extienden desde la caja. Para obtener el límite de estas líneas, se calculan los valores $Q_3+1.5RIC$ y $Q_1-1.5RIC$. De este modo, el límite superior $L_s$ lo marca el valor mayor que cumpla $L_s <= Q_3+1.5RIC$ y el límite inferior $L_i$ se elige como el valor menor que cumpla $L_i >= Q_1-1.5RIC$.
+\switchcolumn
+Line 32 in the code uses command \mintinline{python}|boxplot| to draw a box and whisker plot. This kind of plot is widely used in statistics to analyse the distribution of a set of samples. To perform it, we obtain the value of the first three quartiles, that is, the sample values that surpass the 25\% ($Q_1$), the 50\% ($Q_2$ or median) and the 75\% ($Q_3$) of the sample data. Quartiles $Q_1$ y $Q_3$ are represented in the box plot as the upper and lower limit of the 'box'. In addition, the position of the median is also represented in the box. The value $Q_2-Q_1$ is known as the interquartile rank ($IQR$) and usually is taken to draw a pair of lines ---the whiskers of the plot--- extending from the box. To obtain the limit of these lines, we compute the values $Q_3+1.5RIC$ y $Q_1-1.5RIC$. So, the upper limit $L_s$ is defined by the largest value of the sample, which fulfils that $L_s <= Q_3+1.5RIC$ and the lower limit $L_i$  is chosen as the lower value, which fulfils that $L_i >= Q_1-1.5RIC$.   
 \end{paracol}
 \begin{figure}
 	\centering
@@ -1857,14 +1871,20 @@ La línea de código 32 utiliza el comando \mintinline{python}|boxplot| para dib
 \end{figure}
 
 \begin{paracol}{2}
-La figura \ref{fig:datab} muestra el diagrama de bigotes obtenidos a partir del \emph{DataFrame} \mintinline{python}|gn_Mw_h|. Los datos aparecen distribuidos por la fuente de generación de energía, es decir, por las columnas del \emph{DataFrame}. Si nos fijamos en la primera, entrada \texttt{Eólica}, observamos que la caja del diagrama, para este tipo de energía va desde apróximadamente desde los 8000 Mw hasta un poco más de 15000. La mediana, aparece rerpresentada como una línea horizontal en la mitad inferior de la caja, estaría alrededor de los 9000 Mw. El límite del bigote inferior estaría cerca de los 6000 Mw y wl límite del bigote superior cerca de 1800. En algunas columnas, como por ejemplo en la que representa la generación de electricida mediante turbinas de ciclo combinado, se observan unos puntos negros más allá de límite de los bigotes. Representan datos atípicos, es decir, valores que no encajan con la distribución estadística del resto de los datos.
+La figura \ref{fig:datab} muestra el diagrama de bigotes obtenidos a partir del \emph{DataFrame} \mintinline{python}|gn_Mw_h|. Los datos aparecen distribuidos por la fuente de generación de energía, es decir, por las columnas del \emph{DataFrame}. Si nos fijamos en la primera entrada, \texttt{Eólica}, observamos que la caja del diagrama, para este tipo de energía va desde apróximadamente desde los 8000 hasta un poco más de 15000 Mw. La mediana, aparece representada como una línea horizontal en la mitad inferior de la caja, estaría alrededor de los 9000 Mw. El límite del bigote inferior estaría cerca de los 6000 Mw y wl límite del bigote superior cerca de 18000. En algunas columnas, como por ejemplo en la que representa la generación de electricidad mediante turbinas de ciclo combinado, se observan unos puntos negros más allá de límite de los bigotes. Representan datos atípicos, es decir, valores que no encajan con la distribución estadística del resto de los datos.
+\switchcolumn
+Figure \ref{fig:datab} shows a box and whisker plot drawn with the \emph{DataFrame} \mintinline{python}|gn_Mw_h|.  Data are distributed according to the generation source, that is, according to the \emph{DataFrame} columns. If we focus on the first entry, \texttt{Eólica}, We ca see that the box, for this type of energy cover approximately from 8000 to a bit more than 15000 Mw. The median is represented as a horizontal line in the lower middle of the box. It would be around 9000 Mw. The whisker lower limit would be close to 6000 Mw and the upper one near to 18000 . In some columns we can see some black dots beyond the whisker limits. See, for instance, the ciclo combinado turbines generation. These black dots represent outlayers. That is, data that do not fit with the statistical distribution of the remaining data.      
 \end{paracol}
 
 
 \begin{paracol}{2}
-La línea de código 36 extrae la fila de datos correspondientes al tiempo \texttt{'2025-03-19 01:05'} y la línea 37 la fila correspondiente al tiempo \texttt{'2025-03-19 12:30'}. A continuación las líneas 41 y 42, dibujan sendos diagramas de pastel, que nos permiten comparar como cambia la distribución de la generación entre ambas horas (una de la madrugada, doce y media del mediodía. Algunas diferencias obvias son la gran generación de energía solar fotovoltaica a mediadía, inexistente a la una de la madrugada.  
+La línea de código 36 extrae la fila de datos correspondientes al tiempo \texttt{'2025-03-19 01:05'} y la línea 37 la fila correspondiente al tiempo \texttt{'2025-03-19 12:30'}. A continuación las líneas 41 y 42, dibujan sendos diagramas de pastel, que nos permiten comparar como cambia la distribución de la generación entre ambas horas (una de la madrugada, doce y media del mediodía. Algunas diferencias obvias son la gran generación de energía solar fotovoltaica a mediadía, inexistente a la una de la madrugada.
+\switchcolumn
+The code line 36 extracts the data row  corresponding to time \texttt{'2025-03-19 01:05'} and line 37 the data line corresponding to time \texttt{'2025-03-19 12:30'}. Then, lines 41 and 42, draw two pie charts with allow us to compare how the power generation distribution changes between these two times (one in the morning and noon). Some obvious differences are the huge generation of solar photovoltaic at noon that does not exists at night.     
 \end{paracol}
-
+\begin{flalign*}
+	&&\biggr \}\reversemathwitch* 
+\end{flalign*}
 
 
 
