@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{]:} \PYG{n}{v} \PYG{o}{=} \PYG{n}{gen\PYGZus{}num}\PYG{o}{.}\PYG{n}{random}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{]:} \PYG{n}{v}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{]:} \PYG{n}{array}\PYG{p}{([}\PYG{l+m+mf}{0.07971535}\PYG{p}{,} \PYG{l+m+mf}{0.38433405}\PYG{p}{,} \PYG{l+m+mf}{0.03229333}\PYG{p}{])}
+\end{Verbatim}

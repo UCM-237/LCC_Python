@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:} \PYG{n}{des} \PYG{o}{=} \PYG{n}{generacion\PYGZus{}mw}\PYG{o}{.}\PYG{n}{describe}\PYG{p}{()}
+
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:} \PYG{n}{des}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:}
+	     \PYG{n}{Eólica}      \PYG{n}{Nuclear}  \PYG{o}{...}  \PYG{n}{Andorra} \PYG{n}{importación}   \PYG{n}{Hidráulica}
+\PYG{n}{count}    \PYG{l+m+mf}{361.000000}   \PYG{l+m+mf}{361.000000}  \PYG{o}{...}                \PYG{l+m+mf}{361.0}   \PYG{l+m+mf}{361.000000}
+\PYG{n}{mean}   \PYG{l+m+mf}{11429.587258}  \PYG{l+m+mf}{6041.326870}  \PYG{o}{...}                  \PYG{l+m+mf}{0.0}  \PYG{l+m+mf}{5518.722992}
+\PYG{n}{std}     \PYG{l+m+mf}{3260.205128}   \PYG{l+m+mf}{508.590267}  \PYG{o}{...}                  \PYG{l+m+mf}{0.0}  \PYG{l+m+mf}{1199.772571}
+\PYG{n+nb}{min}     \PYG{l+m+mf}{7740.000000}  \PYG{l+m+mf}{5640.000000}  \PYG{o}{...}                  \PYG{l+m+mf}{0.0}  \PYG{l+m+mf}{3440.000000}
+\PYG{l+m+mi}{25}\PYG{o}{\PYGZpc{}}     \PYG{l+m+mf}{8727.000000}  \PYG{l+m+mf}{5667.000000}  \PYG{o}{...}                  \PYG{l+m+mf}{0.0}  \PYG{l+m+mf}{4306.000000}
+\PYG{l+m+mi}{50}\PYG{o}{\PYGZpc{}}     \PYG{l+m+mf}{9830.000000}  \PYG{l+m+mf}{5673.000000}  \PYG{o}{...}                  \PYG{l+m+mf}{0.0}  \PYG{l+m+mf}{5640.000000}
+\PYG{l+m+mi}{75}\PYG{o}{\PYGZpc{}}    \PYG{l+m+mf}{15167.000000}  \PYG{l+m+mf}{6410.000000}  \PYG{o}{...}                  \PYG{l+m+mf}{0.0}  \PYG{l+m+mf}{6467.000000}
+\PYG{n+nb}{max}    \PYG{l+m+mf}{17810.000000}  \PYG{l+m+mf}{7133.000000}  \PYG{o}{...}                  \PYG{l+m+mf}{0.0}  \PYG{l+m+mf}{8061.000000}
+
+\end{Verbatim}

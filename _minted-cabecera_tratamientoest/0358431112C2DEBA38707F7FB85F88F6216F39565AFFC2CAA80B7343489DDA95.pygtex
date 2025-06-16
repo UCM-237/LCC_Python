@@ -1,0 +1,45 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python3}
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}*\PYGZhy{} coding: utf\PYGZhy{}8 \PYGZhy{}*\PYGZhy{}}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Created on Thu Mar 20 17:04:52 2025}
+\PYG{l+s+sd}{Playing with the electrical network data}
+\PYG{l+s+sd}{@author: juan}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k+kn}{import} \PYG{n+nn}{pandas} \PYG{k}{as} \PYG{n+nn}{pd}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{pl}
+
+\PYG{n}{generacion\PYGZus{}mw} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{read\PYGZus{}csv}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}../../datos/generacion20250319MW.csv\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{generacion\PYGZus{}mw}\PYG{o}{.}\PYG{n}{rename}\PYG{p}{(}\PYG{n}{columns}\PYG{o}{=}\PYG{n}{generacion\PYGZus{}mw}\PYG{o}{.}\PYG{n}{iloc}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{inplace} \PYG{o}{=} \PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{generacion\PYGZus{}mw}\PYG{o}{.}\PYG{n}{drop}\PYG{p}{([}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{inplace}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{lista} \PYG{o}{=} \PYG{n}{generacion\PYGZus{}mw}\PYG{o}{.}\PYG{n}{columns}
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{lista}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:]:}
+    \PYG{n}{generacion\PYGZus{}mw}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{generacion\PYGZus{}mw}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{.}\PYG{n}{astype}\PYG{p}{(}\PYG{n+nb}{float}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}hacemos un analisis estadístico general    }
+\PYG{n}{des} \PYG{o}{=} \PYG{n}{generacion\PYGZus{}mw}\PYG{o}{.}\PYG{n}{describe}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{}hacemos un diagrama de pastel con las medias de la producción}
+\PYG{n}{ax}\PYG{o}{=}\PYG{n}{des}\PYG{o}{.}\PYG{n}{loc}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}mean\PYGZsq{}}\PYG{p}{][}\PYG{n}{des}\PYG{o}{.}\PYG{n}{loc}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}mean\PYGZsq{}}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{plot}\PYG{o}{.}\PYG{n}{pie}\PYG{p}{(}\PYG{n}{rotatelabels}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}cambio los índices a las horas que es bastante sensato}
+\PYG{n}{gn\PYGZus{}Mw\PYGZus{}h} \PYG{o}{=} \PYG{n}{generacion\PYGZus{}mw}\PYG{o}{.}\PYG{n}{set\PYGZus{}index}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Hora\PYGZsq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}pido que me grafique todas, frente al tiempo queda un tanto faragoso}
+\PYG{c+c1}{\PYGZsh{}pero da una idea de lo que hay}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{ax} \PYG{o}{=} \PYG{n}{gn\PYGZus{}Mw\PYGZus{}h}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{rot}\PYG{o}{=}\PYG{l+m+mi}{40}\PYG{p}{,}\PYG{n}{ylabel}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Mw\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{(}\PYG{n}{loc}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}upper left\PYGZsq{}}\PYG{p}{,} \PYG{n}{bbox\PYGZus{}to\PYGZus{}anchor}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{l+m+mf}{1.0}\PYG{p}{))}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{gn\PYGZus{}Mw\PYGZus{}h}\PYG{o}{.}\PYG{n}{boxplot}\PYG{p}{(}\PYG{n}{rot}\PYG{o}{=}\PYG{l+m+mi}{90}\PYG{p}{,}\PYG{n}{ylabel}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Mw\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}vamos a hacer un diagrama de pastel pero eliminado los negativos que propiamente}
+\PYG{c+c1}{\PYGZsh{}no son produccion Seleccionamos una hora}
+
+\PYG{n}{datos1005} \PYG{o}{=} \PYG{n}{gn\PYGZus{}Mw\PYGZus{}h}\PYG{o}{.}\PYG{n}{loc}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}2025\PYGZhy{}03\PYGZhy{}19 01:05\PYGZsq{}}\PYG{p}{]}
+\PYG{n}{datos1230} \PYG{o}{=} \PYG{n}{gn\PYGZus{}Mw\PYGZus{}h}\PYG{o}{.}\PYG{n}{loc}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}2025\PYGZhy{}03\PYGZhy{}19 12:30\PYGZsq{}}\PYG{p}{]}
+\PYG{n}{datosprod1005} \PYG{o}{=} \PYG{n}{datos1005}\PYG{p}{[}\PYG{n}{datos1005}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{0}\PYG{p}{]}
+\PYG{n}{datosprod1230} \PYG{o}{=} \PYG{n}{datos1230}\PYG{p}{[}\PYG{n}{datos1230}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{0}\PYG{p}{]}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{datosprod1005}\PYG{o}{.}\PYG{n}{plot}\PYG{o}{.}\PYG{n}{pie}\PYG{p}{(}\PYG{n}{rotatelabels}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{pl}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{datosprod1230}\PYG{o}{.}\PYG{n}{plot}\PYG{o}{.}\PYG{n}{pie}\PYG{p}{(}\PYG{n}{rotatelabels}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+\end{Verbatim}
