@@ -1,152 +1,120 @@
-\chapter{Introducción al cálculo simbólico}\index{Cálculo Simbolico}
+\chapter{Introducción al cálculo simbólico\\Introduction to symbolic computing}\index{Cálculo Simbolico}
+\chaptermark{Intro cálculo simbólico  \textreferencemark\ Intro symbolic computing}
+\epigraph{And earthly power doth then show likest God's
+	When mercy seasons justice.}{The merchan of Venice, Willian Shakespeare}
+
+\begin{paracol}{2}
 En este último capítulo vamos a introducir un método de cálculo que difiere notablemente de lo visto  en los capítulos anteriores: se trata del cálculo simbólico. Hasta ahora, hemos empleado siempre el ordenador para hacer cálculo numérico. Las variables se definían asignándoles un valor numérico y después eran empleadas en operaciones algebraicas o se les aplicaban funciones matemáticas para obtener a partir de ellas resultados numéricos.
 
-Sin embargo, en matemáticas y en física, es practica habitual realizar operaciones con variables y funciones sin asignarles un resultado numérico. Un ejemplo típico es el de la derivación de una función,
-
+Sin embargo, en matemáticas y en física, es práctica habitual realizar operaciones con variables y funciones sin asignarles un resultado numérico. Un ejemplo típico es el de la derivación de una función,
+\end{paracol}
 \begin{equation*}
 f(x) = \sqrt{1-\ln x} \rightarrow f'(x) =-\frac{1}{2x\sqrt{1 - \ln x}} 
 \end{equation*}  
-
+\begin{paracol}{2}
 A partir de una expresión \emph{simbólica} de la función obtenemos su derivada expresada también de modo \emph{simbólico} como otra función. También con un computador es posible hacer este tipo de operaciones, a las que se da el nombre de cálculo simbólico para distinguirlas del cálculo numérico.  
+\end{paracol}
 
-
-\section{Cálculo simbólico en el entorno de Matlab}
-Como se ha mostrado en capítulos anteriores, la funcionalidad que aportan los comandos básicos de Matlab puede ser ampliada, por parte del usuario, mediante la construcción de funciones y \emph{scripts}. Matlab por su parte, tiene un amplio conjunto de funciones para aplicaciones específicas agrupadas en las llamadas \emph{toolboxes}. Así por ejemplo, hay \emph{toolboxes} específicas para tratamiento de datos, procesamiento de señal, ecuaciones diferenciales en derivadas parciales y cálculo simbólico entre otras. 
-
-Las funciones de una \emph{toolbox} no se distinguen, en cuanto a su uso, de las funciones básicas de Matlab y su sintaxis es la misma. Lo único necesario es que la \emph{toolbox} en cuestión esté instalada en Matlab. Para saber qué \emph{toolboxes} de Matlab están instaladas en un ordenador concreto basta introducir en la ventana de comandos de Matlab el comando \texttt{ver}. \index{Versión (de Matlab)}
-
-\begin{verbatim}
->> ver
-----------------------------------------------------------------------------------------------------
-MATLAB Version: 8.5.0.197613 (R2015a)
-MATLAB License Number: 161052
-Operating System: Microsoft Windows 10 Home Version 10.0 (Build 10586)
-Java Version: Java 1.7.0_60-b19 with Oracle Corporation
-Java HotSpot(TM) 64-Bit Server VM mixed mode
-------------------------------------------------------------------------------------
-MATLAB                                                Version 8.5        (R2015a)
-Simulink                                              Version 8.5        (R2015a)
-Bioinformatics Toolbox                                Version 4.5.1      (R2015a)
-Control System Toolbox                                Version 9.9        (R2015a)
-Curve Fitting Toolbox                                 Version 3.5.1      (R2015a)
-Database Toolbox                                      Version 5.2.1      (R2015a)
-Datafeed Toolbox                                      Version 5.1        (R2015a)
-Fixed-Point Designer                                  Version 5.0        (R2015a)
-Fuzzy Logic Toolbox                                   Version 2.2.21     (R2015a)
-Global Optimization Toolbox                           Version 3.3.1      (R2015a)
-Image Acquisition Toolbox                             Version 4.9        (R2015a)
-Image Processing Toolbox                              Version 9.2        (R2015a)
-MATLAB Coder                                          Version 2.8        (R2015a)
-MATLAB Compiler                                       Version 6.0        (R2015a)
-MATLAB Compiler SDK                                   Version 6.0        (R2015a)
-MATLAB Distributed Computing Server                   Version 6.6        (R2015a)
-MATLAB Report Generator                               Version 4.1        (R2015a)
-Mapping Toolbox                                       Version 4.1        (R2015a)
-Model Predictive Control Toolbox                      Version 5.0.1      (R2015a)
-Model-Based Calibration Toolbox                       Version 4.8.1      (R2015a)
-Neural Network Toolbox                                Version 8.3        (R2015a)
-OPC Toolbox                                           Version 3.3.3      (R2015a)
-Optimization Toolbox                                  Version 7.2        (R2015a)
-Parallel Computing Toolbox                            Version 6.6        (R2015a)
-Partial Differential Equation Toolbox                 Version 2.0        (R2015a)
-Robotics Toolbox                                      Version 8          December
-Robust Control Toolbox                                Version 5.3        (R2015a)
-Signal Processing Toolbox                             Version 7.0        (R2015a)
-Statistics and Machine Learning Toolbox               Version 10.0       (R2015a)
-\end{verbatim}
-{\color{red} \texttt{Symbolic Math Toolbox} \hfill \texttt{Version 6.2} \ \ \ \ \ \ \ \ \ \ \ \ \texttt{(R2015a)}}
-\begin{verbatim}
-System Identification Toolbox                         Version 9.2        (R2015a)
-Wavelet Toolbox                                       Version 4.14.1     (R2015a)
-\end{verbatim} 
-
-Este comando muestra la versión de Matlab así como las \emph{toolboxes} instaladas. Para poder realizar cálculo simbólico necesitamos tener \texttt{Symbolic Math Toolbox}, marcada en rojo en la relación de Toolboxes que se acaba de mostrar.
-
+\begin{paracol}{2}
+\section{Cálculo simbólico con Sympy}
+Sympy  es un módulo de Python creado para realizar cálculo simbólico. Como en el caso de otros módulos que hemos introducido en capítulos anteriores, nos vamos a limitar a dar una introducción al cálculo simbólico empleando Sympy, para conocer de verdad sus posibilidades se aconseja acudir a la documentación del módulo, disponible en interner
 \section{Variables y expresiones simbólicas}
 \subsection{Variables simbólicas} \index{Variable! Simbólica}
-Una variable simbólica, a diferencia de las variables ordinarias de Matlab, no contiene un valor; simplemente es un objeto que puede manipularse empleando reglas  algebraicas ordinarias. Para crear una variable simbólica, se emplea el comando \texttt{syms},
-
-\begin{verbatim}
->> syms x
->> x
-x =
+Una variable simbólica, a diferencia de las variables ordinarias de Python, no contiene un valor; simplemente es un objeto que puede manipularse empleando reglas  algebraicas ordinarias. Importamos el módulo del mismo modo que cualquier otro módulo de Python. Para crear una variable simbólica, se emplea el comando \mintinline{python}|symbols|,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.3\textwidth}
+		\begin{minted}{python}
+In [1]: import sympy as sp
+In [2]: x,y = sp.symbols('x y')
+In [3]: x
+Out[3]: 
 x
-\end{verbatim}
-
-Cuando pedimos a Matlab que nos muestre el contenido de la variable \texttt{x} nos indica que contiene el símbolo \texttt{x}. Es importante remarcar que aquí no se trata de un carácter sino de un símbolo con el que se pueden realizar operaciones algebraicas. Así, por ejemplo,
-\begin{verbatim}
->> syms a b c
->> c = a - b + a + b 
-c = 
-2*a
-\end{verbatim}
-
-Las tres variables \texttt{a}, \texttt{b} y \texttt{c} admiten operaciones aritméticas, cuyo resultado es simbólico, \texttt{2*a}, en lugar de numérico.
-
-Una forma alternativa de crear variables simbólicas es empleando la función \texttt{sym}.
-\begin{verbatim}
->> a = sym('b') 
-a = 
-b
-
->> sqrt(a) 
-ans = 
-b^(1/2)
-\end{verbatim}
-En este caso el nombre de la variable y el símbolo no tienen porqué coincidir y las variables hay que crearlas de una en una. La función \texttt{sym}, nos permite también definir números 'simbólicos', que Matlab maneja de modo análogo a cualquier otro símbolo,
-\begin{verbatim}
->> dos = sym('2') 
-dos = 
-2
- 
->> sqrt(dos) 
-ans = 
-2^(1/2)
-\end{verbatim}
+In [4]: y
+Out[4]: 
+y
+In [5]: z = sp.symbols('x')
+In [6]: z
+Out[6]: 
+x				
+		\end{minted}
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+Así, el comando symbol asigna a las variables que definamos separadas por comas a la izquierda del igual, los símbolos, separados por espacios y encerrados entre comillas simples, introducidos a la función \mintinline{python}|symbols|.
+Cuando pedimos a Python que nos muestre el contenido de la variable \texttt{x} nos indica que contiene el símbolo \texttt{x}. Es importante remarcar que aquí no se trata de un carácter sino de un símbolo con el que se pueden realizar operaciones algebraicas y que el nombre de la variable que contiene el símbolo no tiene porqué coincidir con este. Así, por ejemplo, a la variable \texttt{z}, le hemos vuelto a asignar el simbolo \texttt{x}.
 
 También es posible crear vectores y matrices simbólicas a partir de otras variables simbólicas,
-\begin{verbatim}
->> syms a b c d
- 
->> A = [a b c; d a b; c c b ] 
-A = 
-[ a, b, c]
-[ d, a, b]
-[ c, c, b]
-\end{verbatim}  
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [25]: from sympy import matrices as mt
+In [26]: a,b,c = sp.symbols('a b c')
+In [27]: A = mt.Matrix([[a,b,c],[c,b,b],[a,c,a]])
+			
+In [28]: A
+Out[28]: 				
+		\end{minted}
+\[
+\begin{bmatrix}
+a&b&c\\
+c&b&b\\
+a&c&a
+\end{bmatrix}
+\]
+	\end{minipage}
+\end{center}
 
-o bien, lo que suele ser más frecuente, indicando la dimensión de la matriz que deseamos crear,
-\begin{verbatim}
->> A = sym('a',[3,3]) 
-A = 
-[ a1_1, a1_2, a1_3]
-[ a2_1, a2_2, a2_3]
-[ a3_1, a3_2, a3_3]
-\end{verbatim}
-Es posible elegir el formato de los elementos simbólicos empleando comandos parecidos a los que emplea la función \texttt{fprintf} (ver sección \ref{fpf}),
-\begin{verbatim}
->> A = sym('a%d%d',[3,3]) 
-A = 
-[ a11, a12, a13]
-[ a21, a22, a23]
-[ a31, a32, a33]
-\end{verbatim}
-Las operaciones que realicemos con matrices simbólicas darán también resultados simbólicos,
+Los comandos y funciones más habituales asociados a los arrays de numpy funcionan con las matrices de Sympy. Por ejemplo podemos extraer elemento o filas de la matriz, calcular el determinate o la inversa,
 
-\begin{verbatim}
->> b = sym('b%d',[3,1]) 
-b = 
- b1
- b2
- b3
- 
->> c =A*b 
-c = 
- a11*b1 + a12*b2 + a13*b3
- a21*b1 + a22*b2 + a23*b3
- a31*b1 + a32*b2 + a33*b3
-\end{verbatim}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [44] A[0,0]
+Out[44]: 
+\end{minted}
+$a$	 				
+\begin{minted}{python}
+In [48]: A[1,:]
+Out[48]:
+\end{minted}
+$[c,b,b]$
+\begin{minted}{python}
+In [46]: A.det()
+Out[46]: 
+\end{minted}
+$a^2b+ab^2-3abc+c^3$
+\begin{minted}{python}
+In [50]: A.inv()
+Out[50]: 
+\end{minted}
+\includegraphics[width=1.4\textwidth]{inversa_m.png}
+	\end{minipage}
+\end{center}
 
+Otra opción posible es crear un objeto simbolico matriz. La idea es crear una variable simbólica que contiene una matriz del tamaño que deseemos. Para ello empleamos el comando \mintinline{python}|MatrixSymbol|de \mintinline{python}|sympy.matrices|. Este comando admite un símbolo y dos parámetros numéricos que corresponden con el número de filas y columnas de la matriz creada. Estos parámetros tambień podrían a su vez ser simbólicos
+
+\begin{center}
+	\begin{minipage}{.3\textwidth}
+		\begin{minted}{python}
+In [56]: B = mt.MatrixSymbol('b',3,3)
+B.shape
+Out[60]: (3, 3)				
+		\end{minted}
+	\end{minipage}
+\end{center}
+Podemos obtener a partir de un objeto matriz simbólico la matriz simbólica de forma explícita,
+\begin{center}
+	\begin{minipage}{.3\textwidth}
+\begin{minted}{python}
+In [70]: B.as_explicit()
+Out[70]:				
+\end{minted}
+\includegraphics[width=0.8\textwidth]{matrixexp.png}		
+	\end{minipage}
+\end{center} 
+podemos
 Por último, el comando \texttt{sym} permite también convertir una expresión numérica en su equivalente simbólica,
 \begin{verbatim}
 >> a = [0.1 0.3 0.22
@@ -167,7 +135,35 @@ A =
 
 
 \subsection{Expresiones simbólicas}
-Es posible combinar una o más variables simbólicas con los operadores matemáticos de Matlab para obtener expresiones simbólicas,
+Podemos ahora realizar operaciones aritméticas, con nuestras variables simbólicas,
+
+\begin{center}
+\begin{minipage}{.5\textwidth}
+	\begin{minted}{python}
+In [12]: q = 2*z + 2*x -y
+In [13]: q
+Out[13]: 			
+	\end{minted}
+	$4x - y$
+\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
+El resultado es en este caso una expresión que guarda el resultado de la operación realizada. Es interesante notar cómo Sympy ha operado el contenido simbólico de las variables \texttt{x} y \texttt{z} para dar como resultado $4x$.
+
+Para crear expresiones más complejas, Sympy tiene definidas las funciones matemáticas más comunes como funciones simbólicas,
+\end{paracol}
+
+\begin{center}
+\begin{minipage}{.5\textwidth}
+	\begin{minted}{python}
+In [23]: expr = sp.cos(x)**2 + sp.sqrt(y) + sp.exp(x**2)
+In [24]: expr
+Out[24]: 			
+	\end{minted}
+	$\sqrt{y}+e^{x^2}+\cos^2(x)$
+\end{minipage}
+\end{center}
 
 \begin{verbatim}
 >> syms a b c x
@@ -686,13 +682,24 @@ Matlab dispone de un conjunto de funciones que permiten representar funciones si
 \index{Gráficos! Representación de funciones simbólicas}
 Para obtener la gráfica de una función de una sola variable se emplea el comando \texttt{ezplot}. Este comando admite como variables de entrada una función simbólica y un vector con los límites $[x_{min}\ x_{max}]$ entre los que se desea dibujar la función. Si no se suministran los límites, Matlab toma for defecto el intervalo $[-2\pi \ 2\pi]$ para realizar la representación. Así, por ejemplo para representar la función $f(x) = e^{\sin(x)}$,
 
+%\begin{figure}
+%\centering
+%\subfigure[Intervalo por defecto: $-2\pi \leq x \leq 2\pi$ \label{fig:simplot1}]{\includegraphics[width=9cm]{simplot.eps}} \qquad 
+%\subfigure[Intervalo suministrado: $-10 \leq x \leq 10$  \label{fig:simplot2}]{\includegraphics[width=9cm]{simplot2.eps}}\\
+%\caption{Gráfica de la función $f(x) = e^{\sin\left(x\right)}$ obtenida a partir de su expresión simbólica con el comando \texttt{ezsurf} de Matlab}
+%\end{figure}
 \begin{figure}
-\centering
-\subfigure[Intervalo por defecto: $-2\pi \leq x \leq 2\pi$ \label{fig:simplot1}]{\includegraphics[width=9cm]{simplot.eps}} \qquad 
-\subfigure[Intervalo suministrado: $-10 \leq x \leq 10$  \label{fig:simplot2}]{\includegraphics[width=9cm]{simplot2.eps}}\\
-\caption{Gráfica de la función $f(x) = e^{\sin\left(x\right)}$ obtenida a partir de su expresión simbólica con el comando \texttt{ezsurf} de Matlab}
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=10.5cm]{simplot.eps}
+		\bicaption{Intervalo por defecto: $-2\pi \leq x \leq 2\pi$}{polynomials 2, 4, 6 and 8 degrees} \label{fig:simplot1}
+	\end{subfigure} 
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=10.5cm]{simplot2.eps}
+		\bicaption{Intervalo suministrado: $-10 \leq x \leq 10$}{polynomials 2, 4, 6 and 8 degrees} \label{fig:simplot2}
+	\end{subfigure}
+	\bicaption{Gráfica de la función $f(x) = e^{\sin\left(x\right)}$ obtenida a partir de su expresión simbólica con el comando \texttt{ezsurf} de Matlab}{Taylor polynomial for cosine and sine functions}
 \end{figure}
-
 \begin{verbatim}
 >> syms x
 

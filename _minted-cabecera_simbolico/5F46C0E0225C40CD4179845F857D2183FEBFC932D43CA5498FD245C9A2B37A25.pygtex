@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]:} \PYG{k+kn}{import} \PYG{n+nn}{sympy} \PYG{k}{as} \PYG{n+nn}{sp}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]:} \PYG{n}{x}\PYG{p}{,}\PYG{n}{y} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{symbols}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}x y\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:} \PYG{n}{x}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:}
+\PYG{n}{x}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:} \PYG{n}{y}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]:}
+\PYG{n}{y}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]:} \PYG{n}{z} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{symbols}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}x\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]:} \PYG{n}{z}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]:}
+\PYG{n}{x}				
+\end{Verbatim}
