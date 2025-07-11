@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{289}\PYG{p}{]:} \PYG{n}{f1}\PYG{o}{.}\PYG{n}{series}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{o}{.}\PYG{n}{removeO}\PYG{p}{()}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{289}\PYG{p}{]:}
+\end{Verbatim}

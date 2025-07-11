@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{129}\PYG{p}{]:} \PYG{n}{g} \PYG{o}{=} \PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{x}\PYG{o}{**}\PYG{l+m+mi}{3}\PYG{o}{+}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{130}\PYG{p}{]:} \PYG{n}{g}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{130}\PYG{p}{]:}
+\end{Verbatim}

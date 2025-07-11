@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{166}\PYG{p}{]:} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{simplify}\PYG{p}{(}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{diff}\PYG{p}{(}\PYG{n}{F}\PYG{p}{))}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{166}\PYG{p}{]:}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{52}\PYG{p}{]:} \PYG{n}{f2} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{Abs}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{53}\PYG{p}{]:} \PYG{n}{f2}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{53}\PYG{p}{]:}
+\end{Verbatim}

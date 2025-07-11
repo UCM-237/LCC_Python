@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{138}\PYG{p}{]:} \PYG{n}{df2} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{diff}\PYG{p}{(}\PYG{n}{df}\PYG{p}{,}\PYG{n}{x}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{139}\PYG{p}{]:} \PYG{n}{df2}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{139}\PYG{p}{]:}
+\end{Verbatim}

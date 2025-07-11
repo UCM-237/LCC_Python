@@ -1,26 +1,46 @@
 \chapter{Introducción al cálculo simbólico\\Introduction to symbolic computing}\index{Cálculo Simbolico}
 \chaptermark{Intro cálculo simbólico  \textreferencemark\ Intro symbolic computing}
 \epigraph{And earthly power doth then show likest God's
-	When mercy seasons justice.}{The merchan of Venice, Willian Shakespeare}
-
+	when mercy seasons justice.}{The merchan of Venice, Willian Shakespeare}
+\begin{flalign*}
+	&\mathwitch*_{i=0}^{\infty}\Biggl \{&     
+\end{flalign*}
 \begin{paracol}{2}
 En este último capítulo vamos a introducir un método de cálculo que difiere notablemente de lo visto  en los capítulos anteriores: se trata del cálculo simbólico. Hasta ahora, hemos empleado siempre el ordenador para hacer cálculo numérico. Las variables se definían asignándoles un valor numérico y después eran empleadas en operaciones algebraicas o se les aplicaban funciones matemáticas para obtener a partir de ellas resultados numéricos.
 
 Sin embargo, en matemáticas y en física, es práctica habitual realizar operaciones con variables y funciones sin asignarles un resultado numérico. Un ejemplo típico es el de la derivación de una función,
+\switchcolumn
+In this last chapter we are going to introduce a computing method completely different to the method described in previous chapters: Symbolic computing. So far, we have always use the computer to perform numerical computing. Variables were defined assigning them a numerical value a after, they were used in algebraic operations of introduced in functions to obtain numerical results.
+
+Nevertheless, in mathematics and physics, it is common practice to perform operations with variables and function without assign to them numerical results. A classic example is function derivation, 
 \end{paracol}
 \begin{equation*}
 f(x) = \sqrt{1-\ln x} \rightarrow f'(x) =-\frac{1}{2x\sqrt{1 - \ln x}} 
 \end{equation*}  
 \begin{paracol}{2}
-A partir de una expresión \emph{simbólica} de la función obtenemos su derivada expresada también de modo \emph{simbólico} como otra función. También con un computador es posible hacer este tipo de operaciones, a las que se da el nombre de cálculo simbólico para distinguirlas del cálculo numérico.  
+A partir de una expresión \emph{simbólica} de la función obtenemos su derivada expresada también de modo \emph{simbólico} como otra función. También con un computador es posible hacer este tipo de operaciones, a las que se da el nombre de cálculo simbólico para distinguirlas del cálculo numérico.
+\switchcolumn
+Departing from a function \emph{symbolic} expression, we get its derivative also expressed in a \emph{symbolic} way. This process can also be performed using a computer, which is referred to as symbolic computing, distinguishing it from numerical computing. 
 \end{paracol}
 
 \begin{paracol}{2}
 \section{Cálculo simbólico con Sympy}
-Sympy  es un módulo de Python creado para realizar cálculo simbólico. Como en el caso de otros módulos que hemos introducido en capítulos anteriores, nos vamos a limitar a dar una introducción al cálculo simbólico empleando Sympy, para conocer de verdad sus posibilidades se aconseja acudir a la documentación del módulo, disponible en interner
+\sectionmark{Calculos simbólico con Sympy. \textreferencemark\ Symbploc computing with Sympy.}
+Sympy  es un módulo de Python creado para realizar cálculo simbólico. Como en el caso de otros módulos que hemos introducido en capítulos anteriores, nos vamos a limitar a dar una introducción al cálculo simbólico empleando Sympy, para conocer de verdad sus posibilidades se aconseja acudir a la documentación del módulo, disponible en Internet.
+
 \section{Variables y expresiones simbólicas}
 \subsection{Variables simbólicas} \index{Variable! Simbólica}
 Una variable simbólica, a diferencia de las variables ordinarias de Python, no contiene un valor; simplemente es un objeto que puede manipularse empleando reglas  algebraicas ordinarias. Importamos el módulo del mismo modo que cualquier otro módulo de Python. Para crear una variable simbólica, se emplea el comando \mintinline{python}|symbols|,
+\switchcolumn
+
+\section{Symbolic computing with Sympy }
+Sympy is a Python's module created to perform symbolic computing. As in other modules we have introduced in previous chapters, we are going to limit our exposition to give an introduction to symbolic computing using Sympy. To truly know its capacity, it is advisable to check the module documentation, available in Internet.
+
+\section{Variables and symbolic expressions}
+\subsection{Symbolic variables} \index[eng]{Variable! Symbolic}
+In contrast to a standard Python variable, a symbolic variable doesn't have a value. It is just an object that can be manipulated using ordinary algebraic rules. To import the Sympy module, we proceed in the same way as with other Python modules. To create a symbolic variable, we use the command \mintinline{python}|symbols|,
+
+
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.3\textwidth}
@@ -41,10 +61,18 @@ x
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-Así, el comando symbol asigna a las variables que definamos separadas por comas a la izquierda del igual, los símbolos, separados por espacios y encerrados entre comillas simples, introducidos a la función \mintinline{python}|symbols|.
-Cuando pedimos a Python que nos muestre el contenido de la variable \texttt{x} nos indica que contiene el símbolo \texttt{x}. Es importante remarcar que aquí no se trata de un carácter sino de un símbolo con el que se pueden realizar operaciones algebraicas y que el nombre de la variable que contiene el símbolo no tiene porqué coincidir con este. Así, por ejemplo, a la variable \texttt{z}, le hemos vuelto a asignar el simbolo \texttt{x}.
+Así, el comando asigna a las variables que definamos separadas por comas a la izquierda del igual, los símbolos, separados por espacios y encerrados entre comillas simples, introducidos a \mintinline{python}|symbols()|.
+
+Cuando pedimos a Python que nos muestre el contenido de la variable \texttt{x} nos indica que contiene el símbolo \texttt{x}. Es importante remarcar que aquí no se trata de un caracter sino de un símbolo con el que se pueden realizar operaciones algebraicas y que el nombre de la variable que contiene el símbolo no tiene porqué coincidir con este. Así, por ejemplo, a la variable \texttt{z}, le hemos vuelto a asignar el simbolo \texttt{x}.
 
 También es posible crear vectores y matrices simbólicas a partir de otras variables simbólicas,
+\switchcolumn
+Thus, the command assigns the variables on the left of the equal sign, split by commas, the symbols provided in \mintinline{python}|symbols()|, which are divided by spaces and enclosed in apostrophes.
+
+When we ask Python to display the value of the variable \texttt{x}, it points out that the variable holds the symbol \texttt{x}. It is important to remark that it is not a character but a symbol that we can use to perform algebraical operations and that the name of the variable that holds a symbol is not necessarily the symbol itself. For instance, in the example, we have reassigned the symbol \texttt{x} to variable \texttt{z}
+
+It is also possible to create symbolic vectors and matrices from other symbolic variables,
+
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
@@ -65,9 +93,11 @@ a&c&a
 \]
 	\end{minipage}
 \end{center}
-
-Los comandos y funciones más habituales asociados a los arrays de numpy funcionan con las matrices de Sympy. Por ejemplo podemos extraer elemento o filas de la matriz, calcular el determinate o la inversa,
-
+\begin{paracol}{2}
+Los comandos y funciones más habituales asociados a los arrays de numpy funcionan con las matrices de Sympy. Por ejemplo podemos extraer elementos o filas de una matriz, calcular el determinate o la inversa,
+\switchcolumn
+Most common comand and function defined for Numpy arrays work also with Sympy matrices. For instance, we can extract elements of rows from a matrix, compute the determinant of the inverse matrix, 
+\end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
 		\begin{minted}{python}
@@ -85,6 +115,11 @@ In [46]: A.det()
 Out[46]: 
 \end{minted}
 $a^2b+ab^2-3abc+c^3$
+\end{minipage}
+\end{center}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+
 \begin{minted}{python}
 In [50]: A.inv()
 Out[50]: 
@@ -92,9 +127,11 @@ Out[50]:
 \includegraphics[width=1.4\textwidth]{inversa_m.png}
 	\end{minipage}
 \end{center}
-
-Otra opción posible es crear un objeto simbolico matriz. La idea es crear una variable simbólica que contiene una matriz del tamaño que deseemos. Para ello empleamos el comando \mintinline{python}|MatrixSymbol|de \mintinline{python}|sympy.matrices|. Este comando admite un símbolo y dos parámetros numéricos que corresponden con el número de filas y columnas de la matriz creada. Estos parámetros tambień podrían a su vez ser simbólicos
-
+\begin{paracol}{2}
+Otra opción posible es crear un objeto simbolico matriz. La idea es crear una variable simbólica que contiene una matriz del tamaño que deseemos. Para ello empleamos el comando \mintinline{python}|MatrixSymbol|de \mintinline{python}|sympy.matrices|. Este comando admite un símbolo y dos parámetros numéricos que corresponden con el número de filas y columnas de la matriz creada. Estos parámetros tambień podrían a su vez ser simbólicos.
+\switchcolumn
+An alternative is to create a symbolic matrix object. We make a symbolic variable that holds a matrix the size we wish. The command \mintinline{python}|MatrixSymbol| from \mintinline{python}|sympy.matrices| allows to make a symbolic matrix. This command takes a symbol and two numerical parameters which define the number of rows and columns of the matrix we are creating. In fact, these two last parameter could be also symbolic.
+\end{paracol}
 \begin{center}
 	\begin{minipage}{.3\textwidth}
 		\begin{minted}{python}
@@ -104,7 +141,11 @@ Out[60]: (3, 3)
 		\end{minted}
 	\end{minipage}
 \end{center}
+\begin{paracol}{2}
 Podemos obtener a partir de un objeto matriz simbólico la matriz simbólica de forma explícita,
+\switchcolumn
+We can get explicitly the symbolic matrix from a symbolic matrix object,
+\end{paracol}
 \begin{center}
 	\begin{minipage}{.3\textwidth}
 \begin{minted}{python}
@@ -113,30 +154,29 @@ Out[70]:
 \end{minted}
 \includegraphics[width=0.8\textwidth]{matrixexp.png}		
 	\end{minipage}
-\end{center} 
-podemos
-Por último, el comando \texttt{sym} permite también convertir una expresión numérica en su equivalente simbólica,
-\begin{verbatim}
->> a = [0.1 0.3 0.22
-2.4 3 3.3
-2 1 -1/3]
-a =
-    0.1000    0.3000    0.2200
-    2.4000    3.0000    3.3000
-    2.0000    1.0000   -0.3333
+\end{center}
+\begin{paracol}{2}
+y también aplicar operaciones matriciales, sobre las formas explícitas,
+\switchcolumn
+and then, to apply matrix operations to the explicit matrices.
+\end{paracol}
+\begin{center}
+\begin{minipage}{.8\textwidth}
+	\begin{minted}{python}
+		In [23]: B.as_explicit().det()
+		Out[23]:			
+	\end{minted}
+	\includegraphics[width=1.1\textwidth]{detsimbol.png}		
+\end{minipage}
+\end{center}
 
->> A = sym(a) 
-A = 
-[ 1/10, 3/10, 11/50]
-[ 12/5,    3, 33/10]
-[    2,    1,  -1/3]
-\end{verbatim}
-
-
-
+\begin{paracol}{2}
 \subsection{Expresiones simbólicas}
 Podemos ahora realizar operaciones aritméticas, con nuestras variables simbólicas,
-
+\switchcolumn
+\subsection{Symbolic expressions}
+We can now perform arithmetical operations with our symbolic variables,
+\end{paracol}
 \begin{center}
 \begin{minipage}{.5\textwidth}
 	\begin{minted}{python}
@@ -155,7 +195,7 @@ Para crear expresiones más complejas, Sympy tiene definidas las funciones matem
 \end{paracol}
 
 \begin{center}
-\begin{minipage}{.5\textwidth}
+\begin{minipage}{.8\textwidth}
 	\begin{minted}{python}
 In [23]: expr = sp.cos(x)**2 + sp.sqrt(y) + sp.exp(x**2)
 In [24]: expr
@@ -165,254 +205,364 @@ Out[24]:
 \end{minipage}
 \end{center}
 
-\begin{verbatim}
->> syms a b c x
->> y = a*x^2+b*x+c 
-y = 
-a*x^2 + b*x + c
- 
->> rp = (-b+(b^2-4*a*c)^(1/2))/(2*a) 
-rp = 
--(b - (b^2 - 4*a*c)^(1/2))/(2*a)
- 
->> rm = (-b-(b^2-4*a*c)^(1/2))/(2*a) 
-rm = 
--(b + (b^2 - 4*a*c)^(1/2))/(2*a)
-\end{verbatim}
+\begin{paracol}{2}
+En el siguiente ejemplo, se han creado primero cuatro variables simbólicas y, a partir de ellas, se han generado tres expresiones simbólicas, la primera es un polinomio de grado dos y las dos siguientes las expresiones analíticas de sus raíces.
+\end{paracol}
+\begin{center}
+\begin{minipage}{.5\textwidth}
+	\begin{minted}{python}
+In [14]: a,b,c,x =sp.symbols('a b c x')
 
-En este ejemplo, se han creado primero cuatro variables simbólicas y, a partir de ellas, se han generado tres expresiones simbólicas, la primera es un polinomio de grado dos y las dos siguientes las expresiones analíticas de sus raíces.
+In [15]: y = a*x**2+b*x+c
 
-También es posible crear funciones simbólicas a partir de variables simbólicas, expresiones simbólicas o funciones matemáticas. Hay varias maneras de generarlas, pero quizá la más sencilla, es usar variables simbólicas previamente definidas,
+In [16]: rp = (-b+sp.sqrt(b**2-4*a*c))/(2*a)
 
-\begin{verbatim}
->> syms x
-f(x) = sin(x)
-f(x) = 
-sin(x)
-\end{verbatim}
-
-Las variables de la función se indican entre paréntesis a continuación del nombre de la función y antes del símbolo '\texttt{=}'. Si hay varias (posibles) variables y no se indica expresamente, Matlab tomará coma variable de la función aquella que alfabéticamente esté más cerca de la letra $x$. 
-
+In [17]: rn = (-b-sp.sqrt(b**2-4*a*c))/(2*a)
+	\end{minted}
+\end{minipage}
+\end{center}
+\begin{paracol}{2}
 Es posible definir funciones de más de una variable,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [22]: x,y,z =sp.symbols('x y z')
+			
+In [23]: f = sp.sin(x)**2+sp.cos(x)**2
+In [24]: f
+Out[24]: 
+		\end{minted}
+		$f = \sin^2(x) + \cos^2(x)$
+	\end{minipage}
+\end{center}
 
-\begin{verbatim}
->> syms x y
->> g(x,y)=sin(sqrt(x^2+y^2)) 
-g(x, y) = 
-sin((x^2 + y^2)^(1/2))
-\end{verbatim}
-
-o también, combinar funciones simbólicas mediante operadores aritméticos o composición de funciones, 
-\begin{verbatim}
->> h(x,y) = f(x) - g(x,y)
-h(x, y) =
-sin(x) - sin((x^2 + y^2)^(1/2))
+\begin{paracol}{2}
+o también, combinar funciones simbólicas mediante operadores aritméticos o composición de funciones,
+\end{paracol}
  
->> t(x) = g(x,y) ^f(x) 
-t(x) = 
-sin((x^2 + y^2)^(1/2))^sin(x)
-
->> r(x,y) = f(g(x,y)) 
-r(x, y) = 
-sin(sin((x^2 + y^2)^(1/2)))
-\end{verbatim}
-
+\begin{center}
+	\begin{minipage}{.25\textwidth}
+		\begin{minted}{python}
+In [25]: g= 1/z**2
+In [26]: fg = f*g
+In [27]: fg
+Out[28]:
+		\end{minted}
+	\end{minipage}
+	\begin{equation*}
+		fg = \frac{\sin^2(x) + \cos^2(x)}{z^2}
+	\end{equation*}
+\end{center}
+\begin{paracol}{2}
 \subsection{Simplificación de expresiones simbólicas}
-Matlab permite, dada una expresión simbólica, obtener una equivalente más sencilla. En general, este proceso de simplificación no es trivial ni unívoco, ya que una expresión puede admitir varias formas simplificadas. Es también posible que la expresión simbólica que deseamos simplificar, no sea simplificable.
+Sympy permite, dada una expresión simbólica, obtener una equivalente más sencilla. En general, este proceso de simplificación no es trivial ni unívoco, ya que una expresión puede admitir varias formas simplificadas. Es también posible que la expresión simbólica que deseamos simplificar, no sea simplificable.
 
-Es interesante, sobretodo cuando se trata de expresiones obtenidas a partir de cálculos simbólicos, tratar de obtener una expresión lo más simplificada posible. La razón es que resulta mucho más fácil de entender y manipular. Matlab suministra el comando \texttt{simplify} para simplificar expresiones simbólicas. Así por ejemplo, si construimos la función simbólica,
-
-\begin{verbatim}
->> f(x) = sin(x)^2 + cos(x)^2 
-f(x) = 
-cos(x)^2 + sin(x)^2
-\end{verbatim} 
-
-y le aplicamos el comando \texttt{simplify},
-\begin{verbatim}
->> simplify(f)
-ans(x) =
-1
-\end{verbatim}
-Obtendremos un $1$, como cabría esperar. Este ejemplo es particularmente simple y, aunque sirve para ilustrar el funcionamiento del comando, no siempre es posible conseguir soluciones tan satisfactorias.
+Es interesante, sobretodo cuando se trata de expresiones obtenidas a partir de cálculos simbólicos, tratar de obtener una expresión lo más simplificada posible. La razón es que resulta mucho más fácil de entender y manipular. Sympy suministra el comando \texttt{simplify} para simplificar expresiones simbólicas. Así por ejemplo, si aplicamos \texttt{simplify} a la expresión 
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.25\textwidth}
+		\begin{minted}{python}
+In [33]: sp.simplify(f_g)
+Out[33]: 
+		\end{minted}
+	\end{minipage}
+	\begin{equation*}
+		fg = \frac{1}{z^2}
+	\end{equation*}
+\end{center}
+\begin{paracol}{2}
+Obtendremos un $1$ en el numerador, como cabría esperar. Este ejemplo es particularmente simple y, aunque sirve para ilustrar el funcionamiento del comando, no siempre es posible conseguir soluciones tan satisfactorias.
 
 Veamos otro ejemplo que muestra la ambigüedad del comando \texttt{simplify},
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.25\textwidth}
+		\begin{minted}{python}
+In [37]: bn = x**2+2*x*y+y**2
+In [38]: sp.simplify(bn)
+Out[38]:
+		\end{minted}
+		$x^2+2xy+y^2$
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+En este caso, Sympy devuelve la misma expresión que hemos introducido. Podríamos preguntarnos si no debería devolver la expresión como un binomio $(x+y)^2$. La cuestión es hasta qué punto podemos consider que esta expresión es más simple que la original. Para evitar algunas ambigüedades de este tipo, Sympy tiene varios comando para 'simplificar' expresiones. Por ejemplo, la función \mintinline{Python}|factor|, nos permite realizar la transformación deseada en el ejemplo anterior,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.25\textwidth}
+\begin{minted}{python}
+In [44]: bnf = sp.factor(bn)
+In [45]: bnf
+Out[45]:
+\end{minted}
+$(x+y)^2$
 
-\begin{verbatim}
->> syms x
->> p1 = 3*x^2+2*x-1
- 
-p1 =
- 
-3*x^2 + 2*x - 1
- 
->> p1 = x^2-2*x+1
- 
-p1 =
- 
-x^2 - 2*x + 1
- 
->> simplify(p1)
- 
-ans =
- 
-(x - 1)^2
-\end{verbatim}
+\begin{minted}{python}
+In [46]: sp.expand(bnf)
+Out[46]:
+\end{minted}
+$x^2+2xy+y^2$
+\end{minipage}
+\end{center}
+\begin{paracol}{2}
+Comos se muestra en la línea [46] es posible tambíen desarrollar una expresión binomial, para obtener un polinomio, empleando la función \mintinline{python}|expand|. En nuestro ejemplo, esto revertiría la acción de \mintinline{python}|factor|
+\end{paracol}
 
-Matlab simplifica el polinomio de grado dos suministrado convirtiéndolo en un binomio. La pregunta que cabe hacerse es en qué medida podemos considerar el binomio una expresión simplificada del polinomio del que procede. Así por ejemplo, si estamos sumando polinomios, la expresión desarrollada resulta más \emph{simple} que la expresión binomial.
+\begin{paracol}{2}
+\subsection{Sustitución de variables y expresiones.}
+Es posible, una vez definida una expresión simbólica, sustituir sus variables por otras expresiones empleando el comando \texttt{subs}. La sintáxis es simple, tomamos el nombre de la variable en que guardamos la expresión simbólica que queremos modificar, y invocamos el método \texttt{subs}, indicando el nombre de la variable simbólica que queremos substituir y la expresión por la que queremos sustituirla. Así, por ejemplo podemos cambiar en la expresión $(x+y)^2$ que creamos anteriormente, la variable x por la variable z\footnote{Solo se pueden emplear variables simbólicas previamente definidas para hacer la sustitución}. 
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.25\textwidth}
+		\begin{minted}{python}
+In [50]: bnf.subs(x,z)
+Out[50]:
+		\end{minted}
+		$(y+z)^2$
+	\end{minipage}
+\end{center}
 
-\subsection{Sustitución de variables por valores numéricos}
-Es posible, una vez definida una expresión simbólica, sustituir sus variables por valores numéricos mediante el uso del comando \texttt{subs},
+\begin{paracol}{2}
+También podemos sustituir una expresión simbólica por un número, aunque es importante tener en cuenta que el resulta es también simbólico y no numérico
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.25\textwidth}
+		\begin{minted}{python}
+In [51]: bnf.subs(x,1)
+Out[51]: 
+		\end{minted}
+		$(y+1)^2$
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+Podemos sustituir una variable por una expresión más compleja,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.25\textwidth}
+		\begin{minted}{python}
+In [52]: bnf.subs(x,y**2+z**2)
+Out[52]:
+\end{minted}
+		$(y^2+y+z^2)^2$
+	\end{minipage}
+\end{center}
 
-\begin{verbatim}
->> p = sin(x)^2 -2*x 
-p = 
-sin(x)^2 - 2*x
- 
->> v = subs(p,2) 
-v = 
-sin(2)^2 - 4
-\end{verbatim}
+\begin{paracol}{2}
+Además, podemos sustituir varias variable a la vez empleando una lista de pares de variables, cada par debe contener una variable a sustituir y la expresión por la que se sustituye
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.25\textwidth}
+		\begin{minted}{python}
+In [53]: bnf.subs([(x,z),(y,z**2)])
+Out[53]:
+		\end{minted}
+		$(y+z^2)^2$
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+Veamos en más detalle la sustitución de variables por números. Como hemo dicho esta sustitución da una expresión que es todavía simbólica. Si sustituimos todos los símbolos por valores numéricos, Sympy opera con ellos para evaluarnos la expresión,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [101]: f = sp.cos(x)**2 + sp.sin(y)**2
+In [102]: nums = f.subs([(x,0),(y,sp.pi/3)])
+In [103]: nums
+Out[103]:
+		\end{minted}
+		\begin{equation*} \frac{7}{4}\end{equation*}
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+El resultado es todavía simbólico. Si queremos un resultado numérico podemos emplear directamente el comando de Python \mintinline{python}|float|, que nos dará un número en la representación estándar de doble precisión. 
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [104]: float(nums)
+Out[104]: 1.75
+		\end{minted}
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+Otro comando de interés para evaluar expresiones simbólicas es el comando \mintinline{python}|evalf()|. Veamos su uso con el siguiente ejemplo,
+\end{paracol}
 
-La variable \texttt{x} ha sido sustituida, en la expresión simbólica \texttt{p}, por el número $2$. La expresión resultante sigue siendo todavía simbólica.
-Si lo que deseamos es obtener el valor numérico  de la función \texttt{p} en el punto $2$, tenemos que convertir la expresión simbólica resultante en su correspondiente valor numérico. Para ello se emplea el comando \texttt{double},
-
-\begin{verbatim}
->> double(v)
-ans =
-   -3.1732
-\end{verbatim}
-Este comando toma su nombre del tipo de formato con que el ordenador va a representar el resultado; un número real guardado en doble precisión\footnote{En realidad Matlab convierte los resultados a números reales o complejos de acuerdo con la expresión simbólica de la que se han obtenido.}
-
-Otro comando de interés para pasar de simbólico a numérico es el comando \texttt{vpa} (\emph{variable precision arithmetic}).
-\begin{verbatim}
->> vpa(v) 
-ans = 
--3.1731781895681940426804159084511
-\end{verbatim}
-El número de dígitos obtenidos al hacer la conversión es, por defecto, $32$. Dicho número puede ajustarse al 
-valor que se desee introduciéndolo en \texttt{vpa} como un segundo parámetro,
-
-\begin{verbatim}
->> vpa(v,5) 
-ans = 
--3.1732
-\end{verbatim}
-
-Si una expresión engloba más  de una variable simbólica es posible sustituir solo alguna o algunas de ellas, para ello basta indicar el nombre de la variable que se desea sustituir seguida de su valor,
-\begin{verbatim}
->> syms x y z
-
->> f = x^2*y + x * y^2 + z*x*y 
-f = 
-x^2*y + x*y^2 + z*x*y
- 
->> fx = subs(f,x,2) 
-fx = 
-4*y + 2*y*z + 2*y^2
- 
->> fy = subs(f,y,3) 
-fy = 
-9*x + 3*x*z + 3*x^2
- 
->> fxz = subs(f,2,4) 
-fxz = 
-x^4*y + x*y^4 + z*x*y
-\end{verbatim}
- 
-Además, es posible sustituir una variable simbólica por otra,
-
-\begin{verbatim}
->> fxyx = subs(f,z,x) 
-fxyx = 
-2*x^2*y + x*y^2
- 
->> f 
-f = 
-x^2*y + x*y^2 + z*x*y
- 
->> fxxx = subs(fxyx,y,x) 
-fxxx = 
-3*x^3
-\end{verbatim}
-
-
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [110]: sp.asin(1)
+Out[110]: 
+\end{minted}
+		\begin{equation*} \frac{\pi}{2}\end{equation*}
+	\begin{minted}{python}
+In [111]: sp.asin(1).evalf()
+Out[111]: 
+\end{minted}
+$1.5707963267949$
+	\begin{minted}{python}
+In [112]: sp.asin(1).evalf(25)
+Out[112]:
+\end{minted}
+$1.570796326794896619231322$
+	\begin{minted}{python}
+In [114]: float(sp.asin(1).evalf())
+Out[114]: 1.5707963267948966
+\end{minted}
+\end{minipage}
+\end{center}
+\begin{paracol}{2}
+La línea [110] nos devuelve el resultado de calcular el arcoseno de 1. EL resultado es, un valor simbolico $\pi/2$. En la línea [111], repetimos el cálculo, pero ahora hacemos uso de la función \mintinline{python}|evalf()|. Esta función nos devuelvo un valor numérico, aunque todavía se trata de un resultado simbólico. Por defecto, la función nos devuelve una expresión con 15 dígitos. Podemos sin embargo elegir el número de dígitos que enrá nuestra expresión numérica. para ello pasamos a la función el número de dígitos con el qu queremos que nos devuelva el resultado. La línea [112], nos muestra un ejemplo en que se han pedido 25 dígitos para el resultado. Por último, si queremos convertir el resultado en un número máquina, en la representación normal del computador, empleamos para ello el comando \mintinline{python}|float| de python. El resultado es un número en la representación en coma flotante de doble precisión.
+\end{paracol}
+\begin{paracol}{2}
 \section{Cálculo infinitesimal}
 Es posible realizar operaciones típicas del cálculo infinitesimal como derivación e integración, empleando métodos de cálculo simbólico. A diferencia del cálculo numérico, el resultado será ahora una expresión. 
 
 \subsection{Derivación}
 Para obtener la derivada de una función simbólica, se emplea el comando \texttt{diff},
-\begin{verbatim}
->> syms x a
->> f = a*exp(-x^2) 
-f = 
-a*exp(-x^2) 
->> df = diff(f) 
-df = 
--2*a*x*exp(-x^2) 
-\end{verbatim}
-Matlab devuelve como resultado la derivada con respecto a la variable \texttt{x} de la función simbólica introducida. (Quizá sea útil recordar que Matlab toma como variable de la función la variable simbólica mas próxima alfabéticamente a la letra x.)
+\end{paracol}
 
-Si deseamos derivar una función respecto a una variable simbólica específica, es preciso indicarlo expresamente, introduciendo dicha variable en la llamada al comando \texttt{diff} a continuación de la función que vamos a derivar y separada de ésta por una coma. Así lo indicamos si queremos derivar la función del ejemplo anterior respecto a la variable simbólica \texttt{a},
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [121]: f = a*sp.exp(-x**2)
+In [122]: f
+Out[122]:
+		\end{minted}
+$ae^{-x^2}$
+		\begin{minted}{python}
+In [125]: sp.diff(f,x)
+Out[125]: 
+\end{minted}
+	\end{minipage}
+\end{center}
 
-\begin{verbatim}
->> dfa = diff(f,a) 
-dfa = 
-exp(-x^2)
-\end{verbatim}
+\begin{paracol}{2}
+La función \mintinline{python}|diff()|, toma dos variables de entrada, el nombre de la función simbólica que queremos derivar y, siempre que la función contenga más de una expresión simbólica, la variable con respecto a la que queremos derivar. En en ejemplo anterior, tambiém podríamos haber derivado con respecto a la variable \texttt{a},
+\end{paracol}
 
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [126]: sp.diff(f,a)
+Out[126]: 
+		\end{minted}
+		$e^{-x^2}$
+	\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
+Si la función contienen una única variable simbólica, es suficiente con pasar a la función \mintinline{python}|diff|, la función que deseamos derivar,
+\end{paracol}
+
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [129]: g = 3*x**3+sp.sqrt(x)
+In [130]: g
+Out[130]: 
+		\end{minted}
+		$\sqrt{x}+3x^3$
+		\begin{minted}{python}
+In [132]: sp.diff(g)
+Out[132]: 
+		\end{minted}
+		\begin{equation*}
+			9x^2+\frac{1}{2\sqrt{x}}
+		\end{equation*}
+	\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
 Es posible emplear el comando \texttt{diff} para obtener derivadas de orden superior. Para ello se introduce en la llamada el orden de la derivada a continuación del nombre de la función o, si es el caso, a continuación de la variable simbólica con respecto a la que se quiere derivar,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [133]: sp.diff(f,x,3)
+Out[133]: 
 
-\begin{verbatim}
->> df3 = diff(f,3) 
-df3 = 
-12*a*x*exp(-x^2) - 8*a*x^3*exp(-x^2)
- 
->> dfa2 = diff(f,a,2) 
-dfa2 = 
-0
-\end{verbatim}
-
+		\end{minted}
+		$-4ax(2x^2-3)e^{-x^2}$
+		\begin{minted}{python}
+In [134]: sp.diff(f,a,2)
+Out[134]: 
+		\end{minted}
+		$0$
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
 En el primer caso hemos obtenido la derivada tercera con respecto a \texttt{x} de la función \texttt{f} de los ejemplos anteriores y en el segundo la derivada segunda de dicha función con respecto a la variable \texttt{a}. 
 
 Es fácil comprobar que el resultado sería el mismo si derivamos la función original y las expresiones de las sucesivas derivadas obtenidas hasta alcanzar la derivada del orden deseado,
-\begin{verbatim}
->> df = diff(f) 
-df = 
--2*a*x*exp(-x^2)
->> df2 = diff(df) 
-df2 = 
-4*a*x^2*exp(-x^2) - 2*a*exp(-x^2)
- 
->> df3 = diff(df2) 
-df3 = 
-12*a*x*exp(-x^2) - 8*a*x^3*exp(-x^2) 
-\end{verbatim}
+\end{paracol}
+
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [136]: df = sp.diff(f,x)
+In [137]: df
+Out[137]: 			
+		\end{minted}
+		$-2axe^{-x^2}$
+		\begin{minted}{python}
+In [138]: df2 = sp.diff(df,x)
+In [139]: df2
+Out[139]: 
+		\end{minted}
+		$4ax^2e^{-x^2}-2ae^{-x^2}$
+		\begin{minted}{python}
+In [142]: df3 = sp.diff(df2,x)
+In [143]: df3
+Out[143]:  
+		\end{minted}
+		$-8ax^3e{-x^2} + 12axe^{x^2}$
+		\begin{minted}{python}
+In [146]: sp.factor(df3)
+Out[146]:   
+\end{minted}
+$-4ax(2x^2-3)e^{x^2}$
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+\noindent Donde hemos empleado la función \mintinline{python}|factor|, dscrita anteriormente para simplificar la expresión obtenida y hacerla coincidir con la que resulta de calcular directamente la derivada tercera.
+
 En análisis matemático, cuando una función posee más de una variable independiente, la derivación respecto a una de sus variables recibe el nombre de derivada parcial. Así por ejemplo la función,
 $f(x,y) =\sin \left( \sqrt{x^2+y^2} \right)$ es una función de dos variables $x$ e $y$. Su derivada (parcial) con respecto a $x$ y su derivada parcial con respecto a $y$, se representan como,
+\end{paracol}
+
 \begin{align*}
 \frac{\partial f}{\partial x} &= x\cdot\frac{\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}} \\
 \frac{\partial f}{\partial y} &= y\cdot\frac{\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}}
 \end{align*}
-
+\begin{paracol}{2}
 Podemos obtener dichas derivadas parciales, indicando al comando \texttt{diff} respecto a qué variable debe derivar, tal y como se ha mostrado anteriormente, siendo en nuestro ejemplo con respecto a $x$ e $y$,
-\begin{verbatim}
->> syms x y
->> fxy = sin(sqrt(x^2+y^2)) 
-fxy = 
-sin((x^2 + y^2)^(1/2))
- 
->> sfx = diff(fxy,x) 
-sfx = 
-(x*cos((x^2 + y^2)^(1/2)))/(x^2 + y^2)^(1/2)
- 
->> sfy = diff(fxy,y) 
-sfy = 
-(y*cos((x^2 + y^2)^(1/2)))/(x^2 + y^2)^(1/2)
-\end{verbatim} 
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [147]: fxy = sp.sin(sp.sqrt(x**2+y**2))
+In [148]: fxy
+Out[148]: 	
+		\end{minted}
+		$\sin(\sqrt{x^2+ y^2})$
+		\begin{minted}{python}
+In [150]: sp.diff(fxy,x)
+Out[150]: 
+		\end{minted}
+		\begin{equation*} \frac{x\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}}\end{equation*}
+		\begin{minted}{python}
+In [151]: sp.diff(fxy,y)
+Out[151]:   
+		\end{minted}
+		\begin{equation*} \frac{y\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}}\end{equation*}
+	\end{minipage}
+\end{center}
 
+\begin{paracol}{2}
 Las derivadas parciales de orden superior pueden calcularse respecto a la misma o a distintas variables; por ejemplo para las derivadas segundas,
-
+\end{paracol}
 \begin{align*}
 \frac{\partial^2f}{\partial x^2} &= \frac{\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}} - 
 x^2 \cdot \frac{\cos(\sqrt{x^2+y^2})}{\sqrt{(x^2+y^2)^3}} -
@@ -424,347 +574,542 @@ y^2 \cdot \frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2} \\
 x\cdot y \cdot\frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2} 
 \end{align*}
 
+\begin{paracol}{2}
 Las derivadas calculadas respecto a variables distintas se llaman derivadas cruzadas, y no influye en ellas el orden en que se realice la derivación.
 
-Para calcular las derivadas parciales de orden superior de una función, es suficiente indicar las variables con respecto a las cuales se desea derivar o, en el caso de que se calculen derivadas respecto a la misma variable, se puede también indicar el orden. En los siguientes ejemplos de código se muestra como obtener las derivadas segundas de la función que hemos venido utilizando a lo largo de esta sección empleando ambos métodos,
-\begin{verbatim}
->> sfx2 = diff(fxy,x,x) 
-sfx2 = 
-cos((x^2 + y^2)^(1/2))/(x^2 + y^2)^(1/2)
--(x^2*cos((x^2 + y^2)^(1/2)))/(x^2 + y^2)^(3/2)
--(x^2*sin((x^2 + y^2)^(1/2)))/(x^2 + y^2)
- 
->> sfx2 = diff(fxy,x,2) 
-sfx2 = 
-cos((x^2 + y^2)^(1/2))/(x^2 + y^2)^(1/2)
--(x^2*cos((x^2 + y^2)^(1/2)))/(x^2 + y^2)^(3/2)
--(x^2*sin((x^2 + y^2)^(1/2)))/(x^2 + y^2)
- 
->> sfy2 = diff(fxy,y,y) 
-sfy2 = 
-cos((x^2 + y^2)^(1/2))/(x^2 + y^2)^(1/2)
--(y^2*cos((x^2 + y^2)^(1/2)))/(x^2 + y^2)^(3/2)
--(y^2*sin((x^2 + y^2)^(1/2)))/(x^2 + y^2)
- 
->> sfy2 = diff(fxy,y,2) 
-sfy2 = 
-cos((x^2 + y^2)^(1/2))/(x^2 + y^2)^(1/2)
--(y^2*cos((x^2 + y^2)^(1/2)))/(x^2 + y^2)^(3/2) 
--(y^2*sin((x^2 + y^2)^(1/2)))/(x^2 + y^2)
- 
->> sfxy = diff(fxy,x,y) 
-sfxy = 
--(x*y*cos((x^2 + y^2)^(1/2)))/(x^2 + y^2)^(3/2)
--(x*y*sin((x^2 + y^2)^(1/2)))/(x^2 + y^2)
- 
->> sfyx = diff(fxy,y,x) 
-sfyx = 
--(x*y*cos((x^2 + y^2)^(1/2)))/(x^2 + y^2)^(3/2)
--(x*y*sin((x^2 + y^2)^(1/2)))/(x^2 + y^2) 
-\end{verbatim}
+Para calcular las derivadas parciales de orden superior de una función, es suficiente indicar las variables con respecto a las cuales se desea derivar o, en el caso de que se calculen derivadas respecto a la misma variable, se puede también indicar el orden de la derivada. En los siguientes ejemplos de código se muestra como obtener las derivadas segundas de la función del ejemplo empleando ambos métodos,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.6\textwidth}
+		\begin{minted}{python}
+In [153]: sp.diff(fxy,x,x)
+Out[153]: 	
+		\end{minted}
+		\begin{equation*}
+			\frac{\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}} - 
+			x^2 \cdot \frac{\cos(\sqrt{x^2+y^2})}{\sqrt{(x^2+y^2)^3}} -
+			x^2 \cdot \frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2}
+		\end{equation*}
+		\begin{minted}{python}
+In [154]: sp.diff(fxy,x,2)
+Out[154]:  
+		\end{minted}
+		\begin{equation*}
+			\frac{\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}} - 
+			x^2 \cdot \frac{\cos(\sqrt{x^2+y^2})}{\sqrt{(x^2+y^2)^3}} -
+			x^2 \cdot \frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2}
+		\end{equation*}
+		\begin{minted}{python}
+In [155]: sp.diff(fxy,y,y)
+Out[155]:   
+		\end{minted}
+		\begin{equation*} \frac{\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}} - 
+			y^2 \cdot \frac{\cos(\sqrt{x^2+y^2})}{\sqrt{(x^2+y^2)^3}} -
+			y^2 \cdot \frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2}
+		\end{equation*}
+		\begin{minted}{python}
+In [156]: sp.diff(fxy,y,2)
+Out[156]:    
+		\end{minted}
+		\begin{equation*} \frac{\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}} - 
+			y^2 \cdot \frac{\cos(\sqrt{x^2+y^2})}{\sqrt{(x^2+y^2)^3}} -
+			y^2 \cdot \frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2}
+		\end{equation*}
+		\begin{minted}{python}
+In [157]: sp.diff(fxy,x,y)
+Out[157]:
+\end{minted}
+\begin{equation*} 
+	\frac{\partial^2f}{\partial y\partial x} =-x\cdot y\cdot\frac{\cos(\sqrt{x^2+y^2})}{\sqrt{(x^2+y^2)^3}} - 
+	x\cdot y \cdot\frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2} 
+\end{equation*}
+		\begin{minted}{python}
+In [158]: sp.diff(fxy,y,x)
+Out[158]: 
+\end{minted}
+\begin{equation*} 
+	\frac{\partial^2f}{\partial y\partial x} =-x\cdot y\cdot\frac{\cos(\sqrt{x^2+y^2})}{\sqrt{(x^2+y^2)^3}} - 
+	x\cdot y \cdot\frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2} 
+\end{equation*}
 
-Es posible emplear el comando de Matlab \texttt{pretty} para obtener una representación de una expresión simbólica más fácil de visualizar. Si la aplicamos al último de los resultados obtenidos en el ejemplo anterior obtenemos,
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+Es posible emplear Sympy para realizar cálculos de gradientes, jacobianos, rotacionales, etc. No se incluye su descripción en este manual, los interesados pueden consultar la documentación de Sympy.
+\end{paracol}
 
-\begin{verbatim}
->> pretty(sfyx)
-                2    2                   2    2
-  x y cos(sqrt(x  + y ))   x y sin(sqrt(x  + y ))
-- ---------------------- - ----------------------
-         2    2 3/2                 2    2
-       (x  + y )                   x  + y
-\end{verbatim}
-
-Es importante hacer notar que este comando no altera en modo alguno el valor de la expresión simbólica, simplemente la muestra por pantalla en un formato distinto.
-
-Es posible emplear Matlab para realizar cálculos de gradientes, jacobianos, rotacionales, etc. No se incluye su descripción en este manual, los interesados pueden consultar la ayuda de Matlab.
-
-
+\begin{paracol}{2}
 \subsection{Integración} \index{Integración! Simbólica}
 La integración indefinida en cálculo simbólico permite obtener la primitiva de una función dada,
+\end{paracol}
 \begin{equation*}
 F(x) = \int f(x)dx  \Leftrightarrow f(x) = \frac{dF(x)}{dx}  
 \end{equation*}
-Se trata de una operación más compleja que la derivación. De hecho, hay funciones para las que no es posible obtener una primitiva en forma simbólica, bien porque no existe, o bien porque los algoritmos empleados por Matlab no son capaces de obtenerla.
+\begin{paracol}{2}
+Se trata de una operación más compleja que la derivación. De hecho, hay funciones para las que no es posible obtener una primitiva en forma simbólica, bien porque no existe, o bien porque los algoritmos empleados por sympy no son capaces de obtenerla.
 
-El comando empleado para obtener la integral de una función es \texttt{int}. Así por ejemplo, para obtener la primitiva de la función $f(x) = \sqrt{1-x^2}$ haremos,
-\begin{verbatim}
->> syms x
->> f = sqrt(1-x^2) 
-f = 
-(1 - x^2)^(1/2)
- 
->> F = int(f)
-F = 
-asin(x)/2 + (x*(1 - x^2)^(1/2))/2
-\end{verbatim}
+El comando empleado para obtener la integral de una función es \texttt{integrate()}. Así por ejemplo, para obtener la primitiva de la función $f(x) = \sqrt{1-x^2}$ haremos,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [160]: f =sp.sqrt(1-x**2)
+In [161]: f
+Out[161]: 
+			\end{minted}
+		$\sqrt{1-x^2}$
+		\begin{minted}{python}
+In [162]: sp.integrate(f)
+Out[162]: 
+		\end{minted}
+		\begin{equation*}
+			\frac{x\sqrt{1-x^2}}{2}+\frac{\text{asin}(x)}{2}
+		\end{equation*}
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
 Podemos comprobar el resultado obtenido aplicando la función \texttt{diff} vista en el apartado anterior,
-
-\begin{verbatim}
->> diff(F) 
-ans = 
-1/(2*(1 - x^2)^(1/2)) - x^2/(2*(1 - x^2)^(1/2)) + (1 - x^2)^(1/2)/2
- 
->> simplify(ans) 
-ans = 
-(1 - x^2)^(1/2)
-\end{verbatim}
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [166]: sp.simplify(sp.diff(F))
+Out[166]:  
+		\end{minted}
+			$\sqrt{1-x^2}$
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
 Donde se ha hecho uso del comando \texttt{simplify} para recuperar la expresión original.
 
-Como en otras funciones simbólicas, \texttt{int} calcula la integral con respecto a la variable simbólica más próxima a \texttt{x}, salvo que se indique expresamente respecto a qué variable simbólica se desea integrar. Así por ejemplo,
-\begin{verbatim}
->> syms x a
+Como en el caso de la derivación, si tenemos más de una variable simbolica definida en la función que queremos integrar, es preciso indicar a Sympy con respecto acúial variable queremos realizar la integración. Así, por ejemplo,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [167]: f = a*x/(a**2+x**2)
+In [168]: f
+Out[168]: 
+		\end{minted}
+		\begin{equation*}
+			\frac{ax}{a^2+x^2}
+		\end{equation*}
+		\begin{minted}{python}
+In [173]: Fa = sp.integrate(f,a)
+In [174]: Fa
+Out[174]: 
+		\end{minted}
+		\begin{equation*}
+			\frac{x\log(a^2+x^2)}{2}
+		\end{equation*}
+				\begin{minted}{python}
+In [175]: Fx = sp.integrate(f,x)
+In [176]: Fx
+Out[176]:
+		\end{minted}
+		\begin{equation*}
+			\frac{a\log(a^2+x^2)}{2}
+		\end{equation*}
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+en el primer caso la integración se realiza con respecto a la variable \texttt{a} y en el segundo caso, la integración se realiza respecto a la variable \texttt{x}.
 
->> f = a * x/(a^2 +x^2) 
-f = 
-(a*x)/(a^2 + x^2)
+Cuando no es posible encontrar una primitiva a una función, Sympy devuelve la función dentro del símbolo integral,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [180]: F = sp.integrate(f)
+In [181]: F
+Out[181]:  
+		\end{minted}
+		\begin{equation*}\int \sin(\sinh(x))dx \end{equation*}
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+La función \texttt{integrate}, puede emplearse también para calcular integrales definidas, si se le suministran los límites de integración. La sintaxis debe incluir una tupla con la variable sobre la que se integra y los límites de integración,
+\end{paracol}
 
->> Fx = int(f) 
-Fx =
-(a*log(a^2 + x^2))/2 
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+	\begin{minted}{python}
+In [188]: F = sp.integrate(10*sp.sin(x),(x,0,np.pi))
 
->> Fx = int(f,x) 
-Fx = 
-(a*log(a^2 + x^2))/2
- 
->> Fa = int(f,a) 
-Fa = 
-(x*log(a^2 + x^2))/2 
-\end{verbatim}
-en el primer y el segundo caso la integración se realiza con respecto a la variable \texttt{x}. En el tercer caso, la integración se realiza respecto a la variable \texttt{a}.
+In [189]: F
+Out[189]:   
+		\end{minted}
+		$20.0$
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+	La función \texttt{integrate}, puede emplearse también para calcular integrales múltiples, es suficiente con indicar las variables simbólicas respecto a las que se quiere calcular la integral,
+\end{paracol}
 
-Cuando no es posible encontrar una primitiva a una función, Matlab devuelve como resultado la expresión \texttt{int(integrando)}, para indicar que no ha sido posible realizar la operación,
-\begin{verbatim}
->> f = sin(sinh(x)) 
-f = 
-sin(sinh(x))
- 
->> F = int(f) 
-F = 
-int(sin(sinh(x)), x)
-\end{verbatim}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [160]: f = x**2+y**2
+In [161]: f
+Out[161]: 
+		\end{minted}
+		$x^2+y^2$
+		\begin{minted}{python}
+In [162]: sp.integrate(f,x,y)
+Out[162]: 
+		\end{minted}
+		\begin{equation*}
+			\frac{x^3y}{3}+\frac{xy^3}{3}
+		\end{equation*}
+	\end{minipage}
+\end{center}
 
-La función \texttt{int}, puede emplearse también para calcular integrales definidas, si se le suministran los límites de integración,
-
-\begin{verbatim}
->> f = 10 * sin(x) 
-f = 
-10*sin(x)
- 
->> F0pi = int(f,0,pi) 
-F0pi = 
-20
-\end{verbatim}
-
+\begin{paracol}{2}
 \subsection{Series} \index{Series! Simbólicas}
 \index{Series! suma de series simbólicas}
 
-\paragraph{Suma de series}Matlab permite calcular varias operaciones sobre sucesiones de las que se conoce el término general. En este capítulo, solo nos referiremos a la suma de series. 
-Para ello se aplica el comando \texttt{symsum} indicando los límites de la serie que se quiere sumar,
+\paragraph{Suma de series} Sympy permite calcular varias operaciones sobre sucesiones de las que se conoce el término general. En este capítulo, solo nos referiremos a la suma de series. 
+Para ello se aplica el comando \texttt{Sum} indicando los límites de la serie que se quiere sumar. En primer lugar, creamos unas variables simbólicas para las que definimos ciertas condiciones
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.7\textwidth}
+		\begin{minted}{python}
+In [256]: a = sp.symbols('a',nonnegative=True)
+In [257]: k = sp.symbols('k', integer=True)
+In [258]: n = sp.symbols('n',integer=True,nonnegative=True)
+		\end{minted}
+	\end{minipage}
+\end{center}
 
-\begin{verbatim}
->> syms k
+\begin{paracol}{2}
+De este modo definimos $a \ge 0$, $k \in \mathbb{Z}$ y $n \in \mathbb{Z}_+$.
 
->> symsum(1/k^2,1,inf)
-pi^2/6
+Podemos ahora emplear el comando \mintinline{python}|Sum|, para crear la suma simbolica de la serie que queramos,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.7\textwidth}
+		\begin{minted}{python}
+		In [263]: sp.Sum(1/n**2,(n,1,10))
+		Out[263]:	
+		\end{minted}
+		\begin{equation*}
+			\sum_{n=1}^{10}\frac{1}{n}^2
+		\end{equation*}
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+La notación es muy parecida a la que vimos para las integrales. La función \mintinline{python}|Sum|, toma como parámetros la expresión simbólica de la serie que queremos sumar, la variable sobre la que se expande la serie, en nuestro ejemplo \texttt{n}, y los límites de la suma. Sympy nos devuelve un objeto pero no lleva a cabo, el cálculo de la suma. Si queremos obtener el resultado de la suma, debemos emplear la función \mintinline{python}|doit()|,
+\end{paracol}
 
->> symsum((a)^k,0,inf)
-ans =
-piecewise([1 <= a, Inf], [abs(a) < 1, -1/(a - 1)])
-\end{verbatim}
-El segundo ejemplo muestra el límite de una serie geométrica, donde si $a>1$ la serie no converge. Como siempre, Matlab toma por defecto como variable (índice) la variable simbólica más próxima a \texttt{x}.
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [264]: sp.Sum(1/n**2,(n,1,10)).doit()
+Out[264]: 	
+		\end{minted}
+		\begin{equation*}
+			\frac{1968329}{1270080}
+		\end{equation*}
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+Podemos pedirle también que calcule, sumas de infinitos términos. Para ello Sympy emplea una doble o minúsculo \texttt{oo} para repesentar el símbolo infinito,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.8\textwidth}
+		\begin{minted}{python}
+In [265]: sp.Sum(a**k,(k,1,sp.oo))
+Out[265]: 	
+		\end{minted}
+		\begin{equation*}
+		\sum_{n=1}^{\infty}a^k	
+		\end{equation*}
+	\end{minipage}
+\end{center}
+\begin{paracol}{2}
+Si calculamos la suma,
+\end{paracol}
+\begin{center}
+	\begin{minipage}{.6\textwidth}
+		\begin{minted}{python}
+In [265]: sp.Sum(a**k,(k,1,sp.oo)).doit()
+Out[265]: 	
+		\end{minted}
+		\begin{equation*}
+		\left\{
+		\begin{array}{@{}l@{\,}l}
+			\frac{a}{1-a} & \text{for}\ a<1 \\
+			\sum_{k=1}^{\infty} a^k & \text{otherwise}
+		\end{array}
+		\right.
+	\end{equation*}
+	\end{minipage}
+\end{center}
 
-\paragraph{Serie de Taylor}\index{Series! Serie de Taylor de una función simbólica} Es posible calcular la expresión de la serie de Taylor para una función simbólica. Para ello se emplea el comando \texttt{taylor}. Por defecto se obtienen tan solo los elementos de la serie hasta orden 5, aunque es posible obtener órdenes superiores. A continuación se dan algunos ejemplos de uso,
-\begin{verbatim}
->> syms x
->> f = exp(x)
+\begin{paracol}{2}
+Sympy nos da la solución para el caso en que la serie es sumable $a<1$, recordemos que a es valor real positivo, y nos devuelve la expresión general de la suma en otro caso.
+
+Par el caso de una suma infinita que diverge, Sympy nos devolverá el símbolo infinito,
+\end{paracol}
+
+\begin{center}
+	\begin{minipage}{.6\textwidth}
+		\begin{minted}{python}
+In [271]: sp.Sum(1/n,(n,1,sp.oo)).doit()
+Out[271]:
+		\end{minted}
+	    $\infty$
+	\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
+\paragraph{Serie de Taylor}\index{Series! Serie de Taylor de una función simbólica} Es posible calcular la expresión de la serie de Taylor para una función simbólica. Para ello se emplea el comando \texttt{series}, que es un método propio de cualquier función simbólica que creemos. Toma como variables de entrada, la variable de la función sobre la que se quiere expandir la serie de Taylor, el punto en torno al cual se realiza el desarrollo y el número de términos de la serie que se desea obtener.
+\end{paracol}
+
+\begin{center}
+	\begin{minipage}{.3\textwidth}
+		\begin{minted}{python}
+In [284]: f1 = sp.exp(x)
+In [285]: f1	
+		\end{minted}
+		$e^x$
+		\begin{minted}{python}
+In [286]f1.series(x,0,4)
+Out[286]:
+		\end{minted}
+		\begin{equation*}
+		1+x+\frac{x^2}{2}+\frac{x^3}{6}+ O(x^4)
+		\end{equation*}
+	\end{minipage}
+\end{center}
+
+\begin{paracol}{2}
+El ejemplo anterior nos da el desarrollo añadiéndonos el término de Landau del orden de l aapproximación $O(x^4)$, podemos eliminar el término del resultado, empleando el comando \mintinline{python}|removeO()|. Veamos un ejemplo con el desarrollo de esta misma función en torno a $x=3$,
+\end{paracol}
  
-f =
  
-exp(x)
- 
->> T = taylor(f)
- 
-T =
- 
-x^5/120 + x^4/24 + x^3/6 + x^2/2 + x + 1
- 
->> T2 = taylor(f,x,1)
-T2 =
-exp(1) + exp(1)*(x - 1) + (exp(1)*(x - 1)^2)/2 + (exp(1)*(x - 1)^3)/6 +
-(exp(1)*(x - 1)^4)/24 + (exp(1)*(x - 1)^5)/120
-\end{verbatim}
+\begin{center}
+	\begin{minipage}{.3\textwidth}
+		\begin{minted}{python}
+In [289]: f1.series(x,3,6).removeO()
+Out[289]: 
+		\end{minted}
+		\begin{equation*}			
+			\frac{(x-3)^3e^3}{6}+\frac{(x-3)^2e^3}{2}+(x-3)e^3+e^3
+		\end{equation*}
+	\end{minipage}
+\end{center}
 
-Los ejemplos anteriores nos dan cinco términos del desarrollo de Taylor de la función exponencial. Primero en torno a $x = 0$, ya que no le hemos indicado un punto en torno al cual calcularlo. Después en torno a $x = 1$, valor definido en la llamada al comando \texttt{taylor} después del nombre de la función simbólica para la que queremos calcular el desarrollo.
-
-Para calcular desarrollos de Taylor de otro orden distinto al quinto, debemos indicarlo expresamente, empleando en la llamada al comando \texttt{taylor} la palabra clave \texttt{'Order'}, seguida del orden que deseamos para la expansión,
-
-\begin{verbatim}
->> T2 = taylor(f,x,'Order',7) 
-T2 = 
-x^6/720 + x^5/120 + x^4/24 + x^3/6 + x^2/2 + x + 1
-\end{verbatim} 
-
+\begin{paracol}{2}
 \subsection{Límites} \index{Límites! de una función simbólica}
 Para el cálculo de límites de una expresión simbólica se emplea el comando \texttt{limit}. Es necesario incluir la función simbólica y el valor de la variable independiente para el que se desea calcular el límite.  Dicho valor puede ser también simbólico,
+\end{paracol}
 
-\begin{verbatim}
->> syms x a
+\begin{center}
+	\begin{minipage}{.3\textwidth}
+		\begin{minted}{python}
+In [293]: f = x**2/(3*x**2+sp.log(x))
+In [294]: f
+Out[294]:	
+		\end{minted}
+\begin{equation*}
+\frac{x^2}{3x^2+\log(x)}	
+\end{equation*}
 
->> f =x^2/(3*x^2+log(x))
-f =
- 
-x^2/(log(x) + 3*x^2)
->> limit(f,0)
-ans = 
-0
- 
->> limit(f,a) 
-ans = 
-a^2/(log(a) + 3*a^2)
+\begin{minted}{python}
+In [297]: sp.limit(f,x,0)
+Out[297]: 
+		\end{minted}
+		$0$
+	\end{minipage}
+\end{center}
+El siguiente ejemplo muestra como emplear el comando \texttt{limit} y la definición de derivada para calcular la derivada de una función,
 
-\end{verbatim}
-Si la expresión para la que se desea calcular el límite tiene más de una variable simbólica, Matlab calculará el límite empleando como variable la más cercana a \texttt{x}, excepto si se le indica expresamente con respecto a qué variable debe calcularlo. El siguiente ejemplo muestra como emplear el comando \texttt{limit} y la definición de derivada para calcular la derivada de una función,
-
-\begin{verbatim} 
->> syms h 
->> f = log(x)
- 
-f =
- 
-log(x)
- 
->> limit (log(x+h)/h ,0)
- 
-ans =
- 
-log(h)/h
- 
->> limit (log(x+h)/h ,h,0)
- 
-ans =
- 
-limit(log(h + x)/h, h == 0)
- 
->> limit ((log(x+h)-log(x))/h ,h,0)
- 
-ans =
- 
-1/x
-\end{verbatim}
+\begin{center}
+	\begin{minipage}{.5\textwidth}
+		\begin{minted}{python}
+In [306]: h= sp.symbols('h')
+In [307]: sp.limit((sp.log(x+h)-sp.log(x))/h,h,0)
+Out[307]: 
+		\end{minted}
+		{\noindent \begin{equation*}
+			\frac{1}{x}	
+		\end{equation*}}
+		\end{minipage}
+\end{center}
 
 Es posible calcular límites en el \emph{infinito}
 \index{Límites! Límite en el infinito de una función simbólica}
-\begin{verbatim}
->> limit (1/x,x,inf) 
-ans = 
-0
-\end{verbatim}
+\begin{center}
+	\begin{minipage}{.8\textwidth}
+		\begin{minted}{python}
+In [311]: sp.limit(1/x,x,sp.oo)
+Out[311]:
+		\end{minted}
+		$0$
+	\end{minipage}
+\end{center}
 
-Por último, es posible calcular el límite por la izquierda y el límite por la derecha cuando estos no coinciden. Para ello se añade al final del comando la palabra \texttt{'right} (derecha) o \texttt{'left'} (izquierda)
+Por último, es posible calcular el límite por la izquierda y el límite por la derecha cuando estos no coinciden. Para ello se añade al final del comando la palabra \texttt{'right} (derecha) o \texttt{'left'} (izquierda). Es importante saber que, si no se le indica expresamente, Sympy calcula siempre el límite por la derecha. vamos a ver un ejemplo empleando el comando \mintinline{python}|Piecewise| que nos perminte definir funciones por tramos,
 \index{Límites! Límites laterales de una función simbólica}
-\begin{verbatim}
->> limit (1/x,x,0,'right') 
-ans = 
-Inf
- 
->> limit (1/x,x,0,'left') 
-ans = 
--Inf
- 
->> limit (1/x,x,0) 
-ans = 
-NaN
-\end{verbatim}
-Es interesante notar que si no se especifica la dirección (left/right) al calcular este límite, el resultado es \texttt{NaN}; puesto que el límite, al no ser bilateral, no está bien definido.
+
+\begin{center}
+	\begin{minipage}{.6\textwidth}
+		\begin{minted}{python}
+In [36]: f =sp.Piecewise((x,x<0),(1/x,x>0))
+In [37]: f
+		\end{minted}
+				\begin{equation*}
+			\left\{
+			\begin{array}{@{}l@{\,}l}
+				x &  \text{for}\ x<0\\
+			 \frac{1}{x} & \text{for}\ x>0
+			\end{array}
+			\right.
+		\end{equation*}
+	\end{minipage}
+\end{center}
+Si calculamos directamente el límite,
+\begin{center}
+	\begin{minipage}{.6\textwidth}
+		\begin{minted}{python}
+In [49]: sp.limit(f,x,0)
+Out[49]: 
+		\end{minted}
+$\infty$
+	\end{minipage}
+\end{center}
+
+Para calcular el límite por la derecha, fijamos el parámetro \texttt{dir ='+'} para la el comando \mintinline{python}|limit|, para calcular el límite por la izquierda lo fijamos a \texttt{dir ='-'}.
+
+\begin{center}
+	\begin{minipage}{.6\textwidth}
+		\begin{minted}{python}
+In: [50]: sp.limit(f,x,0,dir='+')
+Out:[50]: 
+		\end{minted}
+		$\infty$
+		\begin{minted}{python}
+In[51] :sp.limit(f,x,0,dir='-')
+Out[51]: 
+\end{minted}
+$0$
+\end{minipage}
+\end{center}
+
+Los límites son distintos como corresponde a la función que hemos definido por tramos, además vemos también que por defecto el límite calculado por Sympy, si no indicamos dirección, es el límite por la derecha.
+
+Por último, es posible calcular un limite bi-lateral, \texttt{dir='+-'} que solo existe si coinciden el límite por la derecha con el limite por la izquierda,
+
+\begin{center}
+	\begin{minipage}{.6\textwidth}
+		\begin{minted}{python}
+In [52]: f2 = sp.Abs(x)
+
+In [53]: f2
+Out[53]: 		\end{minted}
+		$|x|$
+		\begin{minted}{python}
+In [54]: sp.limit(f2,x,0,dir='+-')
+Out[54]: 
+		\end{minted}
+		$0$
+		
+	\end{minipage}
+\end{center}
+
+En caso de que los límites laterales no coincida, este comando devuelve un mensaje de error.
+
+
 
 \section{Representación gráfica}
-Matlab dispone de un conjunto de funciones que permiten representar funciones simbólicas. Su funcionamiento es similar al de las funciones generales de Matlab para representación gráfica. A continuación se presenta una revisión de las más comunes.
+Sympy dispone de un conjunto de funciones que permiten representar funciones simbólicas. Su funcionamiento se basa en Matplotlib. A continuación se presenta una revisión de las más comunes.
 \index{Gráficos! Representación de funciones simbólicas}
-Para obtener la gráfica de una función de una sola variable se emplea el comando \texttt{ezplot}. Este comando admite como variables de entrada una función simbólica y un vector con los límites $[x_{min}\ x_{max}]$ entre los que se desea dibujar la función. Si no se suministran los límites, Matlab toma for defecto el intervalo $[-2\pi \ 2\pi]$ para realizar la representación. Así, por ejemplo para representar la función $f(x) = e^{\sin(x)}$,
+Para obtener la gráfica de una función de una sola variable se emplea el comando \texttt{plot}, del submódulo \mintinline{python}|plotting| de Sympy. Este comando admite como variables de entrada una función simbólica y diversos parámetros para ajustar la gráfica. Poe ejemplo, \mintinline{python}|xlim| e \mintinline{python}|ylim|, dos tuplas de valores que permiten ajustar los límites de los ejes x e y de la representación. Si no se indican límites, Sympy elige los que le parecen más adecuados,
 
-%\begin{figure}
-%\centering
-%\subfigure[Intervalo por defecto: $-2\pi \leq x \leq 2\pi$ \label{fig:simplot1}]{\includegraphics[width=9cm]{simplot.eps}} \qquad 
-%\subfigure[Intervalo suministrado: $-10 \leq x \leq 10$  \label{fig:simplot2}]{\includegraphics[width=9cm]{simplot2.eps}}\\
-%\caption{Gráfica de la función $f(x) = e^{\sin\left(x\right)}$ obtenida a partir de su expresión simbólica con el comando \texttt{ezsurf} de Matlab}
-%\end{figure}
+\begin{center}
+	\begin{minipage}{.6\textwidth}
+		\begin{minted}{python}
+In [52]: f2 = sp.Abs(x)
+In [53]: f2
+Out[53]:
+ 		\end{minted}
+		$|x|$
+		\begin{minted}{python}
+In [58]: sp.plot(f2,xlim=(-5,5))
+Out[58]: <sympy.plotting.plot.Plot at 0x79891a89dbd0>
+		\end{minted}
+	\end{minipage}
+\end{center}
+  
 \begin{figure}
 	\centering
-	\begin{subfigure}{0.45\textwidth}
-		\includegraphics[width=10.5cm]{simplot.eps}
-		\bicaption{Intervalo por defecto: $-2\pi \leq x \leq 2\pi$}{polynomials 2, 4, 6 and 8 degrees} \label{fig:simplot1}
-	\end{subfigure} 
-	\begin{subfigure}{0.45\textwidth}
-		\includegraphics[width=10.5cm]{simplot2.eps}
-		\bicaption{Intervalo suministrado: $-10 \leq x \leq 10$}{polynomials 2, 4, 6 and 8 degrees} \label{fig:simplot2}
-	\end{subfigure}
-	\bicaption{Gráfica de la función $f(x) = e^{\sin\left(x\right)}$ obtenida a partir de su expresión simbólica con el comando \texttt{ezsurf} de Matlab}{Taylor polynomial for cosine and sine functions}
+		\includegraphics[width=10.5cm]{abs_simbol.png}
+		\bicaption{Representacion de la funcion $f(x)  = |x|$ entre $-5$ y $5$}{Function $f(x) = |x|$ into the interval $(-5,5)$ } \label{fig:simplot1}
 \end{figure}
-\begin{verbatim}
->> syms x
+El resultado se muestra en la figuras \ref{fig:simplot1}
 
->> f = exp(sin(x)) 
-f = 
-exp(sin(x))
-  
->> ezplot(f)
-
->> figure
-
->> ezplot(f,[-10 10])
-\end{verbatim}
-El resultado se muestra en la figuras \ref{fig:simplot1}, \ref{fig:simplot2}. 
-
-La función \texttt{ezplot} puede emplearse también para representar curvas paramétricas, $x(t),\ y(t)$. Por ejemplo, $x(t) = t\cos(t),\  y(t)= t\sin(t)$ representa una espiral en el plano $x,\ y$. Para obtener su gráfica se debe pasar a \texttt{zplot} las funciones simbólicas $x(t)$ e $y(t)$,
-\begin{verbatim}
->> syms t x y
->> x = t*cos(t)
-x = 
-t*cos(t)
+Es posible también representar curvas paramétricas, $x(t),\ y(t)$, mediante el emplea del comando \mintinline{python}|plot_parametric|. Por ejemplo, $x(t) = t\cos(t),\  y(t)= t\sin(t)$ representa una espiral en el plano $x,\ y$. Para obtener su gráfica se debe pasar  las funciones simbólicas $x(t)$ e $y(t)$ en una tupla y a continuación la variable simbólica que represente el parámetro, $t$, y el intervalo de valores del parámetro $[t_{min} \ t_{max}]$ para los que se quiere obtener la gráfica.  El siguiente código muestra cómo obtener la representación gráfica la curva paramétrica $x(t),y(t)$ del ejemplo anterior.
+\begin{center}
+	\begin{minipage}{.6\textwidth}
+		\begin{minted}{python}
+In [60]: t = sp.symbols('t')
+In [61]: x = t*sp.cos(t)
+In [62]: y = t*sp.sin(t)
+In [63]: dr = sp.plot_parametric((x,y),(t,0,10))
+In [64]: dr.xlabel='x'
+In [65]: dr.ylabel='y'
+In [66]: dr[0].line_color= 'red'
+In [67]: dr.show()
+		\end{minted}
+	\end{minipage}
+\end{center}
+En esete caso, además hemos creado un objeto grafico \mintinline{python}|dr|, de modo que podemos después modificar las propiedades del gráfico, usando los mismos comando que emplearíamos en Matplotlib. Destacar el uso de \mintinline{python}|dr.show()| para actualizar el gráfico con los parámetros modificados. El resultado final se muestra en la figura \ref{fig:simplot1}.
  
->> y = t*sin(t) 
-y = 
-t*sin(t) 
->> ezplot(x,y)
-\end{verbatim}
-
-El resultado se muestra en la figura \ref{fig:simpar}. Si no se  indica un intervalo concreto para el parámetro \texttt{t}, Matlab toma por defecto el intervalo $[0 \ 2\pi]$. El intervalo puede especificarse mediante un vector $[t_{min} \ t_{max}]$ de modo análogo al caso de la representación de funciones de una sola variable. Una aplicación directa de la representación de curvas paramétricas es la obtención de la trayectoria de un móvil conocida su posición en función del tiempo. Por ejemplo, la obtención de la parábola trazada por un cuerpo que se mueve bajo la fuerza de la gravedad. 
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.751]{simpar.eps}
-\caption{Gráfica de la curva paramétrica $x(t) = t\cos(t), y(t)= t\sin(t)$ obtenida a partir de su expresión simbólica con el comando \texttt{ezsurf} de Matlab }
-\label{fig:simpar}
+\begin{figure}
+	\centering
+	\includegraphics[width=10.5cm]{espiral.png}
+	\bicaption{Gráfica de la curva paramétrica $x(t) = t\cos(t), y(t)= t\sin(t)$ obtenida a partir de su expresión simbólica.}{Graphic of parametric function $x(t) = t\cos(t), y(t)= t\sin(t)$ drawn from its symbolic expression}
+		\label{fig:simpar}
+		
 \end{figure}
-
-Por último es también posible representar superficies empleando funciones simbólicas de dos variables. Para ello se emplea el comando \texttt{ezsurf}. En este caso, es preciso suministrarle al menos la función de dos variables que se desea representar. Si no se especifica rango, Matlab por defecto representará la función en el intervalo $[-2\pi \ 2\pi]$, tanto para la abscisa como para la ordenada. Además, \texttt{ezsurf} admite como un segundo parámetro un vector de cuatro elementos $[x_{min} \ x_{max} \ y_{min} \ y_{max}]$ que indica el área sobre la que se quiere representar la función. Es posible también añadir un segundo parámetro al comando que especifica el tamaño de la retícula empleada para representar la superficie. Si no se indica este segundo parámetro, Matlab traza la superficie empleando una retícula de $60 \times 60$,
-
-
-\begin{verbatim}
->> f = sin(sqrt(x^2+y^2))
-f =
-sin((t^2*vo^2 + (h0 - (a*t^2)/2)^2)^(1/2))
  
->> syms t x y
->> f = sin(sqrt(x^2+y^2))
-f =
-sin((x^2 + y^2)^(1/2))
  
->> ezsurf(f)
-\end{verbatim}
+ El intervalo puede especificarse mediante un vector  de modo análogo al caso de la representación de funciones de una sola variable. Una aplicación directa de la representación de curvas paramétricas es la obtención de la trayectoria de un móvil conocida su posición en función del tiempo. Por ejemplo, la obtención de la parábola trazada por un cuerpo que se mueve bajo la fuerza de la gravedad. 
 
+
+Por último es también posible representar superficies empleando funciones simbólicas de dos variables. Para ello se emplea el comando \texttt{plot3d}. En este caso, es preciso suministrarle al menos la función de dos variables que se desea representar. Si no se especifica rango, Sympy por defecto representará la función en el intervalo $(-10 10)$, tanto para la abscisa como para la ordenada. Además, \texttt{plot3d} admite tuplas de tres elementos $(x, x_{min}, x_{max})$  $()y, y_{min},y_{max})$ que indica el área sobre la que se quiere representar la función. Es posible también añadir parámetros, \mintinline{python}|nb_of_points_x=100,nb_of_points_y=100|,  al comando que especifican el tamaño de la retícula empleada para representar la superficie. 
+
+\begin{center}
+	\begin{minipage}{.9\textwidth}
+		\begin{minted}{python}
+In [124]: x,y = sp.symbols('x y')
+In [125]: f3 = sp.sin(sp.sqrt(x**2+y**2))
+In [126]: f3
+Out[126]: 
+		\end{minted}
+		$\sin(\sqrt{x^2+y^2})$
+		\begin{minted}{python}
+In [127]: sp.plotting.plot3d(f3,(x,-2*sp.pi,2*sp.pi),(y,-2*sp.pi,2*sp.pi),
+nb_of_points_x=100,nb_of_points_y=100)
+Out[127]: <sympy.plotting.plot.Plot at 0x798926f7c610>
+		\end{minted}
+	\end{minipage}
+\end{center}
 La figura \ref{fig:surfsim} muestra los resultados de este ejemplo. 
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{surfsim.eps}
+\includegraphics[scale=0.5]{sim_3d.png}
 \caption{Gráfica de la función $f(x) = \sin\left(\sqrt{x^2+y^2}\right)$ obtenida a partir de su expresión simbólica con el comando \texttt{ezsurf} de Matlab }
 \label{fig:surfsim}
 \end{figure}
 
-Hasta aquí la introducción al cálculo simbólico. Para obtener una visión completa de sus posibilidades se aconseja consultar la ayuda de Matlab
+Hasta aquí la introducción al cálculo simbólico. Para obtener una visión completa de sus posibilidades es imprescindible consultar la documentación de Sympy.
 
-
+\begin{flalign*}
+	&&\biggr \}\reversemathwitch* 
+\end{flalign*}
 
 
 

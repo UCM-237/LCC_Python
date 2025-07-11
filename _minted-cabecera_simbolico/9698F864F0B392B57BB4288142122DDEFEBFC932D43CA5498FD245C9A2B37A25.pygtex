@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{60}\PYG{p}{]:} \PYG{n}{t} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{symbols}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{61}\PYG{p}{]:} \PYG{n}{x} \PYG{o}{=} \PYG{n}{t}\PYG{o}{*}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{62}\PYG{p}{]:} \PYG{n}{y} \PYG{o}{=} \PYG{n}{t}\PYG{o}{*}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{63}\PYG{p}{]:} \PYG{n}{dr} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{plot\PYGZus{}parametric}\PYG{p}{((}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{),(}\PYG{n}{t}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{))}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{64}\PYG{p}{]:} \PYG{n}{dr}\PYG{o}{.}\PYG{n}{xlabel}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}x\PYGZsq{}}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{65}\PYG{p}{]:} \PYG{n}{dr}\PYG{o}{.}\PYG{n}{ylabel}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}y\PYGZsq{}}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{66}\PYG{p}{]:} \PYG{n}{dr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{line\PYGZus{}color}\PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}red\PYGZsq{}}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{67}\PYG{p}{]:} \PYG{n}{dr}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

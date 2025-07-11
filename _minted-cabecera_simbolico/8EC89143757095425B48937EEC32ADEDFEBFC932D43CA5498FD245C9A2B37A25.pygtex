@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{36}\PYG{p}{]:} \PYG{n}{f} \PYG{o}{=}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{Piecewise}\PYG{p}{((}\PYG{n}{x}\PYG{p}{,}\PYG{n}{x}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{),(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{x}\PYG{p}{,}\PYG{n}{x}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{0}\PYG{p}{))}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{37}\PYG{p}{]:} \PYG{n}{f}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{167}\PYG{p}{]:} \PYG{n}{f} \PYG{o}{=} \PYG{n}{a}\PYG{o}{*}\PYG{n}{x}\PYG{o}{/}\PYG{p}{(}\PYG{n}{a}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{n}{x}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{168}\PYG{p}{]:} \PYG{n}{f}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{168}\PYG{p}{]:}
+\end{Verbatim}

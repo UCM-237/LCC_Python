@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{101}\PYG{p}{]:} \PYG{n}{f} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{+} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{102}\PYG{p}{]:} \PYG{n}{nums} \PYG{o}{=} \PYG{n}{f}\PYG{o}{.}\PYG{n}{subs}\PYG{p}{([(}\PYG{n}{x}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{),(}\PYG{n}{y}\PYG{p}{,}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{3}\PYG{p}{)])}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{103}\PYG{p}{]:} \PYG{n}{nums}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{103}\PYG{p}{]:}
+\end{Verbatim}

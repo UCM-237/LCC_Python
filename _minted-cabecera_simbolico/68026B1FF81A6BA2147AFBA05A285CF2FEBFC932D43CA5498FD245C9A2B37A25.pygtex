@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{110}\PYG{p}{]:} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{asin}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{110}\PYG{p}{]:}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{53}\PYG{p}{]:} \PYG{n}{bnf}\PYG{o}{.}\PYG{n}{subs}\PYG{p}{([(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{z}\PYG{p}{),(}\PYG{n}{y}\PYG{p}{,}\PYG{n}{z}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)])}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{53}\PYG{p}{]:}
+\end{Verbatim}

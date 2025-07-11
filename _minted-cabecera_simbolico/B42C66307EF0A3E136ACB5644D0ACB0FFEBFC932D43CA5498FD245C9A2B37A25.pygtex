@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{37}\PYG{p}{]:} \PYG{n}{bn} \PYG{o}{=} \PYG{n}{x}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{x}\PYG{o}{*}\PYG{n}{y}\PYG{o}{+}\PYG{n}{y}\PYG{o}{**}\PYG{l+m+mi}{2}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{38}\PYG{p}{]:} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{simplify}\PYG{p}{(}\PYG{n}{bn}\PYG{p}{)}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{38}\PYG{p}{]:}
+\end{Verbatim}

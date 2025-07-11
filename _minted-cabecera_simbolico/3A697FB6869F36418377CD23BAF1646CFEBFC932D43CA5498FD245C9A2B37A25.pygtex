@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{265}\PYG{p}{]:} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{Sum}\PYG{p}{(}\PYG{n}{a}\PYG{o}{**}\PYG{n}{k}\PYG{p}{,(}\PYG{n}{k}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{oo}\PYG{p}{))}\PYG{o}{.}\PYG{n}{doit}\PYG{p}{()}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{265}\PYG{p}{]:} 	
+\end{Verbatim}

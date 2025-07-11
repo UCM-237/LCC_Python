@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{175}\PYG{p}{]:} \PYG{n}{Fx} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{integrate}\PYG{p}{(}\PYG{n}{f}\PYG{p}{,}\PYG{n}{x}\PYG{p}{)}
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{176}\PYG{p}{]:} \PYG{n}{Fx}
+\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{176}\PYG{p}{]:}
+\end{Verbatim}
