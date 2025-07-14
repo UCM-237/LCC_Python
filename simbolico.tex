@@ -25,10 +25,11 @@ Departing from a function \emph{symbolic} expression, we get its derivative also
 
 \begin{paracol}{2}
 \section{Cálculo simbólico con Sympy}
-\sectionmark{Calculos simbólico con Sympy. \textreferencemark\ Symbploc computing with Sympy.}
+\sectionmark{Calculos simbólico con Sympy. \textreferencemark\ Symbolic computing with Sympy.}
 Sympy  es un módulo de Python creado para realizar cálculo simbólico. Como en el caso de otros módulos que hemos introducido en capítulos anteriores, nos vamos a limitar a dar una introducción al cálculo simbólico empleando Sympy, para conocer de verdad sus posibilidades se aconseja acudir a la documentación del módulo, disponible en Internet.
 
 \section{Variables y expresiones simbólicas}
+\sectionmark{Var. y expr. simbólicas. \textreferencemark\ Symbolic var. and expr.}
 \subsection{Variables simbólicas} \index{Variable! Simbólica}
 Una variable simbólica, a diferencia de las variables ordinarias de Python, no contiene un valor; simplemente es un objeto que puede manipularse empleando reglas  algebraicas ordinarias. Importamos el módulo del mismo modo que cualquier otro módulo de Python. Para crear una variable simbólica, se emplea el comando \mintinline{python}|symbols|,
 \switchcolumn
@@ -192,6 +193,10 @@ Out[13]:
 El resultado es en este caso una expresión que guarda el resultado de la operación realizada. Es interesante notar cómo Sympy ha operado el contenido simbólico de las variables \texttt{x} y \texttt{z} para dar como resultado $4x$.
 
 Para crear expresiones más complejas, Sympy tiene definidas las funciones matemáticas más comunes como funciones simbólicas,
+\switchcolumn
+The result now is an expression that holds the result of the operation we have carried out. It is interesting to note how Sympy operates the symbolic values of variables \texttt{x} and texttt{z} to cast the result $4x$. 
+
+SymPy has the most common mathematical functions defined as symbolic functions, enabling the creation of more complex expressions.
 \end{paracol}
 
 \begin{center}
@@ -207,6 +212,9 @@ Out[24]:
 
 \begin{paracol}{2}
 En el siguiente ejemplo, se han creado primero cuatro variables simbólicas y, a partir de ellas, se han generado tres expresiones simbólicas, la primera es un polinomio de grado dos y las dos siguientes las expresiones analíticas de sus raíces.
+\switchcolumn
+The following example illustrates how to define four symbolic variables and construct three symbolic expressions from them. The first expression is a degree two polynomial, and the subsequent two are its roots analytic expressions.
+
 \end{paracol}
 \begin{center}
 \begin{minipage}{.5\textwidth}
@@ -223,6 +231,8 @@ In [17]: rn = (-b-sp.sqrt(b**2-4*a*c))/(2*a)
 \end{center}
 \begin{paracol}{2}
 Es posible definir funciones de más de una variable,
+\switchcolumn
+It is possible to define functions with several variables
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
@@ -239,6 +249,8 @@ Out[24]:
 
 \begin{paracol}{2}
 o también, combinar funciones simbólicas mediante operadores aritméticos o composición de funciones,
+\switchcolumn
+and also, combine symbolic functions by mean of arithmetic operator or function composition
 \end{paracol}
  
 \begin{center}
@@ -258,7 +270,12 @@ Out[28]:
 \subsection{Simplificación de expresiones simbólicas}
 Sympy permite, dada una expresión simbólica, obtener una equivalente más sencilla. En general, este proceso de simplificación no es trivial ni unívoco, ya que una expresión puede admitir varias formas simplificadas. Es también posible que la expresión simbólica que deseamos simplificar, no sea simplificable.
 
-Es interesante, sobretodo cuando se trata de expresiones obtenidas a partir de cálculos simbólicos, tratar de obtener una expresión lo más simplificada posible. La razón es que resulta mucho más fácil de entender y manipular. Sympy suministra el comando \texttt{simplify} para simplificar expresiones simbólicas. Así por ejemplo, si aplicamos \texttt{simplify} a la expresión 
+Es interesante, sobretodo cuando se trata de expresiones obtenidas a partir de cálculos simbólicos, tratar de obtener una expresión lo más simplificada posible. La razón es que resulta mucho más fácil de entender y manipular. Sympy suministra el comando \texttt{simplify} para simplificar expresiones simbólicas. Así por ejemplo, si aplicamos \texttt{simplify} a la expresión \texttt{f\_g}, que acabamos de definir en la sección anterior, 
+\switchcolumn
+\subsection{Symbolic expression simplification}
+SymPy can take a symbolic expression and generate an equivalent, simplified version. However, this process is not always straightforward or unique, as an expression may have multiple valid simplified forms. Additionally, it's possible that the expression we wish to simplify cannot be simplified at all.
+
+It is interesting, mainly when we get an expression using symbolic computing, try to simplify it as much as possible. Obviously, the simplified version is easier to understand and manipulate. Sympy supplies the command \texttt{simplify} to simplify symbolic expressions. For instance, if we apply the command \texttt{simplify} to the expression \texttt{f\_g}we have just obtained in the previous section,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.25\textwidth}
@@ -275,6 +292,11 @@ Out[33]:
 Obtendremos un $1$ en el numerador, como cabría esperar. Este ejemplo es particularmente simple y, aunque sirve para ilustrar el funcionamiento del comando, no siempre es posible conseguir soluciones tan satisfactorias.
 
 Veamos otro ejemplo que muestra la ambigüedad del comando \texttt{simplify},
+
+\switchcolumn
+We obtain 1 in the numerator, which is expected. This is a straightforward example that illustrates the command's performance, though it may not always yield such satisfactory results.
+
+Let's see another example that shows the ambiguity of the \texttt{simplify} command,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.25\textwidth}
@@ -288,6 +310,9 @@ Out[38]:
 \end{center}
 \begin{paracol}{2}
 En este caso, Sympy devuelve la misma expresión que hemos introducido. Podríamos preguntarnos si no debería devolver la expresión como un binomio $(x+y)^2$. La cuestión es hasta qué punto podemos consider que esta expresión es más simple que la original. Para evitar algunas ambigüedades de este tipo, Sympy tiene varios comando para 'simplificar' expresiones. Por ejemplo, la función \mintinline{Python}|factor|, nos permite realizar la transformación deseada en el ejemplo anterior,
+
+\switchcolumn
+In this case, SymPy retrieves the same expression that we provided to the command. The question arises: should it retrieve the expression as a binomial, \((x+y)^2\)? Can we consider this binomial to be simpler than the original expression? To avoid such ambiguities, SymPy offers several commands to simplify expressions. For example, the function `factor` allows us to perform the desired transformation for the previous example.
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.25\textwidth}
@@ -306,12 +331,22 @@ $x^2+2xy+y^2$
 \end{minipage}
 \end{center}
 \begin{paracol}{2}
-Comos se muestra en la línea [46] es posible tambíen desarrollar una expresión binomial, para obtener un polinomio, empleando la función \mintinline{python}|expand|. En nuestro ejemplo, esto revertiría la acción de \mintinline{python}|factor|
+Comos se muestra en la línea [46] es posible tambíen desarrollar una expresión binomial, para obtener un polinomio, empleando la función \mintinline{python}|expand|. En nuestro ejemplo, esto revertiría la acción de \mintinline{python}|factor|.
+\switchcolumn
+As can be seen in line [46], it is also possible to expand a binomial expression into a polynomial, using the \mintinline{python}|expand| function. In our case, this reverts the actions of the command \mintinline{python}|factor|.
 \end{paracol}
 
 \begin{paracol}{2}
 \subsection{Sustitución de variables y expresiones.}
-Es posible, una vez definida una expresión simbólica, sustituir sus variables por otras expresiones empleando el comando \texttt{subs}. La sintáxis es simple, tomamos el nombre de la variable en que guardamos la expresión simbólica que queremos modificar, y invocamos el método \texttt{subs}, indicando el nombre de la variable simbólica que queremos substituir y la expresión por la que queremos sustituirla. Así, por ejemplo podemos cambiar en la expresión $(x+y)^2$ que creamos anteriormente, la variable x por la variable z\footnote{Solo se pueden emplear variables simbólicas previamente definidas para hacer la sustitución}. 
+Es posible, una vez definida una expresión simbólica, sustituir sus variables por otras expresiones empleando el comando \texttt{subs}. La sintáxis es simple, tomamos el nombre de la variable en que guardamos la expresión simbólica que queremos modificar, invocamos el método \texttt{subs}, indicando el nombre de la variable simbólica que queremos substituir y la expresión por la que queremos sustituirla. 
+
+Por ejemplo podemos cambiar en la expresión $(x+y)^2$ que creamos anteriormente, la variable x por la variable z\footnote{Solo se pueden emplear variables simbólicas previamente definidas para hacer la sustitución}. 
+\switchcolumn
+\subsection{Substituting variables and expressions.}
+Once a symbolic expression has been defined, you can substitute its variables with other expressions using the command \texttt{subs}. The syntax is simple: you specify the name of the variable that holds the symbolic expression you want to modify, call the command \texttt{subs}, and indicate the name of the symbolic variable you wish to substitute along with the expression you want to use in its place. 
+
+For example, if we take the expression \((x+y)^2\) that we created earlier, we can replace the variable \(x\) with the variable \(z\)\footnote{Note that only previously defined symbolic variables can be used for substitution.}.
+
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.25\textwidth}
@@ -324,7 +359,9 @@ Out[50]:
 \end{center}
 
 \begin{paracol}{2}
-También podemos sustituir una expresión simbólica por un número, aunque es importante tener en cuenta que el resulta es también simbólico y no numérico
+También podemos sustituir una expresión simbólica por un número, aunque es importante tener en cuenta que el resulta es también simbólico y no numérico,
+\switchcolumn
+We can substitute a symbolic expression with a number, keeping in mind that the results remain symbolic rather than numeric.
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.25\textwidth}
@@ -337,6 +374,8 @@ Out[51]:
 \end{center}
 \begin{paracol}{2}
 Podemos sustituir una variable por una expresión más compleja,
+\switchcolumn
+We can substitute a simple variable for a more complex expression,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.25\textwidth}
@@ -350,6 +389,9 @@ Out[52]:
 
 \begin{paracol}{2}
 Además, podemos sustituir varias variable a la vez empleando una lista de pares de variables, cada par debe contener una variable a sustituir y la expresión por la que se sustituye
+\switchcolumn
+Additionally, we can substitute multiple variables at once using a list of variable pairs; each pair should include a variable to be substituted and the expression that will replace it.
+
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.25\textwidth}
@@ -362,6 +404,9 @@ Out[53]:
 \end{center}
 \begin{paracol}{2}
 Veamos en más detalle la sustitución de variables por números. Como hemo dicho esta sustitución da una expresión que es todavía simbólica. Si sustituimos todos los símbolos por valores numéricos, Sympy opera con ellos para evaluarnos la expresión,
+
+\switchcolumn
+Let's see in more detail the substitution of variables with numbers. As we have said before, this substitution yields still a symbolic expression. If we replace all symbols with numbers, Sympy operates them to evaluate the expression,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
@@ -375,7 +420,9 @@ Out[103]:
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-El resultado es todavía simbólico. Si queremos un resultado numérico podemos emplear directamente el comando de Python \mintinline{python}|float|, que nos dará un número en la representación estándar de doble precisión. 
+El resultado es todavía simbólico. Si queremos un resultado numérico podemos emplear directamente el comando de Python \mintinline{python}|float|, que nos dará un número en la representación estándar de doble precisión.
+\switchcolumn
+The result remains symbolic. To obtain a numeric result, we can directly use the Python command \mintinline{python}|float|, which returns a number in standard double precision representation.
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
@@ -387,6 +434,8 @@ Out[104]: 1.75
 \end{center}
 \begin{paracol}{2}
 Otro comando de interés para evaluar expresiones simbólicas es el comando \mintinline{python}|evalf()|. Veamos su uso con el siguiente ejemplo,
+\switchcolumn
+Other interesting command to evaluate symbolic expresions is the command \mintinline{python}|evalf()|. We show its use in the following example,
 \end{paracol}
 
 \begin{center}
@@ -413,14 +462,28 @@ Out[114]: 1.5707963267948966
 \end{minipage}
 \end{center}
 \begin{paracol}{2}
-La línea [110] nos devuelve el resultado de calcular el arcoseno de 1. EL resultado es, un valor simbolico $\pi/2$. En la línea [111], repetimos el cálculo, pero ahora hacemos uso de la función \mintinline{python}|evalf()|. Esta función nos devuelvo un valor numérico, aunque todavía se trata de un resultado simbólico. Por defecto, la función nos devuelve una expresión con 15 dígitos. Podemos sin embargo elegir el número de dígitos que enrá nuestra expresión numérica. para ello pasamos a la función el número de dígitos con el qu queremos que nos devuelva el resultado. La línea [112], nos muestra un ejemplo en que se han pedido 25 dígitos para el resultado. Por último, si queremos convertir el resultado en un número máquina, en la representación normal del computador, empleamos para ello el comando \mintinline{python}|float| de python. El resultado es un número en la representación en coma flotante de doble precisión.
+La línea [110] nos devuelve el resultado de calcular el arcoseno de 1. El resultado es, un valor simbolico $\pi/2$. En la línea [111], repetimos el cálculo, pero ahora hacemos uso de la función \mintinline{python}|evalf()|. Esta función nos devuelvo un valor numérico, aunque todavía se trata de un resultado simbólico. Por defecto, la función nos devuelve una expresión con 15 dígitos. 
+
+Podemos sin embargo elegir el número de dígitos que tendrá nuestra expresión numérica. para ello pasamos a la función el número de dígitos con el que queremos que nos devuelva el resultado. La línea [112], nos muestra un ejemplo en que se han pedido 25 dígitos para el resultado. Por último, si queremos convertir el resultado en un número máquina, en la representación normal del computador, empleamos para ello el comando \mintinline{python}|float| de python. El resultado es un número en la representación en coma flotante de doble precisión.
+
+\switchcolumn
+Line [110] computes the arcsine of 1, yielding a symbolic result of \(\pi/2\). In line [111], we perform the calculation again but use the function \mintinline{python}|evalf()|. This function provides a 'numerical' expression while still maintaining the symbolic character of the result, retrieving by default an expression with 15 digits.
+
+However, we can specify the number of digits we want for the numerical expression by providing that figure to the function. Line [112] illustrates an example where we request 25 digits. Finally, to convert the result into a machine number in standard computer representation, we use Python's command \mintinline{python}|float|. This returns a floating-point number in double precision standard format.
+
 \end{paracol}
+
 \begin{paracol}{2}
 \section{Cálculo infinitesimal}
-Es posible realizar operaciones típicas del cálculo infinitesimal como derivación e integración, empleando métodos de cálculo simbólico. A diferencia del cálculo numérico, el resultado será ahora una expresión. 
-
+\sectionmark{Calculo Infinitesimal. \textreferencemark\ Calculus}
+Es posible realizar operaciones típicas del cálculo infinitesimal como derivación e integración, empleando métodos de cálculo simbólico. A diferencia del cálculo numérico, el resultado será ahora una expresión.
 \subsection{Derivación}
 Para obtener la derivada de una función simbólica, se emplea el comando \texttt{diff},
+\switchcolumn
+\section{Calculus}
+We can use symbolic computing methods to perform typical calculus operation such as integrations and differentiation. Unlike numerical computing the result will be now a symbolic expression.  
+\subsection{Differentiation}
+To take the  a symbolic function derivative, we use the command \texttt{diff},
 \end{paracol}
 
 \begin{center}
@@ -440,6 +503,8 @@ Out[125]:
 
 \begin{paracol}{2}
 La función \mintinline{python}|diff()|, toma dos variables de entrada, el nombre de la función simbólica que queremos derivar y, siempre que la función contenga más de una expresión simbólica, la variable con respecto a la que queremos derivar. En en ejemplo anterior, tambiém podríamos haber derivado con respecto a la variable \texttt{a},
+\switchcolumn
+Function \mintinline{python}|diff()| takes two input variables: the name of the symbolic function for which we want to calculate the derivative, and the variable with respect to which we want to take the derivative, especially when the function has more than one symbolic variable. In the previous example, we could also have taken the derivative with respect to variable \texttt{a} 
 \end{paracol}
 
 \begin{center}
@@ -454,6 +519,8 @@ Out[126]:
 
 \begin{paracol}{2}
 Si la función contienen una única variable simbólica, es suficiente con pasar a la función \mintinline{python}|diff|, la función que deseamos derivar,
+\switchcolumn
+When the function has a single symbolic variable, it is enough to pass the function we want to differentiate to function \mintinline{python}|diff| 
 \end{paracol}
 
 \begin{center}
@@ -475,7 +542,9 @@ Out[132]:
 \end{center}
 
 \begin{paracol}{2}
-Es posible emplear el comando \texttt{diff} para obtener derivadas de orden superior. Para ello se introduce en la llamada el orden de la derivada a continuación del nombre de la función o, si es el caso, a continuación de la variable simbólica con respecto a la que se quiere derivar,
+Es posible emplear el comando \texttt{diff()} para obtener derivadas de orden superior. Para ello se introduce en la llamada el orden de la derivada a continuación del nombre de la función o, si es el caso, a continuación de la variable simbólica con respecto a la que se quiere derivar,
+\switchcolumn
+It is possible to use the command \texttt{diff()} to take multiple derivatives. We can do it just introducing into the function \texttt{diff()} the order of the derivative, after the name of the function or after the name of the symbolic variable for which we can to take the derivative. 
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
@@ -496,6 +565,11 @@ Out[134]:
 En el primer caso hemos obtenido la derivada tercera con respecto a \texttt{x} de la función \texttt{f} de los ejemplos anteriores y en el segundo la derivada segunda de dicha función con respecto a la variable \texttt{a}. 
 
 Es fácil comprobar que el resultado sería el mismo si derivamos la función original y las expresiones de las sucesivas derivadas obtenidas hasta alcanzar la derivada del orden deseado,
+\switchcolumn
+In the first case, we have obtained the third derivative with respect to \texttt{x} of function \texttt{f} from previous examples. In the second case, we have obtained the second derivativa with respect to variable \texttt{a}.
+
+It is easy to verify that we will obtain the same result by differentiating the original function and then evaluating the successive derivatives up to the desired order.   
+
 \end{paracol}
 
 \begin{center}
@@ -526,10 +600,15 @@ $-4ax(2x^2-3)e^{x^2}$
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-\noindent Donde hemos empleado la función \mintinline{python}|factor|, dscrita anteriormente para simplificar la expresión obtenida y hacerla coincidir con la que resulta de calcular directamente la derivada tercera.
+\noindent Donde hemos empleado la función \mintinline{python}|factor|, descrita anteriormente para simplificar la expresión obtenida y hacerla coincidir con la que resulta de calcular directamente la derivada tercera.
 
 En análisis matemático, cuando una función posee más de una variable independiente, la derivación respecto a una de sus variables recibe el nombre de derivada parcial. Así por ejemplo la función,
 $f(x,y) =\sin \left( \sqrt{x^2+y^2} \right)$ es una función de dos variables $x$ e $y$. Su derivada (parcial) con respecto a $x$ y su derivada parcial con respecto a $y$, se representan como,
+
+\switchcolumn
+\noindent Where we have made use of function \mintinline{python}|factor|, described above, to simplify the expression we obtain and make it fit with the result we get when we directly compute the third derivative.
+
+In calculus, when a function has more than one independent variable, the derivative with respect to a single variable has the name of partial derivative. So, for instance, function  $f(x,y) =\sin \left( \sqrt{x^2+y^2} \right)$  is a two independent variables function $x$ and $y$. its partial derivative with respect to $x$ and its partial derivative with respect to $y$ are represented as,
 \end{paracol}
 
 \begin{align*}
@@ -538,6 +617,8 @@ $f(x,y) =\sin \left( \sqrt{x^2+y^2} \right)$ es una función de dos variables $x
 \end{align*}
 \begin{paracol}{2}
 Podemos obtener dichas derivadas parciales, indicando al comando \texttt{diff} respecto a qué variable debe derivar, tal y como se ha mostrado anteriormente, siendo en nuestro ejemplo con respecto a $x$ e $y$,
+\switchcolumn
+We can compute this partial derivative by specifying the variable with respect to which we want to take the derivative, similar to how we did previously. In the present example, we will do so with respect to \(x\) and \(y\).  
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
