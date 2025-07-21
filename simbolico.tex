@@ -1,4 +1,4 @@
-\chapter{Introducción al cálculo simbólico\\Introduction to symbolic computing}\index{Cálculo Simbolico}
+\chapter{Introducción al cálculo simbólico\\Introduction to symbolic computing}\index{Cálculo Simbolico}\index[eng]{Symbolic Computing}
 \chaptermark{Intro cálculo simbólico  \textreferencemark\ Intro symbolic computing}
 \epigraph{And earthly power doth then show likest God's
 	when mercy seasons justice.}{The merchan of Venice, Willian Shakespeare}
@@ -477,12 +477,13 @@ However, we can specify the number of digits we want for the numerical expressio
 \section{Cálculo infinitesimal}
 \sectionmark{Calculo Infinitesimal. \textreferencemark\ Calculus}
 Es posible realizar operaciones típicas del cálculo infinitesimal como derivación e integración, empleando métodos de cálculo simbólico. A diferencia del cálculo numérico, el resultado será ahora una expresión.
-\subsection{Derivación}
+\subsection{Derivación}\index{Derivación! Simbólica}
 Para obtener la derivada de una función simbólica, se emplea el comando \texttt{diff},
 \switchcolumn
 \section{Calculus}
+\sectionmark{Calculo Infinitesimal. \textreferencemark\ Calculus}
 We can use symbolic computing methods to perform typical calculus operation such as integrations and differentiation. Unlike numerical computing the result will be now a symbolic expression.  
-\subsection{Differentiation}
+\subsection{Differentiation}\index[eng]{Differentiation! Symbolic}
 To take the  a symbolic function derivative, we use the command \texttt{diff},
 \end{paracol}
 
@@ -643,6 +644,8 @@ Out[151]:
 
 \begin{paracol}{2}
 Las derivadas parciales de orden superior pueden calcularse respecto a la misma o a distintas variables; por ejemplo para las derivadas segundas,
+\switchcolumn
+We can compute higher-order partial derivatives with respect to the same or different variables; for instance, the second-order derivatives,
 \end{paracol}
 \begin{align*}
 \frac{\partial^2f}{\partial x^2} &= \frac{\cos(\sqrt{x^2+y^2})}{\sqrt{x^2+y^2}} - 
@@ -657,8 +660,14 @@ x\cdot y \cdot\frac{\sin(\sqrt{x^2+y^2})}{x^2+y^2}
 
 \begin{paracol}{2}
 Las derivadas calculadas respecto a variables distintas se llaman derivadas cruzadas, y no influye en ellas el orden en que se realice la derivación.
+ 
+Para calcular las derivadas parciales de orden superior de una función, es suficiente indicar las variables con respecto a las cuales se desea derivar o, en el caso de que se calculen derivadas respecto a la misma variable, se puede también indicar el orden de la derivada. En los siguientes códigos se muestra como obtener las derivadas segundas de la función del ejemplo empleando ambos métodos,
 
-Para calcular las derivadas parciales de orden superior de una función, es suficiente indicar las variables con respecto a las cuales se desea derivar o, en el caso de que se calculen derivadas respecto a la misma variable, se puede también indicar el orden de la derivada. En los siguientes ejemplos de código se muestra como obtener las derivadas segundas de la función del ejemplo empleando ambos métodos,
+\switchcolumn
+Partial derivatives that are calculated with respect to multiple variables are known as crossed or mixed partial derivatives; importantly, the order of differentiation does not affect the final outcome.
+
+For computing the higher-order partial derivatives of a function, it is enough to indicate the variables with respect to which we wish to differentiate the function. In the case where we want to differentiate with respect to the same variable, it is enough to indicate the derivative order. The following pieces of code show how to get the second derivatives for the example function, using both methods,
+  
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.6\textwidth}
@@ -717,12 +726,17 @@ Out[158]:
 \end{center}
 \begin{paracol}{2}
 Es posible emplear Sympy para realizar cálculos de gradientes, jacobianos, rotacionales, etc. No se incluye su descripción en este manual, los interesados pueden consultar la documentación de Sympy.
+\switchcolumn
+It is also possible to use Sympy for calculating gradients, jacobians, curls, etc. We do no include any description in this lecture-notes, those interested may check Sympy's documentation.
 \end{paracol}
 
 \begin{paracol}{2}
 \subsection{Integración} \index{Integración! Simbólica}
 La integración indefinida en cálculo simbólico permite obtener la primitiva de una función dada,
-\end{paracol}
+\switchcolumn
+\subsection{Integrals}\index[eng]{Integrals! Symbolic}
+The indefinite integral in symbolic computation allows us to compute the primitive of a function,
+\end{paracol}\sectionmark{Calculo Infinitesimal. \textreferencemark\ Calculus}
 \begin{equation*}
 F(x) = \int f(x)dx  \Leftrightarrow f(x) = \frac{dF(x)}{dx}  
 \end{equation*}
@@ -730,6 +744,11 @@ F(x) = \int f(x)dx  \Leftrightarrow f(x) = \frac{dF(x)}{dx}
 Se trata de una operación más compleja que la derivación. De hecho, hay funciones para las que no es posible obtener una primitiva en forma simbólica, bien porque no existe, o bien porque los algoritmos empleados por sympy no son capaces de obtenerla.
 
 El comando empleado para obtener la integral de una función es \texttt{integrate()}. Así por ejemplo, para obtener la primitiva de la función $f(x) = \sqrt{1-x^2}$ haremos,
+\switchcolumn
+The operation is more complex than differentiation. In fact, there are functions for which it is impossible to obtain a symbolic primitive. This can be due to the non-existence of such a primitive or because the algorithms used by Sympy are unable to derive it.
+
+We can use the command \mintinline{python}|integrate()| to compute the integral of a function. For instance, we can compute the primitive of function $f(x) = \sqrt{1-x^2}$ as follows,
+
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
@@ -750,6 +769,8 @@ Out[162]:
 \end{center}
 \begin{paracol}{2}
 Podemos comprobar el resultado obtenido aplicando la función \texttt{diff} vista en el apartado anterior,
+\switchcolumn
+We can check the result achieved applying the function \texttt{diff} described in the last section,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
@@ -763,7 +784,12 @@ Out[166]:
 \begin{paracol}{2}
 Donde se ha hecho uso del comando \texttt{simplify} para recuperar la expresión original.
 
-Como en el caso de la derivación, si tenemos más de una variable simbolica definida en la función que queremos integrar, es preciso indicar a Sympy con respecto acúial variable queremos realizar la integración. Así, por ejemplo,
+Como en el caso de la derivación, si tenemos más de una variable simbolica definida en la función que queremos integrar, es preciso indicar a Sympy con respecto a cual variable queremos realizar la integración. Así, por ejemplo,
+
+\switchcolumn
+Where we have used the command \texttt{simplify} to recover the original function.
+
+When dealing with integration in Sympy, similar to differentiation, it is important to specify the variable with respect to which you want to compute the integral,when the function has more than one symbolic variable defined. So, for instance,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
@@ -794,9 +820,13 @@ Out[176]:
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-en el primer caso la integración se realiza con respecto a la variable \texttt{a} y en el segundo caso, la integración se realiza respecto a la variable \texttt{x}.
+En el primer caso la integración se realiza con respecto a la variable \texttt{a} y en el segundo caso, la integración se realiza respecto a la variable \texttt{x}.
 
 Cuando no es posible encontrar una primitiva a una función, Sympy devuelve la función dentro del símbolo integral,
+\switchcolumn
+In the first case, we obtain the integral with respect to variable \texttt{a} and in the second case, the integration is carried out with respect to variable \texttt{x}. 
+
+whenever it is not possible to get the primitive of a function, Sympy returns the function enclosed in the integration symbol,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
@@ -810,6 +840,8 @@ Out[181]:
 \end{center}
 \begin{paracol}{2}
 La función \texttt{integrate}, puede emplearse también para calcular integrales definidas, si se le suministran los límites de integración. La sintaxis debe incluir una tupla con la variable sobre la que se integra y los límites de integración,
+\switchcolumn
+The \texttt{integrate} function can be used to compute definite integrals if the integration limits are provided. The syntax must include a tuple with the variable for integration and the corresponding limits.
 \end{paracol}
 
 \begin{center}
@@ -825,6 +857,8 @@ Out[189]:
 \end{center}
 \begin{paracol}{2}
 	La función \texttt{integrate}, puede emplearse también para calcular integrales múltiples, es suficiente con indicar las variables simbólicas respecto a las que se quiere calcular la integral,
+	\switchcolumn
+	Teh \texttt{integrate} function can also be use to compute multiple integrals, it is enough to indicate the symbolic variables with respect to which we can compute the integral,
 \end{paracol}
 
 \begin{center}
@@ -849,8 +883,14 @@ Out[162]:
 \subsection{Series} \index{Series! Simbólicas}
 \index{Series! suma de series simbólicas}
 
-\paragraph{Suma de series} Sympy permite calcular varias operaciones sobre sucesiones de las que se conoce el término general. En este capítulo, solo nos referiremos a la suma de series. 
-Para ello se aplica el comando \texttt{Sum} indicando los límites de la serie que se quiere sumar. En primer lugar, creamos unas variables simbólicas para las que definimos ciertas condiciones
+\paragraph{Suma de series} Sympy permite calcular varias operaciones sobre sucesiones de las que se conoce el término general. En esta sección, solo nos referiremos a la suma de series. 
+Para ello se aplica el comando \texttt{Sum} indicando los límites de la serie que se quiere sumar. En primer lugar, creamos unas variables simbólicas para las que definimos ciertas condiciones,
+\subsection{Series}\index{Series! Symbolic}
+\index{Series! Series addition}
+
+\paragraph{Series addition} Sympy can compute several operations on successions using the general term of the series. In this section, we will only describe the series addition. Sympy uses the command \texttt{Sum}, indicating the limits for the series we want to sum up. First, we create some symbolic variable and define some conditions for them,
+
+
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.7\textwidth}
@@ -866,6 +906,10 @@ In [258]: n = sp.symbols('n',integer=True,nonnegative=True)
 De este modo definimos $a \ge 0$, $k \in \mathbb{Z}$ y $n \in \mathbb{Z}_+$.
 
 Podemos ahora emplear el comando \mintinline{python}|Sum|, para crear la suma simbolica de la serie que queramos,
+\switchcolumn
+In this way, we have defined $a \ge 0$, $k \in \mathbb{Z}$ y $n \in \mathbb{Z}_+$.
+
+We can now use the command \mintinline{python}|Sum|, to define the symbolic sum for a series whatsoever,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.7\textwidth}
@@ -880,6 +924,9 @@ Podemos ahora emplear el comando \mintinline{python}|Sum|, para crear la suma si
 \end{center}
 \begin{paracol}{2}
 La notación es muy parecida a la que vimos para las integrales. La función \mintinline{python}|Sum|, toma como parámetros la expresión simbólica de la serie que queremos sumar, la variable sobre la que se expande la serie, en nuestro ejemplo \texttt{n}, y los límites de la suma. Sympy nos devuelve un objeto pero no lleva a cabo, el cálculo de la suma. Si queremos obtener el resultado de la suma, debemos emplear la función \mintinline{python}|doit()|,
+
+\switchcolumn
+the notation is very similar to the notation used for integrals. The function \mintinline{python}|Sum| takes as parameter the series symbolic expression we want ot sum, the variable the series span on, in our example \texttt{n}, and the limits of the sum. Sympy returns an object, but it does not carry out the computing of the sum. If we want to obtain the sum result we have to use the command \mintinline{python}|doit()|,
 \end{paracol}
 
 \begin{center}
@@ -894,7 +941,9 @@ Out[264]:
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-Podemos pedirle también que calcule, sumas de infinitos términos. Para ello Sympy emplea una doble o minúsculo \texttt{oo} para repesentar el símbolo infinito,
+Podemos pedirle también que calcule, sumas de infinitos términos. Para ello Sympy emplea una doble o minúscula \texttt{oo} para repesentar el símbolo infinito,
+\switchcolumn
+We can also ask for the computation of sums of infinite terms. Sympy uses a double lower case o, \texttt{oo} to represent the infinite symbol,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.8\textwidth}
@@ -909,6 +958,8 @@ Out[265]:
 \end{center}
 \begin{paracol}{2}
 Si calculamos la suma,
+\switchcolumn
+If we compute the sum,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.6\textwidth}
@@ -931,6 +982,11 @@ Out[265]:
 Sympy nos da la solución para el caso en que la serie es sumable $a<1$, recordemos que a es valor real positivo, y nos devuelve la expresión general de la suma en otro caso.
 
 Par el caso de una suma infinita que diverge, Sympy nos devolverá el símbolo infinito,
+
+\switchcolumn
+Sympy provides solutions for the case where the series is summable when \( a < 1 \). Here, \( a \) represents a positive real value. Otherwise, it returns the general expression for the sum.
+
+In the case of a infinite sum that diverges, Sympy will return the infinite symbol,
 \end{paracol}
 
 \begin{center}
@@ -945,6 +1001,8 @@ Out[271]:
 
 \begin{paracol}{2}
 \paragraph{Serie de Taylor}\index{Series! Serie de Taylor de una función simbólica} Es posible calcular la expresión de la serie de Taylor para una función simbólica. Para ello se emplea el comando \texttt{series}, que es un método propio de cualquier función simbólica que creemos. Toma como variables de entrada, la variable de la función sobre la que se quiere expandir la serie de Taylor, el punto en torno al cual se realiza el desarrollo y el número de términos de la serie que se desea obtener.
+\switchcolumn
+\paragraph{Taylor's series}\index[eng]{Series! Taylor's series for a symbolic function} It is possible to compute the expression for the Taylor's series of a symbolic function. We use for it the commans \texttt{series} which is a method belonging to any symbolic function we create. It takes as input variables, the variable of the function we want to expand on Tailor's series, the point around which want to carry out the expansion and the number of terms we want to get for the series,
 \end{paracol}
 
 \begin{center}
@@ -965,7 +1023,10 @@ Out[286]:
 \end{center}
 
 \begin{paracol}{2}
-El ejemplo anterior nos da el desarrollo añadiéndonos el término de Landau del orden de l aapproximación $O(x^4)$, podemos eliminar el término del resultado, empleando el comando \mintinline{python}|removeO()|. Veamos un ejemplo con el desarrollo de esta misma función en torno a $x=3$,
+El ejemplo anterior nos da el desarrollo añadiéndonos el término de Landau del orden de la approximación $O(x^4)$, podemos eliminar el término del resultado, empleando el comando \mintinline{python}|removeO()|. Veamos un ejemplo con el desarrollo de esta misma función en torno a $x=3$,
+
+\switchcolumn
+This example above yield us the expansion adding a the Landau's term for the approximation order $O(x^4)$, We can eliminate this term from the result using the command \mintinline{python}|removeO()|. Let's see an example for this same function expanding around $x=3$,
 \end{paracol}
  
  
@@ -984,6 +1045,9 @@ Out[289]:
 \begin{paracol}{2}
 \subsection{Límites} \index{Límites! de una función simbólica}
 Para el cálculo de límites de una expresión simbólica se emplea el comando \texttt{limit}. Es necesario incluir la función simbólica y el valor de la variable independiente para el que se desea calcular el límite.  Dicho valor puede ser también simbólico,
+\switchcolumn
+\subsection{Limits} \index[eng]{Límits! for a symbolic function}
+To calculate the limits of a symbolic expression we use the command \texttt{limit}. We have to include the symbolic funtion and te value of the independent variable for which we can compute the limit. This value can also be symbolic,
 \end{paracol}
 
 \begin{center}
@@ -1004,8 +1068,12 @@ Out[297]:
 		$0$
 	\end{minipage}
 \end{center}
-El siguiente ejemplo muestra como emplear el comando \texttt{limit} y la definición de derivada para calcular la derivada de una función,
 
+\begin{paracol}{2}
+El siguiente ejemplo muestra como emplear el comando \texttt{limit} y la definición de derivada para calcular la derivada de una función,
+\switchcolumn
+The following example shows how to use the command \texttt{limit} and the definition of derivative to compute the derivative of a function,
+\end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
 		\begin{minted}{python}
@@ -1018,9 +1086,13 @@ Out[307]:
 		\end{equation*}}
 		\end{minipage}
 \end{center}
-
+\begin{paracol}{2}
 Es posible calcular límites en el \emph{infinito}
 \index{Límites! Límite en el infinito de una función simbólica}
+\switchcolumn
+It is also possible to compute the limit to \emph{infinity}
+\index{Límits! Límit to infinity for a symbolic function}
+\end{paracol}
 \begin{center}
 	\begin{minipage}{.8\textwidth}
 		\begin{minted}{python}
@@ -1031,9 +1103,13 @@ Out[311]:
 	\end{minipage}
 \end{center}
 
-Por último, es posible calcular el límite por la izquierda y el límite por la derecha cuando estos no coinciden. Para ello se añade al final del comando la palabra \texttt{'right} (derecha) o \texttt{'left'} (izquierda). Es importante saber que, si no se le indica expresamente, Sympy calcula siempre el límite por la derecha. vamos a ver un ejemplo empleando el comando \mintinline{python}|Piecewise| que nos perminte definir funciones por tramos,
+\begin{paracol}{2}
+Por último, es posible calcular el límite por la izquierda y el límite por la derecha cuando estos no coinciden. Para ello se añade al final del comando la palabra \texttt{'right} (derecha) o \texttt{'left'} (izquierda). Es importante saber que, si no se le indica expresamente, Sympy calcula siempre el límite por la derecha. vamos a ver un ejemplo empleando el comando \mintinline{python}|Piecewise| que nos permite definir funciones por tramos,
 \index{Límites! Límites laterales de una función simbólica}
-
+\switchcolumn
+Lastly, it is possible to compute the left-sided and right-sided limits for a function when these don't meet. To do it, we need to add a the end of the command the word texttt{right} or \texttt{left}. It is important to notice that if you do not specifically indicate it, Sympy always compute the right-sided limit. Let's see an example using the command \mintinline{python}|Piecewise| that allows us to define piecewise functions,
+\index[end]{Límits! Right-hand and Left-hand limits for a symbolic function}
+\end{paracol}
 \begin{center}
 	\begin{minipage}{.6\textwidth}
 		\begin{minted}{python}
@@ -1050,7 +1126,11 @@ In [37]: f
 		\end{equation*}
 	\end{minipage}
 \end{center}
+\begin{paracol}{2}
 Si calculamos directamente el límite,
+\switchcolumn
+First, we compute directly the limit,
+\end{paracol}
 \begin{center}
 	\begin{minipage}{.6\textwidth}
 		\begin{minted}{python}
@@ -1061,8 +1141,11 @@ $\infty$
 	\end{minipage}
 \end{center}
 
-Para calcular el límite por la derecha, fijamos el parámetro \texttt{dir ='+'} para la el comando \mintinline{python}|limit|, para calcular el límite por la izquierda lo fijamos a \texttt{dir ='-'}.
-
+\begin{paracol}{2}
+Para calcular el límite por la derecha, fijamos el parámetro \texttt{dir ='+'} para el comando \mintinline{python}|limit|, para calcular el límite por la izquierda lo fijamos a \texttt{dir ='-'}.
+\switchcolumn
+for calculating the right-sided limit, we fix the parameter \texttt{dir='+'} in the command \mintinline{python}|limit|, to calculate the left-sided limit we fix the parameter to \texttt{dir='-'}.
+\end{paracol}
 \begin{center}
 	\begin{minipage}{.6\textwidth}
 		\begin{minted}{python}
@@ -1077,11 +1160,15 @@ Out[51]:
 $0$
 \end{minipage}
 \end{center}
-
+\begin{paracol}{2}
 Los límites son distintos como corresponde a la función que hemos definido por tramos, además vemos también que por defecto el límite calculado por Sympy, si no indicamos dirección, es el límite por la derecha.
 
 Por último, es posible calcular un limite bi-lateral, \texttt{dir='+-'} que solo existe si coinciden el límite por la derecha con el limite por la izquierda,
+\switchcolumn
+The limits are different as can be expected for the piecewise function we have defined, in addition, we can see how, when we do not indicate the direction, sympe calculates the right-sided limit.
 
+Lastly, we can calculate a bi-lateral limit \texttt{dir='+-'} that only exists if the left and right sided limits meet,
+\end{paracol}
 \begin{center}
 	\begin{minipage}{.6\textwidth}
 		\begin{minted}{python}
@@ -1099,15 +1186,27 @@ Out[54]:
 	\end{minipage}
 \end{center}
 
+\begin{paracol}{2}
 En caso de que los límites laterales no coincida, este comando devuelve un mensaje de error.
+\switchcolumn
+When the right-sided and the left-sided limits do not meet, the command returns an error message.
+\end{paracol}
 
-
-
+\begin{paracol}{2}
 \section{Representación gráfica}
+\sectionmark{Representación gráfica. \textreferencemark\ Plotting}
 Sympy dispone de un conjunto de funciones que permiten representar funciones simbólicas. Su funcionamiento se basa en Matplotlib. A continuación se presenta una revisión de las más comunes.
 \index{Gráficos! Representación de funciones simbólicas}
-Para obtener la gráfica de una función de una sola variable se emplea el comando \texttt{plot}, del submódulo \mintinline{python}|plotting| de Sympy. Este comando admite como variables de entrada una función simbólica y diversos parámetros para ajustar la gráfica. Poe ejemplo, \mintinline{python}|xlim| e \mintinline{python}|ylim|, dos tuplas de valores que permiten ajustar los límites de los ejes x e y de la representación. Si no se indican límites, Sympy elige los que le parecen más adecuados,
 
+Para obtener la gráfica de una función de una sola variable se emplea el comando \texttt{plot}, del submódulo \mintinline{python}|plotting| de Sympy. Este comando admite como variables de entrada una función simbólica y diversos parámetros para ajustar la gráfica. Por ejemplo, \mintinline{python}|xlim| e \mintinline{python}|ylim|, dos tuplas de valores que permiten ajustar los límites de los ejes x e y de la representación. Si no se indican límites, Sympy elige los que le parecen más adecuados,
+\switchcolumn
+\section{Plotting}
+\sectionmark{Representación gráfica. \textreferencemark\ Plotting}
+Sympy has a set of functions that allows us to plot symbolic functions. Its performance is based on Matplotlib. We will supply a review of the most common plotting functions
+\index[eng]{Plotting! Simbolic function plotting}
+
+To draw the graphic of a single variable function we use the command \texttt{plot} from Sympy sub-module \mintinline{python}|plotting|. This command accepts a symbolic function and various parameters needed to adjust the plot. For example, \mintinline{python}|xlim| and \mintinline{python}|ylim| are two tuples that specify the limits for the x and y axes, respectively. If you do not provide these limits, SymPy will automatically select suitable ones.
+\end{paracol} 
 \begin{center}
 	\begin{minipage}{.6\textwidth}
 		\begin{minted}{python}
@@ -1128,9 +1227,15 @@ Out[58]: <sympy.plotting.plot.Plot at 0x79891a89dbd0>
 		\includegraphics[width=10.5cm]{abs_simbol.png}
 		\bicaption{Representacion de la funcion $f(x)  = |x|$ entre $-5$ y $5$}{Function $f(x) = |x|$ into the interval $(-5,5)$ } \label{fig:simplot1}
 \end{figure}
+\begin{paracol}{2}
 El resultado se muestra en la figuras \ref{fig:simplot1}
 
-Es posible también representar curvas paramétricas, $x(t),\ y(t)$, mediante el emplea del comando \mintinline{python}|plot_parametric|. Por ejemplo, $x(t) = t\cos(t),\  y(t)= t\sin(t)$ representa una espiral en el plano $x,\ y$. Para obtener su gráfica se debe pasar  las funciones simbólicas $x(t)$ e $y(t)$ en una tupla y a continuación la variable simbólica que represente el parámetro, $t$, y el intervalo de valores del parámetro $[t_{min} \ t_{max}]$ para los que se quiere obtener la gráfica.  El siguiente código muestra cómo obtener la representación gráfica la curva paramétrica $x(t),y(t)$ del ejemplo anterior.
+Es posible también representar curvas paramétricas, $x(t),\ y(t)$, mediante el empleo del comando \mintinline{python}|plot_parametric|. Como por ejemplo, $x(t) = t\cos(t),\  y(t)= t\sin(t)$ representa una espiral en el plano $x,\ y$. Para obtener su gráfica se debe pasar  las funciones simbólicas $x(t)$ e $y(t)$ en una tupla y a continuación la variable simbólica que represente el parámetro, $t$, y el intervalo de valores del parámetro $[t_{min} \ t_{max}]$ para los que se quiere obtener la gráfica.  El siguiente código muestra cómo obtener la representación gráfica de la curva paramétrica $x(t),y(t)$ del ejemplo anterior.
+\switchcolumn
+The result is shown in figure \ref{fig:simplot1}
+
+It is also possible to represent parametric functions, $x(t),\ y(t)$. To do it, we  use the command \mintinline{python}|plot_parametric|. For example, $x(t) = t\cos(t),\  y(t)= t\sin(t)$ represent a spiral on the $x,\ y$ plane. To plot in we should pass to the function the symbolic functions $x(t)$ and $y(t)$ into a tuple followed by the symbolic variable that represent the parameter, $t$, and the interval of parameter values $[t_{min} \ t_{max}]$ for which we want to draw the plot. The following code shows how to get the graphic representation of the previous example, $x(t),y(t)$, parametric function. 
+\end{paracol}
 \begin{center}
 	\begin{minipage}{.6\textwidth}
 		\begin{minted}{python}
@@ -1145,7 +1250,11 @@ In [67]: dr.show()
 		\end{minted}
 	\end{minipage}
 \end{center}
-En esete caso, además hemos creado un objeto grafico \mintinline{python}|dr|, de modo que podemos después modificar las propiedades del gráfico, usando los mismos comando que emplearíamos en Matplotlib. Destacar el uso de \mintinline{python}|dr.show()| para actualizar el gráfico con los parámetros modificados. El resultado final se muestra en la figura \ref{fig:simplot1}.
+\begin{paracol}{2}
+En este caso, además hemos creado un objeto grafico \mintinline{python}|dr|, de modo que podemos después modificar las propiedades del gráfico, usando los mismos comando que emplearíamos en Matplotlib. Destacar el uso de \mintinline{python}|dr.show()| para actualizar el gráfico con los parámetros modificados. El resultado final se muestra en la figura \ref{fig:simplot1}.
+\switchcolumn
+In this case, we have also created a graphic object \mintinline{python}|dr|, which will allow us to modify the graphics properties later on using the same commands we would use with Matplotlib. It is interesting to notice that use of \mintinline{python}|dr.show()| to update the figure with the modified parameters. The final result is shown in figure \ref{fig:simplot1}.
+\end{paracol}
  
 \begin{figure}
 	\centering
@@ -1155,12 +1264,19 @@ En esete caso, además hemos creado un objeto grafico \mintinline{python}|dr|, d
 		
 \end{figure}
  
- 
- El intervalo puede especificarse mediante un vector  de modo análogo al caso de la representación de funciones de una sola variable. Una aplicación directa de la representación de curvas paramétricas es la obtención de la trayectoria de un móvil conocida su posición en función del tiempo. Por ejemplo, la obtención de la parábola trazada por un cuerpo que se mueve bajo la fuerza de la gravedad. 
+
+\begin{paracol}{2} 
+Una aplicación directa de la representación de curvas paramétricas es la obtención de la trayectoria de un móvil conocida su posición en función del tiempo. Por ejemplo, la obtención de la parábola trazada por un cuerpo que se mueve bajo la fuerza de la gravedad. 
 
 
-Por último es también posible representar superficies empleando funciones simbólicas de dos variables. Para ello se emplea el comando \texttt{plot3d}. En este caso, es preciso suministrarle al menos la función de dos variables que se desea representar. Si no se especifica rango, Sympy por defecto representará la función en el intervalo $(-10 10)$, tanto para la abscisa como para la ordenada. Además, \texttt{plot3d} admite tuplas de tres elementos $(x, x_{min}, x_{max})$  $()y, y_{min},y_{max})$ que indica el área sobre la que se quiere representar la función. Es posible también añadir parámetros, \mintinline{python}|nb_of_points_x=100,nb_of_points_y=100|,  al comando que especifican el tamaño de la retícula empleada para representar la superficie. 
+Por último es también posible representar superficies empleando funciones simbólicas de dos variables. Para ello se emplea el comando \texttt{plot3d}. En este caso, es preciso suministrarle al menos la función de dos variables que se desea representar. Si no se especifica rango, Sympy por defecto representará la función en el intervalo $(-10,10)$, tanto para el eje x como para  como para el y. Además, \texttt{plot3d} admite tuplas de tres elementos $(x, x_{min}, x_{max})$  $()y, y_{min},y_{max})$ que indica el área sobre la que se quiere representar la función. Es posible también añadir parámetros,\\ \mintinline{python}|nb_of_points_x=100,nb_of_points_y=100|\\  al comando que especifican el tamaño de la retícula empleada para representar la superficie. 
+\switchcolumn
+A simple application of parametric functions is plotting a mobile trajectory based on the position as a function of time. For example, this includes the plot of a parabola that represents a body moving under gravitational force.
 
+Finally, it is possible to draw surfaces using symbolic functions of two variables. We use the command \texttt{plot3d} to do this. To use this command, it is necessary to provide at least the two-variable function that we want to visualize. If we do not specify a range, SymPy represents the function in the interval \((-10, 10)\) for both the x and y axes. 
+
+Additionally, \texttt{plot3d} accepts three-element tuples \((x, x_{\text{min}}, x_{\text{max}})\) and \((y, y_{\text{min}}, y_{\text{max}})\) to indicate the area over which you want to draw the function. You can also add parameters such as\\ \mintinline{python}|nb_of_points_x=100,nb_of_points_y=100|\\ to the command to specify the size of the mesh used to represent the surface.
+\end{paracol}  
 \begin{center}
 	\begin{minipage}{.9\textwidth}
 		\begin{minted}{python}
@@ -1177,17 +1293,22 @@ Out[127]: <sympy.plotting.plot.Plot at 0x798926f7c610>
 		\end{minted}
 	\end{minipage}
 \end{center}
-La figura \ref{fig:surfsim} muestra los resultados de este ejemplo. 
-
+\begin{paracol}{2}
+La figura \ref{fig:surfsim} muestra los resultados de este ejemplo.
+\switchcolumn
+Figure \ref{fig:surfsim} shows the results of this example.
+\end{paracol}
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{sim_3d.png}
 \caption{Gráfica de la función $f(x) = \sin\left(\sqrt{x^2+y^2}\right)$ obtenida a partir de su expresión simbólica con el comando \texttt{ezsurf} de Matlab }
 \label{fig:surfsim}
 \end{figure}
-
+\begin{paracol}{2}
 Hasta aquí la introducción al cálculo simbólico. Para obtener una visión completa de sus posibilidades es imprescindible consultar la documentación de Sympy.
-
+\switchcolumn
+So far, the introduction to symbolic computing. In order to get a complete vision of its possibilities it is mandatory to check the Sympy documentation 
+\end{paracol}
 \begin{flalign*}
 	&&\biggr \}\reversemathwitch* 
 \end{flalign*}
