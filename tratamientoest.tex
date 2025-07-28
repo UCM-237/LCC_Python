@@ -874,7 +874,7 @@ Thus, the normal distributions the means calculated belong to are,
 f(\bar{x}_{10})=\frac{1}{\sqrt{2\pi\frac{1}{30}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{30}}},\  f(\bar{x}_{100})=\frac{1}{\sqrt{2\pi\frac{1}{300}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{300}}}
 \end{equation*}
 \begin{paracol}{2}
-La figura \ref{fig:ctrli}, muestra un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total deintronumpy.tex puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad.}. Sobre dicho histograma se ha trazado mediante una línea roja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
+La figura \ref{fig:ctrli}, muestra un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total de puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad.}. Sobre dicho histograma se ha trazado mediante una línea roja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
 
 De las figuras, es fácil deducir que cuantos más datos empleemos en el cálculo de las medias, más centrados son los resultados obtenidos en torno a la media de la distribución original. Por otro lado, esto es una consecuencia lógica del hecho de que la varianza de la distribución normal que siguen las medias, se obtenga dividiendo la varianza de la distribución original, por el número de datos $n$; cuantos mayor es $n$ más pequeña resulta la varianza de la distribución normal resultante.
 \switchcolumn
@@ -1018,7 +1018,8 @@ As we have seen, using the central limit theorem, it is possible to relate the m
 If the mean value after carrying out $n$ repetitions of measurement is $\bar{x}_n$ and the standard deviation is $s_{xn}$ What is the probability that the measured value will be actually inside the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
 
 As we see in section \ref{pdfc}, such probability can be calculated by integrating the normal distribution obtained between the limits $\bar{x}_n-s_{xn}$ y $\bar{x}_n+s_{xn}$,
-\end{paracol}intronumpy.tex
+\end{paracol}
+
 \begin{equation*}
 P(\bar{x}_n - s_{xn} \leqslant x \leqslant \bar{x}_n
 + s_{xn}) = \frac{1}{\sqrt{2\pi\sigma^2_{xn}}}\int_{\bar{x}_n-s_{xn}}^{\bar{x}_n+s_{xn}}e^{\frac{-(x-\bar{x}_n)^2}{2s_{xn}^2}}
@@ -1244,7 +1245,7 @@ Usually, when the number of measurements taken to estimate the value of $\bar{x}
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{tdestudent.eps}
-\bicaption{Comparación entre las distribuciones t de Student de 1, 5, 10, 20 y 30 grados de libertad y la distribución normal.}{Comparison among the Student's T dsitributions of 1, 2,10, 20 and 30 dergrees of fredom and the normal distribution}
+\bicaption{Comparación entre las distribuciones t de Student de 1, 5, 10, 20 y 30 grados de libertad y la distribución normal.}{Comparison among the Student's T dsitributions of 1, 2, 10, 20 and 30 degrees of fredom and the normal distribution}
 \label{fig:tdst}
 \end{figure}
 
@@ -1356,7 +1357,7 @@ s_c^2(y) = \sum_{i=1}^n\left(\frac{\partial f}{\partial x_i}\right)^2 s^2(x_i)
 \end{equation*}
 
 \begin{paracol}{2}
-Un ejemplo simple lo podemos obtener de la ecuación para la potencia disipada en una resistencia eléctrica. En este caso, el valor de la potencia disipada depende del voltaje, $V$, de la resistencia $R_0$ medida a una temperatura de referencia $t_0$, de la temperatura real a que se encuentra la resistencia $t$ y, en primera aproximación, de un coeficiente que $b$, que establece una relación linea entre temperatura y resistencia.
+Un ejemplo simple lo podemos obtener de la ecuación para la potencia disipada en una resistencia eléctrica. En este caso, el valor de la potencia disipada depende del voltaje, $V$, de la resistencia $R_0$ medida a una temperatura de referencia $t_0$, de la temperatura real a que se encuentra la resistencia $t$ y, en primera aproximación, de un coeficiente que $b$, que establece una relación lineal entre temperatura y resistencia.
 \switchcolumn
 We will show a easy example using the equation to determine the power dissipated in an electric resistance. In this case, the value of the power dissipated depends on the voltage, $V$, on the resistance $R_0$ measured at a reference temperature $t_0$, on the actual resistance temperature $t$ and, in a first approximation, on a coefficient $b$ that defines a linear dependence between the temperatura and the resistance.    
 \end{paracol}
@@ -1724,7 +1725,7 @@ En la línea 12 cargamos el fichero de datos en Python. Para ello, empleamos una
 
 Nos gustaría que los datos de esta fila dos fueran los que dieran nombre a las columnas. Para hacer este cambio, utilizamos el comando \mintinline{python}|rename| mostrado en la línea 13 del script que estamos comentado. El comando pide que se renombren la columnas, empleando los datos de las segunda fila de la tabla mediante el uso de \mintinline{python}|generacion_mw.iloc|. El parámetro \mintinline{python}|inplace = True|, obliga a que el cambio se realice sobre el propio \emph{DataFrame} en lugar de generar uno nuevo con los cambios.
 
-Podemos ver los resultados de este cambio en la figura \ref{fig:datafint}. Evectivamente, las columnas han sido renombradas con los valores de los distintos sistemas de producción de energía eléctrica, pero dichos nombres siguen presentes en la fila uno, desde la que se han copiado a la cabecera. Además la fila cero sigue conteniendo NaNs.
+Podemos ver los resultados de este cambio en la figura \ref{fig:datafint}. Efectivamente, las columnas han sido renombradas con los valores de los distintos sistemas de producción de energía eléctrica, pero dichos nombres siguen presentes en la fila uno, desde la que se han copiado a la cabecera. Además la fila cero sigue conteniendo NaNs.
 \switchcolumn
 Let see the performance of this program in more detail.
 In line 9 we import Pandas in the same way that we would import any other Python module.
@@ -1878,7 +1879,7 @@ Figure \ref{fig:datab} shows a box and whisker plot drawn with the \emph{DataFra
 
 
 \begin{paracol}{2}
-La línea de código 36 extrae la fila de datos correspondientes al tiempo \texttt{'2025-03-19 01:05'} y la línea 37 la fila correspondiente al tiempo \texttt{'2025-03-19 12:30'}. A continuación las líneas 41 y 42, dibujan sendos diagramas de pastel, que nos permiten comparar como cambia la distribución de la generación entre ambas horas (una de la madrugada, doce y media del mediodía. Algunas diferencias obvias son la gran generación de energía solar fotovoltaica a mediadía, inexistente a la una de la madrugada.
+La línea de código 36 extrae la fila de datos correspondientes al tiempo \texttt{'2025-03-19 01:05'} y la línea 37 la fila correspondiente al tiempo \texttt{'2025-03-19 12:30'}. A continuación las líneas 41 y 42, dibujan sendos diagramas de pastel, que nos permiten comparar como cambia la distribución de la generación entre ambas horas (una de la madrugada, doce y media del mediodía. Algunas diferencias obvias son la gran generación de energía solar fotovoltaica a mediodía, inexistente a la una de la madrugada.
 \switchcolumn
 The code line 36 extracts the data row  corresponding to time \texttt{'2025-03-19 01:05'} and line 37 the data line corresponding to time \texttt{'2025-03-19 12:30'}. Then, lines 41 and 42, draw two pie charts with allow us to compare how the power generation distribution changes between these two times (one in the morning and noon). Some obvious differences are the huge generation of solar photovoltaic at noon that does not exists at night.     
 \end{paracol}
