@@ -129,7 +129,7 @@ Out[50]:
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-Otra opción posible es crear un objeto simbolico matriz. La idea es crear una variable simbólica que contiene una matriz del tamaño que deseemos. Para ello empleamos el comando \mintinline{python}|MatrixSymbol|de \mintinline{python}|sympy.matrices|. Este comando admite un símbolo y dos parámetros numéricos que corresponden con el número de filas y columnas de la matriz creada. Estos parámetros tambień podrían a su vez ser simbólicos.
+Otra opción posible es crear un objeto simbolico matriz. La idea es crear una variable simbólica que contiene una matriz del tamaño que deseemos. Para ello empleamos el comando \mintinline{python}|MatrixSymbol| de  \mintinline{python}|sympy.matrices|. Este comando admite un símbolo y dos parámetros numéricos que corresponden con el número de filas y columnas de la matriz creada. Estos parámetros tambień podrían a su vez ser simbólicos.
 \switchcolumn
 An alternative is to create a symbolic matrix object. We make a symbolic variable that holds a matrix the size we wish. The command \mintinline{python}|MatrixSymbol| from \mintinline{python}|sympy.matrices| allows to make a symbolic matrix. This command takes a symbol and two numerical parameters which define the number of rows and columns of the matrix we are creating. In fact, these two last parameter could be also symbolic.
 \end{paracol}
@@ -270,7 +270,7 @@ Out[28]:
 \subsection{Simplificación de expresiones simbólicas}
 Sympy permite, dada una expresión simbólica, obtener una equivalente más sencilla. En general, este proceso de simplificación no es trivial ni unívoco, ya que una expresión puede admitir varias formas simplificadas. Es también posible que la expresión simbólica que deseamos simplificar, no sea simplificable.
 
-Es interesante, sobretodo cuando se trata de expresiones obtenidas a partir de cálculos simbólicos, tratar de obtener una expresión lo más simplificada posible. La razón es que resulta mucho más fácil de entender y manipular. Sympy suministra el comando \texttt{simplify} para simplificar expresiones simbólicas. Así por ejemplo, si aplicamos \texttt{simplify} a la expresión \texttt{f\_g}, que acabamos de definir en la sección anterior, 
+Es interesante, sobre todo cuando se trata de expresiones obtenidas a partir de cálculos simbólicos, tratar de obtener una expresión lo más simplificada posible. La razón es que resulta mucho más fácil de entender y manipular. Sympy suministra el comando \texttt{simplify} para simplificar expresiones simbólicas. Así por ejemplo, si aplicamos \texttt{simplify} a la expresión \texttt{f\_g}, que acabamos de definir en la sección anterior, 
 \switchcolumn
 \subsection{Symbolic expression simplification}
 SymPy can take a symbolic expression and generate an equivalent, simplified version. However, this process is not always straightforward or unique, as an expression may have multiple valid simplified forms. Additionally, it's possible that the expression we wish to simplify cannot be simplified at all.
@@ -359,7 +359,7 @@ Out[50]:
 \end{center}
 
 \begin{paracol}{2}
-También podemos sustituir una expresión simbólica por un número, aunque es importante tener en cuenta que el resulta es también simbólico y no numérico,
+También podemos sustituir una expresión simbólica por un número, aunque es importante tener en cuenta que el resultado es también simbólico y no numérico,
 \switchcolumn
 We can substitute a symbolic expression with a number, keeping in mind that the results remain symbolic rather than numeric.
 \end{paracol}
@@ -462,7 +462,7 @@ Out[114]: 1.5707963267948966
 \end{minipage}
 \end{center}
 \begin{paracol}{2}
-La línea [110] nos devuelve el resultado de calcular el arcoseno de 1. El resultado es, un valor simbolico $\pi/2$. En la línea [111], repetimos el cálculo, pero ahora hacemos uso de la función \mintinline{python}|evalf()|. Esta función nos devuelvo un valor numérico, aunque todavía se trata de un resultado simbólico. Por defecto, la función nos devuelve una expresión con 15 dígitos. 
+La línea [110] nos devuelve el resultado de calcular el arcoseno de 1. El resultado es un valor simbolico: $\pi/2$. En la línea [111], repetimos el cálculo, pero ahora hacemos uso de la función \mintinline{python}|evalf()|. Esta función nos devuelve un valor numérico, aunque todavía se trata de un resultado simbólico. Por defecto, la función nos devuelve una expresión con 15 dígitos. 
 
 Podemos sin embargo elegir el número de dígitos que tendrá nuestra expresión numérica. para ello pasamos a la función el número de dígitos con el que queremos que nos devuelva el resultado. La línea [112], nos muestra un ejemplo en que se han pedido 25 dígitos para el resultado. Por último, si queremos convertir el resultado en un número máquina, en la representación normal del computador, empleamos para ello el comando \mintinline{python}|float| de python. El resultado es un número en la representación en coma flotante de doble precisión.
 
@@ -499,6 +499,7 @@ $ae^{-x^2}$
 In [125]: sp.diff(f,x)
 Out[125]: 
 \end{minted}
+$-2axe^{-x^2}$
 	\end{minipage}
 \end{center}
 
@@ -784,7 +785,7 @@ Out[166]:
 \begin{paracol}{2}
 Donde se ha hecho uso del comando \texttt{simplify} para recuperar la expresión original.
 
-Como en el caso de la derivación, si tenemos más de una variable simbolica definida en la función que queremos integrar, es preciso indicar a Sympy con respecto a cual variable queremos realizar la integración. Así, por ejemplo,
+Como en el caso de la derivación, si tenemos más de una variable simbolica definida en la función que queremos integrar, es preciso indicar a Sympy con respecto a que variable queremos realizar la integración. Así, por ejemplo,
 
 \switchcolumn
 Where we have used the command \texttt{simplify} to recover the original function.
@@ -924,7 +925,7 @@ We can now use the command \mintinline{python}|Sum|, to define the symbolic sum 
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-La notación es muy parecida a la que vimos para las integrales. La función \mintinline{python}|Sum|, toma como parámetros la expresión simbólica de la serie que queremos sumar, la variable sobre la que se expande la serie, en nuestro ejemplo \texttt{n}, y los límites de la suma. Sympy nos devuelve un objeto pero no lleva a cabo, el cálculo de la suma. Si queremos obtener el resultado de la suma, debemos emplear la función \mintinline{python}|doit()|,
+La notación es muy parecida a la que vimos para las integrales. La función \mintinline{python}|Sum|, toma como parámetros la expresión simbólica de la serie que queremos sumar, la variable sobre la que se expande la serie, en nuestro ejemplo \texttt{n}, y los límites de la suma. Sympy nos devuelve un objeto, pero no lleva a cabo el cálculo de la suma. Si queremos obtener el resultado de la suma, debemos emplear la función \mintinline{python}|doit()|,
 
 \switchcolumn
 the notation is very similar to the notation used for integrals. The function \mintinline{python}|Sum| takes as parameter the series symbolic expression we want ot sum, the variable the series span on, in our example \texttt{n}, and the limits of the sum. Sympy returns an object, but it does not carry out the computing of the sum. If we want to obtain the sum result we have to use the command \mintinline{python}|doit()|,
@@ -1024,7 +1025,7 @@ Out[286]:
 \end{center}
 
 \begin{paracol}{2}
-El ejemplo anterior nos da el desarrollo añadiéndonos el término de Landau del orden de la approximación $O(x^4)$, podemos eliminar el término del resultado, empleando el comando \mintinline{python}|removeO()|. Veamos un ejemplo con el desarrollo de esta misma función en torno a $x=3$,
+El ejemplo anterior nos da el desarrollo añadiéndonos el término de Landau del orden de la aproximación $O(x^4)$, podemos eliminar el término del resultado, empleando el comando \mintinline{python}|removeO()|. Veamos un ejemplo con el desarrollo de esta misma función en torno a $x=3$,
 
 \switchcolumn
 This example above yield us the expansion adding a the Landau's term for the approximation order $O(x^4)$, We can eliminate this term from the result using the command \mintinline{python}|removeO()|. Let's see an example for this same function expanding around $x=3$,
@@ -1105,7 +1106,7 @@ Out[311]:
 \end{center}
 
 \begin{paracol}{2}
-Por último, es posible calcular el límite por la izquierda y el límite por la derecha cuando estos no coinciden. Para ello se añade al final del comando la palabra \texttt{'right} (derecha) o \texttt{'left'} (izquierda). Es importante saber que, si no se le indica expresamente, Sympy calcula siempre el límite por la derecha. vamos a ver un ejemplo empleando el comando \mintinline{python}|Piecewise| que nos permite definir funciones por tramos,
+Por último, es posible calcular el límite por la izquierda y el límite por la derecha cuando estos no coinciden. Para ello se añade al final del comando la palabra \texttt{'right'} (derecha) o \texttt{'left'} (izquierda). Es importante saber que, si no se le indica expresamente, Sympy calcula siempre el límite por la derecha. vamos a ver un ejemplo empleando el comando \mintinline{python}|Piecewise| que nos permite definir funciones por tramos,
 \index{Límites! Límites laterales de una función simbólica}
 \switchcolumn
 Lastly, it is possible to compute the left-sided and right-sided limits for a function when these don't meet. To do it, we need to add a the end of the command the word texttt{right} or \texttt{left}. It is important to notice that if you do not specifically indicate it, Sympy always compute the right-sided limit. Let's see an example using the command \mintinline{python}|Piecewise| that allows us to define piecewise functions,
@@ -1270,7 +1271,7 @@ In this case, we have also created a graphic object \mintinline{python}|dr|, whi
 Una aplicación directa de la representación de curvas paramétricas es la obtención de la trayectoria de un móvil conocida su posición en función del tiempo. Por ejemplo, la obtención de la parábola trazada por un cuerpo que se mueve bajo la fuerza de la gravedad. 
 
 
-Por último es también posible representar superficies empleando funciones simbólicas de dos variables. Para ello se emplea el comando \texttt{plot3d}. En este caso, es preciso suministrarle al menos la función de dos variables que se desea representar. Si no se especifica rango, Sympy por defecto representará la función en el intervalo $(-10,10)$, tanto para el eje x como para  como para el y. Además, \texttt{plot3d} admite tuplas de tres elementos $(x, x_{min}, x_{max})$  $()y, y_{min},y_{max})$ que indica el área sobre la que se quiere representar la función. Es posible también añadir parámetros,\\ \mintinline{python}|nb_of_points_x=100,nb_of_points_y=100|\\  al comando que especifican el tamaño de la retícula empleada para representar la superficie. 
+Por último es también posible representar superficies empleando funciones simbólicas de dos variables. Para ello se emplea el comando \texttt{plot3d}. En este caso, es preciso suministrarle al menos la función de dos variables que se desea representar. Si no se especifica rango, Sympy por defecto representará la función en el intervalo $(-10,10)$, tanto para el eje x como para  como para el y. Además, \texttt{plot3d} admite tuplas de tres elementos $(x, x_{min}, x_{max})$  $(y, y_{min},y_{max})$ que indica el área sobre la que se quiere representar la función. Es posible también añadir parámetros,\\ \mintinline{python}|nb_of_points_x=100,nb_of_points_y=100|\\  al comando que especifican el tamaño de la retícula empleada para representar la superficie. 
 \switchcolumn
 A simple application of parametric functions is plotting a mobile trajectory based on the position as a function of time. For example, this includes the plot of a parabola that represents a body moving under gravitational force.
 
