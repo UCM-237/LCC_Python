@@ -1,7 +1,7 @@
 \chapter{Cálculo de raíces de una función\\ Methods for calculating the roots of a function }
 \index[eng]{Roots}
 \chaptermark{Raíces \textreferencemark\ Roots}
-\epigraph{Sólo el tiempo muestra al hombre justo mientras que podrías conocer al perverso en un sólo día}{Sófocles. Edipo rey}
+\epigraph{Sólo el tiempo muestra al hombre justo mientras que podrías conocer al perverso en un sólo día (Sófocles. Edipo rey)}
 
 \begin{paracol}{2}
 \section{Raíces de una función}
@@ -1474,7 +1474,7 @@ The roots are:	 [-1.00000001 -0.99999999]
 
 \switchcolumn
 
-\paragraph{The method \texttt{fromroots}.}. This method could be considered the opposite of the previous one; given a vector containing the roots of a polynomial, it returns the corresponding polynomial. For example, if we define the vector of roots, $[3,2,1]$ we can obtain the polynomial that has those roots. In this case the polynomial is $y(x)=x^3-6x^2+11x-6$.
+\paragraph{The method\texttt{fromroots}.}. This method could be considered the opposite of the previous one; given a vector containing the roots of a polynomial, it returns the corresponding polynomial. For example, if we define the vector of roots, $[3,2,1]$ we can obtain the polynomial that has those roots. In this case the polynomial is $y(x)=x^3-6x^2+11x-6$.
 
 \end{paracol}
 \begin{minted}{python}
@@ -2205,43 +2205,4 @@ Queremos calcular la posición de Marte respecto al Sol 80 días terrestres desp
     \item Escribe un programa  que resuelva la ecuación de Kepler de forma numérica por el método de Newtom-Raphson. Compara la velocidad de convergencia sobre la gráfica del apartado 3. Nota: Se deben implementar las funciones $f(E)=0$ y $f ’(E)$. Tolerancia $tol=10^{-10}$.
 \end{enumerate}
 
-\section{LCC. Test 2 (curso 2024 -2025) \protect\footnote{Crea las funciones necesarias  y da los resultados y tus comentarios en un \emph{notebook}.}}
 
-\begin{enumerate}
-	\item Lex Luthor, dueño del parque de atracciones de Gotham city, quiere instalar una nueva montaña rusa. En particular, está estudiando la bajada principal, en la que los cochecitos de la montaña deben desplomarse desde una altura inicial de $h_0=30$m hasta una altura final de $h_f=5$m, recorriendo al mismo tiempo una distancia horizontal de $x_f =60m$. Para minimizar la huella de carbono, la bajada debe ser exclusivamente por gravedad. Además, para asegurar la emoción durante la bajada, Mr. Luthor quiere que ésta se realice en tiempo mínimo.
-	
-	Tras pedir ayuda a la Legion of Doom, descubre que no basta con hacer unos raíles que bajen en línea recta, sino que deben tomar la forma de una braquistócrona\footnote{Del griego $\beta \rho \alpha \chi \iota  \sigma \tau o \varsigma$ 'el más corto', $\chi \rho o \nu o \varsigma$ 'tiempo'. https://mathworld.wolfram.com/BrachistochroneProblem.html} Cuya ecuación paramétrica es,
-	\begin{align}
-		x &= K[\theta-\sin(\theta) + \mu(1-\cos(\theta))] \label{eq1} \\
-		h &= h_0 -K[1-\cos(\theta) + \mu(\theta+\sin(\theta))] \label{eq2}
-	\end{align}
-	
-	Donde $x,h$ representan la posición en el eje $x$ y la altura $h$, sobre el suelo, el punto de inicio de la bajada es $(0,h_0$), $\mu$ es el coeficiente de rozamiento, en nuestro caso,  entre el cochecito y los raíles y $\theta \in [0,2\pi)$ es un parámetro variable. La constante $K$, permite ajustar el tamaño de la braquistócrona.     
-	
-	A Lex Luthor las ecuaciones le nublan la vista y acude a los alumnos de LCC --cuya fama ha llegado hasta Gotham-- para que le ayuden a calcular la braquistócrona que necesita.
-	\begin{enumerate}
-		\item (3 puntos) Escribe una función en Python que, usando las ecuaciones \ref{eq1} y \ref{eq2}, tome como variables de entrada los valores de $h_0,\theta, \mu, K$, y devuelva como salida los valores $x,h$.
-		
-		\item (2 puntos) Utilizando la función que has creado en el apartado anterior y tomando $h_0=30$ y $\mu = 0.1$, calcula dos vectores $x,h$, para valores de $\theta$ comprendidos en el intervalo $(0,2\pi]$. Utiliza una distancia entre valores de $0.01$. Repite el cálculo para 40 valores de $K$ distintos comprendidos en el intervalo $[0, y_0/(2+\pi\mu)]$. Dibuja todos los resultados obtenidos, $h$ frente a $x$, en una misma gráfica.
-	\end{enumerate}
-	\item Si has obtenido el gráfico del apartado anterior, es fácil deducir que por cada punto del espacio alcanzable solo pasa una braquistócrona. Para calcular la que necesita Lex, sustituimos en las ecuaciones \ref{eq1} y \ref{eq2} $x$ y $h$ por los valores finales deseados $x_f$ y $h_f$ y despejamos $K$ de ambas ecuaciones. Una forma sencilla de hacerlo es dividir $h_0-h$ entre $x$,
-	\begin{equation}\label{eq3}
-		\frac{h_0-h_f}{x_f} = \frac{[1-\cos(\theta) + \mu(\theta+\sin(\theta))]}
-		{[\theta-\sin(\theta) + \mu(1-\cos(\theta))]}
-	\end{equation}
-	\begin{enumerate}
-		\item (2 puntos) Emplea el método de la secante para obtener el valor de $\theta$ que resuelve la ecuación \ref{eq3}. Hazlo para los valores $h_0=30m$ $h_f=5m$, $x_f=60m$ y $\mu=0.1$. Usa una tolerancia de $10^{-6}$. Elige a tu criterio los dos puntos de inicio $x_0$ y $x_1$. 
-		
-		\item (2 puntos) Una vez obtenido el valor de $\theta$ emplea la ecuación \ref{eq1} para obtener el valor de $K$.
-		
-		\item (1 punto) Dibuja en un mismo gráfico la braquistócrona obtenida y el valor del punto $(x_f,h_f)$.
-		
-	\end{enumerate}
-	
-	\item (Bonus track) ¿Se podría con el mismo valor del rozamiento y la misma altura inicial, resolver el problema para una altura final de $h_f=5$ y una posición horizontal final $x_f = 80$?. Razona la respuesta.
-\end{enumerate}
-
-
-
-
-\noindent\rule{\textwidth}{0.4pt}

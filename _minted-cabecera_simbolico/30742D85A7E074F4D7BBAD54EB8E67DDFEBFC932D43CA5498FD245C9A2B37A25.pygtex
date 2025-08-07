@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{147}\PYG{p}{]:} \PYG{n}{fxy} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{x}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{n}{y}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{))}
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{148}\PYG{p}{]:} \PYG{n}{fxy}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{148}\PYG{p}{]:} 	
-\end{Verbatim}

@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{160}\PYG{p}{]:} \PYG{n}{f} \PYG{o}{=}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{161}\PYG{p}{]:} \PYG{n}{f}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{161}\PYG{p}{]:}
-\end{Verbatim}

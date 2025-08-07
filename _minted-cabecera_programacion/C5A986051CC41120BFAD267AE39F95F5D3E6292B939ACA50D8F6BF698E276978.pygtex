@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{95}\PYG{p}{]:} \PYG{n}{b} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{3.5}
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{96}\PYG{p}{]:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{96}\PYG{p}{]:} \PYG{n+nb}{float}
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{98}\PYG{p}{]:} \PYG{n}{c} \PYG{o}{=} \PYG{l+m+mi}{3}\PYG{n}{e} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{99}\PYG{p}{]:} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{99}\PYG{p}{]:} \PYG{n+nb}{float}
-\end{Verbatim}

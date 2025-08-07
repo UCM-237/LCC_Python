@@ -545,10 +545,10 @@ ax.scatter(x,y,z)
     \label{fig:3dscatter}
 \end{figure}
 \begin{paracol}{2}
-\subsection{Superficies}
-Para dibujar una superficie emplearemos el método \textit{plot\_surface}. Igual que en el caso del método \textit{scatter} tendremos que crear previamente una figura y unos ejes en 3 dimensiones usando \textit{subplots} e indicando que se trata de una proyección en 3D.
+\subsection{Superfícies}
+Para dibujar una superfície emplearemos el método \textit{plot\_surface}. Igual que en el caso del método \textit{scatter} tendremos que crear previamente una figura y unos ejes en 3 dimensiones usando \textit{subplots} e indicando que se trata de una proyección en 3D.
 
-Para dibujar una superficie con \textit{plot\_surface} hay que generar una rejilla $(X_m,Y_m)$ y en cada uno de los puntos de esa rejilla calcular el valor de la superficie.
+Para poder dibujar una superfície con \textit{plot\_surface} hay que generar una rejilla $(X_m,Y_m)$ y en cada uno de los puntos de esa rejilla calcular el valor de la superfície.
 
 Para definir dicha retícula  se necesitan dos matrices. Una de ellas $X_m$ contiene las coordenadas $x$ de los nodos de la retícula y la otra $Y_m$ las coordenadas $y$. Los elementos que ocupan la misma posición en ambas matrices, representan ---juntos--- un punto en el plano.
 
@@ -563,7 +563,7 @@ $$(x_m(i,j+1),y_m(i,j+1))$$
 Supongamos que empleamos las siguientes matrices, $X_m$ y $Y_m$ para definir una retícula sobre la que dibujar una superficie,
 
 \switchcolumn
-\subsection{Surfaces}
+
 To draw a surface we will use the \textit{plot\-surface} method. As in the case of the \textit{scatter} method, we will have to previously create a figure and axes in 3 dimensions using \textit{subplots} and indicating that it is a 3D projection.
 
 In order to draw a surface with \textit{plot\_surface} we must generate a grid $(X_m,Y_m)$ and at each of the points of this grid calculate the value of the surface.
@@ -613,7 +613,7 @@ lightsource=None, **kwargs)
 La estructura de las matrices $X_m$ e $Y_m$ del ejemplo anterior, es la típica de las matrices de adyacencia de una retícula cuadrada; la matriz  $X_m$ tiene la filas repetidas y la matriz $Y_m$ tiene repetidas la columnas. En el ejemplo las matrices son cuadradas y definen una retícula de $4\times 4$ nodos. En general, podemos definir una retícula rectangular de $m\times n$ nodos. En este caso las matrices empleadas para definir la retícula tendrían dimensión $m\times n$.
 
 Para dibujar con Matplotlib superficies podemos en primer lugar definir la retícula a partir de dos vectores de coordenadas empleando el método de numpy \texttt{meshgrid}. En el ejemplo que acabamos de ver, hemos empleado una retícula que cubre el intervalo, $x\in[0,3]$ e $y\in[0,3]$. para definirlo creamos los vectores,
-\begin{minted}{python}
+\begin{minted}{pycon}
 x=np.arange(0,4)
 
 x
@@ -628,7 +628,7 @@ Out[25]: array([0, 1, 2, 3])
 The structure of the $X_m$ and $Y_m$ matrices in the previous example is typical of the adjacency matrices of a square lattice; the $X_m$ matrix has repeated rows and the $Y_m$ matrix has repeated columns. In the example the matrices are square and define a lattice of $4\times 4$ nodes. In general, we can define a rectangular lattice of $times n$ nodes. In this case the matrices used to define the lattice would have dimension $m\times n$.
 
 To draw with Matplotlib surfaces we can first define the grid from two coordinate vectors using the numpy method \texttt{meshgrid}. In the example we have just seen, we have used a grid covering the interval, $x\in[0,3]$ and $y\in[0,3]$. To define it we create the vectors,
-\begin{minted}{python}
+\begin{minted}{pycon}
 x=np.arange(0,4)
 
 x
@@ -643,7 +643,7 @@ Out[25]: array([0, 1, 2, 3])
 A continuación empleamos el método \texttt{meshgrid} para construir las dos matrices de adyacencia. Numpy se encargará de repetir las filas y columnas necesarias,
 
 
-\begin{minted}{python}
+\begin{minted}{pycon}
     [Xm,Ym]=np.meshgrid(x,y)
 Xm
 Out[20]: 
@@ -666,7 +666,7 @@ array([[0, 0, 0, 0],
 Next, we use the method \texttt{meshgrid} to construct the two adjacency matrices. Numpy will take care of repeating the necessary rows and columns,
 
 
-\begin{minted}{python}
+\begin{minted}{pycon}
     [Xm,Ym]=np.meshgrid(x,y)
 Xm
 Out[20]: 
@@ -687,7 +687,7 @@ array([[0, 0, 0, 0],
 Una vez construidas las matrices de adyacencia, solo necesitamos una matriz de valores para $Z_m$. Si definimos por ejemplo,
 
 
-\begin{minted}{python}
+\begin{minted}{pycon}
     Zm=np.zeros(np.shape(Xm))
 
 Zm
@@ -701,7 +701,7 @@ array([[0., 0., 0., 0.],
 \switchcolumn
 Once the adjacency matrices are constructed, we only need a matrix of values for $Z_m$. If we define for example,
 
-\begin{minted}{python}
+\begin{minted}{pycon}
     Zm=np.zeros(np.shape(Xm))
 
 Zm
@@ -716,7 +716,7 @@ array([[0., 0., 0., 0.],
 Podríamos representar la retícula plana de la figura \ref{fig:mesh}, empleando por ejemplo el comando \texttt{plot\_wireframe(Xm, Ym, Zm)}.
 
 \switchcolumn
-We could represent the flat grid of the figure \ref{fig:mesh}, using the command \texttt{plot\_wireframe(Xm, Ym, Zm)}.
+We could represent the flat grid of the figure \ref{fig:mesh}, using for example the command \texttt{plot\_wireframe(Xm, Ym, Zm)}.
 
 \end{paracol}
 
@@ -744,7 +744,7 @@ In the region of the plane, $x\in[-1.5,1.5]$, $y\in[-2,2]$.
 \switchcolumn
 Igual que en el ejemplo inicial, lo primero que debemos hacer es construirnos una matrices de adyacencia que definan una retícula en la región de interés,
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 x=np.linspace(-1.5,1.5,25)
 y=np.linspace(-2,2,50)
 [Xm,Ym]=np.meshgrid(x,y)
@@ -753,7 +753,7 @@ y=np.linspace(-2,2,50)
 \switchcolumn
 As in the initial example, the first thing to do is to construct adjacency matrices that define a grid in the region of interest,
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 x=np.linspace(-1.5,1.5,25)
 y=np.linspace(-2,2,50)
 [Xm,Ym]=np.meshgrid(x,y)
@@ -765,7 +765,7 @@ Es interesante notar que la región de interés no es cuadrada y que las matrice
 
 A continuación obtenemos la matriz de coordenadas z, aplicando la función a los puntos de la retícula,
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 Zm=Xm**3+Ym**2
 
 \end{minted}
@@ -775,7 +775,7 @@ It is interesting to note that the region of interest is not square and that the
 
 Next we obtain the z-coordinate matrix by applying the function to the grid points,
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 Zm=Xm**3+Ym**2
 \end{minted}
 
@@ -784,31 +784,30 @@ Podemos representar la superfície usando el método \textit{wireframe} o el mé
 
 Igualmente podemos representar una superficie con un mapa de color o de contornos en 2 dimensiones usando el el método \textit{contourf} o el método \textit{pcolor}. En este caso no se emplea \textit{subplot\_kw="projection": "3d"} porque no hace falta dibujar en el eje z, ya que se le atribuye un contorno o un color.
 
+\begin{minted}{pycon}
+import numpy as np
+import matplotlib.pyplot as plt
 
+x=np.linspace(1,100,1000)
+y=np.linspace(1,100,1000)
+[X,Y]=np.meshgrid(x,y)
+Zm=X**2+Y**2
+fig,(ax1,ax2)=plt.subplots(nrows=1,ncols=2,figsize=(15,10))
+ax2.contourf(X,Y,Zm)
+ax1.contour(X, Y, Zm)
+\end{minted}
 
 \switchcolumn
 
 We can represent the surface using the \textit{wireframe} method or the \textit{surface} method. In the first case the surface is drawn as a grid, figure \ref{fig:wireframe}, and in the second as the colour-filled faces of the grid, figure \ref{fig:surface}.
-
 We can also represent a surface with a color or contour map in 2 dimensions using the \textit{contourf} method or the \textit{pcolor} method. In this case, \textit{subplot\_kw=“projection”: “3d”} is not used because it is not necessary to draw on the z-axis, since a contour or a colour is assigned to it.
 \end{paracol}
-\begin{minted}{python}
-	import numpy as np
-	import matplotlib.pyplot as plt
-	
-	x=np.linspace(1,100,1000)
-	y=np.linspace(1,100,1000)
-	[X,Y]=np.meshgrid(x,y)
-	Zm=X**2+Y**2
-	fig,(ax1,ax2)=plt.subplots(nrows=1,ncols=2,figsize=(15,10))
-	ax2.contourf(X,Y,Zm)
-	ax1.contour(X, Y, Zm)
-\end{minted}
+
 \begin{figure}
 \centering
 \begin{subfigure}{0.45\textwidth}
 	\includegraphics[width=8cm]{figuras/wireframe.png}
-	\bicaption{Función $z=x^3+y^2$ representada con \texttt{wireframe}}{Function $z=x^3+y^2$ represented with \texttt{wireframe}}\label{fig:wireframe}
+	\bicaption{Función $z=x^3+y^2$ representada con \texttt{wireframe}}{function $z=x^3+y^2$ represented with \texttt{wireframe}}\label{fig:wireframe}
 \end{subfigure} 
 \begin{subfigure}{0.45\textwidth}
 	\includegraphics[width=8cm]{figuras/surface.png}
@@ -1042,72 +1041,3 @@ y calcule un vector con las sumas de los valores pares de los elementos de cada 
 \includegraphics[scale=0.5]{lisa1.eps}
 \caption{vista de la figura con los ocho subplots} \label{fig:1}
 \end{figure}
-\newpage
-\section{LCC. Test 1 (curso 2024 -2025) \protect\footnote{Crea las funciones necesarias  y da los resultados y tus comentarios en un \emph{notebook}. }}
-
-\begin{enumerate}
-	\item Crea una función en Python que:
-	
-	
-	
-	
-	\begin{enumerate}
-		\item \label{apt1} (2 puntos) Toma como variable de entrada una lista que contenga a su vez listas formadas por números enteros y devuelva una sola lista con todos los números contenidos en la lista original. La lista de entrada puede tener cualquier tamaño. Comprueba el funcionamiento de tu programa con las lista,
-		\begin{minted}{python}
-Lista = [[1, -2, 3], [0, -16, 3, -5], [-1, 0, 4, 6], [1, 3]]
-		\end{minted}
-		
-		
-		\item (2 puntos) Modifica la función creada en el apartado anterior para que:
-		\begin{itemize}
-			\item No guardes los valores de las lista original que sean iguales a cero.
-			\item Cambia todos los valores negativos por su valor absoluto.
-			\item Una vez realizados los cambios anteriores, y antes de guardar el resultado en la lista de salida: 
-			
-			Si el resultado es un número impar, le añada un uno. 
-			
-			Si es divisible por cuatro, divida el numero entre dos (división entera). 
-			
-			En cualquier otro caso cambie el número por $-1$.  
-		\end{itemize}
-		Emplea la misma lista del apartado anterior para comprobar el funcionamiento de tu programa.
-	\end{enumerate}
-	
-	\item El Jocker's carousel  situado en el parque de atracciones de Gotham City es una atracción formada por una plataforma con cuatro brazos de longitud $R$ que giran en el plano horizontal. Del extremo de cada brazo cuelga una cabina a una distancia $r$ del centro, que gira en un plano vertical paralelo al brazo. Cuando está en marcha, el movimiento de cada una de sus cabinas se puede describir mediante las siguiente ecuación:
-	
-	\begin{equation*}
-		\begin{split}
-			x_i(t) &= \left(R+\sin(\omega_c t)\right)\cos(\omega_b t+ \theta_i)\\
-			y_i(t) &= \left(R+r\sin(\omega_c t)\right)\sin(\omega_b t+ \theta_i)\\
-			z_i(t) &= -r\cos(\omega_c t) + h_0
-		\end{split}
-	\end{equation*}
-	Donde $t \in [0,\infty)$ es el tiempo en segundos, $x_i(t)$, $y_i(t)$ y $z_i(t) \in \mathbb{R}$ son las coordenadas de la posición de la cabina $i$, ($i = [0,1,2,3]$), en función del tiempo. $\omega_b$ y $\omega_c$ son respectivamente la frecuencia en $rad/s$ a la giran los brazos y la frecuencia a la que giran las cabinas en el extremo de cada brazo. $\theta_i = \frac{\pi}{2}\cdot i$  representa la orientación de cada brazo con el eje de las $x$. Por último, $h_0$ es la altura en metros sobre el suelo a la que se encuentra la plataforma con los cuatro brazos.  
-	
-	\begin{enumerate}
-		\item (3 puntos) Escribe una función en Python que tome como variables de entrada los valores de $R,r,w_b,w_c,t_f,i,h_0$, y devuelva tres \emph{arrays} de Numpy con la posiciones sucesivas (trayectorias) $x,y,z$ de la cabina $i$, para el intervalo de tiempo $t\in [0,t_f]$. Emplea instantes de tiempos separados entre sí $0.01$s.
-		
-		\item (2 puntos) Utilizando para los parámetros del problema los valores de la tabla siguiente,
-		\begin{table}[h]
-			\centering
-			\begin{tabular}{c c c c c c}
-				\hline
-				$R$ & $r$ & $\omega_c$ & $\omega_b$ & $t_f$ & $h_0$\\
-				$20$ & $3$ & $6\pi$ & $0.2\pi$ & $20$ & $6$\\
-				\hline
-			\end{tabular}
-		\end{table}
-		
-		calcula las trayectorias de las cuatro cabinas y dibújalas empleando una figura distinta para cada una de ellas.
-		\item (1 punto) Vuelve a dibujarlas pero ahora todas en el mismo gráfico.
-		\item (Bonus track. 1 punto) Batman ha estudiado el gráfico en que aparecen todas las trayectorias juntas y no entiende por qué se ven solo dos en lugar de cuatro, ¿Podrías explicarle qué pasa?
-		¿Sabrías mostrárselo gráficamente?
-	\end{enumerate}
-	
-	
-	
-\end{enumerate}
-
-
-
-\noindent\rule{\textwidth}{0.4pt}

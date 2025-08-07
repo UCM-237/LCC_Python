@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{RA}\PYG{o}{=}\PYG{n}{GA}\PYG{p}{[:,}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{l+m+mi}{3}\PYG{p}{]}
-\PYG{n}{nb}\PYG{o}{=}\PYG{n}{GA}\PYG{p}{[:,}\PYG{l+m+mi}{3}\PYG{p}{]}
-\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}RA: \PYGZdq{}}\PYG{p}{,}\PYG{n}{RA}\PYG{p}{)}
-\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}nb: \PYGZdq{}}\PYG{p}{,}\PYG{n}{nb}\PYG{p}{)}
-\PYG{n}{x}\PYG{o}{=}\PYG{n}{regressive}\PYG{p}{(}\PYG{n}{RA}\PYG{p}{,} \PYG{n}{nb}\PYG{p}{)}
-\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}x: \PYGZdq{}}\PYG{p}{,}\PYG{n}{x}\PYG{p}{)}
-\end{Verbatim}

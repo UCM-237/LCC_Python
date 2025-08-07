@@ -108,6 +108,6 @@ def trocea(fun,met,inter,div,dib=False):
     tramos = np.linspace(inter[0],inter[1],div+1)
     total = 0
     for i in np.arange(div):
-        integ = integra(fun,met,[tramos[i],tramos[i+1]],dib)
-        total = total + integ
+        int = integra(fun,met,[tramos[i],tramos[i+1]],dib)
+        total = total + int
     return(total)

@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{293}\PYG{p}{]:} \PYG{n}{f} \PYG{o}{=} \PYG{n}{x}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{x}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{n}{sp}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{x}\PYG{p}{))}
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{294}\PYG{p}{]:} \PYG{n}{f}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{294}\PYG{p}{]:}	
-\end{Verbatim}

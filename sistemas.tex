@@ -325,9 +325,8 @@ For higher dimensional systems of equations, it is also true that the system has
 As soon as a system of equations has a sufficiently large dimension, inverting its coefficient matrix becomes a costly or simply intractable problem.
 
 From a numerical point of view, the inversion of a matrix often presents problems due to the rounding error in the operations. For this reason, systems of equations are almost never solved by inverting their matrix of coefficients. Throughout this chapter we will study two types of methods for solving systems of equations. The first of these is known generically as direct methods, while the second type is known as iterative methods.
-\end{paracol}
 
-\begin{paracol}{2}
+\switchcolumn
 \section{Condicionamiento}
 En la introducción hemos visto que para que un sistema de ecuaciones tenga solución, es preciso que su matriz de coeficientes sea invertible. Sin embargo cuando tratamos de resolver un sistema de ecuaciones numéricamente, empleando un ordenador, debemos antes examinar cuidadosamente la matriz de coeficientes del sistema. Veamos un ejemplo: el sistema,
 
@@ -335,6 +334,7 @@ En la introducción hemos visto que para que un sistema de ecuaciones tenga solu
 4x_1+x_2&=6\\
 2x_1+0.4 x_2&=-1
 \end{align*}
+
 \switchcolumn
 \section{Condition number}
 In the introduction we have seen that for a system of equations to have a solution, its coefficient matrix must be invertible. However, when we try to solve a system of equations numerically, using a computer, we must first carefully examine the matrix of coefficients of the system. Let us look at an example: the system,
@@ -461,7 +461,7 @@ In Python, we can use the function \texttt{cond} inside the \texttt{linalg} modu
 
 \end{paracol}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 import numpy as np
 
 A=np.array([[4,1],[2,0.499]])
@@ -481,7 +481,7 @@ The number is quite far from one, which, in principle, indicates a ill-condition
 Incidentally, we can calculate the factorisation svd of the coefficient matrix and divide the largest singular value by the smallest to check that the result is the same as that given by the function \texttt{cond},
 \end{paracol}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 [U,S,Vt]=np.linalg.svd(A)
 
 S[0]/S[1]
@@ -748,22 +748,22 @@ Since we know how to solve triangular systems, one way to solve more complex sys
 \switchcolumn
 \paragraph{Factorización LU.} La factorización LU consiste en factorizar una matriz en el producto de dos, una triangular inferior $L$ y una triangular superior $U$. La factorización puede incluir pivoteo de filas, para alcanzar una solución numéricamente estable. En este caso la factorización LU toma la forma,
 \begin{equation*}
-P^T\cdot A = L\cdot U
+P\cdot A = L\cdot U
 \end{equation*}
 
 Donde $P$ representa una matriz de permutaciones.
 
-Podemos verlo también de otra manera, $A=P \cdot L \cdot U$ ya que al ser $P$ una matriz de permutación es invertible y $P^{-1}=P^T$.
+Podemos verlo también de otra manera, $A=P^T\cdot L \cdot U$ ya que al ser $P$ una matriz de permutación es invertible y $P^{-1}=P^T$.
 
 \switchcolumn
 
 \paragraph{LU factorisation}. LU factorisation consists of factoring a matrix into the product of two, a lower triangular $L$ and an upper triangular $U$. The factorisation could include pivoting rows, to achieve a numerically stable solution. In this case the LU factorisation takes the form,
 \begin{equation*}
-P^T \cdot A = L\cdot U
+P\cdot A = L\cdot U
 \end{equation*}
 
 Where $P$ represents a matrix of permutations.
-We can also look at it in another way, $A=P \cdot L \cdot U$, since $P$ is a permutation matrix and $P^{-1}=P^T$.
+We can also look at it in another way, $A=P^T$, $A=P^{-1}=P^T$, since $P$ is a permutation matrix and $P^{-1}=P^T$.
 
 \switchcolumn
 Supongamos que queremos resolver un sistema de $n$ ecuaciones lineales con $n$ incógnitas que representamos genéricamente en forma matricial, como siempre,
@@ -879,7 +879,7 @@ First we should check that the coefficient matrix is well conditioned,
 
 \end{paracol}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 import numpy as np
 
 A=np.array([[1, 3, 2],[2, -1, 1],[1, 4, 3]])
@@ -911,7 +911,7 @@ P,L,U=sc.linalg.lu(A)
 
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 L: [[1.         0.         0.        ]
  [0.5        1.         0.        ]
  [0.5        0.77777778 1.        ]]
@@ -936,7 +936,7 @@ Pb=np.transpose(P).dot(b)
 print("Pb: ",Pb)
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 Pb:  [[ 3.]
  [18.]
  [13.]]  
@@ -954,7 +954,7 @@ z=progressive(L, bP)
 print("z:",z)    
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 z: [[ 3.        ]
  [16.5       ]
  [-1.33333333]]  
@@ -973,7 +973,7 @@ x=regressive(U, z)
 print("x:",x)
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 x: [[1.]
  [2.]
  [3.]]
@@ -990,7 +990,7 @@ To check that the solution is correct, it is enough to multiply the matrix of co
 print(A.dot(x))
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
  [[13.]
  [ 3.]
  [18.]]   
@@ -1126,7 +1126,7 @@ print("x: ", x)
 print(A.dot(x))
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 L:  [[ 1.41421356  0.          0.        ]
  [ 3.53553391  1.22474487  0.        ]
  [ 0.70710678 -0.40824829  2.30940108]]
@@ -1225,7 +1225,7 @@ x=regressive(R, Qb)
 print("x: ",x)    
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 Q:  [[-0.40824829  0.46369464 -0.78633365]
  [-0.81649658 -0.5707011   0.08737041]
  [-0.40824829  0.67770756  0.61159284]]
@@ -1360,7 +1360,7 @@ print("x:",x)
     
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 U:  [[-0.59080923 -0.00525033 -0.80679421]
  [-0.04109702 -0.99848485  0.03659281]
  [-0.80576392  0.0547762   0.58969829]]
@@ -1827,7 +1827,7 @@ x=regressive(RA, nb)
 print("x: ",x)
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 RA:  [[ 1.          3.          2.        ]
  [ 0.         -7.         -3.        ]
  [ 0.          0.          0.57142857]]
@@ -1871,7 +1871,7 @@ def eligaussp(A):
             U[index,:]=aux[:]
         # End of Row pivoting
         # For all the rows below the diagonal
-        # print(U)
+        print(U)
         for j in range(i+1,f):
             U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
     return U
@@ -1900,7 +1900,7 @@ x=regressive(RA, nb)
 print("x: ",x)   
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 AM:  [[ 1.  3.  2. 13.]
  [ 2. -1.  1.  3.]
  [ 1.  4.  3. 18.]]
@@ -2079,7 +2079,7 @@ def gaussjordan(A):
             U[index,:]=aux[:]
         # End of Row pivoting
         # For all the rows below the diagonal
-        # print(U)
+        print(U)
         for j in range(i+1,f):
             U[j,:]=U[j,:]-U[i,:]*U[j,i]/U[i,i]
     # Step 2: obtain the diagonal matrix
@@ -2515,7 +2515,7 @@ x_n^s
 \switchcolumn
  and multiply both sides by the inverse of the matrix $D$\footnote{$D$ is a diagonal matrix and its inverse is trivially calculated by simply changing each element of the diagonal by its inverse,}
 \end{paracol}
-
+\newpage
  \begin{align*}
  \overbrace{\begin{pmatrix}
 x_1^{(s+1)}\\
@@ -2616,7 +2616,7 @@ Applying \texttt{diag} to a vector constructs a matrix with the elements of the 
 If we apply \texttt{diag} twice on the matrix of coefficients of a system, we obtain directly the matrix $D$,
 \end{paracol}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 A=np.array([[4., 2.,-1.],[3., -5., 1.],[1., -1., 6.]])
 
 np.diag(A)
@@ -2634,7 +2634,7 @@ Para calcular las matrices $L$ y $U$, podemos emplear las funciones de \texttt{n
 \switchcolumn
 To compute the $L$ and $U$ matrices, we can use the \texttt{numpy} \texttt{triu} and \texttt{tril} which extract an upper triangular matrix and a lower triangular matrix, respectively, from a given matrix.
 \end{paracol}
-\begin{minted}{python}
+\begin{minted}{pycon}
 np.triu(A)
 Out[3]: 
 array([[ 4.,  2., -1.],
@@ -2655,7 +2655,7 @@ Las matrices $L$ y $U$ son estrictamente triangulares superior e inferior, Podem
 The matrices $L$ and $U$ are strictly upper and lower triangular. We can obtain them by subtracting the matrix $D$ from the matrices we have just obtained,
 
 \end{paracol}
-\begin{minted}{python}
+\begin{minted}{pycon}
 np.triu(A)-np.diag(np.diag(A))
 Out[5]: 
 array([[ 0.,  2., -1.],
@@ -2675,7 +2675,7 @@ También podemos obtenerlas directamente, empleando solo la matriz de coeficient
 We can also obtain them directly, using only the coefficient matrix,
 \end{paracol}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 A-np.tril(A)
 Out[7]: 
 array([[ 0.,  2., -1.],
@@ -2970,7 +2970,7 @@ To implement it, it would be sufficient to add to the code of Jacobi's method a 
 \begin{minted}{python}
     error= np.linalg.norm(xs1-xs)
     it=0
-    while (error>tol)&(it<=itmax):
+    while error>tol:
         # For all the equations
         xs1=b.copy()
         for i in range(nf):
@@ -2985,6 +2985,8 @@ To implement it, it would be sufficient to add to the code of Jacobi's method a 
         error= np.linalg.norm(xs1-xs)
         xs=xs1.copy()
         it+=1
+        if it>itmax:
+            break
 \end{minted}
 
 \begin{paracol}{2}
@@ -3402,7 +3404,7 @@ print("Eigenvalues: ",eigenvalues)
 print("Spectral radius: ", spectral_rad)
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 Eigenvalues:  [ 0.11872445+1.05306845j  0.11872445-1.05306845j -0.2374489 +0.j        ]
 Spectral radius:  1.0597398959658624
 \end{minted}
@@ -3433,7 +3435,7 @@ print("Spectral radius: ", spectral_rad)
 
 \end{minted}
 
-\begin{minted}{python}
+\begin{minted}{pycon}
 Eigenvalues:  [0.44063777+0.52653422j 0.44063777-0.52653422j 0.61872445+0.j        ]
 Spectral radius:  0.6865857095839855
 \end{minted}
@@ -3607,63 +3609,5 @@ Determina, a la vista de la gráfica, si sería posible encontrar un valor de $\
 \item {\bf 1 punto.} ¿Sabrías decir que relación hay entre las matrices X y A?
 \end{enumerate}
 
-\section{LCC. Test 3 (curso 2024 -2025) \protect\footnote{Crea las funciones necesarias  y da los resultados y tus comentarios en un \emph{notebook}.}}
 
-\subsection*{Ejercicio sistemas (\textbf{10 puntos})}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\linewidth]{noria2.png}
-	\caption{Noria del parque de atracciones de Gotham}
-	\label{fig:1}
-\end{figure}
-
-Nathaniel Finch, más conocido como Gearhead, es el responsable del mantenimiento de la noria del parque de atracciones de Gotham. Para dar mayor emoción a la atracción, desea calcular cuál sería la máxima velocidad a la que puede hacer girar la noria sin que se rompa su estructura.
-
-La figura \ref{fig:1}, muestra una vista instantánea de la noria. los radios están construidos con barras de acero y los extremos de los radios están unido mediante cables de acero. Para calcular las tensiones, en las barras y cables se puede emplear el siguiente sistema de ecuaciones,
-\begin{align}
-	sT_6+sT_{61} &= mg + s\frac{mv^2}{r}\\
-	- cT_6+ cT_{61} &= -c\frac{mv^2}{r}\\
-	-cT_{61} + T_1 - cT_{12} &= -\frac{mv^2}{r}\\
-	- sT_{61} + sT_{12}   &= mg\\
-	-sT_{12} + sT_{2} &= mg -s\frac{mv^2}{r}\\
-	cT_{12}+cT_{2}-T_{23} &= -c\frac{mv^2}{r}
-\end{align}
-Donde $T_{(\cdot)}$ representa la tensión correspondiente a cada una de las barras y cables de la noria indicadas en figura \ref{fig:1}, $v$ la velocidad lineal a la que giran la cabinas de la noria y $m = 100kg$ su masa; $r = 20m$ la longitud de cada barra y $g=10m/s^2$ la aceleración de la gravedad. Por último, $c = \cos(\frac{\pi}{3})$ y $s = \sin(\frac{\pi}{3})$.
-
-El resto de las tensiones, no incluidas en la ecuación son iguales a sus simétricas respecto al eje vertical, excepto la correspondiente al cable horizontal inferior que no sufre tensión en esta posición de la noria.
-\begin{enumerate}
-	\item (\textbf{1 ptos}) Reescribe las ecuaciones para las tensiones en forma matricial $A\cdot T=b$.
-	
-	Donde $A$ representa la matriz de coeficientes, $b$ el vector de términos independientes y $T = [T_6,T_{61},T_1,T_{12},T_2,T_{23}]^T$ el vector de incógnitas.
-	
-	\item (\textbf{2.5 ptos}) Gearhead, ha calculado el radio espectral del método de Gauss-Seidel, para el sistema de ecuaciones del apartado anterior y decide que no puede emplearlo para obtener las tensiones de su noria. Explica razonadamente si tiene razón.
-	
-	\item (\textbf{2.5 ptos}) Empleando un valor para el amortiguamiento $w = 0.6$, obtén las tensiones de las noria cuando está en reposo, empleando para ello el método SOR. Emplea una tolerancia $tol=1e-9$.
-	
-	\item (\textbf{4 ptos}) Para obtener la velocidad máxima a la que puede girar la noria sin romperse, Gearhead repite el cálculo anterior incrementando la velocidad en $1m/s$, cada vez, hasta que uno de los elementos de la noria (barras o cables) supera la tensión máxima admisible que, tanto para los cables como para las barras, es de $10000N$. Emplea las tensiones obtenidas para cada velocidad, como solución inicial para el cálculo de las tensiones de la siguiente velocidad. Para la primera, emplea como solución inicial las tensiones obtenidas en el apartado anterior.
-	
-	¿Cuál es la velocidad máxima a la que puede girar la noria sin romperse? ¿Cual el el primer elemento que se rompería caso de rebasar dicha velocidad? Ten en cuenta que, en algunos casos, la tensión puede tomar un valor negativo, calcula el valor máximo en valor absoluto.
-\end{enumerate}
-
-
-
-\subsection*{Ejercicio interpolación (10 puntos)}
-
-Algo extraño está ocurriendo en el parque de atracciones de Gotham. El anillo de Kriptonita que Lex Luthor lleva siempre puesto ha comenzado a brillar intermitentemente al pasar cerca de la noria. El instinto científico de Lex le hace pensar que tal vez está ante una contaminación radiactiva. Así que pone en marcha el contador Luthor-Geiger y toma medidas durante $16(s)$. 
-
-Como el cálculo numérico no es el fuerte de Lex (no aprobó nunca LCC) le pasa a los estudiantes del grupo D el archivo con los datos \textit{gotham.txt}, para ver si averiguan algo. Este archivo tiene en la primera columna el tiempo en segundos y en la segunda la actividad radiactiva en bequerelios (Bq).
-
-\begin{enumerate}
-	\item (\textbf{2 ptos}) Carga los datos y dibuja en una gráfica la actividad radiactiva $A(t)$ en función del tiempo $t$ que ha medido Lex.
-	%\item Utiliza el método de interpolación de Lagrange para construir un polinomio que pase por todos los puntos de datos de actividad medidos. Representa gráficamente el polinomio interpolador junto con los datos experimentales.
-	\item (\textbf{2 ptos}) Utiliza el método de interpolación de Newton-Gregory o diferencias finitas (el que prefieras o más convenga) para construir un polinomio que pase por todos los puntos de datos de actividad medidos. Representa gráficamente el polinomio interpolador junto con los datos experimentales.
-	\item (\textbf{3 ptos}) Las medidas de actividad tienen pesos diferentes debido a variaciones en las condiciones experimentales. Para tiempos más largos, el error de medida es mayor, por lo que esos datos deberían tener menos peso. Calcula los pesos para cada dato usando la función $\omega=\frac{1}{1+t}$. Ajusta los datos experimentales a un polinomio de grado $n$ mediante el método de mínimos cuadrados ponderados (elige $n$ de forma razonada). Dibuja el ajuste junto con los datos. Discute la calidad del ajuste en función del grado del polinomio.
-	\item (\textbf{3 ptos}) Lex Luthor tenía razón y los datos parecen responder a una desintegración radiactiva. Las desintegraciones radiactivas se comportan en función de una ley de decaimiento exponencial, 
-	\begin{equation}\label{eqd}
-		A(t)=A_0 e^{-\lambda\cdot t}
-	\end{equation}
-	Donde $A_0$ es la actividad radiactiva inicial (en $t=0$) y $\lambda$ es la constante de desintegración radiactiva propia de cada isótopo. Calcula la constante de desintegración radiactiva usando un ajuste por mínimos cuadrados con los pesos del apartado anterior.
-	(Pista: Si tomas logaritmos naturales a ambos lados de la ecuación (\ref{eqd}), obtienes una recta de pendiente $-\lambda$.)
-\end{enumerate}
-%\noindent\rule{\textwidth}{0.4pt}
 

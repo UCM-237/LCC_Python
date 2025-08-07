@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{58}\PYG{p}{]:} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{f2}\PYG{p}{,}\PYG{n}{xlim}\PYG{o}{=}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{))}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{58}\PYG{p}{]:} \PYG{o}{\PYGZlt{}}\PYG{n}{sympy}\PYG{o}{.}\PYG{n}{plotting}\PYG{o}{.}\PYG{n}{plot}\PYG{o}{.}\PYG{n}{Plot} \PYG{n}{at} \PYG{l+m+mh}{0x79891a89dbd0}\PYG{o}{\PYGZgt{}}
-\end{Verbatim}

@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{180}\PYG{p}{]:} \PYG{n}{F} \PYG{o}{=} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{integrate}\PYG{p}{(}\PYG{n}{f}\PYG{p}{)}
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{181}\PYG{p}{]:} \PYG{n}{F}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{181}\PYG{p}{]:}
-\end{Verbatim}
