@@ -70,6 +70,9 @@ Among the many ways you may follow to install Python and some of its development
 
  En la parte superior derecha de este panel hay un buscador. Si introducimos en él la palabra spyder, el panel nos mostrará los paquetes relacionados con Spyder (figura \ref{fig:ntb2}). Seleccionamos el paquete spyder notebook y en la parte inferior derecha del panel nos aparaceran dos nuevos botones. Si seleccionamos el botón \emph{apply}, Anaconda commenzará el proceso de instalación del paquete. Lo primero que hace es abrir un pop-up y comprobar las dependencias, una vez terminada la comprobación, pulsamos el botón apply del pop-up y dejamos que Anaconda instale spyder notebook.
  
+ Alternativamente, se puede instalar directamente empleando un terminal. Para ello abrir un terminal e introducir el siguiente comando,
+ 
+ 
 
  \switchcolumn
  \selectlanguage{english}
@@ -82,13 +85,24 @@ Among the many ways you may follow to install Python and some of its development
  We are going to use Spyder, which has already been installed. In figure \ref{fig:anaconda}, the Spyder icon has been enclosed in a red circle.
 
  Before starting with a Spyder description, we will use Anaconda to install a plug-in, allowing us to use another of Phyton's most currently used IDEs: \emph{Jupyter Notes}. Jupyter Notes is an IDE for Python code development.  It is independent of Spyder. It is a handy tool because it allows us to combine Python code with graphics and text. We will describe Jupyter Notes later on.
-
+ 
  \paragraph{Spyder-notebook installation.} To install the plugin that allows using Jupyter Notes from Spyder, we press the mouse left button on the \emph{Environments} icon (framed in red in figure \ref{fig:anaconda2}). Then, the Anaconda-Navigator window shows us Anaconda work environments (figure \ref{fig:ntb1}). If we have just installed Anaconda, the only environment already available should be the base (root) environment. We will focus on the right-side panel. The upper left corner has a drop-down menu; we select the option \emph{all}. Then, the panel shows us all the software packages available in the Anaconda default channel. Those packages installed in the computer are ticked with a green square label before the package name; packages available but not installed are ticked with a white square.
 
  There is a browser located in the upper right corner of the panel. We will write the word \emph{spyder} of \emph{spyder notebook}. The panel now shows those software packages related to Spyder (figure \ref{fig:ntb2}). We select the package spyder notebook by clicking the white square before the package name. A new pair of push buttons appear on the panel's lower side. Clicking on \emph{apply} triggers the Spyder notebook installation process. First, Anaconda launches a pop-up window and checks Spyder Notebook software dependencies. The process may take some time, so be patient until it finishes the checking.  Once the checking process is over, we will press the \emph{apply} button on the pop-up window and let Anaconda install the software.
  
+You can also install Spyder-notebook using the command line. To do this, open a terminal and enter the following command:
 \end{paracol}
- 
+
+\begin{verbatim}
+	                 conda install spyder-notebook -c conda-forge
+\end{verbatim} 
+
+\begin{paracol}{2}
+Para windows, lo ideal es usar como terminal \texttt{Anaconda Prompt}, que estará disponible entre las aplicaciones del ordenador después de instalar Anaconda.  
+\switchcolumn
+If you are using Windows, you should use the "Anaconda Prompt" as your terminal. This program will be available as a standard application once Anaconda is installed.
+\end{paracol}
+
 \begin{figure}
 \centering
     \includegraphics[width=0.8\textwidth]{notebook2.png}
@@ -2795,7 +2809,7 @@ print(mi_robot)
 \item print('f=',f)
 \item print('b=',b)
 \item print('g=',g)
-\item b[2] = 'tampoco cambia g pero si f'
+\item b[2] = 'tampoco cambian g y f'
 \item print('f=',f)
 \item print('b=',b)
 \item print('g=',g)
