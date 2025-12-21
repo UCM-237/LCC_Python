@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{import numpy as np}
+
+\PYG{g+go}{np.spacing(1)}
+\PYG{g+go}{Out[9]: 2.220446049250313e\PYGZhy{}16}
+
+\PYG{g+go}{np.spacing(1e\PYGZhy{}10)}
+\PYG{g+go}{Out[10]: 1.2924697071141057e\PYGZhy{}26}
+
+\PYG{g+go}{np.spacing(1e20)}
+\PYG{g+go}{Out[11]: 16384.0}
+
+\PYG{g+go}{10+np.spacing(10)/2}
+\PYG{g+go}{Out[12]: 10.0}
+\PYG{g+go}{10==(10+np.spacing(10)/2)}
+\PYG{g+go}{Out[13]: True}
+
+\PYG{g+go}{1e20==(1e20\PYGZhy{}np.spacing(1e20)/2)}
+\PYG{g+go}{Out[14]: True}
+\PYG{g+go}{np.spacing(\PYGZhy{}5)}
+\PYG{g+go}{Out[15]: \PYGZhy{}8.881784197001252e\PYGZhy{}16}
+
+\PYG{g+go}{\PYGZhy{}5+np.spacing(\PYGZhy{}5)}
+\PYG{g+go}{Out[16]: \PYGZhy{}5.000000000000001}
+
+\PYG{g+go}{\PYGZhy{}5\PYGZhy{}np.spacing(\PYGZhy{}5)}
+\PYG{g+go}{Out[17]: \PYGZhy{}4.999999999999999}
+\end{Verbatim}

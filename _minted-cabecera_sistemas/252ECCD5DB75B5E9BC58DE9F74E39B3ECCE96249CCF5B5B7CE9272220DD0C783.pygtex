@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Q}\PYG{p}{:}  \PYG{p}{[[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.40824829}  \PYG{l+m+mf}{0.46369464} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.78633365}\PYG{p}{]}
+ \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.81649658} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.5707011}   \PYG{l+m+mf}{0.08737041}\PYG{p}{]}
+ \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.40824829}  \PYG{l+m+mf}{0.67770756}  \PYG{l+m+mf}{0.61159284}\PYG{p}{]]}
+\PYG{n}{R}\PYG{p}{:}  \PYG{p}{[[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.44948974} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.04124145} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.85773803}\PYG{p}{]}
+ \PYG{p}{[} \PYG{l+m+mf}{0.}          \PYG{l+m+mf}{4.67261526}  \PYG{l+m+mf}{2.38981086}\PYG{p}{]}
+ \PYG{p}{[} \PYG{l+m+mf}{0.}          \PYG{l+m+mf}{0.}          \PYG{l+m+mf}{0.34948162}\PYG{p}{]]}
+\PYG{n}{x}\PYG{p}{:}  \PYG{p}{[[}\PYG{l+m+mf}{1.}\PYG{p}{]}
+ \PYG{p}{[}\PYG{l+m+mf}{2.}\PYG{p}{]}
+ \PYG{p}{[}\PYG{l+m+mf}{3.}\PYG{p}{]]}
+\end{Verbatim}

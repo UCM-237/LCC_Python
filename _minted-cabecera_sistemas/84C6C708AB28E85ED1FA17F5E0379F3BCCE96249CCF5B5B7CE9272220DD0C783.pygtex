@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Eigenvalues}\PYG{p}{:}  \PYG{p}{[}\PYG{l+m+mf}{0.44063777}\PYG{o}{+}\PYG{l+m+mf}{0.52653422}\PYG{n}{j} \PYG{l+m+mf}{0.44063777}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.52653422}\PYG{n}{j} \PYG{l+m+mf}{0.61872445}\PYG{o}{+}\PYG{l+m+mf}{0.}\PYG{n}{j}        \PYG{p}{]}
+\PYG{n}{Spectral} \PYG{n}{radius}\PYG{p}{:}  \PYG{l+m+mf}{0.6865857095839855}
+\end{Verbatim}

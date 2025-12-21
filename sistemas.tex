@@ -496,7 +496,7 @@ Vamos a empezar el estudio de los métodos directos por los algoritmos de resolu
 
 \switchcolumn
 
-\subsection{Direct methods}
+\section{Direct methods}
 \subsection{Triangular systems}
 We are going to begin the study of direct methods with the algorithms for solving the simplest possible systems, those whose coefficient matrix is a diagonal, upper triangular or lower triangular matrix.
 \paragraph{ Diagonal systems.} A diagonal system is one whose coefficient matrix is a diagonal matrix. 
@@ -3053,9 +3053,9 @@ x_i^{(s+1)}=\omega\cdot \overbrace{\frac{b_i-\sum_{j< i}a_{ij}x_j^{(s+1)}-\sum_{
 
 \begin{paracol}{2}
 
-Al igual que en el caso de Jacobi amortiguado, para implementar el método SOR es suficiente añadir una línea que calcule el promedio de dos soluciones sucesivas,
+En una primera aproximación, para implementar el método SOR, podríamos añadir una línea que calcule el promedio de dos soluciones sucesivas, tal y como hicimos para el método de Jacobi,
 \switchcolumn
-As in the case of the damped Jacobi, to implement the SOR method it is sufficient to add a line that calculates the average of two successive solutions,
+As in the case of the damped Jacobi, A first approach to implement the SOR method would be to add a line that calculates the average of two successive solutions,
 \end{paracol}
 
 \begin{minted}{python}
@@ -3077,9 +3077,9 @@ As in the case of the damped Jacobi, to implement the SOR method it is sufficien
 \end{minted}
 
 \begin{paracol}{2}
-En forma matricial la expresión para una iteración del método SOR sería,
+En forma matricial la expresión para una iteración, sería,
 \switchcolumn
-In matrix form the expression for one iteration of the SOR method would be,
+In matrix form the expression for one iteration would be,
 \end{paracol}
 \begin{equation*}
 x^{(s+1)}= \omega\cdot\overbrace{\left((D+L)^{-1}\cdot b-(D+L)^{-1}\cdot U\cdot x^{(s)}\right)}^{x^{(*)}}+(1-\omega)\cdot x^{(s)}
@@ -3100,13 +3100,13 @@ x^{(s+1)}= \omega\cdot\left((D+L)^{-1}\cdot b\right)+\left[(1-\omega)\cdot I-\om
 \begin{paracol}{2}
 De nuevo, podemos identificar, el término fijo, $f=\omega\cdot\left((D+L)^{-1}\cdot b\right)$ y la matriz del método, $H=\left((1-\omega)\cdot I-\omega\cdot(D+L)^{-1}\cdot U\right)$.
 
-El siguiente fragmento de código muestra la obtención de $f$ y $H$ para el método SOR,
+El siguiente fragmento de código muestra la obtención de $f$ y $H$,
 
 \switchcolumn
 
 Again, we can identify the fixed term, $f=\omega\cdot\left((D+L)^{-1}\cdot b\right)$ and the method matrix, $H=\left((1-\omega)\cdot I-\omega\cdot(D+L)^{-1}\cdot U\right)$.
 
-The following code fragment shows how $f$ and $H$ are obtained for the SOR method,    
+The following code fragment shows how $f$ and $H$ are obtained,    
 \end{paracol}
 
 \begin{minted}{python}
@@ -3128,6 +3128,80 @@ The following code fragment shows how $f$ and $H$ are obtained for the SOR metho
     it+=1
     xs=xs1.copy()
     
+\end{minted}
+
+\begin{paracol}{2}
+	La aproximación que acabamos de describir, aunque válida como método iterativo, no es en realidad el método SOR. Si nos fijamos en la ecuación general del método, deberíamos aplicar el amortiguamiento a cada nueva solución de cada una de las incógnitas que obtenemos al aplicar el método de Gauss-Seidel. Por tanto, no sería valido promediar al final, una vez obtenidas todas la soluciones de una iteración.
+	Para promediar los resultados de cada incógnita, si empleamos el algoritmo no matricial, es suficiente modificar ligeramente el código, para incluir el promedio dentro del bucle que calcula cada una de las soluciones,
+	\switchcolumn
+	The approach just described, although a valid iterative method, does not constitute the SOR Method. The general method equation requires that the weight be applied to each new value of every unknown as it is computed in the Gauss-Seidel method. Therefore, averaging the results only at the end of each iteration is not appropriate.
+	
+	To average the results for each unknown using the non-matrix method, it suffices to slightly modify the code so that the averaging step is included within the loop that computes each solution,
+	 
+\end{paracol}
+
+\begin{minted}{python}
+# For all the equations
+xs1=b.copy()
+for i in range(nf):
+	# For all the terms above x[i]
+	for j in range(i):
+		xs1[i]-=A[i,j]*xs1[j]
+	#For all the terms below x[i]    
+	for j in range(i+1,nf):
+		xs1[i]-=A[i,j]*xs[j]
+	xs1[i]=xs1[i]/A[i,i]
+	xs1=w*xs1+(1-w)*xs
+error= np.linalg.norm(xs1-xs)
+xs=xs1.copy()
+it+=1
+\end{minted}
+
+\begin{paracol}{2}
+Para obtener el método matricial, reescribimos la expresión general del método de modo que separamos a ambos lados del igual los términos que dependen de $x^{(s+1)}$ de los que dependen de $x^s$ y multiplicamos por $a_{ii}$
+\switchcolumn
+To derive the matrix method, we rewrite the general expression so that all terms involving $x^{(s+1)}$ are placed on one side of the equation and those involving $x^s$ are grouped on the other. Finally, we multiply by $a_{ii}$.
+\end{paracol}
+\begin{equation*}
+	a_{ii}x_i^{(s+1)} + \omega\cdot \sum_{j< i}a_{ij}x_j^{(s+1)}= \omega b_i-\omega \sum_{j> i}a_{ij}x_j^{(s)}+a_{ii}(1-\omega)\cdot x_i^{(s)}
+\end{equation*}
+
+\begin{paracol}{2}
+Si nos fijamos en la expresión a la izquierda del igual, podríamos calcularla en forma matricial como $Dx^{(s+1)} + wLx^{s+1}$. De modo análogo, para la parte de la derecha, podemos reescribirla en forma matricial como, $\omega b - \omega Ux^{(s)} + (1-\omega)Dx^{(s)}$. Podemos ahora reconstruir la expresión matricial y despejar $x^{(s+1)}$,
+\switchcolumn
+Focusing on the expression on the left-hand side of the equation, we can write it in matrix form as $Dx^{(s+1)} + \omega Lx^{(s+1)}$. Similarly, the right-hand side can be written in matrix form as $\omega b - \omega Ux^{(s)} + (1-\omega)Dx^{(s)}$. We can now reconstruct the matrix equation and solve for $x^{(s+1)}$.
+\end{paracol}
+\begin{align*}
+	&Dx^{(s+1)} + \omega Lx^{(s+1)} = \omega b - \omega Ux^{(s)} + (1 - \omega)Dx^{(s)}\\
+	&(D + \omega L)x^{(s+1)} = \omega b - [\omega U - (1 - \omega)D)]x^{(s)}\\
+	&x^{(s+1)} = \omega (D + \omega L)^{-1} b - (D + \omega L)^{-1}[\omega U - (1 - \omega)D)]x^{(s)}
+\end{align*}
+\begin{paracol}{2}
+Donde obtendríamos $f = \omega (D+\omega L)^{-1}$ para el término fijo y $H = -(D+ \omega L)^{-1}[\omega U -(1- \omega)D]$ para la matriz del método.  
+El siguiente código muestra como obtener $H$ y $f$, para el método de SOR, 
+\switchcolumn
+Eventually, we obtain $f = \omega (D+\omega L)^{-1}$ for the fixed part of the SOR method and $H = -(D+ \omega L)^{-1}[\omega U -(1- \omega)D]$ for the method matrix. The next code lines show how to get $H$ and $f$ for the SOR method,
+
+\end{paracol}
+
+\begin{minted}{python}
+	[nf,nc]=np.shape(A)
+	xs=x0.copy()
+	xs1=b.copy()
+	error= np.linalg.norm(xs1-xs)
+	it=0
+	D=np.diag(np.diag(A))
+	U=np.triu(A)-D
+	L=np.tril(A)-D
+	invD=np.linalg.inv(D+w*L)
+	f=w*(invD).dot(b)
+	H=-invD.dot(w*U - (1-w)*D)
+	#First iteration
+	xs1=f+H.dot(xs)
+	error=np.linalg.norm(xs1-xs)
+	it+=1
+	xs=xs1.copy()
+	
 \end{minted}
 
 \begin{paracol}{2}

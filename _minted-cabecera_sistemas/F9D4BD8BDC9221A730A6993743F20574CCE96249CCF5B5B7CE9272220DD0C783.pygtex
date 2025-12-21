@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{n}{A}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mf}{1.}\PYG{p}{,} \PYG{l+m+mf}{3.}\PYG{p}{,} \PYG{l+m+mf}{2.}\PYG{p}{],[}\PYG{l+m+mf}{2.}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.}\PYG{p}{,} \PYG{l+m+mf}{1.}\PYG{p}{],[}\PYG{l+m+mf}{1.}\PYG{p}{,} \PYG{l+m+mf}{4.}\PYG{p}{,} \PYG{l+m+mf}{3.}\PYG{p}{]])}
+\PYG{n}{b}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mf}{13.}\PYG{p}{],[}\PYG{l+m+mf}{3.}\PYG{p}{],[}\PYG{l+m+mf}{18.}\PYG{p}{]])}
+\PYG{c+c1}{\PYGZsh{} Extended matrix}
+\PYG{n}{AM}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{concatenate}\PYG{p}{((}\PYG{n}{A}\PYG{p}{,}\PYG{n}{b}\PYG{p}{),}\PYG{n}{axis}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}AM: \PYGZdq{}}\PYG{p}{,}\PYG{n}{AM}\PYG{p}{)}
+\PYG{n}{GA}\PYG{o}{=}\PYG{n}{eligaussp}\PYG{p}{(}\PYG{n}{AM}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}GA: \PYGZdq{}}\PYG{p}{,}\PYG{n}{GA}\PYG{p}{)}
+\PYG{n}{RA}\PYG{o}{=}\PYG{n}{GA}\PYG{p}{[:,}\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{l+m+mi}{3}\PYG{p}{]}
+\PYG{n}{nb}\PYG{o}{=}\PYG{n}{GA}\PYG{p}{[:,}\PYG{l+m+mi}{3}\PYG{p}{]}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}RA: \PYGZdq{}}\PYG{p}{,}\PYG{n}{RA}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}nb: \PYGZdq{}}\PYG{p}{,}\PYG{n}{nb}\PYG{p}{)}
+\PYG{n}{x}\PYG{o}{=}\PYG{n}{regressive}\PYG{p}{(}\PYG{n}{RA}\PYG{p}{,} \PYG{n}{nb}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}x: \PYGZdq{}}\PYG{p}{,}\PYG{n}{x}\PYG{p}{)}
+\end{Verbatim}

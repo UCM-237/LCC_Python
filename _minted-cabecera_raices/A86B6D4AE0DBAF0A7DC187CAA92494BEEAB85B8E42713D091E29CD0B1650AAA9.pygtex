@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+go}{12.0 \PYGZhy{} 4.0·x \PYGZhy{} 3.0·x² + 1.0·x³}
+\PYG{g+go}{Derivative: \PYGZhy{}4.0 \PYGZhy{} 6.0·x + 3.0·x²}
+\PYG{g+go}{Integral: 0.0 + 12.0·x \PYGZhy{} 2.0·x² \PYGZhy{} 1.0·x³ + 0.25·x\PYGZca{}4}
+\PYG{g+go}{0.0 + 12.0·x \PYGZhy{} 2.0·x² \PYGZhy{} 1.0·x³ + 0.25·x\PYGZca{}4}
+\end{Verbatim}
