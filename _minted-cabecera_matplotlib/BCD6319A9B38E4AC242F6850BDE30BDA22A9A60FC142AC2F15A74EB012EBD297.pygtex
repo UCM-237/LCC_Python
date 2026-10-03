@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+            \PYG{k}{with} \PYG{n}{writer}\PYG{o}{.}\PYG{n}{saving}\PYG{p}{(}\PYG{n}{fig}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}movie\PYGZus{}test.mp4\PYGZdq{}}\PYG{p}{,}\PYG{l+m+mi}{100}\PYG{p}{):}
+                \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+                    \PYG{n}{x0}\PYG{o}{=}\PYG{n}{x}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+                    \PYG{n}{y0}\PYG{o}{=}\PYG{n}{y}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+                    \PYG{n}{red\PYGZus{}circle}\PYG{o}{.}\PYG{n}{set\PYGZus{}data}\PYG{p}{([}\PYG{n}{x0}\PYG{p}{],[}\PYG{n}{y0}\PYG{p}{])}
+                    \PYG{n}{writer}\PYG{o}{.}\PYG{n}{grab\PYGZus{}frame}\PYG{p}{()}
+\end{Verbatim}

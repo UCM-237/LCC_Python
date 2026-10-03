@@ -604,10 +604,6 @@ X_m=\begin{pmatrix}
 \end{align*}
 
 
-\begin{minted}{python}
-Axes3D.plot_surface(X, Y, Z, *, norm=None, vmin=None, vmax=None, 
-lightsource=None, **kwargs)
-\end{minted}
 
 \begin{paracol}{2}
 La estructura de las matrices $X_m$ e $Y_m$ del ejemplo anterior, es la típica de las matrices de adyacencia de una retícula cuadrada; la matriz  $X_m$ tiene la filas repetidas y la matriz $Y_m$ tiene repetidas la columnas. En el ejemplo las matrices son cuadradas y definen una retícula de $4\times 4$ nodos. En general, podemos definir una retícula rectangular de $m\times n$ nodos. En este caso las matrices empleadas para definir la retícula tendrían dimensión $m\times n$.
@@ -713,12 +709,16 @@ array([[0., 0., 0., 0.],
 \end{minted}
 
 \switchcolumn
-Podríamos representar la retícula plana de la figura \ref{fig:mesh}, empleando por ejemplo el comando \texttt{plot\_wireframe(Xm, Ym, Zm)}.
+Podríamos representar la retícula plana de la figura \ref{fig:mesh}, empleando por ejemplo el comando,
 
 \switchcolumn
-We could represent the flat grid of the figure \ref{fig:mesh}, using the command \texttt{plot\_wireframe(Xm, Ym, Zm)}.
+We could represent the flat grid of the figure \ref{fig:mesh}, using the command,
 
 \end{paracol}
+\begin{minted}{python}
+Out[24]: fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+Out[25]: ax.plot_wireframe(Xm, Ym, Zm)
+\end{minted}
 
 \begin{figure}
     \centering
@@ -767,7 +767,6 @@ A continuación obtenemos la matriz de coordenadas z, aplicando la función a lo
 
 \begin{minted}{python}
 Zm=Xm**3+Ym**2
-
 \end{minted}
 
 \switchcolumn
@@ -778,20 +777,26 @@ Next we obtain the z-coordinate matrix by applying the function to the grid poin
 \begin{minted}{python}
 Zm=Xm**3+Ym**2
 \end{minted}
-
 \switchcolumn
 Podemos representar la superfície usando el método \textit{wireframe} o el método \textit{surface}. En el primer caso se dibuja la superfície como una rejilla, figura \ref{fig:wireframe} y en el segundo como las caras rellenas de color de la retícula, figura \ref{fig:surface}.
-
-Igualmente podemos representar una superficie con un mapa de color o de contornos en 2 dimensiones usando el el método \textit{contourf} o el método \textit{pcolor}. En este caso no se emplea \textit{subplot\_kw="projection": "3d"} porque no hace falta dibujar en el eje z, ya que se le atribuye un contorno o un color.
-
-
-
 \switchcolumn
-
 We can represent the surface using the \textit{wireframe} method or the \textit{surface} method. In the first case the surface is drawn as a grid, figure \ref{fig:wireframe}, and in the second as the colour-filled faces of the grid, figure \ref{fig:surface}.
+\end{paracol}
 
+\begin{minted}{python}
+	Out[26]: fig, ax = plt.subplots(1,2,subplot_kw={"projection": "3d"})
+	Out[27]: ax[0].plot_wireframe(Xm, Ym, Zm)
+	Out[28]: ax[1].plot_surface(Xm, Ym, Zm)
+\end{minted}
+
+
+\begin{paracol}{2}
+Igualmente podemos representar una superficie con un mapa de color o de contornos en 2 dimensiones usando el el método \textit{contourf} o el método \textit{pcolor}. En este caso no se emplea \textit{subplot\_kw="projection": "3d"} porque no hace falta dibujar en el eje z, ya que se le atribuye un contorno o un color.
+\switchcolumn
 We can also represent a surface with a color or contour map in 2 dimensions using the \textit{contourf} method or the \textit{pcolor} method. In this case, \textit{subplot\_kw=“projection”: “3d”} is not used because it is not necessary to draw on the z-axis, since a contour or a colour is assigned to it.
 \end{paracol}
+
+
 \begin{minted}{python}
 	import numpy as np
 	import matplotlib.pyplot as plt
