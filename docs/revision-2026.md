@@ -59,6 +59,7 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 | Capítulo | Estado | Notas |
 |---|---|---|
 | 2. Introducción a Python (`introprog.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
+| 3. Introducción a Numpy (`intronumpy.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | Resto | Pendiente | Solo han pasado la revisión automática (sección anterior). |
 
 **Capítulo 2: qué se ha hecho**
@@ -126,6 +127,74 @@ empezar; con el plug-in `spyder-notebook` también se trabaja con
 notebooks). Las capturas son de Spyder 5.4 / Python 3.11 y siguen siendo
 válidas. Cuando se rehagan con Spyder 6, aprovechar para corregir
 "Get into de function" en `depu2.png`.
+
+**Capítulo 3: qué se ha hecho**
+
+Revisión completa de las dos columnas (unas 500 correcciones), con todos
+los cálculos y ejemplos comprobados con Numpy/Scipy.
+
+*Errores de contenido corregidos*
+- Determinante $2\times 2$: el desarrollo daba $-a_{11}a_{22}+a_{12}a_{21}$
+  (el signo contrario); el desarrollo por la segunda columna tenía
+  $a_{22}a_{12}$ en lugar de $a_{22}a_{11}$. Un menor del ejemplo $3\times 3$
+  tenía un elemento mal copiado.
+- Diagonalización de la matriz $G$: el autovector dado para $\lambda=1$ no lo
+  era, y la matriz $X$ no tenía como columnas los autovectores (el producto
+  $XDX^{-1}$ no daba $G$). Rehecha con $x_3=[-1,0,2]^T$.
+- Diagonalización ortogonal: $A=QAQ^T$ → $A=QDQ^T$. "Diagonalizable
+  ortogonalmente si es normal" era incorrecto para matrices reales (es si y
+  solo si es simétrica; las normales lo son mediante matrices unitarias).
+- Normas 1 e ∞ de matrices: faltaban los valores absolutos y los límites
+  de los sumatorios estaban mal. Las normas 1, 2 e ∞ se presentaban como
+  algo distinto de las normas inducidas (lo son).
+- Matrices triangulares: las condiciones de triangular y estrictamente
+  triangular estaban intercambiadas.
+- Producto matricial: fórmula con $a_{ij}$ en lugar de $p_{ij}$; notación
+  de filas/columnas incoherente con las dimensiones; en inglés decía que
+  las columnas de la primera deben coincidir con las *columnas* de la
+  segunda.
+- Inglés: "simétrica" traducida como *antisymmetric*, y $A=A^T$ como
+  condición de antisimetría.
+- Indexación: la línea [11] extrae la segunda columna, no la primera; la
+  [95], la última, no la primera. El "slicing" no se detiene en `stop-step`
+  sino en el último valor anterior a `stop`.
+- Formas cuadráticas: dependen de $a_{11}$ y $a_{22}$ (no $a_{12}$) y dan
+  paraboloides elípticos o hiperbólicos (no hiperboloides).
+- Ejemplo de inversa: se invertía una matriz que no aparecía en el texto.
+  Elemento neutro $I\cdot A$ sin resultado; `np.mod` al revés en la tabla;
+  `matrix.power` → `matrix_power`; pie de figura $a-b+c$ → $a-0.5b+c$;
+  `(4\time2)` (asignaba un registro de TeX sin imprimir nada).
+- "Describir la factorización LU queda fuera de estos apuntes": se hace en
+  el capítulo de sistemas; ahora se remite a él.
+- Ejercicios: el 2 usaba `any(M<2)` (falla con `import numpy as np`, que
+  es lo que el texto recomienda); varios usaban `ones`, `eye`, `array` sin
+  `np.`; restos de MATLAB (`SumoDiag.m`).
+
+*Código*
+- `cambio_vb.py`: rechazaba como "no independiente" cualquier base con
+  determinante negativo (`det(B) < eps` sin valor absoluto). Ahora usa
+  `matrix_rank`, y dibuja los vectores con su tamaño real (antes todos
+  normalizados a 0.1).
+- `inversa.py`: la fórmula del comentario multiplicaba por el determinante.
+  Comentarios de `determinante.py` corregidos.
+
+*Contenido nuevo (verificación)*
+- Nota tras `det`: por qué da 20.000000000000007 y cómo comparar
+  (`isclose`, referencia a la sección de verificación y al capítulo de
+  aritmética).
+- Tras la inversa: comprobar con `np.allclose(B@A, np.eye(3))` y aviso de
+  que `inv` de una matriz singular puede devolver, sin error, una "inversa"
+  con elementos de 10^16.
+- Tras LU: la línea `P@L@U` como comprobación; el determinante con
+  permutación ($\vert P\vert=\pm 1$).
+- Cholesky como prueba práctica de "definida positiva"; norma −∞ (no es
+  una norma); coste factorial del determinante recursivo.
+- Ejercicios nuevos: *depura este código* (producto de matrices que solo
+  funciona con matrices cuadradas), *comprueba las propiedades* (con
+  matrices aleatorias), *¿es de verdad la inversa?* (matrices de Hilbert y
+  número de condición) y uno con IA (autovalores 2×2, que suele fallar con
+  autovalores complejos).
+- Ejercicios traducidos al inglés.
 
 ---
 

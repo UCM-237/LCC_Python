@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat May 25 17:47:28 2024
-Este módulo implementa la funcion inver, que calcula la inversa
+Este módulo implementa la función inver, que calcula la inversa
 de una matriz cuadrada empleando la expresión clásica
-A^-1 = [adj(A)]^T*det(A)
-EL determinante de la matriz se obtiene empleando la función
+A^-1 = [adj(A)]^T/det(A)
+El determinante de la matriz se obtiene empleando la función
 dumbdet incluida en el módulo determinante
 @author: abierto
 """
@@ -30,7 +30,7 @@ def inver(A):
             return()
         
         if abs(dA) <= 10*np.finfo(float).eps:
-            print('cuidado determinante proximo a cero')
+            print('cuidado: determinante próximo a cero')
         
     
         #Calculamos el cofactor de cada
@@ -41,11 +41,11 @@ def inver(A):
                 m=np.delete(np.delete(A,i,0),j,1)
                 
                 #calculamos el cofactor llamando a la función determinante
-                #lo ponemos ya en la posición que corresponderia a la matriz 
+                #lo ponemos ya en la posición que correspondería a la matriz 
                 # transpuesta de la adjunta.
                 iA[j,i]=(-1)**(i+j)*dumbdet(m)
                 
     
-    #Terminamos la operacion dividiendo por el determinante de A
+    #Terminamos la operación dividiendo por el determinante de A
         iA=iA/dA
         return(iA)

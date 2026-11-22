@@ -2,23 +2,23 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu May 23 14:50:48 2024
-Este modulo implementa la funcion dumbdet que calcula el determinante de 
+Este módulo implementa la función dumbdet que calcula el determinante de 
 una matriz empleando la formula de Laplace. La función es recursiva, 
-(se llama a si misma sucesivamente para calcular los cofactores necesarios). 
+(se llama a sí misma sucesivamente para calcular los cofactores necesarios). 
 Desarrolla siempre por los elementos de la primera columna. 
-(Es un prodigio de ineficiencia numerica, pero permite manejar bucles 
-y funciones recursivas, asi que supongo que puede ser útil para los que 
+(Es un prodigio de ineficiencia numérica, pero permite manejar bucles 
+y funciones recursivas, así que supongo que puede ser útil para los que 
 empiezan a programar).
-un posible ejercicio para ver lo malo que es el método, consiste ir
-aumentando la dimension de la matriz y comparar lo que lo tarde en
-calcular el determinante con lo que tarda la función de numpy.linalg.det...
-this module implements the function poordet which calculates a matrix 
-determinant using the Laplace's formulae. It is a recursive function, 
-(it calls itself on and on to calculate the cofactor nedded to get the 
- determinat). It always develod the formula using the elements of the matrix
-first column.
-(It is the most ineficient functionever writen, but may be an example of loops 
- and recursive functions  for begginers)
+Un posible ejercicio para ver lo malo que es el método consiste en ir
+aumentando la dimensión de la matriz y comparar lo que tarda en
+calcular el determinante con lo que tarda la función numpy.linalg.det...
+This module implements the function dumbdet, which calculates the determinant
+of a matrix using Laplace's formula. It is a recursive function
+(it calls itself again and again to calculate the cofactors needed to get the
+determinant). It always expands along the entries of the first column of the
+matrix.
+(It is a marvel of numerical inefficiency, but it is a good example of loops
+and recursive functions for beginners.)
 @author: juan
 """
 import numpy as np
