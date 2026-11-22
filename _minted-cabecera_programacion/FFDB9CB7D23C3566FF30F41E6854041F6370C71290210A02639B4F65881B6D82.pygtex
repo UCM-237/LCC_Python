@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{nombre\PYGZus{}de\PYGZus{}la\PYGZus{}funcion}\PYG{p}{(}\PYG{n}{e1}\PYG{p}{,}\PYG{n}{e2}\PYG{p}{,}\PYG{o}{...}\PYG{p}{):}
-    \PYG{n}{código} \PYG{n}{de} \PYG{n}{la} \PYG{n}{función}
-    \PYG{k}{return}\PYG{p}{,} \PYG{n}{r1}\PYG{p}{,} \PYG{n}{r2}\PYG{p}{,} \PYG{o}{...}
-\end{Verbatim}

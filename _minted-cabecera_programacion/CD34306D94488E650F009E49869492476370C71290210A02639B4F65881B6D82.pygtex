@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{L2} \PYG{o}{=} \PYG{n}{L}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
-\end{Verbatim}

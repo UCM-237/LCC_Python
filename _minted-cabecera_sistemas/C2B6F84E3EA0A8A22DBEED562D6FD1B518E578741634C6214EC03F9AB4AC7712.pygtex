@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+go}{import numpy as np}
-
-\PYG{g+go}{A=np.array([[4,1],[2,0.499]])}
-
-\PYG{g+go}{np.linalg.cond(A)}
-\PYG{g+go}{Out[7]: 5312.250061755533}
-\end{Verbatim}

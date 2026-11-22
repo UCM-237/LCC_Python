@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{generacion\PYGZus{}mw}\PYG{o}{.}\PYG{n}{drop}\PYG{p}{([}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{inplace}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{))}
-\end{Verbatim}

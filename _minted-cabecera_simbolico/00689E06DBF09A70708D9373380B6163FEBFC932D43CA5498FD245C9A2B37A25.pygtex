@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{162}\PYG{p}{]:} \PYG{n}{sp}\PYG{o}{.}\PYG{n}{integrate}\PYG{p}{(}\PYG{n}{f}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{)}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{162}\PYG{p}{]:}
-\end{Verbatim}

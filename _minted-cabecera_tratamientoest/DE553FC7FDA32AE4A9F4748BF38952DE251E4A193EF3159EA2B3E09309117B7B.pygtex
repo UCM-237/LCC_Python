@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kn}{from} \PYG{n+nn}{scipy.stats} \PYG{k+kn}{import} \PYG{n}{norm}
-\end{Verbatim}

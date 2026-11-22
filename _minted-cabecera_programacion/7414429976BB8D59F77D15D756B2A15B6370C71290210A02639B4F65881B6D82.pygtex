@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{for} \PYG{n}{índice}\PYG{o}{/}\PYG{n}{index} \PYG{o+ow}{in} \PYG{p}{[}\PYG{n}{Lista} \PYG{n}{de} \PYG{n}{valores}\PYG{o}{/}\PYG{n}{Values} \PYG{n+nb}{list}\PYG{p}{]}
-\end{Verbatim}

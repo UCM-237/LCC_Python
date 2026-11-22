@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{11}\PYG{p}{]:} \PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{numero\PYGZus{}par\PYGZus{}mod}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{par2}
-
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{12}\PYG{p}{]:} \PYG{n}{par2}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
-\PYG{l+m+mi}{3}  \PYG{n}{es} \PYG{n}{un} \PYG{n}{numero} \PYG{n}{impar}
-\PYG{l+m+mi}{3} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{odd} \PYG{n}{number}
-\PYG{n}{Out}\PYG{p}{[}\PYG{l+m+mi}{12}\PYG{p}{]:} \PYG{p}{()}
-\end{Verbatim}

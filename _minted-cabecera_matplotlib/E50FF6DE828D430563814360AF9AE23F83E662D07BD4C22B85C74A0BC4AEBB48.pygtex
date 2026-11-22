@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{k+kn}{import} \PYG{n+nn}{matplotlib} \PYG{k}{as} \PYG{n+nn}{mpl}
-\end{Verbatim}

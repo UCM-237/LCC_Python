@@ -1,7 +1,6 @@
+# --- LaTeX: ficheros auxiliares / auxiliary files ---
 build/
-_minted-lcc_manual/
-_minted-cabecera_numpy/
-__pycache__
+_minted*/
 *.aux
 *.idx
 *.ilg
@@ -10,10 +9,21 @@ __pycache__
 *.log
 *.lot
 *.out
-/*.pdf
 *.toc
 *.gz
+*.fls
+*.fdb_latexmk
+*.pyg
+# PDFs generados en la raíz (los publicados van en pdfs/)
+/*.pdf
 
+# --- Python / Jupyter ---
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
 
-
-
+# --- Ficheros temporales de editores / editor temp files ---
+.~lock.*#
+*~
+.DS_Store
+Thumbs.db
