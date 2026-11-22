@@ -83,7 +83,7 @@ The algorithm used to obtain the root is then said to have converged in \emph{n}
 \end{paracol}
 
 \begin{paracol}{2}
-\section{Metodos iterativos locales}
+\section{Métodos iterativos locales}
 \subsection{Método de la bisección}
 \paragraph*{Teorema de Bolzano.}
 \begin{quote}
@@ -215,7 +215,7 @@ Figure \ref{fig:dfbisec} shows a flowchart corresponding to the bisection method
 \end{figure}
 
 \begin{paracol}{2}
-El proceso se muestra gráficamente en la figura \ref{fig:bisec}, para un caso particular. Se trata de obtener la raíz de la función mostrada en la figura \ref{fig:bolzano}, $f(x)=e^x-x^2$. esta función tiene una única raíz: $r\approx -0.7035$. Para iniciar el algoritmo se ha elegido un intervalo $[a=-2,b=2]$. La figura \ref{fig:bisec}, muestra tres iteraciones sucesivas,y la ´solución final, que se obtiene al cabo de ocho iteraciones en éste ejemplo, para el que se a empleado una tolerancia $tol=0.01$. En la secuencia de gráficas se puede observar también la evolución del intervalo de búsqueda, $[-2, 2]\rightarrow [-2, 0] \rightarrow [-1, 0] \rightarrow [-1, -0.5] \cdots$; así como el cambio alternativo del límite derecho o izquierdo, para asegurar que la raíz queda siempre dentro de los sucesivos intervalos de búsqueda obtenidos. 
+El proceso se muestra gráficamente en la figura \ref{fig:bisec}, para un caso particular. Se trata de obtener la raíz de la función mostrada en la figura \ref{fig:bolzano}, $f(x)=e^x-x^2$. esta función tiene una única raíz: $r\approx -0.7035$. Para iniciar el algoritmo se ha elegido un intervalo $[a=-2,b=2]$. La figura \ref{fig:bisec}, muestra tres iteraciones sucesivas,y la solución final, que se obtiene al cabo de ocho iteraciones en éste ejemplo, para el que se a empleado una tolerancia $tol=0.01$. En la secuencia de gráficas se puede observar también la evolución del intervalo de búsqueda, $[-2, 2]\rightarrow [-2, 0] \rightarrow [-1, 0] \rightarrow [-1, -0.5] \cdots$; así como el cambio alternativo del límite derecho o izquierdo, para asegurar que la raíz queda siempre dentro de los sucesivos intervalos de búsqueda obtenidos. 
 
 \switchcolumn
 
@@ -227,7 +227,7 @@ The process is shown graphically in figure \ref{fig:bisec}, for a particular cas
 
 
 \subsection{Método de interpolación lineal o (\emph{Regula falsi})}
-Este método supone una mejora del anterior ya que, en general,  converge más rápidamente. La idea es modificar el modo en que calculamos el punto $c$. En el caso del método de la bisección el criterio consistía en ir tomando en cada iteración el punto medio del intervalo que contiene la raíz. El método de interpolación lineal, elige como punto $c$ el punto de corte con el eje x, de la recta que pasa por los puntos $\left(a,f(a)\right)$ y $\left(b,f(b)\right)$. Es decir la recta que corta a la función $f(x)$ en ambos límites del intevalo que contiene a la raíz buscada. La recta que pasa por ambos puntos puede construirse a partir de ellos como,
+Este método supone una mejora del anterior ya que, en general,  converge más rápidamente. La idea es modificar el modo en que calculamos el punto $c$. En el caso del método de la bisección el criterio consistía en ir tomando en cada iteración el punto medio del intervalo que contiene la raíz. El método de interpolación lineal, elige como punto $c$ el punto de corte con el eje x, de la recta que pasa por los puntos $\left(a,f(a)\right)$ y $\left(b,f(b)\right)$. Es decir la recta que corta a la función $f(x)$ en ambos límites del intervalo que contiene a la raíz buscada. La recta que pasa por ambos puntos puede construirse a partir de ellos como,
 
 \begin{equation*}
 y=\frac{f(a)-f(b)}{a-b}\cdot(x-b)+f(b)
@@ -346,7 +346,7 @@ Figure \ref{fig:regulaf} shows the position of point $c$ computed with this meth
 En la figura \ref{fig:regula} se muestra el diagrama de flujo para el método de interpolación lineal. Como puede verse, es idéntico al de la bisección excepto en el paso en que se obtiene el valor de $c$, donde se ha sustituido el cálculo del punto medio del intervalo de búsqueda, por el cálculo del punto de corte con el eje de abscisas  de la recta que une los extremos del intervalo.
 
 \switchcolumn
-The flowchart for the false position method is shown in figure \ref{fig:regula_eng}. As can be seen, it is identical to the bisection method except in the step where the value of $c$ is obtained, where the calculation of the midpoint of the search interval has been replaced by the calculation of the point of intersection with the abscissa axis of the straight line joining the ends of the interval.
+The flowchart for the false position method is shown in figure \ref{fig:regula}. As can be seen, it is identical to the bisection method except in the step where the value of $c$ is obtained, where the calculation of the midpoint of the search interval has been replaced by the calculation of the point of intersection with the abscissa axis of the straight line joining the ends of the interval.
 \switchcolumn
 
 La figura \ref{fig:iterr2} Muestra gráficamente el proceso iterativo seguido para obtener la raíz de una función en un intervalo mediante el método de interpolación lineal. Se ha empleado la misma función y el mismo intervalo inicial que en el caso de la bisección. 
@@ -787,7 +787,7 @@ El método del punto fijo es, como se verá a lo largo de esta sección, el más
  \switchcolumn
 
 
-\subsection{Method of successive approximations or fixed point iteration}\label{pfijo}
+\subsection{Method of successive approximations or fixed point iteration}\label{pfijo-2}
 
 The fixed point iteration is, as will be seen throughout this section, the simplest of all to program. Unfortunately, it has the problem that we cannot apply it to all functions. There are cases in which the method does not converge, so it is not possible to use it to find the root or roots of a function.
 
@@ -840,7 +840,7 @@ x_{n+1}=g(x_n)
 Es decir, empezamos tomando un punto inicial $x_0$ y a partir de él vamos obteniendo los siguientes valores de la sucesión como,
 \switchcolumn
 
-\paragraph{Attracting fixed point.} \index{Attracting fixed point} SSuppose now that from the function $g(x)$ we create the following sequence,
+\paragraph{Attracting fixed point.} \index{Attracting fixed point} Suppose now that from the function $g(x)$ we create the following sequence,
 \begin{equation*}
 x_{n+1}=g(x_n)
 \end{equation*}
@@ -863,7 +863,7 @@ There are some cases where it is possible, for certain functions, to know when o
 
 \switchcolumn
 
-\paragraph{Teorema de existencia y unicidad del punto fijo.}\index{Punto fijo! Teorema} Dada una función $g(x)$,  continua y diferen-\- ciable en un intervalo $[a, b]$, si se cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$,  entonces $g(x)$ tiene un punto fijo en el intervalo $[a, b]$. 
+\paragraph{Teorema de existencia y unicidad del punto fijo.}\index{Punto fijo! Teorema} Dada una función $g(x)$,  continua y diferen\-ciable en un intervalo $[a, b]$, si se cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$,  entonces $g(x)$ tiene un punto fijo en el intervalo $[a, b]$. 
 
 Si además existe una constante positiva $k < 1$  y se  cumple que  la derivada $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, entonces el punto fijo contenido en $[a,b]$ es único. 
 
@@ -915,6 +915,7 @@ Salvo que, en contra de la hipótesis inicial, se cumpla que  $ x_{f1}=x_{f2}$. 
 
 \switchcolumn
 Unless, contrary to the initial hypothesis, it is satisfied that $ x_{f1}=x_{f2}$. In which case, there can only be a single fixed point in the interval $[a, b]$ under the conditions imposed by the theorem.
+\switchcolumn
 
 \paragraph{Teorema de punto fijo (atractivo).}\footnote{Hay varios teoremas de punto fijo definidos en distintos contextos matemáticos. Aquí se da una versión reducida a funciones $f(x):\mathbb{R} \rightarrow \mathbb{R}$} Dada una función $g(x)$,  continua y diferenciable en un intervalo $[a, b]$, que  cumple que, $\forall x \in [a, b] \Rightarrow g(x)\in [a,b]$ y que  $\vert g'(x) \vert \leq k, \  \forall x \in (a, b)$, con $0<k<1$, entonces se cumple que, para cualquier punto inicial $x_0$, contenido en el intervalo $[a, b]$, la sucesión  $x_{n+1}=g(x_n)$ converge al único punto fijo del intervalo $[a, b]$.
 La demostración puede obtenerse de nuevo a partir del teorema del valor medio. Si lo aplicamos al valor inicial $x_0$ y al punto fijo $x_f$, obtenemos,
@@ -1297,7 +1298,7 @@ A simple, but very interesting one is that of the discrete logistic equation, $x
 %\end{figure}
 
 \begin{paracol}{2}
-	Por último, si empleamos la función $g(x)=\frac{e^x}{x}$, no se cumple el teorema de punto fijo en ningún punt. En este caso, el algoritmo diverge siempre.  La figura \ref{fig:pfijo5} muestra la evolución del algoritmo del punto fijo para esta función. Se ha elegido un punto de inicio $x_0=-0.745$, muy próximo al valor de la raíz, para poder observar la divergencia de las soluciones obtenidas con respecto al punto fijo. Como puede verse, el valor de $x_n$ cada vez se aleja más de la raíz. La solución oscila entre un valor que cada vez se aproxima más a cero y otro que tiende hacia $-\infty$. Si se deja aumentar suficientemente el número de iteraciones, llegará un momento en que se producirá un error de desbordamiento. 
+	Por último, si empleamos la función $g(x)=\frac{e^x}{x}$, no se cumple el teorema de punto fijo en ningún punto. En este caso, el algoritmo diverge siempre.  La figura \ref{fig:pfijo5} muestra la evolución del algoritmo del punto fijo para esta función. Se ha elegido un punto de inicio $x_0=-0.745$, muy próximo al valor de la raíz, para poder observar la divergencia de las soluciones obtenidas con respecto al punto fijo. Como puede verse, el valor de $x_n$ cada vez se aleja más de la raíz. La solución oscila entre un valor que cada vez se aproxima más a cero y otro que tiende hacia $-\infty$. Si se deja aumentar suficientemente el número de iteraciones, llegará un momento en que se producirá un error de desbordamiento. 
 	
 	A diferencia de lo que sucedía en la elección de $g(x)=ln(x^2)$, en este caso, el algoritmo no oscila entre las dos ramas. Si empezamos en la rama de la derecha, eligiendo un valor positivo para $x_0$, el algoritmo diverge llevando las soluciones hacia $+\infty$. Es un resultado esperable, ya que dicha rama no tiene ningún punto fijo.
 	
@@ -1347,7 +1348,7 @@ La sintaxis del método \texttt{fsolve} en su forma más sencilla es la siguient
 \end{minted}
 
 
-donde \texttt{fun} representa el nombre de la función que se desea evaluar, \texttt{[x0]}, son los valores de partida de las raices  y \texttt{roots} las raices calculadas oir \texttt{fsolve}. 
+donde \texttt{fun} representa el nombre de la función que se desea evaluar, \texttt{[x0]}, son los valores de partida de las raices  y \texttt{roots} las raices calculadas oír \texttt{fsolve}. 
 
 \switchcolumn
 The syntax of the \texttt{fsolve} method in its simplest form is as follows:
@@ -1403,7 +1404,7 @@ The \texttt{fsolve} method has many possibilities to adjust the precision, the m
 
 Podemos crear y manipular polinomios en NumPy usando las clases del paquete\\ \texttt{numpy.polynomial package} incorporado en Numpy 1.4. La clase \texttt{Polynomial} proporciona los métodos numéricos habituales en Python $+$, $-$, $*$, $/$, $\%$ y otros específicos de polinomios.
 
-Para crear un polinomio tendremos que importar el módulo \texttt{numpy.polynomial} y usar la clase \texttt{Polynomial}. A esta clase, como primer argumento le proporcionarenmos un vector cuyos elementos, son los coeficientes del polinomio ordenados de  menor grado a mayor grado. Así por ejemplo, el polinomio $y=1 + 4x + 3x^2+2x^3$ se representa mediante el vector, $[1\ 4\ 3\ 2]$ de la siguiente manera:
+Para crear un polinomio tendremos que importar el módulo \texttt{numpy.polynomial} y usar la clase \texttt{Polynomial}. A esta clase, como primer argumento le proporcionaremos un vector cuyos elementos, son los coeficientes del polinomio ordenados de  menor grado a mayor grado. Así por ejemplo, el polinomio $y=1 + 4x + 3x^2+2x^3$ se representa mediante el vector, $[1\ 4\ 3\ 2]$ de la siguiente manera:
 
 \switchcolumn
 
@@ -1670,180 +1671,12 @@ For the case of the bisection method the flowchart can be modified as shown in t
 			\draw[blue,-latex](f.east)-|(11,-2)--(b);
 		\end{tikzpicture}
 	\end{subfigure}
-	\bicaption{Diagrama de flujo del método de la bisección con precisión máxima}{Flow chart of bisection method with maximal precission}
+	\bicaption{Diagrama de flujo del método de la bisección con precisión máxima}{Flow chart of bisection method with maximal precision}
 	\label{fig:dfbisecprecmax}
 \end{figure}
 
 \begin{paracol}{2}
-Es más, en el método de la bisección se puede calcular en función del intervalo inicial el número de iteraciones necesario para alcanzar la máxima precisión, puesto que en cada iteración el intervalo se reduce a la mitad. Si llamamos $d$ al intervalo de partida $d=\vert a-b \vert$, en la iteración $n$ la longitud del intervalo será $\frac{d}{2^{n-1}}$. Se alcanzará el intervalo mínimo posible cuando su longitud sea la de \texttt{np.spacing(a)}. Pero según se explicaba en la sección \ref{err98 CAP´ITULO/CHAPTER 2. INTRO A PYTHON ※ INTRO TO PYTHON
-29
-30 i = 0 #indice de para recorrer las listas de n´umeros
-31 #numbers to cover the list of number list
-32 C =[]
-33 n_lista = len(A)
-34 while i < n_lista:
-35 n_num = len(A[i])
-36 j = 0 #indice para recorrer los numeros de cada lista de numeros
-37 #index to cover the number of each number list
-38 C.append([])
-39 while j < n_num:
-40 C[i].append(A[i][j]+B[i][j])
-41 j = j+1
-42 i = i+1
-43 return C
-La funci´on pmax, toma como entradas dos
-n´umeros y calcula a qu´e exponente es nece-
-sario elevar el primero de los n´umeros para
-que el resultado sea mayor que el segundo. El
-c´odigo del bucle while comienza en la l´ınea 16
-comprobando si el n´umero elevado al valor de
-n es menor que el valor de la segunda variable
-de entrada M. Si efectivamente se cumple esta
-condici´on, se ejecuta la l´ınea 17 que lo ´unico
-que hace es incrementar en una unidad el va-
-lor de n. A continuaci´on el programa vuelve
-de nuevo a la l´ınea 16 y comprueba si se cum-
-ple la condici´on para el nuevo valor de n. Este
-proceso contin´ua hasta que la condici´on deja
-de cumplirse. En ese momento, el programa
-sale del bucle while y ejecuta la instrucci´on
-return, devolviendo el ´ultimo valor calculado
-de n.
-Un aspecto muy importante del bucle while
-es que al programarlo hay que asegurarse de
-que dentro del bucle existe la posibilidad de
-cambiar la condici´on de entrada. Si no, el pro-
-grama no podr´a terminar nunca el bucle5. Las
-sentencias break y continue son id´enticas a
-las descritas en el caso de los bucles for, por
-lo que no insistiremos m´as sobre el asunto.
-Bucles while anidados. Del mismo modo
-que se anidan los bucles for, es posible anidar
-bucles while. En el c´odigo de ejemplo anterior
-se ha definido una funci´on, L_suma, Que em-
-5Cuando se produce esta situaci´on por un error en
-el dise˜no del programa, el bucle se puede parar pul-
-sando a la vez las teclas ctrl+c
-The function pmax takes two numbers as
-input and calculates the exponent you have
-to raise the first number to obtain a result
-greater than the second one. The while loop
-code starts at line 16, checking whether the
-first input variable raises to n is less than the
-second input variable. When this condition is
-fulfilled, the program executes line 17 that in-
-creases in one unit the value of n. Then, the
-program returns to line 16 and checks if the
-condition is met for a new value of n. This pro-
-cess goes on until the condition is no longer
-met. At this moment, the program exits the
-while loop and executes the return instruc-
-tion, returning the last value of n the program
-calculated.
-A critical point to consider when program-
-ming a while is ensuring that the input to
-the loop condition will change inside the loop.
-Otherwise, the program will get into an infini-
-te loop and never stop5. The commands break
-and continue are identical to those described
-for the for loops. For this reason, we will not
-insist on them any more.
-Nested while loops. In a similar way as
-with the for loops, it is possible to nest while
-loops. We have defined the function L_suma, in
-the above code example, which uses two nes-
-ted while loops to add the values of two lists
-located at the same position in each list. The
-5If you get into this situation for an error in the pro-
-gram design, please don‘t panic: press the board keys
-Control + C simultaneously and breathe normally.
-2.7. CONTROL DE FLUJO ※ FLOW CONTROL. 99
-pela dos bucles while anidados para sumar los
-valores de dos listas de listas de n´umeros que
-ocupan la misma posici´on. Las listas deben
-tener las mismas dimensiones, mismo n´ume-
-ro de listas de n´umeros y mismo n´umero de
-valores en cada lista de n´umero. Lo primero
-que se hace en definir un ´ındice, para ir re-
-corriendo cada una de las listas de n´umeros
-contenidas en las listas de entrada A y B. Des-
-pu´es se crea una nueva lista C, vac´ıa. En la
-l´ınea 34 se empieza el bucle while exterior.
-Este bucle se ejecutar´a mientras le ´ındice i
-sea menor que el n´umero de listas de n´umeros
-contenidas en las listas de entrada. Una vez
-que se entra en dicho bucle, lo primero que se
-hace es comprobar cuantos numeros hay en la
-lista i y se a˜nade una nueva lista (de n´ume-
-ros) vac´ıa a la lista C. El programa entra en
-el while interior, que va recorriendo los valo-
-res de las listas de n´umeros i contenidas en
-las listas de entrada, los suma y los a˜nade a
-la lista C. Cada vez que termina con una de
-las listas de n´umeros, j = n_num, El progra-
-ma sale del bucle interior, incrementa en una
-unidad el valor de i, cuenta cuantos n´umeros
-hay en la nueva lista y a˜nade una nueva lista
-vac´ıa a C y vuelve a entrar en el bucle inte-
-rior. El proceso contin´ua hasta que se agotan
-las listas de n´umeros, i = n_lista; cuando
-se cumple esta condici´on, el programa sale del
-bucle while exterior y devuelve el valor de C.
-lists should have the same dimension, the sa-
-me number of lists of numbers and the same
-number of numbers in each list of numbers.
-We first define an index to cover the lists of
-numbers contained in the input lists A and B.
-Then, a new empty list C is created. An outer
-while loop starts at line 34. This loop will run
-while the index i is less than the number of list
-of numbers contained in the input lists. Once
-the program gets into this outer loop, the pro-
-gram checks first of all how many numbers the
-list i contains and appends a new empty list
-(of numbers) to list C. The program then gets
-into the inner while loop, which covers the
-values of the lists of numbers i contained in
-the input lists, adds these values between then
-and appends the result to the list C. Any ti-
-me a list of numbers is completed, j = n_num,
-the program jumps off the inner loop, increa-
-ses in one unit the value of i, checks how many
-numbers are in the new list of numbers, adds
-a new empty list to C and get again into the
-inner loop. The process goes on till the lists of
-numbers are exhausted, i = n_lista; when
-this condition is met, the program gets out
-the outer while loop and returns the value of
-C.
-2.7.3. Funciones recursivas.
-Una funci´on recursiva es una funci´on que
-se llama a s´ı misma. Hemos esperado hasta
-aqu´ı para hablar de ellas porque, de alguna
-manera, se comportan como un bucle y nece-
-sitan una condici´on de salida para dejar de lla-
-marse a s´ı mismas y terminar su ejecuci´on. En
-general, son delicadas de manejar y tienden a
-consumir mucha memoria ya que cada vez que
-la funci´on se llama a s´ı misma necesita crear
-un nuevo espacio de memoria independiente.
-Veamos un ejemplo de funci´on recurrente que
-permite obtener el t´ermino en´esimo de la su-
-cesi´on de Fibonacci.
-2.7.3. recursive functions.
-A recursive function is a function that calls
-itself. We have waited till now to speak of
-them because, in some ways, they behave li-
-ke a loop and need an output condition to
-stop their execution. Speaking in general, they
-are difficult to deal with and tend to be very
-memory-consuming because any time a fun-
-ction calls itself creates a new memory inde-
-pendent memory area. We are going to see an
-example of a recursive function which allows
-for obtaining the Fibonacci series n term.
-f0 = 0, f1 = 1, f2 = 1, f3 = 2, f4 = 3, f5 = 5, f6 = 8, · · · fi = fi−1 + fi−2 · · ·
-n} el valor de \texttt{eps} es igual a $2$ elevado al número de bits de la mantisa. En el caso de un número de doble precisión la mantisa tiene $52$ bits y por lo tanto:
+Es más, en el método de la bisección se puede calcular en función del intervalo inicial el número de iteraciones necesario para alcanzar la máxima precisión, puesto que en cada iteración el intervalo se reduce a la mitad. Si llamamos $d$ al intervalo de partida $d=\vert a-b \vert$, en la iteración $n$ la longitud del intervalo será $\frac{d}{2^{n-1}}$. Se alcanzará el intervalo mínimo posible cuando su longitud sea la de \texttt{np.spacing(a)}. Pero según se explicaba en la sección \ref{errn} el valor de \texttt{eps} es igual a $2$ elevado al número de bits de la mantisa. En el caso de un número de doble precisión la mantisa tiene $52$ bits y por lo tanto:
 
 \begin{equation*}
 \frac{\vert d \vert}{2^{n-1}}<2^{-52} 
@@ -1896,7 +1729,7 @@ Aplica el programa creado a la función de ejemplo empleada en el manual, $f(x) 
 
 \item Crea una función en python que implemente el método del punto fijo para obtener la raíz de una función cualquiera $y = f(x)\vert\  x, y \in \mathbb{R}$. La función deberá admitir como variables de entrada, la función auxiliar $g(x)$, necesaria para aplicar el método, un punto inicial de búsqueda $x_0$, un numero máximo de iteraciones, $nmax$, a realizar y la tolerancia $tol$ o error máximo admisible para la solución obtenida. Así mismo la función deberá devolver como como variables de salida, el valor aproximado obtenido para la raíz $r$, el error cometido $f(r)$ y el número de iteraciones empleado para alcanzar la solución.
 
-Aplica el programa creado a la función de ejemplo empleada en el manual, $f(x) = e^x-x^2$, empleando para ello los tres ejemplos de funciones auxiliare $g(x)$ propuestos en la sección \ref{pfijo}. Comprueba que se cumple en cada caso lo expuesto en dicha sección.
+Aplica el programa creado a la función de ejemplo empleada en el manual, $f(x) = e^x-x^2$, empleando para ello los tres ejemplos de funciones auxiliare $g(x)$ propuestos en la sección \ref{pfijo-2}. Comprueba que se cumple en cada caso lo expuesto en dicha sección.
 
 \item Se quiere aproximar el valor de $\pi$ utilizando las dos siguientes funciones:
 \begin{equation*}
@@ -1943,7 +1776,7 @@ y
 x^2-2x-3=0 \Rightarrow x=\frac{3}{x-2}
 \end{equation}
 \begin{enumerate}
-\item Aplica el método del punto fijo, tomando como punto de partida $x_0=4$, mediante ambas reordenaciones. Calcula en ambos casos la raíz con una tolerancia de $0.0001$. Indica en cada caso: el valor de la raíz y el número de interaciones empleadas.  ¿Son razonables los resultados?
+\item Aplica el método del punto fijo, tomando como punto de partida $x_0=4$, mediante ambas reordenaciones. Calcula en ambos casos la raíz con una tolerancia de $0.0001$. Indica en cada caso: el valor de la raíz y el número de iteraciones empleadas.  ¿Son razonables los resultados?
 
 \item Repite el calculo empleando ahora el método de Steffensen y comprueba si emplea o no menos iteraciones que el punto fijo.
 \end{enumerate}
@@ -1967,7 +1800,7 @@ x_2 = 4t^6
 \begin{equation}
 f(v) = \sqrt{\frac{2}{\pi}}\left( \frac{m}{kT}\right)^{3/2}v^2e^{-\dfrac{\scriptstyle mv^2}{\scriptstyle 2kT}},
 \end{equation}
-da la probabilidad de que una partícula de un gas se mueva con velocidad $v$. Donde $m$ es la masa de la partícula en Kg, $T$ la temperatura en grados Kelving del gas y k $=1.380649\times 10^{-23} \text{JK}^{-1}$ la constante de Boltzmann. 
+da la probabilidad de que una partícula de un gas se mueva con velocidad $v$. Donde $m$ es la masa de la partícula en Kg, $T$ la temperatura en grados Kelvin del gas y k $=1.380649\times 10^{-23} \text{JK}^{-1}$ la constante de Boltzmann. 
 \begin{enumerate}
 \item  \label{eje91}Dibuja una gráfica de la distribución de Maxwell a temperatura ambiente T $= 300$K para el Nitrógeno N$_2$  cuya masa molecular vale $m = 4.65 \times 10^{-26}	\text{Kg}$.
 \item \label{eje92}Calcula a dicha temperatura cual es el valor más probable de la velocidad de una partícula.
@@ -1998,7 +1831,7 @@ Apply the program created to the example function used in the manual, $f(x) = e^
 
 \item Create a python function that implements the fixed point iteration to obtain the root of any function $y = f(x)\vert x, y \in \mathbb{R}$. The function must admit as input variables, the auxiliary function $g(x)$, necessary to apply the method, an initial search point $x_0$, a maximum number of iterations, $nmax$, to be carried out and the tolerance $tol$ or maximum admissible error for the solution obtained. Likewise, the function must return as output variables, the approximate value obtained for the root $r$, the error committed $f(r)$ and the number of iterations used to reach the solution.
 
-Apply the program created to the example function used in the manual, $f(x) = e^x-x^2$, using the three examples of auxiliary functions $g(x)$ proposed in the section \ref{pfijo}. Check that what is stated in that section is satisfied in each case.
+Apply the program created to the example function used in the manual, $f(x) = e^x-x^2$, using the three examples of auxiliary functions $g(x)$ proposed in the section \ref{pfijo-2}. Check that what is stated in that section is satisfied in each case.
 
 \item The value of $\pi$ is to be approximated using the following two functions:
 \begin{equation*}
@@ -2009,9 +1842,9 @@ y=\cos(x/2)
 \end{equation*}
 \begin{enumerate}
 \alph{enumii}
-\item \label{it1}Draw the two functions and their derivatives on the interval $[\frac{\pi}{2},\frac{3\pi}{2}]$.
+\item \label{it1-2}Draw the two functions and their derivatives on the interval $[\frac{\pi}{2},\frac{3\pi}{2}]$.
 \item Apply the secant method for each function, taking $x_0=3$ as a starting point and obtaining in both cases the solution with a tolerance of $0.01$. Choose a value for $x_1$ that you consider appropriate.
-The program used must add to the graph obtained in \ref{it1}), a point in the position $(x_i,y_i)$ that represents the value obtained for the root in each iteration $i$.
+The program used must add to the graph obtained in \ref{it1-2}), a point in the position $(x_i,y_i)$ that represents the value obtained for the root in each iteration $i$.
 \item Compare the number of iterations needed in each case to obtain the solution.
 \end{enumerate}
 
@@ -2068,7 +1901,7 @@ x_2 = 4t^6
 \begin{equation}
 f(v) = \sqrt{\frac{2}{\pi}}\left( \frac{m}{kT}\right)^{3/2}v^2e^{-\dfrac{\scriptstyle mv^2}{\scriptstyle 2kT}},
 \end{equation}
-gives the probability that a particle of a gas moves with velocity $v$. Where $m$ is the mass of the particle in kg, $T$ the temperature in degrees Kelving of the gas and k $=1.380649\times 10^{-23} \text{JK}^{-1}$ the Boltzmann constant. 
+gives the probability that a particle of a gas moves with velocity $v$. Where $m$ is the mass of the particle in kg, $T$ the temperature in degrees Kelvin of the gas and k $=1.380649\times 10^{-23} \text{JK}^{-1}$ the Boltzmann constant. 
 \begin{enumerate}
 \item  \label{eje91e}Draw a graph of the Maxwell distribution at room temperature  $T= 300K$ for Nitrogen $N_2$ whose molecular mass is $m = 4.65 \times 10^{-26}	\text{Kg}$.
 \item \label{eje92e}Calculate at this temperature what is the most probable value of the velocity of a particle.
@@ -2177,7 +2010,7 @@ La expresión matemática de esta ley es la ecuación de Kepler:
     M=E-e\sin(E)
 \end{equation}
 
-Fue derivada por primera vez por Johannes Kepler en 1609 en el capítulo 60 de su ‘Astronomia nova’ y en el libro V de su ‘Epitome of Copernican Astronomy’ (1621) Kepler propuso una solución iterativa a la ecuación. La ecuación ha jugado un papel importante en la historia de la física y las matemáticas, en particular en la mecánica celeste clásica.
+Fue derivada por primera vez por Johannes Kepler en 1609 en el capítulo 60 de su ‘Astronomía nova’ y en el libro V de su ‘Epitome of Copernican Astronomy’ (1621) Kepler propuso una solución iterativa a la ecuación. La ecuación ha jugado un papel importante en la historia de la física y las matemáticas, en particular en la mecánica celeste clásica.
 
 Si un planeta da una vuelta al Sol en un periodo de tiempo $T_0$. El movimiento medio $n=\frac{2\pi}{T_0}$ es el ángulo girado en la unidad de tiempo suponiendo movimiento uniforme. Si el planeta está en el perihelio  $P$ ( ver figura \ref{fig:my_label}) en  el momento $t_0$ la anomalía media es:
 \begin{equation} \label{eq2}
@@ -2202,7 +2035,7 @@ Queremos calcular la posición de Marte respecto al Sol 80 días terrestres desp
     \item Escribe un programa que resuelva la ecuación de Kepler de forma numérica por el método del punto fijo, con una precisión de $0.001$ (rad.) ¿Qué ocurre con las funciones del apartado 1?
     \item Representar la evolución del cálculo iterativo de $E$ y su tolerancia. Partir de $E=M$.
     \item Calcula y representa la órbita de Marte con una resolución de $1$ día. Representa la órbita y la posición orbital en el día $80$.
-    \item Escribe un programa  que resuelva la ecuación de Kepler de forma numérica por el método de Newtom-Raphson. Compara la velocidad de convergencia sobre la gráfica del apartado 3. Nota: Se deben implementar las funciones $f(E)=0$ y $f ’(E)$. Tolerancia $tol=10^{-10}$.
+    \item Escribe un programa  que resuelva la ecuación de Kepler de forma numérica por el método de Newton-Raphson. Compara la velocidad de convergencia sobre la gráfica del apartado 3. Nota: Se deben implementar las funciones $f(E)=0$ y $f ’(E)$. Tolerancia $tol=10^{-10}$.
 \end{enumerate}
 
 \section{LCC. Test 2 (curso 2024 -2025) \protect\footnote{Crea las funciones necesarias  y da los resultados y tus comentarios en un \emph{notebook}.}}
@@ -2212,19 +2045,19 @@ Queremos calcular la posición de Marte respecto al Sol 80 días terrestres desp
 	
 	Tras pedir ayuda a la Legion of Doom, descubre que no basta con hacer unos raíles que bajen en línea recta, sino que deben tomar la forma de una braquistócrona\footnote{Del griego $\beta \rho \alpha \chi \iota  \sigma \tau o \varsigma$ 'el más corto', $\chi \rho o \nu o \varsigma$ 'tiempo'. https://mathworld.wolfram.com/BrachistochroneProblem.html} Cuya ecuación paramétrica es,
 	\begin{align}
-		x &= K[\theta-\sin(\theta) + \mu(1-\cos(\theta))] \label{eq1} \\
-		h &= h_0 -K[1-\cos(\theta) + \mu(\theta+\sin(\theta))] \label{eq2}
+		x &= K[\theta-\sin(\theta) + \mu(1-\cos(\theta))] \label{eq1-2} \\
+		h &= h_0 -K[1-\cos(\theta) + \mu(\theta+\sin(\theta))] \label{eq2-2}
 	\end{align}
 	
 	Donde $x,h$ representan la posición en el eje $x$ y la altura $h$, sobre el suelo, el punto de inicio de la bajada es $(0,h_0$), $\mu$ es el coeficiente de rozamiento, en nuestro caso,  entre el cochecito y los raíles y $\theta \in [0,2\pi)$ es un parámetro variable. La constante $K$, permite ajustar el tamaño de la braquistócrona.     
 	
 	A Lex Luthor las ecuaciones le nublan la vista y acude a los alumnos de LCC --cuya fama ha llegado hasta Gotham-- para que le ayuden a calcular la braquistócrona que necesita.
 	\begin{enumerate}
-		\item (3 puntos) Escribe una función en Python que, usando las ecuaciones \ref{eq1} y \ref{eq2}, tome como variables de entrada los valores de $h_0,\theta, \mu, K$, y devuelva como salida los valores $x,h$.
+		\item (3 puntos) Escribe una función en Python que, usando las ecuaciones \ref{eq1-2} y \ref{eq2-2}, tome como variables de entrada los valores de $h_0,\theta, \mu, K$, y devuelva como salida los valores $x,h$.
 		
 		\item (2 puntos) Utilizando la función que has creado en el apartado anterior y tomando $h_0=30$ y $\mu = 0.1$, calcula dos vectores $x,h$, para valores de $\theta$ comprendidos en el intervalo $(0,2\pi]$. Utiliza una distancia entre valores de $0.01$. Repite el cálculo para 40 valores de $K$ distintos comprendidos en el intervalo $[0, y_0/(2+\pi\mu)]$. Dibuja todos los resultados obtenidos, $h$ frente a $x$, en una misma gráfica.
 	\end{enumerate}
-	\item Si has obtenido el gráfico del apartado anterior, es fácil deducir que por cada punto del espacio alcanzable solo pasa una braquistócrona. Para calcular la que necesita Lex, sustituimos en las ecuaciones \ref{eq1} y \ref{eq2} $x$ y $h$ por los valores finales deseados $x_f$ y $h_f$ y despejamos $K$ de ambas ecuaciones. Una forma sencilla de hacerlo es dividir $h_0-h$ entre $x$,
+	\item Si has obtenido el gráfico del apartado anterior, es fácil deducir que por cada punto del espacio alcanzable solo pasa una braquistócrona. Para calcular la que necesita Lex, sustituimos en las ecuaciones \ref{eq1-2} y \ref{eq2-2} $x$ y $h$ por los valores finales deseados $x_f$ y $h_f$ y despejamos $K$ de ambas ecuaciones. Una forma sencilla de hacerlo es dividir $h_0-h$ entre $x$,
 	\begin{equation}\label{eq3}
 		\frac{h_0-h_f}{x_f} = \frac{[1-\cos(\theta) + \mu(\theta+\sin(\theta))]}
 		{[\theta-\sin(\theta) + \mu(1-\cos(\theta))]}
@@ -2232,7 +2065,7 @@ Queremos calcular la posición de Marte respecto al Sol 80 días terrestres desp
 	\begin{enumerate}
 		\item (2 puntos) Emplea el método de la secante para obtener el valor de $\theta$ que resuelve la ecuación \ref{eq3}. Hazlo para los valores $h_0=30m$ $h_f=5m$, $x_f=60m$ y $\mu=0.1$. Usa una tolerancia de $10^{-6}$. Elige a tu criterio los dos puntos de inicio $x_0$ y $x_1$. 
 		
-		\item (2 puntos) Una vez obtenido el valor de $\theta$ emplea la ecuación \ref{eq1} para obtener el valor de $K$.
+		\item (2 puntos) Una vez obtenido el valor de $\theta$ emplea la ecuación \ref{eq1-2} para obtener el valor de $K$.
 		
 		\item (1 punto) Dibuja en un mismo gráfico la braquistócrona obtenida y el valor del punto $(x_f,h_f)$.
 		

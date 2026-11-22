@@ -23,7 +23,7 @@ In chapter one, we introduced the binary representation of numbers and the conve
 
 Real numbers can be represented on a line extending from $-\infty$ to $\infty$. Most do not have exact numerical representations because they have infinite decimals.
 
-The integer numbers $1-1,2,-2,3-3,\cdots$ can be represented in scientific notation. However, we rarely deal with numbers containing a large amount of digits. Usually, we take an approximate value, written then in scientific notation, by multiplying the number by a power of $10$. Let's take an example from chemistry: the number of atoms or molecules that make up a mole of a chemical substance is defined as Avogadros's number $N_A = 6.02214179 \times 10^{23}$. This number should be an integer, but we represent it in scientific notation given just a few, nine in our example, of its 23 digits.
+The integer numbers $1-1,2,-2,3-3,\cdots$ can be represented in scientific notation. However, we rarely deal with numbers containing a large amount of digits. Usually, we take an approximate value, written then in scientific notation, by multiplying the number by a power of $10$. Let's take an example from chemistry: the number of atoms or molecules that make up a mole of a chemical substance is defined as Avogadro's number $N_A = 6.02214179 \times 10^{23}$. This number should be an integer, but we represent it in scientific notation given just a few, nine in our example, of its 23 digits.
 
 \index[eng]{Truncation} We truncate a number when we miss off digits past a certain point in the number. Then, we approximate the truncated number by a rational number, i.e., a number that the quotient of two integers can represent. $1/2,3/4,cdots$
 
@@ -160,7 +160,7 @@ Una forma práctica de obtener el complemento a dos de un número binario es cop
      \item The range of representable values in an N-bit representation is $-2^{N-1} \le x \le  2^{N-1}-1$.
      \item We obtain the negative number by computing the 2's complement of their binary representation and changing the sign of the result
  \end{itemize}
-A practical method for computing the 2's complement of a binary number is to copy the number from right to left till we reach the first 1. Once we have copied the first 1, we \emph{complement} the remaining number bits. This means changing the zeros to ones and the ones to zeros. For instance, the 2'complemet of the number 2 (0010 in a -bit representation) will be 1110, 
+A practical method for computing the 2's complement of a binary number is to copy the number from right to left till we reach the first 1. Once we have copied the first 1, we \emph{complement} the remaining number bits. This means changing the zeros to ones and the ones to zeros. For instance, the 2'complement of the number 2 (0010 in a -bit representation) will be 1110, 
 
 \end{paracol}
 
@@ -400,7 +400,7 @@ Muchas calculadoras y programas de cálculo científico presentan los resultados
 \switchcolumn
 We shift the decimal point till just a single figure remains at its left, i.e, only a figure is use to represent the integer part of the number. We need to multiply the result for the power of ten that allows us to recovery the original number.
 
-Many calculator a scientific computing sofware show the computed results on the screen using the scientific format. Usually they utilize the following notation to do it,    
+Many calculator a scientific computing software show the computed results on the screen using the scientific format. Usually they utilize the following notation to do it,    
 
 \end{paracol}
 
@@ -474,7 +474,7 @@ En el caso del estándar de simple precisión la primera mitad de los números d
 \switchcolumn
 Although the representation just described suits well the represented number, it is clear that we cannot represent with it a negative number like, for example, $1.011101\times 2^{-3}$. Fur\-thermore, we have arbitrarily divided the 16-bit register; we could have chosen a different allocation of bits between the mantissa and exponent. In fact, until the 1990s, each computer adopted its own representation for float\-ing-point numbers. As a consequence, the same programs run on different computers yield different results.
 
-already in 1974, John Palmer from INTEL company, promote the creation of a standard, that is, of a floating-point representation which might be adopted for all computers manufactures. The first draft of the standard, inspired in Kahan's work for the IBM 7094 computer (1968), was prepare by Willian Kahan (Intel), Jerome Coonen (Berkeley) and Harold Stone (Berkeley): K-C-S document. The standardisation process was slow. The first version of the standard was no ready till the year 1985. The result of these works was the current standard, known as the IEEE 754 standard. IEEE are the acronym of Institute of Electrical and Electronic Engineers. The Institute is an association born in the United States in the XIX century, and it has evolved to become an international. The IEEE is devoted, among other things, to stablish international industrial standards on the electricity, electronics and computer fields. Let's see in some detail the IEEE 754 standard.
+already in 1974, John Palmer from INTEL company, promote the creation of a standard, that is, of a floating-point representation which might be adopted for all computers manufactures. The first draft of the standard, inspired in Kahan's work for the IBM 7094 computer (1968), was prepare by William Kahan (Intel), Jerome Coonen (Berkeley) and Harold Stone (Berkeley): K-C-S document. The standardisation process was slow. The first version of the standard was no ready till the year 1985. The result of these works was the current standard, known as the IEEE 754 standard. IEEE are the acronym of Institute of Electrical and Electronic Engineers. The Institute is an association born in the United States in the XIX century, and it has evolved to become an international. The IEEE is devoted, among other things, to stablish international industrial standards on the electricity, electronics and computer fields. Let's see in some detail the IEEE 754 standard.
 
 \paragraph{the IEEE 745 standard.}\index[eng]{IEEE 754 Standard} The standard was established thinking in register of two different size. The first one uses 32 bits to save floating-point numbers. It is known as the simple precision standard. The second one uses 64 bits and it is Known as the double precision standard.
 
@@ -526,14 +526,14 @@ $11111111$&$255$&$255-127=128$\\
 \begin{paracol}{2}
 Tenemos por tanto que el exponente de 8 bits del estándar de precisión simple permite representar todos los exponentes enteros desde el -127 al 128.
 
-Ya tenemos casi completa la descripción del éstandar. Solo faltan unos detalles --aunque muy importantes-- relativos a la representación de números muy grandes y muy pequeños. Empecemos con los números muy grandes.
+Ya tenemos casi completa la descripción del estándar. Solo faltan unos detalles --aunque muy importantes-- relativos a la representación de números muy grandes y muy pequeños. Empecemos con los números muy grandes.
 
 ¿Cúal es el número más grande que podría\-mos representar en estándar de simple precisión? En principio cabría suponer que el correspondiente a escribir un 1 en todos los bits correspondientes a la mantisa (la mayor mantisa posible) y escribir también un 1 en todos los bits correspondientes al exponente (el mayor exponente posible). Sin embargo, el están\-dar está pensado para proteger las operaciones del computador de los errores de desbordamiento (ver sección \ref{errn} más adelante). Para ello reserva el valor más alto del exponente. Así cuando el exponente contenido en un registro es 128, dicho valor no se considera propiamente un número, de hecho es preciso mirar el contenido de la mantisa para saber qué es lo que representa el registro: 
 
 \begin{itemize}
 \item Si los bits de la mantisa son todos cero, el registro contiene la representación del infinito $\infty$.  El estándar específica el resultado de algunas operaciones en el infinito: $1/\infty=0$, $\arctan(\infty)=\pi/2$. 
 
-\item \index{NaN} \index{Not a Number} Si por el contrario, el contenido de la mantisa es distinto de cero, se considera el contenido del registro como no numérico (NaN, abreviatura en ingles de \emph{Not a Number}). Este tipo de resultados, considerados no numéricos, surgen en algunas operaciones que carecen de sentido matémático: $0/0, \ \infty\times0,\ \infty -\infty$. \end{itemize}
+\item \index{NaN} \index{Not a Number} Si por el contrario, el contenido de la mantisa es distinto de cero, se considera el contenido del registro como no numérico (NaN, abreviatura en ingles de \emph{Not a Number}). Este tipo de resultados, considerados no numéricos, surgen en algunas operaciones que carecen de sentido matemático: $0/0, \ \infty\times0,\ \infty -\infty$. \end{itemize}
 
 Todo esto hace que el exponente mayor que realmente representa un número sea el 127. \index{IEEE 754! número más grande representable en simple precisión} Como ejemplo podemos construir el número más grande que podemos representar distinto de infinito. Se trata del número con la mantisa más grande posible, una mantisa formada exclusivamente por unos, seguida por el exponente más grande posible. El exponente mas grande en exceso es 127, que corresponde a un exponente en binario $127+127=254 \equiv [11111110]$. Por tanto el número se representaría como,
 \switchcolumn
@@ -566,7 +566,7 @@ Veamos ahora los números mas pequeños, de acuerdo con lo dicho, el número má
 
 \index{IEEE 754! Números desnormalizados} Es evidente que si no fuera por el 1 implícito de la mantisa sería posible representar números aún más pequeños. Por otro lado, si consideramos siempre la mantisa como normalizada, es imposible representar el número 0. Para permitir la representación de números más pequeños, incluido el cero, los desarrolladores del estándar decidieron añadir la siguiente regla: \emph{Si los bits del exponente de un número son todos ceros, es decir, si el exponente representado es -127, se considera que la mantisa de ese número \textbf{no} lleva un 1 entero implícito. Además el  exponente del número se toma como -126}. Los números así representados reciben el nombre de números desnormalizados. Veamos algunos ejemplos.
 \switchcolumn
-This number in base-ten will take the form, $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{127}\approx 3.402823466385289\times10^{38}$. Where we have write in bold letter the implicit 1, which is not present in the matissa.
+This number in base-ten will take the form, $(\mathbf{1\cdot2^0}+1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{127}\approx 3.402823466385289\times10^{38}$. Where we have write in bold letter the implicit 1, which is not present in the mantissa.
 
 Let's turn now to the smallest numbers, according to the method we are using to represent the numbers, the number closest to zero we can build would be the number with the smallest mantissa and the smallest exponent. That is, a mantissa with all its bits set to zero and also an exponent with only zeros. This number will be, $(1\cdot 2^0)\cdot2^{-127}$ (remember that the standard uses a normalised mantissa, hence it has a implicit integer 1).
 
@@ -618,7 +618,7 @@ ssig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits
 que representado en base 10 sería el número: $(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$. Podemos calcular para comparar cual sería el número normalizado más próximo a cero, se trata del número que tiene una mantisa formada solo por ceros y el exponente más pequeño distinto de cero (un exponente igual a cero, implica automáticamente un número desnormalizado),\\ 
 \switchcolumn
 Which represented in base-ten will be the number: $(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$.
-We can compare this number with the closest number to zero we can represent using a normalised mantissa. This number has all zeros mantissa and the smallest possible non-zero exponent (Recall; an all-zero exponent automaticaly implies a denormalised number),    
+We can compare this number with the closest number to zero we can represent using a normalised mantissa. This number has all zeros mantissa and the smallest possible non-zero exponent (Recall; an all-zero exponent automatically implies a denormalised number),    
 \end{paracol}
 
 \begin{minipage}{\textwidth}
@@ -655,7 +655,7 @@ sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits 
 \end{minipage}
 
 \begin{paracol}{2}
-En formato decimal, el número sería: $(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}\approx 1.175494210692441\times10^{-38}$. Los dos últimos números representados, son muy próximos entre sí. De hecho, hemos calculado ya su diferencia, al obtener el número desnomarlizado más próximo a cero, $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}-(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}=(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$.
+En formato decimal, el número sería: $(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}\approx 1.175494210692441\times10^{-38}$. Los dos últimos números representados, son muy próximos entre sí. De hecho, hemos calculado ya su diferencia, al obtener el número desnormalizado más próximo a cero, $(\mathbf{1\cdot2^0}+0\cdot2^{-1}+0\cdots+0\cdot2^{-23})\times 2^{-126}-(1\cdot2^{-1}+1\cdot2^{-2}+1\cdots+1\cdot2^{-23})\times2^{-126}=(0\cdot2^{-1}+0\cdots+1\cdot2^{-23})\times 2^{-126}=2^{-149}\approx 1.401298464324817\times10^{-45}$.
   
 \subparagraph*{Doble precisión} \index{Estándar IEEE 754! Doble precisión} La diferencia entre los estándares de simple y doble precisión está en el tamaño de los registros empleados para representar los números. En doble precisión se emplea un registro de 64 bits. Es decir, el tamaño de los registros es el doble que el empleado en simple precisión. El resto del estándar se adapta al tamaño de la representación; se emplea 1 bit para el signo del número, 52 bits para la mantisa y 11 bits para el exponente.
 
@@ -671,7 +671,7 @@ In base-ten representation the number wo\-uld be: $(1\cdot2^{-1}+1\cdot2^{-2}+1\
 
 In this case the exponent can store $2^{11}=2048$ different numbers (from 0 to 2047). Very much alike the simple precision case, we split the  exponent numbers into two halves, representing the values with a 1023 bias. Therefore, the an exponent equal to zero represent the value  $0-1023=-1023$ and the exponent 2047 represent the value, $2047-1023=1024$.
 
-Again, we use the largest exponent value 1024 to represent the infinite $\infty$ with an all-zeros companying mantissa. Otherwise, if the companying mantissa has any non-zero bit, then the register does not represent a number NaN (overflow error). As an example, We can obtain the largest representable number using the double precision standard,     
+Again, we use the largest exponent value 1024 to represent the infinite $\infty$ with an all-zeros accompanying mantissa. Otherwise, if the accompanying mantissa has any non-zero bit, then the register does not represent a number NaN (overflow error). As an example, We can obtain the largest representable number using the double precision standard,     
 
 \end{paracol}
 \begin{tabular}{|c||c||c|}
@@ -1012,7 +1012,7 @@ If we look at the previous result in more detail, we can see that is the product
 \begin{paracol}{2}
 \index{epsilon del computador} Es decir, el único factor que cambia en el error es precisamente el término relacionado con el tamaño de la mantisa. Este término recibe el nombre de precision del computador o \emph{epsilon del computador} (eps). Y vale siempre 2 elevado a menos ($-$) el  número de bits de la mantisa. Por tanto, podemos generalizar la expresión parar la cota del error absoluto como,
 \switchcolumn
-\index[eng]{machine epsilon} That is, the only factor which changes is precisely the term related with the mantise size. This term is known as the machine precision or the \emph{machine epsilon} (eps) and it takes always the value 2 raises to minus (-) the mantissa number-of-bits. Therfore, we can generalise the upper limit of the absolute error as,   
+\index[eng]{machine epsilon} That is, the only factor which changes is precisely the term related with the mantissa size. This term is known as the machine precision or the \emph{machine epsilon} (eps) and it takes always the value 2 raises to minus (-) the mantissa number-of-bits. Therefore, we can generalise the upper limit of the absolute error as,   
 \end{paracol}
   \begin{equation*}
 \vert x-x_r \vert \leq \frac{1}{2}\vert x_E-x_T \vert= \frac{1}{2}\cdot\ \text{eps}\cdot2^\text{exp}
@@ -1057,7 +1057,7 @@ sig.&$\leftarrow$mantissa, 23 bits $\rightarrow$&$\leftarrow$ exponent., 8 bits 
 \ \\
 \end{minipage}
 \begin{paracol}{2}
-El número representado tiene de exponente $2^7-127=1$. Supongamos ahora que quisieramos sumar a este número la cantidad $2^{-22}$ su representación en el estándar emplearía una mantisa de ceros (recordar el 1 ímplicito) y un exponente $-22+127=105$. Sería por tanto,
+El número representado tiene de exponente $2^7-127=1$. Supongamos ahora que quisiéramos sumar a este número la cantidad $2^{-22}$ su representación en el estándar emplearía una mantisa de ceros (recordar el 1 implícito) y un exponente $-22+127=105$. Sería por tanto,
 \switchcolumn
 The represented number has exponent $2^7-127=1$. Suppose now that we want to add to this number the quantity $2^{-22}$ Its representation in the standard should use an all-zeros mantissa (recall the implicit 1) and an exponent $-22-127 = 105$. So it should be,
 \end{paracol}
@@ -1276,9 +1276,9 @@ Analicemos el error cometido para la suma empleada en los ejemplos anteriores. E
 \switchcolumn	
 Eventually, we check if the operations we have carried out have produce an exponent overflow, because in this case the number would be not representable: $\infty$ or $0$.  
 
-5. \textbf{Renormalisation.} For number in binary representation is sometimes necessary to normalise again the mantissa after carried out the rounding. Suppose as in the previous example that we have a four-bit size mantissa, but now we numbers in binary representation, and that after performing an addition operation it yield the result $11.111\times2^1$. The mantissa has overflowed and then we have to normalised it $11.111\times2^1\rightarrow1.1111\times2^2$. We have to round the mantissa and, due to the number is just on the interval half between two machine number, we round it by excess: $1.1111\times2^2\rightarrow10.000\times2^2$. The round-by-excess process has overflowed the mantissa one more time and, thus, we have to nomarlise it again $10.000\times2^2\rightarrow1.000\times2^3$.
+5. \textbf{Renormalisation.} For number in binary representation is sometimes necessary to normalise again the mantissa after carried out the rounding. Suppose as in the previous example that we have a four-bit size mantissa, but now we numbers in binary representation, and that after performing an addition operation it yield the result $11.111\times2^1$. The mantissa has overflowed and then we have to normalised it $11.111\times2^1\rightarrow1.1111\times2^2$. We have to round the mantissa and, due to the number is just on the interval half between two machine number, we round it by excess: $1.1111\times2^2\rightarrow10.000\times2^2$. The round-by-excess process has overflowed the mantissa one more time and, thus, we have to normalise it again $10.000\times2^2\rightarrow1.000\times2^3$.
 
-If we analise the error we get after perform the addition in our previous example, In exact arithmetic, the sum of the numbers yields $100.152$. When  we use floating-point representation with a four-bit mantissa the result is $1.002\times10^2=100.2$. Then, the absolute error we get is,     
+If we analyse the error we get after perform the addition in our previous example, In exact arithmetic, the sum of the numbers yields $100.152$. When  we use floating-point representation with a four-bit mantissa the result is $1.002\times10^2=100.2$. Then, the absolute error we get is,     
 \end{paracol}
 
 \begin{equation*}
@@ -1544,7 +1544,7 @@ Como regla práctica se debe evitar al realizar operaciones aritméticas aquella
 \switchcolumn
 We get a relative error of around a $1\%$. We used two guard bits in the intermediate operations, so the subtraction makes no mistake. The error is due to the rounding of previous results. Once the subtraction is performed, the result only holds digits affected by the previous rounding because the first (more significant) digits have been cancelled during the operation.
 
-As a thumb rule, we have to avoid, when performing arithmetical operation, the subtraction of of almost equal quantities. Let's see another example, to clarify this idea. Suppose we whant to carry out the operation,          
+As a thumb rule, we have to avoid, when performing arithmetical operation, the subtraction of of almost equal quantities. Let's see another example, to clarify this idea. Suppose we want to carry out the operation,          
 \end{paracol}
 
 \begin{equation*}
@@ -1563,7 +1563,7 @@ y=(\sqrt{x^2+1}-1)\cdot\left(\frac{\sqrt{x^2+1}+1}{\sqrt{x^2+1}+1}\right)=\frac{
 \begin{paracol}{2}
 \subsection{Errores de desbordamiento}
 
-Al, hablar del rango finito de los números representables, se indicó cómo trata el éstandar IEEE 754 los números que desbordan los límites de representación. Al realizar operaciones aritméticas, es posibles llegar a situaciones en las que el resultado sea un número no representable bien por se demasiado grande en magnitud, (\emph{Overflow} positivo o negativo) o por ser demasiado pequeño, (\emph{underflow} positivo o negativo). Un ejemplo que nos permite ilustrar este fenómeno; es el del cálculo del módulo de un vector,
+Al, hablar del rango finito de los números representables, se indicó cómo trata el estándar IEEE 754 los números que desbordan los límites de representación. Al realizar operaciones aritméticas, es posibles llegar a situaciones en las que el resultado sea un número no representable bien por se demasiado grande en magnitud, (\emph{Overflow} positivo o negativo) o por ser demasiado pequeño, (\emph{underflow} positivo o negativo). Un ejemplo que nos permite ilustrar este fenómeno; es el del cálculo del módulo de un vector,
 
 \switchcolumn
 \subsection{Overflow and underflow\\ errors}
@@ -1588,11 +1588,11 @@ fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/aritmetica_del_computador/norm_naive.py}
 \begin{paracol}{2}
-\mintinline{python}{norm_naive} provocará un error de desbordamiento incluso para n=1, si introducimos un número cuyo cuadrado sea mayor que el mayor número representable. Si
+\mintinline{python}{norma_naive} provocará un error de desbordamiento incluso para n=1, si introducimos un número cuyo cuadrado sea mayor que el mayor número representable. Si
  introducimos el número, $ 2^{1024/2} =1.340780792994260e+154$ en nuestro programa, Python devolverá como solución \emph{inf}.
 
 \switchcolumn
-\mintinline{python}{norm_naive} will generate an overflow error even for n=1, provide we introduce a number whose square is greater that the largest representable number. If we introduce the number $ 2^{1024/2}=1.340780792994260e+154$, our function will return \emph{inf} and we also get a warning from Python. 
+\mintinline{python}{norma_naive} will generate an overflow error even for n=1, provide we introduce a number whose square is greater that the largest representable number. If we introduce the number $ 2^{1024/2}=1.340780792994260e+154$, our function will return \emph{inf} and we also get a warning from Python. 
 \end{paracol}
 
 \begin{center}
@@ -1600,7 +1600,7 @@ linenos
 	\begin{minted}{python}
 In [77]: x= np.array([2**(1024/2)])
 		
-In [78]: m = norma(x)
+In [78]: m = norma_naive(x)
 /home/juan/LCC_Python/codigos/aritmetica_del_computador/norm_naive.py:28:
 RuntimeWarning: overflow encountered in scalar power
 m = m +e**2
@@ -1667,7 +1667,7 @@ Out[114]: 1.8961503816218355e+154
 \begin{paracol}{2}
 Si aplicamos este programa a obtener la norma del vector,
 \switchcolumn
-If we apply this program to obtaint the norm of the vector,
+If we apply this program to obtain the norm of the vector,
 \end{paracol}
 \begin{equation*}
 x=[2^{1024/2}\ 2^{1024/2}]
@@ -1675,7 +1675,7 @@ x=[2^{1024/2}\ 2^{1024/2}]
 \begin{paracol}{2}
 obtenemos como resultado,
 \switchcolumn
-We get the folloing result,
+We get the following result,
 \end{paracol}
 \begin{equation*}
 m=1.8961503816218355\cdot10^{154}

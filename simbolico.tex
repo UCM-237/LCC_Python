@@ -1,7 +1,7 @@
 \chapter{Introducción al cálculo simbólico\\Introduction to symbolic computing}\index{Cálculo Simbolico}\index[eng]{Symbolic Computing}
 \chaptermark{Intro cálculo simbólico  \textreferencemark\ Intro symbolic computing}
 \epigraph{And earthly power doth then show likest God's
-	when mercy seasons justice.}{The merchan of Venice, Willian Shakespeare}
+	when mercy seasons justice.}{The Merchant of Venice, William Shakespeare}
 \begin{flalign*}
 	&\mathwitch*_{i=0}^{\infty}\Biggl \{&     
 \end{flalign*}
@@ -70,7 +70,7 @@ También es posible crear vectores y matrices simbólicas a partir de otras vari
 \switchcolumn
 Thus, the command assigns the variables on the left of the equal sign, split by commas, the symbols provided in \mintinline{python}|symbols()|, which are divided by spaces and enclosed in apostrophes.
 
-When we ask Python to display the value of the variable \texttt{x}, it points out that the variable holds the symbol \texttt{x}. It is important to remark that it is not a character but a symbol that we can use to perform algebraical operations and that the name of the variable that holds a symbol is not necessarily the symbol itself. For instance, in the example, we have reassigned the symbol \texttt{x} to variable \texttt{z}
+When we ask Python to display the value of the variable \texttt{x}, it points out that the variable holds the symbol \texttt{x}. It is important to remark that it is not a character but a symbol that we can use to perform algebraic operations and that the name of the variable that holds a symbol is not necessarily the symbol itself. For instance, in the example, we have reassigned the symbol \texttt{x} to variable \texttt{z}
 
 It is also possible to create symbolic vectors and matrices from other symbolic variables,
 
@@ -129,7 +129,7 @@ Out[50]:
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-Otra opción posible es crear un objeto simbolico matriz. La idea es crear una variable simbólica que contiene una matriz del tamaño que deseemos. Para ello empleamos el comando \mintinline{python}|MatrixSymbol| de  \mintinline{python}|sympy.matrices|. Este comando admite un símbolo y dos parámetros numéricos que corresponden con el número de filas y columnas de la matriz creada. Estos parámetros tambień podrían a su vez ser simbólicos.
+Otra opción posible es crear un objeto simbólico matriz. La idea es crear una variable simbólica que contiene una matriz del tamaño que deseemos. Para ello empleamos el comando \mintinline{python}|MatrixSymbol| de  \mintinline{python}|sympy.matrices|. Este comando admite un símbolo y dos parámetros numéricos que corresponden con el número de filas y columnas de la matriz creada. Estos parámetros tambień podrían a su vez ser simbólicos.
 \switchcolumn
 An alternative is to create a symbolic matrix object. We make a symbolic variable that holds a matrix the size we wish. The command \mintinline{python}|MatrixSymbol| from \mintinline{python}|sympy.matrices| allows to make a symbolic matrix. This command takes a symbol and two numerical parameters which define the number of rows and columns of the matrix we are creating. In fact, these two last parameter could be also symbolic.
 \end{paracol}
@@ -331,7 +331,7 @@ $x^2+2xy+y^2$
 \end{minipage}
 \end{center}
 \begin{paracol}{2}
-Comos se muestra en la línea [46] es posible tambíen desarrollar una expresión binomial, para obtener un polinomio, empleando la función \mintinline{python}|expand|. En nuestro ejemplo, esto revertiría la acción de \mintinline{python}|factor|.
+Como se muestra en la línea [46] es posible también desarrollar una expresión binomial, para obtener un polinomio, empleando la función \mintinline{python}|expand|. En nuestro ejemplo, esto revertiría la acción de \mintinline{python}|factor|.
 \switchcolumn
 As can be seen in line [46], it is also possible to expand a binomial expression into a polynomial, using the \mintinline{python}|expand| function. In our case, this reverts the actions of the command \mintinline{python}|factor|.
 \end{paracol}
@@ -403,7 +403,7 @@ Out[53]:
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-Veamos en más detalle la sustitución de variables por números. Como hemo dicho esta sustitución da una expresión que es todavía simbólica. Si sustituimos todos los símbolos por valores numéricos, Sympy opera con ellos para evaluarnos la expresión,
+Veamos en más detalle la sustitución de variables por números. Como hemos dicho esta sustitución da una expresión que es todavía simbólica. Si sustituimos todos los símbolos por valores numéricos, Sympy opera con ellos para evaluarnos la expresión,
 
 \switchcolumn
 Let's see in more detail the substitution of variables with numbers. As we have said before, this substitution yields still a symbolic expression. If we replace all symbols with numbers, Sympy operates them to evaluate the expression,
@@ -435,7 +435,7 @@ Out[104]: 1.75
 \begin{paracol}{2}
 Otro comando de interés para evaluar expresiones simbólicas es el comando \mintinline{python}|evalf()|. Veamos su uso con el siguiente ejemplo,
 \switchcolumn
-Other interesting command to evaluate symbolic expresions is the command \mintinline{python}|evalf()|. We show its use in the following example,
+Other interesting command to evaluate symbolic expressions is the command \mintinline{python}|evalf()|. We show its use in the following example,
 \end{paracol}
 
 \begin{center}
@@ -462,7 +462,7 @@ Out[114]: 1.5707963267948966
 \end{minipage}
 \end{center}
 \begin{paracol}{2}
-La línea [110] nos devuelve el resultado de calcular el arcoseno de 1. El resultado es un valor simbolico: $\pi/2$. En la línea [111], repetimos el cálculo, pero ahora hacemos uso de la función \mintinline{python}|evalf()|. Esta función nos devuelve un valor numérico, aunque todavía se trata de un resultado simbólico. Por defecto, la función nos devuelve una expresión con 15 dígitos. 
+La línea [110] nos devuelve el resultado de calcular el arcoseno de 1. El resultado es un valor simbólico: $\pi/2$. En la línea [111], repetimos el cálculo, pero ahora hacemos uso de la función \mintinline{python}|evalf()|. Esta función nos devuelve un valor numérico, aunque todavía se trata de un resultado simbólico. Por defecto, la función nos devuelve una expresión con 15 dígitos. 
 
 Podemos sin embargo elegir el número de dígitos que tendrá nuestra expresión numérica. para ello pasamos a la función el número de dígitos con el que queremos que nos devuelva el resultado. La línea [112], nos muestra un ejemplo en que se han pedido 25 dígitos para el resultado. Por último, si queremos convertir el resultado en un número máquina, en la representación normal del computador, empleamos para ello el comando \mintinline{python}|float| de python. El resultado es un número en la representación en coma flotante de doble precisión.
 
@@ -504,7 +504,7 @@ $-2axe^{-x^2}$
 \end{center}
 
 \begin{paracol}{2}
-La función \mintinline{python}|diff()|, toma dos variables de entrada, el nombre de la función simbólica que queremos derivar y, siempre que la función contenga más de una expresión simbólica, la variable con respecto a la que queremos derivar. En en ejemplo anterior, tambiém podríamos haber derivado con respecto a la variable \texttt{a},
+La función \mintinline{python}|diff()|, toma dos variables de entrada, el nombre de la función simbólica que queremos derivar y, siempre que la función contenga más de una expresión simbólica, la variable con respecto a la que queremos derivar. En en ejemplo anterior, también podríamos haber derivado con respecto a la variable \texttt{a},
 \switchcolumn
 Function \mintinline{python}|diff()| takes two input variables: the name of the symbolic function for which we want to calculate the derivative, and the variable with respect to which we want to take the derivative, especially when the function has more than one symbolic variable. In the previous example, we could also have taken the derivative with respect to variable \texttt{a} 
 \end{paracol}
@@ -785,7 +785,7 @@ Out[166]:
 \begin{paracol}{2}
 Donde se ha hecho uso del comando \texttt{simplify} para recuperar la expresión original.
 
-Como en el caso de la derivación, si tenemos más de una variable simbolica definida en la función que queremos integrar, es preciso indicar a Sympy con respecto a que variable queremos realizar la integración. Así, por ejemplo,
+Como en el caso de la derivación, si tenemos más de una variable simbólica definida en la función que queremos integrar, es preciso indicar a Sympy con respecto a que variable queremos realizar la integración. Así, por ejemplo,
 
 \switchcolumn
 Where we have used the command \texttt{simplify} to recover the original function.
@@ -848,18 +848,18 @@ The \texttt{integrate} function can be used to compute definite integrals if the
 \begin{center}
 	\begin{minipage}{.5\textwidth}
 	\begin{minted}{python}
-In [188]: F = sp.integrate(10*sp.sin(x),(x,0,np.pi))
+In [188]: F = sp.integrate(10*sp.sin(x),(x,0,sp.pi))
 
 In [189]: F
 Out[189]:   
 		\end{minted}
-		$20.0$
+		$20$
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
 	La función \texttt{integrate}, puede emplearse también para calcular integrales múltiples, es suficiente con indicar las variables simbólicas respecto a las que se quiere calcular la integral,
 	\switchcolumn
-	Teh \texttt{integrate} function can also be use to compute multiple integrals, it is enough to indicate the symbolic variables with respect to which we can compute the integral,
+	The \texttt{integrate} function can also be use to compute multiple integrals, it is enough to indicate the symbolic variables with respect to which we can compute the integral,
 \end{paracol}
 
 \begin{center}
@@ -907,7 +907,7 @@ In [258]: n = sp.symbols('n',integer=True,nonnegative=True)
 \begin{paracol}{2}
 De este modo definimos $a \ge 0$, $k \in \mathbb{Z}$ y $n \in \mathbb{Z}_+$.
 
-Podemos ahora emplear el comando \mintinline{python}|Sum|, para crear la suma simbolica de la serie que queramos,
+Podemos ahora emplear el comando \mintinline{python}|Sum|, para crear la suma simbólica de la serie que queramos,
 \switchcolumn
 In this way, we have defined $a \ge 0$, $k \in \mathbb{Z}$ y $n \in \mathbb{Z}_+$.
 
@@ -943,7 +943,7 @@ Out[264]:
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-Podemos pedirle también que calcule, sumas de infinitos términos. Para ello Sympy emplea una doble o minúscula \texttt{oo} para repesentar el símbolo infinito,
+Podemos pedirle también que calcule, sumas de infinitos términos. Para ello Sympy emplea una doble o minúscula \texttt{oo} para representar el símbolo infinito,
 \switchcolumn
 We can also ask for the computation of sums of infinite terms. Sympy uses a double lower case o, \texttt{oo} to represent the infinite symbol,
 \end{paracol}
@@ -1004,7 +1004,7 @@ Out[271]:
 \begin{paracol}{2}
 \paragraph{Serie de Taylor}\index{Series! Serie de Taylor de una función simbólica} Es posible calcular la expresión de la serie de Taylor para una función simbólica. Para ello se emplea el comando \texttt{series}, que es un método propio de cualquier función simbólica que creemos. Toma como variables de entrada, la variable de la función sobre la que se quiere expandir la serie de Taylor, el punto en torno al cual se realiza el desarrollo y el número de términos de la serie que se desea obtener.
 \switchcolumn
-\paragraph{Taylor's series}\index[eng]{Series! Taylor's series for a symbolic function} It is possible to compute the expression for the Taylor's series of a symbolic function. We use for it the commans \texttt{series} which is a method belonging to any symbolic function we create. It takes as input variables, the variable of the function we want to expand on Tailor's series, the point around which want to carry out the expansion and the number of terms we want to get for the series,
+\paragraph{Taylor's series}\index[eng]{Series! Taylor's series for a symbolic function} It is possible to compute the expression for the Taylor's series of a symbolic function. We use for it the commands \texttt{series} which is a method belonging to any symbolic function we create. It takes as input variables, the variable of the function we want to expand on Tailor's series, the point around which want to carry out the expansion and the number of terms we want to get for the series,
 \end{paracol}
 
 \begin{center}
@@ -1167,7 +1167,7 @@ Los límites son distintos como corresponde a la función que hemos definido por
 
 Por último, es posible calcular un limite bi-lateral, \texttt{dir='+-'} que solo existe si coinciden el límite por la derecha con el limite por la izquierda,
 \switchcolumn
-The limits are different as can be expected for the piecewise function we have defined, in addition, we can see how, when we do not indicate the direction, sympe calculates the right-sided limit.
+The limits are different as can be expected for the piecewise function we have defined, in addition, we can see how, when we do not indicate the direction, sympy calculates the right-sided limit.
 
 Lastly, we can calculate a bi-lateral limit \texttt{dir='+-'} that only exists if the left and right sided limits meet,
 \end{paracol}
@@ -1227,7 +1227,7 @@ Out[58]: <sympy.plotting.plot.Plot at 0x79891a89dbd0>
 \begin{figure}
 	\centering
 		\includegraphics[width=10.5cm]{abs_simbol.png}
-		\bicaption{Representacion de la funcion $f(x)  = |x|$ entre $-5$ y $5$}{Function $f(x) = |x|$ into the interval $(-5,5)$ } \label{fig:simplot1}
+		\bicaption{Representación de la funcion $f(x)  = |x|$ entre $-5$ y $5$}{Function $f(x) = |x|$ into the interval $(-5,5)$ } \label{fig:simplot1}
 \end{figure}
 \begin{paracol}{2}
 El resultado se muestra en la figuras \ref{fig:simplot1}
@@ -1253,7 +1253,7 @@ In [67]: dr.show()
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-En este caso, además hemos creado un objeto grafico \mintinline{python}|dr|, de modo que podemos después modificar las propiedades del gráfico, usando los mismos comando que emplearíamos en Matplotlib. Destacar el uso de \mintinline{python}|dr.show()| para actualizar el gráfico con los parámetros modificados. El resultado final se muestra en la figura \ref{fig:simplot1}.
+En este caso, además hemos creado un objeto gráfico \mintinline{python}|dr|, de modo que podemos después modificar las propiedades del gráfico, usando los mismos comando que emplearíamos en Matplotlib. Destacar el uso de \mintinline{python}|dr.show()| para actualizar el gráfico con los parámetros modificados. El resultado final se muestra en la figura \ref{fig:simplot1}.
 \switchcolumn
 In this case, we have also created a graphic object \mintinline{python}|dr|, which will allow us to modify the graphics properties later on using the same commands we would use with Matplotlib. It is interesting to notice that use of \mintinline{python}|dr.show()| to update the figure with the modified parameters. The final result is shown in figure \ref{fig:simplot1}.
 \end{paracol}

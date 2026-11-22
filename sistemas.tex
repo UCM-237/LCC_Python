@@ -1,4 +1,4 @@
-\chapter{Sistemas de ecuaciones lineales\\ Linear equation systems}\index{sistemas} \index[eng]{systems}
+\chapter{Sistemas de ecuaciones lineales\\ Linear equation systems}\label{ch:sistemas}\index{sistemas} \index[eng]{systems}
 \chaptermark{Sistemas \textreferencemark\ Systems}
 \epigraph{Después de cada guerra \\ alguien tiene que limpiar. \\ No se van a ordenar solas las cosas, \\ digo yo. (Maria Wisława Anna Szymborska)}
 
@@ -771,7 +771,7 @@ Supongamos que queremos resolver un sistema de $n$ ecuaciones lineales con $n$ i
 A\cdot x=b
 \end{equation*}
 
-Si calculamos la fatorización LU de su matriz de  coeficientes,
+Si calculamos la factorización LU de su matriz de  coeficientes,
 
 \begin{equation*}
 A \rightarrow A =  P\cdot  L\cdot U
@@ -950,7 +950,7 @@ We use the matrix $L$ obtained and the product $bp=P^T\cdot b$ that we have just
 \end{paracol}
 
 \begin{minted}{python}
-z=progressive(L, bP)
+z=progressive(L, Pb)
 print("z:",z)    
 \end{minted}
 
@@ -1879,7 +1879,7 @@ def eligaussp(A):
 \end{minted}
 
 \begin{paracol}{2}
-   Podemos aplicar esta funión a nuestro ejemplo de siempre y separando en la matriz ampliada la matriz de coeficientes y el vector de términos independientes podemos resolver el sistema por sustituciones regresivas,
+   Podemos aplicar esta función a nuestro ejemplo de siempre y separando en la matriz ampliada la matriz de coeficientes y el vector de términos independientes podemos resolver el sistema por sustituciones regresivas,
 \switchcolumn
    We can apply this function to our usual example and by separating the coefficient matrix and the vector of independent terms in the extended matrix we can solve the system by backward substitutions,
 \end{paracol}
@@ -2202,7 +2202,7 @@ The answer is that iterative systems do not always converge, that is, it is not 
 \switchcolumn
 \subsection{Jacobi's method}. \index{Jacobi's method.}
 
-\paragraph{Obtaining the algoritm.} We will begin by introducing Jacobi's iterative method, as it is the most intuitive of all. To introduce it, we will use a simple example. Suppose we want to solve the following system of equations,
+\paragraph{Obtaining the algorithm.} We will begin by introducing Jacobi's iterative method, as it is the most intuitive of all. To introduce it, we will use a simple example. Suppose we want to solve the following system of equations,
 \end{paracol}
 
 
@@ -3042,9 +3042,9 @@ To implement the code of the damped Jacobi method, we must calculate the identit
 
 \end{minted}
 \begin{paracol}{2}
-\paragraph{El método SOR.} \index{Método SOR}El método SOR --\emph{Succesive OverRelaxation}-- se obtiene aplicando amortiguamiento al método de Gauss-Seidel. Aplicando el mismo razonamiento que el caso de Jacobi amortiguado, la expresión general para una iteración del método SOR es,
+\paragraph{El método SOR.} \index{Método SOR}El método SOR --\emph{Successive OverRelaxation}-- se obtiene aplicando amortiguamiento al método de Gauss-Seidel. Aplicando el mismo razonamiento que el caso de Jacobi amortiguado, la expresión general para una iteración del método SOR es,
 \switchcolumn
-\paragraph{The SOR method}. \index{SOR method}The SOR method -- ‘successive over-relaxation’ -- is obtained by applying a weigth to the Gauss-Seidel method. Applying the same reasoning as the weighted Jacobi case, the general expression for an iteration of the SOR method is,
+\paragraph{The SOR method}. \index{SOR method}The SOR method -- ‘successive over-relaxation’ -- is obtained by applying a weight to the Gauss-Seidel method. Applying the same reasoning as the weighted Jacobi case, the general expression for an iteration of the SOR method is,
 \end{paracol}
 
 \begin{equation*}
@@ -3307,7 +3307,7 @@ e^{(s+1)}=H\cdot e^{(s)}
 
 \switchcolumn
 
-We finally arrive to the following expression, that relates the convergence errors between two sucessive iterations,
+We finally arrive to the following expression, that relates the convergence errors between two successive iterations,
 
 \begin{equation*}
 e^{(s+1)}=H\cdot e^{(s)}
@@ -3447,7 +3447,7 @@ It does not converge if we try to solve it by the Jacobi method. However, it is 
 \begin{figure}[h]
 \centering
 \includegraphics[width=14cm]{comjjam.eps}
-\bicaption{Evolución de la tolerancia para un mismo sistema empleando el metodo de Jacobi (diverge) y el de Jacobi amortiguado (converge).}{Tolerance evolution for the same system using the Jacobi method (diverges) and the weighted Jacobi method (converges).}
+\bicaption{Evolución de la tolerancia para un mismo sistema empleando el método de Jacobi (diverge) y el de Jacobi amortiguado (converge).}{Tolerance evolution for the same system using the Jacobi method (diverges) and the weighted Jacobi method (converges).}
 \label{fig:cjjam}
 
 
@@ -3530,7 +3530,7 @@ Finally, it should be noted that any of the iterative methods described converge
 
 \item \label{eje62} Crea una función en python que calcule la solución de un sistema de ecuaciones triangular superior empleando el método de sustituciones regresivas. La función deberá tomar como valores de entrada una matriz triangular inferior de dimensión $(n\times n)$ arbitraria y un vector columna $(n\times 1)$ de términos independientes. Deberá devolver un vector columna $(n\times 1)$ con las soluciones del sistema.
 
-\item Crea una función que dadas una matriz cuadrada  $ A,\ (n\times n)$ y un  vector columna $b,\ (n\times 1)$, construya la matriz ampliada $Ab$, Aplique el método de eliminación gausiana a la matriz ampliada y llame a la función creada en el ejercicio \ref{eje62} Para resolver el sistema $Ax=b$. La función deberá devolver como variables de salida, La matriz resultante de la aplicar la eliminación gaussiana a la ampliada y un vector columna con las soluciones del sistema resuelto. 
+\item Crea una función que dadas una matriz cuadrada  $ A,\ (n\times n)$ y un  vector columna $b,\ (n\times 1)$, construya la matriz ampliada $Ab$, Aplique el método de eliminación gaussiana a la matriz ampliada y llame a la función creada en el ejercicio \ref{eje62} Para resolver el sistema $Ax=b$. La función deberá devolver como variables de salida, La matriz resultante de la aplicar la eliminación gaussiana a la ampliada y un vector columna con las soluciones del sistema resuelto. 
 
 \item Crea una función que dadas una matriz cuadrada  $ A,\ (n\times n)$ y un  vector columna $b,\ (n\times 1)$, construya la matriz ampliada $Ab$. Aplique el método de eliminación Gauss-Jordan a la matriz ampliada y devuelva como variable de salida la matriz en forma escalonada reducida por filas, de modo que la última fila sea la solución del sistema $Ax=b$  
 
@@ -3560,9 +3560,9 @@ Finally, it should be noted that any of the iterative methods described converge
 \end{align*}
 Repite el ejercicio empleando las factorizaciones QR y SVD.
 
-\item Para calcular las intensidades de un circuito de corriente continua como el de la figura, es suficiente emplear las leyes de Kirchoff. La primera ley --\emph{ley de nodos}-- establece que la suma de corrientes que llegan a un nodo del circuito debe ser igual a cero.
+\item Para calcular las intensidades de un circuito de corriente continua como el de la figura, es suficiente emplear las leyes de Kirchhoff. La primera ley --\emph{ley de nodos}-- establece que la suma de corrientes que llegan a un nodo del circuito debe ser igual a cero.
 La segunda --\emph{ley de mallas}-- establece que la suma de las caídas de tensión en un malla cerrada tiene que ser cero. La caída de voltaje en una resistencia se calcula empleando la ley de Ohm: $V = i\cdot R$
-Si aplicamos las leyes de Kirchoff al circuito de la figura, obtenemos  el siguiente sistema de ecuaciones,
+Si aplicamos las leyes de Kirchhoff al circuito de la figura, obtenemos  el siguiente sistema de ecuaciones,
 
 \begin{minipage}{0.3\textwidth}
 \begin{align*}
@@ -3601,7 +3601,7 @@ i_1\\ i_2\\ i_3\\ i_4\\ i_5\\ i_6
 
 
 \begin{enumerate}
-\item Define en python el sistema de ecuaciones (\ref{cucu}). Obtén los valores de las intensidades en todas las ramas del circuito empleando directamente un solo comando o función de python. Calcula el condicionamiento del sustema y dí si en tu opinión el sistema está bien o mal condicionado.
+\item Define en python el sistema de ecuaciones (\ref{cucu}). Obtén los valores de las intensidades en todas las ramas del circuito empleando directamente un solo comando o función de python. Calcula el condicionamiento del sistema y dí si en tu opinión el sistema está bien o mal condicionado.
 
 \item Emplea la factorización QR para obtener de nuevo la solución del sistema. 
 
@@ -3618,18 +3618,18 @@ Discute, a la vista de los resultados, cúal método funciona mejor.
 
 \section{Test del curso 2020/21}
 \noindent \textbf{Problema 1}. El método iterativo de Richardson para la resolución de sistemas de ecuaciones lineales emplea la siguiente fórmula de recurrencia
-\begin{equation}\label{eq:1}
+\begin{equation}\label{eq:1-2}
 x^{(s+1)} = x^{(s)} + \omega\left( b - Ax^{(s)}\right),
 \end{equation}  
 		donde $A \in \mathbb{R}^{n\times n}$ y $b  \in \mathbb{R}^{n}$ representan respectivamente la matriz de coeficientes y el vector columna de términos independientes del sistema de ecuaciones $Ax=b$ de orden $n\in\mathbb{N}$, y $x^{(s)}\in\mathbb{R}^n$ es el vector solución en la iteración $s\in\mathbb{N}$. El parámetro $\omega \in \mathbb{R}$  juega el mismo papel que el factor de relajación en los métodos amortiguados y debe ajustarse para asegurar la convergencia del método.
 
  \begin{enumerate}
-\item {\bf 1 punto.} Reescribe la fórmula de recurrencia del método Richardson (ecuación \ref{eq:1})  en la forma matricial estándar
-\begin{equation}\label{eq:2}
+\item {\bf 1 punto.} Reescribe la fórmula de recurrencia del método Richardson (ecuación \ref{eq:1-2})  en la forma matricial estándar
+\begin{equation}\label{eq:2-2}
 x^{(s+1)} = f + Hx^{(s)}.
 \end{equation}
 
-\item {\bf 2 puntos.} Construye una función en python que implemente el método de Richardson enpleando la forma matricial estándar, es decir, en cada iteración aplicamos la ecuación (\ref{eq:2}). La función deberá tomar como variables de entrada: 
+\item {\bf 2 puntos.} Construye una función en python que implemente el método de Richardson empleando la forma matricial estándar, es decir, en cada iteración aplicamos la ecuación (\ref{eq:2-2}). La función deberá tomar como variables de entrada: 
 \begin{enumerate}
 	\item La matriz de coeficientes $A$.
 	\item El vector de términos independientes $b$.
@@ -3667,7 +3667,7 @@ Clasifica los tres métodos de mejor a peor, tomando como criterio el número de
 %		e^{(s+1)} = We^{(s)}.
 %		\label{eq: error}
 %	\end{equation}
-%	 Metodología/pista: Sustituye $x^{(s)} = e^{(s)} + x$ en (\ref{eq:1}), y opera hasta alcanzar (\ref{eq: error}).
+%	 Metodología/pista: Sustituye $x^{(s)} = e^{(s)} + x$ en (\ref{eq:1-2}), y opera hasta alcanzar (\ref{eq: error}).
 
 \item {\bf 2 punto.} Haz una gráfica del radio espectral de $H$ en función del parámetro $\omega$ para el método de Richardson y el sistema de ecuaciones del apartado anterior. Emplea para ello valores de $\omega$ comprendidos en el intervalo $[0.01\ 0.9]$, toma una separación entre valores de $0.01$.  Representa cada valor como un punto independiente.
 
@@ -3688,12 +3688,12 @@ Determina, a la vista de la gráfica, si sería posible encontrar un valor de $\
 	\centering
 	\includegraphics[width=0.8\linewidth]{noria2.png}
 	\caption{Noria del parque de atracciones de Gotham}
-	\label{fig:1}
+	\label{fig:1-2}
 \end{figure}
 
 Nathaniel Finch, más conocido como Gearhead, es el responsable del mantenimiento de la noria del parque de atracciones de Gotham. Para dar mayor emoción a la atracción, desea calcular cuál sería la máxima velocidad a la que puede hacer girar la noria sin que se rompa su estructura.
 
-La figura \ref{fig:1}, muestra una vista instantánea de la noria. los radios están construidos con barras de acero y los extremos de los radios están unido mediante cables de acero. Para calcular las tensiones, en las barras y cables se puede emplear el siguiente sistema de ecuaciones,
+La figura \ref{fig:1-2}, muestra una vista instantánea de la noria. los radios están construidos con barras de acero y los extremos de los radios están unido mediante cables de acero. Para calcular las tensiones, en las barras y cables se puede emplear el siguiente sistema de ecuaciones,
 \begin{align}
 	sT_6+sT_{61} &= mg + s\frac{mv^2}{r}\\
 	- cT_6+ cT_{61} &= -c\frac{mv^2}{r}\\
@@ -3702,7 +3702,7 @@ La figura \ref{fig:1}, muestra una vista instantánea de la noria. los radios es
 	-sT_{12} + sT_{2} &= mg -s\frac{mv^2}{r}\\
 	cT_{12}+cT_{2}-T_{23} &= -c\frac{mv^2}{r}
 \end{align}
-Donde $T_{(\cdot)}$ representa la tensión correspondiente a cada una de las barras y cables de la noria indicadas en figura \ref{fig:1}, $v$ la velocidad lineal a la que giran la cabinas de la noria y $m = 100kg$ su masa; $r = 20m$ la longitud de cada barra y $g=10m/s^2$ la aceleración de la gravedad. Por último, $c = \cos(\frac{\pi}{3})$ y $s = \sin(\frac{\pi}{3})$.
+Donde $T_{(\cdot)}$ representa la tensión correspondiente a cada una de las barras y cables de la noria indicadas en figura \ref{fig:1-2}, $v$ la velocidad lineal a la que giran la cabinas de la noria y $m = 100kg$ su masa; $r = 20m$ la longitud de cada barra y $g=10m/s^2$ la aceleración de la gravedad. Por último, $c = \cos(\frac{\pi}{3})$ y $s = \sin(\frac{\pi}{3})$.
 
 El resto de las tensiones, no incluidas en la ecuación son iguales a sus simétricas respecto al eje vertical, excepto la correspondiente al cable horizontal inferior que no sufre tensión en esta posición de la noria.
 \begin{enumerate}

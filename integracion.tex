@@ -1,6 +1,6 @@
 \chapter{Diferenciación e Integración numérica\\ Numerical differentiation and integration}
 \chaptermark{Difer. e integr. num. \textreferencemark\ NUm. Diff. and Integr. }
-\epigraph{You never really understand a person until you consider things from his point of view...until you climb into his skin and walk around in it.}{Harper Lee, To kill a mokingbird}
+\epigraph{You never really understand a person until you consider things from his point of view...until you climb into his skin and walk around in it.}{Harper Lee, To kill a mockingbird}
 
 
 \begin{paracol}{2}
@@ -17,7 +17,7 @@ Como punto de partida, supondremos que tenemos un conjunto de puntos $\{x_i,y_i\
 \switchcolumn
 
 
-Differentiation and, above all, integration are very common operations in numerical computing. In many cases, obtaining the analytical expression for a function derivative or integral can be very complex or even impossible. Besides, sometimes we have not an analytical expression for the function we need to derivate of integrate, but only a set of numerical values of it. This is the case, for example, when we are worming with experimental data. If we only have numerical values of the function, we can only compute the derivative or integral numerically.
+Differentiation and, above all, integration are very common operations in numerical computing. In many cases, obtaining the analytical expression for a function derivative or integral can be very complex or even impossible. Besides, sometimes we have not an analytical expression for the function we need to differentiate or integrate, but only a set of numerical values of it. This is the case, for example, when we are worming with experimental data. If we only have numerical values of the function, we can only compute the derivative or integral numerically.
 
 Physical systems are usually describe by differential equations. Most differential equations do not have an analytical solution and thus, we can only obtain numerical solution for them.
 
@@ -47,7 +47,7 @@ Which belong to a function $y = f(x)$ whose analytical expression we may know or
 
 We can distinguish two different method to approximate the derivative:
 
-1. WE can derivate the polynomial that interpolates the point. So, we get a new polynomial that approximate the derivative.  
+1. We can differentiate the polynomial that interpolates the point. So, we get a new polynomial that approximate the derivative.  
 \end{paracol}
 \begin{equation*}
 f(x)\approx P_n(x) \Rightarrow f'(x) \approx P'_n(x)
@@ -58,7 +58,7 @@ f(x)\approx P_n(x) \Rightarrow f'(x) \approx P'_n(x)
 Si partimos de la definición de derivada,
 
 \switchcolumn
-2. Estimating the derivativa using a finite differences quotient obtained from the Taylor polinomial expansion.
+2. Estimating the derivative using a finite differences quotient obtained from the Taylor polynomial expansion.
 
 If we start from the definition of derivative,
 \end{paracol} 
@@ -226,7 +226,7 @@ The optimal value for $h$ is that what minimised the rounding-off error plus the
 \begin{paracol}{2}
 Como vimos en la introducción a esta sección, partiendo de el desarrollo de Taylor de una función es posible obtener fórmulas de diferenciación numérica y poder estimar el error cometido. Así por ejemplo, a  partir del polinomio de Taylor de primer orden,
 \switchcolumn
-A we sow in the introducction to the present section, departing from a function Taylor's expansion it is possible to arrive to different numerical differentiation formulae and estimate the error made. So, for instance, departing from the fist order Taylor's polynomial,
+A we sow in the introduction to the present section, departing from a function Taylor's expansion it is possible to arrive to different numerical differentiation formulae and estimate the error made. So, for instance, departing from the fist order Taylor's polynomial,
 \end{paracol}
 \begin{equation*}
 f(x+h)=f(x)+hf'(x)+\frac{h^2}{2}f''(z) \Rightarrow f'(x)=\frac{f(x+h)-f(x)}{h}-\frac{h}{2}f''(z), \ x<z<x+h
@@ -282,7 +282,7 @@ Empleando el desarrollo de Taylor y tres puntos podemos aproximar la derivada po
 \switchcolumn
 Where we have taken $x\equiv x_0$, $x+h\equiv x_1$ y $x-h\equiv x_{-1}$. This approximation is called two point central difference.\index{Diferentiation! Two point central difference} Figure \ref{fig:diffin1} shows a comparison between an actual function derivative and its approximation using a two point forward difference formula. Figure \ref{fig:diffin2} Compares, for the same function, the actual derivative with a two points central difference approximation. In this example, we can see how the central approximation yields better results. However, the accuracy of a result also depends on the higher-order derivative values of the function.  Therefore, it is not possible to claim that the central difference will always result in better outcomes.
 
- With three points and the Tylor's expansion we can approximate the derivative using a three points forward difference formula,   
+ With three points and the Taylor's expansion we can approximate the derivative using a three points forward difference formula,   
 \end{paracol}
 \begin{align*}
 \left. \begin{aligned}
@@ -341,7 +341,7 @@ Dada una función arbitraria $f(x)$ es en muchos casos posible obtener de modo a
 
 \switchcolumn
 \section{Numerical Integration.}
-Given an arbitrary function $f(x)$ it is in many cases possible to obtain analitically is primitive $F(x)$ such that, $f(x)=F'(x)$. In these cases, the function $f(x)$ definite integral in an interval $[a,b]$ can be obtained from its primitive.
+Given an arbitrary function $f(x)$ it is in many cases possible to obtain analytically is primitive $F(x)$ such that, $f(x)=F'(x)$. In these cases, the function $f(x)$ definite integral in an interval $[a,b]$ can be obtained from its primitive.
 
 \end{paracol}
 \begin{equation*}
@@ -552,7 +552,7 @@ So the extended Simpson 1/3 formula takes the form,
 &= \frac{h}{3}(y_0+4y_1+2y_2+4y_3+2y_4+\cdots + 2y_{n-2}+4y_{n-1}+y_n)
 \end{align*}
 \begin{paracol}{2}
-Donde se ha dividido el intervalo de integración en $n$ subintervalos, la fórmula de Simpson se ha calculado para cada dos subintevalos y se han sumado los resultados.
+Donde se ha dividido el intervalo de integración en $n$ subintervalos, la fórmula de Simpson se ha calculado para cada dos subintervalos y se han sumado los resultados.
 
 Por último para la fórmula extendida de Simpson $3/8$ se puede emplear la expresión,
 \switchcolumn
@@ -563,7 +563,7 @@ Where we have divided the integration interval in $n$ subintervals, the Simpson'
 &= \frac{3h}{8}(y_0+3y_1+3y_2+2y_3+3y_4+3y_5+2y_6+ \cdots + 2y_{n-3}+3y_{n-2}+3y_{n-1}+y_n)
 \end{align*}
 \begin{paracol}{2}
-En este caso también se divide el intervalo en $n$ subintervalos pero ahora se ha aplicado la regla de Simpson $3/8$ a cada tres subintevalos.
+En este caso también se divide el intervalo en $n$ subintervalos pero ahora se ha aplicado la regla de Simpson $3/8$ a cada tres subintervalos.
 
 A continuación se incluye un código que permite permite aproximar la integral definida de una función en un intervalo por cualquiera de los tres métodos descritos: Trapecio, Simpson o Simpson $3/8$,
 \switchcolumn
@@ -582,13 +582,13 @@ linenos
 ]{python}{./codigos/diferenciacion_integracion/integrador.py}
 
 \begin{paracol}{2}
-Este programa contiene dos funciones. La primera \mintinline{python}{integra } aplica directamente el método deseado sobre el intervalo de integración. Para obtener los métodos extendidos, podemos emplear la segunda función \mintinline{python}{trocea} que divide el intervalo de integración inicial en el número de subintervalos que deseemos, apliqua el programa anterior a cada subintervalo, y, por último, suma todo los resultados para obtener el valor de la integral en el intervalo deseado.
+Este programa contiene dos funciones. La primera \mintinline{python}{integra } aplica directamente el método deseado sobre el intervalo de integración. Para obtener los métodos extendidos, podemos emplear la segunda función \mintinline{python}{trocea} que divide el intervalo de integración inicial en el número de subintervalos que deseemos, aplica el programa anterior a cada subintervalo, y, por último, suma todo los resultados para obtener el valor de la integral en el intervalo deseado.
 
 Por último, indicar que el modulo de Py\-thon, Scipy  posee varias funciones para calcular la integral definida de una función. Se encuentran dentro del submódulo \mintinline{python}{integrate}. Para calcular la integral definida de una función lo más sencillo es usar el comando\\ \texttt{integrate.quad}. Este comando admite como variables de entrada el nombre de una función, y dos valores que representan los límites de integración. Como variable de salida devuelve el valor de la integral definida en el intervalo introducido y una estimación del error cometido. El siguiente código muestra un ejemplo de uso de la función \mintinline{python}{quad} y compara los resultados con la funcion \mintinline{python}{trocea} cuyo código hemos incluido más arriba.
 \switchcolumn
 This program holds two functions. The first one \mintinline{python}{integra} applies the method directly over the integration interval. To obtain the extended methods, we can employ the second included function \mintinline{python}{trocea}, which divides the initial integration interval into the number of subintervals we wish, applies the function \mintinline{python}{integra} to any subinterval and, eventually, add all the results together to obtain the value of the integral in the wished interval.
 
-Lastly, the Python module Scipy has several functions to compute a function's definite integral. It is located in the submodule \mintinline{python}{integrate}. The easiest way To compute the integral of a function is to use the function \mintinline{python}{integrate.quad}. This function takes a funtion name and two variables which represent the integration limits as imputs and returns the integral value in the interval introduced and an estimation of the committed error. The following code shows a use example of the function \mintinline{python}{quad} and compares the results with those of the function \mintinline{python}{trocea} whose code we have included above. 
+Lastly, the Python module Scipy has several functions to compute a function's definite integral. It is located in the submodule \mintinline{python}{integrate}. The easiest way To compute the integral of a function is to use the function \mintinline{python}{integrate.quad}. This function takes a funtion name and two variables which represent the integration limits as inputs and returns the integral value in the interval introduced and an estimation of the committed error. The following code shows a use example of the function \mintinline{python}{quad} and compares the results with those of the function \mintinline{python}{trocea} whose code we have included above. 
 \end{paracol}
 
 \begin{minted}{python}
@@ -818,7 +818,7 @@ We can solve the capacitor problem using the function \mintinline{python}{euler}
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{solrc.eps}
-\bicaption{Comparacion entre los resultados obtenidos mediante el método de Euler para dos pasos de integración $h=0.5$ y $h=0.25$ y la solución analítica para el voltaje $V_o$ de un condensador durante su carga. Hemos tomado $C=R=1$ y $V_i=10$}{Comparison among the results obtained using Euler's method with two different integration steps $h=0.5$ y $h=0.25$, and the analytic solution for voltage $V_o$ across a capacitor. We took $C=R=1$ and $V_i=10$.}
+\bicaption{Comparación entre los resultados obtenidos mediante el método de Euler para dos pasos de integración $h=0.5$ y $h=0.25$ y la solución analítica para el voltaje $V_o$ de un condensador durante su carga. Hemos tomado $C=R=1$ y $V_i=10$}{Comparison among the results obtained using Euler's method with two different integration steps $h=0.5$ y $h=0.25$, and the analytic solution for voltage $V_o$ across a capacitor. We took $C=R=1$ and $V_i=10$.}
 \label{fig:solrc}
 \end{figure}
 \begin{paracol}{2}
@@ -903,7 +903,7 @@ This system can be solve using the Euler's method, but we need to define a Pytho
 \begin{paracol}{2}
 Empleando la función descrita \\ \texttt{euler('amortiguador',[0 0],0,50,0.01)} obtenemos la evolución temporal de la posición y la velocidad de la masa unida al resorte como puede verse en la figura \ref{fig:amortiguador1}. En esta figura se aprecia como la masa oscila en torno a la posición de equilibrio hasta que finalmente se para.
 \switchcolumn
-Using the function just described \\ \texttt{euler('amortiguador',[0 0],0,50,0.01)} we compute the temporal evoluntion of position and velocity for the mass attached to the spring. Figure \ref{fig:amortiguador1} shows the result, the mass oscillates around an equilibrium position until the damping mechanism, eventually, stops it. 
+Using the function just described \\ \texttt{euler('amortiguador',[0 0],0,50,0.01)} we compute the temporal evolution of position and velocity for the mass attached to the spring. Figure \ref{fig:amortiguador1} shows the result, the mass oscillates around an equilibrium position until the damping mechanism, eventually, stops it. 
 \end{paracol}
 \begin{figure}[h]
 	\centering
@@ -1255,7 +1255,7 @@ donde $a(t)\in\mathbb{R}$ representa la aceleración del bloque,$v_x(t) \in\math
 \paragraph{2.} \label{p2} Representa gráficamente los resultados obtenidos: Posición frente a tiempo y velocidad frente a tiempo. Emplea una figura distinta para cada representación. No olvides añadir rótulos a los ejes indicando las variables representadas con sus unidades.
 
 \paragraph{3.} La solución analítica del problema, para velocidad inicial $v(0)=0$ y cualquier posición inicial $x(0)$ toma la siguiente forma,
-\begin{equation}\label{eq2}
+\begin{equation}\label{eq2-3}
 	x(t) = \frac{p_x}{k}-\left(\frac{p_x}{k}-x(0)\right)\frac{\omega_0}{\omega}e^{-\eta t}\cos\left(\omega t-\phi \right)
 \end{equation}
 donde,
@@ -1267,24 +1267,24 @@ donde,
 \phi = \arcsin \left(\frac{\eta}{\omega_0}\right)
 \end{matrix} \nonumber
 \end{equation}
-a) Calcula la posición del bloque mediante la ecuación (\ref{eq2}). Emplea para ello el mismo intervalo y los mismos instantes de tiempo empleados en el apartado \ref{p1}. Representa los resultados sobre el gráfico  para la posición calculada mediante el método de Euler que has obtenido en el apartado \ref{p2}. 
+a) Calcula la posición del bloque mediante la ecuación (\ref{eq2-3}). Emplea para ello el mismo intervalo y los mismos instantes de tiempo empleados en el apartado \ref{p1}. Representa los resultados sobre el gráfico  para la posición calculada mediante el método de Euler que has obtenido en el apartado \ref{p2}. 
 
 b) Representa en un gráfico de barras los residuos resultantes de comparar la solución analítica con la obtenida por el método de Euler.
 
-c) Calcula el error cuadrático medio cometido al emplear el método de Euler. Considera como exacta la solución analítica (\ref{eq2}).
+c) Calcula el error cuadrático medio cometido al emplear el método de Euler. Considera como exacta la solución analítica (\ref{eq2-3}).
 
 
 \paragraph{4.} Los instantes de tiempo para los que la posición del bloque alcanza un máximo o un mínimo local pueden obtenerse a partir de la frecuencia de oscilación $\omega$,
 \begin{equation}\label{eq4}
 t_{max/min} = \frac{n \pi}{\omega}, n = 1,2,3,\cdots, \infty
 \end{equation}
-a) Emplea las ecuaciones (\ref{eq4}) y (\ref{eq2}) para obtener los primeros 20 puntos singulares (máximos o mínimos) del movimiento del bloque. Represéntalos sobre el gráfico de la posición, obtenido en el apartado 3.b).
+a) Emplea las ecuaciones (\ref{eq4}) y (\ref{eq2-3}) para obtener los primeros 20 puntos singulares (máximos o mínimos) del movimiento del bloque. Represéntalos sobre el gráfico de la posición, obtenido en el apartado 3.b).
 
 b) Utilizando los datos obtenidos en el apartado 4.a), emplea el método de diferencia de dos puntos centrada para obtener las derivadas de las posiciones en los máximos y mínimos locales con respecto al tiempo. Si hay puntos para los que no es posible aplicar este método, calcula su derivada empleando otra aproximación razonable.
  
 c) Representa los resultados obtenidos en el apartado anterior sobre el gráfico de la velocidad obtenido en el ejercicio \ref{p2}. A la vista de los resultados, ¿Cómo valorarías la precisión del método empleado para obtener las derivadas? 
 
-\paragraph{5.} A partir de los resultados obtenidos para la velocidad en el apartado \ref{p1}, calcula la posición del bloque en el instante de tiempo $t=1s$ mediante la siguiente integral
+\paragraph{5.} A partir de los resultados obtenidos para la velocidad en el apartado \ref{p1-2}, calcula la posición del bloque en el instante de tiempo $t=1s$ mediante la siguiente integral
 \begin{equation}
 x(1) = \int_0^1v_x(t)dt,
 \end{equation}
@@ -1313,24 +1313,24 @@ p &= mg\\
 
 \end{minipage}
 \bicaption{Sistema masa-muelle-plano inclinado.}{Mass-spring-inclined plane system.}
-\label{fig1}
+\label{fig1-2}
 \end{figure}
 
-A block attached to a spring is placed on an inclined plane, as shown in figure \ref{fig1}. The contact surface between the plane and the block is very smooth, and the friction between both then can be considered proportional to the speed $v_x(t(t))\in\mathbb{R}$ along the plane surface.
+A block attached to a spring is placed on an inclined plane, as shown in figure \ref{fig1-2}. The contact surface between the plane and the block is very smooth, and the friction between both then can be considered proportional to the speed $v_x(t(t))\in\mathbb{R}$ along the plane surface.
 
 The displacement of the block along the plane can be described using the following equation,
 \begin{equation}
-	ma_{x}(t) = -kx(t) -\mu \lvert N \lvert v_x(t) + p_x, \label{eq: f}
+	ma_{x}(t) = -kx(t) -\mu \lvert N \lvert v_x(t) + p_x, \label{eq: f-2}
 \end{equation}
 
-Where  $a(t)\in\mathbb{R}$ represents the block acceleration, $v_x(t) \in\mathbb{R}$ the block velocity, $x(t)\in\mathbb{R}$ its position and the remaining constant are described in figure \ref{fig1}. The coordinate origin $x=0$ is taken where the spring recovery strength is null. The block position increases in the downward direction along the plane.
+Where  $a(t)\in\mathbb{R}$ represents the block acceleration, $v_x(t) \in\mathbb{R}$ the block velocity, $x(t)\in\mathbb{R}$ its position and the remaining constant are described in figure \ref{fig1-2}. The coordinate origin $x=0$ is taken where the spring recovery strength is null. The block position increases in the downward direction along the plane.
 
-\paragraph{1.} \label{p1} Employ the Euler's method to stimate the block position $x(t)$ and velocity $v_x(t)$ from equation (\ref{eq: f}). Use a step size $h = 10^{-3}\text{s}$. Take $x(0) = 0\text{m}$ as the initial position, $v(0) = 0\text{m/s}$ as the initial velocity and a final integration time $t_{f}=11\text{s}$.
+\paragraph{1.} \label{p1-2} Employ the Euler's method to estimate the block position $x(t)$ and velocity $v_x(t)$ from equation (\ref{eq: f-2}). Use a step size $h = 10^{-3}\text{s}$. Take $x(0) = 0\text{m}$ as the initial position, $v(0) = 0\text{m/s}$ as the initial velocity and a final integration time $t_{f}=11\text{s}$.
 
-\paragraph{2.} \label{p2} Represent graphically the results achieved: Position versus time and velocity versus time, using a different figure for each representation. Do not forget to add axis labels indicating the variables and their units.	 
+\paragraph{2.} \label{p2-2} Represent graphically the results achieved: Position versus time and velocity versus time, using a different figure for each representation. Do not forget to add axis labels indicating the variables and their units.	 
 
 \paragraph{3.} The problem analytical solution, for $v(0)=0$ initial speed and an arbitrary initial position $x(0)$ is, 
-\begin{equation}\label{eq2}
+\begin{equation}\label{eq2-4}
 	x(t) = \frac{p_x}{k}-\left(\frac{p_x}{k}-x(0)\right)\frac{\omega_0}{\omega}e^{-\eta t}\cos\left(\omega t-\phi \right)
 \end{equation}
 where,
@@ -1343,24 +1343,24 @@ where,
 \end{matrix} \nonumber
 \end{equation}
 
-a) Compute the block position using equation (\ref{eq2}). Employ the same interval and the same time instants, used in section ref{p1}, to do it. Draw the result on top the position graphic computed in section \ref{p2}, using the Euler's method.
+a) Compute the block position using equation (\ref{eq2-4}). Employ the same interval and the same time instants, used in section ref{p1}, to do it. Draw the result on top the position graphic computed in section \ref{p2-2}, using the Euler's method.
 
 b) Compare the analytical solution with Euler's method solution and represent, using a bar graphic, the residual obtained from this comparison.
 
 c) Compute the quadratic error made using the Euler's method. Take the analytical solution as the exact solution.  
 
 \paragraph{4.} We can obtain the time instant at which the block position reaches a local maximum or minimum using the the oscillation frequency $\omega$,
-\begin{equation}\label{eq4}
+\begin{equation}\label{eq4-2}
 t_{max/min} = \frac{n \pi}{\omega}, n = 1,2,3,\cdots, \infty
 \end{equation}
 
-a) Use equations (\ref{eq4}) and (\ref{eq2}) to obtain the first twenty singular points (maxima or minima) for the block displacement. Draw them on top the position graph obtained in section 3.b).  
+a) Use equations (\ref{eq4-2}) and (\ref{eq2-4}) to obtain the first twenty singular points (maxima or minima) for the block displacement. Draw them on top the position graph obtained in section 3.b).  
 
 b) Using the data obtained in section 4.a), employ the two point central difference method to obtain the time derivatives of the block position at the local maxima and minima. It there are points for which it is not possible to apply this method, compute the derivative using another reasonable approach.
 
-c) Represent the result obtained on top of the graphic for the velocity drawn in section \ref{p2}. According to the resulting graphic, how do you consider the precision of the method used for computing the derivatives?
+c) Represent the result obtained on top of the graphic for the velocity drawn in section \ref{p2-2}. According to the resulting graphic, how do you consider the precision of the method used for computing the derivatives?
 
-\paragraph{5.} From the results obtained for the velocity in section \ref{p1}, compute the the position of the block at time $t=1s$ using the following integral,  
+\paragraph{5.} From the results obtained for the velocity in section \ref{p1-2}, compute the the position of the block at time $t=1s$ using the following integral,  
 \begin{equation}
 x(1) = \int_0^1v_x(t)dt,
 \end{equation}
@@ -1374,8 +1374,8 @@ Una de las atracciones de mayor éxito en el parque de atracciones de Gotham es 
 Thalia está interesada en saber cual es la mejor ubicación para el lago artificial. Para ello hace uso de sus brillantes conocimientos de física de bachillerato y plantea las siguientes ecuaciones,
 
 \begin{align}
-	x &= v_0\cos(\theta)t + x_0 \label{eq1}\\
-	h &= -\frac{1}{2}gt^2 + v_0\sin({\theta})t + h_0 \label{eq2}
+	x &= v_0\cos(\theta)t + x_0 \label{eq1-3}\\
+	h &= -\frac{1}{2}gt^2 + v_0\sin({\theta})t + h_0 \label{eq2-5}
 \end{align}
 Donde $v_0$ Representa la velocidad de lanzamiento desde la catapulta en $m/s$, $x_0$ es la posición inicial horizontal de la cápsula en $m$, $h_0$ la altura inicial en $m$, $g=9.8m/s$ la aceleración de la gravedad, $\theta$ el ángulo de lanzamiento en radianes y $t$ el tiempo en segundos.
 
@@ -1383,7 +1383,7 @@ Lucía y Laura, antiguas compañeras de bachiller de Thalia, se parten de risa a
 
 A cambio, le proponen que emplee las siguientes ecuaciones,
 \begin{align}
-	\frac{dx}{dt} &= v_x \label{eq3}\\
+	\frac{dx}{dt} &= v_x \label{eq3-2}\\
 	\frac{dh}{dt} &= v_h\\
 	\frac{dv_x}{dt} &= - \frac{C_d}{m}\rho\pi r^2|v|v_x\\
 	\frac{dv_h}{dt} &= -g - \frac{C_d}{m}\rho\pi r^2|v|v_h \label{eq5}
@@ -1396,10 +1396,10 @@ Thalia, que no tiene la menor idea de como resolver las ecuaciones que le plante
 Laura y Lucía piden ayuda al resto de sus compañeros de LCC a ver si entre todos consiguen resolverlo.
 
 \begin{enumerate}
-	\item (\textbf{2 ptos}) Emplea las ecuaciones (\ref{eq1}) y (\ref{eq2}) para obtener las posiciones sucesivas de la cápsula desde su lanzamiento hasta que toca la superficie del lago. Considera que la velocidad con la que sale la cápsula de la catapulta es $v_0 = 20 m/s$ y sale formando un ángulo $\theta = \pi/3$ con la horizontal. La altura desde la que sale es $h_0 = 2m$. Toma $x_0=0m$. Dibuja la trayectoria. (Aunque sabemos que no es necesario recordároslo el tiempo máximo de vuelo para el tiro parabólico se puede calcular como $t_{max} = \frac{v_{0y} + \sqrt{v_{0y}^2+2gh_0}}{g}$)
+	\item (\textbf{2 ptos}) Emplea las ecuaciones (\ref{eq1-3}) y (\ref{eq2-5}) para obtener las posiciones sucesivas de la cápsula desde su lanzamiento hasta que toca la superficie del lago. Considera que la velocidad con la que sale la cápsula de la catapulta es $v_0 = 20 m/s$ y sale formando un ángulo $\theta = \pi/3$ con la horizontal. La altura desde la que sale es $h_0 = 2m$. Toma $x_0=0m$. Dibuja la trayectoria. (Aunque sabemos que no es necesario recordároslo el tiempo máximo de vuelo para el tiro parabólico se puede calcular como $t_{max} = \frac{v_{0y} + \sqrt{v_{0y}^2+2gh_0}}{g}$)
 	
 	
-	\item (\textbf{4 ptos}) Emplea el método de Euler para resolver las ecuaciones (\ref{eq3}) - (\ref{eq5}). Toma para las posiciones y velocidades iniciales los mismo valores del apartado anterior. Integra hasta que la cápsula toque o rebase la superficie del lago. Emplea un incremento de tiempo $\Delta t = 0.0001$. Dibuja la trayectoria resultante en el mismo gráfico del ejercicio anterior.
+	\item (\textbf{4 ptos}) Emplea el método de Euler para resolver las ecuaciones (\ref{eq3-2}) - (\ref{eq5}). Toma para las posiciones y velocidades iniciales los mismo valores del apartado anterior. Integra hasta que la cápsula toque o rebase la superficie del lago. Emplea un incremento de tiempo $\Delta t = 0.0001$. Dibuja la trayectoria resultante en el mismo gráfico del ejercicio anterior.
 	A la vista de los resultados, indica si era acertada la sugerencia de Lucía y Laura.
 	
 	\item \textbf{Bonus track}(\textbf{1 pto}) El cálculo realizado solo el válido para días sin viento, ya que la velocidad empleada para calcular la fricción es relativa al aire. Vuelve a resolver el problema suponiendo una velocidad horizontal del viento $v_{xaire} = -10 m/s$. Compara con los resultados anteriores.

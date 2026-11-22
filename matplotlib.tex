@@ -52,7 +52,7 @@ fig =plt.figure
 
 \section{Dibujar en 2D}
 \begin{paracol}{2}
-    Podemos dibujar facilmente usando matplotlib.pyplot es mediante el método \texttt{plot}. A este método le pasaremos dos vectores con las coordenadas $x$ e $y$ de los puntos que queremos representar (evidentemente tendremos que asegurarnos de que tienen la misma longitud).
+    Podemos dibujar fácilmente usando matplotlib.pyplot es mediante el método \texttt{plot}. A este método le pasaremos dos vectores con las coordenadas $x$ e $y$ de los puntos que queremos representar (evidentemente tendremos que asegurarnos de que tienen la misma longitud).
 
     Por ejemplo si generamos unos vectores de coordenadas como los siguientes 
     $$x=(0,2,-1,-2)$$ 
@@ -245,7 +245,7 @@ Figure \ref{fig:tplot} shows the results of the symbol combinations just describ
 
 \begin{paracol}{2}
 \subsection{Trabajar con múltiples figuras}
-Con \texttt{matplotlib.pyplot} se pueden dibujar diferentes gráficas en una misma figura usando el método \texttt{subplot}. Con este méotodo crearemos una figura donde las distintas gráficas estarán dispuestas a modo de tabla. A este método le indicaremos mediante parámetros de entrada el número de filas, el número de columnas y la posición donde se va a dibujar la siguiente gráfica.
+Con \texttt{matplotlib.pyplot} se pueden dibujar diferentes gráficas en una misma figura usando el método \texttt{subplot}. Con este método crearemos una figura donde las distintas gráficas estarán dispuestas a modo de tabla. A este método le indicaremos mediante parámetros de entrada el número de filas, el número de columnas y la posición donde se va a dibujar la siguiente gráfica.
 
 En el siguiente ejemplo se crean dos gráficas dentro de la misma figura en dos filas y una columna. En la primera se dibuja la gráfica del coseno y en la segunda la del seno. El resultado puede verse en la figura \ref{fig:subplot_01}.
 
@@ -778,7 +778,7 @@ Next we obtain the z-coordinate matrix by applying the function to the grid poin
 Zm=Xm**3+Ym**2
 \end{minted}
 \switchcolumn
-Podemos representar la superfície usando el método \textit{wireframe} o el método \textit{surface}. En el primer caso se dibuja la superfície como una rejilla, figura \ref{fig:wireframe} y en el segundo como las caras rellenas de color de la retícula, figura \ref{fig:surface}.
+Podemos representar la superficie usando el método \textit{wireframe} o el método \textit{surface}. En el primer caso se dibuja la superficie como una rejilla, figura \ref{fig:wireframe} y en el segundo como las caras rellenas de color de la retícula, figura \ref{fig:surface}.
 \switchcolumn
 We can represent the surface using the \textit{wireframe} method or the \textit{surface} method. In the first case the surface is drawn as a grid, figure \ref{fig:wireframe}, and in the second as the colour-filled faces of the grid, figure \ref{fig:surface}.
 \end{paracol}
@@ -859,7 +859,7 @@ Matplotlib también proporciona una interfaz para generar animaciones utilizando
             writer = FFMpegWriter(fps=15, metadata=metadata)
         \end{minted}
 \begin{paracol}{2}
-    \paragraph{Inicializar el fondo de la animación}, es decir aquellos elementos que no van a cambiar. Lo haremos definiendo una figura y todo aquello que va a permanecer constante durante la animación, por eso lo llamamos el fondo. En este caso es la curva del seno. También inicializamos el punto vacío rojo, al que le damos unas coordendas vacías, para que Python sepa que esas coordenadas se actualizarán posteriormente. Como las etiquetas no cambian también las ponemos aquí.
+    \paragraph{Inicializar el fondo de la animación}, es decir aquellos elementos que no van a cambiar. Lo haremos definiendo una figura y todo aquello que va a permanecer constante durante la animación, por eso lo llamamos el fondo. En este caso es la curva del seno. También inicializamos el punto vacío rojo, al que le damos unas coordenadas vacías, para que Python sepa que esas coordenadas se actualizarán posteriormente. Como las etiquetas no cambian también las ponemos aquí.
     
     \switchcolumn
     

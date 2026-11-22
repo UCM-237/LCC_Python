@@ -146,7 +146,7 @@ The approximation works reasonably well for points inside the interval $0<x<2$. 
 \index{Polinomio de Taylor! Series de las funciones seno y coseno}
 Las funciones $\sin(x)$ y $\cos(x)$, son también simples de aproximar mediante polinomios de Taylor. Si desarrollamos en torno a $x_0=0$, la serie del coseno solo tendrá potencias pares mientras que la del seno solo tendrá potencias impares,
 \switchcolumn
-\index[eng]{Tailor's polynomial! Sine and consine function expansion.} Functions $\sin(x)$ and $\cos(x)$, are also easy to approach using Taylor's polynomials. If we expand around $x_0=0$, the cosine series will have only even powers and the sine series will only have odd powers,
+\index[eng]{Tailor's polynomial! Sine and cosine function expansion.} Functions $\sin(x)$ and $\cos(x)$, are also easy to approach using Taylor's polynomials. If we expand around $x_0=0$, the cosine series will have only even powers and the sine series will only have odd powers,
 \end{paracol}
 \begin{align*}
 	\cos(x)&\approx \sum_{i=0}^n \frac{(-1)^i}{(2i)!}x^{2i}\\
@@ -163,7 +163,7 @@ Las funciones $\sin(x)$ y $\cos(x)$, son también simples de aproximar mediante 
 		\includegraphics[width=10.5cm]{sin.eps}
 		\bicaption{$\sin(x)$, polinomios  3, 5, 7 y 9  grados}{polynomials 2, 4, 6 and 8 degrees} \label{fig:sin}
 	\end{subfigure}
-	\bicaption{Polynomios de Taylor para las funciones coseno y seno}{Taylor polynomial for cosine and sine functions}
+	\bicaption{Polinomios de Taylor para las funciones coseno y seno}{Taylor polynomial for cosine and sine functions}
 \end{figure}
 
 
@@ -183,7 +183,7 @@ Si tratamos de interpolar los puntos con un polinomio de grado menor que $n$, es
 Supongamos que tenemos un conjunto de pares de puntos $\mathcal{A}$, 
 
 \switchcolumn
-Figures \ref{fig:cos} and \ref{fig:sin} show aproximations to sine and consine functions using Taylor's polynomials. We have use polynomias up to 8DWM1001 degree for the cosine function and up to degree 9 for the sine function. In both cases we have calculated the results inside the interval $(-\pi, \pi)$. When we compare these results with those yielded by Numpy functions \mintinline{python}{cos} and \mintinline{python}{sin}, we see that the approximation is quite good for the higher degree  polynomials we have used in each case.
+Figures \ref{fig:cos} and \ref{fig:sin} show approximations to sine and cosine functions using Taylor's polynomials. We have use polynomials up to 8DWM1001 degree for the cosine function and up to degree 9 for the sine function. In both cases we have calculated the results inside the interval $(-\pi, \pi)$. When we compare these results with those yielded by Numpy functions \mintinline{python}{cos} and \mintinline{python}{sin}, we see that the approximation is quite good for the higher degree  polynomials we have used in each case.
 
 \section{Polynomial interpolati\-on.}
 \sectionmark{Interpolación polinómica  \textreferencemark\ Polynomial interpolation}
@@ -313,7 +313,7 @@ La matriz de coeficientes del sistema resultante recibe el nombre de matriz de V
 A partir de los valores $x_0, x_1,\cdots, x_n$, se construye el siguiente conjunto de $n+1$ polinomios de grado $n$
 
 \switchcolumn
-The coefficient matrix of the resulting system is called the Vandermonde's matrix. Its elements are hte $n$ first powers of the independent variable values, allocated by rows. It is easy to notice that when the number of data increases the difference among the elements of a row will tend to increase also. For this reason in most cases the Vandermonde's matrix is a poor conditioned matrix and so not suitable for solving the system numerically.  For this reason, in practice,the interpolation polynomial is computed using other alternative methods.  
+The coefficient matrix of the resulting system is called the Vandermonde's matrix. Its elements are the $n$ first powers of the independent variable values, allocated by rows. It is easy to notice that when the number of data increases the difference among the elements of a row will tend to increase also. For this reason in most cases the Vandermonde's matrix is a poor conditioned matrix and so not suitable for solving the system numerically.  For this reason, in practice,the interpolation polynomial is computed using other alternative methods.  
 
 \subsection{Lagrange Interpolating Polynomial}\index[eng]{Interpolation!Lagrange Polynomial} \index[eng]{Lagrange Polynomial}
 Departing from the values $x_0,x_1,\cdots,x_n$, We build the following set of $n+1$ polynomial of degree $n$ 
@@ -338,7 +338,7 @@ l_j(x_i)= \left\{
 \begin{paracol}{2}
 A partir de estos polinomios podemos construir ahora el siguiente polinomio de interpolación empleando las imágenes $y_0,y_1\cdots, y_n$ correspondientes a los valores $x_0, x_1,\cdots, x_n$,
 \switchcolumn
-From this polynomials we can build a interporlation polynomial using the codomain values $y_0,y_1\cdots, y_n$  corresponding to the domain values $x_0, x_1,\cdots, x_n$,
+From this polynomials we can build a interpolation polynomial using the codomain values $y_0,y_1\cdots, y_n$  corresponding to the domain values $x_0, x_1,\cdots, x_n$,
 \end{paracol}
 \begin{equation*}
 p(x)=\sum_{j=0}^n l_j(x)\cdot y_j
@@ -371,8 +371,8 @@ El método de las diferencias divididas, permite obtener el polinomio de interpo
 
 El polinomio de orden $n$ de diferencias divididas se construye de la siguiente manera,
 \switchcolumn
-\subsection{Divided diferences.}\index{Interpolation! Divided diferences} \index{Divided diferences}
-The two method we have studied so far, Vadermonde matrix and Lagrange polynomial, have a common drawback. If we add a new pair of data $(x_{n+1},y_{n+1})$ to the existing data collection, it is necessary to recalculate the interpolation polynomial from scratch.
+\subsection{Divided differences.}\index{Interpolation! Divided differences} \index{Divided differences}
+The two method we have studied so far, Vandermonde matrix and Lagrange polynomial, have a common drawback. If we add a new pair of data $(x_{n+1},y_{n+1})$ to the existing data collection, it is necessary to recalculate the interpolation polynomial from scratch.
 
 The divided differences algorithm allows us to build the interpolation polynomial performing less operations than in the case of Lagrange polynomial. Besides, the computing is carried out stepwise, making use of all previous results when a new data  pair is added to calculate the interpolation polynomial.
 
@@ -417,7 +417,7 @@ f\left[x_0,x_1,x_2\right]=\frac{f\left[x_1,x_2\right]-f\left[x_0,x_1\right]}{x_2
 \begin{paracol}{2}
 y, en general definiremos la diferencia dividida de orden $i$ para $i+1$ puntos como,
 \switchcolumn
-and eventually, we can define the $i-\text{order}$ divide diference for $i+1$ points as,
+and eventually, we can define the $i-\text{order}$ divide difference for $i+1$ points as,
 \end{paracol}
 \begin{equation*}
 f\left[x_0,x_1,\cdots,x_i\right]=\frac{f\left[x_1,x_2,\cdots,x_i\right]-f\left[x_0,x_1,\cdots,x_{i-1}\right]}{x_i-x_0}
@@ -476,11 +476,11 @@ p_3(x)=1-2x+\frac{7}{6}x(x-1)-\frac{1}{3}x(x-1)(x-3)
 \begin{paracol}{2}
 Es importante hacer notar que el polinomio de interpolación obtenido por diferencias divididas siempre aparece representado como suma de productos de binomios $(x-x_0)(x-x_1)\cdots$ y los coeficientes obtenidos corresponden a esta representación y no a la representación habitual de un polinomio como suma de potencias de la variable $x$. 
 
-El siguiente código permite calcular el polinomio de diferencias divididas a partir de un conjunto de $n$ datos. Como el polinomio de diferencias divididas toma una forma especial, es preciso tenerlo en cuenta a la hora de calcular su valor en un punto $x$ determinado. La función \mintinline{python}{difdiv} permite obtener los coeficientes del polinomio de diferencias divididas a partir de una coleccion de datos $x,y$. La función \mintinline{python}{evdif} permite calcular el valor que toma el polinomio en un punto cualquiera $x_i$, a partir de los coeficientes calculados y los valores $x$ de la collección de datos.
+El siguiente código permite calcular el polinomio de diferencias divididas a partir de un conjunto de $n$ datos. Como el polinomio de diferencias divididas toma una forma especial, es preciso tenerlo en cuenta a la hora de calcular su valor en un punto $x$ determinado. La función \mintinline{python}{difdiv} permite obtener los coeficientes del polinomio de diferencias divididas a partir de una colección de datos $x,y$. La función \mintinline{python}{evdif} permite calcular el valor que toma el polinomio en un punto cualquiera $x_i$, a partir de los coeficientes calculados y los valores $x$ de la colección de datos.
 \switchcolumn
 Notice that the interpolation polynomial, built using divided differences, it always represented as a sum of binomials products $(x-x_0)(x-x_1)\cdots$ and the coefficients computed belong to this representation a not to the standard polynomial representation as a sum of variable $x$ powers.
 
-The following code implement the divided differences polynomial from a set of $n$ data. We must take into account the special form of the polynomial to calculate the value ot takes in an specific $x$ point. Function \mintinline{python}{difdiv} computes the polynomiañ coefficients departing from a set $x,y$ of data. Function \mintinline{python}{evdif} calculates the value of the polynomial in a point whatsoever, using the computed coefficientes and the $x$ values of the data set.  
+The following code implement the divided differences polynomial from a set of $n$ data. We must take into account the special form of the polynomial to calculate the value ot takes in an specific $x$ point. Function \mintinline{python}{difdiv} computes the polynomial coefficients departing from a set $x,y$ of data. Function \mintinline{python}{evdif} calculates the value of the polynomial in a point whatsoever, using the computed coefficients and the $x$ values of the data set.  
 \end{paracol}
 
 \inputminted[
@@ -534,7 +534,7 @@ f[x_0,x_1,x_2]=\frac{\Delta^2y_0}{2h^2}
 \begin{paracol}{2}
 En general, para la diferencias de orden n tendríamos,
 \switchcolumn
-In genral, for the order-n differences we obtain,
+In general, for the order-n differences we obtain,
 
 \end{paracol}
 \begin{equation*}
@@ -615,7 +615,7 @@ linenos
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{intpoli.eps}
-\bicaption{Polinomio de interpolación de grado nueve obtenido a partir de un conjunto de diez datos}{Nine degree interpoling polynomial obtained using a set of ten data}
+\bicaption{Polinomio de interpolación de grado nueve obtenido a partir de un conjunto de diez datos}{Nine degree interpolating polynomial obtained using a set of ten data}
 \label{fig:intepol}
 \end{figure}
 \begin{paracol}{2}
@@ -680,7 +680,7 @@ WE have seen how the $n$-degree interpolating polynomial for a set of $n+1$ data
 
 A \emph{spline} is function built using a set of polynomials, any one of them defined in an interval. The spline polynomial are connected in the ends of the intervals meeting certain continuity conditions.
 
-Suposse we have a data table whatsoever,
+Suppose we have a data table whatsoever,
 \end{paracol}
 \begin{table}[h]
 \centering
@@ -693,7 +693,7 @@ y&$y_0$&$y_1$&$\cdots$&$y_n$
 \begin{paracol}{2}
 Para construir una función \emph{spline} $S$ de orden $m$, que interpole los datos de la tabla, se definen intervalos tomando como extremos dos puntos consecutivos de la tabla y un polinomio de grado $m$ para cada uno de los intervalos,
 \switchcolumn
-To build a $m$ order \emph{spline} function $S$ for interpolating the table data, we define intervals taking two consecutive point onn the table as limits. Then, we define an $m$ degree polynomial for each interval.
+To build a $m$ order \emph{spline} function $S$ for interpolating the table data, we define intervals taking two consecutive point on the table as limits. Then, we define an $m$ degree polynomial for each interval.
 \end{paracol}
 \begin{equation*}
 S= \left\{ 
@@ -739,7 +739,7 @@ That is, two consecutive polynomial belonging to the spline and their $m-1$ firs
 
 A straightforward consequence of the continuity conditions impose to spline functions is that their successive derivatives $S'.\ S'', \cdots$ are in turn order $m-1, \ m-2 \cdots$ spline functions too. Besides, the continuity conditions supply $(n-1) \cdot m$ equations that, together with the interpolation conditions ---each polynomial should pass through the two data point that defines the ends of its definition interval---, sum up $n\cdot (m+1)-(m-1)$ equations. This number is insufficient for obtaining the $(m+1\cdot n)$ parameters belonging to the the $n$ polynomial of degree $m$ used in the spline interpolation. We need $m-1$ equations more that are defined imposing to the polynomials additional conditions.
 
-\paragraph{Cubic Spline.} Probably, the most used splines are those composed of third-degree polynomials. We must need to determine $(m+1)\dot n = 4\cdot n$ coefficients to obtain all the polynomials that compose the spline. The continuity plus the interpolation conditions supply $3\cdot (n-1)+n+1 = 4\cdot n - 2$ equations. We need to impose two more conditions to the spline. Some frecuently used conditions are,
+\paragraph{Cubic Spline.} Probably, the most used splines are those composed of third-degree polynomials. We must need to determine $(m+1)\dot n = 4\cdot n$ coefficients to obtain all the polynomials that compose the spline. The continuity plus the interpolation conditions supply $3\cdot (n-1)+n+1 = 4\cdot n - 2$ equations. We need to impose two more conditions to the spline. Some frequently used conditions are,
 \begin{enumerate}
 	\item natural Spline $S''(x_0)=S''(x_n)=0$
 	\item Spline with a known value for the derivatives at the ends of the interval $S'(x_0)=y'_0, S'(x_n)=y'_n$
@@ -870,12 +870,12 @@ b_i=6\cdot \left(\frac{y_{i+1}-y_i}{h_i}-\frac{y_i-y_{i-1}}{h_{i-1}}\right)
 \end{equation*}
 \begin{paracol}{2}
 Tenemos un sistema de ecuaciones en el que la matriz de coeficientes es tridiagonal y además diagonal dominante, por lo que podríamos emplear cualquiera de los métodos vistos en el capítulo  
-\ref{sistemas}.  Una vez resuelto el sistema y obtenidos los valores de $M_i$, obtenemos los valores de $A_i$ y $B_i$ a Partir de las ecuaciones obtenidas más arriba.
+\ref{ch:sistemas}.  Una vez resuelto el sistema y obtenidos los valores de $M_i$, obtenemos los valores de $A_i$ y $B_i$ a Partir de las ecuaciones obtenidas más arriba.
 
 Por último, la forma habitual de definir el polinomio de grado 3 $S_i$, empleado para interpolar los valores del intervalo $[x_i,x_{i+1}]$, mediante splines cúbicos se define como, 
 
 \switchcolumn
-So, we have a system of equations for which the coefficients matrix is tridiagonal and, besides, it is a dominant diagonal matrix. For this reason, we can solve it with anyone of the methods described in chapter \ref{sistemas}. Once the system is solved, we get the values of $M_i$ and the values of $A_i$ and $B_i$ using the equations described above. 
+So, we have a system of equations for which the coefficients matrix is tridiagonal and, besides, it is a dominant diagonal matrix. For this reason, we can solve it with anyone of the methods described in chapter \ref{ch:sistemas}. Once the system is solved, we get the values of $M_i$ and the values of $A_i$ and $B_i$ using the equations described above. 
 
 A last remark: we usually define the 3-degree polynomial, $S_i$ used for interpolating the values inside the interval $[x_i,x_{i+1}]$ as follows, 
 \end{paracol}
@@ -920,19 +920,19 @@ La función \texttt{interp1d}. Esta función admite como variables de entrada do
 \begin{enumerate}
 \item \texttt{'nearest'}. Interpola el intervalo empleando el valor $y_i$ correspondiente al valor  $x_i$ más cercano al punto que se quiere interpolar. El resultado es una interpolación a escalones.
  del conjunto de datos que se desea interpolar.
-\item \texttt{'next'}. Interpola el interpalo empleando el valor de $y_i$ correspondiente al punto $x_i$ de los datos que cierra el intervalo.
-\item \texttt{'previous'} Interpola el interpalo empleando el valor de $y_i$ correspondiente al punto $x_i$ de los datos que abre el intervalo.
-\item \texttt{'linear'} realiza una interpolación lineal entre los extremos del intervalo que se desea intepolar. Esta es la opción por defecto.
+\item \texttt{'next'}. Interpola el intervalo empleando el valor de $y_i$ correspondiente al punto $x_i$ de los datos que cierra el intervalo.
+\item \texttt{'previous'} Interpola el intervalo empleando el valor de $y_i$ correspondiente al punto $x_i$ de los datos que abre el intervalo.
+\item \texttt{'linear'} realiza una interpolación lineal entre los extremos del intervalo que se desea interpolar. Esta es la opción por defecto.
 \end{enumerate} 
 
-\mintinline{python}{interp1d} Devuelve una funcion que admite como variable de entrada un array con los puntos para para los que se quiere calcular el valor de la interpolación y devuelve como salidad un array con los resultados obtenidos. El siguiente código muestra el modo de usar el comando \texttt{interp1d}. Para probarlo se han creado dos array \texttt{x} e \texttt{y} que contienen el conjunto de datos que se empleará para calcular la interpolación. Además, se ha creado otro vector \texttt{xi} que contiene los puntos para los que se quiere calcular el resultado de la interpolación.
+\mintinline{python}{interp1d} Devuelve una funcion que admite como variable de entrada un array con los puntos para para los que se quiere calcular el valor de la interpolación y devuelve como salida un array con los resultados obtenidos. El siguiente código muestra el modo de usar el comando \texttt{interp1d}. Para probarlo se han creado dos array \texttt{x} e \texttt{y} que contienen el conjunto de datos que se empleará para calcular la interpolación. Además, se ha creado otro vector \texttt{xi} que contiene los puntos para los que se quiere calcular el resultado de la interpolación.
 \switchcolumn
 Figure \ref{fig:splines} shows the result of interpolating the same data of figure \ref{fig:intepol} using a cubic spline. It is ease to check how the interpolation polynomials which compose the spline cast a smooth result in the points interpolated and how the curves shapes are reasonable smooth also in the intervals between the data. They do not present variations difficult to explain using the data.
 
 \subsection{Python functions for piecewise interpolation}
-To carry out a piecewise interpolation using anyone of the method above described, we can use the \mintinline{python}{scipy } sub-package \mintinline{python}{scypi.interpolate}. This package includes many intepolation me\-thods; we will only describe two of them:
+To carry out a piecewise interpolation using anyone of the method above described, we can use the \mintinline{python}{scipy } sub-package \mintinline{python}{scypi.interpolate}. This package includes many interpolation me\-thods; we will only describe two of them:
 
-The \mintinline{python}{interp1d} function. This function takes two arrays as inpunt variables with the ccordenates $x$ and $y$ values belonging to the data we want to interpolate. In addition, the function may take also a character string, as an input variable which defines the method we want to use to carry out the interpolation. This last variable can take the following values:
+The \mintinline{python}{interp1d} function. This function takes two arrays as input variables with the coordinates $x$ and $y$ values belonging to the data we want to interpolate. In addition, the function may take also a character string, as an input variable which defines the method we want to use to carry out the interpolation. This last variable can take the following values:
 \begin{enumerate}
 	\item \texttt{'nearest'}. It interpolates the interval using the value  $y_i$ corresponding to the value $x_i$ nearest to the point at which we want to compute the interpolation. The result is stepwise interpolation.
 	\item \texttt{'next'}. It interpolates the interval using the value  $y_i$ corresponding to the value $x_i$ which closes the interval  in  which we want to compute the interpolation.
@@ -941,7 +941,7 @@ The \mintinline{python}{interp1d} function. This function takes two arrays as in
 	\item \texttt{'linear'} It calculates a linear interpolation between the points at the ends of the interval we want to interpolate. This is the default option.
 \end{enumerate}
 
-\mintinline{python}{interp1d} returns a function that, in turn, takes as input variable an array with the points we want to calculate the interpolation at, and returns an array we the computed results. The following code shows how to use the function \mintinline{python}{interp1d}. To try it we have created two arrays \mintinline{python}{x} and \mintinline{python}{y} which contain the dataset we want to interpolate. Besidas, we have created another array \mintinline{python}{xi} with the point we want to compute the interpolation at.  
+\mintinline{python}{interp1d} returns a function that, in turn, takes as input variable an array with the points we want to calculate the interpolation at, and returns an array we the computed results. The following code shows how to use the function \mintinline{python}{interp1d}. To try it we have created two arrays \mintinline{python}{x} and \mintinline{python}{y} which contain the dataset we want to interpolate. Besides, we have created another array \mintinline{python}{xi} with the point we want to compute the interpolation at.  
 \end{paracol}
 
 \begin{figure}
@@ -964,9 +964,9 @@ linenos
 
 
 \begin{paracol}{2}
-La segunda función interpoladora de\\ \mintinline{python}{scipy.interpolation} que vamos a describir se llama \mintinline{python}{CubicSpline}. Permite interpolar empleando Splines cúbicos. En este caso, además de los datos $x$ e $y$ necesarios para definir el spline, la función admite el parametro \mintinline{python}{bc_type}, que permite determinar las condiciones de contorno en los extremos del spline. Las opciones posibles son: 
+La segunda función interpoladora de\\ \mintinline{python}{scipy.interpolation} que vamos a describir se llama \mintinline{python}{CubicSpline}. Permite interpolar empleando Splines cúbicos. En este caso, además de los datos $x$ e $y$ necesarios para definir el spline, la función admite el parámetro \mintinline{python}{bc_type}, que permite determinar las condiciones de contorno en los extremos del spline. Las opciones posibles son: 
 
-\mintinline{python}{bc_type='not__knot'}. Es la opcion por defecto. Hace que el polinomio empleado en el primer y segundo segmento en los extremos del spline sea el mismo.
+\mintinline{python}{bc_type='not__knot'}. Es la opción por defecto. Hace que el polinomio empleado en el primer y segundo segmento en los extremos del spline sea el mismo.
  
 \mintinline{python}{bc_type='natural'}. Spline natural.
 
@@ -974,7 +974,7 @@ La segunda función interpoladora de\\ \mintinline{python}{scipy.interpolation} 
 
 Hay más opciones; los interesados pueden encontrarlas en la documentación de \mintinline{python}{scipy}. El uso es similar al descrito para \mintinline{python}{interp1d}. A partir de los datos se crea una función interpoladora que permite calcular el valor de la imagen en los puntos que se desee. Por ejemplo, para splines naturales sería,
 \switchcolumn
- The second interpolating function, from\\ \mintinline{python}{scipy.interpolation} we are going to describe is \mintinline{python}{CubicSpline}. This function, as can be expected, uses cubic splines to perform the interpolation of a dataset. In this cases, in addition to the $x$ and $y$ data needed to define the spline, the function defines an input paramenter \mintinline{python}{bc_type}, which allows us to stablish the boundary conditions in the ends of the spline. Some of the available options are:
+ The second interpolating function, from\\ \mintinline{python}{scipy.interpolation} we are going to describe is \mintinline{python}{CubicSpline}. This function, as can be expected, uses cubic splines to perform the interpolation of a dataset. In this cases, in addition to the $x$ and $y$ data needed to define the spline, the function defines an input parameter \mintinline{python}{bc_type}, which allows us to stablish the boundary conditions in the ends of the spline. Some of the available options are:
  
 \mintinline{python}{bc_type='not__knot'}. This is the default option. The first and second segments at an end of the spline uses the same polynomial.
 
@@ -982,7 +982,7 @@ Hay más opciones; los interesados pueden encontrarlas en la documentación de \
 
 \mintinline{python}{bc_type='periodic'}. Periodic spline.
 
-There are more options. Those interested can find them in \mintinline{python}{scipy} documentation. Its use  is similar to the use of \mintinline{python}{interp1d}. From the data we want to interpolate \mintinline{python}{CubiSpline} generates an interpoling function which alows us to compute the spline value in the point we wish. For instance, for natural splines we write, 
+There are more options. Those interested can find them in \mintinline{python}{scipy} documentation. Its use  is similar to the use of \mintinline{python}{interp1d}. From the data we want to interpolate \mintinline{python}{CubiSpline} generates an interpolating function which allows us to compute the spline value in the point we wish. For instance, for natural splines we write, 
  
   
 \end{paracol}
@@ -1048,7 +1048,7 @@ Para ver cómo obtener los coeficientes de un polinomio de mínimos cuadrados, e
 \switchcolumn
 We will multiply more reliable data by large values of $\omega$ and the less reliable by small values.
 
-To see how to obtain the coefficients of a least square polynomial, we will start with the simplest case; a 0-degree polynomial. In this case the polynomial is a simple constant value, defined by its constant term $p(x) = a_0$. Then the fucntion to be minimised would be,
+To see how to obtain the coefficients of a least square polynomial, we will start with the simplest case; a 0-degree polynomial. In this case the polynomial is a simple constant value, defined by its constant term $p(x) = a_0$. Then the function to be minimised would be,
 \end{paracol}
 \begin{equation*}
 g(a_0)=\sum_{i=1}^m \omega_i \left(y_i-a_0\right)^2
@@ -1114,7 +1114,7 @@ g(a_0,a_1,\cdots, a_n)=\sum_{i=1}^m \omega_i \left (a_0+a_1x_i+\cdots+ a_nx_i^n-
 \begin{paracol}{2}
 De nuevo, para obtener los coeficientes del polinomio igualamos las derivadas parciales a cero,
 \switchcolumn
-Again, we can get the polynomial coefficents making the partial derivatives equal to zero,
+Again, we can get the polynomial coefficients making the partial derivatives equal to zero,
 \end{paracol}
 \begin{equation*}
 \frac{\partial g(a_0,a_1,\cdots, a_n)}{\partial a_j}=0 \Rightarrow \sum_{i=1}^m \omega_i x_i^j \left( a_0+a_1x_i+\cdots + a_nx_i^n-y_i\right)=0, \ j=0,1\cdots, n
@@ -1198,7 +1198,7 @@ linenos
 Vamos a revisar algunos puntos importantes de este código. en la línea 8, importamos el objeto \mintinline{python}{Polynomial}. Lo hacemos siguiendo el mismo método con que habríamos importado un submódulo cualquiera de \mintinline{python}{numpy}. Le asignamos el alias \mintinline{python}{py}.
 En la línea 12 hemos importado la función lse. Se trata de la función que hemos creado nosotros para realizar ajustes por mínimos cuadrados y cuyo código hemos incluido mas arriba. En las líneas 15 y 16 creamos un conjunto de datos.
 
-En la línea 20 creamos un polinomio de minimos cuadrados de grado 3, \mintinline{python}{p3}, que ajusta los datos anteriores. \mintinline{python}{p3}, contiene toda la información del polynomio creado. En la línea 22, empleamos el comando \mintinline{python}{convert} para obtener un array con los coeficientes del polinomio, ordenados de menor a mayor grado. $p(x)=a_0 + a_1x +a_2x^2+\cdots+a_nx^n$. En la línea 27 empleamos directamente \mintinline{python}{p3} como una función, pasándole los valores del array \mintinline{python}{xi}, para evaluar el polinomio en dichos puntos.
+En la línea 20 creamos un polinomio de mínimos cuadrados de grado 3, \mintinline{python}{p3}, que ajusta los datos anteriores. \mintinline{python}{p3}, contiene toda la información del polinomio creado. En la línea 22, empleamos el comando \mintinline{python}{convert} para obtener un array con los coeficientes del polinomio, ordenados de menor a mayor grado. $p(x)=a_0 + a_1x +a_2x^2+\cdots+a_nx^n$. En la línea 27 empleamos directamente \mintinline{python}{p3} como una función, pasándole los valores del array \mintinline{python}{xi}, para evaluar el polinomio en dichos puntos.
 
 En las líneas 29-34 repetimos el cálculo, pero ahora empleando pesos. Damos a todos los pesos un valor $1$ excepto para el quinto dato, al que damos un peso menor.
 
@@ -1233,7 +1233,7 @@ Si miramos con atención ambos gráficos, es fácil darse cuenta que la función
 \switchcolumn
 The figure clearly shows the effect the we\-ights have on the regression results. When we attenuate the influence of the fifth point, which appears to be quite an outlier, the curve approaches more to the remaining points.
 
-If we look at both graphics attentively, we will see that the Python function approximates the polynomial more to the points than the function we have written. The difference comes from how we introduce the weights, which are not the same as those used by Python. Function \mintinline{python}{fit}, applies the weights directly to the difference between the data an the value taken by the polynomial $\omega_i \vert y_i - p(x_i)\vert$, whike our function applies the weights to the squared difference  $\omega_i(y_i-p(x_i))^2$. If we compare the coefficients of the polynomials computed by both methods,
+If we look at both graphics attentively, we will see that the Python function approximates the polynomial more to the points than the function we have written. The difference comes from how we introduce the weights, which are not the same as those used by Python. Function \mintinline{python}{fit}, applies the weights directly to the difference between the data an the value taken by the polynomial $\omega_i \vert y_i - p(x_i)\vert$, while our function applies the weights to the squared difference  $\omega_i(y_i-p(x_i))^2$. If we compare the coefficients of the polynomials computed by both methods,
 \end{paracol}
 
 \begin{minted}{python}
@@ -1415,9 +1415,9 @@ linenos
 Supongamos que tenemos una curva de Bé\-zier con cuatro puntos de control,
 
 \switchcolumn
-\paragraph{Upper degree equivalent curves.} Given a Bezier's curve, represented by a Berstein's polynomial of degree $n$, it is possible to find Berstein's polynomials of higher degree, which also describes this same Beezier's curve. Indeed, this means an increase in the number of the control points.
+\paragraph{Upper degree equivalent curves.} Given a Bezier's curve, represented by a Berstein's polynomial of degree $n$, it is possible to find Berstein's polynomials of higher degree, which also describes this same Bézier's curve. Indeed, this means an increase in the number of the control points.
 
-Suposse we have a Bezier's curve defined by four control points,
+Suppose we have a Bezier's curve defined by four control points,
 \end{paracol}
 \begin{equation*}
 \vec{p}(t) = \vec{p}_0B_0^3(t) + \vec{p}_1B_1^3(t) + \vec{p}_2B_2^3(t) + \vec{p}_3B_3^3(t)
@@ -1554,7 +1554,7 @@ For instance we can freely choose all control points of curve $B$ and use it to 
 \end{subfigure}
 \begin{subfigure}{0.45\textwidth}
 	\includegraphics[width=7cm]{bezierint2.eps}
-	\bicaption{Interpolación mediante curvas de Bézier de 3 y 4 puntos}{Interpolation using 3 and 4 control points Beziers's curves} \label{fig:ibz2}
+	\bicaption{Interpolación mediante curvas de Bézier de 3 y 4 puntos}{Interpolation using 3 and 4 control points Béziers's curves} \label{fig:ibz2}
 \end{subfigure}
 \bicaption{Interpolación de tres puntos mediante dos curvas de Bézier}{interpolating three point using two Bezier's curves} 
 \label{fig:ibz3}
@@ -1601,9 +1601,9 @@ Calcula el valor que toma el polinomio de interpolación en 100 puntos equiespac
 	
 	\item Write the 'Lagrange' function for computing the Interpolating Lagrange polynomial in Python, included in section \ref{sec:lagranje}. Use the function you just created to recompute the values of the interpolating polynomial obtained in the previous exercise and check that you get the same results as using Vandermonde's matrix.
 	
-	\item Departing from the examples in section \ref{sec:difdiv}, build a program for computing the divided differences polynomial coefficients, usin two data arrays $x$ and $y$ with the same length, $n+1$. Buid also a second program for computing the value of the polynomial in any point, using the coefficients computed with the previous program. Recompute one more time, now using the divided differences polynomial the values of the interpolation polynomial, of the same data use in previous exercises. Check that you get the same results.
+	\item Departing from the examples in section \ref{sec:difdiv}, build a program for computing the divided differences polynomial coefficients, using two data arrays $x$ and $y$ with the same length, $n+1$. Build also a second program for computing the value of the polynomial in any point, using the coefficients computed with the previous program. Recompute one more time, now using the divided differences polynomial the values of the interpolation polynomial, of the same data use in previous exercises. Check that you get the same results.
 	
-	\item Lastly, build a function that compute the Newton-Gregory's interpolating polynomials (section \ref{sec:newgre}). It is possible to interpolate the data held in the file \mintinline{python}{datos.txt} using the Newton-Gregory's polynomial? If the answer is 'yes', use your function just writen to repeat the computing of the intepolation polynomial carried out in previous section and check that the results meet those obtained in previous sections.
+	\item Lastly, build a function that compute the Newton-Gregory's interpolating polynomials (section \ref{sec:newgre}). It is possible to interpolate the data held in the file \mintinline{python}{datos.txt} using the Newton-Gregory's polynomial? If the answer is 'yes', use your function just writen to repeat the computing of the interpolation polynomial carried out in previous section and check that the results meet those obtained in previous sections.
 	
 	\item Using the Numpy's function\\ \mintinline{python}{interp1d} and the data contained in file \mintinline{python}{datos.txt}, compute the result of interpolating in 100 equispaced points between values $x_0$ and $x_n$ of the file dataset. Do it using the method \texttt{'nearest'} and \texttt{'linear'}. Repeat the computing but now using the  Numpy function   \texttt{'CubicSpline'}. Draw the results in the same graphic where you drew exercise \ref{ej1a}) results.  
 \end{enumerate}
@@ -1625,7 +1625,7 @@ En función del comportamiento físico de la cuerda, podemos distinguir tres reg
 
 \begin{itemize}
 	\item \emph{Comportamiento elástico}: Se dice que el comportamiento de la cuerda es elástico si al desaparecer la tensión la cuerda recupera su longitud original. Esto se cumple para tensiones estacionarias pequeñas, y las elongaciones están acotadas por un valor positivo $x_{le}$, esto es, $0 \le x \le x_{le}$. En régimen elástico, la ecuación (\ref{eq:0}) puede aproximarse por la siguiente expresión
-\begin{equation}\label{eq:1}
+\begin{equation}\label{eq:1-3}
 T = \kappa x - \gamma x^3,
 \end{equation}
 donde $\kappa,\gamma \in \mathbb{R}^+$ son también constantes.
@@ -1648,12 +1648,12 @@ Del estudio se pudo registrar la elongación sufrida por la cuerda por los disti
 \item (\textbf{1 punto}) Estima el valor de la elongación $x_{max}$ para el cual se produce la rotura de la cuerda.
 
 \item (\textbf{1 punto}) Obtén la tensión ejercida por la pesa sobre la cuerda para cada ángulo de inclinación $\theta_i$ de la mesa, esto es
-\begin{equation} \label{eq:2}
+\begin{equation} \label{eq:2-3}
 T_i = mg\sin(\theta_i),
 \end{equation}
 donde $m =1000$ Kg y $g = 9.8$ m/s$^2$. Representa gráficamente los datos: $T_i$ frente a $x_i$.
 
-\item A partir de los pares de datos $T_i$ y $x_i$ podemos estimar la ecuación (\ref{eq:1}).
+\item A partir de los pares de datos $T_i$ y $x_i$ podemos estimar la ecuación (\ref{eq:1-3}).
 \begin{enumerate}
 \item (\textbf{2 puntos}) Ajusta los datos por mínimos cuadrados a un polinomio de grado tres. Dado que dicha aproximación solo es válida para el régimen de comportamiento elástico, es imprescindible realizar el ajuste del polinomio asignando pesos a cada par de datos. Para dar más valor a las elongaciones pequeñas y menos a las grandes, utiliza la siguiente expresión para definir los pesos
 \begin{equation}
@@ -1662,7 +1662,7 @@ donde $m =1000$ Kg y $g = 9.8$ m/s$^2$. Representa gráficamente los datos: $T_i
 \item (\textbf{1 punto})  Representa, sobre la gráfica dibujada en el apartado 2a, el polinomio obtenido en el apartado 3a. Según tu criterio, ¿es razonable el ajuste realizado?
 \end{enumerate}
 
-\item (\textbf{1 punto})  Los coeficientes de las ecuaciones (\ref{eq:0}) y (\ref{eq:1}) están relacionados por las siguientes expresiones
+\item (\textbf{1 punto})  Los coeficientes de las ecuaciones (\ref{eq:0-2}) y (\ref{eq:1-4}) están relacionados por las siguientes expresiones
 \begin{equation}
 \kappa = b\cdot a, \quad \gamma = \frac{b\cdot a^3}{3}. \nonumber
 \end{equation}
@@ -1676,7 +1676,7 @@ donde $m =1000$ Kg y $g = 9.8$ m/s$^2$. Representa gráficamente los datos: $T_i
 \section{Course 2020/21 test}
 \noindent \textbf{Question 1.} A Climbing rope stretches when it suffers a stationary strain. Specifically, the increase in length follows the following law,
 
-\begin{equation}\label{eq:0}
+\begin{equation}\label{eq:0-2}
 	T = b\tanh(ax),
 \end{equation}
 Where $T \in \mathbb{R}^+$ is the applied strain in Newtons, $x \in \mathbb{R}^+$ is the rope stretching in meters and  $a, b \ \in \mathbb{R}^+$ are constant parameter which depend on the rope characteristics.
@@ -1684,9 +1684,9 @@ Where $T \in \mathbb{R}^+$ is the applied strain in Newtons, $x \in \mathbb{R}^+
 According to the rope physical behaviour, we can observe three regimes.
 
 \begin{itemize}
-	 \item \emph{elastic behaviour}: The rope follows an elastic behaviour if it recovers its original length once we withdraw the strain. This is the normal behaviour under small stationary strains. In this case, the stretching is upper bounded by a positive value $x_{le}$, that is, $0 \le x \le x_{le}$. In the elastic regime equation \label{eq:0} can be approximated by the following expression,
+	 \item \emph{elastic behaviour}: The rope follows an elastic behaviour if it recovers its original length once we withdraw the strain. This is the normal behaviour under small stationary strains. In this case, the stretching is upper bounded by a positive value $x_{le}$, that is, $0 \le x \le x_{le}$. In the elastic regime equation \label{eq:0-3} can be approximated by the following expression,
 	
-	\begin{equation}\label{eq:1}
+	\begin{equation}\label{eq:1-4}
 		T = \kappa x - \gamma x^3,
 	\end{equation}
 	where $\kappa, \gamma \in \mathbb{R}^+$ are also constant.
@@ -1709,11 +1709,11 @@ During the study, the stretching suffered by the rope for different tilting angl
 	\item (\textbf{1 point}) Estimate the stretching limit value $x_{max}$ beyond which the rope breaks.
 	
 	\item (\textbf{1 point}) compute the strain exerted to the rope for the weight at any table tilting angle $\theta_i$, that is,
-	 \begin{equation} \label{eq:2}
+	 \begin{equation} \label{eq:2-4}
 	 	T_i = mg\sin(\theta_i),
 	 \end{equation}
 	 where  $m =1000$ Kg and $g = 9.8$ m/s$^2$. Draw a  $T_i$ vs $x_i$ graph.
-	 \item From data pairs $T_i$ and $x_i$ we can estimate equation  (\ref{eq:1}).
+	 \item From data pairs $T_i$ and $x_i$ we can estimate equation  (\ref{eq:1-4}).
 	 \begin{enumerate}
 	 	\item (\textbf{2 points})To fit the data, utilize a three-degree least squares polynomial. Because this method is only suitable for elastic behavior, it's important to assign weights to the data when calculating the polynomial. Use the following expression to define the weights, which will enhance the influence of small elongations and reduce the impact of larger ones.
 	 	\begin{equation}
@@ -1721,7 +1721,7 @@ During the study, the stretching suffered by the rope for different tilting angl
 	 	\end{equation}
 	 	\item (\textbf{1 point}) Plot on top the graph drew in question 2a, the polynomial you have computed in question 3b. Is it reasonable the fitting carried out? explain why.
 	 \end{enumerate}
-	 \item (\textbf{1 point}) Coefficient in equations  (\ref{eq:0}) y (\ref{eq:1}) are related by the following expressions,
+	 \item (\textbf{1 point}) Coefficient in equations  (\ref{eq:0-3}) y (\ref{eq:1-4}) are related by the following expressions,
 	 \begin{equation}
 	 	\kappa = b\cdot a, \quad \gamma = \frac{b\cdot a^3}{3}. \nonumber
 	 \end{equation}
@@ -1744,7 +1744,7 @@ During the study, the stretching suffered by the rope for different tilting angl
 \begin{enumerate}
 	\item (\textbf{1.5 puntos}) Utilizando el comando de Numpy correspondiente, obtener mediante interpolación con splines cúbicos los valores de la función $f(x)$ sobre cien puntos equiespaciados en el intervalo $[0,\pi]$.
 	
-	\item (\textbf{1.5 puntos}) Dibuja mediante un diagrama de barras las differencias entre los $f(x)$ y la función $\cos(x)$ de Python en los mismos puntos del intervalo anterior. Considera que no necesitamos más de dos decimales para la precisión el cálculo de la función coseno; ¿podríamos utilizar la interpolación para $f(x)$?
+	\item (\textbf{1.5 puntos}) Dibuja mediante un diagrama de barras las diferencias entre los $f(x)$ y la función $\cos(x)$ de Python en los mismos puntos del intervalo anterior. Considera que no necesitamos más de dos decimales para la precisión el cálculo de la función coseno; ¿podríamos utilizar la interpolación para $f(x)$?
 \end{enumerate}
 \switchcolumn
 \begin{enumerate}

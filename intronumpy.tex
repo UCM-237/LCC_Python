@@ -5,7 +5,7 @@
 \section{Numpy: un paquete de Python para cálculo nu\-mérico}
 \sectionmark{Numpy: módulo mat. \textreferencemark\ Numpy: a math. Pack.}
 En el capítulo \ref{ch:intpr}, vimos cómo importar mó\-dulos de python en un script o directamente en el terminal de Ipython, de modo que podamos reutilizar el código contenido en ellos. Numpy es un librería de python que contiene funciones y variables específicamente diseñadas para el cálculo numérico. Está estructurada en forma de módulos y submódulos de modo que, para utilizarla en nuestros programas, basta con importarla en nuestros scripts, importar sus submódulos o importar sus funciones.
-La base de Numpy la constituyen objetos y operaciones algebráicas. En esta sección vamos a repasar algunos conceptos fundamentales de  álgebra lineal y cómo pueden manejarse empleando Python y la librería numpy. No daremos definiciones precisas ni tampoco demostraciones, ya que tanto unas como otras se verán en detalle en la asignatura de álgebra.
+La base de Numpy la constituyen objetos y operaciones algebraicas. En esta sección vamos a repasar algunos conceptos fundamentales de  álgebra lineal y cómo pueden manejarse empleando Python y la librería numpy. No daremos definiciones precisas ni tampoco demostraciones, ya que tanto unas como otras se verán en detalle en la asignatura de álgebra.
 
 \paragraph{Matrices.} Desde un punto de vista funcional definiremos una matriz como una tabla bidimensional de números ordenados en filas y columnas,
 \switchcolumn
@@ -171,7 +171,7 @@ In [10]: print(B)
 \end{minipage}
  \end{center}
 \begin{paracol}{2} 
-Lo primero que hacemos es importar Numpy, lo importamos usando como alias la abreviatura np, porque es más cómodo a la hora de llamar a funciones específicas de Numpy.  Hemos construido dos matrices iguales \mintinline{python}{A} y \mintinline{python}{B}. En el primer caso hemos creado directamente dentro de la llamada a la función \mintinline{python}{array}, la lista a partir de la cual construimos la matriz. En el segundo caso, hemos construido primero una lista \mintinline{python}{L}, y luego hemos empleado dicha lista como variable de entrada de la función \mintinline{python}{array}. Si nos fijamos en las líneas [9] y [10], vemos como Python distingue la lista ---todos sus elementos aparacen representados en la misma línea---, de la matriz en la que cada fila ocupa una línea distinta. Podemos construir matrices a partir de listas y variables ya definidas, siempre que seamos coherentes con el criterio de que cada fila se cree a partir de una lista y que todas las filas tengan los mismos elementos,
+Lo primero que hacemos es importar Numpy, lo importamos usando como alias la abreviatura np, porque es más cómodo a la hora de llamar a funciones específicas de Numpy.  Hemos construido dos matrices iguales \mintinline{python}{A} y \mintinline{python}{B}. En el primer caso hemos creado directamente dentro de la llamada a la función \mintinline{python}{array}, la lista a partir de la cual construimos la matriz. En el segundo caso, hemos construido primero una lista \mintinline{python}{L}, y luego hemos empleado dicha lista como variable de entrada de la función \mintinline{python}{array}. Si nos fijamos en las líneas [9] y [10], vemos como Python distingue la lista ---todos sus elementos aparecen representados en la misma línea---, de la matriz en la que cada fila ocupa una línea distinta. Podemos construir matrices a partir de listas y variables ya definidas, siempre que seamos coherentes con el criterio de que cada fila se cree a partir de una lista y que todas las filas tengan los mismos elementos,
 \switchcolumn
 First, we import Numpy; we do it using \mintinline{python}{np} as an alias. The reason is that \mintinline{python}{np} is shorter than \mintinline{python}{numpy}, and it eases the calls to specific Numpy functions. We have built two identical matrices \mintinline{python}{a} and \mintinline{python}{B}. In the first case, we have straightforwardly created the list needed to make the matrix inside the call to the function \mintinline{python}{array}. In the second case, we first created a list \mintinline{python}{L}, and then we used it as an input variable to the function \mintinline{python}{array}. Focusing on lines [9] and [10], we see how Python can tell a list and a matrix apart. For a list, Python represents all entries in the same line. For a matrix, each row is written in a different line.
 We can build matrices from lists and variables already defined as long as we follow the criteria that each row be created from a list and all rows have the same number of entries,  
@@ -293,13 +293,13 @@ La línea [90], extrae un vector fila con los elementos de la primera fila de la
 Hemos dicho que la línea [95] nos devuelve un vector columna. Bueno, sí y no; vamos a verlo más despacio.
 
 \paragraph{Vectores.}
-Cuando introducimos los vectores, distinguimos entre vectores filas y columna, definiéndolos como matrices de una sola fila o una sola columna. Sin embargo, en Numpy, se sigue un criterio distinto que permite generalizar el concepto de matriz asociándolo con el de tensor. Sin entrar en detalles\footnote{Una definición formal del concepto de tensor, queda fuera del alcance de estos apuntes.}, podemos decir que un tensor es un objeto algebráico caracterizado por dos parámetros; el orden y la dimensión. Así un escalar $a \in \mathbb{R}$ es un tensor de orden cero. Un vector $b \in \mathbb{R}^n$ es un tensor de orden 1 y dimesión $n$. Una matriz $A \in \mathbb{R}^{m\times n}$ Es un tensor de orden dos y dimensiones $m,n$. Un tensor de orden 3, $T \in \mathbb{R}^{n\times m \times l}$, etc. Podemos asociar el orden al número mínimo de índices que necesitamos para definir de forma unívoca los elementos de un Tensor: para un escalar, no nos hace faltar ningún indice, solo tenemos un elemento que es el propio escalar, por tanto le asociamos orden cero. Para un vector es suficiente emplear un índice para definir sus elementos, $b=(b_i),\ i=1,\cdots, n$, $b \in \mathbb{R}^n$. Para una matriz necesito dos índices, $A=(a_{ij}),\ i =1, \cdots n, j = 1,\ \cdots, m$, $A \in \mathbb{R}^{n\times m}$. Para un tensor de orden tres necesitaría tres índices, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ y así sucesivamente. Numpy permite definir estructuras de cualquier orden y dimensión que queramos. Pero nosotros nos vamos a limitar a vectores (orden 1) y matrices (orden 2). ¿Tiene sentido entonces distiguir entre vectores fila y columna? Solo si consideramos siempre los vectores como matrices (orden 2) y dimesiones $1\times n$ (vector fila) ó $n \times 1$ (vector columna). Para Numpy, sin embargo, vectores y matrices son estructuras de distinto orden. Veamos con algunos ejemplo cómo se diferencian. Para verlo mejor podemos emplear la propiedad \mintinline{python}{shape} de los arrays en numpy, Dicha propiedad nos devuelve una tupla con las dimensiones del array, el número de elementos que contine la tupla nos da el orden,
+Cuando introducimos los vectores, distinguimos entre vectores filas y columna, definiéndolos como matrices de una sola fila o una sola columna. Sin embargo, en Numpy, se sigue un criterio distinto que permite generalizar el concepto de matriz asociándolo con el de tensor. Sin entrar en detalles\footnote{Una definición formal del concepto de tensor, queda fuera del alcance de estos apuntes.}, podemos decir que un tensor es un objeto algebraico caracterizado por dos parámetros; el orden y la dimensión. Así un escalar $a \in \mathbb{R}$ es un tensor de orden cero. Un vector $b \in \mathbb{R}^n$ es un tensor de orden 1 y dimensión $n$. Una matriz $A \in \mathbb{R}^{m\times n}$ Es un tensor de orden dos y dimensiones $m,n$. Un tensor de orden 3, $T \in \mathbb{R}^{n\times m \times l}$, etc. Podemos asociar el orden al número mínimo de índices que necesitamos para definir de forma unívoca los elementos de un Tensor: para un escalar, no nos hace faltar ningún indice, solo tenemos un elemento que es el propio escalar, por tanto le asociamos orden cero. Para un vector es suficiente emplear un índice para definir sus elementos, $b=(b_i),\ i=1,\cdots, n$, $b \in \mathbb{R}^n$. Para una matriz necesito dos índices, $A=(a_{ij}),\ i =1, \cdots n, j = 1,\ \cdots, m$, $A \in \mathbb{R}^{n\times m}$. Para un tensor de orden tres necesitaría tres índices, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ y así sucesivamente. Numpy permite definir estructuras de cualquier orden y dimensión que queramos. Pero nosotros nos vamos a limitar a vectores (orden 1) y matrices (orden 2). ¿Tiene sentido entonces distiguir entre vectores fila y columna? Solo si consideramos siempre los vectores como matrices (orden 2) y dimensiones $1\times n$ (vector fila) ó $n \times 1$ (vector columna). Para Numpy, sin embargo, vectores y matrices son estructuras de distinto orden. Veamos con algunos ejemplo cómo se diferencian. Para verlo mejor podemos emplear la propiedad \mintinline{python}{shape} de los arrays en numpy, Dicha propiedad nos devuelve una tupla con las dimensiones del array, el número de elementos que contiene la tupla nos da el orden,
 \switchcolumn
 Line [90] extracts a row vector from the first row of matrix \mintinline{python}{D}. Line [91] extracts a $2\times 2$ matrix using the four entries located on the left-up corner of the original, \mintinline{python}{D}, matrix. Line [92] extracts a single matrix entry, but notice that it is a $1\times 1$ matrix. Thus, this result is different than the result achieved when we directly use the indexes of the entry: \mintinline{python}{D[2,1]}. Line [93] returns a row vector with the matrix's last row entries. Lastly, line [95] returns a column vector with the matrix's last column entries.
 
 We have said that line [95] returns a column vector. Well, yes and no; let's examine it in more detail.
 
-\paragraph{Vectors.} When we introduced vectors in the previous section, we distinguished between row and column vectors, defining them as matrices with a single row or column. Nevertheless, Numpy follows another criterion that allows us to generalise the idea of matrix, linking it with the concept of tensor. we do not get into details\footnote{A formal definition of tensors is far beyond the scope of these notes.} and simply say that a tensor is an algebraic object defined by two parámeters, its order, and its dimension. So, a scalar $a \in \mathbb{R}$ is a tensor of order zero. A vector $b \in \mathbb{R}^n$ is a tensor of order one and dimension $n$. A matrix $A\in \mathbb{R}^{m\times n}$ is a tensor of order two and dimensions $m,n$. A third order tensor, $T\in\mathbb{R}^{n\times m\times l}$, etc. We can relate the order with the minimum number of indexes we need to univocally define the tensor entry: for a scalar, we don't need an index at all; we have only a single entry, the scalar itself. For this reason, we associate scalars with a zero-order tensor. For a vector, it is enough to use a single index to define its entries, $b=(b_i), i = 1,\cdots, n,\ b \in \mathbb{R}^n$. For a matrix, we need two indexes, $A = (a_{ij}), i =1,\dots,n,\ j = 1,\dots,m,\ A \in \mathbb{R}^{n\times m}$. For third-order tensors, we need three indexes, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ and so on. In Numpy, we can define structures of whatever order and dimensions we want, but we will only use vectors (order 1) and matrices (order 2). Has, then, any sense to distinguish between row and column vector? Only if we always consider vectors as matrices (order 2) and dimensions $1\times n$ (row vector) or $n\times 1$ (column vector). For Numpy, however, vectors an matrices are structures of different order. Let's see some examples of their differences. To appreciate it better, we can use the Numpy arrays attribute \mintinline{python}{shape}, which gives us a tuple containing the dimensions of the array. The number of entries of the tuple tells us the order of the array,     
+\paragraph{Vectors.} When we introduced vectors in the previous section, we distinguished between row and column vectors, defining them as matrices with a single row or column. Nevertheless, Numpy follows another criterion that allows us to generalise the idea of matrix, linking it with the concept of tensor. we do not get into details\footnote{A formal definition of tensors is far beyond the scope of these notes.} and simply say that a tensor is an algebraic object defined by two parameters, its order, and its dimension. So, a scalar $a \in \mathbb{R}$ is a tensor of order zero. A vector $b \in \mathbb{R}^n$ is a tensor of order one and dimension $n$. A matrix $A\in \mathbb{R}^{m\times n}$ is a tensor of order two and dimensions $m,n$. A third order tensor, $T\in\mathbb{R}^{n\times m\times l}$, etc. We can relate the order with the minimum number of indexes we need to univocally define the tensor entry: for a scalar, we don't need an index at all; we have only a single entry, the scalar itself. For this reason, we associate scalars with a zero-order tensor. For a vector, it is enough to use a single index to define its entries, $b=(b_i), i = 1,\cdots, n,\ b \in \mathbb{R}^n$. For a matrix, we need two indexes, $A = (a_{ij}), i =1,\dots,n,\ j = 1,\dots,m,\ A \in \mathbb{R}^{n\times m}$. For third-order tensors, we need three indexes, $T=(T_{ijk}),\ i =1,\cdots, n,\ j =1,\cdots m,\ k = 1,\cdots, l$, $T\in \mathbb{R}^{n\times m \times l}$ and so on. In Numpy, we can define structures of whatever order and dimensions we want, but we will only use vectors (order 1) and matrices (order 2). Has, then, any sense to distinguish between row and column vector? Only if we always consider vectors as matrices (order 2) and dimensions $1\times n$ (row vector) or $n\times 1$ (column vector). For Numpy, however, vectors an matrices are structures of different order. Let's see some examples of their differences. To appreciate it better, we can use the Numpy arrays attribute \mintinline{python}{shape}, which gives us a tuple containing the dimensions of the array. The number of entries of the tuple tells us the order of the array,     
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.3\textwidth}
@@ -394,7 +394,7 @@ array([[ 2.],
 \begin{paracol}{2}
 En el primer caso, línea [10], hemos extraido toda la segunda fila de la matriz \mintinline{python}{D}, el resultado es un vector, por tanto tiene orden $1$ y dimensión $3$. En la línea [11] hemos extraido la primera columna y el resultado es de nuevo un vector, por tanto tiene orden $1$ y la dimensión esta vez $4$. En la línea [12] extraemos todas las columnas de las filas que van desde la segunda hasta la segunda. El resultado es una matriz, ya que el orden del array extraído es $2$, y la dimensiones será $1$ para las filas y $3$ para las columna. Es lo más parecido a un vector 'fila' que podemos obtener con Numpy. Por último, en la línea [13], extraemos todas las filas de las columnas que van desde la segunda hasta la segunda. El resultado es de nuevo una matriz, porque el array extraido tiene orden dos, pero las dimensiones son ahora $4$ para las filas y $1$ para las columnas, lo podemos identificar con un vector columna de los descritos antes.
 
-Evidentemente, podemos tambier extraer de una matriz bloque (submatrices), indicando las filas y columnas que queremos extraer de la matriz original. por ejemplo,
+Evidentemente, podemos también extraer de una matriz bloque (submatrices), indicando las filas y columnas que queremos extraer de la matriz original. por ejemplo,
 \switchcolumn
 In the first case, line [10] we get the whole second row of matrix \mintinline{python}{D}. The result is a vector and has order $1$ and dimension $3$. In line [11], we extract the first column of the matrix, and the result is again a vector. This time the order is $1$, and the dimension is $4$. In line [12] we extract all columns belonging to rows second to second. The result is a matrix because the order of the extracted array is two. The dimensions are $1$ for the rows and $3$ for the columns. It is the most similar to a 'row' vector we can get using Numpy. Lastly, in line [13], we extract all the rows belonging to columns second to second. the result is again a matrix because the array obtained has order two, but the dimensions are now $4$ for the rows and $1$ for the columns, we could identify it as a column vector of those described above. 
 
@@ -433,9 +433,9 @@ A continuación definiremos las operaciones matemáticas más comunes, definidas
 
 \switchcolumn
 \section{Matrix Operations}\index[eng]{Matrices! Matrix Operations}
-In this section we will define the most common mathematical operation for matrices. We are going to beging for those operation that are carried out, entry by entry, between those entries which occupy the same place in the operating matrices.
+In this section we will define the most common mathematical operation for matrices. We are going to begin with those operation that are carried out, entry by entry, between those entries which occupy the same place in the operating matrices.
 
-\paragraph{Addition.} Addition of two matrix, the result is a new matrix obtained adding the entries which ocuppy the same position in both matrices. It is denied only for matrix of the same dimensions, 
+\paragraph{Addition.} Addition of two matrix, the result is a new matrix obtained adding the entries which occupy the same position in both matrices. It is denied only for matrix of the same dimensions, 
 
 \end{paracol}
 \begin{gather*}
@@ -471,7 +471,7 @@ En numpy el signo $+$ se también utiliza para representar la suma de matrices, 
 \switchcolumn
 Matrix addition fulfil the following properties,
 \begin{enumerate}
-\item Asociative: $(A+B)+C=A+(B+C)$
+\item Associative: $(A+B)+C=A+(B+C)$
 \item Conmutative: $A+B=B+A$
 \item Identity element: $O_{n\times m}+A_{n\times m}=A_{m\times m}$ The identity element $O_{n\times m}$ of the addition of  $n\times m$ matrices is the null matriz of this dimensions, ---an only zeros matrix--- . 
 \item Inverse: we get the addition inverse of a matrix changing the sings of all its entries $A_{inv}=-A$
@@ -501,10 +501,10 @@ array([[4, 1, 5],
     \end{minipage}
 \end{center}
 \begin{paracol}{2}
-En numpy, podemos crear una matriz de cualquier orden, compuesta exclusivamente por ceros mediante el comando\\ \mintinline{python}{numpy.zeros((m,n))}, donde $m$ es el número de filas y $n$ el de columnas de la matriz de ceros resultante. Si damos un único valor, \mintinline{python}{numpy.zeros(n)}, obtenedremos un vector formado por $n$ ceros.
+En numpy, podemos crear una matriz de cualquier orden, compuesta exclusivamente por ceros mediante el comando\\ \mintinline{python}{numpy.zeros((m,n))}, donde $m$ es el número de filas y $n$ el de columnas de la matriz de ceros resultante. Si damos un único valor, \mintinline{python}{numpy.zeros(n)}, obtendremos un vector formado por $n$ ceros.
 
 \switchcolumn
-We can use the Numpy command\\ \mintinline{python}{numpy.zeros((m,n))} to create a matrix, of whatever dimension, with all ist entries equal to zero. $m$ stands for the number of rows and $n$ for the number of columns of the zero matrix we want to create. If we use the command \mintinline{python}{numpy.zeros(n)} with a single value instead a tuple, then we will obtain a vector built up of $n$ zeros..  
+We can use the Numpy command\\ \mintinline{python}{numpy.zeros((m,n))} to create a matrix, of whatever dimension, with all its entries equal to zero. $m$ stands for the number of rows and $n$ for the number of columns of the zero matrix we want to create. If we use the command \mintinline{python}{numpy.zeros(n)} with a single value instead a tuple, then we will obtain a vector built up of $n$ zeros..  
 \end{paracol}
 \begin{center}
     \begin{minipage}{.3\textwidth}
@@ -555,7 +555,7 @@ array([[0, 0, 0],
 En Numpy el simbolo para la multiplicación elemento a elemento es el asterisco *,
 
 \switchcolumn
-\paragraph{Entry-wise multiplication} This is not a proper matrix (algebraic) operation. You can get the entry-wise product of two matrices, $A$ and $B$, with the same dimensions to obtain a new matrix $C$ which entries are $c_{i,j} = a_{i,j}b_{i,j}$. This product, like the matrix addition, is conmutative and asociative. In numpy the entry-wise multiplication symbol is the asterisk *, 
+\paragraph{Entry-wise multiplication} This is not a proper matrix (algebraic) operation. You can get the entry-wise product of two matrices, $A$ and $B$, with the same dimensions to obtain a new matrix $C$ which entries are $c_{i,j} = a_{i,j}b_{i,j}$. This product, like the matrix addition, is conmutative and associative. In numpy the entry-wise multiplication symbol is the asterisk *, 
 \end{paracol}
 \begin{center}
     \begin{minipage}{.5\textwidth}
@@ -610,7 +610,7 @@ array([[-0.33333333,  2.        ],
 \begin{paracol}{2}
 \paragraph{Transposición.} Dada una matriz $A$, su transpuesta $A^T$ se define como la matriz que se obtiene intercambiando sus filas con sus columnas.
 \switchcolumn
-\paragraph{Transposition.} The transpose matrix $A^T$ of a matrix $A$ is the matrix we obtain intechanging its rows and columns.      
+\paragraph{Transposition.} The transpose matrix $A^T$ of a matrix $A$ is the matrix we obtain interchanging its rows and columns.      
 \end{paracol}
 
 
@@ -633,7 +633,7 @@ A^T=
 \begin{paracol}{2}
 En numpy, la operación de transposición se indica mediante un punto y la letra T, \mintinline{python}{A.T}. Solo tiene sentido aplicarla para matrices; si transponemos un vector volvemos a obtener el mismo vector.
 \switchcolumn
-In Numpy the traspose matrix is obtained adding a point an the letter T to the matrix we wish to transpose, \mintinline{python}{A.T}. It only has sense for matrices. If we try to transpose a vector wi will optain the same vector again.
+In Numpy the traspose matrix is obtained adding a point an the letter T to the matrix we wish to transpose, \mintinline{python}{A.T}. It only has sense for matrices. If we try to transpose a vector wi will obtain the same vector again.
 \end{paracol}
 
 \begin{center}
@@ -678,7 +678,7 @@ array([[1],
 \begin{paracol}{2}
 Una matriz cuadrada se dice que es simétrica si coincide con su transpuesta,
 \switchcolumn
-A square matrix is antisimetric if it is equal to its traspose matrix,
+A square matrix is antisymmetric if it is equal to its traspose matrix,
 \end{paracol}
 
 \begin{gather*}
@@ -710,7 +710,7 @@ A_S=\frac{1}{2} \left( A+A^T \right)
 \begin{paracol}{2}
 y la parte antisimétrica como,
 \switchcolumn
-An the antisimetric part as,   
+An the antisymmetric part as,   
 \end{paracol}
 
 \begin{equation*}
@@ -752,7 +752,7 @@ The transpose of the addition of matrix meets,
 \begin{paracol}{2}
 \paragraph{Producto de una matriz por un escalar.} El producto de una matriz $A$ por un número $b$ es una matriz del mismo orden que $A$, cuyos elementos se obtienen multiplicando los elementos de $A$ por el número $b$,
 \switchcolumn
-\paragraph{Product of a matrix and a scalar.} The product of a matrix $A$ for a number $b$ is a matrix with the same dimensions as $A$. We obtain the entry of this product multiplying the elemetns of $A$ by the number $b$,
+\paragraph{Product of a matrix and a scalar.} The product of a matrix $A$ for a number $b$ is a matrix with the same dimensions as $A$. We obtain the entry of this product multiplying the elements of $A$ by the number $b$,
 \end{paracol}
 \begin{gather*}
 C=b\cdot A \rightarrow c_{ij}=b\cdot a_{ij}\\
@@ -904,9 +904,9 @@ Es ahora relativamente fácil, deducir algunas de las propiedad del producto mat
 we may consider the consider each entry $p_{ij}$ of the product matrix $P=A\cdot B$ as a escalar product of the row vector $A_i$ and the column vector $B_j$, $p_{ij} = A_i\cdot B_j$. Now we can easily find out some interesting properties of the matrix product.
 
 \begin{enumerate}
-\item Two matrices can be multiplyed only if the number of columns of the first matrix meet the number of columns of the second one. Besides, the product matrix has so meny row as the first matrix and so many columns as the second one.
+\item Two matrices can be multiplied only if the number of columns of the first matrix meet the number of columns of the second one. Besides, the product matrix has so many row as the first matrix and so many columns as the second one.
 
-\item Matrix produc it is not conmutative. In general, $A\cdot B \neq B \cdot A$
+\item Matrix product it is not conmutative. In general, $A\cdot B \neq B \cdot A$
 
 \item $(A\cdot B)^T=B^T\cdot A^T$
 \end{enumerate}
@@ -982,9 +982,9 @@ array([[-2, -3, -4, -5],
 \end{center}
 
 \begin{paracol}{2}
-En la Línea In [384] se ha calculado el producto escalar de los vectores \mintinline{python}{a} y \mintinline{python}{b}. En este caso, la única condición requerida es que tengan la misma dimensión. En la línea In [388] se calcula el producto de la matriz \mintinline{python}{A} por el vector \mintinline{python}{b}. El requisito ahora es que la dimensión de la matriz ($2\times 4$), que corresponde al número de columnas, coincida con la única dimensión del vector ($4$). En la línea In [389] calculamos el producto del vector \mintinline{python}{b} por la transpuesta de la matriz \mintinline{python}{A}. La operación es posible porque la única dimensión del vector y coincide con la dimensión  de la matriz transpuesta $(4\time2)$, que corresponde con a número de filas. Sin embargo, no es posible calcular el producto del vector \mintinline{python}{b} por la matriz \mintinline{python}{A}, ya que la dimensión del vector no coincide con la primera dimensión de la matriz $(2\times4)$. En la línea In [399] hemos multiplicado las matrices \mintinline{python}{A} $(2\times 4$) por la matriz \mintinline{python}{B} $(4\times 2)$. Como coinciden las dimensiones ``internas'', --numero de columnas de la primera matriz con número de filas de la segunda-- La operación puede llevarse a cabo. Si invertimos el orden de las matrices, (línea In [400]) el producto también es posible, ya que en también coincidirían las dimensiones ``internas''. Sin embargo, es fácil ver que los resultados son complementamente distintos.
+En la Línea In [384] se ha calculado el producto escalar de los vectores \mintinline{python}{a} y \mintinline{python}{b}. En este caso, la única condición requerida es que tengan la misma dimensión. En la línea In [388] se calcula el producto de la matriz \mintinline{python}{A} por el vector \mintinline{python}{b}. El requisito ahora es que la dimensión de la matriz ($2\times 4$), que corresponde al número de columnas, coincida con la única dimensión del vector ($4$). En la línea In [389] calculamos el producto del vector \mintinline{python}{b} por la transpuesta de la matriz \mintinline{python}{A}. La operación es posible porque la única dimensión del vector y coincide con la dimensión  de la matriz transpuesta $(4\time2)$, que corresponde con a número de filas. Sin embargo, no es posible calcular el producto del vector \mintinline{python}{b} por la matriz \mintinline{python}{A}, ya que la dimensión del vector no coincide con la primera dimensión de la matriz $(2\times4)$. En la línea In [399] hemos multiplicado las matrices \mintinline{python}{A} $(2\times 4$) por la matriz \mintinline{python}{B} $(4\times 2)$. Como coinciden las dimensiones ``internas'', --numero de columnas de la primera matriz con número de filas de la segunda-- La operación puede llevarse a cabo. Si invertimos el orden de las matrices, (línea In [400]) el producto también es posible, ya que en también coincidirían las dimensiones ``internas''. Sin embargo, es fácil ver que los resultados son completamente distintos.
 \switchcolumn
-In line In[384] we calcuted the scalar product of vectors \mintinline{python}{a} and \mintinline{python}{b}. In this case, the only requirement is that both vectors have the same dimension. In line In [388] we calculated the product of matrix \mintinline{python}{A} and the vector \mintinline{python}{b}. Now the requirement is the dimension of the matrix ($2\times 4$), corresponding to the number of columns, meets the the single dimension of the vector ($4$). In line [389], we multiplied vector \mintinline{python}{b} with the transpose of matrix \mintinline{python}{A}. This operation can be carried out because the single dimension of vector \mintinline{python}{b} is the same as the dimension of the transpose of the matrix $(4\times 2)$, which corresponds with the number of rows of the matrix. However, we cannot multiply vector \mintinline{python}{b} by matrix \mintinline{python}{A} because the dimension of the vector does not meet the first dimension of the matrix $(2\times 4)$. In line In [399] we multiplied matrix \mintinline{python}{A} $(2\times 4)$ by matix \mintinline{python}{B} $(4\times 2)$. We can carry out the operation because the ``inner'' dimensions of the matrices --number of columns of the first matrix and number of rows of the second one--, meet. If we invert the order of the matrices (line In [400]), we can still multiply the matrix because, in this particular case, the new ``inner'' dimensions also meet. However, the result is entirely different        
+In line In[384] we calculated the scalar product of vectors \mintinline{python}{a} and \mintinline{python}{b}. In this case, the only requirement is that both vectors have the same dimension. In line In [388] we calculated the product of matrix \mintinline{python}{A} and the vector \mintinline{python}{b}. Now the requirement is the dimension of the matrix ($2\times 4$), corresponding to the number of columns, meets the the single dimension of the vector ($4$). In line [389], we multiplied vector \mintinline{python}{b} with the transpose of matrix \mintinline{python}{A}. This operation can be carried out because the single dimension of vector \mintinline{python}{b} is the same as the dimension of the transpose of the matrix $(4\times 2)$, which corresponds with the number of rows of the matrix. However, we cannot multiply vector \mintinline{python}{b} by matrix \mintinline{python}{A} because the dimension of the vector does not meet the first dimension of the matrix $(2\times 4)$. In line In [399] we multiplied matrix \mintinline{python}{A} $(2\times 4)$ by matrix \mintinline{python}{B} $(4\times 2)$. We can carry out the operation because the ``inner'' dimensions of the matrices --number of columns of the first matrix and number of rows of the second one--, meet. If we invert the order of the matrices (line In [400]), we can still multiply the matrix because, in this particular case, the new ``inner'' dimensions also meet. However, the result is entirely different        
 \end{paracol}
 \begin{paracol}{2}
 \paragraph{Matriz identidad} La matriz identidad de orden $n\times n$ se 
@@ -1004,7 +1004,7 @@ i_{kj}&=0, \ k\neq j
 \begin{paracol}{2}
 Es decir, una matriz en la que todos los elementos que no pertenecen a la diagonal principal son $0$ y los elementos de la diagonal principal son $1$. Por ejemplo,
 \switchcolumn
-So, an indentity matrix has any entry off the main diagonal equal to $0$ and all entries on the nain diagonal equal to $1$, for example,    
+So, an identity matrix has any entry off the main diagonal equal to $0$ and all entries on the main diagonal equal to $1$, for example,    
 \end{paracol}
 
 \begin{equation*}
@@ -1018,7 +1018,7 @@ I_3=\begin{pmatrix}
 \begin{paracol}{2}
 La matriz identidad $I_n$ es el elemento neutro del producto de matrices cuadradas de orden $n\times n$,
 \switchcolumn
-The indentity matrix $I_n$ is the identity element of the square $n \times n$ matrices product.    
+The identity matrix $I_n$ is the identity element of the square $n \times n$ matrices product.    
 \end{paracol}
 
 \begin{equation*}
@@ -1074,7 +1074,7 @@ Constituye la manera usual de medir la longitud de un vector. Tiene una interpre
 
 La norma de un vector en Numpy se obtiene empleando el  comando \mintinline{python}{norm} que pertenece al submódulo \mintinline{python}{linalg},
 \switchcolumn
-The vector norm represents the usual method to measure its length. It has a direct geometrical interpretation using Pithagoras' theorem: the norm is the length of the segment that represents the vector. Figure \ref{fig:pitag} shows such an interpretation for a bi-dimensional vector.
+The vector norm represents the usual method to measure its length. It has a direct geometrical interpretation using Pythagoras' theorem: the norm is the length of the segment that represents the vector. Figure \ref{fig:pitag} shows such an interpretation for a bi-dimensional vector.
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.3\textwidth}
@@ -1298,7 +1298,7 @@ a_{11}
 \end{pmatrix} \rightarrow \vert A \vert =a_{11}
 \end{equation*}
 \begin{paracol}{2}
-En álgebral lineal, se denomina menor primero, $M_{ij}$ de una matriz $A$, al determinate de la matriz que resulta de eliminar de la matriz $A$ la fila $i$ y la columna $j$. Por ejemplo,
+En álgebra lineal, se denomina menor primero, $M_{ij}$ de una matriz $A$, al determinante de la matriz que resulta de eliminar de la matriz $A$ la fila $i$ y la columna $j$. Por ejemplo,
 \switchcolumn
 In linear algebra, a first minor $M_{ij}$ of a square matrix $A$ is the determinant of the matrix obtained by removing simultaneously row $i$ and column $j$ of $A$. For instance, 
 \end{paracol}
@@ -1327,7 +1327,7 @@ det\begin{pmatrix}
 \end{align*}
 
 \begin{paracol}{2}
- El  cofactor $C_{ij}$ de un elemento $a_{ij}$ de la matriz $A$, se define a partir del menor primero $M_{ij}$, que corresponde precísamenta a la fila y columna que contiene a $a_{ij}$,
+ El  cofactor $C_{ij}$ de un elemento $a_{ij}$ de la matriz $A$, se define a partir del menor primero $M_{ij}$, que corresponde precisamente a la fila y columna que contiene a $a_{ij}$,
  \switchcolumn
  We define the cofactor $C_{ij}$ of a matrix $A_{ij}$ entry, $a_{ij}$, using the first minor $M_{ij}$ obtained removing the row and column $a_{ij}$ belongs to.
 \end{paracol}
@@ -1356,7 +1356,7 @@ or also as,
 \begin{paracol}{2}
 En el primer caso, se dice que se ha desarrollado el determinante a lo largo de la fila $i$. En el segundo caso, se dice que se ha desarrollo a lo largo de la columna $j$.
 
- La fórmula de Laplace obtiene el determinante de una matriz de orden $n\times n$ a partir del cálculo de los menores complementarios de los elementos de una fila o columna; los determinates the $n$ matrices de orden $(n-1)\times (n-1)$. A su vez, podríamos calcular cada menor complementario, aplicando la fórmula de Laplace y así sucesivamente hasta llegar a matrices de orden $2\times 2$. Para una matriz $2\times 2$, si desarrollamos por la primera fila obtenemos su determinante como,
+ La fórmula de Laplace obtiene el determinante de una matriz de orden $n\times n$ a partir del cálculo de los menores complementarios de los elementos de una fila o columna; los determinantes the $n$ matrices de orden $(n-1)\times (n-1)$. A su vez, podríamos calcular cada menor complementario, aplicando la fórmula de Laplace y así sucesivamente hasta llegar a matrices de orden $2\times 2$. Para una matriz $2\times 2$, si desarrollamos por la primera fila obtenemos su determinante como,
 \switchcolumn
 In the first case, we say that we develop the determinant along the row $i$. In the second one, we say that we have developed the determinant along the column $j$
 
@@ -1377,7 +1377,7 @@ a_{21}& a_{22}
 \begin{paracol}{2}
 y si desarrollamos por la segunda columna,
 \switchcolumn
-And if  we develop using the secon column,
+And if  we develop using the second column,
 \end{paracol}
 \begin{align*}
 A&=\begin{pmatrix}
@@ -1477,7 +1477,7 @@ El rango de una matriz $A$ se define como el tamaño de la submatriz más grande
 \switchcolumn
 Among determinants' properties we will point out the following ones,
 \begin{enumerate}
-	\item The determint of a escalar $a$ by a  matrix $A$ is,
+	\item The determinant of a escalar $a$ by a  matrix $A$ is,
 	\begin{equation*}
 		\left\vert a\cdot A \right\vert =a^n\cdot \vert A \vert
 	\end{equation*}
@@ -1522,7 +1522,7 @@ En Numpy se puede obtener el rango de una  matriz mediante el comando \mintinlin
 \switchcolumn
 For a non-singular square matrix, its rank meets its dimension.
 
-In Numpy, we can obtain the rank of a matrix using the comand \mintinline{python}{matrix_rank},  
+In Numpy, we can obtain the rank of a matrix using the command \mintinline{python}{matrix_rank},  
 \end{paracol}
 \begin{center}
 \begin{minipage}{0.5\textwidth}
@@ -1543,7 +1543,7 @@ Out[396]: 2
 \begin{equation*}
 A\cdot A^{-1}=I_{n\times n}
 \end{equation*}
-Donde $I_{n\times n}$ es la matriz indentidad de dimensión $n$.
+Donde $I_{n\times n}$ es la matriz identidad de dimensión $n$.
 La matriz $A^{-1}$ recibe el nombre de matriz inversa de $A$, y  en numpy puede calcularse a partir de $A$ como \mintinline{python}{np.linalg.inv(A)}, ó \mintinline{python}{np.linalg.matrix_power(A,-1)}
 En el segundo caso, estamos empleando la función, del submódulo linalg de numpy, \mintinline{python}{matrix.power(A,n)} que permite calcular el resultado de elevar una matriz a una potencia $A^n$.
 \switchcolumn
@@ -1551,8 +1551,8 @@ En el segundo caso, estamos empleando la función, del submódulo linalg de nump
 \begin{equation*}
 	A\cdot A^{-1}=I_{n\times n}
 \end{equation*}
-Where $I_{n\times n}$ is the identity matrix of dimension $n$. The matrix $A^{-1}$ is called the inverse matrix of $A$, and we can calculate it in Numpy appliying the comands  \mintinline{python}{np.linalg.inv(A)}, ó \mintinline{python}{np.linalg.matrix_power(A,-1)} to the matrix $A$.
-In the second case, we are using the function \mintinline{python}{matrix.power(A,n)} which allows us to calculate the result to raise a natrix to a power $A^n$. 
+Where $I_{n\times n}$ is the identity matrix of dimension $n$. The matrix $A^{-1}$ is called the inverse matrix of $A$, and we can calculate it in Numpy applying the commands  \mintinline{python}{np.linalg.inv(A)}, ó \mintinline{python}{np.linalg.matrix_power(A,-1)} to the matrix $A$.
+In the second case, we are using the function \mintinline{python}{matrix.power(A,n)} which allows us to calculate the result to raise a matrix to a power $A^n$. 
 \end{paracol}
 \begin{center}
 \begin{minipage}{0.7\textwidth}
@@ -1648,7 +1648,7 @@ Some properties relate with matrix inversion are,
 \end{paracol}
 
 \begin{table}[H]
-\bicaption{Algunas funciones matemáticas en Numpy de uso frecuente}{frecuently used mathematical functions included in Numpy} \label{tabfun}
+\bicaption{Algunas funciones matemáticas en Numpy de uso frecuente}{frequently used mathematical functions included in Numpy} \label{tabfun}
 
 \begin{tabular}{c|c|c|c}
 Tipo&Nombre&variables&función matemática\\
@@ -1713,7 +1713,7 @@ Norms & & &sign function; 1 if x $>$ 0, -1 if x $<$ 0, 0 if x=0\\
 \subsection{Funciones incluidas en\\ Num\-py.}\index{Funciónes! Funciones incluidas en Numpy} 
 Numpy incluye un gran número de funciones. Muchas de ellas  están pensadas para ser aplicadas a arrays o a variables numéricas indistintamente. En el primer caso, la función se aplica elemento a elemento y el resultado es un array con las mismas dimensiones que el original. 
 
-En la tabla \ref{tabfun}, se incluyen algunos ejemplos de las funciones matemáticas más corrientes. No están todas. Para obtener una visión más completa de las funciones disponibles se aconseja acudir a la documentacion de Numpy.
+En la tabla \ref{tabfun}, se incluyen algunos ejemplos de las funciones matemáticas más corrientes. No están todas. Para obtener una visión más completa de las funciones disponibles se aconseja acudir a la documentación de Numpy.
 El uso de estas funciones es directo, por ejemplo, el siguiente código calcula la exponencial de los elementos de una matriz,
 \switchcolumn
 \subsection{Functions included in Numpy}\index{Functions! Functions included in Numpy}
@@ -1971,7 +1971,7 @@ a_n\cdot \begin{pmatrix}
 \begin{paracol}{2}
 Por extensión, podemos generalizar este resultado a cualquier otra base, es decir podemos agrupar en un vector los coeficientes de la combinación lineal de los vectores de la base que lo generan. Por ejemplo, si construimos, para los vectores de dimensión $3$ la base,
 \switchcolumn
-We can also generalise and extend this result to any other basis, just grouping in a vector the coeficients of linear combination of basis vectors which generates it. For example, we can build for vector of dimension $3$ the following basis,   
+We can also generalise and extend this result to any other basis, just grouping in a vector the coefficients of linear combination of basis vectors which generates it. For example, we can build for vector of dimension $3$ the following basis,   
 \end{paracol}
 
 \begin{equation*}
@@ -2108,7 +2108,7 @@ b_{n1}&b_{n2}& \cdots & b_{nn}\\
 \begin{paracol}{2}
 Supongamos que tenemos un vector $a$ cuyas componentes en la base $\mathcal{B}$ son,
 \switchcolumn
-Supose now that we vector $a$ has the following components ins basis $\mathcal{B}$,
+Suppose now that we vector $a$ has the following components ins basis $\mathcal{B}$,
 \end{paracol}
 
 \begin{equation*}
@@ -2123,7 +2123,7 @@ a_n^{\mathcal{B}}
 \begin{paracol}{2}
 Para obtener las componentes en la base canónica, basta entonces multiplicar la matriz $B$, por el vector $a^{\mathcal{B}}$. Así en el ejemplo que acabamos de ver,
 \switchcolumn
-we can obtain the componets on the canonical base just multiplying matrix $B$ for vector $a^{\mathcal{B}}$. So in the example we just have seen,
+we can obtain the components on the canonical base just multiplying matrix $B$ for vector $a^{\mathcal{B}}$. So in the example we just have seen,
 \end{paracol}
 
 \begin{equation*}
@@ -2169,7 +2169,7 @@ a^{\mathcal{B}_2}&=B_2^{-1} \cdot B_1\cdot a^{\mathcal{B}_1}
 \begin{paracol}{2}
 El siguiente código permite cambiar de base un vector y, si el vector pertenece a $\mathbb{R}^3$, representa gráficamente tanto el vector como las bases antigua y nueva.
 \switchcolumn
-The following code allows us to change a vector from one basis to aanother. Besides, if the vector is in $\mathbb{R}^3$, the program represents the vector and the old a  the new bases.
+The following code allows us to change a vector from one basis to another. Besides, if the vector is in $\mathbb{R}^3$, the program represents the vector and the old a  the new bases.
 \end{paracol}
 \inputminted[
 frame=lines,
@@ -2297,7 +2297,7 @@ a_2
 \begin{paracol}{2}
 Sería equivalente a aplicar una reflexión respecto al eje x y luego respecto al eje y o viceversa,
 \switchcolumn
-It is equivalent to apply a refletion on x-axis and then a reflection on y-axis or vice versa,
+It is equivalent to apply a reflection on x-axis and then a reflection on y-axis or vice versa,
 \end{paracol}
 $R=R_x\cdot R_y= R_y\cdot R_x$.
 \begin{paracol}{2}
@@ -2360,7 +2360,7 @@ Junto a la norma inducida que acabamos de ver, se definen las siguientes normas,
 \switchcolumn
 Besides the induced norm already described, it is possible to define the following norms,
 
-1. Norm $1$: we add the entries of each column up and then take the maximun value of these sums as a norm
+1. Norm $1$: we add the entries of each column up and then take the maximum value of these sums as a norm
 \end{paracol}
 \begin{equation*}
 \Vert A_{m,n} \Vert _{1} = \max_j \sum_{i=1}^m a_{ij}
@@ -2425,7 +2425,7 @@ Out[14]: 5.744562646538029
 In [15]: np.linalg.norm(A,1)
 Out[15]: 7.0
 
-In [17]: np.linalg.norm(A,inf)
+In [17]: np.linalg.norm(A,np.inf)
 Out[17]: 6.0
 
 In [18]: np.linalg.norm(A,2)
@@ -2594,7 +2594,7 @@ a_{ij}=0,\ \forall i\neq j
 \end{equation*}
 
 \begin{paracol}{2}
-En Numpy, podemos construir una matriz diagonal, a partir de una lista o un array unidimensional la empleando el commando \mintinline{python}{diag}. Además este comando permite también extraer la diagonal de una matrix y convertirla en un array,
+En Numpy, podemos construir una matriz diagonal, a partir de una lista o un array unidimensional la empleando el comando \mintinline{python}{diag}. Además este comando permite también extraer la diagonal de una matrix y convertirla en un array,
 \switchcolumn
 We can build a diagonal matrix departing from a list or an unidimensional array, using the numpy command: \mintinline{python}{diag}. Besides, we can also use this command to get a matrix diagonal an put it into an array,
 \end{paracol}
@@ -2821,9 +2821,9 @@ A veces obtener la factorización LU directa de una matriz, puede llevar a cálc
 La permutación de las filas de una matriz $A$ de orden $n\times m$, se puede definir a partir del producto con las matrices de permutación de orden $n \times n$. Éstas se obtienen permutando directamente las filas de la matriz identidad $I_{n \times n}$. Si una matriz de permutación multiplica a otra matriz por la izquierda, permuta el orden de sus filas. Si la multiplica por la derecha. permuta el orden de sus columnas. Así por ejemplo, para matrices de orden $3 \times n$,
 
 \switchcolumn
-The description of method to calculate a matrix LU factorization is far beyond the scope of this notes. However, we do use the command \mintinline{python}{lu}, include in a Python library called Scipy, to compute the result of a LU factorization. Scipy is a library very much alike to Numpy and similarly to it, Scipy contains a large number of mathematical functions. In fact, Numpy and Scipy overlaps a little and you can find certain functions in both libraries. The \mintinline{python}{lu} command belongs to Scipy submodule called \mintinline{python}{linalg} and takes as input a square matrix $A$ of dimension $n\times n$, and returns as outputs a permutation matrix $P$ of dimension $n\times n$ we will describe later on, the lower triangula matrix $L$, and the upper triangular matrix $U$. The three output matrices satisfy $A=PLU$.
+The description of method to calculate a matrix LU factorization is far beyond the scope of this notes. However, we do use the command \mintinline{python}{lu}, include in a Python library called Scipy, to compute the result of a LU factorization. Scipy is a library very much alike to Numpy and similarly to it, Scipy contains a large number of mathematical functions. In fact, Numpy and Scipy overlaps a little and you can find certain functions in both libraries. The \mintinline{python}{lu} command belongs to Scipy submodule called \mintinline{python}{linalg} and takes as input a square matrix $A$ of dimension $n\times n$, and returns as outputs a permutation matrix $P$ of dimension $n\times n$ we will describe later on, the lower triangular matrix $L$, and the upper triangular matrix $U$. The three output matrices satisfy $A=PLU$.
 
-Sometimes obtaining directly the LU factorization of a matrix, leads to numerically instable calculations. This, in turn, affect the results precision. One way to overcome this problem is to permute some rows of the matrix we intend to factorize and then, to factorize the permuted version.
+Sometimes obtaining directly the LU factorization of a matrix, leads to numerically unstable calculations. This, in turn, affect the results precision. One way to overcome this problem is to permute some rows of the matrix we intend to factorize and then, to factorize the permuted version.
 
 We can define the rows permutation of $A$ matrix of dimensions $n\times m$ multiplying the matrix by permutation matrices of dimensions $n\times n$. We obtain these last permuting the rows of the identity matrix $I_{n\times n}$.  When a permutation matrix multiplies another matrix by it left side, it permutes the order of the matrix rows. By contrast, if the permutation matrix multiplies another matrix by ts right, it permutes the order of the matrix columns. For instance, for matrix of dimensions $3\times n$, 
 
@@ -3040,7 +3040,7 @@ array([[ 3.,  4.,  2.,  5.],
 Dada una matriz cuadrada, simétrica y definida positiva, es siempre posible factorizarla como $A=L\cdot L^T$. Donde $L$ es una matriz triangular inferior,
 \switchcolumn
 \subsection{Cholesky factorisation}
-Given a square simetric positive definite matrix, it always possible to factorize it as $A=L\cdot L^T$. Where $L$ is a lower triangular matrix.
+Given a square symmetric positive definite matrix, it always possible to factorize it as $A=L\cdot L^T$. Where $L$ is a lower triangular matrix.
 \end{paracol}
 
 \begin{equation*}
@@ -3108,7 +3108,7 @@ Si la matriz no es definida positiva, la función \mintinline{python}{cholesky} 
 \subsection{Diagonalización}\label{sec:diag}
 \paragraph{Autovectores y autovalores.} Dada una matriz $A$ de orden $n\times n$, se define como autovector, o vector propio de dicha matriz al vector $x$ que cumple,
 \switchcolumn
-If the matrix is not definite posive, then function \mintinline{python}{cholesky} returns an error message.
+If the matrix is not definite positive, then function \mintinline{python}{cholesky} returns an error message.
 \subsection{Diagonalisation}
 \paragraph{Eigenvectors and eigenvalues.} We define an eigenvector or characteristic vector $x$ of the $n\times n$ matrix $A$ as, 
 \end{paracol}
@@ -3120,7 +3120,7 @@ Es decir, el efecto de multiplicar la matriz $A$ por el vector $x$ es equivalent
 
 $\lambda$ recibe el nombre de autovalor, o valor propio de la matriz $A$ asociado al autovector $x$. Así por ejemplo,
 \switchcolumn
-Namely, the result of multiply matrx $A$ for its eigenvector $x$ is equal to multiply the number, $\lambda$ for the eigen vector. $x$ and $\lambda$ could be real or complex.
+Namely, the result of multiply matrix $A$ for its eigenvector $x$ is equal to multiply the number, $\lambda$ for the eigen vector. $x$ and $\lambda$ could be real or complex.
 
 $\lambda$ is call de eigenvalue or characteristic values of the matrix $A$, associated to the eigenvector $x$. For example,`
 \end{paracol}
@@ -3190,7 +3190,7 @@ Where $D$ is a diagonal matrix built using the eigenvalues of $A$.
 \begin{paracol}{2}
 Esta descomposición no siempre existe.  
 \switchcolumn
-The eigendescomposition does not always exist.  
+The eigendecomposition does not always exist.  
 \end{paracol}
 \begin{flalign*}
 &\mathwitch*_{i=0}^{\infty}\Xi_i(t)\Biggl\{ &     
@@ -3235,7 +3235,7 @@ A= \begin{pmatrix}
 \begin{paracol}{2}
 Por tanto en este ejemplo, los autovalores de $A$ serían $\lambda_1=-2$, $\lambda_2=2$ y $\lambda_3=3$. Para estudiar la composición de la matriz $X$ Reescribimos la expresión de la relación de semejanza de la siguiente manera,
 \switchcolumn
-So, in this example the $A$ eigenvectors would be $\lambda_1=-2$, $\lambda_2=2$ and $\lambda_3=3$. To study the structure of matrix $X$, we rewrite the similarity relashionship as follows,
+So, in this example the $A$ eigenvectors would be $\lambda_1=-2$, $\lambda_2=2$ and $\lambda_3=3$. To study the structure of matrix $X$, we rewrite the similarity relationship as follows,
 \end{paracol}
 
 \begin{equation*}
@@ -3322,7 +3322,7 @@ Veamos algunos ejemplos:
 La matriz,
 
 \switchcolumn
-The roots of a polynomial may be single of multiple that is the same root can be repeated several times. So, the autovalues of a matrix can also be repeated.
+The roots of a polynomial may be single of multiple that is the same root can be repeated several times. So, the eigenvalues of a matrix can also be repeated.
 
 Besides, the roots of a polynomial may be real or complex. For a matrix with real elements, if it has complex eigenvalues their al always pairs complex conjugated numbers. That is, if $\lambda =a+bi$ is an eigenvalue then $\lambda^*=a-bi$ is also an eigenvalue.
 
@@ -3414,7 +3414,7 @@ B=\begin{pmatrix}
 \begin{paracol}{2}
 tiene como polinomio característico,
 \switchcolumn
-has charasteristic polynomial, 
+has characteristic polynomial, 
 \end{paracol}
 \begin{equation*}
 P_B(z)=\left\vert\begin{matrix}
@@ -3553,7 +3553,7 @@ Cualquier matriz simétrica posee autovalores reales y es diagonalizable ortogon
 4. El mayor de los autovalores en valor absoluto, de una matriz $A$ de orden $n$.  recibe el nombre de \emph{radio espectral} de dicha matriz,
 
 \switchcolumn
-Any symmetric matrix has real eigenvalues and is orthogonally diagonalisable. IN general, a matrix  is ortogonally diagonalizable if it is normal:  $A\cdot A^T=A^T\cdot A$
+Any symmetric matrix has real eigenvalues and is orthogonally diagonalisable. IN general, a matrix  is orthogonally diagonalizable if it is normal:  $A\cdot A^T=A^T\cdot A$
 
 4. The maximum absolute value of a $n\times n$ matrix $A$ eigenvalues is called the spectral radius of matrix $A$.  
 \end{paracol}
@@ -3636,7 +3636,7 @@ array([[ 3.00000000e+00,  4.00000000e+00,  2.00000000e+00,
 La idea es factorizar una matriz $A$ en el producto de dos matrices; una matriz ortogonal $Q$ y una matriz triangular superior $R$.
 \switchcolumn
 \subsection{QR Factorisation}
-The objetive of QR factorisation is to divide a matriz $A$ in the product of two matrices; one of then an orthogonal matrix $Q$ and the other one an upper triangular matrix $R$.
+The objective of QR factorisation is to divide a matriz $A$ in the product of two matrices; one of then an orthogonal matrix $Q$ and the other one an upper triangular matrix $R$.
 \end{paracol}
 \begin{equation*}
 A=Q\cdot R, \leftarrow Q\cdot Q^T=I
@@ -3677,7 +3677,7 @@ array([[-2.44948974, -4.4907312 , -2.85773803],
 \subsection{Factorización SVD}\label{sec:SVD}\index{Factorizacion SVD}
 Dada una matriz cualquiera $A$ de orden $m\times n$ es posible factorizarla en el producto de tres matrices,
 \switchcolumn
-\subsection{SVD Factorisation}\label{sec:SVD}\index[eng]{SVD Factorisation}
+\subsection{SVD Factorisation}\label{sec:SVD-2}\index[eng]{SVD Factorisation}
 Any matrix $A$ of dimensions $m \times n$ can be factorised as the product of three matrices,
 \end{paracol}
 \begin{equation*}
@@ -3700,11 +3700,11 @@ s=\begin{pmatrix}
 \begin{paracol}{2}
 Los elementos de la diagonal de la matriz $S$, ($\sigma_1, \ \sigma_2, \  \cdots \ \sigma_i$), reciben el nombre de \emph{valores singulares} de la matriz $A$. De ahí el nombre que recibe esta factorización; SVD son las siglas en inglés de \emph{Singular Value Decomposition}.
 
-No vamos a describir ningún algoritmo para obtener la factorización SVD de una matriz. En Numpy existe la función \mintinline{python}{[U,s,VT]=svd(A)}, dentro del submodulo \mintinline{python}{linalg}, que permite obtener directamente la factorización SDV de una matriz $A$ de dimensión arbitraria. Es importante destacar que Numpy devuelve un vector $s$ en con los valores singulares y, directamente, la matriz $V^T$. Para reconstruir la matriz $S$ es preciso crear un matriz de dimensión $m\times n$ a partir del vector $s$, primero se crea una matriz diagonal a partir de $s$ y depués se le añaden las filas o columnas de ceros necesarias, hasta completar la mayor de las dimensiones. Si $n>m$ debemos añadir filas, si $n>m$ columnas. A continuación se incluyen un ejemplo de uso para una matrice $A$ no cuadrada,
+No vamos a describir ningún algoritmo para obtener la factorización SVD de una matriz. En Numpy existe la función \mintinline{python}{[U,s,VT]=svd(A)}, dentro del submodulo \mintinline{python}{linalg}, que permite obtener directamente la factorización SVD de una matriz $A$ de dimensión arbitraria. Es importante destacar que Numpy devuelve un vector $s$ en con los valores singulares y, directamente, la matriz $V^T$. Para reconstruir la matriz $S$ es preciso crear un matriz de dimensión $m\times n$ a partir del vector $s$, primero se crea una matriz diagonal a partir de $s$ y después se le añaden las filas o columnas de ceros necesarias, hasta completar la mayor de las dimensiones. Si $m>n$ debemos añadir filas, si $n>m$ columnas. A continuación se incluyen un ejemplo de uso para una matriz $A$ no cuadrada,
 \switchcolumn
-The entries of the diagonal of matrix $S$, ($\sigma_1, \ \sigma_2, \  \cdots \ \sigma_i$), are konwn as the singular values of matrix $A$. This is the reason why this factorisation is named \emph{Singular Value Descomposition}, SVD.
+The entries of the diagonal of matrix $S$, ($\sigma_1, \ \sigma_2, \  \cdots \ \sigma_i$), are known as the singular values of matrix $A$. This is the reason why this factorisation is named \emph{Singular Value Decomposition}, SVD.
 
-We are not going to describe any algorithm to get the SVD factorisation of a matrix. In Numpy, the function \mintinline{python}{[U,s,VT]= svd(A)}, which belongs to the \mintinline{python}{linalg} submodule, allow us to get straighforwardly the SVD matrix factorisation for a matrix $A$ with arbitrary dimensions. It in important to notice that Numpy returns a vector $s$ with the singular values and the matrix $V^T$, directly. To build the matrix $S$ we need to create a matrix of dimensions $m\times n$ from vector $S$. To do so, we first create a diagonal matrix with the entries of $s$ and then, we pad the matrix with rows or columns of zeros till complete the larger of the matrix dimension. If $n>m$ we have to add rows, if $n<m$ columns. The following code shows and example for a non-square matrix  
+We are not going to describe any algorithm to get the SVD factorisation of a matrix. In Numpy, the function \mintinline{python}{[U,s,VT]= svd(A)}, which belongs to the \mintinline{python}{linalg} submodule, allow us to get straightforwardly the SVD matrix factorisation for a matrix $A$ with arbitrary dimensions. It in important to notice that Numpy returns a vector $s$ with the singular values and the matrix $V^T$, directly. To build the matrix $S$ we need to create a matrix of dimensions $m\times n$ from vector $S$. To do so, we first create a diagonal matrix with the entries of $s$ and then, we pad the matrix with rows or columns of zeros till complete the larger of the matrix dimension. If $m>n$ we have to add rows, if $n>m$ columns. The following code shows and example for a non-square matrix  
 \end{paracol}
 \begin{center}
     \begin{minipage}{0.7\textwidth}
@@ -3719,6 +3719,8 @@ array([[1, 3, 4],
        [3, 2, 3]])
 
 In [102]: U,s,VT = np.linalg.svd(A)
+
+In [104]: S = np.zeros(A.shape)
 
 In [105]: S[:s.shape[0],:s.shape[0]] = np.diag(s)
 \end{minted}
@@ -3814,7 +3816,7 @@ Para los siguientes ejercicios, es necesario importar Numpy. Se puede hacer de t
 	import numpy as alias
 	from numpy import *
 \end{minted}
-En el primer caso, hay que escribir las funciones precedidas del nombre del módulo: \mintinline{python}{numpy.fun}. En el segundo caso, hay que precederlas del alias elegido, en los ejercicios que siguen es la opcion elegida y el alias empleado es np: \mintinline{python}{np.fun}. En el tercer caso, importamos directamente las funciones y submódulos por lo que pudríamos emplearlos usando directamente su nombre \mintinline{python}{fun}. Este último método tiene el riesgo de sobreescribir accidentalmente alguna función de Numpy. 
+En el primer caso, hay que escribir las funciones precedidas del nombre del módulo: \mintinline{python}{numpy.fun}. En el segundo caso, hay que precederlas del alias elegido, en los ejercicios que siguen es la opción elegida y el alias empleado es np: \mintinline{python}{np.fun}. En el tercer caso, importamos directamente las funciones y submódulos por lo que pudríamos emplearlos usando directamente su nombre \mintinline{python}{fun}. Este último método tiene el riesgo de sobreescribir accidentalmente alguna función de Numpy. 
 \begin{enumerate}
 	\item Arrays en Numpy; matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{línea de comandos} de Ipython e interpreta los resultados que obtienes. En los casos en que Python devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunos operaciones se apoyan en los resultados de operaciones anteriores. 
 \begin{multicols}{2}			
@@ -3889,7 +3891,7 @@ En el primer caso, hay que escribir las funciones precedidas del nombre del mód
 			\item w2 = A@np.linalg.matrix\_power(B,-1)
 			\item w3 = A/B 
 			\item w4 = B/A
-			\item[*] importamos linalg / we import lialg
+			\item[*] importamos linalg / we import linalg
 			\item from numpy import linalg as la
 			\item w5 = A@la.inv(B) \\ -A@la.matrix\_power(B,-1)
 			\item w6 = A@la.matrix\_power(B,-1)\\-la.solve(la.inv(A),la.inv(B))
@@ -3963,7 +3965,7 @@ En el primer caso, hay que escribir las funciones precedidas del nombre del mód
 	
 	Crea una función que tome como variables de entrada una matriz $A$ cuadrada de cualquier dimension $n\times n$ y un vector columna de dimensión $n$ y compruebe si$n$ pertenece o no al \emph{kernel} de $A$. \textbf{Nota:} Considera que la condición se cumple si todos los elementos del vector $Av$ son menores que $1e-12$. Hazlo sin emplear el operador \mintinline{python}{@}.
 	
-	\item Escribe ---empleando bucles una función que reciba como argumentos de entrada dos matrices $X$ e $Y$ y devuelva el valor de su suma $S=X+Y$. El programa debe comprobar si es posible la operación indicada y, caso de no serlo, interrupir la ejecución y mostrar un mensaje de error.
+	\item Escribe ---empleando bucles una función que reciba como argumentos de entrada dos matrices $X$ e $Y$ y devuelva el valor de su suma $S=X+Y$. El programa debe comprobar si es posible la operación indicada y, caso de no serlo, interrumpir la ejecución y mostrar un mensaje de error.
 	
 	\item Implementa una función SumoDiag.m que tome como entrada una matriz cuadrada A y que
 	devuelva la suma de todos los elementos de las 2 diagonales principales de dicha matriz. No utilizar la

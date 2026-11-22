@@ -121,11 +121,11 @@ En 1948 Lehmer propuso un algoritmo conocido con el nombre de \emph{linear congr
 El algoritmo de obtención de la secuencia de números pseudoaleatorios se define en este caso como,
 
 \switchcolumn
-Usually, a value as large as possible is chosen for $m$. In 1948 Lehmmer proposed an algorithm known as \emph{linear congruential}. This algorithm uses four numerical items,
+Usually, a value as large as possible is chosen for $m$. In 1948 Lehmer proposed an algorithm known as \emph{linear congruential}. This algorithm uses four numerical items,
 
 \begin{itemize}
 	\item[-] $I_0$, Seed. Similar to \emph{middle square} method.
-	\item[-] $m > I_0$, modulus.  it is chossen as large as posible. The larger the modulus the lager the period of the induced cycle.
+	\item[-] $m > I_0$, modulus.  it is chosen as large as posible. The larger the modulus the lager the period of the induced cycle.
 	\item[-] $a$, Multiplier. Should be chosen to meet that $0\le a < m$
 	\item[-] $c$, Increment. Should be chosen to meet that $0\le c < m$
 \end{itemize}
@@ -381,7 +381,7 @@ The probability is a property associated with random events. We say that an even
 \subsection{Discrete random events.}
 Tossing a coin to obtain either a \emph{head} or a \emph{tail} is a simple example of a random process, as it is impossible to know the result beforehand. Probability measures the odds of a specific event occurring.
 
-Comming back to the coin tossing, there are two possibilities:
+Coming back to the coin tossing, there are two possibilities:
 \begin{enumerate}
 \item that you get head
 \item that you get tail
@@ -456,7 +456,7 @@ So, for instance, the probability of getting a $6$ when rolling a dice would be,
 \begin{figure}
 \centering
 \includegraphics[width=10cm]{dado.eps}
-\bicaption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar un dado al aire.}{Probability distribution and cumulated probability of the resutls of rolling a dice.}
+\bicaption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar un dado al aire.}{Probability distribution and cumulated probability of the results of rolling a dice.}
 \label{fig:dado}
 \end{figure}
 
@@ -545,7 +545,7 @@ La distribución de probabilidad $f(x)\geqslant 0$ representa en el caso continu
 \switchcolumn
 Figure \ref{fig:puniform} shows the resulting probability distribution. 
 
-It is impointronumpy.texrtant to realize that the difference when we compare with the discrete case. The interval $[a,b]$ contains infinite numbers. If we try to assign a value to the probability dividing the favorable cases by the possible cases, as we did in the discrete case,  we would obtain a value $0$ for every number.
+It is important to realize that the difference when we compare with the discrete case. The interval $[a,b]$ contains infinite numbers. If we try to assign a value to the probability dividing the favorable cases by the possible cases, as we did in the discrete case,  we would obtain a value $0$ for every number.
 
 The probability distribution  $f(x)\geqslant 0$ represents in the continuous case the a \emph{density} of probability. $f(x_0)$ represents the probability of obtaining a random number in an interval $dx$ around $x_0$,
 \end{paracol}
@@ -581,7 +581,7 @@ P(x) = \int_a^xf(x)dx
 \end{equation*}
 
 \begin{paracol}{2}
-Para el caso de la distribución de probabilidad constante descrita más arriba obtendríamos una línea recta que corta el eje de abcisas en $a$ y el valor de ordenada $1$ en b,
+Para el caso de la distribución de probabilidad constante descrita más arriba obtendríamos una línea recta que corta el eje de abscisas en $a$ y el valor de ordenada $1$ en b,
 \switchcolumn
 For the constant probability distribution described above, we will obtain a straight line that cuts the abscissa axis on $a$ and takes the ordinate value $1$ on b.
 \end{paracol} 
@@ -609,7 +609,7 @@ La distribución exponencial está definida para sucesos que pueden tomar cualqu
 We use many different kind of distributions to represent how random events take place in nature. Let see now two very well known examples: 
 
 \paragraph{Exponential distribution} \index[eng]{Exponential distribution}
-Exponetial distribution are define for events that can take a real positive value or $0$, $x\in [0,\infty)$. It is represent by a decreasing exponetial function,
+Exponential distribution are define for events that can take a real positive value or $0$, $x\in [0,\infty)$. It is represent by a decreasing exponential function,
 \end{paracol}
 \begin{equation*}
 f(x)=\frac{1}{\mu}e^{-\frac{x}{\mu}}
@@ -663,7 +663,7 @@ Los parámetros característicos permiten definir propiedades importantes de las
 \paragraph{Characteristic parameters of Distributions}
 The characteristic parameter  allow us to define important properties of probability distributions. We will define only the two main distributions parameters:
 \begin{itemize}\index[eng]{Mean (Distributions)}
-	\item \textbf{Distribution mean or expected value} We get the expected value of a distribution integrating the product of the ramdom variable the distribution is defined on, by its probability density,   
+	\item \textbf{Distribution mean or expected value} We get the expected value of a distribution integrating the product of the random variable the distribution is defined on, by its probability density,   
 \end{itemize}
 \end{paracol}
 \begin{equation*}
@@ -957,9 +957,9 @@ The systematic accuracy uncertainty represents an uniform probability density di
 \paragraph{Statistical uncertainty}\index[eng]{Experimental measurements! Statistical Uncertainty}
 The second source of uncertainty arises from environmental factors that constantly change the conditions under which a measurement is taken. These factors render the measurement subject to random variations. While we could theoretically describe this variation using a probability distribution $f(x)$, in practice, the specific distribution is unknown. Consequently, we do not know its mean value $\mu$ or its variance $\sigma$.
 
-But, fortunately, the central limit theorem, that we described in section \ref{tlc}, supplies a method to estimate the statical uncertainty.
+But, fortunately, the central limit theorem, that we described in section \ref{tlc}, supplies a method to estimate the statistical uncertainty.
 
-Let's suppose we repeat the same experimental measurement $n$ times. For example, we have a bowl of water; we heat it and measure the water temperature when it begins to boil. We obtain a set $\{x_1,x_2,\cdots x_n\}$ of boiling water temperature measurements. Due to statistical uncertainty, it is likely that,  the values we obtain will differ from one to another but they will be close together\footnote{In fact, when we obtain data points that are significantly different from the rest, we often consider them to be influenced by some unknown error and will discard them. Such data are known as outlayers}.
+Let's suppose we repeat the same experimental measurement $n$ times. For example, we have a bowl of water; we heat it and measure the water temperature when it begins to boil. We obtain a set $\{x_1,x_2,\cdots x_n\}$ of boiling water temperature measurements. Due to statistical uncertainty, it is likely that,  the values we obtain will differ from one to another but they will be close together\footnote{In fact, when we obtain data points that are significantly different from the rest, we often consider them to be influenced by some unknown error and will discard them. Such data are known as outliers}.
 
 We know that this data should follow some probability distribution. We can estimate the expected value, $\mu$, by calculating the arithmetic mean of the collected data.
 \end{paracol}
@@ -1045,13 +1045,13 @@ Dicha función representa la probabilidad de obtener un resultado entre el lími
 
 Dado que la distribución normal no tiene primitiva, solo puede integrarse numéricamente. Por tanto, su inversa, solo puede obtenerse también numéricamente. 
 
-Hay varias posibilidades en Python para obtener tanto los valores de la distribución normal acumulada como los de su inversa. Todos ellos forman parte de módulos especializados en realizar cálculos estadísticos. En esta notas nos vamos a centrar en el uso del módulo Scipy y, en particular, su submódulo stats. Se trata de un módulo especializado en cálculo estadistico, que implementa un buen número de funciones de distribución. 
+Hay varias posibilidades en Python para obtener tanto los valores de la distribución normal acumulada como los de su inversa. Todos ellos forman parte de módulos especializados en realizar cálculos estadísticos. En esta notas nos vamos a centrar en el uso del módulo Scipy y, en particular, su submódulo stats. Se trata de un módulo especializado en cálculo estadístico, que implementa un buen número de funciones de distribución. 
 
 En nuestro caso particular, nos centraremos en la distribución normal. Podemos emplearla de muchas maneras, la más sencilla es importarla directamente desde su módulo, \mintinline{python}|from scipy.stats import norm|.
 
-\mintinline{python}|norm| suministra todas las funciones necesarias para trabajar con distribuciones normales. Por defecto, la distribución normal con la que trabaja es la estádar, es decir una distribucion de media $0$ y desviación estandar $1$. Si queremos cambiar los valores de media y desviaciación estándar, podemos hacerlo empleando los parámetros \mintinline{python}|loc| (media) y \mintinline{python}|scale| (desviación estándar). Entre las funciones sumnistradas, nos vamos a centrar de momento en las tres principales, 
+\mintinline{python}|norm| suministra todas las funciones necesarias para trabajar con distribuciones normales. Por defecto, la distribución normal con la que trabaja es la estándar, es decir una distribución de media $0$ y desviación estándar $1$. Si queremos cambiar los valores de media y desviación estándar, podemos hacerlo empleando los parámetros \mintinline{python}|loc| (media) y \mintinline{python}|scale| (desviación estándar). Entre las funciones suministradas, nos vamos a centrar de momento en las tres principales, 
 \begin{itemize}
-	\item \mintinline{python}|norm.pdf(x,loc=0,scale=1)|, suministra valores de la distribucion normal.
+	\item \mintinline{python}|norm.pdf(x,loc=0,scale=1)|, suministra valores de la distribución normal.
 	\item \mintinline{python}|norm.cdf(x,loc=0,scale=1)|, suministra valores de la distribución normal acumulada
 	\item \mintinline{python}|norm.ppf(p,loc=0,scale=1)|, $0\leq q \leq 1$, suministra la inversa de la distribución normal acumulada
 \end{itemize}
@@ -1129,7 +1129,7 @@ ppf m=10,std=5 [-inf 5.16289217 7.8463635 10. 12.1536365  14.83710783 inf]
 \end{minted}
 
 \begin{paracol}{2}
-Si analizamos el código del ejemplo, las líneas 18 y 22 nos dan los valores que toma la ditribución normal estándar y su integral (la distribución normal acumulada) en los puntos\\ $-5,-3.33,-1.66,0,1.66,3.33,5$.
+Si analizamos el código del ejemplo, las líneas 18 y 22 nos dan los valores que toma la distribución normal estándar y su integral (la distribución normal acumulada) en los puntos\\ $-5,-3.33,-1.66,0,1.66,3.33,5$.
 Para la distribución acumulada, podemos fijarnos en el valor correspondiente a $x=0$, el resultado obtenido es $0.5$. Efectivamente, si obtenemos un número aleatorio, empleando una distribución de probabilidad normal, $0.5$ ---un $50\%$--- es la probabilidad de obtener un número en el intervalo $(-\infty, 0]$.  
 
 La línea 26, nos calcula la inversa de la distribución normal acumulada. Es decir nosotros damos un valor para la probabilidad y la función nos devuelve el límite derecho del intervalo al que corresponde dicha probabilidad. Así por ejemplo, para el valor $p=0.5$ que corresponde a una probabilidad del $50\%$, la función \texttt{ppf} nos devuelve el valor $0$. Es decir, para una distribución normal, tenemos una probabilidad del $50\%$ de obtener aleatoriamente un valor en el intervalo $(-\infty, 0]$. La figura \ref{fig:invcum} muestra la función inversa de probabilidad acumulada y en particular el punto  correspondiente al valor 0.5.
@@ -1186,7 +1186,7 @@ In [4]: p = (1-0.90)/2
 
 In [5]: x = norm.ppf(p)
 
-In [6]: prin2t(x)
+In [6]: print(x)
 -1.6448536269514729
 \end{minted}
 \end{minipage}
@@ -1199,7 +1199,7 @@ Supongamos ahora que hemos realizado un conjunto de $n$ medidas de una determina
 \switchcolumn
 Thus the confidence interval corresponding to a $90\%$ probability for a normal distribution with mean cero and deviation standard one is $I_{90\%} =[-1.6449,\ 1.6449]$
 
-Suppose we have taken a set of $n$ measures of a physical magnitude, for instance temperature in ºC, and we calculate it mean value $\bar{x}_n=6.5$ ºC and standard deviation $s_{xn}=2$. If we can represent the result of the measure with an uncertainty corresponding to a $95\%$ confidence interval, we calculate the such confidence intervale using the inverse cumulated normal probability am after, we multiply the result for $s_{xn}$ to fit it to the normal distribution our data belong to,   
+Suppose we have taken a set of $n$ measures of a physical magnitude, for instance temperature in ºC, and we calculate it mean value $\bar{x}_n=6.5$ ºC and standard deviation $s_{xn}=2$. If we can represent the result of the measure with an uncertainty corresponding to a $95\%$ confidence interval, we calculate the such confidence interval using the inverse cumulated normal probability am after, we multiply the result for $s_{xn}$ to fit it to the normal distribution our data belong to,   
 \end{paracol}
 
 \begin{minted}{python}
@@ -1239,20 +1239,20 @@ Habitualmente, cuando el número de medidas que se han tomado para estimar el va
 
 \switchcolumn
 \paragraph{The Student's T distribution}\index[eng]{Student's T Distribution}
-Usually, when the number of measurements taken to estimate the value of $\bar{x}_n$ is small, we calculate the confidence intervals using the Studen's T distribution of $n-1$ degrees of freedom, where $n$ represent the number of measurements taken.  
+Usually, when the number of measurements taken to estimate the value of $\bar{x}_n$ is small, we calculate the confidence intervals using the Student's T distribution of $n-1$ degrees of freedom, where $n$ represent the number of measurements taken.  
 \end{paracol}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{tdestudent.eps}
-\bicaption{Comparación entre las distribuciones t de Student de 1, 5, 10, 20 y 30 grados de libertad y la distribución normal.}{Comparison among the Student's T dsitributions of 1, 2, 10, 20 and 30 degrees of fredom and the normal distribution}
+\bicaption{Comparación entre las distribuciones t de Student de 1, 5, 10, 20 y 30 grados de libertad y la distribución normal.}{Comparison among the Student's T distributions of 1, 2, 10, 20 and 30 degrees of freedom and the normal distribution}
 \label{fig:tdst}
 \end{figure}
 
 \begin{paracol}{2}
 Para un número pequeño de muestras, la distribución t de Student da una aproximación mejor que la distribución normal. Para un número de muestras grande, ambas distribuciones son prácticamente iguales.  La figura \ref{fig:tdst} muestra una comparación entre la distribución normal y la distribución t de Student, calculada para distintos grados de libertad. De la figura se puede concluir en primer lugar que la desviación estándar de la distribución t de Student es en todos los casos mayor que la de la distribución normal, con lo cual los intervalos de confianza para un valor dado de la probabilidad son siempre mayores. En segundo lugar se observa también que para 30 o más medidas --- $n\geqslant 30$ --- la diferencia entre las distribuciones t de Student y normal es prácticamente despreciable.
 
-El procedimiento de cálculo es el mismo que si empleamos la distribución normal, basta sustituir la inversa de la distribución normal acumulada por la inversa de la distribución t de Student acumulada. En Python, podemos importar la distribción t de Student de modo análogo a como hicimos para la distribución normal: \texttt{scipy.stats.t}. Por defecto obtendremos una distribución de media cero y varianza uno y podremos cambiar dichos parámetros empleando las variables \texttt{log} y \texttt{scale}. Disponemos de las mismas funciones \texttt{pdf, cdf, ppf, etc} que para la distribución normal. La única diferencia es que al llamar a estas funciones debemos indicar los grados de libertad de la distribución. \texttt{t.pdf(x,df)}.
+El procedimiento de cálculo es el mismo que si empleamos la distribución normal, basta sustituir la inversa de la distribución normal acumulada por la inversa de la distribución t de Student acumulada. En Python, podemos importar la distribución t de Student de modo análogo a como hicimos para la distribución normal: \texttt{scipy.stats.t}. Por defecto obtendremos una distribución de media cero y varianza uno y podremos cambiar dichos parámetros empleando las variables \texttt{log} y \texttt{scale}. Disponemos de las mismas funciones \texttt{pdf, cdf, ppf, etc} que para la distribución normal. La única diferencia es que al llamar a estas funciones debemos indicar los grados de libertad de la distribución. \texttt{t.pdf(x,df)}.
 
 Así, para el ejemplo anterior de las medidas de temperatura de media  $\bar{x}_n=6.5$ ºC y  desviación estándar $s_{xn}=2$  si suponemos que el número de medidas tomadas es $n=5$. El intervalo de confianza correspondiente a un $95\%$  lo calcularíamos mediante la inversa de la distribución de probabilidad t de Student de $n-1$ grados de libertad acumulada como,
 \switchcolumn
@@ -1264,7 +1264,7 @@ So, for the previous example of temperature measurements, with mean $\bar{x}_n=6
 \end{paracol}
 
 \begin{minted}{python}
-In [22]: from scipy.stats import t #importamos la distribucion T de Student//
+In [22]: from scipy.stats import t #importamos la distribución T de Student//
 #import the Student's T #distribution
 
 In [23]: P = (1-0.95)/2 #probalidad acumulada hasta el límite inferior del 
@@ -1320,7 +1320,7 @@ u_c(y) =\sqrt{s_c^2(y)},
 \begin{paracol}{2}
 donde  $s_c^2(y)$ se define como la  varianza \emph{combinada} de $y$, que se estima en primera aproximación a partir de la expansión en serie de Taylor\footnote{En primera aproximación empleamos un desarrollo de Taylor de primer orden. En realidad, lo adecuado o no de este método depende de las características de la función $f$. No discutiremos aquí este problema.} de la función $f$.	
 \switchcolumn
-where $s_c^2(y)$ is defined as the \emph{combined} variance of $y$, that can be estimated in a first approximation using the Taylor's expansion\footnote{In first approach we use the first-order Taylor's expansion. Actually, this method could be valid or not depending on the features of function $f$. We do not discusse thsi problem here.} of function $f$.    
+where $s_c^2(y)$ is defined as the \emph{combined} variance of $y$, that can be estimated in a first approximation using the Taylor's expansion\footnote{In first approach we use the first-order Taylor's expansion. Actually, this method could be valid or not depending on the features of function $f$. We do not discuss this problem here.} of function $f$.    
 \end{paracol}
 \begin{equation*}
 s_c^2(y) = \sum_{i=1}^n\left(\frac{\partial f}{\partial x_i}\right)^2 s^2(x_i) + 2\sum_{i=1}^{n-1}\sum_{i=1}^n \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} c_v(x_i,x_j)
@@ -1401,7 +1401,7 @@ Para aclarar los métodos descritos en los apartados anteriores, vamos obtener l
 To clarify the methods included in previous sections, we are going to obtain the uncertainty of the power dissipated in a resistance, following the equation described in the previous section. Table \ref{tabres} shows the data obtained after performing 20 experimental measurements of the Voltage and temperature of a resistance. 
 \end{paracol}
 \begin{table}[h]
-\bicaption{Mediciones de Temperatura y Voltaje, sobre una resistencia de prueba de 100 $\Omega$}{Temperature and Voltage Measurements on a 100 $\Omega$ test resistence  }
+\bicaption{Mediciones de Temperatura y Voltaje, sobre una resistencia de prueba de 100 $\Omega$}{Temperature and Voltage Measurements on a 100 $\Omega$ test resistance  }
 \label{tabres}
 \centering
 \begin{tabular}{cccc}
@@ -1566,7 +1566,7 @@ Out[34]: 802.1
 \end{center}
 
 \begin{paracol}{2}
-Una vez estimadas las medias, que emplearemos como valores de las medidas de la temperatura y el voltaje,  podemos ahora estimar la varianza o la desviación estándar de las medias haciendo uso de las función de Numpy \texttt{std()}, para la desviación estándar,  y de \texttt{var()}, para la varianza.  Además, debemos aplicar el teorema central del límite, dividiendo por el número de datos empleados. Un último detalle técnico es que debemos llamar a las funciones con el parámetro \mintinline{python}|var(ddof=1), std(ddof=1)|, para que en el cálculo de la varianza y de la desviación estandar se divida por el número de datos menos uno $(n-1)$, en lugar de entre $n$. (ver sección \ref{fdi}) , 
+Una vez estimadas las medias, que emplearemos como valores de las medidas de la temperatura y el voltaje,  podemos ahora estimar la varianza o la desviación estándar de las medias haciendo uso de las función de Numpy \texttt{std()}, para la desviación estándar,  y de \texttt{var()}, para la varianza.  Además, debemos aplicar el teorema central del límite, dividiendo por el número de datos empleados. Un último detalle técnico es que debemos llamar a las funciones con el parámetro \mintinline{python}|var(ddof=1), std(ddof=1)|, para que en el cálculo de la varianza y de la desviación estándar se divida por el número de datos menos uno $(n-1)$, en lugar de entre $n$. (ver sección \ref{fdi}) , 
 \switchcolumn
 Once mean values have been estimated, we will employ them as the values of the temperature and voltage measurements. We can now estimate the variance or the standard deviation of the mean values using the Numpy functions \texttt{std()} for the standard deviation and \texttt{var()} for the variance. Besides, we should apply the central limit theorem, dividing the result by the number of data used. A last technical detail is that we have to call the functions with the parameter \mintinline{python}|var(ddof=1), std(ddof=1)|, in order to have the calculations of the variance and the standard deviation divide by the number of data less one $(n-1)$ instead than by $n$. (see section \ref{fdii}),    
 \end{paracol}
@@ -1668,7 +1668,7 @@ u_c(P) = \sqrt{s_c^2(P)} =  1.0678\cdot 10^{-4} W
 \begin{paracol}{2}
 Con lo que finalmente expresaríamos la medida indirecta de la potencia consumida como, $P = 1.285 \pm 0.10678 $ mW. Si suponemos que la distribución de probabilidad asociada a la incertidumbre de la potencia es normal, la incertidumbre así expresada (mediante la desviación estándar) representaría un intervalo de confianza del $68.27\%$. 
 \switchcolumn
-And eventually we can represent the indirect measurement of the consumed power as, $P = 1.285 \pm 0.10678 $ mW. If we suppose that the probability distribution asociated to the power uncertainty is normal, the uncertainty so represented (using the standard deviation) represents a confidence intervar of $68.27\%$. $s_c^2(P)$ en W$^2$.
+And eventually we can represent the indirect measurement of the consumed power as, $P = 1.285 \pm 0.10678 $ mW. If we suppose that the probability distribution associated to the power uncertainty is normal, the uncertainty so represented (using the standard deviation) represents a confidence interval of $68.27\%$. $s_c^2(P)$ en W$^2$.
 \end{paracol}
 \begin{paracol}{2}
 \section{Una nota sobre Pandas.}
@@ -1872,9 +1872,9 @@ Line 32 in the code uses command \mintinline{python}|boxplot| to draw a box and 
 \end{figure}
 
 \begin{paracol}{2}
-La figura \ref{fig:datab} muestra el diagrama de bigotes obtenidos a partir del \emph{DataFrame} \mintinline{python}|gn_Mw_h|. Los datos aparecen distribuidos por la fuente de generación de energía, es decir, por las columnas del \emph{DataFrame}. Si nos fijamos en la primera entrada, \texttt{Eólica}, observamos que la caja del diagrama, para este tipo de energía va desde apróximadamente desde los 8000 hasta un poco más de 15000 Mw. La mediana, aparece representada como una línea horizontal en la mitad inferior de la caja, estaría alrededor de los 9000 Mw. El límite del bigote inferior estaría cerca de los 6000 Mw y wl límite del bigote superior cerca de 18000. En algunas columnas, como por ejemplo en la que representa la generación de electricidad mediante turbinas de ciclo combinado, se observan unos puntos negros más allá de límite de los bigotes. Representan datos atípicos, es decir, valores que no encajan con la distribución estadística del resto de los datos.
+La figura \ref{fig:datab} muestra el diagrama de bigotes obtenidos a partir del \emph{DataFrame} \mintinline{python}|gn_Mw_h|. Los datos aparecen distribuidos por la fuente de generación de energía, es decir, por las columnas del \emph{DataFrame}. Si nos fijamos en la primera entrada, \texttt{Eólica}, observamos que la caja del diagrama, para este tipo de energía va desde aproximadamente desde los 8000 hasta un poco más de 15000 Mw. La mediana, aparece representada como una línea horizontal en la mitad inferior de la caja, estaría alrededor de los 9000 Mw. El límite del bigote inferior estaría cerca de los 6000 Mw y wl límite del bigote superior cerca de 18000. En algunas columnas, como por ejemplo en la que representa la generación de electricidad mediante turbinas de ciclo combinado, se observan unos puntos negros más allá de límite de los bigotes. Representan datos atípicos, es decir, valores que no encajan con la distribución estadística del resto de los datos.
 \switchcolumn
-Figure \ref{fig:datab} shows a box and whisker plot drawn with the \emph{DataFrame} \mintinline{python}|gn_Mw_h|.  Data are distributed according to the generation source, that is, according to the \emph{DataFrame} columns. If we focus on the first entry, \texttt{Eólica}, We ca see that the box, for this type of energy cover approximately from 8000 to a bit more than 15000 Mw. The median is represented as a horizontal line in the lower middle of the box. It would be around 9000 Mw. The whisker lower limit would be close to 6000 Mw and the upper one near to 18000 . In some columns we can see some black dots beyond the whisker limits. See, for instance, the ciclo combinado turbines generation. These black dots represent outlayers. That is, data that do not fit with the statistical distribution of the remaining data.      
+Figure \ref{fig:datab} shows a box and whisker plot drawn with the \emph{DataFrame} \mintinline{python}|gn_Mw_h|.  Data are distributed according to the generation source, that is, according to the \emph{DataFrame} columns. If we focus on the first entry, \texttt{Eólica}, We ca see that the box, for this type of energy cover approximately from 8000 to a bit more than 15000 Mw. The median is represented as a horizontal line in the lower middle of the box. It would be around 9000 Mw. The whisker lower limit would be close to 6000 Mw and the upper one near to 18000 . In some columns we can see some black dots beyond the whisker limits. See, for instance, the ciclo combinado turbines generation. These black dots represent outliers. That is, data that do not fit with the statistical distribution of the remaining data.      
 \end{paracol}
 
 
