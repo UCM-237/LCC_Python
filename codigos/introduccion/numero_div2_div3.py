@@ -12,7 +12,7 @@ Script to create a function tha checks if a number is even
 def parthree(n):
     ''' 
     Esta función toma como entrada un número n y muestra un mensaje
-    indicando si el número es par si no comprueva si es divisible por 3
+    indicando si el número es par si no comprueba si es divisible por 3
     This function takes an integer number n as input and checks if the
     number is even. If not it checks if the number is divisble by 3
     '''
@@ -24,5 +24,5 @@ def parthree(n):
         print(str(n),'is a number divisible by three')
     else:
         print(str(n),' es un numero impar pero no divisible por tres')
-        print(str(n),'is an odd number but it not divisible by three')
+        print(str(n),'is an odd number but it is not divisible by three')
     return()        

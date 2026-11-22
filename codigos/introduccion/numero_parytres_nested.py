@@ -30,10 +30,10 @@ def parthreenested(n):
             print(str(n),'is an even number')
     elif n%3 == 0:
         print(str(n),' es un numero divisible entre 3')
-        print(str(n),'is an number divisible by 3')
+        print(str(n),'is a number divisible by 3')
     else:
-        print(str(n),' es un numero no es divisible entre 2 ni entre 3')
-        print(str(n),'is not divisible by 2 neither by 3 ')
+        print(str(n),' no es divisible entre 2 ni entre 3')
+        print(str(n),'is not divisible by 2 nor by 3')
             
     return()
 

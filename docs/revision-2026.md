@@ -54,6 +54,70 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
   metadatos y se han resuelto sin pérdida de contenido.
 - Imports que faltaban en tres notebooks; `rc.secant` → `rc.secante`.
 
+### Revisión a fondo por capítulos
+
+| Capítulo | Estado | Notas |
+|---|---|---|
+| 2. Introducción a Python (`introprog.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
+| Resto | Pendiente | Solo han pasado la revisión automática (sección anterior). |
+
+**Capítulo 2: qué se ha hecho**
+
+*Errores de contenido corregidos*
+- `h=(c1^2+c2^2)**(1/2)`: en Python `^` es XOR bit a bit, no la potencia.
+  No da error, da 2.6458 en lugar de 5 para catetos 3 y 4. En la fórmula
+  de la ecuación de segundo grado faltaba además el 4 (`b^2-a*c`).
+- `R=5*3-6/3+2**3+2-4` vale 19.0, no 17. `2+4/2` imprime `4.0`, no `4`.
+- `//` no redondea hacia cero, sino hacia −∞ (`-7//2` da `-4`).
+- Tabla de operadores relacionales: las descripciones inglesas de `>=` y `<=`
+  estaban intercambiadas.
+- **Ámbito de las variables (regla LEGB)**: el texto lo explicaba como si
+  dependiera de qué función *llama* a cuál ("el namespace de `soleq2`
+  encierra al de `print`"; global = "el módulo que ha llamado a la
+  función"). En Python el ámbito es léxico: depende de dónde está
+  *definida* la función. Reescrito con un ejemplo de función anidada.
+- `primos.py`: el contador del `while` se sobrescribía con el `for i in
+  primos`; `numpr(10)` devolvía 6 primos. Corregido, y la versión con el
+  fallo se usa ahora como ejercicio de depuración.
+- Conjuntos: no son inmutables (se les pueden añadir elementos); lo que
+  impide `C[1]=23` es que no son indexables.
+- `L.count()` no cuenta elementos de la lista, sino las apariciones de un
+  elemento. El modo `'w'` borra el contenido del fichero (no se decía).
+- Coherencia entre ejemplos: los valores de `L`, `D['día']`, la ecuación
+  resuelta en el ejemplo de `import`, el número buscado en
+  `listadelistas`, `c = -3,2` (creaba una tupla).
+- Números de línea citados que no correspondían con los scripts incluidos
+  (`eq_seg_grado.py`, `numero_parytres_nested.py`, `ejemplo_for.py`,
+  `primos.py`) y listados con la etiqueta de otro fichero.
+- Ejercicios con el código mal sangrado (no se podían copiar y ejecutar),
+  una referencia a una línea 12 inexistente y una sucesión de Fibonacci con
+  `F(2)=2`.
+- Los errores de ejecución (`AttributeError`) se presentaban como un tipo
+  de error de sintaxis.
+
+*Estilo*: unas 300 correcciones gramaticales y de estilo en ambas columnas
+(sobre todo falsos amigos y calcos en inglés: *eventually*, *assignation*,
+*true table*, *minor than*…).
+
+*Contenido nuevo (primeros pasos de la propuesta)*
+- Nota "¡Cuidado con el símbolo ^!" en la sección de operadores.
+- Sección nueva **"¿Es correcto mi programa?"** (tras Depuración):
+  estrategias de verificación (predecir, casos conocidos, propiedades,
+  casos límite), `assert`, y por qué comparar reales con `math.isclose` y
+  no con `==`, usando los propios ejemplos del capítulo.
+- Cuatro ejercicios nuevos: *depura este código* (primos), *primero las
+  comprobaciones* (potencia), *¿cuál es correcta?* (tres versiones de una
+  suma, una con un error de rango que solo cambia la cuarta cifra decimal)
+  y uno con un asistente de IA.
+
+*Pendiente en este capítulo*
+- Los ejercicios solo están en español.
+- Las capturas de Anaconda/Spyder son de versiones antiguas; conviene
+  rehacerlas, y valorar si Spyder sigue siendo el entorno principal.
+- La sección del depurador describe una versión de `eq_seg_grado.py`
+  distinta de la incluida (líneas 28, 35, 39); habría que rehacer la
+  captura o el texto.
+
 ---
 
 ## 2. Pendiente: necesita decisión o revisión humana
