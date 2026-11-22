@@ -39,13 +39,13 @@ Among the many ways you may follow to install Python and some of its development
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{anaconda.jpg}
-    \caption{Ventana de Anaconda Navigator. Se ha señalado en rojo el icono correspondiente a Spyder.}
+    \bicaption{Ventana de Anaconda-Navigator. Se ha señalado en rojo el icono correspondiente a Spyder.}{Anaconda-Navigator window. The Spyder icon is circled in red.}
     \label{fig:anaconda}
 \end{figure} 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{anaconda_2.jpg}
-    \caption{Ventana de Anaconda-Navigator, se ha señalado en rojo el botón Environments.}
+    \bicaption{Ventana de Anaconda-Navigator. Se ha señalado en rojo el botón \emph{Environments}.}{Anaconda-Navigator window. The \emph{Environments} button is framed in red.}
     \label{fig:anaconda2}
 \end{figure}
 
@@ -64,7 +64,7 @@ Among the many ways you may follow to install Python and some of its development
 
  En nuestro caso, vamos a emplear Spyder, que aparece entre las aplicaciones ya instaladas, y que aparece rodeada en la figura \ref{fig:anaconda} con un círculo rojo.
 
- Antes de entrar en la descripción de Spyder, vamos a emplear Anaconda navigator para instalar un plug-in, que nos permitirá manejar desde Spyder, otro de los entornos de programación de Python más empleados actualmente: \emph{Jupyter Notebook}. Jupyter Notebook es en realidad un IDE para programar en Python independiente de Spyder. Es muy útil porque permite combinar código en python con texto y gráficos. Más adelante explicaremos cómo instalarlo y usarlo.
+ Antes de entrar en la descripción de Spyder, vamos a emplear Anaconda navigator para instalar un plug-in, que nos permitirá manejar desde Spyder, otro de los entornos de programación de Python más empleados actualmente: \emph{Jupyter Notebook}. Jupyter Notebook es en realidad un IDE para programar en Python independiente de Spyder. Es muy útil porque permite combinar código en Python con texto y gráficos. A continuación explicamos cómo instalar el plug-in; más adelante veremos cómo usarlo.
 
  \paragraph{Instalación de Spyder-Notebook.} para instalar el plug-in de Spyder que permite manejar \emph{notebooks} de Jupyter, pulsamos en la ventana de Anaconda-Navigator el botón \emph{Environments} (enmarcado en rojo en la figura \ref{fig:anaconda2}). La ventana de Anaconda-Navigator nos muestra ahora los entornos de trabajo de Anaconda (figura \ref{fig:ntb1}). Por defecto, estaremos en el entorno base (root). Este será además el único entorno disponible si acabamos de hacer una instalación de Anaconda nueva en el ordenador. Si seleccionamos \emph{All} en el menú desplegable situado en la parte superior izquierda del panel de la derecha,  obtenemos una relación de todos los paquetes disponibles en anaconda. Aquellos que ya están instalados aparecen marcados a la izquierda con un cuadro verde, mientras que para aquellos disponibles pero no instalados el cuadro aparece en blanco.
 
@@ -84,7 +84,7 @@ Among the many ways you may follow to install Python and some of its development
 
  We are going to use Spyder, which has already been installed. In figure \ref{fig:anaconda}, the Spyder icon has been enclosed in a red circle.
 
- Before starting with a Spyder description, we will use Anaconda to install a plug-in, allowing us to use another of the most widely used Python IDEs: \emph{Jupyter Notebook}. Jupyter Notebook is an IDE for Python code development.  It is independent of Spyder. It is a handy tool because it allows us to combine Python code with graphics and text. We will describe Jupyter Notebook later on.
+ Before starting with a Spyder description, we will use Anaconda to install a plug-in, allowing us to use another of the most widely used Python IDEs: \emph{Jupyter Notebook}. Jupyter Notebook is an IDE for Python code development.  It is independent of Spyder. It is a handy tool because it allows us to combine Python code with graphics and text. Next, we explain how to install the plug-in; we will see how to use it later on.
  
  \paragraph{Spyder-notebook installation.} To install the plugin that allows using Jupyter Notebook from Spyder, we click on the \emph{Environments} icon (framed in red in figure \ref{fig:anaconda2}). Then, the Anaconda-Navigator window shows us Anaconda work environments (figure \ref{fig:ntb1}). If we have just installed Anaconda, the only environment already available should be the base (root) environment. We will focus on the right-side panel. The upper left corner has a drop-down menu; we select the option \emph{all}. Then, the panel shows us all the software packages available in the Anaconda default channel. Those packages installed in the computer are ticked with a green square label before the package name; packages available but not installed are ticked with a white square.
 
@@ -1797,14 +1797,14 @@ Obtenemos un error en que se nos dice que no podemos extraer elementos de una va
 
 \paragraph{Errores lógicos.}\index{Errores! lógicos} Este tercer tipo de errores es mucho más difícil de detectar. El código se ejecuta sin problemas, pero los resultados no son los esperados. Ante esta situación, no queda más remedio que ir revisando el código, paso a paso para detectar dónde está el error (en la sección \ref{sec:verif} veremos cómo detectar que existe). Normalmente, este proceso se lleva a cabo con la ayuda de programas específicos llamados depuradores.
 
-El editor de texto de Spyder nos permite ejecutar un programa paso a paso, ver los valores que van tomando las variables etc, mediante el depurador que lleva incorporado. Para ello, se definen en el editor de Spyder \emph{breakpoints}, esto es: líneas en las cuales Python detendrá la ejecución de un programa, entrará en modo de depuración y esperará instrucciones del usuario. La figura \ref{fig:depu1} muestra el código del ejemplo de la ecuación de segundo grado, en el que se ha definido un \texttt{breakpoint}, pulsando con el ratón sobre el espacio situado a continuación del número de la línea en que se desea  introducir el \emph{breakpoint}.  Spyder indica que el \emph{breakpoint} está activo dibujando un círculo rojo. Alternativamente, también es posible establecer o eliminar \emph{breakpoints} empleando el botón \emph{Set/Clear Breakpoint} de la pestaña \emph{Debug}, situada encima del editor de textos.
+El editor de texto de Spyder nos permite ejecutar un programa paso a paso, ver los valores que van tomando las variables etc, mediante el depurador que lleva incorporado. Para ello, se definen en el editor de Spyder \emph{breakpoints}, esto es: líneas en las cuales Python detendrá la ejecución de un programa, entrará en modo de depuración y esperará instrucciones del usuario. La figura \ref{fig:depu1} muestra una versión del ejemplo de la ecuación de segundo grado en la que hemos introducido a propósito un error. Está en el fichero \texttt{eq\_seg\_grado\_error.py}, junto a los demás códigos del capítulo, para que puedas repetir paso a paso lo que se describe aquí; las dos líneas de comentario añadidas (26 y 27) desplazan la numeración respecto al listado \texttt{eq\_seg\_grado.py}. En la figura se ha definido un \texttt{breakpoint}, pulsando con el ratón sobre el espacio situado a continuación del número de la línea en que se desea  introducir el \emph{breakpoint}.  Spyder indica que el \emph{breakpoint} está activo dibujando un círculo rojo. Alternativamente, también es posible establecer o eliminar \emph{breakpoints} empleando el botón \emph{Set/Clear Breakpoint} de la pestaña \emph{Debug}, situada encima del editor de textos.
 
 \switchcolumn
 We get an error message telling us that we cannot extract an element from an integer variable, as is the case of the variable \mintinline{python}{a=3}. The method \mintinline{python}{pop()} exists for lists, but not for integers.
 
 \paragraph{Logic errors.} Errors of this third kind are usu\-ally much more difficult to find than syntax or runtime errors. The code runs correctly, but we do not get the expected results. The only way to find the bug is to review the code line by line (in section \ref{sec:verif} we will see how to detect that there is one). Fortunately, there are specific programs that can carry out this debugging task. They are called, well, yes, debuggers.
 
-Thanks to its built-in debugger, the Spyder text editor allows us to run a program line by line, watching the values the variables are taking, etc. To use the debugger, we need to define in the Spyder editor \emph{breakpoints}, i.e., lines in which Python will stop the program, get into debugging mode, and wait for the user's instructions. Figure \ref{fig:depu1} shows the code of the quadratic equation example, in which we have defined a \emph{breakpoint} by clicking on the space after the number of the line at which we want to define a \emph{breakpoint}. Spyder marks the active \emph{breakpoint}, drawing a bold red circle in the space after the line number. It is also possible to set or remove \emph{breakpoints}, using the \emph{Set/Clear Breakpoint} button located in the tab \emph{Debug} on top of the text editor.
+Thanks to its built-in debugger, the Spyder text editor allows us to run a program line by line, watching the values the variables are taking, etc. To use the debugger, we need to define in the Spyder editor \emph{breakpoints}, i.e., lines in which Python will stop the program, get into debugging mode, and wait for the user's instructions. Figure \ref{fig:depu1} shows a version of the quadratic equation example into which we have deliberately introduced a bug. It is in the file \texttt{eq\_seg\_grado\_error.py}, together with the rest of the chapter code, so that you can repeat step by step what is described here; the two comment lines we added (26 and 27) shift the line numbers with respect to the listing \texttt{eq\_seg\_grado.py}. In the figure, we have defined a \emph{breakpoint} by clicking on the space after the number of the line at which we want to define a \emph{breakpoint}. Spyder marks the active \emph{breakpoint}, drawing a bold red circle in the space after the line number. It is also possible to set or remove \emph{breakpoints}, using the \emph{Set/Clear Breakpoint} button located in the tab \emph{Debug} on top of the text editor.
 \end{paracol}
 
 \begin{figure}
@@ -1822,8 +1822,8 @@ Suppose after activating the \emph{breakpoint}, we start the debugging mode by p
 \end{paracol}
 \begin{minted}{python}
 IPdb [1]: !continue
-> c:\users\abierto\documents\borrar\eq_seg_grado.py(35)<module>()
-     33 #here, we add a 'how to use' example that's not part of the function
+> c:\...\eq_seg_grado_error.py(35)<module>()
+     33 #here we add a 'how to use' example that's not part of the function
      34 
 2--> 35 solplus, solminus = soleq2(2, 3, 1)
      36 
@@ -1835,17 +1835,17 @@ IPdb [2]:
 \begin{figure}
 \centering
 \includegraphics[width=14cm]{depu2.png}
-\bicaption{Parada de programa en un breakpoint y herramientas de depuración}{program stop on a breakpoint and debugging tools}
+\bicaption{Parada de programa en un breakpoint y herramientas de depuración}{Program stop on a breakpoint and debugging tools}
 \label{fig:depu2}
 \end{figure}
 
 \begin{paracol}{2}
-A partir de aquí Spyder pone a nuestra disposición las herramientas de depuración, la figura \ref{fig:depu2} muestra la línea en que se ha parado la ejecución del programa, (señalada con una flecha verde), y algunas de estas herramientas. Se trata del mismo módulo de ejemplos anteriores, en el que hemos introducido un pequeño error en la línea $28$.  Básicamente, Spyder nos da la posibilidad de ejecutar el código línea a línea, de entrar e ir línea a línea en las funciones que llama nuestro programa, o de continuar la ejecución hasta el final del programa o hasta el siguiente \emph{breakpoint}.
+A partir de aquí Spyder pone a nuestra disposición las herramientas de depuración, la figura \ref{fig:depu2} muestra la línea en que se ha parado la ejecución del programa, (señalada con una flecha verde), y algunas de estas herramientas. Sabemos que el programa tiene un error porque la comprobación de las líneas $39$ y $40$ (consola de la figura \ref{fig:depu1}) da $0.222$ para la raíz positiva, cuando debería dar $0$; la raíz negativa, en cambio, es correcta. El depurador nos ayudará a localizarlo.  Básicamente, Spyder nos da la posibilidad de ejecutar el código línea a línea, de entrar e ir línea a línea en las funciones que llama nuestro programa, o de continuar la ejecución hasta el final del programa o hasta el siguiente \emph{breakpoint}.
 
 Si pulsamos el botón ``ejecutar línea actual'' Spyder ejecutará la línea de programa señalada con la flecha verde y se parará en la línea siguiente. En cada paso, podemos ver el valor que toman las variables, pidiendo su valor directamente en el terminal de Ipython. En el ejemplo de la figura, el breakpoint está situado en la línea $35$ que corresponde a la llamada a la función \mintinline{python}{soleq2}. Si volvemos a pulsar el ``ejecutar la línea actual'', el depurador ejecutará la función y saltará directamente a la línea $39$. Si queremos que recorra paso a paso el código correspondiente a la función, empleamos el botón ``entrar en la función de la línea actual''. El uso del resto de las opciones del depurador es bastante evidente (ver figura \ref{fig:depu2}). Si entramos en la función, ejecutamos su código línea a línea y vamos comprobando el resultado que deberían dar, comprobaremos que la línea $28$ no da un resultado correcto y estaremos en condiciones de repasar su código y descubrir el error. ¿Cuál es?
 
 \switchcolumn
-Now, we can access Spyder debugger's tools. Figure \ref{fig:depu2} shows the line where the program execution has been stopped (marked with a green arrow) and some of these tools. It is the same module used in previous examples, but we have added a small error in line $28$ this time. Spyder allows us to run the program line by line, step into the functions our program calls and run them line by line, or continue the program execution till the next breakpoint or to the program end. 
+Now, we can access Spyder debugger's tools. Figure \ref{fig:depu2} shows the line where the program execution has been stopped (marked with a green arrow) and some of these tools. We know the program has a bug because the check in lines $39$ and $40$ (console in figure \ref{fig:depu1}) gives $0.222$ for the positive root, when it should give $0$; the negative root, on the other hand, is correct. The debugger will help us locate the bug. Spyder allows us to run the program line by line, step into the functions our program calls and run them line by line, or continue the program execution till the next breakpoint or to the program end. 
 
 If we select the button ``Run the current line,'' the program will execute the code line marked with the green arrow and stop in the following line. In each step, we can check the values the variables so far defined take by asking for them at the Ipython terminal. In the example shown in the figure, the breakpoint is located in line $35$, where the program calls the \mintinline{python}{soleq2} function. If we push the button ``Run the current line'' again, the debugger will execute the function and jump to line $39$. If we want to run the function \mintinline{python}{soleq2} line by line, then we may push the button ``Get into the function of the current line''. The performance of the remaining debugger tools is easy to understand, looking at figure \ref{fig:depu2}. If we step into the function \mintinline{python}{soleq2} and execute its code line by line, checking their results, we will realise that there is a bug in line $28$ because the result cast by this line is wrong. So we would be ready to review its code and discover the error. Can you find it?
 \end{paracol}
@@ -2871,8 +2871,9 @@ print(mi_robot)
 \newpage
 
 \section{Ejercicios}
+\sectionmark{Ejercicios \textreferencemark\ Exercises}
 \begin{enumerate}
-\item Tipos de variables en Python; matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{consola IPython} e interpreta los resultados que obtienes. En los casos en que Python devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunas operaciones se apoyan en los resultados de operaciones anteriores.
+\item Tipos de variables en Python; listas como matrices y vectores. Escribe, por orden, las siguientes expresiones en la \emph{consola IPython} e interpreta los resultados que obtienes. En los casos en que Python devuelva un mensaje de error, trata de averiguar la razón. \textbf{Nota:} Es importante hacerlos por orden ya que algunas operaciones se apoyan en los resultados de operaciones anteriores.
 
 \begin{multicols}{2}
 \begin{enumerate}
@@ -2991,7 +2992,7 @@ x = [A[0]*B[0],A[1]*B[1]]
 y = [A[0]+B[0],A[1]+B[1]]
 \end{minted}
 Guarda el fichero con el nombre \emph{primero.py}. Emplea el comando \mintinline{python}{%reset} en el terminal de IPython para borrar cualquier variable anterior. Ejecuta el fichero y comprueba que existen las variables \mintinline{python}{A, B, x ,y}.\\
-Vuelve ejecutar el comando \mintinline{python}{%reset}. Emplea el comando \mintinline{python}{import primero}. ¿Se han creado las variables? ¿Qué ha pasado ahora?\\
+Vuelve a ejecutar el comando \mintinline{python}{%reset}. Emplea el comando \mintinline{python}{import primero}. ¿Se han creado las variables? ¿Qué ha pasado ahora?\\
 Vuelve a borrar las variables del namespace de Python e importa de nuevo tu programa con \mintinline{python}{import primero as kiki}. ¿Dónde están ahora las variables \mintinline{python}{A, B, x ,y}?\\
 Crea una variable \mintinline{python}{x = 'nueva'}  Comprueba que las variables \mintinline{python}{x} y \mintinline{python}{kiki.x}
 son distintas.\\
@@ -3072,7 +3073,7 @@ for i in range(n):
         else:
             x[i].append(0)
 \end{minted}
-Introduce un punto de ruptura (\emph{breakpoint}) en el código, por ejemplo en la línea 7. Ejecuta paso a paso el programa para ver cómo va generando el resultado.
+Introduce un punto de parada (\emph{breakpoint}) en el código, por ejemplo en la línea 7. Ejecuta paso a paso el programa para ver cómo va generando el resultado.
 
 \item Crea un script con el siguiente código,
 \begin{minted}[
@@ -3215,3 +3216,352 @@ def suma3():
 
 \item \textbf{Con un asistente de IA.} Si tienes acceso a un asistente de inteligencia artificial, pídele una función que calcule los $n$ primeros números primos. Antes de leer el código que te proponga, escribe tres comprobaciones con \mintinline{python}{assert}. ¿Las supera? Lee después el código: ¿entiendes todas las líneas? ¿Usa alguna instrucción que no hayamos visto? Explica con tus palabras cómo funciona y compáralo con el algoritmo de la figura \ref{fig:primos}.
 \end{enumerate}
+
+\newpage
+\section{Exercises}
+\sectionmark{Ejercicios \textreferencemark\ Exercises}
+\selectlanguage{english}
+\begin{enumerate}
+\item Python variable types; lists as matrices and vectors. Type the following expressions, in order, in the \emph{IPython console} and interpret the results you get. When Python returns an error message, try to find out why. \textbf{Note:} It is important to follow the order, because some operations rely on the results of previous ones.
+
+\begin{multicols}{2}
+\begin{enumerate}
+\renewcommand{\labelenumii}{\arabic{enumii}}
+\texttt{
+\item a=[[1,2,3],[4,5,6]]
+\item a=[1,2,3],4,5]
+\item a=[[1 2 3] 1 2 3]
+\item a=[[1,2,3],[5,6,8],[3,2,6]]
+\item b=[1,2,3]
+\item c=[a b]
+\item c=[a,b]
+\item d=[b,a]
+\item[*] function type()
+\item type(a)
+\item type(a[0])
+\item type(a[0][1])
+\item a[2][2] = 'b'
+\item type(a[2][2])
+\item[*] changing copied lists 
+\item c[1] = 'watch out'
+\item print('c=',c)
+\item print('a=',a)
+\item print('b=',b)
+\item print('d=',d)
+\item f = b
+\item f[1] = 'b changes too'
+\item print('f=',f)
+\item print('b=',b)
+\item b[2] = 'f changes too'
+\item print('f=',f)
+\item print('b=',b)
+\item b = [1,2,3]
+\item g = b.copy()
+\item print('f=',f)
+\item print('b=',b)
+\item print('g=',g)
+\item g[1] = 'b and f do not change'
+\item print('f=',f)
+\item print('b=',b)
+\item print('g=',g)
+\item b[2] = 'neither do g and f'
+\item print('f=',f)
+\item print('b=',b)
+\item print('g=',g)
+\item e = a.copy()
+\item a[2][2] = 'e changes too'
+\item print('c=',c)
+\item print('a=',a)
+\item print('b=',b)
+\item print('d=',d)
+\item print('e=',e)
+\item e[2][2]= 'and vice versa'
+\item print('c=',c)
+\item print('a=',a)
+\item print('b=',b)
+\item print('d=',d)
+\item print('e=',e)
+\item \%who
+\item \%whos
+\item del(d)
+\item \%reset
+\item[*] Operators
+\item a = -6
+\item b = 5
+\item c = 3.5
+\item e = 0.9
+\item a*e
+\item g=a*e
+\item g=e*a
+\item a*b
+\item r=a-b
+\item f=(a+b)*c
+\item f= a+b*c
+\item p=a**2
+\item r=a**2-a*a
+\item[*] Chaining operations
+\item w=a*b**-1
+\item w=a/b
+\item w=a//b
+\item w=a*b**-1-a/b
+\item w=a**-1*b
+\item w=(a*b)**-1
+\item w=a**-1*b-1/a*b
+\item w=a**-1*b-a
+\item[*] Relational and logical
+\item y0 = p<2
+\item y1 = p<=2
+\item y2 = p>2
+\item y3 = p>=2
+\item y4 = p==2
+\item y5 = p!=36
+\item r1 = a<5 and b==5
+\item r2 = a<b or b>=5
+\item r3 = a<b or b>5
+\item r4 = (a<b or b>=5) and not(a<b and b>=5)
+}
+\end{enumerate}
+\end{multicols}
+\item Use the IPython \emph{command line} to obtain the result of the following expressions:
+\begin{align*}
+\frac{5+3x^2}{6y}\\
+\frac{1+4\sqrt{2x}}{6}y \\
+\frac{-x+\sqrt{x^2-4xy}}{2x}
+\end{align*}
+
+Use any values you like for $x$ and $y$.
+
+\item Open a new file in the Spyder text editor.
+Write the following lines:\\
+\begin{minted}{python}
+A = [35,23]
+B = [12,-12.34]
+x = [A[0]*B[0],A[1]*B[1]]
+y = [A[0]+B[0],A[1]+B[1]]
+\end{minted}
+Save the file as \emph{primero.py}. Use the command \mintinline{python}{%reset} in the IPython console to delete any previous variable. Run the file and check that the variables \mintinline{python}{A, B, x ,y} exist.\\
+Run the command \mintinline{python}{%reset} again. Now use the command \mintinline{python}{import primero}. Have the variables been created? What has happened this time?\\
+Delete the variables from the Python namespace again and import your program once more with \mintinline{python}{import primero as kiki}. Where are the variables \mintinline{python}{A, B, x ,y} now?\\
+Create a variable \mintinline{python}{x = 'new'}. Check that the variables \mintinline{python}{x} and \mintinline{python}{kiki.x}
+are different.\\
+Import the variable \mintinline{python}{x} directly from the module \mintinline{python}{primero} using the expression:\\ \mintinline{python}{from primero import x}.\\ What is the value of x now?
+
+\item Create the following function in the IPython console; you may give it any name you like:
+\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]{python}
+def mifun(A):
+    E = A[0] + A[1]**2
+    D = A[0] - A[1]**-1
+    return(E,D)
+\end{minted}
+
+Create suitable variables and call the function you have created, saving the result in a single variable \mintinline{python}{resultado}.\\
+Run the following lines and try to explain what they do:\\
+\begin{minted}{python}
+uno = 2
+dos = 4
+resultado = mifun([uno,dos])
+print(resultado)
+me, da = mifun(resultado)
+la,risa = mifun(mifun([uno,dos]))
+print(me,da,la,risa)
+\end{minted}
+
+\item Write the following code in a file. Run it and analyse the results:
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	%bgcolor=LightGray,
+	fontsize=\footnotesize,
+	linenos
+	]{python}
+from random import random
+dato = random()
+if dato == 0.5:
+    dato = 0
+elif dato < 0.5:
+    dato = -dato*10
+else:
+    dato = dato*10
+print(dato)
+\end{minted}
+
+Modify the program:
+\begin{enumerate}
+\item so that it shows the results of the calculations on the screen;
+\item so that it creates a variable (other than 'dato') whose value is $-1$ if 'dato' is less than or equal to $0.3$, $-0.5$ if 'dato' is greater than $0.3$ and less than $0.5$, $0$ if 'dato' is greater than or equal to $0.5$ and less than or equal to $0.7$, and $1$ otherwise;
+\item turn the \emph{script} into a function that takes 'dato' as its input variable and returns the value of the new variable, according to the condition that holds. (Of course, the line \verb|dato=random()| must be removed or commented out.)
+\end{enumerate}
+
+\item Create a Python script with the following code and try to guess what it does before running it. Use Spyder's \emph{help}, or type \mintinline{python}{abs?} in the console, to find out what the function \verb|abs| does.
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	%bgcolor=LightGray,
+	fontsize=\footnotesize,
+	linenos
+	]{python}
+n = 5
+x = []
+for i in range(n):
+    x.append([])
+    for j in range(n):
+        if i == j:
+            x[i].append(1)
+        elif abs(i-j) == 1:
+            x[i].append(-1)
+        else:
+            x[i].append(0)
+\end{minted}
+Set a \emph{breakpoint} in the code, for instance on line 7. Run the program step by step to see how it builds the result.
+
+\item Create a script with the following code:
+\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+%bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]{python}
+n = 5
+x = []
+i = 0
+while i<n:
+    j=0
+    x.append([])
+    while j<n:
+        if i==j:
+            x[i].append(1)
+        elif abs(i-j)==1:
+            x[i].append(-1)
+        else:
+            x[i].append(0)
+        j = j + 1
+    i = i+1
+\end{minted}
+
+Repeat the analysis of the previous program.
+
+\item Modify the previous \emph{script} so that it reads as follows:
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	%bgcolor=LightGray,
+	fontsize=\footnotesize,
+	linenos
+	]{python}
+n = 5
+x = []
+i = 0
+while 1:
+    j=0
+    x.append([])
+    while 1:
+        if i==j:
+            x[i].append(1)
+        elif abs(i-j)==1:
+            x[i].append(-1)
+        else:
+            x[i].append(0)
+        j = j + 1
+        if j==n:
+            break
+    i = i+1
+    if i==n:
+        break
+\end{minted}
+Repeat the analysis of the previous program. What happens if we comment out the line(s) containing the \verb|break| statement?
+Turn the previous \emph{scripts} into functions that take the size of the list to be generated as their input variable and return the list created.
+
+\item Write ---using loops and without the ( ** ) operator--- a function \verb|potencia| that takes as input arguments a real number $x\in \mathbb{R}$ and an integer $n \in \mathbb{Z}$, and returns the $n$-th power of $x$ ($x^n$). The second input argument may be optional. If it is omitted, take $n=2$ (returning the square of $x$).
+
+\item Write a function that computes the sum of the reciprocals of the odd natural numbers less than 1000. Use loops for the calculation.
+\begin{equation*}
+S_{odd} = \sum_{n=1}^{500}\frac{1}{2n-1} =\frac{1}{1}+\frac{1}{3}+\frac{1}{5}+\cdots+\frac{1}{999}
+\end{equation*}
+Modify your program so that it takes a number $m\in\mathbb{N}$ as input and computes the sum of the reciprocals of the odd numbers less than or equal to $m$.
+
+\item The Fibonacci numbers, $F(n)$, form a sequence of natural numbers. The first two values are $F(1)=1$ and $F(2)=1$. Each of the remaining terms is the sum of the two previous ones: $F(n) = F(n-1) + F(n-2)$.
+Write a script that generates the first $m$ Fibonacci numbers and stores them in a list \verb|F|. Use a \verb|while| loop.\label{fibonacci-eng}
+
+\item Write a function that takes a list as input and returns another list of the same length with the elements in reverse order.
+
+Could you do it in a single line of code? Hint: use a \emph{list comprehension}.
+
+\item Modify the program of exercise \ref{fibonacci-eng} so that it saves the list of Fibonacci numbers in a text file.
+\begin{itemize}
+    \item Now modify it so that it saves them in a \emph{CSV} file.
+\end{itemize}
+
+\item \textbf{Debug this code.} The following function is meant to return a list with the first $n$ prime numbers (\emph{primos} in Spanish). It runs without any error message.
+\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]{python}
+def numpr(n):
+    primos = [2]
+    i = 0
+    impar = 3
+    while i < n:
+        es_primo = True
+        for i in primos:
+            if impar % i == 0:
+                es_primo = False
+                break
+        if es_primo:
+            primos.append(impar)
+        impar = impar + 2
+    return primos
+\end{minted}
+\begin{enumerate}
+\item Before running it, write down what \mintinline{python}{numpr(10)} should return.
+\item Run it. How many primes does it return for $n=5$, $n=10$ and $n=20$?
+\item Find the bug and fix it. Hint: look at the variable \mintinline{python}{i}.
+\item Write an \mintinline{python}{assert} check that would have caught the bug.
+\end{enumerate}
+
+\item \textbf{Checks first.} Before writing the function \verb|potencia| of a previous exercise, write at least five \mintinline{python}{assert} statements it should satisfy. Think of simple cases, but also of limit cases: $n=0$, negative $n$, $x=0$, negative $x$\ldots. Then write the function and check that it passes all your checks. Did you find any case you had not foreseen?
+
+\item \textbf{Which one is right?} The following three functions are meant to compute the sum $S_{odd}$ of the reciprocals of the odd numbers less than $1000$, from a previous exercise. Only one of them is correct. Without running them, decide which one it is and explain what is wrong with the other two. Then check your answer by running them. Would you have spotted the bug in the second one just by looking at its result?
+\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]{python}
+def suma1():
+    s = 0
+    for n in range(1, 1000, 2):
+        s = s + 1/n
+    return s
+
+def suma2():
+    s = 0
+    for n in range(1, 999, 2):
+        s = s + 1/n
+    return s
+
+def suma3():
+    s = 0
+    for n in range(1, 501):
+        s = s + 1/2*n - 1
+    return s
+\end{minted}
+
+\item \textbf{With an AI assistant.} If you have access to an artificial intelligence assistant, ask it for a function that computes the first $n$ prime numbers. Before reading the code it proposes, write three \mintinline{python}{assert} checks. Does the code pass them? Then read the code: do you understand every line? Does it use any instruction we have not seen yet? Explain in your own words how it works and compare it with the algorithm in figure \ref{fig:primos}.
+\end{enumerate}
+\selectlanguage{spanish}

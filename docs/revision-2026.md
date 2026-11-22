@@ -110,13 +110,22 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
   suma, una con un error de rango que solo cambia la cuarta cifra decimal)
   y uno con un asistente de IA.
 
-*Pendiente en este capítulo*
-- Los ejercicios solo están en español.
-- Las capturas de Anaconda/Spyder son de versiones antiguas; conviene
-  rehacerlas, y valorar si Spyder sigue siendo el entorno principal.
-- La sección del depurador describe una versión de `eq_seg_grado.py`
-  distinta de la incluida (líneas 28, 35, 39); habría que rehacer la
-  captura o el texto.
+*Completado después (nov 2026)*
+- Ejercicios traducidos: sección *Exercises* tras la española (mismo
+  formato que `integracion.tex`), con los mismos bloques de código.
+- Depurador: las capturas muestran una copia de `eq_seg_grado.py` con un
+  error intencionado (`/2/b` en la línea 28) y dos líneas de comentario más.
+  Esa copia está ahora en `codigos/introduccion/eq_seg_grado_error.py`
+  (reproduce exactamente la consola de la figura: 0.222 y 0.0), y el texto
+  lo explica. Ya no desvela la línea del error: parte de que la comprobación
+  falla y deja que el depurador lo localice.
+- Pies de figura de Anaconda bilingües.
+
+*Decisión*: **se mantiene Spyder** como entorno principal (IDE sencillo al
+empezar; con el plug-in `spyder-notebook` también se trabaja con
+notebooks). Las capturas son de Spyder 5.4 / Python 3.11 y siguen siendo
+válidas. Cuando se rehagan con Spyder 6, aprovechar para corregir
+"Get into de function" en `depu2.png`.
 
 ---
 
@@ -142,8 +151,10 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
    construcciones calcadas del español que conviene revisar capítulo a
    capítulo.
 7. Anaconda: sus condiciones de uso para organizaciones cambiaron en 2024.
-   Conviene comprobar si el uso en la UCM está cubierto, o pasar a
-   Miniforge (conda-forge) o a `pip`/`uv`, que no tienen esa restricción.
+   Conviene comprobar si el uso en la UCM está cubierto. Si no, se puede
+   seguir con Spyder sin Anaconda: Miniforge (conda-forge) con
+   `conda install spyder spyder-notebook`, o los instaladores autónomos de
+   Spyder. Afectaría a la sección 1 del capítulo 2 y a sus capturas.
 
 ---
 
@@ -255,8 +266,9 @@ detectado los ~20 ejemplos rotos. Opciones, de menor a mayor cambio:
    que cada ejemplo se ejecuta al generar el documento y los alumnos pueden
    abrir cada capítulo como notebook.
 
-**H. Actualizaciones menores de contenido.** Dar más peso a Jupyter frente a
-Spyder (55 menciones frente a 14), añadir `scipy.integrate.solve_ivp` al
+**H. Actualizaciones menores de contenido.** Spyder se mantiene como
+entorno principal (decisión de nov 2026); los notebooks se usan desde
+Spyder con `spyder-notebook`. Añadir `scipy.integrate.solve_ivp` al
 capítulo de EDOs, sustituir `interp1d` (marcada como *legacy* en SciPy) y
 añadir una sección de vectorización y rendimiento.
 
