@@ -27,3 +27,6 @@ __pycache__/
 *~
 .DS_Store
 Thumbs.db
+
+# diccionarios del corrector (descargados)
+tools/dict/
