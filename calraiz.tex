@@ -1454,10 +1454,10 @@ The roots are:	 [0.33333333 0.5        1.        ]
 \end{minted}
 
 \begin{paracol}{2}
-El método \texttt{roots} devuelve las raices del polinomio en un único vector. Si el polinomio tiene raices complejas devuelve su parte real como en el caso del polinomio  $y(x)=x^2+2x+1$
+El método \texttt{roots} devuelve las raíces del polinomio en un único vector. Si el polinomio tiene raíces complejas, el vector devuelto es de números complejos (por ejemplo, para $y(x)=x^2+1$ obtenemos \texttt{[0.-1.j 0.+1.j]}). Las raíces múltiples son especialmente sensibles a los errores de redondeo: el polinomio $y(x)=x^2+2x+1=(x+1)^2$ tiene una raíz doble en $x=-1$, pero \texttt{roots} la devuelve como dos valores ligeramente distintos,
 
 \switchcolumn
-The method \texttt{roots} returns the polynomial roots in a single vector. If the polynomial has complex roots it returns its real part as in the case of the polynomial $y(x)=x^2+2x+1$
+The method \texttt{roots} returns the polynomial roots in a single vector. If the polynomial has complex roots, the returned vector contains complex numbers (for instance, for $y(x)=x^2+1$ we get \texttt{[0.-1.j 0.+1.j]}). Multiple roots are especially sensitive to rounding errors: the polynomial $y(x)=x^2+2x+1=(x+1)^2$ has a double root at $x=-1$, but \texttt{roots} returns it as two slightly different values,
 \end{paracol}
 
 \begin{minted}{python}

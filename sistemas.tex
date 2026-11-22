@@ -654,7 +654,7 @@ def progressive(A,b):
         return
     # To build the solution vector x
     x=np.zeros(f)
-    x=b.copy()
+    x=b.astype(float)
     for i in range(f):
         '''The inner block subtracts to the independent term the previous solution
          multiplied by the correspondent coefficient'''
@@ -664,6 +664,12 @@ def progressive(A,b):
         x[i]=(x[i])/A[i,i]
     return x
 \end{minted}
+
+\begin{paracol}{2}
+\textbf{¡Cuidado con los tipos!} Fíjate en que la copia de \texttt{b} se hace con \mintinline{python}{b.astype(float)} y no con \mintinline{python}{b.copy()}. Si \texttt{b} se hubiera creado solo con números enteros, por ejemplo \mintinline{python}{np.array([1,1])}, una copia normal sería también un array de enteros, y al asignar en él el resultado de una división, Numpy truncaría el valor \emph{sin dar ningún aviso}. Con \mintinline{python}{astype(float)} obtenemos una copia de tipo real y el problema desaparece. Usaremos el mismo recurso en el resto de funciones de este capítulo.
+\switchcolumn
+\textbf{Watch out for types!} Notice that \texttt{b} is copied using \mintinline{python}{b.astype(float)} instead of \mintinline{python}{b.copy()}. If \texttt{b} had been created using only integers, e.g. \mintinline{python}{np.array([1,1])}, a plain copy would also be an integer array, and when the result of a division is assigned to it, Numpy would truncate the value \emph{without any warning}. Using \mintinline{python}{astype(float)} we get a floating point copy and the problem disappears. We will use the same trick in the remaining functions of this chapter.
+\end{paracol}
 
 \begin{paracol}{2}
 
@@ -1616,7 +1622,7 @@ def eligauss(A):
     
     #Matrix shape
     [f,c]=np.shape(A)
-    U=A.copy()
+    U=A.astype(float)
     #For all the columns in A (except the last one)
     for i in range(c-1):
         # For all the rows below the diagonal
@@ -1852,7 +1858,7 @@ def eligaussp(A):
    
     #Matrix shape
     [f,c]=np.shape(A)
-    U=A.copy()
+    U=A.astype(float)
     #For all the columns in A (except the last one)
     for i in range(c-1):
         #Row pivoting
@@ -2059,7 +2065,7 @@ def gaussjordan(A):
     
     #Matrix shape
     [f,c]=np.shape(A)
-    U=A.copy()
+    U=A.astype(float)
     # Step 1: reduce matrix A to a triangular matrix
     #For all the columns in A (except the last one)
     for i in range(c-1):
@@ -2342,7 +2348,7 @@ Below, we include the code corresponding to the calculation of one iteration of 
 \end{paracol}
 \begin{minted}{python}
         # For all the equations
-        xs1=b.copy()
+        xs1=b.astype(float)
         for i in range(nf):
             for j in range(i):
                 xs1[i]-=A[i,j]*xs[j]
@@ -2709,8 +2715,8 @@ The following code fragment brings together all the operations described,
 \begin{minted}{python}
 def jacobi(A,b,x0,tol,itmax):
     [nf,nc]=np.shape(A)
-    xs=x0.copy()
-    xs1=b.copy()
+    xs=x0.astype(float)
+    xs1=b.astype(float)
     it=0
     # Build the matrices D,U,f,H
     D=np.diag(np.diag(A))
@@ -2805,7 +2811,7 @@ Interestingly, the only change in the entire code from Jacobi's method is the re
 \end{paracol}
 \begin{minted}{python}
         # For all the equations
-        xs1=b.copy()
+        xs1=b.astype(float)
         for i in range(nf):
             # For all the terms above x[i]
             for j in range(i):
@@ -2873,8 +2879,8 @@ The following code fragment shows the construction of the matrices needed to imp
 
 \begin{minted}{python}
     [nf,nc]=np.shape(A)
-    xs=x0.copy()
-    xs1=b.copy()
+    xs=x0.astype(float)
+    xs1=b.astype(float)
     error= np.linalg.norm(xs1-xs)
     it=0
     D=np.diag(np.diag(A))
@@ -2972,7 +2978,7 @@ To implement it, it would be sufficient to add to the code of Jacobi's method a 
     it=0
     while (error>tol)&(it<=itmax):
         # For all the equations
-        xs1=b.copy()
+        xs1=b.astype(float)
         for i in range(nf):
             for j in range(i):
                 xs1[i]-=A[i,j]*xs[j]
@@ -3022,8 +3028,8 @@ To implement the code of the damped Jacobi method, we must calculate the identit
 
 \begin{minted}{python}
     [nf,nc]=np.shape(A)
-    xs=x0.copy()
-    xs1=b.copy()
+    xs=x0.astype(float)
+    xs1=b.astype(float)
     error= np.linalg.norm(xs1-xs)
     it=0
     D=np.diag(np.diag(A))
@@ -3060,7 +3066,7 @@ As in the case of the damped Jacobi, A first approach to implement the SOR metho
 
 \begin{minted}{python}
         # For all the equations
-        xs1=b.copy()
+        xs1=b.astype(float)
         for i in range(nf):
             # For all the terms above x[i]
             for j in range(i):
@@ -3111,8 +3117,8 @@ The following code fragment shows how $f$ and $H$ are obtained,
 
 \begin{minted}{python}
     [nf,nc]=np.shape(A)
-    xs=x0.copy()
-    xs1=b.copy()
+    xs=x0.astype(float)
+    xs1=b.astype(float)
     error= np.linalg.norm(xs1-xs)
     it=0
     D=np.diag(np.diag(A))
@@ -3142,7 +3148,7 @@ The following code fragment shows how $f$ and $H$ are obtained,
 
 \begin{minted}{python}
 # For all the equations
-xs1=b.copy()
+xs1=b.astype(float)
 for i in range(nf):
 	# For all the terms above x[i]
 	for j in range(i):
@@ -3186,8 +3192,8 @@ Eventually, we obtain $f = \omega (D+\omega L)^{-1}$ for the fixed part of the S
 
 \begin{minted}{python}
 	[nf,nc]=np.shape(A)
-	xs=x0.copy()
-	xs1=b.copy()
+	xs=x0.astype(float)
+	xs1=b.astype(float)
 	error= np.linalg.norm(xs1-xs)
 	it=0
 	D=np.diag(np.diag(A))
