@@ -64,6 +64,7 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 | 5. Aritmética del computador (`aritmetica.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 6. Cálculo de raíces (`calraiz.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 7. Sistemas de ecuaciones lineales (`sistemas.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
+| 8. Interpolación y ajuste (`interpolacion.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | Resto | Pendiente | Solo han pasado la revisión automática (sección anterior). |
 
 **Capítulo 2: qué se ha hecho**
@@ -511,6 +512,65 @@ código, fragmentos sueltos, docstrings sin cerrar).
   quería decir "Lagrange o Newton"). Las figuras `gjcom` y `comjjam` no se
   han regenerado (sus datos coinciden con el texto: 23/13 iteraciones).
 
+**Capítulo 8: qué se ha hecho**
+
+Reescritura completa de las dos columnas (la inglesa tenía restos como
+"8DWM1001 degree" y `$x-= =1$`), revisión de los programas de
+`codigos/interpolacion/` y salidas del texto regeneradas.
+
+*Errores corregidos*
+- **Ejercicio 1: el fichero de datos era otro.** `datos/datos.txt` tiene 201
+  puntos (interpolarlos con Vandermonde da $\kappa\approx10^{20}$); el
+  solucionario usaba los 10 datos de la figura, que solo estaban en
+  `codigos/interpolacion/interpolacion.txt`. Copiado a
+  `datos/interpolacion.txt`; `datos.txt` ($y=20x+3x^3$ con y sin ruido) pasa al
+  ejercicio de mínimos cuadrados.
+- **`difdiv` y `newgre` truncaban sin aviso con datos enteros** (`y.copy()`):
+  con la tabla del propio libro daban $1,-2,1,0$. Ahora `astype(float)`;
+  `newgre` lanza un error si los datos no están equiespaciados. Convertido en
+  ejercicio de depuración.
+- **`dbez` multiplicaba por $n-1$ en lugar de $n$** (derivada de Bézier).
+  *La figura `bezierhodg.eps` se generó con el código erróneo: la hodógrafa
+  está escalada por $(n-1)/n$; habría que regenerarla* (no se conocen los
+  puntos de control usados).
+- `evspc` fallaba (`IndexError`) fuera del último dato y solo admitía un
+  punto: ahora `np.searchsorted`, vectorizada. `lse`: comprobación del número
+  de datos ($m<n$ en vez de $m<n+1$) y `w='none'`.
+- `CubicSpline(x, y, 'natural')` (el tercer argumento es `axis`: da error);
+  `'not__knot'`; `scipy.interpolation`; `interp1d` "de numpy".
+- Bézier: $\vec p_2^{+}$ de la curva elevada de grado usaba $\vec p_2,\vec p_3$
+  (es $\vec p_1,\vec p_2$); conjunto de puntos sin $\vec p_1$; índices.
+- Splines: índices de las condiciones de continuidad, $h_i$ por $h_{i-1}$ en
+  $S_{i-1}(x_i)$, condición periódica.
+- Vandermonde: "$n$ ecuaciones" ($n+1$). Taylor: "el error disminuye con el
+  grado" (falso fuera del radio de convergencia: en $x=2.5$ el de grado 40 se
+  equivoca en $10^5$). Leyendas de figuras (seno 3, 5, 7, 9) y subfiguras más
+  anchas que la columna.
+- Test 2020/21: referencias cruzadas a las etiquetas inglesas, "52 ángulos"
+  (son 51), "apartado 2a/3b", "comando de Numpy" (es SciPy).
+
+*Contenido nuevo*
+- Convergencia de la serie de Taylor (radio de convergencia, con números).
+- Condicionamiento de la matriz de Vandermonde (tabla) y por qué
+  `Polynomial.fit` no resuelve las ecuaciones normales
+  ($\kappa(V^TV)\approx\kappa(V)^2$; con grado 9 y 10 datos, `lse` deja un
+  residuo $10^{10}$ veces mayor); `.coef` frente a `.convert().coef`.
+- Sección **"Error de interpolación y fenómeno de Runge"**, con nodos de
+  Chebyshev y figura nueva (`figuras/runge.pdf`).
+- Orden del error medido: interpolación lineal $h^2$, spline $h^4$.
+- `np.interp` como opción recomendada; `interp1d` señalada como *legacy*
+  (medida H de la propuesta).
+- Ejercicios nuevos: Runge (*predice y mide*), orden del spline natural con
+  $\cos x$ (*mide el orden*: sale 2, no 4), *depura este código* (`difdiv`
+  antigua), *¿cuál es correcta?* (pesos en `fit` y en `lse`) y uno con IA
+  (ajuste exponencial linealizado: transformación de las incertidumbres).
+- Solucionario: `onlyforyoureyes/interpolacion/EjerciciosLibro.ipynb`
+  (nuevo). Al resolverlo salen dos matices útiles para clase: con el ruido
+  de `datos.txt` el término cúbico apenas se distingue, y el ajuste
+  logarítmico con pesos tiene un pequeño sesgo frente a `curve_fit`.
+- `integracion.tex` tenía el capítulo sin etiqueta: añadida
+  `\label{ch:integracion}`.
+
 ---
 
 ## 2. Pendiente: necesita decisión o revisión humana
@@ -519,11 +579,19 @@ código, fragmentos sueltos, docstrings sin cerrar).
    (nov 2026) y ya no se versiona, pero **sigue en el historial de git**.
    Borrarlo también del historial exige reescribirlo (`git filter-repo`) y
    forzar la subida; solo si se decide.
-2. `interpolacion/Test2024_Interpolacion.ipynb`: se usa una variable `t1` que
-   nunca se define (falta la malla de evaluación).
+2. ~~`interpolacion/Test2024_Interpolacion.ipynb`: `t1` sin definir~~:
+   resuelto (nov 2026; también truncaba con enteros en `difdiv`).
 3. ~~`ax3.meshgrid`~~ y ~~ficheros `.p`~~: resueltos (nov 2026).
 5. ~~`codigos/Intro_matplotlib/untitled0.py` y `untitled3.py`~~: borrados
    (nov 2026).
+8. **pdfTeX se cuelga (violación de segmento) de forma intermitente** al
+   compilar el manual completo en este ordenador (TeX Live 2023 de Debian)
+   desde la revisión del capítulo 8: algunas pasadas fallan al escribir una
+   página y dejan el `.aux` vacío; la siguiente funciona y da el PDF correcto
+   (589 páginas, sin errores ni referencias rotas). No ocurre con el capítulo
+   suelto ni con la versión anterior, y no depende de la figura nueva ni del
+   índice. Comprobar si pasa también con MiKTeX en el despacho; si pasa,
+   investigarlo (quizá probar LuaLaTeX).
 6. **La revisión gramatical y de estilo no está hecha.** El corrector sólo
    encuentra palabras mal escritas. El inglés, en particular, tiene muchas
    construcciones calcadas del español que conviene revisar capítulo a

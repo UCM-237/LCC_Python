@@ -70,8 +70,8 @@ def evspc(M,A,B,x,xi):
         DESCRIPTION.
     x : TYPE numpy array
         DESCRIPTION. x data of the datatable interpolated
-    xi : TYPE double 
-        DESCRIPTION. point to calculate the spline value
+    xi : TYPE double or numpy array
+        DESCRIPTION. point(s) to calculate the spline value
 
     Returns
     -------
@@ -79,17 +79,11 @@ def evspc(M,A,B,x,xi):
         DESCRIPTION. value calculate for the spline yi =s(xi) 
 
     """
-    l = x.shape[0]
-    h = np.zeros(l-1)
-    for i in range(0,l-1):
-        h[i] = x[i+1] - x[i]
-    j = 0
-    while xi > x[j]:
-        j = j+1
-    if j > l - 1:
-       j = l - 1
-    elif j < 1:
-        j = 1
+    h = np.diff(x)
+    # index j of the right end of the interval [x[j-1], x[j]] containing xi.
+    # Points outside [x[0], x[-1]] use the first or the last polynomial
+    # (extrapolation). xi can be a number or an array.
+    j = np.clip(np.searchsorted(x, xi), 1, x.shape[0] - 1)
     yi=-M[j-1]*(xi-x[j])**3/(6*h[j-1])+ M[j]*(xi-x[j-1])**3/(6*h[j-1])\
         +A[j-1]*(xi-x[j-1])+B[j-1]
     return yi

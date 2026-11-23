@@ -29,13 +29,15 @@ def difdiv(x,y):
         ...+(x-x_0)(x-x_1)...(x-x_{n-2})(x-x_{n-1})a_n
     """
     n = x.shape[0] #number of data
-    #we use the y variable to inisialise the vector of coefficients
-    a = y.copy() #warning I need to copy to avoid overwrite the values of y
-    #we must compute n differences 
-    for j in range(1,n): #start in 1 we alredy have the order zero differences    
+    # The order-zero differences are the y values. We copy them as floats:
+    # y.copy() would keep an integer type if y were an integer array, and
+    # the divisions below would be truncated without any warning.
+    a = y.astype(float)
+    #we must compute n-1 columns of differences
+    for j in range(1,n): #start in 1 we alredy have the order zero differences
+        prev = a.copy() # differences of order j-1
         for i in range(j,n):
-            a[i] = (a[i]-y[i-1])/(x[i]-x[i-j])
-        y = a.copy()
+            a[i] = (prev[i]-prev[i-1])/(x[i]-x[i-j])
     return(a)
 
 def evdif(a,x,xi):

@@ -5,7 +5,7 @@ Function to obtain the least squared error polynomial from a dataset
 @author: abierto
 """
 import numpy as np
-def lse(x,y,n,w='none'):
+def lse(x,y,n,w=None):
     """
     This function compute the least squared error polynomial of
     degree n from a set of data x,y. Optionally it can use a
@@ -30,10 +30,10 @@ def lse(x,y,n,w='none'):
     """
     m = x.shape[0] 
     #first we check that we have enought points
-    if m < n:
-        raise Warning('the degree is greater than the number of data')
+    if m < n + 1:
+        raise ValueError('a polynomial of degree n needs at least n+1 data')
     #if there is no weight array generate an arry of ones
-    if type(w)==str:
+    if w is None:
         w = np.ones(m)
     #we build the s elements of the system coefficient matrix
     n = n+1 # for degree n I need n+1 coeficientes

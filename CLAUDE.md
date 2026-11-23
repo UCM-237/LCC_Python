@@ -15,7 +15,7 @@ hermano `onlyforyoureyes`, que suele estar abierto en el mismo workspace.
   el cuaderno de bitácora con la propuesta, el estado de cada capítulo, lo hecho
   y las decisiones pendientes. Actualizarlo al terminar cada capítulo.
 - Orden de revisión (el del curso): introprog ✔, intronumpy ✔, matplotlib ✔,
-  aritmetica ✔, calraiz ✔, sistemas ✔, interpolacion, integracion, tratamientoest,
+  aritmetica ✔, calraiz ✔, sistemas ✔, interpolacion ✔, integracion, tratamientoest,
   simbolico. Más adelante, un capítulo nuevo sobre programar con IA.
 - Decisión tomada: se mantiene **Spyder** (con el plug-in spyder-notebook) como
   IDE del curso. No proponer cambiarlo.

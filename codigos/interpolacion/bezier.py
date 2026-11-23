@@ -140,7 +140,7 @@ def dbez(p):
     d = np.zeros([2,grado])
     #compute the control points of the derivativa
     for i in range(grado):
-        d[:,i] = (grado-1)*(p[:,i+1]-p[:,i])
+        d[:,i] = grado*(p[:,i+1]-p[:,i])
     t = np.arange(0,1+0.01,0.01)
     #plot de odograph 
     pl.figure(1)

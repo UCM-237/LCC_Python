@@ -36,26 +36,24 @@ def newgre(x,y,x1=0):
 
     """
     n = x.shape[0]
-    a = y.copy() #we start the coefficient with the 0-order differences,i.e. 
-               #y values. remember use a copy to avoid overwrite the arrays
     h = x[1] -x[0]
+    # The method only works for equispaced data in increasing order
+    if h <= 0 or not np.allclose(np.diff(x), h):
+        raise ValueError('x must be equispaced and in increasing order')
+    a = y.astype(float) #we start the coefficient with the 0-order
+               #differences, i.e. y values. A float copy: with integer
+               #data, y.copy() would truncate the divisions
     #here start the loop to calculate the differences
     for j in range(1,n):
         #for each iteration we calculate the differences
         #of higher order. But we only need the first difference. So we restart
         #the inner loop in the value j of the outer one
+        prev = a.copy() # differences of order j-1
         for i in range(j,n):
             #now it is enough to divide for the distance h betwwen x point 
             #multiplied by order j of the diference
-            a[i] = (a[i]-y[i-1])/(j*h)
-        y = a.copy()
+            a[i] = (prev[i]-prev[i-1])/(j*h)
     #now we calculate the value(s) of the polynomial using the
     #function built to evaluate divided diferences polynomials 
-    # if type(x1) != np.ndarray:
-    #     x1 = np.array([x1])
-    # y1 = []    
-    # for i in x1:
-    #     y1.append(evdif(a,x,i))
-    # y1 = np.array(y1)
     y1 = evdif(a,x,x1)
     return(a,y1)

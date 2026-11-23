@@ -13,9 +13,6 @@ x = data[0,:]
 y = data[1,:]        
 M,A,B,C,h = spcubic(x,y)
 xi = np.arange(1,10,0.01)
-l = xi.shape[0]
-yi =np.zeros(l)
-for i in range(l):
-    yi[i] = evspc(M,A,B,x,xi[i])
+yi = evspc(M,A,B,x,xi)
 pl.plot(x,y,'o')
 pl.plot(xi,yi)
