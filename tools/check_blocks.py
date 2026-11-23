@@ -2,7 +2,12 @@
 shared namespace per chapter, reporting blocks that raise exceptions.
 IPython-style sessions (In [n]: / ...:) are reduced to their input lines.
 
-Usage:  python tools/check_blocks.py <repo> introprog.tex intronumpy.tex ...
+Usage:  python tools/check_blocks.py [--prelude file.py] <repo> introprog.tex ...
+
+--prelude file.py: run file.py in each chapter's namespace before its
+blocks. Use it for functions the text leaves as exercises (e.g. the
+`regressive` function of the systems chapter); keep that file with the
+solutions, not in this repository.
 
 Blocks run inside a temporary copy of datos/, so files they write never
 touch the repository. Every codigos/* folder is put on sys.path so that
@@ -13,8 +18,13 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-REPO = os.path.abspath(sys.argv[1])
-chapters = sys.argv[2:]
+args = sys.argv[1:]
+PRELUDE = None
+if args[:1] == ["--prelude"]:
+    PRELUDE = os.path.abspath(args[1])
+    args = args[2:]
+REPO = os.path.abspath(args[0])
+chapters = args[1:]
 blk = re.compile(r"\\begin\{minted\}(?:\[[^\]]*\])?\{(python|python3|ipython|pycon)\}(.*?)\\end\{minted\}", re.S)
 prompt = re.compile(r"^\s*(In \[\d*\]:|>>>|\.\.\.:?|\s+\.\.\.:)\s?")
 
@@ -41,6 +51,8 @@ for ch in chapters:
     ns = {"__name__": "__main__"}
     os.chdir(os.path.join(WORK, "datos"))
     print(f"##### {ch}")
+    if PRELUDE:
+        exec(compile(open(PRELUDE, encoding="utf8").read(), PRELUDE, "exec"), ns)
     for m in blk.finditer(txt):
         line = txt[:m.start()].count("\n") + 1
         code = to_code(m.group(2))

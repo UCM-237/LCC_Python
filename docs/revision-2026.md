@@ -63,6 +63,7 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 | 4. Introducción a Matplotlib (`matplotlib.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 5. Aritmética del computador (`aritmetica.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 6. Cálculo de raíces (`calraiz.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
+| 7. Sistemas de ecuaciones lineales (`sistemas.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | Resto | Pendiente | Solo han pasado la revisión automática (sección anterior). |
 
 **Capítulo 2: qué se ha hecho**
@@ -421,6 +422,94 @@ recalculadas (número de iteraciones de cada ejemplo, salidas de Python).
   piden ahora `assert`, errores explícitos y predicciones.
 - Solucionario: `onlyforyoureyes/raices/EjerciciosLibro.ipynb` (nuevo), con
   todos los ejercicios del libro resueltos y comprobados.
+
+**Capítulo 7: qué se ha hecho**
+
+Reescritura completa de las dos columnas. Todas las salidas del texto se
+han regenerado ejecutando el código y comparándolas literalmente con lo
+impreso (las que dependen de la plataforma, p. ej. el texto de los
+`RuntimeWarning`, corresponden a NumPy 1.26). **Ningún bloque de código del
+capítulo se podía ejecutar tal como estaba** (salidas mezcladas con el
+código, fragmentos sueltos, docstrings sin cerrar).
+
+*Errores de contenido corregidos*
+- **Jacobi en forma matricial: el texto construía `f = inv(A) @ b` y
+  `H = -inv(A) @ (U+L)`** en lugar de `inv(D)`.
+- **Código del método SOR: `xs1 = w*xs1 + (1-w)*xs` dentro del bucle** sobre
+  las componentes (promedia el vector entero en cada pasada). No da ningún
+  error: converge a una solución equivocada o diverge. Corregido
+  (`xs1[i] = ...`) y convertido en el ejercicio *¿cuál es correcta?*
+  (el `sistemas.py` del solucionario ya estaba bien).
+- Forma matricial de SOR: $f=\omega(D+\omega L)^{-1}$ (faltaba $b$).
+  Gauss-Seidel: "multiplicando por la inversa de $D+U$" ($D+L$).
+- Ejemplo de eliminación de Gauss: $-2.6$ en lugar de $-8/3$, un $3$ que se
+  convertía en $-3$, la matriz $U_2$ mostrada sin actualizar; ahora con
+  fracciones exactas y comprobado con `eligauss`.
+- Gauss-Jordan: "restar columnas" donde se restan filas; la matriz de partida
+  no era la del ejemplo anterior (ahora se dice que es otra).
+- Ejemplo de Jacobi $2\times2$: "$5-3x_2$", "$7-3\cdot1.67$".
+- Espectro de Jacobi calculado con $H=+D^{-1}(L+U)$ (signo); autovalores
+  impresos corregidos.
+- "Para converger, $H$ tiene que tener norma 2 menor que uno" (es
+  suficiente, no necesario; el criterio es $\rho(H)<1$, ahora "si y solo
+  si"). La ecuación $\lVert x^{(s+1)}-x^{(s)}\rVert\le C\Rightarrow\lVert
+  x^{(s+1)}-x\rVert=\vert e\vert$ no tenía sentido.
+- "Cualquiera de los métodos converge si la matriz es estrictamente diagonal
+  dominante": cierto para Jacobi y Gauss-Seidel, y para los amortiguados
+  solo con $0<\omega\le1$. Gauss-Seidel "converge más deprisa" (en
+  general, no siempre).
+- SVD: la función devuelve los *valores singulares*, no los autovalores;
+  variable `V` que en realidad era $V^T$. Ortogonal: $Q^T=Q^{-1}$ (decía
+  $A^T=A^{-1}$). "Multiplicarla por el vector de coeficientes para obtener
+  el vector de términos independientes" (al revés).
+- Columna inglesa: ecuaciones corrompidas en la SVD (`A=U=U{sec:SVD}, S=V^T`),
+  `x^Tdot`, `cdots`, `L^T z=b` (es $L z=b$), $U^T U^T$, "row echelon form"
+  (es *reduced*); faltaba toda la sección de ejercicios en inglés.
+- Epígrafe con un solo argumento (Szymborska, *Fin y principio*); figura 1 cm
+  más ancha que la página; minipágina del circuito desbordada.
+- Ejercicio del circuito: "usa $P\cdot A$" (con la $P$ de SciPy es
+  $P^T\cdot A$).
+
+*Contenido nuevo*
+- Condicionamiento: tabla del número de condición frente a la solución,
+  significado (cota del error relativo) y la regla "se pierden
+  $\log_{10}\kappa$ cifras", comprobada con la matriz de Hilbert;
+  **un residuo pequeño no garantiza una solución buena**; el determinante no
+  mide el condicionamiento.
+- Coste de cada método ($n^2$, $2n^3/3$) y por qué no se invierte la matriz.
+- `lu_factor`/`lu_solve` (factorizar una vez, resolver muchas).
+- Sección **"Pivoteo"**: pivote nulo (NumPy sigue con `nan` e `inf`),
+  pivote pequeño ($10^{-20}$: $x_1=0$ sin aviso con un sistema bien
+  condicionado); la eliminación de Gauss con pivoteo **es** la factorización
+  LU (multiplicadores = $L$, comparados con SciPy).
+- Sección **"Resolver sistemas con NumPy y SciPy"**: `solve`,
+  `solve_triangular`, `assume_a='pos'`, no usar `inv`, y una lista de
+  verificación (condición, residuo, otro método, sentido físico).
+- Métodos iterativos: funciones completas y ejecutables, que lanzan un error
+  si no convergen; cada forma matricial se comprueba con `assert` frente a la
+  de bucles. Sección **"Criterio de parada"** (cuerda con $n=20$: paso
+  $<10^{-5}$ pero error $9\times10^{-4}$) y estimación
+  $e\approx\rho/(1-\rho)\cdot$paso. Predicción del número de iteraciones
+  con $\rho$ (22.8 y 11.7 frente a 23 y 13 reales).
+- Ejercicios: los antiguos reescritos (con `assert`, errores explícitos y
+  predicciones) y nuevos: *¿cuál es correcta?* (tres SOR), *depura este
+  código* (Gauss que modifica la entrada y trunca enteros: la comprobación
+  `allclose(A @ x, b)` da `True` con una solución errónea), condicionamiento
+  (Hilbert), *predice y mide el coste*, y uno con IA (algoritmo de Thomas para
+  sistemas tridiagonales, con las pruebas escritas antes).
+- `tools/check_blocks.py --prelude`: permite ejecutar los bloques que usan
+  `regressive` (ejercicio del libro) sin publicar su solución; el preludio
+  está en `onlyforyoureyes/sistemas_lineales/prelude_check_blocks.py`.
+- Solucionario: `onlyforyoureyes/sistemas_lineales/EjerciciosLibro.ipynb`
+  (nuevo), con todos los ejercicios resueltos y comprobados con `assert`. El
+  antiguo `07Ejercicios_sistemas.ipynb` se conserva.
+
+*Sin cambiar (para revisar)*
+- Los tests 2020/21 y 2024-25 solo se han corregido de forma (erratas,
+  unidades). El Test 3 de 2024-25 incluye un ejercicio de interpolación
+  ("Newton-Gregory o diferencias finitas": son el mismo método; quizá se
+  quería decir "Lagrange o Newton"). Las figuras `gjcom` y `comjjam` no se
+  han regenerado (sus datos coinciden con el texto: 23/13 iteraciones).
 
 ---
 

@@ -11,6 +11,13 @@ Scripts usados en la revisión de 2026 (ver `docs/revision-2026.md`).
   Algunos fallos son esperados: errores puestos a propósito, pseudocódigo
   y bloques que solo muestran la salida.
 
+  Con `--prelude fichero.py` se ejecuta antes ese fichero, para definir las
+  funciones que el texto deja como ejercicio (p. ej. `regressive` en
+  sistemas). El preludio está con las soluciones, en
+  `onlyforyoureyes/sistemas_lineales/prelude_check_blocks.py`:
+
+      python tools/check_blocks.py --prelude ../onlyforyoureyes/sistemas_lineales/prelude_check_blocks.py . sistemas.tex
+
 - `spellcheck.py`: corrector ortográfico bilingüe que distingue la
   columna española de la inglesa. Requiere `pip install spylls` y los
   diccionarios Hunspell (`es.aff/.dic`, `en.aff/.dic`) en `tools/dict/`
