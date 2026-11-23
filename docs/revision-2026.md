@@ -62,6 +62,7 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 | 3. Introducción a Numpy (`intronumpy.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 4. Introducción a Matplotlib (`matplotlib.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 5. Aritmética del computador (`aritmetica.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
+| 6. Cálculo de raíces (`calraiz.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | Resto | Pendiente | Solo han pasado la revisión automática (sección anterior). |
 
 **Capítulo 2: qué se ha hecho**
@@ -344,13 +345,79 @@ cada párrafo), con todas las cifras comprobadas en Python (`struct`,
   *predice y mide* (h óptimo de la diferencia centrada ∝ eps^(1/3)); y uno
   con IA (norma de un vector con las pruebas escritas antes de pedir el
   código).
-- El solucionario no tiene material de este capítulo: habrá que añadir las
-  soluciones de los ejercicios nuevos.
+- Solucionario: `onlyforyoureyes/aritmetica/EjerciciosLibro.ipynb` (nuevo),
+  con las soluciones de todos los ejercicios comprobadas con `assert`.
 
 *Herramientas*
 - El corrector ortográfico funciona en Linux con los diccionarios del
   sistema (`hunspell-es`, `hunspell-en-us`); instrucciones en
   `tools/README.md`. Pasado a los capítulos 4 y 5.
+
+
+**Capítulo 6: qué se ha hecho**
+
+Reescritura completa de las dos columnas, con todas las cifras del texto
+recalculadas (número de iteraciones de cada ejemplo, salidas de Python).
+
+*Errores de contenido corregidos*
+- **Polinomio con los coeficientes al revés**: el texto decía calcular las
+  raíces de $x^3-6x^2+11x-6$ con `P([1,-6,11,-6])`, que es
+  $1-6x+11x^2-6x^3$; las raíces impresas (1/3, 1/2, 1) eran de ese otro
+  polinomio. Corregido y convertido en aviso: `Polynomial` usa orden
+  ascendente y `np.roots`/`np.polyval`, descendente, y el error es
+  silencioso.
+- `P([0,6,2,0,3],[-2,2])`: el segundo argumento (*domain*) no es el
+  intervalo de dibujo; reescala la variable (en $x=2$ da 11 en lugar de 68).
+  Ahora `p.linspace(domain=[-2,2])`, con aviso.
+- La raíz doble de $(x+1)^2$ ya no sale "−1.00000001, −0.99999999" con NumPy
+  actual; sustituido por $(x-1)^3$ (error ~7e-6 ≈ eps^(1/3)).
+- **Bisección con precisión máxima**: el diagrama de flujo del libro, sin
+  comprobar $f(c)=0$, da un resultado erróneo con la propia función del
+  ejemplo: en la iteración 47 $f(c)$ vale exactamente 0, `f(a)*f(c)<0` falla
+  y el intervalo abandona la raíz (256 números máquina). Diagrama corregido.
+  La fórmula del número de iteraciones usaba `eps` (vale solo para raíces en
+  [1,2)); ahora usa `np.spacing(r)`.
+- Recuentos de iteraciones: Newton desde 2.5 necesita 6, no 5; el punto fijo
+  con $-\sqrt{e^x}$, 8, no 5; con $\ln(x^2)$ desde −0.2 no son 211 de forma
+  reproducible (en nuestra prueba, 5163): es caótico y depende del redondeo;
+  convertido en lección.
+- Bisección: "si hay más de una raíz el algoritmo puede no converger" (falso:
+  converge a una de ellas); la relación entre cambio de signo y número impar
+  de raíces se precisa (multiplicidad).
+- Punto fijo: $x^2$ también alcanza 1 desde $x_0=-1$; añadido $|g'|$ en cada
+  ejemplo (0.35, 2.84, 1.70) para explicar convergencia y divergencia.
+- `fsolve`: el ejemplo decía partir de 2 y partía de −2; "oír" → "por".
+- Ejercicio de la secante: pedía la derivada (el método no la usa). Ejercicio
+  de Steffensen con pseudocódigo `while condición` (no ejecutable): ahora
+  fórmula. Maxwell: $f$ es una densidad (s/m), no una probabilidad.
+- Kepler (ejercicio aplicado): **$x=a\cos E-e$ es dimensionalmente
+  incorrecta** ($x=a(\cos E-e)$); $M$ es la anomalía *media*, no la
+  "verdadera". Test 2024-25: $y_0$ no definido ($h_0$). Test 2020/21: el
+  enunciado pedía escribir $e(t)=t-g(t)$; ahora $e(t)=1$ miliparsec como
+  $t=g(t)$ (revisar si era lo que se pretendía).
+- Desigualdad $|f(r_0)|\ge|f(r_1)|\ge\cdots$ eliminada (no es cierta en
+  general); `\text(tol)`; figura con `{h}`; subfigura repetida
+  (`p3fijo3.pdf` dos veces); `\alph{enumii}` suelto; sección inglesa de
+  ejercicios titulada "Problems".
+
+*Contenido nuevo*
+- **Criterios de parada**: residuo, error absoluto y relativo, número máximo
+  de iteraciones; cuándo falla cada uno ($(x-1)^3$, raíces grandes o
+  pequeñas).
+- Predicción del número de iteraciones de la bisección; regula falsi lenta
+  con $x^{10}-1$ (87 frente a 29); ciclo de Newton en $x^3-2x+2$.
+- Sección **"Orden de convergencia"**: definición, tabla de órdenes, y código
+  que mide el orden de Newton (cifras correctas 1→3→6→13).
+- `root_scalar` (Brent) como opción recomendada; `fsolve` devuelve un
+  número aunque no converja ($x^2+1$ → −2e-12, con un simple aviso).
+- Ejercicios nuevos: *¿cuál es correcta?* (tres pruebas de signo en la
+  bisección: el producto falla con $f(c)=0$ y con *underflow*), *mide el
+  orden* (incluida la raíz doble y Newton modificado), *depura este código*
+  (la bisección de precisión máxima sin comprobar $f(c)=0$) y uno con IA
+  (ecuación de Kepler con pruebas previas). Los ejercicios de implementación
+  piden ahora `assert`, errores explícitos y predicciones.
+- Solucionario: `onlyforyoureyes/raices/EjerciciosLibro.ipynb` (nuevo), con
+  todos los ejercicios del libro resueltos y comprobados.
 
 ---
 
@@ -363,11 +430,8 @@ cada párrafo), con todas las cifras comprobadas en Python (`struct`,
 2. `interpolacion/Test2024_Interpolacion.ipynb`: se usa una variable `t1` que
    nunca se define (falta la malla de evaluación).
 3. ~~`ax3.meshgrid`~~ y ~~ficheros `.p`~~: resueltos (nov 2026).
-5. `codigos/Intro_matplotlib/untitled0.py` y `untitled3.py`: son restos de
-   trabajo sin relación con el capítulo (operaciones sueltas con listas y
-   arrays; el segundo acaba en una línea rota). El `untitled0.py` que cita
-   el cap. 2 es el nombre por defecto de Spyder, no este fichero.
-   Propuesta: borrarlos.
+5. ~~`codigos/Intro_matplotlib/untitled0.py` y `untitled3.py`~~: borrados
+   (nov 2026).
 6. **La revisión gramatical y de estilo no está hecha.** El corrector sólo
    encuentra palabras mal escritas. El inglés, en particular, tiene muchas
    construcciones calcadas del español que conviene revisar capítulo a
