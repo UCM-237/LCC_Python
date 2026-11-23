@@ -1,98 +1,100 @@
-\chapter{Introducción a matplotlib\\ Introduction to matplotlib}
-\chaptermark{Intro to matplotlib \textreferencemark \ Intro to matplotlib}
+\chapter{Introducción a Matplotlib\\ Introduction to Matplotlib}\label{ch:matplotlib}\index{Matplotlib}\index[eng]{Matplotlib}
+\chaptermark{Intro. a Matplotlib \textreferencemark\ Intro to Matplotlib}
+\sloppy
 \epigraph{El punto geométrico es invisible. De modo que lo debemos definir como un ente abstracto. Si pensamos en él materialmente, el punto se asemeja a un cero.
-Cero que, sin embargo, oculta diversas propiedades «humanas». Para nuestra percepción este cero —el punto geométrico—está ligado a la mayor concisión. Habla, sin duda, pero con la mayor reserva.}{Vasili Kandinski, Punto y línea sobre plano}
+Cero que, sin embargo, oculta diversas propiedades «humanas». Para nuestra percepción este cero ---el punto geométrico--- está ligado a la mayor concisión. Habla, sin duda, pero con la mayor reserva.}{Vasili Kandinski, Punto y línea sobre plano}
 \begin{paracol}{2}
-    Visualizar los datos es fundamental para poder comprender y transmitir ideas e información en ciencias e ingeniería.
-    Python tiene numerosas funciones gráficas que para mostrar muchos tipos de gráficos. Una de las librerías para visualizar datos de uso más extendido es \href{https://matplotlib.org/stable/}{matplotlib} a la que dedicamos este capítulo.
-    \switchcolumn
-    Visualising data is essential for understanding and conveying ideas and information in science and engineering.
-    Python has numerous graphics functions for displaying many types of graphics. One of the most widely used data visualisation libraries is \href{https://matplotlib.org/stable/}{matplotlib} to which we dedicate this chapter.
-    \switchcolumn
-    Importaremos la biblioteca matplotlib de la siguiente manera
-    \switchcolumn
-    We can import matplotlib as follows:
+Visualizar los datos es fundamental para comprender y comunicar ideas e información en ciencia e ingeniería. Python no incluye funciones gráficas propias, pero hay muchas bibliotecas que las proporcionan. La más extendida es \href{https://matplotlib.org/stable/}{Matplotlib}, a la que dedicamos este capítulo.
+
+En este curso, una gráfica tiene dos usos. El primero, \emph{entender} lo que hemos calculado: es mucho más fácil ver en una gráfica que algo va mal que en una lista de números. El segundo, \emph{convencer} a otra persona, y a nosotros mismos, de que el resultado es correcto. Volveremos sobre ello en la sección \ref{sec:graf_verif}.
+
+Casi todo lo que vamos a usar está en el submódulo \texttt{pyplot}, que importaremos así:
+\switchcolumn
+Visualizing data is essential for understanding and communicating ideas and information in science and engineering. Python has no graphics functions of its own, but many libraries provide them. The most widely used is \href{https://matplotlib.org/stable/}{Matplotlib}, to which we devote this chapter.
+
+In this course, a graph has two uses. The first is to \emph{understand} what we have computed: it is much easier to see that something is wrong in a graph than in a list of numbers. The second is to \emph{convince} someone else, and ourselves, that the result is correct. We will come back to this in section \ref{sec:graf_verif}.
+
+Almost everything we are going to use is in the \texttt{pyplot} submodule, which we will import as follows:
 \end{paracol}
 
-\begin{minted}{python}
-    import matplotlib as mpl
-\end{minted}
-\begin{paracol}{2}
-    \paragraph{matplotlib.pyplot} es una colección de funciones que hacen que matplotlib funcione como MATLAB. Cada función de pyplot realiza algún cambio en una figura: por ejemplo, crea una figura, crea un área de trazado en una figura, traza algunas líneas en un área de trazado, decora el trazado con etiquetas, etc.
-
-    En matplotlib.pyplot la figura se conserva a través de las llamadas a funciones, de modo que las funciones de trazado se ejecutan sobre los ejes actuales.
-    \switchcolumn
-        \paragraph{matplotlib.pyplot} is a collection of functions that make matplotlib work like MATLAB. Each pyplot function makes some change to a figure: for example, it creates a figure, creates a plot area in a figure, draws some lines in a plot area, decorates the plot with labels, etc.
-
-        In matplotlib.pyplot the figure is preserved across function calls, so that the plotting functions are executed on the current axes.
-\switchcolumn
-Para crear gráficas usando Matplotlib necesitaremos una figura. Cada figura tiene un par (o más) de ejes y un área que es donde se dibujarán los puntos en el sistema de coordenadas que decidamos. Además podremos poner títulos, leyendas etc...
-
-\switchcolumn
-
-To create graphs using Matplotlib we will need a figure. Each figure has a pair (or more) of axes and an area which is where the points will be drawn in the coordinate system of your choice. In addition we can put titles, legends etc...
-
-\switchcolumn
-
-La manera más sencilla de crear una figura es empleando el método \texttt{figure} que creará una figura en la que posteriormente podremos añadir ejes, títulos y más cosas. Simplemente llamando a \texttt{figure} creamos un objeto de tipo figura, aunque también podemos darle de manera opcional parámetros como el tamaño, el color de fondo y más.
-
-\switchcolumn
-The easiest way to create a figure is to use the \texttt{figure} method which will create a figure to which we can later add axes, titles and more. Simply by calling \texttt{figure} we create an object of type figure, although we can also optionally give it parameters such as size, background colour and more.
-\end{paracol}
-
-\begin{paracol}{2}
-
-\end{paracol}
 \begin{minted}{python}
 import matplotlib.pyplot as plt
-fig = plt.figure(figsize=(2, 2), facecolor='lightskyblue',
-                 layout='constrained')
-fig =plt.figure            
 \end{minted}
+
+\begin{paracol}{2}
+El alias \texttt{plt} es una convención: lo encontrarás en la documentación de Matplotlib y en casi todo el código que leas, incluido el que genere un asistente de IA.
+
+\paragraph{Pyplot.}\index{Matplotlib!pyplot} \texttt{matplotlib.pyplot} es una colección de funciones que imitan la forma de dibujar de MATLAB. Cada una hace algún cambio en una figura: la crea, crea en ella un área de dibujo, traza líneas, añade etiquetas, etc. Pyplot recuerda cuál es la figura \emph{actual} y cuál es su área de dibujo actual, y cada nueva instrucción actúa sobre ellas.
+
+\paragraph{Figuras y ejes.} Una \emph{figura} (\texttt{Figure}) es la ventana o la página en la que dibujamos. Dentro de ella hay una o varias áreas de dibujo, que Matplotlib llama \texttt{Axes}. El nombre confunde: aunque significa \emph{ejes}, cada \texttt{Axes} es una gráfica completa, con sus dos ejes de coordenadas, $x$ e $y$. En cada una podemos dibujar puntos y curvas y añadir títulos, etiquetas, leyendas, etc.
+
+La función \texttt{figure} crea una figura nueva, vacía, a la que luego añadiremos gráficas. Admite argumentos opcionales como el tamaño en pulgadas (\texttt{figsize}), el color de fondo (\texttt{facecolor}) o \texttt{layout=\textquotesingle{}constrained\textquotesingle{}}, que ajusta los márgenes para que los títulos y las etiquetas no se solapen:
+\switchcolumn
+The alias \texttt{plt} is a convention: you will find it in the Matplotlib documentation and in almost all the code you read, including the code generated by an AI assistant.
+
+\paragraph{Pyplot.}\index[eng]{Matplotlib!pyplot} \texttt{matplotlib.pyplot} is a collection of functions that mimic the way MATLAB draws. Each of them makes some change to a figure: it creates it, creates a plotting area in it, draws lines, adds labels, etc. Pyplot keeps track of the \emph{current} figure and of its current plotting area, and every new instruction acts on them.
+
+\paragraph{Figures and axes.} A \emph{figure} (\texttt{Figure}) is the window or the page on which we draw. Inside it there are one or more plotting areas, which Matplotlib calls \texttt{Axes}. The name is misleading: each \texttt{Axes} is a complete graph, with its two coordinate axes, $x$ and $y$. In each one we can draw points and curves and add titles, labels, legends, etc.
+
+The function \texttt{figure} creates a new, empty figure, to which we will later add graphs. It takes optional arguments such as the size in inches (\texttt{figsize}), the background color (\texttt{facecolor}) or \texttt{layout=\textquotesingle{}constrained\textquotesingle{}}, which adjusts the margins so that titles and labels do not overlap:
+\end{paracol}
+
+\begin{minted}{python}
+fig = plt.figure(figsize=(4, 3), facecolor='lightskyblue',
+                 layout='constrained')
+\end{minted}
+
+\begin{paracol}{2}
+\textbf{¡Cuidado con los paréntesis!} \texttt{fig = plt.figure} (sin paréntesis) no crea ninguna figura: guarda en \texttt{fig} la propia función \texttt{figure}. No da ningún error; sencillamente, no ocurre lo que esperábamos.
+
+\paragraph{¿Dónde aparecen las figuras?} En Spyder, las figuras se muestran por defecto en el panel \emph{Plots}. Para que se abran en una ventana aparte (por ejemplo, para girar con el ratón una gráfica en 3D o para ver una animación), hay que ir a \emph{Tools} $\rightarrow$ \emph{Preferences} $\rightarrow$ \emph{IPython console} $\rightarrow$ \emph{Graphics} y elegir el \emph{backend} \emph{Automatic}. Si ejecutamos un script fuera de Spyder, hay que terminarlo con \texttt{plt.show()} para que las figuras se muestren.
+\switchcolumn
+\textbf{Watch the brackets!} \texttt{fig = plt.figure} (without brackets) does not create a figure: it stores the function \texttt{figure} itself in \texttt{fig}. There is no error message; simply, what we expected does not happen.
+
+\paragraph{Where do figures appear?} In Spyder, figures are shown by default in the \emph{Plots} pane. To open them in a separate window (for example, to rotate a 3D graph with the mouse or to watch an animation), go to \emph{Tools} $\rightarrow$ \emph{Preferences} $\rightarrow$ \emph{IPython console} $\rightarrow$ \emph{Graphics} and choose the \emph{Automatic} backend. If we run a script outside Spyder, we must end it with \texttt{plt.show()} for the figures to be displayed.
+\end{paracol}
 
 \section{Dibujar en 2D}
 \begin{paracol}{2}
-    Podemos dibujar fácilmente usando matplotlib.pyplot es mediante el método \texttt{plot}. A este método le pasaremos dos vectores con las coordenadas $x$ e $y$ de los puntos que queremos representar (evidentemente tendremos que asegurarnos de que tienen la misma longitud).
+La forma más sencilla de dibujar con \texttt{pyplot} es la función \texttt{plot}\index{Matplotlib!plot}. Le pasamos dos vectores con las coordenadas $x$ e $y$ de los puntos que queremos representar, que deben tener la misma longitud.
 
-    Por ejemplo si generamos unos vectores de coordenadas como los siguientes 
-    $$x=(0,2,-1,-2)$$ 
-    $$y=(0,3,2,-4)$$
-    y se los pasamos al método \texttt{plot} pyplot dibujará los puntos $(x,y)$ y los unirá con rectas, como puede verse en la figura \ref{fig:pyplot-simple}.
-    \switchcolumn
-        The easiest way to draw using matplotlib.pyplot is by using the \texttt{plot} method. To this method we will pass two vectors with the $x$ and $y$ coordinates of the points we want to represent (obviously we will have to make sure that they have the same length).  
+Por ejemplo, si generamos los vectores de coordenadas
+$$x=(0,2,-1,-2)$$
+$$y=(0,3,2,-4)$$
+y se los pasamos a \texttt{plot}, pyplot dibujará los puntos $(x,y)$ y los unirá con rectas, como puede verse en la figura \ref{fig:pyplot-simple}.
+\switchcolumn
+The easiest way to draw with \texttt{pyplot} is the function \texttt{plot}\index[eng]{Matplotlib!plot}. We pass it two vectors with the $x$ and $y$ coordinates of the points we want to represent, which must have the same length.
 
-            For example, if we generate coordinate vectors such as 
-            $$x=(0,2,-1,-2)$$ 
-            $$y=(0,3,2,-4)$$ 
-            and pass them to the pyplot method, it will draw the points $(x,y)$ and join them with straight lines, as can be seen in the figure \ref{fig:pyplot-simple}.
-        
+For example, if we generate the coordinate vectors
+$$x=(0,2,-1,-2)$$
+$$y=(0,3,2,-4)$$
+and pass them to \texttt{plot}, pyplot will draw the points $(x,y)$ and join them with straight lines, as can be seen in figure \ref{fig:pyplot-simple}.
 \end{paracol}
 \begin{minted}{python}
 import numpy as np
 import matplotlib.pyplot as plt
 
-x=np.array([0, 2, -1, -2])
-y=np.array([0, 3, 2, -4])
-plt.figure
-plt.plot(x,y)
+x = np.array([0, 2, -1, -2])
+y = np.array([0, 3, 2, -4])
+plt.figure()
+plt.plot(x, y)
 \end{minted}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\linewidth]{figuras/pyplot01.png}
-    \bicaption{Ejemplo sencillo de pyplot.} {Simple pyplot example.}
+    \bicaption{Ejemplo sencillo de pyplot.}{Simple pyplot example.}
     \label{fig:pyplot-simple}
 \end{figure}
 
 \begin{paracol}{2}
-    Además de las coordenadas de los puntos $(x,y)$ al método \texttt{pyplot.plot} podemos darle un tercer argumento indicando el formato (color y forma) con el que queremos que se grafiquen los puntos y opcionalmente la línea que los una. 
+Además de las coordenadas de los puntos, a \texttt{plot} podemos darle un tercer argumento: una cadena de caracteres que indica el formato, es decir, el color, la forma de los puntos (el \emph{marcador}) y el tipo de línea que los une.
 
-    Algunos de los colores y formatos admitidos están en las tablas \ref{tab:colores}, \ref{tab:puntos} y \ref{tab:lineas}. Para más información consulta la ayuda de \texttt{pyplot.plot}.
+Algunos de los colores, marcadores y tipos de línea admitidos están en las tablas \ref{tab:colores}, \ref{tab:puntos} y \ref{tab:lineas}. Para más información, consulta la ayuda de \texttt{plt.plot}.
 
-    
     \begin{table}
         \centering
         \begin{tabular}{|c|c|} \hline
-        \textbf{Símbolo}     &  \textbf{Color}\\
+        \textbf{Símbolo}     &  \textbf{Color}\\ \hline
              b& azul \\ \hline
              r& rojo \\ \hline
              g& verde \\ \hline
@@ -102,49 +104,48 @@ plt.plot(x,y)
              k& negro\\ \hline
              w& blanco\\ \hline
         \end{tabular}
-        \caption{Colores de los puntos}
+        \caption{Colores}
         \label{tab:colores}
     \end{table}
 
-    
     \begin{table}
         \centering
         \begin{tabular}{|c|c|} \hline
-        \textbf{Símbolo}     &  \textbf{Formato punto}\\
+        \textbf{Símbolo}     &  \textbf{Marcador}\\ \hline
              .& punto \\ \hline
              ,& píxel\\ \hline
              o& círculo \\ \hline
              s& cuadrado\\ \hline
-             $\wedge$ & triángulo hacia abajo\\ \hline
-             v& triángulo hacia arriba\\ \hline
+             \texttt{\^{}} & triángulo hacia arriba\\ \hline
+             v& triángulo hacia abajo\\ \hline
              p& pentágono\\ \hline
-             *& asterisco\\ \hline
+             *& estrella\\ \hline
         \end{tabular}
-        \caption{Algunos de los marcadores de puntos}
+        \caption{Algunos marcadores}
         \label{tab:puntos}
     \end{table}
 
       \begin{table}
         \centering
         \begin{tabular}{|c|c|} \hline
-        \textbf{Símbolo}     &  \textbf{Tipo de línea}\\
-             -& sólida \\ \hline
-             --& discontínua\\ \hline
-             -.& punto-raya \\ \hline
-             :& de puntos\\ \hline
+        \textbf{Símbolo}     &  \textbf{Tipo de línea}\\ \hline
+             \texttt{-}& continua \\ \hline
+             \texttt{-{}-}& discontinua\\ \hline
+             \texttt{-.}& punto y raya \\ \hline
+             \texttt{:}& de puntos\\ \hline
         \end{tabular}
         \caption{Tipos de línea}
         \label{tab:lineas}
-    \end{table}  
+    \end{table}
     \switchcolumn
-    In addition to the coordinates of the points $(x,y)$, we can give the \texttt{pyplot.plot} method a third argument indicating the format (colour and shape) in which we want the points to be plotted and optionally the line that joins them. 
+In addition to the coordinates of the points, we can give \texttt{plot} a third argument: a string indicating the format, that is, the color, the shape of the points (the \emph{marker}) and the type of line joining them.
 
-    Some of the colours and formats supported are in the tables \ref{tab:colours}, \ref{tab:dots} and \ref{tab:lines}. For more information, see the help for \texttt{pyplot.plot}.
-    
+Some of the supported colors, markers and line styles are listed in tables \ref{tab:colours}, \ref{tab:dots} and \ref{tab:lines}. For more information, see the help for \texttt{plt.plot}.
+
     \begin{table}
         \centering
         \begin{tabular}{|c|c|} \hline
-        \textbf{Symbol}     &  \textbf{Color}\\
+        \textbf{Symbol}     &  \textbf{Color}\\ \hline
              b& blue \\ \hline
              r& red \\ \hline
              g& green \\ \hline
@@ -154,231 +155,294 @@ plt.plot(x,y)
              k& black\\ \hline
              w& white\\ \hline
         \end{tabular}
-        \caption{Point colors}
+        \caption{Colors}
         \label{tab:colours}
     \end{table}
 
-    
     \begin{table}
         \centering
         \begin{tabular}{|c|c|} \hline
-        \textbf{Symbol}     &  \textbf{Point format}\\
+        \textbf{Symbol}     &  \textbf{Marker}\\ \hline
              .& point \\ \hline
              ,& pixel\\ \hline
              o& circle \\ \hline
              s& square\\ \hline
-             $\wedge$ & down triangle\\ \hline
-             v& up triangle\\ \hline
+             \texttt{\^{}} & triangle up\\ \hline
+             v& triangle down\\ \hline
              p& pentagon\\ \hline
              *& star\\ \hline
         \end{tabular}
-        \caption{Some point markers}
+        \caption{Some markers}
         \label{tab:dots}
     \end{table}
 
       \begin{table}
         \centering
         \begin{tabular}{|c|c|} \hline
-        \textbf{Symbol}     &  \textbf{Line type}\\
-             -& solid \\ \hline
-             --& dashed\\ \hline
-             -.& dash and dot\\ \hline
-             :& dotted\\ \hline
+        \textbf{Symbol}     &  \textbf{Line style}\\ \hline
+             \texttt{-}& solid \\ \hline
+             \texttt{-{}-}& dashed\\ \hline
+             \texttt{-.}& dash-dot\\ \hline
+             \texttt{:}& dotted\\ \hline
         \end{tabular}
-        \caption{Line types}
+        \caption{Line styles}
         \label{tab:lines}
-    \end{table}  
-    
+    \end{table}
+
     \switchcolumn
-    Se puede combinar un símbolo de cada tipo en un mismo \texttt{plot}. Así por ejemplo si queremos representar los datos anteriores unidos mediante una línea de puntos,
+    En una misma cadena de formato se puede combinar un símbolo de cada tipo. Así, por ejemplo, si queremos representar los datos anteriores unidos mediante una línea de puntos,
 \begin{minted}{python}
-plt.plot(x,y,':')    
+plt.plot(x, y, ':')
 \end{minted}
-
-Si queremos que pinte solo los puntos sin unirlos con líneas y en color rojo,
+Si queremos que dibuje solo los puntos, en rojo y sin unirlos con líneas,
 \begin{minted}{python}
-plt.plot(x,y,'.r')
+plt.plot(x, y, '.r')
 \end{minted}
-
-Si queremos que pinte los puntos representados por triángulos con el vértice hacia arriba, unidos mediante una línea continua y en color negro,
-
+Si queremos que dibuje los puntos como triángulos con el vértice hacia arriba, unidos mediante una línea continua y en color negro,
 \begin{minted}{python}
-plt.plot(x,y,'-^k')
+plt.plot(x, y, '-^k')
+\end{minted}
+Y con cuadrados de color magenta unidos por una línea de puntos,
+\begin{minted}{python}
+plt.plot(x, y, 's:m')
 \end{minted}
 
 \switchcolumn
-It is possible to combine one symbol of each type in the same text. So for example if we want to represent the above data joined by a dotted line,
+In the same format string we can combine one symbol of each type. So, for example, if we want to represent the above data joined by a dotted line,
 \begin{minted}{python}
-plt.plot(x,y,':')    
+plt.plot(x, y, ':')
 \end{minted}
-
-If we want it to paint only the dots without joining them with lines and in red,
+If we want it to draw only the points, in red and without joining them with lines,
 \begin{minted}{python}
-plt.plot(x,y,'.r')
+plt.plot(x, y, '.r')
 \end{minted}
-If we want it to paint the points represented by triangles with the vertex upwards, joined by a continuous line and in black,
-
+If we want it to draw the points as triangles pointing upwards, joined by a solid line and in black,
 \begin{minted}{python}
-plt.plot(x,y,'-^k')
+plt.plot(x, y, '-^k')
 \end{minted}
-
+And with magenta squares joined by a dotted line,
+\begin{minted}{python}
+plt.plot(x, y, 's:m')
+\end{minted}
 
 \switchcolumn
-La figura \ref{fig:tplot} muestra los resultados de las combinaciones de símbolos que acabamos de describir.
-
+La figura \ref{fig:tplot} muestra el resultado de estas cuatro combinaciones.
 \switchcolumn
-Figure \ref{fig:tplot} shows the results of the symbol combinations just described.
+Figure \ref{fig:tplot} shows the result of these four combinations.
 \end{paracol}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\linewidth]{figuras/tipos_plot.png}
-    \bicaption{Ejemplos de dibujos con diferente formato}{Different uses of plot}
+    \includegraphics[width=0.8\linewidth]{figuras/tipos_plot.png}
+    \bicaption{Los mismos datos dibujados con distintos formatos: \texttt{\textquotesingle{}:\textquotesingle{}}, \texttt{\textquotesingle{}.r\textquotesingle{}}, \texttt{\textquotesingle{}-\^{}k\textquotesingle{}} y \texttt{\textquotesingle{}s:m\textquotesingle{}}}{The same data drawn with different formats: \texttt{\textquotesingle{}:\textquotesingle{}}, \texttt{\textquotesingle{}.r\textquotesingle{}}, \texttt{\textquotesingle{}-\^{}k\textquotesingle{}} and \texttt{\textquotesingle{}s:m\textquotesingle{}}}
     \label{fig:tplot}
 \end{figure}
 
 \begin{paracol}{2}
-    \paragraph{Scatter.} También podemos dibujar los puntos $x$, $y$, por separado sin unirlos usando el método \texttt{scatter(x,y)}. 
-    \switchcolumn
-    \paragraph{Scatter.} We can also draw the points $x$, $y$, separately without joining them using the method \texttt{scatter(x,y)}. 
+El formato también puede darse con argumentos con nombre, que son más largos de escribir pero más fáciles de leer y permiten más opciones, como el grosor de la línea o el tamaño de los marcadores. Además, \texttt{color} admite cualquier nombre de color de la documentación (\texttt{\textquotesingle{}orange\textquotesingle{}}, \texttt{\textquotesingle{}tab:blue\textquotesingle{}}…):
+\switchcolumn
+The format can also be given with keyword arguments, which are longer to write but easier to read and allow more options, such as the line width or the marker size. Moreover, \texttt{color} accepts any color name in the documentation (\texttt{\textquotesingle{}orange\textquotesingle{}}, \texttt{\textquotesingle{}tab:blue\textquotesingle{}}…):
+\end{paracol}
+\begin{minted}{python}
+plt.plot(x, y, color='k', marker='^', linestyle='-', linewidth=2, markersize=8)
+\end{minted}
+
+\begin{paracol}{2}
+\paragraph{Varias curvas y leyenda.}\index{Matplotlib!leyenda} Si llamamos varias veces a \texttt{plot}, todas las curvas se dibujan en la misma gráfica, cada una de un color. Para saber cuál es cuál, le damos a cada una un nombre con el argumento \texttt{label} y añadimos una leyenda con \texttt{legend}. Las etiquetas pueden contener fórmulas de \LaTeX\ entre símbolos \$:
+\switchcolumn
+\paragraph{Several curves and a legend.}\index[eng]{Matplotlib!legend} If we call \texttt{plot} several times, all the curves are drawn on the same graph, each in a different color. To tell which is which, we give each one a name with the argument \texttt{label} and add a legend with \texttt{legend}. Labels may contain \LaTeX\ formulas between \$ signs:
+\end{paracol}
+\begin{minted}{python}
+t = np.linspace(0, 2*np.pi, 100)
+plt.figure()
+plt.plot(t, np.sin(t), label=r'$\sin(t)$')
+plt.plot(t, np.cos(t), '--', label=r'$\cos(t)$')
+plt.legend()
+\end{minted}
+
+\begin{paracol}{2}
+\paragraph{Scatter.}\index{Matplotlib!scatter} La función \texttt{scatter(x, y)} dibuja los puntos $(x,y)$ sin unirlos. A diferencia de \texttt{plot(x, y, \textquotesingle{}o\textquotesingle{})}, permite que cada punto tenga su propio tamaño (argumento \texttt{s}) y su propio color (argumento \texttt{c}), lo que sirve para representar una tercera magnitud. Por ejemplo, \texttt{plt.scatter(x, y, c=y)} colorea cada punto según el valor de su coordenada $y$.
+\switchcolumn
+\paragraph{Scatter.}\index[eng]{Matplotlib!scatter} The function \texttt{scatter(x, y)} draws the points $(x,y)$ without joining them. Unlike \texttt{plot(x, y, \textquotesingle{}o\textquotesingle{})}, it allows each point to have its own size (argument \texttt{s}) and its own color (argument \texttt{c}), which is useful to represent a third quantity. For example, \texttt{plt.scatter(x, y, c=y)} colors each point according to its $y$ coordinate.
 \end{paracol}
 
 \begin{paracol}{2}
-\subsection{Trabajar con múltiples figuras}
-Con \texttt{matplotlib.pyplot} se pueden dibujar diferentes gráficas en una misma figura usando el método \texttt{subplot}. Con este método crearemos una figura donde las distintas gráficas estarán dispuestas a modo de tabla. A este método le indicaremos mediante parámetros de entrada el número de filas, el número de columnas y la posición donde se va a dibujar la siguiente gráfica.
+\subsection{Varias gráficas en una figura}\index{Matplotlib!subplot}
+Con la función \texttt{subplot} se pueden dibujar varias gráficas en una misma figura, dispuestas como en una tabla. Le indicamos el número de filas, el número de columnas y la posición en la que se va a dibujar la siguiente gráfica. Las posiciones se numeran desde $1$, por filas, de izquierda a derecha y de arriba abajo.
 
-En el siguiente ejemplo se crean dos gráficas dentro de la misma figura en dos filas y una columna. En la primera se dibuja la gráfica del coseno y en la segunda la del seno. El resultado puede verse en la figura \ref{fig:subplot_01}.
-
-\begin{minted}{python}
-import numpy as np
-import matplotlib.pyplot as plt
-t1 = np.arange(0.0, 5.0, 0.1)
-plt.subplot(2,1,1)
-plt.plot(t1,np.cos(t1),'r.-')
-plt.subplot(2,1,2)
-plt.plot(t1,np.sin(t1),'b.-')
-\end{minted}
-
+En el siguiente ejemplo se crean dos gráficas en una misma figura, en dos filas y una columna. En la primera se dibuja el coseno y en la segunda, el seno. El resultado puede verse en la figura \ref{fig:subplot_01}.
 \switchcolumn
+\subsection{Several graphs in one figure}\index[eng]{Matplotlib!subplot}
+With the function \texttt{subplot} we can draw several graphs in the same figure, arranged as in a table. We give it the number of rows, the number of columns and the position in which the next graph will be drawn. Positions are numbered from $1$, row by row, from left to right and from top to bottom.
 
-\subsection{Working with multiple figures}
-With \texttt{matplotlib.pyplot} you can draw different graphs in the same figure using the \texttt{subplot} method. With this method we will create a figure where the different graphs will be arranged as a table. To this method we will indicate by means of input parameters the number of rows, the number of columns and the position where the next graph is going to be drawn.
-
-In the following example, two graphs are created within the same figure in two rows and one column. In the first one the cosine graph is drawn and in the second one the sine graph is drawn. The result can be seen in figure \ref{fig:subplot_01}.
-
+In the following example, two graphs are created in the same figure, in two rows and one column. The cosine is drawn in the first one and the sine in the second. The result can be seen in figure \ref{fig:subplot_01}.
+\end{paracol}
 \begin{minted}{python}
 import numpy as np
 import matplotlib.pyplot as plt
 t1 = np.arange(0.0, 5.0, 0.1)
-plt.subplot(2,1,1)
-plt.plot(t1,np.cos(t1),'r.-')
-plt.subplot(2,1,2)
-plt.plot(t1,np.sin(t1),'b.-')
+plt.figure()
+plt.subplot(2, 1, 1)
+plt.plot(t1, np.cos(t1), 'r.-')
+plt.subplot(2, 1, 2)
+plt.plot(t1, np.sin(t1), 'b.-')
 \end{minted}
-\end{paracol}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.75\linewidth]{figuras/subplot_01.png}
-    \bicaption{Dos gráficas en una misma figura usando  \texttt{subplot}}{Two graphs in one figure using \texttt{subplot}}
+    \bicaption{Dos gráficas en una misma figura usando \texttt{subplot}}{Two graphs in one figure using \texttt{subplot}}
     \label{fig:subplot_01}
 \end{figure}
 
 \begin{paracol}{2}
-    Se puede añadir texto en cualquier parte del dibujo mediante el método \texttt{text} indicando las coordenadas donde se quiere poner el texto y el texto deseado. También se puede poner un texto como título de la figura, usando \texttt{title}, o etiquetando los ejes con \texttt{xlabel}, \texttt{ylabel}.
+\subsection{Títulos, etiquetas y texto}
+Con \texttt{title} se pone un título a la gráfica y con \texttt{xlabel} e \texttt{ylabel} se etiquetan los ejes. La función \texttt{text} escribe un texto en cualquier punto del dibujo: le indicamos las coordenadas (en las unidades de los ejes) y el texto.
 
-Por ejemplo el siguiente código da lugar a la figura \ref{fig:plot_text}.
-  
+Por ejemplo, el siguiente código da lugar a la figura \ref{fig:plot_text}.
 \switchcolumn
-Text can be added anywhere on the drawing using the \texttt{text} method, indicating the coordinates where the text is to be placed and the desired text. You can also put a text as the title of the figure, using \texttt{title}, or by labelling the axes with \texttt{xlabel}, \texttt{ylabel}.
+\subsection{Titles, labels and text}
+\texttt{title} puts a title on the graph, and \texttt{xlabel} and \texttt{ylabel} label the axes. The function \texttt{text} writes a text anywhere on the drawing: we give it the coordinates (in axis units) and the text.
 
-For example, the following code results in the following figure \ref{fig:plot_text}.
- 
-\end{paracol}
- \begin{minted}{python}
-import numpy as np
-import matplotlib.pyplot as plt
-plt.figure()
-t=np.arange(0.0,5,0.01)
-y=np.exp(-t) * np.cos(2*np.pi*t)
-plt.plot(t,y)
-plt.title("Evolución de un sistema amortiguado")
-plt.xlabel('t(s)')
-plt.ylabel('x(m)')
-plt.text(2.5,0.8,'$x=e^{-t}\cos(2\pi \cdot t)$')
-    \end{minted}
-    
-    \begin{figure}
-    \centering
-    \includegraphics[width=0.75\linewidth]{figuras/plot_text.png}
-    \bicaption{Figura con texto en etiquetas}{Figure with text and labels}
-    \label{fig:plot_text}
-\end{figure}
-\begin{paracol}{2}
-\subsection{Ejes no lineales}
-    \texttt{Matplotlib.pytplot} cuenta con un método para definir la escala de los ejes, son los métodos \texttt{xscale} e \texttt{yscale}. Estos métodos pueden recibir como argumento el tipo de escala del eje, a elegir entre los siguientes:
-    \begin{itemize}
-        \item \texttt{"linear"} para definir una escala lineal
-        \item \texttt{"log"} para definir una escala logarítmica de eje positivo
-        \item \texttt{"symlog"} para definir una escala logarítmica con tramo positivo y negativo centrado en el cero (como los valores del logaritmo en torno al cero tienden a infinito hay una zona en torno al cero donde considera la escala lineal)
-        \item \texttt{"logit"} escala logarítmica entre $0$ y $1$
-    \end{itemize}
-    Tanto \texttt{xscale} como \texttt{yscale} permiten definir la escala mediante una función que le definamos nosotros.
-
-    En el siguiente ejemplo de código puede verse un ejemplo de uso de los métodos \texttt{xscale} e \texttt{yscale} para generar la figura \ref{fig:scale}.  
-    
-    Como se ve en la figura \ref{fig:scale}  las divisiones del eje logarítmico (eje y en la segunda figura y ambos en la tercera) aparecen marcadas como potencias de 10. Como estamos representando empleando el logaritmo decimal de la variable, las divisiones se corresponden con el exponente de la potencia de 10 de cada división, $\log_{10}(10^n)=n$.
-    
-    En segundo lugar hemos empleado un nuevo método: \texttt{grid()}. Este método añade una retícula al gráfico de modo que sea más fácil ver los valores que toman las variables en cada punto de la gráfica. Si se invoca el método \texttt{grid()} sin parámetros cambia la retícula de visible a invisible y viceversa.
-
-
-    \switchcolumn
-    \subsection{Nonlinear axis}
-    \texttt{Matplotlib.pytplot} has a method to define the scale of the axes, these are the methods \texttt{xscale} and \texttt{yscale}. These methods can take as an argument the scale type of the axis, choose from the following:
-    \begin{itemize}
-        \item ‘linear’ to define a linear scale
-        \item \texttt{‘log’} to define a positive-axis logarithmic scale
-        \item \texttt{‘symlog’} to define a logarithmic scale with a positive and negative span centred at zero (as the values of the logarithm around zero tend to infinity there is a zone around zero where the linear scale is considered)
-        \item{‘logit’} logarithmic scale between $0$ and $1$.
-    \end{itemize}
-    Both \texttt{xscale} and \texttt{yscale} allow the scale to be defined by a function that we define.
-
-    The following code example shows an example of using the \texttt{xscale} and \texttt{yscale} methods to generate the \ref{fig:scale} figure.  
-    
-    As can be seen in the figure \ref{fig:scale} the divisions of the logarithmic axis (y-axis in the second figure and both in the third figure) are marked as powers of 10. As we are representing using the decimal logarithm of the variable, the divisions correspond to the exponent of the power of 10 of each division, $\log_{10}(10^n)=n$.
-
-    Secondly, we have employed a new method: \text{grid()}. This method adds a grid to the graph so that it is easier to see the values taken by the variables at each point on the graph. Calling the \texttt{grid()} method without parameters toggles the visibility of the grid.
+For example, the following code produces figure \ref{fig:plot_text}.
 \end{paracol}
 \begin{minted}{python}
 import numpy as np
 import matplotlib.pyplot as plt
-x=np.linspace(0,10,100)
-y=np.exp(x)
+plt.figure()
+t = np.arange(0.0, 5, 0.01)
+y = np.exp(-t) * np.cos(2*np.pi*t)
+plt.plot(t, y)
+plt.title("Evolución de un sistema amortiguado")
+plt.xlabel('t (s)')
+plt.ylabel('x (m)')
+plt.text(2.5, 0.8, r'$x=e^{-t}\cos(2\pi t)$')
+\end{minted}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{figuras/plot_text.png}
+    \bicaption{Figura con título, etiquetas y texto}{Figure with title, labels and text}
+    \label{fig:plot_text}
+\end{figure}
+
+\begin{paracol}{2}
+\textbf{¿Por qué la \texttt{r} delante del texto?} En una cadena normal, la barra invertida \texttt{\textbackslash} sirve para escribir caracteres especiales: \texttt{\textbackslash n} es un salto de línea y \texttt{\textbackslash t}, un tabulador. Sin la \texttt{r}, \texttt{\textquotesingle{}\textbackslash cos\textquotesingle{}} es una secuencia que Python no reconoce (se limita a dar un aviso), y en \texttt{\textquotesingle{}\textbackslash theta\textquotesingle{}} los caracteres \texttt{\textbackslash t} se convierten en un tabulador, sin ningún aviso. Las cadenas \emph{en bruto}, con una \texttt{r} delante, dejan la barra tal cual. Úsalas siempre que escribas fórmulas de \LaTeX.
+
+\paragraph{Guardar la figura.}\index{Matplotlib!savefig} Para usar una figura en un informe, se guarda en un fichero con \texttt{savefig}. El formato se deduce de la extensión: \texttt{.png} para una imagen y \texttt{.pdf} o \texttt{.svg} para una figura vectorial, que no pierde calidad al ampliarla. Con \texttt{dpi} elegimos la resolución de las imágenes:
+\begin{minted}{python}
+plt.savefig('amortiguado.pdf')
+plt.savefig('amortiguado.png', dpi=200)
+\end{minted}
+Si usamos \texttt{plt.show()}, hay que guardar la figura antes.
+\switchcolumn
+\textbf{Why the \texttt{r} before the text?} In an ordinary string, the backslash \texttt{\textbackslash} is used to write special characters: \texttt{\textbackslash n} is a line break and \texttt{\textbackslash t} a tab. Without the \texttt{r}, \texttt{\textquotesingle{}\textbackslash cos\textquotesingle{}} is a sequence that Python does not recognize (it only issues a warning), and in \texttt{\textquotesingle{}\textbackslash theta\textquotesingle{}} the characters \texttt{\textbackslash t} become a tab, without any warning. \emph{Raw} strings, with an \texttt{r} in front, keep the backslash as it is. Always use them when writing \LaTeX\ formulas.
+
+\paragraph{Saving the figure.}\index[eng]{Matplotlib!savefig} To use a figure in a report, we save it to a file with \texttt{savefig}. The format is taken from the extension: \texttt{.png} for an image and \texttt{.pdf} or \texttt{.svg} for a vector figure, which does not lose quality when enlarged. With \texttt{dpi} we choose the resolution of images:
+\begin{minted}{python}
+plt.savefig('amortiguado.pdf')
+plt.savefig('amortiguado.png', dpi=200)
+\end{minted}
+If we use \texttt{plt.show()}, the figure must be saved before it.
+\end{paracol}
+
+\begin{paracol}{2}
+\subsection{Dos formas de trabajar: pyplot y objetos}\label{sec:ax_interface}\index{Matplotlib!interfaz orientada a objetos}
+Hasta ahora hemos usado funciones de \texttt{pyplot}, que actúan sobre la figura y la gráfica actuales. Matplotlib tiene una segunda forma de trabajar: crear la figura y sus gráficas con \texttt{plt.subplots} y guardarlas en variables, y después llamar a los métodos de cada gráfica. La figura \ref{fig:plot_text} se puede hacer también así:
+\switchcolumn
+\subsection{Two ways of working: pyplot and objects}\label{sec:ax_interface-2}\index[eng]{Matplotlib!object-oriented interface}
+So far we have used \texttt{pyplot} functions, which act on the current figure and graph. Matplotlib has a second way of working: create the figure and its graphs with \texttt{plt.subplots} and store them in variables, and then call the methods of each graph. Figure \ref{fig:plot_text} can also be made this way:
+\end{paracol}
+\begin{minted}{python}
+fig, ax = plt.subplots()
+ax.plot(t, y)
+ax.set_title("Evolución de un sistema amortiguado")
+ax.set_xlabel('t (s)')
+ax.set_ylabel('x (m)')
+ax.text(2.5, 0.8, r'$x=e^{-t}\cos(2\pi t)$')
+\end{minted}
+
+\begin{paracol}{2}
+\texttt{fig} es la figura y \texttt{ax}, el área de dibujo (el objeto \texttt{Axes}). Con \texttt{fig, axs = plt.subplots(2, 1)} se crean dos gráficas, \texttt{axs[0]} y \texttt{axs[1]}, y queda claro en cuál dibuja cada instrucción. Por eso esta forma es la recomendada cuando hay varias gráficas o cuando se dibuja dentro de una función. Para una gráfica rápida, \texttt{pyplot} es más cómodo. La mayoría de las funciones tienen el mismo nombre en las dos formas (\texttt{plot}, \texttt{scatter}, \texttt{hist}, \texttt{legend}, \texttt{grid}, \texttt{text}…), pero las que \emph{cambian} una propiedad de la gráfica llevan delante \texttt{set\_} cuando son métodos (tabla \ref{tab:pyplot_ax}).
+
+\textbf{No las mezcles sin darte cuenta.} \texttt{ax.xlabel(\textquotesingle{}t\textquotesingle{})} da un \texttt{AttributeError} (los objetos \texttt{Axes} no tienen \texttt{xlabel}, sino \texttt{set\_xlabel}), y \texttt{plt.set\_xlabel(\textquotesingle{}t\textquotesingle{})} también. Es uno de los errores más frecuentes del código que proponen los asistentes de IA, que mezclan ejemplos escritos de las dos formas.
+\switchcolumn
+\texttt{fig} is the figure and \texttt{ax} the plotting area (the \texttt{Axes} object). With \texttt{fig, axs = plt.subplots(2, 1)} we create two graphs, \texttt{axs[0]} and \texttt{axs[1]}, and it is clear on which one each instruction draws. That is why this is the recommended way when there are several graphs or when drawing inside a function. For a quick graph, \texttt{pyplot} is more convenient. Most functions have the same name in both ways (\texttt{plot}, \texttt{scatter}, \texttt{hist}, \texttt{legend}, \texttt{grid}, \texttt{text}…), but those that \emph{change} a property of the graph get the prefix \texttt{set\_} when they are methods (table \ref{tab:pyplot_ax}).
+
+\textbf{Do not mix them by accident.} \texttt{ax.xlabel(\textquotesingle{}t\textquotesingle{})} raises an \texttt{AttributeError} (\texttt{Axes} objects have no \texttt{xlabel}, but \texttt{set\_xlabel}), and so does \texttt{plt.set\_xlabel(\textquotesingle{}t\textquotesingle{})}. It is one of the most frequent errors in code proposed by AI assistants, which mix examples written in both ways.
+\end{paracol}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}\hline
+\textbf{pyplot} & \textbf{objetos / objects}\\ \hline
+\texttt{plt.title(\textquotesingle{}...\textquotesingle{})} & \texttt{ax.set\_title(\textquotesingle{}...\textquotesingle{})}\\ \hline
+\texttt{plt.xlabel(\textquotesingle{}...\textquotesingle{})}, \texttt{plt.ylabel(\textquotesingle{}...\textquotesingle{})} & \texttt{ax.set\_xlabel(\textquotesingle{}...\textquotesingle{})}, \texttt{ax.set\_ylabel(\textquotesingle{}...\textquotesingle{})}\\ \hline
+\texttt{plt.xlim(a, b)}, \texttt{plt.ylim(a, b)} & \texttt{ax.set\_xlim(a, b)}, \texttt{ax.set\_ylim(a, b)}\\ \hline
+\texttt{plt.xscale(\textquotesingle{}log\textquotesingle{})}, \texttt{plt.yscale(\textquotesingle{}log\textquotesingle{})} & \texttt{ax.set\_xscale(\textquotesingle{}log\textquotesingle{})}, \texttt{ax.set\_yscale(\textquotesingle{}log\textquotesingle{})}\\ \hline
+\texttt{plt.subplot(2, 1, 1)} & \texttt{fig, axs = plt.subplots(2, 1)}; \texttt{axs[0]}\\ \hline
+\end{tabular}
+\bicaption{Equivalencias entre las funciones de pyplot y los métodos de los objetos \texttt{Axes}}{Equivalences between pyplot functions and the methods of \texttt{Axes} objects}
+\label{tab:pyplot_ax}
+\end{table}
+
+\begin{paracol}{2}
+\subsection{Ejes no lineales}\index{Matplotlib!escala logarítmica}
+Las funciones \texttt{xscale} e \texttt{yscale} cambian la escala de los ejes. Reciben como argumento el tipo de escala:
+    \begin{itemize}
+        \item \texttt{\textquotesingle{}linear\textquotesingle{}}: escala lineal (la que se usa por defecto).
+        \item \texttt{\textquotesingle{}log\textquotesingle{}}: escala logarítmica. Solo admite valores positivos; los demás no se dibujan, sin ningún aviso.
+        \item \texttt{\textquotesingle{}symlog\textquotesingle{}}: escala logarítmica para valores positivos y negativos. Como el logaritmo tiende a $-\infty$ cuando su argumento se acerca a cero, en una zona alrededor del cero la escala es lineal.
+        \item \texttt{\textquotesingle{}logit\textquotesingle{}}: para valores $p$ entre $0$ y $1$ (por ejemplo, probabilidades). Representa $\log\frac{p}{1-p}$, que amplía las zonas próximas a $0$ y a $1$.
+    \end{itemize}
+También se puede definir una escala propia mediante una función.
+
+En el siguiente ejemplo se usan \texttt{xscale} e \texttt{yscale} para generar la figura \ref{fig:scale}. Como puede verse, en los ejes logarítmicos (el eje $y$ en la segunda gráfica, y los dos en la tercera) las divisiones son potencias de $10$ igualmente espaciadas: la distancia sobre el eje es proporcional a $\log_{10}$ del valor, y $\log_{10}(10^n)=n$.
+
+También hemos empleado una función nueva, \texttt{grid}, que añade una retícula a la gráfica para que sea más fácil leer los valores de cada punto. Si se llama sin argumentos, la retícula pasa de visible a invisible, o al revés; con \texttt{grid(True)} se hace siempre visible.
+\switchcolumn
+\subsection{Nonlinear axes}\index[eng]{Matplotlib!logarithmic scale}
+The functions \texttt{xscale} and \texttt{yscale} change the scale of the axes. They take the type of scale as an argument:
+    \begin{itemize}
+        \item \texttt{\textquotesingle{}linear\textquotesingle{}}: linear scale (the default).
+        \item \texttt{\textquotesingle{}log\textquotesingle{}}: logarithmic scale. It only accepts positive values; the rest are not drawn, without any warning.
+        \item \texttt{\textquotesingle{}symlog\textquotesingle{}}: logarithmic scale for positive and negative values. As the logarithm tends to $-\infty$ when its argument approaches zero, the scale is linear in a region around zero.
+        \item \texttt{\textquotesingle{}logit\textquotesingle{}}: for values $p$ between $0$ and $1$ (for example, probabilities). It represents $\log\frac{p}{1-p}$, which magnifies the regions close to $0$ and $1$.
+    \end{itemize}
+A custom scale can also be defined by means of a function.
+
+The following example uses \texttt{xscale} and \texttt{yscale} to generate figure \ref{fig:scale}. As can be seen, on the logarithmic axes (the $y$-axis in the second graph, and both axes in the third) the divisions are equally spaced powers of $10$: the distance along the axis is proportional to $\log_{10}$ of the value, and $\log_{10}(10^n)=n$.
+
+We have also used a new function, \texttt{grid}, which adds a grid to the graph so that the values of each point are easier to read. If it is called without arguments, it toggles the grid between visible and invisible; with \texttt{grid(True)} it is always made visible.
+\end{paracol}
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.linspace(0, 10, 100)
+y = np.exp(x)
 plt.figure()
 
-plt.subplot(3,1,1)
-plt.plot(x,y)
+plt.subplot(3, 1, 1)
+plt.plot(x, y)
 plt.grid()
 plt.xlabel("Escala lineal")
 plt.ylabel("Escala lineal")
 plt.title("$y=e^x$")
 
-plt.subplot(3,1,2)  
-plt.plot(x,y)
+plt.subplot(3, 1, 2)
+plt.plot(x, y)
 plt.yscale('log')
 plt.xlabel("Escala lineal")
 plt.ylabel("Escala logarítmica")
 plt.grid()
 
-
-plt.subplot(3,1,3)  
-plt.plot(x,y)
+plt.subplot(3, 1, 3)
+plt.plot(x, y)
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel("Escala logarítmica")
 plt.ylabel("Escala logarítmica")
 plt.grid()
-
 \end{minted}
 
 \begin{figure}[h]
@@ -387,214 +451,208 @@ plt.grid()
     \bicaption{Gráfica de la función $y=e^x$ con ejes en escala lineal y logarítmica}{Graph of the function $y=e^x$ with axes on linear and logarithmic scale}
     \label{fig:scale}
 \end{figure}
+
 \begin{paracol}{2}
-\subsection{Gráfica en coordenadas polares}
-Usando el método \texttt{polar} podemos representar funciones en coordenadas polares. El primer argumento  es un ángulo en radianes y el segundo el correspondiente radio. La figura \ref{fig:sp} muestra la espiral,
+\paragraph{Rectas en escala logarítmica.} La escala logarítmica no sirve solo para que quepan datos muy grandes y muy pequeños. Su uso más importante es reconocer leyes:
+\begin{itemize}
+\item Si $y=Ce^{ax}$, entonces $\log y=\log C+a\,x\log e$: en escala semilogarítmica (solo el eje $y$ logarítmico) la gráfica es una \emph{recta}. Es lo que ocurre en la segunda gráfica de la figura \ref{fig:scale}.
+\item Si $y=Cx^{p}$, entonces $\log y=\log C+p\log x$: en escala log-log (los dos ejes logarítmicos) la gráfica es una recta \emph{cuya pendiente es el exponente} $p$.
+\end{itemize}
+La exponencial no es una recta en escala log-log (tercera gráfica). Las funciones \texttt{semilogy}, \texttt{semilogx} y \texttt{loglog} dibujan directamente con esas escalas. En la sección \ref{sec:graf_verif} usaremos la gráfica log-log para medir cómo disminuye el error de un método numérico.
 
+Fíjate también en que $x=0$ está en los datos, pero no aparece en la tercera gráfica: $\log 0$ no existe y Matplotlib descarta ese punto sin avisar.
+\switchcolumn
+\paragraph{Straight lines on a logarithmic scale.} The logarithmic scale is not only useful to fit very large and very small data in the same graph. Its most important use is to recognize laws:
+\begin{itemize}
+\item If $y=Ce^{ax}$, then $\log y=\log C+a\,x\log e$: on a semi-logarithmic scale (only the $y$-axis logarithmic) the graph is a \emph{straight line}. This is what happens in the second graph of figure \ref{fig:scale}.
+\item If $y=Cx^{p}$, then $\log y=\log C+p\log x$: on a log-log scale (both axes logarithmic) the graph is a straight line \emph{whose slope is the exponent} $p$.
+\end{itemize}
+The exponential is not a straight line on a log-log scale (third graph). The functions \texttt{semilogy}, \texttt{semilogx} and \texttt{loglog} plot directly with those scales. In section \ref{sec:graf_verif} we will use the log-log graph to measure how the error of a numerical method decreases.
+
+Notice also that $x=0$ is in the data but does not appear in the third graph: $\log 0$ does not exist, and Matplotlib discards that point without warning.
+\end{paracol}
+
+\begin{paracol}{2}
+\subsection{Gráficas en coordenadas polares}\index{Matplotlib!coordenadas polares}
+Con la función \texttt{polar} podemos representar funciones en coordenadas polares. El primer argumento es el ángulo, en radianes, y el segundo, el radio correspondiente. La figura \ref{fig:sp} muestra la espiral
 \begin{equation*}
-r=2\cdot\sqrt{\theta}
+r=2\theta
 \end{equation*}
-
-Para el intervalo angular $[0,8\pi]$.
-
- \switchcolumn
-
-\subsection{Polar coordinates graph}
-Using the \texttt{polar} method we can plot functions in polar coordinates. The first argument is an angle in radians and the second the corresponding radius. The figure \ref{fig:sp} shows the spiral,
-
-\begin{equation}
-r=2\cdot\sqrt{\theta}
-\end{equation}
-
-For the angular interval $[0,8\pi]$.
+en el intervalo angular $[0,8\pi]$.
+\switchcolumn
+\subsection{Polar coordinates graphs}\index[eng]{Matplotlib!polar coordinates}
+With the function \texttt{polar} we can plot functions in polar coordinates. The first argument is the angle, in radians, and the second the corresponding radius. Figure \ref{fig:sp} shows the spiral
+\begin{equation*}
+r=2\theta
+\end{equation*}
+in the angular interval $[0,8\pi]$.
 \end{paracol}
 \begin{minted}{python}
 import numpy as np
 import matplotlib.pyplot as plt
 
-theta=np.linspace(0,8*np.pi,100)
-radio=2*theta
+theta = np.linspace(0, 8*np.pi, 100)
+radio = 2*theta
 plt.figure()
-plt.polar(theta,radio,'b.-')
-plt.grid(visible=True)
+plt.polar(theta, radio, 'b.-')
+plt.grid(True)
 plt.title("Espiral en polares")
 \end{minted}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.75\linewidth]{figuras/plt_polar.png}
-    \bicaption{Espiral en coordenadas polares}{Spiral plot using polar coordinates}
+    \includegraphics[width=0.6\linewidth]{figuras/plt_polar.png}
+    \bicaption{Espiral $r=2\theta$ en coordenadas polares}{Spiral $r=2\theta$ in polar coordinates}
     \label{fig:sp}
 \end{figure}
 
 \begin{paracol}{2}
-    \subsection{Otras representaciones gráficas}
-    Con \texttt{matplotlib.pyplot} tenemos más opciones para hacer otro tipo de representaciones gráficas.
+    \subsection{Histogramas}\index{Matplotlib!histograma}
+    Matplotlib tiene muchos otros tipos de gráficas: de barras (\texttt{bar}), de sectores (\texttt{pie}), en escalera (\texttt{step}), de flechas (\texttt{quiver})… Veremos uno más, muy útil para analizar datos.
 
-    \paragraph{hist}. Este método permite dibujar el histograma de una colección de datos. El histograma representa cuántos datos de una colección caen dentro de un intervalo dado. El método \texttt{hist} necesita como parámetro de entrada un vector de datos. Si no se le indica otra cosa los datos se agrupan en $10$ intervalos. Si se quiere cambiar el número de intervalos se puede indicar con el parámetro \texttt{bin}. En el siguiente ejemplo se dibuja el histograma de los datos de coches por cada $1000$ habitantes usando el método \texttt{hist} con el número de intervalos por defecto, con $5$ intervalos y con $10$. Los datos se cargan de un fichero llamado \textit{coches.dat} y la figura \ref{fig:plt_hist} es la figura resultante.
+    La función \texttt{hist} dibuja el histograma de una colección de datos: divide el intervalo que ocupan en subintervalos y representa cuántos datos caen en cada uno. Recibe como argumento un vector de datos. Si no se le indica otra cosa, usa $10$ intervalos; para cambiarlo se usa el argumento \texttt{bins}. En el siguiente ejemplo se dibuja el histograma del número de coches por cada $1000$ habitantes en distintos países, con $10$ intervalos (el valor por defecto), con $5$ y con $20$. Los datos se leen con \texttt{np.loadtxt} (capítulo \ref{ch:intpr}) del fichero \texttt{coches.dat}, que está en la carpeta \texttt{datos}. El resultado es la figura \ref{fig:plt_hist}.
 
+    El número de intervalos cambia mucho el aspecto del histograma: con pocos se pierden detalles, y con demasiados aparecen huecos y picos que se deben solo al azar.
     \switchcolumn
-    \subsection{Other graphical representations}
-    With \texttt{matplotlib.pyplot} we have more options to make other types of graphical representations.
+    \subsection{Histograms}\index[eng]{Matplotlib!histogram}
+    Matplotlib has many other types of graphs: bar charts (\texttt{bar}), pie charts (\texttt{pie}), step plots (\texttt{step}), arrow plots (\texttt{quiver})… We will see one more, which is very useful for analysing data.
 
-    \paragraph{hist}. This method allows you to draw the histogram of a collection of data. The histogram represents how much data in a collection falls within a given interval. The \texttt{hist} method requires a vector of data as input parameter. Unless otherwise specified, the data is grouped into $10$ intervals. If you want to change the number of intervals you can specify it with the parameter \texttt{bin}. In the following example the histogram of the car data per $1000$ inhabitants is drawn using the \texttt{hist} method with the default number of intervals, with $5$ intervals and with $10$ intervals. The data is loaded from a file called \textit{cars.dat} and the resulting figure \ref{fig:plt_hist} is the resulting figure.
+    The function \texttt{hist} draws the histogram of a collection of data: it divides the interval they span into subintervals and represents how many data fall in each one. It takes a vector of data as its argument. Unless told otherwise, it uses $10$ intervals; to change this, we use the argument \texttt{bins}. The following example draws the histogram of the number of cars per $1000$ inhabitants in different countries, with $10$ intervals (the default), with $5$ and with $20$. The data are read with \texttt{np.loadtxt} (chapter \ref{ch:intpr}) from the file \texttt{coches.dat}, which is in the \texttt{datos} folder. The result is figure \ref{fig:plt_hist}.
+
+    The number of intervals changes the look of the histogram a lot: with too few, details are lost, and with too many, gaps and peaks appear that are due only to chance.
 \end{paracol}
 
 \begin{minted}{python}
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Abrir el archivo en modo lectura
-with open('coches.dat', 'r') as file:
-    lineas=file.readlines() 
-    f=len(lineas)
-    n=np.zeros([f])
-    i=0
-    for row in lineas:
-        n[i]=float(row)
-        i+=1
-
+n = np.loadtxt('coches.dat')
 
 plt.figure()
-
-plt.subplot(1,3,1)
+plt.subplot(1, 3, 1)
 plt.hist(n)
-plt.grid(visible=True)
+plt.grid(True)
 plt.title("10 intervalos")
 plt.xlabel("Coches por cada 1000 habitantes")
-plt.ylabel("Número de paises")
-plt.subplot(1,3,2)
+plt.ylabel("Número de países")
+plt.subplot(1, 3, 2)
 plt.hist(n, bins=5)
-plt.grid(visible=True)
+plt.grid(True)
 plt.title("5 intervalos")
 plt.xlabel("Coches por cada 1000 habitantes")
-plt.ylabel("Número de paises")
-plt.subplot(1,3,3)
-plt.hist(n,bins=20)
-plt.grid(visible=True)
+plt.ylabel("Número de países")
+plt.subplot(1, 3, 3)
+plt.hist(n, bins=20)
+plt.grid(True)
 plt.title("20 intervalos")
 plt.xlabel("Coches por cada 1000 habitantes")
-plt.ylabel("Número de paises")
+plt.ylabel("Número de países")
 \end{minted}
 
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{figuras/plt_hist.png}
-    \bicaption{Histogramas del número de automóviles por cada $1000$ habitantes}{}
+    \bicaption{Histogramas del número de automóviles por cada $1000$ habitantes}{Histograms of the number of cars per $1000$ inhabitants}
     \label{fig:plt_hist}
 \end{figure}
 
 \begin{paracol}{2}
 \section{Dibujar en 3D}
-En tres dimensiones es posible representar dos tipos de gráficos: puntos y curvas, análogos a los representados en dos dimensiones y además superficies en el espacio.
+En tres dimensiones podemos representar puntos y curvas, igual que en dos, y además superficies.
 
-\paragraph{subplots} Este método encapsula todo lo necesario para crear una figura y un conjunto de subfiguras contenidas en ella. Podemos indicarle muchos parámetros como el número de filas y de columnas de la rejilla de subfiguras, si se comparten o no los ejes entre ellas etc. También podemos indicar, mediante un diccionario qué tipo de proyección queremos usar en los ejes creados. Concretamente mediante el par clave-valor siguiente estamos indicando que queremos ejes en 3d  \textit{subplot\_kw="projection":"3d"}.
-
+\paragraph{subplots.} Para dibujar en 3D creamos la figura y sus ejes con la función \texttt{subplots} que vimos en la sección \ref{sec:ax_interface}. Admite muchos argumentos: el número de filas y de columnas de la rejilla de gráficas, si comparten o no los ejes, etc. Con el argumento \texttt{subplot\_kw} le pasamos un diccionario con opciones para cada gráfica; en particular, \texttt{subplot\_kw=\{"projection": "3d"\}} indica que queremos ejes en 3D. Esta es su forma completa:
 \switchcolumn
 \section{3D plots}
-In three dimensions it is possible to represent two types of graphics: points and curves, analogous to those represented in two dimensions, and also surfaces in space.
+In three dimensions we can represent points and curves, just as in two, and also surfaces.
 
-\paragraph{subplots} This method encapsulates everything needed to create a figure and a set of subfigures contained in it. We can indicate many parameters such as the number of rows and columns of the grid of subfigures, whether or not the axes are shared between them, etc. We can also indicate, by means of a dictionary, which type of projection we want to use in the axes created. Concretely, by means of the following key-value pair, we are indicating that we want 3d axes \textit{subplot\_kw=‘projection’: ‘3d’}. 
-
-
+\paragraph{subplots.} To draw in 3D we create the figure and its axes with the function \texttt{subplots} we saw in section \ref{sec:ax_interface}. It takes many arguments: the number of rows and columns of the grid of graphs, whether or not they share axes, etc. With the argument \texttt{subplot\_kw} we pass it a dictionary with options for each graph; in particular, \texttt{subplot\_kw=\{"projection": "3d"\}} indicates that we want 3D axes. This is its complete form:
 \end{paracol}
 
 \begin{minted}{python}
-    matplotlib.pyplot.subplots(nrows=1, ncols=1, *, sharex=False,
-    sharey=False, squeeze=True, width_ratios=None, height_ratios=None, 
+matplotlib.pyplot.subplots(nrows=1, ncols=1, *, sharex=False,
+    sharey=False, squeeze=True, width_ratios=None, height_ratios=None,
     subplot_kw=None, gridspec_kw=None, **fig_kw)
 \end{minted}
 \begin{paracol}{2}
-
-Por ejemplo, podemos representar la curva,
+Por ejemplo, podemos representar la curva
 \begin{align*}
 y&=\sin(2\pi x)\\
 z&=\cos(2\pi x)
 \end{align*}
-
-Para ello, seleccionamos un intervalo de valores para $x \in (0,2)$, y calculamos los correspondientes valores de $y$ y $z$. Los representamos usando el método \textit{scatter}, figura \ref{fig:3dscatter}.
-
+Para ello, tomamos valores de $x$ en el intervalo $[0,2]$ y calculamos los correspondientes valores de $y$ y $z$. Los representamos con el método \texttt{scatter} (figura \ref{fig:3dscatter}). Con \texttt{ax.plot(x, y, z)} se dibujaría la curva como una línea continua.
 \switchcolumn
-For example, we can represent the curve,
+For example, we can represent the curve
 \begin{align*}
 y&=\sin(2\pi x)\\
 z&=\cos(2\pi x)
 \end{align*}
-
-To do this, we select an interval of values for $x \in (0,2)$, and calculate the corresponding values of $y$ and $z$. Then, we plot them using the \textit{scatter} method, Figure \ref{fig:3dscatter}.
-
+To do this, we take values of $x$ in the interval $[0,2]$ and calculate the corresponding values of $y$ and $z$. We plot them with the method \texttt{scatter} (figure \ref{fig:3dscatter}). With \texttt{ax.plot(x, y, z)} the curve would be drawn as a continuous line.
 \end{paracol}
 
 \begin{minted}{python}
 import matplotlib.pyplot as plt
 import numpy as np
 
-x=np.linspace(0,2,100)
-y=np.sin(2*np.pi*x)
-z=np.cos(2*np.pi*x)
+x = np.linspace(0, 2, 100)
+y = np.sin(2*np.pi*x)
+z = np.cos(2*np.pi*x)
 
-fig,ax=plt.subplots(subplot_kw={"projection": "3d"})
-ax.scatter(x,y,z)  
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+ax.scatter(x, y, z)
 \end{minted}
-
 
 \begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{figuras/scatter3d.png}
-    \bicaption{Representación en 3 dimensiones usando \textit{scatter}}{3D plot using \textit{scatter}}
+    \bicaption{Representación en 3 dimensiones usando \texttt{scatter}}{3D plot using \texttt{scatter}}
     \label{fig:3dscatter}
 \end{figure}
 \begin{paracol}{2}
-\subsection{Superficies}
-Para dibujar una superficie emplearemos el método \textit{plot\_surface}. Igual que en el caso del método \textit{scatter} tendremos que crear previamente una figura y unos ejes en 3 dimensiones usando \textit{subplots} e indicando que se trata de una proyección en 3D.
+\subsection{Superficies}\index{Matplotlib!superficies}
+Para dibujar una superficie $z=f(x,y)$ hay que generar una rejilla de puntos $(x,y)$ en el plano y calcular el valor de $z$ en cada uno. Igual que con \texttt{scatter}, primero creamos una figura con ejes en 3D usando \texttt{subplots}.
 
-Para dibujar una superficie con \textit{plot\_surface} hay que generar una rejilla $(X_m,Y_m)$ y en cada uno de los puntos de esa rejilla calcular el valor de la superficie.
+Para definir la rejilla, o retícula, se necesitan dos matrices del mismo tamaño, que llamaremos \emph{matrices de coordenadas}: $X_m$ contiene las coordenadas $x$ de los nodos de la retícula, e $Y_m$, las coordenadas $y$. Los elementos que ocupan la misma posición en ambas matrices representan, juntos, un punto del plano.
 
-Para definir dicha retícula  se necesitan dos matrices. Una de ellas $X_m$ contiene las coordenadas $x$ de los nodos de la retícula y la otra $Y_m$ las coordenadas $y$. Los elementos que ocupan la misma posición en ambas matrices, representan ---juntos--- un punto en el plano.
+Matplotlib une cada nodo con los que ocupan posiciones contiguas en las matrices. El nodo
+$$(x_m(i,j),y_m(i,j))$$
+aparecerá en la gráfica unido por una arista a cada uno de sus cuatro vecinos,
+$$(x_m(i-1,j),y_m(i-1,j)),$$
+$$(x_m(i,j-1),y_m(i,j-1)),$$
+$$(x_m(i+1,j),y_m(i+1,j)),$$
+$$(x_m(i,j+1),y_m(i,j+1)).$$
 
-Matplotlib emplea dichas matrices como matrices de \emph{adyacencia}. Cada nodo, 
-$$(x_m(i,j),y_m(i,j))$$ 
-aparecerá en la gráfica conectado por una arista a cada uno de sus cuatro puntos vecinos, 
-$$(x_m(i-1,j),y_m(i-1,j))$$, 
-$$(x_m(i,j-1),y_m(i,j-1))$$, 
-$$(x_m(i+1,j),y_m(i+1,j))$$, 
-$$(x_m(i,j+1),y_m(i,j+1))$$
-
-Supongamos que empleamos las siguientes matrices, $X_m$ y $Y_m$ para definir una retícula sobre la que dibujar una superficie,
-
+Supongamos que usamos las siguientes matrices $X_m$ e $Y_m$ para definir una retícula sobre la que dibujar una superficie:
 \switchcolumn
-\subsection{Surfaces}
-To draw a surface we will use the \textit{plot\-surface} method. As in the case of the \textit{scatter} method, we will have to previously create a figure and axes in 3 dimensions using \textit{subplots} and indicating that it is a 3D projection.
+\subsection{Surfaces}\index[eng]{Matplotlib!surfaces}
+To draw a surface $z=f(x,y)$, we must generate a grid of points $(x,y)$ in the plane and calculate the value of $z$ at each of them. As with \texttt{scatter}, we first create a figure with 3D axes using \texttt{subplots}.
 
-In order to draw a surface with \textit{plot\_surface} we must generate a grid $(X_m,Y_m)$ and at each of the points of this grid calculate the value of the surface.
+To define the grid, or mesh, we need two matrices of the same size, which we will call \emph{coordinate matrices}: $X_m$ contains the $x$ coordinates of the grid nodes, and $Y_m$ the $y$ coordinates. Elements occupying the same position in both matrices represent, together, a point in the plane.
 
-To define such a grid, two matrices are needed. One of them $X_m$ contains the $x$ coordinates of the grid nodes and the other $Y_m$ the $y$ coordinates. Elements occupying the same position in both matrices represent - together - a point in the plane.
+Matplotlib joins each node to those in adjacent positions of the matrices. The node
+$$(x_m(i,j),y_m(i,j))$$
+will appear in the graph joined by an edge to each of its four neighbors,
+$$(x_m(i-1,j),y_m(i-1,j)),$$
+$$(x_m(i,j-1),y_m(i,j-1)),$$
+$$(x_m(i+1,j),y_m(i+1,j)),$$
+$$(x_m(i,j+1),y_m(i,j+1)).$$
 
-Matplotlib uses these matrices as adjacency matrices. Each node, $$(x_m(i,j),y_m(i,j))$$,  
-will appear in the graph connected by an edge to each of its four neighbouring points, 
-$$(x_m(i-1,j),y_m(i-1,j))$$, 
-$$(x_m(i,j-1),y_m(i,j-1))$$, 
-$$(x_m(i+1,j),y_m(i+1,j))$$, 
-$$(x_m(i,j+1),y_m(i,j+1))$$
-
-Suppose we use the following matrices, $X_m$ and $Y_m$ to define a lattice on which to draw a surface,$z$.
-
+Suppose we use the following matrices $X_m$ and $Y_m$ to define a grid on which to draw a surface:
 \end{paracol}
 
 \begin{align*}
 X_m=\begin{pmatrix}
-0&1&2&3\\ 
+0&1&2&3\\
 0&1&2&3\\
 0&1&2&3\\
 0&1&2&3
-\end{pmatrix},& Y_m\begin{pmatrix}
+\end{pmatrix},\ Y_m=\begin{pmatrix}
 0&0&0&0\\
 1&1&1&1\\
 2&2&2&2\\
 3&3&3&3
-\end{pmatrix}\xrightarrow[nodos]{posiciones}\begin{matrix}
+\end{pmatrix}\xrightarrow[\text{nodes}]{\text{nodos}}\begin{matrix}
 (0,0)&-&(1,0)&-&(2,0)&-&(3,0)\\
-\vert&&\vert&&\vert&&\vert\\ 
+\vert&&\vert&&\vert&&\vert\\
 (0,1)&-&(1,1)&-&(2,1)&-&(3,1)\\
 \vert&&\vert&&\vert&&\vert\\
 (0,2)&-&(1,2)&-&(2,2)&-&(3,2)\\
@@ -603,121 +661,72 @@ X_m=\begin{pmatrix}
 \end{matrix}
 \end{align*}
 
-
-
 \begin{paracol}{2}
-La estructura de las matrices $X_m$ e $Y_m$ del ejemplo anterior, es la típica de las matrices de adyacencia de una retícula cuadrada; la matriz  $X_m$ tiene la filas repetidas y la matriz $Y_m$ tiene repetidas la columnas. En el ejemplo las matrices son cuadradas y definen una retícula de $4\times 4$ nodos. En general, podemos definir una retícula rectangular de $m\times n$ nodos. En este caso las matrices empleadas para definir la retícula tendrían dimensión $m\times n$.
+La estructura de las matrices $X_m$ e $Y_m$ del ejemplo es la típica de una retícula rectangular: todas las filas de $X_m$ son iguales, y también todas las columnas de $Y_m$. En el ejemplo las matrices son cuadradas y definen una retícula de $4\times 4$ nodos, pero en general la retícula puede tener $m\times n$ nodos, y entonces las dos matrices tendrán dimensión $m\times n$.
 
-Para dibujar con Matplotlib superficies podemos en primer lugar definir la retícula a partir de dos vectores de coordenadas empleando el método de numpy \texttt{meshgrid}. En el ejemplo que acabamos de ver, hemos empleado una retícula que cubre el intervalo, $x\in[0,3]$ e $y\in[0,3]$. para definirlo creamos los vectores,
-\begin{minted}{python}
-x=np.arange(0,4)
-
-x
-Out[23]: array([0, 1, 2, 3])
-
-y=np.arange(0,4)
-
-y
-Out[25]: array([0, 1, 2, 3])
-\end{minted}
+La función \texttt{meshgrid}\index{Numpy!meshgrid} de Numpy construye las matrices de coordenadas a partir de dos vectores: uno con los valores de $x$ y otro con los de $y$. En el ejemplo anterior, la retícula cubre la región $x\in[0,3]$, $y\in[0,3]$, con nodos separados una unidad. Para definirla, creamos los vectores
 \switchcolumn
-The structure of the $X_m$ and $Y_m$ matrices in the previous example is typical of the adjacency matrices of a square lattice; the $X_m$ matrix has repeated rows and the $Y_m$ matrix has repeated columns. In the example the matrices are square and define a lattice of $4\times 4$ nodes. In general, we can define a rectangular lattice of $times n$ nodes. In this case the matrices used to define the lattice would have dimension $m\times n$.
+The structure of the matrices $X_m$ and $Y_m$ in the example is typical of a rectangular grid: all the rows of $X_m$ are equal, and so are all the columns of $Y_m$. In the example the matrices are square and define a grid of $4\times 4$ nodes, but in general the grid may have $m\times n$ nodes, and then both matrices will have dimension $m\times n$.
 
-To draw with Matplotlib surfaces we can first define the grid from two coordinate vectors using the numpy method \texttt{meshgrid}. In the example we have just seen, we have used a grid covering the interval, $x\in[0,3]$ and $y\in[0,3]$. To define it we create the vectors,
-\begin{minted}{python}
-x=np.arange(0,4)
-
-x
-Out[23]: array([0, 1, 2, 3])
-
-y=np.arange(0,4)
-
-y
-Out[25]: array([0, 1, 2, 3])
-\end{minted}
-\switchcolumn
-A continuación empleamos el método \texttt{meshgrid} para construir las dos matrices de adyacencia. Numpy se encargará de repetir las filas y columnas necesarias,
-
-
-\begin{minted}{python}
-    [Xm,Ym]=np.meshgrid(x,y)
-Xm
-Out[20]: 
-array([[0, 1, 2, 3],
-       [0, 1, 2, 3],
-       [0, 1, 2, 3],
-       [0, 1, 2, 3]])
-
-Ym
-Out[21]: 
-array([[0, 0, 0, 0],
-       [1, 1, 1, 1],
-       [2, 2, 2, 2],
-       [3, 3, 3, 3]])
-\end{minted}
-
-
-\switchcolumn
-
-Next, we use the method \texttt{meshgrid} to construct the two adjacency matrices. Numpy will take care of repeating the necessary rows and columns,
-
-
-\begin{minted}{python}
-    [Xm,Ym]=np.meshgrid(x,y)
-Xm
-Out[20]: 
-array([[0, 1, 2, 3],
-       [0, 1, 2, 3],
-       [0, 1, 2, 3],
-       [0, 1, 2, 3]])
-
-Ym
-Out[21]: 
-array([[0, 0, 0, 0],
-       [1, 1, 1, 1],
-       [2, 2, 2, 2],
-       [3, 3, 3, 3]])
-\end{minted}
-
-\switchcolumn    
-Una vez construidas las matrices de adyacencia, solo necesitamos una matriz de valores para $Z_m$. Si definimos por ejemplo,
-
-
-\begin{minted}{python}
-    Zm=np.zeros(np.shape(Xm))
-
-Zm
-Out[35]: 
-array([[0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.]])
-\end{minted}
-
-\switchcolumn
-Once the adjacency matrices are constructed, we only need a matrix of values for $Z_m$. If we define for example,
-
-\begin{minted}{python}
-    Zm=np.zeros(np.shape(Xm))
-
-Zm
-Out[35]: 
-array([[0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.]])
-\end{minted}
-
-\switchcolumn
-Podríamos representar la retícula plana de la figura \ref{fig:mesh}, empleando por ejemplo el comando,
-
-\switchcolumn
-We could represent the flat grid of the figure \ref{fig:mesh}, using the command,
-
+Numpy's function \texttt{meshgrid}\index[eng]{Numpy!meshgrid} builds the coordinate matrices from two vectors: one with the values of $x$ and another with those of $y$. In the previous example, the grid covers the region $x\in[0,3]$, $y\in[0,3]$, with nodes one unit apart. To define it, we create the vectors
 \end{paracol}
 \begin{minted}{python}
-Out[24]: fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
-Out[25]: ax.plot_wireframe(Xm, Ym, Zm)
+In [1]: x = np.arange(0, 4)
+
+In [2]: x
+Out[2]: array([0, 1, 2, 3])
+
+In [3]: y = np.arange(0, 4)
+
+In [4]: y
+Out[4]: array([0, 1, 2, 3])
+\end{minted}
+\begin{paracol}{2}
+A continuación, usamos \texttt{meshgrid} para construir las dos matrices de coordenadas. Numpy se encarga de repetir las filas y columnas necesarias:
+\switchcolumn
+Next, we use \texttt{meshgrid} to build the two coordinate matrices. Numpy takes care of repeating the necessary rows and columns:
+\end{paracol}
+\begin{minted}{python}
+In [5]: Xm, Ym = np.meshgrid(x, y)
+
+In [6]: Xm
+Out[6]:
+array([[0, 1, 2, 3],
+       [0, 1, 2, 3],
+       [0, 1, 2, 3],
+       [0, 1, 2, 3]])
+
+In [7]: Ym
+Out[7]:
+array([[0, 0, 0, 0],
+       [1, 1, 1, 1],
+       [2, 2, 2, 2],
+       [3, 3, 3, 3]])
+\end{minted}
+\begin{paracol}{2}
+Una vez construidas las matrices de coordenadas, solo necesitamos una matriz $Z_m$, del mismo tamaño, con los valores de $z$. Si definimos, por ejemplo,
+\switchcolumn
+Once the coordinate matrices are built, we only need a matrix $Z_m$, of the same size, with the values of $z$. If we define, for example,
+\end{paracol}
+\begin{minted}{python}
+In [8]: Zm = np.zeros(np.shape(Xm))
+
+In [9]: Zm
+Out[9]:
+array([[0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.]])
+\end{minted}
+\begin{paracol}{2}
+podemos representar la retícula plana de la figura \ref{fig:mesh} con las instrucciones
+\switchcolumn
+we can represent the flat grid of figure \ref{fig:mesh} with the instructions
+\end{paracol}
+\begin{minted}{python}
+In [10]: fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+
+In [11]: ax.plot_wireframe(Xm, Ym, Zm)
 \end{minted}
 
 \begin{figure}
@@ -727,308 +736,558 @@ Out[25]: ax.plot_wireframe(Xm, Ym, Zm)
     \label{fig:mesh}
 \end{figure}
 
-\begin{paracol} {2}
-Una vez que hemos visto como construir una retícula rectangular sobre la que construir una superficie, veamos como dibujarla con un ejemplo. Supongamos que queremos dibujar la superficie,
-\begin{equation*}
-z=x^3+y^2
-\end{equation*}
-
-En la región del plano, $x\in[-1.5,1.5]$, $y\in[-2,2]$. 
-\switchcolumn
-Now that we have seen how to construct a rectangular grid on which to build a surface, let's see how to draw it with an example. Suppose we want to draw the surface,
-\begin{equation*}
-z=x^3+y^2
-\end{equation*}
-
-In the region of the plane, $x\in[-1.5,1.5]$, $y\in[-2,2]$. 
-\switchcolumn
-Igual que en el ejemplo inicial, lo primero que debemos hacer es construirnos una matrices de adyacencia que definan una retícula en la región de interés,
-
-\begin{minted}{python}
-x=np.linspace(-1.5,1.5,25)
-y=np.linspace(-2,2,50)
-[Xm,Ym]=np.meshgrid(x,y)
-\end{minted}
-
-\switchcolumn
-As in the initial example, the first thing to do is to construct adjacency matrices that define a grid in the region of interest,
-
-\begin{minted}{python}
-x=np.linspace(-1.5,1.5,25)
-y=np.linspace(-2,2,50)
-[Xm,Ym]=np.meshgrid(x,y)
-\end{minted}
-
-\switchcolumn
-
-Es interesante notar que la región de interés no es cuadrada y que las matrices de adyacencia tampoco los son ($50\times 25$). Además los puntos no están espaciados igual en los dos ejes.
-
-A continuación obtenemos la matriz de coordenadas z, aplicando la función a los puntos de la retícula,
-
-\begin{minted}{python}
-Zm=Xm**3+Ym**2
-\end{minted}
-
-\switchcolumn
-It is interesting to note that the region of interest is not square and that the adjacency matrices are not square either ($50\times 25$). Also the points are not equally spaced on the two axes.
-
-Next we obtain the z-coordinate matrix by applying the function to the grid points,
-
-\begin{minted}{python}
-Zm=Xm**3+Ym**2
-\end{minted}
-\switchcolumn
-Podemos representar la superficie usando el método \textit{wireframe} o el método \textit{surface}. En el primer caso se dibuja la superficie como una rejilla, figura \ref{fig:wireframe} y en el segundo como las caras rellenas de color de la retícula, figura \ref{fig:surface}.
-\switchcolumn
-We can represent the surface using the \textit{wireframe} method or the \textit{surface} method. In the first case the surface is drawn as a grid, figure \ref{fig:wireframe}, and in the second as the colour-filled faces of the grid, figure \ref{fig:surface}.
-\end{paracol}
-
-\begin{minted}{python}
-	Out[26]: fig, ax = plt.subplots(1,2,subplot_kw={"projection": "3d"})
-	Out[27]: ax[0].plot_wireframe(Xm, Ym, Zm)
-	Out[28]: ax[1].plot_surface(Xm, Ym, Zm)
-\end{minted}
-
-
 \begin{paracol}{2}
-Igualmente podemos representar una superficie con un mapa de color o de contornos en 2 dimensiones usando el el método \textit{contourf} o el método \textit{pcolor}. En este caso no se emplea \textit{subplot\_kw="projection": "3d"} porque no hace falta dibujar en el eje z, ya que se le atribuye un contorno o un color.
+Una vez que hemos visto cómo construir la retícula, veamos cómo dibujar una superficie con un ejemplo. Supongamos que queremos dibujar la superficie
+\begin{equation*}
+z=x^3+y^2
+\end{equation*}
+en la región del plano $x\in[-1.5,1.5]$, $y\in[-2,2]$.
+
+Igual que en el ejemplo inicial, lo primero es construir las matrices de coordenadas que definen una retícula en esa región:
 \switchcolumn
-We can also represent a surface with a color or contour map in 2 dimensions using the \textit{contourf} method or the \textit{pcolor} method. In this case, \textit{subplot\_kw=“projection”: “3d”} is not used because it is not necessary to draw on the z-axis, since a contour or a colour is assigned to it.
+Now that we have seen how to build the grid, let us see how to draw a surface with an example. Suppose we want to draw the surface
+\begin{equation*}
+z=x^3+y^2
+\end{equation*}
+in the region of the plane $x\in[-1.5,1.5]$, $y\in[-2,2]$.
+
+As in the initial example, the first thing to do is to build the coordinate matrices that define a grid in that region:
 \end{paracol}
-
-
 \begin{minted}{python}
-	import numpy as np
-	import matplotlib.pyplot as plt
-	
-	x=np.linspace(1,100,1000)
-	y=np.linspace(1,100,1000)
-	[X,Y]=np.meshgrid(x,y)
-	Zm=X**2+Y**2
-	fig,(ax1,ax2)=plt.subplots(nrows=1,ncols=2,figsize=(15,10))
-	ax2.contourf(X,Y,Zm)
-	ax1.contour(X, Y, Zm)
+x = np.linspace(-1.5, 1.5, 25)
+y = np.linspace(-2, 2, 50)
+Xm, Ym = np.meshgrid(x, y)
 \end{minted}
+\begin{paracol}{2}
+Ahora la región no es cuadrada, y los puntos no están igual de espaciados en los dos ejes. Las matrices de coordenadas tampoco son cuadradas: \texttt{Xm.shape} es \texttt{(50, 25)}. \textbf{Atención al orden}: \texttt{meshgrid(x, y)} produce matrices con tantas \emph{filas} como elementos tiene \texttt{y} y tantas \emph{columnas} como elementos tiene \texttt{x}. Es decir, el elemento \texttt{Zm[i, j]} corresponde al punto \texttt{(x[j], y[i])}, y no al \texttt{(x[i], y[j])}. Si en lugar de usar \texttt{meshgrid} rellenamos la matriz $Z_m$ con dos bucles, es muy fácil equivocarse (ejercicio \ref{ej:mesh_cual}).
+
+A continuación, obtenemos la matriz de coordenadas $z$ aplicando la función a los puntos de la retícula:
+\switchcolumn
+Now the region is not square, and the points are not equally spaced on the two axes. The coordinate matrices are not square either: \texttt{Xm.shape} is \texttt{(50, 25)}. \textbf{Watch the order}: \texttt{meshgrid(x, y)} produces matrices with as many \emph{rows} as elements in \texttt{y} and as many \emph{columns} as elements in \texttt{x}. That is, the element \texttt{Zm[i, j]} corresponds to the point \texttt{(x[j], y[i])}, not to \texttt{(x[i], y[j])}. If we fill the matrix $Z_m$ with two loops instead of using \texttt{meshgrid}, it is very easy to get it wrong (exercise \ref{ej:mesh_cual-en}).
+
+Next, we obtain the $z$ coordinate matrix by applying the function to the grid points:
+\end{paracol}
+\begin{minted}{python}
+Zm = Xm**3 + Ym**2
+\end{minted}
+\begin{paracol}{2}
+Podemos representar la superficie con el método \texttt{plot\_wireframe} o con el método \texttt{plot\_surface}. El primero dibuja la superficie como una rejilla (figura \ref{fig:wireframe}) y el segundo, con las caras de la retícula rellenas de color (figura \ref{fig:surface}).
+\switchcolumn
+We can represent the surface with the method \texttt{plot\_wireframe} or with the method \texttt{plot\_surface}. The first draws the surface as a mesh (figure \ref{fig:wireframe}) and the second with the faces of the grid filled with color (figure \ref{fig:surface}).
+\end{paracol}
+\begin{minted}{python}
+fig, ax = plt.subplots(1, 2, subplot_kw={"projection": "3d"})
+ax[0].plot_wireframe(Xm, Ym, Zm)
+ax[1].plot_surface(Xm, Ym, Zm)
+\end{minted}
+
 \begin{figure}
 \centering
 \begin{subfigure}{0.45\textwidth}
-	\includegraphics[width=8cm]{figuras/wireframe.png}
-	\bicaption{Función $z=x^3+y^2$ representada con \texttt{wireframe}}{Function $z=x^3+y^2$ represented with \texttt{wireframe}}\label{fig:wireframe}
-\end{subfigure} 
-\begin{subfigure}{0.45\textwidth}
-	\includegraphics[width=8cm]{figuras/surface.png}
-	\bicaption{Función $z=x^3+y^2$ representada con \texttt{surf}}{Function $z=x^3+y^2$ represented with \texttt{surf}} \label{fig:surface}
+	\centering
+	\includegraphics[width=\linewidth]{figuras/wireframe.png}
+	\bicaption{Función $z=x^3+y^2$ representada con \texttt{plot\_wireframe}}{Function $z=x^3+y^2$ represented with \texttt{plot\_wireframe}}\label{fig:wireframe}
 \end{subfigure}
-\bicaption{Comparación entre \texttt{wireframe} y \texttt{surface}}{Comparison between \texttt{wireframe} and \texttt{surface}}
+\begin{subfigure}{0.45\textwidth}
+	\centering
+	\includegraphics[width=\linewidth]{figuras/surface.png}
+	\bicaption{Función $z=x^3+y^2$ representada con \texttt{plot\_surface}}{Function $z=x^3+y^2$ represented with \texttt{plot\_surface}}\label{fig:surface}
+\end{subfigure}
+\bicaption{Comparación entre \texttt{plot\_wireframe} y \texttt{plot\_surface}}{Comparison between \texttt{plot\_wireframe} and \texttt{plot\_surface}}
 \end{figure}
 
 \begin{paracol}{2}
-\section{Animaciones}
-Matplotlib también proporciona una interfaz para generar animaciones utilizando el módulo \textit{animation}. Una animación es una secuencia de fotogramas en la que cada fotograma corresponde a un trazado sobre una figura.
+\paragraph{Curvas de nivel y mapas de color.}\index{Matplotlib!curvas de nivel} Una superficie también se puede representar en dos dimensiones. El método \texttt{contour} dibuja sus curvas de nivel, \texttt{contourf} rellena de color el espacio entre ellas y \texttt{pcolormesh} colorea cada celda de la retícula según el valor de $z$. Aquí no hace falta \texttt{subplot\_kw=\{"projection": "3d"\}}, porque el valor de $z$ no se dibuja sobre un tercer eje, sino que se representa con una curva o un color.
 
-    \switchcolumn
-    \section{Animations}
-    Based on its plotting functionality, Matplotlib also provides an interface to generate animations using the \textit{animation} module. An animation is a sequence of frames where each frame corresponds to a plot on a figure.
-
-    \switchcolumn
-    Para crear una animación en python usando \textit{matplotlib.animation} seguiremos los siguientes pasos:
-    \begin{enumerate}
-        \item Inicializar los meta datos para la animación.
-        \item Inicializar el fondo de la animación.
-        \item Definir los objetos que van a ir cambiando en cada fotograma.   
-    \end{enumerate}
-
-    \switchcolumn
-
-      To create an animation in python using \textit{matplotlib.animation} we will follow the following steps:
-    \begin{enumerate}
-        \item Initialise the meta data for the animation.
-         \item Initialise the background of the animation.
-        \item Define the objects that are going to change in each frame. 
-    \end{enumerate}
-
+En un mapa de color hay que añadir siempre una \textbf{barra de color} (\texttt{colorbar}): sin ella no hay forma de saber qué valor corresponde a cada color. En las curvas de nivel, \texttt{clabel} escribe el valor sobre cada curva. El resultado del código siguiente, con la misma superficie de antes, está en la figura \ref{fig:contour}.
 \switchcolumn
-\paragraph{Inicializar los metadatos}. Inicializar los meta datos para la animación creando un diccionario con ellos y pasándoselos al método que va a crear la animación \textit{writers}. Le indicamos tanto los metadatos como el número de frames por segundo con el parámetro \texttt{fps}.
-\switchcolumn
-\paragraph{Initialize the meta data.} Initialise the meta data for the animation by creating a dictionary of it and passing it to the method that will create the animation \textit{writers}.We indicate both the metadata and the number of frames per second with the parameter \texttt{fps}.
-\end{paracol}
-        \begin{minted}{python}
-            FFMpegWriter=manimation.writers["ffmpeg"]
-            metadata = dict(title="GIF Test", artist ="Me", 
-            comment="A red circle following a blue sine wave")
-            writer = FFMpegWriter(fps=15, metadata=metadata)
-        \end{minted}
-\begin{paracol}{2}
-    \paragraph{Inicializar el fondo de la animación}, es decir aquellos elementos que no van a cambiar. Lo haremos definiendo una figura y todo aquello que va a permanecer constante durante la animación, por eso lo llamamos el fondo. En este caso es la curva del seno. También inicializamos el punto vacío rojo, al que le damos unas coordenadas vacías, para que Python sepa que esas coordenadas se actualizarán posteriormente. Como las etiquetas no cambian también las ponemos aquí.
-    
-    \switchcolumn
-    
-    \paragraph{Initialise the background of the animation},  i.e. those elements that are not going to change. We will do this by defining a figure and everything that will remain constant during the animation, which is why we call it the background. In this case it is the sine curve. We also initialise the red empty point, to which we give empty coordinates, so that Python knows that these coordinates will be updated later. Since the labels don't change, we also put them here.
-\end{paracol}
+\paragraph{Contour lines and color maps.}\index[eng]{Matplotlib!contour lines} A surface can also be represented in two dimensions. The method \texttt{contour} draws its contour lines, \texttt{contourf} fills the space between them with color, and \texttt{pcolormesh} colors each cell of the grid according to the value of $z$. We do not need \texttt{subplot\_kw=\{"projection": "3d"\}} here, because the value of $z$ is not drawn on a third axis, but represented by a line or a color.
 
+A color map must always have a \textbf{color bar} (\texttt{colorbar}): without it there is no way of knowing which value corresponds to each color. In contour plots, \texttt{clabel} writes the value on each line. The result of the following code, with the same surface as before, is in figure \ref{fig:contour}.
+\end{paracol}
 \begin{minted}{python}
-            fig =plt.figure()
-            n=1000
-            x=np.linspace(0, 6*np.pi,n)
-            y=np.sin(x)
-            sine_line, =plt.plot(x,y,"b")
-            red_circle,=plt.plot([],[],"ro",markersize=10)
-            plt.xlabel("x")
-            plt.ylabel("sin(x)")
-            
-        \end{minted}
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9, 4), layout='constrained')
+curvas = ax1.contour(Xm, Ym, Zm, levels=15)
+ax1.clabel(curvas, fontsize=7)
+ax1.set_title('contour')
+mapa = ax2.contourf(Xm, Ym, Zm, levels=15)
+fig.colorbar(mapa, ax=ax2, label='z')
+ax2.set_title('contourf')
+for ax in (ax1, ax2):
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+\end{minted}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figuras/plt_contour.png}
+    \bicaption{Función $z=x^3+y^2$ representada con curvas de nivel (\texttt{contour}) y con un mapa de color con su barra (\texttt{contourf} y \texttt{colorbar})}{Function $z=x^3+y^2$ represented with contour lines (\texttt{contour}) and with a color map and its color bar (\texttt{contourf} and \texttt{colorbar})}
+    \label{fig:contour}
+\end{figure}
 
 \begin{paracol}{2}
-    \paragraph{Definir los objetos que van a ir cambiando en cada fotograma}. Salvaremos un fichero, indicando qué figura vamos a salvar, el nombre del fichero (\texttt{movie\_test.mpg}) y la resolución de la figura en puntos por pulgada (dpi). En el bucle \textit{for} se actualiza repetidamente la figura para crear el movimiento, en cada iteración se actualiza la posición del punto rojo (usando \texttt{set\_data}). El método \texttt{grab\_frame} captura estos cambios y los muestra con los frames por segundo especificados anteriormente.
-      \switchcolumn
-      \paragraph{Define the objects that are going to change in each frame.} We will save a file, indicating which figure we are going to save, the name of the file (\texttt{movie\_test.mpg}) and the resolution of the figure in dots per inch (dpi). In the \textit{for} loop the figure is repeatedly updated to create the movement, in each iteration the position of the red dot is updated (using \texttt{set\_data}). The \texttt{grab\_frame} method captures these changes and displays them at the frames per second specified above.
+\section{Animaciones}\index{Matplotlib!animaciones}
+Matplotlib también permite crear animaciones con el módulo \texttt{matplotlib.animation}. Una animación es una secuencia de fotogramas, y cada fotograma es una figura. La forma más directa de crearla tiene tres pasos:
+\begin{enumerate}
+    \item Crear el objeto que va a escribir el fichero de la animación (el \emph{writer}).
+    \item Dibujar el fondo: lo que no cambia de un fotograma a otro.
+    \item En un bucle, cambiar lo que se mueve y capturar cada fotograma.
+\end{enumerate}
+Como ejemplo, haremos que un círculo rojo recorra la gráfica de la función seno.
+
+\paragraph{Crear el writer.} \texttt{PillowWriter} guarda la animación como un GIF, que se puede ver en cualquier navegador. Con \texttt{fps} indicamos el número de fotogramas por segundo:
+\switchcolumn
+\section{Animations}\index[eng]{Matplotlib!animations}
+Matplotlib can also create animations with the module \texttt{matplotlib.animation}. An animation is a sequence of frames, and each frame is a figure. The most direct way to create one has three steps:
+\begin{enumerate}
+    \item Create the object that will write the animation file (the \emph{writer}).
+    \item Draw the background: what does not change from one frame to the next.
+    \item In a loop, change what moves and capture each frame.
+\end{enumerate}
+As an example, we will make a red circle travel along the graph of the sine function.
+
+\paragraph{Create the writer.} \texttt{PillowWriter} saves the animation as a GIF, which can be viewed in any browser. With \texttt{fps} we set the number of frames per second:
 \end{paracol}
-      \begin{minted}{python}
-            with writer.saving(fig,"movie_test.mp4",100):
-                for i in range(n):
-                    x0=x[i]
-                    y0=y[i]
-                    red_circle.set_data([x0],[y0])
-                    writer.grab_frame()
-        \end{minted}
-        
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import PillowWriter
+
+writer = PillowWriter(fps=20)
+\end{minted}
+\begin{paracol}{2}
+\paragraph{Dibujar el fondo.} Creamos la figura y dibujamos lo que va a permanecer constante durante la animación: la curva del seno y las etiquetas de los ejes. También creamos el círculo rojo, pero sin coordenadas (dos listas vacías), porque se las daremos en cada fotograma. Guardamos en la variable \texttt{punto} el objeto que devuelve \texttt{plot} para poder modificarlo después. La coma de \texttt{punto,} es necesaria porque \texttt{plot} devuelve una lista de líneas, y aquí solo hay una.
+\switchcolumn
+\paragraph{Draw the background.} We create the figure and draw what will remain constant during the animation: the sine curve and the axis labels. We also create the red circle, but without coordinates (two empty lists), because we will give them to it in each frame. We store the object returned by \texttt{plot} in the variable \texttt{punto} so that we can modify it later. The comma in \texttt{punto,} is needed because \texttt{plot} returns a list of lines, and here there is only one.
+\end{paracol}
+\begin{minted}{python}
+fig = plt.figure()
+n = 200
+x = np.linspace(0, 6*np.pi, n)
+y = np.sin(x)
+plt.plot(x, y, 'b')
+punto, = plt.plot([], [], 'ro', markersize=10)
+plt.xlabel('x')
+plt.ylabel('sen(x)')
+\end{minted}
+\begin{paracol}{2}
+\paragraph{Cambiar lo que se mueve y capturar los fotogramas.} Todo ocurre dentro del bloque \texttt{with writer.saving(...)}, al que le indicamos la figura, el nombre del fichero y la resolución en puntos por pulgada (\texttt{dpi}). En cada iteración del bucle se cambia la posición del círculo con \texttt{set\_data}, que espera dos secuencias (por eso los corchetes, aunque sea un solo punto), y \texttt{grab\_frame} añade la figura tal como está en ese momento como un fotograma más.
+\switchcolumn
+\paragraph{Change what moves and capture the frames.} Everything happens inside the block \texttt{with writer.saving(...)}, to which we give the figure, the file name and the resolution in dots per inch (\texttt{dpi}). In each iteration of the loop, the position of the circle is changed with \texttt{set\_data}, which expects two sequences (hence the square brackets, even for a single point), and \texttt{grab\_frame} adds the figure, as it is at that moment, as one more frame.
+\end{paracol}
+\begin{minted}{python}
+with writer.saving(fig, 'seno.gif', dpi=100):
+    for i in range(n):
+        punto.set_data([x[i]], [y[i]])
+        writer.grab_frame()
+\end{minted}
+\begin{paracol}{2}
+Para obtener un vídeo \texttt{.mp4} en lugar de un GIF se usa \texttt{FFMpegWriter} en vez de \texttt{PillowWriter}, pero necesita tener instalado el programa \texttt{ffmpeg} (en Anaconda, con \texttt{conda install ffmpeg}). Matplotlib tiene además la clase \texttt{FuncAnimation}, que genera la animación llamando a una función para cada fotograma y que también permite verla en una ventana sin guardarla. Encontrarás ejemplos de las dos en la documentación.
+\switchcolumn
+To get an \texttt{.mp4} video instead of a GIF, use \texttt{FFMpegWriter} instead of \texttt{PillowWriter}, but it needs the program \texttt{ffmpeg} to be installed (in Anaconda, with \texttt{conda install ffmpeg}). Matplotlib also has the class \texttt{FuncAnimation}, which generates the animation by calling a function for each frame and also allows viewing it in a window without saving it. You will find examples of both in the documentation.
+\end{paracol}
+
+\begin{paracol}{2}
+\section[Gráficas para verificar un resultado]{Gráficas para verificar un resultado\sectionmark{Gráficas para verificar \textreferencemark\ Graphs to verify}}\label{sec:graf_verif}\index{Verificación!con gráficas}
+En el capítulo \ref{ch:intpr} (sección \ref{sec:verif}) vimos que un programa que se ejecuta sin errores no es necesariamente un programa correcto, y algunas estrategias para comprobarlo. Las gráficas son una de las herramientas más potentes para ello: en los capítulos siguientes, casi siempre que calculemos algo lo comprobaremos dibujándolo.
+
+\paragraph{Una gráfica que se pueda defender.} Una gráfica que acompaña a un resultado tiene que poder entenderla otra persona sin preguntarnos nada. Antes de darla por buena, comprueba que:
+\begin{itemize}
+\item Los ejes indican la magnitud y sus unidades.
+\item Si hay más de una curva, hay una leyenda.
+\item Los datos medidos o calculados en puntos sueltos se dibujan con marcadores. Las líneas continuas son para funciones o para guiar la vista.
+\item La escala es la adecuada: si los datos abarcan varios órdenes de magnitud, logarítmica.
+\item Los mapas de color tienen su barra de color.
+\item Para comparar dos curvas casi iguales (por ejemplo, un resultado numérico y la solución exacta), no basta con dibujarlas superpuestas: dos curvas que difieren en un $1\%$ parecen idénticas. Hay que dibujar su diferencia.
+\end{itemize}
+
+\paragraph{Medir el orden de un error.} Muchos métodos numéricos dependen de un parámetro $h$ (un paso, una distancia entre puntos) y su error se comporta como $E\approx Ch^p$: el método es \emph{de orden} $p$. Como vimos al hablar de las escalas logarítmicas, en una gráfica log-log esa ley es una recta de pendiente $p$. Por ejemplo, la derivada de una función puede aproximarse por
+$$f'(x)\approx\frac{f(x+h)-f(x)}{h}.$$
+El código siguiente calcula el error de esta aproximación para $f(x)=\sin x$ en $x=1$, cuya derivada exacta conocemos, $\cos 1$, con $h=10^{-1}, 10^{-2},\ldots,10^{-15}$. El resultado está en la figura \ref{fig:error_h}.
+\switchcolumn
+\section[Graphs to verify a result]{Graphs to verify a result\sectionmark{Gráficas para verificar \textreferencemark\ Graphs to verify}}\label{sec:graf_verif-2}\index[eng]{Verification!with graphs}
+In chapter \ref{ch:intpr} (section \ref{sec:verif}) we saw that a program that runs without errors is not necessarily a correct program, and some strategies to check it. Graphs are one of the most powerful tools for this: in the following chapters, almost every time we compute something we will check it by plotting it.
+
+\paragraph{A graph you can defend.} A graph that accompanies a result must be understandable by someone else without asking us anything. Before accepting it, check that:
+\begin{itemize}
+\item The axes show the quantity and its units.
+\item If there is more than one curve, there is a legend.
+\item Data measured or computed at individual points are drawn with markers. Continuous lines are for functions or to guide the eye.
+\item The scale is appropriate: logarithmic, if the data span several orders of magnitude.
+\item Color maps have their color bar.
+\item To compare two almost identical curves (for example, a numerical result and the exact solution), it is not enough to draw them on top of each other: two curves that differ by $1\%$ look identical. Their difference must be plotted.
+\end{itemize}
+
+\paragraph{Measuring the order of an error.} Many numerical methods depend on a parameter $h$ (a step, a distance between points), and their error behaves as $E\approx Ch^p$: the method is \emph{of order} $p$. As we saw when discussing logarithmic scales, on a log-log graph this law is a straight line with slope $p$. For example, the derivative of a function can be approximated by
+$$f'(x)\approx\frac{f(x+h)-f(x)}{h}.$$
+The following code calculates the error of this approximation for $f(x)=\sin x$ at $x=1$, whose exact derivative we know, $\cos 1$, with $h=10^{-1}, 10^{-2},\ldots,10^{-15}$. The result is in figure \ref{fig:error_h}.
+\end{paracol}
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+h = np.logspace(-1, -15, 15)    # 1e-1, 1e-2, ..., 1e-15
+aprox = (np.sin(1 + h) - np.sin(1)) / h
+error = np.abs(aprox - np.cos(1))
+
+fig, ax = plt.subplots()
+ax.loglog(h, error, 'o-', label='diferencia hacia delante')
+ax.loglog(h, h, 'k--', label='pendiente 1 (referencia)')
+ax.set_xlabel('h')
+ax.set_ylabel('error absoluto')
+ax.grid(True)
+ax.legend()
+\end{minted}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figuras/plt_error_h.png}
+    \bicaption{Error de la aproximación de $f'(1)$ por diferencias hacia delante para $f(x)=\sin x$, en función del paso $h$}{Error of the forward difference approximation of $f'(1)$ for $f(x)=\sin x$, as a function of the step $h$}
+    \label{fig:error_h}
+\end{figure}
+\begin{paracol}{2}
+Para $h$ entre $10^{-1}$ y $10^{-7}$ los puntos están sobre una recta paralela a la de referencia: el error es proporcional a $h$ y el método es de orden $1$. La pendiente puede medirse con dos puntos de la recta:
+\begin{minted}{python}
+In [1]: (np.log10(error[3]) - np.log10(error[0])) / (np.log10(h[3]) - np.log10(h[0]))
+Out[1]: 1.002942988564625
+\end{minted}
+Para $h$ menores que $10^{-8}$, el error \emph{aumenta} al disminuir $h$. No es un fallo del programa: es el error de redondeo, que estudiaremos en el capítulo \ref{chp:arit}. Sin la gráfica en escala log-log, nada de esto se vería.
+
+\paragraph{Una gráfica no es una prueba.} Una gráfica que parece razonable puede ocultar un error. En el ejercicio \ref{ej:precip} se corrigen los datos de un fichero de precipitaciones, y la gráfica de los datos corregidos se parece mucho a la de los datos originales tanto si la corrección está bien hecha como si no. La gráfica orienta; las comprobaciones numéricas (\texttt{assert}, \texttt{np.allclose}…) confirman.
+\switchcolumn
+For $h$ between $10^{-1}$ and $10^{-7}$ the points lie on a straight line parallel to the reference line: the error is proportional to $h$, and the method is of order $1$. The slope can be measured with two points on the line:
+\begin{minted}{python}
+In [1]: (np.log10(error[3]) - np.log10(error[0])) / (np.log10(h[3]) - np.log10(h[0]))
+Out[1]: 1.002942988564625
+\end{minted}
+For $h$ smaller than $10^{-8}$, the error \emph{increases} as $h$ decreases. This is not a bug in the program: it is the rounding error, which we will study in chapter \ref{chp:arit}. Without the log-log graph, none of this would be visible.
+
+\paragraph{A graph is not a proof.} A graph that looks reasonable may hide an error. In exercise \ref{ej:precip-en}, the data in a precipitation file are corrected, and the graph of the corrected data looks very much like that of the original data, whether the correction is right or not. The graph guides; numerical checks (\texttt{assert}, \texttt{np.allclose}…) confirm.
+\end{paracol}
+
 \newpage
-
 \section{Ejercicios}
+\sectionmark{Ejercicios \textreferencemark\ Exercises}
+
+En todos los ejercicios se supone que se han importado Numpy y Matplotlib con \texttt{import numpy as np} e \texttt{import matplotlib.pyplot as plt}. Los ficheros de datos están en la carpeta \texttt{datos}.
 \begin{enumerate}
-    \item  Escribe una función que muestre paso a paso en una figura la trayectoria del tiro parabólico para $v_0=40$ (m/s) $\theta=45 $ grados  y para $v_0=60$ (m/s) $\theta=60 $ grados. En cada instante se mostrará con un círculo rojo la posición (x, y). 
+\item Escribe una función que muestre paso a paso en una figura la trayectoria de un tiro parabólico, para $v_0=40$~m/s y $\theta=45^\circ$, y para $v_0=60$~m/s y $\theta=60^\circ$. En cada instante se mostrará con un círculo rojo la posición $(x, y)$:
 \begin{align*}
-    x&=v_0 \cdot \cos(\theta) \cdot t \\
-    y&=v_0 \cdot \sin(\theta) \cdot t -\frac{1}{2}\cdot g \cdot t^2
+    x&=v_0 \cos\theta \; t, \\
+    y&=v_0 \sin\theta \; t -\frac{1}{2} g t^2,
 \end{align*}
-Añade el nombre de cada eje y el título de la figura.
+con $g=9.8$~m/s$^2$. Añade el nombre de cada eje y el título de la figura. Las funciones trigonométricas de Numpy trabajan en radianes: convierte los ángulos con \texttt{np.radians}. Para que el dibujo avance paso a paso, puedes usar \texttt{plt.pause(0.01)} dentro del bucle (con la figura en una ventana aparte). Comprueba que el alcance de tu gráfica coincide con el valor teórico, $v_0^2\sin(2\theta)/g$.
 
-\item Usa únicamente una sola figura para representar en diferentes paneles las siguientes funciones. 
+\item Representa en una sola figura, en cuatro paneles distintos, las siguientes funciones en el intervalo $[-2,2]$, empleando $100$ puntos equiespaciados:
 \begin{itemize}
-    \item $y=e^{-x^2}$ en el intervalo $[-2,2]$ empleando $100$ datos equiespaciados
-    \item $y=e^{-((\frac{x}{2})^2))}$
-    \item $y=e^{-((2x)^2)}$
-    \item La función $y=e^{-((2x)^2)}$ pero en escala logarítmica
+    \item $y=e^{-x^2}$
+    \item $y=e^{-(x/2)^2}$
+    \item $y=e^{-(2x)^2}$
+    \item $y=e^{-(2x)^2}$, con el eje $y$ en escala logarítmica.
+\end{itemize}
+¿Qué forma tiene la curva del último panel? ¿Por qué?
+
+\item Crea una función \texttt{dibujatriangulo} que tenga como argumentos de entrada los tres vértices de un triángulo y dibuje el triángulo en una figura.
+
+\item Crea una función \texttt{dibujaMCU} que dibuje la trayectoria circular de una partícula, conocidos su velocidad angular $\omega$ y el radio de giro $r$. Las ecuaciones cartesianas son
+\begin{align*}
+    x&=r\cos(\omega t),\\
+    y&=r\sin (\omega t).
+\end{align*}
+Añade a la trayectoria, en cada punto, el vector velocidad con la función \texttt{quiver}, usando las ecuaciones de la velocidad:
+\begin{align*}
+    v_x&=-r \omega \sin(\omega t),\\
+    v_y&=r \omega \cos(\omega t).
+\end{align*}
+¿Tienes que hacer algo para que la circunferencia no parezca una elipse? (Busca qué hace \texttt{plt.axis(\textquotesingle{}equal\textquotesingle{})}.)
+
+\item Crea una función que tenga como parámetros de entrada el radio $r$, la velocidad angular $\omega$ y una velocidad $v_z$, y dibuje la trayectoria en 3 dimensiones de una partícula que describe un MCU en el plano $XY$ mientras se mueve a lo largo del eje $z$ con velocidad constante $v_z$.
+
+\item Crea una función que represente un tiro parabólico en 3D. Sus argumentos de entrada serán la velocidad inicial $v_0$ y los ángulos $\psi$ y $\theta$, de acuerdo con las siguientes expresiones:
+\begin{align*}
+    x&=v_0 \cos\psi \cos\theta \; t, \\
+    y&=v_0 \sin\psi \cos\theta \; t,  \\
+    z&=v_0 \sin\theta \; t- \frac{1}{2} g t^2.
+\end{align*}
+Dibuja la trayectoria solo hasta que el proyectil vuelve al suelo ($z=0$).
+
+\item Usando la función \texttt{meshgrid}, crea una retícula rectangular en la región $x \in [-1, 1]$, $y \in [-2, 2]$, con un paso de malla de $0.1$. ¿Cuántas filas y cuántas columnas tienen las matrices de coordenadas? ¿Por qué? (Cuidado: \texttt{np.arange(-1, 1, 0.1)} no incluye el extremo $1$.) Crea una matriz de ceros del tamaño de las matrices que definen la retícula y represéntala sobre la retícula con \texttt{plot\_wireframe}. Representa después la superficie $z = e^{-(x^2+y^2)}$.
+
+\item Genera $1000$ números aleatorios con distribución normal estándar, usando \texttt{rng = np.random.default\_rng()} y \texttt{rng.standard\_normal(1000)}.
+\begin{itemize}
+    \item Dibuja su histograma con \texttt{plt.hist}, con $10$ intervalos.
+    \item Calcula el número de datos en cada intervalo con \texttt{np.histogram} y dibuja con ellos un diagrama de barras con \texttt{plt.bar}. ¿Coincide con el histograma anterior?
+    \item ¿Siguen de verdad una distribución normal? Para comprobarlo, dibuja el histograma con el argumento \texttt{density=True} (que lo escala para que su área sea $1$) y superpón la densidad de la distribución normal, $\frac{1}{\sqrt{2\pi}}e^{-x^2/2}$. Repite con $10^5$ números. ¿Qué cambia?
 \end{itemize}
 
-\item Crear una función dibujatriangul que tenga como argumento de entrada los 3 vértices de un triángulo y devuelva una figura con el triángulo dibujado.
-\item Crea una función \emph{dibujaMUC} que dibuje la trayectoria circular de una partícula conociendo su velocidad angular $\omega$ y el radio de giro $r$. 
-Las ecuaciones cartesianas son:
-\begin{align*}
-    x&=r\cos(\omega \cdot t)\\
-    y&=r\sin (\omega \cdot t)
-\end{align*}
+\item Crea una función \texttt{my\_poly\_plot(n, x)} que dibuje los polinomios $p(x)=x^k$ para $k=1,\ldots,n$ en los puntos del vector \texttt{x}, con una leyenda que indique qué curva corresponde a cada $k$.
+
+\item \emph{El juego del caos.} Los puntos $P_1=(0,0)$, $P_2=(1/2,\sqrt{3}/2)$ y $P_3=(1,0)$ son los vértices de un triángulo equilátero. Crea una función que:
 \begin{itemize}
-    \item Añadir a la trayectoria en cada punto el vector velocidad con el comando quiver mediante las ecuaciones de la velocidad:
-    \begin{align*}
-        v_x&=-r\cdot \omega \cdot \sin(\omega \cdot t)\\
-        v_x&=r\cdot \omega \cdot \cos(\omega \cdot t)
-    \end{align*}
-\end{itemize}
-
-\item Crea una función que tenga como parámetros de entrada el radio $r$ y
-la velocidad angular $\omega$ y dibuje la trayectoria en 3 dimensiones de una partícula que describe un MCU en el plano XY moviéndose en el eje z con una velocidad constante $v_z$.
-
-\item Crea una función que represente el tiro parabólico en 3D sabiendo
-que la función tiene como entrada los ángulos $\psi$ y $\theta$ , de acuerdo con las siguientes expresiones:
-\begin{align*}
-    x&=v_0 \cdot \cos(\psi)\cdot \cos(\theta) \cdot t \\
-    y&=v_0 \cdot \sin(\psi)\cdot \cos(\theta) \cdot t  \\
-    z&=v_0 \cdot \sin(\theta) \cdot t- \frac{1}{2} \cdot g \cdot t^2
-\end{align*}
-
-\item Usando el Comando meshgrid, crea una retícula cuadrada en el intervalo $x = [-1, 1]$ e  $y = [-2, 2]$ emplea para ello un paso de malla de valor $0.1$. Crea una matriz de ceros del tamaño de las matrices que definen la retícula. Representa, empleando el comando mesh, la matriz de ceros
-creada sobre la retícula. Representa gráficamente la superficie $z = e^{-(x^2+y^2)}$. 
-
-\item Genera $1000$ números aleatorios distribuidos normalmente (usa para ello la función \emph{np.random.randn}. Usa la función \emph{plt.hist} para dibujar el histograma de los números aleatorios generados. 
-\begin{itemize}
-    \item Sepáralos en $10$ contenedores.
-    \item Crea un diagrama de barras de los datos del apartado anterior usando  \emph{plt.bar}.
-    \item ¿Crees que la función \emph{np.random.randn} es una buena aproximación de una distribución normal?
-\end{itemize}
-
-\item  Crea una función \emph{my\_poly\_plot(n,x)} que dibuje los polinomios $p(x)=x^k$ para $k=1,...,n$.
-
-\item Supón que tienes tres puntos que forman las esquinas de un triángulo equilátero $P_1=(0,0)$, $P_2=(0.5,\frac{\sqrt{2}}{2})$ y $P_3=(1,0)$. Crea una función que:
-\begin{itemize}
-    \item Genere un conjunto de $n$ puntos $p_i=(x_i,y_i)$ tales que $p_1=(0,0)$ y $p_{i+1}$  es el punto medio entre $p_i$ y $P_1$ con un $33\%$ de probabilidad, el punto medio entre  $p_i$ y $P_2$ con un $33\%$ de probabilidad y  el punto medio entre $p_i$ y $P_3$ con un $33\%$ de probabilidad.
+    \item Genere un conjunto de $n$ puntos $p_i=(x_i,y_i)$ tales que $p_1=(0,0)$ y $p_{i+1}$ es el punto medio entre $p_i$ y uno de los tres vértices, elegido al azar con probabilidad $1/3$ cada uno.
     \item Dibuje los puntos obtenidos en el plano.
-    \item Prueba la función para $n=100$ y  $n=1000$ puntos.
+    \item Pruebe la función con $n=100$, $n=1000$ y $n=10000$ puntos.
 \end{itemize}
-\item El fichero de precipitaciones \textit{precip.dat} es un fichero de texto plano que contiene 14 columnas, la primera se corresponde con el campo \textbf{Año}, de la segunda a la decimotercera que contiene los datos de precipitación de cada mes (enero, febrero....noviembre, diciembre), la última columna contiene el campo \textbf{Precipitación Total Anual}. Las unidades de precipitación vienen dadas en mm/mes o mm/año, según el caso.
+Antes de programarlo: ¿puede algún punto quedar fuera del triángulo? Comprueba tu respuesta en la gráfica.
 
-En el fichero \textit{precip.dat} hay dos tipos de errores:
-\begin{itemize}
-    \item La precipitación de uno de los meses es muy superior a la precipitación total que debería corresponder a la suma de la precipitación mensual de ese año. Esto ocurre en dos años.
-    \item En otros cuatro años la suma total de la precipitación es diferente a la precipitación
-acumulada o total para ese año. A diferencia de lo que ocurría en el caso (a), la diferencia
-entre los valores de precipitación de los distintos meses no es muy grande. 
-\end{itemize}
-El objetivo de este ejercicio es identificar los meses (y los años) en los que se da alguno de
-estos dos errores y sustituirlo por el valor correcto. Para ello debes realizar las siguientes
-operaciones:
+\item\label{ej:precip} El fichero \texttt{precip.dat} es un fichero de texto plano con 14 columnas. La primera contiene el año, de la segunda a la decimotercera, la precipitación de cada mes (de enero a diciembre) y la última, la precipitación total anual. Las precipitaciones están en mm/mes o en mm/año, según el caso.
+
+En el fichero \texttt{precip.dat} hay dos tipos de errores:
 \begin{enumerate}
-    \item Extrae las precipitaciones en cada uno de los meses. Asigna la información de la precipitación total anual en un array unidimensional y el resto de las
-precipitaciones a una variable matricial.
-    \item Dibuja en una gráfica la evolución de la precipitación anual del mes de enero en los
-diferentes años.
-    \item Dibuja en una única gráfica la evolución de la precipitación anual para cada uno de los meses, junto con el campo \textbf{Precipitación Total Anual}.
+    \item[(a)] En dos años, la precipitación de uno de los meses es muy superior a la precipitación total anual.
+    \item[(b)] En otros cuatro años, la suma de las precipitaciones mensuales es distinta de la precipitación total anual, pero ningún mes tiene un valor anómalo.
+\end{enumerate}
+El objetivo de este ejercicio es identificar los meses (y los años) en los que se da alguno de estos dos errores y sustituir el dato erróneo por el valor correcto. Para ello:
+\begin{enumerate}
+    \item Lee el fichero. Guarda la precipitación total anual en un array unidimensional y las precipitaciones mensuales en una matriz.
+    \item Dibuja en una gráfica la evolución de la precipitación del mes de enero a lo largo de los años.
+    \item Dibuja en una única gráfica la evolución de la precipitación de cada uno de los meses, junto con la precipitación total anual.
     \item Crea un script que realice las siguientes operaciones:
     \begin{enumerate}
-        \item Chequear, para cada año, si la columna de precipitación total corresponde a la suma total de las precipitaciones de los meses. Si no fuera así, el script debe identificar el tipo de error encontrado:
+        \item Comprobar, para cada año, si la precipitación total anual coincide con la suma de las precipitaciones mensuales. Si no es así, el script debe identificar el tipo de error:
         \begin{itemize}
-            \item Si la discrepancia entre la suma de todos los meses difiere mucho del dato de
-\textbf{Precipitación Total Anual} (error tipo (a)), se debe calcular el valor correcto de
-precipitación para ese mes, considerando que el dato de \textbf{Precipitación Total Anual}
-es correcto.
-            \item Si el dato de \textbf{Precipitación Total Anual} no difiere mucho de la suma de las precipitaciones mensuales (error tipo (b)), considera que el dato de precipitación total es erróneo y sustitúyelo por el valor de esta suma.
-
+            \item Si es de tipo (a), debe calcular el valor correcto de la precipitación de ese mes, suponiendo que el dato de precipitación total anual es correcto.
+            \item Si es de tipo (b), debe suponer que el dato de precipitación total anual es erróneo y sustituirlo por la suma de las precipitaciones mensuales.
         \end{itemize}
-\item El script debe incorporar la visualización por pantalla de lo siguiente: (1) año donde se ha detectado un error, (2) suma total mensual para ese año, (3) dato de precipitación total anual de ese año y (4) si el error es del tipo (a), el mes en el que se encuentra dicho error.
-
-\item Además, el script debe crear un fichero de texto en el que se guarden los datos iniciales con los errores corregidos.
+        \item Mostrar por pantalla: (1) el año en el que se ha detectado un error, (2) la suma de las precipitaciones mensuales de ese año, (3) el dato de precipitación total anual de ese año y (4) si el error es de tipo (a), el mes en el que se encuentra.
+        \item Crear un fichero de texto con los datos corregidos.
     \end{enumerate}
+    \item Comprueba con \texttt{np.allclose} que, en los datos corregidos, la precipitación total de cada año coincide con la suma de sus meses. Si para reconocer los errores de tipo (a) hubieras usado como criterio que la diferencia entre la suma de los meses y el total sea mayor que $1000$ mm, ¿los habrías detectado los dos? ¿Lo habrías notado en la gráfica?
 \end{enumerate}
+
+\item \textbf{Depura este código.} El siguiente programa debería dibujar la trayectoria de un proyectil lanzado con $v_0=40$~m/s y un ángulo de $45^\circ$, desde que sale hasta que vuelve al suelo:
+\begin{minted}{python}
+g = 9.8
+v0 = 40
+theta = 45
+t = np.linspace(0, 2*v0*np.sin(theta)/g, 50)
+x = v0*np.cos(theta)*t
+y = v0*np.sin(theta) - 0.5*g*t**2
+plt.plot(x, y, 'o')
+plt.xlabel('x (m)')
+plt.ylabel('y (m)')
+\end{minted}
+Antes de ejecutarlo, escribe qué debería verse: ¿dónde empieza la curva? ¿Qué forma tiene? ¿Cuánto valen el alcance, $v_0^2\sin(2\theta)/g$, y la altura máxima, $(v_0\sin\theta)^2/(2g)$? Ejecútalo y compara. El programa tiene dos errores y ninguno produce un mensaje de error. Encuéntralos, corrígelos y comprueba que la gráfica corregida tiene el alcance y la altura máxima que habías calculado.
+
+\item\label{ej:mesh_cual} \textbf{¿Cuál es correcta?} Se quiere dibujar la superficie $z=x^3+y^2$ en la región $x\in[-1,1]$, $y\in[-2,2]$. Las tres versiones parten de
+\begin{minted}{python}
+x = np.linspace(-1, 1, 40)
+y = np.linspace(-2, 2, 40)
+X, Y = np.meshgrid(x, y)
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+\end{minted}
+y continúan así:
+\begin{minted}{python}
+# Versión A
+Z = X**3 + Y**2
+ax.plot_surface(X, Y, Z)
+
+# Versión B
+Z = np.zeros((40, 40))
+for i in range(40):
+    for j in range(40):
+        Z[i, j] = x[i]**3 + y[j]**2
+ax.plot_surface(X, Y, Z)
+
+# Versión C
+Z = x**3 + y**2
+ax.plot_surface(X, Y, Z)
+\end{minted}
+Ejecuta cada versión en una figura distinta. ¿Cuál da un mensaje de error? ¿Cuál dibuja una superficie equivocada sin avisar? ¿Cuál es correcta? Explica qué falla en las otras dos. ¿Cómo podrías haber detectado el error silencioso sin mirar la figura? (Calcula a mano $z$ en una esquina de la región y compáralo con el elemento correspondiente de \texttt{Z}.) Repite las tres versiones con \texttt{x = np.linspace(-1, 1, 30)}, cambiando las dimensiones de la versión B a \texttt{(30, 40)} y su primer bucle a \texttt{range(30)}. ¿Qué ocurre ahora? ¿Por qué es mejor probar el código con retículas que no sean cuadradas?
+
+\item \textbf{Mide el orden.} La derivada también puede aproximarse con la diferencia centrada,
+$$f'(x)\approx\frac{f(x+h)-f(x-h)}{2h}.$$
+Antes de calcular nada, ¿esperas que su error sea mayor o menor que el de la diferencia hacia delante de la sección \ref{sec:graf_verif}? Repite la figura \ref{fig:error_h} con las dos aproximaciones en la misma gráfica, añade una recta de referencia adecuada y mide la pendiente de la nueva curva. ¿De qué orden es el método? ¿Para qué valor de $h$ se obtiene el menor error con cada aproximación?
+
+\item \textbf{Con un asistente de IA.} Pide a un asistente de IA un script que dibuje, en una figura con dos paneles, la superficie $z=x\,e^{-x^2-y^2}$ y su mapa de curvas de nivel, en la región $x\in[-2,2]$, $y\in[-1,1]$. Antes de leer el código que te proponga, escribe las comprobaciones que vas a hacer:
+\begin{itemize}
+\item ¿Dónde está el máximo de la función y cuánto vale? (Calcúlalo a mano: con $y=0$, deriva $x\,e^{-x^2}$.) ¿Coincide con el que muestra la barra de color?
+\item ¿Va el eje $x$ de $-2$ a $2$ y el eje $y$ de $-1$ a $1$, o están intercambiados?
+\item ¿Cumple la figura todos los puntos de la lista de la sección \ref{sec:graf_verif}?
+\end{itemize}
+Revisa además el código: ¿usa \texttt{pyplot}, objetos o una mezcla de los dos (sección \ref{sec:ax_interface})? ¿Funciona sin cambios? Corrige lo que haga falta y explica con tus palabras cada línea.
 \end{enumerate}
+
+\newpage
+\section{Exercises}
+\sectionmark{Ejercicios \textreferencemark\ Exercises}
+\selectlanguage{english}
+
+In all the exercises we assume that Numpy and Matplotlib have been imported with \texttt{import numpy as np} and \texttt{import matplotlib.pyplot as plt}. The data files are in the \texttt{datos} folder.
+\begin{enumerate}
+\item Write a function that shows step by step in a figure the trajectory of a projectile, for $v_0=40$~m/s and $\theta=45^\circ$, and for $v_0=60$~m/s and $\theta=60^\circ$. At each instant, the position $(x, y)$ will be shown with a red circle:
+\begin{align*}
+    x&=v_0 \cos\theta \; t, \\
+    y&=v_0 \sin\theta \; t -\frac{1}{2} g t^2,
+\end{align*}
+with $g=9.8$~m/s$^2$. Add the name of each axis and the title of the figure. Numpy's trigonometric functions work in radians: convert the angles with \texttt{np.radians}. To make the drawing advance step by step, you can use \texttt{plt.pause(0.01)} inside the loop (with the figure in a separate window). Check that the range in your graph matches the theoretical value, $v_0^2\sin(2\theta)/g$.
+
+\item Plot in a single figure, in four different panels, the following functions on the interval $[-2,2]$, using $100$ equally spaced points:
+\begin{itemize}
+    \item $y=e^{-x^2}$
+    \item $y=e^{-(x/2)^2}$
+    \item $y=e^{-(2x)^2}$
+    \item $y=e^{-(2x)^2}$, with the $y$-axis on a logarithmic scale.
+\end{itemize}
+What shape does the curve in the last panel have? Why?
+
+\item Create a function \texttt{dibujatriangulo} that takes as input arguments the three vertices of a triangle and draws the triangle in a figure.
+
+\item Create a function \texttt{dibujaMCU} that draws the circular trajectory of a particle, given its angular velocity $\omega$ and the radius $r$. The Cartesian equations are
+\begin{align*}
+    x&=r\cos(\omega t),\\
+    y&=r\sin (\omega t).
+\end{align*}
+Add to the trajectory, at each point, the velocity vector with the function \texttt{quiver}, using the velocity equations:
+\begin{align*}
+    v_x&=-r \omega \sin(\omega t),\\
+    v_y&=r \omega \cos(\omega t).
+\end{align*}
+Do you need to do anything so that the circle does not look like an ellipse? (Find out what \texttt{plt.axis(\textquotesingle{}equal\textquotesingle{})} does.)
+
+\item Create a function that takes as input parameters the radius $r$, the angular velocity $\omega$ and a velocity $v_z$, and draws the 3D trajectory of a particle in uniform circular motion in the $XY$ plane while it moves along the $z$-axis with constant velocity $v_z$.
+
+\item Create a function that represents the trajectory of a projectile in 3D. Its input arguments will be the initial velocity $v_0$ and the angles $\psi$ and $\theta$, according to the following expressions:
+\begin{align*}
+    x&=v_0 \cos\psi \cos\theta \; t, \\
+    y&=v_0 \sin\psi \cos\theta \; t,  \\
+    z&=v_0 \sin\theta \; t- \frac{1}{2} g t^2.
+\end{align*}
+Draw the trajectory only until the projectile returns to the ground ($z=0$).
+
+\item Using the function \texttt{meshgrid}, create a rectangular grid in the region $x \in [-1, 1]$, $y \in [-2, 2]$, with a mesh step of $0.1$. How many rows and columns do the coordinate matrices have? Why? (Careful: \texttt{np.arange(-1, 1, 0.1)} does not include the end point $1$.) Create a matrix of zeros of the same size as the matrices defining the grid, and plot it on the grid with \texttt{plot\_wireframe}. Then plot the surface $z = e^{-(x^2+y^2)}$.
+
+\item Generate $1000$ random numbers with a standard normal distribution, using \texttt{rng = np.random.default\_rng()} and \texttt{rng.standard\_normal(1000)}.
+\begin{itemize}
+    \item Draw their histogram with \texttt{plt.hist}, with $10$ intervals.
+    \item Calculate the number of data in each interval with \texttt{np.histogram} and use them to draw a bar chart with \texttt{plt.bar}. Does it match the previous histogram?
+    \item Do they really follow a normal distribution? To check it, draw the histogram with the argument \texttt{density=True} (which scales it so that its area is $1$) and superimpose the density of the normal distribution, $\frac{1}{\sqrt{2\pi}}e^{-x^2/2}$. Repeat with $10^5$ numbers. What changes?
+\end{itemize}
+
+\item Create a function \texttt{my\_poly\_plot(n, x)} that draws the polynomials $p(x)=x^k$ for $k=1,\ldots,n$ at the points of the vector \texttt{x}, with a legend indicating which curve corresponds to each $k$.
+
+\item \emph{The chaos game.} The points $P_1=(0,0)$, $P_2=(1/2,\sqrt{3}/2)$ and $P_3=(1,0)$ are the vertices of an equilateral triangle. Create a function that:
+\begin{itemize}
+    \item Generates a set of $n$ points $p_i=(x_i,y_i)$ such that $p_1=(0,0)$ and $p_{i+1}$ is the midpoint between $p_i$ and one of the three vertices, chosen at random with probability $1/3$ each.
+    \item Draws the points obtained in the plane.
+    \item Tests the function with $n=100$, $n=1000$ and $n=10000$ points.
+\end{itemize}
+Before programming it: can any point fall outside the triangle? Check your answer in the graph.
+
+\item\label{ej:precip-en} The file \texttt{precip.dat} is a plain text file with 14 columns. The first contains the year, the second to the thirteenth the precipitation of each month (from January to December), and the last one the total annual precipitation. Precipitation is given in mm/month or mm/year, as appropriate.
+
+There are two types of errors in the file \texttt{precip.dat}:
+\begin{enumerate}
+    \item[(a)] In two years, the precipitation of one of the months is much larger than the total annual precipitation.
+    \item[(b)] In another four years, the sum of the monthly precipitations is different from the total annual precipitation, but no month has an anomalous value.
+\end{enumerate}
+The aim of this exercise is to identify the months (and years) in which either of these two errors occurs and to replace the wrong value by the correct one. To do this:
+\begin{enumerate}
+    \item Read the file. Store the total annual precipitation in a one-dimensional array and the monthly precipitations in a matrix.
+    \item Plot the evolution of the precipitation in January over the years.
+    \item Plot in a single graph the evolution of the precipitation of each month, together with the total annual precipitation.
+    \item Write a script that performs the following operations:
+    \begin{enumerate}
+        \item Check, for each year, whether the total annual precipitation matches the sum of the monthly precipitations. If not, the script must identify the type of error:
+        \begin{itemize}
+            \item If it is of type (a), it must calculate the correct value of the precipitation of that month, assuming that the total annual precipitation is correct.
+            \item If it is of type (b), it must assume that the total annual precipitation is wrong and replace it by the sum of the monthly precipitations.
+        \end{itemize}
+        \item Display on screen: (1) the year in which an error has been detected, (2) the sum of the monthly precipitations of that year, (3) the total annual precipitation of that year and (4) if the error is of type (a), the month in which it is found.
+        \item Create a text file with the corrected data.
+    \end{enumerate}
+    \item Check with \texttt{np.allclose} that, in the corrected data, the total precipitation of each year matches the sum of its months. If, to recognize type (a) errors, you had used as criterion that the difference between the sum of the months and the total is larger than $1000$ mm, would you have detected both of them? Would you have noticed it in the graph?
+\end{enumerate}
+
+\item \textbf{Debug this code.} The following program should draw the trajectory of a projectile launched with $v_0=40$~m/s at an angle of $45^\circ$, from launch until it returns to the ground:
+\begin{minted}{python}
+g = 9.8
+v0 = 40
+theta = 45
+t = np.linspace(0, 2*v0*np.sin(theta)/g, 50)
+x = v0*np.cos(theta)*t
+y = v0*np.sin(theta) - 0.5*g*t**2
+plt.plot(x, y, 'o')
+plt.xlabel('x (m)')
+plt.ylabel('y (m)')
+\end{minted}
+Before running it, write down what should be seen: where does the curve start? What shape does it have? What are the range, $v_0^2\sin(2\theta)/g$, and the maximum height, $(v_0\sin\theta)^2/(2g)$? Run it and compare. The program has two errors and neither of them produces an error message. Find them, fix them and check that the corrected graph has the range and maximum height you had calculated.
+
+\item\label{ej:mesh_cual-en} \textbf{Which one is correct?} We want to draw the surface $z=x^3+y^2$ in the region $x\in[-1,1]$, $y\in[-2,2]$. The three versions start with
+\begin{minted}{python}
+x = np.linspace(-1, 1, 40)
+y = np.linspace(-2, 2, 40)
+X, Y = np.meshgrid(x, y)
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+\end{minted}
+and continue as follows:
+\begin{minted}{python}
+# Version A
+Z = X**3 + Y**2
+ax.plot_surface(X, Y, Z)
+
+# Version B
+Z = np.zeros((40, 40))
+for i in range(40):
+    for j in range(40):
+        Z[i, j] = x[i]**3 + y[j]**2
+ax.plot_surface(X, Y, Z)
+
+# Version C
+Z = x**3 + y**2
+ax.plot_surface(X, Y, Z)
+\end{minted}
+Run each version in a different figure. Which one gives an error message? Which one draws a wrong surface without warning? Which one is correct? Explain what goes wrong in the other two. How could you have detected the silent error without looking at the figure? (Calculate $z$ by hand at a corner of the region and compare it with the corresponding element of \texttt{Z}.) Repeat the three versions with \texttt{x = np.linspace(-1, 1, 30)}, changing the dimensions in version B to \texttt{(30, 40)} and its first loop to \texttt{range(30)}. What happens now? Why is it better to test code with grids that are not square?
+
+\item \textbf{Measure the order.} The derivative can also be approximated with the central difference,
+$$f'(x)\approx\frac{f(x+h)-f(x-h)}{2h}.$$
+Before calculating anything, do you expect its error to be larger or smaller than that of the forward difference in section \ref{sec:graf_verif}? Repeat figure \ref{fig:error_h} with both approximations in the same graph, add a suitable reference line and measure the slope of the new curve. What is the order of the method? For which value of $h$ is the smallest error obtained with each approximation?
+
+\item \textbf{With an AI assistant.} Ask an AI assistant for a script that draws, in a figure with two panels, the surface $z=x\,e^{-x^2-y^2}$ and its contour map, in the region $x\in[-2,2]$, $y\in[-1,1]$. Before reading the code it proposes, write down the checks you are going to make:
+\begin{itemize}
+\item Where is the maximum of the function and what is its value? (Calculate it by hand: with $y=0$, differentiate $x\,e^{-x^2}$.) Does it match the one shown by the color bar?
+\item Does the $x$-axis go from $-2$ to $2$ and the $y$-axis from $-1$ to $1$, or are they swapped?
+\item Does the figure meet all the points in the list in section \ref{sec:graf_verif}?
+\end{itemize}
+Review the code as well: does it use \texttt{pyplot}, objects or a mixture of both (section \ref{sec:ax_interface})? Does it work without changes? Fix whatever is needed and explain each line in your own words.
+\end{enumerate}
+\selectlanguage{spanish}
+
+\newpage
 \section{Test del curso 2020/21}
+\sectionmark{Test curso 2020/21 \textreferencemark\ Course 2020/21 test}
 \begin{enumerate}
 
-\item  El movimiento de un cuerpo en el plano viene descrito por las siguientes ecuaciones,
-
+\item  El movimiento de un cuerpo en el espacio viene descrito por las siguientes ecuaciones:
 \begin{align}
 x(t) &= \sin(2 \pi \, \omega_1 t)\\
 y(t) &= \cos(2 \pi \, \omega_2 t)\\
-z(t) &= a\cos(2\pi \, \omega_1 t) \label{eq:3}
+z(t) &= a\cos(2\pi \, \omega_1 t)
 \end{align}
-
-donde $x,y,z$ representan las coordenadas del cuerpo en el instante de tiempo $t$ medidas en metros,  $w_1$ y $w_2$ son frecuencias fijas medidas en $rad\cdot s^{-1}$ y $a$ es una amplitud fija medida en metros.
-
-\begin{enumerate}
-	\item \label{ap1} (\textbf{1.5 puntos}) Escribe una función que:
+donde $x,y,z$ representan las coordenadas del cuerpo en el instante de tiempo $t$, medidas en metros, $\omega_1$ y $\omega_2$ son frecuencias fijas medidas en s$^{-1}$ y $a$ es una amplitud fija medida en metros.
 
 \begin{enumerate}
-	\item Tome como variables de entrada las frecuencias $w_1$, $w_2$, la amplitud $a$ .
-	\item Haga el cálculo de la trayectoria en tres dimensiones descrita por el cuerpo en el intervalo de tiempo $[0,1]$. Considera incrementos de tiempo de $0.01s$.
-	\item Dibuje en una gráfica la trayectoria descrita por el cuerpo en el espacio. Cada eje del gráfico deberá llevar  una etiqueta indicando de qué variable se trata $x$, $y$ ó $z$.
-	\item La salida serán tres vectores con los valores de $x$, $y$ y $z$ calculados para cada instante de tiempo.
+	\item (\textbf{1.5 puntos}) Escribe una función que:
+	\begin{enumerate}
+		\item Tome como variables de entrada las frecuencias $\omega_1$, $\omega_2$ y la amplitud $a$.
+		\item Calcule la trayectoria en tres dimensiones descrita por el cuerpo en el intervalo de tiempo $[0,1]$. Considera incrementos de tiempo de $0.01$~s.
+		\item Dibuje en una gráfica la trayectoria descrita por el cuerpo en el espacio. Cada eje del gráfico deberá llevar una etiqueta indicando de qué variable se trata: $x$, $y$ o $z$.
+		\item Devuelva tres vectores con los valores de $x$, $y$ y $z$ calculados para cada instante de tiempo.
 	\end{enumerate}
 
-\item \label{ap2} (\textbf{1.5 puntos}) Genera dos  vectores de frecuencias: \texttt{W1} y \texttt{W2} de  modo que el primero contenga los números impares comprendidos entre $1$ y $7$ y el segundo los números pares comprendidos entres $2$ y $8$.  Emplea la función creada en el apartado anterior para calcular el valor de las trayectorias obtenidas tomando como entradas para  $\omega_1, \omega_2$,  todos los pares posibles de la forma: \texttt{W1(i)} y \texttt{W2(j)}. Supón que no hay tercera entrada $a$. Realiza los cálculos empleando bucles.
+	\item (\textbf{1.5 puntos}) Genera dos vectores de frecuencias, \texttt{W1} y \texttt{W2}, de modo que el primero contenga los números impares comprendidos entre $1$ y $7$ y el segundo, los números pares comprendidos entre $2$ y $8$. Emplea la función creada en el apartado anterior para calcular las trayectorias obtenidas tomando como entradas para $\omega_1$ y $\omega_2$ todos los pares posibles de la forma \texttt{W1[i]}, \texttt{W2[j]}, con $a=0$. Realiza los cálculos empleando bucles.
 
-\item (\textbf{1 punto}) Añade a tu programa el código necesario para que dibuje cada resultado en un \emph{subplot} de modo que la figura resultante tenga $4\times4$ \emph{subplots} (ver figura al dorso).  Debes crear los \emph{subplots} empleando los mismos bucles del apartados anterior. 
+	\item (\textbf{1 punto}) Añade a tu programa el código necesario para que dibuje cada resultado en un \emph{subplot}, de modo que la figura resultante tenga $4\times4$ \emph{subplots} (ver la figura \ref{fig:lisa1}). Debes crear los \emph{subplots} empleando los mismos bucles del apartado anterior.
 
-\item (\textbf{0.5 puntos}) Repite los cálculos de los apartados c) y d) pero tomando ahora $a=1$.
+	\item (\textbf{0.5 puntos}) Repite los cálculos de los apartados (b) y (c), pero tomando ahora $a=1$.
 \end{enumerate}
 
-\item Una matriz cuadrada $A$, de dimensión arbitraria $(n\times n)$, cuyos elementos $a_{ij} \in \mathbb{Z}$, se define como \emph{buenrollista} cuando las suma de los valores pares de cada fila es mayor o igual que la suma de los valores  impares de la columna correspondiente, i.e., satisface la siguiente relación:
+\item Una matriz cuadrada $A$, de dimensión arbitraria $n\times n$ y cuyos elementos son enteros, $a_{ij} \in \mathbb{Z}$, se define como \emph{buenrollista} cuando la suma de los valores pares de cada fila es mayor o igual que la suma de los valores impares de la columna correspondiente, es decir, cuando satisface la siguiente relación:
 \begin{equation}
-	\sum_{j=1}^n a_{ij\text{(par)}} \geq \sum_{j=1}^n a_{ji\text{(impar)}}, \quad \forall i\in\{1,...,n\}
+	\sum_{j=1}^n a_{ij\text{(par)}} \geq \sum_{j=1}^n a_{ji\text{(impar)}}, \quad \forall i\in\{1,\ldots,n\}
 \end{equation}
 
 \begin{enumerate}
-\item (\textbf{1.5 puntos}) Escribe  una función que tome como variable de entrada una matriz cuadrada de cualquier dimensión 
-y calcule un vector con las sumas de los valores pares de los elementos de cada una de su filas  y otro vector con las sumas de los elementos impares de cada una de sus columnas.
-\item (\textbf{1.5 puntos}) Añade a la función anterior el código necesario para que compruebe, empleando los vectores obtenidos en el apartado anterior, si la función es \emph{buenrollista} y muestre un mensaje por pantalla indicando si lo es o no.
+\item (\textbf{1.5 puntos}) Escribe una función que tome como variable de entrada una matriz cuadrada de cualquier dimensión y calcule un vector con las sumas de los elementos pares de cada una de sus filas y otro vector con las sumas de los elementos impares de cada una de sus columnas.
+\item (\textbf{1.5 puntos}) Añade a la función anterior el código necesario para que compruebe, empleando los vectores obtenidos en el apartado anterior, si la matriz es \emph{buenrollista}, y muestre un mensaje por pantalla indicando si lo es o no.
 \item (\textbf{1 punto}) Aplica la función desarrollada a la siguiente matriz:
 \begin{equation*}
 \begin{pmatrix}
@@ -1045,41 +1304,35 @@ y calcule un vector con las sumas de los valores pares de los elementos de cada 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{lisa1.eps}
-\caption{vista de la figura con los ocho subplots} \label{fig:1}
+\caption{Vista de la figura con los dieciséis \emph{subplots}} \label{fig:lisa1}
 \end{figure}
 \newpage
-\section{LCC. Test 1 (curso 2024 -2025) \protect\footnote{Crea las funciones necesarias  y da los resultados y tus comentarios en un \emph{notebook}. }}
+\section{LCC. Test 1 (curso 2024-2025) \protect\footnote{Crea las funciones necesarias y da los resultados y tus comentarios en un \emph{notebook}.}}
 
 \begin{enumerate}
 	\item Crea una función en Python que:
-	
-	
-	
-	
 	\begin{enumerate}
-		\item \label{apt1} (2 puntos) Toma como variable de entrada una lista que contenga a su vez listas formadas por números enteros y devuelva una sola lista con todos los números contenidos en la lista original. La lista de entrada puede tener cualquier tamaño. Comprueba el funcionamiento de tu programa con las lista,
+		\item (2 puntos) Tome como variable de entrada una lista que contenga a su vez listas formadas por números enteros, y devuelva una sola lista con todos los números contenidos en la lista original. La lista de entrada puede tener cualquier tamaño. Comprueba el funcionamiento de tu programa con la lista
 		\begin{minted}{python}
 Lista = [[1, -2, 3], [0, -16, 3, -5], [-1, 0, 4, 6], [1, 3]]
 		\end{minted}
-		
-		
+
 		\item (2 puntos) Modifica la función creada en el apartado anterior para que:
 		\begin{itemize}
-			\item No guardes los valores de las lista original que sean iguales a cero.
-			\item Cambia todos los valores negativos por su valor absoluto.
-			\item Una vez realizados los cambios anteriores, y antes de guardar el resultado en la lista de salida: 
-			
-			Si el resultado es un número impar, le añada un uno. 
-			
-			Si es divisible por cuatro, divida el numero entre dos (división entera). 
-			
-			En cualquier otro caso cambie el número por $-1$.  
+			\item No guarde los valores de la lista original que sean iguales a cero.
+			\item Cambie todos los valores negativos por su valor absoluto.
+			\item Una vez realizados los cambios anteriores, y antes de guardar el resultado en la lista de salida:
+
+			Si el resultado es un número impar, le sume uno.
+
+			Si es divisible por cuatro, lo divida entre dos (división entera).
+
+			En cualquier otro caso, lo cambie por $-1$.
 		\end{itemize}
 		Emplea la misma lista del apartado anterior para comprobar el funcionamiento de tu programa.
 	\end{enumerate}
-	
-	\item El Jocker's carousel  situado en el parque de atracciones de Gotham City es una atracción formada por una plataforma con cuatro brazos de longitud $R$ que giran en el plano horizontal. Del extremo de cada brazo cuelga una cabina a una distancia $r$ del centro, que gira en un plano vertical paralelo al brazo. Cuando está en marcha, el movimiento de cada una de sus cabinas se puede describir mediante las siguiente ecuación:
-	
+
+	\item El Joker's carousel, situado en el parque de atracciones de Gotham City, es una atracción formada por una plataforma con cuatro brazos de longitud $R$ que giran en el plano horizontal. Del extremo de cada brazo cuelga una cabina, a una distancia $r$, que gira en un plano vertical paralelo al brazo. Cuando está en marcha, el movimiento de cada una de sus cabinas se puede describir mediante las siguientes ecuaciones:
 	\begin{equation*}
 		\begin{split}
 			x_i(t) &= \left(R+r\sin(\omega_c t)\right)\cos(\omega_b t+ \theta_i)\\
@@ -1087,11 +1340,11 @@ Lista = [[1, -2, 3], [0, -16, 3, -5], [-1, 0, 4, 6], [1, 3]]
 			z_i(t) &= -r\cos(\omega_c t) + h_0
 		\end{split}
 	\end{equation*}
-	Donde $t \in [0,\infty)$ es el tiempo en segundos, $x_i(t)$, $y_i(t)$ y $z_i(t) \in \mathbb{R}$ son las coordenadas de la posición de la cabina $i$, ($i = [0,1,2,3]$), en función del tiempo. $\omega_b$ y $\omega_c$ son respectivamente la frecuencia en $rad/s$ a la giran los brazos y la frecuencia a la que giran las cabinas en el extremo de cada brazo. $\theta_i = \frac{\pi}{2}\cdot i$  representa la orientación de cada brazo con el eje de las $x$. Por último, $h_0$ es la altura en metros sobre el suelo a la que se encuentra la plataforma con los cuatro brazos.  
-	
+	donde $t \in [0,\infty)$ es el tiempo en segundos y $x_i(t)$, $y_i(t)$ y $z_i(t)$ son las coordenadas de la posición de la cabina $i$ ($i = 0,1,2,3$) en función del tiempo. $\omega_b$ y $\omega_c$ son, respectivamente, la frecuencia angular, en rad/s, a la que giran los brazos y la frecuencia angular a la que giran las cabinas en el extremo de cada brazo. $\theta_i = \frac{\pi}{2}\cdot i$ representa la orientación de cada brazo con respecto al eje $x$. Por último, $h_0$ es la altura en metros sobre el suelo a la que se encuentra la plataforma con los cuatro brazos.
+
 	\begin{enumerate}
-		\item (3 puntos) Escribe una función en Python que tome como variables de entrada los valores de $R,r,w_b,w_c,t_f,i,h_0$, y devuelva tres \emph{arrays} de Numpy con la posiciones sucesivas (trayectorias) $x,y,z$ de la cabina $i$, para el intervalo de tiempo $t\in [0,t_f]$. Emplea instantes de tiempos separados entre sí $0.01$s.
-		
+		\item (3 puntos) Escribe una función en Python que tome como variables de entrada los valores de $R,r,\omega_b,\omega_c,t_f,i,h_0$ y devuelva tres \emph{arrays} de Numpy con las posiciones sucesivas (trayectorias) $x,y,z$ de la cabina $i$ en el intervalo de tiempo $t\in [0,t_f]$. Emplea instantes de tiempo separados entre sí $0.01$~s.
+
 		\item (2 puntos) Utilizando para los parámetros del problema los valores de la tabla siguiente,
 		\begin{table}[h]
 			\centering
@@ -1102,17 +1355,12 @@ Lista = [[1, -2, 3], [0, -16, 3, -5], [-1, 0, 4, 6], [1, 3]]
 				\hline
 			\end{tabular}
 		\end{table}
-		
+
 		calcula las trayectorias de las cuatro cabinas y dibújalas empleando una figura distinta para cada una de ellas.
-		\item (1 punto) Vuelve a dibujarlas pero ahora todas en el mismo gráfico.
-		\item (Bonus track. 1 punto) Batman ha estudiado el gráfico en que aparecen todas las trayectorias juntas y no entiende por qué se ven solo dos en lugar de cuatro, ¿Podrías explicarle qué pasa?
-		¿Sabrías mostrárselo gráficamente?
+		\item (1 punto) Vuelve a dibujarlas, pero ahora todas en el mismo gráfico.
+		\item (Bonus track. 1 punto) Batman ha estudiado el gráfico en el que aparecen todas las trayectorias juntas y no entiende por qué se ven solo dos en lugar de cuatro. ¿Podrías explicarle qué pasa? ¿Sabrías mostrárselo gráficamente?
 	\end{enumerate}
-	
-	
-	
 \end{enumerate}
 
-
-
 \noindent\rule{\textwidth}{0.4pt}
+\fussy

@@ -60,6 +60,7 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 |---|---|---|
 | 2. Introducción a Python (`introprog.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 3. Introducción a Numpy (`intronumpy.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
+| 4. Introducción a Matplotlib (`matplotlib.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | Resto | Pendiente | Solo han pasado la revisión automática (sección anterior). |
 
 **Capítulo 2: qué se ha hecho**
@@ -196,31 +197,112 @@ los cálculos y ejemplos comprobados con Numpy/Scipy.
   autovalores complejos).
 - Ejercicios traducidos al inglés.
 
+**Capítulo 4: qué se ha hecho**
+
+Reescritura completa de las dos columnas, con todos los ejemplos
+ejecutados (Matplotlib 3.8) y las figuras comparadas con el código.
+
+*Errores de contenido corregidos*
+- Tabla de marcadores: `^` (triángulo hacia arriba) y `v` (hacia abajo)
+  estaban intercambiados en los dos idiomas; `*` es una estrella.
+- `fig = plt.figure` y `plt.figure` sin paréntesis: no creaban ninguna
+  figura (guardan la función). Ahora es además una nota de aviso.
+- `plt.text(..., '$x=e^{-t}\cos(...)$')` sin `r''`: secuencia de escape no
+  válida (aviso de Python). Nota sobre las cadenas en bruto.
+- Espiral polar: el texto decía $r=2\sqrt{\theta}$; el código y la figura
+  son $r=2\theta$.
+- Histograma: el texto decía 10, 5 y 10 intervalos (el código usa 20);
+  argumento `bin` → `bins`; pie de figura inglés vacío. Lectura con
+  `np.loadtxt` en lugar del bucle manual.
+- Superficies: llamaba "matrices de adyacencia" a las matrices de
+  coordenadas de `meshgrid` (en teoría de grafos es otra cosa). Añadido
+  el orden de `meshgrid(x, y)`: forma `(len(y), len(x))`, `Z[i,j]` ↔
+  `(x[j], y[i])`.
+- Sesiones de IPython con `Out[24]:` delante de las entradas, numeración
+  incoherente y sangrías que impedían ejecutar los bloques.
+- `contourf`/`pcolor`: el texto citaba `pcolor` y el código usaba
+  `contour`; ahora `contour` + `contourf` con barra de color (figura nueva
+  `plt_contour.png`).
+- Animación: faltaba `import matplotlib.animation`; el texto decía
+  `.mpg` y el código `.mp4`; dependía de `ffmpeg`, que no viene con
+  Anaconda en Windows. Ahora usa `PillowWriter` (GIF, sin dependencias) y
+  menciona `FFMpegWriter` y `FuncAnimation`.
+- Ejercicios: $P_2=(0.5,\sqrt2/2)$ no forma un triángulo equilátero
+  (√3/2); $v_x$ repetida (era $v_y$); `dibujaMUC` → `dibujaMCU`;
+  "retícula cuadrada" en una región rectangular; "comando mesh" (MATLAB);
+  `np.random.randn` → `default_rng`; paréntesis desequilibrados.
+- Test 2020/21: "ocho subplots" (son 16), frecuencias "en rad/s" dentro de
+  $2\pi\omega t$ (son s⁻¹), "movimiento en el plano" (es en el espacio),
+  autorreferencia "apartados c) y d)" dentro del d).
+- `precip.dat` no estaba en el repositorio del manual (solo en el
+  solucionario): copiado a `datos/`, junto con `coches.dat`.
+
+*Contenido nuevo*
+- Para qué sirve una gráfica en el curso (entender y convencer); figuras y
+  `Axes`; dónde aparecen las figuras en Spyder; `legend`, argumentos con
+  nombre, `savefig`.
+- Sección **"Dos formas de trabajar: pyplot y objetos"** con tabla de
+  equivalencias (`plt.xlabel` ↔ `ax.set_xlabel`) y aviso de que mezclarlas
+  da `AttributeError` (error típico del código generado por IA).
+- Escalas logarítmicas: rectas en semilog (exponenciales) y log-log
+  (potencias, pendiente = exponente); `log 0` se descarta sin avisar.
+- Sección **"Gráficas para verificar un resultado"**: lista de comprobación
+  de una figura defendible; medir el orden de un error en log-log
+  (diferencia hacia delante, pendiente 1 y error de redondeo para
+  h < 1e-8, figura nueva `plt_error_h.png`); "una gráfica no es una
+  prueba".
+- Ejercicios nuevos: *depura este código* (tiro parabólico con grados y un
+  `*t` olvidado), *¿cuál es correcta?* (tres formas de rellenar Z; la de
+  los bucles falla en silencio con mallas cuadradas), *mide el orden*
+  (diferencia centrada) y uno con IA (superficie y curvas de nivel con
+  comprobaciones previas). Verificación final añadida al de
+  precipitaciones. Ejercicios traducidos al inglés.
+- `\mintinline` sustituido por `\texttt` (con comilla recta, que se puede
+  copiar del PDF) para que no se salga de las columnas.
+
+*Solucionario (`onlyforyoureyes/matplotlib`)*
+- `04_Ejercicio_Aplicado.ipynb`: **la solución era incorrecta**. Con
+  `limite=1000`, 1998 (diferencia 690) se trataba como error de tipo b, y
+  `meses[i,0:j-1]` dejaba fuera el mes anterior al erróneo (1985 quedaba
+  con 102.5 en lugar de 72.5). Corregido, con `assert` final, y
+  regenerado `precip_corregido.dat`. Es el ejemplo de "una gráfica no es
+  una prueba" del texto.
+- `EjerciciosLibro.ipynb`: tiro parabólico sin `*t`; MCU con
+  `np.array([0,1,0.1])` (3 puntos); `np.arange(-1,1-0.1)`; `range(n)` en
+  lugar de 1…n; juego del caos con `(P[i]-P)/2` (no es el punto medio) y
+  √2/2. Todo corregido y ejecutado.
+- `matplotlib.ipynb`: `ax3.meshgrid` → `ax3.contour` con barras de color;
+  la última celda (respuesta de un chatbot pegada tal cual) tenía
+  `plt.pause()` sin argumento y `set_data` con escalares. Corregidos con
+  un comentario; puede servir de ejemplo real para un ejercicio de
+  "critica el código de la IA".
+- Se ha confirmado la salida de `big_brother/` (se ignora en adelante) y
+  se han borrado los `.p` de MATLAB (decisión de nov 2026: hay copia en
+  otro sitio).
+
 ---
 
 ## 2. Pendiente: necesita decisión o revisión humana
 
-1. **`big_brother/` contiene calificaciones de alumnos** (`.xlsx`) dentro de un
-   repositorio git. Aunque sea privado, son datos personales: el historial de
-   git los conserva aunque se borren. Recomendación: sacarlos del repositorio
-   (y, si se quiere ser estricto, del historial). No se ha abierto ni
-   modificado nada de esa carpeta. Además, `big_brother/lcc_result.ipynb`
-   tiene marcas de conflicto de merge sin resolver.
+1. **`big_brother/`**: el profesor lo ha movido fuera del repositorio
+   (nov 2026) y ya no se versiona, pero **sigue en el historial de git**.
+   Borrarlo también del historial exige reescribirlo (`git filter-repo`) y
+   forzar la subida; solo si se decide.
 2. `interpolacion/Test2024_Interpolacion.ipynb`: se usa una variable `t1` que
    nunca se define (falta la malla de evaluación).
-3. `matplotlib/matplotlib.ipynb`: `ax3.meshgrid(...)` no existe en Matplotlib;
-   no está claro qué gráfico se quería.
-4. Ficheros `.p` en el solucionario: son *P-code* de MATLAB (ofuscado), restos
-   de la versión antigua de la asignatura. ¿Se conservan?
-5. `codigos/Intro_matplotlib/untitled0.py` y `untitled3.py`: el texto
-   referencia `untitled0.py` como ejemplo; convendría darles nombres
-   descriptivos.
+3. ~~`ax3.meshgrid`~~ y ~~ficheros `.p`~~: resueltos (nov 2026).
+5. `codigos/Intro_matplotlib/untitled0.py` y `untitled3.py`: son restos de
+   trabajo sin relación con el capítulo (operaciones sueltas con listas y
+   arrays; el segundo acaba en una línea rota). El `untitled0.py` que cita
+   el cap. 2 es el nombre por defecto de Spyder, no este fichero.
+   Propuesta: borrarlos.
 6. **La revisión gramatical y de estilo no está hecha.** El corrector sólo
    encuentra palabras mal escritas. El inglés, en particular, tiene muchas
    construcciones calcadas del español que conviene revisar capítulo a
    capítulo.
 7. Anaconda: sus condiciones de uso para organizaciones cambiaron en 2024.
-   Conviene comprobar si el uso en la UCM está cubierto. Si no, se puede
+   Conviene comprobar si el uso en la UCM está cubierto (el profesor lo
+   está consultando, nov 2026). Si no, se puede
    seguir con Spyder sin Anaconda: Miniforge (conda-forge) con
    `conda install spyder spyder-notebook`, o los instaladores autónomos de
    Spyder. Afectaría a la sección 1 del capítulo 2 y a sus capturas.
@@ -341,7 +423,7 @@ Spyder con `spyder-notebook`. Añadir `scipy.integrate.solve_ivp` al
 capítulo de EDOs, sustituir `interp1d` (marcada como *legacy* en SciPy) y
 añadir una sección de vectorización y rendimiento.
 
-### Hoja de ruta (propuesta)
+### Hoja de ruta (aprobada, nov 2026)
 
 | Fase | Periodo orientativo | Contenido |
 |---|---|---|

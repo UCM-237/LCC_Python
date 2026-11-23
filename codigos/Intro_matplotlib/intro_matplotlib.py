@@ -35,7 +35,7 @@ plt.plot(t,y)
 plt.title("Evolución de un sistema amortiguado")
 plt.xlabel('t(s)')
 plt.ylabel('x(m)')
-plt.text(2.5,0.8,'$x=e^{-t}\cos(2\pi \cdot t)$')
+plt.text(2.5,0.8,r'$x=e^{-t}\cos(2\pi t)$')
 '''
 ''' Escalas
 x=np.linspace(0,10,100)
