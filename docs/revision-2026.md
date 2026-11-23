@@ -61,6 +61,7 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 | 2. Introducción a Python (`introprog.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 3. Introducción a Numpy (`intronumpy.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 4. Introducción a Matplotlib (`matplotlib.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
+| 5. Aritmética del computador (`aritmetica.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | Resto | Pendiente | Solo han pasado la revisión automática (sección anterior). |
 
 **Capítulo 2: qué se ha hecho**
@@ -279,6 +280,77 @@ ejecutados (Matplotlib 3.8) y las figuras comparadas con el código.
 - Se ha confirmado la salida de `big_brother/` (se ignora en adelante) y
   se han borrado los `.p` de MATLAB (decisión de nov 2026: hay copia en
   otro sitio).
+
+**Capítulo 5: qué se ha hecho**
+
+Reescritura completa de las dos columnas (el inglés tenía errores en casi
+cada párrafo), con todas las cifras comprobadas en Python (`struct`,
+`np.float32().view`, `decimal`, `fractions`).
+
+*Errores de contenido corregidos*
+- **Orden de los campos IEEE 754**: todas las tablas ponían
+  signo | mantisa | exponente; el estándar guarda signo | exponente |
+  mantisa (comprobado con los bits reales). Reordenadas las 16 tablas,
+  incluida la del ejemplo de 16 bits.
+- Mantisas de 22 bits en lugar de 23 en cuatro tablas (y de 51 en lugar
+  de 52 en precisión doble); un exponente de 9 bits.
+- Ejemplo 2 de IEEE: mantisa "= 0.25" y "0.25 × 2² = 5.0" (es 1.25).
+- Notación científica: 234.25 ≠ 2.345×10², 0.000234 ≠ 2.34×10⁻⁵.
+- Desplazamiento del punto con el exponente al revés (exponente 1 →
+  a la derecha, no a la izquierda).
+- Suma de ejemplo: el texto daba 100.152 como resultado exacto (es
+  100.151) y lo usaba en el error relativo.
+- **Anulación catastrófica**: con la mantisa de 5 dígitos que dice el
+  texto, b²−4ac da 1.0000·10⁻³ (error del 102 %), no 5.0000·10⁻⁴ (1 %, que
+  corresponde a 6 dígitos). Reescrito: el ejemplo es ahora mucho más
+  convincente.
+- Axioma fundamental con |δ| ≤ eps, incoherente con la cota eps/2 que el
+  propio capítulo deduce. Ahora eps/2, y se explica que IEEE 754 exige
+  redondeo correcto (los dígitos de guarda son el medio, no la norma).
+  Añadido el redondeo al par.
+- NaN descrito como "error de desbordamiento" en precisión doble; tabla
+  resumen con `m_23·2^-52` y `e_8·2^8` (es 2^7).
+- Historia del estándar: fechas incoherentes entre idiomas (1976/1974),
+  "Kahan (Intel)", "hasta los años noventa". Corregida (Intel/8087 en 1976,
+  comité en 1977, aprobación en 1985, revisiones 2008 y 2019, premio Turing
+  1989).
+- Avogadro: "9 de sus 23 cifras" (son 24) y valor anterior a 2019.
+- Frase española duplicada fuera de `paracol`; "3. normalización" sin
+  columna inglesa; índices `\index[eng]` en la columna española; cita de
+  Kipling ("Not rivet" → "No rivet").
+- `norm_naive.py`: `norma_robust` fallaba con un vector de ceros
+  (`UnboundLocalError`). Corregido; las sesiones del texto ya no muestran
+  rutas de `/home/juan` y se ejecutan (importan el módulo).
+
+*Contenido nuevo*
+- Desbordamiento silencioso en complemento a dos (7+1 = −8 con 4 bits).
+- `np.linalg.norm` también desborda con el vector del ejemplo;
+  `math.hypot` no.
+- Sección **"La aritmética del ordenador en Python"**: `np.finfo`,
+  `0.1+0.2 != 0.3` y `Fraction(0.1)`, bucle `while x != 1.0` que no
+  termina, `np.spacing`, ver los bits con `view(np.uint32)` (comprueba los
+  ejemplos del texto), enteros de Python frente a NumPy (`int8`, 21! con
+  `int64` da un negativo sin aviso; nota sobre `int32` en Windows con
+  NumPy < 2), `inf`/`nan`, `math.fsum`, `float32`/`float16` (redes
+  neuronales).
+- Sección **"Error de redondeo y error de truncamiento"**: explica y
+  *predice* el mínimo en h ≈ √(2 eps) de la figura de la diferencia hacia
+  delante del capítulo 4.
+- **Ejercicios** (el capítulo no tenía ninguno), en los dos idiomas: IEEE a
+  mano y con Python; complemento a dos con predicción; épsilon del
+  computador; anulación en (1−cos x)/x²; *depura este código* (combinaciones
+  con `np.prod`, da −3 en lugar de 4060); *¿cuál es correcta?* (tres
+  fórmulas de la ecuación de segundo grado, verificación con Vieta);
+  *predice y mide* (h óptimo de la diferencia centrada ∝ eps^(1/3)); y uno
+  con IA (norma de un vector con las pruebas escritas antes de pedir el
+  código).
+- El solucionario no tiene material de este capítulo: habrá que añadir las
+  soluciones de los ejercicios nuevos.
+
+*Herramientas*
+- El corrector ortográfico funciona en Linux con los diccionarios del
+  sistema (`hunspell-es`, `hunspell-en-us`); instrucciones en
+  `tools/README.md`. Pasado a los capítulos 4 y 5.
 
 ---
 

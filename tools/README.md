@@ -16,5 +16,9 @@ Scripts usados en la revisión de 2026 (ver `docs/revision-2026.md`).
   diccionarios Hunspell (`es.aff/.dic`, `en.aff/.dic`) en `tools/dict/`
   o en la carpeta indicada por la variable `LCC_DICT`. Solo detecta
   palabras mal escritas, no errores gramaticales.
+  En Linux basta con instalar `hunspell-es` y `hunspell-en-us` y enlazar
+  `/usr/share/hunspell/es_ES.*` y `en_US.*` como `tools/dict/es.*` y
+  `en.*`; en Windows, descargar los `.aff/.dic` de los diccionarios de
+  LibreOffice (github.com/LibreOffice/dictionaries).
 
 Necesitan el Python de Anaconda (numpy, scipy, sympy, pandas, matplotlib).

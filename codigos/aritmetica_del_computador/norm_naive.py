@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jul 17 14:43:50 2024
-This 
+Two functions to compute the Euclidean norm of a vector.
+norma_naive overflows when the square of an element is larger than the
+largest representable number; norma_robust scales the elements to avoid it.
 @author: juan
 """
 
@@ -10,54 +11,50 @@ import numpy as np
 
 def norma_naive(x):
     """
-    This program (naive) calculates the norm of a vector
+    Calculates the norm of a vector (naive version)
     Parameters
     ----------
-    x : TYPE Real Vector
-        DESCRIPTION. imput vector  whose norm we wamma get
+    x : real vector (1D numpy array)
+        input vector whose norm we want to get
 
     Returns
     -------
-    m: Type Real number
-       Description. The vector norm 
+    m : real number
+        the norm of the vector
     """
-    
-    
-    m = 0. 
+    m = 0.
     for e in x:
-        m = m +e**2
-        
-    m =np.sqrt(m)
+        m = m + e**2
+    m = np.sqrt(m)
     return m
 
 def norma_robust(x):
-       """
-       This program calculates the norm of a vector
-       Parameters
-       ----------
-       x : TYPE Real Vector
-           DESCRIPTION. imput vector  whose norm we wamma get
+    """
+    Calculates the norm of a vector, scaling its elements by the largest
+    absolute value found so far, to avoid overflow and underflow
+    Parameters
+    ----------
+    x : real vector (1D numpy array)
+        input vector whose norm we want to get
 
-       Returns
-       -------
-       m: Type Real number
-          Description. The vector norm 
-       """ 
-       l =x.shape[0]
-       if l==1:
-           m = np.abs(x[0])
-       else:
-           mayor  = 0
-           mscalado = -1
-           for e in x:
-               if e == 0:
-                   continue
-               modxi = np.abs(e)
-               if mayor<modxi:
-                   mscalado = 1 + mscalado*(mayor/modxi)**2
-                   mayor = modxi
-               else:
-                   mscalado = mscalado+(modxi/mayor)**2
-               m = mayor*np.sqrt(mscalado)
-       return m
-               
+    Returns
+    -------
+    m : real number
+        the norm of the vector
+    """
+    if x.shape[0] == 1:
+        return np.abs(x[0])
+    mayor = 0.          # largest absolute value found so far
+    mscalado = 0.       # sum of (x_i/mayor)**2 for the elements seen so far
+    for e in x:
+        if e == 0:
+            continue
+        modxi = np.abs(e)
+        if mayor < modxi:
+            # new largest element: rescale the accumulated sum
+            mscalado = 1 + mscalado*(mayor/modxi)**2
+            mayor = modxi
+        else:
+            mscalado = mscalado + (modxi/mayor)**2
+    m = mayor*np.sqrt(mscalado)
+    return m
