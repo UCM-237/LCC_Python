@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{matplotlib}\PYG{o}{.}\PYG{n}{pyplot}\PYG{o}{.}\PYG{n}{subplots}\PYG{p}{(}\PYG{n}{nrows}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{ncols}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{*}\PYG{p}{,} \PYG{n}{sharex}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{,}
+    \PYG{n}{sharey}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{,} \PYG{n}{squeeze}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{n}{width\PYGZus{}ratios}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,} \PYG{n}{height\PYGZus{}ratios}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,}
+    \PYG{n}{subplot\PYGZus{}kw}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,} \PYG{n}{gridspec\PYGZus{}kw}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,} \PYG{o}{**}\PYG{n}{fig\PYGZus{}kw}\PYG{p}{)}
+\end{Verbatim}

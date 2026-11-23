@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+            \PYG{n}{FFMpegWriter}\PYG{o}{=}\PYG{n}{manimation}\PYG{o}{.}\PYG{n}{writers}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}ffmpeg\PYGZdq{}}\PYG{p}{]}
+            \PYG{n}{metadata} \PYG{o}{=} \PYG{n+nb}{dict}\PYG{p}{(}\PYG{n}{title}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}GIF Test\PYGZdq{}}\PYG{p}{,} \PYG{n}{artist} \PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Me\PYGZdq{}}\PYG{p}{,}
+            \PYG{n}{comment}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}A red circle following a blue sine wave\PYGZdq{}}\PYG{p}{)}
+            \PYG{n}{writer} \PYG{o}{=} \PYG{n}{FFMpegWriter}\PYG{p}{(}\PYG{n}{fps}\PYG{o}{=}\PYG{l+m+mi}{15}\PYG{p}{,} \PYG{n}{metadata}\PYG{o}{=}\PYG{n}{metadata}\PYG{p}{)}
+\end{Verbatim}
