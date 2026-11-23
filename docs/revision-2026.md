@@ -393,8 +393,11 @@ recalculadas (número de iteraciones de cada ejemplo, salidas de Python).
 - Kepler (ejercicio aplicado): **$x=a\cos E-e$ es dimensionalmente
   incorrecta** ($x=a(\cos E-e)$); $M$ es la anomalía *media*, no la
   "verdadera". Test 2024-25: $y_0$ no definido ($h_0$). Test 2020/21: el
-  enunciado pedía escribir $e(t)=t-g(t)$; ahora $e(t)=1$ miliparsec como
-  $t=g(t)$ (revisar si era lo que se pretendía).
+  enunciado pedía escribir $e(t)=t-g(t)$; ahora se define $f(t)=e(t)-d$
+  ($d$ = 1 miliparsec) y se escribe $f(t)=t-g(t)$ (opción elegida por el
+  profesor). **El solucionario antiguo (`raices/Test2020_21.ipynb`) tenía mal
+  las constantes y daba 1.64 días; lo correcto es 2.54 días** (t ≈ 219 737 s,
+  17 iteraciones con $t_0=1$, tol 0.1). Corregido y verificado con `brentq`.
 - Desigualdad $|f(r_0)|\ge|f(r_1)|\ge\cdots$ eliminada (no es cierta en
   general); `\text(tol)`; figura con `{h}`; subfigura repetida
   (`p3fijo3.pdf` dos veces); `\alph{enumii}` suelto; sección inglesa de
