@@ -1,61 +1,48 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Aug 21 11:08:42 2024
 Euler's method for solving initial value problems
-@author: abierto
 """
 import numpy as np
-import matplotlib.pyplot as pl
 
-def euler(fun,xa,a,b,h):
+
+def euler(fun, xa, a, b, h):
     """
-    This function solve numerically the problem dx/dt = f(t,x)
-    form the intial condition xa along the interval [a,b] and
-    using an integration step h
+    Solves numerically the initial value problem dx/dt = fun(t, x),
+    x(a) = xa, in the interval [a, b], using Euler's method.
 
     Parameters
     ----------
-    fun : TYPE function
-        DESCRIPTION. it is the funtion that describe the differential
-        equation to be solved it should be a funtion of t and x 
-        f(t,x) also is there is not explicit dependence on t.
-    xa : TYPE numpy array 
-        DESCRIPTION. initial condition
-    a : TYPE double
-        DESCRIPTION. initial value of t
-    b : TYPE double
-        DESCRIPTION. final value of t
-    h : TYPE double
-        DESCRIPTION. integration step
+    fun : function
+        right-hand side of the differential equation, fun(t, x). It must
+        accept t and x as inputs, even if it does not depend explicitly
+        on t, and return a value (or an array) with the shape of x.
+    xa : number, list or numpy array
+        initial condition x(a). For a system of equations, one value per
+        equation.
+    a, b : float
+        initial and final values of t (a < b).
+    h : float
+        integration step. If (b-a)/h is not an integer, the step is
+        slightly reduced so that the last time is exactly b.
 
     Returns
     -------
-    x : TYPE numpy array
-        DESCRIPTION. intial value dx/dt = f(x) solution at points
-        a, a+h a+2h ... b
-    t. TYPE numpy array
-       DESCRIPTION. times x has been computed at 
+    t : numpy array
+        times a, a+h, a+2h, ..., b
+    x : numpy array
+        solution: x[j, i] is the unknown number j at time t[i]
     """
     if a >= b:
         raise ValueError('I need an increasing interval')
-    
-    #to arrive to the final condition, we modify slighly the
-    #integration step. First we calculate the aproximate number
-    #of intervals between a and b of size h and round it towards
-    #infinite.
-    pt = int(np.ceil((b-a)/h))
-    #then, we modify the integration step to acomodate at 
-    #the rounded number of interval. This is, of course, not
-    #necessary to implement the method, there are other
-    #posibilities to deal with the integration step and
-    #the limit b
-    hft = (b-a)/pt
-    t = np.arange(a,b+hft,hft)
-    x = np.zeros([xa.shape[0],pt+1])
-    x[:,0] = xa
-    for i in range(1,pt+1):
-        x[:,i] = x[:,i-1] + hft*fun(t[i-1],x[:,i-1])
-    pl.plot(t,x.T)
-    return(t,x)
-        
-               
+    xa = np.atleast_1d(np.asarray(xa, dtype=float))
+    # number of steps: (b-a)/h rounded up. The small number avoids an
+    # extra step when, due to rounding errors, (b-a)/h gives something
+    # like 11.000000000000002
+    n = int(np.ceil((b - a)/h - 1e-9))
+    h = (b - a)/n
+    t = np.linspace(a, b, n + 1)
+    x = np.zeros([xa.shape[0], n + 1])
+    x[:, 0] = xa
+    for i in range(n):
+        x[:, i+1] = x[:, i] + h*fun(t[i], x[:, i])
+    return t, x

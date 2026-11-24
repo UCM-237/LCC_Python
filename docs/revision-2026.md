@@ -65,6 +65,7 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 | 6. Cálculo de raíces (`calraiz.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 7. Sistemas de ecuaciones lineales (`sistemas.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 8. Interpolación y ajuste (`interpolacion.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
+| 9. Diferenciación e integración (`integracion.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | Resto | Pendiente | Solo han pasado la revisión automática (sección anterior). |
 
 **Capítulo 2: qué se ha hecho**
@@ -571,6 +572,106 @@ Reescritura completa de las dos columnas (la inglesa tenía restos como
 - `integracion.tex` tenía el capítulo sin etiqueta: añadida
   `\label{ch:integracion}`.
 
+**Capítulo 9: qué se ha hecho**
+
+Reescritura completa de las dos columnas (la inglesa tenía muchas erratas:
+*worming*, *Nunerical*, *sprint*, *base on*\ldots), revisión de los
+programas de `codigos/diferenciacion_integracion/` y figuras nuevas
+generadas con los propios programas.
+
+*Errores corregidos*
+- **Tabla de fórmulas de diferencias finitas**: la segunda derivada
+  adelantada de orden $h^2$ tenía $+y_2$ en lugar de $+4y_2$ (la fórmula
+  impresa ni siquiera aproxima $y''$); `2yx_{-1}` en la tercera derivada; a
+  la centrada de la segunda derivada le faltaba $O(h^2)$. Todas comprobadas
+  con un desarrollo de Taylor simbólico.
+- Diferencia adelantada de tres puntos: el término de error tenía el signo
+  cambiado ($+\frac{h^2}{3}f'''$) y la deducción, una errata (`2{h^2}{2}`).
+- Ejemplo de Newton-Gregory: el texto decía que añadir diferencias hace la
+  derivada "cada vez más precisa", pero las cuatro estimaciones oscilan
+  (1.015, 0.9725, 1.0125, 0.9875). Los datos son $\tan x$ redondeada: la
+  derivada exacta es 1, y con los valores exactos de $\tan x$ pasa lo mismo
+  (es el fenómeno de Runge en el extremo del intervalo). Reescrito como
+  ejemplo de verificación.
+- Ejemplo de `quad`: `inte.quad` con el módulo importado como `integ`
+  (`NameError`).
+- **Figuras del amortiguador: la leyenda estaba intercambiada** (la curva
+  marcada como velocidad era la posición, que tiende a $mg/k$). Además, el
+  texto decía que la primera figura era con $k=100$ (era $k=10$), y que el
+  código mostrado tenía $k=100$. Las tres figuras se han sustituido por una
+  (`amortiguador_euler.pdf`) generada con el código del texto.
+- `Euler_method.py` y `midpoint_method.py`: `np.arange(a, b+h, h)` da a
+  veces un elemento de más (177 de 1194 combinaciones probadas de $b$ y $h$),
+  y entonces `t` y `x` tienen longitudes distintas; un valor inicial escalar
+  daba `AttributeError` (el texto llamaba `euler(condensador,0,0,10,h)`), y
+  dibujaban dentro de la función. Ahora `np.linspace`, `np.atleast_1d` y sin
+  gráficas. El texto llamaba además `euler('amortiguador',[0 0],0,50,0.01)`
+  (nombre como cadena y sintaxis de MATLAB). El bloque de la función
+  `amortiguador` no era Python válido (cuerpo sin sangrar).
+- `integrador.py`: código suelto dentro de la *docstring*; método
+  desconocido daba `UnboundLocalError` (ahora `ValueError`).
+- Paso de integración del condensador: el texto decía $h=0.025$ y la figura
+  $0.25$. Fórmula de Simpson 3/8 con $p_2$ en lugar de $p_3$; $e^{-t/R\cdot
+  C}$ ambiguo; "el error de redondeo hace que haya un $h$ óptimo" en Euler
+  (cierto en teoría, irrelevante en doble precisión: reescrito).
+- Ejercicios: $d^2\theta/dt$ (faltaba el cuadrado), `pi/6`, "tomo",
+  $\int\sin x$ sin $dx$.
+- Test 2020/21: unidades de $\mu$ (con la fuerza $\mu|N|v$, $\mu$ tiene
+  unidades de s/m, no kg/s); referencias `\ref{p1}` a párrafos sin número
+  (sustituidas por "apartado 1"), una con la etiqueta inglesa y otra sin
+  barra (`ref{p1}`); "gráfico del apartado 3.b)" (es 3.a); $v_x(t(t))$. La
+  solución analítica se ha comprobado con `solve_ivp` (diferencia
+  $2\times10^{-12}$).
+- Test 2024-25: unidades ($g=9.8$ m/s, Kg), tildes; `\section*` como en
+  los demás capítulos.
+
+*Contenido nuevo*
+- **"Truncamiento frente a redondeo: el paso óptimo"**: $E(h)$, $h_{opt}$
+  ($\sqrt\epsilon$ y $\epsilon^{1/3}$), tabla medida y figura nueva medida
+  (`errores_derivada.pdf`, sustituye al esquema `errores.eps`).
+- `np.gradient` y la amplificación del ruido al derivar datos (ruido de
+  $3\times10^{-3}$ → error de $6\times10^{-2}$).
+- Fórmulas del error de trapecio y Simpson, Simpson exacto para cúbicas,
+  pesos negativos de Newton-Cotes, **orden medido** (cocientes 4 y 16) y
+  error predicho con la fórmula.
+- `quad` puede fallar con seguridad aparente: un pico estrecho da
+  $4\times10^{-70}$ con error estimado $8\times10^{-70}$ (la integral es
+  $\sqrt\pi$); `points`. `trapezoid`, `simpson` y `cumulative_trapezoid`
+  para datos.
+- Euler: orden 1 medido con el condensador; **estabilidad** del
+  amortiguador: predicción del paso crítico $h=\mu/k$ y comprobación con
+  $h=0.0051$ y $0.0049$ ("estable no quiere decir preciso").
+- Sección **"¿Es correcta mi solución?"** (solución conocida, orden,
+  conservación, sentido físico, comparación con `solve_ivp`).
+- Punto medio con orden 2 medido; RK4 (fórmulas).
+- **`solve_ivp`** (medida H): uso, `t_eval`, forma de `sol.y`, y el
+  peligro de las tolerancias por defecto (`rtol=1e-3`): un oscilador pierde
+  el 1.3 % de la energía en 100 periodos. Métodos y problemas rígidos.
+- Ejercicios: los cinco antiguos corregidos y ampliados (con `assert`,
+  predicciones y conservación de la energía y del momento angular), y nuevos:
+  *predice y mide* el paso óptimo, *mide el orden* ($\sqrt x$: orden 1.5;
+  función periódica: el trapecio es exacto con 16 intervalos), *depura este
+  código* (Simpson que se salta el último panel: con 101 datos da 1.998,
+  que parece razonable, pero el orden medido es 2), *¿cuál es correcta?*
+  (tres bucles del oscilador: el único que es Euler gana un 87 % de energía;
+  los "mal escritos" son Euler-Cromer) y uno con IA (RK4 con las pruebas
+  escritas antes).
+- Solucionario: `onlyforyoureyes/diferenciacion_integracion/EjerciciosLibro.ipynb`
+  (nuevo), comprobado con `assert`. Matices que salen al resolverlo: los
+  $x$ de la tabla del ejercicio de integración están truncados (el paso real
+  es $\pi/10$; usar $h=0.3141$ introduce un error comparable al de Simpson);
+  con las tolerancias por defecto de `solve_ivp`, la órbita del ejercicio
+  del planeta cambia su energía de $-0.755$ a $-3.1$ en $t=100$.
+
+*Sin cambiar (para revisar)*
+- Test 2024-25: la fuerza de arrastre se escribe $C_d\rho\pi r^2|v|v$, sin el
+  factor $\frac12$ habitual ($\frac12C_d\rho A v^2$); equivale a usar
+  $C_d=0.94$. Y $\rho=1.22$ kg/m$^3$ corresponde a unos 15 °C, no a 30 °C
+  (1.16). No se ha tocado porque cambia los resultados del test y del
+  fichero `datosLauraLucia.txt`.
+- Las figuras antiguas `amortiguador_1/2/3.png`, `errores.eps` y `solrc.eps`
+  ya no se usan; no se han borrado.
+
 ---
 
 ## 2. Pendiente: necesita decisión o revisión humana
@@ -592,6 +693,15 @@ Reescritura completa de las dos columnas (la inglesa tenía restos como
    suelto ni con la versión anterior, y no depende de la figura nueva ni del
    índice. Comprobar si pasa también con MiKTeX en el despacho; si pasa,
    investigarlo (quizá probar LuaLaTeX).
+   *Actualización (cap. 9)*: el núcleo registra los fallos casi siempre en
+   la misma instrucción de pdfTeX (6 de 8 en el desplazamiento `0x5630b`),
+   con poca memoria en uso (quedaban ~5 GB libres): es un error del programa
+   (lee fuera de un búfer), no falta de memoria ni un fallo del ordenador.
+   Ocurre también con la aleatorización de direcciones desactivada
+   (`setarch -R`): las pasadas con el `.aux` incompleto terminan, y las que
+   leen el `.aux` completo se caen. Con el capítulo 9 nuevo no se ha
+   conseguido ninguna pasada limpia del manual completo (sí del capítulo
+   suelto, sin errores). Probar con MiKTeX o con otra versión de TeX Live.
 6. **La revisión gramatical y de estilo no está hecha.** El corrector sólo
    encuentra palabras mal escritas. El inglés, en particular, tiene muchas
    construcciones calcadas del español que conviene revisar capítulo a

@@ -1,56 +1,46 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Aug 23 16:10:09 2024
-The Runge-Kutta midpoint method
-@author: abierto
+The Runge-Kutta midpoint method for solving initial value problems
 """
 import numpy as np
-import matplotlib.pyplot as pl
-def pmedio(fun,xa,a,b,h):
+
+
+def pmedio(fun, xa, a, b, h):
     """
-    This funtion implements the second-order Runge-Kutta method
-    better known as the midpoint method
+    Solves numerically the initial value problem dx/dt = fun(t, x),
+    x(a) = xa, in the interval [a, b], using the midpoint method
+    (second-order Runge-Kutta).
 
     Parameters
     ----------
-    fin : TYPE function
-        DESCRIPTION. a funtion describing the initial value problem
-        derivative to be integrate
-    xa : TYPE numpy array
-        DESCRIPTION. initial condition
-    a : TYPE double
-        DESCRIPTION. initial integratio point
-    b : TYPE double 
-        DESCRIPTION. final integration point
-    h : TYPE double
-        DESCRIPTION. integration step
+    fun : function
+        right-hand side of the differential equation, fun(t, x).
+    xa : number, list or numpy array
+        initial condition x(a).
+    a, b : float
+        initial and final values of t (a < b).
+    h : float
+        integration step. If (b-a)/h is not an integer, the step is
+        slightly reduced so that the last time is exactly b.
 
     Returns
     -------
-    x: TYPE numpy array 
-       DESCRIPTION. solutions at points a, a+h, a+2h etc
-    t. TYPE numpy array
-       DESCRIPTION. times x has been computed at 
+    t : numpy array
+        times a, a+h, a+2h, ..., b
+    x : numpy array
+        solution: x[j, i] is the unknown number j at time t[i]
     """
     if a >= b:
         raise ValueError('I need an increasing interval')
-    
-    #to arrive to the final condition, we modify slighly the
-    #integration step. First we calculate the aproximate number
-    #of intervals between a and b of size h and round it towards
-    #infinite.
-    pt = int(np.ceil((b-a)/h))
-    #then, we modify the integration step to acomodate at 
-    #the rounded number of interval. This is, of course, not
-    #necessary to implement the method, there are other
-    #posibilities to deal with the integration step and
-    #the limit b
-    hft = (b-a)/pt
-    t = np.arange(a,b+hft,hft)
-    x = np.zeros([xa.shape[0],pt+1])
-    x[:,0] = xa
-    for i in range(1,pt+1):
-        x[:,i] = x[:,i-1] + hft*fun(t[i-1]+hft/2,x[:,i-1]\
-                 +hft*fun(t[i-1],x[:,i-1])/2)
-    pl.plot(t,x.T)
-    return(t,x)
+    xa = np.atleast_1d(np.asarray(xa, dtype=float))
+    n = int(np.ceil((b - a)/h - 1e-9))
+    h = (b - a)/n
+    t = np.linspace(a, b, n + 1)
+    x = np.zeros([xa.shape[0], n + 1])
+    x[:, 0] = xa
+    for i in range(n):
+        # half a step with Euler, to estimate x at the midpoint
+        xm = x[:, i] + h/2*fun(t[i], x[:, i])
+        # whole step with the slope at the midpoint
+        x[:, i+1] = x[:, i] + h*fun(t[i] + h/2, xm)
+    return t, x

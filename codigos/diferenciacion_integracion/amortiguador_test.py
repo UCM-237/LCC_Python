@@ -1,46 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Aug 21 20:16:17 2024
-
-@author: abierto
+Damped oscillator (a mass hanging from a spring, with a damper)
+solved with Euler's method
 """
 import numpy as np
 import matplotlib.pyplot as pl
 from Euler_method import euler
 
-def amortiguador(t,y):
+
+def amortiguador(t, y, k=10., m=2., mu=0.5, g=9.8):
     """
-    Defines the set of differetial equations for a damping
-    oscilator 
+    Right-hand side of the equations of the damped oscillator,
+        dy/dt = v,  dv/dt = g - (k/m)*y - (mu/m)*v
 
-    Parameters
-    ----------
-    t : TYPE double 
-        DESCRIPTION. time
-    y : TYPE numpy array
-        DESCRIPTION. y[0] ->> position
-                     y[1] ->> velocity
-
-    Returns
-    -------
-    dydt : TYPE numpy arra
-           DESCRIPTION. dydt[0] ->> velocity
-                        dydt[1] ->> acceleration
-    
+    y[0] is the position (m) and y[1] the velocity (m/s); k is the
+    spring constant (N/m), m the mass (kg), mu the damping constant
+    (kg/s) and g the gravity acceleration (m/s^2).
+    Returns the array [dy/dt, dv/dt].
     """
-    g = 9.8 #gravity accel.
-    k = 100. #spring constant
-    m = 2.  #mass
-    mu = 0.5 #friction constant
-    dydt = np.zeros(2) 
-    dydt[0]=y[1]
-    dydt[1]=g-(k/m)*y[0]-(mu/m)*y[1];
-    return(dydt)
+    return np.array([y[1], g - (k/m)*y[0] - (mu/m)*y[1]])
 
-yini = np.array([0,0])
-pl.figure(1)
-euler(amortiguador,yini,0,50,0.001)
-pl.xlabel('t(s.)')
-pl.ylabel('(-)')
-pl.title('Amortiguador k= 100, mu = 0.5, m = 2, step/paso = 0.001')
-pl.legend(['v m/s', 'y m'])
+
+t, y = euler(amortiguador, [0, 0], 0, 50, 0.01)
+pl.plot(t, y[0], label='y (m)')
+pl.plot(t, y[1], label='v (m/s)')
+pl.xlabel('t (s)')
+pl.title('k = 10 N/m, h = 0.01 s')
+pl.legend()

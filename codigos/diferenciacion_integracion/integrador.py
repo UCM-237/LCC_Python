@@ -8,15 +8,15 @@ import numpy as np
 from matplotlib import pyplot as pl
 def integra(fun,met,inter,dib=False):
     """
-    function numerical integration, using trapezium, Simpson's
+    Numerical integration of a function, using the trapezium, Simpson's
     1/3 or Simpson 3/8 methods
 
     Parameters
     ----------
     fun : TYPE function
         DESCRIPTION. Function to be integrated
-    met : TYPE char array 
-        DESCRIPTION. method should be one of 'trap' 'simpson' 
+    met : TYPE string
+        DESCRIPTION. method should be one of 'trap', 'simpson'
         or 'simpson38'
     inter : TYPE array [a,b]
         DESCRIPTION. integration interval limits
@@ -27,8 +27,6 @@ def integra(fun,met,inter,dib=False):
     -------
     intg: TYPE double
         DESCRIPTION. Integral value
-        f1 = fun(inter[1])
-        h = inter[1] - inter[0]
 
     """
     if met == 'trap':
@@ -76,22 +74,24 @@ def integra(fun,met,inter,dib=False):
                           where=(inter[0]<=x)&(x<=inter[3]))
             pl.plot(x,ypol,'k')
             pl.plot(x,y,'b')
+    else:
+        raise ValueError("method should be 'trap', 'simpson' or 'simpson38'")
     return(intg)
 
 def trocea(fun,met,inter,div,dib=False):
     """
-    This funtion divide a interval into the number of subintervals indicate
-    by div and calls function integra to obtain the integral in 
-    any subinterval. Eventually sums all results to compute the
+    This function divides an interval into the number of subintervals
+    given by div and calls the function integra to obtain the integral
+    in each subinterval. Then it adds all the results to compute the
     integral over the whole interval
 
     Parameters
     ----------
     fun : TYPE function
-        DESCRIPTION. function to be integrate
-    met : TYPE character string 
-        DESCRIPTION. Method it should be one of 'trap' 'simpson' 
-        or 'simpson38'can be 'trap', 
+        DESCRIPTION. function to be integrated
+    met : TYPE string
+        DESCRIPTION. Method, it should be one of 'trap', 'simpson'
+        or 'simpson38'
     inter : TYPE array or list 
         DESCRIPTION. limits for the integration interval [a,b]
     div : TYPE integer
@@ -102,7 +102,7 @@ def trocea(fun,met,inter,div,dib=False):
     Returns
     -------
     total : TYPE double
-          DSCRIPTION Definite integral value of fun in inter
+          DESCRIPTION. Definite integral value of fun in inter
 
     """
     tramos = np.linspace(inter[0],inter[1],div+1)
