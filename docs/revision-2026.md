@@ -706,8 +706,12 @@ ejercicios: se ha añadido una sección con diez.
   $t_0$ se calculaba con el intervalo $[-1,1]$ en lugar de $[-0.1,0.1]$
   (`(1-(-1))**2/12` = 0.3333 en vez de 0.003333, cien veces mayor); la media
   del voltaje era 802.1 mV, no 802.01; $s^2(t)$ 0.5382 en vez de 0.5328. Con
-  todo corregido, $P=1.286\pm0.089$ mW (antes $1.285\pm0.107$). Las unidades
-  de $b$ eran $\Omega$/ºC, incompatibles con $1+b(t-t_0)$: ahora ºC$^{-1}$.
+  todo corregido (y con $b=0.4$), $P=1.286\pm0.089$ mW (antes $1.285\pm0.107$).
+  Las unidades de $b$ eran $\Omega$/ºC, incompatibles con $1+b(t-t_0)$: ahora
+  ºC$^{-1}$. Además, $b=0.4$ ºC$^{-1}$ era irreal (a 60 ºC la resistencia
+  valdría 500 Ω); con el visto bueno del profesor se ha cambiado a $b=0.004$
+  ºC$^{-1}$ (cobre: 0.0039): $P=6.19\pm0.23$ mW, y la incertidumbre la domina
+  el voltaje (66 %) y $R_0$ (34 %), no la temperatura.
 - **`middlesquare.py`** (escrito por un asistente de IA, según su cabecera):
   no completaba el cuadrado con ceros por la izquierda, así que no
   reproducía el ejemplo de 8 cifras del propio texto (daba 5247068 donde el
@@ -762,9 +766,9 @@ ejercicios: se ha añadido una sección con diez.
   (`cobertura.pdf`).
 - **"Comprobación: propagación por Monte Carlo"** del ejemplo de la potencia:
   $0.090$ mW frente a $0.089$ de la propagación lineal; distribución
-  ligeramente asimétrica, intervalo del 95 % [1.128, 1.481] mW
-  (`propagacion_mc.pdf`). Con el error antiguo de $s^2(t_0)$ la diferencia
-  habría saltado a la vista. Qué término domina (la temperatura, 71 %).
+  ligeramente asimétrica, intervalo del 95 % [1.128, 1.481] mW con $b=0.4$
+  (`propagacion_mc.pdf`). Con $b=0.004$: $0.230$ frente a $0.229$ mW,
+  intervalo del 95 % [5.75, 6.65] mW. Qué término domina (el voltaje, 66 %).
 - Pandas: comprobación del número de datos (361 = 30 h × 12 + 1) y
   `read_csv(..., skiprows=2)` como forma directa de leer el fichero.
 - Ejercicios (todos nuevos): dados simulados ($\sqrt{p(1-p)/N}$), *depura*
@@ -786,10 +790,6 @@ ejercicios: se ha añadido una sección con diez.
   típicas de la función del último ejercicio que las pruebas detectan.
 
 *Sin cambiar (para revisar)*
-- En el ejemplo de la resistencia, $b=0.4$ ºC$^{-1}$ es físicamente
-  exagerado: a 60 ºC la resistencia valdría 500 Ω (para el cobre,
-  $b\approx0.0039$ ºC$^{-1}$). Con $b=0.004$ cambian todos los números y el
-  término dominante pasa a ser el voltaje. Se ha mantenido 0.4.
 - Las figuras antiguas `dadot.eps`, `distexp.eps`, `tlc.eps`, `tlc1.eps` y
   `tlc2.eps` ya no se usan; no se han borrado. `codigos/tratamiento_datos/`
   conserva `middlesquare.m` (MATLAB) y `electrica.ipynb`, que no cita el

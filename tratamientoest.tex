@@ -1510,7 +1510,7 @@ Resistence nominal value&\hspace{2.2cm} (confidence interval 98\%) \\
 Temperatura de referencia& $t_0=50\pm 0.1 ^oC$ (división menor del sensor $0.2^oC$) \\
 Reference temperature& \hspace{2.2cm}(sensor least count $0.2^oC$)\\
 \hline
-Valor del parámetro b& $b = 0.4\ ^o\mathrm{C}^{-1}$ (incertidumbre despreciable)\\
+Valor del parámetro b& $b = 0.004\ ^o\mathrm{C}^{-1}$ (incertidumbre despreciable)\\
 b parameter value & \hspace{2.2cm} (negligible uncertainty)\\
 \hline
 \hline
@@ -1719,7 +1719,7 @@ Variable (units) & Value & Variance\\
 \hline
 $R_0$($\Omega$)&$100$&$4.6195$\\
 \hline
-b (ºC$^{-1}$)& $0.4$ &--\\
+b (ºC$^{-1}$)& $0.004$ &--\\
 \hline
 $t_0$ (ºC)& 50& 0.003333\\
 \hline 
@@ -1733,7 +1733,7 @@ $\bar{V}$(mV)& $802.1$&$145.5837$\\
 
 
 \begin{equation*}
-P = \frac{V^2}{R_0\left(1+b(t-t_0)\right)}=\frac{0.8021^2}{100\left(1+0.4(60.01-50)\right)} =  0.001286\ \mathrm{W} = 1.286\ \mathrm{mW}
+P = \frac{V^2}{R_0\left(1+b(t-t_0)\right)}=\frac{0.8021^2}{100\left(1+0.004(60.01-50)\right)} =  0.006186\ \mathrm{W} = 6.186\ \mathrm{mW}
 \end{equation*}
 
 \begin{paracol}{2}
@@ -1749,11 +1749,11 @@ Subsequently, we propagate the uncertainty of the input variables to the output,
 \begin{align*}
 s_c^2(P) =& \left(\frac{2V}{R_0\left(1+b(t-t_0)\right)}\right)^2 s^2(V)+ \left(\frac{-V^2\left(1+b(t-t_0)\right)}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(R_0)+\\
 &+ \left(\frac{-V^2R_0b}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(t)+\left(\frac{V^2R_0b}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(t_0)=\\
-=& \left(\frac{2 \cdot 0.8021}{100\left(1+0.4(60.01-50)\right)}\right)^2 \cdot 1.455837\cdot10^{-4} +\\
-&+ \left(\frac{- 0.8021^2\left(1+0.4(60.01-50)\right)}{100^2\left(1+0.4(60.01-50)\right)^2}\right)^2 \cdot 4.619+\\
-&+ \left(\frac{- 0.8021^2\cdot100\cdot0.4}{100^2\left(1+0.4(60.01-50)\right)^2}\right)^2\cdot 0.5328 +\\
-&+\left(\frac{0.8021^2\cdot100\cdot0.4}{100^2\left(1+0.4(60.01-50)\right)^2}\right)^2 0.003333=\\
-=&1.4962\cdot10^{-9} + 7.6361\cdot10^{-10} + 5.6281\cdot10^{-9} + 3.5208\cdot10^{-11} =  7.9231\cdot 10^{-9}
+=& \left(\frac{2 \cdot 0.8021}{100\left(1+0.004(60.01-50)\right)}\right)^2 \cdot 1.455837\cdot10^{-4} +\\
+&+ \left(\frac{- 0.8021^2\left(1+0.004(60.01-50)\right)}{100^2\left(1+0.004(60.01-50)\right)^2}\right)^2 \cdot 4.619+\\
+&+ \left(\frac{- 0.8021^2\cdot100\cdot0.004}{100^2\left(1+0.004(60.01-50)\right)^2}\right)^2\cdot 0.5328 +\\
+&+\left(\frac{0.8021^2\cdot100\cdot0.004}{100^2\left(1+0.004(60.01-50)\right)^2}\right)^2 0.003333=\\
+=&3.4636\cdot10^{-8} + 1.7677\cdot10^{-8} + 3.0160\cdot10^{-10} + 1.8867\cdot10^{-12} =  5.2616\cdot 10^{-8}
 \end{align*} 
 
 \begin{paracol}{2}
@@ -1763,12 +1763,12 @@ En este caso, hemos multiplicado la varianza del voltaje $s^2(V)$ por $10^{-6}$,
 In this case, we have multiply the voltage variance $s^2(V)$ by $10^{-6}$, to obtain the $s_c^2(P)$ in W$^2$. We can now represent the uncertainty of the consumed power as a function of the standard deviation as,
 \end{paracol}
 \begin{equation*}
-u_c(P) = \sqrt{s_c^2(P)} =  8.901\cdot 10^{-5}\ \mathrm{W}
+u_c(P) = \sqrt{s_c^2(P)} =  2.294\cdot 10^{-4}\ \mathrm{W}
 \end{equation*}
 \begin{paracol}{2}
-Con lo que finalmente expresaríamos la medida indirecta de la potencia consumida como $P = 1.286 \pm 0.089$ mW. Los cuatro términos de la suma nos dicen además de dónde viene la incertidumbre: el de la temperatura $t$ aporta el 71\% de la varianza, el del voltaje el 19\%, el de $R_0$ el 10\% y el de $t_0$ menos del 1\%. Si quisiéramos una medida más precisa, lo primero sería medir mejor la temperatura. Si suponemos que la distribución de probabilidad asociada a la incertidumbre de la potencia es normal, la incertidumbre así expresada (mediante la desviación estándar) representaría un intervalo de confianza del $68.27\%$. 
+Con lo que finalmente expresaríamos la medida indirecta de la potencia consumida como $P = 6.19 \pm 0.23$ mW. Los cuatro términos de la suma nos dicen además de dónde viene la incertidumbre: el del voltaje aporta el 66\% de la varianza, el de $R_0$ el 34\%, el de la temperatura $t$ menos del 1\% y el de $t_0$ es despreciable. Con un coeficiente de temperatura realista ($b=0.004$ ºC$^{-1}$, parecido al del cobre, $0.0039$ ºC$^{-1}$), la resistencia solo cambia un 4\% entre $50$ y $60$ ºC, y por eso la temperatura apenas influye. Si quisiéramos una medida más precisa, lo primero sería medir mejor el voltaje (o hacer más medidas) y conocer mejor $R_0$. Si suponemos que la distribución de probabilidad asociada a la incertidumbre de la potencia es normal, la incertidumbre así expresada (mediante la desviación estándar) representaría un intervalo de confianza del $68.27\%$. 
 \switchcolumn
-And eventually we can represent the indirect measurement of the consumed power as $P = 1.286 \pm 0.089$ mW. The four terms of the sum also tell us where the uncertainty comes from: the temperature $t$ term contributes 71\% of the variance, the voltage term 19\%, the $R_0$ term 10\% and the $t_0$ term less than 1\%. If we wanted a more accurate measurement, the first thing to do would be to measure the temperature better. If we suppose that the probability distribution associated to the power uncertainty is normal, the uncertainty so represented (using the standard deviation) represents a confidence interval of $68.27\%$.
+And eventually we can represent the indirect measurement of the consumed power as $P = 6.19 \pm 0.23$ mW. The four terms of the sum also tell us where the uncertainty comes from: the voltage term contributes 66\% of the variance, the $R_0$ term 34\%, the temperature $t$ term less than 1\% and the $t_0$ term is negligible. With a realistic temperature coefficient ($b=0.004$ ºC$^{-1}$, similar to that of copper, $0.0039$ ºC$^{-1}$), the resistance only changes by 4\% between $50$ and $60$ ºC, and that is why the temperature hardly matters. If we wanted a more accurate measurement, the first thing to do would be to measure the voltage better (or take more measurements) and to know $R_0$ better. If we suppose that the probability distribution associated to the power uncertainty is normal, the uncertainty so represented (using the standard deviation) represents a confidence interval of $68.27\%$.
 \end{paracol}
 
 \begin{paracol}{2}
@@ -1787,14 +1787,14 @@ V = rng.normal(v.mean(), v.std(ddof=1)/np.sqrt(len(v)), N)*1e-3   # V
 R0 = rng.normal(100, 5/norm.ppf(0.99), N)                          # ohm
 T = rng.normal(t.mean(), t.std(ddof=1)/np.sqrt(len(t)), N)         # ºC
 T0 = rng.uniform(49.9, 50.1, N)                                    # ºC
-b = 0.4                                                            # 1/ºC
+b = 0.004                                                          # 1/ºC
 P = V**2/(R0*(1 + b*(T - T0)))*1e3                                 # mW
 print(f'P = {P.mean():.3f} ± {P.std():.3f} mW')
 print('intervalo del 95 %:', np.percentile(P, [2.5, 97.5]))
 \end{minted}
 \begin{minted}{text}
-P = 1.291 ± 0.090 mW
-intervalo del 95 %: [1.12756653 1.48092042]
+P = 6.190 ± 0.230 mW
+intervalo del 95 %: [5.75093035 6.65210516]
 \end{minted}
 \begin{figure}[h]
 \centering
@@ -1803,9 +1803,9 @@ intervalo del 95 %: [1.12756653 1.48092042]
 \label{fig:propmc}
 \end{figure}
 \begin{paracol}{2}
-La desviación estándar ($0.090$~mW) coincide con la de la propagación lineal ($0.089$~mW), lo que confirma el cálculo anterior. (Con el error en $s^2(t_0)$ que tenía una versión anterior de estos apuntes, la propagación lineal daba $0.107$~mW, y esta comprobación lo habría detectado.) La simulación da además información que la fórmula no da: la distribución es ligeramente asimétrica (figura \ref{fig:propmc}), y el intervalo que contiene el 95\% de los resultados, $[1.128,\ 1.481]$~mW, no es simétrico respecto al valor central. Cuando la ecuación de medida es muy no lineal, la propagación por Monte Carlo es el método que recomienda la guía internacional para expresar la incertidumbre de medida (GUM, suplemento 1).
+La desviación estándar ($0.230$~mW) coincide con la de la propagación lineal ($0.229$~mW), lo que confirma el cálculo anterior. La simulación da además información que la fórmula no da: la distribución es ligeramente asimétrica (figura \ref{fig:propmc}), y el intervalo que contiene el 95\% de los resultados, $[5.75,\ 6.65]$~mW, no es simétrico respecto al valor central ($6.19$~mW): se extiende $0.44$~mW por debajo y $0.47$~mW por encima. Cuando la ecuación de medida es muy no lineal, la propagación por Monte Carlo es el método que recomienda la guía internacional para expresar la incertidumbre de medida (GUM, suplemento 1).
 \switchcolumn
-The standard deviation ($0.090$~mW) agrees with that of the linear propagation ($0.089$~mW), which confirms the previous computation. (With the error in $s^2(t_0)$ of a previous version of these notes, the linear propagation gave $0.107$~mW, and this check would have detected it.) The simulation also gives information that the formula does not: the distribution is slightly asymmetric (figure \ref{fig:propmc}), and the interval that contains 95\% of the results, $[1.128,\ 1.481]$~mW, is not symmetric about the central value. When the measurement equation is strongly nonlinear, Monte Carlo propagation is the method recommended by the international guide to the expression of uncertainty in measurement (GUM, supplement 1).
+The standard deviation ($0.230$~mW) agrees with that of the linear propagation ($0.229$~mW), which confirms the previous computation. The simulation also gives information that the formula does not: the distribution is slightly asymmetric (figure \ref{fig:propmc}), and the interval that contains 95\% of the results, $[5.75,\ 6.65]$~mW, is not symmetric about the central value ($6.19$~mW): it extends $0.44$~mW below and $0.47$~mW above. When the measurement equation is strongly nonlinear, Monte Carlo propagation is the method recommended by the international guide to the expression of uncertainty in measurement (GUM, supplement 1).
 \end{paracol}
 \begin{paracol}{2}
 \section{Una nota sobre Pandas.}
