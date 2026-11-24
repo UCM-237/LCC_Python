@@ -664,11 +664,15 @@ generadas con los propios programas.
   del planeta cambia su energía de $-0.755$ a $-3.1$ en $t=100$.
 
 *Sin cambiar (para revisar)*
-- Test 2024-25: la fuerza de arrastre se escribe $C_d\rho\pi r^2|v|v$, sin el
-  factor $\frac12$ habitual ($\frac12C_d\rho A v^2$); equivale a usar
-  $C_d=0.94$. Y $\rho=1.22$ kg/m$^3$ corresponde a unos 15 °C, no a 30 °C
-  (1.16). No se ha tocado porque cambia los resultados del test y del
-  fichero `datosLauraLucia.txt`.
+- Test 2024-25 (**corregido** con el visto bueno del profesor): la fuerza de
+  arrastre era $C_d\rho\pi r^2|v|v$, sin el factor $\frac12$ habitual
+  ($\frac12C_d\rho A v^2$), y $\rho=1.22$ kg/m$^3$ corresponde a unos 15 °C,
+  no a 30 °C (1.16). Ahora lleva el $\frac12$ en las ecuaciones y en
+  $F_{rx},F_{rh}$, y dice 15 °C. Se han regenerado `datosLauraLucia.txt` (y su
+  copia `datos_Laura_Lucia.txt`) en `onlyforyoureyes`: alcance 28.24 m en vez
+  de 23.36 m. **Hay que subir el fichero nuevo al campus virtual.** El balance
+  de energía del apartado 4 sigue cuadrando (W = -6915 J frente a ΔE = -6899 J
+  con Δt = 1e-3).
 - Las figuras antiguas `amortiguador_1/2/3.png`, `errores.eps` y `solrc.eps`
   ya no se usan; no se han borrado.
 
