@@ -1,46 +1,43 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Feb 26 15:20:07 2025
-Middle Square method to generate psudo-random numbers
-@author: chapgpt
-@Juan: Beware: the function do not check the number of digits of the seed.
-So is up to the user to introduce a seed with the proper size
+Método 'middle square' de von Neumann para generar números pseudoaleatorios.
+Von Neumann's middle-square method to generate pseudo-random numbers.
+
+La primera versión de esta función la escribió un asistente de IA y tenía un
+error: convertía el cuadrado en texto sin completarlo con ceros a la
+izquierda hasta 2n cifras, así que tomaba mal las cifras centrales en cuanto
+aparecía un número con un cero inicial (por ejemplo 09633548).
+The first version of this function was written by an AI assistant and had a
+bug: it did not pad the square with leading zeros up to 2n digits.
 """
+
+
 def middle_square(seed, num_digits, num_iterations):
-    # Initialize the current number with the seed
+    """
+    seed: semilla, entero de como mucho num_digits cifras / integer seed
+    num_digits: número de cifras n (par) / number of digits n (even)
+    num_iterations: cuántos números generar / how many numbers to generate
+    Devuelve una lista de enteros / returns a list of integers
+    """
+    if num_digits % 2 != 0 or seed >= 10**num_digits:
+        raise ValueError('num_digits debe ser par y la semilla tener '
+                         'como mucho num_digits cifras')
     current_number = seed
-    
-    # List to store the random numbers generated
     random_numbers = []
-    
     for _ in range(num_iterations):
-        # Square the current number
-        squared = current_number * current_number
-        
-        # Convert squared number to string to extract middle digits
-        # Calculate the number of digits in the squared result
-        squared_str = str(squared)
-        
-        # Calculate the start and end index for the middle digits
-        mid_start = (len(squared_str) - num_digits) // 2
-        mid_end = mid_start + num_digits
-        
-        # Extract the middle digits (as integer)
-        middle_digits = int(squared_str[mid_start:mid_end])
-        
-        # Add the middle digits to the list of random numbers
-        random_numbers.append(middle_digits)
-        
-        # Update current_number to the middle digits for the next iteration
-        current_number = middle_digits
-    
+        # cuadrado con 2n cifras, rellenando con ceros a la izquierda
+        squared_str = str(current_number**2).zfill(2*num_digits)
+        mid_start = num_digits // 2
+        current_number = int(squared_str[mid_start:mid_start + num_digits])
+        random_numbers.append(current_number)
     return random_numbers
 
-# Example usage
-seed = 3708  # Initial seed
-num_digits = 4  # Number of digits to extract as the random number
-num_iterations = 10  # Number of iterations to generate
 
-random_sequence = middle_square(seed, num_digits, num_iterations)
-print("Random Sequence:", random_sequence)
+# Comprobaciones con los ejemplos del texto / tests with the text examples
+assert middle_square(87289689, 8, 4) == [48980571, 9633548, 80524706,
+                                         22827638]
+assert middle_square(3708, 4, 8) == [7492, 1300, 6900, 6100, 2100, 4100,
+                                     8100, 6100]
+
+print(middle_square(3708, 4, 10))

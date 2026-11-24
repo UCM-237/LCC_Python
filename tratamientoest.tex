@@ -1,5 +1,6 @@
 \chapter{Tratamiento estadístico de datos\\ Statistical data analysis}
 \chaptermark{Tratamiento de datos \textreferencemark\ Data analysis}
+\sloppy
 \epigraph{Dicen que las buenas mozas en Madrid han decidido, el gastar en vez de lengua una espada de dos filos.
 
 Y si hay guerra en este invierno , los Valones y los Suizos llevarán en vez de espada guardapiés y rebocillo.}{El barberillo de Lavapiés. Luis Mariano de Larra}
@@ -16,7 +17,7 @@ No es posible generar secuencias de números aleatorios con un computador. La ra
 
 Sin embargo, es posible con un ordenador generar secuencias de números que simulan ser aleatorios. Estas secuencias reciben el nombre de secuencias de números \emph{pseudoaleatorios}.\index{Números pseudoaleatorios}
 
-El primer algoritmo para obtener números pseudoaleatorios, lo desarrolló John Von Newman en 1946. Se conoce con el nombre de \emph{Middle Square}.\index{Middle Square} La idea consiste en elegir un número inicial, formado por $n$ cifras, que recibe el nombre de semilla.\index{Números aleatorios! Semilla} A continuación se eleva el número al cuadrado. Por último, se extraen las $n$ cifras centrales del número así generado, que constituye el segundo número en la secuencia de números aleatorios. Este número se vuelve a elevar al cuadrado y se extraen de el las $n$ cifras centrales que constituirán el tercer número aleatorio. Este proceso se repite tantas veces como números aleatorios se deseen generar.
+El primer algoritmo para obtener números pseudoaleatorios, lo desarrolló John von Neumann en 1946. Se conoce con el nombre de \emph{Middle Square}.\index{Middle Square} La idea consiste en elegir un número inicial, formado por $n$ cifras, que recibe el nombre de semilla.\index{Números aleatorios! Semilla} A continuación se eleva el número al cuadrado. Por último, se extraen las $n$ cifras centrales del número así generado, que constituye el segundo número en la secuencia de números aleatorios. Este número se vuelve a elevar al cuadrado y se extraen de el las $n$ cifras centrales que constituirán el tercer número aleatorio. Este proceso se repite tantas veces como números aleatorios se deseen generar.
 
 Veamos un ejemplo con una semilla  formada por $n=8$ dígitos,
 \switchcolumn
@@ -28,7 +29,7 @@ It is impossible to generate random numbers using a computer, because a computer
 
 Nevertheless, it is possible to use the computer for generating sequences of number that seem to be random. Such sequences are called \emph{pseudo-random} number sequences.\index[eng]{Pseudo-random numbers}
 
-The first algorithm for obtaining pseudo-random numbers was developed by John Von Newman in 1946. Its is known as the \emph{Middle Square} method.\index[eng]{Middle Square} It starts from an initial number made up of n digits which is called the seed.\index[eng]{Random numbers! Seed} Then, the square of the number is calculated and the n central digits of the result are taken as a new number that will be the second one of the random number sequence. This new number is squared and the n central digit of the result are taken to form the three number of the random sequence. The process is repeated so many times as random numbers you wish to generate.
+The first algorithm for obtaining pseudo-random numbers was developed by John von Neumann in 1946. It is known as the \emph{Middle Square} method.\index[eng]{Middle Square} It starts from an initial number made up of n digits which is called the seed.\index[eng]{Random numbers! Seed} Then, the square of the number is calculated and the n central digits of the result are taken as a new number that will be the second one of the random number sequence. This new number is squared and the n central digit of the result are taken to form the three number of the random sequence. The process is repeated so many times as random numbers you wish to generate.
 
 Let see an example, using a n=8 digits seed, 
 
@@ -62,14 +63,18 @@ linenos
 ]{python}{./codigos/tratamiento_datos/middlesquare.py}
 
 \begin{paracol}{2}
+La primera versión de la función \mintinline{python}|middle_square| la escribió un asistente de IA. Funcionaba con la semilla $3708$, pero con la semilla de 8 cifras del ejemplo anterior daba una secuencia distinta: convertía el cuadrado en texto sin completarlo con ceros por la izquierda hasta $2n$ cifras, y $09633548^2=92805247068304$ solo tiene 14 cifras. Por eso el código termina con dos \mintinline{python}|assert| que comprueban la función con los dos ejemplos del texto; con la versión original, el primero falla. Comprobar un programa con casos cuya respuesta conocemos es la forma más sencilla de detectar errores así.
+
 Las secuencias generadas mediante el método \emph{middle square} no son aleatorias, cada número viene completamente determinado por el número anterior. Sin embargo, dichas secuencias parecen aleatorias. La figura \ref{fig:middlesquare} muestra una secuencia de $100$ valores pseudoaleatorios generados mediante \emph{middle square}. Aparentemente, cada valor parece no guardar ninguna relación con los anteriores.
 
-El método descrito, presenta sin embargo serios inconvenientes: Si la semilla contiene ceros o unos a la derecha, estos tienden a repetirse indefinidamente. Además todos los métodos inducen ciclos que hacen que los números generados comiencen a repetirse periódicamente. Por ejemplo, si empezamos con la semilla de cuatro dígitos $3708$,  La secuencia cae, tras generar los primeros cuatro números aleatorios, en un ciclo en el que los cuatro siguientes números generados se repiten indefinidamente.
+El método descrito presenta, sin embargo, serios inconvenientes: si en la secuencia aparecen ceros a la derecha, se conservan indefinidamente. Además, todos los métodos inducen ciclos que hacen que los números generados comiencen a repetirse periódicamente. Por ejemplo, si empezamos con la semilla de cuatro dígitos $3708$,  La secuencia cae, tras generar los primeros cuatro números aleatorios, en un ciclo en el que los cuatro siguientes números generados se repiten indefinidamente.
 
 \switchcolumn
+The first version of function \mintinline{python}|middle_square| was written by an AI assistant. It worked with the seed $3708$, but with the 8-digit seed of the previous example it gave a different sequence: it converted the square into text without padding it with zeros on the left up to $2n$ digits, and $09633548^2=92805247068304$ has only 14 digits. That is why the code ends with two \mintinline{python}|assert| statements that test the function with the two examples of the text; with the original version, the first one fails. Testing a program with cases whose answer we know is the simplest way to detect errors like this one.
+
 Sequences generated using the middle square method are not random, each number is thoroughly determined by the previous one. Nevertheless, these sequences seems random. Figure \ref{fig:middlesquare} shows a sequence of 100 pseudo-random values generated using the middle square. Apparently, each value doesn't seem to have any relationship with the previous ones.
 
-However, this method has significant drawbacks: if the seed contains zeros or ones on the right side, these values tend to repeat indefinitely. Besides, all methods induce cycles, which make the generated numbers begin to repeat periodically. For instance, If we begin with the four-digit seed $3708$, The sequence gets into a cycle after it generates the first four random numbers. The four subsequent numbers repeat indefinitely.
+However, this method has significant drawbacks: if zeros appear on the right side of a number of the sequence, they remain forever. Besides, all methods induce cycles, which make the generated numbers begin to repeat periodically. For instance, If we begin with the four-digit seed $3708$, The sequence gets into a cycle after it generates the first four random numbers. The four subsequent numbers repeat indefinitely.
 \end{paracol}
 \begin{figure}[h]
 	\centering
@@ -163,48 +168,88 @@ Una variante del algoritmo descrito, frecuentemente empleada, se obtiene haciend
 We can get a frequently used variation of the linear congruential algorithm taking the increment equal to zero, $c=0$. Such variation is known as the \emph{multiplicative congruential} algorithm; a general expression for it would be, 
 \end{paracol}
 \begin{equation*}
-I_{n+1}=\text{rem}(a\cdot I_n)
+I_{n+1}=\text{rem}(a\cdot I_n, m)
 \end{equation*}
 \begin{paracol}{2}
-Dado que el resto de la división entera de un número cualquiera entre el módulo $m$ solo puede tomar valores enteros comprendidos entre $0$ y $m-1$, es fácil deducir que, en el mejor de los casos, podríamos obtener un ciclo de longitud $m$, antes de que secuencia de números aleatorios comenzara a repetirse. De ahí la importancia de elegir $m$ lo más grande posible. Por otra parte, los valores de $I_0$ e $c$, también influyen en la longitud de los ciclos inducidos.
+Dado que el resto de la división entera de un número cualquiera entre el módulo $m$ solo puede tomar valores enteros comprendidos entre $0$ y $m-1$, es fácil deducir que, en el mejor de los casos, podríamos obtener un ciclo de longitud $m$, antes de que secuencia de números aleatorios comenzara a repetirse. De ahí la importancia de elegir $m$ lo más grande posible. Por otra parte, los valores de $a$, $c$ e $I_0$ también influyen en la longitud de los ciclos inducidos.
 
 Si ahora dividimos los numero aleatorios obtenidos por el modulo,  
 \switchcolumn
 
 
-Since the integer division of whatever number by the modulus $m$ can yield results between $0$ and $m-1$, it becomes clear that, in the best-case scenario, we can achieve a cycle of length $m$ before the sequence of random numbers starts to repeat. Hence, the importance of choosing a large as possible value for $m$. On the other hand, the values taken by $I_0$ and $c$ also influence the length of the induced cycles.
+Since the integer division of whatever number by the modulus $m$ can yield results between $0$ and $m-1$, it becomes clear that, in the best-case scenario, we can achieve a cycle of length $m$ before the sequence of random numbers starts to repeat. Hence, the importance of choosing a large as possible value for $m$. On the other hand, the values taken by $a$, $c$ and $I_0$ also influence the length of the induced cycles.
 
 If we now divide the random number achieved by the modulus,
 \end{paracol}
 \begin{equation*}
-x_n=\frac{I_n}{m} \Rightarrow x_n \in [0,1]
+x_n=\frac{I_n}{m} \Rightarrow x_n \in [0,1)
 \end{equation*}
 
 \begin{paracol}{2}
-Los números así obtenidos pertenecen al intervalo $[0,1]$ y están regularmente distribuidos. 
+Los números así obtenidos pertenecen al intervalo $[0,1)$ y, si $a$, $c$ y $m$ están bien elegidos, se distribuyen de modo aproximadamente uniforme. 
 
-En la década de los 60 del siglo pasado, La compañía IBM, desarrolló una función, conocida como \emph{Randu}, que utilizaba el algoritmo \emph{multiplicative congruential}. \emph{Randu} tenía definido un multiplicador $c=2^{16}+3$ y un módulo $m=2^{31}$. 
+En la década de los 60 del siglo pasado, La compañía IBM, desarrolló una función, conocida como \emph{Randu}, que utilizaba el algoritmo \emph{multiplicative congruential}. \emph{Randu} usaba el multiplicador $a=2^{16}+3=65539$, el módulo $m=2^{31}$ e incremento $c=0$. 
 Se han desarrollado diferentes variante de \emph{Randu}, mejorando progresivamente su rendimiento. Una de las mejoras introducidas fue aumentar el número de semillas empleadas,
 
 \switchcolumn
-The number obtained belong to the interval $[0,1]$ and are regularly distributed.
+The numbers obtained belong to the interval $[0,1)$ and, if $a$, $c$ and $m$ are well chosen, they are approximately uniformly distributed.
 
-In the last century sixties, IBM company developed a function known as \emph{Randu} which employed the \emph{multiplication congruential} algorithm. \emph{Randu} had defined a multiplier $c=2^{16}+3$ and modulus $m=2^{31}$.
+In the last century sixties, IBM company developed a function known as \emph{Randu} which employed the \emph{multiplication congruential} algorithm. \emph{Randu} used the multiplier $a=2^{16}+3=65539$, the modulus $m=2^{31}$ and increment $c=0$.
 Several variations of \emph{Randu} have been developed, gradually improving its performance. One of these improvements was to increase the number of seeds the algorithm uses.  
 \end{paracol}
 \begin{equation*}
-I_{n+1}=\text{rem}(a\cdot I_n+b\cdot I_{n-1}+\cdots)
+I_{n+1}=\text{rem}(a\cdot I_n+b\cdot I_{n-1}+\cdots, m)
 \end{equation*} 
 \begin{paracol}{2}
 Este método permite obtener periodos mayores.
+
+\subsection{¿Es bueno un generador? El caso RANDU}\label{sec:randu}
+Que una secuencia \emph{parezca} aleatoria no basta. RANDU se usó durante años en muchos ordenadores y tiene un defecto grave que no se ve mirando los números uno a uno. Como $a=2^{16}+3$, se cumple $a^2=2^{32}+6\cdot 2^{16}+9$, y como $2^{32}$ es múltiplo de $m=2^{31}$, $a^2 \equiv 6a-9$ (módulo $m$). Por tanto, cada número está determinado por los dos anteriores de una forma muy sencilla,
 \switchcolumn
-This method leads to get longer periods
+This method leads to longer periods.
+
+\subsection{Is a generator good? The RANDU case}\label{sec:randu-2}
+It is not enough that a sequence \emph{looks} random. RANDU was used for years on many computers and it has a serious flaw that cannot be seen by looking at the numbers one by one. Since $a=2^{16}+3$, we have $a^2=2^{32}+6\cdot 2^{16}+9$, and since $2^{32}$ is a multiple of $m=2^{31}$, $a^2 \equiv 6a-9$ (modulo $m$). Therefore, each number is determined by the two previous ones in a very simple way,
+\end{paracol}
+\begin{equation*}
+I_{k+2}=\text{rem}(6I_{k+1}-9I_k,\ m) \quad\Rightarrow\quad 9u_k-6u_{k+1}+u_{k+2}\ \text{es un número entero / is an integer}
+\end{equation*}
+\begin{paracol}{2}
+\noindent donde $u_k=I_k/m$. Si tomamos los números de tres en tres como coordenadas $(u_k,u_{k+1},u_{k+2})$ de un punto del cubo unidad, todos los puntos caen en unos pocos planos paralelos, $9x-6y+z=\text{constante}$ (figura \ref{fig:randu}). Para un buen generador, la combinación $9u_k-6u_{k+1}+u_{k+2}$ puede tomar cualquier valor real entre $-6$ y $10$; para RANDU solo toma valores enteros. Podemos comprobarlo,
+\switchcolumn
+\noindent where $u_k=I_k/m$. If we take the numbers three by three as the coordinates $(u_k,u_{k+1},u_{k+2})$ of a point in the unit cube, all the points lie on a few parallel planes, $9x-6y+z=\text{constant}$ (figure \ref{fig:randu}). For a good generator, the combination $9u_k-6u_{k+1}+u_{k+2}$ can take any real value between $-6$ and $10$; for RANDU it only takes integer values. We can check it,
+\end{paracol}
+\begin{minted}{python}
+import numpy as np
+I = np.empty(30001, dtype=np.int64)
+I[0] = 1                                   # semilla / seed
+for k in range(1, len(I)):
+    I[k] = (65539*I[k-1]) % 2**31          # RANDU
+u = I/2**31
+c = 9*u[:-2] - 6*u[1:-1] + u[2:]
+print(np.unique(np.round(c)))              # valores distintos / distinct values
+print(np.abs(c - np.round(c)).max())       # distancia al entero más próximo
+\end{minted}
+\begin{minted}{text}
+[-5. -4. -3. -2. -1.  0.  1.  2.  3.  4.  5.  6.  7.  8.  9.]
+0.0
+\end{minted}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{randu.pdf}
+\bicaption{Izquierda: 3000 ternas consecutivas de RANDU vistas en la dirección de los planos; todas están en 15 planos. Derecha: histograma de $9u_k-6u_{k+1}+u_{k+2}$ para RANDU (solo valores enteros) y para el generador de numpy (valores continuos).}{Left: 3000 consecutive RANDU triples seen along the direction of the planes; all of them lie on 15 planes. Right: histogram of $9u_k-6u_{k+1}+u_{k+2}$ for RANDU (integer values only) and for numpy's generator (continuous values).}
+\label{fig:randu}
+\end{figure}
+\begin{paracol}{2}
+Los $30000$ puntos están en solo 15 planos. Una simulación en tres dimensiones hecha con RANDU (por ejemplo, de las posiciones de las moléculas de un gas) daría resultados sesgados sin ningún mensaje de error. La lección es general: un resultado numérico, también el de un generador de números aleatorios, hay que comprobarlo con alguna propiedad que se conozca de antemano.
+\switchcolumn
+The $30000$ points lie on only 15 planes. A three-dimensional simulation made with RANDU (for instance, of the positions of the molecules of a gas) would give biased results without any error message. The lesson is general: a numerical result, also the output of a random number generator, must be checked against some property known in advance.
 \end{paracol}
 
 \begin{paracol}{2}
 \subsection{El generador de números aleatorios de Numpy.}\label{rand} Se trata de un generador mucho mas evolucionado que los ejemplo descritos hasta ahora. Es muy versátil y se puede emplear de muchas maneras. Aquí vamos a ver solo una introducción. Para una visión detallada, lo mejor es leer la documentación de numpy, (\emph{random sampling}).
 
-Numpy contiene un módulo  \mintinline{python}|numpy.random|, que contiene todas las funciones necesarias para generar secuencias de números aleatorios. Lo primero que debemos hacer, es crear un ``generador'' (\emph{generator}) de numeros aleatorios. La manera más sencilla de hacerlo es emplear la función \mintinline{python}|default_rng()|,
+Numpy contiene un módulo  \mintinline{python}|numpy.random|, que contiene todas las funciones necesarias para generar secuencias de números aleatorios. Lo primero que debemos hacer, es crear un ``generador'' (\emph{generator}) de números aleatorios. La manera más sencilla de hacerlo es emplear la función \mintinline{python}|default_rng()|,
 
 \switchcolumn
 \subsection{Numpy's random numbers generator.} The numpy's random number generator is fairly more evolved than the example generators described so far. It is highly versatile and can be use in many different ways. Here, we are going to offer only an introduction. For a detailed knowledge it is advisable to read numpy documentation, (\emph{random sampling}).
@@ -212,14 +257,14 @@ Numpy contiene un módulo  \mintinline{python}|numpy.random|, que contiene todas
 Numpy has a module \mintinline{python}|numpy.random|, which has all the functions needed to generate sequences of random numbers. The first step is to create a \emph{generator} of random numbers. The easiest way to do it is by using the function \mintinline{python}|default_rng()|,  
 \end{paracol}
 \begin{minted}{python}
-	import numpy as np
-	
-	#lo primero de todo es crear un generador de números aleatorios
-	#si no le indicamos semilla, el la toma del sistema operativo de modo no
-	#determinista, es decir la secuencia de números generada no podrá volver 
-	#a reproducirse.
-	
-	gen_num = np.random.default_rng()
+import numpy as np
+
+#lo primero de todo es crear un generador de números aleatorios
+#si no le indicamos semilla, lo toma del sistema operativo de modo no
+#determinista, es decir, la secuencia de números generada no podrá volver
+#a reproducirse.
+
+gen_num = np.random.default_rng()
 \end{minted}
  
 \begin{paracol}{2}
@@ -241,7 +286,7 @@ n1= 0.15431941570206298
 \begin{paracol}{2}
 Si llamamos al generador con un valor entero como variable de entrada, nos generará un array de numpy con tantos elementos como indique el valor entero,
 \switchcolumn
-If we call the generator with an integer number as input variable, it will generate a numpy array with the a number of elements equal to the integer supplied.
+If we call the generator with an integer number as input variable, it will generate a numpy array with a number of elements equal to the integer supplied.
 \end{paracol}
 \begin{center}
 	\begin{minipage}{0.5\textwidth}
@@ -254,9 +299,9 @@ Out[8]: array([0.07971535, 0.38433405, 0.03229333])
 \end{center}
 
 \begin{paracol}{2}
-\noindent y si introducimos una tupla o una lista con dos elementos $[m,n]$, devolverá una matriz de números aleatorios de dimensión $n\times m$,
+\noindent y si introducimos una tupla o una lista con dos elementos $(m,n)$, devolverá una matriz de números aleatorios de dimensión $m\times n$ ($m$ filas y $n$ columnas),
 \switchcolumn
-\noindent and if we use a tuple or a list with two elements $[m,n]$, the generator will cast a matrix of random number with dimensions $n\times m$.
+\noindent and if we use a tuple or a list with two elements $(m,n)$, the generator will return a matrix of random numbers with dimensions $m\times n$ ($m$ rows and $n$ columns).
 \end{paracol}
 
 \begin{center}
@@ -288,9 +333,9 @@ Generator(PCG64)
 \end{center}
 
 \begin{paracol}{2}
-Nos devuelve las iniciales del método y el número 64 que hace referencia al tamaño en bits de los números enteros empleados en el proceso de generación. EL periodo de este método es de $2^{128}$.
+Nos devuelve las iniciales del método y el número 64 que hace referencia al tamaño en bits de los números enteros empleados en el proceso de generación. El periodo de este método es de $2^{128}$.
 
-Podemos controlar la secuencia de números aleatorios suministrando una semilla a la función \mintinline{python}|default_rng|, de este modo, podemos reproducir cualquier secuencia de numeros aleatorios, siempre que creemos un nuevo generador con la misma semilla,
+Podemos controlar la secuencia de números aleatorios suministrando una semilla a la función \mintinline{python}|default_rng|, de este modo, podemos reproducir cualquier secuencia de números aleatorios, siempre que creemos un nuevo generador con la misma semilla,
 \switchcolumn
 It retrieves the acronym of the method and the number 64 which refers to the bit size of the number used in the random generation process. The period of this method is $2^{128}$.
 
@@ -305,7 +350,7 @@ In [48]:
 ...: #volvemos a inicializar el generador con la misma semilla
 ...: gen_num_1 = np.random.default_rng(100)
 ...: #y nos reproduce exactamente la misma secuencia
-...: print('\n Secuencia repetida. Repited Sequence \n')
+...: print('\nSecuencia repetida. Repeated sequence\n')
 ...: for i in range(10):
 ...:     print(gen_num_1.random())
 0.8349816305020089
@@ -319,7 +364,7 @@ In [48]:
 0.6881544475917452
 0.18999147338772315
 
-Secuencia repetida. Repited sequence
+Secuencia repetida. Repeated sequence
 
 0.8349816305020089
 0.5965540269678873
@@ -334,6 +379,8 @@ Secuencia repetida. Repited sequence
 \end{minted}
 
 \begin{paracol}{2}
+Fijar la semilla es imprescindible para comprobar y depurar un programa que usa números aleatorios: si un resultado parece incorrecto, podemos repetir exactamente el mismo cálculo. Por eso todos los ejemplos de este capítulo fijan la semilla.
+
 Las posibilidades del generador de números aleatorios de numpy son muy amplias. Puede generar números aleatorios empleando distintos tipos de distribuciones de probabilidad (ver sección siguiente), permutar aleatoriamente arrays de números, seleccionar números de modo aleatorio de entre una secuencia de enteros, etc. Para conocer a fondo el proceso, se aconseja consultar la ayuda de numpy.
 
 \section{Probabilidad y distribuciones de probabilidad}
@@ -372,6 +419,8 @@ P(\text{cruz})=\frac{1}{2}=0.5
 \end{equation*} 
 \end{itemize}
 \switchcolumn
+Fixing the seed is essential to check and debug a program that uses random numbers: if a result looks wrong, we can repeat exactly the same computation. That is why all the examples in this chapter fix the seed.
+
 Numpy's random number generator has an extensive range of possibilities. It can generate random numbers using different kinds of probability distributions (see the next section), permuting random number arrays, randomly choosing a number from a sequence of integers, etc. For a complete description of Numpy's random number generator, it is advisable to check Numpy's help. 
 
 \section{Probability and probability distributions.}\index[eng]{Random event}
@@ -430,13 +479,13 @@ Una distribución de probabilidad discreta, es una función que asocia cada caso
 Si todos los sucesos posibles dentro de un fenómeno aleatorio discreto tienen la misma probabilidad de suceder,  es posible determinar directamente la probabilidad de cada uno de ellos sin más que  dividir los casos favorables  entre los casos posibles,
 
 \begin{equation*}
-P(a)=\frac{\text{casos en que se da} \ a}{\text{numero total de casos posibles}}
+P(a)=\frac{\text{casos en que se da} \ a}{\text{número total de casos posibles}}
 \end{equation*}
 
-Así por ejemplo la probabilidad de sacar un $6$ cuando se laza un dado será,
+Así por ejemplo la probabilidad de sacar un $6$ cuando se lanza un dado será,
 
 \begin{equation*}
-P(a)=\frac{\text{casos en que se da}\ a=1}{\text{numero total de casos posibles}=6}=\frac{1}{6}
+P(6)=\frac{\text{casos en que sale un 6}}{\text{casos posibles}}=\frac{1}{6}
 \end{equation*}
 \switchcolumn
 Tossing a coin, rolling a dice, drawing a card at random, or filling in a pool coupon are examples of random discrete phenomena. They are called \emph{discrete} because the outcomes of these activities are numerable, i.e., they can be counted. For instance, there are only to events associated to tossing a coin (head or tail), in the case of rolling a dice we have six events (any one of the dice faces), drawing a card has 40 events associated (well, it depends on the deck, 52 for a french playing card). The set of possible events of a random discrete phenomena are called random variable. \index[eng]{Variable! random}
@@ -450,7 +499,7 @@ If all possible events belonging to a specific random discrete phenomenon have t
 
 So, for instance, the probability of getting a $6$ when rolling a dice would be,
 \begin{equation*}
-	P(a)=\frac{\text{cases where} \ a \ \text{occurs} = 1}{\text{total number of possible cases}=6}=\frac{1}{6}
+	P(6)=\frac{\text{cases where a 6 comes up}}{\text{possible cases}}=\frac{1}{6}
 \end{equation*}
 \end{paracol}
 \begin{figure}
@@ -502,7 +551,7 @@ All discrete probability distributions we have encountered  so far, ---such as c
 
 \begin{figure}
 	\centering
-	\includegraphics[width=10cm]{dadot.eps}
+	\includegraphics[width=10cm]{dadot.pdf}
 	\bicaption{Distribución de probabilidad y probabilidad acumulada de los resultados de lanzar un dado trucado al aire.}{Probability distribution and cumulated probability of the results of rolling a biased dice.}
 	\label{fig:dadot}
 \end{figure}
@@ -513,9 +562,9 @@ P(6)& = \frac{1}{2}\\
 \sum_i P(i)& = 1 
 \end{align*}
 \begin{paracol}{2}
-La figura \ref{fig:dadot} muestra la distribución de probabilidad y la probabilidad asociada al lanzamiento del dato trucado del ejemplo.
+La figura \ref{fig:dadot} muestra la distribución de probabilidad y la probabilidad acumulada asociadas al lanzamiento del dado trucado del ejemplo.
 \switchcolumn
-Figure \ref{fig:dadot} shows the probability distribution associated the example of the biased dice rolling.
+Figure \ref{fig:dadot} shows the probability distribution and the cumulated probability associated with rolling the biased die of the example.
 \end{paracol}
 
 \begin{paracol}{2}
@@ -527,9 +576,7 @@ En realidad, no podemos sumar los infinitos valores que contiene el intervalo. D
 \subsection{Continuous probability distributions}
 So far, we have considered phenomena in which the possible cases-- the random variable--- are finite and enumerable. Let us suppose now a random phenomenon for which the random variable, $x$, is continuous. It can take every real value in an interval $[a,b]$. Suppose every number in this interval can be chosen with equal probability. We could represent the probability as a continuous horizontal line $f(x) =c$ which would cover the whole interval $[a,b]$. To obtain the constant value $c$ for such probability distribution would be enough to sum up the probability assigned by the distribution to each value in the interval, equal the result to one, and find $c$.
 
-We can not sum up the infinite values contained in the interval. In fact, we have to replace the sum with an integral.
-
-Actually we can not sum up the infinite values contained in the interval. In fact, what we have to do is replace the sum for a in integral.
+Actually, we cannot sum up the infinite values contained in the interval; what we do is replace the sum with an integral,
 \end{paracol}
 \begin{equation*}
 \int_a^b c\cdot dx = 1 \Rightarrow c = \frac{1}{b-a}
@@ -541,17 +588,17 @@ La figura \ref{fig:puniform} muestra la distribución de probabilidad resultante
 
 Es importante darse cuenta de la diferencia con el caso discreto. El intervalo $[a,b]$ contiene infinitos números. Si tratáramos de asignar un valor a la probabilidad de obtener un número dividiendo casos favorables entre casos posibles, como hacíamos en el caso discreto, obtendríamos un valor $0$ para todos los números. 
 
-La distribución de probabilidad $f(x)\geqslant 0$ representa en el caso continuo una \emph{densidad} de probabilidad. Así, dado un número cualquiera $x_0 \in [a,b]$, el valor que toma la distribución de probabilidad $f(x_0)$ representa la probabilidad de obtener un número al azar en un intervalo $dx$ en torno a $x_0$,
+La distribución de probabilidad $f(x)\geqslant 0$ representa en el caso continuo una \emph{densidad} de probabilidad. Así, dado un número cualquiera $x_0 \in [a,b]$, el producto $f(x_0)\,dx$ representa la probabilidad de obtener un número al azar en un intervalo pequeño de anchura $dx$ en torno a $x_0$ (de ahí el nombre de densidad: probabilidad por unidad de longitud),
 \switchcolumn
 Figure \ref{fig:puniform} shows the resulting probability distribution. 
 
 It is important to realize that the difference when we compare with the discrete case. The interval $[a,b]$ contains infinite numbers. If we try to assign a value to the probability dividing the favorable cases by the possible cases, as we did in the discrete case,  we would obtain a value $0$ for every number.
 
-The probability distribution  $f(x)\geqslant 0$ represents in the continuous case the a \emph{density} of probability. $f(x_0)$ represents the probability of obtaining a random number in an interval $dx$ around $x_0$,
+The probability distribution  $f(x)\geqslant 0$ represents in the continuous case the a \emph{density} of probability. $f(x_0)\,dx$ represents the probability of obtaining a random number in a small interval of width $dx$ around $x_0$ (hence the name density: probability per unit length),
 \end{paracol}
 
 \begin{equation*}
-P\left(x_0-\frac{dx}{2}\leqslant x_0 \leqslant x_0+\frac{dx}{2}\right) = f(x_0)
+P\left(x_0-\frac{dx}{2}\leqslant x \leqslant x_0+\frac{dx}{2}\right) \approx f(x_0)\,dx
 \end{equation*} 
 \begin{figure}
 	\centering
@@ -577,7 +624,7 @@ La probabilidad acumulada, se obtiene también mediante integración,
 \end{paracol} 
 
 \begin{equation*}
-P(x) = \int_a^xf(x)dx
+F(x) = \int_a^x f(s)\,ds
 \end{equation*}
 
 \begin{paracol}{2}
@@ -586,7 +633,7 @@ Para el caso de la distribución de probabilidad constante descrita más arriba 
 For the constant probability distribution described above, we will obtain a straight line that cuts the abscissa axis on $a$ and takes the ordinate value $1$ on b.
 \end{paracol} 
 \begin{equation*}
-P(x) = \int_a^xf(x)dx = \int_a^x \frac{1}{b-a}dx = \frac{x-a}{b-a}, \ x \in[a,b]
+F(x) = \int_a^x f(s)\,ds = \int_a^x \frac{1}{b-a}ds = \frac{x-a}{b-a}, \ x \in[a,b]
 \end{equation*}
 \begin{paracol}{2}
 La figura \ref{fig:puniform} muestra la probabilidad acumulada para el ejemplo de la distribución uniforme. 
@@ -617,8 +664,8 @@ f(x)=\frac{1}{\mu}e^{-\frac{x}{\mu}}
 
 \begin{figure}
 \centering
-\includegraphics[width=10cm]{distexp.eps}
-\bicaption{Distribución de probabilidad exponencial}{Exponential probability distribution}
+\includegraphics[width=10cm]{distexp.pdf}
+\bicaption{Distribución de probabilidad exponencial con $\mu=1$. El área sombreada es la probabilidad de obtener un valor entre 1 y 2.}{Exponential probability distribution with $\mu=1$. The shaded area is the probability of obtaining a value between 1 and 2.}
 \label{fig:distexp}
 \end{figure}
 
@@ -692,7 +739,7 @@ and for a normal distribution,
 \end{paracol}
 
 \begin{equation*}
-\mu = \int_{-\infty}^{\infty}x \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}= \mu
+\mu = \int_{-\infty}^{\infty}x \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx= \mu
 \end{equation*}
 \begin{paracol}{2}
 Es interesante observar como en el caso de las distribuciones exponencial y normal la media es un parámetro que forma parte de la definición de la función de distribución.
@@ -733,7 +780,7 @@ y para la distribución normal,
 and for a normal distribution,
 \end{paracol}
 \begin{equation*}
-\sigma^2 = \int_{-\infty}^{\infty}x \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}= \sigma^2
+\sigma^2 = \int_{-\infty}^{\infty}(x-\mu)^2 \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx= \sigma^2
 \end{equation*}
 \begin{paracol}{2}
 \begin{itemize}
@@ -769,13 +816,13 @@ Suppose we carry out an experiment and obtain $n$ random samples of $x$. The val
 \end{equation*}
 \begin{paracol}{2}
 Si repetimos el experimento muchas veces, obtendremos al final una colección de medias; tantas, como veces hemos repetido el experimento,
-$\left\{\bar{x}_{n1}, \bar{x}_{n2} \cdots \bar{x}_{nj} \cdots \right\}$. El teorema del límite central, establece que las medias así obtenidas constituyen a su vez valores de una variable aleatoria que sigue una distribución normal, cuya media coincide con la media $\mu$ de la distribución original $f(x)$ y cuya varianza coincide con el valor de la varianza de la distribución original $\sigma^2$ dividida por el número $n$ de valores de $x$ obtenidos al azar en cada uno de los experimentos. (En todos los experimentos se obtiene siempre el mismo número de valores de la variable aleatoria $x$).
+$\left\{\bar{x}_{n1}, \bar{x}_{n2} \cdots \bar{x}_{nj} \cdots \right\}$. El teorema del límite central establece que, si la varianza $\sigma^2$ es finita, las medias así obtenidas son a su vez valores de una variable aleatoria cuya distribución se aproxima, a medida que crece $n$, a una distribución normal cuya media coincide con la media $\mu$ de la distribución original $f(x)$ y cuya varianza coincide con el valor de la varianza de la distribución original $\sigma^2$ dividida por el número $n$ de valores de $x$ obtenidos al azar en cada uno de los experimentos. (En todos los experimentos se obtiene siempre el mismo número de valores de la variable aleatoria $x$).
 \switchcolumn
-If we repeat the experiment many times, we eventually, will obtain a collection of mean values; so many as times we have repeated the experiment, $\left\{\bar{x}_{n1}, \bar{x}_{n2} \cdots \bar{x}_{nj} \cdots \right\}$. The central limit theorem establishes that the set of means so obtained are in turn values of a random variable that follows a normal distribution. The mean of such normal distributions meets the mean $\mu$  of the original distribution $f(x)$ and the its variance is equal to the variance $\sigma^2$ of the original distribution divided by the number $n$ of values of $x$ randomly generated in each one of the experiments. (You should obtain the same number of samples of the random variable $x$ in every experiment). 
+If we repeat the experiment many times, we eventually, will obtain a collection of mean values; so many as times we have repeated the experiment, $\left\{\bar{x}_{n1}, \bar{x}_{n2} \cdots \bar{x}_{nj} \cdots \right\}$. The central limit theorem establishes that, if the variance $\sigma^2$ is finite, the means so obtained are in turn values of a random variable whose distribution approaches, as $n$ grows, a normal distribution. The mean of such normal distributions meets the mean $\mu$  of the original distribution $f(x)$ and the its variance is equal to the variance $\sigma^2$ of the original distribution divided by the number $n$ of values of $x$ randomly generated in each one of the experiments. (You should obtain the same number of samples of the random variable $x$ in every experiment). 
 \end{paracol}
 
 \begin{equation*}
-x, \ f(x), \mu, \sigma^2 \Rightarrow \bar{x}_n,\ f(\bar{x}_n)=\frac{1}{\sqrt{2\pi\sigma^2/n}}e^{-\frac{(x-\mu)^2}{2\sigma^2/n}}  
+x, \ f(x), \mu, \sigma^2 \Rightarrow \bar{x}_n,\ f(\bar{x}_n)\approx\frac{1}{\sqrt{2\pi\sigma^2/n}}e^{-\frac{(\bar{x}_n-\mu)^2}{2\sigma^2/n}}  
 \end{equation*}
 
 \begin{paracol}{2}
@@ -796,7 +843,7 @@ genera un array de 100 números aleatorios en el intervalo $(0,5)$.
 Además podemos desplazar el centro del intervalo sumando o restando al resultado anterior un segundo número. Así,
 \switchcolumn
 generates a 100 random number array in the interval $(0,5)$.
-Moreover, we can shift the center of the interval adding or subtracting a secon number. So, 
+Moreover, we can shift the center of the interval adding or subtracting a second number. So, 
 \end{paracol}
 
 
@@ -811,11 +858,11 @@ Moreover, we can shift the center of the interval adding or subtracting a secon 
 \begin{paracol}{2}
 genera un vector de 100 números aleatorios en el intervalo $(-2,3)$.
 
-Para comprobar el teorema del límite central, podemos construir un bucle que genere un vector de $n$ números aleatorios en un determinado intervalo, calcule su media y guarde el resultado en un vector de medias. El siguiente código de Python, realiza dicho cálculo primero generando un vector de $10$ números aleatorios ($n = 10$) y después generando un vector de $100$, ($n=100$).  El programa genera en cada caso un millón de vectores distintos.
+Para comprobar el teorema del límite central, podemos generar muchos conjuntos de $n$ números aleatorios en un determinado intervalo, calcular la media de cada conjunto y comparar la distribución de esas medias con la que predice el teorema. El siguiente código de Python lo hace con conjuntos de $10$ números ($n = 10$) y de $100$ ($n=100$), y en cada caso genera cien mil conjuntos. En lugar de un bucle, genera una matriz con un conjunto en cada fila y calcula todas las medias a la vez con \mintinline{python}|mean(axis=1)|.
 \switchcolumn
 generates a 100 random numbers array in the interval $(-2,3)$.
 
-We can now check the central limit theorem, building a loop that generates a vector of $n$ random number in an specific interval, calculates their mean value and saves the result in a vector of 'means'. The following python code, makes this calculation generating firs a vector of $10$ random numbers ($n=10$) and then generating a vector of $100$ random numbers, ($n=100$). IN both cases, the program generates one million of different vectors.
+We can now check the central limit theorem by generating many sets of $n$ random numbers in a given interval, computing the mean of each set and comparing the distribution of those means with the one predicted by the theorem. The following Python code does it with sets of $10$ numbers ($n=10$) and of $100$ ($n=100$), and in each case it generates one hundred thousand sets. Instead of a loop, it generates a matrix with one set in each row and computes all the means at once with \mintinline{python}|mean(axis=1)|.
 \end{paracol}
 \inputminted[
 frame=lines,
@@ -826,14 +873,18 @@ label=central\_limit,
 fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/tratamiento_datos/central_limit.py}
+\begin{minted}{text}
+n=  10: media -0.00013 (teoría 0), varianza 0.033609 (teoría 0.033333)
+n= 100: media +0.00010 (teoría 0), varianza 0.003335 (teoría 0.003333)
+\end{minted}
 
 \begin{paracol}{2}
-De acuerdo con el teorema del límite central, los dos vectores de medias obtenidos,\\ \texttt{media10} y \texttt{media100}, deben seguir distribuciones normales tales que,
+De acuerdo con el teorema del límite central, los dos conjuntos de medias obtenidos (para $n=10$ y para $n=100$) deben seguir aproximadamente distribuciones normales tales que,
 \begin{enumerate}
 \item La media de la distribución normal debe coincidir con la media de la distribución a la que pertenecían los datos originales. Como hemos tomado datos distribuidos uniformemente en el intervalo $[-1,1]$, la media de dicha distribución es,
 \end{enumerate}
 \switchcolumn
-According with the central limit theorem, both means vectors obtained by this procedure,  \texttt{media10} y \texttt{media100}, should follow normal distributions such that, 
+According to the central limit theorem, both sets of means obtained (for $n=10$ and for $n=100$) should approximately follow normal distributions such that, 
 \begin{enumerate}
 	\item The mean of the normal distribution sho\-uld meet the mean of the original distribution the data belong to. as we have taken data uniformly distributed in the interval $[-1,1]$, The mean value of this distribution is,
 \end{enumerate}
@@ -856,13 +907,13 @@ According with the central limit theorem, both means vectors obtained by this pr
 
 \begin{align*}
 \sigma_{10}^2 = \frac{\sigma^2}{10}=\frac{\frac{(b-a)^2}{12}}{10}=\frac{\frac{(1-(-1))^2}{12}}{10}=\frac{1}{30}\\
-\sigma_{100}^2 = \frac{\sigma^2}{100}=\frac{\frac{(b-a)^2}{12}}{100}\frac{\frac{(1-(-1))^2}{12}}{10}=\frac{1}{300}
+\sigma_{100}^2 = \frac{\sigma^2}{100}=\frac{\frac{(b-a)^2}{12}}{100}=\frac{\frac{(1-(-1))^2}{12}}{100}=\frac{1}{300}
 \end{align*}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{tlc.eps}
-\bicaption{Teorema del límite central: Comparación entre histogramas normalizados para un millón de medias y la distribución normal a que pertenecen. Izquierda medias de 10 muestras. Derecha medias de 100 muestras}{Central Limit Theorem: Comparison between the normalised histograms for a million of means and the normal distribution they belong to. Left, mean of 10 random samples. Right, means of 100 random samples }\label{fig:ctrli}
+\includegraphics[width=\textwidth]{tlc.pdf}
+\bicaption{Teorema del límite central: Comparación entre histogramas normalizados de cien mil medias y la distribución normal a que pertenecen. Izquierda medias de 10 muestras. Derecha medias de 100 muestras}{Central Limit Theorem: Comparison between the normalised histograms of one hundred thousand means and the normal distribution they belong to. Left, mean of 10 random samples. Right, means of 100 random samples }\label{fig:ctrli}
 \end{figure}
 
 \begin{paracol}{2}
@@ -874,11 +925,11 @@ Thus, the normal distributions the means calculated belong to are,
 f(\bar{x}_{10})=\frac{1}{\sqrt{2\pi\frac{1}{30}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{30}}},\  f(\bar{x}_{100})=\frac{1}{\sqrt{2\pi\frac{1}{300}}}e^{-\frac{(x-\mu)^2}{2\frac{1}{300}}}
 \end{equation*}
 \begin{paracol}{2}
-La figura \ref{fig:ctrli}, muestra un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total de puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad.}. Sobre dicho histograma se ha trazado mediante una línea roja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
+La figura \ref{fig:ctrli}, muestra un histograma normalizado de las medias obtenidas con el código que acabamos de describir \footnote{El histograma normalizado se obtiene dividiendo el número de puntos que pertenecen a cada barra del histograma entre el número total de puntos y el ancho de la barra. De esta manera, si sumamos los valores representados en cada barra multiplicados por su ancho, el resultado es la unidad. Solo normalizando el histograma es posible compararlo con la distribución a que pertenecen los datos, que cumple por definición tener área unidad. La función \mintinline{python}|hist| lo hace si se le pasa \mintinline{python}|density=True|.}. Sobre dicho histograma se ha trazado mediante una línea naranja, la función de Gauss que representa en cada caso la distribución normal a que pertenecen las medias. Como puede observarse en ambos casos el histograma normalizado y la distribución coinciden bastante bien.
 
 De las figuras, es fácil deducir que cuantos más datos empleemos en el cálculo de las medias, más centrados son los resultados obtenidos en torno a la media de la distribución original. Por otro lado, esto es una consecuencia lógica del hecho de que la varianza de la distribución normal que siguen las medias, se obtenga dividiendo la varianza de la distribución original, por el número de datos $n$; cuantos mayor es $n$ más pequeña resulta la varianza de la distribución normal resultante.
 \switchcolumn
-Figure \ref{fig:ctrli} shows a normalized histogram of the means obtained with the code described above\footnote{We can obtain a normalized histogram dividing the number of values belonging to a bar by the width of the bar and the total number of value that compose the histogram. IN this way if we sum up the values represented in each bar multiplied by the bar width the result is one. Only if we normalize the histogram can we compare it with the distribution the data belong two which, by definition should have unit area.}. On top of the histogram we have represented, using a orange line, The Gauss function which represent in each case the normal distribution the means belong to. As can be seen, the normalize histograms and the normal distributions feet well.
+Figure \ref{fig:ctrli} shows a normalized histogram of the means obtained with the code described above\footnote{We can obtain a normalized histogram dividing the number of values belonging to a bar by the width of the bar and the total number of value that compose the histogram. IN this way if we sum up the values represented in each bar multiplied by the bar width the result is one. Only if we normalize the histogram can we compare it with the distribution the data belong two which, by definition should have unit area. Function \mintinline{python}|hist| does it when called with \mintinline{python}|density=True|.}. On top of the histogram we have represented, using a orange line, The Gauss function which represent in each case the normal distribution the means belong to. As can be seen, the normalised histograms and the normal distributions fit well.
 
 From the figures it is easy to observe that as many data are uses to calculate the means, more center are the results around the mean of the original distribution. On the other hand, this is a logical consequence of the fact that the variance of the normal distribution the means follow, are obtained dividing the variance of the original distribution by the number of data $n$; as larger is $n$ smaller is the variance of the resulting normal distribution.  
 \end{paracol}
@@ -932,9 +983,9 @@ Se llama así porque depende exclusivamente de las características del aparato 
 La incertidumbre sistemática de precisión suele expresarse añadiendo a la medida la mitad de la división mínima de la escala del aparato de medida empleado. Así, por ejemplo, si medimos $123 mm$ con una regla graduada en milímetros, podríamos expresar la  medida como $123 \pm 0.5 mm$ o también como $12,3\pm0.05cm$.
 
 
-La incertidumbre sistemática de precisión representa una distribución uniforme de media el valor de la medida realizada y anchura la división mínima de la escala. Es decir, se considera que el valor real de la medida está dentro de dicho intervalo intervalo con una probabilidad del $100\%$. Volviendo al ejemplo anterior de la regla, el valor real de nuestra medida estaría comprendido en el intervalo $[122.5,\ 123.5 ]$, y podría tomar cualquier valor de dicho intervalo con igual probabilidad. 
+La incertidumbre sistemática de precisión representa una distribución uniforme de media el valor de la medida realizada y anchura la división mínima de la escala. Es decir, se considera que el valor real de la medida está dentro de dicho intervalo intervalo con una probabilidad del $100\%$. Volviendo al ejemplo anterior de la regla, el valor real de nuestra medida estaría comprendido en el intervalo $[122.5,\ 123.5 ]$, y podría tomar cualquier valor de dicho intervalo con igual probabilidad. La desviación estándar de esta distribución uniforme es $d/\sqrt{12}$, siendo $d$ la división mínima (sección \ref{pdfc}): para la regla, $1/\sqrt{12}\approx 0.29$~mm. Es el valor que hay que usar cuando esta incertidumbre se combina con otras.
 
-\paragraph{Incertidumbre estadística.}\index{Medidas experimentales! Incertidumbre estadística} La segunda fuente de incertidumbre se debe a factores ambientales, que modifican de una vez para otra las condiciones en que se realiza una medida experimental. Estos factores hacen que la medidas realizadas sean sucesos aleatorios. En principio podría describirse mediante una distribución de probabilidad $f(x)$, pero en la práctica desconocemos de qué distribución se trata y ni siquiera sabemos cual es su valor esperado $\mu$ o su varianza $\sigma$. \index{Medidas experimentales! Incertidumbre estadística}
+\paragraph{Incertidumbre estadística.}\index{Medidas experimentales! Incertidumbre estadística} La segunda fuente de incertidumbre se debe a factores ambientales, que modifican de una vez para otra las condiciones en que se realiza una medida experimental. Estos factores hacen que la medidas realizadas sean sucesos aleatorios. En principio podría describirse mediante una distribución de probabilidad $f(x)$, pero en la práctica desconocemos de qué distribución se trata y ni siquiera sabemos cuál es su valor esperado $\mu$ o su varianza $\sigma^2$. \index{Medidas experimentales! Incertidumbre estadística}
 
 Afortunadamente, el teorema del límite central, que describimos en al sección \ref{tlc} proporciona un sistema de estimar la incertidumbre estadística.
 
@@ -952,10 +1003,10 @@ The uncertainty due to the finite accuracy of the sensors is known as \emph{Syst
 
 Systematic accuracy uncertainty is usually shown by adding half the least division of the Sensor device measurement scale to the measurement. So, for instance, if we are taking a measurement of $123 mm$ with a rule graduated in millimeters, we can present the measurement as  $123 \pm 0.5 mm$ or $12,3\pm0.05cm$.
 
-The systematic accuracy uncertainty represents an uniform probability density distribution. The mean is the value measured and the width is the minimum division of the sensor measurement scale. This means, that we consider that the real value of the magnitude is inside this interval (defined by the minimum division value) with a probability of $100\%$. Coming back to the example of the rule, The real value of our measurement will be inside the interval $[122.5,\ 123.5 ]$ and it could take whatever value, inside this interval, with the same probability. 
+The systematic accuracy uncertainty represents an uniform probability density distribution. The mean is the value measured and the width is the minimum division of the sensor measurement scale. This means, that we consider that the real value of the magnitude is inside this interval (defined by the minimum division value) with a probability of $100\%$. Coming back to the example of the rule, The real value of our measurement will be inside the interval $[122.5,\ 123.5 ]$ and it could take whatever value, inside this interval, with the same probability. The standard deviation of this uniform distribution is $d/\sqrt{12}$, $d$ being the least division (section \ref{pdfc}): for the rule, $1/\sqrt{12}\approx 0.29$~mm. This is the value to use when this uncertainty is combined with others.
 
 \paragraph{Statistical uncertainty}\index[eng]{Experimental measurements! Statistical Uncertainty}
-The second source of uncertainty arises from environmental factors that constantly change the conditions under which a measurement is taken. These factors render the measurement subject to random variations. While we could theoretically describe this variation using a probability distribution $f(x)$, in practice, the specific distribution is unknown. Consequently, we do not know its mean value $\mu$ or its variance $\sigma$.
+The second source of uncertainty arises from environmental factors that constantly change the conditions under which a measurement is taken. These factors render the measurement subject to random variations. While we could theoretically describe this variation using a probability distribution $f(x)$, in practice, the specific distribution is unknown. Consequently, we do not know its mean value $\mu$ or its variance $\sigma^2$.
 
 But, fortunately, the central limit theorem, that we described in section \ref{tlc}, supplies a method to estimate the statistical uncertainty.
 
@@ -1001,38 +1052,38 @@ s_{xn}=\sqrt{s^2_{xn}}=\sqrt{\frac{\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2}{n}}
 \end{equation*}
 
 \begin{paracol}{2}
-esta cantidad recibe el nombre de desviación estándar.
+esta cantidad recibe el nombre de desviación estándar de la media o error estándar. No hay que confundirla con $s$, la desviación estándar de las medidas: $s$ mide cuánto se dispersan las medidas individuales y no disminuye al repetir la medida; $s_{xn}=s/\sqrt{n}$ mide la incertidumbre de la media y disminuye como $1/\sqrt{n}$.
 
 \subsection{Intervalos de confianza.}\index{Intervalos e confianza}
 Como hemos visto, a partir del teorema central del límite podemos asociar la media de los valores obtenidos al repetir una medida y su desviación estándar con una distribución normal. Podemos ahora, en un segundo paso, asociar la incertidumbre de la medida realizada con la probabilidad representada por dicha distribución normal.
 
-Si el valor obtenido tras realizar $n$ repeticiones de una medida es $\bar{x}_n$ y su desviación típica es $s_{xn}$ ¿Cuál es la probabilidad de que el valor medido esté realmente comprendido en el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
+Si el valor obtenido tras realizar $n$ repeticiones de una medida es $\bar{x}_n$ y su desviación típica es $s_{xn}$ ¿Cuál es la probabilidad de que el valor verdadero $\mu$ esté realmente comprendido en el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
 
 Como vimos en el apartado \ref{pdfc}, dicha probabilidad puede calcularse integrando la distribución normal obtenida entre $\bar{x}_n-s_{xn}$ y $\bar{x}_n+s_{xn}$,
 \switchcolumn
-this quantity is known as the standard deviation.
+this quantity is known as the standard deviation of the mean or standard error. It must not be confused with $s$, the standard deviation of the measurements: $s$ measures how much the individual measurements spread and does not decrease when the measurement is repeated; $s_{xn}=s/\sqrt{n}$ measures the uncertainty of the mean and decreases as $1/\sqrt{n}$.
 
 \subsection{Confidence intervals.}\index[eng]{Confidence Intervals}
 As we have seen, using the central limit theorem, it is possible to relate the mean of the values obtained by repeating a measure and their standard deviation to a normal distribution. In the second step, we can associate the uncertainty of the performed measure with the probability represented by this normal distribution.
 
-If the mean value after carrying out $n$ repetitions of measurement is $\bar{x}_n$ and the standard deviation is $s_{xn}$ What is the probability that the measured value will be actually inside the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
+If the mean value after carrying out $n$ repetitions of measurement is $\bar{x}_n$ and the standard deviation is $s_{xn}$ What is the probability that the true value $\mu$ is actually inside the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$? 
 
 As we see in section \ref{pdfc}, such probability can be calculated by integrating the normal distribution obtained between the limits $\bar{x}_n-s_{xn}$ y $\bar{x}_n+s_{xn}$,
 \end{paracol}
 
 \begin{equation*}
 P(\bar{x}_n - s_{xn} \leqslant x \leqslant \bar{x}_n
-+ s_{xn}) = \frac{1}{\sqrt{2\pi\sigma^2_{xn}}}\int_{\bar{x}_n-s_{xn}}^{\bar{x}_n+s_{xn}}e^{\frac{-(x-\bar{x}_n)^2}{2s_{xn}^2}}
++ s_{xn}) = \frac{1}{\sqrt{2\pi s^2_{xn}}}\int_{\bar{x}_n-s_{xn}}^{\bar{x}_n+s_{xn}}e^{-\frac{(x-\bar{x}_n)^2}{2s_{xn}^2}}\,dx
 \end{equation*}
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{interconf1.eps}
-\caption{Intervalo de confianza del $68.27\%$ }
+\bicaption{Intervalo de confianza del $68.27\%$.}{$68.27\%$ confidence interval.}
 \label{fig:ic1}
 \end{figure}
 
 \begin{paracol}{2}
-El valor de dicha integral es $0.6827$. Si expresamos este valor como un tanto por ciento, concluimos que la probabilidad de que el valor medido este en el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ es del $68.27\%$. Dicho de otra manera: el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ corresponde con el \emph{intervalo de confianza} del 68.27\%. La figura \ref{fig:ic1} muestra el área bajo la distribución normal, correspondiente a dicha probabilidad.
+El valor de dicha integral es $0.6827$. Si expresamos este valor como un tanto por ciento, concluimos que un intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ construido así contiene el valor verdadero $\mu$ con una probabilidad del $68.27\%$ (en la sección \ref{sec:cobertura} lo comprobaremos por simulación). Dicho de otra manera: el intervalo $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ corresponde con el \emph{intervalo de confianza} del 68.27\%. La figura \ref{fig:ic1} muestra el área bajo la distribución normal, correspondiente a dicha probabilidad.
 
 Volviendo al problema de la medida, la manera correcta de expresarla sería en nuestro caso:  $\bar{x}\pm s_{xn}$ (unidades). Indicando que la incertidumbre corresponde con el intervalo de confianza del $68.27\%$.
 
@@ -1043,7 +1094,7 @@ Para estimarlo se emplea la inversa de la función de probabilidad acumulada. Co
 
 Dicha función representa la probabilidad de obtener un resultado entre el límite inferior para el que está definida la distribución de probabilidad y el valor $x$ para el que se calcula la función. La inversa de la función de probabilidad acumulada nos indica, dado un valor de la probabilidad comprendido entre $0$ y $1$, a qué valor $x$ corresponde dicha probabilidad acumulada. 
 
-Dado que la distribución normal no tiene primitiva, solo puede integrarse numéricamente. Por tanto, su inversa, solo puede obtenerse también numéricamente. 
+La distribución normal no tiene una primitiva que se pueda escribir con funciones elementales (se expresa mediante la función error, \mintinline{python}|scipy.special.erf|), así que se integra numéricamente, y su inversa también se obtiene numéricamente. 
 
 Hay varias posibilidades en Python para obtener tanto los valores de la distribución normal acumulada como los de su inversa. Todos ellos forman parte de módulos especializados en realizar cálculos estadísticos. En esta notas nos vamos a centrar en el uso del módulo Scipy y, en particular, su submódulo stats. Se trata de un módulo especializado en cálculo estadístico, que implementa un buen número de funciones de distribución. 
 
@@ -1053,12 +1104,12 @@ En nuestro caso particular, nos centraremos en la distribución normal. Podemos 
 \begin{itemize}
 	\item \mintinline{python}|norm.pdf(x,loc=0,scale=1)|, suministra valores de la distribución normal.
 	\item \mintinline{python}|norm.cdf(x,loc=0,scale=1)|, suministra valores de la distribución normal acumulada
-	\item \mintinline{python}|norm.ppf(p,loc=0,scale=1)|, $0\leq q \leq 1$, suministra la inversa de la distribución normal acumulada
+	\item \mintinline{python}|norm.ppf(p,loc=0,scale=1)|, $0\leq p \leq 1$, suministra la inversa de la distribución normal acumulada
 \end{itemize}
 veamos algunos ejemplos del uso de estas funciones,
 
 \switchcolumn
-The value taken by this integral is $0.6827$. If we represent this value using a percentage, We can conclude that the probability of the mean value falling within the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ is a $68.27\%$. In other words, the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ represents a confidence interval  of 68.27\%. Figure \ref{fig:ic1} shows the area beneath the normal distribution corresponding to this probability.
+The value taken by this integral is $0.6827$. If we represent this value using a percentage, We can conclude that an interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ built in this way contains the true value $\mu$ with a probability of $68.27\%$ (we will check it by simulation in section \ref{sec:cobertura-2}). In other words, the interval $[\bar{x}_n-s_{xn}, \bar{x}_n+s_{xn}]$ represents a confidence interval  of 68.27\%. Figure \ref{fig:ic1} shows the area beneath the normal distribution corresponding to this probability.
 
 Coming back to the measurement problem, the appropriate way to represent it in our example would be: $\bar{x}\pm s_{xn}$ (units). Indicating that the uncertainty corresponds to a confidence interval of $68.27\%$.
 
@@ -1068,7 +1119,7 @@ We can estimate this interval by using the inverse of the cumulated probability 
 
 The cumulative probability function provides the probability of obtaining a result that falls between the lower limit of the probability distribution and a specific value, $x$, for which we are calculating the function's result. The inverse of the cumulative probability function determines which value $x$ corresponds to a given cumulative probability, where that probability is a value between $0$ and $1$.
 
-The normal function has not primitive and it can only be integrated numerically. Thus, its inverse, can only be obtain also by numerical methods.
+The normal distribution has no primitive that can be written with elementary functions (it is expressed through the error function, \mintinline{python}|scipy.special.erf|), so it is integrated numerically, and its inverse is also obtained numerically.
 
 There are several means in Python to calculate the values of the normal cumulative distribution and the values of its inverse function. All this methods belong to Python modules devoted to make statistical calculations. In this notes we are going to focus on Scipy module and, specifically in Scipy's submodule stats; a submodule specifically designed to perform statistical computing, which implement a large number of distributions functions.
 
@@ -1078,7 +1129,7 @@ In our case, we are going to focus on the normal distribution. we can use it in 
 \begin{itemize}
 	\item \mintinline{python}|norm.pdf(x,loc=0,scale=1)|, it supplies normal distribution values .
 	\item \mintinline{python}|norm.cdf(x,loc=0,scale=1)|, it supplies normal cumulated distributions values.
-	\item \mintinline{python}|norm.ppf(p,loc=0,scale=1)|, $0\leq q \leq 1$, it supplies inverse normal cumulated distributions values.
+	\item \mintinline{python}|norm.ppf(p,loc=0,scale=1)|, $0\leq p \leq 1$, it supplies inverse normal cumulated distributions values.
 \end{itemize}
 
 Let's see for these functions some examples of use, 
@@ -1095,37 +1146,41 @@ fontsize=\footnotesize,
 linenos
 ]{python}{./codigos/tratamiento_datos/normal.py}
 
-\begin{minted}{python}
-x= [-5. -3.33333333 -1.66666667  '0.' 1.66666667  3.33333333 5.] 
+\begin{minted}{text}
+x= [-5.         -3.33333333 -1.66666667  0.          1.66666667  3.33333333
+  5.        ] 
 
-p= [0.   0.16666667 0.33333333 '0.5'  0.66666667 0.83333333 1.] 
+p= [0.         0.16666667 0.33333333 0.5        0.66666667 0.83333333
+ 1.        ] 
 
 pdf standard [1.48671951e-06 1.54227900e-03 9.94771388e-02 3.98942280e-01
-9.94771388e-02 1.54227900e-03 1.48671951e-06] 
+ 9.94771388e-02 1.54227900e-03 1.48671951e-06] 
 
-cdf standard [2.86651572e-07 4.29060333e-04 4.77903523e-02 '5.00000000e-01'
-9.52209648e-01 9.99570940e-01 9.99999713e-01] 
+cdf standard [2.86651572e-07 4.29060333e-04 4.77903523e-02 5.00000000e-01
+ 9.52209648e-01 9.99570940e-01 9.99999713e-01] 
 
-ppf standard [-inf -0.96742157 -0.4307273 '0.' 0.4307273 0.96742157 inf] 
+ppf standard [       -inf -0.96742157 -0.4307273   0.          0.4307273   0.96742157
+         inf] 
 
 pdf m=10,std=5 [0.00088637 0.0022792  0.00524438 0.01079819 0.01989543 0.03280201
-0.04839414] 
+ 0.04839414] 
 
 cdf m=10,std=5 [0.0013499  0.00383038 0.00981533 0.02275013 0.04779035 0.09121122
-0.15865525] 
+ 0.15865525] 
 
-ppf m=10,std=5 [-inf 5.16289217 7.8463635  10. 12.1536365 14.83710783 inf] 
+ppf m=10,std=5 [       -inf  5.16289217  7.8463635  10.         12.1536365  14.83710783
+         inf] 
 
 mean and std predefined 
 
 pdf m=10,std=5 [0.00088637 0.0022792  0.00524438 0.01079819 0.01989543 0.03280201
-0.04839414] 
+ 0.04839414] 
 
 cdf m=10,std=5 [0.0013499  0.00383038 0.00981533 0.02275013 0.04779035 0.09121122
-0.15865525] 
+ 0.15865525] 
 
-ppf m=10,std=5 [-inf 5.16289217 7.8463635 10. 12.1536365  14.83710783 inf] 
-
+ppf m=10,std=5 [       -inf  5.16289217  7.8463635  10.         12.1536365  14.83710783
+         inf]
 \end{minted}
 
 \begin{paracol}{2}
@@ -1148,17 +1203,17 @@ The examples included in code lines 33 to 58, repeat the calculation performed b
 \centering
 \includegraphics[width=10cm]{invcum.eps}
 \bicaption{Función inversa  de probabilidad normal acumulada}{Inverse standard cumulated normal distribution}
-\label{fig:invcum}s
+\label{fig:invcum}
 \end{figure}
 
 \begin{paracol}{2}
 Retomando el hilo de nuestro problema, lo que a nosotros realmente nos interesa, es encontrar intervalos de confianza, es decir conocer el intervalo en torno al valor medio $\bar{x}_n$ que corresponde a una determinada probabilidad. La función inversa de probabilidad acumulada nos da el intervalo entre $-\infty$ y $x$ correspondiente a una determinada probabilidad. Si combinamos los resultados de dicha función con las propiedades de simetría y área unidad de la función normal podemos obtener el intervalo centrado en torno a la media correspondiente a una determinada probabilidad.
 
-Así el intervalo $[-x ,x]$ correspondiente a  una probabilidad del $P\%$, abarca un área bajo la curva $P/100$. Por tanto el área que queda en las colas ---a derecha e izquierda del intervalo--- es $1-x/100$. Como la distribución normal es simétrica, dicha área debe dividirse en dos, una correspondiente a la cola $[-\infty, -x]$ y la otra correspondiente a la cola $[x, \infty]$.
+Así el intervalo $[-x ,x]$ correspondiente a  una probabilidad del $P\%$, abarca un área bajo la curva $P/100$. Por tanto el área que queda en las colas ---a derecha e izquierda del intervalo--- es $1-P/100$. Como la distribución normal es simétrica, dicha área debe dividirse en dos, una correspondiente a la cola $[-\infty, -x]$ y la otra correspondiente a la cola $[x, \infty]$.
 \switchcolumn
 Coming back to our problem, we are actually interested in finding confidence intervals. That is, get to know the interval around a mean value $\bar{x}_n$ associated to a specific probability. The inverse cumulated normal probability function gives us the interval between $-\infty$ and $x$ associated to a specific probability. If we combine the results of this function with the symmetry and unit area characteristic of the normal function, we can obtain the interval centered around a measurement, associated to a specific probability.
 
-So the interval $[-x ,x]$ corresponding to a $P\%$ probability, Cover an area beneath the curve of a normal funtion equals to $P/100$. Thus, the remaining area in the sides  --- on the left and right the interval--- is $1-x/100$. Moreover, as the normal distribution is symmetric we should divide this area by two. One half correspond to the interval $[-\infty, -x]$ and the other to the interval $[x, \infty]$.
+So the interval $[-x ,x]$ corresponding to a $P\%$ probability, covers an area beneath the curve of a normal function equal to $P/100$. Thus, the remaining area in the tails ---on the left and right of the interval--- is $1-P/100$. Moreover, as the normal distribution is symmetric we should divide this area by two. One half correspond to the interval $[-\infty, -x]$ and the other to the interval $[x, \infty]$.
 \end{paracol}
 
 \begin{figure}[h]
@@ -1182,6 +1237,8 @@ To obtain the lower limit, $-x$, for a probability interval $P\%$ we can use the
 \begin{center}
 \begin{minipage}{0.5\textwidth}
 	\begin{minted}{python}
+In [3]: from scipy.stats import norm
+
 In [4]: p = (1-0.90)/2
 
 In [5]: x = norm.ppf(p)
@@ -1199,13 +1256,13 @@ Supongamos ahora que hemos realizado un conjunto de $n$ medidas de una determina
 \switchcolumn
 Thus the confidence interval corresponding to a $90\%$ probability for a normal distribution with mean cero and deviation standard one is $I_{90\%} =[-1.6449,\ 1.6449]$
 
-Suppose we have taken a set of $n$ measures of a physical magnitude, for instance temperature in ºC, and we calculate it mean value $\bar{x}_n=6.5$ ºC and standard deviation $s_{xn}=2$. If we can represent the result of the measure with an uncertainty corresponding to a $95\%$ confidence interval, we calculate the such confidence interval using the inverse cumulated normal probability am after, we multiply the result for $s_{xn}$ to fit it to the normal distribution our data belong to,   
+Suppose we have taken a set of $n$ measures of a physical magnitude, for instance temperature in ºC, and we calculate it mean value $\bar{x}_n=6.5$ ºC and standard deviation $s_{xn}=2$. If we want to represent the result of the measure with an uncertainty corresponding to a $95\%$ confidence interval, we calculate the such confidence interval using the inverse cumulated normal probability am after, we multiply the result for $s_{xn}$ to fit it to the normal distribution our data belong to,   
 \end{paracol}
 
 \begin{minted}{python}
-In [10]: xm = 6 #media de las medidas //measures mean
+In [10]: xm = 6.5 #media de las medidas //measures mean
 			
-In [11]: sigma = 2 #desviacion de las mendidad // measures deviation
+In [11]: sigma = 2 #desviación de la media // standard deviation of the mean
 			
 In [12]: P = (1-0.95)/2 #probalidad acumulada hasta el límite inferior del 
 #intervalo// cumulated probability up to the lower limit of the interval
@@ -1245,22 +1302,22 @@ Usually, when the number of measurements taken to estimate the value of $\bar{x}
 \begin{figure}[h]
 \centering
 \includegraphics[width=10cm]{tdestudent.eps}
-\bicaption{Comparación entre las distribuciones t de Student de 1, 5, 10, 20 y 30 grados de libertad y la distribución normal.}{Comparison among the Student's T distributions of 1, 2, 10, 20 and 30 degrees of freedom and the normal distribution}
+\bicaption{Comparación entre las distribuciones t de Student de 1, 5, 10, 20 y 30 grados de libertad y la distribución normal.}{Comparison among the Student's T distributions of 1, 5, 10, 20 and 30 degrees of freedom and the normal distribution}
 \label{fig:tdst}
 \end{figure}
 
 \begin{paracol}{2}
-Para un número pequeño de muestras, la distribución t de Student da una aproximación mejor que la distribución normal. Para un número de muestras grande, ambas distribuciones son prácticamente iguales.  La figura \ref{fig:tdst} muestra una comparación entre la distribución normal y la distribución t de Student, calculada para distintos grados de libertad. De la figura se puede concluir en primer lugar que la desviación estándar de la distribución t de Student es en todos los casos mayor que la de la distribución normal, con lo cual los intervalos de confianza para un valor dado de la probabilidad son siempre mayores. En segundo lugar se observa también que para 30 o más medidas --- $n\geqslant 30$ --- la diferencia entre las distribuciones t de Student y normal es prácticamente despreciable.
+Para un número pequeño de muestras, la distribución t de Student da una aproximación mejor que la distribución normal. Para un número de muestras grande, ambas distribuciones son prácticamente iguales.  La figura \ref{fig:tdst} muestra una comparación entre la distribución normal y la distribución t de Student, calculada para distintos grados de libertad. De la figura se puede concluir en primer lugar que la desviación estándar de la distribución t de Student es en todos los casos mayor que la de la distribución normal, con lo cual los intervalos de confianza para un valor dado de la probabilidad son siempre mayores. En segundo lugar se observa también que para 30 o más medidas ---$n\geqslant 30$--- la diferencia entre las distribuciones t de Student y normal es pequeña: con $n=30$, el factor que da el intervalo del 95\% es $2.045$ en lugar de $1.960$, un 4\% mayor.
 
-El procedimiento de cálculo es el mismo que si empleamos la distribución normal, basta sustituir la inversa de la distribución normal acumulada por la inversa de la distribución t de Student acumulada. En Python, podemos importar la distribución t de Student de modo análogo a como hicimos para la distribución normal: \texttt{scipy.stats.t}. Por defecto obtendremos una distribución de media cero y varianza uno y podremos cambiar dichos parámetros empleando las variables \texttt{log} y \texttt{scale}. Disponemos de las mismas funciones \texttt{pdf, cdf, ppf, etc} que para la distribución normal. La única diferencia es que al llamar a estas funciones debemos indicar los grados de libertad de la distribución. \texttt{t.pdf(x,df)}.
+El procedimiento de cálculo es el mismo que si empleamos la distribución normal, basta sustituir la inversa de la distribución normal acumulada por la inversa de la distribución t de Student acumulada. En Python, podemos importar la distribución t de Student de modo análogo a como hicimos para la distribución normal: \texttt{scipy.stats.t}. Por defecto la distribución está centrada en cero (\texttt{loc=0}) y tiene \texttt{scale=1}, y podemos cambiar dichos parámetros. Ojo: su varianza no es uno, sino $\nu/(\nu-2)$ para $\nu>2$ grados de libertad. Disponemos de las mismas funciones \texttt{pdf, cdf, ppf, etc} que para la distribución normal. La única diferencia es que al llamar a estas funciones debemos indicar los grados de libertad de la distribución. \texttt{t.pdf(x,df)}.
 
 Así, para el ejemplo anterior de las medidas de temperatura de media  $\bar{x}_n=6.5$ ºC y  desviación estándar $s_{xn}=2$  si suponemos que el número de medidas tomadas es $n=5$. El intervalo de confianza correspondiente a un $95\%$  lo calcularíamos mediante la inversa de la distribución de probabilidad t de Student de $n-1$ grados de libertad acumulada como,
 \switchcolumn
-For a small number of samples, the Student's T distributions yields a better approximation than the normal distribution. For a large number of samples, both distributions are quite the same. Figure \ref{fig:tdst} shows a comparison among the normal distribution a Student's T distribution calculated for several degrees of freedom. Looking at the figure we may conclude that the standard deviation of the Student's T distribution is in every case larger than the normal distribution standard deviation. This means that the confidence intervals associated with a specific probability value are always larger too. Moreover, we can see also that for 30 or more measurements --- $n\geqslant 30$ --- the difference between the normal and the Student's T distributions is negligible.
+For a small number of samples, the Student's T distributions yields a better approximation than the normal distribution. For a large number of samples, both distributions are quite the same. Figure \ref{fig:tdst} shows a comparison among the normal distribution a Student's T distribution calculated for several degrees of freedom. Looking at the figure we may conclude that the standard deviation of the Student's T distribution is in every case larger than the normal distribution standard deviation. This means that the confidence intervals associated with a specific probability value are always larger too. Moreover, we can see also that for 30 or more measurements ---$n\geqslant 30$--- the difference between the normal and the Student's T distributions is small: with $n=30$, the factor that gives the 95\% interval is $2.045$ instead of $1.960$, 4\% larger.
 
-The method to calculate a confidence interval is identical to the normal distribution case; we just use the inverse cumulated Student's T distribution instead of the inverse cumulated normal distribution. IN python we can import the the Student's T distribution using the same wise that in the normal distribution case: \texttt{scipy.stats.t}. We will obtain a mean zero variance one distribution by default and we can change these parameters using using the variables, \texttt{log} y \texttt{scale}. The same functions \texttt{pdf, cdf, ppf, etc} as for the normal distribution are available The main difference  is that now we can input the distribution degrees of freedom to the functions \texttt{t.pdf(x,df)}. 
+The method to calculate a confidence interval is identical to the normal distribution case; we just use the inverse cumulated Student's T distribution instead of the inverse cumulated normal distribution. IN python we can import the the Student's T distribution using the same wise that in the normal distribution case: \texttt{scipy.stats.t}. By default the distribution is centred at zero (\texttt{loc=0}) and has \texttt{scale=1}, and we can change these parameters. Beware: its variance is not one but $\nu/(\nu-2)$ for $\nu>2$ degrees of freedom. The same functions \texttt{pdf, cdf, ppf, etc} as for the normal distribution are available The main difference  is that now we can input the distribution degrees of freedom to the functions \texttt{t.pdf(x,df)}. 
 
-So, for the previous example of temperature measurements, with mean $\bar{x}_n=6.5$ ºC and standard deviation $s_{xn}=2$ supposing that we have taken $n=5$ measurements. We calculate the $95\%$ confident interval using the inverse cumulated Student's T distribution of five degrees of freedom as follows,
+So, for the previous example of temperature measurements, with mean $\bar{x}_n=6.5$ ºC and standard deviation $s_{xn}=2$ supposing that we have taken $n=5$ measurements. We calculate the $95\%$ confident interval using the inverse cumulated Student's T distribution of four ($n-1$) degrees of freedom as follows,
 \end{paracol}
 
 \begin{minted}{python}
@@ -1287,13 +1344,54 @@ In [27]: print(incert)
 \begin{paracol}{2}
 Por tanto deberíamos expresar el valor de la medida realizada como $6.5\pm 5.55$ ºC. Si comparamos este resultado con el obtenido empleando la distribución normal, vemos que el intervalo de confianza y, por tanto, la incertidumbre han aumentado.
 
+\subsection{¿Qué significa un intervalo del 95\%? Comprobación por simulación}\label{sec:cobertura}
+En un experimento real no conocemos el valor verdadero $\mu$, pero en una simulación sí. Podemos repetir muchas veces un ``experimento'' de $n=5$ medidas, calcular en cada uno el intervalo de confianza del 95\% y contar cuántas veces contiene el valor verdadero. Si el procedimiento es correcto, debe acertar el 95\% de las veces,
+\switchcolumn
+Therefore, we should represent the measurement value as $6.5 \pm 5.55$ ºC. Comparing this result with the one obtained using the normal distribution, we can see that the confidence interval and, consequently, the uncertainty have increased.
+
+\subsection{What does a 95\% interval mean? Checking by simulation}\label{sec:cobertura-2}
+In a real experiment we do not know the true value $\mu$, but in a simulation we do. We can repeat many times an ``experiment'' of $n=5$ measurements, compute in each one the 95\% confidence interval and count how many times it contains the true value. If the procedure is right, it must succeed 95\% of the times,
+\end{paracol}
+\begin{minted}{python}
+import numpy as np
+from scipy.stats import norm, t
+rng = np.random.default_rng(2026)
+mu, sigma, n = 20.0, 0.5, 5         # valor verdadero, dispersión, nº de medidas
+M = 100000                          # número de experimentos
+x = rng.normal(mu, sigma, (M, n))   # un experimento en cada fila
+xm = x.mean(axis=1)
+s_xn = x.std(axis=1, ddof=1)/np.sqrt(n)
+for nombre, k in [('normal', norm.ppf(0.975)), ('t Student', t.ppf(0.975, n-1))]:
+    cubre = np.abs(xm - mu) <= k*s_xn      # ¿contiene el intervalo a mu?
+    print(f'{nombre:10s} k = {k:.3f}  cobertura = {cubre.mean():.3f}')
+\end{minted}
+\begin{minted}{text}
+normal     k = 1.960  cobertura = 0.879
+t Student  k = 2.776  cobertura = 0.951
+\end{minted}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{cobertura.pdf}
+\bicaption{Intervalos del 95\% de 100 experimentos simulados de $n=5$ medidas ($\mu=20$, línea discontinua). En rojo, los que no contienen el valor verdadero. Izquierda: con la distribución normal fallan 7. Derecha: con la t de Student fallan 2.}{95\% intervals of 100 simulated experiments of $n=5$ measurements ($\mu=20$, dashed line). In red, those that do not contain the true value. Left: with the normal distribution 7 fail. Right: with Student's t 2 fail.}
+\label{fig:cobertura}
+\end{figure}
+\begin{paracol}{2}
+Con $n=5$ medidas, el intervalo calculado con la distribución normal solo contiene el valor verdadero en el 88\% de los experimentos, no en el 95\%: subestima la incertidumbre, porque no tiene en cuenta que $s$ es también una estimación hecha con pocos datos. Con la t de Student acierta el 95\%. La figura \ref{fig:cobertura} muestra 100 de estos experimentos.
+
+Esto es lo que significa un intervalo de confianza del 95\%: no que haya un 95\% de probabilidad de que el valor verdadero esté en un intervalo concreto ya calculado (o está o no está), sino que el \emph{procedimiento} con el que se calcula acierta en el 95\% de los experimentos. Simular un caso en el que conocemos la respuesta es la forma de comprobar cualquier procedimiento estadístico, también los que nos proponga un asistente de IA.
+\switchcolumn
+With $n=5$ measurements, the interval computed with the normal distribution only contains the true value in 88\% of the experiments, not in 95\%: it underestimates the uncertainty, because it does not take into account that $s$ is also an estimate made with few data. With Student's t it succeeds 95\% of the times. Figure \ref{fig:cobertura} shows 100 of these experiments.
+
+This is what a 95\% confidence interval means: not that there is a 95\% probability that the true value lies in a particular interval already computed (it either does or does not), but that the \emph{procedure} used to compute it succeeds in 95\% of the experiments. Simulating a case whose answer we know is the way to check any statistical procedure, including those suggested by an AI assistant.
+\end{paracol}
+
+\begin{paracol}{2}
+
 \subsection{Propagación de la incertidumbre: Estimación de la incertidumbre de medidas indirectas.}
 
 Supongamos que deseamos obtener la incertidumbre de una determinada magnitud física $y$ que no hemos medido directamente, sino que se determina a partir de otras cantidades $x_1,x_2,\cdots,x_n$ empleando una relación funcional $f$,
 
 \switchcolumn
-Therefore, we should represent the measurement value as $6.5 \pm 5.55$ ºC. Comparing this result with the one obtained using the normal distribution, we can see that the confidence interval and, consequently, the uncertainty have increased.
-
 \subsection{Uncertainty propagation:\\ uncertainty estimation of indirect measurements.}
 
 Suppose we wish to get the uncertainty of a physical magnitude $y$ that we have not measured directly, but that is determined from other measurements $x_1,x_2,\cdots,x_n$ using a functional relationship $f$,  
@@ -1323,7 +1421,7 @@ donde  $s_c^2(y)$ se define como la  varianza \emph{combinada} de $y$, que se es
 where $s_c^2(y)$ is defined as the \emph{combined} variance of $y$, that can be estimated in a first approximation using the Taylor's expansion\footnote{In first approach we use the first-order Taylor's expansion. Actually, this method could be valid or not depending on the features of function $f$. We do not discuss this problem here.} of function $f$.    
 \end{paracol}
 \begin{equation*}
-s_c^2(y) = \sum_{i=1}^n\left(\frac{\partial f}{\partial x_i}\right)^2 s^2(x_i) + 2\sum_{i=1}^{n-1}\sum_{i=1}^n \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} c_v(x_i,x_j)
+s_c^2(y) = \sum_{i=1}^n\left(\frac{\partial f}{\partial x_i}\right)^2 s^2(x_i) + 2\sum_{i=1}^{n-1}\sum_{j=i+1}^n \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} c_v(x_i,x_j)
 \end{equation*}
 
 \begin{paracol}{2}
@@ -1357,12 +1455,12 @@ s_c^2(y) = \sum_{i=1}^n\left(\frac{\partial f}{\partial x_i}\right)^2 s^2(x_i)
 \end{equation*}
 
 \begin{paracol}{2}
-Un ejemplo simple lo podemos obtener de la ecuación para la potencia disipada en una resistencia eléctrica. En este caso, el valor de la potencia disipada depende del voltaje, $V$, de la resistencia $R_0$ medida a una temperatura de referencia $t_0$, de la temperatura real a que se encuentra la resistencia $t$ y, en primera aproximación, de un coeficiente que $b$, que establece una relación lineal entre temperatura y resistencia.
+Un ejemplo simple lo podemos obtener de la ecuación para la potencia disipada en una resistencia eléctrica. En este caso, el valor de la potencia disipada depende del voltaje, $V$, de la resistencia $R_0$ medida a una temperatura de referencia $t_0$, de la temperatura real a que se encuentra la resistencia $t$ y, en primera aproximación, de un coeficiente $b$, que establece una relación lineal entre temperatura y resistencia.
 \switchcolumn
 We will show a easy example using the equation to determine the power dissipated in an electric resistance. In this case, the value of the power dissipated depends on the voltage, $V$, on the resistance $R_0$ measured at a reference temperature $t_0$, on the actual resistance temperature $t$ and, in a first approximation, on a coefficient $b$ that defines a linear dependence between the temperatura and the resistance.    
 \end{paracol}
 \begin{equation*}
-P = f(V,R_o,b,t) = \frac{V^2}{R_0\left(1+b(t-t_0)\right)}
+P = f(V,R_0,b,t,t_0) = \frac{V^2}{R_0\left(1+b(t-t_0)\right)}
 \end{equation*}
 \begin{paracol}{2}
 Supongamos que $b$ es un coeficiente numérico no sujeto a incertidumbre y que las  variables $V$, $R_0$, $t$ y $t_0$ no están correlacionadas entre sí. Podemos entonces expresar la varianza  en la  potencia disipada, a partir de las varianzas de las variables de entrada como,
@@ -1412,11 +1510,11 @@ Resistence nominal value&\hspace{2.2cm} (confidence interval 98\%) \\
 Temperatura de referencia& $t_0=50\pm 0.1 ^oC$ (división menor del sensor $0.2^oC$) \\
 Reference temperature& \hspace{2.2cm}(sensor least count $0.2^oC$)\\
 \hline
-Valor del parámetro b& $b = 0.4\Omega / ^oC$ (incertidumbre despreciable)\\
+Valor del parámetro b& $b = 0.4\ ^o\mathrm{C}^{-1}$ (incertidumbre despreciable)\\
 b parameter value & \hspace{2.2cm} (negligible uncertainty)\\
 \hline
 \hline
-Temperatura ºC& Votaje mV\\
+Temperatura ºC& Voltaje mV\\
 Temperature ºC& Voltage mV\\
 \hline
  $55.7$&$761$\\
@@ -1493,8 +1591,6 @@ This quantity multiplied by $R_0$ standard deviation casts the confidence interv
 \begin{center}
 	\begin{minipage}{0.5\textwidth}
 		\begin{minted}{python}
-In [5]: sR0 = -5/i98
-
 In [6]: sR0 = -5/i98 #R0 standard deviation 
 
 In [7]: s2R0 = sR0**2 #R0 variance
@@ -1506,7 +1602,9 @@ sR0= 2.149291623919966 s2R0= 4.619454484652525
 \end{center}
 
 
-luego $s^2(R_0)= 4.6195$
+\begin{equation*}
+s^2(R_0)= 4.6195\ \Omega^2
+\end{equation*}
 \begin{paracol}{2}
 \textbullet Varianza de la temperatura de referencia $t_0$: En este caso se ha expresado la incertidumbre en función de la mitad de la división más pequeña de la escala del aparato de medida. Podemos considerar por tanto que la incertidumbre estaría representada por una distribución uniforme definida en el intervalo $[-0.1\ 0.1]$. En esta caso, podemos asociar la varianza de la medida directamente con dicha distribución uniforme,
 \switchcolumn
@@ -1516,21 +1614,21 @@ luego $s^2(R_0)= 4.6195$
 \begin{center}
 	\begin{minipage}{\textwidth}
 		\begin{minted}{python}
-			In [14]: s2t0 = (1-(-1))**2/12
+			In [14]: s2t0 = (0.1-(-0.1))**2/12
 
 			In [15]: print(s2t0)
-			0.3333333333333333		
+			0.003333333333333334		
 		\end{minted}
 	\end{minipage}
 \end{center}
 
 \begin{paracol}{2}
-Así, $s^2(t_0)=0.3333$
+Así, $s^2(t_0)=0.003333$. (Un error fácil de cometer, y que tenía una versión anterior de estos apuntes, es usar el intervalo $[-1,1]$ en lugar de $[-0.1,0.1]$: da una varianza cien veces mayor.)
 
 \textbullet Varianzas de las medidas de temperatura y voltaje:
 En primer lugar promediamos los valores  obtenidos de voltaje y temperatura, para calcular el valor de la medida. Numpy tiene definida la función \mintinline{python}|mean()| que permite obtener directamente el valor medio de los elementos de una array de Numpy. Podemos por tanto definir en Python dos vectores, unos para los datos de temperatura y otro para los datos de voltaje y calcular directamente las medias,
 \switchcolumn
-Thus, $s^2(t_0)=0.3333$
+Thus, $s^2(t_0)=0.003333$. (An easy mistake, which a previous version of these notes made, is to use the interval $[-1,1]$ instead of $[-0.1,0.1]$: it gives a variance one hundred times larger.)
 
 \textbullet temperature measurements and voltage measurements variances:
 First we calculate the mean of the values we have obtained for temperature and voltage, taking these means as the measurement value. Numpy defines the function \mintinline{python}|mean()| which allows us directly to calculate the mean value of a Numpy array. So, we may define in Python two vectors one with the temperature data and other for the voltage data and obtain the means straightforwardly, 
@@ -1539,19 +1637,19 @@ First we calculate the mean of the values we have obtained for temperature and v
 \begin{center}
 	\begin{minipage}{\textwidth}
 		\begin{minted}{python}
-In[29] t=np.array([55.7, 62.8, 58.1, 60.9, 66.3, 59.4, 61.8, 62.5, 59.4, 61.4,
-55.7, 65.3, 56.9, 57.8, 62.9, 59.9, 62.6, 59.1, 57.9, 53.8])
+In [29]: t=np.array([55.7, 62.8, 58.1, 60.9, 66.3, 59.4, 61.8, 62.5, 59.4, 61.4,
+    ...: 55.7, 65.3, 56.9, 57.8, 62.9, 59.9, 62.6, 59.1, 57.9, 53.8])
 
-In[30]: t
+In [30]: t
 Out[30]: 
 array([55.7, 62.8, 58.1, 60.9, 66.3, 59.4, 61.8, 62.5, 59.4, 61.4, 55.7,
 65.3, 56.9, 57.8, 62.9, 59.9, 62.6, 59.1, 57.9, 53.8])
 
-In[31]: t.mean()
+In [31]: t.mean()
 Out[31]: 60.00999999999999
 			
 In [32]: v=np.array([761, 897, 879, 767, 758, 763, 762, 761, 790, 852,
-816, 752, 848, 920, 743, 858, 761, 788, 775, 791])
+    ...: 816, 752, 848, 920, 743, 858, 761, 788, 775, 791])
 			
 In [33]: v
 Out[33]: 
@@ -1584,7 +1682,7 @@ In [67]: s2v= v.var(ddof=1)/len(v) #mean volt. variance
 In [68]: print(s2v)
 145.58368421052631
 
-In [71]: st= t.std(ddof=1)/np.sqrt(len(t)) #mean volt. standard dev
+In [71]: st= t.std(ddof=1)/np.sqrt(len(t)) #mean temp. standard dev
 
 In [72]: print(st)
 0.7299567398861818
@@ -1597,12 +1695,12 @@ In [74]: print(sv)
 	\end{minipage}
 \end{center} 
 \begin{paracol}{2}
-Lógicamente, los resultados muestran que las desviaciones estándar son las raíces cuadradas de las varianzas. Tenemos por tanto, $\bar{t}=60.01$, $\bar{V}=802,01$, $s^2(t)=0.5382$, $s^2(V)=145.5837$.
+Lógicamente, los resultados muestran que las desviaciones estándar son las raíces cuadradas de las varianzas. Tenemos por tanto, $\bar{t}=60.01$, $\bar{V}=802.1$, $s^2(t)=0.5328$, $s^2(V)=145.5837$.
  
 En este momento, hemos reunido ya toda la información necesaria para estimar la incertidumbre de la potencia consumida en la resistencia de nuestro ejemplo. La tabla \ref{tabdatos} contiene los datos calculados.
 
 \switchcolumn
-Obviously, the result show that the standard deviation are the square roots of the variances. So, eventually we have, $\bar{t}=60.01$, $\bar{V}=802,01$, $s^2(t)=0.5382$, $s^2(V)=145.5837$.
+Obviously, the result show that the standard deviation are the square roots of the variances. So, eventually we have, $\bar{t}=60.01$, $\bar{V}=802.1$, $s^2(t)=0.5328$, $s^2(V)=145.5837$.
 
 Now we have gathered all needed information to estimate the uncertainty of the power consumed in the resistance of our example. Table \ref{tabdatos} holds of the computed data.
 
@@ -1621,13 +1719,13 @@ Variable (units) & Value & Variance\\
 \hline
 $R_0$($\Omega$)&$100$&$4.6195$\\
 \hline
-b ($\Omega$/ºC)& $0.4$ &--\\
+b (ºC$^{-1}$)& $0.4$ &--\\
 \hline
-$t_0$ (ºC)& 50& 0.3333\\
+$t_0$ (ºC)& 50& 0.003333\\
 \hline 
  $\bar{t}$ (ºC)&$60.01$&$0.5328$\\
 \hline 
-$\bar{V}$(mV)& $802.01$&$145.5837$\\
+$\bar{V}$(mV)& $802.1$&$145.5837$\\
 \hline
 \hline
 \end{tabular}
@@ -1635,7 +1733,7 @@ $\bar{V}$(mV)& $802.01$&$145.5837$\\
 
 
 \begin{equation*}
-P = \frac{V^2}{R_0\left(1+b(t-t_0)\right)}=\frac{0.80201^2}{100\left(1+0.4(60.01-50)\right)} =  0.001285 W = 1.285 mW
+P = \frac{V^2}{R_0\left(1+b(t-t_0)\right)}=\frac{0.8021^2}{100\left(1+0.4(60.01-50)\right)} =  0.001286\ \mathrm{W} = 1.286\ \mathrm{mW}
 \end{equation*}
 
 \begin{paracol}{2}
@@ -1646,14 +1744,16 @@ A continuación, propagamos la incertidumbre de las variables de entrada a la de
 \switchcolumn
 Where we have introduced the voltage in volts in order to obtain the power directly in watts.
 
-Subsequently, we propagate the uncertainty o the input variables to the output, 
+Subsequently, we propagate the uncertainty of the input variables to the output, 
 \end{paracol}
 \begin{align*}
 s_c^2(P) =& \left(\frac{2V}{R_0\left(1+b(t-t_0)\right)}\right)^2 s^2(V)+ \left(\frac{-V^2\left(1+b(t-t_0)\right)}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(R_0)+\\
 &+ \left(\frac{-V^2R_0b}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(t)+\left(\frac{V^2R_0b}{R_0^2\left(1+b(t-t_0)\right)^2}\right)^2 s^2(t_0)=\\
-=& \left(\frac{2 \cdot 0.80201}{100\left(1+0.4(60.01-50)\right)}\right)^2 \cdot 1.455836\cdot10^{-4} + \left(\frac{- 0.80201^2\left(1+0.4(60.01-50)\right)}{100^2\left(1+0.4(60.01-50)\right)^2}\right)^2 \cdot 4.619+\\
-&+ \left(\frac{- 0.80201^2\cdot100\cdot0.4}{100^2\left(1+0.4(60.01-50)\right)^2}\right)^2\cdot 0.5328 +\left(\frac{0.80201^2\cdot100\cdot0.4}{100^2\left(1+0.4(60.01-50)\right)^2}\right)^2 0.3333=\\
-=&1.4959\cdot10^{-09} + 7.6327\cdot10^{-10} + 5.6252\cdot10^{-09} + 3.5189\cdot10^{-09} =  1.1403\cdot 10^{-08}
+=& \left(\frac{2 \cdot 0.8021}{100\left(1+0.4(60.01-50)\right)}\right)^2 \cdot 1.455837\cdot10^{-4} +\\
+&+ \left(\frac{- 0.8021^2\left(1+0.4(60.01-50)\right)}{100^2\left(1+0.4(60.01-50)\right)^2}\right)^2 \cdot 4.619+\\
+&+ \left(\frac{- 0.8021^2\cdot100\cdot0.4}{100^2\left(1+0.4(60.01-50)\right)^2}\right)^2\cdot 0.5328 +\\
+&+\left(\frac{0.8021^2\cdot100\cdot0.4}{100^2\left(1+0.4(60.01-50)\right)^2}\right)^2 0.003333=\\
+=&1.4962\cdot10^{-9} + 7.6361\cdot10^{-10} + 5.6281\cdot10^{-9} + 3.5208\cdot10^{-11} =  7.9231\cdot 10^{-9}
 \end{align*} 
 
 \begin{paracol}{2}
@@ -1663,17 +1763,54 @@ En este caso, hemos multiplicado la varianza del voltaje $s^2(V)$ por $10^{-6}$,
 In this case, we have multiply the voltage variance $s^2(V)$ by $10^{-6}$, to obtain the $s_c^2(P)$ in W$^2$. We can now represent the uncertainty of the consumed power as a function of the standard deviation as,
 \end{paracol}
 \begin{equation*}
-u_c(P) = \sqrt{s_c^2(P)} =  1.0678\cdot 10^{-4} W
+u_c(P) = \sqrt{s_c^2(P)} =  8.901\cdot 10^{-5}\ \mathrm{W}
 \end{equation*}
 \begin{paracol}{2}
-Con lo que finalmente expresaríamos la medida indirecta de la potencia consumida como, $P = 1.285 \pm 0.10678 $ mW. Si suponemos que la distribución de probabilidad asociada a la incertidumbre de la potencia es normal, la incertidumbre así expresada (mediante la desviación estándar) representaría un intervalo de confianza del $68.27\%$. 
+Con lo que finalmente expresaríamos la medida indirecta de la potencia consumida como $P = 1.286 \pm 0.089$ mW. Los cuatro términos de la suma nos dicen además de dónde viene la incertidumbre: el de la temperatura $t$ aporta el 71\% de la varianza, el del voltaje el 19\%, el de $R_0$ el 10\% y el de $t_0$ menos del 1\%. Si quisiéramos una medida más precisa, lo primero sería medir mejor la temperatura. Si suponemos que la distribución de probabilidad asociada a la incertidumbre de la potencia es normal, la incertidumbre así expresada (mediante la desviación estándar) representaría un intervalo de confianza del $68.27\%$. 
 \switchcolumn
-And eventually we can represent the indirect measurement of the consumed power as, $P = 1.285 \pm 0.10678 $ mW. If we suppose that the probability distribution associated to the power uncertainty is normal, the uncertainty so represented (using the standard deviation) represents a confidence interval of $68.27\%$. $s_c^2(P)$ en W$^2$.
+And eventually we can represent the indirect measurement of the consumed power as $P = 1.286 \pm 0.089$ mW. The four terms of the sum also tell us where the uncertainty comes from: the temperature $t$ term contributes 71\% of the variance, the voltage term 19\%, the $R_0$ term 10\% and the $t_0$ term less than 1\%. If we wanted a more accurate measurement, the first thing to do would be to measure the temperature better. If we suppose that the probability distribution associated to the power uncertainty is normal, the uncertainty so represented (using the standard deviation) represents a confidence interval of $68.27\%$.
+\end{paracol}
+
+\begin{paracol}{2}
+\subsection{Comprobación: propagación de la incertidumbre por Monte Carlo}\label{sec:propmc}
+La propagación que acabamos de hacer se basa en un desarrollo de Taylor de primer orden, y es fácil equivocarse al derivar o al cambiar de unidades. Podemos comprobarla sin ninguna aproximación: generamos un número muy grande de valores posibles de cada entrada, cada uno con su distribución (normal para $V$, $R_0$ y $t$; uniforme para $t_0$), calculamos $P$ para cada combinación y estudiamos la distribución de los resultados. Este método se llama propagación por \emph{Monte Carlo} (por el casino). Usamos los arrays \mintinline{python}|t| y \mintinline{python}|v| de la tabla,
+\switchcolumn
+\subsection{Checking: Monte Carlo uncertainty propagation}\label{sec:propmc-2}
+The propagation we have just done is based on a first-order Taylor expansion, and it is easy to make a mistake when differentiating or changing units. We can check it without any approximation: we generate a very large number of possible values of each input, each one with its distribution (normal for $V$, $R_0$ and $t$; uniform for $t_0$), compute $P$ for each combination and study the distribution of the results. This method is called \emph{Monte Carlo} propagation (after the casino). We use the arrays \mintinline{python}|t| and \mintinline{python}|v| of the table,
+\end{paracol}
+\begin{minted}{python}
+import numpy as np
+from scipy.stats import norm
+rng = np.random.default_rng(2026)
+N = 1_000_000
+V = rng.normal(v.mean(), v.std(ddof=1)/np.sqrt(len(v)), N)*1e-3   # V
+R0 = rng.normal(100, 5/norm.ppf(0.99), N)                          # ohm
+T = rng.normal(t.mean(), t.std(ddof=1)/np.sqrt(len(t)), N)         # ºC
+T0 = rng.uniform(49.9, 50.1, N)                                    # ºC
+b = 0.4                                                            # 1/ºC
+P = V**2/(R0*(1 + b*(T - T0)))*1e3                                 # mW
+print(f'P = {P.mean():.3f} ± {P.std():.3f} mW')
+print('intervalo del 95 %:', np.percentile(P, [2.5, 97.5]))
+\end{minted}
+\begin{minted}{text}
+P = 1.291 ± 0.090 mW
+intervalo del 95 %: [1.12756653 1.48092042]
+\end{minted}
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{propagacion_mc.pdf}
+\bicaption{Distribución de la potencia obtenida por Monte Carlo y distribución normal que supone la propagación lineal.}{Distribution of the power obtained by Monte Carlo and normal distribution assumed by linear propagation.}
+\label{fig:propmc}
+\end{figure}
+\begin{paracol}{2}
+La desviación estándar ($0.090$~mW) coincide con la de la propagación lineal ($0.089$~mW), lo que confirma el cálculo anterior. (Con el error en $s^2(t_0)$ que tenía una versión anterior de estos apuntes, la propagación lineal daba $0.107$~mW, y esta comprobación lo habría detectado.) La simulación da además información que la fórmula no da: la distribución es ligeramente asimétrica (figura \ref{fig:propmc}), y el intervalo que contiene el 95\% de los resultados, $[1.128,\ 1.481]$~mW, no es simétrico respecto al valor central. Cuando la ecuación de medida es muy no lineal, la propagación por Monte Carlo es el método que recomienda la guía internacional para expresar la incertidumbre de medida (GUM, suplemento 1).
+\switchcolumn
+The standard deviation ($0.090$~mW) agrees with that of the linear propagation ($0.089$~mW), which confirms the previous computation. (With the error in $s^2(t_0)$ of a previous version of these notes, the linear propagation gave $0.107$~mW, and this check would have detected it.) The simulation also gives information that the formula does not: the distribution is slightly asymmetric (figure \ref{fig:propmc}), and the interval that contains 95\% of the results, $[1.128,\ 1.481]$~mW, is not symmetric about the central value. When the measurement equation is strongly nonlinear, Monte Carlo propagation is the method recommended by the international guide to the expression of uncertainty in measurement (GUM, supplement 1).
 \end{paracol}
 \begin{paracol}{2}
 \section{Una nota sobre Pandas.}
 \sectionmark{Una nota sobre Pandas. \textreferencemark\ A note on Pandas.}
-Python cuenta con un módulo específico para tratar con datos. Se trata de Pandas. Una descripción detallada de este módulo queda fuera del alcance de estos apuntes. Aquí simplemente daremos una muy breve introducción con un ejemplo de uso. Para ello tomaremos datos de la generación de energía electrica en España durante el 19 de marzo de 2025. Los datos están disponibles en la página web de Red Eléctrica,
+Python cuenta con un módulo específico para tratar con datos. Se trata de Pandas. Una descripción detallada de este módulo queda fuera del alcance de estos apuntes. Aquí simplemente daremos una muy breve introducción con un ejemplo de uso. Para ello tomaremos datos de la generación de energía eléctrica en España durante el 19 de marzo de 2025. Los datos están disponibles en la página web de Red Eléctrica,
 \switchcolumn
 \section{A note on Pandas}
 Python has a specific module to deal with data, named Pandas. A detailed description o this module is far beyond the reach of these notes. We are only to supply a very brief introduction to it, following a use case. To do this, we will the take data of the electrical generation in Spain during  the 19th of March, 2025. These data are available in the Red Eléctrica Web Page  
@@ -1690,7 +1827,7 @@ Para obtenerlos los hemos descargado en formato csv, en un archivo llamado \emph
 
 Los datos contenidos en el fichero csv, corresponden a la producción total de potencia eléctrica en Megawatios, entre las 21.00 horas del días 18.03.2025 y las 03.00 horas del día 20.03.2025. Los datos se suministran a intervalos de 5 minutos y contienen las cantidades generadas por los distintos sistemas de producción: Eólica, Nuclear, etc.
 
-A continuación, incluimos un script de Py\-thon en el que se muestra un análisis my sencillo de los datos descargados.
+A continuación, incluimos un script de Py\-thon en el que se muestra un análisis muy sencillo de los datos descargados.
 \switchcolumn
 We have download the data into a file called \emph{generacion20250319MW.csv}. The file has csv format --'comma separated values'-- and it is compatible with standard spread sheet programs.
 
@@ -1717,22 +1854,22 @@ linenos
 
 \begin{paracol}{2}
  	
-Veamos en detalle lo que hace éste codigo.
+Veamos en detalle lo que hace este código.
 
 En la línea 9 importamos Pandas, del mismo modo que importaríamos cualquier otro módulo de Python. 
 
-En la línea 12 cargamos el fichero de datos en Python. Para ello, empleamos una función específica de Pandas \mintinline{python}|pd.read_csv|. Este comando permite leer un fichero tipo csv y lo carga en una variable especial de Pandas, cuyo tipo se conoce como \emph{DataFrame}, llamada \mintinline{python}|generacion_mw|. La figura \ref{fig:datafna}, muestra una vista de dicha variable empleando el visor de variables de Spyder. La primera fila muestra una cabecera, que en este caso, por la estructura del fichero csv cargado, no contiene nombres significativos (Unnamed:\#). Además, tenemos una línea de datos que contiene NaNs. Una de las ventajas de Panda, es que, los \emph{DataFrames} contienen un gran número de funciones propias para su manipulación. Sin nos fijamos, es en la fila dos de la tabla donde aparecen los nombre de las variables contenidas en cada columna.
+En la línea 12 cargamos el fichero de datos en Python. Para ello, empleamos una función específica de Pandas \mintinline{python}|pd.read_csv|. Este comando permite leer un fichero tipo csv y lo carga en una variable especial de Pandas, cuyo tipo se conoce como \emph{DataFrame}, llamada \mintinline{python}|generacion_mw|. La figura \ref{fig:datafna}, muestra una vista de dicha variable empleando el visor de variables de Spyder. La primera fila muestra una cabecera, que en este caso, por la estructura del fichero csv cargado, no contiene nombres significativos (Unnamed:\#). Además, tenemos una línea de datos que contiene NaNs. Una de las ventajas de Panda, es que, los \emph{DataFrames} contienen un gran número de funciones propias para su manipulación. Si nos fijamos, es en la fila uno de la tabla donde aparecen los nombres de las variables contenidas en cada columna. (Si hubiéramos abierto antes el fichero con un editor de texto, habríamos visto que los nombres están en la tercera línea, y habría bastado con \mintinline{python}|pd.read_csv(fichero, skiprows=2)|, que además lee los datos directamente como números. Mirar los datos antes de procesarlos ahorra mucho trabajo.)
 
-Nos gustaría que los datos de esta fila dos fueran los que dieran nombre a las columnas. Para hacer este cambio, utilizamos el comando \mintinline{python}|rename| mostrado en la línea 13 del script que estamos comentado. El comando pide que se renombren la columnas, empleando los datos de las segunda fila de la tabla mediante el uso de \mintinline{python}|generacion_mw.iloc|. El parámetro \mintinline{python}|inplace = True|, obliga a que el cambio se realice sobre el propio \emph{DataFrame} en lugar de generar uno nuevo con los cambios.
+Nos gustaría que los datos de esta fila uno fueran los que dieran nombre a las columnas. Para hacer este cambio, utilizamos el comando \mintinline{python}|rename| mostrado en la línea 13 del script que estamos comentado. El comando pide que se renombren la columnas, empleando los datos de la fila uno de la tabla mediante el uso de \mintinline{python}|generacion_mw.iloc|. El parámetro \mintinline{python}|inplace = True|, obliga a que el cambio se realice sobre el propio \emph{DataFrame} en lugar de generar uno nuevo con los cambios.
 
 Podemos ver los resultados de este cambio en la figura \ref{fig:datafint}. Efectivamente, las columnas han sido renombradas con los valores de los distintos sistemas de producción de energía eléctrica, pero dichos nombres siguen presentes en la fila uno, desde la que se han copiado a la cabecera. Además la fila cero sigue conteniendo NaNs.
 \switchcolumn
 Let see the performance of this program in more detail.
 In line 9 we import Pandas in the same way that we would import any other Python module.
 
-In line 12 we load the data file in Python. To do this, we use a specific Pandas function \mintinline{python}|pd.read_csv|. This command allows us to read a csv file and load its contend in a special Pandas variable named generacion\_mv, which type is known as \emph{DataFrame}. Figure \ref{fig:datafna} shows a view of this variable using the spider variable scope. The first row, shows a header that, in this case and due to the data structure, has not meaningful names (Unnamed:\#). In addition, we have got a row that contains NaNs. One advantage of Panda is that DataFrames include many built-in functions for manipulation. If we look at the table we see that row two has the names of the variables contained in each column.
+In line 12 we load the data file in Python. To do this, we use a specific Pandas function \mintinline{python}|pd.read_csv|. This command allows us to read a csv file and load its contend in a special Pandas variable named generacion\_mv, which type is known as \emph{DataFrame}. Figure \ref{fig:datafna} shows a view of this variable using Spyder's variable explorer. The first row, shows a header that, in this case and due to the data structure, has not meaningful names (Unnamed:\#). In addition, we have got a row that contains NaNs. One advantage of Panda is that DataFrames include many built-in functions for manipulation. If we look at the table we see that row one has the names of the variables contained in each column. (Had we opened the file with a text editor first, we would have seen that the names are in the third line, and \mintinline{python}|pd.read_csv(file, skiprows=2)| would have been enough; it also reads the data directly as numbers. Looking at the data before processing them saves a lot of work.)
 
-We would like the data from row two to be used as the column names. We carry out this change using the \mintinline{python}|rename| command, shown in line 13 of the script we are commenting. The command changes the name of the columns using the data from the second row of the table using \mintinline{python}|generacion.iloc|. The parameter \mintinline{python}|inplace = True| forces the change to be made onto the same \emph{DataFrame} instead of creating a new \emph{DataFrame} with the changes.
+We would like the data from row one to be used as the column names. We carry out this change using the \mintinline{python}|rename| command, shown in line 13 of the script we are commenting. The command changes the name of the columns using the data from row one of the table through \mintinline{python}|generacion_mw.iloc|. The parameter \mintinline{python}|inplace = True| forces the change to be made onto the same \emph{DataFrame} instead of creating a new \emph{DataFrame} with the changes.
 
 We can see the results of the change in figure \ref{fig:datafint}. The column are now renamed using the names of the different power generation sources, but these names are still presented  in the first row, where they were before be copied on the header. Besides, the row zero still has NaNs. 
 \end{paracol}
@@ -1744,12 +1881,12 @@ We can see the results of the change in figure \ref{fig:datafint}. The column ar
 \end{figure}
 
 \begin{paracol}{2}
-Nos gustaría eliminar estas dos filas para dejar nuestro \emph{DataFrame} limpio. Para ello, en la línea 14 del scripts, hemos incluido el comando \mintinline{python}|drop|. Este comando nos permite eliminara líneas enteras de la tabla, empleando directamente su número de índice. En nuestro caso queremos eliminar las filas uno y dos; \mintinline{python}|generacion_mw.drop([0,1],inplace=True))|. Donde, de nuevo hemos empleado la opción \mintinline{python}|inplace = True|, para que los cambios se lleven a cabo sobre el propio 	\emph{DataFrame}. 
+Nos gustaría eliminar estas dos filas para dejar nuestro \emph{DataFrame} limpio. Para ello, en la línea 14 del scripts, hemos incluido el comando \mintinline{python}|drop|. Este comando nos permite eliminara líneas enteras de la tabla, empleando directamente su número de índice. En nuestro caso queremos eliminar las filas cero y uno; \mintinline{python}|generacion_mw.drop([0,1],inplace=True)|. Donde, de nuevo hemos empleado la opción \mintinline{python}|inplace = True|, para que los cambios se lleven a cabo sobre el propio 	\emph{DataFrame}. 
 Podemos ver el resultado de la tabla completa en la figura \ref{fig:dataf}. Las filas cero y uno se han eliminado, dejándonos una tabla de datos coherente. 
 Sin embargo, los datos, contenidos en las columnas no son numéricos. Para convertirlos en números y poder trabajar con ellos,
 En la línea 15 copiamos los nombres de las columnas, en una lista, 
 \switchcolumn
-We would like to delete these two lines and so, leave our \emph{DataFrame} clean. To do it, we have included the command \mintinline{python}|drop| in the script line number 14. This command allows us to eliminate complete rows from the table, using directly the row index number. In our case, we want to delete rows zero and one from the table;\\ \mintinline{python}|generacion_mw.drop([0,1],inplace=True))|. Where, one more time, we have used the option  \mintinline{python}|inplace = True|, to perform the changes on the same \emph{DataFrame}. WE can see the result of the complete table in figure \ref{fig:dataf}. Rows zero and one have been deleted casting a coherent data table.
+We would like to delete these two lines and so, leave our \emph{DataFrame} clean. To do it, we have included the command \mintinline{python}|drop| in the script line number 14. This command allows us to eliminate complete rows from the table, using directly the row index number. In our case, we want to delete rows zero and one from the table;\\ \mintinline{python}|generacion_mw.drop([0,1],inplace=True)|. Where, one more time, we have used the option  \mintinline{python}|inplace = True|, to perform the changes on the same \emph{DataFrame}. WE can see the result of the complete table in figure \ref{fig:dataf}. Rows zero and one have been deleted casting a coherent data table.
 Nevertheless, the data contained in the columns are not numerical. We need to change them to numbers to work with. We perform it in two steps, first in line 15 we copy the columns names in a list,                  
 
 \end{paracol}
@@ -1781,7 +1918,7 @@ dtype='object')
 \end{figure}
 
 \begin{paracol}{2}
- Despues, empleamos un bucle \mintinline{python}|for| para recorrer las columnas y cambiar el tipo de los datos a \mintinline{python}|float|. Es interesante observar que, tal y como hemos escrito el código, cambiamos los tipos de todos los datos de cada columna en un solo paso.
+ Después, empleamos un bucle \mintinline{python}|for| para recorrer las columnas y cambiar el tipo de los datos a \mintinline{python}|float|. Es interesante observar que, tal y como hemos escrito el código, cambiamos los tipos de todos los datos de cada columna en un solo paso.
 
 El comando \mintinline{python}|describe| de la línea 19, nos permite hacernos una idea de la potencia de Pandas.
 \switchcolumn
@@ -1811,29 +1948,29 @@ max    17810.000000  7133.000000  ...                  0.0  8061.000000
 \end{center} 
 
 \begin{paracol}{2}
-Con una única instrucción, Pandas nos devuelve un estudio estadístico básico de los datos de nuestra tabla. En el terminal de python se no muestran los nombres de las columnas, con los distintos tipos de generación de energía eléctrica, y en cada columna \texttt{count,mean, std, min, 25\%, 50\%, 75\%, max} los valores del nú\-mero total de datos, el valor medio, el valor mínimo, la desviación estándar, y los valores que marcan los cuartiles 25\%, 50\% (la mediana),75\% y el valor máximo.  En el terminal de python no se muestran todos los datos de la tabla \mintinline{python}|des|, solo las dos primeras columnas y las dos últimas y unos puntos suspensivos entre medias para indicarnos que hay más datos. 
+Con una única instrucción, Pandas nos devuelve un estudio estadístico básico de los datos de nuestra tabla. Es también una primera comprobación de los datos: de las 21.00 del día 18 a las 03.00 del día 20 hay 30 horas, que a intervalos de 5 minutos dan $30\cdot 12+1=361$ datos, justo los que indica la fila \texttt{count} en todas las columnas (no falta ninguno). En el terminal de python se no muestran los nombres de las columnas, con los distintos tipos de generación de energía eléctrica, y en cada columna \texttt{count,mean, std, min, 25\%, 50\%, 75\%, max} el nú\-mero total de datos, el valor medio, la desviación estándar, el valor mínimo, los valores que marcan los cuartiles 25\%, 50\% (la mediana) y 75\%, y el valor máximo.  En el terminal de python no se muestran todos los datos de la tabla \mintinline{python}|des|, solo las dos primeras columnas y las dos últimas y unos puntos suspensivos entre medias para indicarnos que hay más datos. 
 
-Veamos con detalle el código contenido en la línea 22. Se trata de un comando asociado a los \emph{DataFrames} que permite realizar gráficos tipo 'pastel'. Lo que queremos es obtener una comparativa de la producción media obtenida de las distintas fuentes de energía. El problema es que la tabla que estamos estudiando contiene valores de producción negativos. Se trata en realidad de los intercambios energéticos como, por ejemplo, \texttt{'Francia exportación'} estos datos se toman como negativos porque se trata de energía que 'sale' del sistema español y, por tanto no está disponible para el consumo interno. El problema es que un gráfico tipo pastel, nos da gráficamente una distribución de valores respecto a un total. Debemos excluir los valores negativos. Para ello, dentro del \emph{Dataframe} \mintinline{python}|des|, escogemos los datos de la fila \mintinline{python}|mean| pero solo aquellos que sean mayores que cero: \mintinline{python}|des.loc['mean']>0|. Por último llamamos al comando \mintinline{python}|plot.pie|, para que nos dibuje el gráfico. EL resultado se puede ver en la figura \ref{fig:pastm}. Es fácil ver la proporción de cada tipo de generación empleado en el periodo que cubren los datos y, en particular, el dominio del consumo de energía eólica.
+Veamos con detalle el código contenido en la línea 22. Se trata de un comando asociado a los \emph{DataFrames} que permite realizar gráficos tipo 'pastel'. Lo que queremos es obtener una comparativa de la producción media obtenida de las distintas fuentes de energía. El problema es que la tabla que estamos estudiando contiene valores de producción negativos. Se trata en realidad de los intercambios energéticos como, por ejemplo, \texttt{'Francia exportación'} estos datos se toman como negativos porque se trata de energía que 'sale' del sistema español y, por tanto no está disponible para el consumo interno. El problema es que un gráfico tipo pastel, nos da gráficamente una distribución de valores respecto a un total. Debemos excluir los valores negativos. Para ello, dentro del \emph{Dataframe} \mintinline{python}|des|, escogemos los datos de la fila \mintinline{python}|mean| pero solo aquellos que sean mayores que cero: \mintinline{python}|des.loc['mean']>0|. Por último llamamos al comando \mintinline{python}|plot.pie|, para que nos dibuje el gráfico. EL resultado se puede ver en la figura \ref{fig:pastm}. Es fácil ver la proporción de cada tipo de generación empleado en el periodo que cubren los datos y, en particular, el predominio de la generación eólica.
 \switchcolumn
-With a single instruction, Pandas renders a basic statistical study of our table data. On the python terminal we can see the names of the different kinds of Electrical power generators and in each column \texttt{count,mean, std, min, 25\%, 50\%, 75\%, max} the values corresponding to the total number of data, the mean value, the minimum, the standard deviation and the values taken by the 25\%, 50\% (the  median) and 75\% quartiles and the maximum. On the Python terminal no every data of table  \mintinline{python}|des| are shown, but only the two first and two last columns and a ellipsis in between to show us that there are more data available.
+With a single instruction, Pandas renders a basic statistical study of our table data. It is also a first check of the data: from 21.00 on the 18th to 03.00 on the 20th there are 30 hours, which at 5-minute intervals give $30\cdot 12+1=361$ data, exactly what row \texttt{count} shows in every column (none is missing). On the python terminal we can see the names of the different kinds of Electrical power generators and in each column \texttt{count,mean, std, min, 25\%, 50\%, 75\%, max} the values corresponding to the total number of data, the mean value, the standard deviation, the minimum, the values taken by the 25\%, 50\% (the  median) and 75\% quartiles and the maximum. On the Python terminal no every data of table  \mintinline{python}|des| are shown, but only the two first and two last columns and a ellipsis in between to show us that there are more data available.
 
-Let see in detail the code on line 22. It contains a command associated to \emph{DataFrames} Who allows us to draw Pie charts. We want to get a comparison among the mean power generation from the different generation sources. The problem is that the table we want to study holds negative production values. In fact these correspond to electrical power interchanges with other countries, such France \texttt{'Francia exportación'}. These data are taken negative because it is energy that 'gets out' of the Spanish system and, thus, it is not available for inner consumption. The problem is that a pie chart gives a graphic distribution of values that sum up a total quantity. We should exclude the negative value. To do this we chose from the  \emph{Dataframe} \mintinline{python}|des|, the data on the row \mintinline{python}|mean|, but only those that are greater than zero: \mintinline{python}|des.loc['mean']>0|. Eventually, we call the command \mintinline{python}|plot.pie| to draw the graphic. The result is shown if figure \ref{fig:pastm}. It very clear to see the distribution of each kind of power generation source used in the period covered by the data and, in particular, the dominance of wind power consumption.       
+Let see in detail the code on line 22. It contains a command associated to \emph{DataFrames} Who allows us to draw Pie charts. We want to get a comparison among the mean power generation from the different generation sources. The problem is that the table we want to study holds negative production values. In fact these correspond to electrical power interchanges with other countries, such France \texttt{'Francia exportación'}. These data are taken negative because it is energy that 'gets out' of the Spanish system and, thus, it is not available for inner consumption. The problem is that a pie chart gives a graphic distribution of values that sum up a total quantity. We should exclude the negative value. To do this we chose from the  \emph{Dataframe} \mintinline{python}|des|, the data on the row \mintinline{python}|mean|, but only those that are greater than zero: \mintinline{python}|des.loc['mean']>0|. Eventually, we call the command \mintinline{python}|plot.pie| to draw the graphic. The result is shown if figure \ref{fig:pastm}. It very clear to see the distribution of each kind of power generation source used in the period covered by the data and, in particular, the dominance of wind power generation.       
 \end{paracol}
 	 	
 \begin{figure}
 	\centering
 	\includegraphics[width=13cm]{electrica_prmean.png}
-	\bicaption{Distribución de la producción media de energía eléctrica en Mw en el periodo 18.03.2025:21.00h - 20.03.2025:03.00h}{Electrical mean energy during the period 03.18.2025:21.00h - 03.20.2025:03.00h}
+	\bicaption{Distribución de la producción media de energía eléctrica en MW en el periodo 18.03.2025:21.00h - 20.03.2025:03.00h}{Electrical mean energy during the period 03.18.2025:21.00h - 03.20.2025:03.00h}
 	\label{fig:pastm}
 \end{figure}
 \begin{paracol}{2}
 	A continuación, en la línea 24 sustituimos la columna de índices por la columna de horas. De este modo, los datos están directamente etiquetados por el tiempo en que se tomaron. El resultado es un \emph{DataFrame} nuevo, \mintinline{python}|gn_Mw_h|, en el que la primera columna son las horas.
 	
-	En la línea 29 empleamos el comando \mintinline{python}|plot|, asociado al nuevo \emph{Dataframe}. Por defecto, no representará los valores de cada columna con respecto a la columna de índices que ahora contiene los tiempos en los que se han realizado las correspondientes medidas. El parámetro \mintinline{python}|rot|, inclina las etiquetas del eje x de modo que no se solapen y sean legibles. Es imposible cubrir aquí todas las posibilidades de modificación que admiten los gráficos de Pandas que, a su vez, dependen del módulo matplotlib. Para más información se aconseja consultar la documentación de Pandas. La figura \ref{fig:datosele} muestra la gráfica resultante. El eje y representa la potencia en Mw generada. Los valores negativos representan exportaciones de electricidad a otros países, como ya se comentó anteriormente.
+	En la línea 29 empleamos el comando \mintinline{python}|plot|, asociado al nuevo \emph{Dataframe}. Por defecto, representa los valores de cada columna con respecto a la columna de índices que ahora contiene los tiempos en los que se han realizado las correspondientes medidas. El parámetro \mintinline{python}|rot|, inclina las etiquetas del eje x de modo que no se solapen y sean legibles. Es imposible cubrir aquí todas las posibilidades de modificación que admiten los gráficos de Pandas que, a su vez, dependen del módulo matplotlib. Para más información se aconseja consultar la documentación de Pandas. La figura \ref{fig:datosele} muestra la gráfica resultante. El eje y representa la potencia en MW generada. Los valores negativos representan exportaciones de electricidad a otros países, como ya se comentó anteriormente.
 	\switchcolumn
 	Following with the code of the example, in line 24 we change the column of indices by the column of hours. In this way, data are directly label with the time when they were measured. The result is a new \emph{DataFrame}, \mintinline{python}|gn_Mw_h| where the first columns are the hours. 
 	
-	In line 29 we use the command \mintinline{python}|plot|, associated to the new \emph{DataFrame}. By default, it will represent de values each column versus the index column, which, now, has the times when the measurements were taken. The parameter \mintinline{python}|rot| adjusts the tilt of the x-axis labels to prevent overlapping and ensure they remain legible. It is impossible to cover here all possible modifications admitted by Pandas graphics which, in turn, depends on Matplotlib module. For more information it is valuable to consult Panda documentation. Figure \ref{fig:datosele} shows the resulting graphic. The y-axis represents the power generated in Mw. As we said before, negative values are the electrical power exported to other countries.
+	In line 29 we use the command \mintinline{python}|plot|, associated to the new \emph{DataFrame}. By default, it will represent de values each column versus the index column, which, now, has the times when the measurements were taken. The parameter \mintinline{python}|rot| adjusts the tilt of the x-axis labels to prevent overlapping and ensure they remain legible. It is impossible to cover here all possible modifications admitted by Pandas graphics which, in turn, depends on Matplotlib module. For more information it is valuable to consult Panda documentation. Figure \ref{fig:datosele} shows the resulting graphic. The y-axis represents the power generated in MW. As we said before, negative values are the electrical power exported to other countries.
 \end{paracol}
 \begin{figure}
 	\centering
@@ -1844,9 +1981,9 @@ Let see in detail the code on line 22. It contains a command associated to \emph
 
 
 \begin{paracol}{2}
-La línea de código 32 utiliza el comando \mintinline{python}|boxplot| para dibujar un diagrama de 'bigotes' de los datos . Se trata de un diagrama muy empleado en estadística para analizar como es la distribución de un conjunto de muestras. Para ello, se obtienen los tres primeros cuartiles, es decir los valores de las muestras que superan al 25\% ($Q_1$), al 50\% ($Q_2$ o mediana) y al 75\% ($Q_3$) de los datos. los cuartiles $Q_1$ y $Q_3$ se representa en el gráfico respectivamente como los límites inferior y superior de la 'caja', ademas se señala tambien dentro de la caja la posición de la mediana. El valor $Q_2-Q_1$ recibe el nombre de rango intercuartílico ($RIC$) y habitualmente se emplea para dibujar unas líneas, ---los bigotes del diagrama--- que se extienden desde la caja. Para obtener el límite de estas líneas, se calculan los valores $Q_3+1.5RIC$ y $Q_1-1.5RIC$. De este modo, el límite superior $L_s$ lo marca el valor mayor que cumpla $L_s <= Q_3+1.5RIC$ y el límite inferior $L_i$ se elige como el valor menor que cumpla $L_i >= Q_1-1.5RIC$.
+La línea de código 32 utiliza el comando \mintinline{python}|boxplot| para dibujar un diagrama de 'bigotes' de los datos . Se trata de un diagrama muy empleado en estadística para analizar como es la distribución de un conjunto de muestras. Para ello, se obtienen los tres primeros cuartiles, es decir los valores de las muestras que superan al 25\% ($Q_1$), al 50\% ($Q_2$ o mediana) y al 75\% ($Q_3$) de los datos. los cuartiles $Q_1$ y $Q_3$ se representa en el gráfico respectivamente como los límites inferior y superior de la 'caja', además se señala también dentro de la caja la posición de la mediana. El valor $Q_3-Q_1$ recibe el nombre de rango intercuartílico ($RIC$) y habitualmente se emplea para dibujar unas líneas, ---los bigotes del diagrama--- que se extienden desde la caja. Para obtener el límite de estas líneas, se calculan los valores $Q_3+1.5RIC$ y $Q_1-1.5RIC$. De este modo, el límite superior $L_s$ lo marca el valor mayor que cumpla $L_s \leqslant Q_3+1.5RIC$ y el límite inferior $L_i$ se elige como el valor menor que cumpla $L_i \geqslant Q_1-1.5RIC$.
 \switchcolumn
-Line 32 in the code uses command \mintinline{python}|boxplot| to draw a box and whisker plot. This kind of plot is widely used in statistics to analyse the distribution of a set of samples. To perform it, we obtain the value of the first three quartiles, that is, the sample values that surpass the 25\% ($Q_1$), the 50\% ($Q_2$ or median) and the 75\% ($Q_3$) of the sample data. Quartiles $Q_1$ y $Q_3$ are represented in the box plot as the upper and lower limit of the 'box'. In addition, the position of the median is also represented in the box. The value $Q_2-Q_1$ is known as the interquartile rank ($IQR$) and usually is taken to draw a pair of lines ---the whiskers of the plot--- extending from the box. To obtain the limit of these lines, we compute the values $Q_3+1.5RIC$ y $Q_1-1.5RIC$. So, the upper limit $L_s$ is defined by the largest value of the sample, which fulfils that $L_s <= Q_3+1.5RIC$ and the lower limit $L_i$  is chosen as the lower value, which fulfils that $L_i >= Q_1-1.5RIC$.   
+Line 32 in the code uses command \mintinline{python}|boxplot| to draw a box and whisker plot. This kind of plot is widely used in statistics to analyse the distribution of a set of samples. To perform it, we obtain the value of the first three quartiles, that is, the sample values that surpass the 25\% ($Q_1$), the 50\% ($Q_2$ or median) and the 75\% ($Q_3$) of the sample data. Quartiles $Q_1$ y $Q_3$ are represented in the box plot as the upper and lower limit of the 'box'. In addition, the position of the median is also represented in the box. The value $Q_3-Q_1$ is known as the interquartile range ($IQR$) and usually is taken to draw a pair of lines ---the whiskers of the plot--- extending from the box. To obtain the limit of these lines, we compute the values $Q_3+1.5IQR$ and $Q_1-1.5IQR$. So, the upper limit $L_s$ is the largest value of the sample that fulfils $L_s \leqslant Q_3+1.5IQR$ and the lower limit $L_i$ is the smallest value that fulfils $L_i \geqslant Q_1-1.5IQR$.   
 \end{paracol}
 \begin{figure}
 	\centering
@@ -1865,16 +2002,16 @@ Line 32 in the code uses command \mintinline{python}|boxplot| to draw a box and 
 	\begin{subfigure}{\textwidth}
 		\centering
 		\includegraphics[width=10cm]{electrica_prod12.png}
-		\bicaption{Distribución de la generación a las 12.30h am}{Generation distribution at 12.30h am}
+		\bicaption{Distribución de la generación a las 12.30 h}{Generation distribution at 12.30 h}
 		\label{fig:data12}
 	\end{subfigure}
-	\bicaption{Comparación entre la distribución de generación de energía eléctrica a la 01h am y al las 12.30h pm}{Comparison between the distribution of electricity generation at 01h am and 12.30h pm}
+	\bicaption{Comparación entre la distribución de generación de energía eléctrica a la 01h am y a las 12.30 h}{Comparison between the distribution of electricity generation at 01.05 h and 12.30 h}
 \end{figure}
 
 \begin{paracol}{2}
-La figura \ref{fig:datab} muestra el diagrama de bigotes obtenidos a partir del \emph{DataFrame} \mintinline{python}|gn_Mw_h|. Los datos aparecen distribuidos por la fuente de generación de energía, es decir, por las columnas del \emph{DataFrame}. Si nos fijamos en la primera entrada, \texttt{Eólica}, observamos que la caja del diagrama, para este tipo de energía va desde aproximadamente desde los 8000 hasta un poco más de 15000 Mw. La mediana, aparece representada como una línea horizontal en la mitad inferior de la caja, estaría alrededor de los 9000 Mw. El límite del bigote inferior estaría cerca de los 6000 Mw y wl límite del bigote superior cerca de 18000. En algunas columnas, como por ejemplo en la que representa la generación de electricidad mediante turbinas de ciclo combinado, se observan unos puntos negros más allá de límite de los bigotes. Representan datos atípicos, es decir, valores que no encajan con la distribución estadística del resto de los datos.
+La figura \ref{fig:datab} muestra el diagrama de bigotes obtenidos a partir del \emph{DataFrame} \mintinline{python}|gn_Mw_h|. Los datos aparecen distribuidos por la fuente de generación de energía, es decir, por las columnas del \emph{DataFrame}. Si nos fijamos en la primera entrada, \texttt{Eólica}, observamos que la caja del diagrama, para este tipo de energía, va aproximadamente desde los 8700 hasta los 15200 MW (son $Q_1$ y $Q_3$; compárese con las filas \texttt{25\%} y \texttt{75\%} de \texttt{describe}). La mediana aparece representada como una línea horizontal en la mitad inferior de la caja, alrededor de los 9800 MW. El bigote inferior llega hasta el mínimo de los datos, unos 7700 MW, y el superior hasta el máximo, unos 17800 MW: para la eólica no hay datos atípicos y los bigotes coinciden con los valores extremos (7740 y 17810 MW según \texttt{describe}). En algunas columnas, como por ejemplo en la que representa la generación de electricidad mediante turbinas de ciclo combinado, se observan unos puntos negros más allá de límite de los bigotes. Representan datos atípicos, es decir, valores que quedan más allá de $1.5\,RIC$ de la caja.
 \switchcolumn
-Figure \ref{fig:datab} shows a box and whisker plot drawn with the \emph{DataFrame} \mintinline{python}|gn_Mw_h|.  Data are distributed according to the generation source, that is, according to the \emph{DataFrame} columns. If we focus on the first entry, \texttt{Eólica}, We ca see that the box, for this type of energy cover approximately from 8000 to a bit more than 15000 Mw. The median is represented as a horizontal line in the lower middle of the box. It would be around 9000 Mw. The whisker lower limit would be close to 6000 Mw and the upper one near to 18000 . In some columns we can see some black dots beyond the whisker limits. See, for instance, the ciclo combinado turbines generation. These black dots represent outliers. That is, data that do not fit with the statistical distribution of the remaining data.      
+Figure \ref{fig:datab} shows a box and whisker plot drawn with the \emph{DataFrame} \mintinline{python}|gn_Mw_h|.  Data are distributed according to the generation source, that is, according to the \emph{DataFrame} columns. If we focus on the first entry, \texttt{Eólica}, We can see that the box, for this type of energy, covers approximately from 8700 to 15200 MW (they are $Q_1$ and $Q_3$; compare with rows \texttt{25\%} and \texttt{75\%} of \texttt{describe}). The median is represented as a horizontal line in the lower half of the box, around 9800 MW. The lower whisker reaches the minimum of the data, about 7700 MW, and the upper one the maximum, about 17800 MW: for wind power there are no outliers and the whiskers coincide with the extreme values (7740 and 17810 MW according to \texttt{describe}). In some columns we can see some black dots beyond the whisker limits. See, for instance, the ciclo combinado turbines generation. These black dots represent outliers. That is, values that lie more than $1.5\,IQR$ away from the box.      
 \end{paracol}
 
 
@@ -1887,5 +2024,143 @@ The code line 36 extracts the data row  corresponding to time \texttt{'2025-03-1
 	&&\biggr \}\reversemathwitch* 
 \end{flalign*}
 
+\section{Ejercicios}
+\sectionmark{Ejercicios \textreferencemark\ Exercises}
+\begin{enumerate}
+\item \label{ej:dado} \textbf{Dados simulados.} Crea un generador con semilla fija y simula $N$ lanzamientos de un dado con \mintinline{python}|gen.integers(1, 7, N)| para $N=60$, $600$, $6000$ y $60000$. Calcula la frecuencia relativa de cada cara y su mayor diferencia con $1/6$.
+\begin{enumerate}
+\item El número de veces que sale una cara sigue una distribución binomial, y su frecuencia relativa tiene una desviación estándar $\sqrt{p(1-p)/N}$, con $p=1/6$. Antes de simular, predice cómo debe disminuir la diferencia con $1/6$ al multiplicar $N$ por 10, y compruébalo.
+\item Simula el dado trucado de la figura \ref{fig:dadot} con \mintinline{python}|gen.choice| (consulta su argumento \mintinline{python}|p|) y dibuja las frecuencias obtenidas junto a las probabilidades. ¿Cuántos lanzamientos hacen falta, aproximadamente, para distinguir con claridad que la probabilidad del 1 es $1/10$ y no $1/6$?
+\end{enumerate}
 
+\item \label{ej:middle_square} \textbf{Depura y explora: \emph{middle square}.} La versión del asistente de IA de la función \mintinline{python}|middle_square| (al principio de este capítulo) calculaba las cifras centrales así:
+\begin{minted}{python}
+squared_str = str(current_number**2)
+mid_start = (len(squared_str) - num_digits)//2
+middle_digits = int(squared_str[mid_start:mid_start + num_digits])
+\end{minted}
+\begin{enumerate}
+\item Escribe esa versión y la corregida, y encuentra la primera semilla de 4 cifras para la que las dos dan secuencias distintas en las 10 primeras iteraciones. Explica por qué difieren.
+\item Con la versión corregida, calcula para cada semilla de 4 cifras ($0$ a $9999$) cuántos números genera antes de repetir uno ya obtenido. ¿Cuál es la secuencia más larga? ¿Qué fracción de las semillas acaba en el ciclo $0 \rightarrow 0$? (Un diccionario que guarde los números ya vistos es una buena estructura de datos para esto).
+\end{enumerate}
 
+\item \label{ej:lcg} \textbf{Periodo de un generador congruencial.} Con la función \mintinline{python}|linear_con| (o mejor, con una versión que devuelva los enteros $I_n$), calcula el periodo del generador para $m=16$ y todos los pares $0<a<16$, $0\leq c<16$. ¿Cuántos pares alcanzan el periodo máximo, $16$? Comprueba que son exactamente los que cumplen la regla de Hull y Dobell para $m$ potencia de 2: $c$ impar y $a-1$ múltiplo de 4. Después, comprueba la relación $I_{k+2}=\text{rem}(6I_{k+1}-9I_k,\ 2^{31})$ de RANDU (sección \ref{sec:randu}) con otra semilla.
+
+\item \label{ej:tlc_orden} \textbf{Mide el orden y rómpelo: el teorema del límite central.}
+\begin{enumerate}
+\item Genera $10^4$ conjuntos de $n$ números con distribución exponencial de media $\mu=1$ (\mintinline{python}|gen.exponential|) para $n=10$, $100$ y $1000$, y calcula la media de cada conjunto. Predice cómo debe variar con $n$ la dispersión de las medias, mídela y obtén el exponente con un ajuste en escala logarítmica. Dibuja el histograma normalizado de las medias para $n=10$ junto a la distribución normal que predice el teorema: ¿se nota que la distribución original no es simétrica?
+\item Repite el apartado anterior con la distribución de Cauchy (\mintinline{python}|gen.standard_cauchy|), $f(x)=1/\left(\pi(1+x^2)\right)$. Como medida de la dispersión usa el rango intercuartílico de las medias (\mintinline{python}|np.percentile|). ¿Disminuye con $n$? ¿Qué hipótesis del teorema no se cumple?
+\end{enumerate}
+
+\item \label{ej:montecarlo} \textbf{Integración por Monte Carlo.} Si $u_1,\dots,u_N$ son números aleatorios uniformes en $[a,b]$, la integral de $f$ en $[a,b]$ se puede estimar como $(b-a)$ por la media de los $f(u_i)$, y el teorema del límite central da su incertidumbre: $(b-a)\,s/\sqrt{N}$, siendo $s$ la desviación estándar de los $f(u_i)$.
+\begin{enumerate}
+\item Escribe una función que devuelva la estimación y su incertidumbre, y aplícala a $\int_0^{\pi}\sin x\,dx=2$ con $N=10^2,10^3,\dots,10^6$. Mide cómo disminuye el error con $N$.
+\item Repite $1000$ veces el cálculo con $N=1000$ y cuenta en qué fracción de los casos el error real es menor que la incertidumbre estimada. ¿Qué fracción esperas?
+\item Con $N=1000$ evaluaciones de la función, ¿qué error da la regla del trapecio del capítulo anterior? ¿Por qué se usa entonces Monte Carlo? Para responder, estima con Monte Carlo el volumen de la esfera de radio 1 en 10 dimensiones (el valor exacto es $\pi^5/120$) y piensa cuántas evaluaciones necesitaría la regla del trapecio con solo 10 puntos en cada dimensión.
+\end{enumerate}
+
+\item \label{ej:cual_incertidumbre} \textbf{¿Cuál es correcta?} Tres estudiantes han escrito una función para calcular la incertidumbre (desviación estándar de la media) de un conjunto de medidas \mintinline{python}|x|:
+\begin{minted}{python}
+def u_a(x): return np.std(x)/np.sqrt(len(x))
+def u_b(x): return np.std(x, ddof=1)/len(x)
+def u_c(x): return np.std(x, ddof=1)/np.sqrt(len(x))
+\end{minted}
+Para $n=4$ medidas, todas dan resultados del mismo orden y no se puede saber cuál es correcta mirando un solo caso. Simula $10^5$ experimentos de $n=4$ medidas con $\sigma=1$ y compara la desviación estándar real de las medias (que puedes calcular con las propias medias simuladas) con el valor medio que da cada función. Repite para $n=25$. ¿Cuál es correcta? ¿Por qué la diferencia entre \mintinline{python}|u_a| y \mintinline{python}|u_c| es más importante cuando $n$ es pequeño? Para terminar, comprueba la cobertura del intervalo $\bar{x}\pm t_{n-1}\,$\mintinline{python}|u_c(x)| con $n=4$.
+
+\item \label{ej:pendulo} \textbf{Propaga y comprueba: el péndulo.} Para medir $g$ con un péndulo simple de longitud $L=1.000$~m (medida con una cinta graduada en milímetros), se ha cronometrado 10 veces un periodo, con los resultados (en segundos):
+\begin{center}
+$1.99,\ 2.02,\ 2.04,\ 1.96,\ 2.04,\ 2.02,\ 2.05,\ 2.02,\ 2.06,\ 1.96$
+\end{center}
+\begin{enumerate}
+\item Calcula $g=4\pi^2L/T^2$ y su incertidumbre propagando las de $L$ y $\bar{T}$ (sección \ref{sec:propmc}). ¿Es compatible con $9.81$~m/s$^2$?
+\item Comprueba la propagación por Monte Carlo.
+\item ¿Qué término domina la incertidumbre? ¿Cuántas medidas del periodo harían falta para reducirla a la mitad? Propón una forma mejor de medir $T$ con el mismo cronómetro.
+\end{enumerate}
+
+\item \label{ej:ia_intervalo} \textbf{Critica la explicación.} Un estudiante le pidió a un asistente de IA que le ayudara a expresar sus medidas de temperatura, $21.01$, $20.78$, $20.06$, $20.56$, $20.48$, $19.60$, $20.54$, $20.07$, $20.20$ y $20.06$~ºC. Esta fue la respuesta:
+\begin{quote}
+\emph{La media es $20.34$~ºC y la desviación estándar $0.41$~ºC. El intervalo de confianza del 95\% es $20.34\pm1.96\cdot0.41$, es decir, $[19.54,\ 21.14]$~ºC: hay un 95\% de probabilidad de que la temperatura verdadera esté en este intervalo.}
+\end{quote}
+Encuentra los errores (hay al menos tres) y da el resultado correcto. Después, comprueba por simulación (sección \ref{sec:cobertura}) qué fracción de las veces contiene el valor verdadero un intervalo calculado como propone el asistente y uno calculado correctamente. ¿Qué describe aproximadamente el intervalo del asistente?
+
+\item \label{ej:red_electrica} \textbf{Comprueba los datos: la red eléctrica.} Con los datos de la sección sobre Pandas:
+\begin{enumerate}
+\item Léelos con \mintinline{python}|pd.read_csv(fichero, skiprows=2, index_col='Hora')| y comprueba que todas las columnas son numéricas, que hay 361 filas y que todos los datos están separados exactamente 5 minutos (\mintinline{python}|pd.to_datetime| convierte las horas en fechas que se pueden restar).
+\item Comprueba que la columna \texttt{'Intercambios int'} coincide, salvo diferencias pequeñas, con la suma de las columnas de importación y exportación. ¿Qué ocurriría entonces si calculásemos la generación total sumando todas las columnas?
+\item Calcula la energía (en MWh) que generó cada fuente el 19 de marzo, de 00.00 a 24.00, integrando la potencia con la regla del trapecio (capítulo anterior). Comprueba el resultado de la eólica con una estimación sencilla (potencia media por 24 horas). ¿Qué fracción de la energía generada en España ese día fue eólica?
+\end{enumerate}
+
+\item \label{ej:tests_ia} \textbf{Primero los tests.} Queremos una función \mintinline{python}|intervalo(x, confianza=0.95)| que devuelva la media de las medidas \mintinline{python}|x| y la semianchura del intervalo de confianza calculado con la t de Student. Antes de escribirla, o de pedírsela a un asistente de IA, escribe las pruebas con \mintinline{python}|assert| que debe pasar. Por ejemplo: un caso calculado a mano (para \mintinline{python}|x = [1, 2, 3]| la semianchura del 95\% es $t_{2}\cdot 1/\sqrt{3}=2.484$); que lance un error si hay menos de dos medidas; que dé semianchura cero si todas las medidas son iguales; y que, en una simulación con $n=3$, el intervalo contenga el valor verdadero en un $95\pm1$\% de los casos. Después, escribe la función (o pídesela al asistente) y ejecuta las pruebas.
+\end{enumerate}
+
+\selectlanguage{english}
+\section{Exercises}
+\begin{enumerate}
+\item \label{ej:dado-en} \textbf{Simulated dice.} Create a generator with a fixed seed and simulate $N$ rolls of a die with \mintinline{python}|gen.integers(1, 7, N)| for $N=60$, $600$, $6000$ and $60000$. Compute the relative frequency of each face and its largest difference from $1/6$.
+\begin{enumerate}
+\item The number of times a face comes up follows a binomial distribution, and its relative frequency has a standard deviation $\sqrt{p(1-p)/N}$, with $p=1/6$. Before simulating, predict how the difference from $1/6$ should decrease when $N$ is multiplied by 10, and check it.
+\item Simulate the biased die of figure \ref{fig:dadot} with \mintinline{python}|gen.choice| (look up its argument \mintinline{python}|p|) and plot the frequencies obtained together with the probabilities. Approximately how many rolls are needed to see clearly that the probability of a 1 is $1/10$ and not $1/6$?
+\end{enumerate}
+
+\item \label{ej:middle_square-en} \textbf{Debug and explore: middle square.} The AI assistant's version of function \mintinline{python}|middle_square| (at the beginning of this chapter) computed the middle digits like this:
+\begin{minted}{python}
+squared_str = str(current_number**2)
+mid_start = (len(squared_str) - num_digits)//2
+middle_digits = int(squared_str[mid_start:mid_start + num_digits])
+\end{minted}
+\begin{enumerate}
+\item Write that version and the corrected one, and find the first 4-digit seed for which both give different sequences in the first 10 iterations. Explain why they differ.
+\item With the corrected version, compute for each 4-digit seed ($0$ to $9999$) how many numbers it generates before repeating one already obtained. Which is the longest sequence? What fraction of the seeds ends in the cycle $0 \rightarrow 0$? (A dictionary that stores the numbers already seen is a good data structure for this).
+\end{enumerate}
+
+\item \label{ej:lcg-en} \textbf{Period of a congruential generator.} With function \mintinline{python}|linear_con| (or better, with a version that returns the integers $I_n$), compute the period of the generator for $m=16$ and all pairs $0<a<16$, $0\leq c<16$. How many pairs reach the maximum period, $16$? Check that they are exactly those that satisfy the Hull-Dobell rule for $m$ a power of 2: $c$ odd and $a-1$ a multiple of 4. Then, check the RANDU relation $I_{k+2}=\text{rem}(6I_{k+1}-9I_k,\ 2^{31})$ (section \ref{sec:randu-2}) with another seed.
+
+\item \label{ej:tlc_orden-en} \textbf{Measure the order and break it: the central limit theorem.}
+\begin{enumerate}
+\item Generate $10^4$ sets of $n$ numbers with an exponential distribution of mean $\mu=1$ (\mintinline{python}|gen.exponential|) for $n=10$, $100$ and $1000$, and compute the mean of each set. Predict how the spread of the means should change with $n$, measure it and obtain the exponent with a fit on a logarithmic scale. Plot the normalised histogram of the means for $n=10$ together with the normal distribution predicted by the theorem: can you tell that the original distribution is not symmetric?
+\item Repeat the previous part with the Cauchy distribution (\mintinline{python}|gen.standard_cauchy|), $f(x)=1/\left(\pi(1+x^2)\right)$. As a measure of the spread use the interquartile range of the means (\mintinline{python}|np.percentile|). Does it decrease with $n$? Which hypothesis of the theorem does not hold?
+\end{enumerate}
+
+\item \label{ej:montecarlo-en} \textbf{Monte Carlo integration.} If $u_1,\dots,u_N$ are uniform random numbers in $[a,b]$, the integral of $f$ over $[a,b]$ can be estimated as $(b-a)$ times the mean of the $f(u_i)$, and the central limit theorem gives its uncertainty: $(b-a)\,s/\sqrt{N}$, $s$ being the standard deviation of the $f(u_i)$.
+\begin{enumerate}
+\item Write a function that returns the estimate and its uncertainty, and apply it to $\int_0^{\pi}\sin x\,dx=2$ with $N=10^2,10^3,\dots,10^6$. Measure how the error decreases with $N$.
+\item Repeat the computation $1000$ times with $N=1000$ and count in what fraction of the cases the actual error is smaller than the estimated uncertainty. What fraction do you expect?
+\item With $N=1000$ evaluations of the function, what error does the trapezium rule of the previous chapter give? Why is Monte Carlo used, then? To answer, estimate with Monte Carlo the volume of the sphere of radius 1 in 10 dimensions (the exact value is $\pi^5/120$) and think how many evaluations the trapezium rule would need with only 10 points in each dimension.
+\end{enumerate}
+
+\item \label{ej:cual_incertidumbre-en} \textbf{Which one is right?} Three students have written a function to compute the uncertainty (standard deviation of the mean) of a set of measurements \mintinline{python}|x|:
+\begin{minted}{python}
+def u_a(x): return np.std(x)/np.sqrt(len(x))
+def u_b(x): return np.std(x, ddof=1)/len(x)
+def u_c(x): return np.std(x, ddof=1)/np.sqrt(len(x))
+\end{minted}
+For $n=4$ measurements, all of them give results of the same order and it is impossible to tell which one is right by looking at a single case. Simulate $10^5$ experiments of $n=4$ measurements with $\sigma=1$ and compare the actual standard deviation of the means (which you can compute from the simulated means themselves) with the mean value given by each function. Repeat for $n=25$. Which one is right? Why is the difference between \mintinline{python}|u_a| and \mintinline{python}|u_c| more important when $n$ is small? Finally, check the coverage of the interval $\bar{x}\pm t_{n-1}\,$\mintinline{python}|u_c(x)| with $n=4$.
+
+\item \label{ej:pendulo-en} \textbf{Propagate and check: the pendulum.} To measure $g$ with a simple pendulum of length $L=1.000$~m (measured with a tape graduated in millimetres), one period has been timed 10 times, with the results (in seconds):
+\begin{center}
+$1.99,\ 2.02,\ 2.04,\ 1.96,\ 2.04,\ 2.02,\ 2.05,\ 2.02,\ 2.06,\ 1.96$
+\end{center}
+\begin{enumerate}
+\item Compute $g=4\pi^2L/T^2$ and its uncertainty by propagating those of $L$ and $\bar{T}$ (section \ref{sec:propmc-2}). Is it compatible with $9.81$~m/s$^2$?
+\item Check the propagation by Monte Carlo.
+\item Which term dominates the uncertainty? How many measurements of the period would be needed to halve it? Propose a better way to measure $T$ with the same stopwatch.
+\end{enumerate}
+
+\item \label{ej:ia_intervalo-en} \textbf{Criticise the explanation.} A student asked an AI assistant for help to express their temperature measurements, $21.01$, $20.78$, $20.06$, $20.56$, $20.48$, $19.60$, $20.54$, $20.07$, $20.20$ and $20.06$~ºC. This was the answer:
+\begin{quote}
+\emph{The mean is $20.34$~ºC and the standard deviation $0.41$~ºC. The 95\% confidence interval is $20.34\pm1.96\cdot0.41$, that is, $[19.54,\ 21.14]$~ºC: there is a 95\% probability that the true temperature lies in this interval.}
+\end{quote}
+Find the errors (there are at least three) and give the right result. Then, check by simulation (section \ref{sec:cobertura-2}) what fraction of the times an interval computed as the assistant proposes, and one computed correctly, contain the true value. What does the assistant's interval approximately describe?
+
+\item \label{ej:red_electrica-en} \textbf{Check the data: the electricity grid.} With the data of the section on Pandas:
+\begin{enumerate}
+\item Read them with \mintinline{python}|pd.read_csv(file, skiprows=2, index_col='Hora')| and check that all the columns are numerical, that there are 361 rows and that all the data are exactly 5 minutes apart (\mintinline{python}|pd.to_datetime| converts the times into dates that can be subtracted).
+\item Check that column \texttt{'Intercambios int'} agrees, except for small differences, with the sum of the import and export columns. What would then happen if we computed the total generation by adding up all the columns?
+\item Compute the energy (in MWh) generated by each source on 19 March, from 00.00 to 24.00, by integrating the power with the trapezium rule (previous chapter). Check the wind power result with a simple estimate (mean power times 24 hours). What fraction of the energy generated in Spain that day was wind energy?
+\end{enumerate}
+
+\item \label{ej:tests_ia-en} \textbf{Tests first.} We want a function \mintinline{python}|intervalo(x, confianza=0.95)| that returns the mean of the measurements \mintinline{python}|x| and the half-width of the confidence interval computed with Student's t. Before writing it, or asking an AI assistant for it, write the tests with \mintinline{python}|assert| that it must pass. For instance: a case computed by hand (for \mintinline{python}|x = [1, 2, 3]| the 95\% half-width is $t_{2}\cdot 1/\sqrt{3}=2.484$); that it raises an error if there are fewer than two measurements; that it gives zero half-width if all the measurements are equal; and that, in a simulation with $n=3$, the interval contains the true value in $95\pm1$\% of the cases. Then, write the function (or ask the assistant for it) and run the tests.
+\end{enumerate}
+\selectlanguage{spanish}
+
+\fussy

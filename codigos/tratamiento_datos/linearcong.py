@@ -1,39 +1,32 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Feb 27 16:51:02 2025
-Generados aleatorios linear congruential
+Generador lineal congruencial / linear congruential generator
 @author: juan
 """
 import matplotlib.pyplot as pl
-def linear_con(i0,a,c,m,l):
+
+
+def linear_con(i0, a, c, m, l):
     """
-    
+    i0: semilla / seed, 0 <= i0 < m
+    a: multiplicador / multiplier, 0 <= a < m
+    c: incremento / increment, 0 <= c < m
+    m: módulo / modulus (cuanto mayor, mejor / the larger the better)
+    l: número de elementos de la secuencia / length of the sequence
 
-    Parameters
-    ----------
-    i0 : TYPE integer
-        DESCRIPTION. seed /semilla
-    a : TYPE integer
-        DESCRIPTION. multiplier 0 <= a < m
-    c : TYPE integer
-        DESCRIPTION. Increment 0 <= c < m
-    m : TYPE int
-        DESCRIPTION. Module > I0 (the larger the better)
-    l : TYPE int
-        DESCRIPTION. number of elements in the random sequence 
-
-    Returns
-    -------
-    secuencia : TYPE List of double 0<=secuencia[i]<=1
-        DESCRIPTION. Sequence o l pseudo-random numbers
-
+    Devuelve una lista de l números en [0, 1) / returns a list of l numbers
+    in [0, 1)
     """
-    secuencia=[]
-    for i in range(1,l):
-        i0 = (i0*a+c)%m
+    secuencia = []
+    for i in range(l):
+        i0 = (a*i0 + c) % m
         secuencia.append(i0/m)
     return secuencia
-#ejemplo/example
-sec = linear_con(1000,3,10,100000,1000)
-pl.plot(sec)
+
+
+# Ejemplo con parámetros muy usados (Numerical Recipes): m = 2**32
+# Example with widely used parameters (Numerical Recipes): m = 2**32
+sec = linear_con(1000, 1664525, 1013904223, 2**32, 1000)
+print(len(sec), min(sec), max(sec))
+pl.plot(sec, '.')

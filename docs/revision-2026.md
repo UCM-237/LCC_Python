@@ -7,6 +7,17 @@ que queda pendiente y necesita una decisión, y (3) una propuesta para
 reorientar la asignatura asumiendo que los alumnos tienen acceso a asistentes
 de IA.
 
+> **⚠ Recordatorios para cuando termine la revisión** (antes de publicar el
+> material nuevo):
+>
+> - [ ] **Campus virtual:** sustituir `datosLauraLucia.txt` (Test 2024-25 de
+>   integración) por la versión nueva de
+>   `onlyforyoureyes/diferenciacion_integracion/datosLauraLucia.txt`. La del
+>   campus es de las ecuaciones sin el factor ½ (alcance 23.36 m en vez de
+>   28.24 m).
+> - [ ] **PDFs:** recompilar `pdfs/` con la versión final de las fuentes; los
+>   PDF van solo en `pdfs/`, nunca en la raíz.
+
 ---
 
 ## 1. Qué se ha corregido
@@ -66,6 +77,7 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 | 7. Sistemas de ecuaciones lineales (`sistemas.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 8. Interpolación y ajuste (`interpolacion.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 9. Diferenciación e integración (`integracion.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
+| 10. Tratamiento estadístico de datos (`tratamientoest.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | Resto | Pendiente | Solo han pasado la revisión automática (sección anterior). |
 
 **Capítulo 2: qué se ha hecho**
@@ -672,9 +684,118 @@ generadas con los propios programas.
   copia `datos_Laura_Lucia.txt`) en `onlyforyoureyes`: alcance 28.24 m en vez
   de 23.36 m. **Hay que subir el fichero nuevo al campus virtual.** El balance
   de energía del apartado 4 sigue cuadrando (W = -6915 J frente a ΔE = -6899 J
-  con Δt = 1e-3).
+  con Δt = 1e-3). La solución (`Test2024_Integracion.ipynb`) se ha corregido:
+  el apartado del viento usaba $v_x+v_{aire}$ con $v_{aire}=5$ fijo en la
+  función y desplazaba la posición con la velocidad relativa (ahora: rozamiento
+  con la velocidad relativa, posición con la absoluta; comprobado con
+  `solve_ivp`, alcance 17.46 m), y el apartado 4 integraba con los datos del
+  viento y con `integra_preciso`, que descarta los últimos puntos (ahora
+  trapecio con los datos del apartado 2 y balance de energía mecánica
+  comprobado con Δt = 1e-3, 1e-4 y 1e-5).
 - Las figuras antiguas `amortiguador_1/2/3.png`, `errores.eps` y `solrc.eps`
   ya no se usan; no se han borrado.
+
+**Capítulo 10: qué se ha hecho**
+
+Revisión de las dos columnas, de los programas de
+`codigos/tratamiento_datos/` y de las figuras. El capítulo no tenía
+ejercicios: se ha añadido una sección con diez.
+
+*Errores corregidos*
+- **Ejemplo de propagación (potencia en una resistencia)**: la varianza de
+  $t_0$ se calculaba con el intervalo $[-1,1]$ en lugar de $[-0.1,0.1]$
+  (`(1-(-1))**2/12` = 0.3333 en vez de 0.003333, cien veces mayor); la media
+  del voltaje era 802.1 mV, no 802.01; $s^2(t)$ 0.5382 en vez de 0.5328. Con
+  todo corregido, $P=1.286\pm0.089$ mW (antes $1.285\pm0.107$). Las unidades
+  de $b$ eran $\Omega$/ºC, incompatibles con $1+b(t-t_0)$: ahora ºC$^{-1}$.
+- **`middlesquare.py`** (escrito por un asistente de IA, según su cabecera):
+  no completaba el cuadrado con ceros por la izquierda, así que no
+  reproducía el ejemplo de 8 cifras del propio texto (daba 5247068 donde el
+  texto da 80524706). Corregido, con `assert` sobre los dos ejemplos del
+  texto, y aprovechado en el texto y en un ejercicio *depura*.
+- `linearcong.py`: `range(1, l)` daba $l-1$ números; parámetros de ejemplo
+  muy pobres ($a=3$, $m=10^5$), ahora los de *Numerical Recipes*.
+- `central_limit.py`: dos bucles de un millón de iteraciones (lento) y
+  normalización del histograma a mano con un ancho de barra aproximado; ahora
+  vectorizado, con `density=True` e imprimiendo media y varianza frente a la
+  teoría. Se usan $10^5$ conjuntos: con $10^6$ conjuntos de 100 números la
+  matriz ocupaba 800 MB.
+- RANDU: el multiplicador se llamaba $c$ (es $a$); $\text{rem}$ sin el módulo
+  en dos ecuaciones; von Neumann ("Von Newman"); $[0,1]$ en vez de $[0,1)$;
+  `random((m,n))` da $m\times n$, no $n\times m$.
+- Densidad de probabilidad: $P(x_0-dx/2\le x_0\le x_0+dx/2)=f(x_0)$ (falta
+  $dx$ y la variable); integrales de la normal sin $dx$ y la varianza con $x$
+  en lugar de $(x-\mu)^2$; doble suma de la covarianza con $i$ dos veces;
+  $\sigma_{100}^2$ con un factor de más; $1-x/100$ por $1-P/100$.
+- **Figuras**: en la del dado trucado la marca "1/5" estaba a la altura de
+  0.5; en la exponencial el rótulo decía "entre 2 y 4" y la zona sombreada era
+  de 1 a 2. Rehechas (`dadot.pdf`, `distexp.pdf`) y `tlc.pdf` regenerada con
+  el código nuevo.
+- Teorema del límite central enunciado sin la hipótesis de varianza finita y
+  como igualdad exacta (es una aproximación que mejora con $n$).
+- Intervalos de confianza: "probabilidad de que el valor medido esté en el
+  intervalo" (es el valor verdadero, y la probabilidad es del procedimiento);
+  $s_{xn}$ se llamaba "desviación estándar" sin distinguirla de $s$.
+- t de Student: `log` por `loc`; "media cero y varianza uno" (la varianza es
+  $\nu/(\nu-2)$); en inglés, "cinco grados de libertad" (son cuatro) y una
+  figura con 1, 2, 10\ldots (es 1, 5, 10\ldots); `xm = 6` con media 6.5.
+- Pandas: los bigotes de la eólica no llegan a 6000 y 18000 MW sino a 7740 y
+  17810 (no hay atípicos), la caja va de 8700 a 15200; el rango
+  intercuartílico es $Q_3-Q_1$, no $Q_2-Q_1$; filas "uno y dos" por "cero y
+  uno"; paréntesis de más en `drop`; Mw por MW.
+- Salida de `normal.py` con comillas sueltas (`'0.'`) sustituida por la real;
+  etiqueta `\label{fig:invcum}s`; figura `ic1` sin `\bicaption`; bloques con
+  sangría de tabuladores o sin indicador de continuación (no ejecutables).
+- Inglés: párrafo duplicado en las distribuciones continuas, *feet well*,
+  *interquartile rank*, *spider variable scope* y muchas erratas menores.
+
+*Contenido nuevo*
+- **"¿Es bueno un generador? El caso RANDU"**: deducción de
+  $I_{k+2}=6I_{k+1}-9I_k$ (mód. $2^{31}$), código que comprueba que
+  $9u_k-6u_{k+1}+u_{k+2}$ solo toma los 15 enteros de $-5$ a 9, y figura de
+  los 15 planos (`randu.pdf`).
+- Fijar la semilla para poder comprobar y depurar.
+- Incertidumbre de una distribución uniforme: $d/\sqrt{12}$.
+- **"¿Qué significa un intervalo del 95 %? Comprobación por simulación"**:
+  con $n=5$, el intervalo de la normal contiene el valor verdadero el 88 % de
+  las veces; el de la t de Student, el 95 %. Figura con 100 intervalos
+  (`cobertura.pdf`).
+- **"Comprobación: propagación por Monte Carlo"** del ejemplo de la potencia:
+  $0.090$ mW frente a $0.089$ de la propagación lineal; distribución
+  ligeramente asimétrica, intervalo del 95 % [1.128, 1.481] mW
+  (`propagacion_mc.pdf`). Con el error antiguo de $s^2(t_0)$ la diferencia
+  habría saltado a la vista. Qué término domina (la temperatura, 71 %).
+- Pandas: comprobación del número de datos (361 = 30 h × 12 + 1) y
+  `read_csv(..., skiprows=2)` como forma directa de leer el fichero.
+- Ejercicios (todos nuevos): dados simulados ($\sqrt{p(1-p)/N}$), *depura*
+  `middle_square` (primera semilla que falla: 1001; secuencia más larga: 111
+  valores, semilla 6239), periodo de un generador congruencial (regla de
+  Hull-Dobell: 32 pares con $m=16$), *mide el orden y rómpelo* con el teorema
+  del límite central (pendiente $-1/2$ con la exponencial; con Cauchy el rango
+  intercuartílico de las medias no baja de 2), integración por Monte Carlo
+  (cobertura del 68 %, esfera en 10 dimensiones), *¿cuál es correcta?* (tres
+  fórmulas de la incertidumbre de la media), péndulo con propagación lineal y
+  Monte Carlo ($g=9.71\pm0.11$), *critica la explicación* de un asistente de
+  IA (usa $s$ en vez de $s/\sqrt n$ y 1.96 en vez de $t_9$; su intervalo
+  contiene $\mu$ el 99.99 % de las veces), comprobación de los datos de la red
+  eléctrica (`Intercambios int` es la suma de los países: sumar todas las
+  columnas cuenta dos veces los intercambios; la eólica fue el 34 % de la
+  energía del 19 de marzo) y *primero los tests*.
+- Solucionario: `onlyforyoureyes/tratamiento_datos/EjerciciosLibro.ipynb`
+  (nuevo), comprobado con `assert`; incluye tres versiones incorrectas
+  típicas de la función del último ejercicio que las pruebas detectan.
+
+*Sin cambiar (para revisar)*
+- En el ejemplo de la resistencia, $b=0.4$ ºC$^{-1}$ es físicamente
+  exagerado: a 60 ºC la resistencia valdría 500 Ω (para el cobre,
+  $b\approx0.0039$ ºC$^{-1}$). Con $b=0.004$ cambian todos los números y el
+  término dominante pasa a ser el voltaje. Se ha mantenido 0.4.
+- Las figuras antiguas `dadot.eps`, `distexp.eps`, `tlc.eps`, `tlc1.eps` y
+  `tlc2.eps` ya no se usan; no se han borrado. `codigos/tratamiento_datos/`
+  conserva `middlesquare.m` (MATLAB) y `electrica.ipynb`, que no cita el
+  texto.
+- Las capturas del explorador de variables de Spyder (Pandas) son de 2025; no
+  se han rehecho.
 
 ---
 
