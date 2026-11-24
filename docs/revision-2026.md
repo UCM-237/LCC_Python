@@ -78,7 +78,8 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 | 8. Interpolación y ajuste (`interpolacion.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 9. Diferenciación e integración (`integracion.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 10. Tratamiento estadístico de datos (`tratamientoest.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
-| Resto | Pendiente | Solo han pasado la revisión automática (sección anterior). |
+| 11. Cálculo simbólico (`simbolico.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
+| 1. Introducción (`introduccion.tex`) y prefacio | Pendiente | Solo han pasado la revisión automática (sección anterior). |
 
 **Capítulo 2: qué se ha hecho**
 
@@ -796,6 +797,67 @@ ejercicios: se ha añadido una sección con diez.
   texto.
 - Las capturas del explorador de variables de Spyder (Pandas) son de 2025; no
   se han rehecho.
+
+**Capítulo 11: qué se ha hecho**
+
+Revisión de las dos columnas y de todas las salidas, comprobadas con Sympy
+1.12. El capítulo no tenía ejercicios: se ha añadido una sección con nueve, y
+una sección nueva de verificación.
+
+*Errores corregidos*
+- Sustitución múltiple: `bnf.subs([(x,z),(y,z**2)])` da $(z^2+z)^2$, no
+  $(y+z^2)^2$ (las sustituciones se hacen en orden; ahora se explica).
+- `series(x,3,6)` da los términos hasta $(x-3)^5$, no hasta $(x-3)^3$; el
+  tercer argumento es el orden del término $O$, no "el número de términos".
+- Tercera derivada de $ae^{-x^2}$: exponentes $e^{x^2}$ y `e{-x^2}` en lugar
+  de $e^{-x^2}$.
+- `sp.simplify(sp.diff(F))` con `F` sin definir (la primitiva no se guardaba);
+  `sp.integrate(f)` mostrando $\int\sin(\sinh x)dx$ sin haber definido esa
+  `f`; `simplify(f_g)` con la variable llamada `fg`.
+- `evalf()` da `1.57079632679490` (15 cifras), no `1.5707963267949`.
+- Sumas: $\frac1n^2$ por $\frac1{n^2}$, índice $n$ por $k$; $a$ es "no
+  negativo", no "positivo".
+- Límites: el texto decía que el lado se indica con las palabras `'right'` y
+  `'left'` (es `dir='+'`/`'-'`); el error con límites laterales distintos es
+  un `ValueError`; índices `\index[end]` y "Límits".
+- Figura de la espiral referida como la del valor absoluto; la superficie
+  decía haberse hecho "con el comando `ezsurf` de Matlab" (es `plot3d` de
+  Sympy) y no tenía `\bicaption`.
+- Indicadores `In [44] A[0,0]`, `In: [50]:`, `B.shape` sin indicador, y una
+  línea de continuación sin `...:` (bloques no ejecutables); erratas en las
+  dos columnas.
+
+*Contenido nuevo*
+- **"Usar y comprobar los resultados simbólicos"**: `solve` (comprobando las
+  raíces por sustitución) y `nsolve`; `lambdify` (derivada simbólica
+  comprobada con la diferencia centrada: $7.5\times10^{-10}$; `subs` es unas
+  diez mil veces más lento); errores frecuentes (`np.pi` y `1/3` dentro de
+  Sympy, hipótesis sobre las variables, `integrate(1/x,(x,-1,1))` = `nan`);
+  y Sympy para obtener el error de truncamiento de una fórmula de diferencias
+  finitas (así se comprobó la tabla del capítulo 9).
+- Ejercicios (todos nuevos): derivar, integrar y comprobar con `assert`,
+  `lambdify` y `quad`; comprobar las fórmulas de diferencias finitas y
+  deducir una con `solve`; *depura* (`np.pi`, `1/2`, `1/3`); hipótesis;
+  ecuaciones (raíces del cúbico frente a la bisección; Kepler con `nsolve`
+  como referencia para medir la convergencia cuadrática de Newton); *predice
+  y mide* la serie de Taylor de $e^x$ (cota de Lagrange y límite del
+  redondeo hacia $n=17$); *mide* `subs` frente a `lambdify`; *critica la
+  explicación* de un asistente de IA (límite por la derecha tomado por el
+  límite; $\int_{-1}^1dx/x=0$ "por ser impar": recortando $\epsilon$ y
+  $2\epsilon$ sale $-\ln2$); *primero los tests* (polinomio de Taylor).
+- Solucionario: `onlyforyoureyes/simbolico/EjerciciosLibro.ipynb` (nuevo),
+  comprobado con `assert`.
+
+*Sin cambiar (para revisar)*
+- Las capturas `inversa_m.png`, `matrixexp.png` y `detsimbol.png` son más
+  anchas que su caja (avisos de 85 y 34 pt); se ven bien, pero convendría
+  sustituirlas por la salida en LaTeX (`sp.latex`).
+- Las cabeceras de página de este capítulo son demasiado largas (aviso de 20
+  pt en cada página); ya pasaba antes.
+
+*Scripts de las figuras nuevas*: `tools/figuras/figuras_cap9.py` y
+`tools/figuras/figuras_cap10.py` regeneran las figuras nuevas de los
+capítulos 9 y 10 (con semillas fijas; desde la raíz del repositorio).
 
 ---
 

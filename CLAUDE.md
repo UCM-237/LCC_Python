@@ -11,12 +11,27 @@ hermano `onlyforyoureyes`, que suele estar abierto en el mismo workspace.
   enfoque "obtener, verificar y defender un resultado numérico".
 - Se trabaja en la rama `revision-2026` en **los dos** repositorios. No tocar
   `main` ni abrir pull requests sin que se pida.
+- La rama `revision-2026` está en GitHub (`UCM-237/LCC_Python` y
+  `UCM-237/onlyforyoureyes`) y la consultan otros profesores de la
+  asignatura: hacer `git push` cuando el profesor lo pida (lo pidió en nov
+  2026 al terminar los capítulos), no por iniciativa propia.
 - **Antes de seguir, leer [docs/revision-2026.md](docs/revision-2026.md)**: es
   el cuaderno de bitácora con la propuesta, el estado de cada capítulo, lo hecho
   y las decisiones pendientes. Actualizarlo al terminar cada capítulo.
 - Orden de revisión (el del curso): introprog ✔, intronumpy ✔, matplotlib ✔,
-  aritmetica ✔, calraiz ✔, sistemas ✔, interpolacion ✔, integracion ✔, tratamientoest ✔,
-  simbolico. Más adelante, un capítulo nuevo sobre programar con IA.
+  aritmetica ✔, calraiz ✔, sistemas ✔, interpolacion ✔, integracion ✔,
+  tratamientoest ✔, simbolico ✔ (nov 2026). Quedan sin revisar a fondo
+  `introduccion.tex` y `preface.tex`. Siguiente fase (hoja de ruta del
+  documento de revisión): capítulo nuevo sobre programar con IA, guía de uso
+  de la IA y evaluación.
+- Patrón seguido en cada capítulo: corregir errores (comprobando cada número
+  y cada salida), sección o apartados de verificación, ejercicios de los tipos
+  nuevos (*predice y mide*, *depura*, *¿cuál es correcta?*, *critica la
+  explicación* de una IA, *primero los tests*) y solucionario
+  `onlyforyoureyes/<tema>/EjerciciosLibro.ipynb` comprobado con `assert`.
+- **Al terminar la revisión**, recordar al profesor los "Recordatorios" del
+  principio de `docs/revision-2026.md` (subir `datosLauraLucia.txt` nuevo al
+  campus virtual, recompilar `pdfs/`).
 - Decisión tomada: se mantiene **Spyder** (con el plug-in spyder-notebook) como
   IDE del curso. No proponer cambiarlo.
 - Las decisiones abiertas listadas en el documento de revisión no se ejecutan
@@ -34,6 +49,17 @@ hermano `onlyforyoureyes`, que suele estar abierto en el mismo workspace.
 - Cada capítulo es un `.tex` (p. ej. `intronumpy.tex`) incluido en
   `lcc_manual.tex`; los `cabecera_*.tex` compilan un capítulo suelto
   (`cabecera_programacion` → introprog, `cabecera_numpy` → intronumpy, etc.).
+  Al compilar un capítulo suelto, las referencias a otros capítulos salen
+  como "??" (no es un error).
+- Etiquetas de capítulo: `ch:raices`, `ch:integracion`, `chp:arit`, etc.
+  (comprobar con `grep '\\label' <capitulo>.tex | head`). Las secciones
+  inglesas repiten la etiqueta con `-2` y los ejercicios ingleses con `-en`.
+- Los capítulos revisados empiezan con `\sloppy` (tras `\chaptermark`) y
+  terminan con `\fussy`; los bloques que solo muestran salida van en
+  `\begin{minted}{text}` (así `check_blocks` no los ejecuta).
+- **PDFs**: los finales van solo en `pdfs/` (la raíz los ignora
+  `.gitignore`). `pdfs/lcc_manual.pdf` es de oct 2026 porque el manual
+  completo no compila en el ordenador de casa (ver abajo).
 - Disposición bilingüe con `paracol`: texto en español, `\switchcolumn`, texto
   en inglés. Un `\switchcolumn` que falta intercambia los idiomas sin error.
 - Los ejercicios van como `\section{Ejercicios}` en español seguido de
@@ -47,7 +73,9 @@ hermano `onlyforyoureyes`, que suele estar abierto en el mismo workspace.
 
 ## Cómo editar y comprobar
 
-- La mayoría de `.tex` y `.py` usan finales de línea CRLF: conservarlos.
+- Finales de línea: en el despacho (Windows) muchos ficheros tienen CRLF; en
+  el ordenador de casa (Linux) son LF. Conservar los que tenga cada fichero
+  (leer y escribir con `newline=''`).
 - Método fiable: scripts de sustitución literal (antiguo → nuevo) con
   comprobación del número de apariciones. Muchas líneas acaban en espacios
   significativos (`\rightarrow \ `, `Out[n]: `, líneas solo con tabuladores en
@@ -60,9 +88,24 @@ hermano `onlyforyoureyes`, que suele estar abierto en el mismo workspace.
 - Compilar en una copia de trabajo fuera del repositorio, no en el propio
   repositorio, para no ensuciarlo con auxiliares.
 - Verificar numéricamente cualquier afirmación matemática del texto antes de
-  darla por buena o corregirla.
+  darla por buena o corregirla. Comparar también las salidas impresas en el
+  texto con las reales (extraer el bloque y ejecutarlo).
+- `tools/figuras/figuras_cap9.py` y `figuras_cap10.py` regeneran las figuras
+  nuevas (semillas fijas). Al regenerar, los PDF cambian solo en la fecha
+  interna: restaurar con `git checkout` los que no deban cambiar.
 
-## Entorno (ordenador del despacho; puede variar en otros)
+## Entorno: ordenador de casa (Linux)
+
+- `python3` es Anaconda (`/home/juan/anaconda3`) con numpy, scipy, sympy 1.12,
+  pandas y jupyter; `pdflatex` es TeX Live 2023 de Debian y encuentra
+  `pygmentize`. Diccionarios del corrector en `tools/dict/`.
+- **pdfTeX se cae (violación de segmento) al compilar el manual completo**,
+  siempre en la misma instrucción y con memoria de sobra: es un fallo de
+  pdfTeX, no del ordenador (pendiente 8 del documento de revisión). Los
+  capítulos sueltos compilan bien. Probar el manual completo con MiKTeX en el
+  despacho.
+
+## Entorno: ordenador del despacho (Windows)
 
 - Python con numpy/scipy/sympy: `C:/Users/abierto/anaconda3/python.exe` (el
   `python` del PATH es un 3.9 sin sympy).

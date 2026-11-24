@@ -1,5 +1,6 @@
 \chapter{Introducción al cálculo simbólico\\Introduction to symbolic computing}\index{Cálculo Simbolico}\index[eng]{Symbolic Computing}
 \chaptermark{Intro cálculo simbólico  \textreferencemark\ Intro symbolic computing}
+\sloppy
 \epigraph{And earthly power doth then show likest God's
 	when mercy seasons justice.}{The Merchant of Venice, William Shakespeare}
 \begin{flalign*}
@@ -10,9 +11,9 @@ En este último capítulo vamos a introducir un método de cálculo que difiere 
 
 Sin embargo, en matemáticas y en física, es práctica habitual realizar operaciones con variables y funciones sin asignarles un resultado numérico. Un ejemplo típico es el de la derivación de una función,
 \switchcolumn
-In this last chapter we are going to introduce a computing method completely different to the method described in previous chapters: Symbolic computing. So far, we have always use the computer to perform numerical computing. Variables were defined assigning them a numerical value a after, they were used in algebraic operations of introduced in functions to obtain numerical results.
+In this last chapter we are going to introduce a computing method completely different to the method described in previous chapters: Symbolic computing. So far, we have always used the computer to perform numerical computing. Variables were defined assigning them a numerical value and, after, they were used in algebraic operations or introduced in functions to obtain numerical results.
 
-Nevertheless, in mathematics and physics, it is common practice to perform operations with variables and function without assign to them numerical results. A classic example is function derivation, 
+Nevertheless, in mathematics and physics, it is common practice to perform operations with variables and functions without assigning numerical values to them. A classic example is function derivation, 
 \end{paracol}
 \begin{equation*}
 f(x) = \sqrt{1-\ln x} \rightarrow f'(x) =-\frac{1}{2x\sqrt{1 - \ln x}} 
@@ -25,7 +26,7 @@ Departing from a function \emph{symbolic} expression, we get its derivative also
 
 \begin{paracol}{2}
 \section{Cálculo simbólico con Sympy}
-\sectionmark{Calculos simbólico con Sympy. \textreferencemark\ Symbolic computing with Sympy.}
+\sectionmark{Cálculo simbólico con Sympy. \textreferencemark\ Symbolic computing with Sympy.}
 Sympy  es un módulo de Python creado para realizar cálculo simbólico. Como en el caso de otros módulos que hemos introducido en capítulos anteriores, nos vamos a limitar a dar una introducción al cálculo simbólico empleando Sympy, para conocer de verdad sus posibilidades se aconseja acudir a la documentación del módulo, disponible en Internet.
 
 \section{Variables y expresiones simbólicas}
@@ -64,7 +65,7 @@ x
 \begin{paracol}{2}
 Así, el comando asigna a las variables que definamos separadas por comas a la izquierda del igual, los símbolos, separados por espacios y encerrados entre comillas simples, introducidos a \mintinline{python}|symbols()|.
 
-Cuando pedimos a Python que nos muestre el contenido de la variable \texttt{x} nos indica que contiene el símbolo \texttt{x}. Es importante remarcar que aquí no se trata de un caracter sino de un símbolo con el que se pueden realizar operaciones algebraicas y que el nombre de la variable que contiene el símbolo no tiene porqué coincidir con este. Así, por ejemplo, a la variable \texttt{z}, le hemos vuelto a asignar el simbolo \texttt{x}.
+Cuando pedimos a Python que nos muestre el contenido de la variable \texttt{x} nos indica que contiene el símbolo \texttt{x}. Es importante remarcar que aquí no se trata de un carácter sino de un símbolo con el que se pueden realizar operaciones algebraicas y que el nombre de la variable que contiene el símbolo no tiene porqué coincidir con este. Así, por ejemplo, a la variable \texttt{z}, le hemos vuelto a asignar el símbolo \texttt{x}.
 
 También es posible crear vectores y matrices simbólicas a partir de otras variables simbólicas,
 \switchcolumn
@@ -95,14 +96,14 @@ a&c&a
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-Los comandos y funciones más habituales asociados a los arrays de numpy funcionan con las matrices de Sympy. Por ejemplo podemos extraer elementos o filas de una matriz, calcular el determinate o la inversa,
+Los comandos y funciones más habituales asociados a los arrays de numpy funcionan con las matrices de Sympy. Por ejemplo podemos extraer elementos o filas de una matriz, calcular el determinante o la inversa,
 \switchcolumn
-Most common comand and function defined for Numpy arrays work also with Sympy matrices. For instance, we can extract elements of rows from a matrix, compute the determinant of the inverse matrix, 
+Most common commands and functions defined for Numpy arrays work also with Sympy matrices. For instance, we can extract elements or rows from a matrix, compute the determinant or the inverse matrix, 
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
 		\begin{minted}{python}
-In [44] A[0,0]
+In [44]: A[0,0]
 Out[44]: 
 \end{minted}
 $a$	 				
@@ -129,7 +130,7 @@ Out[50]:
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-Otra opción posible es crear un objeto simbólico matriz. La idea es crear una variable simbólica que contiene una matriz del tamaño que deseemos. Para ello empleamos el comando \mintinline{python}|MatrixSymbol| de  \mintinline{python}|sympy.matrices|. Este comando admite un símbolo y dos parámetros numéricos que corresponden con el número de filas y columnas de la matriz creada. Estos parámetros tambień podrían a su vez ser simbólicos.
+Otra opción posible es crear un objeto simbólico matriz. La idea es crear una variable simbólica que contiene una matriz del tamaño que deseemos. Para ello empleamos el comando \mintinline{python}|MatrixSymbol| de  \mintinline{python}|sympy.matrices|. Este comando admite un símbolo y dos parámetros numéricos que corresponden con el número de filas y columnas de la matriz creada. Estos parámetros también podrían a su vez ser simbólicos.
 \switchcolumn
 An alternative is to create a symbolic matrix object. We make a symbolic variable that holds a matrix the size we wish. The command \mintinline{python}|MatrixSymbol| from \mintinline{python}|sympy.matrices| allows to make a symbolic matrix. This command takes a symbol and two numerical parameters which define the number of rows and columns of the matrix we are creating. In fact, these two last parameter could be also symbolic.
 \end{paracol}
@@ -137,8 +138,8 @@ An alternative is to create a symbolic matrix object. We make a symbolic variabl
 	\begin{minipage}{.3\textwidth}
 		\begin{minted}{python}
 In [56]: B = mt.MatrixSymbol('b',3,3)
-B.shape
-Out[60]: (3, 3)				
+In [57]: B.shape
+Out[57]: (3, 3)				
 		\end{minted}
 	\end{minipage}
 \end{center}
@@ -194,7 +195,7 @@ El resultado es en este caso una expresión que guarda el resultado de la operac
 
 Para crear expresiones más complejas, Sympy tiene definidas las funciones matemáticas más comunes como funciones simbólicas,
 \switchcolumn
-The result now is an expression that holds the result of the operation we have carried out. It is interesting to note how Sympy operates the symbolic values of variables \texttt{x} and texttt{z} to cast the result $4x$. 
+The result now is an expression that holds the result of the operation we have carried out. It is interesting to note how Sympy operates the symbolic values of variables \texttt{x} and \texttt{z} to cast the result $4x$. 
 
 SymPy has the most common mathematical functions defined as symbolic functions, enabling the creation of more complex expressions.
 \end{paracol}
@@ -270,17 +271,17 @@ Out[28]:
 \subsection{Simplificación de expresiones simbólicas}
 Sympy permite, dada una expresión simbólica, obtener una equivalente más sencilla. En general, este proceso de simplificación no es trivial ni unívoco, ya que una expresión puede admitir varias formas simplificadas. Es también posible que la expresión simbólica que deseamos simplificar, no sea simplificable.
 
-Es interesante, sobre todo cuando se trata de expresiones obtenidas a partir de cálculos simbólicos, tratar de obtener una expresión lo más simplificada posible. La razón es que resulta mucho más fácil de entender y manipular. Sympy suministra el comando \texttt{simplify} para simplificar expresiones simbólicas. Así por ejemplo, si aplicamos \texttt{simplify} a la expresión \texttt{f\_g}, que acabamos de definir en la sección anterior, 
+Es interesante, sobre todo cuando se trata de expresiones obtenidas a partir de cálculos simbólicos, tratar de obtener una expresión lo más simplificada posible. La razón es que resulta mucho más fácil de entender y manipular. Sympy suministra el comando \texttt{simplify} para simplificar expresiones simbólicas. Así por ejemplo, si aplicamos \texttt{simplify} a la expresión \texttt{fg}, que acabamos de definir en la sección anterior, 
 \switchcolumn
 \subsection{Symbolic expression simplification}
 SymPy can take a symbolic expression and generate an equivalent, simplified version. However, this process is not always straightforward or unique, as an expression may have multiple valid simplified forms. Additionally, it's possible that the expression we wish to simplify cannot be simplified at all.
 
-It is interesting, mainly when we get an expression using symbolic computing, try to simplify it as much as possible. Obviously, the simplified version is easier to understand and manipulate. Sympy supplies the command \texttt{simplify} to simplify symbolic expressions. For instance, if we apply the command \texttt{simplify} to the expression \texttt{f\_g}we have just obtained in the previous section,
+It is interesting, mainly when we get an expression using symbolic computing, try to simplify it as much as possible. Obviously, the simplified version is easier to understand and manipulate. Sympy supplies the command \texttt{simplify} to simplify symbolic expressions. For instance, if we apply the command \texttt{simplify} to the expression \texttt{fg} we have just obtained in the previous section,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.25\textwidth}
 		\begin{minted}{python}
-In [33]: sp.simplify(f_g)
+In [33]: sp.simplify(fg)
 Out[33]: 
 		\end{minted}
 	\end{minipage}
@@ -309,10 +310,10 @@ Out[38]:
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-En este caso, Sympy devuelve la misma expresión que hemos introducido. Podríamos preguntarnos si no debería devolver la expresión como un binomio $(x+y)^2$. La cuestión es hasta qué punto podemos consider que esta expresión es más simple que la original. Para evitar algunas ambigüedades de este tipo, Sympy tiene varios comando para 'simplificar' expresiones. Por ejemplo, la función \mintinline{Python}|factor|, nos permite realizar la transformación deseada en el ejemplo anterior,
+En este caso, Sympy devuelve la misma expresión que hemos introducido. Podríamos preguntarnos si no debería devolver la expresión como un binomio $(x+y)^2$. La cuestión es hasta qué punto podemos considerar que esta expresión es más simple que la original. Para evitar algunas ambigüedades de este tipo, Sympy tiene varios comandos para `simplificar' expresiones. Por ejemplo, la función \mintinline{Python}|factor|, nos permite realizar la transformación deseada en el ejemplo anterior,
 
 \switchcolumn
-In this case, SymPy retrieves the same expression that we provided to the command. The question arises: should it retrieve the expression as a binomial, \((x+y)^2\)? Can we consider this binomial to be simpler than the original expression? To avoid such ambiguities, SymPy offers several commands to simplify expressions. For example, the function `factor` allows us to perform the desired transformation for the previous example.
+In this case, SymPy retrieves the same expression that we provided to the command. The question arises: should it retrieve the expression as a binomial, \((x+y)^2\)? Can we consider this binomial to be simpler than the original expression? To avoid such ambiguities, SymPy offers several commands to simplify expressions. For example, the function \mintinline{python}|factor| allows us to perform the desired transformation for the previous example.
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.25\textwidth}
@@ -338,7 +339,7 @@ As can be seen in line [46], it is also possible to expand a binomial expression
 
 \begin{paracol}{2}
 \subsection{Sustitución de variables y expresiones.}
-Es posible, una vez definida una expresión simbólica, sustituir sus variables por otras expresiones empleando el comando \texttt{subs}. La sintáxis es simple, tomamos el nombre de la variable en que guardamos la expresión simbólica que queremos modificar, invocamos el método \texttt{subs}, indicando el nombre de la variable simbólica que queremos substituir y la expresión por la que queremos sustituirla. 
+Es posible, una vez definida una expresión simbólica, sustituir sus variables por otras expresiones empleando el comando \texttt{subs}. La sintaxis es simple, tomamos el nombre de la variable en que guardamos la expresión simbólica que queremos modificar, invocamos el método \texttt{subs}, indicando el nombre de la variable simbólica que queremos substituir y la expresión por la que queremos sustituirla. 
 
 Por ejemplo podemos cambiar en la expresión $(x+y)^2$ que creamos anteriormente, la variable x por la variable z\footnote{Solo se pueden emplear variables simbólicas previamente definidas para hacer la sustitución}. 
 \switchcolumn
@@ -388,9 +389,9 @@ Out[52]:
 \end{center}
 
 \begin{paracol}{2}
-Además, podemos sustituir varias variable a la vez empleando una lista de pares de variables, cada par debe contener una variable a sustituir y la expresión por la que se sustituye
+Además, podemos sustituir varias variables a la vez empleando una lista de pares; cada par debe contener una variable a sustituir y la expresión por la que se sustituye. Las sustituciones se hacen en orden: en el ejemplo, la primera convierte $(x+y)^2$ en $(z+y)^2$, y la segunda cambia después $y$ por $z^2$,
 \switchcolumn
-Additionally, we can substitute multiple variables at once using a list of variable pairs; each pair should include a variable to be substituted and the expression that will replace it.
+Additionally, we can substitute multiple variables at once using a list of pairs; each pair should include a variable to be substituted and the expression that will replace it. The substitutions are made in order: in the example, the first one turns $(x+y)^2$ into $(z+y)^2$, and then the second one replaces $y$ with $z^2$,
 
 \end{paracol}
 \begin{center}
@@ -399,7 +400,7 @@ Additionally, we can substitute multiple variables at once using a list of varia
 In [53]: bnf.subs([(x,z),(y,z**2)])
 Out[53]:
 		\end{minted}
-		$(y+z^2)^2$
+		$(z^2+z)^2$
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
@@ -449,7 +450,7 @@ Out[110]:
 In [111]: sp.asin(1).evalf()
 Out[111]: 
 \end{minted}
-$1.5707963267949$
+$1.57079632679490$
 	\begin{minted}{python}
 In [112]: sp.asin(1).evalf(25)
 Out[112]:
@@ -462,9 +463,9 @@ Out[114]: 1.5707963267948966
 \end{minipage}
 \end{center}
 \begin{paracol}{2}
-La línea [110] nos devuelve el resultado de calcular el arcoseno de 1. El resultado es un valor simbólico: $\pi/2$. En la línea [111], repetimos el cálculo, pero ahora hacemos uso de la función \mintinline{python}|evalf()|. Esta función nos devuelve un valor numérico, aunque todavía se trata de un resultado simbólico. Por defecto, la función nos devuelve una expresión con 15 dígitos. 
+La línea [110] nos devuelve el resultado de calcular el arcoseno de 1. El resultado es un valor simbólico: $\pi/2$. En la línea [111], repetimos el cálculo, pero ahora hacemos uso de la función \mintinline{python}|evalf()|. Esta función nos devuelve un valor numérico, aunque todavía se trata de un resultado simbólico. Por defecto, la función nos devuelve una expresión con 15 dígitos significativos.
 
-Podemos sin embargo elegir el número de dígitos que tendrá nuestra expresión numérica. para ello pasamos a la función el número de dígitos con el que queremos que nos devuelva el resultado. La línea [112], nos muestra un ejemplo en que se han pedido 25 dígitos para el resultado. Por último, si queremos convertir el resultado en un número máquina, en la representación normal del computador, empleamos para ello el comando \mintinline{python}|float| de python. El resultado es un número en la representación en coma flotante de doble precisión.
+Podemos sin embargo elegir el número de dígitos que tendrá nuestra expresión numérica. Para ello pasamos a la función el número de dígitos con el que queremos que nos devuelva el resultado. La línea [112], nos muestra un ejemplo en que se han pedido 25 dígitos para el resultado. Por último, si queremos convertir el resultado en un número máquina, en la representación normal del computador, empleamos para ello el comando \mintinline{python}|float| de python. El resultado es un número en la representación en coma flotante de doble precisión.
 
 \switchcolumn
 Line [110] computes the arcsine of 1, yielding a symbolic result of \(\pi/2\). In line [111], we perform the calculation again but use the function \mintinline{python}|evalf()|. This function provides a 'numerical' expression while still maintaining the symbolic character of the result, retrieving by default an expression with 15 digits.
@@ -475,13 +476,13 @@ However, we can specify the number of digits we want for the numerical expressio
 
 \begin{paracol}{2}
 \section{Cálculo infinitesimal}
-\sectionmark{Calculo Infinitesimal. \textreferencemark\ Calculus}
+\sectionmark{Cálculo infinitesimal. \textreferencemark\ Calculus}
 Es posible realizar operaciones típicas del cálculo infinitesimal como derivación e integración, empleando métodos de cálculo simbólico. A diferencia del cálculo numérico, el resultado será ahora una expresión.
 \subsection{Derivación}\index{Derivación! Simbólica}
 Para obtener la derivada de una función simbólica, se emplea el comando \texttt{diff},
 \switchcolumn
 \section{Calculus}
-\sectionmark{Calculo Infinitesimal. \textreferencemark\ Calculus}
+\sectionmark{Cálculo infinitesimal. \textreferencemark\ Calculus}
 We can use symbolic computing methods to perform typical calculus operation such as integrations and differentiation. Unlike numerical computing the result will be now a symbolic expression.  
 \subsection{Differentiation}\index[eng]{Differentiation! Symbolic}
 To take the  a symbolic function derivative, we use the command \texttt{diff},
@@ -504,7 +505,7 @@ $-2axe^{-x^2}$
 \end{center}
 
 \begin{paracol}{2}
-La función \mintinline{python}|diff()|, toma dos variables de entrada, el nombre de la función simbólica que queremos derivar y, siempre que la función contenga más de una expresión simbólica, la variable con respecto a la que queremos derivar. En en ejemplo anterior, también podríamos haber derivado con respecto a la variable \texttt{a},
+La función \mintinline{python}|diff()|, toma dos variables de entrada, el nombre de la función simbólica que queremos derivar y, siempre que la función contenga más de una variable simbólica, la variable con respecto a la que queremos derivar. En en ejemplo anterior, también podríamos haber derivado con respecto a la variable \texttt{a},
 \switchcolumn
 Function \mintinline{python}|diff()| takes two input variables: the name of the symbolic function for which we want to calculate the derivative, and the variable with respect to which we want to take the derivative, especially when the function has more than one symbolic variable. In the previous example, we could also have taken the derivative with respect to variable \texttt{a} 
 \end{paracol}
@@ -546,7 +547,7 @@ Out[132]:
 \begin{paracol}{2}
 Es posible emplear el comando \texttt{diff()} para obtener derivadas de orden superior. Para ello se introduce en la llamada el orden de la derivada a continuación del nombre de la función o, si es el caso, a continuación de la variable simbólica con respecto a la que se quiere derivar,
 \switchcolumn
-It is possible to use the command \texttt{diff()} to take multiple derivatives. We can do it just introducing into the function \texttt{diff()} the order of the derivative, after the name of the function or after the name of the symbolic variable for which we can to take the derivative. 
+It is possible to use the command \texttt{diff()} to take multiple derivatives. We can do it just introducing into the function \texttt{diff()} the order of the derivative, after the name of the function or after the name of the symbolic variable for which we want to take the derivative. 
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
@@ -568,7 +569,7 @@ En el primer caso hemos obtenido la derivada tercera con respecto a \texttt{x} d
 
 Es fácil comprobar que el resultado sería el mismo si derivamos la función original y las expresiones de las sucesivas derivadas obtenidas hasta alcanzar la derivada del orden deseado,
 \switchcolumn
-In the first case, we have obtained the third derivative with respect to \texttt{x} of function \texttt{f} from previous examples. In the second case, we have obtained the second derivativa with respect to variable \texttt{a}.
+In the first case, we have obtained the third derivative with respect to \texttt{x} of function \texttt{f} from previous examples. In the second case, we have obtained the second derivative with respect to variable \texttt{a}.
 
 It is easy to verify that we will obtain the same result by differentiating the original function and then evaluating the successive derivatives up to the desired order.   
 
@@ -593,12 +594,12 @@ In [142]: df3 = sp.diff(df2,x)
 In [143]: df3
 Out[143]:  
 		\end{minted}
-		$-8ax^3e{-x^2} + 12axe^{x^2}$
+		$-8ax^3e^{-x^2} + 12axe^{-x^2}$
 		\begin{minted}{python}
 In [146]: sp.factor(df3)
 Out[146]:   
 \end{minted}
-$-4ax(2x^2-3)e^{x^2}$
+$-4ax(2x^2-3)e^{-x^2}$
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
@@ -728,7 +729,7 @@ Out[158]:
 \begin{paracol}{2}
 Es posible emplear Sympy para realizar cálculos de gradientes, jacobianos, rotacionales, etc. No se incluye su descripción en este manual, los interesados pueden consultar la documentación de Sympy.
 \switchcolumn
-It is also possible to use Sympy for calculating gradients, jacobians, curls, etc. We do no include any description in this lecture-notes, those interested may check Sympy's documentation.
+It is also possible to use Sympy for calculating gradients, jacobians, curls, etc. We do not include any description in these lecture notes; those interested may check Sympy's documentation.
 \end{paracol}
 
 \begin{paracol}{2}
@@ -737,7 +738,7 @@ La integración indefinida en cálculo simbólico permite obtener la primitiva d
 \switchcolumn
 \subsection{Integrals}\index[eng]{Integrals! Symbolic}
 The indefinite integral in symbolic computation allows us to compute the primitive of a function,
-\end{paracol}\sectionmark{Calculo Infinitesimal. \textreferencemark\ Calculus}
+\end{paracol}\sectionmark{Cálculo infinitesimal. \textreferencemark\ Calculus}
 \begin{equation*}
 F(x) = \int f(x)dx  \Leftrightarrow f(x) = \frac{dF(x)}{dx}  
 \end{equation*}
@@ -760,8 +761,9 @@ Out[161]:
 			\end{minted}
 		$\sqrt{1-x^2}$
 		\begin{minted}{python}
-In [162]: sp.integrate(f)
-Out[162]: 
+In [162]: F = sp.integrate(f)
+In [163]: F
+Out[163]: 
 		\end{minted}
 		\begin{equation*}
 			\frac{x\sqrt{1-x^2}}{2}+\frac{\text{asin}(x)}{2}
@@ -823,15 +825,16 @@ Out[176]:
 \begin{paracol}{2}
 En el primer caso la integración se realiza con respecto a la variable \texttt{a} y en el segundo caso, la integración se realiza respecto a la variable \texttt{x}.
 
-Cuando no es posible encontrar una primitiva a una función, Sympy devuelve la función dentro del símbolo integral,
+Cuando no es posible encontrar una primitiva a una función, Sympy devuelve la función dentro del símbolo integral. Por ejemplo, para $\sin(\sinh x)$,
 \switchcolumn
 In the first case, we obtain the integral with respect to variable \texttt{a} and in the second case, the integration is carried out with respect to variable \texttt{x}. 
 
-whenever it is not possible to get the primitive of a function, Sympy returns the function enclosed in the integration symbol,
+Whenever it is not possible to get the primitive of a function, Sympy returns the function enclosed in the integration symbol. For instance, for $\sin(\sinh x)$,
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.5\textwidth}
 		\begin{minted}{python}
+In [179]: f = sp.sin(sp.sinh(x))
 In [180]: F = sp.integrate(f)
 In [181]: F
 Out[181]:  
@@ -859,7 +862,7 @@ Out[189]:
 \begin{paracol}{2}
 	La función \texttt{integrate}, puede emplearse también para calcular integrales múltiples, es suficiente con indicar las variables simbólicas respecto a las que se quiere calcular la integral,
 	\switchcolumn
-	The \texttt{integrate} function can also be use to compute multiple integrals, it is enough to indicate the symbolic variables with respect to which we can compute the integral,
+	The \texttt{integrate} function can also be use to compute multiple integrals, it is enough to indicate the symbolic variables with respect to which we want to compute the integral,
 \end{paracol}
 
 \begin{center}
@@ -905,11 +908,11 @@ In [258]: n = sp.symbols('n',integer=True,nonnegative=True)
 \end{center}
 
 \begin{paracol}{2}
-De este modo definimos $a \ge 0$, $k \in \mathbb{Z}$ y $n \in \mathbb{Z}_+$.
+De este modo definimos $a \ge 0$, $k \in \mathbb{Z}$ y $n \in \mathbb{Z}$, $n\ge 0$.
 
 Podemos ahora emplear el comando \mintinline{python}|Sum|, para crear la suma simbólica de la serie que queramos,
 \switchcolumn
-In this way, we have defined $a \ge 0$, $k \in \mathbb{Z}$ y $n \in \mathbb{Z}_+$.
+In this way, we have defined $a \ge 0$, $k \in \mathbb{Z}$ and $n \in \mathbb{Z}$, $n\ge 0$.
 
 We can now use the command \mintinline{python}|Sum|, to define the symbolic sum for a series whatsoever,
 \end{paracol}
@@ -920,7 +923,7 @@ We can now use the command \mintinline{python}|Sum|, to define the symbolic sum 
 		Out[263]:	
 		\end{minted}
 		\begin{equation*}
-			\sum_{n=1}^{10}\frac{1}{n}^2
+			\sum_{n=1}^{10}\frac{1}{n^2}
 		\end{equation*}
 	\end{minipage}
 \end{center}
@@ -928,7 +931,7 @@ We can now use the command \mintinline{python}|Sum|, to define the symbolic sum 
 La notación es muy parecida a la que vimos para las integrales. La función \mintinline{python}|Sum|, toma como parámetros la expresión simbólica de la serie que queremos sumar, la variable sobre la que se expande la serie, en nuestro ejemplo \texttt{n}, y los límites de la suma. Sympy nos devuelve un objeto, pero no lleva a cabo el cálculo de la suma. Si queremos obtener el resultado de la suma, debemos emplear la función \mintinline{python}|doit()|,
 
 \switchcolumn
-the notation is very similar to the notation used for integrals. The function \mintinline{python}|Sum| takes as parameter the series symbolic expression we want ot sum, the variable the series span on, in our example \texttt{n}, and the limits of the sum. Sympy returns an object, but it does not carry out the computing of the sum. If we want to obtain the sum result we have to use the command \mintinline{python}|doit()|,
+the notation is very similar to the notation used for integrals. The function \mintinline{python}|Sum| takes as parameter the series symbolic expression we want to sum, the variable the series span on, in our example \texttt{n}, and the limits of the sum. Sympy returns an object, but it does not carry out the computing of the sum. If we want to obtain the sum result we have to use the command \mintinline{python}|doit()|,
 \end{paracol}
 
 \begin{center}
@@ -954,7 +957,7 @@ In [265]: sp.Sum(a**k,(k,1,sp.oo))
 Out[265]: 	
 		\end{minted}
 		\begin{equation*}
-		\sum_{n=1}^{\infty}a^k	
+		\sum_{k=1}^{\infty}a^k	
 		\end{equation*}
 	\end{minipage}
 \end{center}
@@ -981,12 +984,12 @@ Out[265]:
 \end{center}
 
 \begin{paracol}{2}
-Sympy nos da la solución para el caso en que la serie es sumable $a<1$, recordemos que a es valor real positivo, y nos devuelve la expresión general de la suma en otro caso.
+Sympy nos da la solución para el caso en que la serie es sumable $a<1$, recordemos que $a$ es un valor real no negativo, y nos devuelve la expresión general de la suma en otro caso.
 
-Par el caso de una suma infinita que diverge, Sympy nos devolverá el símbolo infinito,
+Para el caso de una suma infinita que diverge, Sympy nos devolverá el símbolo infinito,
 
 \switchcolumn
-Sympy provides solutions for the case where the series is summable when \( a < 1 \). Here, \( a \) represents a positive real value. Otherwise, it returns the general expression for the sum.
+Sympy provides solutions for the case where the series is summable when \( a < 1 \). Here, \( a \) represents a nonnegative real value. Otherwise, it returns the general expression for the sum.
 
 In the case of a infinite sum that diverges, Sympy will return the infinite symbol,
 \end{paracol}
@@ -1002,20 +1005,21 @@ Out[271]:
 \end{center}
 
 \begin{paracol}{2}
-\paragraph{Serie de Taylor}\index{Series! Serie de Taylor de una función simbólica} Es posible calcular la expresión de la serie de Taylor para una función simbólica. Para ello se emplea el comando \texttt{series}, que es un método propio de cualquier función simbólica que creemos. Toma como variables de entrada, la variable de la función sobre la que se quiere expandir la serie de Taylor, el punto en torno al cual se realiza el desarrollo y el número de términos de la serie que se desea obtener.
+\paragraph{Serie de Taylor}\index{Series! Serie de Taylor de una función simbólica} Es posible calcular la expresión de la serie de Taylor para una función simbólica. Para ello se emplea el comando \texttt{series}, que es un método propio de cualquier función simbólica que creemos. Toma como variables de entrada, la variable de la función sobre la que se quiere expandir la serie de Taylor, el punto $x_0$ en torno al cual se realiza el desarrollo y el orden $n$ del desarrollo: el resultado incluye los términos hasta $(x-x_0)^{n-1}$ y el término $O\left((x-x_0)^n\right)$.
 \switchcolumn
-\paragraph{Taylor's series}\index[eng]{Series! Taylor's series for a symbolic function} It is possible to compute the expression for the Taylor's series of a symbolic function. We use for it the commands \texttt{series} which is a method belonging to any symbolic function we create. It takes as input variables, the variable of the function we want to expand on Tailor's series, the point around which want to carry out the expansion and the number of terms we want to get for the series,
+\paragraph{Taylor's series}\index[eng]{Series! Taylor's series for a symbolic function} It is possible to compute the expression for the Taylor's series of a symbolic function. We use for it the commands \texttt{series} which is a method belonging to any symbolic function we create. It takes as input variables, the variable of the function we want to expand in Taylor's series, the point $x_0$ around which we want to carry out the expansion and the order $n$ of the expansion: the result includes the terms up to $(x-x_0)^{n-1}$ and the term $O\left((x-x_0)^n\right)$,
 \end{paracol}
 
 \begin{center}
 	\begin{minipage}{.3\textwidth}
 		\begin{minted}{python}
 In [284]: f1 = sp.exp(x)
-In [285]: f1	
+In [285]: f1
+Out[285]:
 		\end{minted}
 		$e^x$
 		\begin{minted}{python}
-In [286]f1.series(x,0,4)
+In [286]: f1.series(x,0,4)
 Out[286]:
 		\end{minted}
 		\begin{equation*}
@@ -1033,23 +1037,23 @@ This example above yield us the expansion adding a the Landau's term for the app
  
  
 \begin{center}
-	\begin{minipage}{.3\textwidth}
+	\begin{minipage}{.7\textwidth}
 		\begin{minted}{python}
 In [289]: f1.series(x,3,6).removeO()
 Out[289]: 
 		\end{minted}
 		\begin{equation*}			
-			\frac{(x-3)^3e^3}{6}+\frac{(x-3)^2e^3}{2}+(x-3)e^3+e^3
+			\frac{(x-3)^5e^3}{120}+\frac{(x-3)^4e^3}{24}+\frac{(x-3)^3e^3}{6}+\frac{(x-3)^2e^3}{2}+(x-3)e^3+e^3
 		\end{equation*}
 	\end{minipage}
 \end{center}
 
 \begin{paracol}{2}
 \subsection{Límites} \index{Límites! de una función simbólica}
-Para el cálculo de límites de una expresión simbólica se emplea el comando \texttt{limit}. Es necesario incluir la función simbólica y el valor de la variable independiente para el que se desea calcular el límite.  Dicho valor puede ser también simbólico,
+Para el cálculo de límites de una expresión simbólica se emplea el comando \texttt{limit}. Es necesario incluir la función simbólica, la variable independiente y el valor de la variable en el que se desea calcular el límite.  Dicho valor puede ser también simbólico,
 \switchcolumn
-\subsection{Limits} \index[eng]{Límits! for a symbolic function}
-To calculate the limits of a symbolic expression we use the command \texttt{limit}. We have to include the symbolic funtion and te value of the independent variable for which we can compute the limit. This value can also be symbolic,
+\subsection{Limits} \index[eng]{Limits! for a symbolic function}
+To calculate the limits of a symbolic expression we use the command \texttt{limit}. We have to include the symbolic function, the independent variable and the value of the variable at which we want to compute the limit. This value can also be symbolic,
 \end{paracol}
 
 \begin{center}
@@ -1093,7 +1097,7 @@ Es posible calcular límites en el \emph{infinito}
 \index{Límites! Límite en el infinito de una función simbólica}
 \switchcolumn
 It is also possible to compute the limit to \emph{infinity}
-\index{Límits! Límit to infinity for a symbolic function}
+\index[eng]{Limits! Limit to infinity for a symbolic function}
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.8\textwidth}
@@ -1106,11 +1110,11 @@ Out[311]:
 \end{center}
 
 \begin{paracol}{2}
-Por último, es posible calcular el límite por la izquierda y el límite por la derecha cuando estos no coinciden. Para ello se añade al final del comando la palabra \texttt{'right'} (derecha) o \texttt{'left'} (izquierda). Es importante saber que, si no se le indica expresamente, Sympy calcula siempre el límite por la derecha. vamos a ver un ejemplo empleando el comando \mintinline{python}|Piecewise| que nos permite definir funciones por tramos,
+Por último, es posible calcular el límite por la izquierda y el límite por la derecha cuando estos no coinciden. Para ello se emplea el argumento \texttt{dir} del comando. Es importante saber que, si no se le indica expresamente, Sympy calcula siempre el límite por la derecha. Vamos a ver un ejemplo empleando el comando \mintinline{python}|Piecewise| que nos permite definir funciones por tramos,
 \index{Límites! Límites laterales de una función simbólica}
 \switchcolumn
-Lastly, it is possible to compute the left-sided and right-sided limits for a function when these don't meet. To do it, we need to add a the end of the command the word texttt{right} or \texttt{left}. It is important to notice that if you do not specifically indicate it, Sympy always compute the right-sided limit. Let's see an example using the command \mintinline{python}|Piecewise| that allows us to define piecewise functions,
-\index[end]{Límits! Right-hand and Left-hand limits for a symbolic function}
+Lastly, it is possible to compute the left-sided and right-sided limits for a function when these don't meet. To do it, we use the argument \texttt{dir} of the command. It is important to notice that if you do not specifically indicate it, Sympy always computes the right-sided limit. Let's see an example using the command \mintinline{python}|Piecewise| that allows us to define piecewise functions,
+\index[eng]{Limits! Right-hand and Left-hand limits for a symbolic function}
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.6\textwidth}
@@ -1151,12 +1155,12 @@ for calculating the right-sided limit, we fix the parameter \texttt{dir='+'} in 
 \begin{center}
 	\begin{minipage}{.6\textwidth}
 		\begin{minted}{python}
-In: [50]: sp.limit(f,x,0,dir='+')
-Out:[50]: 
+In [50]: sp.limit(f,x,0,dir='+')
+Out[50]: 
 		\end{minted}
 		$\infty$
 		\begin{minted}{python}
-In[51] :sp.limit(f,x,0,dir='-')
+In [51]: sp.limit(f,x,0,dir='-')
 Out[51]: 
 \end{minted}
 $0$
@@ -1165,7 +1169,7 @@ $0$
 \begin{paracol}{2}
 Los límites son distintos como corresponde a la función que hemos definido por tramos, además vemos también que por defecto el límite calculado por Sympy, si no indicamos dirección, es el límite por la derecha.
 
-Por último, es posible calcular un limite bi-lateral, \texttt{dir='+-'} que solo existe si coinciden el límite por la derecha con el limite por la izquierda,
+Por último, es posible calcular un límite bilateral, \texttt{dir='+-'} que solo existe si coinciden el límite por la derecha con el limite por la izquierda,
 \switchcolumn
 The limits are different as can be expected for the piecewise function we have defined, in addition, we can see how, when we do not indicate the direction, sympy calculates the right-sided limit.
 
@@ -1189,9 +1193,122 @@ Out[54]:
 \end{center}
 
 \begin{paracol}{2}
-En caso de que los límites laterales no coincida, este comando devuelve un mensaje de error.
+En caso de que los límites laterales no coincidan, este comando lanza un error (\mintinline{python}|ValueError|); con la función por tramos anterior, el mensaje dice que el límite no existe porque el límite por la izquierda es 0 y el límite por la derecha es $\infty$. Por eso, ante un límite que parece raro, conviene calcular los dos límites laterales.
 \switchcolumn
-When the right-sided and the left-sided limits do not meet, the command returns an error message.
+When the right-sided and the left-sided limits do not agree, the command raises an error (\mintinline{python}|ValueError|); with the previous piecewise function, the message says that the limit does not exist because the left-hand limit is 0 and the right-hand limit is $\infty$. That is why, when a limit looks strange, it is advisable to compute both one-sided limits.
+\end{paracol}
+
+\begin{paracol}{2}
+\section{Usar y comprobar los resultados simbólicos}\label{sec:simb_comprobar}
+\sectionmark{Usar y comprobar. \textreferencemark\ Using and checking.}
+El cálculo simbólico y el numérico se complementan. En esta sección vemos cómo resolver ecuaciones, cómo convertir una expresión simbólica en una función numérica, qué errores son frecuentes al mezclar Sympy con Numpy y cómo usar Sympy para comprobar los métodos numéricos de los capítulos anteriores.
+
+\subsection{Resolver ecuaciones}
+El comando \mintinline{python}|solve| busca soluciones exactas de una ecuación (o de un sistema). Se le pasa la expresión que debe anularse y la incógnita. Una solución simbólica se puede comprobar sustituyéndola en la ecuación,
+\switchcolumn
+\section{Using and checking symbolic results}\label{sec:simb_comprobar-2}
+\sectionmark{Usar y comprobar. \textreferencemark\ Using and checking.}
+Symbolic and numerical computing complement each other. In this section we see how to solve equations, how to turn a symbolic expression into a numerical function, which mistakes are frequent when mixing Sympy and Numpy, and how to use Sympy to check the numerical methods of the previous chapters.
+
+\subsection{Solving equations}
+Command \mintinline{python}|solve| looks for exact solutions of an equation (or a system). We pass it the expression that must vanish and the unknown. A symbolic solution can be checked by substituting it into the equation,
+\end{paracol}
+\begin{minted}{python}
+import sympy as sp
+a, b, c, x = sp.symbols('a b c x')
+raices = sp.solve(a*x**2 + b*x + c, x)
+print(raices)
+print([sp.simplify((a*x**2 + b*x + c).subs(x, r)) for r in raices])
+\end{minted}
+\begin{minted}{text}
+[(-b - sqrt(-4*a*c + b**2))/(2*a), (-b + sqrt(-4*a*c + b**2))/(2*a)]
+[0, 0]
+\end{minted}
+\begin{paracol}{2}
+Muchas ecuaciones no tienen solución que se pueda escribir con funciones elementales, como $\cos x = x$. Para ellas, \mintinline{python}|nsolve| aplica un método numérico (parecido al de Newton del capítulo \ref{ch:raices}) a partir de un punto inicial, con la precisión que se desee,
+\switchcolumn
+Many equations have no solution that can be written with elementary functions, such as $\cos x = x$. For them, \mintinline{python}|nsolve| applies a numerical method (similar to Newton's method of chapter \ref{ch:raices}) from an initial point, with the desired accuracy,
+\end{paracol}
+\begin{minted}{python}
+print(sp.nsolve(sp.cos(x) - x, x, 1))
+\end{minted}
+\begin{minted}{text}
+0.739085133215161
+\end{minted}
+
+\begin{paracol}{2}
+\subsection{Del símbolo al número: \texttt{lambdify}}
+Para evaluar una expresión simbólica en muchos puntos no hay que usar \mintinline{python}|subs|, que es muy lento, sino convertirla en una función de Python que trabaje con arrays de Numpy. Eso hace \mintinline{python}|lambdify|. En el ejemplo, obtenemos la derivada de $g(x)=e^{-x^2}\sin 3x$ con Sympy, la convertimos en función y la comprobamos con la diferencia centrada del capítulo \ref{ch:integracion},
+\switchcolumn
+\subsection{From symbol to number: \texttt{lambdify}}
+To evaluate a symbolic expression at many points we should not use \mintinline{python}|subs|, which is very slow, but turn it into a Python function that works with Numpy arrays. That is what \mintinline{python}|lambdify| does. In the example, we obtain the derivative of $g(x)=e^{-x^2}\sin 3x$ with Sympy, turn it into a function and check it with the central difference of chapter \ref{ch:integracion},
+\end{paracol}
+\begin{minted}{python}
+import numpy as np
+g = sp.exp(-x**2)*sp.sin(3*x)
+dg = sp.diff(g, x)
+g_num = sp.lambdify(x, g, 'numpy')       # funciones de Python / Python functions
+dg_num = sp.lambdify(x, dg, 'numpy')
+xs = np.linspace(-2, 2, 1001)
+h = 1e-5
+dif_centrada = (g_num(xs + h) - g_num(xs - h))/(2*h)
+print(np.max(np.abs(dg_num(xs) - dif_centrada)))
+\end{minted}
+\begin{minted}{text}
+7.500000620552782e-10
+\end{minted}
+\begin{paracol}{2}
+La diferencia, $7.5\cdot10^{-10}$, es del orden del error esperado para la diferencia centrada con $h=10^{-5}$ (sección \ref{sec:paso_optimo}): las dos derivadas se confirman mutuamente. Evaluar \mintinline{python}|dg| en 2000 puntos con \mintinline{python}|subs| y \mintinline{python}|evalf| tarda varios segundos; con la función de \mintinline{python}|lambdify|, menos de un milisegundo (unas diez mil veces menos).
+
+\subsection{Errores frecuentes al mezclar Sympy y Numpy}
+Sympy trabaja con números exactos (enteros, racionales, $\pi$\ldots), pero en cuanto aparece un número de coma flotante, el resultado deja de ser exacto. Los errores más frecuentes son:
+\begin{itemize}
+\item Usar \mintinline{python}|np.pi| en lugar de \mintinline{python}|sp.pi|: \mintinline{python}|sp.sin(np.pi)| da $1.22\cdot10^{-16}$ y \mintinline{python}|sp.sin(sp.pi)| da $0$. Del mismo modo, si integramos $\sin(\pi x)$ entre 0 y 1 con \mintinline{python}|integrate|, con \mintinline{python}|np.pi| obtenemos $0.636619772367581$ y con \mintinline{python}|sp.pi|, el resultado exacto, $2/\pi$.
+\item Escribir fracciones de Python: \mintinline{python}|x**(1/3)| da \mintinline{python}|x**0.333333333333333|, porque \mintinline{python}|1/3| se calcula en coma flotante antes de llegar a Sympy. Hay que usar \mintinline{python}|sp.Rational(1, 3)| o \mintinline{python}|sp.cbrt(x)|.
+\item Olvidar las hipótesis sobre las variables: \mintinline{python}|sp.sqrt(x**2)| no se simplifica a \mintinline{python}|x|, porque eso solo es cierto si $x\geq0$. Con \mintinline{python}|x = sp.symbols('x', positive=True)| sí se simplifica.
+\item Creer que un resultado simbólico es siempre correcto o tiene sentido: \mintinline{python}|sp.integrate(1/x, (x, -1, 1))| devuelve \mintinline{python}|nan|, porque la integral diverge en $x=0$, aunque el integrando sea impar. Un resultado simbólico se comprueba como cualquier otro: derivando la primitiva obtenida, sustituyendo la solución en la ecuación o comparando con un cálculo numérico.
+\end{itemize}
+\switchcolumn
+The difference, $7.5\cdot10^{-10}$, is of the order of the error expected for the central difference with $h=10^{-5}$ (section \ref{sec:paso_optimo-2}): both derivatives confirm each other. Evaluating \mintinline{python}|dg| at 2000 points with \mintinline{python}|subs| and \mintinline{python}|evalf| takes several seconds; with the function from \mintinline{python}|lambdify|, less than a millisecond (some ten thousand times less).
+
+\subsection{Frequent mistakes when mixing Sympy and Numpy}
+Sympy works with exact numbers (integers, rationals, $\pi$\ldots), but as soon as a floating-point number appears, the result is no longer exact. The most frequent mistakes are:
+\begin{itemize}
+\item Using \mintinline{python}|np.pi| instead of \mintinline{python}|sp.pi|: \mintinline{python}|sp.sin(np.pi)| gives $1.22\cdot10^{-16}$ and \mintinline{python}|sp.sin(sp.pi)| gives $0$. Likewise, if we integrate $\sin(\pi x)$ between 0 and 1 with \mintinline{python}|integrate|, with \mintinline{python}|np.pi| we obtain $0.636619772367581$ and with \mintinline{python}|sp.pi|, the exact result, $2/\pi$.
+\item Writing Python fractions: \mintinline{python}|x**(1/3)| gives \mintinline{python}|x**0.333333333333333|, because \mintinline{python}|1/3| is computed in floating point before reaching Sympy. We must use \mintinline{python}|sp.Rational(1, 3)| or \mintinline{python}|sp.cbrt(x)|.
+\item Forgetting the assumptions on the variables: \mintinline{python}|sp.sqrt(x**2)| is not simplified to \mintinline{python}|x|, because that is only true if $x\geq0$. With \mintinline{python}|x = sp.symbols('x', positive=True)| it is simplified.
+\item Believing that a symbolic result is always right or meaningful: \mintinline{python}|sp.integrate(1/x, (x, -1, 1))| returns \mintinline{python}|nan|, because the integral diverges at $x=0$, even though the integrand is odd. A symbolic result is checked like any other: differentiating the primitive obtained, substituting the solution into the equation or comparing with a numerical computation.
+\end{itemize}
+\end{paracol}
+
+\begin{paracol}{2}
+\subsection{Sympy para comprobar métodos numéricos}
+El error de truncamiento de una fórmula de diferencias finitas se obtiene con un desarrollo de Taylor, un cálculo largo y fácil de equivocar. Sympy lo hace por nosotros si usamos una función genérica, \mintinline{python}|sp.Function('f')|, y desarrollamos la fórmula en serie de potencias de $h$,
+\switchcolumn
+\subsection{Sympy to check numerical methods}
+The truncation error of a finite-difference formula is obtained with a Taylor expansion, a long computation in which it is easy to make mistakes. Sympy does it for us if we use a generic function, \mintinline{python}|sp.Function('f')|, and expand the formula in a power series of $h$,
+\end{paracol}
+\begin{minted}{python}
+f = sp.Function('f')
+h = sp.symbols('h')
+centrada = (f(x + h) - f(x - h))/(2*h)
+print(centrada.series(h, 0, 4))
+\end{minted}
+\begin{minted}{text}
+Subs(Derivative(f(_xi_1), _xi_1), _xi_1, x) + h**2*Subs(Derivative(f(_xi_1), (_xi_1, 3)), _xi_1, x)/6 + O(h**4)
+\end{minted}
+\begin{paracol}{2}
+Sympy escribe las derivadas de forma un poco aparatosa (\mintinline{python}|Subs(Derivative(...))| es la derivada evaluada en $x$), pero el resultado es
+\switchcolumn
+Sympy writes the derivatives in a somewhat cumbersome way (\mintinline{python}|Subs(Derivative(...))| is the derivative evaluated at $x$), but the result is
+\end{paracol}
+\begin{equation*}
+\frac{f(x+h)-f(x-h)}{2h} = f'(x) + \frac{h^2}{6}f'''(x) + O(h^4)
+\end{equation*}
+\begin{paracol}{2}
+\noindent es decir, la diferencia centrada es de orden 2 y su error principal es $h^2f'''(x)/6$. Así se comprobaron todas las fórmulas de la tabla \ref{tabdiff} del capítulo \ref{ch:integracion} en la revisión de estos apuntes, y así se encontró que una de ellas estaba mal: no aproximaba la segunda derivada.
+\switchcolumn
+\noindent that is, the central difference is of order 2 and its leading error is $h^2f'''(x)/6$. This is how all the formulas of table \ref{tabdiff} of chapter \ref{ch:integracion} were checked in the revision of these notes, and how one of them was found to be wrong: it did not approximate the second derivative.
 \end{paracol}
 
 \begin{paracol}{2}
@@ -1204,8 +1321,8 @@ Para obtener la gráfica de una función de una sola variable se emplea el coman
 \switchcolumn
 \section{Plotting}
 \sectionmark{Representación gráfica. \textreferencemark\ Plotting}
-Sympy has a set of functions that allows us to plot symbolic functions. Its performance is based on Matplotlib. We will supply a review of the most common plotting functions
-\index[eng]{Plotting! Simbolic function plotting}
+Sympy has a set of functions that allows us to plot symbolic functions. They are based on Matplotlib. We will supply a review of the most common plotting functions.
+\index[eng]{Plotting! Symbolic function plotting}
 
 To draw the graphic of a single variable function we use the command \texttt{plot} from Sympy sub-module \mintinline{python}|plotting|. This command accepts a symbolic function and various parameters needed to adjust the plot. For example, \mintinline{python}|xlim| and \mintinline{python}|ylim| are two tuples that specify the limits for the x and y axes, respectively. If you do not provide these limits, SymPy will automatically select suitable ones.
 \end{paracol} 
@@ -1227,16 +1344,16 @@ Out[58]: <sympy.plotting.plot.Plot at 0x79891a89dbd0>
 \begin{figure}
 	\centering
 		\includegraphics[width=10.5cm]{abs_simbol.png}
-		\bicaption{Representación de la funcion $f(x)  = |x|$ entre $-5$ y $5$}{Function $f(x) = |x|$ into the interval $(-5,5)$ } \label{fig:simplot1}
+		\bicaption{Representación de la función $f(x)  = |x|$ entre $-5$ y $5$}{Function $f(x) = |x|$ into the interval $(-5,5)$ } \label{fig:simplot1}
 \end{figure}
 \begin{paracol}{2}
-El resultado se muestra en la figuras \ref{fig:simplot1}
+El resultado se muestra en la figura \ref{fig:simplot1}.
 
 Es posible también representar curvas paramétricas, $x(t),\ y(t)$, mediante el empleo del comando \mintinline{python}|plot_parametric|. Como por ejemplo, $x(t) = t\cos(t),\  y(t)= t\sin(t)$ representa una espiral en el plano $x,\ y$. Para obtener su gráfica se debe pasar  las funciones simbólicas $x(t)$ e $y(t)$ en una tupla y a continuación la variable simbólica que represente el parámetro, $t$, y el intervalo de valores del parámetro $[t_{min} \ t_{max}]$ para los que se quiere obtener la gráfica.  El siguiente código muestra cómo obtener la representación gráfica de la curva paramétrica $x(t),y(t)$ del ejemplo anterior.
 \switchcolumn
 The result is shown in figure \ref{fig:simplot1}
 
-It is also possible to represent parametric functions, $x(t),\ y(t)$. To do it, we  use the command \mintinline{python}|plot_parametric|. For example, $x(t) = t\cos(t),\  y(t)= t\sin(t)$ represent a spiral on the $x,\ y$ plane. To plot in we should pass to the function the symbolic functions $x(t)$ and $y(t)$ into a tuple followed by the symbolic variable that represent the parameter, $t$, and the interval of parameter values $[t_{min} \ t_{max}]$ for which we want to draw the plot. The following code shows how to get the graphic representation of the previous example, $x(t),y(t)$, parametric function. 
+It is also possible to represent parametric functions, $x(t),\ y(t)$. To do it, we  use the command \mintinline{python}|plot_parametric|. For example, $x(t) = t\cos(t),\  y(t)= t\sin(t)$ represent a spiral on the $x,\ y$ plane. To plot it we should pass to the function the symbolic functions $x(t)$ and $y(t)$ into a tuple followed by the symbolic variable that represent the parameter, $t$, and the interval of parameter values $[t_{min} \ t_{max}]$ for which we want to draw the plot. The following code shows how to get the graphic representation of the previous example, $x(t),y(t)$, parametric function. 
 \end{paracol}
 \begin{center}
 	\begin{minipage}{.6\textwidth}
@@ -1253,9 +1370,9 @@ In [67]: dr.show()
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
-En este caso, además hemos creado un objeto gráfico \mintinline{python}|dr|, de modo que podemos después modificar las propiedades del gráfico, usando los mismos comando que emplearíamos en Matplotlib. Destacar el uso de \mintinline{python}|dr.show()| para actualizar el gráfico con los parámetros modificados. El resultado final se muestra en la figura \ref{fig:simplot1}.
+En este caso, además hemos creado un objeto gráfico \mintinline{python}|dr|, de modo que podemos después modificar las propiedades del gráfico, usando los mismos comando que emplearíamos en Matplotlib. Destacar el uso de \mintinline{python}|dr.show()| para actualizar el gráfico con los parámetros modificados. El resultado final se muestra en la figura \ref{fig:simpar}.
 \switchcolumn
-In this case, we have also created a graphic object \mintinline{python}|dr|, which will allow us to modify the graphics properties later on using the same commands we would use with Matplotlib. It is interesting to notice that use of \mintinline{python}|dr.show()| to update the figure with the modified parameters. The final result is shown in figure \ref{fig:simplot1}.
+In this case, we have also created a graphic object \mintinline{python}|dr|, which will allow us to modify the graphics properties later on using the same commands we would use with Matplotlib. It is interesting to notice that use of \mintinline{python}|dr.show()| to update the figure with the modified parameters. The final result is shown in figure \ref{fig:simpar}.
 \end{paracol}
  
 \begin{figure}
@@ -1290,7 +1407,7 @@ Out[126]:
 		$\sin(\sqrt{x^2+y^2})$
 		\begin{minted}{python}
 In [127]: sp.plotting.plot3d(f3,(x,-2*sp.pi,2*sp.pi),(y,-2*sp.pi,2*sp.pi),
-nb_of_points_x=100,nb_of_points_y=100)
+   ...: nb_of_points_x=100,nb_of_points_y=100)
 Out[127]: <sympy.plotting.plot.Plot at 0x798926f7c610>
 		\end{minted}
 	\end{minipage}
@@ -1303,21 +1420,107 @@ Figure \ref{fig:surfsim} shows the results of this example.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{sim_3d.png}
-\caption{Gráfica de la función $f(x) = \sin\left(\sqrt{x^2+y^2}\right)$ obtenida a partir de su expresión simbólica con el comando \texttt{ezsurf} de Matlab }
+\bicaption{Gráfica de la función $f(x,y) = \sin\left(\sqrt{x^2+y^2}\right)$ obtenida a partir de su expresión simbólica con el comando \texttt{plot3d} de Sympy.}{Plot of function $f(x,y) = \sin\left(\sqrt{x^2+y^2}\right)$ obtained from its symbolic expression with Sympy's command \texttt{plot3d}.}
 \label{fig:surfsim}
 \end{figure}
 \begin{paracol}{2}
 Hasta aquí la introducción al cálculo simbólico. Para obtener una visión completa de sus posibilidades es imprescindible consultar la documentación de Sympy.
 \switchcolumn
-So far, the introduction to symbolic computing. In order to get a complete vision of its possibilities it is mandatory to check the Sympy documentation 
+This is the end of the introduction to symbolic computing. To get a complete view of its possibilities, it is essential to check the Sympy documentation. 
 \end{paracol}
 \begin{flalign*}
 	&&\biggr \}\reversemathwitch* 
 \end{flalign*}
 
+\section{Ejercicios}
+\sectionmark{Ejercicios \textreferencemark\ Exercises}
+\begin{enumerate}
+\item \label{ej:sim_deriv_int} \textbf{Derivar, integrar y comprobar.} Para las funciones $f_1(x)=x^2e^{-x}$, $f_2(x)=\dfrac{1}{1+x^2}$, $f_3(x)=\sin^3 x$ y $f_4(x)=\ln(x+\sqrt{1+x^2})$:
+\begin{enumerate}
+\item Calcula con Sympy la derivada y una primitiva de cada una. Comprueba cada primitiva con \mintinline{python}|assert|, derivándola y simplificando la diferencia con la función original.
+\item Convierte cada derivada en una función numérica con \mintinline{python}|lambdify| y compárala con la diferencia centrada en 100 puntos de $[0,2]$. ¿Qué diferencia máxima esperas con $h=10^{-5}$?
+\item Calcula $\int_0^2 f_i(x)\,dx$ de forma exacta y con \mintinline{python}|scipy.integrate.quad|, y comprueba que coinciden.
+\end{enumerate}
 
+\item \label{ej:sim_taylor_dif} \textbf{Comprueba las fórmulas de diferencias finitas.} Con el método de la sección \ref{sec:simb_comprobar}, obtén el error de truncamiento principal de la diferencia adelantada de dos puntos, de la adelantada de tres puntos y de la fórmula centrada de la segunda derivada, $\left(f(x+h)-2f(x)+f(x-h)\right)/h^2$. Compara con la tabla \ref{tabdiff} del capítulo \ref{ch:integracion} (la tabla solo da el orden: comprueba que coincide). Después, escribe con coeficientes desconocidos una fórmula $\left(a f(x)+b f(x+h)+c f(x+2h)\right)/h^2$ para la segunda derivada y usa \mintinline{python}|solve| para encontrar $a$, $b$ y $c$. ¿De qué orden es?
 
+\item \label{ej:sim_depura} \textbf{Depura este código.} Un estudiante esperaba obtener $1$, $2/\pi$ y $\dfrac{1}{3x^{2/3}}$ con este programa,
+\begin{minted}{python}
+import numpy as np
+import sympy as sp
+x = sp.symbols('x')
+f = sp.sin(np.pi*x)**2 + x**(1/2)
+print(f.subs(x, 1))
+print(sp.integrate(sp.sin(np.pi*x), (x, 0, 1)))
+print(sp.diff(x**(1/3), x))
+\end{minted}
+Ejecútalo, explica qué obtiene y por qué, y corrígelo para que dé resultados exactos.
 
-  
+\item \label{ej:sim_supuestos} \textbf{Hipótesis sobre las variables.} Calcula con Sympy \mintinline{python}|sp.sqrt(x**2)|, \mintinline{python}|sp.simplify(sp.log(sp.exp(x)))| y \mintinline{python}|sp.integrate(x**n, x)|, primero con símbolos sin hipótesis y después declarando \mintinline{python}|positive=True|, \mintinline{python}|real=True| o \mintinline{python}|integer=True| según convenga. Explica cada resultado. ¿Por qué la primitiva de $x^n$ es una función definida a trozos? ¿Para qué valores complejos de $x$ es falsa la igualdad $\ln(e^x)=x$?
 
-  	 
+\item \label{ej:sim_ecuaciones} \textbf{Ecuaciones: exactas y numéricas.}
+\begin{enumerate}
+\item Resuelve $x^3-6x^2+11x-6=0$ con \mintinline{python}|solve| y comprueba que las raíces coinciden con las que da la bisección del capítulo \ref{ch:raices} en $[0, 1.5]$, $[1.5, 2.5]$ y $[2.5, 4]$.
+\item La ecuación de Kepler, $M = E - e\sin E$, relaciona la anomalía media $M$ y la excéntrica $E$ de una órbita de excentricidad $e$. Intenta resolverla con \mintinline{python}|solve| para $e=0.5$ y $M=1$. Después, resuélvela con \mintinline{python}|nsolve| con 30 cifras y usa ese valor como referencia para medir el error de tu método de Newton del capítulo \ref{ch:raices} en cada iteración. ¿Se observa la convergencia cuadrática?
+\end{enumerate}
+
+\item \label{ej:sim_serie} \textbf{Predice y mide: la serie de Taylor de $e^x$.} Obtén con Sympy el polinomio de Taylor de grado $n$ de $e^x$ en $x_0=0$, conviértelo en función con \mintinline{python}|lambdify| y evalúalo en $x=1$ para $n=1,\dots,20$. Usa \mintinline{python}|sp.E.evalf(30)| como valor de referencia. Antes de calcular, predice el error con la cota de Lagrange, $e/(n+1)!$, y a partir de qué $n$ dejará de disminuir al evaluar en doble precisión (capítulo \ref{chp:arit}). Dibuja el error medido y la predicción en escala logarítmica.
+
+\item \label{ej:sim_lambdify} \textbf{Mide: \texttt{subs} frente a \texttt{lambdify}.} Para $g(x)=e^{-x^2}\sin 3x$, mide con \mintinline{python}|time.perf_counter| cuánto se tarda en evaluar $g$ en $N=10, 100$ y $1000$ puntos con \mintinline{python}|subs| y \mintinline{python}|evalf| y con la función de \mintinline{python}|lambdify|. ¿Cómo crece el tiempo con $N$ en cada caso? ¿Cuánto se tardaría con $10^6$ puntos?
+
+\item \label{ej:sim_ia} \textbf{Critica la explicación.} Un asistente de IA dio esta respuesta a un estudiante:
+\begin{quote}
+\emph{Para la función $f(x)=x$ si $x<0$ y $f(x)=1/x$ si $x>0$, Sympy confirma que $\lim_{x\to0}f(x)=\infty$:} \mintinline{python}|sp.limit(f, x, 0)| \emph{devuelve} \mintinline{python}|oo|. \emph{Además, como $1/x$ es una función impar, $\int_{-1}^{1}\frac{dx}{x}=0$.}
+\end{quote}
+Comprueba las dos afirmaciones con Sympy (límites laterales, \mintinline{python}|dir='+-'|, \mintinline{python}|integrate|) y con un cálculo numérico de $\int_{-1}^{-\epsilon}+\int_{\epsilon}^{1}$ y de $\int_{-1}^{-\epsilon}+\int_{2\epsilon}^{1}$ para $\epsilon\to0$. Explica qué está mal en cada una.
+
+\item \label{ej:sim_tests} \textbf{Primero los tests.} Queremos una función \mintinline{python}|taylor(expr, x, x0, n)| que devuelva una función de Numpy que evalúe el polinomio de Taylor de grado $n$ de la expresión simbólica \mintinline{python}|expr| en torno a $x_0$. Antes de escribirla, o de pedírsela a un asistente de IA, escribe las pruebas: que para un polinomio de grado menor o igual que $n$ devuelva el propio polinomio; que coincida con \mintinline{python}|series| para $\sin x$ y $n=5$; que acepte arrays de Numpy; y que, para $e^x$ con $n=3$, el error en $x_0+h$ disminuya como $h^4$ (mídelo con $h=0.1, 0.05, 0.025$). Después, escribe la función (o pídesela al asistente) y ejecuta las pruebas.
+\end{enumerate}
+
+\selectlanguage{english}
+\section{Exercises}
+\begin{enumerate}
+\item \label{ej:sim_deriv_int-en} \textbf{Differentiate, integrate and check.} For the functions $f_1(x)=x^2e^{-x}$, $f_2(x)=\dfrac{1}{1+x^2}$, $f_3(x)=\sin^3 x$ and $f_4(x)=\ln(x+\sqrt{1+x^2})$:
+\begin{enumerate}
+\item Compute with Sympy the derivative and a primitive of each one. Check each primitive with \mintinline{python}|assert|, by differentiating it and simplifying the difference with the original function.
+\item Turn each derivative into a numerical function with \mintinline{python}|lambdify| and compare it with the central difference at 100 points of $[0,2]$. What maximum difference do you expect with $h=10^{-5}$?
+\item Compute $\int_0^2 f_i(x)\,dx$ exactly and with \mintinline{python}|scipy.integrate.quad|, and check that they agree.
+\end{enumerate}
+
+\item \label{ej:sim_taylor_dif-en} \textbf{Check the finite-difference formulas.} With the method of section \ref{sec:simb_comprobar-2}, obtain the leading truncation error of the two-point forward difference, of the three-point forward difference and of the central formula for the second derivative, $\left(f(x+h)-2f(x)+f(x-h)\right)/h^2$. Compare with table \ref{tabdiff} of chapter \ref{ch:integracion} (the table only gives the order: check that it agrees). Then, write with unknown coefficients a formula $\left(a f(x)+b f(x+h)+c f(x+2h)\right)/h^2$ for the second derivative and use \mintinline{python}|solve| to find $a$, $b$ and $c$. What is its order?
+
+\item \label{ej:sim_depura-en} \textbf{Debug this code.} A student expected to obtain $1$, $2/\pi$ and $\dfrac{1}{3x^{2/3}}$ with this program,
+\begin{minted}{python}
+import numpy as np
+import sympy as sp
+x = sp.symbols('x')
+f = sp.sin(np.pi*x)**2 + x**(1/2)
+print(f.subs(x, 1))
+print(sp.integrate(sp.sin(np.pi*x), (x, 0, 1)))
+print(sp.diff(x**(1/3), x))
+\end{minted}
+Run it, explain what it gives and why, and correct it so that it gives exact results.
+
+\item \label{ej:sim_supuestos-en} \textbf{Assumptions on the variables.} Compute with Sympy \mintinline{python}|sp.sqrt(x**2)|, \mintinline{python}|sp.simplify(sp.log(sp.exp(x)))| and \mintinline{python}|sp.integrate(x**n, x)|, first with symbols without assumptions and then declaring \mintinline{python}|positive=True|, \mintinline{python}|real=True| or \mintinline{python}|integer=True| as appropriate. Explain each result. Why is the primitive of $x^n$ a piecewise function? For which complex values of $x$ is the equality $\ln(e^x)=x$ false?
+
+\item \label{ej:sim_ecuaciones-en} \textbf{Equations: exact and numerical.}
+\begin{enumerate}
+\item Solve $x^3-6x^2+11x-6=0$ with \mintinline{python}|solve| and check that the roots agree with those given by the bisection method of chapter \ref{ch:raices} in $[0, 1.5]$, $[1.5, 2.5]$ and $[2.5, 4]$.
+\item Kepler's equation, $M = E - e\sin E$, relates the mean anomaly $M$ and the eccentric anomaly $E$ of an orbit of eccentricity $e$. Try to solve it with \mintinline{python}|solve| for $e=0.5$ and $M=1$. Then, solve it with \mintinline{python}|nsolve| with 30 digits and use that value as a reference to measure the error of your Newton's method of chapter \ref{ch:raices} at each iteration. Can you see the quadratic convergence?
+\end{enumerate}
+
+\item \label{ej:sim_serie-en} \textbf{Predict and measure: the Taylor series of $e^x$.} Obtain with Sympy the Taylor polynomial of degree $n$ of $e^x$ at $x_0=0$, turn it into a function with \mintinline{python}|lambdify| and evaluate it at $x=1$ for $n=1,\dots,20$. Use \mintinline{python}|sp.E.evalf(30)| as the reference value. Before computing, predict the error with Lagrange's bound, $e/(n+1)!$, and from which $n$ it will stop decreasing when evaluating in double precision (chapter \ref{chp:arit}). Plot the measured error and the prediction on a logarithmic scale.
+
+\item \label{ej:sim_lambdify-en} \textbf{Measure: \texttt{subs} versus \texttt{lambdify}.} For $g(x)=e^{-x^2}\sin 3x$, measure with \mintinline{python}|time.perf_counter| how long it takes to evaluate $g$ at $N=10, 100$ and $1000$ points with \mintinline{python}|subs| and \mintinline{python}|evalf| and with the function from \mintinline{python}|lambdify|. How does the time grow with $N$ in each case? How long would it take with $10^6$ points?
+
+\item \label{ej:sim_ia-en} \textbf{Criticise the explanation.} An AI assistant gave this answer to a student:
+\begin{quote}
+\emph{For the function $f(x)=x$ if $x<0$ and $f(x)=1/x$ if $x>0$, Sympy confirms that $\lim_{x\to0}f(x)=\infty$:} \mintinline{python}|sp.limit(f, x, 0)| \emph{returns} \mintinline{python}|oo|. \emph{Besides, since $1/x$ is an odd function, $\int_{-1}^{1}\frac{dx}{x}=0$.}
+\end{quote}
+Check both statements with Sympy (one-sided limits, \mintinline{python}|dir='+-'|, \mintinline{python}|integrate|) and with a numerical computation of $\int_{-1}^{-\epsilon}+\int_{\epsilon}^{1}$ and of $\int_{-1}^{-\epsilon}+\int_{2\epsilon}^{1}$ for $\epsilon\to0$. Explain what is wrong in each one.
+
+\item \label{ej:sim_tests-en} \textbf{Tests first.} We want a function \mintinline{python}|taylor(expr, x, x0, n)| that returns a Numpy function evaluating the Taylor polynomial of degree $n$ of the symbolic expression \mintinline{python}|expr| around $x_0$. Before writing it, or asking an AI assistant for it, write the tests: that for a polynomial of degree less than or equal to $n$ it returns the polynomial itself; that it agrees with \mintinline{python}|series| for $\sin x$ and $n=5$; that it accepts Numpy arrays; and that, for $e^x$ with $n=3$, the error at $x_0+h$ decreases as $h^4$ (measure it with $h=0.1, 0.05, 0.025$). Then, write the function (or ask the assistant for it) and run the tests.
+\end{enumerate}
+\selectlanguage{spanish}
+
+\fussy
