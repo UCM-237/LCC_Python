@@ -140,9 +140,9 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 - Erratas: "python", "parrafo", "no por que", "Said", comillas del
   epígrafe de Tolkien, "first semester" (el español no dice semestre),
   "Lia" sin tilde en la firma.
-- *Sin cambiar (para confirmar)*: grafía de algunos nombres de la lista de
-  agradecimientos ("Daviz sánchez", "Iñaqui", "Matessini", "Ruíz",
-  "Rodriguez", "Ramirez", "Jose", "Selles").
+- Nombres de los agradecimientos corregidos según el profesor: Rodríguez,
+  Mattesini, Ruiz, José, Sellés. *Sin confirmar (sin cambiar)*: "Daviz
+  sánchez", "Iñaqui", "Ramirez".
 
 **Capítulo 2: qué se ha hecho**
 
