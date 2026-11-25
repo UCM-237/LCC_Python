@@ -141,8 +141,8 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
   epígrafe de Tolkien, "first semester" (el español no dice semestre),
   "Lia" sin tilde en la firma.
 - Nombres de los agradecimientos corregidos según el profesor: Rodríguez,
-  Mattesini, Ruiz, José, Sellés, David Sánchez. *Sin confirmar (sin
-  cambiar)*: "Iñaqui", "Ramirez".
+  Mattesini, Ruiz, José, Sellés, David Sánchez, Ramírez. "Iñaqui" se
+  escribe así (confirmado).
 
 **Capítulo 2: qué se ha hecho**
 
