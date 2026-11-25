@@ -1373,7 +1373,11 @@ To fit $m$ data we can use any polynomial from degree $0$ to degree $m-1$. If we
 Therefore, for experimental data with random errors, the best fit is given by the lowest-degree polynomial for which the differences between the data and the polynomial, $r_i=y_i-p(x_i)$, are randomly distributed. These differences are called \emph{residuals}. \index[eng]{Residuals}
 \end{paracol}
 
-\begin{figure}
+% No flotante: como figura flotante entre dos paracol se perdía sin aviso
+% en el manual completo (y con ella las etiquetas fig:residuos*).
+\begin{center}
+\begin{minipage}{\textwidth}
+	\captionsetup{type=figure}
 	\centering
 	\begin{subfigure}{0.48\textwidth}
 		\includegraphics[width=\linewidth]{lse1.png}
@@ -1393,7 +1397,8 @@ Therefore, for experimental data with random errors, the best fit is given by th
 	\end{subfigure}
 	\bicaption{Comparación entre los residuos de los ajustes por mínimos cuadrados de un conjunto de datos con polinomios de grados 1 a 4.}{Comparison between the residuals of the least squares fits of a set of data with polynomials of degrees 1 to 4.}
 	\label{fig:residuos}
-\end{figure}
+\end{minipage}
+\end{center}
 \begin{paracol}{2}
 La figura \ref{fig:residuos} muestra un ejemplo de ajuste por mínimos cuadrados con polinomios de grado creciente.
 

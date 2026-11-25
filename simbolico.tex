@@ -126,9 +126,15 @@ $a^2b+ab^2-3abc+c^3$
 In [50]: A.inv()
 Out[50]: 
 \end{minted}
-\includegraphics[width=1.4\textwidth]{inversa_m.png}
 	\end{minipage}
 \end{center}
+\[
+\begin{bmatrix}
+\dfrac{a b - b c}{a^{2} b + a b^{2} - 3 a b c + c^{3}} & \dfrac{- a b + c^{2}}{a^{2} b + a b^{2} - 3 a b c + c^{3}} & \dfrac{b^{2} - b c}{a^{2} b + a b^{2} - 3 a b c + c^{3}}\\[3ex]
+\dfrac{a b - a c}{a^{2} b + a b^{2} - 3 a b c + c^{3}} & \dfrac{a^{2} - a c}{a^{2} b + a b^{2} - 3 a b c + c^{3}} & \dfrac{- a b + c^{2}}{a^{2} b + a b^{2} - 3 a b c + c^{3}}\\[3ex]
+\dfrac{- a b + c^{2}}{a^{2} b + a b^{2} - 3 a b c + c^{3}} & \dfrac{a b - a c}{a^{2} b + a b^{2} - 3 a b c + c^{3}} & \dfrac{a b - b c}{a^{2} b + a b^{2} - 3 a b c + c^{3}}
+\end{bmatrix}
+\]
 \begin{paracol}{2}
 Otra opción posible es crear un objeto simbólico matriz. La idea es crear una variable simbólica que contiene una matriz del tamaño que deseemos. Para ello empleamos el comando \mintinline{python}|MatrixSymbol| de  \mintinline{python}|sympy.matrices|. Este comando admite un símbolo y dos parámetros numéricos que corresponden con el número de filas y columnas de la matriz creada. Estos parámetros también podrían a su vez ser simbólicos.
 \switchcolumn
@@ -154,7 +160,13 @@ We can get explicitly the symbolic matrix from a symbolic matrix object,
 In [70]: B.as_explicit()
 Out[70]:				
 \end{minted}
-\includegraphics[width=0.8\textwidth]{matrixexp.png}		
+\[
+\begin{bmatrix}
+b_{0, 0} & b_{0, 1} & b_{0, 2}\\
+b_{1, 0} & b_{1, 1} & b_{1, 2}\\
+b_{2, 0} & b_{2, 1} & b_{2, 2}
+\end{bmatrix}
+\]
 	\end{minipage}
 \end{center}
 \begin{paracol}{2}
@@ -168,9 +180,11 @@ and then, to apply matrix operations to the explicit matrices.
 		In [23]: B.as_explicit().det()
 		Out[23]:			
 	\end{minted}
-	\includegraphics[width=1.1\textwidth]{detsimbol.png}		
 \end{minipage}
 \end{center}
+\[
+b_{0, 0} b_{1, 1} b_{2, 2} - b_{0, 0} b_{1, 2} b_{2, 1} - b_{0, 1} b_{1, 0} b_{2, 2} + b_{0, 1} b_{1, 2} b_{2, 0} + b_{0, 2} b_{1, 0} b_{2, 1} - b_{0, 2} b_{1, 1} b_{2, 0}
+\]
 
 \begin{paracol}{2}
 \subsection{Expresiones simbólicas}

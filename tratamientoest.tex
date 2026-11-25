@@ -2067,7 +2067,7 @@ def u_c(x): return np.std(x, ddof=1)/np.sqrt(len(x))
 \end{minted}
 Para $n=4$ medidas, todas dan resultados del mismo orden y no se puede saber cuál es correcta mirando un solo caso. Simula $10^5$ experimentos de $n=4$ medidas con $\sigma=1$ y compara la desviación estándar real de las medias (que puedes calcular con las propias medias simuladas) con el valor medio que da cada función. Repite para $n=25$. ¿Cuál es correcta? ¿Por qué la diferencia entre \mintinline{python}|u_a| y \mintinline{python}|u_c| es más importante cuando $n$ es pequeño? Para terminar, comprueba la cobertura del intervalo $\bar{x}\pm t_{n-1}\,$\mintinline{python}|u_c(x)| con $n=4$.
 
-\item \label{ej:pendulo} \textbf{Propaga y comprueba: el péndulo.} Para medir $g$ con un péndulo simple de longitud $L=1.000$~m (medida con una cinta graduada en milímetros), se ha cronometrado 10 veces un periodo, con los resultados (en segundos):
+\item \label{ej:pendulo_prop} \textbf{Propaga y comprueba: el péndulo.} Para medir $g$ con un péndulo simple de longitud $L=1.000$~m (medida con una cinta graduada en milímetros), se ha cronometrado 10 veces un periodo, con los resultados (en segundos):
 \begin{center}
 $1.99,\ 2.02,\ 2.04,\ 1.96,\ 2.04,\ 2.02,\ 2.05,\ 2.02,\ 2.06,\ 1.96$
 \end{center}
@@ -2136,7 +2136,7 @@ def u_c(x): return np.std(x, ddof=1)/np.sqrt(len(x))
 \end{minted}
 For $n=4$ measurements, all of them give results of the same order and it is impossible to tell which one is right by looking at a single case. Simulate $10^5$ experiments of $n=4$ measurements with $\sigma=1$ and compare the actual standard deviation of the means (which you can compute from the simulated means themselves) with the mean value given by each function. Repeat for $n=25$. Which one is right? Why is the difference between \mintinline{python}|u_a| and \mintinline{python}|u_c| more important when $n$ is small? Finally, check the coverage of the interval $\bar{x}\pm t_{n-1}\,$\mintinline{python}|u_c(x)| with $n=4$.
 
-\item \label{ej:pendulo-en} \textbf{Propagate and check: the pendulum.} To measure $g$ with a simple pendulum of length $L=1.000$~m (measured with a tape graduated in millimetres), one period has been timed 10 times, with the results (in seconds):
+\item \label{ej:pendulo_prop-en} \textbf{Propagate and check: the pendulum.} To measure $g$ with a simple pendulum of length $L=1.000$~m (measured with a tape graduated in millimetres), one period has been timed 10 times, with the results (in seconds):
 \begin{center}
 $1.99,\ 2.02,\ 2.04,\ 1.96,\ 2.04,\ 2.02,\ 2.05,\ 2.02,\ 2.06,\ 1.96$
 \end{center}

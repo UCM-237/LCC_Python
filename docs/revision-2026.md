@@ -79,7 +79,70 @@ Tras los cambios el manual compila sin errores ni referencias rotas.
 | 9. Diferenciación e integración (`integracion.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 10. Tratamiento estadístico de datos (`tratamientoest.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
 | 11. Cálculo simbólico (`simbolico.tex`) | **Revisado** (nov 2026) | Ver detalle abajo. |
-| 1. Introducción (`introduccion.tex`) y prefacio | Pendiente | Solo han pasado la revisión automática (sección anterior). |
+| 1. Introducción (`introduccion.tex`) y prefacio | **Revisado** (nov 2026) | Ver detalle abajo. |
+
+**Capítulo 1 y prefacio: qué se ha hecho**
+
+*Errores corregidos (capítulo 1)*
+- Circuito digital: "$V_1$ = verdadero, $V_2$ = falso" (es $V_0$), en las dos
+  columnas.
+- Múltiplos del byte: "1 KB = $2^{10}$ bits = 1024 B" (y MB, GB, TB en
+  bits); son $2^{10}$ **bytes**. Se añade la diferencia entre prefijos SI
+  (potencias de 10) e IEC (KiB, MiB\ldots), con el disco de 1 TB que aparece
+  como 931 GB.
+- Representación decimal: "si recorremos los dígitos de izquierda a
+  derecha, cada uno representa una potencia superior" (es de derecha a
+  izquierda); en inglés, los restos de las divisiones se colocaban "from
+  left to right" y, en español, las cifras de la parte fraccionaria "de
+  derecha a izquierda" (las dos al revés).
+- Ejemplo de la parte fraccionaria: anunciaba $0.626$ y calculaba $0.623$;
+  "tomando nueve decimales" para un resultado de 8 cifras binarias; la
+  fórmula general acababa en $E_n\cdot2^{-3}$ y tenía $0.d\cdot2$ en el lado
+  izquierdo; comas decimales mezcladas con puntos.
+- $D=1\cdot2^n+R_n2^{n-1}\cdots$ sin el signo $+$; `${0,1,\ldots}$` sin
+  llaves visibles; etiquetas dentro de `equation*`.
+- Contenido anticuado o erróneo: "navegadores como Bing, Mocilla o Google
+  Crome" (Bing es un buscador); LaTeX como "editor de texto"; Java como
+  lenguaje interpretado (se aclara la frontera compilado/interpretado);
+  sistemas operativos "DOS, Unix y su versión para ordenadores personales
+  Linux"; coprocesador matemático como chip aparte (hoy la FPU está en la
+  CPU); MIPS como "millones de operaciones".
+- Figuras: "E/S)", "I/O)", "Aplication", "High level languaje", "UC" en
+  inglés.
+- Inglés: "assembler language", "bit architecture" (*but*), "traduce",
+  "Central Processing Unity", "three basic models", "binary sentences",
+  tiempos verbales de la unidad de control; erratas en las dos columnas
+  (`éstas`, `cómo` por `como`, `mas`, `Si no que`, `interprete`,
+  `par especificar`, `ó`\ldots).
+- Epígrafe de Alicia: "came" por "come" y comillas.
+
+*Contenido nuevo (capítulo 1)*
+- Comprobación de las conversiones deshaciendo el cambio ($234$, $0.625$) y
+  cota del error de truncamiento ($0.0019 < 2^{-8}$).
+- Sección **"Obtener, comprobar y defender un resultado numérico"**
+  (`sec:intro_verificar`): presenta el enfoque de la revisión, el ciclo
+  predecir/verificar/romper y los tipos de ejercicio.
+- Ejercicios (el capítulo no tenía): conversión a mano y de vuelta; *predice
+  y mide* el número de cifras binarias; el disco de 1 TB; *¿cuál es
+  correcta?* (decimal finito frente a binario finito); *critica la
+  explicación* de una IA ($0.375$ leído al revés y $0.1$ "exacto"); *depura*
+  una función `a_binario` cuya salida para 13 *parece* correcta, con las
+  pruebas escritas antes de la corrección.
+- Solucionario: `onlyforyoureyes/introduccion/EjerciciosLibro.ipynb`
+  (nuevo), comprobado con `assert`.
+
+*Prefacio*
+- Estructura de capítulos: decía "los capítulos uno al cuatro" son de
+  Python (son del dos al cuatro); ahora se enumeran todos.
+- Párrafo nuevo sobre la revisión de 2026 y el uso de la IA; Claude
+  (Anthropic) figura como cuarto autor en la portada (a petición del
+  profesor).
+- Erratas: "python", "parrafo", "no por que", "Said", comillas del
+  epígrafe de Tolkien, "first semester" (el español no dice semestre),
+  "Lia" sin tilde en la firma.
+- *Sin cambiar (para confirmar)*: grafía de algunos nombres de la lista de
+  agradecimientos ("Daviz sánchez", "Iñaqui", "Matessini", "Ruíz",
+  "Rodriguez", "Ramirez", "Jose", "Selles").
 
 **Capítulo 2: qué se ha hecho**
 
@@ -798,6 +861,10 @@ ejercicios: se ha añadido una sección con diez.
 - Las capturas del explorador de variables de Spyder (Pandas) son de 2025; no
   se han rehecho.
 
+*Corrección posterior (nov 2026)*: la etiqueta `ej:pendulo` del ejercicio
+nuevo de propagación ya existía en el capítulo 9 (aviso "multiply defined"
+en el manual completo); ahora es `ej:pendulo_prop`.
+
 **Capítulo 11: qué se ha hecho**
 
 Revisión de las dos columnas y de todas las salidas, comprobadas con Sympy
@@ -849,9 +916,10 @@ una sección nueva de verificación.
   comprobado con `assert`.
 
 *Sin cambiar (para revisar)*
-- Las capturas `inversa_m.png`, `matrixexp.png` y `detsimbol.png` son más
-  anchas que su caja (avisos de 85 y 34 pt); se ven bien, pero convendría
-  sustituirlas por la salida en LaTeX (`sp.latex`).
+- ~~Las capturas `inversa_m.png`, `matrixexp.png` y `detsimbol.png` eran
+  más anchas que su caja~~: sustituidas (nov 2026) por el LaTeX que genera
+  `sp.latex` (compila con pdflatex normal). Las tres imágenes ya no se usan
+  y siguen en `figuras/`.
 - Las cabeceras de página de este capítulo son demasiado largas (aviso de 20
   pt en cada página); ya pasaba antes.
 
@@ -872,23 +940,27 @@ capítulos 9 y 10 (con semillas fijas; desde la raíz del repositorio).
 3. ~~`ax3.meshgrid`~~ y ~~ficheros `.p`~~: resueltos (nov 2026).
 5. ~~`codigos/Intro_matplotlib/untitled0.py` y `untitled3.py`~~: borrados
    (nov 2026).
-8. **pdfTeX se cuelga (violación de segmento) de forma intermitente** al
-   compilar el manual completo en este ordenador (TeX Live 2023 de Debian)
-   desde la revisión del capítulo 8: algunas pasadas fallan al escribir una
-   página y dejan el `.aux` vacío; la siguiente funciona y da el PDF correcto
-   (589 páginas, sin errores ni referencias rotas). No ocurre con el capítulo
-   suelto ni con la versión anterior, y no depende de la figura nueva ni del
-   índice. Comprobar si pasa también con MiKTeX en el despacho; si pasa,
-   investigarlo (quizá probar LuaLaTeX).
-   *Actualización (cap. 9)*: el núcleo registra los fallos casi siempre en
-   la misma instrucción de pdfTeX (6 de 8 en el desplazamiento `0x5630b`),
-   con poca memoria en uso (quedaban ~5 GB libres): es un error del programa
-   (lee fuera de un búfer), no falta de memoria ni un fallo del ordenador.
-   Ocurre también con la aleatorización de direcciones desactivada
-   (`setarch -R`): las pasadas con el `.aux` incompleto terminan, y las que
-   leen el `.aux` completo se caen. Con el capítulo 9 nuevo no se ha
-   conseguido ninguna pasada limpia del manual completo (sí del capítulo
-   suelto, sin errores). Probar con MiKTeX o con otra versión de TeX Live.
+8. ~~**pdfTeX se cuelga (violación de segmento)** al compilar el manual
+   completo~~: **resuelto** (nov 2026). Es un fallo de pdfTeX 1.40.25 (TeX
+   Live 2023) que no depende del ordenador: se produce al escribir una página
+   cuando un enlace (`\pdfstartlink`/`\pdfendlink`) queda en niveles de caja
+   distintos (aviso "\pdfendlink ended up in different nesting level than
+   \pdfstartlink" justo antes de caerse). Solo ocurre con el `.aux` completo
+   (cuando las referencias ya generan enlaces), por eso alternaban pasadas
+   buenas y malas. El enlace culpable era `\ref{fig:itera}` en el párrafo
+   que presenta la función `jacobi` (`sistemas.tex`, antes de un bloque
+   `minted` dentro de `paracol`); ahora es `\ref*` (mismo texto, sin
+   enlace), con un comentario. La versión original compilaba porque la
+   maquetación era otra. Si vuelve a pasar con otro enlace, buscar el aviso
+   en el log y aplicar el mismo remedio.
+   Con ese arreglo apareció otro problema del manual completo: la figura de
+   residuos de `interpolacion.tex` (`fig:residuos`, figura flotante entre dos
+   `paracol`) se perdía sin aviso en una de cada dos pasadas, y con ella sus
+   etiquetas, de modo que las referencias oscilaban entre "8.9" y "??" y el
+   PDF entre 623 y 621 páginas. Ahora es un `minipage` no flotante con
+   `\captionsetup{type=figure}`; el manual completo queda estable (623
+   páginas, sin errores ni referencias rotas) y `pdfs/lcc_manual.pdf` está
+   regenerado (nov 2026).
 6. **La revisión gramatical y de estilo no está hecha.** El corrector sólo
    encuentra palabras mal escritas. El inglés, en particular, tiene muchas
    construcciones calcadas del español que conviene revisar capítulo a

@@ -20,8 +20,10 @@ hermano `onlyforyoureyes`, que suele estar abierto en el mismo workspace.
   y las decisiones pendientes. Actualizarlo al terminar cada capítulo.
 - Orden de revisión (el del curso): introprog ✔, intronumpy ✔, matplotlib ✔,
   aritmetica ✔, calraiz ✔, sistemas ✔, interpolacion ✔, integracion ✔,
-  tratamientoest ✔, simbolico ✔ (nov 2026). Quedan sin revisar a fondo
-  `introduccion.tex` y `preface.tex`. Siguiente fase (hoja de ruta del
+  tratamientoest ✔, simbolico ✔, introduccion ✔ y preface ✔ (nov 2026): la
+  revisión capítulo a capítulo está terminada. Claude (Anthropic) figura como
+  cuarto autor en la portada (`lcc_manual.tex`) a petición del profesor.
+  Siguiente fase (hoja de ruta del
   documento de revisión): capítulo nuevo sobre programar con IA, guía de uso
   de la IA y evaluación.
 - Patrón seguido en cada capítulo: corregir errores (comprobando cada número
@@ -58,8 +60,8 @@ hermano `onlyforyoureyes`, que suele estar abierto en el mismo workspace.
   terminan con `\fussy`; los bloques que solo muestran salida van en
   `\begin{minted}{text}` (así `check_blocks` no los ejecuta).
 - **PDFs**: los finales van solo en `pdfs/` (la raíz los ignora
-  `.gitignore`). `pdfs/lcc_manual.pdf` es de oct 2026 porque el manual
-  completo no compila en el ordenador de casa (ver abajo).
+  `.gitignore`). El manual completo se compila con tres pasadas de
+  `pdflatex -shell-escape` (unos 3,5 min cada una en casa).
 - Disposición bilingüe con `paracol`: texto en español, `\switchcolumn`, texto
   en inglés. Un `\switchcolumn` que falta intercambia los idiomas sin error.
 - Los ejercicios van como `\section{Ejercicios}` en español seguido de
@@ -99,11 +101,18 @@ hermano `onlyforyoureyes`, que suele estar abierto en el mismo workspace.
 - `python3` es Anaconda (`/home/juan/anaconda3`) con numpy, scipy, sympy 1.12,
   pandas y jupyter; `pdflatex` es TeX Live 2023 de Debian y encuentra
   `pygmentize`. Diccionarios del corrector en `tools/dict/`.
-- **pdfTeX se cae (violación de segmento) al compilar el manual completo**,
-  siempre en la misma instrucción y con memoria de sobra: es un fallo de
-  pdfTeX, no del ordenador (pendiente 8 del documento de revisión). Los
-  capítulos sueltos compilan bien. Probar el manual completo con MiKTeX en el
-  despacho.
+- **pdfTeX 1.40.25 se cae (violación de segmento)** si un enlace de
+  `hyperref` queda partido entre niveles de caja (en el log, justo antes:
+  "\pdfendlink ended up in different nesting level than \pdfstartlink"). Solo
+  pasa con el `.aux` completo, así que alterna pasadas buenas y malas. Se
+  arregló (nov 2026) cambiando el `\ref` culpable por `\ref*` (sin enlace) en
+  `sistemas.tex`; si reaparece tras cambiar la maquetación, buscar el aviso y
+  hacer lo mismo (pendiente 8 del documento de revisión).
+- Con `paracol`, una figura flotante colocada entre dos `paracol` puede
+  perderse sin aviso (pasó con `fig:residuos`): si una referencia oscila
+  entre número y "??" de una pasada a otra, convertir la figura en `minipage`
+  con `\captionsetup{type=figure}`. Comprobar siempre que la última pasada no
+  pida "Rerun".
 
 ## Entorno: ordenador del despacho (Windows)
 

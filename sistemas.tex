@@ -2178,11 +2178,13 @@ From the example, we can generalise Jacobi's method to any system of $n$ equatio
 x_i^{(s+1)}=\frac{b_i-\sum_{j\neq i}a_{ij}x_j^{(s)}}{a_{ii}}
 \end{equation*}
 
+% \ref* (sin enlace): con \ref, pdfTeX 1.40.25 (TeX Live 2023) se cae al
+% compilar el manual completo (fallo de pdfTeX con enlaces en paracol).
 \begin{paracol}{2}
-La siguiente función implementa el método de Jacobi siguiendo el diagrama de flujo de la figura \ref{fig:itera}. El bucle interior sobre \texttt{i} es la función $M(\cdot)$ del método:
+La siguiente función implementa el método de Jacobi siguiendo el diagrama de flujo de la figura \ref*{fig:itera}. El bucle interior sobre \texttt{i} es la función $M(\cdot)$ del método:
 
 \switchcolumn
-The following function implements Jacobi's method following the flowchart in figure \ref{fig:itera}. The inner loop over \texttt{i} is the function $M(\cdot)$ of the method:
+The following function implements Jacobi's method following the flowchart in figure \ref*{fig:itera}. The inner loop over \texttt{i} is the function $M(\cdot)$ of the method:
 \end{paracol}
 \begin{minted}{python}
 import numpy as np
